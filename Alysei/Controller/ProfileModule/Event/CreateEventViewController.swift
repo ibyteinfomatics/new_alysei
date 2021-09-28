@@ -720,7 +720,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
         dateTxf.inputAccessoryView = toolbar
         dateTxf.inputView = datePicker
@@ -757,7 +757,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker1));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
         timeTxf.inputAccessoryView = toolbar
         timeTxf.inputView = timePicker

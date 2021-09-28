@@ -169,6 +169,8 @@ class ConversationViewController: AlysieBaseViewC {
         }
     }
     
+    
+    
     @IBAction func btnDeleteTapped(_ sender: Any) {
         kChatharedInstance.deletePerticularMessage(msgId: self.selectedChat, user_id: (String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_"+(String.getString(userId)))
         
@@ -411,7 +413,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
-                        textCell.chatBoxView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+                        textCell.chatBoxView.backgroundColor = UIColor.init(red: 229/255.0, green: 229/255.0, blue: 234/255.0, alpha: 1.0)
                         
                         let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
                         self.selectedChat.remove(at: index!)

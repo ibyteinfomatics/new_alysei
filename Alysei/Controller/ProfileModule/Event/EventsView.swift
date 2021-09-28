@@ -58,9 +58,16 @@ class EventsView: AlysieBaseViewC {
         eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
         eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
         eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
-        //eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
+        
+        
+        if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
+            eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
+        } else {
+            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
+        }
+        
         eventTableCell.moreButton.layer.cornerRadius = 10
-        eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
+        
         eventTableCell.editButton.tag = indexPath
         eventTableCell.deleteButton.tag = indexPath
         eventTableCell.moreButton.tag = indexPath
@@ -187,6 +194,10 @@ extension EventsView: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 189
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("index--- ",indexPath.row)
     }
     
 }

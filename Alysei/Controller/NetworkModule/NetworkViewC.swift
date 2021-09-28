@@ -24,7 +24,7 @@ class NetworkViewC: AlysieBaseViewC {
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     
-  
+    var connection:ConnectionTabModel?
   //MARK: - ViewLifeCycle Methods -
   
   override func viewDidLoad() {
@@ -47,6 +47,21 @@ class NetworkViewC: AlysieBaseViewC {
         }
     }
     
+    func callConnectionApi(api: String){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: api, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+           
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.connection = ConnectionTabModel.init(with: dictResponse)
+                
+            }
+            
+            self.tblViewNetwork.reloadData()
+        }
+    }
+    
   //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -65,6 +80,8 @@ class NetworkViewC: AlysieBaseViewC {
   private func getNetworkCategoryCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
     
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
+    
+    
     networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
     return networkCategoryCollectionCell
   }
@@ -72,6 +89,24 @@ class NetworkViewC: AlysieBaseViewC {
   private func getNetworkTableCell(_ indexPath: IndexPath) -> UITableViewCell{
     
     let networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
+    
+    //networkTableCell.name.text = self.connection?.data?[indexPath.row].user?.companyName
+    networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
+    
+    if connection?.data?[indexPath.row].user?.companyName != "" {
+        networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
+    } else if connection?.data?[indexPath.row].user?.firstname != ""{
+        networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+    } else {
+        networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+    }
+    
+    networkTableCell.img.layer.masksToBounds = false
+    networkTableCell.img.clipsToBounds = true
+    networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
+    
+    networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+    
     return networkTableCell
   }
 }
@@ -94,6 +129,13 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         
     self.currentIndex = indexPath.item
     self.collectionViewNetworkCategory.reloadData()
+    
+    if indexPath.row == 1 {
+        callConnectionApi(api: APIUrl.kConnectionTabApi)
+    } else if indexPath.row == 2 {
+        callConnectionApi(api: "get/connection/tabs?tab=4")
+    }
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -110,7 +152,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return 2
+    return self.connection?.data?.count ?? 0
   }
         
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

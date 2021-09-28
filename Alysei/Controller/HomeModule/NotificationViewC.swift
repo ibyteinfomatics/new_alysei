@@ -200,8 +200,10 @@ extension NotificationViewC: UITableViewDataSource, UITableViewDelegate{
             vc.profileImageUrl = String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
             
         } else {
-            let img = (imageDomain+"/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? ""))
-            vc.profileImageUrl = img.replacingOccurrences(of: "//", with: "/")
+            var img = ("/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? ""))
+            img = img.replacingOccurrences(of: "//", with: "/")
+            
+            vc.profileImageUrl = imageDomain+img
         }
    
         //self.present(vc , animated: true)
