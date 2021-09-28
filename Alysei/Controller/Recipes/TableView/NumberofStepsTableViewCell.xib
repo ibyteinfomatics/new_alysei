@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell1" id="KGk-i7-Jjw" customClass="NumberofStepsTableViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjR-nt-E8X">
+                        <rect key="frame" x="15" y="0.0" width="290" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3Z-f7-jkC">
+                                <rect key="frame" x="0.0" y="12" width="47" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vW-ri-7vg">
+                                <rect key="frame" x="274" y="11" width="16" height="22"/>
+                                <state key="normal" image="icons8_delete_bin_2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orN-fg-QbM">
+                                <rect key="frame" x="274" y="11" width="20" height="22"/>
+                                <state key="normal" image="icons8_edit_2"/>
+                                <connections>
+                                    <action selector="tapForEditSteps:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nWi-kh-Rqs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0Q-ae-QJ9">
+                                <rect key="frame" x="60" y="12" width="34" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ztu-yF-dzz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b3Z-f7-jkC" firstAttribute="centerY" secondItem="FjR-nt-E8X" secondAttribute="centerY" id="So5-qV-Lqx"/>
+                            <constraint firstItem="1vW-ri-7vg" firstAttribute="leading" secondItem="orN-fg-QbM" secondAttribute="trailing" constant="-20" id="bcc-v8-U45"/>
+                            <constraint firstItem="b3Z-f7-jkC" firstAttribute="leading" secondItem="FjR-nt-E8X" secondAttribute="leading" id="bkD-1e-0az"/>
+                            <constraint firstItem="X0Q-ae-QJ9" firstAttribute="leading" secondItem="b3Z-f7-jkC" secondAttribute="trailing" constant="13" id="e4S-dL-qSm"/>
+                            <constraint firstItem="1vW-ri-7vg" firstAttribute="centerY" secondItem="FjR-nt-E8X" secondAttribute="centerY" id="qtc-x2-6Ta"/>
+                            <constraint firstItem="orN-fg-QbM" firstAttribute="centerY" secondItem="FjR-nt-E8X" secondAttribute="centerY" id="vbY-kd-IiX"/>
+                            <constraint firstItem="X0Q-ae-QJ9" firstAttribute="centerY" secondItem="FjR-nt-E8X" secondAttribute="centerY" id="vsX-6O-SOt"/>
+                            <constraint firstAttribute="trailing" secondItem="1vW-ri-7vg" secondAttribute="trailing" id="yAj-38-zX8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FjR-nt-E8X" secondAttribute="trailing" constant="15" id="7Dp-nE-vmG"/>
+                    <constraint firstItem="FjR-nt-E8X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="DvQ-uB-rye"/>
+                    <constraint firstItem="FjR-nt-E8X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rjc-qo-Zwh"/>
+                    <constraint firstAttribute="bottom" secondItem="FjR-nt-E8X" secondAttribute="bottom" id="gAo-nh-la5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="stepTitle" destination="b3Z-f7-jkC" id="25U-qM-fJN"/>
+                <outlet property="titleLabel" destination="X0Q-ae-QJ9" id="dkj-PL-6g3"/>
+            </connections>
+            <point key="canvasLocation" x="34.782608695652179" y="61.607142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icons8_delete_bin_2" width="16" height="20"/>
+        <image name="icons8_edit_2" width="19.5" height="19.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

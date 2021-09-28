@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "puerto rico.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HubNameCollectionViewCell" id="gTV-IL-0wX" customClass="HubNameCollectionViewCell" customModule="Alysie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJb-YJ-M5w">
+                        <rect key="frame" x="5" y="0.0" width="325" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jh-Pb-xbE">
+                                <rect key="frame" x="5" y="5" width="288" height="50"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyL-jG-VJz">
+                                <rect key="frame" x="303" y="24" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="U8z-nL-Xmg"/>
+                                    <constraint firstAttribute="width" secondItem="lyL-jG-VJz" secondAttribute="height" multiplier="1:1" id="sgQ-ls-5iK"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icons8_delete_4"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="4jh-Pb-xbE" firstAttribute="top" secondItem="NJb-YJ-M5w" secondAttribute="top" constant="5" id="IVj-Cb-tbH"/>
+                            <constraint firstItem="4jh-Pb-xbE" firstAttribute="leading" secondItem="NJb-YJ-M5w" secondAttribute="leading" constant="5" id="JuV-JJ-Hao"/>
+                            <constraint firstAttribute="trailing" secondItem="lyL-jG-VJz" secondAttribute="trailing" constant="10" id="S7f-oT-WGu"/>
+                            <constraint firstItem="lyL-jG-VJz" firstAttribute="leading" secondItem="4jh-Pb-xbE" secondAttribute="trailing" constant="10" id="ZVH-wO-oqH"/>
+                            <constraint firstItem="lyL-jG-VJz" firstAttribute="centerY" secondItem="4jh-Pb-xbE" secondAttribute="centerY" id="b5G-LT-WY0"/>
+                            <constraint firstAttribute="bottom" secondItem="4jh-Pb-xbE" secondAttribute="bottom" constant="5" id="fAJ-Sh-7bi"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="NJb-YJ-M5w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="8nS-OM-iwu"/>
+                <constraint firstAttribute="bottom" secondItem="NJb-YJ-M5w" secondAttribute="bottom" id="Vc4-Rb-zY2"/>
+                <constraint firstItem="NJb-YJ-M5w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="le7-wJ-Ykf"/>
+                <constraint firstAttribute="trailing" secondItem="NJb-YJ-M5w" secondAttribute="trailing" constant="5" id="x5N-lL-zYF"/>
+            </constraints>
+            <size key="customSize" width="335" height="60"/>
+            <connections>
+                <outlet property="lblNAme" destination="4jh-Pb-xbE" id="xCZ-nW-s80"/>
+            </connections>
+            <point key="canvasLocation" x="274.63768115942031" y="78.348214285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icons8_delete_4" width="25" height="25"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

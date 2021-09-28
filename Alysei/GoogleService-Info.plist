@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>843003765744-kf9be6m47nurmd29fssojik5tig89mol.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.843003765744-kf9be6m47nurmd29fssojik5tig89mol</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>843003765744-2udckibm15mvmdir57182m4erdbsrlnv.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCHoKV0CQU2zctfEt3-8H-cX2skMbMpmsM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>843003765744</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.Alysei</string>
+	<key>PROJECT_ID</key>
+	<string>alysei-add21</string>
+	<key>STORAGE_BUCKET</key>
+	<string>alysei-add21.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:843003765744:ios:1e74c37e85f65a31b63335</string>
+	<key>DATABASE_URL</key>
+	<string>https://alysei-add21-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

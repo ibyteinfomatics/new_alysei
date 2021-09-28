@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SelectHubStateCViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="218" height="57"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="218" height="57"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jp-h9-K89">
+                        <rect key="frame" x="0.0" y="0.0" width="218" height="57"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitations" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGh-AE-qLO">
+                                <rect key="frame" x="10" y="19.5" width="84" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-jT-C0v">
+                                <rect key="frame" x="0.0" y="53" width="218" height="3"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="GOr-jZ-6Nq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2eV-jT-C0v" secondAttribute="bottom" constant="1" id="2Xg-KP-2rO"/>
+                            <constraint firstItem="dGh-AE-qLO" firstAttribute="leading" secondItem="3jp-h9-K89" secondAttribute="leading" constant="10" id="Owz-Z4-iVp"/>
+                            <constraint firstItem="dGh-AE-qLO" firstAttribute="centerY" secondItem="3jp-h9-K89" secondAttribute="centerY" id="apV-iR-5Od"/>
+                            <constraint firstAttribute="trailing" secondItem="2eV-jT-C0v" secondAttribute="trailing" id="sPc-b5-F73"/>
+                            <constraint firstItem="2eV-jT-C0v" firstAttribute="leading" secondItem="3jp-h9-K89" secondAttribute="leading" id="ux3-hp-y3F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="3jp-h9-K89" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lyu-AH-Rjv"/>
+                <constraint firstAttribute="trailing" secondItem="3jp-h9-K89" secondAttribute="trailing" id="N37-jj-e5k"/>
+                <constraint firstItem="3jp-h9-K89" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="S1u-8w-g39"/>
+                <constraint firstAttribute="bottom" secondItem="3jp-h9-K89" secondAttribute="bottom" id="osQ-83-dRi"/>
+            </constraints>
+            <size key="customSize" width="218" height="57"/>
+            <connections>
+                <outlet property="lblBusinessHeading" destination="dGh-AE-qLO" id="GeA-wv-g7r"/>
+                <outlet property="viewBottom" destination="2eV-jT-C0v" id="Hl3-bn-nhX"/>
+            </connections>
+            <point key="canvasLocation" x="262.31884057971018" y="51.897321428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

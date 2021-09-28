@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HubSelectionTableViewCell" rowHeight="728" id="KGk-i7-Jjw" customClass="HubSelectionTableViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="728"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="580" height="728"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the hub from USA/illnios where you export." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2p-sF-RhC">
+                        <rect key="frame" x="10" y="15" width="560" height="19"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npd-zH-MtK">
+                        <rect key="frame" x="0.0" y="119" width="580" height="596"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="cBY-C5-Psn"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="PGB-aI-aHi"/>
+                        </connections>
+                    </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5V-Z0-Qdi">
+                        <rect key="frame" x="0.0" y="725" width="580" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="VHm-lg-fjO"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLn-ZI-Fnv">
+                        <rect key="frame" x="10" y="54" width="560" height="45"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_icon" translatesAutoresizingMaskIntoConstraints="NO" id="auF-ox-MkR">
+                                <rect key="frame" x="20" y="12.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="VOf-G6-8XM"/>
+                                    <constraint firstAttribute="width" secondItem="auF-ox-MkR" secondAttribute="height" multiplier="1:1" id="mVF-nl-cUP"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Cities" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="coM-cy-B0n">
+                                <rect key="frame" x="50" y="5" width="500" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="coM-cy-B0n" secondAttribute="trailing" constant="10" id="APW-7u-uaR"/>
+                            <constraint firstAttribute="bottom" secondItem="coM-cy-B0n" secondAttribute="bottom" constant="5" id="LOL-Zf-o60"/>
+                            <constraint firstAttribute="height" constant="45" id="jNd-ZM-dgN"/>
+                            <constraint firstItem="coM-cy-B0n" firstAttribute="leading" secondItem="auF-ox-MkR" secondAttribute="trailing" constant="10" id="nEO-pI-Sqj"/>
+                            <constraint firstItem="auF-ox-MkR" firstAttribute="centerY" secondItem="LLn-ZI-Fnv" secondAttribute="centerY" id="tQ0-Nu-ZLj"/>
+                            <constraint firstItem="auF-ox-MkR" firstAttribute="leading" secondItem="LLn-ZI-Fnv" secondAttribute="leading" constant="20" id="vIr-kH-Et8"/>
+                            <constraint firstItem="coM-cy-B0n" firstAttribute="top" secondItem="LLn-ZI-Fnv" secondAttribute="top" constant="5" id="wvK-cS-3TT"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hub exists in this state." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caA-wB-RFW">
+                        <rect key="frame" x="20" y="407" width="540" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="npd-zH-MtK" secondAttribute="trailing" id="5Ap-6I-Bw3"/>
+                    <constraint firstAttribute="trailing" secondItem="l2p-sF-RhC" secondAttribute="trailing" constant="10" id="AG1-PJ-hOY"/>
+                    <constraint firstAttribute="trailing" secondItem="caA-wB-RFW" secondAttribute="trailing" constant="20" id="JTD-nl-lr9"/>
+                    <constraint firstItem="f5V-Z0-Qdi" firstAttribute="top" secondItem="npd-zH-MtK" secondAttribute="bottom" constant="10" id="O9D-YN-giy"/>
+                    <constraint firstAttribute="bottom" secondItem="f5V-Z0-Qdi" secondAttribute="bottom" constant="2" id="SFA-nl-tTm"/>
+                    <constraint firstItem="l2p-sF-RhC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="YlH-VD-LFK"/>
+                    <constraint firstItem="LLn-ZI-Fnv" firstAttribute="trailing" secondItem="l2p-sF-RhC" secondAttribute="trailing" id="ash-ms-ORQ"/>
+                    <constraint firstItem="LLn-ZI-Fnv" firstAttribute="leading" secondItem="l2p-sF-RhC" secondAttribute="leading" id="dfB-mp-b0g"/>
+                    <constraint firstItem="caA-wB-RFW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="f3X-e8-pq2"/>
+                    <constraint firstItem="l2p-sF-RhC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="f8D-0U-86K"/>
+                    <constraint firstItem="f5V-Z0-Qdi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f8O-fI-FbC"/>
+                    <constraint firstItem="caA-wB-RFW" firstAttribute="centerX" secondItem="npd-zH-MtK" secondAttribute="centerX" id="oHi-Od-Dsq"/>
+                    <constraint firstItem="npd-zH-MtK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ovv-QI-RU6"/>
+                    <constraint firstAttribute="trailing" secondItem="f5V-Z0-Qdi" secondAttribute="trailing" id="phv-6L-dlu"/>
+                    <constraint firstItem="LLn-ZI-Fnv" firstAttribute="top" secondItem="l2p-sF-RhC" secondAttribute="bottom" constant="20" id="rOF-5h-uqF"/>
+                    <constraint firstItem="npd-zH-MtK" firstAttribute="top" secondItem="LLn-ZI-Fnv" secondAttribute="bottom" constant="20" id="wCb-Pm-nUe"/>
+                    <constraint firstItem="caA-wB-RFW" firstAttribute="centerY" secondItem="npd-zH-MtK" secondAttribute="centerY" id="yKD-Fa-fh7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblHeading" destination="l2p-sF-RhC" id="YOB-hj-U5g"/>
+                <outlet property="lblNoHub" destination="caA-wB-RFW" id="6Jp-Qm-gMT"/>
+                <outlet property="tableView" destination="npd-zH-MtK" id="tWq-qf-iJC"/>
+                <outlet property="txtSearch" destination="coM-cy-B0n" id="Wn5-PA-i5s"/>
+                <outlet property="viewSearch" destination="LLn-ZI-Fnv" id="p1s-12-AnV"/>
+                <outlet property="viewSearchHeight" destination="jNd-ZM-dgN" id="iM3-OJ-TZN"/>
+            </connections>
+            <point key="canvasLocation" x="395.6521739130435" y="196.20535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="search_icon" width="20" height="19.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

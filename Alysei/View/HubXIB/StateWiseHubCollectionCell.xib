@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StateWiseHubCollectionCell" id="gTV-IL-0wX" customClass="StateWiseHubCollectionCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="54"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="54"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGD-pn-r1S">
+                        <rect key="frame" x="5" y="5" width="163" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitations" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mA-oI-fyH">
+                                <rect key="frame" x="5" y="5" width="153" height="34"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57i-cD-euw">
+                                <rect key="frame" x="0.0" y="40" width="163" height="3"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="IUW-TD-tsc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5mA-oI-fyH" secondAttribute="bottom" constant="5" id="1Hu-qj-Twb"/>
+                            <constraint firstItem="5mA-oI-fyH" firstAttribute="top" secondItem="BGD-pn-r1S" secondAttribute="top" constant="5" id="2yz-KE-9Yh"/>
+                            <constraint firstItem="57i-cD-euw" firstAttribute="leading" secondItem="BGD-pn-r1S" secondAttribute="leading" id="AC2-Pe-tVq"/>
+                            <constraint firstItem="5mA-oI-fyH" firstAttribute="leading" secondItem="BGD-pn-r1S" secondAttribute="leading" constant="5" id="Esq-2R-2Oe"/>
+                            <constraint firstAttribute="trailing" secondItem="57i-cD-euw" secondAttribute="trailing" id="IOR-tG-Nb7"/>
+                            <constraint firstAttribute="bottom" secondItem="57i-cD-euw" secondAttribute="bottom" constant="1" id="Iyr-dr-CBK"/>
+                            <constraint firstAttribute="trailing" secondItem="5mA-oI-fyH" secondAttribute="trailing" constant="5" id="ltf-Ef-aRF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="BGD-pn-r1S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9Bl-D1-mbp"/>
+                <constraint firstItem="BGD-pn-r1S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="FEY-42-6Bn"/>
+                <constraint firstAttribute="bottom" secondItem="BGD-pn-r1S" secondAttribute="bottom" constant="5" id="OOK-ve-lPt"/>
+                <constraint firstAttribute="trailing" secondItem="BGD-pn-r1S" secondAttribute="trailing" constant="5" id="jKg-HX-Fvl"/>
+            </constraints>
+            <size key="customSize" width="173" height="54"/>
+            <connections>
+                <outlet property="viewBottom" destination="57i-cD-euw" id="NoE-4e-SmZ"/>
+            </connections>
+            <point key="canvasLocation" x="184.78260869565219" y="58.928571428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

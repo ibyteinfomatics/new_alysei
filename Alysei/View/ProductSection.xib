@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" interfaceStyle="light" id="iN0-l3-epB" customClass="ProductSection" customModule="Alysie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qay-B1-trr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-O4-Z2f">
+                            <rect key="frame" x="30" y="0.0" width="46" height="45"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="380" id="jAM-Xq-onu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-c2-SzM">
+                            <rect key="frame" x="91" y="7.5" width="40" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="K8l-if-lxS"/>
+                                <constraint firstAttribute="height" constant="30" id="L9E-km-3SU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                            <color key="tintColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                            <state key="normal" image="info_icon"/>
+                            <connections>
+                                <action selector="tapInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="mxq-bM-Ta2"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="rVC-c2-SzM" firstAttribute="leading" secondItem="EzR-O4-Z2f" secondAttribute="trailing" constant="15" id="B2d-kt-eSd"/>
+                        <constraint firstAttribute="bottom" secondItem="EzR-O4-Z2f" secondAttribute="bottom" id="Unk-kX-BGI"/>
+                        <constraint firstItem="rVC-c2-SzM" firstAttribute="centerY" secondItem="EzR-O4-Z2f" secondAttribute="centerY" id="n7D-gG-8l8"/>
+                        <constraint firstItem="EzR-O4-Z2f" firstAttribute="top" secondItem="Qay-B1-trr" secondAttribute="top" id="uUt-DI-WuL"/>
+                        <constraint firstItem="EzR-O4-Z2f" firstAttribute="leading" secondItem="Qay-B1-trr" secondAttribute="leading" constant="30" id="weY-j0-arH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Qay-B1-trr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ATl-uJ-lnq"/>
+                <constraint firstItem="Qay-B1-trr" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="GhH-Lz-0vB"/>
+                <constraint firstItem="Qay-B1-trr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="TKf-KP-Yy3"/>
+                <constraint firstItem="Qay-B1-trr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WpX-FB-SbB"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnInfo" destination="rVC-c2-SzM" id="6BJ-eo-PRv"/>
+                <outlet property="lblSectionName" destination="EzR-O4-Z2f" id="UgD-sA-MgU"/>
+            </connections>
+            <point key="canvasLocation" x="-258" y="69"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info_icon" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

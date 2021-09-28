@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="IIH-al-Tr9" customClass="FlagView" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVU-qf-gGd">
+                    <rect key="frame" x="12" y="10" width="30" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="7aH-V5-Rmq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="wDB-ju-nvx">
+                    <rect key="frame" x="50" y="4" width="56" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="c5P-cy-tUa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLg-kh-QQo">
+                    <rect key="frame" x="114" y="10" width="1" height="20.5"/>
+                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="dy6-NI-gG2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hiU-Jd-LLt">
+                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="TFw-62-diG"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wDB-ju-nvx" firstAttribute="centerY" secondItem="hVU-qf-gGd" secondAttribute="centerY" id="6sb-tn-8XI"/>
+                <constraint firstItem="TFw-62-diG" firstAttribute="bottom" secondItem="hVU-qf-gGd" secondAttribute="bottom" constant="10" id="9pQ-e2-yxK"/>
+                <constraint firstAttribute="trailing" secondItem="vLg-kh-QQo" secondAttribute="trailing" constant="15" id="DnA-S5-3Zb"/>
+                <constraint firstItem="vLg-kh-QQo" firstAttribute="leading" secondItem="wDB-ju-nvx" secondAttribute="trailing" constant="8" id="WdZ-lw-9bw"/>
+                <constraint firstItem="wDB-ju-nvx" firstAttribute="leading" secondItem="hVU-qf-gGd" secondAttribute="trailing" constant="8" id="b3b-nh-irY"/>
+                <constraint firstItem="hVU-qf-gGd" firstAttribute="leading" secondItem="IIH-al-Tr9" secondAttribute="leading" constant="12" id="eJy-w7-YTi"/>
+                <constraint firstAttribute="top" secondItem="hVU-qf-gGd" secondAttribute="top" constant="-10" id="pbZ-Gs-W1L"/>
+                <constraint firstItem="vLg-kh-QQo" firstAttribute="centerY" secondItem="wDB-ju-nvx" secondAttribute="centerY" id="tDt-OB-SY2"/>
+                <constraint firstAttribute="bottom" secondItem="wDB-ju-nvx" secondAttribute="top" constant="36" id="zot-h4-RDl"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="hiU-Jd-LLt" id="eqm-ah-Cmi"/>
+                <outlet property="countrtyCode" destination="wDB-ju-nvx" id="3pp-Do-qhJ"/>
+                <outlet property="flag" destination="hVU-qf-gGd" id="w7C-jv-pFR"/>
+            </connections>
+            <point key="canvasLocation" x="-2837.68115942029" y="-141.96428571428569"/>
+        </view>
+    </objects>
+</document>

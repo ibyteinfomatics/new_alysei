@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cocos (keeling) islands.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

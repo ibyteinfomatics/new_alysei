@@ -1,0 +1,15 @@
+Pods/
+fastlane/
+Gemfile.lock
+Gemfile
+build/
+docs/
+Podfile.lock
+DerivedData/
+RangDe.xcodeproj/xcshareddata/*
+RangDe.xcworkspace/
+*.DS_Store
+*/xcuserdata/*
+JBM979S22V.cer
+*.zip
+*.ipa
