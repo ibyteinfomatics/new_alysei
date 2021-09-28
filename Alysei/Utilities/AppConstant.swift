@@ -288,8 +288,12 @@ struct APIUrl{
     static let kGetNotificationList  =  "get/all/notifications"
     static let kSendNotification  =  "send/message/notification"
     static let kUploadMediaApi = "upload/media"
+    static let kConnectionTabApi1 = "get/connection/tabs?tab=1"
     static let kConnectionTabApi = "get/connection/tabs?tab=2"
+    static let kConnectionTabApi3 = "get/connection/tabs?tab=3"
+    static let kConnectionTabApi4 = "get/connection/tabs?tab=4"
 
+    
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
         
@@ -772,7 +776,8 @@ struct StaticArrayData {
     
     static let kNetworkCategoryDict = [(image: "icons_invitations", name: "Invitations"),
                                        (image: "icons8_people", name: "Connections"),
-                                       (image: "icons_pending", name: "Pending")]
+                                       (image: "icons_pending", name: "Pending"),
+                                       (image: "icons_invitations", name: "Followers")]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),

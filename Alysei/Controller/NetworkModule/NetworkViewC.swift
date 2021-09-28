@@ -48,6 +48,9 @@ class NetworkViewC: AlysieBaseViewC {
     }
     
     func callConnectionApi(api: String){
+        
+        self.connection?.data?.removeAll()
+        self.tblViewNetwork.reloadData()
         TANetworkManager.sharedInstance.requestApi(withServiceName: api, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -81,7 +84,7 @@ class NetworkViewC: AlysieBaseViewC {
     
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
     
-    
+    networkCategoryCollectionCell.lblNetworkCount.isHidden = true
     networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
     return networkCategoryCollectionCell
   }
@@ -101,11 +104,26 @@ class NetworkViewC: AlysieBaseViewC {
         networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
     }
     
+    if currentIndex == 3 {
+        networkTableCell.remove.isHidden = true
+    } else if currentIndex == 1{
+        networkTableCell.remove.isHidden = false
+        networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
+        networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
+    } else if currentIndex == 2{
+        networkTableCell.remove.isHidden = false
+        networkTableCell.remove.setTitleColor(.red, for: .normal)
+        networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
+    }
+    
     networkTableCell.img.layer.masksToBounds = false
     networkTableCell.img.clipsToBounds = true
     networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
     
-    networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+    if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
+        networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+    }
+    
     
     return networkTableCell
   }
@@ -133,7 +151,9 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
     if indexPath.row == 1 {
         callConnectionApi(api: APIUrl.kConnectionTabApi)
     } else if indexPath.row == 2 {
-        callConnectionApi(api: "get/connection/tabs?tab=4")
+        callConnectionApi(api: APIUrl.kConnectionTabApi3)
+    } else if indexPath.row == 3 {
+        callConnectionApi(api: APIUrl.kConnectionTabApi4)
     }
     
   }
