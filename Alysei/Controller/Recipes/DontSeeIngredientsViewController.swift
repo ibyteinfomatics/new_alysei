@@ -6,7 +6,7 @@
 //
 
 import UIKit
-var arraySelectedIngridient: [Int]? = []
+var arrayPreference4: PreferencesDataModel?
 class DontSeeIngredientsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,6 +27,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     var ingridientSearchModel: [SearchIngridientDataModel]? = []
     var searchTextPreferences = String()
     var ingridientSet = Set<Int>()
+    var arraySelectedIngridient: [Int]? = []
     
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
@@ -34,6 +35,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     }
     
     override func viewDidLoad() {
+        preferenceNumber = 4
         super.viewDidLoad()
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
@@ -59,6 +61,8 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
             self.searching = false
             self.searchTextField.text = nil
             self.searchTableView.reloadData()
+            arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
             self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{}
@@ -117,7 +121,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     
     func callSearchIngridients(){
        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.searchIngridient + searchTextPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchTextPreferences)&type=2", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
             

@@ -360,7 +360,11 @@ struct APIUrl{
         static let getHomeScreen = kBASEURL + "get/home/screen"
         static let getMyFavRecipe = kBASEURL + "my/favourite/recipes"
         static let searchIngridient = kBASEURL + "search/ingredients?keyword="
-
+        static let savePreferences = kBASEURL + "save/preference"
+        static let getsavedPreferences = kBASEURL + "get/saved/preferences"
+       
+        static let getRecipeHomeScreen = kBASEURL + "get/home/screen"
+        static let getSearchMeal = kBASEURL + "search/meal?keyword="
 
 
         

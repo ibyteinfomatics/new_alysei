@@ -17,7 +17,7 @@ class AddToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var selectToolImgView: UIImageView!
     
-    var data: ToolsArray?
+  
     var checkDataStatus: Bool?
     var indexPath: IndexPath?
     var addToolDelegate : AddToolTableViewCellProtocol?
@@ -25,15 +25,24 @@ class AddToolsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func configCell(data: ToolsArray){
-        self.data = data
-        if data.isSelected == true{
-            self.selectToolImgView.isHidden = false
-        }
-        else{
-            self.selectToolImgView.isHidden = true
+    
+    var data: ToolsArray?{
+        didSet{
+            updateUI()
         }
     }
+    
+    func updateUI() {
+        if(selectedToolsArray.contains(where: { $0.recipeToolIds == data?.recipeToolIds })) == true {
+            self.selectToolImgView.isHidden = false
+        } else {
+            self.selectToolImgView.isHidden = true
+        }
+        let imgUrl = (kImageBaseUrl + (data?.imageId?.imgUrl ?? ""))
+        img.setImage(withString: imgUrl)
+        label2.text = data?.toolTitle
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         addButton.layer.borderWidth = 1
@@ -45,9 +54,12 @@ class AddToolsTableViewCell: UITableViewCell {
     
     @IBAction func TapForAddTool(_ sender: UIButton) {
         
-        checkDataStatus = data?.isSelected
-        addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]), checkStatus: checkDataStatus)
-       
+        if self.selectToolImgView.isHidden == true {
+            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]), checkStatus: false)
+        } else {
+            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]), checkStatus: true)
+
+        }
     }
 
 }

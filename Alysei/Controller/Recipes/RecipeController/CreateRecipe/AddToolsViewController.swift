@@ -37,21 +37,21 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     @IBOutlet weak var addMissingToolPopUpHeight: NSLayoutConstraint!
     var newSearchModel: [AddToolsDataModel]? = []
     var addMissingToolModel: [ToolTypeDataModel]? = []
-   
+    
     var array1 = NSMutableArray()
     var array2 = NSMutableArray()
-
+    
     var toolBar = UIToolbar()
     var picker1  = UIPickerView()
     var strReturn = String()
     var strReturn1 = Int()
     var arrQuantity = NSMutableArray()
     var arrUnit = NSMutableArray()
-   
+    
     var arrayPickerData: [String] = []
     var selectedIndexPath : IndexPath?
     var selectedIndexPath1: IndexPath?
-   
+    
     var strToolQuantity = Int()
     var strToolId = Int()
     var strToolUnit = String()
@@ -62,7 +62,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
         addToolsTableView.reloadData()
         self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
         if self.addedToolQuantityLabel.text == "0 Items"{
@@ -70,32 +70,27 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         }
         else{
             self.saveButton.layer.backgroundColor =
-            UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
+                UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
         }
         
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        self.addedToolQuantityLabel.text = "\(arraySelectedItemTools.count) Items"
-//        addToolsTableView.reloadData()
-//    }
-   
-    override func viewDidLoad() {
     
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-
+        
         picker1.delegate = self
         picker1.dataSource = self
         
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-         arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter"]
+        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter"]
         self.addNewMissingToolBtn.isHidden = true
         setUI()
         setupUI()
         callAddTools()
         callListTools()
-      
+        
         self.addMissingToolView.isHidden = true
         self.addToolPopUpView.isHidden = true
         self.setupUI()
@@ -137,7 +132,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         addedToolItemButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         addedToolItemButton.layer.cornerRadius = 5
         addedToolQuantityLabel.text = "0 Items"
-
+        
     }
     
     func setPickerToolbar(){
@@ -149,24 +144,24 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         picker1.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
         self.view.addSubview(picker1)
         picker1.reloadAllComponents()
-
+        
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 40))
         toolBar.barTintColor = AppColors.mediumBlue.color
         toolBar.tintColor = UIColor.white
         toolBar.sizeToFit()
         
-       
-    
-       let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-    
-       let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-
+        
         self.view.addSubview(toolBar)
         
-            }
+    }
     
     @objc func onDoneButtonTapped() {
         
@@ -178,7 +173,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
                 self.strReturn1 = stId1
                 self.quantityLabel.text = String(self.strReturn1)
             }
-           
+            
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
         case 2:
@@ -193,28 +188,28 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         default:
             break
         }
-       
+        
     }
     
     @objc func onCancelButtonTapped() {
         
         toolBar.removeFromSuperview()
         picker1.removeFromSuperview()
-
-       }
+        
+    }
     @IBAction func addMissingToolButton(_ sender: UIButton) {
         
         sender.isSelected = !sender.isSelected
-       if sender.isSelected == false
-       {
-           self.addMissingToolButton.setImage(UIImage.init(named: "MENU"), for: .normal)
-        self.addMissingToolView.isHidden = true
-       }
-       else
-       {
-           self.addMissingToolButton.setImage(UIImage.init(named: "5"), for: .normal)
-        self.addMissingToolView.isHidden = false
-
+        if sender.isSelected == false
+        {
+            self.addMissingToolButton.setImage(UIImage.init(named: "MENU"), for: .normal)
+            self.addMissingToolView.isHidden = true
+        }
+        else
+        {
+            self.addMissingToolButton.setImage(UIImage.init(named: "5"), for: .normal)
+            self.addMissingToolView.isHidden = false
+            
         }
     }
     
@@ -222,6 +217,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     @IBAction func saveButton(_ sender: Any) {
         if addedToolQuantityLabel.text != "0 Items" {
             let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
+            if  arrayStepFinalData.count == 0 {
             var ingridentsArray : [IngridentArray] = []
             for item in selectedIngridentsArray{
                 let ingridients: IngridentArray = IngridentArray.init()
@@ -254,13 +250,18 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
             addSteps.arrayIngridients = ingridentsArray
             addSteps.arraytools = toolsArray
             addSteps.page = 1
+            }
+            else{
+                addSteps.page = 1
+                addSteps.selectedIndex = 0
+            }
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
         let cancelPopUpVC = self.storyboard?.instantiateViewController(withIdentifier: "CancelPopUpViewController") as! CancelPopUpViewController
-      
+        
         cancelPopUpVC.modalPresentationStyle = .overFullScreen
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
@@ -276,10 +277,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     
     @IBAction func backButton(_ sender: UIButton) {
         
-//        let indexPath = IndexPath(row: sender.tag, section: 0)
-//        let cell = addToolsTableView.cellForRow(at: indexPath) as! AddToolsTableViewCell
-//        cell.selectToolImgView.image = nil
-         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tapForaddMyMissingTool(_ sender: Any) {
@@ -289,7 +287,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         self.addMissingToolButton.setImage(UIImage.init(named: "MENU"), for: .normal)
         self.addMissingToolButton.isSelected = false
         self.navigationController?.pushViewController(addmissIngridient, animated: true)
-       
+        
     }
     
     @IBAction func tapForClosePopUp(_ sender: Any) {
@@ -310,49 +308,49 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     }
     
     @IBAction func tapForSaveTool(_ sender: UIButton) {
-//        if self.quantityLabel.text == "0" || self.unitLabel.text == "Unit"{
-//            self.addToolPopUpView.isHidden = false
-//            self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//        }
-//        else{
-//            self.addToolPopUpView.isHidden = true
-//
-//
-//            let quantity = self.strReturn1
-//            let unit = self.strReturn
-//            let pickerData = String(quantity) + " " + unit
-//            arrayPickerData.append(pickerData)
-//            arraySelectedItemTools.append(selectedIndexPath ?? IndexPath(row: sender.tag, section: 0))
-//            self.addedToolQuantityLabel.text = "\(arraySelectedItemTools.count) Items"
-//            addToolsTableView.reloadData()
-//            self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
-//
-//            selectedToolsArray.removeAll()
-//            for (indexPath,item) in arraySelectedItemTools.enumerated(){
-//
-//                let valueIngridients: ToolsArray = (self.newSearchModel?[item.section].tools?[item.row]) as! ToolsArray
-//                print(valueIngridients)
-//                valueIngridients.pickerData = arrayPickerData[indexPath]
-//                valueIngridients.quantity = quantity
-//                valueIngridients.unit = unit
-//                selectedToolsArray.append(valueIngridients)
-//            }
-//        }
+        //        if self.quantityLabel.text == "0" || self.unitLabel.text == "Unit"{
+        //            self.addToolPopUpView.isHidden = false
+        //            self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
+        //        }
+        //        else{
+        //            self.addToolPopUpView.isHidden = true
+        //
+        //
+        //            let quantity = self.strReturn1
+        //            let unit = self.strReturn
+        //            let pickerData = String(quantity) + " " + unit
+        //            arrayPickerData.append(pickerData)
+        //            arraySelectedItemTools.append(selectedIndexPath ?? IndexPath(row: sender.tag, section: 0))
+        //            self.addedToolQuantityLabel.text = "\(arraySelectedItemTools.count) Items"
+        //            addToolsTableView.reloadData()
+        //            self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
+        //
+        //            selectedToolsArray.removeAll()
+        //            for (indexPath,item) in arraySelectedItemTools.enumerated(){
+        //
+        //                let valueIngridients: ToolsArray = (self.newSearchModel?[item.section].tools?[item.row]) as! ToolsArray
+        //                print(valueIngridients)
+        //                valueIngridients.pickerData = arrayPickerData[indexPath]
+        //                valueIngridients.quantity = quantity
+        //                valueIngridients.unit = unit
+        //                selectedToolsArray.append(valueIngridients)
+        //            }
+        //        }
         
     }
     @IBAction func tapForShowAddedTools(_ sender: Any) {
         let recipeIngredients = self.storyboard?.instantiateViewController(withIdentifier: "RecipeIngredientsUseViewController") as! RecipeIngredientsUseViewController
-
+        
         self.navigationController?.pushViewController(recipeIngredients, animated: true)
     }
 }
 
 extension AddToolsViewController: UITableViewDelegate
-, UITableViewDataSource{
+                                  , UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == addToolsTableView{
-        return self.newSearchModel?.count ?? 0
+            return self.newSearchModel?.count ?? 0
         }
         if tableView == addMissingToolTableView{
             return 1
@@ -365,7 +363,7 @@ extension AddToolsViewController: UITableViewDelegate
         
         if tableView == addToolsTableView{
             
-        return newSearchModel?[section].tools?.count ?? 0
+            return newSearchModel?[section].tools?.count ?? 0
         }
         if tableView == addMissingToolTableView{
             if self.addMissingToolModel?.count == 1{
@@ -394,11 +392,11 @@ extension AddToolsViewController: UITableViewDelegate
         else{
             return 0
         }
-    
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == addToolsTableView{
-        return 70
+            return 70
         }
         else{
             return 40
@@ -408,7 +406,7 @@ extension AddToolsViewController: UITableViewDelegate
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if tableView == addToolsTableView{
-        return self.newSearchModel?[section].toolDataName
+            return self.newSearchModel?[section].toolDataName
         }
         else{
             return ""
@@ -424,46 +422,24 @@ extension AddToolsViewController: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == addToolsTableView{
-        return 40
+            return 40
         }
         else{
             return 0
         }
     }
- 
-
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == addToolsTableView{
-        let cell:AddToolsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddToolsTableViewCell") as! AddToolsTableViewCell
+            let cell:AddToolsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddToolsTableViewCell") as! AddToolsTableViewCell
             
             cell.indexPath = indexPath
             cell.addToolDelegate = self
-
-            cell.configCell(data: newSearchModel?[indexPath.section].tools?[indexPath.row] ?? ToolsArray(with: [:]))
-
-        let imgUrl = (kImageBaseUrl + (self.newSearchModel?[indexPath.section].tools?[indexPath.row].imageId?.imgUrl ?? ""))
-
-        cell.img.setImage(withString: imgUrl)
-//         cell.imgSelected.isHidden  = true
             
-            strToolQuantity = self.newSearchModel?[indexPath.section].tools?[indexPath.row].quantity ?? 0
-            strToolUnit = self.newSearchModel?[indexPath.section].tools?[indexPath.row].unit ?? ""
-            strToolId = self.newSearchModel?[indexPath.section].tools?[indexPath.row].recipeToolIds ?? 0
-        cell.label2.text = self.newSearchModel?[indexPath.section].tools?[indexPath.row].toolTitle
-        strToolId = self.newSearchModel?[indexPath.section].tools?[indexPath.row].recipeToolIds ?? 0
-
-//        cell.label2?.font = UIFont(name: "Montserrat-Bold", size: 16)
-        cell.img.layer.cornerRadius = cell.img.frame.height/2
+            cell.data = newSearchModel?[indexPath.section].tools?[indexPath.row]
             
-//            if arraySelectedItemTools.contains(indexPath){
-//
-//                cell.selectToolImgView.isHidden = false
-//
-//            }else {
-//                cell.selectToolImgView.isHidden = true
-//            }
-            
-        return cell
+            return cell
         }
         else{
             let cell:AddMissingToolsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddMissingToolsTableViewCell") as! AddMissingToolsTableViewCell
@@ -483,69 +459,28 @@ extension AddToolsViewController: UITableViewDelegate
             self.addMissingToolButton.isSelected = false
             self.addMissingToolView.isHidden = true
             selectedIndexPath1 = indexPath
-
+            
             let row = indexPath.row
-
+            
             print("\(String(describing: selectedIndexPath1))")
-           let indexPath = IndexPath(row: NSNotFound, section: row)
+            let indexPath = IndexPath(row: NSNotFound, section: row)
             addToolsTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             
-
+            
         }
     }
     
     func tapForTool(indexPath: IndexPath, data: ToolsArray, checkStatus: Bool?){
-//        let currentCell = addToolsTableView.cellForRow(at: indexPath) as! AddToolsTableViewCell
-//
-//        if currentCell.selectToolImgView.isHidden == false{
-//            selectedIndexPath = indexPath
-//        self.addToolPopUpView.isHidden = true
-//        currentCell.selectToolImgView.isHidden = true
-//
-//            for (index,item) in arraySelectedItemTools.enumerated(){
-//                if item == indexPath{
-//                    arraySelectedItemTools.remove(at: index)
-//
-//
-//                }
-//            }
-//            self.addedToolQuantityLabel.text = "\(arraySelectedItemTools.count) Items"
-//            if addedToolQuantityLabel.text == "0 Items"{
-//                self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//            }
-//    }
-//        else{
-//            selectedIndexPath = indexPath
-//            currentCell.selectToolImgView.isHidden = false
-//            arraySelectedItemTools.append(selectedIndexPath ?? IndexPath(row: indexPath.row, section: indexPath.section))
-//            self.addedToolQuantityLabel.text = "\(arraySelectedItemTools.count) Items"
-//            addToolsTableView.reloadData()
-//            self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
-//
-//
-//            self.addToolPopUpView.isHidden = true
-//
-//            selectedToolsArray.removeAll()
-//            for (indexPath,item) in arraySelectedItemTools.enumerated(){
-//
-//                let valueIngridients: ToolsArray = (self.newSearchModel?[item.section].tools?[item.row]) as! ToolsArray
-//                print(valueIngridients)
-////                valueIngridients.pickerData = arrayPickerData[indexPath]
-////                valueIngridients.quantity = quantity
-////                valueIngridients.unit = unit
-//                selectedToolsArray.append(valueIngridients)
-//            }
-//
-//       }
-//
-//
+        self.singleIngridientData = data
         if checkStatus == true{
             
             self.addToolPopUpView.isHidden = true
-            data.isSelected = false
-            selectedToolsArray.remove(at: indexPath.row)
+            if let index = selectedToolsArray.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
+                print("Found at \(index)")
+                selectedToolsArray.remove(at: index)
+            }
             self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
-          
+            
             if  self.addedToolQuantityLabel.text == "0 Items"{
                 self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
                 
@@ -556,16 +491,22 @@ extension AddToolsViewController: UITableViewDelegate
         else{
             
             self.addToolPopUpView.isHidden = true
-            self.singleIngridientData = data
-            singleIngridientData?.isSelected = true
-            selectedToolsArray.append(singleIngridientData ?? ToolsArray())
+            let data = ToolsArray()
+            data.recipeToolIds = singleIngridientData?.recipeToolIds
+            data.toolTitle = singleIngridientData?.toolTitle
+            data.imageId = singleIngridientData?.imageId
+            data.parent = singleIngridientData?.parent
+            data.isSelected = true
+                selectedToolsArray.append(data)
+
+            
             self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
             self.addToolsTableView.reloadData()
             
         }
-      
-       
+        
+        
     }
     
 }
@@ -575,62 +516,62 @@ extension AddToolsViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-        
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         switch picker1.tag {
         case 1:
             
             return self.arrQuantity.count
-
-        case 2:
-
-        return self.arrUnit.count
             
-
+        case 2:
+            
+            return self.arrUnit.count
+            
+            
         default:
-
-        break
-
+            
+            break
+            
         }
-     return 0
+        return 0
     }
-        
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         var str_return : String = String ()
-    
+        
         switch picker1.tag {
         
         case 1:
-
-             let stName = self.arrQuantity[row]
-         
+            
+            let stName = self.arrQuantity[row]
+            
             str_return = "\(stName)"
-         
-
+            
+            
         case 2:
-
+            
             let stName = self.arrUnit[row]
-        
-             str_return = "\(stName)"
-
+            
+            str_return = "\(stName)"
+            
         default: break
-
+            
         }
-      return str_return
+        return str_return
     }
-        
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
+        
         switch picker1.tag {
         
         case 1:
             
             strReturn1 = arrQuantity[row] as! Int
-        
+            
         case 2:
-
+            
             strReturn = arrUnit[row] as! String
         default:
             break
@@ -641,17 +582,17 @@ extension AddToolsViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 extension AddToolsViewController{
     
     func callAddTools(){
-       
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeTools, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-       
+            
             let dictResponse = dictResponse as? [String:Any]
             
-
-                if let data = dictResponse?["data"] as? [[String:Any]]{
-                    self.newSearchModel = data.map({AddToolsDataModel.init(with: $0)})
-                    self.addToolsTableView.reloadData()
-
-
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.newSearchModel = data.map({AddToolsDataModel.init(with: $0)})
+                self.addToolsTableView.reloadData()
+                
+                
             }
         }
     }
@@ -659,18 +600,18 @@ extension AddToolsViewController{
     func callListTools(){
         disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeTools, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-       
+            
             let dictResponse = dictResponse as? [String:Any]
             
-                if let data = dictResponse?["types"] as? [[String:Any]]{
-                    self.addMissingToolModel = data.map({ToolTypeDataModel.init(with: $0)})
-                    self.addMissingToolTableView.reloadData()
+            if let data = dictResponse?["types"] as? [[String:Any]]{
+                self.addMissingToolModel = data.map({ToolTypeDataModel.init(with: $0)})
+                self.addMissingToolTableView.reloadData()
             }
         }
     }
 }
 extension UITableView {
-
+    
     public func reloadData(_ completion: @escaping ()->()) {
         UIView.animate(withDuration: 0, animations: {
             self.reloadData()
@@ -678,7 +619,7 @@ extension UITableView {
             completion()
         })
     }
-
+    
     func scroll(to: scrollsTo, animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
             let numberOfSections = self.numberOfSections
@@ -686,8 +627,8 @@ extension UITableView {
             switch to{
             case .top:
                 if numberOfRows > 0 {
-                     let indexPath = IndexPath(row: 0, section: 0)
-                     self.scrollToRow(at: indexPath, at: .top, animated: animated)
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    self.scrollToRow(at: indexPath, at: .top, animated: animated)
                 }
                 break
             case .bottom:
@@ -699,7 +640,7 @@ extension UITableView {
             }
         }
     }
-
+    
     enum scrollsTo {
         case top,bottom
     }

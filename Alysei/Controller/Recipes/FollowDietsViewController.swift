@@ -7,8 +7,7 @@
 
 import UIKit
 import SVGKit
-
-var arraySelectedDiet: [Int]? = []
+var arrayPreference3: PreferencesDataModel?
 class FollowDietsViewController: AlysieBaseViewC {
 
     @IBOutlet weak var backButton: UIButton!
@@ -18,9 +17,11 @@ class FollowDietsViewController: AlysieBaseViewC {
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var selectedIndexPath : IndexPath?
     var arrDiet: [SelectRecipeDietDataModel]?
+    var arraySelectedDiet: [Int]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferenceNumber = 3
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         collectionView.delegate = self
@@ -40,6 +41,8 @@ class FollowDietsViewController: AlysieBaseViewC {
     @IBAction func tapNextToingridient(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DontSeeIngredientsViewController") as! DontSeeIngredientsViewController
+            arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDiet ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
         self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{

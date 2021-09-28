@@ -185,7 +185,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
                 self.strSelectedId = stId
             }
             self.cookingSkillLabel.text = self.str_return
-            self.cookingSkillLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.cookingSkillLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.cookingSkillLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -196,7 +196,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
                 self.strSelectedId2 = stId
             }
             self.cuisineLabel.text = self.str_return
-            self.cuisineLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.cuisineLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.cuisineLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -204,7 +204,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             
         case 3:
             self.mealNameLabel.text = self.str_return
-            self.mealNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.mealNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.mealNameLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -212,7 +212,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             
         case 4:
             self.courseNameLabel.text = self.str_return
-            self.courseNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.courseNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.courseNameLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -220,7 +220,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         
         case 5:
             self.dietLabel.text = self.str_return
-            self.dietLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.dietLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.dietLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -228,7 +228,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         case 6:
             self.foodIntoleranceLabel.text = self.str_return
             
-            self.foodIntoleranceLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.foodIntoleranceLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.foodIntoleranceLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
@@ -236,7 +236,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             
         case 7:
             self.regionLabel.text = self.str_return
-            self.regionLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
+//            self.regionLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.regionLabel.textColor = .black
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()

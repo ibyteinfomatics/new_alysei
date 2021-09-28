@@ -122,7 +122,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         dunamicButton.layer.cornerRadius = 5
         dunamicButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
 //        dunamicButton.frame = CGRect(x: 15, y: 60, width: (self.view.frame.size.width-30), height: 48)
-        dunamicButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 16)
+        dunamicButton.titleLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
         dunamicButton.setImage(UIImage(named: "Group 1127.png"), for: .normal)
         dunamicButton.setTitleColor(UIColor.black, for: .normal)
         footerView.addSubview(dunamicButton)
@@ -412,7 +412,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel.layer.borderWidth = 1
             statusLabel.layer.cornerRadius = 5
             statusLabel.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
-            statusLabel.font = UIFont(name: "Montserrat-Regular", size: 14)
+            statusLabel.font = UIFont(name: "Helvetica Neue-Regular", size: 14)
             statusLabel.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel)
             statusLabel.text = "  No Ingridients Added yet!"
@@ -437,7 +437,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel1.layer.borderWidth = 1
             statusLabel1.layer.cornerRadius = 5
             statusLabel1.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
-            statusLabel1.font = UIFont(name: "Montserrat-Regular", size: 14)
+            statusLabel1.font = UIFont(name: "Helvetica Neue-Regular", size: 14)
             statusLabel1.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel1)
             statusLabel1.text = "  No Tools Added yet!"
@@ -553,9 +553,6 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     
-//    func deleteClickSteps(index: IndexPath){
-//
-//    }
     
     @IBAction func backButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -572,9 +569,6 @@ extension RecipeIngredientsUseViewController: UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         switch picker1.tag {
-//        case 1:
-//
-//            return self.arrQuantity.count
 
         case 1:
 
@@ -594,13 +588,6 @@ extension RecipeIngredientsUseViewController: UIPickerViewDelegate, UIPickerView
         var str_return : String = String ()
     
         switch picker1.tag {
-        
-//        case 1:
-
-//             let stName = self.arrQuantity[row]
-//
-//            str_return = "\(stName)"
-         
 
         case 1:
 
@@ -616,12 +603,8 @@ extension RecipeIngredientsUseViewController: UIPickerViewDelegate, UIPickerView
     }
         
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        var strSelectedId = String()
+
         switch picker1.tag {
-        
-//        case 1:
-//
-//            strReturn1 = arrQuantity[row] as! Int
 
         case 1:
             
@@ -655,17 +638,10 @@ extension RecipeIngredientsUseViewController{
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.saveRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
              let resultNew = dictResponse as? [String:Any]
-            if let message = resultNew!["message"] as? String{
+            if let message = resultNew?["message"] as? String{
                 self.showAlert(withMessage: message)
             }
             
-           
-//                let controller = self.pushViewController(withName: DiscoverRecipeViewController.id(), fromStoryboard: StoryBoardConstants.kRecipesSelection) as? DiscoverRecipeViewController
-          
-          
-//                controller?..reloadData()
-//                controller?.storeName = self.txtStoreName.text
-//                controller?.marketPlaceStoreId = self.marketPlaceId
         }
     }
 

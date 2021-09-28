@@ -25,10 +25,10 @@ class SelectRecepiDataModel{
 class ImageURL{
    
     var imgUrl: String?
-    
+    var id: Int?
     init(with dictResponse: [String:Any]){
        
-        
+            self.id = Int.getInt(dictResponse["id"])
             self.imgUrl = String.getString(dictResponse["attachment_url"])
         }
     }
