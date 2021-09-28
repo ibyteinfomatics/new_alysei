@@ -6,8 +6,9 @@
 //
 
 import UIKit
+var arrayPreferencesModelData: [PreferencesDataModel]? = []
+var arrayPreference1: PreferencesDataModel?
 
-var arraySelectedCuisine: [Int]?
 class CuisinePageControlViewController: UIViewController {
     
     @IBOutlet weak var cuisineCollectionView: UICollectionView!
@@ -17,13 +18,14 @@ class CuisinePageControlViewController: UIViewController {
     
     var thisWidth:CGFloat = 0
     var arrCuisine = [SelectCuisineDataModel]()
-    var cuisineId : Int?
+    var cuisineID : Int?
     var selectedIndexPath: IndexPath? = nil
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
+    var arraySelectedCuisine: [Int]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        thisWidth = CGFloat(self.frame.width)
+        preferenceNumber = 1
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
         btnCusineNext.isHidden = true
@@ -38,9 +40,12 @@ class CuisinePageControlViewController: UIViewController {
 
     @IBAction func tapNext(_ sender: Any) {
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FoodAllergyViewController") as! FoodAllergyViewController
-       
+
+        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: preferenceNumber)
+        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
         self.navigationController?.pushViewController(viewAll, animated: true)
     }
+    
     
     @IBAction func tapSkip(_ sender: Any) {
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FoodAllergyViewController") as! FoodAllergyViewController
@@ -107,7 +112,7 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
         let cell = cuisineCollectionView.cellForItem(at: indexPath as IndexPath) as? CuisinePageControlCollectionViewCell
         selectedIndexPath = indexPath
         let selectedCuisine = arrCuisine[indexPath.row].cuisineId
-        self.cuisineId = selectedCuisine
+        self.cuisineID = selectedCuisine
         if  arrCuisine[indexPath.row].isSelected == true {
             arrCuisine[indexPath.row].isSelected = false
                     // it was already selected
@@ -120,6 +125,11 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
                     arrSelectedIndex.remove(at: index)
                 }
             }
+            for (index,item) in arraySelectedCuisine!.enumerated(){
+                if item == arrCuisine[indexPath.row].cuisineId{
+                    arraySelectedCuisine?.remove(at: index)
+                }
+            }
             if arrSelectedIndex.count == 0{
                 self.btnCusineNext.isHidden = true
             }
@@ -130,7 +140,7 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
                    
                     cell?.imageCuisineSelected.isHidden = false
                     self.btnCusineNext.isHidden = false
-                    arraySelectedCuisine?.append(arrCuisine[indexPath.row].cuisineId ?? 0)
+                    arraySelectedCuisine?.append(cuisineID ?? 0)
                     arrSelectedIndex.append(selectedIndexPath!)
                     print("\(String(describing: arrSelectedIndex.count))")
                     print("select")

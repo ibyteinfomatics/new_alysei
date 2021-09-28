@@ -15,6 +15,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var tapPostVw: UIView!
     @IBOutlet weak var tapMarketPlaceVw: UIView!
     @IBOutlet weak var discoverCollectionView: UICollectionView!
+//    @IBOutlet weak var containerTableViewHeight: NSLayoutConstraint!
     
     var arrayHeader = NSMutableArray()
     var arrayCollection = NSMutableArray()
@@ -23,11 +24,15 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var selectedIndexPath : IndexPath?
     var tableIndexPath : Int?
     var currentIndex : Int? = 0
+    var isFirstTimeLoading = true
+    var isReloadData = true
 
-    
+//    override func viewWillAppear(_ animated: Bool) {
+//        getExploreData()
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         discoverRecipeView.layer.masksToBounds = false
         discoverRecipeView.layer.shadowRadius = 2
         discoverRecipeView.layer.shadowOpacity = 0.2
@@ -57,6 +62,8 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         
         self.discoverCollectionView.delegate = self
         self.discoverCollectionView.dataSource = self
+        getExploreData()
+        isFirstTimeLoading = false
     }
     
     @objc func openPost(){
@@ -75,6 +82,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
                 self.hidesBottomBarWhenPushed = true
             }
      
+   
     @IBAction func createNewRecipeButton(_ sender: Any) {
         let createNewRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateNewRecipeViewController") as! CreateNewRecipeViewController
         self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
@@ -83,6 +91,51 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     func cellTapped(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getExploreData(){
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
+                                                   , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [String:Any]{
+                
+                if let ingridients = data["ingredients"] as? [[String:Any]]{
+                    let ingridient = ingridients.map({IngridentArray.init(with: $0)})
+                  arraySearchByIngridient = ingridient
+                    print("\(String(describing: arraySearchByIngridient?.count))")
+                    
+                }
+                
+                if let meals = data["meals"] as? [[String:Any]]{
+                    let meal = meals.map({SelectMealDataModel.init(with: $0)})
+                    arraySearchByMeal = meal
+                    print("\(String(describing: arraySearchByMeal?.count))")
+                }
+                
+                if let regions = data["regions"] as? [[String:Any]]{
+                    let region = regions.map({SelectRegionDataModel.init(with: $0)})
+                    arraySearchByRegion = region
+                    print("\(String(describing: arraySearchByRegion?.count))")
+                }
+                
+                if let trendings = data["trending_recipes"] as? [[String:Any]]{
+                    let trending = trendings.map({HomeTrending.init(with: $0)})
+                    arrayTrending = trending
+                    print("\(String(describing: arrayTrending?.count))")
+                }
+                
+                if let quickEasy = data["quick_easy"] as? [[String:Any]]{
+                    let quickEase = quickEasy.map({HomeQuickEasy.init(with: $0)})
+                   arrayQuickEasy = quickEase
+                    print("\(String(describing: arrayQuickEasy?.count))")
+                }
+               
+            }
+            self.containerTableVw.reloadData()
+     }
     }
 }
 
@@ -144,75 +197,93 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
     
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreNwTableViewCell") as! ExploreNwTableViewCell
+        let cell1 = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreNwTableViewCell") as! ExploreNwTableViewCell
        let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExploreByRecipeTableViewCell") as! ExploreByRecipeTableViewCell
        let cell3 = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
         switch checkbutton{
         case 0:
-
+            
            switch indexPath.section{
-           case 0:
+        case 0:
 
-               cell.quickSearchLbl.text = "Quick Search By Meal"
-               cell.quickSearchLbl?.font = UIFont(name: "Montserrat-Bold", size: 16)
-               cell.tapViewAll = { [self] in
-                   
-                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
-                       self.navigationController?.pushViewController(viewAll, animated: true)
-                   
-               }
-             
-               return cell
-             
-              
-        case 1:
-
-              cell.quickSearchLbl.text = "Quick Search By Ingridients"
-              cell.quickSearchLbl?.font = UIFont(name: "Montserrat-Bold", size: 16)
-             cell.tapViewAll = {[self] in
+              cell1.quickSearchLbl.text = "Quick Search By Ingridients"
+              cell1.checkCell = 0
+              cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+              cell1.tapViewAll = {[self] in
                
                    let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
                    self.navigationController?.pushViewController(viewAll, animated: true)
               
            }
-           return cell
            
+//            if arraySearchByIngridient!.count <= 3{
+//
+//                finalheight1 = 200
+//            }
+//            else{
+//
+//                finalheight1 = 400
+//            }
+           return cell1
+          
+           case 1:
+            cell1.checkCell = 1
+               cell1.quickSearchLbl.text = "Quick Search By Meal"
+              
+               cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+               cell1.tapViewAll = { [self] in
+                   
+                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllMealViewController") as! ViewAllMealViewController
+                       self.navigationController?.pushViewController(viewAll, animated: true)
+                   
+               }
+           
+//                cell.getSearchByMeal()
+            
+//            if arraySearchByMeal!.count <= 3{
+//
+//                finalheight = 200
+//            }
+//            else{
+//
+//                finalheight = 400
+//            }
+           
+               return cell1
+             
         case 2:
 
            cell2.quickSearchByRegionLabel.text = "Quick Search By Region"
-            cell2.quickSearchByRegionLabel?.font = UIFont(name: "Montserrat-Bold", size: 16)
-           cell2.tapViewAllRecipe = { [self] in
-               
-                   let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
-                   self.navigationController?.pushViewController(viewAll, animated: true)
-               
-           }
-           
+            cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+
+//            cell2.getSearchByRegion()
            return cell2
            
            case 3:
-
+            cell3.checkCellTrending = 0
                cell3.quickSearchTrendingLabel.text = "Trending Now"
-               cell3.quickSearchTrendingLabel?.font = UIFont(name: "Montserrat-Bold", size: 16)
+               cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
                cell3.delegate = self
                cell3.tapViewAllTrending = { [self] in
                    
-                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
+                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllTrendingViewController") as! ViewAllTrendingViewController
                        self.navigationController?.pushViewController(viewAll, animated: true)
                    
                }
+//            cell3.getTrending()
               return cell3
            case 4:
-
+            cell3.checkCellTrending = 1
                cell3.quickSearchTrendingLabel.text = "Quick Easy"
-               cell3.quickSearchTrendingLabel?.font = UIFont(name: "Montserrat-Bold", size: 16)
+               cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
                cell3.delegate = self
                cell3.tapViewAllTrending = { [self] in
                    
-                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
+                       let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllQuickEasyViewController") as! ViewAllQuickEasyViewController
                        self.navigationController?.pushViewController(viewAll, animated: true)
                    
                }
+//            cell3.getQuickEasy()
               return cell3
           
         default:
@@ -222,22 +293,31 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 1:
             let cell4 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
             cell4.check = true
+
             return cell4
         case 2:
             let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
             cell5.check = false
+
             return cell5
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
-
+            cell6.config()
+            cell6.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
+            if isReloadData{
+                cell6.getSavedMyPreferences()
+//                isReloadData = false
+            }
+            
+           
             return cell6
         default:
             break
       
         }
-
-       return cell2
+      
+       return UITableViewCell()
       
     }
     
@@ -245,21 +325,21 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
 
         switch checkbutton{
         case 0:
+            
             if (indexPath.section == 0)
              {
-            
-                 return 280;
+               return 380
+             }
+            if (indexPath.section == 1)
+             {
+                return 200
+                 
              }
          
-             if (indexPath.section == 1)
-              {
-             
-                  return 280;
-              }
              if (indexPath.section == 2)
               {
              
-                  return 180;
+                  return 200;
               }
              if (indexPath.section == 3)
               {
@@ -276,7 +356,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 2:
             return self.containerTableVw.frame.height
         case 3:
-            return self.containerTableVw.frame.height
+            return UITableView.automaticDimension
         default:
             break
         }
@@ -337,12 +417,12 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
         case 0:
            
             checkbutton = 0
+           
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
-            containerTableVw.reloadData()
-            self.containerTableVw.register(UINib(nibName: "SearchByRegionCollectionViewCell", bundle: nil), forCellReuseIdentifier: "SearchByRegionCollectionViewCell")
-            
+            getExploreData()
+
         case 1:
            
             checkbutton = 1
@@ -350,8 +430,8 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
             containerTableVw.reloadData()
-            self.containerTableVw.register(UINib(nibName: "ExploreNwTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreNwTableViewCell")
-            
+        
+
         case 2:
            
             checkbutton = 2
@@ -359,15 +439,16 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
             containerTableVw.reloadData()
-            self.containerTableVw.register(UINib(nibName: "ExploreNwTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreNwTableViewCell")
             
         case 3:
             checkbutton = 3
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+
             discoverCollectionView.reloadData()
+            isReloadData = true
             containerTableVw.reloadData()
-            self.containerTableVw.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesTableViewCell")
+            
            
         default:
             break
@@ -375,69 +456,36 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             discoverCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         }
-
-    
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = discoverCollectionView.cellForItem(at: indexPath as IndexPath) as? DiscoverRecipeHomeCollectionViewCell
-//
-//        cell?.exploreHighlightView.backgroundColor = .clear
-//        self.selectedIndexPath = nil
-//
-//        print("previous Deselect")
-//    }
 }
 extension DiscoverRecipeViewController: PreferencesDelegate{
     
     func pluscellTapped(){
-    
-            for controller in (self.navigationController?.viewControllers ?? []) as Array {
-                if controller.isKind(of: CuisinePageControlViewController.self) {
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-//                else{
-//                    let vc = (self.storyboard?.instantiateViewController(withIdentifier: "CuisinesViewController"))!
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                }
-            }
+
+                    let vc = (self.storyboard?.instantiateViewController(withIdentifier: "CuisinesViewController"))!
+                    self.navigationController?.pushViewController(vc, animated: true)
+
         }
     
     func pluscellTapped1(){
       
-            for controller in (self.navigationController?.viewControllers ?? []) as Array {
-                if controller.isKind(of: FoodAllergyViewController.self) {
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-            }
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "FoodViewController"))!
+        self.navigationController?.pushViewController(vc, animated: true)
         }
     
     func pluscellTapped2(){
       
-            for controller in (self.navigationController?.viewControllers ?? []) as Array {
-                if controller.isKind(of: FollowDietsViewController.self) {
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-            }
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "DietViewController"))!
+        self.navigationController?.pushViewController(vc, animated: true)
         }
     func pluscellTapped3(){
       
-            for controller in (self.navigationController?.viewControllers ?? []) as Array {
-                if controller.isKind(of: DontSeeIngredientsViewController.self) {
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-            }
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "IngridientViewController"))!
+        self.navigationController?.pushViewController(vc, animated: true)
         }
     func pluscellTapped4(){
-      
-            for controller in (self.navigationController?.viewControllers ?? []) as Array {
-                if controller.isKind(of: CookingSkillViewController.self) {
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-            }
+
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "CookingViewController"))!
+        self.navigationController?.pushViewController(vc, animated: true)
         }
 
 }

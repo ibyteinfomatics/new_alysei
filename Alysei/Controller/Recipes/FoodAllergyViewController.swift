@@ -8,7 +8,7 @@
 import UIKit
 import SVGKit
 
-var arraySelectedFood : [Int]? = []
+var arrayPreference2: PreferencesDataModel?
 class FoodAllergyViewController: AlysieBaseViewC {
 
     @IBOutlet weak var backButton: UIButton!
@@ -19,9 +19,10 @@ class FoodAllergyViewController: AlysieBaseViewC {
     var selectedIndexPath : IndexPath?
     var arrFoodIntolerance: [SelectFoodIntoleranceDataModel]? = []
     var isFirStTimeLoading = true
-  
+    var arraySelectedFood : [Int]? = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferenceNumber = 2
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: nil ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         //disableWindowInteraction()
         self.view.isUserInteractionEnabled = false
@@ -40,6 +41,9 @@ class FoodAllergyViewController: AlysieBaseViewC {
     @IBAction func tapNextToDiets(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
             let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FollowDietsViewController") as! FollowDietsViewController
+            
+            arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
             self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{

@@ -13,14 +13,16 @@ class SelectFoodIntoleranceDataModel{
     var foodName: String?
     var imageId: ImageURL?
     var isSelected: Bool?
-   
+    var imageOnlyId: Int?
     init(with dictResponse: [String:Any]){
         self.foodId = Int.getInt(dictResponse["recipe_food_intolerance_id"])
         
             self.foodName = String.getString(dictResponse["name"])
         if let image = dictResponse["image_id"] as? [String:Any]{
             self.imageId = ImageURL.init(with: image)
-            self.isSelected = false
+            
         }
+        self.isSelected = false
+        self.imageOnlyId = Int.getInt(dictResponse["image_id"])
         }
 }

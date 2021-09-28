@@ -13,13 +13,16 @@ class SelectCookingSkillsDataModel{
     var cookingSkillName: String?
     var imageId: ImageURL?
     var isSelected: Bool?
+    var imageOnlyId: Int?
     init(with dictResponse: [String:Any]){
         self.cookinSkillId = Int.getInt(dictResponse["recipe_cooking_skill_id"])
         
             self.cookingSkillName = String.getString(dictResponse["name"])
         if let image = dictResponse["image_id"] as? [String:Any]{
             self.imageId = ImageURL.init(with: image)
-            self.isSelected = false
+            
         }
+        self.isSelected = false
+        self.imageOnlyId = Int.getInt(dictResponse["image_id"])
         }
 }

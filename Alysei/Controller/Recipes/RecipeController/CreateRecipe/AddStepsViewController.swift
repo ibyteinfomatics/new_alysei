@@ -115,6 +115,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
 
     @IBAction func backButton(_ sender: UIButton) {
+        var isBack = false
         if selectedIndex > 0 && selectedIndex != 1000{
             let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
             addSteps.page = (page - 1)
@@ -122,13 +123,27 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             self.navigationController?.pushViewController(addSteps, animated: true)
         } else {
             if selectedIndex != 1000 {
+                
                 if let destinationViewController = navigationController?.viewControllers
                                                                         .filter(
                                                       {$0 is RecipeIngredientsUseViewController})
                                                                         .first {
+                    isBack = true
                     navigationController?.popToViewController(destinationViewController, animated: true)
                 }
-            } else {
+                if isBack == false{
+                    if let destinationViewController = navigationController?.viewControllers
+                                                                            .filter(
+                                                          {$0 is AddToolsViewController})
+                                                                            .first {
+                        
+                        navigationController?.popToViewController(destinationViewController, animated: true)
+                    }
+                }
+                
+            }
+            else
+            {
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -150,63 +165,133 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
     }
     @IBAction func tapForAddNewStep(_ sender: Any) {
-        let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-        let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! AddStepsCollectionViewCell
-        if cell.titleTextField.text?.isEmpty == true{
-            showAlert(withMessage: AlertMessage.kEnterTitle)
-            return
-        }
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
-            showAlert(withMessage: AlertMessage.kEnterDescription)
-            return
-        }
-        else{
-        var ingridentsArray : [IngridentArray] = []
-        for item in selectedIngridentsArray{
-            let ingridients: IngridentArray = IngridentArray.init()
-            ingridients.recipeIngredientIds = item.recipeIngredientIds
-            ingridients.ingridientTitle = item.ingridientTitle
-            ingridients.imageId = item.imageId
-            ingridients.parent = item.parent
-            ingridients.pickerData = item.pickerData
-            ingridients.quantity = item.quantity
-            ingridients.unit = item.unit
-            ingridients.createdAt = item.createdAt
-            ingridients.updatedAt = item.updatedAt
-            ingridients.isSelected = false
-            ingridentsArray.append(ingridients)
-        }
-        
-        var toolsArray : [ToolsArray] = []
-        for item in selectedToolsArray{
-            let tools: ToolsArray = ToolsArray.init()
-            tools.recipeToolIds = item.recipeToolIds
-            tools.toolTitle = item.toolTitle
-            tools.imageId = item.imageId
-            tools.parent = item.parent
-            tools.pickerData = item.pickerData
-            tools.quantity = item.quantity
-            tools.unit = item.unit
-            tools.isSelected = false
-            toolsArray.append(tools)
-        }
-        addSteps.arrayIngridients = ingridentsArray
-        addSteps.arraytools = toolsArray
-        addSteps.page = page + 1
-        let stepdata = stepDataModel()
-        stepdata.title = cell.titleTextField.text ?? ""
-        stepdata.description = cell.desciptionTextView.text ?? ""
-        stepdata.ingridentsArray = arrayIngridients
-        stepdata.toolsArray = arraytools
 
-        if selectedIndex == 1000 {
-            arrayStepFinalData.append(stepdata)
-        } else {
-            arrayStepFinalData[selectedIndex] = stepdata
+            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
+
+            let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! AddStepsCollectionViewCell
+
+            if cell.titleTextField.text?.isEmpty == true{
+
+                showAlert(withMessage: AlertMessage.kEnterTitle)
+
+                return
+
+            }
+
+            else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+
+                showAlert(withMessage: AlertMessage.kEnterDescription)
+
+                return
+
+            }
+
+            else{
+
+                
+
+                if (page + 1) > arrayStepFinalData.count {
+
+                    var ingridentsArray : [IngridentArray] = []
+
+                    for item in selectedIngridentsArray{
+
+                        let ingridients: IngridentArray = IngridentArray.init()
+
+                        ingridients.recipeIngredientIds = item.recipeIngredientIds
+
+                        ingridients.ingridientTitle = item.ingridientTitle
+
+                        ingridients.imageId = item.imageId
+
+                        ingridients.parent = item.parent
+
+                        ingridients.pickerData = item.pickerData
+
+                        ingridients.quantity = item.quantity
+
+                        ingridients.unit = item.unit
+
+                        ingridients.createdAt = item.createdAt
+
+                        ingridients.updatedAt = item.updatedAt
+
+                        ingridients.isSelected = false
+
+                        ingridentsArray.append(ingridients)
+
+                    }
+
+                    
+
+                    var toolsArray : [ToolsArray] = []
+
+                    for item in selectedToolsArray{
+
+                        let tools: ToolsArray = ToolsArray.init()
+
+                        tools.recipeToolIds = item.recipeToolIds
+
+                        tools.toolTitle = item.toolTitle
+
+                        tools.imageId = item.imageId
+
+                        tools.parent = item.parent
+
+                        tools.pickerData = item.pickerData
+
+                        tools.quantity = item.quantity
+
+                        tools.unit = item.unit
+
+                        tools.isSelected = false
+
+                        toolsArray.append(tools)
+
+                    }
+
+                    addSteps.arrayIngridients = ingridentsArray
+
+                    addSteps.arraytools = toolsArray
+
+                    addSteps.page = page + 1
+
+                    let stepdata = stepDataModel()
+
+                    stepdata.title = cell.titleTextField.text ?? ""
+
+                    stepdata.description = cell.desciptionTextView.text ?? ""
+
+                    stepdata.ingridentsArray = arrayIngridients
+
+                    stepdata.toolsArray = arraytools
+
+                    
+
+                    if selectedIndex == 1000 {
+
+                        arrayStepFinalData.append(stepdata)
+
+                    } else {
+
+                        arrayStepFinalData[selectedIndex] = stepdata
+
+                    }
+
+                } else {
+
+                    addSteps.page = page + 1
+
+                    addSteps.selectedIndex = page
+
+                }
+
+                self.navigationController?.pushViewController(addSteps, animated: true)
+
+            }
+
         }
-        self.navigationController?.pushViewController(addSteps, animated: true)
-        }
-    }
+
 }
 
 extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewDataSource{

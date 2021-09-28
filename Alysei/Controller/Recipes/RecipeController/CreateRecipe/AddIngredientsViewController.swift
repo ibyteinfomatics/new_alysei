@@ -76,7 +76,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         }
         else{
             self.saveButton.layer.backgroundColor =
-            UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
+                UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
         }
         
         
@@ -218,37 +218,38 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
             self.addIndridentPopupView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
-        else{
+        else {
             self.addIndridentPopupView.isHidden = true
             let quantity = self.quantityTextField.text
             let unit = self.strReturn
             
-            let pickerData = ((quantity!) + " " + unit)
-            
+            let pickerData = ((quantity ?? "") + " " + unit)
             arrayPickerData.append(pickerData)
-          
+            
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
-           
-                singleIngridientData?.quantity = Int(quantity!)
-                singleIngridientData?.unit = unit
-                singleIngridientData?.pickerData = pickerData
-                singleIngridientData?.isSelected = true
-                singleIngridientData?.recipeIngredientIds = strIngridientId
             
-                
-            
-            if arraySelectedIngridient?.contains(strIngridientId) == false{
-                print("hiiii")
-                selectedIngridentsArray.append(singleIngridientData ?? IngridentArray())
+            let data = IngridentArray()
+            data.recipeIngredientIds = singleIngridientData?.recipeIngredientIds
+            data.ingridientTitle = singleIngridientData?.ingridientTitle
+            data.imageId = singleIngridientData?.imageId
+            data.parent = singleIngridientData?.parent
+            data.pickerData = pickerData
+            data.quantity = Int(quantity!)
+            data.unit = unit
+            data.createdAt = singleIngridientData?.createdAt
+            data.updatedAt = singleIngridientData?.updatedAt
+            data.isSelected = true
+        
+            if (((newSearchModel?.contains(where: { $0.ingridientId == data.recipeIngredientIds }))) == true)  {
+                print("contain yes")
+            }else{
+                print("contain no")
+                selectedIngridentsArray.append(data)
             }
-           
-                self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
-                self.addIngridientsTableView.reloadData()
-                
             
+            self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
+            self.addIngridientsTableView.reloadData()
         }
-        
-        
     }
     
     @IBAction func tapForShowItemDetails(_ sender: Any) {
@@ -291,7 +292,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         else{
             self.navigationController?.popViewController(animated: true)
         }
-       
+        
     }
     
     
@@ -433,110 +434,53 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == addIngridientsTableView{
+        if tableView == addIngridientsTableView {
             let cell:AddIngridientsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddIngridientsTableViewCell") as! AddIngridientsTableViewCell
             
             cell.indexPath = indexPath
-            
-//            cell.btnAddCallback = { tag in
-//
-//                if self.ingridientSearchModel[indexPath.row].isSelected == true{
-//
-//                    self.ingridientSearchModel[indexPath.row].isSelected = false
-//                    self.addIndridentPopupView.isHidden = true
-//                    //self.arrayPickerData.remove(at: indexPath.row)
-//                    self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
-//
-//                    if  self.quantityLabel.text == "0 Items"{
-//                        self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//
-//                    }
-//                    self.addIngridientsTableView.reloadData()
-//
-//                }
-//                else{
-//                    //self.ingridientSearchModel[indexPath.row].isSelected = true
-//                    self.quantityTextField.text = ""
-//                    self.unitLabel.text = "Unit"
-//                    self.addIndridentPopupView.isHidden = false
-//
-//                }
-//
-//            }
-//
             cell.addIngridientDelegate = self
-            if searching == true{
-                cell.configCell(data: ingridientSearchModel[indexPath.row])
-                let imgUrl = (kImageBaseUrl + (self.ingridientSearchModel[indexPath.row].imageId?.imgUrl ?? ""))
-                
-                cell.ingridientsImageView.setImage(withString: imgUrl)
-                strIngridientQuantity = self.ingridientSearchModel[indexPath.row].quantity ?? 0
-                strIngridientUnit = self.ingridientSearchModel[indexPath.row].unit ?? ""
-                strIngridientId = self.ingridientSearchModel[indexPath.row].recipeIngredientIds ?? 0
-                cell.ingredientsNameLabel.text = self.ingridientSearchModel[indexPath.row].ingridientTitle
-                
-               
-//                if self.ingridientSearchModel[indexPath.row].isSelected == false{
-//                    cell.selectImgView.isHidden = true
-//                }
-//                else{
-//                    cell.selectImgView.isHidden = false
-//                }
-                
+            if searching == true {
+                cell.data = ingridientSearchModel[indexPath.row]
             }
-            else{
-                
-                cell.configCell(data: newSearchModel?[indexPath.section].ingridents?[indexPath.row] ?? IngridentArray(with: [:]))
-               
-                let imgUrl = (kImageBaseUrl + (self.newSearchModel?[indexPath.section].ingridents?[indexPath.row].imageId?.imgUrl ?? ""))
-                
-                cell.ingridientsImageView.setImage(withString: imgUrl)
-                strIngridientQuantity = self.newSearchModel?[indexPath.section].ingridents?[indexPath.row].quantity ?? 0
-                strIngridientUnit = self.newSearchModel?[indexPath.section].ingridents?[indexPath.row].unit ?? ""
-                strIngridientId = self.newSearchModel?[indexPath.section].ingridents?[indexPath.row].recipeIngredientIds ?? 0
-                cell.ingredientsNameLabel.text = self.newSearchModel?[indexPath.section].ingridents?[indexPath.row].ingridientTitle
-                
+            else {
+                cell.data = newSearchModel?[indexPath.section].ingridents?[indexPath.row]
             }
             return cell
         }
-        else{
+        else {
             let cell:AddMissingIngridientTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddMissingIngridientTableViewCell") as! AddMissingIngridientTableViewCell
+            
             cell.ingridientsTypeLabel.text = self.addMissingIngridientModel?[indexPath.row].ingridientType
-            
             cell.ingridientsQuantityLabel.text = "\(self.addMissingIngridientModel?[indexPath.row].count ?? 0)"
-            
             return cell
         }
-        
     }
     
-    func tapForIngridient(indexPath: IndexPath, data: IngridentArray, checkStatus: Bool?){
+    func tapForIngridient(indexPath: IndexPath, data: IngridentArray, checkStatus: Bool?) {
         
-        if checkStatus == true{
+        self.singleIngridientData = data
+        if checkStatus == true {
+            if let index = selectedIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
+                print("Found at \(index)")
+                selectedIngridentsArray.remove(at: index)
+            }
             
-            self.addIndridentPopupView.isHidden = true
-            data.isSelected = false
-//            selectedIngridentsArray.rem
-            arrayPickerData.remove(at: indexPath.row)
+//            arrayPickerData.remove(at: indexPath.row)
             self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
             
-            if  self.quantityLabel.text == "0 Items"{
+            if  self.quantityLabel.text == "0 Items" {
                 self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-                
             }
             self.addIngridientsTableView.reloadData()
-            
         }
-        else{
+        else {
             quantityTextField.text = ""
             unitLabel.text = "Unit"
             self.addIndridentPopupView.isHidden = false
-            self.singleIngridientData = data
             self.labelIngridientTitle.text = data.ingridientTitle
             
         }
     }
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -654,7 +598,7 @@ extension AddIngredientsViewController{
     
     func callSearchIngridients(){
         disableWindowInteraction()
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.searchIngridient + searchText, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchText)&type=2" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
             
@@ -687,8 +631,8 @@ extension AddIngredientsViewController: UITextFieldDelegate{
         }
         else{
             self.searching = false
-//            ingridientSearchModel.removeAll()
-//            callAddIngridients()
+            //            ingridientSearchModel.removeAll()
+            //            callAddIngridients()
             addIngridientsTableView.reloadData()
             self.addMissingIngridientsButton.isHidden = false
         }

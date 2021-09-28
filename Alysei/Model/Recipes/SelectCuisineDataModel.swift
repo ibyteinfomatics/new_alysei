@@ -12,8 +12,10 @@ class SelectCuisineDataModel{
     var cuisineId: Int?
     var cuisineName: String?
     var imageId: ImageURL?
+    var imageOnlyID: Int?
     var isSelected: Bool?
-   
+    var status: Int?
+    
     init(with dictResponse: [String:Any]){
         self.cuisineId = Int.getInt(dictResponse["cousin_id"])
         
@@ -22,5 +24,7 @@ class SelectCuisineDataModel{
             self.imageId = ImageURL.init(with: image)
         }
         self.isSelected = false
+        self.status = Int.getInt(dictResponse["status"])
+        self.imageOnlyID = Int.getInt(dictResponse["image_id"])
         }
 }
