@@ -9,14 +9,15 @@ import UIKit
 import TLPhotoPicker
 import Photos
 import YPImagePicker
+var txtPostDesc: String?
 
 class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPickerViewControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var btnCamera: UIButton!
-    @IBOutlet weak var btnGallery: UIButton!
+   // @IBOutlet weak var btnCamera: UIButton!
+    //@IBOutlet weak var btnGallery: UIButton!
     @IBOutlet weak var btnPostPrivacy: UIButton!
     @IBOutlet weak var txtPost: UITextView!
-    @IBOutlet weak var btnStackView: UIStackView!
+   // @IBOutlet weak var btnStackView: UIStackView!
     @IBOutlet weak var viewHeaderShadow: UIView!
     @IBOutlet weak var collectionViewImage: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
@@ -42,9 +43,13 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     var imagesFromSource = [UIImage]()
     var ypImages = [YPMediaItem]()
     var descriptionPost: String?
+    var imgHeight: Int?
+    var imgWidth: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
         //setUI()
         // Do any additional setup after loading the view.
@@ -66,11 +71,15 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             postRequestToGetProgressPrfile()
             
         }
+        
+        
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
-
-      kSharedUserDefaults.clearAllData()
+        let token = kSharedUserDefaults.getDeviceToken()
+        kSharedUserDefaults.clearAllData()
+        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+      //kSharedUserDefaults.clearAllData()
     }
     
     
@@ -102,17 +111,20 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     func setUI(){
         txtPost.delegate = self
         self.viewHeaderShadow.addShadow()
-        btnCamera.layer.borderWidth = 0.5
-        btnCamera.layer.borderColor = UIColor.lightGray.cgColor
-        btnGallery.layer.borderWidth = 0.5
-        btnGallery.layer.borderColor = UIColor.lightGray.cgColor
+        txtPost.textContainer.heightTracksTextView = true
+        txtPost.isScrollEnabled = false
+      // addBottomBorderWithColor(txtPost)
+//        btnCamera.layer.borderWidth = 0.5
+//        btnCamera.layer.borderColor = UIColor.lightGray.cgColor
+//        btnGallery.layer.borderWidth = 0.5
+//        btnGallery.layer.borderColor = UIColor.lightGray.cgColor
         // collectionViewHeight.constant = 0
         //collectionViewImage.isHidden = true
         postPrivacyTableView.isHidden = true
         
-        txtPost.layer.borderWidth = 0.5
-        txtPost.layer.borderColor = UIColor.lightGray.cgColor
-        txtPost.textColor = UIColor.lightGray
+//        txtPost.layer.borderWidth = 0.5
+//        txtPost.layer.borderColor = UIColor.lightGray.cgColor
+        
         let roleID = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
         var name = ""
         switch roleID {
@@ -222,6 +234,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //        viewCon.modalPresentationStyle = .fullScreen
 //        self.navigationController?.present(viewCon, animated: true, completion: nil)
 //        self.present(viewCon, animated: false, completion: nil)
+        txtPostDesc = txtPost.text
 
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
@@ -237,6 +250,11 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 switch item {
                 case .photo(let photo):
                     self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
+                    self.imgWidth = photo.asset?.pixelWidth
+                    self.imgHeight = photo.asset?.pixelHeight
+                    
+                    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHeight>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgHeight ?? 0)
+                    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHWidth>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgWidth ?? 0)
                     print(photo)
                 
                 case .video(let video):
@@ -244,8 +262,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 }
                 self.txtPost.text = self.descriptionPost
             }
+            
             self.collectionViewImage.reloadData()
             picker.dismiss(animated: true, completion: nil)
+            if txtPostDesc == AppConstants.kEnterText {
+                self.txtPost.textColor = .lightGray
+            }else{
+                self.txtPost.textColor = .black
+            }
         }
 
         self.present(picker, animated: true, completion: nil)
@@ -518,6 +542,16 @@ extension AddPostViewController : UITableViewDataSource, UITableViewDelegate{
     
     
 }
+//extension AddPostViewController{
+//
+//    func addBottomBorderWithColor(_ yourTextArea: UITextView) {
+//        let border = CALayer()
+//        border.backgroundColor = UIColor.lightGray.cgColor
+//        border.frame = CGRect(x: 0, y: yourTextArea.frame.height - 1, width: yourTextArea.frame.width, height: 1)
+//        yourTextArea.layer.addSublayer(border)
+//        self.view.layer.masksToBounds = true
+//    }
+//}
 
 extension AddPostViewController {
     func addPostApi(){

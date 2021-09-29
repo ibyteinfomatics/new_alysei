@@ -44,8 +44,14 @@ class Datum {
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])
         
-        if let userData = dictResponse?["user"] as? [String:Any]{
-            self.user = User.init(with: userData)
+        if dictResponse?["user"] == nil {
+            if let userData = dictResponse?["followed_by"] as? [String:Any]{
+                self.user = User.init(with: userData)
+            }
+        } else {
+            if let userData = dictResponse?["user"] as? [String:Any]{
+                self.user = User.init(with: userData)
+            }
         }
         
     }

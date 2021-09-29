@@ -49,7 +49,10 @@ extension UpdatePasswordViewC {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kChangePassword, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errtyoe, statuscode) in
             self.showAlert(withMessage: "Password Updated Successfully")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let token = kSharedUserDefaults.getDeviceToken()
                 kSharedUserDefaults.clearAllData()
+                kSharedUserDefaults.setDeviceToken(deviceToken: token)
+               // kSharedUserDefaults.clearAllData()
             }
         }
     }

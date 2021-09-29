@@ -58,7 +58,7 @@ class TripsViewController: AlysieBaseViewC {
         
         tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
-        tripTableCell.priceTitle.text = tripModel?.data?[indexPath].price
+        tripTableCell.priceTitle.text = (tripModel?.data?[indexPath].price ?? "0") + "$"
         
         tripTableCell.editButton.tag = indexPath
         tripTableCell.deleteButton.tag = indexPath
