@@ -8,8 +8,6 @@
 import UIKit
 import  SVGKit
 
-var arraySelectedIngridientMyPreferences: [Int]? = []
-
 class IngridientViewController: UIViewController {
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
@@ -24,9 +22,11 @@ class IngridientViewController: UIViewController {
     
     var getSavedIngridientPreferencesModel : [GetSavedPreferencesDataModel]? = []
     var showAllIngridient: [MapDataModel]? = []
-    
+    var arrayPreference4: PreferencesDataModel?
+    var callbackResult: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferenceNumber = 4
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
@@ -34,30 +34,27 @@ class IngridientViewController: UIViewController {
         saveButton.layer.borderWidth = 1
         saveButton.layer.cornerRadius = 30
         saveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
         backButton.layer.borderWidth = 1
         backButton.layer.cornerRadius = 30
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         preferenceNumber = 4
-        //        callChooseIngridients()
+        
         getSavedIngridientMyPreferences()
         
     }
     
     
     @IBAction func tapSave(_ sender: Any) {
-        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: 1)
-        arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: 2)
-        arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDietMyPreferences ?? [], preference: 3)
-        arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridientMyPreferences ?? [], preference: 4)
-        arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkillMyPrefrences ?? [], preference: 5)
-        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
-       postRequestToSaveIngridientPreferences()
-        self.navigationController?.popViewController(animated: true)
+        if saveButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
+            arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient, preference: preferenceNumber)
+            arrayPreferencesModelData.remove(at: 3)
+            arrayPreferencesModelData.insert(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0), at: 3)
+           postRequestToSaveIngridientPreferences()
+            callbackResult?()
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         
     }
     
@@ -133,13 +130,6 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.image2.image = nil
         }
         
-//        if arraySelectedIngridientMyPreferences?.count == 0{
-//            saveButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
-//        }
-//        else{
-//            saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        }
-        
         cell.layoutSubviews()
         
         return cell
@@ -156,29 +146,29 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
             
             print("You deselected cell #\(indexPath.item)!")
             
-            for (index,item) in arraySelectedIngridientMyPreferences!.enumerated(){
+            for (index,item) in arraySelectedIngridient!.enumerated(){
                 if item == showAllIngridient?[indexPath.row].ingridientId{
-                    arraySelectedIngridientMyPreferences?.remove(at: index)
+                    arraySelectedIngridient?.remove(at: index)
                 }
                 
             }
-//            if arraySelectedIngridientMyPreferences?.count == 0{
-//                saveButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
-//            }
+            for (index,item) in arraySelectedDiet!.enumerated(){
+                if item == showAllIngridient?[indexPath.row].ingridientId{
+                    arraySelectedIngridient?.remove(at: index)
+                }
+            }
             
         }
         else {
-            print("You selected cell #\(indexPath.item)!")
+            
+           
             showAllIngridient?[indexPath.row].isSelected = 1
             cell?.image2.image = UIImage(named: "Group 1165")
             
-            let selectedIngridient = showAllIngridient?[indexPath.row].ingridientId
-            self.searchingridientId = selectedIngridient
-            arraySelectedIngridientMyPreferences?.append(searchingridientId!)
-//            saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            arraySelectedIngridient?.append(showAllIngridient?[indexPath.row].ingridientId ?? 0)
             
         }
-        
+        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
     }
     
     

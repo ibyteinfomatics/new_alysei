@@ -7,7 +7,8 @@
 
 import UIKit
 import SVGKit
-var arraySelectedFood : [Int]? = []
+
+
 class FoodViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
@@ -16,8 +17,8 @@ class FoodViewController: UIViewController {
     var selectedIndexPath : IndexPath?
     var getSavedFoodPreferencesModel : [GetSavedPreferencesDataModel]? = []
     var showAllFood: [MapDataModel]? = []
-    
-    
+    var arrayPreference2: PreferencesDataModel?
+    var callbackResult: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
         preferenceNumber = 2
@@ -29,7 +30,7 @@ class FoodViewController: UIViewController {
         saveButton.layer.borderWidth = 1
         saveButton.layer.cornerRadius = 30
         saveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
         backButton.layer.borderWidth = 1
         backButton.layer.cornerRadius = 30
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
@@ -40,19 +41,21 @@ class FoodViewController: UIViewController {
     
     @IBAction func tapSave(_ sender: Any) {
         
-        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: 1)
-        arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: 2)
-        arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDietMyPreferences ?? [], preference: 3)
-        arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridientMyPreferences ?? [], preference: 4)
-        arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkillMyPrefrences ?? [], preference: 5)
-        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
+        if saveButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
+        arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood, preference: preferenceNumber)
+        arrayPreferencesModelData.remove(at: 1)
+        arrayPreferencesModelData.insert(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0), at: 1)
+
         postRequestToSaveFoodPreferences()
-        self.navigationController?.popViewController(animated: true)
-        
+        callbackResult?()
+            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is DiscoverRecipeViewController {
+                    self.navigationController!.popToViewController(aViewController, animated: true)
+                }
+            }
+        }
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -180,7 +183,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
             arrSelectedIndex.append(selectedIndexPath!)
             print("\(String(describing: arrSelectedIndex.count))")
         }
-        
+        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         
         
     }

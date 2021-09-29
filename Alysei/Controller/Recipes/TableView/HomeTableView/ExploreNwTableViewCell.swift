@@ -15,7 +15,7 @@ class ExploreNwTableViewCell: UITableViewCell {
     @IBOutlet weak var quickSearchLbl: UILabel!
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+   @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     var rowWithimage: [ExploreCollectionVwModl1]?
     var row: [ExploreCollectionVwModl1]?
    
@@ -25,15 +25,15 @@ class ExploreNwTableViewCell: UITableViewCell {
     var checkCell = 0
     override func awakeFromNib(){
         super.awakeFromNib()
-        
-       
+        // Register the xib for collection view cell
+        let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
+        self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
+        collectionVw.collectionViewLayout.invalidateLayout()
         setGradientBackground()
         self.collectionVw.delegate = self
         self.collectionVw.dataSource = self
      
-        // Register the xib for collection view cell
-        let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
-        self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
+        
         
         
     }
@@ -54,8 +54,8 @@ class ExploreNwTableViewCell: UITableViewCell {
     
     func setGradientBackground() {
      
-        let colorTop =  UIColor(red: 55.0/255.0, green: 162.0/255.0, blue: 130.0/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 47.0/255.0, green: 151.0/255.0, blue: 193.0/255.0, alpha: 1.0).cgColor
+        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
@@ -117,12 +117,10 @@ extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewData
             return arraySearchByIngridient?.count ?? 0
           
         }
-        else if checkCell == 1{
+        else {
             return  arraySearchByMeal?.count ?? 0
         }
-        else{
-            return 0
-        }
+       
 
     }
     
@@ -141,7 +139,7 @@ extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.itemNameLbl.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
                
             }
-            else if checkCell == 1{
+            else{
                 let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
                 
                 cell.itemImgVw.setImage(withString: imgUrl)
@@ -150,9 +148,7 @@ extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName
                
             }
-            else{
-                
-            }
+           
             
 //            if arraySearchByMeal!.count <= 3{
 //

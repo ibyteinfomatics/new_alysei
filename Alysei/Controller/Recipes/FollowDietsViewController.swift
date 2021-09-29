@@ -7,7 +7,7 @@
 
 import UIKit
 import SVGKit
-var arrayPreference3: PreferencesDataModel?
+var arraySelectedDiet: [Int]? = []
 class FollowDietsViewController: AlysieBaseViewC {
 
     @IBOutlet weak var backButton: UIButton!
@@ -17,7 +17,7 @@ class FollowDietsViewController: AlysieBaseViewC {
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var selectedIndexPath : IndexPath?
     var arrDiet: [SelectRecipeDietDataModel]?
-    var arraySelectedDiet: [Int]? = []
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +41,8 @@ class FollowDietsViewController: AlysieBaseViewC {
     @IBAction func tapNextToingridient(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DontSeeIngredientsViewController") as! DontSeeIngredientsViewController
-            arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDiet ?? [], preference: preferenceNumber)
-            arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreference = PreferencesDataModel.init(id: arraySelectedDiet ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
         self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{
@@ -135,7 +135,7 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
                 }
             }
             if arrSelectedIndex.count == 0{
-                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+                nextButton.layer.backgroundColor = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
             }
             
         } else {

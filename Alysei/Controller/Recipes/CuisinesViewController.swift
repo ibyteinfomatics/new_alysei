@@ -7,7 +7,6 @@
 
 import UIKit
 //import SVGKit
-var arraySelectedCuisine: [Int]? = []
 
 class CuisinesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,8 +19,8 @@ class CuisinesViewController: UIViewController {
     var showSelecetdAllCuisine: [Int]? = []
     var selectedIndexPath: IndexPath? = nil
     var cuisineId : Int?
-   
-    
+    var arrayPreference1: PreferencesDataModel?
+    var callbackResult: (() -> Void)?
     override func viewDidLoad() {
         preferenceNumber = 1
         super.viewDidLoad()
@@ -31,7 +30,7 @@ class CuisinesViewController: UIViewController {
         
         SaveButton.layer.borderWidth = 1
         SaveButton.layer.cornerRadius = 30
-        SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
         SaveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
         backButton.layer.borderWidth = 1
         backButton.layer.cornerRadius = 30
@@ -41,20 +40,17 @@ class CuisinesViewController: UIViewController {
     
     
     @IBAction func tapSave(_ sender: Any) {
-       
-        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: 1)
-        arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: 2)
-        arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDietMyPreferences ?? [], preference: 3)
-        arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridientMyPreferences ?? [], preference: 4)
-        arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkillMyPrefrences ?? [], preference: 5)
-        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
-       postRequestToSaveCousinPreferences()
-        self.navigationController?.popViewController(animated: true)
         
+        if SaveButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
+            arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine, preference: preferenceNumber)
+            arrayPreferencesModelData.remove(at: 0)
+            arrayPreferencesModelData.insert(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0), at: 0)
+            postRequestToSaveCousinPreferences()
+            callbackResult?()
+            self.navigationController?.popViewController(animated: true)
+        }
+       
+
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -151,49 +147,49 @@ extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewData
         return cellSize
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
-        selectedIndexPath = indexPath
-        let selectedCuisine = showAllCuisine?[indexPath.row].cousinId
-        self.cuisineId = selectedCuisine
-        if  showAllCuisine?[indexPath.row].isSelected == 1 {
-            showAllCuisine?[indexPath.row].isSelected = 0
-            // it was already selected
-            //                    selectedIndexPath = nil
-            collectionView.deselectItem(at: indexPath, animated: false)
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-            
-            for (index,item) in arrSelectedIndex.enumerated(){
-                if item == indexPath{
-                    arrSelectedIndex.remove(at: index)
-                }
-            }
-            
-            for (index,item) in arraySelectedCuisine!.enumerated(){
-                if item == showAllCuisine?[indexPath.row].cousinId{
-                    arraySelectedCuisine?.remove(at: index)
-                }
-            }
-//            if arraySelectedCuisine?.count == 0{
-//                SaveButton.layer.backgroundColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
+//        selectedIndexPath = indexPath
+//        let selectedCuisine = showAllCuisine?[indexPath.row].cousinId
+//        self.cuisineId = selectedCuisine
+//        if  showAllCuisine?[indexPath.row].isSelected == 1 {
+//            showAllCuisine?[indexPath.row].isSelected = 0
+//            // it was already selected
+//            //                    selectedIndexPath = nil
+//            collectionView.deselectItem(at: indexPath, animated: false)
+//            cell?.viewOfImage.layer.borderWidth = 4
+//            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+//
+//            for (index,item) in arrSelectedIndex.enumerated(){
+//                if item == indexPath{
+//                    arrSelectedIndex.remove(at: index)
+//                }
 //            }
-            print("deselect")
-        } else {
-            // wasn't yet selected, so let's remember it
-            showAllCuisine?[indexPath.row].isSelected = 1
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-            
-            arraySelectedCuisine?.append(cuisineId ?? 0)
-           
-            arrSelectedIndex.append(selectedIndexPath!)
-//            SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-            print("\(String(describing: arrSelectedIndex.count))")
-            print("select")
-        }
-        
-    }
+//
+////            for (index,item) in arraySelectedCuisine!.enumerated(){
+////                if item == showAllCuisine?[indexPath.row].cousinId{
+////                    arraySelectedCuisine?.remove(at: index)
+////                }
+////            }
+////            if arraySelectedCuisine?.count == 0{
+////                SaveButton.layer.backgroundColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
+////            }
+//            print("deselect")
+//        } else {
+//            // wasn't yet selected, so let's remember it
+//            showAllCuisine?[indexPath.row].isSelected = 1
+//            cell?.viewOfImage.layer.borderWidth = 4
+//            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//
+//            arraySelectedCuisine?.append(cuisineId ?? 0)
+//
+//            arrSelectedIndex.append(selectedIndexPath!)
+////            SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//            print("\(String(describing: arrSelectedIndex.count))")
+//            print("select")
+//        }
+//        SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//    }
 }
 
 

@@ -6,8 +6,10 @@
 //
 
 import UIKit
-var arrayPreferencesModelData: [PreferencesDataModel]? = []
-var arrayPreference1: PreferencesDataModel?
+
+var arrayPreferencesModelData = [PreferencesDataModel]()
+var arrayPreference: PreferencesDataModel?
+var arraySelectedCuisine: [Int]? = []
 
 class CuisinePageControlViewController: UIViewController {
     
@@ -21,29 +23,35 @@ class CuisinePageControlViewController: UIViewController {
     var cuisineID : Int?
     var selectedIndexPath: IndexPath? = nil
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
-    var arraySelectedCuisine: [Int]? = []
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         preferenceNumber = 1
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
-        btnCusineNext.isHidden = true
+//        btnCusineNext.isHidden = true
         cuisinePageControl.hidesForSinglePage = true
-        btnCusineNext.layer.borderWidth = 1
+//        btnCusineNext.layer.borderWidth = 1
         btnCusineNext.layer.cornerRadius = 30
-        btnCusineNext.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//        btnCusineNext.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        btnCusineNext.layer.backgroundColor  = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
         self.tabBarController?.tabBar.isHidden = true
+        
         postRequestToGetCuisine()
     }
     
 
     @IBAction func tapNext(_ sender: Any) {
+        
+        if btnCusineNext.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FoodAllergyViewController") as! FoodAllergyViewController
 
-        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: preferenceNumber)
-        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
+        arrayPreference = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: preferenceNumber)
+        arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
         self.navigationController?.pushViewController(viewAll, animated: true)
+        }
     }
     
     
@@ -119,7 +127,7 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
 //                    selectedIndexPath = nil
                     cuisineCollectionView.deselectItem(at: indexPath, animated: false)
             cell?.imageCuisineSelected.isHidden = true
-            self.btnCusineNext.isHidden = true
+            
             for (index,item) in arrSelectedIndex.enumerated(){
                 if item == indexPath{
                     arrSelectedIndex.remove(at: index)
@@ -131,15 +139,14 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
                 }
             }
             if arrSelectedIndex.count == 0{
-                self.btnCusineNext.isHidden = true
+                btnCusineNext.layer.backgroundColor  = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
             }
            print("deselect")
                 } else {
                     // wasn't yet selected, so let's remember it
                     arrCuisine[indexPath.row].isSelected = true
-                   
+                    btnCusineNext.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
                     cell?.imageCuisineSelected.isHidden = false
-                    self.btnCusineNext.isHidden = false
                     arraySelectedCuisine?.append(cuisineID ?? 0)
                     arrSelectedIndex.append(selectedIndexPath!)
                     print("\(String(describing: arrSelectedIndex.count))")

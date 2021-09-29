@@ -55,7 +55,7 @@
                             <constraint firstItem="mJP-aB-65k" firstAttribute="leading" secondItem="mvs-ea-ldT" secondAttribute="leading" constant="15" id="jiH-Hx-VkI"/>
                         </constraints>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yeC-1l-EU9">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yeC-1l-EU9">
                         <rect key="frame" x="5" y="50" width="310" height="200"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -67,10 +67,6 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <connections>
-                            <outlet property="dataSource" destination="H2p-sc-9uM" id="G0I-Um-G7v"/>
-                            <outlet property="delegate" destination="H2p-sc-9uM" id="gKm-FN-9cA"/>
-                        </connections>
                     </collectionView>
                 </subviews>
                 <constraints>

@@ -9,7 +9,7 @@ import UIKit
 import SVGKit
 
 var preferenceNumber : Int?
-var arrayPreference5: PreferencesDataModel?
+var arraySelectedCookingSkill: [Int]? = []
 class CookingSkillViewController: AlysieBaseViewC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
@@ -18,7 +18,7 @@ class CookingSkillViewController: AlysieBaseViewC {
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var arrCookingSkill = [SelectCookingSkillsDataModel]()
     var selectedIndexPath: IndexPath? = nil
-    var arraySelectedCookingSkill: [Int]? = []
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class CookingSkillViewController: AlysieBaseViewC {
         postRequestToGetCookinSkills()
     }
     @IBAction func tapNextToMainScreen(_ sender: Any) {
-        arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkill ?? [], preference: preferenceNumber)
-        arrayPreferencesModelData?.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
+        arrayPreference = PreferencesDataModel.init(id: arraySelectedCookingSkill ?? [], preference: preferenceNumber)
+        arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
         postRequestToSaveAllPreferences()
        
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
@@ -58,7 +58,7 @@ class CookingSkillViewController: AlysieBaseViewC {
         self.arrCookingSkill[i].isSelected = false
             self.arrSelectedIndex.removeAll()
         }
-        arrayPreferencesModelData?.removeAll()
+        arrayPreferencesModelData.removeAll()
         self.navigationController?.pushViewController(viewAll, animated: true)
     }
     
@@ -122,19 +122,20 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
-        
-//        if selectedIndexPath == indexPath {
-//                    // it was already selected
-//                    selectedIndexPath = nil
-//                    collectionView.deselectItem(at: indexPath, animated: false)
-//                        cell?.viewOfImage.layer.borderWidth = 4
-//                        cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-//                        nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
-//
-//            print("deselect")
-//                } else {
+        if selectedIndexPath == indexPath {
+                    // it was already selected
+                 selectedIndexPath = indexPath
+                   
+                        cell?.viewOfImage.layer.borderWidth = 4
+            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+
+            nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            
+        } else {
                     // wasn't yet selected, so let's remember it
+                   
                     selectedIndexPath = indexPath
                     arraySelectedCookingSkill?.append(arrCookingSkill[indexPath.row].cookinSkillId ?? 0)
                                 cell?.viewOfImage.layer.borderWidth = 4
@@ -143,7 +144,7 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
                                 nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
                    
                     print("select")
-//                }
+               }
 
     }
     

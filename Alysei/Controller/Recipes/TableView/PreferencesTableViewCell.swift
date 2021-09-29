@@ -39,7 +39,7 @@ class PreferencesTableViewCell: UITableViewCell {
     var imageArray :[Int]? = []
     let imageNameLabelArray = ["A","B","C","D"]
     let titleArray = ["Favourite Cuisine","Food Alergies","Diets","Ingridients","Cooking Skill"]
-    
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,6 +61,24 @@ class PreferencesTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    override func layoutSubviews() {
+            super.layoutSubviews()
+        CATransaction.begin()
+         CATransaction.setDisableActions(true)
+       
+         CATransaction.commit()
+        }
+//    func setGradientBackground() {
+//
+//        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
+//        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
+//
+//        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//        gradientLayer.shouldRasterize = true
+//        self.headerView.layer.insertSublayer(gradientLayer, at: 0)
+//    }
     func config(){
         imageArray?.removeAll()
         
@@ -71,11 +89,11 @@ class PreferencesTableViewCell: UITableViewCell {
         imageArray?.append(showCookingSkill?.count ?? 0)
 //       finalHeight = (cusinHeight + foodHeight + dietHeight + ingridientHeight + cookingHeight + 100)
         if imageArray!.count % 3 == 0 {
-            tableViewHeight.constant = CGFloat(130*((imageArray!.count/3)*6))
+            tableViewHeight.constant = CGFloat(130*((imageArray!.count/3)*5))
 
         }
         else{
-            tableViewHeight.constant = CGFloat(130*(((imageArray!.count/3) + 1 )*6))
+            tableViewHeight.constant = CGFloat(130*(((imageArray!.count/3) + 1 )*5))
         }
 //        self.PrefrenceImageCollectionView.reloadData()
     }
@@ -146,6 +164,7 @@ class PreferencesTableViewCell: UITableViewCell {
 
             
          self.PrefrenceImageCollectionView.reloadData()
+            
         }
     }
     
@@ -221,7 +240,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 cell.imageView1.image = UIImage(named: "")
                 cell.imageView1.clipsToBounds = true
             }else {
-                cell.imageView.image = UIImage(named: "Group 1166")
+                cell.imageView.image = UIImage(named: "")
                
                 cell.imageView.contentMode = .scaleAspectFit
 
@@ -229,7 +248,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.lightGray.cgColor
+                cell.imageView1.layer.borderColor = UIColor.clear.cgColor
                 cell.imageView1.image = UIImage(named: "")
                 cell.imageView1.clipsToBounds = true
             }
@@ -416,7 +435,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 60)
+        return CGSize(width: collectionView.frame.width, height: 40)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -427,9 +446,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                         return
                     }
                     else{
-                        if delegate != nil {
-                            delegate?.pluscellTapped()
-                    }
+                        return
                     
                         }
                 case 1:

@@ -8,7 +8,7 @@
 import UIKit
 import SVGKit
 
-var arrayPreference2: PreferencesDataModel?
+var arraySelectedFood : [Int]? = []
 class FoodAllergyViewController: AlysieBaseViewC {
 
     @IBOutlet weak var backButton: UIButton!
@@ -19,7 +19,7 @@ class FoodAllergyViewController: AlysieBaseViewC {
     var selectedIndexPath : IndexPath?
     var arrFoodIntolerance: [SelectFoodIntoleranceDataModel]? = []
     var isFirStTimeLoading = true
-    var arraySelectedFood : [Int]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferenceNumber = 2
@@ -42,8 +42,8 @@ class FoodAllergyViewController: AlysieBaseViewC {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
             let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FollowDietsViewController") as! FollowDietsViewController
             
-            arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: preferenceNumber)
-            arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreference = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
             self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{
@@ -135,7 +135,7 @@ extension FoodAllergyViewController: UICollectionViewDelegate, UICollectionViewD
                 }
             }
             if arrSelectedIndex.count == 0{
-                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+                nextButton.layer.backgroundColor = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
             }
 
         } else {

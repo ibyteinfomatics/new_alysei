@@ -7,7 +7,7 @@
 
 import UIKit
 import SVGKit
-var arraySelectedDietMyPreferences: [Int]? = []
+
 class DietViewController: AlysieBaseViewC  {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -18,11 +18,11 @@ class DietViewController: AlysieBaseViewC  {
     var selectedIndexPath : IndexPath?
     var getSavedDietPreferencesModel : [GetSavedPreferencesDataModel]? = []
     var showAllDiet: [MapDataModel]? = []
-   
-    
+    var arrayPreference3: PreferencesDataModel?
+    var callbackResult: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        preferenceNumber = 3
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         collectionView.delegate = self
@@ -30,27 +30,27 @@ class DietViewController: AlysieBaseViewC  {
         saveButton.layer.borderWidth = 1
         saveButton.layer.cornerRadius = 30
         saveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+       
         backButton.layer.borderWidth = 1
         backButton.layer.cornerRadius = 30
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         getSavedDietMyPreferences()
         
+        
+        
     }
     
     @IBAction func tapSave(_ sender: Any) {
-        arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: 1)
-        arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: 2)
-        arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDietMyPreferences ?? [], preference: 3)
-        arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridientMyPreferences ?? [], preference: 4)
-        arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkillMyPrefrences ?? [], preference: 5)
-        arrayPreferencesModelData?.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
-        arrayPreferencesModelData?.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
-        postRequestToSaveDietPreferences()
-        self.navigationController?.popViewController(animated: true)
+        
+        if saveButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
+            arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDiet, preference: preferenceNumber)
+            arrayPreferencesModelData.remove(at: 2)
+            arrayPreferencesModelData.insert(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0), at: 2)
+            postRequestToSaveDietPreferences()
+            callbackResult?()
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         
     }
     
@@ -142,6 +142,7 @@ extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
+       
         selectedIndexPath = indexPath
         if  showAllDiet?[indexPath.row].isSelected == 1 {
             showAllDiet?[indexPath.row].isSelected = 0
@@ -155,9 +156,9 @@ extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
             }
             
-            for (index,item) in arraySelectedDietMyPreferences!.enumerated(){
+            for (index,item) in arraySelectedDiet!.enumerated(){
                 if item == showAllDiet?[indexPath.row].dietId{
-                    arraySelectedDietMyPreferences?.remove(at: index)
+                    arraySelectedDiet?.remove(at: index)
                 }
             }
 //            if arrSelectedIndex.count == 0{
@@ -170,10 +171,12 @@ extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
 //            saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             //            cell?.image2.image = UIImage(named: "Group 1163")
-            arraySelectedDietMyPreferences?.append(showAllDiet?[indexPath.row].dietId ?? 0)
+            arraySelectedDiet?.append(showAllDiet?[indexPath.row].dietId ?? 0)
             arrSelectedIndex.append(selectedIndexPath!)
             print("\(String(describing: arrSelectedIndex.count))")
         }
+        
+        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         
     }
     

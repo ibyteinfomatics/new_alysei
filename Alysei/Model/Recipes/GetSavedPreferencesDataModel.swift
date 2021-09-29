@@ -41,8 +41,8 @@ class MapDataModel{
         self.cousinId = Int.getInt(dictResponse["cousin_id"])
         self.foodId = Int.getInt(dictResponse["recipe_food_intolerance_id"])
         self.dietId = Int.getInt(dictResponse["recipe_diet_id"])
-        self.ingridientId = Int.getInt(dictResponse["recipe_diet_id"])
-        self.cookingSkillId = Int.getInt(dictResponse["recipe_diet_id"])
+        self.ingridientId = Int.getInt(dictResponse["recipe_ingredient_id"])
+        self.cookingSkillId = Int.getInt(dictResponse["recipe_cooking_skill_id"])
 
         if let image = dictResponse["image_id"] as? [String:Any]{
             self.imageId = ImageURL.init(with: image)

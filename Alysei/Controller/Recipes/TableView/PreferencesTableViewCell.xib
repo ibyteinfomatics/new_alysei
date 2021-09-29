@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="148" height="143"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="m2x-YA-KHY">
-                                <rect key="frame" x="15" y="0.0" width="118" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="148" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Hjr-Uv-K4F"/>
@@ -31,15 +31,15 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="m2x-YA-KHY" secondAttribute="bottom" constant="15" id="6m6-uh-htl"/>
-                            <constraint firstItem="m2x-YA-KHY" firstAttribute="leading" secondItem="hja-y1-C5n" secondAttribute="leading" constant="15" id="KVj-JJ-Vwp"/>
-                            <constraint firstAttribute="trailing" secondItem="m2x-YA-KHY" secondAttribute="trailing" constant="15" id="U9v-pq-8b9"/>
+                            <constraint firstItem="m2x-YA-KHY" firstAttribute="leading" secondItem="hja-y1-C5n" secondAttribute="leading" id="KVj-JJ-Vwp"/>
+                            <constraint firstAttribute="trailing" secondItem="m2x-YA-KHY" secondAttribute="trailing" id="U9v-pq-8b9"/>
                             <constraint firstItem="m2x-YA-KHY" firstAttribute="top" secondItem="hja-y1-C5n" secondAttribute="top" id="bpu-QY-LzP"/>
                         </constraints>
                     </view>

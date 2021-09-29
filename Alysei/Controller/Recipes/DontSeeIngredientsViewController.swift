@@ -6,7 +6,7 @@
 //
 
 import UIKit
-var arrayPreference4: PreferencesDataModel?
+var arraySelectedIngridient: [Int]? = []
 class DontSeeIngredientsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,7 +27,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     var ingridientSearchModel: [SearchIngridientDataModel]? = []
     var searchTextPreferences = String()
     var ingridientSet = Set<Int>()
-    var arraySelectedIngridient: [Int]? = []
+    
     
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
@@ -61,8 +61,8 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
             self.searching = false
             self.searchTextField.text = nil
             self.searchTableView.reloadData()
-            arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient ?? [], preference: preferenceNumber)
-            arrayPreferencesModelData?.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreference = PreferencesDataModel.init(id: arraySelectedIngridient ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
             self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{}
@@ -188,7 +188,7 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
                 
             }
             if arraySelectedIngridient?.count == 0{
-                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+                nextButton.layer.backgroundColor = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
             }
             
         }
