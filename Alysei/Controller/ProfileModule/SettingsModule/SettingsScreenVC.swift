@@ -31,8 +31,10 @@ class SettingsScreenVC: AlysieBaseViewC {
       self.navigationController?.popViewController(animated: true)
     }
     @IBAction func tapLogout(_ sender: UIButton) {
-
-      kSharedUserDefaults.clearAllData()
+        let token = kSharedUserDefaults.getDeviceToken()
+        kSharedUserDefaults.clearAllData()
+        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+     // kSharedUserDefaults.clearAllData()
     }
 }
 
@@ -78,7 +80,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             case 9:
               _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 8:
+                //kSharedUserDefaults.clearAllData()
+                let token = kSharedUserDefaults.getDeviceToken()
                 kSharedUserDefaults.clearAllData()
+                kSharedUserDefaults.setDeviceToken(deviceToken: token)
             default:
               break
             }
@@ -98,7 +103,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 3:
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
+            let token = kSharedUserDefaults.getDeviceToken()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+           // kSharedUserDefaults.clearAllData()
         default:
           break
         }
@@ -121,7 +129,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 9:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 8:
+            let token = kSharedUserDefaults.getDeviceToken()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+           // kSharedUserDefaults.clearAllData()
         default:
           break
         }
@@ -141,7 +152,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 9:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 8:
+            let token = kSharedUserDefaults.getDeviceToken()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+           // kSharedUserDefaults.clearAllData()
         default:
           break
         }
@@ -161,7 +175,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
+            let token = kSharedUserDefaults.getDeviceToken()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+            
+          //  kSharedUserDefaults.clearAllData()
         default:
           break
         }
@@ -181,7 +199,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
+            let token = kSharedUserDefaults.getDeviceToken()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+          //  kSharedUserDefaults.clearAllData()
         default:
           break
         }

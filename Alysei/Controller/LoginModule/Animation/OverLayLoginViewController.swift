@@ -137,7 +137,7 @@ extension OverLayLoginViewController{
     }
     
     private func postRequestToGetRoles(_ tag: Int) -> Void{
-       
+       // kSharedAppDelegate.get
         disableWindowInteraction()
         CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetRoles, method: .GET, controller: self, type: tag, param: [:], btnTapped: self.btnSignUp)
     }

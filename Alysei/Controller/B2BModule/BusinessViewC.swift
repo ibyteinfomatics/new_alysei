@@ -124,8 +124,10 @@ class BusinessViewC: AlysieBaseViewC {
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
-
-      kSharedUserDefaults.clearAllData()
+        let token = kSharedUserDefaults.getDeviceToken()
+        kSharedUserDefaults.clearAllData()
+        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+     // kSharedUserDefaults.clearAllData()
     }
     
     //MARK: - IBAction -

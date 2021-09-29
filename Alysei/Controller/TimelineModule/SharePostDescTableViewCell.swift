@@ -44,6 +44,8 @@ class SharePostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var lblSharedUserEmail: UILabel!
     @IBOutlet weak var imgSharedUserImage: UIImageView!
     @IBOutlet weak var lblSharedPostDesc: UILabel!
+    @IBOutlet weak var lblSharedUserTitle: UILabel!
+    @IBOutlet weak var vwHeader: UIView!
 
     var data: NewFeedSearchDataModel?
     var index: Int?
@@ -56,6 +58,7 @@ class SharePostDescTableViewCell: UITableViewCell {
         // Initialization code
     }
     func setUI(){
+        vwHeader.addShadow()
         self.userImage.layer.cornerRadius = self.userImage.frame.height / 2
         self.userImage.layer.masksToBounds = true
         self.imgSharedUserImage.layer.cornerRadius = self.userImage.frame.height / 2
@@ -81,12 +84,15 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
         userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        
         lblSharedUserEmail.text = modelData.subjectId?.email
     //userName.text = modelData.subjectId?.companyName?.capitalized
     //userNickName.text = modelData.subjectId?.email
     }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
         lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
         userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
+        lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
         lblSharedUserEmail.text = modelData.subjectId?.email
         //userNickName.text = modelData.subjectId?.email
     }else{
@@ -94,6 +100,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
         userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
         lblSharedUserEmail.text = modelData.subjectId?.name?.capitalized
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
        // userNickName.text = modelData.subjectId?.name?.capitalized
     }
     lblPostDesc.text = modelData.sharedPostData?.body
@@ -133,12 +140,22 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     self.imagePostCollectionView.showsHorizontalScrollIndicator = false
 
     self.imageArray.removeAll()
-    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
-        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-        
-       
-
-    }
+//    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
+//        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+//
+//
+//
+//    }
+    if (modelData.sharedPostData?.attachments?.isEmpty == true) || (modelData.sharedPostData?.attachmentCount == 0){
+             print("No Data")
+            }else{
+                    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
+                        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                
+                
+                
+                    }
+            }
     print("ImageArrayCount---------------------------\(imageArray.count)")
 
     if imageArray.count <= 0 {

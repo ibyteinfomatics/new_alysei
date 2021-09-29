@@ -96,6 +96,14 @@ class PostsViewController: AlysieBaseViewC {
                 }
             }
         }
+        
+        if segue.identifier == "seguePostsToEditPost" {
+            if let dataModel = sender as? EditPost.EditData.edit {
+                if let viewCon = segue.destination as? EditPostViewController {
+                    viewCon.postDataModel = dataModel
+                }
+            }
+        }
     }
     @objc func openNotificationPlace(){
         guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
@@ -210,13 +218,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0{
-//        return 150
-//        }else{
-//            return UITableView.automaticDimension
-//        }
-   // }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0{
+        return 150
+        }else{
+            return UITableView.automaticDimension
+        }
+    }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        if indexPath.row + 1 == newFeedModel?.data?.count {
@@ -257,9 +265,9 @@ extension PostsViewController: ShareEditMenuProtocol {
             self.deletePost(postID)
         }
 
-        let changePrivacyAction = UIAlertAction(title: "Change Privacy", style: .default) { action in
-            self.editPost(postID)
-        }
+       // let f = UIAlertAction(title: "Change Privacy", style: .default) { action in
+         //   self.editPost(postID)
+        //}
 
         let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
         }
@@ -274,7 +282,7 @@ extension PostsViewController: ShareEditMenuProtocol {
             if Int(loggedInUserID) == userID {
                 actionSheet.addAction(shareAction)
                 actionSheet.addAction(editPostAction)
-                actionSheet.addAction(changePrivacyAction)
+               // actionSheet.addAction(changePrivacyAction)
                 actionSheet.addAction(deletePost)
             } else {
                 actionSheet.addAction(shareAction)
@@ -322,7 +330,14 @@ extension PostsViewController: ShareEditMenuProtocol {
     }
 
     func editPost(_ postID: Int) {
-
+        let data = arrNewFeedDataModel.filter({ $0.postID == postID })
+        if let editData = data.first {
+            let editPostDataModel = EditPost.EditData.edit(attachments: editData.attachments,
+                                                             postOwnerDetail: editData.subjectId,
+                                                             postDescription: "\(editData.body ?? "")",
+                                                             postID: postID)
+            self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
+        }
     }
 
     func sharePost(_ postID: Int) {
@@ -330,7 +345,7 @@ extension PostsViewController: ShareEditMenuProtocol {
         if let searchDataModel = data.first {
             let sharePostDataModel = SharePost.PostData.post(attachments: searchDataModel.attachments,
                                                              postOwnerDetail: searchDataModel.subjectId,
-                                                             postDescription: "\(searchDataModel.body)",
+                                                             postDescription: "\(searchDataModel.body ?? "")",
                                                              postID: postID)
             self.performSegue(withIdentifier: "seguePostsToSharePost", sender: sharePostDataModel)
         }

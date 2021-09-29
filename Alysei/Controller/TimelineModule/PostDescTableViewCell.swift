@@ -176,9 +176,14 @@ class PostDescTableViewCell: UITableViewCell {
         self.imagePostCollectionView.showsHorizontalScrollIndicator = false
 
         self.imageArray.removeAll()
-        for i in  0..<(modelData.attachmentCount ?? 0) {
-            self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+        if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
+            print("No Data")
+        }else{
+            for i in  0..<(modelData.attachmentCount ?? 0) {
+                self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+            }
         }
+       
 
 
         if imageArray.count <= 0 {

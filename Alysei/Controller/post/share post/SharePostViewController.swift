@@ -97,6 +97,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         } else if (self.postDataModel.postOwnerDetail?.restaurantName?.count ?? 0) > 0 {
             postOwner = self.postDataModel.postOwnerDetail?.restaurantName ?? ""
         }
+        self.lblPostDesc.text = self.postDataModel.postDescription
 
         self.postOwnerUsernameLabel.text = "\(postOwner)"
 
@@ -124,6 +125,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
     @IBOutlet var shareableTextLabel: UITextField!
     @IBOutlet var imageCollectionView: UICollectionView!
     @IBOutlet var postOwnerUsernameLabel: UILabel!
+    @IBOutlet var lblPostDesc: UILabel!
 
     // MARK:- IBAction methods
 

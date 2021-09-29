@@ -494,7 +494,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
        
         arrOptions.removeAll()
         arrCountryStateName.removeAll()
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetCountries + String.getString(kSharedUserDefaults.loggedInUserModal.memberRoleId), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "https://alyseiapi.ibyteworkshop.com/public/api/get/countries?param=trips", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let response = dicResponse as? [String:Any]
             //let filterCountry = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.kCountry})
             if let array = response?[APIConstants.kData] as? ArrayOfDictionary{
@@ -566,6 +566,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             "website": websiteTxf.text ?? "",
             "price": priceTxf.text ?? "",
             "description": descriptionTextView.text ?? "",
+           // "param": "trips"
             
         ]
         

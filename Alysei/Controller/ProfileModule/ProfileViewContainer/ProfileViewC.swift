@@ -336,8 +336,11 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        
+        let token = kSharedUserDefaults.getDeviceToken()
         kSharedUserDefaults.clearAllData()
+        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        
+      //  kSharedUserDefaults.clearAllData()
     }
     
     override func viewDidLayoutSubviews(){
@@ -352,7 +355,10 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - IBAction -
     
     @IBAction func btnLogout(_ sender: UIButton){
+        let token = kSharedUserDefaults.getDeviceToken()
         kSharedUserDefaults.clearAllData()
+        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+       // kSharedUserDefaults.clearAllData()
     }
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
@@ -721,7 +727,10 @@ class ProfileViewC: AlysieBaseViewC{
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
             SVProgressHUD.dismiss()
             if statusCode == 401 {
+                let token = kSharedUserDefaults.getDeviceToken()
                 kSharedUserDefaults.clearAllData()
+                kSharedUserDefaults.setDeviceToken(deviceToken: token)
+               // kSharedUserDefaults.clearAllData()
             }
             guard let data = data else { return }
             do {
