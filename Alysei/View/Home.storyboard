@@ -1208,7 +1208,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="btnRemoveTapped:" destination="HVT-L8-zv8" eventType="touchUpInside" id="STy-Wa-zxw"/>
+                                                        <action selector="btnViewAction:" destination="HVT-L8-zv8" eventType="touchUpInside" id="HF7-kn-Gnd"/>
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ycs-XX-BxA">
@@ -1233,6 +1233,9 @@
                                                                     <color key="value" name="grey3"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="btnAcceptAction:" destination="HVT-L8-zv8" eventType="touchUpInside" id="SE1-fy-HPM"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpa-vl-iNj" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="176" y="0.0" width="156" height="30"/>
@@ -1253,6 +1256,9 @@
                                                                     <color key="value" name="grey3"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="btnDeclineAction:" destination="HVT-L8-zv8" eventType="touchUpInside" id="tFe-yU-pHM"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -15135,7 +15141,7 @@ AAAAAAABG/w
         <image name="icons8_forward-1" width="11.5" height="21"/>
         <image name="icons8_gallery_1" width="33.5" height="25.5"/>
         <image name="icons8_pencil" width="13" height="13"/>
-        <image name="icons8_shop_3" width="16" height="16"/>
+        <image name="icons8_shop_3" width="17.5" height="17.5"/>
         <image name="icons8_trash_1" width="10.5" height="13"/>
         <image name="icons_grey_checkbox" width="13" height="13"/>
         <image name="icons_invitations" width="15.5" height="16"/>

@@ -53,6 +53,20 @@ class NetworkViewC: AlysieBaseViewC {
         }
     }
     
+    func inviteApi(id: Int, type: Int){
+        
+        let params: [String:Any] = [
+            "connection_id": id,
+            "accept_or_reject": type]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
+            
+        }
+        
+    }
+    
     func callConnectionApi(api: String){
         
         self.connection?.data?.removeAll()
@@ -144,6 +158,24 @@ class NetworkViewC: AlysieBaseViewC {
         if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
             networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         }
+        
+        
+        networkTableCell.btnViewCallback = { tag in
+            
+            
+        }
+        
+        networkTableCell.btnAcceptCallback = { tag in
+            
+            self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 1)
+            
+        }
+        
+        networkTableCell.btnDeclineCallback = { tag in
+            self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
+            
+        }
+        
         
     } else {
         networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
