@@ -679,7 +679,8 @@ class ProfileViewC: AlysieBaseViewC{
             //          self.view.isUserInteractionEnabled = false
             self.addChild(newVC)
             newVC.view.frame = self.containerView.bounds
-            newVC.view.setHeight(self.view.frame.height - 100.0)
+            //newVC.view.setHeight(self.view.frame.height - 100.0)
+            //newVC.view.setHeight(self.view.frame.height+50)
             
             oldVC.willMove(toParent: nil)
             
