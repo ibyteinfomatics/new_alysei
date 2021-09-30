@@ -17,6 +17,7 @@ class NetworkViewC: AlysieBaseViewC {
   
   @IBOutlet weak var collectionViewNetworkCategory: UICollectionView!
   @IBOutlet weak var tblViewNetwork: UITableView!
+  @IBOutlet weak var tblViewInviteNetwork: UITableView!
     
     // blank data view
     @IBOutlet weak var text: UILabel!
@@ -30,6 +31,11 @@ class NetworkViewC: AlysieBaseViewC {
   override func viewDidLoad() {
    super.viewDidLoad()
     self.tblViewNetwork.tableFooterView = UIView()
+    self.tblViewInviteNetwork.tableFooterView = UIView()
+    
+    tblViewInviteNetwork.isHidden = false
+    tblViewNetwork.isHidden = true
+    callConnectionApi(api: APIUrl.kConnectionTabApi1)
   }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +57,7 @@ class NetworkViewC: AlysieBaseViewC {
         
         self.connection?.data?.removeAll()
         self.tblViewNetwork.reloadData()
+        self.tblViewInviteNetwork.reloadData()
         TANetworkManager.sharedInstance.requestApi(withServiceName: api, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -61,7 +68,13 @@ class NetworkViewC: AlysieBaseViewC {
                 
             }
             
-            self.tblViewNetwork.reloadData()
+            if self.currentIndex == 0 {
+                self.tblViewInviteNetwork.reloadData()
+            } else {
+                self.tblViewNetwork.reloadData()
+            }
+            
+            
         }
     }
     
@@ -94,38 +107,81 @@ class NetworkViewC: AlysieBaseViewC {
   
   private func getNetworkTableCell(_ indexPath: IndexPath) -> UITableViewCell{
     
-    let networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
+    var networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
     
-    //networkTableCell.name.text = self.connection?.data?[indexPath.row].user?.companyName
-    networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
-    
-    if connection?.data?[indexPath.row].user?.companyName != "" {
-        networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
-    } else if connection?.data?[indexPath.row].user?.firstname != ""{
-        networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+    if currentIndex == 0 {
+        
+        networkTableCell = tblViewInviteNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
+        
+        networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
+        
+        if connection?.data?[indexPath.row].user?.companyName != "" {
+            networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
+        } else if connection?.data?[indexPath.row].user?.firstname != ""{
+            networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+        } else {
+            networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+        }
+        
+        if currentIndex == 3 {
+            networkTableCell.remove.isHidden = true
+        } else if currentIndex == 1{
+            networkTableCell.remove.isHidden = false
+            networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
+            networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
+        } else if currentIndex == 2{
+            networkTableCell.remove.isHidden = false
+            networkTableCell.remove.setTitleColor(.red, for: .normal)
+            networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
+        }
+        
+        networkTableCell.img.layer.masksToBounds = false
+        networkTableCell.img.clipsToBounds = true
+        networkTableCell.img.layer.borderWidth = 2
+        networkTableCell.img.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
+        networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
+        
+        if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
+            networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        }
+        
     } else {
-        networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+        networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
+        //networkTableCell.name.text = self.connection?.data?[indexPath.row].user?.companyName
+        networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
+        
+        if connection?.data?[indexPath.row].user?.companyName != "" {
+            networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
+        } else if connection?.data?[indexPath.row].user?.firstname != ""{
+            networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+        } else {
+            networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+        }
+        
+        if currentIndex == 3 {
+            networkTableCell.remove.isHidden = true
+        } else if currentIndex == 1{
+            networkTableCell.remove.isHidden = false
+            networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
+            networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
+            networkTableCell.remove.setTitle("Remove", for: .normal)
+        } else if currentIndex == 2{
+            networkTableCell.remove.isHidden = false
+            networkTableCell.remove.setTitleColor(.red, for: .normal)
+            networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
+            networkTableCell.remove.setTitle("Cancel", for: .normal)
+        }
+        
+        networkTableCell.img.layer.masksToBounds = false
+        networkTableCell.img.clipsToBounds = true
+        networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
+        
+        if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
+            networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        }
     }
     
-    if currentIndex == 3 {
-        networkTableCell.remove.isHidden = true
-    } else if currentIndex == 1{
-        networkTableCell.remove.isHidden = false
-        networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
-        networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
-    } else if currentIndex == 2{
-        networkTableCell.remove.isHidden = false
-        networkTableCell.remove.setTitleColor(.red, for: .normal)
-        networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
-    }
     
-    networkTableCell.img.layer.masksToBounds = false
-    networkTableCell.img.clipsToBounds = true
-    networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
-    
-    if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-        networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
-    }
     
     
     return networkTableCell
@@ -150,12 +206,21 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         
     self.currentIndex = indexPath.item
     self.collectionViewNetworkCategory.reloadData()
-    
-    if indexPath.row == 1 {
+    if indexPath.row == 0 {
+        tblViewInviteNetwork.isHidden = false
+        tblViewNetwork.isHidden = true
+        callConnectionApi(api: APIUrl.kConnectionTabApi1)
+    } else if indexPath.row == 1 {
+        tblViewInviteNetwork.isHidden = true
+        tblViewNetwork.isHidden = false
         callConnectionApi(api: APIUrl.kConnectionTabApi)
     } else if indexPath.row == 2 {
+        tblViewInviteNetwork.isHidden = true
+        tblViewNetwork.isHidden = false
         callConnectionApi(api: APIUrl.kConnectionTabApi3)
     } else if indexPath.row == 3 {
+        tblViewInviteNetwork.isHidden = true
+        tblViewNetwork.isHidden = false
         callConnectionApi(api: APIUrl.kConnectionTabApi4)
     }
     
@@ -175,7 +240,13 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+//    if currentIndex == 0 {
+//        return 8
+//    } else {
+//
+//    }
     return self.connection?.data?.count ?? 0
+    
   }
         
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -185,7 +256,13 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
   }
         
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 66.0
+    
+    if currentIndex == 0 {
+        return 150.0
+    } else {
+        return 66.0
+    }
+    
   }
         
 }
