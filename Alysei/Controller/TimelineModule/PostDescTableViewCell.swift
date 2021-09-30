@@ -46,6 +46,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var btnMoreLess: UIButton!
 
     var data: NewFeedSearchDataModel?
     var likeCallback:((Int) -> Void)? = nil
@@ -54,6 +55,11 @@ class PostDescTableViewCell: UITableViewCell {
     var index: Int?
     var imageArray = [String]()
     var menuDelegate: ShareEditMenuProtocol!
+    var isExpand = false
+    var previousIndex: Int?
+    var currentIndex: Int?
+    var reloadCallBack: ((Int?,Int?) -> Void)? = nil
+    var relaodSection : Int?
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -66,6 +72,7 @@ class PostDescTableViewCell: UITableViewCell {
         imagePostCollectionView.delegate = self
         imagePostCollectionView.dataSource = self
         imagePostCollectionView.isHidden = false
+       // lblPostDesc.numberOfLines = 2
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
@@ -91,7 +98,9 @@ class PostDescTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -102,7 +111,9 @@ class PostDescTableViewCell: UITableViewCell {
         self.menuDelegate.menuBttonTapped(self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
         
     }
-    
+    @IBAction func btnMoreLessAction(_ sender: UIButton){
+        reloadCallBack?(sender.tag, relaodSection)
+    }
     
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 
@@ -158,7 +169,11 @@ class PostDescTableViewCell: UITableViewCell {
             imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
         }else{
-            imageHeightCVConstant.constant = 220
+            if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+            imageHeightCVConstant.constant = 250
+            }else{
+                imageHeightCVConstant.constant = 400
+            }
 //            imagePostCollectionView.alpha = 1.0
         }
         self.userImage.layer.borderWidth = 0.5
@@ -295,7 +310,16 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
-        return CGSize(width: (self.imagePostCollectionView.frame.width), height: 220);
+        let data = self.data?.attachments?[indexPath.row]
+        if data?.attachmentLink?.height == data?.attachmentLink?.width{
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 250);
+        }else{
+            let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
+        }
+            
+        
+       
     }
 //
 //     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

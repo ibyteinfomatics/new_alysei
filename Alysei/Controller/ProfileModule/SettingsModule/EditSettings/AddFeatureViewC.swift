@@ -21,7 +21,8 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var imgViewProduct: UIImageView!
   @IBOutlet weak var btnUploadImage: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
-  
+    var addDesc = false
+    var addUrl = false
   //MARK: - Properties -
 
   var productCategoriesDataModel: ProductCategoriesDataModel!
@@ -67,6 +68,10 @@ class AddFeatureViewC: AlysieBaseViewC {
           showAlert(withMessage: AlertMessage.kUploadImage)
             return
         }
+ 
+//    for i in 1..<(currentArray.count){f.
+//
+//    }
     for i in 1..<(currentArray.count ){
         if (currentArray[i].selectedValue == "" && currentArray[i].required == AppConstants.Yes){
             showAlert(withMessage: "\(currentArray[i].productTitle ?? "") is required")
@@ -76,6 +81,22 @@ class AddFeatureViewC: AlysieBaseViewC {
           showAlert(withMessage: AlertMessage.kUploadImage)
             return
         }
+    }
+    for i in 1..<(currentArray.count){
+        if currentArray[i].productTitle == AppConstants.URL   {
+            if  currentArray[i].selectedValue != ""{
+                self.addUrl = true
+            }
+        }
+        if currentArray[i].productTitle == AppConstants.Description   {
+          if currentArray[i].selectedValue != ""{
+                self.addDesc = true
+            }
+        }
+    }
+    if addDesc == false && addUrl == false{
+        self.showAlert(withMessage: AlertMessage.kEnterDescriptionUrl)
+        return
     }
     self.postRequestToAddProduct()
 

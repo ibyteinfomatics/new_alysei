@@ -1,8 +1,8 @@
 //
-//  ExploreNwTableViewCell.swift
+//  ExploreByIngridientTableViewCell.swift
 //  Alysei
 //
-//  Created by Mohit on 11/08/21.
+//  Created by Gitesh Dang on 30/09/21.
 //
 
 import UIKit
@@ -10,38 +10,30 @@ var finalheight : CGFloat?
 var finalheight1 : CGFloat?
 var arraySearchByMeal : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
-class ExploreNwTableViewCell: UITableViewCell {
+class ExploreByIngridientTableViewCell: UITableViewCell {
 
     @IBOutlet weak var quickSearchLbl: UILabel!
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var headerView: UIView!
    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    var rowWithimage: [ExploreCollectionVwModl1]?
-    var row: [ExploreCollectionVwModl1]?
    
-
+    
     var tapViewAll:(()->())?
     let gradientLayer = CAGradientLayer()
-    var checkCell = 0
-    override func awakeFromNib(){
+    override func awakeFromNib() {
         super.awakeFromNib()
-        // Register the xib for collection view cell
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
         self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
         collectionVw.collectionViewLayout.invalidateLayout()
         setGradientBackground()
         self.collectionVw.delegate = self
         self.collectionVw.dataSource = self
-     
-        
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-       
+
+        // Configure the view for the selected state
     }
     override func layoutSubviews() {
             super.layoutSubviews()
@@ -70,57 +62,12 @@ class ExploreNwTableViewCell: UITableViewCell {
         
     }
     
-//    func getSearchByMeal(){
-//        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
-//                                                   , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
-//
-//            let dictResponse = dictResponse as? [String:Any]
-//
-//            if let data = dictResponse?["data"] as? [String:Any]{
-//
-//                if let meals = data["meals"] as? [[String:Any]]{
-//                    let meal = meals.map({SelectMealDataModel.init(with: $0)})
-//                    arraySearchByMeal = meal
-//                    print("\(String(describing: arraySearchByMeal?.count))")
-//                }
-//
-//            }
-//            self.collectionVw.reloadData()
-//    }
-//    }
-//
-//    func getSearchByIngridients(){
-//        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
-//                                                   , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
-//
-//            let dictResponse = dictResponse as? [String:Any]
-//
-//            if let data = dictResponse?["data"] as? [String:Any]{
-//
-//                if let ingridients = data["ingredients"] as? [[String:Any]]{
-//                    let ingridient = ingridients.map({IngridentArray.init(with: $0)})
-//                  arraySearchByIngridient = ingridient
-//                    print("\(String(describing: arraySearchByIngridient?.count))")
-//                }
-//            }
-//            self.collectionVw.reloadData()
-//    }
-//    }
-    
 }
-    
-extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if checkCell == 0{
             return arraySearchByIngridient?.count ?? 0
-          
-        }
-        else {
-            return  arraySearchByMeal?.count ?? 0
-        }
-       
 
     }
     
@@ -129,7 +76,7 @@ extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewData
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCollectionViewCell", for: indexPath) as? ExploreCollectionViewCell {
             
-            if checkCell == 0{
+          
                 
                 let imgUrl = (kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
                 
@@ -138,16 +85,6 @@ extension ExploreNwTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.itemImgVw.contentMode = .scaleAspectFill
                 cell.itemNameLbl.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
                
-            }
-            else{
-                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
-                
-                cell.itemImgVw.setImage(withString: imgUrl)
-                cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
-                cell.itemImgVw.contentMode = .scaleAspectFill
-                cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName
-               
-            }
            
             
 //            if arraySearchByMeal!.count <= 3{
