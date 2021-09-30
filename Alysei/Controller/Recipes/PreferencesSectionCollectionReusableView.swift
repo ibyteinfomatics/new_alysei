@@ -11,7 +11,7 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
   
     var label: UILabel = {
              let label: UILabel = UILabel()
-             label.textColor = .black
+             label.textColor = .white
              label.font = UIFont(name: "Montserrat-Bold", size: 16)
           
              label.sizeToFit()
@@ -31,7 +31,6 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
             
             let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
             let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
-           
             gradientLayer.colors = [colorTop, colorBottom]
             gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
