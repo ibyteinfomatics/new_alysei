@@ -12,9 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Bold</string>
-        </array>
         <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
         </array>
@@ -26,6 +23,12 @@
         </array>
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
+        </array>
+        <array key="SanFranciscoText-Bold.otf">
+            <string>SanFranciscoText-Bold</string>
+        </array>
+        <array key="SanFranciscoText-Regular.otf">
+            <string>SanFranciscoText-Regular</string>
         </array>
         <array key="SourceSansPro-Semibold.ttf">
             <string>SourceSansPro-Semibold</string>
@@ -609,8 +612,8 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu5-AX-mKi">
-                                        <rect key="frame" x="10" y="564.5" width="394" height="21"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <rect key="frame" x="10" y="564.5" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -820,73 +823,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3l-sh-iZa">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFR-X6-KZp">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-eT-oDC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdQ-BR-01P">
-                                                <rect key="frame" x="341" y="15" width="63" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="63" id="4DS-CP-dTb"/>
-                                                    <constraint firstAttribute="height" constant="33" id="aiY-BY-bDN"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                                <state key="normal" title="Logout">
-                                                    <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tapLogout:" destination="36y-OR-9KC" eventType="touchUpInside" id="JfV-dB-1tf"/>
-                                                    <action selector="tapLogout:" destination="I2M-E1-LUd" eventType="touchUpInside" id="Qf5-Kf-zmC"/>
-                                                    <action selector="tapLogout:" destination="mQq-kK-w54" eventType="touchUpInside" id="arR-BY-6wf"/>
-                                                    <action selector="tapLogout:" destination="mxg-66-oxh" eventType="touchUpInside" id="hy9-In-8rJ"/>
-                                                </connections>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="icon_homeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bp7-YM-gDB">
-                                                <rect key="frame" x="10" y="16.5" width="101" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="Ka7-EN-Ww6"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="DdQ-BR-01P" secondAttribute="trailing" constant="10" id="Fou-HT-AdR"/>
-                                            <constraint firstAttribute="height" constant="64" id="Tmz-o2-Pdx"/>
-                                            <constraint firstItem="bp7-YM-gDB" firstAttribute="top" secondItem="qBs-eT-oDC" secondAttribute="top" constant="16.5" id="aDi-N7-ooW"/>
-                                            <constraint firstItem="DdQ-BR-01P" firstAttribute="top" secondItem="qBs-eT-oDC" secondAttribute="top" constant="15" id="o04-J3-dLX"/>
-                                            <constraint firstItem="bp7-YM-gDB" firstAttribute="leading" secondItem="qBs-eT-oDC" secondAttribute="leading" constant="10" id="uGz-gM-der"/>
-                                        </constraints>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Review" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-Qp-iAF">
-                                        <rect key="frame" x="50" y="209.5" width="314" height="350"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="350" id="8ch-PU-VTA"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-g5-9TQ">
-                                        <rect key="frame" x="10" y="569.5" width="394" height="21"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" constant="50" id="6qN-im-LCv"/>
-                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="centerY" secondItem="cFR-X6-KZp" secondAttribute="centerY" id="8J6-ZY-1YU"/>
-                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="top" secondItem="qzY-Qp-iAF" secondAttribute="bottom" constant="10" id="AEK-lH-ruL"/>
-                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" constant="10" id="Efe-5U-4p4"/>
-                                    <constraint firstAttribute="trailing" secondItem="qBs-eT-oDC" secondAttribute="trailing" id="RTt-0W-vwn"/>
-                                    <constraint firstItem="qBs-eT-oDC" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" id="UhX-UN-4mi"/>
-                                    <constraint firstAttribute="trailing" secondItem="B7o-g5-9TQ" secondAttribute="trailing" constant="10" id="b4w-MQ-bTy"/>
-                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="centerX" secondItem="cFR-X6-KZp" secondAttribute="centerX" id="ciZ-z8-iao"/>
-                                    <constraint firstItem="qBs-eT-oDC" firstAttribute="top" secondItem="cFR-X6-KZp" secondAttribute="top" id="hx4-ld-Pei"/>
-                                    <constraint firstAttribute="trailing" secondItem="qzY-Qp-iAF" secondAttribute="trailing" constant="50" id="i00-An-QhX"/>
-                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="centerX" secondItem="cFR-X6-KZp" secondAttribute="centerX" id="yce-kw-Jbi"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8H-Oa-wA0">
                                 <rect key="frame" x="0.0" y="44" width="414" height="64"/>
@@ -1296,6 +1232,73 @@
                                     <outlet property="delegate" destination="36y-OR-9KC" id="xWr-fL-Ia4"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFR-X6-KZp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-eT-oDC">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdQ-BR-01P">
+                                                <rect key="frame" x="341" y="15" width="63" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="63" id="4DS-CP-dTb"/>
+                                                    <constraint firstAttribute="height" constant="33" id="aiY-BY-bDN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                                <state key="normal" title="Logout">
+                                                    <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapLogout:" destination="36y-OR-9KC" eventType="touchUpInside" id="JfV-dB-1tf"/>
+                                                    <action selector="tapLogout:" destination="I2M-E1-LUd" eventType="touchUpInside" id="Qf5-Kf-zmC"/>
+                                                    <action selector="tapLogout:" destination="mQq-kK-w54" eventType="touchUpInside" id="arR-BY-6wf"/>
+                                                    <action selector="tapLogout:" destination="mxg-66-oxh" eventType="touchUpInside" id="hy9-In-8rJ"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="icon_homeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bp7-YM-gDB">
+                                                <rect key="frame" x="10" y="16.5" width="101" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="Ka7-EN-Ww6"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="DdQ-BR-01P" secondAttribute="trailing" constant="10" id="Fou-HT-AdR"/>
+                                            <constraint firstAttribute="height" constant="64" id="Tmz-o2-Pdx"/>
+                                            <constraint firstItem="bp7-YM-gDB" firstAttribute="top" secondItem="qBs-eT-oDC" secondAttribute="top" constant="16.5" id="aDi-N7-ooW"/>
+                                            <constraint firstItem="DdQ-BR-01P" firstAttribute="top" secondItem="qBs-eT-oDC" secondAttribute="top" constant="15" id="o04-J3-dLX"/>
+                                            <constraint firstItem="bp7-YM-gDB" firstAttribute="leading" secondItem="qBs-eT-oDC" secondAttribute="leading" constant="10" id="uGz-gM-der"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Review" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-Qp-iAF">
+                                        <rect key="frame" x="50" y="209.5" width="314" height="350"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="350" id="8ch-PU-VTA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-g5-9TQ">
+                                        <rect key="frame" x="10" y="569.5" width="394" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" constant="50" id="6qN-im-LCv"/>
+                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="centerY" secondItem="cFR-X6-KZp" secondAttribute="centerY" id="8J6-ZY-1YU"/>
+                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="top" secondItem="qzY-Qp-iAF" secondAttribute="bottom" constant="10" id="AEK-lH-ruL"/>
+                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" constant="10" id="Efe-5U-4p4"/>
+                                    <constraint firstAttribute="trailing" secondItem="qBs-eT-oDC" secondAttribute="trailing" id="RTt-0W-vwn"/>
+                                    <constraint firstItem="qBs-eT-oDC" firstAttribute="leading" secondItem="cFR-X6-KZp" secondAttribute="leading" id="UhX-UN-4mi"/>
+                                    <constraint firstAttribute="trailing" secondItem="B7o-g5-9TQ" secondAttribute="trailing" constant="10" id="b4w-MQ-bTy"/>
+                                    <constraint firstItem="qzY-Qp-iAF" firstAttribute="centerX" secondItem="cFR-X6-KZp" secondAttribute="centerX" id="ciZ-z8-iao"/>
+                                    <constraint firstItem="qBs-eT-oDC" firstAttribute="top" secondItem="cFR-X6-KZp" secondAttribute="top" id="hx4-ld-Pei"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzY-Qp-iAF" secondAttribute="trailing" constant="50" id="i00-An-QhX"/>
+                                    <constraint firstItem="B7o-g5-9TQ" firstAttribute="centerX" secondItem="cFR-X6-KZp" secondAttribute="centerX" id="yce-kw-Jbi"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -1814,11 +1817,11 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="display name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsp-LJ-M54">
-                                                    <rect key="frame" x="120" y="189" width="224" height="24.5"/>
+                                                    <rect key="frame" x="120" y="189.5" width="224" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="AYT-jd-PEd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1832,7 +1835,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkD-N5-Sjn">
-                                                    <rect key="frame" x="160" y="228.5" width="50" height="20"/>
+                                                    <rect key="frame" x="164" y="228.5" width="50" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="82q-au-ORb"/>
                                                         <constraint firstAttribute="height" constant="20" id="zyz-97-UaL"/>
@@ -1842,15 +1845,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFb-xo-tX6">
-                                                    <rect key="frame" x="165.5" y="248.5" width="39" height="20"/>
+                                                    <rect key="frame" x="171" y="248.5" width="35.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="g9t-bt-NsU"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lq-J2-nBV">
-                                                    <rect key="frame" x="240" y="228.5" width="50" height="20"/>
+                                                    <rect key="frame" x="244" y="228.5" width="50" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="MNa-y9-tpQ"/>
                                                     </constraints>
@@ -1859,15 +1862,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connections" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-66-ojk">
-                                                    <rect key="frame" x="220" y="248.5" width="90" height="20"/>
+                                                    <rect key="frame" x="228.5" y="248.5" width="80.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="zay-L3-iRx"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-4D-ncL">
-                                                    <rect key="frame" x="330" y="228.5" width="50" height="20"/>
+                                                    <rect key="frame" x="334" y="228.5" width="50" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="d1y-at-YmS"/>
                                                     </constraints>
@@ -1876,11 +1879,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jca-kL-9xV">
-                                                    <rect key="frame" x="321" y="248.5" width="68" height="20"/>
+                                                    <rect key="frame" x="328.5" y="248.5" width="60.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="SzL-Mn-uRb"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                             </subviews>
@@ -1923,20 +1926,20 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-Vv-U4Y">
-                                            <rect key="frame" x="0.0" y="280" width="414" height="86.5"/>
+                                            <rect key="frame" x="0.0" y="280" width="414" height="85.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYG-B3-Bl0">
                                                     <rect key="frame" x="15" y="5" width="379" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="v2Q-ch-gzB"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsun hgsdbjsjc etryuijsknjnmnmcnjkncjncjnjcjcncjncnccnkcjkckcnjkcncnncnnccncmcmmc" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ar-in-dBB">
-                                                    <rect key="frame" x="15" y="30" width="384" height="51.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="15" y="30" width="384" height="50.5"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1953,14 +1956,14 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abZ-xo-HVg">
-                                            <rect key="frame" x="0.0" y="425.5" width="414" height="140"/>
+                                            <rect key="frame" x="0.0" y="424.5" width="414" height="140"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Products" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cj-Ud-CTr">
                                                     <rect key="frame" x="15" y="0.0" width="379" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="zON-lB-yJa"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1998,7 +2001,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="xn3-YP-1r0"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="12"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2055,7 +2058,7 @@
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Langham Culver " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjZ-0c-3XL">
                                                                         <rect key="frame" x="0.0" y="69" width="64" height="31"/>
-                                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -2103,7 +2106,7 @@
                                             </constraints>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rao-J3-paC">
-                                            <rect key="frame" x="0.0" y="565.5" width="414" height="70"/>
+                                            <rect key="frame" x="0.0" y="564.5" width="414" height="70"/>
                                             <subviews>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gb2-jI-5aH">
                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="70"/>
@@ -2162,15 +2165,15 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eDe-nB-QnY">
-                                                                        <rect key="frame" x="32.5" y="12" width="20" height="20"/>
+                                                                        <rect key="frame" x="34.5" y="12" width="20" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="eDe-nB-QnY" secondAttribute="height" multiplier="1:1" id="5Qc-Aa-Ud9"/>
                                                                             <constraint firstAttribute="width" constant="20" id="x1e-BF-IXC"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZS-MI-uuC">
-                                                                        <rect key="frame" x="60.5" y="12" width="45" height="20"/>
-                                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                                                        <rect key="frame" x="62.5" y="12" width="41.5" height="20"/>
+                                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -2246,13 +2249,13 @@
                                             </constraints>
                                         </view>
                                         <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7y3-jK-Gog">
-                                            <rect key="frame" x="0.0" y="645.5" width="414" height="41.5"/>
+                                            <rect key="frame" x="0.0" y="644.5" width="414" height="42.5"/>
                                             <connections>
                                                 <segue destination="dKf-00-s8n" kind="embed" id="3fd-Hc-zJo"/>
                                             </connections>
                                         </containerView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUz-OT-5d2" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="371.5" width="120" height="44"/>
+                                            <rect key="frame" x="15" y="370.5" width="120" height="44"/>
                                             <color key="backgroundColor" red="0.29411764705882354" green="0.70196078431372544" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="DNv-CX-8Iq"/>
@@ -2271,7 +2274,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQC-t6-3ep" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="371.5" width="120" height="44"/>
+                                            <rect key="frame" x="15" y="370.5" width="120" height="44"/>
                                             <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="JvA-hU-koS"/>
@@ -2287,13 +2290,13 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="943-Bp-Ma1" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                            <rect key="frame" x="143" y="371.5" width="120" height="44"/>
+                                            <rect key="frame" x="143" y="370.5" width="120" height="44"/>
                                             <color key="backgroundColor" name="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="bqU-9k-KTB"/>
                                                 <constraint firstAttribute="width" constant="120" id="ttf-Be-8nJ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="15"/>
                                             <state key="normal" title="Message">
                                                 <color key="titleColor" name="blackColor"/>
                                             </state>
@@ -2314,13 +2317,13 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XqZ-iA-quK" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="371.5" width="120" height="44"/>
+                                            <rect key="frame" x="15" y="370.5" width="120" height="44"/>
                                             <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="DjE-eb-phi"/>
                                                 <constraint firstAttribute="width" constant="120" id="Kww-CZ-8BP"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                             <state key="normal" title="Connect"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="makeCircle" value="NO"/>
@@ -2378,7 +2381,7 @@
                                                 <constraint firstAttribute="width" constant="180" id="JJy-tu-5E9"/>
                                                 <constraint firstAttribute="height" constant="20" id="im4-Bq-Rvd"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -2388,7 +2391,7 @@
                                                 <constraint firstAttribute="width" constant="180" id="GDg-nZ-L5H"/>
                                                 <constraint firstAttribute="height" constant="20" id="zgi-pX-ngf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -2443,13 +2446,14 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8S-Qg-4aV">
-                                            <rect key="frame" x="20" y="158" width="124" height="21"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                            <rect key="frame" x="20" y="158" width="113" height="21"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="17"/>
                                             <color key="textColor" red="0.1137254902" green="0.28235294119999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mm8-hU-qMd">
-                                            <rect key="frame" x="352" y="20" width="52" height="30"/>
+                                            <rect key="frame" x="374" y="29" width="30" height="12"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                             <state key="normal" title="Log out"/>
                                             <connections>
                                                 <action selector="btnLogout:" destination="RXC-XK-UKx" eventType="touchUpInside" id="CHf-n0-R0Y"/>
@@ -2508,7 +2512,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="ewW-tK-cvT"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2518,7 +2522,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="sWi-of-ht4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2603,8 +2607,8 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Se-Ge-Wec">
-                                        <rect key="frame" x="10" y="569.5" width="394" height="21"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <rect key="frame" x="10" y="569.5" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -4324,7 +4328,7 @@ any other devices.</string>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD5-t4-pRd">
                                         <rect key="frame" x="20" y="569.5" width="374" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -4735,7 +4739,7 @@ any other devices.</string>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzS-HZ-3qZ">
                                         <rect key="frame" x="20" y="569.5" width="335" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -6591,14 +6595,14 @@ any other devices.</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Patrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-3Y-tFs">
-                                                            <rect key="frame" x="80" y="27" width="284" height="20"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                            <rect key="frame" x="80" y="27" width="284" height="19.5"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@marcus_patrikProducer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mx-o2-ylk">
-                                                            <rect key="frame" x="80" y="47" width="284" height="16"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                            <rect key="frame" x="80" y="46.5" width="284" height="16"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -6612,7 +6616,7 @@ any other devices.</string>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It s a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQb-uS-04U">
                                                             <rect key="frame" x="20" y="85" width="374" height="38.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -6656,8 +6660,8 @@ any other devices.</string>
                                                             </cells>
                                                         </collectionView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-99-keG">
-                                                            <rect key="frame" x="20" y="383.5" width="65" height="15"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="20" y="383.5" width="58.5" height="15"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -6675,8 +6679,8 @@ any other devices.</string>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJP-pe-jbJ">
-                                                                            <rect key="frame" x="26" y="2.5" width="9.5" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                                                            <rect key="frame" x="26" y="3" width="9.5" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -6700,8 +6704,8 @@ any other devices.</string>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFG-Qk-bUR">
-                                                                            <rect key="frame" x="26" y="2.5" width="9.5" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                                                            <rect key="frame" x="26" y="3" width="9.5" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -7203,15 +7207,15 @@ any other devices.</string>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="aboutSubviewCollectionViewCell" id="UgU-y5-FOT" customClass="AboutViewCollectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="9" width="171" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="9" width="151" height="27"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uiu-CD-dqd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="171" height="27.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="151" height="27"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Product Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8S-hB-X4s">
-                                                                        <rect key="frame" x="5" y="5" width="161" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                                        <rect key="frame" x="5" y="5" width="141" height="17"/>
+                                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -7231,7 +7235,7 @@ any other devices.</string>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="10" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7252,10 +7256,10 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="115" width="394" height="58"/>
+                                        <rect key="frame" x="0.0" y="115" width="394" height="57.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-rv-7Kh" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
@@ -7263,13 +7267,13 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Utb-xm-iMv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYx-Lz-039" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="30" width="374" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="10" y="30" width="374" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7290,10 +7294,10 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="173" width="394" height="58"/>
+                                        <rect key="frame" x="0.0" y="172.5" width="394" height="57.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-aN-sfa" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
@@ -7301,13 +7305,13 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="hlF-No-kum"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-ju-yQp" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="30" width="315" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="10" y="30" width="315" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7417,7 +7421,7 @@ any other devices.</string>
                                                 <constraint firstAttribute="width" constant="95" id="3OE-sw-whU"/>
                                                 <constraint firstAttribute="height" constant="20" id="wsu-6j-hgX"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -7428,7 +7432,7 @@ any other devices.</string>
                                                 <constraint firstAttribute="width" constant="85" id="7tF-ma-aXA"/>
                                                 <constraint firstAttribute="height" constant="26" id="mfQ-Hx-bQR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="Edit"/>
                                             <userDefinedRuntimeAttributes>
@@ -7463,7 +7467,7 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="HrO-7O-6AR"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7472,7 +7476,7 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="95" id="8mW-vr-szv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -9283,8 +9287,8 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Blogs " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZk-ty-7hf">
-                                        <rect key="frame" x="15" y="15" width="81.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <rect key="frame" x="15" y="15" width="72" height="20"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -9295,7 +9299,7 @@ any other devices.</string>
                                             <constraint firstAttribute="height" constant="35" id="kci-T9-I6c"/>
                                             <constraint firstAttribute="width" constant="130" id="uIp-Um-hLf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                         <state key="normal" title="Create Blogs"/>
                                         <connections>
                                             <action selector="create:" destination="sEz-iq-7q1" eventType="touchUpInside" id="RZ9-5A-ZHA"/>
@@ -9330,42 +9334,44 @@ any other devices.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is cheese" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-KC-2bx">
-                                                    <rect key="frame" x="125" y="15" width="189" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="125" y="15" width="189" height="17"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-SJ-h0P">
-                                                    <rect key="frame" x="333" y="9" width="31" height="30"/>
+                                                    <rect key="frame" x="333" y="8.5" width="31" height="30"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                     <state key="normal" image="icons8_pencil"/>
                                                     <connections>
                                                         <action selector="btnEditAction:" destination="4iZ-aQ-OgT" eventType="touchUpInside" id="kmn-80-oAX"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WV-2a-cMm">
-                                                    <rect key="frame" x="374" y="9" width="30" height="30"/>
+                                                    <rect key="frame" x="374" y="8.5" width="30" height="30"/>
                                                     <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6WV-2a-cMm" secondAttribute="height" multiplier="1:1" id="crC-IW-7ZJ"/>
                                                         <constraint firstAttribute="height" constant="30" id="wjA-wc-txa"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                     <state key="normal" image="icons8_trash_1"/>
                                                     <connections>
                                                         <action selector="btnDeleteAction:" destination="4iZ-aQ-OgT" eventType="touchUpInside" id="cua-rA-Btc"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4F-gk-sr0">
-                                                    <rect key="frame" x="125" y="80" width="76" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="125" y="78.5" width="68" height="29"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <state key="normal" title="Read More"/>
                                                     <connections>
                                                         <action selector="btnMoreAction:" destination="4iZ-aQ-OgT" eventType="touchUpInside" id="VuF-Js-xY5"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:00 pm . 2 Apr, 2021" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-p3-zpb">
-                                                    <rect key="frame" x="257.5" y="95" width="141.5" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="266.5" y="93.5" width="132.5" height="17"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -9377,8 +9383,8 @@ any other devices.</string>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-oi-zP1">
-                                                    <rect key="frame" x="125" y="45.5" width="274" height="34.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="125" y="45" width="274" height="33.5"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -9434,8 +9440,8 @@ any other devices.</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are blogs at this moment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zio-y7-0G3">
-                                        <rect key="frame" x="10" y="471" width="394" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                                        <rect key="frame" x="10" y="471" width="394" height="24"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -10638,8 +10644,8 @@ any other devices.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Across the Alps" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwq-qd-tvN">
-                                                    <rect key="frame" x="125" y="15" width="189" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="125" y="15" width="189" height="17"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -10649,6 +10655,7 @@ any other devices.</string>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-la-Jdh">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="20"/>
                                                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                             <state key="normal" image="icons8_pencil"/>
                                                             <connections>
                                                                 <action selector="btnEditAction:" destination="a1t-1K-FIq" eventType="touchUpInside" id="AwD-Sx-qRa"/>
@@ -10657,6 +10664,7 @@ any other devices.</string>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3r-D3-qve">
                                                             <rect key="frame" x="44" y="0.0" width="31" height="20"/>
                                                             <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                             <state key="normal" image="icons8_trash_1"/>
                                                             <connections>
                                                                 <action selector="btnDeleteAction:" destination="a1t-1K-FIq" eventType="touchUpInside" id="kdp-xh-6be"/>
@@ -10681,14 +10689,14 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="274" height="11"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Agency:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unq-iv-Cwp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="77" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHd-Gw-hka">
-                                                                    <rect key="frame" x="92" y="0.0" width="41" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="85" y="0.0" width="36" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -10707,14 +10715,14 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="15" width="274" height="10.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIN-gf-jFp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="10.5"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="10.5"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hps-Sx-eFr">
-                                                                    <rect key="frame" x="67" y="0.0" width="33.5" height="10.5"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="64" y="0.0" width="29.5" height="10.5"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -10733,14 +10741,14 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="29.5" width="274" height="11"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Region:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jL0-01-HND">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="36.5" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valle D'Aosta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBc-Xb-ejl">
-                                                                    <rect key="frame" x="55" y="0.0" width="64.5" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="51.5" y="0.0" width="58.5" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -10759,13 +10767,13 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="44.5" width="274" height="11"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKV-4J-4Nn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="67U-8J-chb">
-                                                                    <rect key="frame" x="64" y="0.0" width="88" height="10"/>
+                                                                    <rect key="frame" x="60" y="0.0" width="88" height="10"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEI-gm-fo5">
                                                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -10815,13 +10823,13 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="59.5" width="274" height="10.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXk-Mj-ndz">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="10.5"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="46.5" height="10.5"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="hqb-sU-OZh">
-                                                                    <rect key="frame" x="64" y="0.0" width="62" height="10"/>
+                                                                    <rect key="frame" x="61.5" y="0.0" width="62" height="10"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-aX-Itc">
                                                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -10863,14 +10871,14 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="74" width="274" height="11"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-pk-YRS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="52.5" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmS-QM-90N">
-                                                                    <rect key="frame" x="67.5" y="0.0" width="32.5" height="11"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                                                    <rect key="frame" x="64" y="0.0" width="31.5" height="11"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="10"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -10902,7 +10910,7 @@ any other devices.</string>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="84.5" id="b9d-kj-NfI"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="12"/>
                                                             <state key="normal" title="More info">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
@@ -10916,7 +10924,7 @@ any other devices.</string>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="84.5" id="STx-4E-cNj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="12"/>
                                                             <state key="normal" title="Interested">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
@@ -10984,8 +10992,8 @@ any other devices.</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no trips at this moment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxn-wR-Upb">
-                                        <rect key="frame" x="10" y="471" width="394" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                                        <rect key="frame" x="10" y="471" width="394" height="24"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -11224,18 +11232,18 @@ any other devices.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alysei Membership Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ff-nJ-9f7">
-                                                    <rect key="frame" x="15" y="20" width="209" height="18"/>
+                                                    <rect key="frame" x="15" y="20" width="190" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="H5a-Fg-Cjn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1k-5o-90E">
                                                     <rect key="frame" x="15" y="43" width="384" height="107"/>
                                                     <string key="text">Alysei membership is the Quality Mark for high quality Italian brands and products. The Alysei Quality Mark Team travels throughout Italy to discover and select the best companies and products.</string>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -11287,7 +11295,7 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="UbL-Tk-JU7"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -11347,7 +11355,7 @@ any other devices.</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="Wjp-O8-C1s"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -11414,8 +11422,8 @@ any other devices.</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgq-16-Mql">
-                                                        <rect key="frame" x="22" y="40" width="39.5" height="17.5"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                                        <rect key="frame" x="23" y="40" width="37.5" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -11450,8 +11458,8 @@ any other devices.</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MarketPlace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2W-TI-nQT">
-                                                        <rect key="frame" x="-3.5" y="40" width="90.5" height="17.5"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                                        <rect key="frame" x="0.5" y="40.5" width="83" height="17"/>
+                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -11483,8 +11491,8 @@ any other devices.</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-aW-iKi">
-                                                        <rect key="frame" x="17" y="40" width="49.5" height="17.5"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                                        <rect key="frame" x="19" y="40.5" width="45.5" height="17"/>
+                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -11516,8 +11524,8 @@ any other devices.</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXW-nZ-w43">
-                                                        <rect key="frame" x="-5" y="40" width="93.5" height="17.5"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                                        <rect key="frame" x="-2" y="40.5" width="88" height="17"/>
+                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -11569,11 +11577,11 @@ any other devices.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discovery Alysei" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lme-1T-gdl">
-                                                    <rect key="frame" x="20" y="1" width="117.5" height="30"/>
+                                                    <rect key="frame" x="20" y="1" width="118.5" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="VAq-ww-zW9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -11605,8 +11613,8 @@ any other devices.</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nk0-od-Ov9">
-                                                                        <rect key="frame" x="26.5" y="80" width="65" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                                        <rect key="frame" x="31" y="80" width="56.5" height="17"/>
+                                                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -11662,17 +11670,17 @@ any other devices.</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Patrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkX-x5-JYe">
-                                                            <rect key="frame" x="80" y="9" width="116" height="18.5"/>
+                                                            <rect key="frame" x="80" y="9" width="106" height="18.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18.5" id="A7n-w6-Bep"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@marcus_patrikProducer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXM-wJ-uax">
-                                                            <rect key="frame" x="80" y="27.5" width="167.5" height="16"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                            <rect key="frame" x="80" y="27.5" width="150" height="16"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11689,7 +11697,7 @@ any other devices.</string>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It s a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAn-tC-Lj1">
                                                             <rect key="frame" x="20" y="67" width="374" height="57"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11699,6 +11707,7 @@ any other devices.</string>
                                                                 <constraint firstAttribute="height" constant="30" id="AdN-za-Fpv"/>
                                                                 <constraint firstAttribute="width" constant="65" id="RUt-N4-yxI"/>
                                                             </constraints>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                             <state key="normal" title="....more"/>
                                                             <connections>
                                                                 <action selector="btnMoreLessAction:" destination="hMg-YV-lBR" eventType="touchUpInside" id="KR8-YU-sxG"/>
@@ -11747,11 +11756,11 @@ any other devices.</string>
                                                             </connections>
                                                         </collectionView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-oB-7KW">
-                                                            <rect key="frame" x="20" y="429" width="65" height="26"/>
+                                                            <rect key="frame" x="20" y="429" width="58.5" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="X4c-NF-ijf"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11910,20 +11919,20 @@ any other devices.</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Patrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-oX-rFZ">
-                                                                    <rect key="frame" x="15" y="16" width="116" height="18.5"/>
+                                                                    <rect key="frame" x="15" y="16" width="106" height="18.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18.5" id="bqA-gQ-tww"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="shared a post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRt-KJ-WUn">
-                                                                    <rect key="frame" x="136" y="16" width="108" height="18.5"/>
+                                                                    <rect key="frame" x="126" y="16" width="99" height="18.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18.5" id="sdM-0h-4GA"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -11945,17 +11954,17 @@ any other devices.</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Patrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKU-OU-d21">
-                                                            <rect key="frame" x="80" y="69" width="116" height="18.5"/>
+                                                            <rect key="frame" x="80" y="69" width="106" height="18.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18.5" id="IyK-Hc-Kae"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@marcus_patrikProducer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Q7-hW-Tim">
-                                                            <rect key="frame" x="80" y="87.5" width="167.5" height="16"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                            <rect key="frame" x="80" y="87.5" width="150" height="16"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11975,7 +11984,7 @@ any other devices.</string>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="48" id="OH9-y8-oBv"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11984,7 +11993,7 @@ any other devices.</string>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It s a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqY-5f-uE6">
                                                                     <rect key="frame" x="10" y="10" width="374" height="62"/>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -12046,11 +12055,11 @@ any other devices.</string>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Patrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-wI-Hch">
-                                                                    <rect key="frame" x="70" y="328" width="116" height="18.5"/>
+                                                                    <rect key="frame" x="70" y="328" width="106" height="18.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18.5" id="6oJ-em-Abj"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -12074,11 +12083,11 @@ any other devices.</string>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI0-7W-sDJ">
-                                                            <rect key="frame" x="20" y="565" width="65" height="26"/>
+                                                            <rect key="frame" x="20" y="565" width="58.5" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="0DV-jf-cox"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -12096,8 +12105,8 @@ any other devices.</string>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-7o-j0Z">
-                                                                            <rect key="frame" x="26" y="2.5" width="9.5" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                                                            <rect key="frame" x="26" y="3" width="9.5" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -12121,8 +12130,8 @@ any other devices.</string>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRl-gX-KkS">
-                                                                            <rect key="frame" x="26" y="2.5" width="9.5" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                                                            <rect key="frame" x="26" y="3" width="9.5" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -13260,8 +13269,8 @@ any other devices.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sardinian Flavours" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOg-1U-qNT">
-                                                    <rect key="frame" x="125" y="15" width="189" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                    <rect key="frame" x="125" y="15" width="189" height="17"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -13271,6 +13280,7 @@ any other devices.</string>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weM-2C-NfZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
                                                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                             <state key="normal" image="icons8_pencil"/>
                                                             <connections>
                                                                 <action selector="btnEditAction:" destination="ra2-9b-uIl" eventType="touchUpInside" id="lMm-Sn-wvT"/>
@@ -13279,6 +13289,7 @@ any other devices.</string>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-Zh-TFc">
                                                             <rect key="frame" x="44" y="0.0" width="31" height="30"/>
                                                             <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="0.0"/>
                                                             <state key="normal" image="icons8_trash_1"/>
                                                             <connections>
                                                                 <action selector="btnDeleteAction:" destination="ra2-9b-uIl" eventType="touchUpInside" id="gc0-gF-HCR"/>
@@ -13300,59 +13311,59 @@ any other devices.</string>
                                                     <rect key="frame" x="130" y="45" width="269" height="99"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36b-lg-Ol7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="38" height="17.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="17"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJx-8J-fZ1">
-                                                            <rect key="frame" x="0.0" y="20.5" width="67.5" height="17.5"/>
+                                                            <rect key="frame" x="0.0" y="20" width="67.5" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67.5" id="hqk-B6-nS0"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volare Restorent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TO-9w-yKP">
-                                                            <rect key="frame" x="53" y="0.0" width="116.5" height="17.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="51" y="0.0" width="106" height="17"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hjdhcjfzgavxgavghvahxvashxvahsxahxbhabxaXBAJ fhfrhgfhffhgfhgfh  dgfdgfd" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJi-Dw-PYu">
-                                                            <rect key="frame" x="82.5" y="20.5" width="186.5" height="34.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="82.5" y="20" width="186.5" height="33.5"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5b-Xq-Uca">
-                                                            <rect key="frame" x="0.0" y="58" width="67.5" height="17.5"/>
+                                                            <rect key="frame" x="0.0" y="56.5" width="67.5" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67.5" id="81w-Wu-F2C"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMq-CP-NaE">
-                                                            <rect key="frame" x="0.0" y="78.5" width="67.5" height="17.5"/>
+                                                            <rect key="frame" x="0.0" y="76.5" width="67.5" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67.5" id="Fwb-Ee-faO"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 9 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96W-ci-Shl">
-                                                            <rect key="frame" x="82.5" y="58" width="80.5" height="17.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="82.5" y="56.5" width="76" height="17"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:00am - 9:00pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayb-6n-rQ4">
-                                                            <rect key="frame" x="82.5" y="78.5" width="120.5" height="17.5"/>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <rect key="frame" x="82.5" y="76.5" width="111" height="17"/>
+                                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -13385,7 +13396,7 @@ any other devices.</string>
                                                         <constraint firstAttribute="width" constant="84.5" id="cma-tf-fwi"/>
                                                         <constraint firstAttribute="height" constant="20" id="fAM-wT-yeq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="12"/>
                                                     <state key="normal" title="More info">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -13436,8 +13447,8 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-xP-GLd">
-                                        <rect key="frame" x="15" y="15" width="86" height="20"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <rect key="frame" x="15" y="15.5" width="77.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -13448,7 +13459,7 @@ any other devices.</string>
                                             <constraint firstAttribute="width" constant="130" id="mwp-Oy-4B9"/>
                                             <constraint firstAttribute="height" constant="35" id="yV6-h9-txB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Bold" family="San Francisco Text" pointSize="16"/>
                                         <state key="normal" title="Create Events"/>
                                         <connections>
                                             <action selector="create:" destination="UE4-8W-qh8" eventType="touchUpInside" id="WIM-jD-MTC"/>
@@ -13475,8 +13486,8 @@ any other devices.</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no events at this moment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJL-nM-cJO">
-                                        <rect key="frame" x="10" y="454" width="394" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                                        <rect key="frame" x="10" y="454" width="394" height="24"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -13535,8 +13546,8 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no awards to show at this moment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkI-Yx-ZwS">
-                                <rect key="frame" x="10" y="518" width="394" height="49"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                                <rect key="frame" x="10" y="518" width="394" height="48"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -15150,7 +15161,7 @@ AAAAAAABG/w
         <image name="icon_sideMenu" width="22" height="19"/>
         <image name="icon_uncheckedBox" width="26" height="26"/>
         <image name="icons8_add_user_male" width="23" height="23"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward-1" width="11.5" height="21"/>
         <image name="icons8_gallery_1" width="33.5" height="25.5"/>

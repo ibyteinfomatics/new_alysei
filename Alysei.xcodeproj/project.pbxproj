@@ -319,6 +319,7 @@
 		6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */; };
 		6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */; };
 		6BC4C0DF260088C500791DCD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0DE260088C500791DCD /* ImageLoader.swift */; };
+		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BFF239126E7475E004C3916 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 6BFF239026E7475E004C3916 /* SocketIO */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
 		A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A808778625ADB4F400AA4A69 /* Login.storyboard */; };
@@ -896,6 +897,7 @@
 		6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayForgetVC.swift; sourceTree = "<group>"; };
 		6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayForgetVC.xib; sourceTree = "<group>"; };
 		6BC4C0DE260088C500791DCD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A84EECF825B19F6F00429B1D /* EditProfileViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewC.swift; sourceTree = "<group>"; };
@@ -1819,6 +1821,7 @@
 			children = (
 				27BC689E25AC56C000A01B6A /* AppDelegate.swift */,
 				27BC689F25AC56C000A01B6A /* SceneDelegate.swift */,
+				6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */,
 			);
 			path = "Delegate Methods";
 			sourceTree = "<group>";
@@ -3091,6 +3094,7 @@
 				61A8CB4B261D98CA00B99233 /* ContactDetailViewController.swift in Sources */,
 				27A4439625AE03720002BAAC /* NSData+CommonCrypto.m in Sources */,
 				C51D47762636A6FE00CD3863 /* PostsViewController.swift in Sources */,
+				6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */,
 				27B4E8FB25EF957D00623E45 /* SettingsEditModel.swift in Sources */,
 				C562C4C12626D582009F9E3B /* ProfileCompletionTableViewCell.swift in Sources */,
 				276E16AE25DD8C5E00B17ACF /* TutorialViewC.swift in Sources */,
