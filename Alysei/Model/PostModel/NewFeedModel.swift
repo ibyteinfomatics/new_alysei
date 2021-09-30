@@ -49,6 +49,7 @@ class NewFeedSearchDataModel{
     var id: Int?
     var shared_post_id: Int?
     var sharedPostData: SharedPostData?
+    var isExpand = false
     
     init(with dictResponse: [String:Any]){
         self.activityActionId = Int.getInt(dictResponse["activity_action_id"])
@@ -177,13 +178,19 @@ class Attachments: Codable{
 
 class AttachmentLink: Codable {
     var attachmentUrl: String?
+    var height: Int?
+    var width: Int?
     
     init(with dictResponse: [String:Any]){
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
+        self.height = Int.getInt(dictResponse["height"])
+        self.width = Int.getInt(dictResponse["width"])
     }
 
     private enum CodingKeys: String, CodingKey {
         case attachmentUrl = "attachment_url"
+        case height = "height"
+        case width = "width"
     }
 }
 
