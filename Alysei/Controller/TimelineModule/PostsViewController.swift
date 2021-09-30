@@ -30,7 +30,7 @@ class PostsViewController: AlysieBaseViewC {
     var likeUnlike: Int?
     var indexOfPageToRequest = 1
     var role: String?
-    
+    var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -200,12 +200,36 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             if arrNewFeedDataModel.count > indexPath.row {
                 cell.configCell(arrNewFeedDataModel[indexPath.row] , indexPath.row)
                 let data = arrNewFeedDataModel[indexPath.row]
+                cell.btnMoreLess.tag = indexPath.row
+                cell.relaodSection = indexPath.section
+                
+                if data.isExpand == true{
+                    cell.lblPostDesc.numberOfLines = 0
+                    cell.btnMoreLess.setTitle("....less", for: .normal)
+                }else{
+                    cell.lblPostDesc.numberOfLines = 2
+                    cell.btnMoreLess.setTitle("....more", for: .normal)
+                }
                 cell.likeCallback = { index in
                     //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                     cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
                     cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
                 }
+                cell.reloadCallBack = { tag, section in
+                    let data = self.arrNewFeedDataModel[tag ?? -1]
+                    
+                    if data.isExpand == false{
+                        data.isExpand = true
+                    }else{
+                        data.isExpand = false
+                    }
+                    //self.postTableView.reloadData()
+                    let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
+                    self.postTableView.reloadRows(at: [indexPath], with: .automatic)
+                    self.postTableView.scrollToRow(at: indexPath, at: .top, animated: false)
 
+                }
+                
                 cell.menuDelegate = self
 
                 cell.commentCallback = { postCommentsUserData in

@@ -293,6 +293,8 @@ struct APIUrl{
     static let kConnectionTabApi3 = "get/connection/tabs?tab=3"
     static let kConnectionTabApi4 = "get/connection/tabs?tab=4"
     static let kEditPost = "edit/post"
+    
+    static let kinvitationAcceptReject = "accept/reject/request"
 
     
     enum FeaturedProduct {
