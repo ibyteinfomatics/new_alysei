@@ -18,13 +18,14 @@ class NetworkTableCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    var btnRemoveCallback:((Int) -> Void)? = nil
     var btnViewCallback:((Int) -> Void)? = nil
     var btnAcceptCallback:((Int) -> Void)? = nil
     var btnDeclineCallback:((Int) -> Void)? = nil
     
     @IBAction func btnRemoveTapped(_ sender: Any) {
         
-        
+        btnRemoveCallback?(remove.tag)
     }
     
     @IBAction func btnViewAction(_ sender: UIButton){

@@ -422,7 +422,7 @@ class ReceivedMessageClass {
     var senderImage:String?
     var senderName:String?
     var senderid :String?
-    var timestamp = Int()
+    var timestamp : String?
     var uid :String?
     var messageFrom:MessageFrom?
     init() { }
@@ -439,7 +439,7 @@ class ReceivedMessageClass {
         self.senderName           = String.getString(messageData[Parameters.senderName])
         self.senderid           = String.getString(messageData[Parameters.senderid])
         self.uid           = String.getString(messageData[Parameters.uid])
-        self.timestamp         = Int.getInt(messageData[Parameters.timestamp])
+        self.timestamp         = String.getString(messageData[Parameters.timestamp])
         
         self.messageFrom         = String.getString(messageData[Parameters.senderid]) == String.getString(kSharedUserDefaults.loggedInUserModal.userId) ? .sender : .receiver
         //MARK:- Switch for media type

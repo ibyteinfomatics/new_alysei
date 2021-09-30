@@ -675,7 +675,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     func textViewDidBeginEditing(_ textView: UITextView) {
        if textView == self.descriptionTextView{
         
-        if agency == nil {
+        if self.descriptionTextView.text == "Description" {
             self.descriptionTextView.text = nil
         }
         

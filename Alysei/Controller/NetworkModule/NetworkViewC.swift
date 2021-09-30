@@ -61,6 +61,20 @@ class NetworkViewC: AlysieBaseViewC {
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
+            if self.currentIndex == 0 {
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
+            } else if self.currentIndex == 1{
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi)
+            }
+            
+        }
+        
+    }
+    
+    func pendingRemoveApi(id: Int){
+       
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPendingRemove+String.getString(id), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
             self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
             
         }
@@ -127,7 +141,7 @@ class NetworkViewC: AlysieBaseViewC {
         
         networkTableCell = tblViewInviteNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
         
-        networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
+        networkTableCell.email.text = self.connection?.data?[indexPath.row].reasonToConnect
         
         if connection?.data?[indexPath.row].user?.companyName != "" {
             networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
@@ -193,15 +207,29 @@ class NetworkViewC: AlysieBaseViewC {
         if currentIndex == 3 {
             networkTableCell.remove.isHidden = true
         } else if currentIndex == 1{
+            networkTableCell.remove.tag = indexPath.row
             networkTableCell.remove.isHidden = false
             networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
             networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
             networkTableCell.remove.setTitle("Remove", for: .normal)
+            
+            networkTableCell.btnRemoveCallback = { tag in
+                self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
+                
+            }
+            
         } else if currentIndex == 2{
+            networkTableCell.remove.tag = indexPath.row
             networkTableCell.remove.isHidden = false
             networkTableCell.remove.setTitleColor(.red, for: .normal)
             networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
             networkTableCell.remove.setTitle("Cancel", for: .normal)
+            
+            networkTableCell.btnRemoveCallback = { tag in
+                self.pendingRemoveApi(id: (self.connection?.data?[indexPath.row].userID)!)
+                
+            }
+            
         }
         
         networkTableCell.img.layer.masksToBounds = false
@@ -290,7 +318,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     if currentIndex == 0 {
-        return 150.0
+        return 180.0
     } else {
         return 66.0
     }

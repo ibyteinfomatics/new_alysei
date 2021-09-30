@@ -567,10 +567,10 @@ class Chat_hepler {
                     
                     if !(isDeleted.contains(String.getString(senderId))) {
                         self?.messageclass.append(ReceivedMessageClass(uid: String.getString(key), messageData: dic))
-                        self?.messageclass.sort{ $0.timestamp < $1.timestamp }
+                        self?.messageclass.sort{ Int.getInt($0.timestamp) < Int.getInt($1.timestamp) }
                     } else {
                         self?.chatBackupOnetoOne.append(ReceivedMessageClass(uid: String.getString(key), messageData: dic))
-                        self?.chatBackupOnetoOne.sort{ $0.timestamp < $1.timestamp}
+                        self?.chatBackupOnetoOne.sort{ Int.getInt($0.timestamp) < Int.getInt($1.timestamp)}
                     }
                     
                 }

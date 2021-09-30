@@ -524,7 +524,7 @@ extension ConversationViewController {
         
         sendMessageDetails.receiverImage = profileImageUrl
         sendMessageDetails.receiverName = name
-        sendMessageDetails.timestamp = Int(Date().timeIntervalSince1970 * 1000)
+        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
         kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId))
@@ -586,14 +586,16 @@ extension ConversationViewController {
                         sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
                     }
                     
-                    sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "") //"https://alyseiapi.ibyteworkshop.com/public/uploads/2021/08/2327781571627986351.jpg"//kImageBaseUrl+UserDetailBasedElements().profilePhoto
+                    sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "") 
                     
                     sendMessageDetails.receiverImage = self?.profileImageUrl
                     sendMessageDetails.receiverName = self?.name
-                    sendMessageDetails.timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
                     kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId))
+                    
+                    self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
 
                 case 400:
                     self?.showAlert(withMessage: String.getString(dicResponse["message"]))

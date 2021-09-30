@@ -134,6 +134,7 @@ struct  AlertMessage{
     static let kselectUnit = "Please select Unit"
     static let kenterQuantity = "Please enter Quantity"
     static let kEnterValidName = "Please enter more than 3 character."
+    static let kEnterDescriptionUrl = "Please enter Description or Url."
 
 }
 struct LabelandTextFieldTitle{
@@ -295,6 +296,7 @@ struct APIUrl{
     static let kEditPost = "edit/post"
     
     static let kinvitationAcceptReject = "accept/reject/request"
+    static let kPendingRemove = "cancel/connection/request?visitor_profile_id="
 
     
     enum FeaturedProduct {
@@ -373,7 +375,7 @@ struct APIUrl{
         static let getRecipeHomeScreen = kBASEURL + "get/home/screen"
         static let getSearchMeal = kBASEURL + "search/meal?keyword="
 
-
+        static let getSearchRecipe = kBASEURL + "search/recipe?keyword="
         
     }
 }
@@ -471,7 +473,8 @@ struct AppConstants {
     static let is_subscribed_with_hub = "is_subscribed_with_hub"
     static let marketplace_product_id = "marketplace_product_id"
     static let profileData = "profile_data"
-    
+    static let kURL = "URL"
+    static let kUrl = "Url"
     
 }
 

@@ -321,7 +321,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Asq-uD-pQJ">
                                                         <rect key="frame" x="14" y="15" width="341" height="40"/>
                                                         <subviews>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" dgjkhh jkdhjgkhdjfhg djg d  dfbkjsdb  dmnbdkjhljkh h h  hdkgh fdhgh df hdfhgjhds jkgfg dgjsfjg jkdg dfhgdfioguioudifuiudfif" translatesAutoresizingMaskIntoConstraints="NO" id="S0g-hi-gNb" customClass="IQTextView" customModule="IQKeyboardManagerSwift">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0g-hi-gNb" customClass="IQTextView" customModule="IQKeyboardManagerSwift">
                                                                 <rect key="frame" x="10" y="3" width="289" height="34"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>

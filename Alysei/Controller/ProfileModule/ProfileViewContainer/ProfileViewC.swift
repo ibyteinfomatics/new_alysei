@@ -443,7 +443,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.contactViewC.tableData = self.contactDetail
         //    self.tblViewPosts.tableHeaderView?.setHeight(kScreenWidth + 200.0)
         if self.userLevel == .other {
-            self.contactViewC.editContactDetailButton.isHidden = true
+            //self.contactViewC.editContactDetailButton.isHidden = true
         }
         self.contactViewC.view.bringSubviewToFront(self.contactViewC.editContactDetailButton)
     }
@@ -924,8 +924,13 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     func fetchContactDetail() {
+        var id = ""
+        if userID != 0 || userID != nil {
+            id = "/\(String.getString(userID))"
+        }
+        
         SVProgressHUD.show()
-        guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.fetchContactDetails)", method: .GET) else { return }
+        guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.fetchContactDetails)"+id, method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
             SVProgressHUD.dismiss()
             guard let data = data else { return }
