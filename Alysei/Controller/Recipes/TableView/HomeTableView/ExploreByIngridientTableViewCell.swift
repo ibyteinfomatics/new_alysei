@@ -10,6 +10,7 @@ var finalheight : CGFloat?
 var finalheight1 : CGFloat?
 var arraySearchByMeal : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
+
 class ExploreByIngridientTableViewCell: UITableViewCell {
 
     @IBOutlet weak var quickSearchLbl: UILabel!
@@ -17,7 +18,7 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
    
-    
+    var delegate: SearchRecipeDelegate?
     var tapViewAll:(()->())?
     let gradientLayer = CAGradientLayer()
     override func awakeFromNib() {
@@ -83,7 +84,8 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
                 cell.itemImgVw.setImage(withString: imgUrl)
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
-                cell.itemNameLbl.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
+               
+                cell.itemNameLbl.text =  arraySearchByIngridient?[indexPath.item].ingridientTitle ?? ""
                
            
             
@@ -116,6 +118,14 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
+        if delegate != nil {
+            delegate?.cellTappedForSearchRecipe()
+            
+            }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {

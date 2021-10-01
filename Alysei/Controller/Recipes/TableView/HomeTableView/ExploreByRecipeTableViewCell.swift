@@ -6,6 +6,7 @@
 //
 
 import UIKit
+var searchRegionTitle = String()
 var arraySearchByRegion : [SelectRegionDataModel]?
 class ExploreByRecipeTableViewCell: UITableViewCell {
 
@@ -13,7 +14,7 @@ class ExploreByRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionVwRegion: UICollectionView!
    
-    
+    var delegate: SearchRecipeDelegate?
     var tapViewAllRecipe:(()->())?
     let gradientLayer = CAGradientLayer()
     override func awakeFromNib() {
@@ -94,13 +95,23 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
             cell.countryImgVw.setImage(withString: imgUrl)
             cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
             cell.countryImgVw.contentMode = .scaleAspectFit
-            cell.countryNameLbl.text = arraySearchByRegion?[indexPath.item].regionName
-
+            
+             
+            cell.countryNameLbl.text = arraySearchByRegion?[indexPath.item].regionName ?? ""
             return cell
         }
         
         
         return UICollectionViewCell()
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchTitle = arraySearchByRegion?[indexPath.row].regionName ?? ""
+        if delegate != nil {
+            delegate?.cellTappedForSearchRecipe()
+            
+            }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize

@@ -57,7 +57,7 @@ class HomeTrending{
     var createdAt: String?
     var updatedAt: String?
     var totalLikes: Int?
-    var avgRating: Int?
+    var avgRating: String?
     var userName: String?
     var image: ImageURL?
     var meal: SelectMealDataModel?
@@ -88,7 +88,7 @@ class HomeTrending{
         self.createdAt = String.getString(dictResponse["created_at"])
         self.updatedAt = String.getString(dictResponse["updated_at"])
         self.totalLikes = Int.getInt(dictResponse["total_likes"])
-        self.avgRating = Int.getInt(dictResponse["avg_rating"])
+        self.avgRating = String.getString(dictResponse["avg_rating"])
         self.userName = String.getString(dictResponse["username"])
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)

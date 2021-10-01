@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WFK-Um-YKR">
-                        <rect key="frame" x="15" y="15" width="277" height="203"/>
+                        <rect key="frame" x="5" y="5" width="297" height="213"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jb5-FK-uvv">
                             <size key="itemSize" width="128" height="128"/>
@@ -31,9 +31,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="WFK-Um-YKR" secondAttribute="bottom" constant="15" id="9A9-uV-A17"/>
-                    <constraint firstAttribute="trailing" secondItem="WFK-Um-YKR" secondAttribute="trailing" constant="15" id="Fh8-dt-9hc"/>
-                    <constraint firstItem="WFK-Um-YKR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lmb-1L-d9b"/>
-                    <constraint firstItem="WFK-Um-YKR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="nkW-Wh-Kh1"/>
+                    <constraint firstAttribute="trailing" secondItem="WFK-Um-YKR" secondAttribute="trailing" constant="5" id="Fh8-dt-9hc"/>
+                    <constraint firstItem="WFK-Um-YKR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="lmb-1L-d9b"/>
+                    <constraint firstItem="WFK-Um-YKR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nkW-Wh-Kh1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -78,7 +78,7 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.likeLabel.text = ""
                 cell.userNameLabel.text = ""
                 cell.timeLabel.text = "\( arrayQuickEasy?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayQuickEasy?[indexPath.item].minute ?? 0)" + " " + "minutes"
-                cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)"
+                cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + "Serving"
                 cell.typeLabel.text = arrayQuickEasy?[indexPath.item].meal?.mealName
            
             

@@ -122,7 +122,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         dunamicButton.layer.cornerRadius = 5
         dunamicButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
 //        dunamicButton.frame = CGRect(x: 15, y: 60, width: (self.view.frame.size.width-30), height: 48)
-        dunamicButton.titleLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+        dunamicButton.titleLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
         dunamicButton.setImage(UIImage(named: "Group 1127.png"), for: .normal)
         dunamicButton.setTitleColor(UIColor.black, for: .normal)
         footerView.addSubview(dunamicButton)
@@ -412,7 +412,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel.layer.borderWidth = 1
             statusLabel.layer.cornerRadius = 5
             statusLabel.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
-            statusLabel.font = UIFont(name: "Helvetica Neue-Regular", size: 14)
+            statusLabel.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel)
             statusLabel.text = "  No Ingridients Added yet!"
@@ -437,7 +437,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel1.layer.borderWidth = 1
             statusLabel1.layer.cornerRadius = 5
             statusLabel1.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
-            statusLabel1.font = UIFont(name: "Helvetica Neue-Regular", size: 14)
+            statusLabel1.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel1.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel1)
             statusLabel1.text = "  No Tools Added yet!"

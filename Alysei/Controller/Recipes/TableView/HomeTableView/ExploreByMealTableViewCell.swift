@@ -6,14 +6,20 @@
 //
 
 import UIKit
-
+var searchTitle = String()
+protocol SearchRecipeDelegate {
+    func cellTappedForSearchRecipe()
+   }
 class ExploreByMealTableViewCell: UITableViewCell {
     @IBOutlet weak var quickSearchLbl: UILabel!
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var headerView: UIView!
-   @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
+    var delegate: SearchRecipeDelegate?
     var tapViewAll:(()->())?
     let gradientLayer = CAGradientLayer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
@@ -29,9 +35,10 @@ class ExploreByMealTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     override func layoutSubviews() {
             super.layoutSubviews()
-        CATransaction.begin()
+         CATransaction.begin()
          CATransaction.setDisableActions(true)
          gradientLayer.frame = self.headerView.bounds
          CATransaction.commit()
@@ -78,7 +85,8 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
                 cell.itemImgVw.setImage(withString: imgUrl)
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
-                cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName
+                
+                cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName ?? ""
                
           
            
@@ -112,6 +120,12 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        if delegate != nil {
+            delegate?.cellTappedForSearchRecipe()
+            }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {

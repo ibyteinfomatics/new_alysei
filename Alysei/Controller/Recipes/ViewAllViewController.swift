@@ -14,6 +14,7 @@ class ViewAllViewController: UIViewController {
     var arraySearchByIngridient : [IngridentArray]? = []
     var searchText = String()
     var searching = false
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -92,6 +93,17 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.ingredientsLabel.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
+        vc.searching = true
+        vc.indexOfPageToRequest = 1
+        vc.searchText = searchTitle
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 180)
