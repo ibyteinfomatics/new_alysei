@@ -146,6 +146,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
           self.blogTxf.placeholder = ""
           self.blogView1.isHidden = false
           self.blogView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+            self.blogLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
 
         }
         
@@ -163,6 +164,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
        // self.timeTxf.placeholder = ""
       self.descriptionView1.isHidden = false
       self.descriptionView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+        self.descriptionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
        
         
       }

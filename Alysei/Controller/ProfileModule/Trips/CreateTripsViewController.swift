@@ -332,6 +332,18 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     }
     
     @objc func dayDropDown(){
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.priceView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.priceTxf.endEditing(true)
+        self.descriptionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.descriptionTextView.endEditing(true)
         self.dataDropDown.dataSource = self.DayarrData
         dataDropDown.show()
         dataDropDown.anchorView = self.durationEvent
@@ -344,6 +356,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            self.durationTxf.placeholder = ""
           self.durationView1.isHidden = false
           self.durationView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+            self.durationLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
            
         }
         dataDropDown.cellHeight = 50
@@ -354,6 +367,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     
     
     func countrydropDown(){
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         self.dataDropDown.dataSource = self.arrCountryStateName
         dataDropDown.show()
         dataDropDown.anchorView = countryEvent
@@ -364,9 +385,9 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.countryLabel.isHidden = false
             self.countryTxf.placeholder = ""
           self.countryView1.isHidden = false
-          self.countryView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+          self.countryLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
             print(self.arrOptions[index].id)
-            
+            self.countryView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             countryId = Int.getInt(arrOptions[index].id)
             
             regionTxf.text = ""
@@ -374,6 +395,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.regionTxf.placeholder = "Region"
             self.regionView1.isHidden = true
             regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
             
             
             callGetStatesWithCountryIdApi(String.getString(self.arrOptions[index].id))
@@ -386,6 +408,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     }
     
     func regiondropDown(){
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         self.dataDropDown.dataSource = self.regionarrCountryStateName
         dataDropDown.show()
         dataDropDown.anchorView = regionEvent
@@ -399,7 +429,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            self.regionTxf.placeholder = ""
           self.regionView1.isHidden = false
           self.regionView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-           
+            self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
@@ -408,6 +438,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     }
     
     @objc func intensityDropDown(){
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         self.dataDropDown.dataSource = self.intensityarrData
         dataDropDown.show()
         dataDropDown.anchorView = self.intensityEvent
@@ -421,6 +459,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            self.intensityTxf.placeholder = ""
           self.intensityView1.isHidden = false
           self.intensityView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+            self.intensityLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
            
         }
         dataDropDown.cellHeight = 50
@@ -430,7 +469,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     }
     
     @objc func adventureDropDown(){
-        
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         self.dataDropDown.dataSource = self.adventurearrData
         dataDropDown.show()
         dataDropDown.anchorView = self.adventureEvent
@@ -444,7 +490,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            self.adventuresTxf.placeholder = ""
           self.adventuresView1.isHidden = false
           self.adventuresView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-           
+            self.adventuresLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
@@ -589,13 +635,23 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
       }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         if textField == self.tripNameTxf
         {
             self.tripNameLabel.isHidden = false
           self.tripNameTxf.placeholder = ""
           self.tripNameView1.isHidden = false
           self.tripNameView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-
+            self.tripNameLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         }
         else if textField == self.travelAgencyTxf{
           
@@ -603,14 +659,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
           self.travelAgencyTxf.placeholder = ""
         self.travelAgencyView1.isHidden = false
         self.travelAgencyView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-          
+            self.travelAgencyLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         } else if textField == self.countryTxf{
           
           self.countryLabel.isHidden = false
           self.countryTxf.placeholder = ""
         self.countryView1.isHidden = false
         self.countryView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-          
+            self.countryLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         }
         
         else if textField == self.regionTxf{
@@ -620,7 +676,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         self.regionView1.isHidden = false
         self.regionView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
          
-          
+            self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         }
           
         else if textField == self.adventuresTxf{
@@ -629,7 +685,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
          self.adventuresTxf.placeholder = ""
         self.adventuresView1.isHidden = false
         self.adventuresView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-         
+            self.adventuresLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
           
         }
         else if textField == self.durationTxf{
@@ -638,7 +694,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
          self.durationTxf.placeholder = ""
         self.durationView1.isHidden = false
         self.durationView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-         
+            self.durationLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
           
         }
           
@@ -648,7 +704,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
          self.intensityTxf.placeholder = ""
         self.intensityView1.isHidden = false
         self.intensityView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-         
+            self.intensityLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
           
         }
         else if textField == self.websiteTxf{
@@ -657,7 +713,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
          self.websiteTxf.placeholder = ""
         self.websiteView1.isHidden = false
         self.websiteView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-         
+            self.websiteLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
           
         }
           
@@ -667,12 +723,22 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
          self.priceTxf.placeholder = ""
         self.priceView1.isHidden = false
         self.priceView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-         
+            self.priceLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
           
         }
         
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
+        self.countryLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.intensityLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.durationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.regionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        self.countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
        if textView == self.descriptionTextView{
         
         if self.descriptionTextView.text == "Description" {
@@ -684,6 +750,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
        // self.timeTxf.placeholder = ""
       self.descriptionView1.isHidden = false
       self.descriptionView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+        self.descriptionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
        
         
       }
@@ -702,6 +769,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.tripNameTxf.placeholder = "Trip Name/Package Name"
                 self.tripNameView1.isHidden = false
                 tripNameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            self.tripNameLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
         //}
 
 
@@ -715,6 +783,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.travelAgencyTxf.placeholder = "Travel Agency"
                 self.travelAgencyView1.isHidden = false
                 travelAgencyView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            self.travelAgencyLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
        // }
         }
         
@@ -725,6 +794,8 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
                 self.countryTxf.placeholder = "Travel Agency"
                 self.countryView1.isHidden = false
                 countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            //self.countryLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
+            
            // }
         }
         
@@ -737,6 +808,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.regionTxf.placeholder = "region"
                 self.regionView1.isHidden = false
                 regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+         //   self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
         //}
 
         }
@@ -750,6 +822,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             self.adventuresTxf.placeholder = "Adventures"
                 self.adventuresView1.isHidden = false
                 adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+           // self.adventuresLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
        // }
 
 
@@ -799,10 +872,10 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         {
            // if self.priceTxf.text == ""
             //{
-            self.priceLabel.isHidden = true
+            self.priceLabel.isHidden = false
             self.priceLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.priceTxf.placeholder = "Price"
-                self.priceView1.isHidden = true
+                self.priceView1.isHidden = false
                 priceView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
               

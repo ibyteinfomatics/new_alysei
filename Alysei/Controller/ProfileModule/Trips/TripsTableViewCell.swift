@@ -34,9 +34,10 @@ class TripsTableViewCell: UITableViewCell {
     @IBOutlet weak var moreInfoButton: UIButton!
     @IBOutlet weak var interestedButton: UIButton!
     
-    var btnDeleteCallback:((Int) -> Void)? = nil
+    var btnDeleteCallback:((Int,Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil
     var btnMoreCallback:((Int) -> Void)? = nil
+    var data: TripDatum?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,8 +72,12 @@ class TripsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configCell(_ data: TripDatum){
+        self.data = data
+    }
+    
     @IBAction func btnDeleteAction(_ sender: UIButton){
-        btnDeleteCallback?(sender.tag)
+        btnDeleteCallback?(sender.tag,self.data?.tripID ?? 0)
     }
     
     @IBAction func btnMoreAction(_ sender: UIButton){

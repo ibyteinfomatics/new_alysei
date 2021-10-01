@@ -86,19 +86,34 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
             self.userProfileImage.contentMode = .scaleAspectFill
             self.userProfileImage.layer.cornerRadius = self.userProfileImage.frame.height / 2.0
             self.userProfileImage.layer.masksToBounds = true
+            
+            self.postOwnerImage.contentMode = .scaleAspectFill
+            self.postOwnerImage.layer.cornerRadius = self.userProfileImage.frame.height / 2.0
+            self.postOwnerImage.layer.masksToBounds = true
 
         }
 
         var postOwner = ""
-        if (self.postDataModel.postOwnerDetail?.name?.count ?? 0) > 0 {
-            postOwner = self.postDataModel.postOwnerDetail?.name ?? ""
-        } else if (self.postDataModel.postOwnerDetail?.companyName?.count ?? 0) > 0 {
+//        if (self.postDataModel.postOwnerDetail?.name?.count ?? 0) > 0 {
+//            postOwner = self.postDataModel.postOwnerDetail?.name ?? ""
+//        } else if (self.postDataModel.postOwnerDetail?.companyName?.count ?? 0) > 0 {
+//            postOwner = self.postDataModel.postOwnerDetail?.companyName ?? ""
+//        } else if (self.postDataModel.postOwnerDetail?.restaurantName?.count ?? 0) > 0 {
+//            postOwner = self.postDataModel.postOwnerDetail?.restaurantName ?? ""
+//        }
+        if self.postDataModel.postOwnerDetail?.roleId == UserRoles.producer.rawValue{
             postOwner = self.postDataModel.postOwnerDetail?.companyName ?? ""
-        } else if (self.postDataModel.postOwnerDetail?.restaurantName?.count ?? 0) > 0 {
+        }else if self.postDataModel.postOwnerDetail?.roleId == UserRoles.restaurant.rawValue{
             postOwner = self.postDataModel.postOwnerDetail?.restaurantName ?? ""
+        }else if (self.postDataModel.postOwnerDetail?.roleId == UserRoles.voyagers.rawValue || self.postDataModel.postOwnerDetail?.roleId == UserRoles.voiceExperts.rawValue){
+            postOwner = self.postDataModel.postOwnerDetail?.name ?? ""
+        }else{
+            postOwner = self.postDataModel.postOwnerDetail?.companyName ?? ""
         }
+        let imgUrl = (kImageBaseUrl + ( self.postDataModel.postOwnerDetail?.avatarId?.attachmentUrl ?? ""))
+        self.postOwnerImage.setImage(withString: imgUrl)
         self.lblPostDesc.text = self.postDataModel.postDescription
-
+        
         self.postOwnerUsernameLabel.text = "\(postOwner)"
 
         self.imageCollectionView.dataSource = self
@@ -126,6 +141,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
     @IBOutlet var imageCollectionView: UICollectionView!
     @IBOutlet var postOwnerUsernameLabel: UILabel!
     @IBOutlet var lblPostDesc: UILabel!
+    @IBOutlet var postOwnerImage: UIImageView!
 
     // MARK:- IBAction methods
 

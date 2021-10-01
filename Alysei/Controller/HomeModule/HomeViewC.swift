@@ -224,7 +224,7 @@ class HomeViewC: AlysieBaseViewC {
                 if String.getString(data["profile_percentage"])  != "100" {
                     self.membershipView.isHidden = true
                   self.blankdataView.isHidden = false
-                    self.imgReview.image = UIImage(named: "Review")
+                    self.imgReview.image = UIImage(named: "ProfileCompletion")
                     self.text.text = "Complete your profile in order to start Posting"
                 } else {
                     self.membershipView.isHidden = true

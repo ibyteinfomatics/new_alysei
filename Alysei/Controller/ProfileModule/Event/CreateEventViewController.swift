@@ -487,6 +487,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             
             descriptionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
             
+            
         }
     }
     
