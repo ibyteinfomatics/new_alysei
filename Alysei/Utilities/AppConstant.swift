@@ -276,7 +276,7 @@ struct APIUrl{
     
     static let kDeleteEvent = "delete/event?event_id="
     static let kDeleteBlog = "delete/blog?blog_id="
-    static let kDeleteTrip = "delete/trip?trip_id=1"
+    static let kDeleteTrip = "delete/trip?trip_id="
        
     static let kCreateEvent = "create/event"
     static let kGetIntensity = "get/intensity/list"

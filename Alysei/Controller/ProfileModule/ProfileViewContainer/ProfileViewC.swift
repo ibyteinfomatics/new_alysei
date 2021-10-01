@@ -269,17 +269,32 @@ class ProfileViewC: AlysieBaseViewC{
     @objc func swipeLeftRightGesturePerformed(_ gesture: UISwipeGestureRecognizer) {
         
         print("\(gesture.direction)")
-        
+        print("self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ",self.tabsCollectionView.indexPathsForSelectedItems?.last?.row )
+        let totalRows = ProfileTabRows().noOfRows(self.userType)
+       
         if gesture.direction == .right {
-            if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) > 0 {
+           // ((self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) < totalRows - 1))
+            if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) >= totalRows{
+                       print("invalid")
+                       return
+            }
+            if ((self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) > 0)  {
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
                 self.collectionView(self.tabsCollectionView, didDeselectItemAt: IndexPath(item: row, section: 0))
                 self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: row - 1, section: 0))
                 self.tabsCollectionView.selectItem(at: IndexPath(item: row - 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
                 //self.tabsCollectionView.scrollToItem(at: IndexPath(item: row - 1, section: 0), at: .centeredHorizontally, animated: true)
+            }else{
+                print("Invalid case")
             }
+            
         } else if gesture.direction == .left {
-            let totalRows = ProfileTabRows().noOfRows(self.userType)
+            
+            //let totalRows = ProfileTabRows().noOfRows(self.userType)
+            if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) == totalRows - 1{
+                       print("invalid")
+                       return
+            }
             if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) < totalRows {
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
                 self.collectionView(self.tabsCollectionView, didDeselectItemAt: IndexPath(item: row, section: 0))
@@ -1153,7 +1168,13 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) -> Void {
+        
+        let totalRows = ProfileTabRows().noOfRows(self.userType)
+        
+        if totalRows > indexPath.row{
         if collectionView == self.tabsCollectionView {
+            let totalRows = ProfileTabRows().noOfRows(self.userType)
+            
             let title = ProfileTabRows().rowsTitle(self.userType)[indexPath.row]
             if indexPath.row ==  0 {
                 self.tapPosts(UIButton())
@@ -1185,6 +1206,10 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
                 self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             }
             
+            
+        }
+        }else{
+            print("Invalid data")
         }
     }
     
@@ -1205,7 +1230,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             return CGSize(width: self.tabsCollectionView.frame.width / 3, height: 48.0)
         }else{
         
-        return CGSize(width: 80, height: 100.0)
+        return CGSize(width: 65, height: 100.0)
         }
     }
     

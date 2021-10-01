@@ -60,7 +60,7 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
         tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
-        
+        tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
         tripTableCell.editButton.tag = indexPath
         tripTableCell.deleteButton.tag = indexPath
         tripTableCell.moreInfoButton.tag = indexPath
@@ -192,7 +192,7 @@ class TripsViewController: AlysieBaseViewC {
             tripTableCell.interestedButton.isHidden = true
         }
         
-        tripTableCell.btnDeleteCallback = { tag in
+        tripTableCell.btnDeleteCallback = { tag,tripId in
           
             
             //MARK:show Alert Message
@@ -201,7 +201,7 @@ class TripsViewController: AlysieBaseViewC {
                
                 self.disableWindowInteraction()
               
-                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteTrip+"\(self.tripModel?.data?[indexPath].tripID ?? 0)", requestMethod: .POST, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteTrip+"\(tripId)", requestMethod: .POST, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
                     
                     self.postRequestToGetTrip()
                 }
