@@ -9,7 +9,8 @@ var selectedIndex: Int?
 
 import UIKit
 
-class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate{
+class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
+    
     @IBOutlet weak var discoverRecipeView: UIView!
     @IBOutlet weak var searchRecipe: UIView!
     @IBOutlet weak var searchTextField: UITextField!
@@ -22,7 +23,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var arrayHeader = NSMutableArray()
     var arrayCollection = NSMutableArray()
     var checkbutton = 0
-    
+ 
     var selectedIndexPath : IndexPath?
     var currentIndex : Int? = 0
     var isReloadData = true
@@ -106,6 +107,13 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func cellTappedForSearchRecipe(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
+        vc.searching = true
+        vc.indexOfPageToRequest = 1
+        vc.searchText = searchTitle
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
    
     @IBAction func tapSearchRecipe(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
@@ -230,7 +238,8 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             case 0:
                 
                 cell1.quickSearchLbl.text = "Quick Search By Ingridients"
-                cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+                cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell1.delegate = self
                 cell1.tapViewAll = {[self] in
                     
                     let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllViewController") as! ViewAllViewController
@@ -242,7 +251,8 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             case 1:
                
                 cell.quickSearchLbl.text = "Quick Search By Meal"
-                cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+                cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell.delegate = self
                 cell.tapViewAll = { [self] in
                     
                     let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllMealViewController") as! ViewAllMealViewController
@@ -250,19 +260,18 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                     
                 }
                 
-                
                 return cell
                 
             case 2:
                 
                 cell2.quickSearchByRegionLabel.text = "Quick Search By Region"
-                cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
-                
+                cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell2.delegate = self
                 return cell2
                 
             case 3:
                 cell3.quickSearchTrendingLabel.text = "Trending Now"
-                cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+                cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
                 cell3.delegate = self
                 cell3.tapViewAllTrending = { [self] in
                     
@@ -273,7 +282,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return cell3
             case 4:
                 cellQuick.quickSearchTrendingLabel.text = "Quick Easy"
-                cellQuick.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue-Bold", size: 16)
+                cellQuick.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
                 cellQuick.delegate = self
                 cellQuick.tapViewAllTrending = { [self] in
                     

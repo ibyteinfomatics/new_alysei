@@ -18,7 +18,12 @@ class ViewAllTrendingViewController: UIViewController {
         trendingCollectionView.delegate = self
         trendingCollectionView.dataSource = self
         
-        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)
+        headerView.layer.masksToBounds = false
+        headerView.layer.shadowRadius = 2
+        headerView.layer.shadowOpacity = 0.2
+        headerView.layer.shadowColor = UIColor.lightGray.cgColor
+        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
+        
         let cellNib = UINib(nibName: "TrendingCollectionViewCell", bundle: nil)
         self.trendingCollectionView.register(cellNib, forCellWithReuseIdentifier: "TrendingCollectionViewCell")
         getTrending()
@@ -82,6 +87,11 @@ extension ViewAllTrendingViewController: UICollectionViewDelegate, UICollectionV
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
         return CGSize(width: (self.trendingCollectionView.frame.width), height: 320.0)

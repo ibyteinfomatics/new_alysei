@@ -342,7 +342,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = arrayIngridients[indexPath.row].ingridientTitle
             cell1.addStepIngridientQuantityLabel.text = selectedIngridentsArray[indexPath.row].pickerData ?? ""
-            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Montserrat-Bold", size: 14)
+            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 14)
             if  arrayIngridients[indexPath.row].isSelected == true {
                 cell1.addStepIngeidientSelectedImageView.isHidden = false
             } else {
@@ -359,7 +359,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = arraytools[indexPath.row].toolTitle
             cell2.addStepToolQuantityLabel.text = selectedToolsArray[indexPath.row].pickerData ?? ""
-            cell2.addStepToolNameLabel?.font = UIFont(name: "Montserrat-Bold", size: 16)
+            cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             
             if  arraytools[indexPath.row].isSelected == true {
                 cell2.addStepToolSelectedImageView.isHidden = false

@@ -12,7 +12,7 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
     var label: UILabel = {
              let label: UILabel = UILabel()
              label.textColor = .white
-             label.font = UIFont(name: "Montserrat-Bold", size: 16)
+             label.font = UIFont(name: "Helvetica Neue Bold", size: 16)
           
              label.sizeToFit()
              return label

@@ -15,7 +15,7 @@ class ViewAllMealViewController: UIViewController {
     var arraySearchByMeal : [SelectMealDataModel]? = []
     var searchText = String()
     var searching = false
-    
+    var delegate: SearchRecipeDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -93,6 +93,15 @@ extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewD
         cell.ingredientsImage.contentMode = .scaleAspectFill
         cell.ingredientsLabel.text = arraySearchByMeal?[indexPath.item].mealName
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
+        vc.searching = true
+        vc.indexOfPageToRequest = 1
+        vc.searchText = searchTitle
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
