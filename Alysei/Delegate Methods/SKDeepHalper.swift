@@ -24,32 +24,31 @@ class SKDeepHalper {
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         let response = kSharedInstance.getDictionary(data)
-        let type = Int.getInt(response["notification_type"])
-        print("type---- ",type)
-        /*switch type {
+        let type = convertToDictionary(text: response["gcm.notification.data"] as! String)?["notification_type"]//response["gcm.notification.data"]
+        
+        let json = convertToDictionary(text: response["gcm.notification.data"] as! String)
+        print("type---- ",type ?? "")
+        switch Int.getInt(type) {
         case 1,4:
-            kSharedAppDelegate.moveToUser(userId: String.getString(String.getString(response["sender_id"])))
-        case 2:
-            kSharedAppDelegate.movetoRequest()
-        case 3,8:
-            kSharedAppDelegate.moveChat(receiverid: String.getString(response["sender_id"]),username: String.getString(response["user_name"]),profileimage: String.getString(response["profile_image"]))
-        case 9:
-            kSharedAppDelegate.moveChat(receiverid: String.getString(response["_id"]),username: String.getString(response["user_name"]),profileimage: String.getString(response["profile_image"]))
-        case 10:
-                        
-            if UserData.shared.id.contains(String.getString(response["user_id"])) {
-                kSharedAppDelegate.movetoJoin(chatRoomID: String.getString(response["chat_room_id"]))
-            } else {
-                kSharedAppDelegate.movetoHome()
-            }
-            
-        case 7:
-            kSharedAppDelegate.moveChat(receiverid: String.getString(response["sender_id"]),username: String.getString(response["user_name"]),profileimage: String.getString(response["profile_image"]))
+            kSharedAppDelegate.moveChat(receiverid: String.getString(json?["redirect_to_id"]), username: String.getString(json?["sender_name"]))
+            //kSharedAppDelegate.pushToTabBarViewC()
         default:
-            kSharedAppDelegate.movetoHome()
+            kSharedAppDelegate.pushToTabBarViewC()
     
-        }*/
+        }
         
     }
+   
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+
     
 }

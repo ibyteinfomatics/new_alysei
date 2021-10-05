@@ -295,9 +295,11 @@ struct APIUrl{
     static let kConnectionTabApi4 = "get/connection/tabs?tab=4"
     static let kEditPost = "edit/post"
     
+    static let kDashboard = "view/connection?connection_id="
+    
     static let kinvitationAcceptReject = "accept/reject/request"
     static let kPendingRemove = "cancel/connection/request?visitor_profile_id="
-
+    static let kMarketPlaceProduct = "get/box/detail/"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -376,6 +378,9 @@ struct APIUrl{
         static let getSearchMeal = kBASEURL + "search/meal?keyword="
 
         static let getSearchRecipe = kBASEURL + "search/recipe?keyword="
+        static let getChildIngridient = kBASEURL + "get/child/ingredients/"
+        static let getFilterRecipe = kBASEURL + "filter/recipe?cook_time="
+        static let getFavouriteRecipe = kBASEURL + " get/my/favourite/recipes"
         
     }
 }

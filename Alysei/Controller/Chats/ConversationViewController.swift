@@ -10,6 +10,11 @@ import Photos
 import YPImagePicker
 import IQKeyboardManagerSwift
 
+enum FromVC {
+    case UserTab
+    case Notification
+}
+
 class ConversationViewController: AlysieBaseViewC {
     
     //MARK: Outlets
@@ -38,7 +43,7 @@ class ConversationViewController: AlysieBaseViewC {
     
     var receiverid  =  String()
     var receivername = String()
-    
+    var fromvc: FromVC?
     var selectedChat = [String]()
     /*var receiverselectedChat = [String]()
     var senderselectedImageChat = [String]()
@@ -169,6 +174,16 @@ class ConversationViewController: AlysieBaseViewC {
         }
     }
     
+    @IBAction func btnBackTapped(_ sender: UIButton) {
+        
+        if fromvc == .Notification {
+            kSharedAppDelegate.pushToTabBarViewC()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        
+    }
     
     
     @IBAction func btnDeleteTapped(_ sender: Any) {
@@ -535,9 +550,13 @@ extension ConversationViewController {
     
     func notificationApi(fromid: String, toid: String){
         
-        let parameters: [String:Any] = [
+       /* let parameters: [String:Any] = [
             "from_id": fromid,
-            "to_id": toid]
+            "to_id": toid]*/
+        
+        let parameters: [String:Any] = [
+            "from_id": toid,
+            "to_id": fromid]
       
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kSendNotification, requestMethod: .POST, requestParameters: parameters, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             

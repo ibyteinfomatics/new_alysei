@@ -35,7 +35,7 @@ class NetworkViewC: AlysieBaseViewC {
     
     tblViewInviteNetwork.isHidden = false
     tblViewNetwork.isHidden = true
-    callConnectionApi(api: APIUrl.kConnectionTabApi1)
+    
   }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -44,13 +44,14 @@ class NetworkViewC: AlysieBaseViewC {
             
             blankdataView.isHidden = false
             
-           
         } else if Int.getInt(data["alysei_review"]) == 1{
             
             blankdataView.isHidden = true
            
-            
         }
+        
+        callConnectionApi(api: APIUrl.kConnectionTabApi1)
+        
     }
     
     func inviteApi(id: Int, type: Int){
@@ -176,6 +177,29 @@ class NetworkViewC: AlysieBaseViewC {
         
         networkTableCell.btnViewCallback = { tag in
             
+            let type = self.connection?.data?[indexPath.row].user?.roleID
+            
+            switch type {
+            case 4,5,6:
+                let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
+                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+            case 3:
+                let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
+                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+            case 8:
+                let vc = self.pushViewController(withName: TravelAgencyViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! TravelAgencyViewController
+                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+            case 9:
+                let vc = self.pushViewController(withName: RestaurantViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! RestaurantViewController
+                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+            case 7:
+                let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
+                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+            default:
+                break
+                //return nil
+            }
+           
             
         }
         
@@ -297,6 +321,7 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
 //MARK:  - UITableViewMethods -
 
 extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
+    
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     

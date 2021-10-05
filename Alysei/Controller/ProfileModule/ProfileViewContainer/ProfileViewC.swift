@@ -171,9 +171,11 @@ class ProfileViewC: AlysieBaseViewC{
         self.viewSeparator.alpha = 0.0
         
         if self.userLevel == .own {
+            self.menuButton.isHidden = false
             self.fetchProfileDetails()
         } else {
             if self.userID != nil {
+                self.menuButton.isHidden = true
                 self.fetchVisiterProfileDetails(self.userID)
             }
         }

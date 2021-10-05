@@ -228,6 +228,14 @@
 		6B0AF4FC26E8CF2500F9B034 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */; };
 		6B23867826FD96DD00D4CC1B /* AlyseiBGV 2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */; };
 		6B2F94F626202F3A0030928E /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2F94F526202F3A0030928E /* Timeline.storyboard */; };
+		6B360CF8270ADC4B006A48E4 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */; };
+		6B360CFB270AE9ED006A48E4 /* ImporterDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */; };
+		6B360D00270AEA27006A48E4 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */; };
+		6B360D01270AEA27006A48E4 /* ProducerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFD270AEA27006A48E4 /* ProducerDashboardViewController.swift */; };
+		6B360D02270AEA27006A48E4 /* VoiceOfExpertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFE270AEA27006A48E4 /* VoiceOfExpertsViewController.swift */; };
+		6B360D03270AEA27006A48E4 /* TravelAgencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFF270AEA27006A48E4 /* TravelAgencyViewController.swift */; };
+		6B360D06270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360D04270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift */; };
+		6B360D07270AEA51006A48E4 /* ProducerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */; };
 		6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
 		6B58C9AF26256EE300D250CD /* ReviewHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58C9AE26256EE300D250CD /* ReviewHubModel.swift */; };
@@ -803,6 +811,14 @@
 		6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlyseiBGV 2.mp4"; sourceTree = "<group>"; };
 		6B2F94F526202F3A0030928E /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImporterDashboardViewController.swift; sourceTree = "<group>"; };
+		6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		6B360CFD270AEA27006A48E4 /* ProducerDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerDashboardViewController.swift; sourceTree = "<group>"; };
+		6B360CFE270AEA27006A48E4 /* VoiceOfExpertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceOfExpertsViewController.swift; sourceTree = "<group>"; };
+		6B360CFF270AEA27006A48E4 /* TravelAgencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelAgencyViewController.swift; sourceTree = "<group>"; };
+		6B360D04270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyFoodDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerDetailTableViewCell.swift; sourceTree = "<group>"; };
 		6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngridientModel.swift; sourceTree = "<group>"; };
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
@@ -1829,6 +1845,7 @@
 		27CC2D2D25BE099800F4C005 /* NetworkModule */ = {
 			isa = PBXGroup;
 			children = (
+				6B360CF9270AE96F006A48E4 /* Dashboard */,
 				27CC2D2F25BEC40F00F4C005 /* NetworkViewC.swift */,
 				277D189C25BEC8C3007CA5C7 /* NetworkCategoryCollectionCell.swift */,
 				27CC2D3225BEC44B00F4C005 /* NetworkTableCell.swift */,
@@ -2020,6 +2037,20 @@
 				C5B87763264A6A20009048E6 /* CustomPhotoPickerViewController.swift */,
 			);
 			path = AddPost;
+			sourceTree = "<group>";
+		};
+		6B360CF9270AE96F006A48E4 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				6B360CFD270AEA27006A48E4 /* ProducerDashboardViewController.swift */,
+				6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */,
+				6B360CFF270AEA27006A48E4 /* TravelAgencyViewController.swift */,
+				6B360CFE270AEA27006A48E4 /* VoiceOfExpertsViewController.swift */,
+				6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */,
+				6B360D04270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift */,
+				6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		6B5A8282260C5CA800ED60B7 /* CompanyCerModel */ = {
@@ -2298,6 +2329,7 @@
 				6B79E66326E74C2200B2D434 /* TripModel.swift */,
 				6B7B8FFC26EF319E00454F48 /* IntensityModel.swift */,
 				6B7B8FFE26EF327200454F48 /* AdventureModel.swift */,
+				6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3027,6 +3059,7 @@
 				61C7BE41267C8FDA006DB3BB /* FlagCountryListCell.swift in Sources */,
 				6B90663C26F89DE100D24521 /* FoodViewController.swift in Sources */,
 				C52920452677575D000C044B /* ConnectionProductTypeModels.swift in Sources */,
+				6B360D02270AEA27006A48E4 /* VoiceOfExpertsViewController.swift in Sources */,
 				27D0FAAE25CEE9FF00463FE0 /* LoginViewC.swift in Sources */,
 				C56C2887268465F30042A0A3 /* MyStoreInquiriesViewController.swift in Sources */,
 				610D71902628B24E000FA104 /* EventsViewController.swift in Sources */,
@@ -3073,6 +3106,7 @@
 				C5EB3CE326E9CB8600CCAC9E /* FollowDietsViewController.swift in Sources */,
 				C5AAB85826171896000557B6 /* LiquidCollectionViewLayout.swift in Sources */,
 				27B4E8FD25EF957D00623E45 /* SignUpModel.swift in Sources */,
+				6B360CF8270ADC4B006A48E4 /* DashboardModel.swift in Sources */,
 				C5E9A3AA26B7ED200005AE89 /* ProductRatingTableVCell.swift in Sources */,
 				279AB34625FF436C0061FCB3 /* CountryTable.swift in Sources */,
 				C517236426E5E72D00CE7572 /* SelectCuisineDataModel.swift in Sources */,
@@ -3216,6 +3250,7 @@
 				27B4E90025EF957D00623E45 /* GetRoleModel.swift in Sources */,
 				612576F526CEFDC700E3EED5 /* SharePostModels.swift in Sources */,
 				C5EB3CE526E9CB8600CCAC9E /* FoodAllergyViewController.swift in Sources */,
+				6B360D03270AEA27006A48E4 /* TravelAgencyViewController.swift in Sources */,
 				C56C287B268465C60042A0A3 /* MyStoreDetailInteractor.swift in Sources */,
 				C5197ADF26E72A4F00C0894F /* SenderImageCell.swift in Sources */,
 				C5197AE326E72A4F00C0894F /* ChatConversationCell.swift in Sources */,
@@ -3304,6 +3339,7 @@
 				274D90AA25B85D5D00C82A75 /* UpdatePasswordViewC.swift in Sources */,
 				C5197AEA26E72AA800C0894F /* ConnectionTabModel.swift in Sources */,
 				C52920432677575D000C044B /* ConnectionProductTypeWorker.swift in Sources */,
+				6B360D06270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift in Sources */,
 				C5EB3CBC26E9CB5700CCAC9E /* FavouriteTableViewCell.swift in Sources */,
 				61A40A1D267378BF00D7D078 /* BasicConnectFlowRouter.swift in Sources */,
 				C587D14D26413BE6002D72DF /* NewFeedModel.swift in Sources */,
@@ -3313,6 +3349,7 @@
 				C5197AF226E72BBF00C0894F /* NewChat.swift in Sources */,
 				273E5E7E25BB3848009AF5A4 /* ContactViewC.swift in Sources */,
 				C5E9A39E26B7DE5C0005AE89 /* ProductDetailVC.swift in Sources */,
+				6B360D07270AEA51006A48E4 /* ProducerDetailTableViewCell.swift in Sources */,
 				C51C33832664FB52002EC412 /* MarketPlaceWalkthroughVC.swift in Sources */,
 				C554DBF4266A36B400D4EECC /* MarketPlaceConfirmationVC.swift in Sources */,
 				61A8CB4A261D98CA00B99233 /* ContactDetailModels.swift in Sources */,
@@ -3339,6 +3376,7 @@
 				6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */,
 				C5CA9A8D26C1520D00BDAE25 /* ReviewScreenTableViewCell.swift in Sources */,
 				C5EB38C226E9CAE400CCAC9E /* TrendingCollectionViewCell.swift in Sources */,
+				6B360D00270AEA27006A48E4 /* RestaurantViewController.swift in Sources */,
 				C5EB38C726E9CAE400CCAC9E /* AddStepsCollectionViewCell.swift in Sources */,
 				61A8CB6F26204CE500B99233 /* AboutViewModel.swift in Sources */,
 				27A4439325AE03720002BAAC /* NSString+Base64.m in Sources */,
@@ -3376,6 +3414,7 @@
 				C56C286C268465A90042A0A3 /* MyStoreProductModels.swift in Sources */,
 				27A443A625AE03720002BAAC /* UITableViewCellExtended.swift in Sources */,
 				2770AA5625AE1BBC00A2F10B /* AlysieBaseViewC.swift in Sources */,
+				6B360D01270AEA27006A48E4 /* ProducerDashboardViewController.swift in Sources */,
 				C56C2885268465F30042A0A3 /* MyStoreInquiriesRouter.swift in Sources */,
 				C5EB3CB526E9CB5700CCAC9E /* ToolsTableViewCell.swift in Sources */,
 				27A443C125AE03720002BAAC /* String+Utilities.swift in Sources */,
@@ -3394,6 +3433,7 @@
 				C55625F8266F5252007272C5 /* Membership.swift in Sources */,
 				C517236A26E5E72D00CE7572 /* SelectMealDataModel.swift in Sources */,
 				61EAB560269A23B900793F18 /* PostCommentsViewController.swift in Sources */,
+				6B360CFB270AE9ED006A48E4 /* ImporterDashboardViewController.swift in Sources */,
 				6B58C9AF26256EE300D250CD /* ReviewHubModel.swift in Sources */,
 				6B90661826F83D5F00D24521 /* TagCollectionReusableView.swift in Sources */,
 				6B65FFB326034900002832C8 /* SelectRoleViewC.swift in Sources */,

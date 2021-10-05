@@ -257,7 +257,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPg-s9-sgk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU9-Of-qB8" customClass="BackButton" customModule="Alysei" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU9-Of-qB8">
                                         <rect key="frame" x="10" y="5" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -265,6 +265,9 @@
                                             <constraint firstAttribute="width" constant="40" id="nIF-cc-HnQ"/>
                                         </constraints>
                                         <state key="normal" image="back_black"/>
+                                        <connections>
+                                            <action selector="btnBackTapped:" destination="FPH-nX-SET" eventType="touchUpInside" id="Yfe-wp-vCQ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvr-jj-sXl">
                                         <rect key="frame" x="65" y="13.666666666666666" width="50.666666666666657" height="23.333333333333336"/>
