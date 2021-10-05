@@ -18,9 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="307" height="233"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WFK-Um-YKR">
-                        <rect key="frame" x="5" y="5" width="297" height="213"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WFK-Um-YKR">
+                        <rect key="frame" x="0.0" y="0.0" width="307" height="218"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="218" id="Wjb-5q-Y7T"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jb5-FK-uvv">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -31,14 +34,15 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="WFK-Um-YKR" secondAttribute="bottom" constant="15" id="9A9-uV-A17"/>
-                    <constraint firstAttribute="trailing" secondItem="WFK-Um-YKR" secondAttribute="trailing" constant="5" id="Fh8-dt-9hc"/>
-                    <constraint firstItem="WFK-Um-YKR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="lmb-1L-d9b"/>
-                    <constraint firstItem="WFK-Um-YKR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nkW-Wh-Kh1"/>
+                    <constraint firstAttribute="trailing" secondItem="WFK-Um-YKR" secondAttribute="trailing" id="Fh8-dt-9hc"/>
+                    <constraint firstItem="WFK-Um-YKR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lmb-1L-d9b"/>
+                    <constraint firstItem="WFK-Um-YKR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nkW-Wh-Kh1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="favouriteCollectionView" destination="WFK-Um-YKR" id="5Wf-gx-7CF"/>
+                <outlet property="favouriteCollectionVwHeight" destination="Wjb-5q-Y7T" id="6Zk-YC-UCW"/>
             </connections>
             <point key="canvasLocation" x="80.434782608695656" y="106.80803571428571"/>
         </tableViewCell>

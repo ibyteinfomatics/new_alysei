@@ -22,7 +22,12 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var typeLabel: UILabel!
     
-   
+    @IBOutlet weak var ratingImg1: UIImageView!
+    @IBOutlet weak var ratingImg2: UIImageView!
+    @IBOutlet weak var ratingImg3: UIImageView!
+    @IBOutlet weak var ratingImg4: UIImageView!
+    @IBOutlet weak var ratingImg5: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

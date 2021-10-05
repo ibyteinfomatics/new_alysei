@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+var parentId = Int()
 class ViewAllViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -91,11 +91,13 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.ingredientsImage.layer.cornerRadius = cell.ingredientsImage.frame.height/2
         cell.ingredientsImage.contentMode = .scaleAspectFill
         cell.ingredientsLabel.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
+       
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
+        parentId = (arraySearchByIngridient?[indexPath.item].parent)!
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
         vc.searching = true
         vc.indexOfPageToRequest = 1

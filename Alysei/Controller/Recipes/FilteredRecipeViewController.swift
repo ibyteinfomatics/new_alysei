@@ -7,6 +7,7 @@
 
 import UIKit
 
+var isFilterLoading = false
 class FilteredRecipeViewController: UIViewController {
 
     @IBOutlet weak var searchRecipeTextField: UITextField!
@@ -16,16 +17,21 @@ class FilteredRecipeViewController: UIViewController {
     
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
-    var isFirstTimeLoading = true
+    var indexOfPageToRequest = 1
+    var searching = false
+   
     var searchText = String()
     var updatedText = String()
-    var searching = false
-    var indexOfPageToRequest = 1
+    
+   
     
     override func viewWillAppear(_ animated: Bool) {
         if searching == true{
             self.labelRecipe.text = searchText
             callSearchRecipe(searchText, indexOfPageToRequest)
+        }
+        else if isFilterLoading == true{
+//            getFilterRecipe("3", "1", "1", "1", "1", "1")
         }
     }
     override func viewDidLoad() {
@@ -59,8 +65,8 @@ class FilteredRecipeViewController: UIViewController {
     
     
     @IBAction func tapToGoFilter(_ sender: Any) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilterRecipeViewController") as! FilterRecipeViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilterRecipeViewController") as! FilterRecipeViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func callSearchRecipe(_ text: String, _ pageNo: Int?){
@@ -83,6 +89,7 @@ class FilteredRecipeViewController: UIViewController {
             case 409:
                 self.arrSearchRecipeDataModel?.removeAll()
                 self.filteredCollectionView.reloadData()
+                
                 self.showAlert(withMessage: "No Recipe found")
                 
             default:
@@ -111,6 +118,38 @@ class FilteredRecipeViewController: UIViewController {
             // tell the table view to reload with the new data
             self.filteredCollectionView.reloadData()
             }
+        }
+    }
+    
+    func getFilterRecipe(_ cookingTime: String?, _ noOfIngridient: String?, _ mealType: String?, _ cusinId: String?, _ childIngridient: String?, _ parentIngridient: Int?) -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getFilterRecipe) + (cookingTime)&no_of_ingredients=noOfIngridient&meal_type=mealType&cousin_id=cusinId&child_ingredient=childIngridient&parent_ingredient=parentIngridient", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+          
+            switch statusCode{
+            case 200:
+            
+                let dictResponse = response as? [String:Any]
+                
+                if let data = dictResponse?["data"] as? [String:Any]{
+                    
+                    self.searchRecipeModel = SearchRecipeDataModel.init(with: data)
+                    if self.indexOfPageToRequest == 1 {self.arrSearchRecipeDataModel?.removeAll() }
+                    self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
+                    self.searching = true
+                    self.filteredCollectionView.reloadData()
+                }
+            case 409:
+                
+                self.arrSearchRecipeDataModel?.removeAll()
+                self.filteredCollectionView.reloadData()
+                self.showAlert(withMessage: "No Recipe found")
+                
+            default:
+               
+                self.showAlert(withMessage: "No Recipe found")
+            }
+            
         }
     }
 }
@@ -281,7 +320,7 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
             
         }
         else{
-            self.searching = false
+            searching = false
             filteredCollectionView.reloadData()
         }
         

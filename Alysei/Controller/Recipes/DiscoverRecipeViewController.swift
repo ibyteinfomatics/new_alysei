@@ -9,7 +9,7 @@ var selectedIndex: Int?
 
 import UIKit
 
-class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
+class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate, AlertShower{
     
     @IBOutlet weak var discoverRecipeView: UIView!
     @IBOutlet weak var searchRecipe: UIView!
@@ -27,6 +27,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var selectedIndexPath : IndexPath?
     var currentIndex : Int? = 0
     var isReloadData = true
+    var isReloadMyRecipe = true
     
         override func viewWillAppear(_ animated: Bool) {
             if checkbutton == 3{
@@ -37,6 +38,19 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
            
             }
             if checkbutton == 0{
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                    self.containerTableVw.reloadData()
+                }
+            }
+            if checkbutton == 2{
+                
+                isReloadMyRecipe = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                    self.containerTableVw.reloadData()
+                }
+            }
+            if checkbutton == 1{
+                isReloadMyRecipe = true
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                     self.containerTableVw.reloadData()
                 }
@@ -165,7 +179,13 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         }
     }
     
-    
+    func showAlert1(message: String, sender:FavouriteTableViewCell) {
+
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        }
 }
 
 //MARK: UITableView
@@ -301,11 +321,23 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 1:
             let cell4 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
             cell4.check = true
+            cell.delegate = self
+            cell4.myRecipeTab = 0
+            if isReloadMyRecipe{
+            cell4.getMyFavouriteRecipes()
+            }
             return cell4
         case 2:
             let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
             cell5.check = false
+            cell5.myRecipeTab = 1
+            if isReloadMyRecipe{
+                cell5.getMyAllRecipes()
+                isReloadMyRecipe = true
+           }
+        
             return cell5
+            
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
@@ -357,9 +389,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return 350;
             }
         case 1:
-            return self.containerTableVw.frame.height
+            return UITableView.automaticDimension
         case 2:
-            return self.containerTableVw.frame.height
+            return UITableView.automaticDimension
         case 3:
             return UITableView.automaticDimension
         default:
@@ -434,6 +466,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
+            isReloadMyRecipe = true
             containerTableVw.reloadData()
             
             
@@ -444,6 +477,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
+            isReloadMyRecipe = true
             containerTableVw.reloadData()
             
             

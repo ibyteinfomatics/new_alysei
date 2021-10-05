@@ -120,84 +120,90 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
                 cell.trendingImgVw.contentMode = .scaleAspectFill
                 cell.recipeNameLbl.text = arrayTrending?[indexPath.item].name
                 cell.likeLabel.text = "\(arrayTrending?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            if arrayTrending?[indexPath.item].userName == ""{
+                cell.userNameLabel.text = "NA"
+            }
+            else{
                 cell.userNameLabel.text = arrayTrending?[indexPath.item].userName
+            }
+               
                 cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + "minutes"
                 cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + "Serving"
                 cell.typeLabel.text = arrayTrending?[indexPath.item].meal?.mealName ?? "NA"
             
-//            if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "0.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//
-//            }
-//            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "0.5" {
-//                cell.rating1ImgVw.image = UIImage(named: "Group 1142")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//               cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "1.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//               cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }
-//            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "1.5" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "Group 1142")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//               cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "2.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }
-//            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "2.5" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "Group 1142")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "3.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }
-//            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "3.5" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating4ImgvW.image = UIImage(named: "Group 1142")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "4.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-//            }
-//            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "4.5" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating5ImgVw.image = UIImage(named: "Group 1142")
-//            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "5.0" {
-//                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
-//                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star")
-//            }
+            if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "0.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+
+            }
+            else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "0.5" {
+                cell.ratingImg1.image = UIImage(named: "Group 1142")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+               cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "1.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+               cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "1.5" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "Group 1142")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "2.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "2.5" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "Group 1142")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "3.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "3.5" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg4.image = UIImage(named: "Group 1142")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "4.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "4.5" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg5.image = UIImage(named: "Group 1142")
+            }else if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "5.0" {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star")
+            }
             return cell
            
            
