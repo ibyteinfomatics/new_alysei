@@ -7511,7 +7511,7 @@ any other devices.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc@gmail.com" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WZ-8v-E2q">
-                                                    <rect key="frame" x="40" y="25" width="359" height="36"/>
+                                                    <rect key="frame" x="40" y="31" width="359" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="95" id="8mW-vr-szv"/>
                                                     </constraints>
@@ -7534,7 +7534,7 @@ any other devices.</string>
                                                 <constraint firstItem="sr2-33-ECi" firstAttribute="leading" secondItem="PUX-x5-R75" secondAttribute="trailing" constant="10" id="MYV-aa-081"/>
                                                 <constraint firstItem="PUX-x5-R75" firstAttribute="top" secondItem="lmq-Mg-bfb" secondAttribute="top" constant="15" id="MwG-qA-TNR"/>
                                                 <constraint firstAttribute="trailing" secondItem="8WZ-8v-E2q" secondAttribute="trailing" constant="15" id="TBY-RK-xig"/>
-                                                <constraint firstItem="8WZ-8v-E2q" firstAttribute="top" secondItem="sr2-33-ECi" secondAttribute="bottom" constant="-4" id="Xec-5x-Veb"/>
+                                                <constraint firstItem="8WZ-8v-E2q" firstAttribute="top" secondItem="sr2-33-ECi" secondAttribute="bottom" constant="2" id="Xec-5x-Veb"/>
                                                 <constraint firstAttribute="bottom" secondItem="8WZ-8v-E2q" secondAttribute="bottom" constant="5" id="kRB-xF-P0f"/>
                                                 <constraint firstItem="PUX-x5-R75" firstAttribute="leading" secondItem="lmq-Mg-bfb" secondAttribute="leading" constant="15" id="ubD-dM-VT9"/>
                                             </constraints>
