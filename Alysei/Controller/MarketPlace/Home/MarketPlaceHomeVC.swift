@@ -136,13 +136,19 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if indexPath.row == 0{
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
+            nextVC.listType = 1
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
         if indexPath.row == 2 {
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
             self.navigationController?.pushViewController(nextVC, animated: true)
-        }else{
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
-        self.navigationController?.pushViewController(nextVC, animated: true)
         }
+//        else{
+//        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+//        }
     }
 }
 extension MarketPlaceHomeVC{

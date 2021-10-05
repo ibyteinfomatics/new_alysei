@@ -74,8 +74,8 @@
                                             <action selector="tapLikeButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uc0-if-a7x"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-iS-aBD">
-                                        <rect key="frame" x="260" y="25" width="55" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-iS-aBD">
+                                        <rect key="frame" x="255" y="25" width="55" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="Mg8-7g-LT8"/>
                                         </constraints>
@@ -86,7 +86,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0fF-iS-aBD" secondAttribute="trailing" constant="5" id="31f-G0-jz6"/>
+                                    <constraint firstAttribute="trailing" secondItem="0fF-iS-aBD" secondAttribute="trailing" constant="10" id="31f-G0-jz6"/>
                                     <constraint firstAttribute="height" constant="47" id="6vY-Al-BR3"/>
                                     <constraint firstItem="i1D-Wc-j0f" firstAttribute="leading" secondItem="i7o-w8-a7R" secondAttribute="leading" constant="15" id="7wm-3a-ihP"/>
                                     <constraint firstItem="QD4-vX-9vU" firstAttribute="top" secondItem="i7o-w8-a7R" secondAttribute="top" constant="5" id="BGm-92-pTQ"/>
@@ -97,47 +97,47 @@
                                     <constraint firstItem="We7-LM-97f" firstAttribute="top" secondItem="i7o-w8-a7R" secondAttribute="top" constant="5" id="b8V-34-6dU"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fj-fe-fRF">
-                                <rect key="frame" x="15" y="160" width="73.5" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fj-fe-fRF">
+                                <rect key="frame" x="15" y="160" width="78.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Hour 20Mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-CT-UyI">
-                                <rect key="frame" x="36" y="189" width="92" height="16.5"/>
+                                <rect key="frame" x="36" y="189.5" width="92" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Serving" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKp-gu-HJd">
-                                <rect key="frame" x="36" y="215.5" width="59" height="16.5"/>
+                                <rect key="frame" x="36" y="216" width="59" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1171" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-79-v7Y">
-                                <rect key="frame" x="15" y="190" width="16" height="16"/>
+                                <rect key="frame" x="15" y="190.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="L35-Fc-I0i"/>
                                     <constraint firstAttribute="height" constant="16" id="gcn-kz-VlX"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_user1" translatesAutoresizingMaskIntoConstraints="NO" id="MCJ-F3-SSz">
-                                <rect key="frame" x="15" y="218" width="16" height="16"/>
+                                <rect key="frame" x="15" y="218.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Ddb-JF-jYd"/>
                                     <constraint firstAttribute="width" constant="16" id="dfd-Z7-nyj"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_dining_room_1" translatesAutoresizingMaskIntoConstraints="NO" id="iFA-q4-czc">
-                                <rect key="frame" x="15" y="245" width="16" height="16"/>
+                                <rect key="frame" x="15" y="245.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="0Xo-jf-wbM"/>
                                     <constraint firstAttribute="width" constant="16" id="KD5-zy-gBR"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dessert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnW-pQ-YdB">
-                                <rect key="frame" x="36" y="242" width="48" height="16.5"/>
+                                <rect key="frame" x="36" y="242.5" width="48" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -182,6 +182,11 @@
             <connections>
                 <outlet property="likeLabel" destination="0fF-iS-aBD" id="CAa-bM-Wmn"/>
                 <outlet property="outerView" destination="TJG-KV-zVS" id="Ywh-nZ-yKS"/>
+                <outlet property="ratingImg1" destination="bgQ-fq-gA6" id="3rI-YS-pMj"/>
+                <outlet property="ratingImg2" destination="3PU-Pe-gNI" id="Q6h-oV-Mrm"/>
+                <outlet property="ratingImg3" destination="OCZ-gZ-TVV" id="ei0-GO-uT2"/>
+                <outlet property="ratingImg4" destination="50O-ZU-Usl" id="ckP-tg-24g"/>
+                <outlet property="ratingImg5" destination="kSj-yG-ASq" id="wWs-OD-f2p"/>
                 <outlet property="recipeNameLbl" destination="QD4-vX-9vU" id="8im-dt-jdc"/>
                 <outlet property="servingLabel" destination="xKp-gu-HJd" id="x3i-X2-gZy"/>
                 <outlet property="timeLabel" destination="hEy-CT-UyI" id="pFF-Ln-iqZ"/>
@@ -189,7 +194,7 @@
                 <outlet property="typeLabel" destination="SnW-pQ-YdB" id="sd7-qJ-nDm"/>
                 <outlet property="userNameLabel" destination="1Fj-fe-fRF" id="nrH-Dh-DoC"/>
             </connections>
-            <point key="canvasLocation" x="234.78260869565219" y="114.84375"/>
+            <point key="canvasLocation" x="234.78260869565219" y="114.50892857142857"/>
         </collectionViewCell>
     </objects>
     <resources>

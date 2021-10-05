@@ -14,11 +14,32 @@ class FilterRecipeViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     
+    var arrayChildIngridient : [IngridentArray]? = []
+    var arrayCuisine : [SelectCuisineDataModel]? = []
+    var arrayMeal : [SelectMealDataModel]? = []
+    var filterNameArray = ["Cook Time","No. of Ingredients","Meal Type","Cuisines", "Ingridients"]
+    var titleTimeArray = ["<3 min",
+                     "<5 min",
+                     "<15 min",
+                     "<30 min",
+                     "<45 min",
+                     "<1 hr",
+                     "<2 hr"]
+    var titleNoOfIngridientArray = ["<2",
+                               "<5",
+                               "<10",
+                               "<20",
+                               "<30",
+                               "<50"]
+    var mealTypeArray = ["Breakfast & Brunch", "Lunch"]
+    var cuisinesArray = ["Italian"]
+    var ingridientsArray = ["Test ingredient", "Test Ingredient-3", "Chilli flakes"]
     
-    var filterNameArray = ["Cook Time","No. of Ingredients","Meal Type","Cuisines"]
     private var selected = [String]()
-    private var titlesCount = [[String](),[String](),[String](),[String]()]
-    private var titles = [[String]]()
+    private var titlesCount = [[String](),[String](),[String](),[String](),[String]()]
+    var titles = [String]()
+//        = [[String](),[String](),[SelectMealDataModel](),[SelectCuisineDataModel](),[IngridentArray]()]
+//    var myArray:[(a:String,b:String,c:String, d: )] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,29 +59,13 @@ class FilterRecipeViewController: UIViewController {
         nextButton.layer.borderWidth = 1
         nextButton.layer.cornerRadius = 24
         nextButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-        titles = [[
-            "<5 min",
-            "<15 min",
-            "<30 min",
-            "<45 min",
-            "<1 hr",
-           
-        ],[
-            "<5",
-            "<10",
-            "<20"
-        ],[
-            "Breakfast",
-            "Lunch",
-            "Dinner"
-        ],[
-            "American",
-            "Asian",
-            "British"
-        ]]
+        
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+//        titles = [titleTimeArray, titleNoOfIngridientArray, arrayMeal, arrayCuisine, arrayChildIngridient]
+        //titles.append(titleTimeArray)
+        //titles.append(titleNoOfIngridientArray)
+        //titles.append(arrayMeal as Any)
         let layout = TagFlowLayout()
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         collectionView.collectionViewLayout = layout
@@ -68,11 +73,18 @@ class FilterRecipeViewController: UIViewController {
     }
     
     @IBAction func clearAllTapped(_ sender: UIButton) {
-        titlesCount = [[String](),[String](),[String](),[String]()]
+        titlesCount = [[String](),[String](),[String](),[String](),[String]()]
         collectionView.reloadData()
     }
     
+    @IBAction func tapback(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
+    @IBAction func tapViewResult(_ sender: Any) {
+        isFilterLoading = true
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -80,7 +92,7 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
         return titles.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles[section].count
+        return self.titles[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,3 +150,53 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
     }
 }
 
+extension FilterRecipeViewController{
+    
+    func getChildIngridients() -> Void{
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getChildIngridient)\(parentId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.arrayChildIngridient = data.map({IngridentArray.init(with: $0)})
+                
+            }
+        
+            self.collectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func getCuisine() -> Void{
+        self.view.isUserInteractionEnabled = false
+       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCuisine, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+           
+           let res = response as? [String:Any]
+           
+           if let data = res?["data"] as? [[String:Any]]{
+               self.arrayCuisine = data.map({SelectCuisineDataModel.init(with: $0)})
+           }
+           
+        self.collectionView.reloadData()
+        self.view.isUserInteractionEnabled = true
+       }
+    }
+    
+    func getMeal() -> Void{
+       self.view.isUserInteractionEnabled = false
+       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeMeal, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+           
+           let res = response as? [String:Any]
+           
+           if let data = res?["data"] as? [[String:Any]]{
+               self.arrayMeal = data.map({SelectMealDataModel.init(with: $0)})
+           }
+          
+        self.collectionView.reloadData()
+           self.view.isUserInteractionEnabled = true
+       }
+    }
+    
+   
+   
+}

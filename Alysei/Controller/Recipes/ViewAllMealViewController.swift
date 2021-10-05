@@ -96,6 +96,7 @@ extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
         searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
         vc.searching = true

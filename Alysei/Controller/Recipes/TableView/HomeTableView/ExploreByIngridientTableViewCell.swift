@@ -29,6 +29,7 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
         setGradientBackground()
         self.collectionVw.delegate = self
         self.collectionVw.dataSource = self
+        self.collectionVw.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -119,7 +120,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        parentId = (arraySearchByIngridient?[indexPath.item].parent)!
         searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()

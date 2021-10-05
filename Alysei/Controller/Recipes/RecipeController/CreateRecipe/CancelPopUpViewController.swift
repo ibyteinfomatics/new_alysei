@@ -80,7 +80,7 @@ extension CancelPopUpViewController{
         let minute = createRecipeJson["minute"]
         let serving = createRecipeJson["serving"]
        
-        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt ?? 0, APIConstants.kUnit: finalUnitIngridirnt ?? ""]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId ?? 0, APIConstants.kQuantity: finalquantityTool ?? 0, APIConstants.kUnit: finalUnitTool ?? ""]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription ?? "", APIConstants.kIngridients: [ingridientArray] , APIConstants.kTools: [toolArray]]]]
+        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt ?? 0, APIConstants.kUnit: finalUnitIngridirnt ?? ""]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId , APIConstants.kQuantity: finalquantityTool ?? 0, APIConstants.kUnit: finalUnitTool ?? ""]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription ?? "", APIConstants.kIngridients: [ingridientArray] , APIConstants.kTools: [toolArray]]]]
 
     
         let paramsMain: [String: Any] = ["params": params]
@@ -92,6 +92,7 @@ extension CancelPopUpViewController{
             if let message = resultNew?["message"] as? String{
                 self.showAlert(withMessage: message, nil)
             }
+            
         }
     }
 
