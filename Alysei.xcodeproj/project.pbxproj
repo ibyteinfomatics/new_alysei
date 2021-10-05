@@ -320,6 +320,7 @@
 		6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */; };
 		6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */; };
 		6BC4C0DF260088C500791DCD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0DE260088C500791DCD /* ImageLoader.swift */; };
+		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BFF239126E7475E004C3916 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 6BFF239026E7475E004C3916 /* SocketIO */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
@@ -898,6 +899,7 @@
 		6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayForgetVC.swift; sourceTree = "<group>"; };
 		6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayForgetVC.xib; sourceTree = "<group>"; };
 		6BC4C0DE260088C500791DCD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -2271,6 +2273,14 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		6BD5696F270AF914009F2F35 /* ProductStore */ = {
+			isa = PBXGroup;
+			children = (
+				6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */,
+			);
+			path = ProductStore;
+			sourceTree = "<group>";
+		};
 		8136D8C240C91EF7F5CD1719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2528,6 +2538,7 @@
 		C51C337D2664F599002EC412 /* MarketPlace */ = {
 			isa = PBXGroup;
 			children = (
+				6BD5696F270AF914009F2F35 /* ProductStore */,
 				C519FFC226C397E100245E7A /* Home */,
 				C519FFC126C397C800245E7A /* Review&Rating */,
 				C519FFC026C397B400245E7A /* SearchProduct */,
@@ -3127,6 +3138,7 @@
 				27A443B525AE03720002BAAC /* UIScreenExtended.swift in Sources */,
 				2742855D25B82EEC003F3DE5 /* EditUserSettingsViewC.swift in Sources */,
 				C5D6F7DB26B1829D006FFCDF /* StateWiseHubCollectionCell.swift in Sources */,
+				6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */,
 				C5EB3CED26E9CB8600CCAC9E /* CircularProgressView.swift in Sources */,
 				61A40A20267378BF00D7D078 /* BasicConnectFlowInteractor.swift in Sources */,
 				C527176F26BA71860051F896 /* SortProductViewController.swift in Sources */,

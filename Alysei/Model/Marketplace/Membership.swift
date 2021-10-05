@@ -22,6 +22,28 @@ class Membership{
     }
 }
 
+class ProductsStore{
+    var currentPage: Int?
+    //var data: [MyStoreProductDetail]?
+    var myStoreProduct : [MyStoreProductDetail]?
+    var firstPageUrl: String?
+    var lastPageUrl: String?
+    var lastPage: Int?
+    
+    init(with dictResponse: [String:Any]){
+        self.currentPage = Int.getInt(dictResponse["current_page"])
+//        if let data = dictResponse["data"] as? [[String:Any]]{
+//            self.data = data.map({SubjectData.init(with: $0)})
+//        }
+        if let data = dictResponse["data"] as? [[String:Any]]{
+            self.myStoreProduct = data.map({MyStoreProductDetail.init(with: $0)})
+        }
+        self.firstPageUrl = String.getString(dictResponse["first_page_url"])
+        self.lastPageUrl = String.getString(dictResponse["last_page_url"])
+        self.lastPage = Int.getInt(dictResponse["last_page"])
+    }
+}
+
 class MyStoreProductDetail{
     
     var marketplace_product_id: Int?
@@ -61,6 +83,7 @@ class MyStoreProductDetail{
     var total_one_star: Int?
     var total_three_star: Int?
     var total_two_star: Int?
+    var location: String?
     
     init(with data: [String:Any]?) {
         self.marketplace_product_id = Int.getInt(data?["marketplace_product_id"])
@@ -95,6 +118,7 @@ class MyStoreProductDetail{
         self.total_three_star = Int.getInt(data?["total_three_star"])
         self.total_four_star = Int.getInt(data?["total_four_star"])
         self.total_five_star = Int.getInt(data?["total_five_star"])
+        self.location = String.getString(data?["location"])
         if let product_gallery = data?["product_gallery"] as? [[String:Any]]{
             self.product_gallery = product_gallery.map({ProductGallery.init(with: $0)})
         }
