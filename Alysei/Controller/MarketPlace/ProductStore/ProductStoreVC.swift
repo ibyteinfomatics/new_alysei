@@ -68,20 +68,31 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 160
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+        let data = arrProductList?.myStoreProduct?[indexPath.row]
+        nextVC.passStoreId = "\(data?.marketplace_store_id ?? 0)"
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
 
 extension ProductStoreVC {
     func callMyStoreProductApi(_ pageNo: Int?){
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "page=" + "\(pageNo ?? 0)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "?page=" + "\(pageNo ?? 0)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+            switch statusCode{
+            case 200:
             if let response = dictResponse as? [String:Any]{
                 if let data = response["data"] as? [String:Any]{
                     self.arrProductList = ProductsStore.init(with: data)
                 }
-                
+            }
+            default:
+                print("No Data")
             }
             self.tableView.reloadData()
         }
@@ -94,4 +105,10 @@ class ProductTableViewCell: UITableViewCell{
     @IBOutlet weak var lblTotalRating: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var imgStore: UIImageView!
+    @IBOutlet weak var vwContainer: UIView!
+    
+    override func awakeFromNib() {
+        vwContainer.addShadow()
+    }
+    
 }
