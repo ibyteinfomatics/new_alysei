@@ -151,14 +151,17 @@ class PostDescTableViewCell: UITableViewCell {
         self.index = self.data?.postID ?? 0
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         userName.text = modelData.subjectId?.companyName?.capitalized
-        userNickName.text = modelData.subjectId?.email
+            userNickName.text = modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
-            userNickName.text = modelData.subjectId?.email
+            userNickName.text = modelData.subjectId?.email?.lowercased()
+        }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
+            userName.text = "\(modelData.subjectId?.name?.capitalized ?? "")"
+            userNickName.text = modelData.subjectId?.email?.lowercased()
         }else{
-            //userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")" + "\(modelData.subjectId?.lastName?.capitalized ?? "")"
+  
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = modelData.subjectId?.name?.capitalized
+            userNickName.text = modelData.subjectId?.email?.lowercased()
         }
         lblPostDesc.text = modelData.body
         lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
@@ -198,8 +201,6 @@ class PostDescTableViewCell: UITableViewCell {
                 self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
             }
         }
-       
-
 
         if imageArray.count <= 0 {
             self.pageControl.alpha = 0
@@ -207,7 +208,15 @@ class PostDescTableViewCell: UITableViewCell {
             self.pageControl.alpha = 1
             self.pageControl.numberOfPages = imageArray.count
         }
-
+        let  wordContains = modelData.body?.count ?? 0
+        //let lblSize = lblPostDesc.numberOfLines
+        //print("lableSize?>>>>>>>>>>>>>>>>>>>>>>>>>>>>",lblSize)
+        if wordContains <= 60 {
+            btnMoreLess.isHidden = true
+        }else{
+            btnMoreLess.isHidden = false
+        }
+       
         self.imagePostCollectionView.reloadData()
     }
 

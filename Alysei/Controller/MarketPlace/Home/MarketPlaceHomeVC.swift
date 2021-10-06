@@ -150,9 +150,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
            self.navigationController?.pushViewController(nextVC, animated: true)
         }
         else{
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
-            
-            
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
+            nextVC.listIndex = indexPath.row + 1
         self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }

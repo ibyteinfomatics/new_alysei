@@ -16,6 +16,7 @@ class MarketPlaceOptionViewController: UIViewController {
     var indexOfPageToRequest = 1
     var arrOptions: [MyStoreProductDetail]?
     var passHeading: String?
+   // var listType: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +76,9 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
        
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
         nextVC.listType = self.listIndex
-        nextVC.pushedFromVC = .category
+      
         if listIndex == 4{
+            nextVC.pushedFromVC = .category
             nextVC.keywordSearch = arrOptions?[indexPath.row].name
             nextVC.optionId = arrOptions?[indexPath.row].marketplace_product_category_id
         }else{
@@ -85,7 +87,7 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
             
         }
         
-       
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

@@ -82,26 +82,40 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 //        self.index = index
     self.index = self.data?.postID ?? 0
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
+    
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
-        
         lblSharedUserEmail.text = modelData.subjectId?.email
     //userName.text = modelData.subjectId?.companyName?.capitalized
     //userNickName.text = modelData.subjectId?.email
     }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
         lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
-        userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
+      //  userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
         lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
         lblSharedUserEmail.text = modelData.subjectId?.email
         //userNickName.text = modelData.subjectId?.email
-    }else{
+    }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
+       
+        lblSharedUserEmail.text = modelData.subjectId?.email?.lowercased()
+        lblSharedUserTitle.text = modelData.subjectId?.name?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.name?.capitalized
+    }
+    else{
         //userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")" + "\(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+       // userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
         lblSharedUserEmail.text = modelData.subjectId?.name?.capitalized
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
        // userNickName.text = modelData.subjectId?.name?.capitalized
+    }
+    if modelData.sharedPostData?.subjectId?.roleId == UserRoles.producer.rawValue{
+        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.restaurant.rawValue{
+        userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
+    }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue){
+        userName.text = "\(modelData.sharedPostData?.subjectId?.name?.capitalized ?? "")"
+    }else{
+        userName.text = "\(modelData.sharedPostData?.subjectId?.companyName?.capitalized ?? "")"
     }
     lblPostDesc.text = modelData.sharedPostData?.body
     lblSharePostDesc.text = modelData.body
