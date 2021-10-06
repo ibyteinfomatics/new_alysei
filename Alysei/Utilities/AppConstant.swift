@@ -927,6 +927,8 @@ enum PushedFrom: Int {
     case confirmSelection
     case myStoreDashboard
     case addProduct
+    case region
+    case category
     
 }
 
