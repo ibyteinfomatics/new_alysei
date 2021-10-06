@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 //Mark:- You can also set any custom fonts in the code
         let fontAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 13.0)!]
             UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+       // UITabBarItem.appearance().tintColor = UIColor.black
         }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
