@@ -84,10 +84,18 @@ class MyStoreProductDetail{
     var total_three_star: Int?
     var total_two_star: Int?
     var location: String?
+    var userFieldOptionid, userFieldid: Int?
+    var option: String?
+    var hint: String?
+    var parent, head: Int?
+    var createdAt, updatedAt: String?
+    var id: Int?
     
+
     init(with data: [String:Any]?) {
         self.marketplace_product_id = Int.getInt(data?["marketplace_product_id"])
         self.user_id = Int.getInt(data?["user_id"])
+        self.id = Int.getInt(data?["id"])
         self.marketplace_store_id = Int.getInt(data?["marketplace_store_id"])
         self.title = String.getString(data?["title"])
         self.description = String.getString(data?["description"])
@@ -132,6 +140,15 @@ class MyStoreProductDetail{
             self.prefilled = SubjectData.init(with: storePreValue)
         }
         self.product_Name = String.getString(data?["product_category_name"])
+        self.option = String.getString(data?["option"])
+        self.hint = String.getString(data?["hint"])
+        self.createdAt = String.getString(data?["created_at"])
+        self.userFieldOptionid = Int.getInt(data?["user_field_option_id"])
+        self.userFieldid = Int.getInt(data?["user_field_id"])
+        self.parent = Int.getInt(data?["parent"])
+        self.head = Int.getInt(data?["head"])
+        
+        self.updatedAt = String.getString(data?["updated_at"])
     }
 }
 

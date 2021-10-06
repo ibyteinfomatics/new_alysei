@@ -329,6 +329,7 @@
 		6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */; };
 		6BC4C0DF260088C500791DCD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0DE260088C500791DCD /* ImageLoader.swift */; };
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
+		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BFF239126E7475E004C3916 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 6BFF239026E7475E004C3916 /* SocketIO */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
@@ -916,6 +917,7 @@
 		6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayForgetVC.xib; sourceTree = "<group>"; };
 		6BC4C0DE260088C500791DCD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
+		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -2628,6 +2630,7 @@
 				C55625F7266F5252007272C5 /* Membership.swift */,
 				C5E9A3AF26B8033C0005AE89 /* ProductRecentSearchModel.swift */,
 				C54F862726BD0FCB00501775 /* RatingReviewModel.swift */,
+				6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -3404,6 +3407,7 @@
 				276E16AF25DD8C5E00B17ACF /* MemberWalkthroughCollectionCell.swift in Sources */,
 				6B8992572702EA5C00591A2E /* GetHomePageModelData.swift in Sources */,
 				C5957A35265CEFF2004952D8 /* HubCollectionViewCell.swift in Sources */,
+				6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */,
 				C5EB3CF026E9CB8700CCAC9E /* DiscoverRecipeViewController.swift in Sources */,
 				27A443B625AE03720002BAAC /* UICollectionViewCellExtended.swift in Sources */,
 				27A443CB25AE03720002BAAC /* CommonUtil.swift in Sources */,
