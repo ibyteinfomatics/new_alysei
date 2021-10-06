@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VoiceOfExpertsViewController: UIViewController {
+class VoiceOfExpertsViewController: AlysieBaseViewC {
     @IBOutlet weak var btnDecline: UIButton!
     
     @IBOutlet weak var name: UILabel!
@@ -27,6 +27,20 @@ class VoiceOfExpertsViewController: UIViewController {
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         // Do any additional setup after loading the view.
         callDashboardApi(id: connectionId)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        userimg.isUserInteractionEnabled = true
+        userimg.addGestureRecognizer(tapGestureRecognizer)
+        
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = dashboardModel?.data?.userData?.userid
+        // Your action
     }
     
     func inviteApi(id: Int, type: Int){
@@ -67,6 +81,11 @@ class VoiceOfExpertsViewController: UIViewController {
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
                 self.userimg.setImage(withString: String.getString(kImageBaseUrl+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
             }
+            
+            self.specialization.text = self.dashboardModel?.data?.aboutMember?[1].value
+            self.voice_title.text = self.dashboardModel?.data?.aboutMember?[2].value
+            self.country.text = self.dashboardModel?.data?.aboutMember?[3].value
+            
             
         }
     }

@@ -94,10 +94,16 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
   {
     let request = ConnectionProductType.Something.Request()
     interactor?.doSomething(request: request)
-    lblSelectedProduct.text = "Select product type........."
+    lblSelectedProduct.text = "Select product type"
     lblSelectedProduct.textColor = UIColor.lightGray
-   print("UserName---------------------\(self.userName)")
-    lblUserName.text = "Sending a request to connect with @" + "\(userName ?? "")"
+   print("UserName---------------------\(self.userName!)")
+    
+    
+    let messageAttributedString = NSMutableAttributedString()
+    messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
+    messageAttributedString.append(NSAttributedString(string: "@\(self.userName!)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
+    
+    lblUserName.attributedText = messageAttributedString
     vwProduct.layer.borderWidth = 0.5
     vwProduct.layer.borderColor = UIColor.lightGray.cgColor
   }

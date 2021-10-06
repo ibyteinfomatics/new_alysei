@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImporterDashboardViewController: UIViewController {
+class ImporterDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var btnDecline: UIButton!
     @IBOutlet weak var btnAccept: UIButton!
@@ -38,6 +38,18 @@ class ImporterDashboardViewController: UIViewController {
        
         callDashboardApi(id: connectionId)
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        userimg.isUserInteractionEnabled = true
+        userimg.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = dashboardModel?.data?.userData?.userid
+        // Your action
     }
     
     func inviteApi(id: Int, type: Int){

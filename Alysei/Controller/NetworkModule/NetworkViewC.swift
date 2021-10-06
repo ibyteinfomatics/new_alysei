@@ -184,8 +184,19 @@ class NetworkViewC: AlysieBaseViewC {
                 let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                 vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
             case 3:
-                let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
-                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                
+                let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+                
+                switch role {
+                case 9,7,8:
+                    let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
+                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                default:
+                    let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
+                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                }
+                
+                
             case 8:
                 let vc = self.pushViewController(withName: TravelAgencyViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! TravelAgencyViewController
                 vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
@@ -343,7 +354,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     if currentIndex == 0 {
-        return 180.0
+        return 200.0
     } else {
         return 66.0
     }

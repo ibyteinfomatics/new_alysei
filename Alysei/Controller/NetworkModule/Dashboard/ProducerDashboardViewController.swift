@@ -27,7 +27,18 @@ class ProducerDashboardViewController: AlysieBaseViewC {
 //        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
 //
         callDashboardApi(id: connectionId)
+        
+        
 
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = dashboardModel?.data?.userData?.userid
+        // Your action
     }
     
     func callDashboardApi(id: String){
@@ -105,6 +116,10 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             cell.userimg.layer.borderWidth = 2
             cell.userimg.layer.borderColor = UIColor.white.cgColor
             cell.userimg.layer.cornerRadius = cell.userimg.frame.width/2
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            cell.userimg.isUserInteractionEnabled = true
+            cell.userimg.addGestureRecognizer(tapGestureRecognizer)
             
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
                 cell.userimg.setImage(withString: String.getString(kImageBaseUrl+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))

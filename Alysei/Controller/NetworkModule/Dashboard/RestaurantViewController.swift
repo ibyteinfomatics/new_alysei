@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RestaurantViewController: UIViewController {
+class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var btnDecline: UIButton!
     
     @IBOutlet weak var name: UILabel!
@@ -28,6 +28,19 @@ class RestaurantViewController: UIViewController {
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         
         callDashboardApi(id: connectionId)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        userimg.isUserInteractionEnabled = true
+        userimg.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = dashboardModel?.data?.userData?.userid
+        // Your action
     }
     
     
@@ -57,18 +70,25 @@ class RestaurantViewController: UIViewController {
                 
             }
             
-            self.name.text = self.dashboardModel?.data?.userData?.companyName
+            self.name.text = self.dashboardModel?.data?.userData?.restaurantName
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
             
             self.userimg.layer.masksToBounds = false
             self.userimg.clipsToBounds = true
             self.userimg.layer.borderWidth = 2
             self.userimg.layer.borderColor = UIColor.white.cgColor
+            self.userimg.contentMode = .scaleToFill
             self.userimg.layer.cornerRadius = self.userimg.frame.width/2
             
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
                 self.userimg.setImage(withString: String.getString(kImageBaseUrl+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
             }
+            
+            self.about.text = self.dashboardModel?.data?.aboutMember?[4].value
+            self.ourmenu.text = self.dashboardModel?.data?.aboutMember?[5].value
+            self.pickup.text = self.dashboardModel?.data?.aboutMember?[2].value
+            //self.pickupDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value
+            //self.deliveryDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value
             
         }
     }

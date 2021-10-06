@@ -68,7 +68,7 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
         vwConfirm.isHidden = true
         let messageAttributedString = NSMutableAttributedString()
         messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
-        //messageAttributedString.append(NSAttributedString(string: "@\(self.userModel.username)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
+        messageAttributedString.append(NSAttributedString(string: "@\(self.userModel.username)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
 
         self.emailIDLabel.attributedText = messageAttributedString
     }

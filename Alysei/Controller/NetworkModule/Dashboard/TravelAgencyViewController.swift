@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelAgencyViewController: UIViewController {
+class TravelAgencyViewController: AlysieBaseViewC {
 
     @IBOutlet weak var btnDecline: UIButton!
     
@@ -30,6 +30,20 @@ class TravelAgencyViewController: UIViewController {
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
     
         callDashboardApi(id: connectionId)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        userimg.isUserInteractionEnabled = true
+        userimg.addGestureRecognizer(tapGestureRecognizer)
+        
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = dashboardModel?.data?.userData?.userid
+        // Your action
     }
     
     

@@ -17,14 +17,15 @@ class UserPostsViewController: AlysieBaseViewC {
     //TODO: pagination is pending
     var count = 100
 
-    var postData = [PostList.innerData]()
+   // var postData = [PostList.innerData]()
+    var postData = [NewFeedSearchDataModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
-        self.fetchPostWithPhotsFromServer(pageNumber)
+        
 
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
@@ -39,6 +40,7 @@ class UserPostsViewController: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.fetchPostWithPhotsFromServer(pageNumber)
     }
 
     func updatePostList() {
@@ -54,31 +56,43 @@ extension UserPostsViewController {
         guard let request = WebServices.shared.buildURLRequest(urlString, method: .GET) else {
             return
         }
-        WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-            print("some")
-
-            guard statusCode == 200 else { return }
-
-            guard let data = data else { return }
-
-            do {
-                let response = try JSONDecoder().decode(PostList.request.self, from: data)
-                print(response)
-
-                let postData = response.data.data
-                if self.pageNumber == 1 {
-                    self.postData = postData
-                } else {
-                    self.postData.append(contentsOf: postData)
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: urlString, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, erroType, statusCode in
+            let response = dictResponse as? [String:Any]
+            
+            if let data = response?["data"]  as? [String:Any]{
+                if let subData = data["data"] as? [[String:Any]]{
+                    self.postData = subData.map({NewFeedSearchDataModel.init(with: $0)})
                 }
                 self.setUI()
                 self.updatePostList()
-
-            } catch {
-                print(error.localizedDescription)
             }
-
         }
+//        WebServices.shared.request(request) { data, URLResponse, statusCode, error in
+//            print("some")
+//
+//            guard statusCode == 200 else { return }
+//
+//            guard let data = data else { return }
+//
+//            do {
+//                let response = try JSONDecoder().decode(PostList.request.self, from: data)
+//                print(response)
+//
+//                let postData = response.data.data
+//                if self.pageNumber == 1 {
+//                    self.postData = postData
+//                } else {
+//                    self.postData.append(contentsOf: postData)
+//                }
+//                self.setUI()
+//                self.updatePostList()
+//
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//
+//        }
     }
 }
 
@@ -92,7 +106,8 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
 
         let data = self.postData[indexPath.row]
 //        cell.lblPostDesc?.text = data.body
-        cell.configCell(NewFeedSearchDataModel(data), indexPath.row)
+       // cell.configCell(NewFeedSearchDataModel(data), indexPath.row)
+        cell.configCell(data, indexPath.row)
         cell.sizeToFit()
         return cell
     }

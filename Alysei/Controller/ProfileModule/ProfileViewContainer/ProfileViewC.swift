@@ -536,28 +536,63 @@ class ProfileViewC: AlysieBaseViewC{
         
         //
         
-        if (self.visitorUserType == .producer) && (self.userType == .distributer1 || self.userType == .distributer2 || self.userType == .distributer3) {
-            self.segueToCompleteConnectionFlow()
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
+            
+            if percentage == "100" || percentage == nil{
+                self.segueToCompleteConnectionFlow()
+            } else {
+                self.tabBarController?.selectedIndex = 4
+            }
+            
             return
-        } else if self.userType == .voyagers {
+        } else {
+            if percentage == "100" || percentage == nil{
+                self.connectButtonTapped()
+            } else {
+                self.tabBarController?.selectedIndex = 4
+            }
+        }
+        
+        
+        /*else if self.userType == .voyagers {
             if self.userType == .voyagers {
             } else {
             }
-        } else {
-        }
+        }*/
         
-        if percentage == "100" {
+        
+        
+        
+        
+        /*if percentage == "100" || percentage == nil{
             self.connectButtonTapped()
         } else {
             self.tabBarController?.selectedIndex = 4
-        }
+        }*/
         
         
     }
     
     private func segueToCompleteConnectionFlow() {
         let controller = pushViewController(withName: ConnectionProductTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionProductTypeViewController
-        controller?.userName = self.usernameLabel.text
+        
+        var username = ""
+        
+        if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+            
+            username = self.userProfileModel.data?.userData?.restaurantName ?? ""
+            
+        } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
+            
+            username = self.userProfileModel.data?.userData?.companyName ?? ""
+            
+        } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+            
+            username = self.userProfileModel.data?.userData?.firstName ?? ""
+            
+        }
+        
+        controller?.userName = username
         controller?.userID = self.userID
     }
     
@@ -1502,7 +1537,22 @@ extension ProfileViewC{
         
         if segue.identifier == "segueProfileTabToBasicConnection" {
             if let viewCon = segue.destination as? BasicConnectFlowViewController {
-                let username = self.userProfileModel.data?.userData?.username ?? ""
+                var username = ""
+                
+                if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+                    
+                    username = self.userProfileModel.data?.userData?.restaurantName ?? ""
+                    
+                } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
+                    
+                    username = self.userProfileModel.data?.userData?.companyName ?? ""
+                    
+                } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+                    
+                    username = self.userProfileModel.data?.userData?.firstName ?? ""
+                    
+                }
+                
                 let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
                 viewCon.userModel = BasicConnectFlow.userDataModel(userID: profileID,
                                                                    username: username)
