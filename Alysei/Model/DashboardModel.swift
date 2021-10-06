@@ -12,10 +12,6 @@ class DashboardModel {
     var success: Int?
     var data: DashboardDataClass?
 
-    init(success: Int?, data: DashboardDataClass?) {
-        self.success = success
-        self.data = data
-    }
     
     init(with dictResponse: [String:Any]?) {
         self.success = Int.getInt(dictResponse?["success"])

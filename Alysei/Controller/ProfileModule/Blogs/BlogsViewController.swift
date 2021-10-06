@@ -42,6 +42,7 @@ class BlogsViewController: AlysieBaseViewC {
     }
     @IBAction func create(_ sender: UIButton) {
       
+        check = "create"
         _ = pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome)
       
     }
@@ -102,7 +103,7 @@ class BlogsViewController: AlysieBaseViewC {
         }
         
         blogTableCell.btnEditCallback = { tag in
-                    
+            check = "show"
             let vc = self.pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateBlogViewController
             vc.blogtitle = self.blogModel?.data?[indexPath].title
             vc.fulldescription = self.blogModel?.data?[indexPath].datumDescription
@@ -114,7 +115,8 @@ class BlogsViewController: AlysieBaseViewC {
         }
         
         blogTableCell.btnMoreCallback = { tag in
-                    
+                
+            check = "show"
             let vc = self.pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateBlogViewController
             vc.blogtitle = self.blogModel?.data?[indexPath].title
             vc.fulldescription = self.blogModel?.data?[indexPath].datumDescription

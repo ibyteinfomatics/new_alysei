@@ -300,6 +300,13 @@ struct APIUrl{
     static let kinvitationAcceptReject = "accept/reject/request"
     static let kPendingRemove = "cancel/connection/request?visitor_profile_id="
     static let kMarketPlaceProduct = "get/box/detail/"
+    static let kBlockList = "get/block/user/list"
+    static let kUnBlockUser = "unblock/user"
+    static let kMarketPlaceProductBox = "get/products?box="
+    static let kMarketPlaceBoxProduct = "get/products?box="
+    static let kMarketPlaceRegion = "get/box/detail/3"
+    static let kGetProductByRegionId = "get/products/by/region?region_id="
+    static let kGetProductByCategoryId = "get/products/by/category?category_id="
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="

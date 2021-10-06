@@ -550,13 +550,13 @@ extension ConversationViewController {
     
     func notificationApi(fromid: String, toid: String){
         
-       /* let parameters: [String:Any] = [
+       let parameters: [String:Any] = [
             "from_id": fromid,
-            "to_id": toid]*/
+            "to_id": toid]
         
-        let parameters: [String:Any] = [
+        /*let parameters: [String:Any] = [
             "from_id": toid,
-            "to_id": fromid]
+            "to_id": fromid]*/
       
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kSendNotification, requestMethod: .POST, requestParameters: parameters, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             

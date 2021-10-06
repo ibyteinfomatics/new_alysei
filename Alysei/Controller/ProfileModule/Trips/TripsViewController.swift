@@ -42,7 +42,7 @@ class TripsViewController: AlysieBaseViewC {
         }
     }
     @IBAction func create(_ sender: UIButton) {
-      
+        check = "show"
         let vc  = pushViewController(withName: CreateTripsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateTripsViewController
         vc.agency = agencyname
         vc.website = website
@@ -216,7 +216,7 @@ class TripsViewController: AlysieBaseViewC {
         }
         
         tripTableCell.btnEditCallback = { tag in
-                    
+            check = "show"
             let vc = self.pushViewController(withName: CreateTripsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateTripsViewController
             vc.tripname = self.tripModel?.data?[indexPath].tripName
             vc.agency = self.tripModel?.data?[indexPath].travelAgency
@@ -241,7 +241,7 @@ class TripsViewController: AlysieBaseViewC {
         }
         
         tripTableCell.btnMoreCallback = { tag in
-            
+            check = "show"
             let vc = self.pushViewController(withName: CreateTripsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateTripsViewController
             vc.tripname = self.tripModel?.data?[indexPath].tripName
             vc.agency = self.tripModel?.data?[indexPath].travelAgency

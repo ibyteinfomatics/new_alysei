@@ -8,7 +8,7 @@
 import UIKit
 import SVProgressHUD
 
-
+var check = "";
 class ProfileViewC: AlysieBaseViewC{
     
     //MARK: - IBOutlet -
@@ -170,7 +170,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.btnEditProfile.layer.cornerRadius = 0.0
         self.viewSeparator.alpha = 0.0
         
-        if self.userLevel == .own {
+        /*if self.userLevel == .own {
             self.menuButton.isHidden = false
             self.fetchProfileDetails()
         } else {
@@ -178,7 +178,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.menuButton.isHidden = true
                 self.fetchVisiterProfileDetails(self.userID)
             }
-        }
+        }*/
         //btnEditProfile.layer.cornerRadius = 22
         //btnEditProfile.layer.masksToBounds = true
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
@@ -332,16 +332,31 @@ class ProfileViewC: AlysieBaseViewC{
             self.currentIndex = 0
             self.postRequestToGetProgress()
             //tblViewProfileCompletion.scrollToTop()
-            self.postRequestToGetProgress()
+            // self.postRequestToGetProgress()
             //tblViewProfileCompletion.scrollToTop()
-           
-            /*if self.userLevel == .own {
-                self.fetchProfileDetails()
-            } else {
-                if self.userID != nil {
-                    self.fetchVisiterProfileDetails(self.userID)
+            
+            if check == "" {
+                if self.userLevel == .own {
+                    self.menuButton.isHidden = false
+                    self.fetchProfileDetails()
+                } else {
+                    if self.userID != nil {
+                        self.menuButton.isHidden = true
+                        self.fetchVisiterProfileDetails(self.userID)
+                    }
                 }
-            }*/
+            }
+            //check = ""
+            
+            /**/
+           
+//            if self.userLevel == .own {
+//                self.fetchProfileDetails()
+//            } else {
+//                if self.userID != nil {
+//                    self.fetchVisiterProfileDetails(self.userID)
+//                }
+//            }
             
             
         }
@@ -381,7 +396,8 @@ class ProfileViewC: AlysieBaseViewC{
     @IBAction func tapSideMenu(_ sender: UIButton) {
         
         // _ = pushViewController(withName: SettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        _ = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
+        vc!.userId = String.getString(userID)
     }
     
     @IBAction func tapPosts(_ sender: UIButton) {
@@ -529,7 +545,14 @@ class ProfileViewC: AlysieBaseViewC{
             }
         } else {
         }
-        self.connectButtonTapped()
+        
+        if percentage == "100" {
+            self.connectButtonTapped()
+        } else {
+            self.tabBarController?.selectedIndex = 4
+        }
+        
+        
     }
     
     private func segueToCompleteConnectionFlow() {

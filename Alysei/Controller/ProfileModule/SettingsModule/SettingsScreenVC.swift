@@ -12,6 +12,7 @@ class SettingsScreenVC: AlysieBaseViewC {
 
     @IBOutlet weak var settingCollectionView: UICollectionView!
     @IBOutlet weak var viewShadow: UIView!
+    var userId: String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,8 +119,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
-        case 3:
-          _ = pushViewController(withName: EventsView.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 2:
+          let vc = pushViewController(withName: EventsView.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventsView
+            vc!.userId = userId
         case 4:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:

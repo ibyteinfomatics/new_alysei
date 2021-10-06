@@ -26,6 +26,7 @@ class VoiceOfExpertsViewController: UIViewController {
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         // Do any additional setup after loading the view.
+        callDashboardApi(id: connectionId)
     }
     
     func inviteApi(id: Int, type: Int){
@@ -54,7 +55,7 @@ class VoiceOfExpertsViewController: UIViewController {
                 
             }
             
-            self.name.text = self.dashboardModel?.data?.userData?.companyName
+            self.name.text = (self.dashboardModel?.data?.userData?.firstName)!+" "+(self.dashboardModel?.data?.userData?.lastName)!
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
             
             self.userimg.layer.masksToBounds = false

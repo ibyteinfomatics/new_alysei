@@ -42,7 +42,7 @@ class EventsView: AlysieBaseViewC {
     }
     
     @IBAction func create(_ sender: UIButton) {
-
+        check = "create"
         let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
         vc.hostname = hostname
         vc.location = location
@@ -104,7 +104,7 @@ class EventsView: AlysieBaseViewC {
         }
         
         eventTableCell.btnMoreCallback = { tag in
-            
+            check = "show"
             let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
             vc.hostname = self.eventModel?.data?[indexPath].hostName
             vc.eventname = self.eventModel?.data?[indexPath].eventName
@@ -121,7 +121,7 @@ class EventsView: AlysieBaseViewC {
         }
         
         eventTableCell.btnEditCallback = { tag in
-            
+            check = "show"
             let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
             vc.hostname = self.eventModel?.data?[indexPath].hostName
             vc.eventname = self.eventModel?.data?[indexPath].eventName
