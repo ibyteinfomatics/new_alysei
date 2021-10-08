@@ -114,6 +114,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         websiteView1.isHidden = false
         websiteLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
         
+        descriptionTextView.textContainer.heightTracksTextView = true
+        descriptionTextView.isScrollEnabled = false
+        
         if eventname != nil {
             hostNameTxf.text = hostname
             eventNameTxf.text = eventname

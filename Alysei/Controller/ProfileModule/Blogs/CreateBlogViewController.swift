@@ -45,13 +45,14 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateBlogViewController.dismissKeyboard))
             view.addGestureRecognizer(tap)
         
+        descriptionTextView.textContainer.heightTracksTextView = true
+        descriptionTextView.isScrollEnabled = false
+        
         if blogtitle != nil {
             
             blogTxf.text = blogtitle
             descriptionTextView.text = fulldescription
             descriptionTextView.textColor = .black
-            descriptionTextView.textContainer.heightTracksTextView = true
-            descriptionTextView.isScrollEnabled = false
             uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
             
             if draft == "1" {

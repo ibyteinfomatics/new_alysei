@@ -109,7 +109,7 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
 //        let controller = pushViewController(withName: ConnectionConfirmVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionConfirmVC
 //        controller?.userID = self.userID
         vwConfirm.isHidden = false
-        
+        self.navigationController?.popViewController(animated: true)
        
         
     }

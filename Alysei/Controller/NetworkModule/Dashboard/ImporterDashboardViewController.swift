@@ -20,12 +20,14 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var privatelabel: UILabel!
     @IBOutlet weak var brandlabel: UILabel!
     @IBOutlet weak var ourproduct: UILabel!
+    @IBOutlet weak var countryText: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     
     @IBOutlet weak var scrollview: UIScrollView!
     
     var connectionId = ""
     var dashboardModel:DashboardModel?
+    var role = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,15 @@ class ImporterDashboardViewController: AlysieBaseViewC {
 //        headerView.layer.shadowOpacity = 0.2
 //        headerView.layer.shadowColor = UIColor.lightGray.cgColor
 //        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
+        
+        //let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+        
+        switch role {
+        case 4,5,6:
+            countryText.text = "USA State"
+        default:
+            countryText.text = "Italian Region"
+        }
         
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor

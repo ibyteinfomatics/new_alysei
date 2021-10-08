@@ -44,7 +44,15 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBAction func btnFilterAction(_ sender: UIButton){
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
         nextVC.identifyList = 4
+        if pushedFromVC == .region {
+            nextVC.loadFilter =  .region
+        }else if pushedFromVC == .category{
+            nextVC.loadFilter =  .category
+        }else if pushedFromVC == .properties{
+            nextVC.loadFilter =  .properties
+        }else{
         nextVC.loadFilter = .conservationFood
+        }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -307,6 +307,7 @@ struct APIUrl{
     static let kMarketPlaceRegion = "get/box/detail/3"
     static let kGetProductByRegionId = "get/products/by/region?region_id="
     static let kGetProductByCategoryId = "get/products/by/category?category_id="
+    static let kFollowUnfollow = "follow/user"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -372,7 +373,9 @@ struct APIUrl{
         static let addNewIngridient = kBASEURL + "add/ingredients"
         static let saveRecipe = kBASEURL + "create/recipe"
 //        static let draftRecipe = kBASEURL + "save/in/draft/recipe"
-        static let draftRecipe = kBASEURL + "save/update/draft/recipe/3"
+        static let draftRecipe = kBASEURL + "save/update/draft/recipe"
+        static let getAllReviews = kBASEURL + "get/reviews?recipe_id="
+
         
         static let getMyRecipe = kBASEURL + "get/myrecipes"
         static let getHomeScreen = kBASEURL + "get/home/screen"
@@ -931,6 +934,7 @@ enum PushedFrom: Int {
     case category
     case conservation
     case fdaCertified
+    case properties
     
 }
 

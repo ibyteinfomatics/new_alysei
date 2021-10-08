@@ -322,13 +322,57 @@ class ProfileViewC: AlysieBaseViewC{
         // self.viewProfileHeight.constant = 0
         
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        if Int.getInt(data["alysei_review"]) == 0 {
+        
+        
+        let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+        
+        if role != 10 {
             
-            blankdataView.isHidden = false
+            if Int.getInt(data["alysei_review"]) == 0 {
+                
+                blankdataView.isHidden = false
 
+                
+                
+            } else if Int.getInt(data["alysei_review"]) == 1{
+                
+                blankdataView.isHidden = true
+                self.postRequestToGetFields()
+                self.fetchContactDetail()
+                self.currentIndex = 0
+                self.postRequestToGetProgress()
+                //tblViewProfileCompletion.scrollToTop()
+                // self.postRequestToGetProgress()
+                //tblViewProfileCompletion.scrollToTop()
+                
+                if check == "" {
+                    if self.userLevel == .own {
+                        self.menuButton.isHidden = false
+                        self.fetchProfileDetails()
+                    } else {
+                        if self.userID != nil {
+                            self.menuButton.isHidden = true
+                            self.fetchVisiterProfileDetails(self.userID)
+                        }
+                    }
+                }
+                //check = ""
+                
+                /**/
+               
+    //            if self.userLevel == .own {
+    //                self.fetchProfileDetails()
+    //            } else {
+    //                if self.userID != nil {
+    //                    self.fetchVisiterProfileDetails(self.userID)
+    //                }
+    //            }
+                
+                
+            }
             
+        } else {
             
-        } else if Int.getInt(data["alysei_review"]) == 1{
             
             blankdataView.isHidden = true
             self.postRequestToGetFields()
@@ -350,20 +394,10 @@ class ProfileViewC: AlysieBaseViewC{
                     }
                 }
             }
-            //check = ""
-            
-            /**/
-           
-//            if self.userLevel == .own {
-//                self.fetchProfileDetails()
-//            } else {
-//                if self.userID != nil {
-//                    self.fetchVisiterProfileDetails(self.userID)
-//                }
-//            }
-            
             
         }
+        
+        
         
         
     }
@@ -551,7 +585,31 @@ class ProfileViewC: AlysieBaseViewC{
             return
         } else {
             if percentage == "100" || percentage == nil{
-                self.connectButtonTapped()
+                
+                
+                let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
+                
+                if self.connectButton.titleLabel?.text == "Follow" {
+                    followUnfollow(id: profileID, type: 1)
+                } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                    followUnfollow(id: profileID, type: 0)
+                } else {
+                    self.connectButtonTapped()
+                }
+                
+                /*if self.userType == .voyagers {
+                    
+                    if self.visitorUserType == .voyagers {
+                        
+                        //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
+                        //self.connectButton.setTitle("\(title)", for: .normal)
+                    } else {
+                        //let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
+                        //self.connectButton.setTitle("\(title)", for: .normal)
+                        
+                    }
+                }*/
+                
             } else {
                 self.tabBarController?.selectedIndex = 4
             }
@@ -625,6 +683,7 @@ class ProfileViewC: AlysieBaseViewC{
             }
             self.connectButton.setTitle("\(title)", for: .normal)
         } else if self.userType == .voyagers {
+            
             if self.visitorUserType == .voyagers {
                 let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
                 self.connectButton.setTitle("\(title)", for: .normal)
@@ -1175,6 +1234,27 @@ class ProfileViewC: AlysieBaseViewC{
         
     }
     //MARK:  - WebService Methods -
+    
+    func followUnfollow(id: Int, type: Int){
+        
+        let params: [String:Any] = [
+            "follow_user_id": id,
+            "follow_or_unfollow": type]
+        
+        disableWindowInteraction()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kFollowUnfollow, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
+            
+            if self.connectButton.titleLabel?.text == "Follow" {
+                
+                self.connectButton.setTitle("Unfollow", for: .normal)
+            } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                self.connectButton.setTitle("Follow", for: .normal)
+            }
+            
+            
+        }
+        
+    }
     
     private func postRequestToGetProgress() -> Void{
         
