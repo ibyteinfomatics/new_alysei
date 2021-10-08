@@ -9,13 +9,22 @@ import UIKit
 
 class ProductStoreVC: UIViewController {
     
-    var arrProductList:ProductsStore?
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblHeading: UILabel!
     var indexOfPageToRequest = 1
     var listType: Int?
+    var arrProductList:ProductsStore?
+    var pushedFromVC: PushedFrom?
+    var optionId: Int?
+    var keywordSearch: String?
+    
+    var lastPage: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.callMyStoreProductApi(1)
+        
+        self.lblHeading.text = keywordSearch
+        callMyStoreProductApi(1)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +35,12 @@ class ProductStoreVC: UIViewController {
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @IBAction func filterAction(_ sender: UIButton){
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
+        nextVC.identifyList = 4
+        nextVC.loadFilter = .producerStore
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // calculates where the user is in the y-axis
         let offsetY = scrollView.contentOffset.y
@@ -35,14 +49,14 @@ class ProductStoreVC: UIViewController {
             if indexOfPageToRequest > arrProductList?.lastPage ?? 0{
                 self.showAlert(withMessage: "No More Data Found")
             }else{
-            // increments the number of the page to request
-            indexOfPageToRequest += 1
-
-            // call your API for more data
+                // increments the number of the page to request
+                indexOfPageToRequest += 1
+                
+                // call your API for more data
                 callMyStoreProductApi(indexOfPageToRequest)
-
-            // tell the table view to reload with the new data
-            self.tableView.reloadData()
+                
+                // tell the table view to reload with the new data
+                self.tableView.reloadData()
             }
         }
     }
@@ -86,17 +100,18 @@ extension ProductStoreVC {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "?page=" + "\(pageNo ?? 0)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
             switch statusCode{
             case 200:
-            if let response = dictResponse as? [String:Any]{
-                if let data = response["data"] as? [String:Any]{
+                let response = dictResponse as? [String:Any]
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
                     self.arrProductList = ProductsStore.init(with: data)
                 }
-            }
             default:
                 print("No Data")
             }
             self.tableView.reloadData()
         }
     }
+    
 }
 
 class ProductTableViewCell: UITableViewCell{

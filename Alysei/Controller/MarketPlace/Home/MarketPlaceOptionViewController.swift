@@ -17,7 +17,7 @@ class MarketPlaceOptionViewController: UIViewController {
     var arrOptions: [MyStoreProductDetail]?
     var passHeading: String?
    // var listType: Int?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lblHead.text = passHeading
@@ -82,9 +82,8 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
             nextVC.keywordSearch = arrOptions?[indexPath.row].name
             nextVC.optionId = arrOptions?[indexPath.row].marketplace_product_category_id
         }else{
+            nextVC.pushedFromVC = .conservation
             nextVC.keywordSearch = arrOptions?[indexPath.row].option
-            nextVC.optionId = arrOptions?[indexPath.row].userFieldOptionid
-            
         }
         
         self.navigationController?.pushViewController(nextVC, animated: true)

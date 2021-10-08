@@ -124,7 +124,15 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
         cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
-        cell.lblOption.text = "\(arrMarketPlace[indexPath.row])"
+
+        let firstWord = arrMarketPlace[indexPath.row].components(separatedBy: " ")
+        if firstWord.first == firstWord.last{
+            cell.lblOption.text = (firstWord.first ?? "")
+        }else{
+        cell.lblOption.text = (firstWord.first ?? "") + "\n" + (firstWord.last ?? "")
+        }
+        //cell.lblOption.text = ("\u{00a0}\(arrMarketPlace[indexPath.row])")
+      
         return cell
     }
     
@@ -139,19 +147,23 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if indexPath.row == 0{
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
             nextVC.listType = 1
+            nextVC.keywordSearch = arrMarketPlace[indexPath.row]
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if indexPath.row == 2 {
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
             
             self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if indexPath.row == 6 || indexPath.row == 7 || indexPath.row == 5{
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
+        }else if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7{
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
+                nextVC.pushedFromVC = .fdaCertified
             nextVC.listType = indexPath.row + 1
-           self.navigationController?.pushViewController(nextVC, animated: true)
+            nextVC.keywordSearch = arrMarketPlace[indexPath.row]
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
         else{
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
             nextVC.listIndex = indexPath.row + 1
+            nextVC.passHeading = arrMarketPlace[indexPath.row]
         self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
