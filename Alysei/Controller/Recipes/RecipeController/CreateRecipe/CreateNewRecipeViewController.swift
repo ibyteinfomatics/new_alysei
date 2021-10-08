@@ -54,6 +54,11 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     var toolBar = UIToolbar()
     var picker1  = UIPickerView()
     var strSelectedId : Int?
+    var strSelectedIdMeal : Int?
+    var strSelectedIdCourse : Int?
+    var strSelecetdIdDiet: Int?
+    var strSelectedIdIntolerance: Int?
+    var strSelectedIdRegion: Int?
     var strSelectedId2: Int?
     var arraySelectedImg: String?
 
@@ -65,9 +70,9 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     var arrRegion = [SelectRegionDataModel]()
     var arrFoodIntolerance = [SelectFoodIntoleranceDataModel]()
     var str_return : String = String ()
-    var timer: Timer?
    
-
+    var timer: Timer?
+    
     override func viewDidLayoutSubviews() {
            self.scrollViewCreateRecipe.contentSize = CGSize(width: self.view.frame.size.width, height: 1250)
         
@@ -88,6 +93,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         addPlusServingLongPressGesture()
         addMinusServingLongPressGesture()
 
+       
     }
     
     override func viewWillLayoutSubviews() {
@@ -203,6 +209,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         
             
         case 3:
+            if let stId = self.arrOptions[0].recipeMealId
+            {
+                self.strSelectedIdMeal = stId
+            }
             self.mealNameLabel.text = self.str_return
 //            self.mealNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.mealNameLabel.textColor = .black
@@ -211,6 +221,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         
             
         case 4:
+            if let stId = self.arrCourse[0].recipeCourseId
+            {
+                self.strSelectedIdCourse = stId
+            }
             self.courseNameLabel.text = self.str_return
 //            self.courseNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.courseNameLabel.textColor = .black
@@ -219,6 +233,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         
         
         case 5:
+            if let stId = self.arrDiet[0].dietId
+            {
+                self.strSelecetdIdDiet = stId
+            }
             self.dietLabel.text = self.str_return
 //            self.dietLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.dietLabel.textColor = .black
@@ -226,6 +244,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             picker1.removeFromSuperview()
         
         case 6:
+            if let stId = self.arrFoodIntolerance[0].foodId
+            {
+                self.strSelectedIdIntolerance = stId
+            }
             self.foodIntoleranceLabel.text = self.str_return
             
 //            self.foodIntoleranceLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -235,6 +257,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
            
             
         case 7:
+            if let stId = self.arrRegion[0].regionId
+            {
+                self.strSelectedIdRegion = stId
+            }
             self.regionLabel.text = self.str_return
 //            self.regionLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
             self.regionLabel.textColor = .black
@@ -324,7 +350,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     @IBAction func nextButton(_ sender: UIButton) {
 
         self.validateFields()
-        createRecipeJson = ["recipeImage" : self.arraySelectedImg, "name" : self.nameTextField.text ?? "", "cookingSkill" : self.cookingSkillLabel.text ?? "","cookingSkillId" : self.strSelectedId ?? 0, "cusineId" : self.strSelectedId2 ?? 0, "cusine" : self.cuisineLabel.text ?? "", "meal" : self.mealNameLabel.text ?? "","mealId" : self.strSelectedId ?? 0, "course" : self.courseNameLabel.text ?? "","courseId" : self.strSelectedId ?? 0, "diet" : self.dietLabel.text ?? "","dietId" : self.strSelectedId ?? 0, "foodIntolerance" : self.foodIntoleranceLabel.text ?? "","foodIntoleranceId" : self.strSelectedId ?? 0, "hour" : Int(self.hoursLable.text!) ?? 0, "minute" : Int(self.minutesLable.text!) ?? 0, "serving" : Int(self.howMuchPeopleLable.text!) ?? 0, "region" : self.regionLabel.text ?? "", "regionId" : self.strSelectedId ?? 0]
+        createRecipeJson = ["recipeImage" : self.arraySelectedImg, "name" : self.nameTextField.text ?? "", "cookingSkill" : self.cookingSkillLabel.text ?? "","cookingSkillId" : self.strSelectedId ?? 0, "cusineId" : self.strSelectedId2 ?? 0, "cusine" : self.cuisineLabel.text ?? "", "meal" : self.mealNameLabel.text ?? "","mealId" : self.strSelectedIdMeal ?? 0, "course" : self.courseNameLabel.text ?? "","courseId" : self.strSelectedIdCourse ?? 0, "diet" : self.dietLabel.text ?? "","dietId" : self.strSelecetdIdDiet ?? 0, "foodIntolerance" : self.foodIntoleranceLabel.text ?? "","foodIntoleranceId" : self.strSelectedIdIntolerance ?? 0, "hour" : Int(self.hoursLable.text!) ?? 0, "minute" : Int(self.minutesLable.text!) ?? 0, "serving" : Int(self.howMuchPeopleLable.text!) ?? 0, "region" : self.regionLabel.text ?? "", "regionId" : self.strSelectedIdRegion ?? 0]
         
     }
     @IBAction func plusHoursButton(_ sender: UIButton) {
@@ -917,7 +943,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
 
             if let stName = self.arrOptions[row].mealName
          {
-             str_return = stName
+                str_return = stName
          }
 
         case 4:
@@ -982,7 +1008,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
         case 4:
              if let stId = self.arrCourse[row].recipeCourseId
              {
-                 self.strSelectedId = stId
+                 self.strSelectedIdCourse = stId
              }
              if let stName = self.arrCourse[row].courseName
              {
@@ -1009,7 +1035,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
         case 5:
              if let stId = self.arrDiet[row].dietId
              {
-                 self.strSelectedId = stId
+                 self.strSelecetdIdDiet = stId
              }
              if let stName = self.arrDiet[row].dietName
              {
@@ -1018,7 +1044,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
         case 6:
             if let stId = self.arrFoodIntolerance[row].foodId
              {
-                 self.strSelectedId = stId
+                 self.strSelectedIdIntolerance = stId
              }
              if let stName = self.arrFoodIntolerance[row].foodName
              {
@@ -1027,7 +1053,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
         case 7:
              if let stId = self.arrRegion[row].regionId
              {
-                 self.strSelectedId = stId
+                 self.strSelectedIdRegion = stId
              }
              if let stName = self.arrRegion[row].regionName
              {

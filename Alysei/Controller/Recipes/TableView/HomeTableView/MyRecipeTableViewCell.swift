@@ -25,6 +25,7 @@ class MyRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var rating4ImgvW: UIImageView!
     @IBOutlet weak var rating5ImgVw: UIImageView!
    
+    var btnEditCallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         editRecipeButton.layer.cornerRadius = 18
@@ -45,5 +46,8 @@ class MyRecipeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-
+    @IBAction func tapForEdit(_ sender: UIButton) {
+        btnEditCallback?(sender.tag)
+    }
+    
 }

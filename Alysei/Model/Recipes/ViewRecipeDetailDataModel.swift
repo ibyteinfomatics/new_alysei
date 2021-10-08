@@ -29,7 +29,7 @@ class ViewRecipeDetailDataModel{
     var isFav: Int?
     var avgRating: String?
     var totalReview: Int?
-    var latestReview: LatestReviewDataMode?
+    var latestReview: LatestReviewDataModel?
     var image: ImageURL?
     var meal: SelectMealDataModel?
     var region: SelectRegionDataModel?
@@ -60,7 +60,7 @@ class ViewRecipeDetailDataModel{
         self.totalReview = Int.getInt(dictResponse["total_reviews"])
         
         if let data = dictResponse["latest_review"] as? [String:Any]{
-            self.latestReview = LatestReviewDataMode.init(with: data)
+            self.latestReview = LatestReviewDataModel.init(with: data)
         }
         
         if let image = dictResponse["image"] as? [String:Any]{
@@ -79,7 +79,7 @@ class ViewRecipeDetailDataModel{
     
 }
 
-class LatestReviewDataMode{
+class LatestReviewDataModel{
     var recipeReviewRateId: Int?
     var userId: Int?
     var recipeId: Int?

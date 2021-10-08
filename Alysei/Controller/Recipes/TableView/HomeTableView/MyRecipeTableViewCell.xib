@@ -41,6 +41,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title=" Edit Recipe" image="icons8_edit"/>
+                                <connections>
+                                    <action selector="tapForEdit:" destination="vCc-Uc-PJg" eventType="touchUpInside" id="dHI-yK-lV5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idR-3h-XJH">
                                 <rect key="frame" x="281" y="10" width="80" height="35"/>

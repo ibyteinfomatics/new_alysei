@@ -64,7 +64,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     var quantity: Int?
     var unit: String?
     var singleIngridientData: IngridentArray?
-    
+    var arrayMyRecipe: [HomeTrending]? = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,7 +105,10 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         self.addMissingIngridientsTableView.delegate = self
         self.addMissingIngridientsTableView.dataSource = self
         
-        
+        if arrayMyRecipe!.count > 0{
+           
+            
+        }
     }
     
     

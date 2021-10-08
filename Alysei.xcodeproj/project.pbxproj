@@ -253,6 +253,8 @@
 		6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */; };
 		6B6F084C261EC41400BA2D2B /* EditSettingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */; };
 		6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */; };
+		6B76ADEB27105725002855CD /* AddReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */; };
+		6B76ADED2710584B002855CD /* AddReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */; };
 		6B79E66826E74C2400B2D434 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66326E74C2200B2D434 /* TripModel.swift */; };
 		6B79E66926E74C2400B2D434 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66426E74C2300B2D434 /* EventModel.swift */; };
 		6B79E66A26E74C2400B2D434 /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66526E74C2300B2D434 /* ProgressModel.swift */; };
@@ -844,6 +846,8 @@
 		6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostInteractor.swift; sourceTree = "<group>"; };
 		6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeViewController.swift; sourceTree = "<group>"; };
 		6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewRecipeViewController.swift; sourceTree = "<group>"; };
+		6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewTableViewCell.swift; sourceTree = "<group>"; };
 		6B79E66226E74B3400B2D434 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
 		6B79E66326E74C2200B2D434 /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		6B79E66426E74C2300B2D434 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -2122,6 +2126,7 @@
 				C5EB3CD626E9CB8400CCAC9E /* StepsViewController.swift */,
 				C5EB3CD726E9CB8400CCAC9E /* CircularProgressView.swift */,
 				C5EB3CC726E9CB7C00CCAC9E /* AddStepsInRecipeViewController.swift */,
+				6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */,
 			);
 			name = ViewRecipe;
 			path = ..;
@@ -2146,6 +2151,7 @@
 				C5EB3CA726E9CB5400CCAC9E /* ViewRecipeTableViewCell.swift */,
 				C5EB3CA626E9CB5400CCAC9E /* StepTableViewCell.swift */,
 				C5EB3C9F26E9CB5000CCAC9E /* ViewDetailsTableViewCell.swift */,
+				6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */,
 			);
 			path = ViewRecipeTableView;
 			sourceTree = "<group>";
@@ -3126,6 +3132,7 @@
 				2742855E25B82EEC003F3DE5 /* AddFeatureTableCell.swift in Sources */,
 				C5D6F7E626B1829D006FFCDF /* StateWiseHubListVC.swift in Sources */,
 				61A40A1E267378BF00D7D078 /* BasicConnectFlowModels.swift in Sources */,
+				6B76ADED2710584B002855CD /* AddReviewTableViewCell.swift in Sources */,
 				C5197AF126E72BBF00C0894F /* ConversationViewController.swift in Sources */,
 				277D18A625BF3CE7007CA5C7 /* BusinessFiltersCollectionCell.swift in Sources */,
 				C5CA9A8A26C147F900BDAE25 /* StoreDescProductTableVCell.swift in Sources */,
@@ -3381,6 +3388,7 @@
 				C5EB3CAD26E9CB5700CCAC9E /* RecipeIngredientsUsedTableViewCell.swift in Sources */,
 				C5197AF226E72BBF00C0894F /* NewChat.swift in Sources */,
 				273E5E7E25BB3848009AF5A4 /* ContactViewC.swift in Sources */,
+				6B76ADEB27105725002855CD /* AddReviewRecipeViewController.swift in Sources */,
 				C5E9A39E26B7DE5C0005AE89 /* ProductDetailVC.swift in Sources */,
 				6B360D07270AEA51006A48E4 /* ProducerDetailTableViewCell.swift in Sources */,
 				C51C33832664FB52002EC412 /* MarketPlaceWalkthroughVC.swift in Sources */,

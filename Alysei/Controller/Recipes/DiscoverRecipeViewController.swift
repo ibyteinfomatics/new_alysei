@@ -418,7 +418,12 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
             
             cell5.recipeImageView.setImage(withString: imgUrl)
-            
+            cell5.btnEditCallback = { tag in
+                let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "EditRecipeViewController") as! EditRecipeViewController
+                viewAll.arrayMyRecipe = self.arrayMyRecipe
+                viewAll.index = indexPath.row
+                self.navigationController?.pushViewController(viewAll, animated: true)
+            }
             cell5.recipeImageView.contentMode = .scaleAspectFill
             cell5.recipeName.text = arrayMyRecipe?[indexPath.item].name
             cell5.likeLabel.text = "\(arrayMyRecipe?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
