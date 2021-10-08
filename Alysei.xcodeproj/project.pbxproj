@@ -335,6 +335,7 @@
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
+		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
 		6BFF239126E7475E004C3916 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 6BFF239026E7475E004C3916 /* SocketIO */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
 		A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A808778625ADB4F400AA4A69 /* Login.storyboard */; };
@@ -927,6 +928,7 @@
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
+		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A84EECF825B19F6F00429B1D /* EditProfileViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewC.swift; sourceTree = "<group>"; };
@@ -2514,6 +2516,7 @@
 				C527177126BA81E70051F896 /* FilterViewController.swift */,
 				C5BFBA5C26BBF5DD00A91BF9 /* FilterOptionTableVCell.swift */,
 				C5BFBA5F26BBF6F000A91BF9 /* FilterSubOptionsTableVCell.swift */,
+				6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */,
 			);
 			path = "Filter&Sort";
 			sourceTree = "<group>";
@@ -3531,6 +3534,7 @@
 				C517235F26E5E72D00CE7572 /* SelectRegionDataModel.swift in Sources */,
 				C5EB3CBB26E9CB5700CCAC9E /* AddMissingIngridientTableViewCell.swift in Sources */,
 				27B4E8FF25EF957D00623E45 /* UserModel.swift in Sources */,
+				6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */,
 				27A443A925AE03720002BAAC /* UIButtonBorderWidthAndColor.swift in Sources */,
 				C517236826E5E72D00CE7572 /* ExploreCollectionVwModl1.swift in Sources */,
 				27A4439825AE03720002BAAC /* RSLabel.swift in Sources */,

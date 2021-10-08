@@ -15,24 +15,67 @@ class MarketPlaceProductListViewController: UIViewController {
     var keywordSearch: String?
     var pushedFromVC : PushedFrom?
     var optionId: Int?
+    var indexOfPageToRequest = 1
+    var lastPage: Int?
     // var arrList: [MyStoreProductDetail]?
     var arrList: [ProductSearchListModel]?
+    //var homearrList: []
     override func viewDidLoad() {
         super.viewDidLoad()
         if pushedFromVC == .region{
-            callRegionProductListApi()
+            callRegionProductListApi(1)
         }else if pushedFromVC == .category{
-            callCategoryProductListApi()
+            callCategoryProductListApi(1)
+        }else if pushedFromVC == .conservation {
+            callConservationListApi(1)
+        }else if pushedFromVC == .fdaCertified{
+            callOptionApi(1)
         }else{
-        self.callProductListApi()
+            self.callProductListApi()
         }
+        
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-
+    
+    @IBAction func btnFilterAction(_ sender: UIButton){
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
+        nextVC.identifyList = 4
+        nextVC.loadFilter = .conservationFood
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest < lastPage ?? 0{
+                self.showAlert(withMessage: "No More Data Found")
+            }else{
+                // increments the number of the page to request
+                indexOfPageToRequest += 1
+                
+                // call your API for more data
+                if pushedFromVC == .region{
+                    callRegionProductListApi(indexOfPageToRequest)
+                }else if pushedFromVC == .category{
+                    callCategoryProductListApi(indexOfPageToRequest)
+                }else if pushedFromVC == .conservation {
+                    callConservationListApi(indexOfPageToRequest)
+                }else if pushedFromVC == .fdaCertified{
+                    callOptionApi(indexOfPageToRequest)
+                }else{
+                    self.callProductListApi()
+                }
+                    // tell the table view to reload with the new data
+                    self.tableView.reloadData()
+                }
+            }
+            
+        }
 }
 
 extension MarketPlaceProductListViewController: UITableViewDelegate, UITableViewDataSource{
@@ -72,45 +115,84 @@ extension MarketPlaceProductListViewController{
         }
         
     }
-    func callRegionProductListApi(){
+    func callRegionProductListApi(_ pageNo: Int?){
         let urlString = APIUrl.kGetProductByRegionId + "\(optionId ?? 0)"
-        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString1 = (urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") + "&page=" + "\(pageNo ?? 0)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
             
             let response = dictresponse as? [String:Any]
-            if let data = response?["data"] as? [[String:Any]]{
-                self.arrList = data.map({ProductSearchListModel.init(with: $0)})
+            if let data = response?["data"] as? [String:Any]{
+                self.lastPage = data["last_page"] as? Int
+                if let subData = data["data"] as? [[String:Any]]{
+                    self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                }
             }
             self.tableView.reloadData()
         }
         
     }
-    func callCategoryProductListApi(){
+    func callCategoryProductListApi(_ pageNo : Int?){
         let urlString = APIUrl.kGetProductByCategoryId + "\(optionId ?? 0)"
-        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString1 = (urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") + "&page=" + "\(pageNo ?? 0)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
             
             let response = dictresponse as? [String:Any]
-            if let data = response?["data"] as? [[String:Any]]{
-                self.arrList = data.map({ProductSearchListModel.init(with: $0)})
+            if let data = response?["data"] as? [String:Any]{
+                self.lastPage = data["last_page"] as? Int
+                if let subData = data["data"] as? [[String:Any]]{
+                    self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                }
             }
             self.tableView.reloadData()
         }
         
     }
-//    func callFdaCertifiedProductListApi(){
-//        let urlString = APIUrl.kGetProductByCategoryId + "\(optionId ?? 0)"
-//        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-//        TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
-//
-//            let response = dictresponse as? [String:Any]
-//            if let data = response?["data"] as? [[String:Any]]{
-//                self.arrList = data.map({ProductSearchListModel.init(with: $0)})
-//            }
-//            self.tableView.reloadData()
-//        }
-//
-//    }
+    func callConservationListApi(_ pageNo : Int?){
+        let urlString = APIUrl.kMarketPlaceProductBox + "\(listType ?? 0)" + "&keyword=" + "\(keywordSearch ?? "")" + "&page=" + "\(pageNo ?? 0)"
+        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
+            
+            let response = dictresponse as? [String:Any]
+            if let data = response?["data"] as? [String:Any]{
+                self.lastPage = data["last_page"] as? Int
+                if let subData = data["data"] as? [[String:Any]]{
+                    self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                }
+            }
+            self.tableView.reloadData()
+        }
+        
+    }
+    func callOptionApi(_ pageNo: Int?){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "?page=" + "\(pageNo ?? 0)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
+            switch statusCode{
+            case 200:
+                let response = dictresponse as? [String:Any]
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
+                    if let subData = data["data"] as? [[String:Any]]{
+                        self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                    }
+                }
+            default:
+                print("No Data")
+            }
+            self.tableView.reloadData()
+        }
+    }
+    //    func callFdaCertifiedProductListApi(){
+    //        let urlString = APIUrl.kGetProductByCategoryId + "\(optionId ?? 0)"
+    //        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    //        TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
+    //
+    //            let response = dictresponse as? [String:Any]
+    //            if let data = response?["data"] as? [[String:Any]]{
+    //                self.arrList = data.map({ProductSearchListModel.init(with: $0)})
+    //            }
+    //            self.tableView.reloadData()
+    //        }
+    //
+    //    }
 }
 
 class MarketPlaceProductListTableVCell: UITableViewCell{
@@ -123,7 +205,6 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     @IBOutlet weak var lblProductType: UILabel!
     @IBOutlet weak var imgSample: UIImageView!
     @IBOutlet weak var imgProduct: UIImageView!
-  
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -131,6 +212,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     
     
     func configCell(_ data: ProductSearchListModel){
+        
         lblProductName.text = data.title
         lblCost.text = "$" + (data.product_price ?? "")
         lblStoreName.text = data.store_name
