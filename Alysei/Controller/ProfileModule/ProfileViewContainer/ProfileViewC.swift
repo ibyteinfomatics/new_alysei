@@ -585,7 +585,31 @@ class ProfileViewC: AlysieBaseViewC{
             return
         } else {
             if percentage == "100" || percentage == nil{
-                self.connectButtonTapped()
+                
+                
+                let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
+                
+                if self.connectButton.titleLabel?.text == "Follow" {
+                    followUnfollow(id: profileID, type: 1)
+                } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                    followUnfollow(id: profileID, type: 0)
+                } else {
+                    self.connectButtonTapped()
+                }
+                
+                /*if self.userType == .voyagers {
+                    
+                    if self.visitorUserType == .voyagers {
+                        
+                        //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
+                        //self.connectButton.setTitle("\(title)", for: .normal)
+                    } else {
+                        //let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
+                        //self.connectButton.setTitle("\(title)", for: .normal)
+                        
+                    }
+                }*/
+                
             } else {
                 self.tabBarController?.selectedIndex = 4
             }
@@ -659,6 +683,7 @@ class ProfileViewC: AlysieBaseViewC{
             }
             self.connectButton.setTitle("\(title)", for: .normal)
         } else if self.userType == .voyagers {
+            
             if self.visitorUserType == .voyagers {
                 let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
                 self.connectButton.setTitle("\(title)", for: .normal)
@@ -1209,6 +1234,27 @@ class ProfileViewC: AlysieBaseViewC{
         
     }
     //MARK:  - WebService Methods -
+    
+    func followUnfollow(id: Int, type: Int){
+        
+        let params: [String:Any] = [
+            "follow_user_id": id,
+            "follow_or_unfollow": type]
+        
+        disableWindowInteraction()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kFollowUnfollow, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
+            
+            if self.connectButton.titleLabel?.text == "Follow" {
+                
+                self.connectButton.setTitle("Unfollow", for: .normal)
+            } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                self.connectButton.setTitle("Follow", for: .normal)
+            }
+            
+            
+        }
+        
+    }
     
     private func postRequestToGetProgress() -> Void{
         
