@@ -6,34 +6,33 @@
 //
 
 import UIKit
-
+var recipeId = Int()
 class ViewRecipeViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var recipeImageView: UIImageView!
+    
     var checkbutton = 0
-    
-
-    var imageArray = [#imageLiteral(resourceName: "Milk-Chocolate-1"),#imageLiteral(resourceName: "orange-600x600-500x500"),#imageLiteral(resourceName: "toppng.com-lettuce-600x567"),#imageLiteral(resourceName: "4ZLH33AYAAI6TOHGKZYZBQX5BA"),#imageLiteral(resourceName: "toppng.com-lettuce-600x567")]
-    var ingredientNameArray = ["Chocolate","Cheese","Brockli","Egg","Brockli"]
-    var ingredientsQuantityArray = ["1 cup","1 1/2 cup","1 unit","1 egg","1 unit"]
-    
-    
-    var imageArray1 = [#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23")]
-    var ingredientNameArray1 = ["Non-Stick Pan","Microwave","Cooking Spray","Cooker","Cooking Rod"]
-    var ingredientsQuantityArray1 = ["1 unit ","1 unit","1 unit","1 unit","1 unit"]
-    
+    var recipeModel : ViewRecipeDetailDataModel?
+    var usedIngridientModel : [UsedIngridientDataModel]? = []
+    var usedToolModel: [UsedToolsDataModel]? = []
+    var stepsModel: [StepsDataModel]? = []
+   
    
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        getRecipeDetail()
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
-//        tableView.register(UINib(nibName: "LikeRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "LikeRecipeTableViewCell")
+
+        getRecipeDetail()
+        
         }
     
     
@@ -47,6 +46,10 @@ class ViewRecipeViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func setImage(){
+        let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+        recipeImageView.setImage(withString: imgUrl)
+    }
 }
 
 
@@ -64,10 +67,10 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 1{
      switch checkbutton {
         case 0:
-            print("Check 0 Count------------------\(ingredientNameArray.count)")
-            return ingredientNameArray.count
+
+            return usedIngridientModel?.count ?? 0
         case 1:
-            return ingredientNameArray1.count
+            return usedToolModel?.count ?? 0
         
      default:
         print("Invalid")
@@ -84,10 +87,90 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       // if indexPath.section = 0
         switch indexPath.section {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
+            cell.labelRecipeName.text = recipeModel?.recipeName
+            cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
+            cell.labelUserName.text = recipeModel?.userName
+            cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + "Reviews"
+            cell.labelTime.text = "\( recipeModel?.hours ?? 0)" + " " + "hours" + " " + "\( recipeModel?.minute ?? 0)" + " " + "minutes"
+            cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + "Serving"
+            cell.labelMealType.text = recipeModel?.meal?.mealName ?? "NA"
+        
+        if recipeModel?.avgRating ?? "0.0" == "0.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_star")
+            cell.rateImg2.image = UIImage(named: "icons8_star")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+
+        }
+        else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+            cell.rateImg1.image = UIImage(named: "Group 1142")
+            cell.rateImg2.image = UIImage(named: "icons8_star")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+           cell.rateImg5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating ?? "0.0" == "1.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_star")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+           cell.rateImg5.image = UIImage(named: "icons8_star")
+        }
+        else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "Group 1142")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating ?? "0.0" == "2.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }
+        else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "Group 1142")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating ?? "0.0" == "3.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }
+        else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg4.image = UIImage(named: "Group 1142")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating ?? "0.0" == "4.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+        }
+        else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg5.image = UIImage(named: "Group 1142")
+        }else if recipeModel?.avgRating ?? "0.0" == "5.0" {
+            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+            cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
+        }
             cell.reloadTableViewCallback = { tag in
                 self.checkbutton = tag
                 self.tableView.reloadData()
@@ -96,30 +179,128 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
             }
            
-          
             return cell
         case 1:
             guard let cell:ViewRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
             if checkbutton == 0{
-                cell.ingredientImageView.image = imageArray[indexPath.row]
-                            cell.ingredientNameLabel.text = ingredientNameArray[indexPath.row]
-                            cell.ingredientQuantityLabel.text = ingredientsQuantityArray[indexPath.row]
+                
+                let imgUrl = (kImageBaseUrl + (usedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+                
+                cell.ingredientImageView.setImage(withString: imgUrl)
+                cell.ingredientNameLabel.text = usedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
+                cell.ingredientQuantityLabel.text = usedIngridientModel?[indexPath.row].quantity
         
                 
             }else{
-                cell.ingredientImageView.image = imageArray1[indexPath.row]
-                           cell.ingredientNameLabel.text = ingredientNameArray1[indexPath.row]
-                           cell.ingredientQuantityLabel.text = ingredientsQuantityArray1[indexPath.row]
+                let imgUrl = (kImageBaseUrl + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+                
+                cell.ingredientImageView.setImage(withString: imgUrl)
+                cell.ingredientNameLabel.text = usedToolModel?[indexPath.row].tool?.toolTitle
+                cell.ingredientQuantityLabel.text = usedToolModel?[indexPath.row].quantityTool
             }
             
             return cell
             
         case 2:
             guard let cell:RecipeByTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "RecipeByTableViewCell") as? RecipeByTableViewCell else {return UITableViewCell()}
+            let imgUrl = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
+            
+            cell.profileImg.setImage(withString: imgUrl)
+            cell.profileImgComment.setImage(withString: imgUrl)
+            cell.labelUserName.text = recipeModel?.userName
+            cell.labelEmail.text = recipeModel?.userMain?.email
+            let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
+            cell.latestCommentImg.setImage(withString: imgUrl2)
+            cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
+            cell.latestCommentDate.text = recipeModel?.latestReview?.created
+            cell.latestCommentTextView.text = recipeModel?.latestReview?.review
+            
+            if recipeModel?.latestReview?.rating ?? 0 == 0 {
+                cell.rateImg1.image = UIImage(named: "icons8_star")
+                cell.rateImg2.image = UIImage(named: "icons8_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+
+            }
+//            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+//                cell.rateImg1.image = UIImage(named: "Group 1142")
+//                cell.rateImg2.image = UIImage(named: "icons8_star")
+//                cell.rateImg3.image = UIImage(named: "icons8_star")
+//                cell.rateImg4.image = UIImage(named: "icons8_star")
+//               cell.rateImg5.image = UIImage(named: "icons8_star")
+//            }
+            else if recipeModel?.latestReview?.rating ?? 0 == 1 {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+               cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+//            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg2.image = UIImage(named: "Group 1142")
+//                cell.rateImg3.image = UIImage(named: "icons8_star")
+//                cell.rateImg4.image = UIImage(named: "icons8_star")
+//                cell.rateImg5.image = UIImage(named: "icons8_star")
+//            }
+        else if recipeModel?.latestReview?.rating ?? 0 == 2 {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+//            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg3.image = UIImage(named: "Group 1142")
+//                cell.rateImg4.image = UIImage(named: "icons8_star")
+//                cell.rateImg5.image = UIImage(named: "icons8_star")
+//            }
+        else if recipeModel?.latestReview?.rating ?? 0 == 3 {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+//            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg4.image = UIImage(named: "Group 1142")
+//                cell.rateImg5.image = UIImage(named: "icons8_star")
+//            }
+            else if recipeModel?.latestReview?.rating ?? 0 == 4 {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+//            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+//                cell.rateImg5.image = UIImage(named: "Group 1142")
+//            }
+        else if recipeModel?.latestReview?.rating ?? 0 == 5 {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
+            }
+            
         return cell
             
         default:
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
+            
+           
+            
         return cell
         }
         
@@ -130,7 +311,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return 300
         case 1:
-            return 50
+            return 70
         case 2:
             return 350
         case 3:
@@ -142,7 +323,39 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
         
-
+extension ViewRecipeViewController{
+    func getRecipeDetail(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDeatail + "\(recipeId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["recipe"] as? [String:Any]{
+                self.recipeModel = ViewRecipeDetailDataModel.init(with: data)
+               
+            }
+            if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
+                self.usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
+               
+            }
+            if let data = dictResponse?["used_tools"] as? [[String:Any]]{
+                self.usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
+               
+            }
+            if let data = dictResponse?["steps"] as? [[String:Any]]{
+                self.stepsModel = data.map({StepsDataModel.init(with: $0)})
+               
+            }
+            if let data = dictResponse?["you_might_also_like"] as? [[String:Any]]{
+                youMightAlsoLikeModel = data.map({ViewRecipeDetailDataModel.init(with: $0)})
+               
+            }
+            setImage()
+            self.tableView.reloadData()
+            
+        }
+    }
+   
+}
 
 
 

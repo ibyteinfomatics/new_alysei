@@ -220,6 +220,7 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil {
+            recipeId = (arrayTrending?[indexPath.row].recipeId)!
             delegate?.cellTapped()
             }
 

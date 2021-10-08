@@ -50,5 +50,11 @@ class FilterSubOptionsTableVCell: UITableViewCell {
         
         
     }
-
+    func configProductSearch(_ data: MyStoreProductDetail, _ identifyList: Int?){
+        if identifyList == 5{
+        labelSubOptions.text = data.option
+        }else{
+            labelSubOptions.text = data.name
+        }
+    }
 }

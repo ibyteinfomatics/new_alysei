@@ -384,11 +384,11 @@ struct APIUrl{
         static let getRecipeHomeScreen = kBASEURL + "get/home/screen"
         static let getSearchMeal = kBASEURL + "search/meal?keyword="
 
-        static let getSearchRecipe = kBASEURL + "search/recipe?keyword="
         static let getChildIngridient = kBASEURL + "get/child/ingredients/"
         static let getFilterRecipe = kBASEURL + "filter/recipe?cook_time="
         static let getFavouriteRecipe = kBASEURL + " get/my/favourite/recipes"
-        
+        static let getSearchRecipe = kBASEURL + "search/recipe?"
+        static let getRecipeDeatail = kBASEURL + "get/recipe/detail/"
     }
 }
 
@@ -929,6 +929,8 @@ enum PushedFrom: Int {
     case addProduct
     case region
     case category
+    case conservation
+    case fdaCertified
     
 }
 

@@ -1,14 +1,14 @@
 //
-//  FavouriteTableViewCell.swift
+//  MyRecipeTableViewCell.swift
 //  Alysei
 //
-//  Created by Gitesh Dang on 27/08/21.
+//  Created by namrata upadhyay on 05/10/21.
 //
 
 import UIKit
-
-class FavouriteTableViewCell: UITableViewCell {
-  
+var tableviewHeight = CGFloat()
+class MyRecipeTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var editRecipeButton: UIButton!
     @IBOutlet weak var deaftButton: UIButton!
     @IBOutlet weak var outerView: UIView!
@@ -24,14 +24,26 @@ class FavouriteTableViewCell: UITableViewCell {
     @IBOutlet weak var rating3ImgVw: UIImageView!
     @IBOutlet weak var rating4ImgvW: UIImageView!
     @IBOutlet weak var rating5ImgVw: UIImageView!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        editRecipeButton.layer.cornerRadius = 18
+        deaftButton.layer.cornerRadius = 18
+        
+        self.layer.cornerRadius = 10.0
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        self.layer.masksToBounds = true
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    
+
+        // Configure the view for the selected state
     }
+    
 
 }

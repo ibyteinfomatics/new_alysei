@@ -90,6 +90,7 @@ class MyStoreProductDetail{
     var parent, head: Int?
     var createdAt, updatedAt: String?
     var id: Int?
+    var storeName: String?
     
 
     init(with data: [String:Any]?) {
@@ -104,6 +105,7 @@ class MyStoreProductDetail{
         self.product_subcategory_id = Int.getInt(data?["product_subcategory_id"])
         self.quantity_available = Int.getInt(data?["quantity_available"])
         self.brand_label_id = Int.getInt(data?["brand_label_id"])
+        self.storeName = String.getString(data?["store_name"])
         self.min_order_quantity = String.getString(data?["min_order_quantity"])
         self.handling_instruction = String.getString(data?["handling_instruction"])
         self.dispatch_instruction = String.getString(data?["dispatch_instruction"])

@@ -6,14 +6,14 @@
 //
 
 import UIKit
-var parentId = Int()
+var parentIngridientId = Int()
 class ViewAllViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
     var arraySearchByIngridient : [IngridentArray]? = []
     var searchText = String()
-    var searching = false
+    var searching1 = false
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class ViewAllViewController: UIViewController {
     
     @IBAction func tapBack(_ sender: Any) {
         if searching == true{
-            self.searching = false
+            self.searching1 = false
             self.searchIngridientTextField.text = ""
             getSearchByIngridients()
         }
@@ -67,7 +67,7 @@ class ViewAllViewController: UIViewController {
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.arraySearchByIngridient = data.map({IngridentArray.init(with: $0)})
-                self.searching = true
+                self.searching1 = true
                 self.collectionView.reloadData()
 
             }
@@ -96,12 +96,14 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        isFrom = "Ingridients"
         searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
-        parentId = (arraySearchByIngridient?[indexPath.item].parent)!
+        searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
+        parentIngridientId = (arraySearchByIngridient?[indexPath.item].recipeIngredientIds)!
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
-        vc.searching = true
+       searching = true
         vc.indexOfPageToRequest = 1
-        vc.searchText = searchTitle
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -128,7 +130,7 @@ extension ViewAllViewController: UITextFieldDelegate{
            hideKeyboardWhenTappedAround()
         }
         else{
-            self.searching = false
+            self.searching1 = false
             getSearchByIngridients()
             collectionView.reloadData()
         }

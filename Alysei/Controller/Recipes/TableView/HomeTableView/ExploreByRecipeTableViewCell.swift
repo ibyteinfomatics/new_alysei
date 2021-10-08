@@ -108,6 +108,8 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         searchTitle = arraySearchByRegion?[indexPath.row].regionName ?? ""
+        searchId = "\(arraySearchByRegion?[indexPath.row].regionId ?? -1)"
+        isFrom = "Region"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
             

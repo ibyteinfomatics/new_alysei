@@ -14,7 +14,7 @@ class ViewAllMealViewController: UIViewController {
     @IBOutlet weak var searchIngridientTextField: UITextField!
     var arraySearchByMeal : [SelectMealDataModel]? = []
     var searchText = String()
-    var searching = false
+    var searching1 = false
     var delegate: SearchRecipeDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,8 @@ class ViewAllMealViewController: UIViewController {
     }
     
     @IBAction func tapBack(_ sender: Any) {
-        if searching == true{
-        self.searching = false
+        if searching1 == true{
+        self.searching1 = false
         self.searchIngridientTextField.text = ""
         getSearchByMeal()
     }
@@ -69,7 +69,7 @@ class ViewAllMealViewController: UIViewController {
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.arraySearchByMeal = data.map({SelectMealDataModel.init(with: $0)})
-                self.searching = true
+                self.searching1 = true
                 self.collectionView.reloadData()
 
             }
@@ -96,10 +96,13 @@ extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        isFrom = "Meal"
         mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
         searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
-        vc.searching = true
+        searching = true
         vc.indexOfPageToRequest = 1
         vc.searchText = searchTitle
         self.navigationController?.pushViewController(vc, animated: true)
@@ -126,7 +129,7 @@ extension ViewAllMealViewController: UITextFieldDelegate{
            hideKeyboardWhenTappedAround()
         }
         else{
-            self.searching = false
+            self.searching1 = false
            getSearchByMeal()
             collectionView.reloadData()
         }

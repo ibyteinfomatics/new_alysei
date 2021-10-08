@@ -8,6 +8,7 @@
 import UIKit
 var searchTitle = String()
 var mealType = String()
+var searchId = String()
 protocol SearchRecipeDelegate {
     func cellTappedForSearchRecipe()
    }
@@ -122,8 +123,10 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        isFrom = "Meal"
         mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
             }
