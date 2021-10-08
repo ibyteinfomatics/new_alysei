@@ -50,8 +50,8 @@ class FilterSubOptionsTableVCell: UITableViewCell {
         
         
     }
-    func configProductSearch(_ data: MyStoreProductDetail, _ identifyList: Int?){
-        if identifyList == 5{
+    func configProductSearch(_ data: MyStoreProductDetail, _ checkHitApi: checkHitApi?){
+        if checkHitApi == .fdaCertified || checkHitApi == .method || checkHitApi == .properties{
         labelSubOptions.text = data.option
         }else{
             labelSubOptions.text = data.name

@@ -931,6 +931,7 @@ enum PushedFrom: Int {
     case category
     case conservation
     case fdaCertified
+    case properties
     
 }
 
