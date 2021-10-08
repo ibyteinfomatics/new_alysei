@@ -10,6 +10,7 @@ var finalheight : CGFloat?
 var finalheight1 : CGFloat?
 var arraySearchByMeal : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
+var isFrom = String()
 
 class ExploreByIngridientTableViewCell: UITableViewCell {
 
@@ -120,8 +121,11 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        parentId = (arraySearchByIngridient?[indexPath.item].parent)!
+        isFrom = "Ingridients"
+        isFilterLoading = false
+        parentIngridientId = (arraySearchByIngridient?[indexPath.item].recipeIngredientIds)!
         searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
+        searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
             

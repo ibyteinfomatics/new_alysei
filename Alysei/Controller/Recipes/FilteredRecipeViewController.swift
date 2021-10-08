@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
+var searching = false
 var isFilterLoading = false
+
 class FilteredRecipeViewController: UIViewController {
 
     @IBOutlet weak var searchRecipeTextField: UITextField!
@@ -18,7 +19,7 @@ class FilteredRecipeViewController: UIViewController {
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
-    var searching = false
+   
    
     var searchText = String()
     var updatedText = String()
@@ -27,11 +28,34 @@ class FilteredRecipeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if searching == true{
-            self.labelRecipe.text = searchText
-            callSearchRecipe(searchText, indexOfPageToRequest)
+            
+            if isFrom == "Meal"{
+                self.viewHeader.isHidden = true
+                self.labelRecipe.text = searchTitle
+                callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
+            }
+            else if isFrom == "Ingridients"{
+                self.viewHeader.isHidden = true
+                self.labelRecipe.text = searchTitle
+                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+            }
+            else if isFrom == "Region"{
+                self.viewHeader.isHidden = true
+                self.labelRecipe.text = searchTitle
+                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+            }
+           
+//            else{
+//                self.viewHeader.isHidden = false
+//                self.labelRecipe.text = searchText
+//                callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
+//            }
+            
+            
         }
         else if isFilterLoading == true{
-//            getFilterRecipe("3", "1", "1", "1", "1", "1")
+            self.viewHeader.isHidden = true
+            getFilterRecipe()
         }
     }
     override func viewDidLoad() {
@@ -47,7 +71,18 @@ class FilteredRecipeViewController: UIViewController {
         filteredCollectionView.dataSource = self
         if searching == true{
             self.searchRecipeTextField.resignFirstResponder()
-            callSearchRecipe(searchText, indexOfPageToRequest)
+            if isFrom == "Meal"{
+               
+                callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
+            }
+            else if isFrom == "Ingridients"{
+                
+                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+            }
+            else if isFrom == "Region"{
+                
+                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+            }
         }
         else{
             self.searchRecipeTextField.becomeFirstResponder()
@@ -59,6 +94,7 @@ class FilteredRecipeViewController: UIViewController {
    
     @IBAction func tapBack(_ sender: Any) {
         searching = false
+        isFrom = ""
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -66,12 +102,13 @@ class FilteredRecipeViewController: UIViewController {
     
     @IBAction func tapToGoFilter(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilterRecipeViewController") as! FilterRecipeViewController
+        self.searchRecipeTextField.resignFirstResponder()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func callSearchRecipe(_ text: String, _ pageNo: Int?){
+    func callSearchRecipe(_ param: String ,_ text: String, _ pageNo: Int?){
 
-        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchRecipe)\(text)&page=pageNo" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchRecipe)\(param)\(text)&page=pageNo" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             switch statusCode{
             case 200:
@@ -82,7 +119,7 @@ class FilteredRecipeViewController: UIViewController {
                     self.searchRecipeModel = SearchRecipeDataModel.init(with: data)
                     if self.indexOfPageToRequest == 1 { self.arrSearchRecipeDataModel?.removeAll() }
                     self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
-                    self.searching = true
+                    searching = true
                     self.filteredCollectionView.reloadData()
                     
                 }
@@ -106,24 +143,58 @@ class FilteredRecipeViewController: UIViewController {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
-            if indexOfPageToRequest < searchRecipeModel?.lastPage ?? 0{
-                self.showAlert(withMessage: "No More Data Found")
-            }else{
-            // increments the number of the page to request
-            indexOfPageToRequest += 1
+            if isFilterLoading == false{
+                if indexOfPageToRequest < searchRecipeModel?.lastPage ?? 0{
+                    self.showAlert(withMessage: "No More Data Found")
+                }else{
+                // increments the number of the page to request
+                indexOfPageToRequest += 1
 
-            // call your API for more data
-                callSearchRecipe(updatedText, indexOfPageToRequest)
+                // call your API for more data
+                    if isFrom == "Meal"{
+                        
+                        callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
+                    }
+                    else if isFrom == "Ingridients"{
+                        
+                        callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+                    }
+                    else if isFrom == "Region"{
+                        
+                        callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
+                    }
+                    else{
+                        callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
+                    }
+                   
 
-            // tell the table view to reload with the new data
-            self.filteredCollectionView.reloadData()
+                // tell the table view to reload with the new data
+                self.filteredCollectionView.reloadData()
+                }
             }
+            else{
+                if indexOfPageToRequest < searchRecipeModel?.lastPage ?? 0{
+                    self.showAlert(withMessage: "No More Data Found")
+                }else{
+                // increments the number of the page to request
+                indexOfPageToRequest += 1
+
+                // call your API for more data
+                     getFilterRecipe()
+
+                // tell the table view to reload with the new data
+                self.filteredCollectionView.reloadData()
+                }
+            }
+           
         }
     }
     
-    func getFilterRecipe(_ cookingTime: String?, _ noOfIngridient: String?, _ mealType: String?, _ cusinId: String?, _ childIngridient: String?, _ parentIngridient: Int?) -> Void{
-        self.view.isUserInteractionEnabled = false
-        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getFilterRecipe) + (cookingTime)&no_of_ingredients=noOfIngridient&meal_type=mealType&cousin_id=cusinId&child_ingredient=childIngridient&parent_ingredient=parentIngridient", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+    func getFilterRecipe() -> Void{
+       
+        let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFilterRecipe + "\(strTime )" + "&no_of_ingredients=" + "\(strNoOfIngridient )" + "&meal_type=" + "\(strMeal)" + "&cousin_id=" + "\(strCuisin)" + "&child_ingredient=" + "\(formattedArray)" + "&parent_ingredient=" + "\(parentRecipeId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
             
           
             switch statusCode{
@@ -136,7 +207,7 @@ class FilteredRecipeViewController: UIViewController {
                     self.searchRecipeModel = SearchRecipeDataModel.init(with: data)
                     if self.indexOfPageToRequest == 1 {self.arrSearchRecipeDataModel?.removeAll() }
                     self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
-                    self.searching = true
+                   searching = true
                     self.filteredCollectionView.reloadData()
                 }
             case 409:
@@ -315,7 +386,7 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
                                                                    with: string)
                 updatedText = updateText
                 
-                callSearchRecipe(updatedText, indexOfPageToRequest)
+                callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
                     }
             
         }
@@ -338,3 +409,4 @@ extension UILabel {
             textField.addTarget(self, action: #selector(UILabel.input(textField:)), for: .editingChanged)
         }
 }
+

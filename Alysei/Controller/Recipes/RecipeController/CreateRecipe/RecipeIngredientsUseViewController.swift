@@ -293,8 +293,8 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             selectedIngridentsArray.removeAll()
             selectedToolsArray.removeAll()
             let discoverRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            discoverRecipeVC.currentIndex = 2
-            discoverRecipeVC.checkbutton = 2
+//            discoverRecipeVC.currentIndex = 2
+//            discoverRecipeVC.checkbutton = 2
             self.navigationController?.pushViewController(discoverRecipeVC, animated: true)
         }
        

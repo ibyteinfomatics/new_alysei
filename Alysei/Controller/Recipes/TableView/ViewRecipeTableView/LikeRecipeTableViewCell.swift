@@ -6,15 +6,9 @@
 //
 
 import UIKit
-
+var youMightAlsoLikeModel: [ViewRecipeDetailDataModel]? = []
 class LikeRecipeTableViewCell: UITableViewCell {
     
-    var imageArray2 = [#imageLiteral(resourceName: "monika-grabkowska-89HtiQoRgPc-unsplash"),#imageLiteral(resourceName: "monika-grabkowska-89HtiQoRgPc-unsplash"),#imageLiteral(resourceName: "monika-grabkowska-89HtiQoRgPc-unsplash"),#imageLiteral(resourceName: "monika-grabkowska-89HtiQoRgPc-unsplash")]
-    var recipeNameArray = ["Dal Bati","Churma","Roti","Rice"]
-    var userNameArray = ["Deepanshu","Abhishek","Rahul","Smriti"]
-    var timeArray = ["2hr 10min","1hr","2hr 30min","30min"]
-    var servingArray = ["2 Serving","1 Serving","5 Serving","10 Serving"]
-    var cousineTypeArray = ["Dessert","Dessert","Lunch","Dinner"]
     
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -22,6 +16,8 @@ class LikeRecipeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         self.collectionView.reloadData()
     }
 
@@ -35,17 +31,20 @@ class LikeRecipeTableViewCell: UITableViewCell {
 
 extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        userNameArray.count
+        youMightAlsoLikeModel?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LikeRecipeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeRecipeCollectionViewCell", for: indexPath) as! LikeRecipeCollectionViewCell
-        cell.imageView.image = imageArray2[indexPath.row]
-        cell.recipeNameLabel.text = recipeNameArray[indexPath.row]
-        cell.UsernameLabel.text = userNameArray[indexPath.row]
-        cell.timeLabel.text = timeArray[indexPath.row]
-        cell.servingLabel.text = servingArray[indexPath.row]
-        cell.cousineTypeLabel.text = cousineTypeArray[indexPath.row]
+        
+        let imgUrl = (kImageBaseUrl + (youMightAlsoLikeModel?[indexPath.item].userMain?.avatarId?.imageUrl ?? ""))
+        
+        cell.imageView?.setImage(withString: imgUrl)
+        cell.recipeNameLabel.text = youMightAlsoLikeModel?[indexPath.row].recipeName
+        cell.UsernameLabel.text = youMightAlsoLikeModel?[indexPath.row].userName
+        cell.timeLabel.text = "\( youMightAlsoLikeModel?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( youMightAlsoLikeModel?[indexPath.item].minute ?? 0)" + " " + "minutes"
+        cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + "Serving"
+        cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? "NA"
         
        
         return cell

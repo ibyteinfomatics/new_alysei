@@ -103,6 +103,7 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil {
+            recipeId = (arrayQuickEasy?[indexPath.row].recipeId)!
             delegate?.cellTapped()
         }
         

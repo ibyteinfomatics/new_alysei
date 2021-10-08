@@ -9,7 +9,7 @@ var selectedIndex: Int?
 
 import UIKit
 
-class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate, AlertShower{
+class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
     @IBOutlet weak var discoverRecipeView: UIView!
     @IBOutlet weak var searchRecipe: UIView!
@@ -18,44 +18,43 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var tapPostVw: UIView!
     @IBOutlet weak var tapMarketPlaceVw: UIView!
     @IBOutlet weak var discoverCollectionView: UICollectionView!
-    //    @IBOutlet weak var containerTableViewHeight: NSLayoutConstraint!
+    var arrayMyRecipe: [HomeTrending]? = []
+    var arrayMyFavouriteRecipe: [HomeTrending]? = []
     
     var arrayHeader = NSMutableArray()
     var arrayCollection = NSMutableArray()
     var checkbutton = 0
- 
+    
     var selectedIndexPath : IndexPath?
     var currentIndex : Int? = 0
     var isReloadData = true
-    var isReloadMyRecipe = true
     
-        override func viewWillAppear(_ animated: Bool) {
-            if checkbutton == 3{
+    override func viewWillAppear(_ animated: Bool) {
+        if checkbutton == 3{
             isReloadData = true
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                    self.containerTableVw.reloadData()
-                }
-           
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
             }
-            if checkbutton == 0{
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                    self.containerTableVw.reloadData()
-                }
-            }
-            if checkbutton == 2{
-                
-                isReloadMyRecipe = true
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                    self.containerTableVw.reloadData()
-                }
-            }
-            if checkbutton == 1{
-                isReloadMyRecipe = true
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                    self.containerTableVw.reloadData()
-                }
+            
+        }
+        if checkbutton == 0{
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
             }
         }
+        if checkbutton == 2{
+            getMyAllRecipes()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+            
+        }
+        if checkbutton == 1{
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,6 +78,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         containerTableVw.register(UINib(nibName: "TrendingTableViewCell", bundle: nil), forCellReuseIdentifier: "TrendingTableViewCell")
         containerTableVw.register(UINib(nibName: "QuickEasyTableViewCell", bundle: nil), forCellReuseIdentifier: "QuickEasyTableViewCell")
         containerTableVw.register(UINib(nibName: "FavouriteTableViewCell", bundle: nil), forCellReuseIdentifier: "FavouriteTableViewCell")
+        containerTableVw.register(UINib(nibName: "MyRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "MyRecipeTableViewCell")
         containerTableVw.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesTableViewCell")
         
         arrayHeader = ["Quick Search by Categories", "Quick Search by Ingridients", "Quick Search by Regions", "Trending Now", "Quick Easy"]
@@ -91,7 +91,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.discoverCollectionView.dataSource = self
         
         getExploreData()
-       
+        
     }
     
     @objc func openPost(){
@@ -123,14 +123,15 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     
     func cellTappedForSearchRecipe(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
-        vc.searching = true
+        searching = true
         vc.indexOfPageToRequest = 1
         vc.searchText = searchTitle
         self.navigationController?.pushViewController(vc, animated: true)
     }
-   
+    
     @IBAction func tapSearchRecipe(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
+        isFilterLoading = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -179,13 +180,13 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         }
     }
     
-    func showAlert1(message: String, sender:FavouriteTableViewCell) {
-
+    func showAlert1(message: String) {
+        
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
-        }
+        
+    }
 }
 
 //MARK: UITableView
@@ -231,9 +232,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 break
             }
         case 1:
-            return 1
+            return arrayMyFavouriteRecipe?.count ?? 0
         case 2:
-            return 1
+            return arrayMyRecipe?.count ?? 0
         case 3:
             return 1
         default:
@@ -269,7 +270,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return cell1
                 
             case 1:
-               
+                
                 cell.quickSearchLbl.text = "Quick Search By Meal"
                 cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
                 cell.delegate = self
@@ -316,38 +317,217 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 break
                 
             }
-//            containerTableVw.reloadData()
-//            return cell1
+       
         case 1:
             let cell4 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
-            cell4.check = true
-            cell.delegate = self
-            cell4.myRecipeTab = 0
-            if isReloadMyRecipe{
-            cell4.getMyFavouriteRecipes()
-            }
+            let imgUrl = (kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))
+            
+            cell4.recipeImageView.setImage(withString: imgUrl)
+        
+            cell4.recipeImageView.contentMode = .scaleAspectFill
+            cell4.recipeName.text = arrayMyFavouriteRecipe?[indexPath.item].name
+            cell4.likeLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            
+        if arrayMyFavouriteRecipe?[indexPath.item].userName == ""{
+            cell4.userNameLabel.text = "NA"
+        }
+        else{
+            cell4.userNameLabel.text = arrayMyFavouriteRecipe?[indexPath.item].userName
+        }
+           
+            cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
+            cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
+            cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? "NA"
+        
+        if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "0.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+
+        }
+        else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "0.5" {
+            cell4.rating1ImgVw.image = UIImage(named: "Group 1142")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+           cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "1.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+           cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }
+        else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "1.5" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "Group 1142")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "2.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }
+        else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "2.5" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "Group 1142")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "3.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }
+        else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "3.5" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating4ImgvW.image = UIImage(named: "Group 1142")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "4.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+        }
+        else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "4.5" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating5ImgVw.image = UIImage(named: "Group 1142")
+        }else if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "5.0" {
+            cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+            cell4.rating5ImgVw.image = UIImage(named: "icons8_christmas_star")
+        }
+           
             return cell4
         case 2:
-            let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
-            cell5.check = false
-            cell5.myRecipeTab = 1
-            if isReloadMyRecipe{
-                cell5.getMyAllRecipes()
-                isReloadMyRecipe = true
-           }
-        
+            let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "MyRecipeTableViewCell") as! MyRecipeTableViewCell
+            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
+            
+            cell5.recipeImageView.setImage(withString: imgUrl)
+            
+            cell5.recipeImageView.contentMode = .scaleAspectFill
+            cell5.recipeName.text = arrayMyRecipe?[indexPath.item].name
+            cell5.likeLabel.text = "\(arrayMyRecipe?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            if arrayMyRecipe?[indexPath.item].status == "0"{
+                cell5.deaftButton.setTitle("Draft", for: .normal)
+                cell5.deaftButton.layer.backgroundColor = UIColor.init(red: 114/255, green: 114/255, blue: 114/255, alpha: 1).cgColor
+            }
+            else{
+                cell5.deaftButton.setTitle("Publish", for: .normal)
+                cell5.deaftButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            }
+            if arrayMyRecipe?[indexPath.item].userName == ""{
+                cell5.userNameLabel.text = "NA"
+            }
+            else{
+                cell5.userNameLabel.text = arrayMyRecipe?[indexPath.item].userName
+            }
+            
+            cell5.timeLabel.text = "\( arrayMyRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
+            cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
+            cell5.typeLabel.text = arrayMyRecipe?[indexPath.item].meal?.mealName ?? "NA"
+            
+            if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "0.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                
+            }
+            else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "0.5" {
+                cell5.rating1ImgVw.image = UIImage(named: "Group 1142")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "1.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "1.5" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "Group 1142")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "2.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "2.5" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "Group 1142")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "3.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "3.5" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating4ImgvW.image = UIImage(named: "Group 1142")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "4.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }
+            else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "4.5" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating5ImgVw.image = UIImage(named: "Group 1142")
+            }else if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "5.0" {
+                cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
+                cell5.rating5ImgVw.image = UIImage(named: "icons8_christmas_star")
+            }
+            
+            
             return cell5
             
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
-           
+            
             cell6.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
             if isReloadData{
                 cell6.config()
                 cell6.getSavedMyPreferences()
-               isReloadData = false
-           }
+                isReloadData = false
+            }
             return cell6
         default:
             break
@@ -391,7 +571,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 1:
             return UITableView.automaticDimension
         case 2:
-            return UITableView.automaticDimension
+            return 250
         case 3:
             return UITableView.automaticDimension
         default:
@@ -458,7 +638,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
-            containerTableVw.reloadData()
+            self.containerTableVw.reloadData()
             
         case 1:
             
@@ -466,8 +646,8 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
-            isReloadMyRecipe = true
-            containerTableVw.reloadData()
+            getMyFavouriteRecipes()
+            self.containerTableVw.reloadData()
             
             
             
@@ -477,10 +657,12 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             selectedIndexPath = indexPath
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             discoverCollectionView.reloadData()
-            isReloadMyRecipe = true
-            containerTableVw.reloadData()
-            
-            
+          
+            getMyAllRecipes()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+        
         case 3:
             checkbutton = 3
             selectedIndexPath = indexPath
@@ -488,7 +670,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             
             discoverCollectionView.reloadData()
             isReloadData = true
-            containerTableVw.reloadData()
+            self.containerTableVw.reloadData()
             
             
         default:
@@ -502,33 +684,77 @@ extension DiscoverRecipeViewController: PreferencesDelegate{
     
     func pluscellTapped(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CuisinesViewController") as! CuisinesViewController
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     func pluscellTapped1(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FoodViewController") as! FoodViewController
-    
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func pluscellTapped2(){
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DietViewController") as! DietViewController
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func pluscellTapped3(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "IngridientViewController") as! IngridientViewController
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func pluscellTapped4(){
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CookingViewController") as! CookingViewController
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+extension DiscoverRecipeViewController{
+    func getMyAllRecipes(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getMyrecipe, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                
+                arrayMyRecipe = data.map({HomeTrending.init(with: $0)})
+                
+                print("\(String(describing: arrayMyRecipe?.count))")
+                
+            }
+           
+            self.containerTableVw.reloadData()
+            
+        }
+    }
+    
+    func getMyFavouriteRecipes(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFavouriteRecipe
+                                                   , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
+                let dictResponse = dictResponse as? [String:Any]
+                
+                if let data = dictResponse?["data"] as? [[String:Any]]{
+                    
+                    arrayMyFavouriteRecipe = data.map({HomeTrending.init(with: $0)})
+                    
+                    print("\(String(describing: arrayMyFavouriteRecipe?.count))")
+                    
+                }
+                self.containerTableVw.reloadData()
+                
+            case 409:
+                self.showAlert1(message: "You have not liked any recipe")
+            default:
+                self.showAlert1(message: "Something went wrong")
+            }
+            
+        }
+    }
 }

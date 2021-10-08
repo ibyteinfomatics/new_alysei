@@ -17,7 +17,23 @@ class ViewDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var ingredientsButton: UIButton!
     @IBOutlet weak var ingredientsStatusView: UIView!
     @IBOutlet weak var utencilsStatusView: UIView!
+    @IBOutlet weak var labelRecipeName: UILabel!
+    @IBOutlet weak var labelUserName: UILabel!
     
+    @IBOutlet weak var labelLike: UILabel!
+    
+    @IBOutlet weak var rateImg1: UIImageView!
+    @IBOutlet weak var rateImg2: UIImageView!
+    @IBOutlet weak var rateImg3: UIImageView!
+    @IBOutlet weak var rateImg4: UIImageView!
+    @IBOutlet weak var rateImg5: UIImageView!
+    
+    @IBOutlet weak var labelReview: UILabel!
+    @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelServing: UILabel!
+    @IBOutlet weak var labelMealType: UILabel!
+    
+    @IBOutlet weak var labelEnergyValue: UILabel!
     var reloadTableViewCallback:((Int) ->Void)? = nil
     enum source {
         case button1
