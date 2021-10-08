@@ -147,7 +147,7 @@ class BusinessButtonTableCell: UITableViewCell {
 }
 extension BusinessButtonTableCell{
 func callStateApi() {
-    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetCountryStates, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetCountryStates + "?param=usa", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
         
         let response = dictResponse as? [String:Any]
         if let data = response?["data"] as? [[String:Any]]{

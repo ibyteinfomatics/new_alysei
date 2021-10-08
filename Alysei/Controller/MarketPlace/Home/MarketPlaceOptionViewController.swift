@@ -81,6 +81,9 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
             nextVC.pushedFromVC = .category
             nextVC.keywordSearch = arrOptions?[indexPath.row].name
             nextVC.optionId = arrOptions?[indexPath.row].marketplace_product_category_id
+        }else if listIndex == 5 {
+            nextVC.pushedFromVC = .properties
+            nextVC.keywordSearch = arrOptions?[indexPath.row].option
         }else{
             nextVC.pushedFromVC = .conservation
             nextVC.keywordSearch = arrOptions?[indexPath.row].option
