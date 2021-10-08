@@ -39,6 +39,10 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var aboutLabel: UILabel!
     @IBOutlet weak var lbladdproduct: UILabel!
     @IBOutlet weak var btnEditProfile: UIButtonExtended!
+    
+    @IBOutlet weak var postcount: UILabel!
+    @IBOutlet weak var connectioncount: UILabel!
+    @IBOutlet weak var followercount: UILabel!
     //    @IBOutlet weak var viewProfileCompletion: UIView!
     //    @IBOutlet weak var viewProfiletab: NSLayoutConstraint!
     //    @IBOutlet weak var profilePercentage: UILabel!
@@ -817,6 +821,9 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 //                self.fetchAboutDetail()
                 
+                self.postcount.text = String.getString(responseModel.data?.postCount)
+                self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
+                self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
                 if let username = responseModel.data?.userData?.username {
                     self.usernameLabel.text = "@\(username)".lowercased()
@@ -930,6 +937,10 @@ class ProfileViewC: AlysieBaseViewC{
                 self.userProfileModel = responseModel
                 
                 self.fetchAboutDetail()
+                
+                self.postcount.text = String.getString(responseModel.data?.postCount)
+               // self.postcount.text = String.getString(responseModel.data?.con)
+                self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
                 if let username = responseModel.data?.userData?.username {
                     self.usernameLabel.text = "@\(username)".lowercased()
@@ -1612,8 +1623,14 @@ extension ProfileViewC {
                 }
                 cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
+                var title = "Block"
+                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                    title = "Block"
+                } else {
+                    title = "UnBlock"
+                }
                 
-                let blockUserAction = UIAlertAction(title: "Block", style: .destructive) { action in
+                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
                     self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
                 }
                 blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")

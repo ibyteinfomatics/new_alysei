@@ -26,7 +26,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
         self.userPhotosCollectionView.delegate = self
         self.userPhotosCollectionView.dataSource = self
 
-        self.fetchPostWithPhotsFromServer(pageNumber)
+        
         
     }
 
@@ -40,10 +40,11 @@ class UserPhotosGridViewController: AlysieBaseViewC {
             self.vwBlank.isHidden = true
         }
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.fetchPostWithPhotsFromServer(pageNumber)
-//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchPostWithPhotsFromServer(pageNumber)
+    }
 
 
 }
@@ -96,12 +97,23 @@ extension UserPhotosGridViewController {
                 print(response)
 
                 let photosURLList = response.data.data.reduce( [String]() ) { res, innerData in
-                  let result =  innerData.attachments.reduce([String]()) { resultInner, attachments in
-                        var innerResult = resultInner
-                        innerResult.append(attachments.attachment_link.attachment_url)
-                        return innerResult
-                    }
-                    return result
+                    
+//                    let result =  innerData.attachments.reduce([String]()) { resultInner, attachments in
+//                          var innerResult = resultInner
+//                        innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
+//                          return innerResult
+//                      }
+//
+                    var innerResult = res
+                  innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
+                    return innerResult
+                   
+//                  let result =  innerData.attachments.reduce([String]()) { resultInner, attachments in
+//                        var innerResult = resultInner
+//                        innerResult.append(attachments.attachment_link.attachment_url)
+//                        return innerResult
+//                    }
+                    //return result
                 }
 
                 if photosURLList.count > 0 {

@@ -188,7 +188,7 @@ class NetworkViewC: AlysieBaseViewC {
                 let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
                 
                 switch role {
-                case 9,7,8:
+                case 9,7,8,3:
                     let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                     vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
                 default:
@@ -354,7 +354,17 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     if currentIndex == 0 {
-        return 200.0
+        var height = 200
+        
+        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
+            height = 120
+        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
+            height = 140
+        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50 && String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
+            height = 170
+        } 
+        
+        return CGFloat(height)//UITableView.automaticDimension
     } else {
         return 66.0
     }

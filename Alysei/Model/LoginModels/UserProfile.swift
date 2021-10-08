@@ -18,6 +18,7 @@ enum UserProfile {
         var about: String?
         var postCount: Int?
         var followerCount: Int?
+        var connectionCount: Int?
         var userData: userDataModel?
         var contactTab: contactTab?
         var aboutTab: [aboutTab]?
@@ -26,6 +27,7 @@ enum UserProfile {
             case about
             case postCount = "post_count"
             case userData = "user_data"
+            case connectionCount = "connection_count"
             case followerCount = "follower_count"
             case contactTab = "contact_tab"
             case aboutTab = "about_tab"
@@ -43,11 +45,13 @@ enum UserProfile {
         var firstName: String?
         var lastName: String?
         var restaurantName: String?
+        var profileColor: String?
         var profilePercentage: Int?
         var followFlag: Int?
         var connectionFlag: Int?
         var availableToFollow: Int?
         var availableToConnect: Int?
+        var blockFlag: Int?
         
          private enum CodingKeys: String, CodingKey {
             case avatar = "avatar_id"
@@ -64,6 +68,8 @@ enum UserProfile {
             case availableToFollow = "available_to_follow"
             case availableToConnect = "available_to_connect"
             case connectionFlag = "connection_flag"
+            case blockFlag = "block_flag"
+            case profileColor = "profile_color"
          }
     }
 

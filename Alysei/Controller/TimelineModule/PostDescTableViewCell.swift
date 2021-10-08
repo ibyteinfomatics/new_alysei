@@ -212,9 +212,9 @@ class PostDescTableViewCell: UITableViewCell {
         //let lblSize = lblPostDesc.numberOfLines
         //print("lableSize?>>>>>>>>>>>>>>>>>>>>>>>>>>>>",lblSize)
         if wordContains <= 60 {
-            btnMoreLess.isHidden = true
+//            btnMoreLess.isHidden = true
         }else{
-            btnMoreLess.isHidden = false
+           // btnMoreLess.isHidden = false
         }
        
         self.imagePostCollectionView.reloadData()

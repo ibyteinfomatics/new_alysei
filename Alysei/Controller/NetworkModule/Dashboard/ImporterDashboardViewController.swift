@@ -22,6 +22,8 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var ourproduct: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     
+    @IBOutlet weak var scrollview: UIScrollView!
+    
     var connectionId = ""
     var dashboardModel:DashboardModel?
     
@@ -68,6 +70,7 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     
     func callDashboardApi(id: String){
         
+        self.scrollview.isHidden = true
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDashboard+id, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -78,6 +81,7 @@ class ImporterDashboardViewController: AlysieBaseViewC {
                 
             }
             
+            self.scrollview.isHidden = false
             self.name.text = self.dashboardModel?.data?.userData?.companyName
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
             

@@ -80,7 +80,13 @@ class BlockingViewC: AlysieBaseViewC {
     
     let blockingTableCell = tblViewBlocking.dequeueReusableCell(withIdentifier: BlockingTableCell.identifier()) as! BlockingTableCell
     
-    blockingTableCell.lblBlockingName.text = blockModel?.data?[indexPath.row].blockuser?.companyName
+    if blockModel?.data?[indexPath.row].blockuser?.companyName == "" {
+        blockingTableCell.lblBlockingName.text = blockModel?.data?[indexPath.row].blockuser?.restaurantName
+    }  else if blockModel?.data?[indexPath.row].blockuser?.restaurantName == "" {
+        blockingTableCell.lblBlockingName.text = blockModel?.data?[indexPath.row].blockuser?.companyName
+    }
+    
+    
     blockingTableCell.lblBlockingStatus.text = "Blocked. Tap to Unblock"
     
     blockingTableCell.imgViewBlocking.layer.masksToBounds = false

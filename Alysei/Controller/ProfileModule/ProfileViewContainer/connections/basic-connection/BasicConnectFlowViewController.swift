@@ -70,12 +70,16 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
         messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
         messageAttributedString.append(NSAttributedString(string: "@\(self.userModel.username)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
 
+        reasonToConnect.layer.borderWidth = 1
+        reasonToConnect.layer.borderColor = UIColor.lightGray.cgColor
+        reasonToConnect.textContainer.heightTracksTextView = true
+        reasonToConnect.isScrollEnabled = false
         self.emailIDLabel.attributedText = messageAttributedString
     }
 
     // MARK:- IBOutlets
     @IBOutlet weak var emailIDLabel: UILabel!
-    @IBOutlet weak var reasonToConnect: UITextFieldExtended!
+    @IBOutlet weak var reasonToConnect: UITextView!
 
     // MARK:- protocol methods
 

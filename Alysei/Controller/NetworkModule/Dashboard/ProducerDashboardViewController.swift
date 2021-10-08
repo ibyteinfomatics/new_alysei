@@ -11,7 +11,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var producerTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     var connectionId = ""
-   
+    
     
     var dashboardModel:DashboardModel?
     
@@ -42,7 +42,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
     }
     
     func callDashboardApi(id: String){
-        
+        self.producerTableView.isHidden = true
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDashboard+id, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -52,6 +52,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
                 self.dashboardModel = DashboardModel.init(with: dictResponse)
                 
             }
+            self.producerTableView.isHidden = false
             self.producerTableView.reloadData()
             
             /*self.name.text = self.dashboardModel?.data?.userData?.companyName

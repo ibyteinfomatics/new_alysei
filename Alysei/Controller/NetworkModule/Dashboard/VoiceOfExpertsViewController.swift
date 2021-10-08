@@ -15,7 +15,7 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
     @IBOutlet weak var specialization: UILabel!
     @IBOutlet weak var voice_title: UILabel!
     @IBOutlet weak var country: UILabel!
-    
+    @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var userimg: UIImageView!
     
     var connectionId = ""
@@ -58,7 +58,7 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
     }
     
     func callDashboardApi(id: String){
-        
+        self.scrollview.isHidden = true
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDashboard+id, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -68,7 +68,7 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
                 self.dashboardModel = DashboardModel.init(with: dictResponse)
                 
             }
-            
+            self.scrollview.isHidden = false
             self.name.text = (self.dashboardModel?.data?.userData?.firstName)!+" "+(self.dashboardModel?.data?.userData?.lastName)!
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
             

@@ -18,6 +18,7 @@ class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var deliveryDiscount: UILabel!
     @IBOutlet weak var ourmenu: UILabel!
     @IBOutlet weak var userimg: UIImageView!
+    @IBOutlet weak var scrollview: UIScrollView!
     
     var connectionId = ""
     var dashboardModel:DashboardModel?
@@ -59,7 +60,7 @@ class RestaurantViewController: AlysieBaseViewC {
     }
     
     func callDashboardApi(id: String){
-        
+        self.scrollview.isHidden = true
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDashboard+id, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -69,7 +70,7 @@ class RestaurantViewController: AlysieBaseViewC {
                 self.dashboardModel = DashboardModel.init(with: dictResponse)
                 
             }
-            
+            self.scrollview.isHidden = false
             self.name.text = self.dashboardModel?.data?.userData?.restaurantName
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
             

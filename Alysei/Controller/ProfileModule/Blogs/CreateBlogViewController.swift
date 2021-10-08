@@ -50,6 +50,8 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             blogTxf.text = blogtitle
             descriptionTextView.text = fulldescription
             descriptionTextView.textColor = .black
+            descriptionTextView.textContainer.heightTracksTextView = true
+            descriptionTextView.isScrollEnabled = false
             uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
             
             if draft == "1" {
