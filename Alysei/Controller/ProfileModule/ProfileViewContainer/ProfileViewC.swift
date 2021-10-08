@@ -322,13 +322,57 @@ class ProfileViewC: AlysieBaseViewC{
         // self.viewProfileHeight.constant = 0
         
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        if Int.getInt(data["alysei_review"]) == 0 {
+        
+        
+        let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+        
+        if role != 10 {
             
-            blankdataView.isHidden = false
+            if Int.getInt(data["alysei_review"]) == 0 {
+                
+                blankdataView.isHidden = false
 
+                
+                
+            } else if Int.getInt(data["alysei_review"]) == 1{
+                
+                blankdataView.isHidden = true
+                self.postRequestToGetFields()
+                self.fetchContactDetail()
+                self.currentIndex = 0
+                self.postRequestToGetProgress()
+                //tblViewProfileCompletion.scrollToTop()
+                // self.postRequestToGetProgress()
+                //tblViewProfileCompletion.scrollToTop()
+                
+                if check == "" {
+                    if self.userLevel == .own {
+                        self.menuButton.isHidden = false
+                        self.fetchProfileDetails()
+                    } else {
+                        if self.userID != nil {
+                            self.menuButton.isHidden = true
+                            self.fetchVisiterProfileDetails(self.userID)
+                        }
+                    }
+                }
+                //check = ""
+                
+                /**/
+               
+    //            if self.userLevel == .own {
+    //                self.fetchProfileDetails()
+    //            } else {
+    //                if self.userID != nil {
+    //                    self.fetchVisiterProfileDetails(self.userID)
+    //                }
+    //            }
+                
+                
+            }
             
+        } else {
             
-        } else if Int.getInt(data["alysei_review"]) == 1{
             
             blankdataView.isHidden = true
             self.postRequestToGetFields()
@@ -350,20 +394,10 @@ class ProfileViewC: AlysieBaseViewC{
                     }
                 }
             }
-            //check = ""
-            
-            /**/
-           
-//            if self.userLevel == .own {
-//                self.fetchProfileDetails()
-//            } else {
-//                if self.userID != nil {
-//                    self.fetchVisiterProfileDetails(self.userID)
-//                }
-//            }
-            
             
         }
+        
+        
         
         
     }

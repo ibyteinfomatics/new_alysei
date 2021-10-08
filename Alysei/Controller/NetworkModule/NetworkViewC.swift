@@ -40,14 +40,21 @@ class NetworkViewC: AlysieBaseViewC {
   
     override func viewWillAppear(_ animated: Bool) {
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        if Int.getInt(data["alysei_review"]) == 0 {
-            
-            blankdataView.isHidden = false
-            
-        } else if Int.getInt(data["alysei_review"]) == 1{
-            
+        
+        let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+        
+        if role != 10 {
+            if Int.getInt(data["alysei_review"]) == 0 {
+                
+                blankdataView.isHidden = false
+                
+            } else if Int.getInt(data["alysei_review"]) == 1{
+                
+                blankdataView.isHidden = true
+               
+            }
+        } else {
             blankdataView.isHidden = true
-           
         }
         
         callConnectionApi(api: APIUrl.kConnectionTabApi1)
@@ -142,7 +149,7 @@ class NetworkViewC: AlysieBaseViewC {
         
         networkTableCell = tblViewInviteNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
         
-        networkTableCell.email.text = self.connection?.data?[indexPath.row].reasonToConnect
+        networkTableCell.email.text = self.connection?.data?[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
         
         if connection?.data?[indexPath.row].user?.companyName != "" {
             networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
@@ -182,6 +189,7 @@ class NetworkViewC: AlysieBaseViewC {
             switch type {
             case 4,5,6:
                 let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
+                vc.role = type!
                 vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
             case 3:
                 
@@ -190,6 +198,7 @@ class NetworkViewC: AlysieBaseViewC {
                 switch role {
                 case 9,7,8,3:
                     let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
+                    vc.role = type!
                     vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
                 default:
                     let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
@@ -359,9 +368,18 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         if self.connection?.data?[indexPath.row].reasonToConnect == "" {
             height = 120
         } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
-            height = 140
-        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50 && String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
-            height = 170
+            
+            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+            
+            
+            height = 140 + ((tok.count-1)*20)
+        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
+            
+            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+            
+            
+            height = 170 + ((tok.count-1)*20)
+            //height = 170
         } 
         
         return CGFloat(height)//UITableView.automaticDimension

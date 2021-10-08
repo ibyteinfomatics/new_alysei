@@ -84,16 +84,25 @@ class HomeViewC: AlysieBaseViewC {
         self.viewBlankHeading.makeCornerRadius(radius: 5.0)
         //postRequestToGetProgress()
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        if Int.getInt(data["alysei_review"]) == 0 {
-            
-            postRequestToGetProgress()
-            
-           
-        } else if Int.getInt(data["alysei_review"]) == 1{
-            
+        
+        let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+        
+        if role == 10 {
             postRequestToGetProgressPrfile()
-            
+        } else {
+            if Int.getInt(data["alysei_review"]) == 0 {
+                
+                postRequestToGetProgress()
+                
+               
+            } else if Int.getInt(data["alysei_review"]) == 1{
+                
+                postRequestToGetProgressPrfile()
+                
+            }
         }
+        
+        
         
         self.countshow.isHidden = true
         receiveUsers()
