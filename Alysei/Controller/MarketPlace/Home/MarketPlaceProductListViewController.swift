@@ -28,8 +28,10 @@ class MarketPlaceProductListViewController: UIViewController {
             callCategoryProductListApi(1)
         }else if pushedFromVC == .conservation {
             callConservationListApi(1)
-        }else if pushedFromVC == .fdaCertified{
+        }else if pushedFromVC == .fdaCertified || pushedFromVC == .myFav {
             callOptionApi(1)
+        }else if pushedFromVC == .properties {
+            callConservationListApi(1)
         }else{
             self.callProductListApi()
         }
@@ -43,13 +45,17 @@ class MarketPlaceProductListViewController: UIViewController {
     
     @IBAction func btnFilterAction(_ sender: UIButton){
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
-        nextVC.identifyList = 4
+       // nextVC.identifyList = 4
         if pushedFromVC == .region {
             nextVC.loadFilter =  .region
         }else if pushedFromVC == .category{
             nextVC.loadFilter =  .category
         }else if pushedFromVC == .properties{
             nextVC.loadFilter =  .properties
+        }else if  pushedFromVC == .fdaCertified {
+            nextVC.loadFilter =  .fdaCertified
+        }else if pushedFromVC == .myFav{
+            nextVC.loadFilter =  .myFav
         }else{
         nextVC.loadFilter = .conservationFood
         }
@@ -73,8 +79,10 @@ class MarketPlaceProductListViewController: UIViewController {
                     callCategoryProductListApi(indexOfPageToRequest)
                 }else if pushedFromVC == .conservation {
                     callConservationListApi(indexOfPageToRequest)
-                }else if pushedFromVC == .fdaCertified{
+                }else if pushedFromVC == .fdaCertified  || pushedFromVC == .myFav{
                     callOptionApi(indexOfPageToRequest)
+                }else if pushedFromVC == .properties {
+                    callConservationListApi(indexOfPageToRequest)
                 }else{
                     self.callProductListApi()
                 }
@@ -201,6 +209,24 @@ extension MarketPlaceProductListViewController{
     //        }
     //
     //    }
+    
+    func callBoxFilterApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketplaceBoxFilterApi, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
+            switch statusCode{
+            case 200:
+                let response = dictresponse as? [String:Any]
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
+                    if let subData = data["data"] as? [[String:Any]]{
+                        self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                    }
+                }
+            default:
+                print("No Data")
+            }
+            self.tableView.reloadData()
+        }
+    }
 }
 
 class MarketPlaceProductListTableVCell: UITableViewCell{

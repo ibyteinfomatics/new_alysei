@@ -140,6 +140,7 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
             controller?.selectedProductId = self.selectedProductId
             controller?.fromVC = .connectionRequest
             controller?.userID = self.userID
+            controller?.userName = self.userName
         }
     }
     

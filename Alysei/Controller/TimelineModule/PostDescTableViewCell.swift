@@ -6,9 +6,11 @@
 //
 
 import UIKit
-import SocketIO
+//import SocketIO
 
-struct PostLikeUnlikeRequestModel: Codable, SocketData {
+//struct PostLikeUnlikeRequestModel: Codable, SocketData {
+    struct PostLikeUnlikeRequestModel: Codable {
+
     let postOwnerID: Int
     let userID: Int
     let postID: Int
@@ -22,7 +24,7 @@ struct PostLikeUnlikeRequestModel: Codable, SocketData {
     }
 }
 
-    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
+    //let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 
 
 protocol ShareEditMenuProtocol {
@@ -64,7 +66,7 @@ class PostDescTableViewCell: UITableViewCell {
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
 
-    let socket = manager.defaultSocket
+   // let socket = manager.defaultSocket
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -119,31 +121,31 @@ class PostDescTableViewCell: UITableViewCell {
 
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
 
-        socket.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
-
-            print(data)
-            print(ack)
-
-            print("socket is connected")
-
-            let userIDSD = ["user_id": selfID].socketRepresentation()
-
-            self.socket.emit("init", userIDSD) {
-                print("init done")
-            }
-
-            self.socket.on("connected") { connectedData, connectedAck in
-                print(connectedData)
-            }
-
-        }
-
-        socket.on(clientEvent: .error) { data, ack in
-            print(data)
-        }
-
-        socket.connect()
+//        socket.on(clientEvent: .connect) {data, ack in
+//            print("socket connected")
+//
+//            print(data)
+//            print(ack)
+//
+//            print("socket is connected")
+//
+//            let userIDSD = ["user_id": selfID].socketRepresentation()
+//
+//            self.socket.emit("init", userIDSD) {
+//                print("init done")
+//            }
+//
+//            self.socket.on("connected") { connectedData, connectedAck in
+//                print(connectedData)
+//            }
+//
+//        }
+//
+//        socket.on(clientEvent: .error) { data, ack in
+//            print(data)
+//        }
+//
+//        socket.connect()
 
 
         self.data = modelData
@@ -238,43 +240,43 @@ class PostDescTableViewCell: UITableViewCell {
                       "post_id": self.data?.postID ?? -1,
                       "like_status": islike ?? 1]
 
-        let sd = params.socketRepresentation()
-
-        socket.emit("doLike", with: [sd]) {
-            print("doLike - inside ")
-        }
-
-        socket.on("showLike") { showLikeData, showLikeAck in
-            print("inside show like - start")
-            print(showLikeData)
-            print("inside show like - end")
-
-//            socket.disconnect()
-
-            if let data = showLikeData[0] as? [String: Any] {
-
-                if let postID = data["post_id"] as? Int {
-                    if postID != (self.data?.postID ?? -1) {
-                        return
-                    }
-                }
-
-                let totalLikes = data["total_likes"] as? Int
-                self.data?.likeCount = totalLikes ?? 0
-
-                let likeStatus = data["like_status"] as? Int
-                self.data?.likeFlag = likeStatus ?? 0
-
-                self.likeCallback?(self.index ?? 0)
-            }
-
-
-        }
-
-
-        socket.on(clientEvent: .error) { data, ack in
-            print(data)
-        }
+//        let sd = params.socketRepresentation()
+//
+//        socket.emit("doLike", with: [sd]) {
+//            print("doLike - inside ")
+//        }
+//
+//        socket.on("showLike") { showLikeData, showLikeAck in
+//            print("inside show like - start")
+//            print(showLikeData)
+//            print("inside show like - end")
+//
+////            socket.disconnect()
+//
+//            if let data = showLikeData[0] as? [String: Any] {
+//
+//                if let postID = data["post_id"] as? Int {
+//                    if postID != (self.data?.postID ?? -1) {
+//                        return
+//                    }
+//                }
+//
+//                let totalLikes = data["total_likes"] as? Int
+//                self.data?.likeCount = totalLikes ?? 0
+//
+//                let likeStatus = data["like_status"] as? Int
+//                self.data?.likeFlag = likeStatus ?? 0
+//
+//                self.likeCallback?(self.index ?? 0)
+//            }
+//
+//
+//        }
+//
+//
+//        socket.on(clientEvent: .error) { data, ack in
+//            print(data)
+//        }
 
     }
 

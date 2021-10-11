@@ -308,6 +308,7 @@ struct APIUrl{
     static let kGetProductByRegionId = "get/products/by/region?region_id="
     static let kGetProductByCategoryId = "get/products/by/category?category_id="
     static let kFollowUnfollow = "follow/user"
+    static let kMarketplaceBoxFilterApi = "filter?"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -935,6 +936,7 @@ enum PushedFrom: Int {
     case conservation
     case fdaCertified
     case properties
+    case myFav
     
 }
 

@@ -11,6 +11,7 @@ class FilterSubOptionsTableVCell: UITableViewCell {
     @IBOutlet weak var labelSubOptions: UILabel!
     @IBOutlet weak var btnOptionSelect: UIButton!
     var selectedCategory: [Int]?
+    var id: Int?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,11 +51,50 @@ class FilterSubOptionsTableVCell: UITableViewCell {
         
         
     }
-    func configProductSearch(_ data: MyStoreProductDetail, _ checkHitApi: checkHitApi?){
+    func configProductSearch(_ data: MyStoreProductDetail, _ checkHitApi: checkHitApi?, indexPath: Int?){
         if checkHitApi == .fdaCertified || checkHitApi == .method || checkHitApi == .properties{
         labelSubOptions.text = data.option
         }else{
             labelSubOptions.text = data.name
+        }
+        if checkHitApi == .categories{
+            self.id = data.marketplace_product_category_id
+        }else if checkHitApi == .properties || checkHitApi == .method{
+                self.id = data.userFieldOptionid
+            }else if checkHitApi == .region{
+                self.id = data.id
+            }
+        if (selectedCategory?.contains(id ?? -1) ?? false){
+            data.isSelected = true
+        }else{
+            data.isSelected = false
+        }
+       
+        if data.isSelected == false{
+        btnOptionSelect.setImage(UIImage(named: "icons_grey_checkbox"), for: .normal)
+        }else{
+            btnOptionSelect.setImage(UIImage(named: "FilterMultiSelect"), for: .normal)
+        }
+    }
+    
+    func configStringNameCell(_ data: FilterModel, _ index: Int, _ checkHitApi: checkHitApi?){
+        if (selectedCategory?.contains(index ) ?? false){
+            data.isSelected = true
+        }else{
+            data.isSelected = false
+        }
+        if checkHitApi == .fdaCertified || checkHitApi == .producers{
+        if data.isSelected == false{
+            btnOptionSelect.setImage(UIImage(named: "UnselectSort"), for: .normal)
+        }else{
+            btnOptionSelect.setImage(UIImage(named: "SelectSort"), for: .normal)
+        }
+        }else{
+            if data.isSelected == false{
+                btnOptionSelect.setImage(UIImage(named: "icons_grey_checkbox"), for: .normal)
+            }else{
+                btnOptionSelect.setImage(UIImage(named: "FilterMultiSelect"), for: .normal)
+            }
         }
     }
 }

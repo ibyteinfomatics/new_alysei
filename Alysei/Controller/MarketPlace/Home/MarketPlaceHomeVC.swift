@@ -155,7 +155,13 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7{
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
+            switch indexPath.row {
+            case 5:
                 nextVC.pushedFromVC = .fdaCertified
+            default:
+               
+                nextVC.pushedFromVC = .myFav
+        }
             nextVC.listType = indexPath.row + 1
             nextVC.keywordSearch = arrMarketPlace[indexPath.row]
             self.navigationController?.pushViewController(nextVC, animated: true)

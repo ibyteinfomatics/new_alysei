@@ -24,6 +24,7 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     // MARK:- Object lifecycle
 
     var userModel: BasicConnectFlow.userDataModel!
+    var userName = ""
     @IBOutlet weak var vwConfirm: UIView!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -68,7 +69,11 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
         vwConfirm.isHidden = true
         let messageAttributedString = NSMutableAttributedString()
         messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
+        if self.userName != ""{
+            messageAttributedString.append(NSAttributedString(string: "@\(self.userName ?? "")", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
+        }else{
         messageAttributedString.append(NSAttributedString(string: "@\(self.userModel.username)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
+        }
 
         reasonToConnect.layer.borderWidth = 1
         reasonToConnect.layer.borderColor = UIColor.lightGray.cgColor
@@ -84,7 +89,8 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     // MARK:- protocol methods
 
     var selectProductId = [String]()
-    var userID: Int?
+    var userID = 0
+    var passUserID: Int?
     //MARK:- IBActions
     @IBAction func backbuttonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -94,9 +100,14 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         self.reasonToConnect.resignFirstResponder()
         let optionName = self.selectProductId.joined(separator: ",")
+        if self.userID != 0{
+            passUserID = self.userID
+        }else{
+            passUserID = self.userModel.userID
+        }
         let requestModel = BasicConnectFlow.Connection.request(//userID: self.userModel.userID,
-            userID: self.userModel.userID,
-                                                               reason: self.reasonToConnect.text,
+            //userID: self.userModel.userID,
+            userID: passUserID ?? 0,              reason: self.reasonToConnect.text,
                                                                selectProductId: optionName)
        
         self.interactor?.sendConnectionRequest(requestModel)
@@ -109,7 +120,13 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
 //        let controller = pushViewController(withName: ConnectionConfirmVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionConfirmVC
 //        controller?.userID = self.userID
         vwConfirm.isHidden = false
-        self.navigationController?.popViewController(animated: true)
+       // self.navigationController?.popViewController(animated: true)
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: ProfileViewC.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
        
         
     }

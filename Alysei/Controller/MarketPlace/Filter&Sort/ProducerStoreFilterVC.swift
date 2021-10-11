@@ -12,6 +12,8 @@ enum loadFilter{
     case region
     case category
     case properties
+    case fdaCertified
+    case myFav
 }
 enum checkHitApi : String{
     case method = "Method"
@@ -23,6 +25,7 @@ enum checkHitApi : String{
     case distance = "Distance"
     case rating = "Ratings"
     case producers = "Producers"
+    case productName = "Product Name"
     
 }
 
@@ -32,11 +35,15 @@ class ProducerStoreFilterVC: UIViewController {
     @IBOutlet weak var subOptionTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
     var selectedIndex = 0
+    
     var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
     var arrConservationOption = ["Categories","Properties","Italian Region","FDA Certfied"]
     var arrRegionOption = ["Producers","Method","Categories","Properties","FDA Certfied"]
     var arrCategoriesOption = ["Method","Properties","FDA Certfied"]
     var arrPropertiesOption = ["Method","FDA Certfied","Categories"]
+    var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
+    var arrMyFavOption = ["Producers","Method","Categories","Properties","FDA Certfied","Distance","Ratings"]
+    
     var arrDistance = ["Within 5 Miles","Within 10 Miles","Within 20 Miles","Within 40 Miles","Within 100 Miles"]
     var arrRating = ["Most rated stores","5 star stores", "Most searched"]
     var arrFdaCertified = ["Yes","No"]
@@ -44,6 +51,8 @@ class ProducerStoreFilterVC: UIViewController {
     var arrFilterOptions = [FilterModel]()
     var arrDistanceOption = [FilterModel]()
     var arrRatingOptions = [FilterModel]()
+    var arrOptionFdaCert = [FilterModel]()
+    var arrOptionSortProducers = [FilterModel]()
     var loadingFirstTime = true
     var arrList: [MyStoreProductDetail]?
     var lastPage: Int?
@@ -52,7 +61,22 @@ class ProducerStoreFilterVC: UIViewController {
     var loadDistance = false
     var loadFilter : loadFilter?
     var checkApi: checkHitApi?
-  //  var loadRating =
+    
+    var selectedId: Int?
+    var selectedOptionsId = [Int]()
+    
+    var arrSelectedCategories = [Int]()
+    var arrSelectedProperties = [Int]()
+    var arrSelectedItalianRegion = [Int]()
+    var arrSelectedDistance = [Int]()
+    var arrSelectedRating = [Int]()
+    //var arrSelectedMethod = [Int]()
+    var selectFdaCertified = [Int]()
+    var selectedSortProducer = [Int]()
+    var selectedOptionsMethod = [Int]()
+    var callApiCallBack: (()-> Void)? = nil
+    
+    //  var loadRating =
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -61,9 +85,9 @@ class ProducerStoreFilterVC: UIViewController {
     
     func setUI(){
         if loadFilter == .producerStore{
-        for option in arrOption {
-            self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
-        }
+            for option in arrOption {
+                self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
+            }
         }else if loadFilter == .conservationFood{
             for option in arrConservationOption {
                 self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
@@ -80,6 +104,14 @@ class ProducerStoreFilterVC: UIViewController {
             for option in arrPropertiesOption {
                 self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
             }
+        }else if loadFilter == .fdaCertified{
+            for option in arrFdaCertifiedOption {
+                self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
+            }
+        }else if loadFilter == .myFav{
+            for option in arrMyFavOption {
+                self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
+            }
         }
         for option in arrDistance{
             self.arrDistanceOption.append(FilterModel(name: option, isSelected: false))
@@ -87,12 +119,24 @@ class ProducerStoreFilterVC: UIViewController {
         for option in arrRating{
             self.arrRatingOptions.append(FilterModel(name: option, isSelected: false))
         }
-        if loadFilter == .region{
+        for option in arrFdaCertified{
+            self.arrOptionFdaCert.append(FilterModel(name: option, isSelected: false))
+        }
+        for option in arrSortProducer{
+            self.arrOptionSortProducers.append(FilterModel(name: option, isSelected: false))
+        }
+        if loadFilter == .producerStore || loadFilter == .conservationFood{
+            checkApi = .categories
+            identifyList = 4
+            callOptionApi(1)
+        }else if loadFilter == .region{
             checkApi = .producers
         }else if loadFilter == .category || loadFilter == .properties{
             checkApi = .method
             identifyList = 2
             callOptionApi(1)
+        }else if loadFilter == .fdaCertified || loadFilter == .myFav{
+            checkApi = .producers
         }
         callOptionApi(indexOfPageToRequest)
     }
@@ -100,10 +144,10 @@ class ProducerStoreFilterVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func clearFilters(_ sender: UIButton){
-        
+        callApiCallBack?()
     }
     @IBAction func btnApplyFilter(_ sender: UIButton){
-        
+        callApiCallBack?()
     }
     
 }
@@ -137,34 +181,47 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
             if self.loadingFirstTime == true{
                 arrFilterOptions[0].isSelected = true
             }
+            
             cell.configCell(self.selectedIndex, arrFilterOptions[indexPath.row])
             return cell
         }else{
             guard let cell = subOptionTableView.dequeueReusableCell(withIdentifier: "FilterSubOptionsTableVCell", for: indexPath) as? FilterSubOptionsTableVCell else {return UITableViewCell()}
             cell.selectionStyle = .none
-//            if selectedIndex == 3 && loadFilter == .producerStore {
-//                cell.labelSubOptions.text = arrDistanceOption[indexPath.row].name
-//            }else if ((selectedIndex == 3) && (loadFilter == .conservationFood)){
-//                cell.labelSubOptions.text = arrFdaCertified[indexPath.row]
-//            }else if ((selectedIndex == 4) && (loadFilter == .producerStore)){
-//                cell.labelSubOptions.text = arrRatingOptions[indexPath.row].name
-//            }else if (selectedIndex == 0 && loadFilter == .region){
-//                cell.labelSubOptions.text = arrSortProducer[indexPath.row]
-//            }else{
-//                cell.configProductSearch(arrList?[indexPath.row] ?? MyStoreProductDetail(with: [:]), identifyList)
-//
-//            }
             
             if checkApi == .distance {
-                cell.labelSubOptions.text = arrDistanceOption[indexPath.row].name
+                let data = arrDistanceOption[indexPath.row]
+                cell.labelSubOptions.text = data.name
+                cell.selectedCategory = self.selectedOptionsId
+                self.arrSelectedDistance = self.selectedOptionsId
+                cell.configStringNameCell(arrDistanceOption[indexPath.row], indexPath.row, .distance)
             }else if checkApi == .rating {
                 cell.labelSubOptions.text = arrRatingOptions[indexPath.row].name
+                cell.selectedCategory = self.selectedOptionsId
+                self.arrSelectedRating = self.selectedOptionsId
+                cell.configStringNameCell(arrRatingOptions[indexPath.row], indexPath.row, .rating)
             }else if checkApi == .fdaCertified {
                 cell.labelSubOptions.text = arrFdaCertified[indexPath.row]
+                cell.selectedCategory = self.selectedOptionsId
+                self.selectFdaCertified = self.selectedOptionsId
+                cell.configStringNameCell(arrOptionFdaCert[indexPath.row], indexPath.row, .fdaCertified)
             }else if checkApi == .producers {
                 cell.labelSubOptions.text = arrSortProducer[indexPath.row]
+                cell.selectedCategory = self.selectedOptionsId
+                self.selectedSortProducer = self.selectedOptionsId
+                cell.configStringNameCell(arrOptionSortProducers[indexPath.row], indexPath.row, .producers)
             }else{
-                cell.configProductSearch(arrList?[indexPath.row] ?? MyStoreProductDetail(with: [:]), checkApi)
+                if checkApi == .categories {
+                    self.arrSelectedCategories = self.selectedOptionsId
+                }else if checkApi == .properties{
+                    self.arrSelectedProperties = self.selectedOptionsId
+                }else if checkApi == .region{
+                    self.arrSelectedItalianRegion = self.selectedOptionsId
+                }else if checkApi == .method{
+                    self.selectedOptionsMethod = self.selectedOptionsId
+                }
+                cell.selectedCategory = self.selectedOptionsId
+                cell.configProductSearch(arrList?[indexPath.row] ?? MyStoreProductDetail(with: [:]), checkApi, indexPath: indexPath.row)
+                
             }
             
             return cell
@@ -187,50 +244,96 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
             selectedIndex = indexPath.row
             if arrFilterOptions[indexPath.row].name == checkHitApi.categories.rawValue{
                 checkApi = .categories
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.arrSelectedCategories
                 identifyList = 4
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.properties.rawValue{
                 checkApi = .properties
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.arrSelectedProperties
                 identifyList = 5
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.region.rawValue{
                 checkApi = .region
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.arrSelectedItalianRegion
                 identifyList = 3
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.method.rawValue{
                 checkApi = .method
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.selectedOptionsMethod
                 identifyList = 2
                 callOptionApi(1)
             }else if  arrFilterOptions[indexPath.row].name == checkHitApi.distance.rawValue{
                 checkApi = .distance
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.arrSelectedDistance
             }
             else if arrFilterOptions[indexPath.row].name == checkHitApi.rating.rawValue {
                 checkApi = .rating
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.producers.rawValue {
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.arrSelectedRating
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.producers.rawValue || arrFilterOptions[indexPath.row].name == checkHitApi.productName.rawValue {
                 checkApi = .producers
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.selectedSortProducer
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.fdaCertified.rawValue{
                 checkApi = .fdaCertified
-//                identifyList = 2
-//                callOptionApi(1)
+                self.selectedOptionsId = []
+                self.selectedOptionsId = self.selectFdaCertified
             }else{
                 self.subOptionTableView.reloadData()
             }
-//            switch indexPath.row {
-//            case 0:
-//                identifyList = 4
-//                callOptionApi(1)
-//            case 1:
-//                identifyList = 5
-//                callOptionApi(1)
-//            case 2:
-//                identifyList = 3
-//                callOptionApi(1)
-//            case 3, 4:
-//                self.subOptionTableView.reloadData()
-//            default:
-//                print("Invalid")
-//
-//            }
+            self.subOptionTableView.reloadData()
+        }else{
+            
+            if checkApi == .categories ||  checkApi == .properties ||  checkApi == .region || checkApi == .method{
+                if checkApi == .categories{
+                    selectedId = arrList?[indexPath.row].marketplace_product_category_id
+                }else if checkApi == .properties || checkApi == .method{
+                    selectedId = arrList?[indexPath.row].userFieldOptionid
+                }else if  checkApi == .region{
+                    selectedId = arrList?[indexPath.row].id
+                }
+                if self.selectedOptionsId.contains(selectedId ?? -1){
+                    if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedId ?? -1) {
+                        self.selectedOptionsId.remove(at: itemToRemoveIndex)
+                    }
+                }else{
+                    self.selectedOptionsId.append(selectedId ?? -1)
+                }
+            }else  if checkApi == .distance ||  checkApi == .rating{
+                let selectedIndex = indexPath.row
+                if self.selectedOptionsId.contains(selectedIndex){
+                    if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedIndex ) {
+                        self.selectedOptionsId.remove(at: itemToRemoveIndex)
+                    }
+                }else{
+                    self.selectedOptionsId.append(selectedIndex )
+                }
+            }else if checkApi == .fdaCertified{
+                let data = arrOptionFdaCert[indexPath.row]
+                for i in 0..<arrOptionFdaCert.count{
+                    arrOptionFdaCert[i].isSelected = false
+                }
+                data.isSelected = !(data.isSelected ?? false)
+                
+                self.selectedOptionsId = []
+                self.selectedOptionsId.append(indexPath.row)
+            }else if checkApi == .producers{
+                let data = arrOptionSortProducers[indexPath.row]
+                for i in 0..<arrOptionSortProducers.count{
+                    arrOptionSortProducers[i].isSelected = false
+                }
+                data.isSelected = !(data.isSelected ?? false)
+                
+                self.selectedOptionsId = []
+                self.selectedOptionsId.append(indexPath.row)
+            }
+            print("selectedOptionsId",selectedOptionsId)
+            
             self.subOptionTableView.reloadData()
         }
     }
