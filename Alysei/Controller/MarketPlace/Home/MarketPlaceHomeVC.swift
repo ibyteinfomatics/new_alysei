@@ -19,6 +19,10 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblDiscover: UILabel!
     @IBOutlet weak var recipesView: UIView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var recentlyAddedCollectionView: UICollectionView!
+    @IBOutlet weak var newlyyAddedStoreCollectionView: UICollectionView!
+    @IBOutlet weak var regionCollectionView: UICollectionView!
     
     
     var isCreateStore = false
@@ -30,7 +34,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-       // headerView.addShadow()
+        // headerView.addShadow()
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.addShadow()
         callCheckIfStoredCreated()
@@ -49,7 +53,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         
         let searchTap = UITapGestureRecognizer(target: self, action: #selector(openSearchView))
         self.viewSearch.addGestureRecognizer(searchTap)
-         
+        
         
         let tapRecipe = UITapGestureRecognizer(target: self, action: #selector(openRecipes))
         self.recipesView.addGestureRecognizer(tapRecipe)
@@ -59,7 +63,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
             self.btnCreateStore.setTitle("Go to My Store", for: .normal)
         }else{
             self.btnCreateStore.setTitle("Create your Store", for: .normal)
-        
+            
         }
     }
     @objc func openSearchView(){
@@ -67,110 +71,144 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceHomeVC") as! MarketPlaceHomeVC
-//
-//        vc.view.frame = self.containerView.bounds
-//        self.addChild(vc)
-//        self.containerView.addSubview(vc.view)
-//        vc.didMove(toParent: self)
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceHomeVC") as! MarketPlaceHomeVC
+    //
+    //        vc.view.frame = self.containerView.bounds
+    //        self.addChild(vc)
+    //        self.containerView.addSubview(vc.view)
+    //        vc.didMove(toParent: self)
+    //    }
     @objc func openPost(){
-       // self.navigationController?.popViewController(animated: true)
+        // self.navigationController?.popViewController(animated: true)
         
         _ = pushViewController(withName: HomeViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? HomeViewC
         
         /*for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: HomeViewC.self) {
-                self.navigationController!.popToViewController(controller, animated: true)
-                break
-            }
-        }*/
+         if controller.isKind(of: HomeViewC.self) {
+         self.navigationController!.popToViewController(controller, animated: true)
+         break
+         }
+         }*/
         
     }
     @objc func openRecipes(){
-      
+        
         guard let vc = UIStoryboard(name: StoryBoardConstants.kRecipesSelection, bundle: nil).instantiateViewController(identifier: "CuisinePageControlViewController") as? CuisinePageControlViewController else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
     }
-
-
+    
+    
     @IBAction func btnGotoStores(_ sender: UIButton){
         //self.callCheckIfStoredCreated()
         //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
-            if self.storeCreated == 0{
-        let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
-
-        vc.view.frame = self.containerView.bounds
-        self.addChild(vc)
-        self.containerView.addSubview(vc.view)
-        vc.didMove(toParent: self)
-            }else if self.storeCreated == 1 && self.productCount == 0{
-                _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
-            }else{
+        if self.storeCreated == 0{
+            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
+            
+            vc.view.frame = self.containerView.bounds
+            self.addChild(vc)
+            self.containerView.addSubview(vc.view)
+            vc.didMove(toParent: self)
+        }else if self.storeCreated == 1 && self.productCount == 0{
+            _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
+        }else{
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
         }
-      //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
     }
-
+    
 }
 extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        if collectionView == imageCollectionView{
+            return 9
+        }else if collectionView == recentlyAddedCollectionView{
+            return 9
+        }else if collectionView == newlyyAddedStoreCollectionView{
+            return 9
+        }else{
+            return 9
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
-        cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
-
-        let firstWord = arrMarketPlace[indexPath.row].components(separatedBy: " ")
-        if firstWord.first == firstWord.last{
-            cell.lblOption.text = (firstWord.first ?? "")
+        if collectionView == imageCollectionView{
+            guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeImageCVC", for: indexPath) as? MarketplaceHomeImageCVC else {return UICollectionViewCell()}
+            return cell
+        }else if collectionView == recentlyAddedCollectionView{
+            guard let cell = recentlyAddedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeRecentlyAddedCVC", for: indexPath) as? MarketplaceHomeRecentlyAddedCVC else {return UICollectionViewCell()}
+            return cell
+        }else if collectionView == newlyyAddedStoreCollectionView{
+            guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
+            return cell
+        }else if collectionView == regionCollectionView{
+            guard let cell = regionCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeRegionCViewCell", for: indexPath) as? MarketPlaceHomeRegionCViewCell  else {return UICollectionViewCell()}
+            return cell
         }else{
-        cell.lblOption.text = (firstWord.first ?? "") + "\n" + (firstWord.last ?? "")
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
+            cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
+            
+            let firstWord = arrMarketPlace[indexPath.row].components(separatedBy: " ")
+            if firstWord.first == firstWord.last{
+                cell.lblOption.text = (firstWord.first ?? "")
+            }else{
+                cell.lblOption.text = (firstWord.first ?? "") + "\n" + (firstWord.last ?? "")
+            }
+            //cell.lblOption.text = ("\u{00a0}\(arrMarketPlace[indexPath.row])")
+            
+            return cell
         }
-        //cell.lblOption.text = ("\u{00a0}\(arrMarketPlace[indexPath.row])")
-      
-        return cell
     }
     
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3, height: 120)
+        if collectionView == imageCollectionView{
+            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 150)
+        }else if collectionView == recentlyAddedCollectionView{
+            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 200)
+        }else if collectionView == newlyyAddedStoreCollectionView{
+            return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 200)
+        }else{
+            return CGSize(width: collectionView.frame.width / 3, height: 120)
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if indexPath.row == 0{
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
-            nextVC.listType = 1
-            nextVC.keywordSearch = arrMarketPlace[indexPath.row]
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if indexPath.row == 2 {
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
-            
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7{
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
-            switch indexPath.row {
-            case 5:
-                nextVC.pushedFromVC = .fdaCertified
-            default:
-               
-                nextVC.pushedFromVC = .myFav
-        }
-            nextVC.listType = indexPath.row + 1
-            nextVC.keywordSearch = arrMarketPlace[indexPath.row]
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }
-        else{
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
-            nextVC.listIndex = indexPath.row + 1
-            nextVC.passHeading = arrMarketPlace[indexPath.row]
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if collectionView == imageCollectionView{
+            print("Check")
+        }else if collectionView == newlyyAddedStoreCollectionView{
+            print("Check")
+        }else{
+            if indexPath.row == 0{
+                guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
+                nextVC.listType = 1
+                nextVC.keywordSearch = arrMarketPlace[indexPath.row]
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if indexPath.row == 2 {
+                guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
+                
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7{
+                guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
+                switch indexPath.row {
+                case 5:
+                    nextVC.pushedFromVC = .fdaCertified
+                default:
+                    
+                    nextVC.pushedFromVC = .myFav
+                }
+                nextVC.listType = indexPath.row + 1
+                nextVC.keywordSearch = arrMarketPlace[indexPath.row]
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            else{
+                guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
+                nextVC.listIndex = indexPath.row + 1
+                nextVC.passHeading = arrMarketPlace[indexPath.row]
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
         }
     }
 }
@@ -186,4 +224,12 @@ extension MarketPlaceHomeVC{
     }
 }
 
-
+class MarketplaceHomeImageCVC: UICollectionViewCell{
+    @IBOutlet weak  var image: UIImageView!
+}
+class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
+    @IBOutlet weak  var image: UIImageView!
+}
+class MarketPlaceHomeRegionCViewCell: UICollectionViewCell{
+    
+}
