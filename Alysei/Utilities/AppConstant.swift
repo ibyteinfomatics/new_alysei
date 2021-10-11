@@ -390,9 +390,11 @@ struct APIUrl{
 
         static let getChildIngridient = kBASEURL + "get/child/ingredients/"
         static let getFilterRecipe = kBASEURL + "filter/recipe?cook_time="
-        static let getFavouriteRecipe = kBASEURL + " get/my/favourite/recipes"
+        static let getFavouriteRecipe = kBASEURL + "get/my/favourite/recipes"
         static let getSearchRecipe = kBASEURL + "search/recipe?"
         static let getRecipeDeatail = kBASEURL + "get/recipe/detail/"
+        static let getFavUnfavRecipe = kBASEURL + "favourite/unfavourite/recipe"
+        static let doReview = kBASEURL + "do/review"
     }
 }
 
