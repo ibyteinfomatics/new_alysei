@@ -640,21 +640,31 @@ class ProfileViewC: AlysieBaseViewC{
         
         var username = ""
         
-        if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
-            
-            username = self.userProfileModel.data?.userData?.restaurantName ?? ""
-            
-        } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
-            
-            username = self.userProfileModel.data?.userData?.companyName ?? ""
-            
-        } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
-            
-            username = self.userProfileModel.data?.userData?.firstName ?? ""
-            
+//        if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+//
+//            username = self.userProfileModel.data?.userData?.restaurantName ?? ""
+//
+//        } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
+//
+//            username = self.userProfileModel.data?.userData?.companyName ?? ""
+//
+//        } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+//
+//            username = self.userProfileModel.data?.userData?.firstName ?? ""
+//
+//        }
+        var pusername = ""
+        
+        
+        if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
+            pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
+        }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
+            pusername = self.userProfileModel.data?.userData?.firstName ?? ""
+        }else{
+            pusername = self.userProfileModel.data?.userData?.companyName ?? ""
         }
         
-        controller?.userName = username
+        controller?.userName = pusername
         controller?.userID = self.userID
     }
     

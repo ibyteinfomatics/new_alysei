@@ -64,7 +64,7 @@ class NetworkViewC: AlysieBaseViewC {
     func inviteApi(id: Int, type: Int){
         
         let params: [String:Any] = [
-            "connection_id": id,
+            "connection_id": String.getString(id),
             "accept_or_reject": type]
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
@@ -81,7 +81,7 @@ class NetworkViewC: AlysieBaseViewC {
     
     func pendingRemoveApi(id: Int){
        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPendingRemove+String.getString(id), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPendingRemove+String.getString(id), requestMethod: .POST, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
             
@@ -362,27 +362,28 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
-    if currentIndex == 0 {
-        var height = 200
+    if currentIndex == 0 && tblViewInviteNetwork.isHidden == false{
+//        var height = 200
+//
+//        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
+//            height = 120
+//        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
+//
+//            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+//
+//
+//            height = 140 + ((tok.count-1)*20)
+//        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
+//
+//            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+//
+//
+//            height = 170 + ((tok.count-1)*20)
+//            //height = 170
+//        }
         
-        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
-            height = 120
-        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
-            
-            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
-            
-            
-            height = 140 + ((tok.count-1)*20)
-        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
-            
-            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
-            
-            
-            height = 170 + ((tok.count-1)*20)
-            //height = 170
-        } 
-        
-        return CGFloat(height)//UITableView.automaticDimension
+       // return CGFloat(height)
+        return UITableView.automaticDimension
     } else {
         return 66.0
     }

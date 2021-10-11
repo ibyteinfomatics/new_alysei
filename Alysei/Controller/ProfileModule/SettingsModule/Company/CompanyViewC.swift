@@ -39,6 +39,7 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
     var fromVC: isCameFrom?
     var tapSaveBtn = false
     var userID : Int?
+    var userName: String?
     
     //MARK: - ViewLifeCycle Methods -
     
@@ -199,7 +200,8 @@ extension CompanyViewC {
             if self.fromVC == .connectionRequest && self.tapSaveBtn == true{
                 let controller = self.pushViewController(withName: BasicConnectFlowViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? BasicConnectFlowViewController
                 controller?.selectProductId = self.selectedProductId
-                controller?.userID = self.userID
+                controller?.userID = self.userID ?? 0
+                controller?.userName = self.userName ?? ""
             }
         }
     }
@@ -362,4 +364,5 @@ extension UIImage {
         return nil
     }
 }
+
 

@@ -354,7 +354,6 @@
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
-		6BFF239126E7475E004C3916 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 6BFF239026E7475E004C3916 /* SocketIO */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
 		A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A808778625ADB4F400AA4A69 /* Login.storyboard */; };
 		A84EECF925B19F6F00429B1D /* EditProfileViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84EECF825B19F6F00429B1D /* EditProfileViewC.swift */; };
@@ -1222,7 +1221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */,
-				6BFF239126E7475E004C3916 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2941,7 +2939,6 @@
 			);
 			name = Alysei;
 			packageProductDependencies = (
-				6BFF239026E7475E004C3916 /* SocketIO */,
 			);
 			productName = Alysie;
 			productReference = 27BC688025AC564100A01B6A /* Alysei.app */;
@@ -3856,14 +3853,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6BFF239026E7475E004C3916 /* SocketIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6129994D2685E7F600B5DA46 /* XCRemoteSwiftPackageReference "socket" */;
-			productName = SocketIO;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 27BC687825AC564100A01B6A /* Project object */;
 }
