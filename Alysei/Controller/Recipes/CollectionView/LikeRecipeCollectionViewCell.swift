@@ -9,9 +9,7 @@ import UIKit
 
 class LikeRecipeCollectionViewCell: UICollectionViewCell {
     
-   
-
-          
+ 
     @IBOutlet weak var likeView: UIView!
     @IBOutlet weak var imageView : UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -19,6 +17,15 @@ class LikeRecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var servingLabel: UILabel!
     @IBOutlet weak var cousineTypeLabel: UILabel!
+    
+    @IBOutlet weak var likeLLabel: UILabel!
+    
+    @IBOutlet weak var rateImg1: UIImageView!
+    @IBOutlet weak var rateImg2: UIImageView!
+    @IBOutlet weak var rateImg3: UIImageView!
+    
+    @IBOutlet weak var rateImg4: UIImageView!
+    @IBOutlet weak var rateImg5: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

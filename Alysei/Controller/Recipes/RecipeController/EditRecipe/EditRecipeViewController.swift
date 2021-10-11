@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+var editRecipeId = Int()
 class EditRecipeViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
@@ -123,6 +123,7 @@ class EditRecipeViewController: UIViewController {
             minutesLable.text = "\(arrayMyRecipe?[index].minute ?? 0)"
             howMuchPeopleLable.text = "\(arrayMyRecipe?[index].serving ?? 0)"
             
+            editRecipeId = (arrayMyRecipe?[index].recipeId)!
         }
     }
     
@@ -293,8 +294,11 @@ class EditRecipeViewController: UIViewController {
     }
     
     @IBAction func editIngridient(_ sender: Any) {
+        let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "EditScreen2ViewController") as! EditScreen2ViewController
         
+        self.navigationController?.pushViewController(addSteps, animated: true)
     }
+    
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -326,6 +326,22 @@
 		6B90664026F89E1600D24521 /* IngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90663F26F89E1600D24521 /* IngridientViewController.swift */; };
 		6B90664226F89E3300D24521 /* CookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90664126F89E3300D24521 /* CookingViewController.swift */; };
 		6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */; };
+		6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */; };
+		6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */; };
+		6B97B0912713EE62003B9E68 /* EditIngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0902713EE62003B9E68 /* EditIngridientViewController.swift */; };
+		6B97B0932713EE6C003B9E68 /* EditToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0922713EE6C003B9E68 /* EditToolViewController.swift */; };
+		6B97B0952713EE74003B9E68 /* EditStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0942713EE74003B9E68 /* EditStepViewController.swift */; };
+		6B97B0982713EF13003B9E68 /* EditIngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0972713EF13003B9E68 /* EditIngridientTableViewCell.swift */; };
+		6B97B09A2713EF1C003B9E68 /* EditToolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0992713EF1C003B9E68 /* EditToolTableViewCell.swift */; };
+		6B97B09C2713EF21003B9E68 /* EditRecipeIngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B09B2713EF21003B9E68 /* EditRecipeIngridientTableViewCell.swift */; };
+		6B97B09E2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B97B09D2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib */; };
+		6B97B0A02713EF30003B9E68 /* EditNumberOfStepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B09F2713EF30003B9E68 /* EditNumberOfStepsTableViewCell.swift */; };
+		6B97B0A22713EF38003B9E68 /* EditNumberOfStepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B97B0A12713EF38003B9E68 /* EditNumberOfStepsTableViewCell.xib */; };
+		6B97B0A42713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0A32713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift */; };
+		6B97B0A62713EF44003B9E68 /* EditMissingToolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0A52713EF44003B9E68 /* EditMissingToolTableViewCell.swift */; };
+		6B97B0A92713EF80003B9E68 /* EditStepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0A82713EF80003B9E68 /* EditStepCollectionViewCell.swift */; };
+		6B97B0AB2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */; };
+		6B97B0AD2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */; };
 		6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */; };
 		6BBA9952260AF55900AA7A81 /* InactiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */; };
 		6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */; };
@@ -921,6 +937,22 @@
 		6B90663F26F89E1600D24521 /* IngridientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientViewController.swift; sourceTree = "<group>"; };
 		6B90664126F89E3300D24521 /* CookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingViewController.swift; sourceTree = "<group>"; };
 		6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
+		6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
+		6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreen2ViewController.swift; sourceTree = "<group>"; };
+		6B97B0902713EE62003B9E68 /* EditIngridientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIngridientViewController.swift; sourceTree = "<group>"; };
+		6B97B0922713EE6C003B9E68 /* EditToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditToolViewController.swift; sourceTree = "<group>"; };
+		6B97B0942713EE74003B9E68 /* EditStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepViewController.swift; sourceTree = "<group>"; };
+		6B97B0972713EF13003B9E68 /* EditIngridientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIngridientTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B0992713EF1C003B9E68 /* EditToolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditToolTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B09B2713EF21003B9E68 /* EditRecipeIngridientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRecipeIngridientTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B09D2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditRecipeIngridientTableViewCell.xib; sourceTree = "<group>"; };
+		6B97B09F2713EF30003B9E68 /* EditNumberOfStepsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNumberOfStepsTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B0A12713EF38003B9E68 /* EditNumberOfStepsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNumberOfStepsTableViewCell.xib; sourceTree = "<group>"; };
+		6B97B0A32713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMissingIngridientTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B0A52713EF44003B9E68 /* EditMissingToolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMissingToolTableViewCell.swift; sourceTree = "<group>"; };
+		6B97B0A82713EF80003B9E68 /* EditStepCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepIngridientCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepToolsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCollectionView.swift; sourceTree = "<group>"; };
 		6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCollectionView.swift; sourceTree = "<group>"; };
 		6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayLoginViewController.swift; sourceTree = "<group>"; };
@@ -2127,6 +2159,7 @@
 				C5EB3CD726E9CB8400CCAC9E /* CircularProgressView.swift */,
 				C5EB3CC726E9CB7C00CCAC9E /* AddStepsInRecipeViewController.swift */,
 				6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */,
+				6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */,
 			);
 			name = ViewRecipe;
 			path = ..;
@@ -2224,7 +2257,6 @@
 				C5EB3CDA26E9CB8500CCAC9E /* DiscoverRecipeViewController.swift */,
 				6B90661926F83D7A00D24521 /* TagFlowLayout.swift */,
 				6B90661B26F83D8600D24521 /* FilterRecipeViewController.swift */,
-				6B7C6625270AB58600860F62 /* EditRecipeViewController.swift */,
 				C5EB3CD426E9CB8300CCAC9E /* ViewAllViewController.swift */,
 				6B89924C2702E9F300591A2E /* ViewAllMealViewController.swift */,
 				6B8992502702EA0B00591A2E /* ViewAllTrendingViewController.swift */,
@@ -2238,6 +2270,7 @@
 		6B90663526F898B900D24521 /* RecipeController */ = {
 			isa = PBXGroup;
 			children = (
+				6B97B08D2713EDAB003B9E68 /* EditRecipe */,
 				6B90662B26F8952F00D24521 /* MyPreferences */,
 				6B90662C26F8955800D24521 /* Preferences */,
 				6B90662D26F895BB00D24521 /* ViewRecipe */,
@@ -2310,6 +2343,43 @@
 				6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */,
 			);
 			path = Award;
+			sourceTree = "<group>";
+		};
+		6B97B08D2713EDAB003B9E68 /* EditRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				6B7C6625270AB58600860F62 /* EditRecipeViewController.swift */,
+				6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */,
+				6B97B0902713EE62003B9E68 /* EditIngridientViewController.swift */,
+				6B97B0922713EE6C003B9E68 /* EditToolViewController.swift */,
+				6B97B0942713EE74003B9E68 /* EditStepViewController.swift */,
+			);
+			path = EditRecipe;
+			sourceTree = "<group>";
+		};
+		6B97B0962713EEE2003B9E68 /* EditRecipeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				6B97B0972713EF13003B9E68 /* EditIngridientTableViewCell.swift */,
+				6B97B0992713EF1C003B9E68 /* EditToolTableViewCell.swift */,
+				6B97B09B2713EF21003B9E68 /* EditRecipeIngridientTableViewCell.swift */,
+				6B97B09D2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib */,
+				6B97B09F2713EF30003B9E68 /* EditNumberOfStepsTableViewCell.swift */,
+				6B97B0A12713EF38003B9E68 /* EditNumberOfStepsTableViewCell.xib */,
+				6B97B0A32713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift */,
+				6B97B0A52713EF44003B9E68 /* EditMissingToolTableViewCell.swift */,
+			);
+			name = EditRecipeTableView;
+			sourceTree = "<group>";
+		};
+		6B97B0A72713EF6D003B9E68 /* EditRecipeCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				6B97B0A82713EF80003B9E68 /* EditStepCollectionViewCell.swift */,
+				6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */,
+				6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */,
+			);
+			name = EditRecipeCollectionView;
 			sourceTree = "<group>";
 		};
 		6BC4C0CB26006A8000791DCD /* Animation */ = {
@@ -2828,6 +2898,7 @@
 		C5EB374A26E9CADB00CCAC9E /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				6B97B0A72713EF6D003B9E68 /* EditRecipeCollectionView */,
 				6B90663A26F89A5000D24521 /* MyPreferencesCollectionView */,
 				6B90663926F89A1F00D24521 /* PreferencesCopllectionView */,
 				6B90663826F899D900D24521 /* ViewRecipeCollectionView */,
@@ -2840,6 +2911,7 @@
 		C5EB3C9326E9CB3800CCAC9E /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				6B97B0962713EEE2003B9E68 /* EditRecipeTableView */,
 				6B90663226F897E700D24521 /* CreateRecipeTableView */,
 				6B90663126F8975800D24521 /* HomeTableView */,
 				6B90663026F8972800D24521 /* PreferencesTableaView */,
@@ -2959,6 +3031,8 @@
 				6B805B1D270576EE002FC4BF /* ExploreByMealTableViewCell.xib in Resources */,
 				C5D6F7BB26B1828D006FFCDF /* HubSelection.storyboard in Resources */,
 				27A443CF25AE03720002BAAC /* Montserrat-Light.ttf in Resources */,
+				6B97B0A22713EF38003B9E68 /* EditNumberOfStepsTableViewCell.xib in Resources */,
+				6B97B09E2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib in Resources */,
 				6B7AF261270EAC8800C48528 /* MyRecipeTableViewCell.xib in Resources */,
 				27A443D025AE03720002BAAC /* Montserrat-ThinItalic.ttf in Resources */,
 				6BC4C0CF26006AA600791DCD /* OverLayLoginViewController.xib in Resources */,
@@ -3079,6 +3153,7 @@
 			files = (
 				27A443A725AE03720002BAAC /* UIButtonCornerRadius.swift in Sources */,
 				C5EB38C426E9CAE400CCAC9E /* SearchByRegionCollectionViewCell.swift in Sources */,
+				6B97B09C2713EF21003B9E68 /* EditRecipeIngridientTableViewCell.swift in Sources */,
 				279AB32725FF42010061FCB3 /* HubsModels.swift in Sources */,
 				272EA30F25C1B00B009E0259 /* BusinessSearchTableCell.swift in Sources */,
 				61A40A1F267378BF00D7D078 /* BasicConnectFlowViewController.swift in Sources */,
@@ -3103,6 +3178,7 @@
 				2742855B25B82EEC003F3DE5 /* EditUserSettingsTableCell.swift in Sources */,
 				C57979D526D7AE620040D716 /* SelectB2BProductViewController.swift in Sources */,
 				C56C286A268465A90042A0A3 /* MyStoreProductWorker.swift in Sources */,
+				6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */,
 				279AB34825FF436C0061FCB3 /* HubsListTable.swift in Sources */,
 				C5EB3CC126E9CB5700CCAC9E /* AddIngridientsTableViewCell.swift in Sources */,
 				6140882B26697BB100A98B0E /* UserPhotosGridCollectionViewCell.swift in Sources */,
@@ -3118,7 +3194,9 @@
 				C5EB3CC326E9CB5700CCAC9E /* AddToolsTableViewCell.swift in Sources */,
 				6B8992552702EA5600591A2E /* GetSavedPreferencesDataModel.swift in Sources */,
 				6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */,
+				6B97B0AB2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift in Sources */,
 				C5D6F7E826B1829D006FFCDF /* HubNameCollectionViewCell.swift in Sources */,
+				6B97B0932713EE6C003B9E68 /* EditToolViewController.swift in Sources */,
 				C5EB3CB926E9CB5700CCAC9E /* AddMissingToolsTableViewCell.swift in Sources */,
 				6B805B1C270576EE002FC4BF /* ExploreByMealTableViewCell.swift in Sources */,
 				C529209626777F00000C044B /* UserProductListModels.swift in Sources */,
@@ -3221,12 +3299,14 @@
 				27D0FAB925CEE9FF00463FE0 /* SelectProductViewC.swift in Sources */,
 				C5989065262EAC1400507E84 /* ProfileCompletionModel.swift in Sources */,
 				C5197AF026E72BBF00C0894F /* SeemImageVC.swift in Sources */,
+				6B97B0982713EF13003B9E68 /* EditIngridientTableViewCell.swift in Sources */,
 				C5861B4426C6306A00AB35C1 /* MarketPlaceHomeCollectionVCell.swift in Sources */,
 				C52920442677575D000C044B /* ConnectionProductTypeRouter.swift in Sources */,
 				C5B98116263FE65D002BFA23 /* UserPostsTableViewCell.swift in Sources */,
 				C5E9A3AD26B7F5E50005AE89 /* SimilarProductTableVCell.swift in Sources */,
 				C56C2879268465C60042A0A3 /* MyStoreDetailModels.swift in Sources */,
 				6B7B8FFF26EF327200454F48 /* AdventureModel.swift in Sources */,
+				6B97B0A62713EF44003B9E68 /* EditMissingToolTableViewCell.swift in Sources */,
 				C5923F7A265FAE7B003A3465 /* HubUserListVC.swift in Sources */,
 				6B67AD4D270437A200B4A4F1 /* EditPostPresenter.swift in Sources */,
 				61EAB55C269A23B900793F18 /* PostCommentsPresenter.swift in Sources */,
@@ -3249,6 +3329,7 @@
 				271662B125BD7A45000C0189 /* BusinessButtonTableCell.swift in Sources */,
 				274D90AD25B85D5D00C82A75 /* CompanyFirstTableCell.swift in Sources */,
 				C5D6F7E926B1829D006FFCDF /* ShowHubSelectionTableViewCell.swift in Sources */,
+				6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */,
 				61A8CB48261D98CA00B99233 /* ContactDetailWorker.swift in Sources */,
 				C56C28BD26846EEA0042A0A3 /* AnalyticsTableViewCell.swift in Sources */,
 				C54F862826BD0FCB00501775 /* RatingReviewModel.swift in Sources */,
@@ -3273,6 +3354,7 @@
 				6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */,
 				C5EB3CB626E9CB5700CCAC9E /* TrendingTableViewCell.swift in Sources */,
 				C56C2876268465C60042A0A3 /* MyStoreDetailPresenter.swift in Sources */,
+				6B97B0A02713EF30003B9E68 /* EditNumberOfStepsTableViewCell.swift in Sources */,
 				C529209426777F00000C044B /* UserProductListWorker.swift in Sources */,
 				273737F625B76BCE005984CF /* SettingsTableCell.swift in Sources */,
 				C56C2860268465770042A0A3 /* MyStoreDashboardInteractor.swift in Sources */,
@@ -3304,6 +3386,7 @@
 				27A443BC25AE03720002BAAC /* RSPickerView.swift in Sources */,
 				27B87CEC25F6310400E38E85 /* FeaturedProductTableCell.swift in Sources */,
 				6B67AD51270437A200B4A4F1 /* EditPostViewController.swift in Sources */,
+				6B97B0912713EE62003B9E68 /* EditIngridientViewController.swift in Sources */,
 				27A443B925AE03720002BAAC /* UIImageViewExtended.swift in Sources */,
 				C5D6F7E126B1829D006FFCDF /* ActiveCollectionViewCell.swift in Sources */,
 				C5EB3CE226E9CB8600CCAC9E /* DontSeeIngredientsViewController.swift in Sources */,
@@ -3380,6 +3463,7 @@
 				C5197AEA26E72AA800C0894F /* ConnectionTabModel.swift in Sources */,
 				C52920432677575D000C044B /* ConnectionProductTypeWorker.swift in Sources */,
 				6B360D06270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift in Sources */,
+				6B97B0A92713EF80003B9E68 /* EditStepCollectionViewCell.swift in Sources */,
 				C5EB3CBC26E9CB5700CCAC9E /* FavouriteTableViewCell.swift in Sources */,
 				61A40A1D267378BF00D7D078 /* BasicConnectFlowRouter.swift in Sources */,
 				C587D14D26413BE6002D72DF /* NewFeedModel.swift in Sources */,
@@ -3401,6 +3485,7 @@
 				27A443BF25AE03720002BAAC /* RSDatePicker.swift in Sources */,
 				C5EB3CEE26E9CB8600CCAC9E /* CuisinesViewController.swift in Sources */,
 				C529209726777F00000C044B /* UserProductListViewController.swift in Sources */,
+				6B97B0952713EE74003B9E68 /* EditStepViewController.swift in Sources */,
 				6B79E66826E74C2400B2D434 /* TripModel.swift in Sources */,
 				27A4439D25AE03720002BAAC /* RSTextField.swift in Sources */,
 				C5197ADD26E72A4F00C0894F /* ReceiverImageCell.swift in Sources */,
@@ -3408,9 +3493,11 @@
 				6B5A8284260C5CD100ED60B7 /* CompanyCertificates.swift in Sources */,
 				61C95C8126C1C4BB000BF4BA /* PostModel.swift in Sources */,
 				C5EB3CF126E9CB8700CCAC9E /* SelectRecipeCategaryViewController.swift in Sources */,
+				6B97B0A42713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift in Sources */,
 				27B4E8FE25EF957D00623E45 /* WalkThroughModel.swift in Sources */,
 				27A4439725AE03720002BAAC /* NSData+Base64.m in Sources */,
 				6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */,
+				6B97B0AD2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift in Sources */,
 				61137769263210F500EEBFDA /* Colors.swift in Sources */,
 				27D4A15A25BDE32700FB7039 /* BusinessListTableCell.swift in Sources */,
 				C529209326777F00000C044B /* UserProductListPresenter.swift in Sources */,
@@ -3450,6 +3537,7 @@
 				C56C2883268465F30042A0A3 /* MyStoreInquiriesPresenter.swift in Sources */,
 				C5E9A3A726B7EBB10005AE89 /* ProductDescOptionTableVC.swift in Sources */,
 				27A443A825AE03720002BAAC /* UIButtonExtended.swift in Sources */,
+				6B97B09A2713EF1C003B9E68 /* EditToolTableViewCell.swift in Sources */,
 				6B67AD50270437A200B4A4F1 /* EditPostModels.swift in Sources */,
 				C5EB3CE826E9CB8600CCAC9E /* CancelPopUpViewController.swift in Sources */,
 				C51C337F2664F5CA002EC412 /* MarketPlaceHomeVC.swift in Sources */,

@@ -11,26 +11,27 @@ class StepsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextStep: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var stepImage: UIImageView!
     
-    
-    var imageArray = [#imageLiteral(resourceName: "Milk-Chocolate-1"),#imageLiteral(resourceName: "orange-600x600-500x500"),#imageLiteral(resourceName: "toppng.com-lettuce-600x567"),#imageLiteral(resourceName: "4ZLH33AYAAI6TOHGKZYZBQX5BA"),#imageLiteral(resourceName: "toppng.com-lettuce-600x567")]
-    var ingredientNameArray = ["Chocolate","Cheese","Brockli","Egg","Brockli"]
-    var ingredientsQuantityArray = ["1 cup","1 1/2 cup","1 unit","1 egg","1 unit"]
-    
-    
-    var imageArray1 = [#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23"),#imageLiteral(resourceName: "23")]
-    var ingredientNameArray1 = ["Non-Stick Pan","Microwave","Cooking Spray","Cooker","Cooking Rod"]
-    var ingredientsQuantityArray1 = ["1 unit ","1 unit","1 unit","1 unit","1 unit"]
-  
+    var page = 1
+//    var stepIngridients: [UsedIngridientDataModel]? = []
+//    var stepTools: [UsedToolsDataModel]? = []
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
         nextStep.layer.borderWidth = 1
         nextStep.layer.cornerRadius = 24
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
+        let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+        stepImage.setImage(withString: imgUrl)
     }
     
+   
     @IBAction func nextStepTapped(_ sender: UIButton) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WellDoneViewController") as! WellDoneViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     
@@ -52,13 +53,13 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         else if section == 1{
-            return imageArray.count
+            return 1
         }
         else if section == 2{
             return 1
         }
         else if section == 3{
-            return imageArray1.count
+            return 1
         }
         else{
             return 1
@@ -70,13 +71,16 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             guard let cell:StepTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StepTableViewCell", for: indexPath) as? StepTableViewCell
             else{return UITableViewCell()}
+            cell.lblDescription.text = stepsModel?[indexPath.row].description
             return cell
         
         case 1:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            cell.ingredientImageView.image = imageArray[indexPath.row]
-            cell.ingredientNameLabel.text = ingredientNameArray[indexPath.row]
-            cell.ingredientQuantityLabel.text = ingredientsQuantityArray[indexPath.row]
+            let imgUrl = (kImageBaseUrl + (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            cell.ingredientImageView.setImage(withString: imgUrl)
+            
+            cell.ingredientNameLabel.text = stepsModel?[indexPath.row].stepIngridient?[indexPath.row].ingridient?.ingridientTitle
+            cell.ingredientQuantityLabel.text = (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].quantity ?? "")  + " " + (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].unit ?? "")
             
                 return cell
         case 2:
@@ -85,9 +89,11 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 3:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            cell.ingredientImageView.image = imageArray1[indexPath.row]
-            cell.ingredientNameLabel.text = ingredientNameArray1[indexPath.row]
-            cell.ingredientQuantityLabel.text = ingredientsQuantityArray1[indexPath.row]
+            let imgUrl = (kImageBaseUrl + (stepsModel?[indexPath.row].stepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            cell.ingredientImageView.setImage(withString: imgUrl)
+            
+            cell.ingredientNameLabel.text = stepsModel?[indexPath.row].stepTool?[indexPath.row].tool?.toolTitle
+            cell.ingredientQuantityLabel.text = (stepsModel?[indexPath.row].stepTool?[indexPath.row].quantityTool ?? "") + " " + (stepsModel?[indexPath.row].stepTool?[indexPath.row].unitTool ?? "")
             
                 return cell
             

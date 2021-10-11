@@ -14,8 +14,10 @@ class StepTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var stepView: UIView!
     
+    @IBOutlet weak var lblDescription: UILabel!
     
-    var numberArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13"]
+    var arrStep = String()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,13 +32,19 @@ class StepTableViewCell: UITableViewCell {
 }
 extension StepTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numberArray.count
+        stepsModel?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:StepCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StepCollectionViewCell", for: indexPath) as! StepCollectionViewCell
-        cell.stepButton.setTitle((numberArray[indexPath.row]), for: .normal)
-        print("\(numberArray[indexPath.row])")
+        
+//        cell.stepButton.titleLabel?.text =
+//        let allStepTitle = "\(stepsModel?[indexPath.row] ?? Inde)"
+//        arrStep.append(allStepTitle)
+        
+//        cell.stepButton.setTitle((arrStep[indexPath.row]), for: .normal)
+        
+        
         return cell
         }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -44,7 +52,7 @@ extension StepTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        stepLabel.text = numberArray[indexPath.row]
+        stepLabel.text = stepsModel?[indexPath.row].title
         
     }
     

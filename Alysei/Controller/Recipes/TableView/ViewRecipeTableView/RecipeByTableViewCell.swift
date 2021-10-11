@@ -28,8 +28,10 @@ class RecipeByTableViewCell: UITableViewCell {
     @IBOutlet weak var rateImg4: UIImageView!
     @IBOutlet weak var rateImg5: UIImageView!
     
+    var btnAddReviewCallback:(() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         setUi()
         // Initialization code
     }
@@ -51,6 +53,8 @@ class RecipeByTableViewCell: UITableViewCell {
     @IBAction func viewProfileButton(_ sender: Any) {
     }
     @IBAction func leaveACommentTapped(_ sender: UIButton) {
+        
+        btnAddReviewCallback?()
     }
     
     

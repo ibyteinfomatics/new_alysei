@@ -7,46 +7,69 @@
 
 import UIKit
 var recipeId = Int()
-class ViewRecipeViewController: UIViewController {
+var stepsModel: [StepsDataModel]? = []
+var recipeModel : ViewRecipeDetailDataModel?
+var usedIngridientModel : [UsedIngridientDataModel]? = []
+var usedToolModel: [UsedToolsDataModel]? = []
+class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRowDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recipeImageView: UIImageView!
     
     var checkbutton = 0
-    var recipeModel : ViewRecipeDetailDataModel?
-    var usedIngridientModel : [UsedIngridientDataModel]? = []
-    var usedToolModel: [UsedToolsDataModel]? = []
-    var stepsModel: [StepsDataModel]? = []
    
    
+   
+    var imgUrl1 = String()
+    var page = 1
     
     override func viewWillAppear(_ animated: Bool) {
-        getRecipeDetail()
+        
+
+       if isFromComment == "Review" {
+            self.getRecipeDetail()
+        }
+       else{
+        tableView.reloadData()
+       }
+
+
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
 
         getRecipeDetail()
         
         }
-    
-    
-    @IBAction func tapBackHome(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
+    func cellTapped(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func tapBackHome(_ sender: Any) {
+
+            self.navigationController?.popViewController(animated: true)
+
+    }
+    
+    @IBAction func taplike(_ sender: Any) {
+        
+        postReqtoFavUnfavRecipe()
+        getRecipeDetail()
+    }
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setImage(){
+  func setImage(){
         let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
         recipeImageView.setImage(withString: imgUrl)
     }
@@ -91,6 +114,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
             cell.labelRecipeName.text = recipeModel?.recipeName
+           
             cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
             cell.labelUserName.text = recipeModel?.userName
             cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + "Reviews"
@@ -206,15 +230,24 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             let imgUrl = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
             
             cell.profileImg.setImage(withString: imgUrl)
-            cell.profileImgComment.setImage(withString: imgUrl)
+            cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
+            imgUrl1 = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
+            cell.profileImgComment.setImage(withString: imgUrl1)
+            cell.profileImgComment.layer.cornerRadius = cell.profileImgComment.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
             let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
             cell.latestCommentImg.setImage(withString: imgUrl2)
+            cell.latestCommentImg.layer.cornerRadius = cell.latestCommentImg.frame.height/2
             cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
             cell.latestCommentDate.text = recipeModel?.latestReview?.created
             cell.latestCommentTextView.text = recipeModel?.latestReview?.review
-            
+            cell.btnAddReviewCallback = {
+                let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
+                viewAll.imageUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+                viewAll.recipeReviewId = recipeModel!.recipeId!
+                self.navigationController?.pushViewController(viewAll, animated: true)
+            }
             if recipeModel?.latestReview?.rating ?? 0 == 0 {
                 cell.rateImg1.image = UIImage(named: "icons8_star")
                 cell.rateImg2.image = UIImage(named: "icons8_star")
@@ -299,7 +332,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
             
-           
+                cell.delegate = self
             
         return cell
         }
@@ -330,19 +363,19 @@ extension ViewRecipeViewController{
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["recipe"] as? [String:Any]{
-                self.recipeModel = ViewRecipeDetailDataModel.init(with: data)
+                recipeModel = ViewRecipeDetailDataModel.init(with: data)
                
             }
             if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
-                self.usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
+                usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
                
             }
             if let data = dictResponse?["used_tools"] as? [[String:Any]]{
-                self.usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
+                usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
                
             }
             if let data = dictResponse?["steps"] as? [[String:Any]]{
-                self.stepsModel = data.map({StepsDataModel.init(with: $0)})
+                stepsModel = data.map({StepsDataModel.init(with: $0)})
                
             }
             if let data = dictResponse?["you_might_also_like"] as? [[String:Any]]{
@@ -355,6 +388,17 @@ extension ViewRecipeViewController{
         }
     }
    
+    func postReqtoFavUnfavRecipe(){
+        
+        let params = ["recipe_id": recipeId ,"favourite_or_unfavourite": 1]
+            
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFavUnfavRecipe, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+            
+            
+          }
+        tableView.reloadData()
+        
+    }
 }
 
 

@@ -38,7 +38,9 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
             
         }
         if checkbutton == 0{
+            getExploreData()
             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+
                 self.containerTableVw.reloadData()
             }
         }
@@ -91,7 +93,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.discoverCollectionView.dataSource = self
         
         getExploreData()
-        
+       
     }
     
     @objc func openPost(){
@@ -148,7 +150,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
                     let ingridient = ingridients.map({IngridentArray.init(with: $0)})
                     arraySearchByIngridient = ingridient
                     print("\(String(describing: arraySearchByIngridient?.count))")
-                    
+                   
                 }
                 
                 if let meals = data["meals"] as? [[String:Any]]{
@@ -421,6 +423,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             cell5.btnEditCallback = { tag in
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "EditRecipeViewController") as! EditRecipeViewController
                 viewAll.arrayMyRecipe = self.arrayMyRecipe
+               
                 viewAll.index = indexPath.row
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
@@ -574,7 +577,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return 350;
             }
         case 1:
-            return UITableView.automaticDimension
+            return 250
         case 2:
             return 250
         case 3:
@@ -589,7 +592,24 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print(indexPath.row)
-        
+        switch checkbutton{
+        case 0:
+            return
+        case 1:
+           
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
+            recipeId = (arrayMyFavouriteRecipe?[indexPath.row].recipeId)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+           
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
+            recipeId = (arrayMyRecipe?[indexPath.row].recipeId)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            return
+        default:
+            break
+        }
     }
 }
 extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
