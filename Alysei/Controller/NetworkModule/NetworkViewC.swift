@@ -498,27 +498,27 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     if currentIndex == 0 {
-//        var height = 200
-//
-//        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
-//            height = 120
-//        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
-//
-//            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
-//
-//
-//            height = 140 + ((tok.count-1)*20)
-//        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
-//
-//            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
-//
-//
-//            height = 170 + ((tok.count-1)*20)
-//            //height = 170
-//        }
+        var height = 200
+
+        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
+            height = 120
+        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
+
+            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+
+
+            height = 140 + ((tok.count-1)*20)
+        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
+
+            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+
+
+            height = 170 + ((tok.count-1)*20)
+            //height = 170
+        }
         
-       // return CGFloat(height)
-        return UITableView.automaticDimension
+        return CGFloat(height)
+      //  return UITableView.automaticDimension
     } else {
         return 66.0
     }

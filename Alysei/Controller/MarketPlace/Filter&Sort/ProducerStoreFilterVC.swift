@@ -74,8 +74,14 @@ class ProducerStoreFilterVC: UIViewController {
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
-    var callApiCallBack: (()-> Void)? = nil
     
+    var arrSelectedName = [String]()
+    var arrSelectedPropertiesName = [String]()
+    var arrSelectedMethodName = [String]()
+    var selectName: String?
+    
+    var callApiCallBack: (([Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?, [String]?,[String]? )-> Void)? = nil
+    var clearFilterApi:((loadFilter?) -> Void)? = nil
     //  var loadRating =
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,11 +150,15 @@ class ProducerStoreFilterVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func clearFilters(_ sender: UIButton){
-        callApiCallBack?()
+        clearFilterApi?(loadFilter)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnApplyFilter(_ sender: UIButton){
-        callApiCallBack?()
+    
+        callApiCallBack?(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     
 }
 
@@ -214,10 +224,12 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                     self.arrSelectedCategories = self.selectedOptionsId
                 }else if checkApi == .properties{
                     self.arrSelectedProperties = self.selectedOptionsId
+                    self.arrSelectedPropertiesName = self.arrSelectedName
                 }else if checkApi == .region{
                     self.arrSelectedItalianRegion = self.selectedOptionsId
                 }else if checkApi == .method{
                     self.selectedOptionsMethod = self.selectedOptionsId
+                    self.arrSelectedMethodName = self.arrSelectedName
                 }
                 cell.selectedCategory = self.selectedOptionsId
                 cell.configProductSearch(arrList?[indexPath.row] ?? MyStoreProductDetail(with: [:]), checkApi, indexPath: indexPath.row)
@@ -252,6 +264,8 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 checkApi = .properties
                 self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedProperties
+                self.arrSelectedName = self.arrSelectedPropertiesName
+                
                 identifyList = 5
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.region.rawValue{
@@ -264,6 +278,7 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 checkApi = .method
                 self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectedOptionsMethod
+                self.arrSelectedName = self.arrSelectedMethodName
                 identifyList = 2
                 callOptionApi(1)
             }else if  arrFilterOptions[indexPath.row].name == checkHitApi.distance.rawValue{
@@ -297,12 +312,19 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 }else if  checkApi == .region{
                     selectedId = arrList?[indexPath.row].id
                 }
+                if checkApi == .fdaCertified || checkApi == .method || checkApi == .properties{
+                selectName = arrList?[indexPath.row].option
+                }else{
+                    selectName = arrList?[indexPath.row].name
+                }
                 if self.selectedOptionsId.contains(selectedId ?? -1){
                     if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedId ?? -1) {
                         self.selectedOptionsId.remove(at: itemToRemoveIndex)
+                        self.arrSelectedName.remove(at: itemToRemoveIndex)
                     }
                 }else{
                     self.selectedOptionsId.append(selectedId ?? -1)
+                    self.arrSelectedName.append(selectName ?? "")
                 }
             }else  if checkApi == .distance ||  checkApi == .rating{
                 let selectedIndex = indexPath.row

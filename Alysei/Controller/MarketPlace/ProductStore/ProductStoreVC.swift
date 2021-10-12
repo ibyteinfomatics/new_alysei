@@ -19,6 +19,17 @@ class ProductStoreVC: UIViewController {
     var optionId: Int?
     var keywordSearch: String?
     
+    
+    var arrSelectedCategories = [Int]()
+    var arrSelectedProperties = [Int]()
+    var arrSelectedItalianRegion = [Int]()
+    var arrSelectedDistance = [Int]()
+    var arrSelectedRating = [Int]()
+    //var arrSelectedMethod = [Int]()
+    var selectFdaCertified = [Int]()
+    var selectedSortProducer = [Int]()
+    var selectedOptionsMethod = [Int]()
+    
     var lastPage: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +50,35 @@ class ProductStoreVC: UIViewController {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
         nextVC.identifyList = 4
         nextVC.loadFilter = .producerStore
+        nextVC.arrSelectedCategories = self.arrSelectedCategories
+        nextVC.arrSelectedProperties = self.arrSelectedProperties
+        nextVC.arrSelectedItalianRegion = self.arrSelectedItalianRegion
+        nextVC.arrSelectedDistance = self.arrSelectedDistance
+        nextVC.arrSelectedRating = self.arrSelectedRating
+       
+        nextVC.selectFdaCertified = self.selectFdaCertified
+        nextVC.selectedSortProducer = self.selectedSortProducer
+        nextVC.selectedOptionsMethod = self.selectedOptionsMethod
+        nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+            
+        self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            
+            self.arrSelectedCategories = nextVC.arrSelectedCategories
+            self.arrSelectedProperties = nextVC.arrSelectedProperties
+           self.arrSelectedItalianRegion =  nextVC.arrSelectedItalianRegion
+            self.arrSelectedDistance = nextVC.arrSelectedDistance
+            self.arrSelectedRating = nextVC.arrSelectedRating
+            
+            self.selectFdaCertified = nextVC.selectFdaCertified
+            self.selectedSortProducer = nextVC.selectedSortProducer
+            self.selectedOptionsMethod = nextVC.selectedOptionsMethod
+            
+        }
+        nextVC.clearFilterApi = { loadfilter in
+            self.listType = 1
+            self.callMyStoreProductApi(1)
+        }
+
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -73,7 +113,7 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
         let data = arrProductList?.myStoreProduct?[indexPath.row]
         let imgUrl = (kImageBaseUrl + (data?.logo_id ?? ""))
         cell.imgStore.setImage(withString: imgUrl)
-        cell.lblStoreName.text = data?.name
+        cell.lblStoreName.text = data?.storeName
         cell.lblAddress.text = data?.location
         cell.lblTotalRating.text = data?.avg_rating
         cell.lblTotalReview.text = (data?.total_reviews ?? "0") + " Reviews"
@@ -111,6 +151,37 @@ extension ProductStoreVC {
             self.tableView.reloadData()
         }
     }
+    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?){
+        
+       // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
+    
+        let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
+        let selectedMethodString = arrSelectedMethodName?.joined(separator: ",")
+        
+        let selectedCategoryStringId = arrSelectedCategories.map(String.init)
+        let selectedRegionStringId = arrSelectedItalianRegion.map(String.init)
+        let selectedRatingStringId = arrSelectedRating.map(String.init)
+        //let selectedCategoryStringId = str
+        
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")"
+        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
+            switch statusCode{
+            case 200:
+                let response = dictresponse as? [String:Any]
+               
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
+                    self.arrProductList = ProductsStore.init(with: data)
+                }
+            default:
+                print("No Data")
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
     
 }
 

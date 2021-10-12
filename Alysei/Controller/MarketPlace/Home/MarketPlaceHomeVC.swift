@@ -23,11 +23,18 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var recentlyAddedCollectionView: UICollectionView!
     @IBOutlet weak var newlyyAddedStoreCollectionView: UICollectionView!
     @IBOutlet weak var regionCollectionView: UICollectionView!
-    
-    
+    @IBOutlet weak var maximumSearchedCollectionView: UICollectionView!
+    @IBOutlet weak var topSellingCollectionView: UICollectionView!
+    @IBOutlet weak var adCollectionView: UICollectionView!
+    @IBOutlet weak var kitchenCollectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var hghtBottomBannerCV: NSLayoutConstraint!
     var isCreateStore = false
     var productCount: Int?
     var storeCreated: Int?
+    var maketPlaceHomeScreenData: MaketPlaceHomeScreenModel?
+   
+    
     
     var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
@@ -38,6 +45,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.addShadow()
         callCheckIfStoredCreated()
+        callMarketPlaceHomeApi()
         print("kSharedUserDefaults.loggedInUserModal.isStoreCreated----------------\(kSharedUserDefaults.loggedInUserModal.isStoreCreated ?? "")")
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             self.btnCreateStore.isHidden = false
@@ -117,16 +125,23 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         }
         //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
     }
+    @IBAction func viewAllRegion(_ sender: UIButton){
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
     
 }
 extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == imageCollectionView{
-            return 9
+            return maketPlaceHomeScreenData?.top_banners?.count ?? 0
         }else if collectionView == recentlyAddedCollectionView{
-            return 9
+            return maketPlaceHomeScreenData?.recently_added_product?.count ?? 0
         }else if collectionView == newlyyAddedStoreCollectionView{
             return 9
+        }else if collectionView == adCollectionView{
+            return maketPlaceHomeScreenData?.bottom_banners?.count ?? 0
         }else{
             return 9
         }
@@ -135,17 +150,42 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == imageCollectionView{
             guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeImageCVC", for: indexPath) as? MarketplaceHomeImageCVC else {return UICollectionViewCell()}
+            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
+            print("imgUrl---------------------------------------",imgUrl)
+            cell.image.setImage(withString: imgUrl)
             return cell
         }else if collectionView == recentlyAddedCollectionView{
             guard let cell = recentlyAddedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeRecentlyAddedCVC", for: indexPath) as? MarketplaceHomeRecentlyAddedCVC else {return UICollectionViewCell()}
+            cell.configCell(self.maketPlaceHomeScreenData?.recently_added_product?[indexPath.row] ?? MyStoreProductDetail(with: [:]))
             return cell
         }else if collectionView == newlyyAddedStoreCollectionView{
             guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
+            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].logoId?.attachmentURL ?? ""))
+            cell.image.setImage(withString: imgUrl)
+            cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].storeName
+            cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].location
             return cell
         }else if collectionView == regionCollectionView{
             guard let cell = regionCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeRegionCViewCell", for: indexPath) as? MarketPlaceHomeRegionCViewCell  else {return UICollectionViewCell()}
+            cell.lblRegionName.text = self.maketPlaceHomeScreenData?.regions?[indexPath.row].name
             return cell
-        }else{
+        }else if collectionView == maximumSearchedCollectionView{
+            guard let cell = maximumSearchedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeMaximumSearchedCVC", for: indexPath) as? MarketPlaceHomeMaximumSearchedCVC  else {return UICollectionViewCell()}
+            return cell
+        }else if collectionView == topSellingCollectionView{
+            guard let cell = topSellingCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeTopSearchedCVC", for: indexPath) as? MarketPlaceHomeTopSearchedCVC  else {return UICollectionViewCell()}
+            return cell
+        }else if collectionView == adCollectionView{
+            guard let cell = adCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCollectionVC", for: indexPath) as? AdCollectionVC  else {return UICollectionViewCell()}
+            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.bottom_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
+            print("imgUrl---------------------------------------",imgUrl)
+            cell.imgBanner.setImage(withString: imgUrl)
+            return cell
+        }else if collectionView == kitchenCollectionView{
+            guard let cell = kitchenCollectionView.dequeueReusableCell(withReuseIdentifier: "KitchenCollectionVC", for: indexPath) as? KitchenCollectionVC  else {return UICollectionViewCell()}
+            return cell
+        }
+        else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
             cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
             
@@ -164,23 +204,29 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == imageCollectionView{
-            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 150)
+            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 180)
         }else if collectionView == recentlyAddedCollectionView{
             return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 200)
-        }else if collectionView == newlyyAddedStoreCollectionView{
-            return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 200)
+        }else if collectionView == adCollectionView{
+            return CGSize(width: adCollectionView.frame.width / 2 , height: 200)
+        }else if collectionView == regionCollectionView{
+            return CGSize(width: regionCollectionView.frame.width / 3 , height: 100)
+        }else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == maximumSearchedCollectionView) || (collectionView == topSellingCollectionView) || (collectionView == kitchenCollectionView){
+            return CGSize(width: collectionView.frame.width / 2 , height: 200)
         }else{
             return CGSize(width: collectionView.frame.width / 3, height: 120)
         }
     }
+
     
     
+   
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == imageCollectionView{
             print("Check")
         }else if collectionView == newlyyAddedStoreCollectionView{
             print("Check")
-        }else{
+        }else if collectionView == collectionView{
             if indexPath.row == 0{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
                 nextVC.listType = 1
@@ -209,6 +255,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
                 nextVC.passHeading = arrMarketPlace[indexPath.row]
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }
+        }else{
+            print("Check")
         }
     }
 }
@@ -224,12 +272,64 @@ extension MarketPlaceHomeVC{
     }
 }
 
+extension MarketPlaceHomeVC{
+    func callMarketPlaceHomeApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceHome, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            let response = dictResponse as? [String:Any]
+            if let data = response?["data"] as? [String:Any]{
+                self.maketPlaceHomeScreenData = MaketPlaceHomeScreenModel.init(with: data)
+            }
+            self.tableView.reloadData()
+            self.imageCollectionView.reloadData()
+            self.recentlyAddedCollectionView.reloadData()
+            self.adCollectionView.reloadData()
+            self.regionCollectionView.reloadData()
+            self.hghtBottomBannerCV.constant = 400
+        }
+        
+}
+}
+
 class MarketplaceHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
 }
 class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
+    @IBOutlet weak var lblStoreLoaction: UILabel!
+    @IBOutlet weak var lblStoreName: UILabel!
 }
 class MarketPlaceHomeRegionCViewCell: UICollectionViewCell{
+    @IBOutlet weak var vwRegion: UIView!
+    @IBOutlet weak var lblRegionName: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        vwRegion.layer.cornerRadius = self.vwRegion.frame.height / 2
+        vwRegion.layer.masksToBounds = true
+        vwRegion.addShadow()
+        vwRegion.layer.borderWidth = 0.5
+        vwRegion.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+
+    }
+}
+
+class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
     
 }
+class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
+    
+}
+
+class AdCollectionVC: UICollectionViewCell{
+    @IBOutlet weak var imgBanner: UIImageView!
+}
+class KitchenCollectionVC: UICollectionViewCell{
+    
+}
+
+ 
