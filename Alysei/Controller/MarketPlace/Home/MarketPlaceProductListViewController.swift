@@ -30,6 +30,18 @@ class MarketPlaceProductListViewController: UIViewController {
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
     
+    
+    var selecteMethodFilterName :String?
+    var selectePropertiesFilterName :String?
+    var selecteCategoryFilterId :String?
+    var selectedRegionFilterId: String?
+    var sortFilterId: String?
+    var fdaFilterId: String?
+    var selectRatingId: String?
+    
+    //var selectFdaCertifiedId: String?
+    
+    
     //var homearrList: []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +108,15 @@ class MarketPlaceProductListViewController: UIViewController {
             
         }
         nextVC.clearFilterApi = { loadfilter in
+            self.arrSelectedCategories = [Int]()
+            self.arrSelectedProperties = [Int]()
+           self.arrSelectedItalianRegion =  [Int]()
+            self.arrSelectedDistance = [Int]()
+            self.arrSelectedRating = [Int]()
+            
+            self.selectFdaCertified = [Int]()
+            self.selectedSortProducer = [Int]()
+            self.selectedOptionsMethod = [Int]()
             if loadfilter == .region{
                 self.callRegionProductListApi(1)
             }else if loadfilter == .category {
@@ -266,14 +287,77 @@ extension MarketPlaceProductListViewController{
        // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
     
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
-        let selectedMethodString = arrSelectedMethodName?.joined(separator: ",")
+        if pushedFromVC == .properties{
+            selectePropertiesFilterName = "\(keywordSearch ?? "")"
+        }else{
+            selectePropertiesFilterName = selectedPropertyString
+        }
+       
+        let selectedMethodStringName = arrSelectedMethodName?.joined(separator: ",")
+        if pushedFromVC == .conservation{
+            selecteMethodFilterName  = "\(keywordSearch ?? "")"
+        }else{
+            selecteMethodFilterName = selectedMethodStringName
+        }
         
-        let selectedCategoryStringId = arrSelectedCategories.map(String.init)
-        let selectedRegionStringId = arrSelectedItalianRegion.map(String.init)
-        let selectedRatingStringId = arrSelectedRating.map(String.init)
-        //let selectedCategoryStringId = str
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")"
+        let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
+        let selectedCategoryStringId = stringCatArray?.joined(separator: ",")
+        
+        if pushedFromVC == .category{
+            selecteCategoryFilterId = "\(optionId ?? 0)"
+        }else{
+            selecteCategoryFilterId = selectedCategoryStringId
+        }
+        
+        
+        let stringRegionArray = arrSelectedItalianRegion?.compactMap({String($0)}) //{ String($0)!}
+        let selectedRegionStringId = stringRegionArray?.joined(separator: ",")
+        if pushedFromVC == .region {
+            selectedRegionFilterId = "\(optionId ?? 0)"
+        }else{
+            selectedRegionFilterId = selectedRegionStringId
+        }
+        
+       
+        let stringRatingArray = arrSelectedRating?.compactMap({String($0)})
+        let selectedRatingStringId = stringRatingArray?.joined(separator: ",")
+        if selectedRatingStringId == "0"{
+            selectRatingId = "1"
+        }else if selectedRatingStringId == "1"{
+            selectRatingId = "2"
+        }else if selectedRatingStringId == "2"{
+            selectRatingId = "3"
+        }else{
+            selectRatingId = ""
+        }
+        
+        let stringFdaArray = selectFdaCertified?.compactMap({String($0)})
+        let selectedFdaCertificate = stringFdaArray?.joined(separator: ",")
+        if pushedFromVC == .fdaCertified {
+            fdaFilterId = "1"
+        }else{
+            if selectedFdaCertificate == "0"{
+            fdaFilterId = "1"
+            }else if selectedFdaCertificate == "1"{
+                fdaFilterId = "0"
+            }else{
+                fdaFilterId = ""
+            }
+        }
+        
+        let stringSortArray = selectedSortProducer?.compactMap({String($0)})
+        let selectedSortProducerStringId = stringSortArray?.joined(separator: ",")
+        if selectedSortProducerStringId == "0" {
+            sortFilterId = "1"
+        }else if selectedSortProducerStringId == "1"{
+            sortFilterId = "0"
+        }else{
+            sortFilterId = ""
+        }
+    
+        
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in

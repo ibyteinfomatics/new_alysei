@@ -226,7 +226,25 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             print("Check")
         }else if collectionView == newlyyAddedStoreCollectionView{
             print("Check")
-        }else if collectionView == collectionView{
+        }else if collectionView == recentlyAddedCollectionView {
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
+            nextVC.marketplaceProductId = "\( maketPlaceHomeScreenData?.recently_added_product?[indexPath.row].marketplace_product_id ?? 0)"
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if collectionView == regionCollectionView {
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
+            nextVC.pushedFromVC = .region
+            nextVC.keywordSearch = self.maketPlaceHomeScreenData?.regions?[indexPath.row].name
+            nextVC.optionId = self.maketPlaceHomeScreenData?.regions?[indexPath.row].id
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if collectionView == maximumSearchedCollectionView {
+           print("Check")
+        }else if collectionView == topSellingCollectionView {
+            print("Check")
+         }else if collectionView == adCollectionView {
+            print("Check")
+         }else if collectionView == kitchenCollectionView {
+            print("Check")
+         }else if collectionView == collectionView{
             if indexPath.row == 0{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
                 nextVC.listType = 1
@@ -255,8 +273,6 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
                 nextVC.passHeading = arrMarketPlace[indexPath.row]
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }
-        }else{
-            print("Check")
         }
     }
 }

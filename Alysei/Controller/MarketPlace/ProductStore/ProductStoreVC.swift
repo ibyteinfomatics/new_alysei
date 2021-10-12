@@ -28,7 +28,7 @@ class ProductStoreVC: UIViewController {
     //var arrSelectedMethod = [Int]()
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
-    var selectedOptionsMethod = [Int]()
+    var selectedOptionsMethod = [Int]()  
     
     var lastPage: Int?
     override func viewDidLoad() {
@@ -75,6 +75,15 @@ class ProductStoreVC: UIViewController {
             
         }
         nextVC.clearFilterApi = { loadfilter in
+            self.arrSelectedCategories = [Int]()
+            self.arrSelectedProperties = [Int]()
+           self.arrSelectedItalianRegion =  [Int]()
+            self.arrSelectedDistance = [Int]()
+            self.arrSelectedRating = [Int]()
+            
+            self.selectFdaCertified = [Int]()
+            self.selectedSortProducer = [Int]()
+            self.selectedOptionsMethod = [Int]()
             self.listType = 1
             self.callMyStoreProductApi(1)
         }
