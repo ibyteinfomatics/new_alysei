@@ -12,13 +12,14 @@ class ProductStoreVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var searchtext: UITextField!
     var indexOfPageToRequest = 1
     var listType: Int?
     var arrProductList:ProductsStore?
     var pushedFromVC: PushedFrom?
     var optionId: Int?
     var keywordSearch: String?
-    
+    var searchStoreString: String?
     
     var arrSelectedCategories = [Int]()
     var arrSelectedProperties = [Int]()
@@ -28,11 +29,15 @@ class ProductStoreVC: UIViewController {
     //var arrSelectedMethod = [Int]()
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
-    var selectedOptionsMethod = [Int]()  
+    var selectedOptionsMethod = [Int]()
+    
+    var arrSelectedPropertiesName = [String]()
+    var arrSelectedMethodName = [String]()
     
     var lastPage: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchtext.delegate = self
         
         self.lblHeading.text = keywordSearch
         callMyStoreProductApi(1)
@@ -59,6 +64,9 @@ class ProductStoreVC: UIViewController {
         nextVC.selectFdaCertified = self.selectFdaCertified
         nextVC.selectedSortProducer = self.selectedSortProducer
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
+        
+        nextVC.arrSelectedMethodName =  self.arrSelectedMethodName
+        nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
             
         self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
@@ -72,6 +80,8 @@ class ProductStoreVC: UIViewController {
             self.selectFdaCertified = nextVC.selectFdaCertified
             self.selectedSortProducer = nextVC.selectedSortProducer
             self.selectedOptionsMethod = nextVC.selectedOptionsMethod
+            self.arrSelectedMethodName = nextVC.arrSelectedMethodName
+            self.arrSelectedPropertiesName = nextVC.arrSelectedPropertiesName
             
         }
         nextVC.clearFilterApi = { loadfilter in
@@ -84,6 +94,8 @@ class ProductStoreVC: UIViewController {
             self.selectFdaCertified = [Int]()
             self.selectedSortProducer = [Int]()
             self.selectedOptionsMethod = [Int]()
+            self.arrSelectedMethodName = [String]()
+            self.arrSelectedPropertiesName = [String]()
             self.listType = 1
             self.callMyStoreProductApi(1)
         }
@@ -144,6 +156,19 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     
 }
 
+extension ProductStoreVC : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+                   let textRange = Range(range, in: text) {
+                   let updatedText = text.replacingCharacters(in: textRange,
+                                                               with: string)
+          
+            self.searchStoreString = updatedText
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            }
+                return true
+    }
+}
 extension ProductStoreVC {
     func callMyStoreProductApi(_ pageNo: Int?){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "?page=" + "\(pageNo ?? 0)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
@@ -172,7 +197,7 @@ extension ProductStoreVC {
         let selectedRatingStringId = arrSelectedRating.map(String.init)
         //let selectedCategoryStringId = str
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_product= " + "" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")" + "sort_by_product=" + "" + "keyword=" + "\(searchStoreString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in

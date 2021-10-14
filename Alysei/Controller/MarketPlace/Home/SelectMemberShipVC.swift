@@ -12,6 +12,7 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    var selectedPassId: Int?
 
     var memberShipData : [Membership]?
     override func viewDidLoad() {
@@ -42,7 +43,8 @@ class SelectMemberShipVC: AlysieBaseViewC {
 //        }
 //    }
     @IBAction func btnNextAction(_ sender: UIButton){
-        _ = pushViewController(withName: MarketPlaceCreateStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        guard let controller = pushViewController(withName: MarketPlaceCreateStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceCreateStoreVC else{return}
+        controller.passpackageId = selectedPassId
     }
 }
 extension SelectMemberShipVC: UITableViewDelegate, UITableViewDataSource{
@@ -56,6 +58,7 @@ extension SelectMemberShipVC: UITableViewDelegate, UITableViewDataSource{
         let data = memberShipData?[indexPath.row]
         cell.lblMemberShip.text = memberShipData?[indexPath.row].name
         cell.btnCheck.setImage( data?.isSelected == true ? UIImage(named: "icons8_checkmark_2") : UIImage(named: "Ellipse 22"), for: .normal)
+        self.selectedPassId = memberShipData?[indexPath.row].marketplacePackageId
         return cell
     }
     

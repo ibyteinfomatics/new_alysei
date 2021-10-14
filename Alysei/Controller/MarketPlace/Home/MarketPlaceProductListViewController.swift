@@ -11,6 +11,8 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
+      
+    @IBOutlet weak var searchtextField: UITextField!
     var listType:Int?
     var keywordSearch: String?
     var pushedFromVC : PushedFrom?
@@ -29,6 +31,8 @@ class MarketPlaceProductListViewController: UIViewController {
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
+    var arrSelectedPropertiesName = [String]()
+    var arrSelectedMethodName = [String]()
     
     
     var selecteMethodFilterName :String?
@@ -38,6 +42,7 @@ class MarketPlaceProductListViewController: UIViewController {
     var sortFilterId: String?
     var fdaFilterId: String?
     var selectRatingId: String?
+    var searchProductString: String?
     
     //var selectFdaCertifiedId: String?
     
@@ -58,7 +63,8 @@ class MarketPlaceProductListViewController: UIViewController {
         }else{
             self.callProductListApi()
         }
-        
+        searchtextField.delegate = self
+   
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.
     }
@@ -91,7 +97,8 @@ class MarketPlaceProductListViewController: UIViewController {
         nextVC.selectFdaCertified = self.selectFdaCertified
         nextVC.selectedSortProducer = self.selectedSortProducer
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
-        
+        nextVC.arrSelectedMethodName =  self.arrSelectedMethodName
+        nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         
         nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
             self.arrSelectedCategories = nextVC.arrSelectedCategories
@@ -103,7 +110,8 @@ class MarketPlaceProductListViewController: UIViewController {
             self.selectFdaCertified = nextVC.selectFdaCertified
             self.selectedSortProducer = nextVC.selectedSortProducer
             self.selectedOptionsMethod = nextVC.selectedOptionsMethod
-            
+            self.arrSelectedMethodName = nextVC.arrSelectedMethodName
+            self.arrSelectedPropertiesName = nextVC.arrSelectedPropertiesName
         self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
             
         }
@@ -117,6 +125,9 @@ class MarketPlaceProductListViewController: UIViewController {
             self.selectFdaCertified = [Int]()
             self.selectedSortProducer = [Int]()
             self.selectedOptionsMethod = [Int]()
+            self.arrSelectedMethodName = [String]()
+           
+            self.arrSelectedPropertiesName = [String]()
             if loadfilter == .region{
                 self.callRegionProductListApi(1)
             }else if loadfilter == .category {
@@ -188,7 +199,19 @@ extension MarketPlaceProductListViewController: UITableViewDelegate, UITableView
     }
     
 }
-
+extension MarketPlaceProductListViewController : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+                   let textRange = Range(range, in: text) {
+                   let updatedText = text.replacingCharacters(in: textRange,
+                                                               with: string)
+          
+            self.searchProductString = updatedText
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            }
+                return true
+    }
+}
 extension MarketPlaceProductListViewController{
     func callProductListApi(){
         let urlString = APIUrl.kMarketPlaceProductBox + "\(listType ?? 0)" + "&keyword=" + "\(keywordSearch ?? "")"
@@ -287,18 +310,12 @@ extension MarketPlaceProductListViewController{
        // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
     
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
-        if pushedFromVC == .properties{
-            selectePropertiesFilterName = "\(keywordSearch ?? "")"
-        }else{
-            selectePropertiesFilterName = selectedPropertyString
-        }
+         selectePropertiesFilterName = selectedPropertyString
+        
        
         let selectedMethodStringName = arrSelectedMethodName?.joined(separator: ",")
-        if pushedFromVC == .conservation{
-            selecteMethodFilterName  = "\(keywordSearch ?? "")"
-        }else{
-            selecteMethodFilterName = selectedMethodStringName
-        }
+        selecteMethodFilterName = selectedMethodStringName
+    
         
         
         let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
@@ -357,7 +374,8 @@ extension MarketPlaceProductListViewController{
         }
     
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product= " + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")" + "sort_by_product=" + "" + "keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)"
+        
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
