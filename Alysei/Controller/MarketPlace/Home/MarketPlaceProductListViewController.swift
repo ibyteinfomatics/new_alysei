@@ -374,7 +374,7 @@ extension MarketPlaceProductListViewController{
         }
     
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product= " + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")" + "sort_by_product=" + "" + "keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product= " + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")" + "sort_by_product=" + "" + "keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)" + "&type=" + "2"
         
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         

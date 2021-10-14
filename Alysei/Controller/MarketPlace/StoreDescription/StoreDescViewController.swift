@@ -206,7 +206,7 @@ class StoreDescViewController: AlysieBaseViewC {
           }
     }
     @objc func openLocation(){
-        let storboard = UIStoryboard(name: "Main", bundle: nil)
+        let storboard = UIStoryboard(name: "Login", bundle: nil)
         guard let nextVC = storboard.instantiateViewController(identifier: "MapViewC") as? MapViewC else {return}
         self.navigationController?.pushViewController(nextVC, animated: true)
         
