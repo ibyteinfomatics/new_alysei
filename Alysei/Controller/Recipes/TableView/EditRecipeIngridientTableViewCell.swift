@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditRecipeIngredientTableViewCellProtocol {
-    func tapForDeleteIngridient(indexPath: IndexPath)
+    func tapForDeleteIngridient1(indexPath: IndexPath)
 }
 class EditRecipeIngridientTableViewCell: UITableViewCell {
 
@@ -29,6 +29,6 @@ class EditRecipeIngridientTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func deleteItem(_ sender: UIButton) {
-        deleteIngridientDelegate?.tapForDeleteIngridient(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0))
+        deleteIngridientDelegate?.tapForDeleteIngridient1(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0))
     }
 }

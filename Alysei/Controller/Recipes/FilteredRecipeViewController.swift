@@ -16,6 +16,7 @@ class FilteredRecipeViewController: UIViewController {
     @IBOutlet weak var labelRecipe: UILabel!
     @IBOutlet weak var viewHeader: UIView!
     
+    @IBOutlet weak var viewFilter: UIView!
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
@@ -29,26 +30,26 @@ class FilteredRecipeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if searching == true{
             
-            if isFrom == "Meal"{
-                self.viewHeader.isHidden = true
-                self.labelRecipe.text = searchTitle
-                callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
-            }
-            else if isFrom == "Ingridients"{
-                self.viewHeader.isHidden = true
-                self.labelRecipe.text = searchTitle
-                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-            }
-            else if isFrom == "Region"{
-                self.viewHeader.isHidden = true
-                self.labelRecipe.text = searchTitle
-                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-            }
+//            if isFrom == "Meal"{
+//                self.viewHeader.isHidden = true
+//                self.labelRecipe.text = searchTitle
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
+//            else if isFrom == "Ingridients"{
+//                self.viewHeader.isHidden = true
+//                self.labelRecipe.text = searchTitle
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
+//            else if isFrom == "Region"{
+//                self.viewHeader.isHidden = true
+//                self.labelRecipe.text = searchTitle
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
            
 //            else{
 //                self.viewHeader.isHidden = false
 //                self.labelRecipe.text = searchText
-//                callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
+                callSearchRecipe(searchTitle, indexOfPageToRequest)
 //            }
             
             
@@ -71,18 +72,19 @@ class FilteredRecipeViewController: UIViewController {
         filteredCollectionView.dataSource = self
         if searching == true{
             self.searchRecipeTextField.resignFirstResponder()
-            if isFrom == "Meal"{
-               
-                callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
-            }
-            else if isFrom == "Ingridients"{
-                
-                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-            }
-            else if isFrom == "Region"{
-                
-                callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-            }
+//            if isFrom == "Meal"{
+//
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
+//            else if isFrom == "Ingridients"{
+//
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
+//            else if isFrom == "Region"{
+//
+//                callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//            }
+            callSearchRecipe(searchTitle, indexOfPageToRequest)
         }
         else{
             self.searchRecipeTextField.becomeFirstResponder()
@@ -106,10 +108,11 @@ class FilteredRecipeViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func callSearchRecipe(_ param: String ,_ text: String, _ pageNo: Int?){
+    func callSearchRecipe(_ text: String, _ pageNo: Int?){
 
-        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchRecipe)\(param)\(text)&page=pageNo" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchRecipe)\(text)&page=pageNo" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
+        
             switch statusCode{
             case 200:
             
@@ -120,18 +123,20 @@ class FilteredRecipeViewController: UIViewController {
                     if self.indexOfPageToRequest == 1 { self.arrSearchRecipeDataModel?.removeAll() }
                     self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
                     searching = true
+                    self.viewFilter.isHidden = false
                     self.filteredCollectionView.reloadData()
                     
                 }
             case 409:
                 self.arrSearchRecipeDataModel?.removeAll()
                 self.filteredCollectionView.reloadData()
-                
+                self.viewFilter.isHidden = true
                 self.showAlert(withMessage: "No Recipe found")
                 
             default:
                
                 self.showAlert(withMessage: "No Recipe found")
+                self.viewFilter.isHidden = false
             }
             
             
@@ -151,20 +156,20 @@ class FilteredRecipeViewController: UIViewController {
                 indexOfPageToRequest += 1
 
                 // call your API for more data
-                    if isFrom == "Meal"{
-                        
-                        callSearchRecipe("recipe_meal_id=", searchId, indexOfPageToRequest)
+                    if isFrom == "Meal" || isFrom == "Ingridients" || isFrom == "Region"{
+//
+                        callSearchRecipe(searchTitle, indexOfPageToRequest)
                     }
-                    else if isFrom == "Ingridients"{
-                        
-                        callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-                    }
-                    else if isFrom == "Region"{
-                        
-                        callSearchRecipe("recipe_ingredient_id=", searchId, indexOfPageToRequest)
-                    }
+//                    else if isFrom == "Ingridients"{
+//
+//                        callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//                    }
+//                    else if isFrom == "Region"{
+//
+//                        callSearchRecipe("keyword=", searchTitle, indexOfPageToRequest)
+//                    }
                     else{
-                        callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
+                        callSearchRecipe(searchTitle, indexOfPageToRequest)
                     }
                    
 
@@ -380,13 +385,14 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
         
         
         if searchText.count > 0 {
+            searching = true
             if let text = textField.text,
                        let textRange = Range(range, in: text) {
                        let updateText = text.replacingCharacters(in: textRange,
                                                                    with: string)
                 updatedText = updateText
                 
-                callSearchRecipe("keyword=", updatedText, indexOfPageToRequest)
+                callSearchRecipe(updatedText, indexOfPageToRequest)
                     }
             
         }

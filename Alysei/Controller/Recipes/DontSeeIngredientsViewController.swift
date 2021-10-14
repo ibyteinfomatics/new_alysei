@@ -91,7 +91,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     
     
     func callChooseIngridients(){
-        
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -108,9 +108,9 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
                 }
             }
             
-            for i in 0..<6{
-                self.firstSixingdntArray.append(self.ingdntArray[i])
-            }
+//            for i in 0..<6{
+//                self.firstSixingdntArray.append(self.ingdntArray[i])
+//            }
             
             print("IngrdntArray-------",self.ingdntArray)
             self.ingredientsCollectionView.reloadData()

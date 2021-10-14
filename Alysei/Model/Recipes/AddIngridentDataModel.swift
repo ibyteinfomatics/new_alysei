@@ -28,7 +28,7 @@ class AddIngridientDataModel {
     init(with dictResponse: [String:Any]){
        
             self.ingridientDataName = String.getString(dictResponse["title"])
-            self.ingridientId = Int.getInt(dictResponse["recipe_tool_id"])
+            self.ingridientId = Int.getInt(dictResponse["recipe_ingredient_id"])
             if let data = dictResponse["ingredients"] as? [[String:Any]]{
             self.ingridents = data.map({IngridentArray.init(with: $0)})
                 

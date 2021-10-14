@@ -18,15 +18,10 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     @IBOutlet weak var recipeImageView: UIImageView!
     
     var checkbutton = 0
-   
-   
-   
     var imgUrl1 = String()
-    var page = 1
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         
-
        if isFromComment == "Review" {
             self.getRecipeDetail()
         }
@@ -37,17 +32,16 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
 
         getRecipeDetail()
         
         }
+    
     func cellTapped(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -59,11 +53,11 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 
     }
     
-    @IBAction func taplike(_ sender: Any) {
-        
-        postReqtoFavUnfavRecipe()
-        getRecipeDetail()
-    }
+//    @IBAction func taplike(_ sender: Any) {
+//
+//        postReqtoFavUnfavRecipe()
+//
+//    }
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -115,6 +109,13 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
             cell.labelRecipeName.text = recipeModel?.recipeName
            
+            cell.likeCallback = { 
+            
+                cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
+                cell.imagLike.image = recipeModel?.isFav == 0 ? UIImage(named: "like_icon") : UIImage(named: "like_icon_active")
+                
+            }
+            cell.imagLike.image = recipeModel?.isFav == 1 ? UIImage(named: "like_icon_active") : UIImage(named: "like_icon")
             cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
             cell.labelUserName.text = recipeModel?.userName
             cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + "Reviews"
@@ -231,20 +232,30 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.profileImg.setImage(withString: imgUrl)
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
-            imgUrl1 = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
-            cell.profileImgComment.setImage(withString: imgUrl1)
+
+            if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
+                        cell.profileImgComment.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            }
             cell.profileImgComment.layer.cornerRadius = cell.profileImgComment.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
             let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
             cell.latestCommentImg.setImage(withString: imgUrl2)
             cell.latestCommentImg.layer.cornerRadius = cell.latestCommentImg.frame.height/2
-            cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
-            cell.latestCommentDate.text = recipeModel?.latestReview?.created
+            if recipeModel?.latestReview?.user?.name == ""{
+                cell.latestCommentUserName.text = "NA"
+            }
+            else{
+                cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
+            }
+           
+//            let time = self.getcurrentdateWithTime(timeStamp: String.getString(recipeModel?.latestReview?.created))
+            let date = Date(timeIntervalSinceNow: -180)
+            cell.latestCommentDate.text = date.getElapsedInterval(timeStamp: String.getString(recipeModel?.latestReview?.created)) + "ago"
+            
             cell.latestCommentTextView.text = recipeModel?.latestReview?.review
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
-                viewAll.imageUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
                 viewAll.recipeReviewId = recipeModel!.recipeId!
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
@@ -388,18 +399,37 @@ extension ViewRecipeViewController{
         }
     }
    
-    func postReqtoFavUnfavRecipe(){
-        
-        let params = ["recipe_id": recipeId ,"favourite_or_unfavourite": 1]
-            
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFavUnfavRecipe, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
-            
-          }
-        tableView.reloadData()
-        
-    }
+    
 }
 
-
+extension Date {
+    
+    func getElapsedInterval(timeStamp :String?) -> String {
+            
+            let interval = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
+            
+            if let year = interval.year, year > 0 {
+                return year == 1 ? "\(year)" + " " + "year" :
+                    "\(year)" + " " + "years"
+            } else if let month = interval.month, month > 0 {
+                return month == 1 ? "\(month)" + " " + "month" :
+                    "\(month)" + " " + "months"
+            } else if let day = interval.day, day > 0 {
+                return day == 1 ? "\(day)" + " " + "day" :
+                    "\(day)" + " " + "days"
+            } else if let hour = interval.hour, hour > 0 {
+                return hour == 1 ? "\(hour)" + " " + "hour" :
+                    "\(hour)" + " " + "hours"
+            } else if let minute = interval.minute, minute > 0 {
+                return minute == 1 ? "\(minute)" + " " + "minute" :
+                    "\(minute)" + " " + "minutes"
+            } else if let second = interval.second, second > 0 {
+                return second == 1 ? "\(second)" + " " + "second" :
+                    "\(second)" + " " + "seconds"
+            } else {
+                return "a moment ago"
+            }
+            
+        }
+}
 

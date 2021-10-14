@@ -277,8 +277,8 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
             let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            cancelPopVC.checkbutton = 2
-            cancelPopVC.currentIndex = 2
+            cancelPopVC.checkbutton = 0
+            cancelPopVC.currentIndex = 0
             self.navigationController?.pushViewController(cancelPopVC, animated: true)
             
         }
@@ -468,7 +468,7 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
                 selectedIngridentsArray.remove(at: index)
             }
             
-//            arrayPickerData.remove(at: indexPath.row)
+//           arrayPickerData.remove(at: indexPath.row)
             self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
             
             if  self.quantityLabel.text == "0 Items" {

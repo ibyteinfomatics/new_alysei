@@ -24,16 +24,18 @@ class EditIngridientTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+    var dataSelecetd: UsedIngridientDataModel?
     var data: IngridentArray? {
         didSet {
             updateUI()
         }
     }
     func updateUI() {
-        if(selectedIngridentsArray.contains(where: { $0.recipeIngredientIds == data?.recipeIngredientIds })) == true {
+        if (selectedEditIngridentsArray.contains(where: { $0.recipeIngredientIds == data?.recipeIngredientIds })) || (editusedIngridientModel?.contains(where: { $0.recipeSavedIngridientId == data?.recipeIngredientIds }))  == true {
             self.selectImgView.isHidden = false
-        } else {
+                
+        }
+        else {
             self.selectImgView.isHidden = true
         }
         let imgUrl = (kImageBaseUrl + (data?.imageId?.imgUrl ?? ""))

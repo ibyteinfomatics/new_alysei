@@ -99,6 +99,8 @@ class PreferencesTableViewCell: UITableViewCell {
     }
     
     func getSavedMyPreferences() -> Void{
+        
+       
         self.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
         self.showCuisine?.removeAll()
         self.showFood?.removeAll()
@@ -129,7 +131,6 @@ class PreferencesTableViewCell: UITableViewCell {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showFood?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
                         }
-//                        self.PrefrenceImageCollectionView.reloadData()
                     }
                 case 2:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))

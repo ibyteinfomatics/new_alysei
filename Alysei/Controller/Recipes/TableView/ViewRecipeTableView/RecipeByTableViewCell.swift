@@ -20,7 +20,7 @@ class RecipeByTableViewCell: UITableViewCell {
     @IBOutlet weak var latestCommentImg: UIImageView!
     @IBOutlet weak var latestCommentUserName: UILabel!
     @IBOutlet weak var latestCommentDate: UILabel!
-    @IBOutlet weak var latestCommentTextView: UITextView!
+    @IBOutlet weak var latestCommentTextView: UILabel!
     
     @IBOutlet weak var rateImg1: UIImageView!
     @IBOutlet weak var rateImg2: UIImageView!
@@ -31,6 +31,7 @@ class RecipeByTableViewCell: UITableViewCell {
     var btnAddReviewCallback:(() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         
         setUi()
         // Initialization code

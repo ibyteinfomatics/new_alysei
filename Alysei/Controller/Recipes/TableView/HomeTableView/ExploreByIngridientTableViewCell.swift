@@ -22,6 +22,13 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
     var delegate: SearchRecipeDelegate?
     var tapViewAll:(()->())?
     let gradientLayer = CAGradientLayer()
+    
+    var post: Bool?{
+        didSet{
+            self.collectionVw.reloadData()
+        }
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)

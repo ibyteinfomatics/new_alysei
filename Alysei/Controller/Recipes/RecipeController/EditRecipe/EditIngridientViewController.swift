@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+var selectedEditIngridentsArray: [IngridentArray] = []
 class EditIngridientViewController: UIViewController, EditIngridientsTableViewCellProtocol, AddIngridientsTableViewCellProtocol {
     @IBOutlet weak var addIngredientsView: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -59,6 +59,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     var quantity: Int?
     var unit: String?
     var singleIngridientData: IngridentArray?
+    var singleUsedIngridientData: UsedIngridientDataModel?
     var arrayMyRecipe: [HomeTrending]? = []
     
     override func viewWillAppear(_ animated: Bool) {
@@ -220,31 +221,47 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             let quantity = self.quantityTextField.text
             let unit = self.strReturn
             
-            let pickerData = ((quantity ?? "") + " " + unit)
-            arrayPickerData.append(pickerData)
-            
+//            let pickerData = ((quantity ?? "") + " " + unit)
+//            arrayPickerData.append(pickerData)
+//
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
             
-            let data = IngridentArray()
-            data.recipeIngredientIds = singleIngridientData?.recipeIngredientIds
-            data.ingridientTitle = singleIngridientData?.ingridientTitle
-            data.imageId = singleIngridientData?.imageId
-            data.parent = singleIngridientData?.parent
-            data.pickerData = pickerData
-            data.quantity = Int(quantity!)
+            let data = UsedIngridientDataModel(with: [:])
+            data.recipeSavedIngridientId = singleUsedIngridientData?.recipeSavedIngridientId
+            data.recipeId = singleUsedIngridientData?.recipeId
+            data.ingridientId = singleIngridientData?.recipeIngredientIds
+            data.ingridient = singleIngridientData
+            data.quantity = quantity
             data.unit = unit
             data.createdAt = singleIngridientData?.createdAt
             data.updatedAt = singleIngridientData?.updatedAt
             data.isSelected = true
         
-            if (((newSearchModel?.contains(where: { $0.ingridientId == data.recipeIngredientIds }))) == true)  {
+            if (((newSearchModel?.contains(where: { $0.ingridientId == data.ingridientId }))) == true)  {
                 print("contain yes")
             }else{
                 print("contain no")
-                selectedIngridentsArray.append(data)
+                editusedIngridientModel?.append(data)
             }
             
-//            self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
+            let data1 = IngridentArray()
+            data1.recipeIngredientIds = singleIngridientData?.recipeIngredientIds
+            data1.ingridientTitle = singleIngridientData?.ingridientTitle
+            data1.imageId = singleIngridientData?.imageId
+            data1.parent = singleIngridientData?.parent
+            data1.quantity = Int(quantity!)
+            data1.unit = unit
+            data1.createdAt = singleIngridientData?.createdAt
+            data1.updatedAt = singleIngridientData?.updatedAt
+            data1.isSelected = true
+        
+            if (((newSearchModel?.contains(where: { $0.ingridientId == data1.recipeIngredientIds }))) == true)  {
+                print("contain yes")
+            }else{
+                print("contain no")
+                selectedEditIngridentsArray.append(data1)
+            }
+
             self.addIngridientsTableView.reloadData()
         }
     }
@@ -443,9 +460,9 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
         
         self.singleIngridientData = data
         if checkStatus == true {
-            if let index = selectedIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
+            if let index = selectedEditIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
                 print("Found at \(index)")
-                selectedIngridentsArray.remove(at: index)
+                selectedEditIngridentsArray.remove(at: index)
             }
             
 //            arrayPickerData.remove(at: indexPath.row)

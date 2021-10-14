@@ -7,23 +7,228 @@
 
 import UIKit
 
-class EditStepViewController: UIViewController {
+class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
+    @IBOutlet weak var scrollVw: UIScrollView!
+    @IBOutlet weak var nextView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var addStepsCollectionView: UICollectionView!
+    @IBOutlet weak var ingridientUsedLabel: UILabel!
+    @IBOutlet weak var ingridientUsedCollectionView: UICollectionView!
+    @IBOutlet weak var toolsUsedLabel: UILabel!
+    @IBOutlet weak var toolsUsedCollectionView: UICollectionView!
+    @IBOutlet weak var step1IngridientLabel: UILabel!
+    @IBOutlet weak var step1ToolLabel: UILabel!
+    
+    var newSearchModel: [AddIngridientDataModel]? = []
+    var newSearchModel1: [AddToolsDataModel]? = []
+    var page = Int()
+    var pageEdit = Int()
+    var selectedIndex: Int = 1000
+    var arrSelectedIndex = [IndexPath]()
+    var arrSelectedIndex1 = [IndexPath]()
+    var stepTitle : String?
+    var stepNumber : String?
+    var stepDescription: String?
+    
+    var arrayIngridients = [IngridentArray()]
+    var arraytools = [ToolsArray()]
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if isFromStep == "Add Step"{
+          page = (editstepsModel!.count) + 1
+        }
+        else{
+          page = pageEdit
+        }
+        step1IngridientLabel.text = "\(page)"
+        step1ToolLabel.text = "\(page)"
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addStepsCollectionView.delegate = self
+        addStepsCollectionView.dataSource = self
+        
+        ingridientUsedCollectionView.delegate = self
+        ingridientUsedCollectionView.dataSource = self
+        ingridientUsedCollectionView.reloadData()
+        
+        toolsUsedCollectionView.delegate = self
+        toolsUsedCollectionView.dataSource = self
+        toolsUsedCollectionView.reloadData()
+        
+        nextButton.layer.borderWidth = 1
+        nextButton.layer.cornerRadius = 24
+        nextButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//        setStepTitle()
+        self.hideKeyboardWhenTappedAround()
+        
+        if isFromStep == "Add Step"{
+          page = (editstepsModel!.count) + 1
+        }
+        else{
+          page = pageEdit
+        }
+        
+        step1IngridientLabel.text = "\(page)"
+        step1ToolLabel.text = "\(page)"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//    func setStepTitle(){
+//        step1IngridientLabel.text = "\(page)"
+//        step1ToolLabel.text = "\(page)"
+//
+//    }
+    override func viewDidLayoutSubviews() {
+        self.scrollVw.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
     }
-    */
+
+    @IBAction func NextButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension EditStepViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if collectionView == addStepsCollectionView{
+            return 1
+        }
+        else if collectionView == ingridientUsedCollectionView{
+            return editusedIngridientModel?.count ?? 0
+        }
+        else if collectionView == toolsUsedCollectionView{
+            return editusedToolModel?.count ?? 0
+        }
+        else{
+            return 0
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       
+        let cell = addStepsCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepCollectionViewCell", for: indexPath) as! EditStepCollectionViewCell
+        
+        if collectionView == addStepsCollectionView{
+            
+            cell.descriptionView.layer.borderWidth = 1
+            cell.descriptionView.layer.cornerRadius = 5
+            cell.descriptionView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
+
+            cell.titleView.layer.borderWidth = 1
+            cell.titleView.layer.cornerRadius = 5
+            cell.titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
+            
+           
+            stepNumber = "Step \(page)"
+            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
+//            cell.desciptionTextView.text = "Your recipe direction text here..."
+            cell.step1Label.text = stepNumber
+            return cell
+            
+        }else if collectionView == ingridientUsedCollectionView{
+            
+            let cell1 = ingridientUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepIngridientCollectionViewCell", for: indexPath) as! EditStepIngridientCollectionViewCell
+            
+            let imgUrl = (kImageBaseUrl + (editusedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            cell1.addStepIngridientImageView.setImage(withString: imgUrl)
+            cell1.addStepIngridientNameLabel.text = editusedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
+            cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel?[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel?[indexPath.row].unit ?? "")
+            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 14)
+            
+            
+            if  editusedIngridientModel?[indexPath.row].ingridient?.isSelected == true {
+                cell1.addStepIngeidientSelectedImageView.isHidden = false
+            } else {
+                cell1.addStepIngeidientSelectedImageView.isHidden = true
+
+            }
+            cell1.layoutSubviews()
+
+            return cell1
+        } else if collectionView == toolsUsedCollectionView {
+            
+            let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepToolsCollectionViewCell", for: indexPath) as! EditStepToolsCollectionViewCell
+            let imgUrl = (kImageBaseUrl + (editusedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            cell2.addStepToolImageView.setImage(withString: imgUrl)
+            cell2.addStepToolNameLabel.text = editusedToolModel?[indexPath.row].tool?.toolTitle
+            cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+            
+            if  editusedToolModel?[indexPath.row].tool?.isSelected == true {
+                cell2.addStepToolSelectedImageView.isHidden = false
+            } else {
+                cell2.addStepToolSelectedImageView.isHidden = true
+               
+            }
+            cell2.layoutSubviews()
+            return cell2
+        }
+        
+        else{
+            return cell
+        }
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = ingridientUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? AddStepIngridientCollectionViewCell
+        let cell1 = toolsUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? AddStepToolCollectionViewCell
+        
+        if collectionView == ingridientUsedCollectionView {
+            
+            if  editusedIngridientModel?[indexPath.row].ingridient?.isSelected == true {
+                editusedIngridientModel?[indexPath.row].ingridient?.isSelected = false
+                cell?.addStepIngeidientSelectedImageView.isHidden = true
+            } else {
+                editusedIngridientModel?[indexPath.row].ingridient?.isSelected = true
+                cell?.addStepIngeidientSelectedImageView.isHidden = false
+//                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+            }
+        }
+        if collectionView == toolsUsedCollectionView {
+            
+            if  editusedToolModel?[indexPath.row].tool?.isSelected == true {
+                editusedToolModel?[indexPath.row].tool?.isSelected = false
+                cell1?.addStepToolSelectedImageView.isHidden = true
+            } else {
+                editusedToolModel?[indexPath.row].tool?.isSelected = true
+                cell1?.addStepToolSelectedImageView.isHidden = false
+//                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+            }
+        }
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        
+        if collectionView == addStepsCollectionView{
+            return CGSize(width: self.addStepsCollectionView.frame.width, height: 270.0)
+        }
+        if collectionView == ingridientUsedCollectionView{
+            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 240)
+        }
+        if collectionView == toolsUsedCollectionView{
+            return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 200)
+        }
+        else{
+            return CGSize.zero
+        }
+        
+    }
+    
 
 }

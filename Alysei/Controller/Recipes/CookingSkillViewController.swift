@@ -63,7 +63,7 @@ class CookingSkillViewController: AlysieBaseViewC {
     }
     
     func postRequestToGetCookinSkills() -> Void{
-        
+        self.view.isUserInteractionEnabled = false
        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCookingSkill, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
            
            let res = response as? [String:Any]

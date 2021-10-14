@@ -8,14 +8,14 @@
 import UIKit
 
 protocol ViewRecipeDelegate {
-   func cellTapped()
-   }
+    func cellTapped()
+}
 var youMightAlsoLikeModel: [ViewRecipeDetailDataModel]? = []
 class LikeRecipeTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     var delegate:CategoryRowDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,13 +24,13 @@ class LikeRecipeTableViewCell: UITableViewCell {
         self.collectionView.dataSource = self
         self.collectionView.reloadData()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
 
 extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -50,27 +50,27 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + "Serving"
         cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? "NA"
         cell.likeLLabel.text = "\(youMightAlsoLikeModel?[indexPath.row].favCount ?? 0 )" + " " + "Likes"
-       
+        
         if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "0.0" {
             cell.rateImg1.image = UIImage(named: "icons8_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-
+            
         }
         else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "0.5" {
             cell.rateImg1.image = UIImage(named: "Group 1142")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
-           cell.rateImg5.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
         }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "1.0" {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
-           cell.rateImg5.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
         }
         else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "1.5" {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
@@ -137,7 +137,7 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         if delegate != nil {
             recipeId = (youMightAlsoLikeModel?[indexPath.item].recipeId)!
             delegate?.cellTapped()
-            }
-
-}
+        }
+        
+    }
 }

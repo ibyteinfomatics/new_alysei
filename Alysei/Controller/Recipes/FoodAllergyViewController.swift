@@ -72,7 +72,7 @@ class FoodAllergyViewController: AlysieBaseViewC {
     }
     
     func postRequestToGetFoodIntolerance() -> Void{
-       
+        self.view.isUserInteractionEnabled = false
        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFoodIntolerance, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
            
            let res = response as? [String:Any]

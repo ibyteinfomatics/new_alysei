@@ -12,6 +12,7 @@ struct PostCommentsUserData {
     var postID: Int
 }
 
+
 class PostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var postTableView: UITableView!
@@ -121,9 +122,18 @@ class PostsViewController: AlysieBaseViewC {
     }
     @objc func openRecipes(){
       
+        if AppConstants.isFirstLaunch == true{
+            AppConstants.isFirstLaunch = false
         guard let vc = UIStoryboard(name: StoryBoardConstants.kRecipesSelection, bundle: nil).instantiateViewController(identifier: "CuisinePageControlViewController") as? CuisinePageControlViewController else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
+       }
+       else{
+        guard let vc = UIStoryboard(name: StoryBoardConstants.kRecipesSelection, bundle: nil).instantiateViewController(identifier: "DiscoverRecipeViewController") as? DiscoverRecipeViewController else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = true
+       }
+       
     }
 
    

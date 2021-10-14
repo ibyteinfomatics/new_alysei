@@ -32,22 +32,41 @@ class ViewDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelServing: UILabel!
     @IBOutlet weak var labelMealType: UILabel!
+    @IBOutlet weak var imagLike: UIImageView!
     
+//    @IBOutlet weak var btnImgLike: UIButton!
     @IBOutlet weak var labelEnergyValue: UILabel!
+    @IBOutlet weak var viewLike: UIView!
+    //    @IBOutlet weak var tapLikeUnLike: UIButton!
     var reloadTableViewCallback:((Int) ->Void)? = nil
+    var islike: Int?
     enum source {
         case button1
         case button2
     }
-    
-//    var source = source.button1
-    
-
+//    var data: ViewRecipeDetailDataModel?
+    var likeCallback:( () -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setUi()
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
+        self.viewLike.addGestureRecognizer(tap)
     }
+    
+    @objc func likeAction(_ tap: UITapGestureRecognizer){
+        
+        if recipeModel?.isFav == 1 {
+            islike = 0
+        }else{
+            islike = 1
+        }
+        
+        postReqtoFavUnfavRecipe(islike, recipeId)
+
+    }
+    
     func setUi(){
         energyCircularProgressView.trackColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         energyCircularProgressView.progressColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1)
@@ -99,7 +118,22 @@ class ViewDetailsTableViewCell: UITableViewCell {
 
     }
     
-    
+    func postReqtoFavUnfavRecipe(_ islike1: Int?, _ recipeId: Int?){
+        
+        let params: [String:Any] = ["recipe_id": recipeId ?? 0 ,"favourite_or_unfavourite": islike1 ?? 0 ]
+            
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFavUnfavRecipe, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+            recipeModel?.isFav = islike1
+            if islike1 == 0{
+                recipeModel?.favCount = ((recipeModel?.favCount ?? 1) - 1)
+            }else{
+                recipeModel?.favCount = ((recipeModel?.favCount ?? 1) + 1)
+               
+            }
+            self.likeCallback?()
+            
+          }
+    }
     
     
 

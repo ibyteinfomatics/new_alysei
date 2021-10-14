@@ -16,41 +16,66 @@ class AddReviewRecipeViewController: UIViewController{
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var btnAddReview: UIButton!
-   
+    
+    @IBOutlet weak var btnStar1: UIButton!
+    @IBOutlet weak var btnStar2: UIButton!
+    @IBOutlet weak var btnStar3: UIButton!
+    @IBOutlet weak var btnStar4: UIButton!
+    @IBOutlet weak var btnStar5: UIButton!
+    
+    var reviewStarCount: Int?
     var recipeReviewId = Int()
     var viewRecipeCommentModel: ViewRecipeDetailDataModel?
     var arrAllReviewModel: [LatestReviewDataModel]? = []
-    var imageUrl = String()
+//    var imageUrl = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         allReviewTableView.delegate = self
         allReviewTableView.dataSource = self
         reviewTextView.delegate = self
-        reviewTextView.text = "Your review text here..."
+        reviewTextView.text = "Leave a comment..."
         reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         reviewTextView.autocorrectionType = .no
         btnAddReview.layer.cornerRadius = 5
         reviewView.layer.cornerRadius = 5
         reviewView.layer.borderWidth = 2
         reviewView.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
+        reviewStarCount = 0
+        setStar()
         
-       
-        userImageVw.setImage(withString: imageUrl)
-        
+        if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
+                   userImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+        }
+        userImageVw.layer.cornerRadius = userImageVw.frame.height/2
         getAllReviews()
-        // Do any additional setup after loading the view.
+
     }
     
+    func setStar(){
+        btnStar1.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+    }
 
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tapAddReview(_ sender: Any) {
-        reviewTextView.text = "Your review text here..."
-        reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        
+        if (reviewStarCount == 0){
+            self.showAlert(withMessage: "Please add ratings.")
+        }else{
+            
         postDoReview()
+            reviewTextView.text = "Leave a comment..."
+            reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+            reviewStarCount = 0
+            setStar()
+        }
         DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
             self.getAllReviews()
         }
@@ -58,14 +83,44 @@ class AddReviewRecipeViewController: UIViewController{
     }
     
     @IBAction func tap1star(_ sender: Any) {
+        
+        reviewStarCount = 1
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap2star(_ sender: Any) {
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap3star(_ sender: Any) {
+        reviewStarCount = 3
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap4star(_ sender: Any) {
+        reviewStarCount = 4
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap5star(_ sender: Any) {
+        reviewStarCount = 5
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
     }
     
 //    func ratingVaiewSet()
@@ -197,7 +252,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
 
 extension AddReviewRecipeViewController: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Your review text here..." {
+        if textView.text == "Leave a comment..." {
             reviewTextView.text = ""
             reviewTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
         }
@@ -205,9 +260,9 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
         textView.becomeFirstResponder()
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == ""{
-            reviewTextView.text = "Your recipe direction text here..."
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+        if text == " "{
+            reviewTextView.text = "Leave a comment..."
             reviewTextView.resignFirstResponder()
         }
         return true
@@ -215,16 +270,59 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            reviewTextView.text = "Your recipe direction text here..."
+            reviewTextView.text = "Leave a comment..."
             reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         }
         else{
-            
+            reviewTextView.text = textView.text
             reviewTextView.textColor = .black
         }
         textView.resignFirstResponder()
     }
     
+//    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+//        if textView.text == "Leave a comment"{
+//            textView.text = ""
+//        }
+//        return true
+//    }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//
+//        // Combine the textView text and the replacement text to
+//        // create the updated text string
+//        let currentText:String = textView.text
+//        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+//
+//        // If updated text view will be empty, add the placeholder
+//        // and set the cursor to the beginning of the text view
+//        if updatedText.isEmpty {
+//
+//            textView.text = "Leave a comment"
+//            textView.textColor = UIColor.lightGray
+//
+//            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+//        }
+//
+//        // Else if the text view's placeholder is showing and the
+//        // length of the replacement string is greater than 0, set
+//        // the text color to black then set its text to the
+//        // replacement string
+////         else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+////            textView.textColor = UIColor.black
+////            textView.text = text
+////        }
+//
+//        // For every other case, the text should change with the usual
+//        // behavior...
+//        else {
+//            return true
+//        }
+//
+//        // ...otherwise return false since the updates have already
+//        // been made
+//        return true
+//    }
+//
 }
 extension AddReviewRecipeViewController{
     func getAllReviews(){
@@ -244,11 +342,20 @@ extension AddReviewRecipeViewController{
     
     func postDoReview(){
         
-        let params = ["recipe_id": recipeReviewId ,"rating": 2]
+        let params: [String:Any] = ["recipe_id": recipeReviewId ,"rating": reviewStarCount ?? 0, "review": self.reviewTextView.text ?? ""]
             
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.doReview, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             
-            
+            switch statusCode{
+            case 200:
+                self.showAlert(withMessage: "Review added Successfully!")
+                
+            case 409:
+                self.showAlert(withMessage: "You have already done a review on this product")
+                
+            default:
+                break
+            }
           }
         allReviewTableView.reloadData()
         

@@ -71,7 +71,7 @@ class FollowDietsViewController: AlysieBaseViewC {
     }
     
     func postRequestToGetDiet() -> Void{
-       
+        self.view.isUserInteractionEnabled = false
        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDiet, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
            
            let res = response as? [String:Any]

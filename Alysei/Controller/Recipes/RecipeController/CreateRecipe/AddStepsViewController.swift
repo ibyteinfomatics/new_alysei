@@ -156,8 +156,8 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
             let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            cancelPopVC.checkbutton = 2
-            cancelPopVC.currentIndex = 2
+            cancelPopVC.checkbutton = 0
+            cancelPopVC.currentIndex = 0
             self.navigationController?.pushViewController(cancelPopVC, animated: true)
             
         }
@@ -341,7 +341,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             let imgUrl = (kImageBaseUrl + (arrayIngridients[indexPath.row].imageId?.imgUrl ?? ""))
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = arrayIngridients[indexPath.row].ingridientTitle
-            cell1.addStepIngridientQuantityLabel.text = selectedIngridentsArray[indexPath.row].pickerData ?? ""
+            cell1.addStepIngridientQuantityLabel.text = arrayIngridients[indexPath.row].pickerData ?? ""
             cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 14)
             if  arrayIngridients[indexPath.row].isSelected == true {
                 cell1.addStepIngeidientSelectedImageView.isHidden = false
@@ -358,7 +358,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             let imgUrl = (kImageBaseUrl + (arraytools[indexPath.row].imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = arraytools[indexPath.row].toolTitle
-            cell2.addStepToolQuantityLabel.text = selectedToolsArray[indexPath.row].pickerData ?? ""
+            
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             
             if  arraytools[indexPath.row].isSelected == true {

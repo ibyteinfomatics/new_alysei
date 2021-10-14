@@ -7,13 +7,13 @@
 
 import UIKit
 
-class StepsViewController: UIViewController {
+class StepsViewController: UIViewController, StepDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextStep: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var stepImage: UIImageView!
     
-    var page = 1
+    var page = 0
 //    var stepIngridients: [UsedIngridientDataModel]? = []
 //    var stepTools: [UsedToolsDataModel]? = []
 //
@@ -23,6 +23,11 @@ class StepsViewController: UIViewController {
         nextStep.layer.borderWidth = 1
         nextStep.layer.cornerRadius = 24
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        nextStep.setTitle("Next", for: .normal)
+        stepTableViewCellCurrentIndex = page
+        if page == (stepsModel?.count ?? 0 - 1){
+            nextStep.setTitle("Finish Cooking", for: .normal)
+        }
         
         let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
         stepImage.setImage(withString: imgUrl)
@@ -30,17 +35,46 @@ class StepsViewController: UIViewController {
     
    
     @IBAction func nextStepTapped(_ sender: UIButton) {
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WellDoneViewController") as! WellDoneViewController
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if page < ((stepsModel?.count ?? 0) - 1){
+            page = page + 1
+            nextStep.setTitle("Next", for: .normal)
+            stepTableViewCellCurrentIndex = page
+            tableView.reloadData()
+           
+            if page == ((stepsModel?.count ?? 0) - 1){
+                nextStep.setTitle("Finish Cooking", for: .normal)
+            }
+        }
+        else{
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "WellDoneViewController") as! WellDoneViewController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
     }
     
     
     @IBAction func tapDownBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        if page > 0{
+            page = page - 1
+            stepTableViewCellCurrentIndex = page
+            tableView.reloadData()
+            
+            nextStep.setTitle("Next", for: .normal)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func tapBacklToViewRecipe(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func cellStepTapped(index: Int){
+       page = index
+       tableView.reloadData()
+        
     }
 }
 extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
@@ -53,13 +87,25 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         else if section == 1{
-            return 1
+//            return stepsModel?[page].stepIngridient?[section].ingridient.count
+            if stepsModel?.count ?? 0 > page{
+            return stepsModel?[page].stepIngridient?.count ?? 0
+            }
+            else{
+                return 0
+            }
         }
         else if section == 2{
             return 1
         }
         else if section == 3{
-            return 1
+            if (stepsModel?.count ?? 0) > page{
+                return stepsModel?[page].stepTool?.count ?? 0
+            }
+            else{
+                return 0
+            }
+            
         }
         else{
             return 1
@@ -71,16 +117,22 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             guard let cell:StepTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StepTableViewCell", for: indexPath) as? StepTableViewCell
             else{return UITableViewCell()}
-            cell.lblDescription.text = stepsModel?[indexPath.row].description
+            cell.lblDescription.text = stepsModel?[page].description
+            cell.stepLabel.text = "Step" + " " + "\(page + 1)"
+//            cell.tapViewStep = {
+//
+//            }
+            cell.delegate = self
+            cell.collectionView.reloadData()
             return cell
         
         case 1:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (stepsModel?[page].stepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell.ingredientImageView.setImage(withString: imgUrl)
             
-            cell.ingredientNameLabel.text = stepsModel?[indexPath.row].stepIngridient?[indexPath.row].ingridient?.ingridientTitle
-            cell.ingredientQuantityLabel.text = (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].quantity ?? "")  + " " + (stepsModel?[indexPath.row].stepIngridient?[indexPath.row].unit ?? "")
+            cell.ingredientNameLabel.text = stepsModel?[page].stepIngridient?[indexPath.row].ingridient?.ingridientTitle
+            cell.ingredientQuantityLabel.text = (stepsModel?[page].stepIngridient?[indexPath.row].quantity ?? "")  + " " + (stepsModel?[page].stepIngridient?[indexPath.row].unit ?? "")
             
                 return cell
         case 2:
@@ -89,11 +141,11 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 3:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (stepsModel?[indexPath.row].stepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (stepsModel?[page].stepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell.ingredientImageView.setImage(withString: imgUrl)
             
-            cell.ingredientNameLabel.text = stepsModel?[indexPath.row].stepTool?[indexPath.row].tool?.toolTitle
-            cell.ingredientQuantityLabel.text = (stepsModel?[indexPath.row].stepTool?[indexPath.row].quantityTool ?? "") + " " + (stepsModel?[indexPath.row].stepTool?[indexPath.row].unitTool ?? "")
+            cell.ingredientNameLabel.text = stepsModel?[page].stepTool?[indexPath.row].tool?.toolTitle
+            cell.ingredientQuantityLabel.text = (stepsModel?[page].stepTool?[indexPath.row].quantityTool ?? "") + " " + (stepsModel?[page].stepTool?[indexPath.row].unitTool ?? "")
             
                 return cell
             
