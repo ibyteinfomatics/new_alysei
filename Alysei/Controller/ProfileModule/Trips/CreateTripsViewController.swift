@@ -56,6 +56,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     
     @IBOutlet weak var intensityEvent: UIButton!
     @IBOutlet weak var durationEvent: UIButton!
+    @IBOutlet weak var currencyEvent: UIButton!
     @IBOutlet weak var regionEvent: UIButton!
     @IBOutlet weak var adventureEvent: UIButton!
     @IBOutlet weak var countryEvent: UIButton!
@@ -64,16 +65,18 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     @IBOutlet weak var countryTxf: UITextField!
     @IBOutlet weak var countryView1: UIView!
     @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
     
     var countryId,regionId,adventureId,intensityId: Int!
     
     var dataDropDown = DropDown()
+    var currencyArray = ["USD","Euro"]
     
     var DayarrData = ["1 Day","2 Days","3 Days","4 Days","5 Days","6 Days","7 Days"]
     
-    var tripname,agency,website,price,country,region,adventure,intensity,duration,fulldescription,imgurl: String?
+    var tripname,agency,website,price,country,region,adventure,intensity,duration,fulldescription,imgurl,currency: String?
     var trip_id: Int?
     var typeofpage: String?
     
@@ -122,6 +125,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         if tripname != nil {
             tripNameTxf.text = tripname
             
+            currencyLabel.text = currency
             countryTxf.text = country
             regionTxf.text = region
             adventuresTxf.text = adventure
@@ -238,6 +242,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
     }
     
+    
+    @IBAction func CouurencyDropDown(_ sender: UIButton){
+        if typeofpage != "read" {
+            currencyDropDown()
+        }
+        
+    }
+    
     @IBAction func savebUtoon(_ sender: UIButton){
         
         if tripname != nil {
@@ -333,6 +345,25 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
        
         
     }
+    
+    @objc func currencyDropDown(){
+        
+        self.dataDropDown.dataSource = self.currencyArray
+        dataDropDown.show()
+        dataDropDown.anchorView = self.currencyEvent
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            //self.btnReport.setTitle(item, for: .normal)
+            currencyLabel.text = item
+          
+        }
+        dataDropDown.cellHeight = 50
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .top
+        
+    }
+    
     
     @objc func dayDropDown(){
         self.adventuresLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
@@ -591,6 +622,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             "price": priceTxf.text ?? "",
             "description": descriptionTextView.text ?? "",
             "trip_id": String.getString(trip_id),
+            "currency": String.getString(currencyLabel.text),
             
         ]
         
@@ -615,6 +647,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             "website": websiteTxf.text ?? "",
             "price": priceTxf.text ?? "",
             "description": descriptionTextView.text ?? "",
+            "currency": String.getString(currencyLabel.text),
            // "param": "trips"
             
         ]

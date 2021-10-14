@@ -16,9 +16,9 @@ class MembershipViewC: AlysieBaseViewC {
     @IBOutlet weak var viewBottom: UIView!
   @IBOutlet weak var tableviewheight: NSLayoutConstraint!
   var progressmodel:ProgressModel?
-  
+    @IBOutlet weak var backbutton: UIButton!
   //MARK: - Properties -
-  
+  var from = ""
   var currentIndex: Int = 0
     
     private lazy var postViewC: PostsViewController = {

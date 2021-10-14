@@ -19,6 +19,29 @@ class MarketPlaceProductListViewController: UIViewController {
     var lastPage: Int?
     // var arrList: [MyStoreProductDetail]?
     var arrList: [ProductSearchListModel]?
+    
+    var arrSelectedCategories = [Int]()
+    var arrSelectedProperties = [Int]()
+    var arrSelectedItalianRegion = [Int]()
+    var arrSelectedDistance = [Int]()
+    var arrSelectedRating = [Int]()
+    //var arrSelectedMethod = [Int]()
+    var selectFdaCertified = [Int]()
+    var selectedSortProducer = [Int]()
+    var selectedOptionsMethod = [Int]()
+    
+    
+    var selecteMethodFilterName :String?
+    var selectePropertiesFilterName :String?
+    var selecteCategoryFilterId :String?
+    var selectedRegionFilterId: String?
+    var sortFilterId: String?
+    var fdaFilterId: String?
+    var selectRatingId: String?
+    
+    //var selectFdaCertifiedId: String?
+    
+    
     //var homearrList: []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +81,55 @@ class MarketPlaceProductListViewController: UIViewController {
             nextVC.loadFilter =  .myFav
         }else{
         nextVC.loadFilter = .conservationFood
+        }
+        nextVC.arrSelectedCategories = self.arrSelectedCategories
+        nextVC.arrSelectedProperties = self.arrSelectedProperties
+        nextVC.arrSelectedItalianRegion = self.arrSelectedItalianRegion
+        nextVC.arrSelectedDistance = self.arrSelectedDistance
+        nextVC.arrSelectedRating = self.arrSelectedRating
+       
+        nextVC.selectFdaCertified = self.selectFdaCertified
+        nextVC.selectedSortProducer = self.selectedSortProducer
+        nextVC.selectedOptionsMethod = self.selectedOptionsMethod
+        
+        
+        nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+            self.arrSelectedCategories = nextVC.arrSelectedCategories
+            self.arrSelectedProperties = nextVC.arrSelectedProperties
+           self.arrSelectedItalianRegion =  nextVC.arrSelectedItalianRegion
+            self.arrSelectedDistance = nextVC.arrSelectedDistance
+            self.arrSelectedRating = nextVC.arrSelectedRating
+            
+            self.selectFdaCertified = nextVC.selectFdaCertified
+            self.selectedSortProducer = nextVC.selectedSortProducer
+            self.selectedOptionsMethod = nextVC.selectedOptionsMethod
+            
+        self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            
+        }
+        nextVC.clearFilterApi = { loadfilter in
+            self.arrSelectedCategories = [Int]()
+            self.arrSelectedProperties = [Int]()
+           self.arrSelectedItalianRegion =  [Int]()
+            self.arrSelectedDistance = [Int]()
+            self.arrSelectedRating = [Int]()
+            
+            self.selectFdaCertified = [Int]()
+            self.selectedSortProducer = [Int]()
+            self.selectedOptionsMethod = [Int]()
+            if loadfilter == .region{
+                self.callRegionProductListApi(1)
+            }else if loadfilter == .category {
+                self.callCategoryProductListApi(1)
+        }else if loadfilter == .conservationFood {
+            self.callConservationListApi(1)
+        }else if loadfilter == .fdaCertified || loadfilter == .myFav {
+                self.callOptionApi(1)
+        }else if loadfilter == .properties {
+                self.callConservationListApi(1)
+            }else{
+                self.callProductListApi()
+            }
         }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -210,8 +282,85 @@ extension MarketPlaceProductListViewController{
     //
     //    }
     
-    func callBoxFilterApi(){
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketplaceBoxFilterApi, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
+    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?){
+        
+       // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
+    
+        let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
+        if pushedFromVC == .properties{
+            selectePropertiesFilterName = "\(keywordSearch ?? "")"
+        }else{
+            selectePropertiesFilterName = selectedPropertyString
+        }
+       
+        let selectedMethodStringName = arrSelectedMethodName?.joined(separator: ",")
+        if pushedFromVC == .conservation{
+            selecteMethodFilterName  = "\(keywordSearch ?? "")"
+        }else{
+            selecteMethodFilterName = selectedMethodStringName
+        }
+        
+        
+        let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
+        let selectedCategoryStringId = stringCatArray?.joined(separator: ",")
+        
+        if pushedFromVC == .category{
+            selecteCategoryFilterId = "\(optionId ?? 0)"
+        }else{
+            selecteCategoryFilterId = selectedCategoryStringId
+        }
+        
+        
+        let stringRegionArray = arrSelectedItalianRegion?.compactMap({String($0)}) //{ String($0)!}
+        let selectedRegionStringId = stringRegionArray?.joined(separator: ",")
+        if pushedFromVC == .region {
+            selectedRegionFilterId = "\(optionId ?? 0)"
+        }else{
+            selectedRegionFilterId = selectedRegionStringId
+        }
+        
+       
+        let stringRatingArray = arrSelectedRating?.compactMap({String($0)})
+        let selectedRatingStringId = stringRatingArray?.joined(separator: ",")
+        if selectedRatingStringId == "0"{
+            selectRatingId = "1"
+        }else if selectedRatingStringId == "1"{
+            selectRatingId = "2"
+        }else if selectedRatingStringId == "2"{
+            selectRatingId = "3"
+        }else{
+            selectRatingId = ""
+        }
+        
+        let stringFdaArray = selectFdaCertified?.compactMap({String($0)})
+        let selectedFdaCertificate = stringFdaArray?.joined(separator: ",")
+        if pushedFromVC == .fdaCertified {
+            fdaFilterId = "1"
+        }else{
+            if selectedFdaCertificate == "0"{
+            fdaFilterId = "1"
+            }else if selectedFdaCertificate == "1"{
+                fdaFilterId = "0"
+            }else{
+                fdaFilterId = ""
+            }
+        }
+        
+        let stringSortArray = selectedSortProducer?.compactMap({String($0)})
+        let selectedSortProducerStringId = stringSortArray?.joined(separator: ",")
+        if selectedSortProducerStringId == "0" {
+            sortFilterId = "1"
+        }else if selectedSortProducerStringId == "1"{
+            sortFilterId = "0"
+        }else{
+            sortFilterId = ""
+        }
+    
+        
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")"
+        let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
             switch statusCode{
             case 200:
                 let response = dictresponse as? [String:Any]
@@ -227,6 +376,8 @@ extension MarketPlaceProductListViewController{
             self.tableView.reloadData()
         }
     }
+    
+    
 }
 
 class MarketPlaceProductListTableVCell: UITableViewCell{

@@ -309,6 +309,7 @@ struct APIUrl{
     static let kGetProductByCategoryId = "get/products/by/category?category_id="
     static let kFollowUnfollow = "follow/user"
     static let kMarketplaceBoxFilterApi = "filter?"
+    static let kMarketPlaceHome = "get/homescreen"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -790,6 +791,7 @@ struct StaticArrayData {
                                   (image: "Ellipse 22", name: "Recognition", status: "Your have been recognized by our app."),
                                   (image: "Ellipse 22", name: "Quality Mark", status: "You will receive an official quality mark on your profile.")]
     
+    
     static let kBusinessCategoryDict = [(image: "b2btab1_icon", name: "Hubs"),
                                         (image: "b2btab2_icon", name: "Importers & Distributors"),
                                         (image: "b2btab3_icon", name: "Italian Restaurants in US"),
@@ -801,7 +803,7 @@ struct StaticArrayData {
     static let kNetworkCategoryDict = [(image: "icons_invitations", name: "Invitations"),
                                        (image: "icons8_people", name: "Connections"),
                                        (image: "icons_pending", name: "Pending"),
-                                       (image: "icons_invitations", name: "Followers")]
+                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons_invitations", name: "Following") : (image: "icons_invitations", name: "Followers")]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),

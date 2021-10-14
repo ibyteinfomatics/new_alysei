@@ -72,6 +72,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
               _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
             case 2:
               _ = pushViewController(withName: CompanyViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+            case 3:
+              _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 4:
               _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 5:
@@ -97,6 +99,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         case 2:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 3:
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
@@ -122,6 +126,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 2:
           let vc = pushViewController(withName: EventsView.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventsView
             vc!.userId = userId
+        case 3:
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
@@ -145,6 +151,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        case 3:
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
@@ -168,6 +176,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        case 2:
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 3:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
@@ -192,6 +202,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        case 2:
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 3:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:

@@ -36,12 +36,14 @@ class ProducerStoreFilterVC: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     var selectedIndex = 0
     
-    var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
+        //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
+    var arrOption = ["Categories","Properties","Italian Region","Ratings"]
     var arrConservationOption = ["Categories","Properties","Italian Region","FDA Certfied"]
     var arrRegionOption = ["Producers","Method","Categories","Properties","FDA Certfied"]
     var arrCategoriesOption = ["Method","Properties","FDA Certfied"]
     var arrPropertiesOption = ["Method","FDA Certfied","Categories"]
-    var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
+    //var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
+    var arrFdaCertifiedOption = ["Producers","Italian Region","Categories"]
     var arrMyFavOption = ["Producers","Method","Categories","Properties","FDA Certfied","Distance","Ratings"]
     
     var arrDistance = ["Within 5 Miles","Within 10 Miles","Within 20 Miles","Within 40 Miles","Within 100 Miles"]
@@ -74,8 +76,14 @@ class ProducerStoreFilterVC: UIViewController {
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
-    var callApiCallBack: (()-> Void)? = nil
     
+    var arrSelectedName = [String]()
+    var arrSelectedPropertiesName = [String]()
+    var arrSelectedMethodName = [String]()
+    var selectName: String?
+    
+    var callApiCallBack: (([Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?,[Int]?, [String]?,[String]? )-> Void)? = nil
+    var clearFilterApi:((loadFilter?) -> Void)? = nil
     //  var loadRating =
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,30 +133,52 @@ class ProducerStoreFilterVC: UIViewController {
         for option in arrSortProducer{
             self.arrOptionSortProducers.append(FilterModel(name: option, isSelected: false))
         }
-        if loadFilter == .producerStore || loadFilter == .conservationFood{
+        if loadFilter == .producerStore {
             checkApi = .categories
             identifyList = 4
             callOptionApi(1)
+            self.selectedOptionsId = self.arrSelectedCategories
+        }else if loadFilter == .conservationFood{
+            checkApi = .categories
+            identifyList = 4
+            callOptionApi(1)
+            self.selectedOptionsId = self.arrSelectedCategories
         }else if loadFilter == .region{
             checkApi = .producers
-        }else if loadFilter == .category || loadFilter == .properties{
+            self.selectedOptionsId = self.selectedSortProducer
+        }else if loadFilter == .category {
             checkApi = .method
             identifyList = 2
             callOptionApi(1)
-        }else if loadFilter == .fdaCertified || loadFilter == .myFav{
+            self.selectedOptionsId = self.selectedOptionsMethod
+        }else if loadFilter == .properties {
+            checkApi = .method
+            identifyList = 2
+            callOptionApi(1)
+            
+            self.selectedOptionsId = self.selectedOptionsMethod
+        }else if loadFilter == .fdaCertified {
             checkApi = .producers
+            self.selectedOptionsId = self.selectedSortProducer
+        }else if loadFilter == .myFav{
+            checkApi = .producers
+            self.selectedOptionsId = self.selectedSortProducer
         }
-        callOptionApi(indexOfPageToRequest)
+       // callOptionApi(indexOfPageToRequest)
     }
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func clearFilters(_ sender: UIButton){
-        callApiCallBack?()
+        clearFilterApi?(loadFilter)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnApplyFilter(_ sender: UIButton){
-        callApiCallBack?()
+    
+        callApiCallBack?(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     
 }
 
@@ -214,10 +244,12 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                     self.arrSelectedCategories = self.selectedOptionsId
                 }else if checkApi == .properties{
                     self.arrSelectedProperties = self.selectedOptionsId
+                    self.arrSelectedPropertiesName = self.arrSelectedName
                 }else if checkApi == .region{
                     self.arrSelectedItalianRegion = self.selectedOptionsId
                 }else if checkApi == .method{
                     self.selectedOptionsMethod = self.selectedOptionsId
+                    self.arrSelectedMethodName = self.arrSelectedName
                 }
                 cell.selectedCategory = self.selectedOptionsId
                 cell.configProductSearch(arrList?[indexPath.row] ?? MyStoreProductDetail(with: [:]), checkApi, indexPath: indexPath.row)
@@ -244,44 +276,47 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
             selectedIndex = indexPath.row
             if arrFilterOptions[indexPath.row].name == checkHitApi.categories.rawValue{
                 checkApi = .categories
-                self.selectedOptionsId = []
+                //self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedCategories
                 identifyList = 4
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.properties.rawValue{
                 checkApi = .properties
-                self.selectedOptionsId = []
+              //  self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedProperties
+                self.arrSelectedName = self.arrSelectedPropertiesName
+                
                 identifyList = 5
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.region.rawValue{
                 checkApi = .region
-                self.selectedOptionsId = []
+              //  self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedItalianRegion
                 identifyList = 3
                 callOptionApi(1)
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.method.rawValue{
                 checkApi = .method
-                self.selectedOptionsId = []
+               // self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectedOptionsMethod
+                self.arrSelectedName = self.arrSelectedMethodName
                 identifyList = 2
                 callOptionApi(1)
             }else if  arrFilterOptions[indexPath.row].name == checkHitApi.distance.rawValue{
                 checkApi = .distance
-                self.selectedOptionsId = []
+               // self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedDistance
             }
             else if arrFilterOptions[indexPath.row].name == checkHitApi.rating.rawValue {
                 checkApi = .rating
-                self.selectedOptionsId = []
+               // self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedRating
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.producers.rawValue || arrFilterOptions[indexPath.row].name == checkHitApi.productName.rawValue {
                 checkApi = .producers
-                self.selectedOptionsId = []
+                //self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectedSortProducer
             }else if arrFilterOptions[indexPath.row].name == checkHitApi.fdaCertified.rawValue{
                 checkApi = .fdaCertified
-                self.selectedOptionsId = []
+               // self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectFdaCertified
             }else{
                 self.subOptionTableView.reloadData()
@@ -297,12 +332,19 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 }else if  checkApi == .region{
                     selectedId = arrList?[indexPath.row].id
                 }
+                if checkApi == .fdaCertified || checkApi == .method || checkApi == .properties{
+                selectName = arrList?[indexPath.row].option
+                }else{
+                    selectName = arrList?[indexPath.row].name
+                }
                 if self.selectedOptionsId.contains(selectedId ?? -1){
                     if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedId ?? -1) {
                         self.selectedOptionsId.remove(at: itemToRemoveIndex)
+                        self.arrSelectedName.remove(at: itemToRemoveIndex)
                     }
                 }else{
                     self.selectedOptionsId.append(selectedId ?? -1)
+                    self.arrSelectedName.append(selectName ?? "")
                 }
             }else  if checkApi == .distance ||  checkApi == .rating{
                 let selectedIndex = indexPath.row

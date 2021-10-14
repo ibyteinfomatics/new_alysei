@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import DropDown
 
 class ProducerDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var producerTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     var connectionId = ""
     
-    
+    var arrProperty = [String]()
     var dashboardModel:DashboardModel?
+    var dataDropDown = DropDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
     
     func callDashboardApi(id: String){
         self.producerTableView.isHidden = true
+        //self.arrProperty.removeAll()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDashboard+id, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
@@ -52,6 +55,9 @@ class ProducerDashboardViewController: AlysieBaseViewC {
                 self.dashboardModel = DashboardModel.init(with: dictResponse)
                 
             }
+            
+            
+            
             self.producerTableView.isHidden = false
             self.producerTableView.reloadData()
             
@@ -100,7 +106,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             return 1
         }
         else{
-            return 3
+            return dashboardModel?.data?.certificates?.count ?? 0
         }
     }
     
@@ -139,6 +145,113 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
         }
         else{
             guard let cell: BabyFoodDetailsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "BabyFoodDetailsTableViewCell", for: indexPath) as? BabyFoodDetailsTableViewCell else{return UITableViewCell()}
+            
+            cell.lblDocumentUpload.text = dashboardModel?.data?.certificates?[indexPath.row].option
+            
+            
+            cell.propertyCallBack = {
+                
+                self.arrProperty.removeAll()
+                for j in 0..<(self.dashboardModel?.data?.certificates![indexPath.row].productProperties?.count)!{
+                        
+                   self.arrProperty.append((self.dashboardModel?.data?.certificates![indexPath.row].productProperties![j].option)!)
+                }
+                
+                self.dataDropDown.dataSource = self.arrProperty
+                self.dataDropDown.show()
+                //dataDropDown.anchorView = countryEvent
+                self.dataDropDown.bottomOffset = CGPoint(x: 0, y: (self.dataDropDown.anchorView?.plainView.bounds.height)!)
+                self.dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                    
+                    
+                }
+                 
+            }
+            
+            cell.conservationCallBack = {
+                
+                
+                
+            }
+            
+            cell.openImageCallBack1 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            cell.openImageCallBack2 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            cell.openImageCallBack3 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            cell.openImageCallBack4 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            cell.openImageCallBack5 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            cell.openImageCallBack6 = {
+                
+                let story = UIStoryboard(name:"Chat", bundle: nil)
+                let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate)!)
+                
+                self.present(controller, animated: true)
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel == "" {
+                cell.uiview1.constant =  0
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification == "" {
+                cell.uiview2.constant =  0
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate == "" {
+                cell.uiview3.constant =  0
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa == "" {
+                cell.uiview4.constant =  0
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan == "" {
+                cell.uiview5.constant =  0
+            }
+            
+            if dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate == "" {
+                cell.uiview6.constant =  0
+            }
+            
             return cell
         }
         
@@ -150,7 +263,34 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             
         }
             else {
-                return 170
+                
+                var checkSize = 20
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                if dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate == "" {
+                    checkSize = checkSize + 90
+                }
+                
+                return CGFloat(660 - checkSize)
         }
     }
     

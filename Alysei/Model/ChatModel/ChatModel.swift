@@ -478,6 +478,76 @@ class ReceivedMessageClass {
     }
 }
 
+
+class LikeCommentClass {
+    
+    var commentCount:Int?
+    var likeCount :Int?
+    var postId : Int?
+    
+    var body:String?
+    var core_comment_id :Int?
+    var created_at : String?
+    
+    var attachment_type:String?
+    var attachment_url :String?
+    var poster_created_at : String?
+    var id :Int?
+    var updated_at : String?
+    
+    var email:String?
+    var name :String?
+    var restaurant_name : String?
+    var role_id :Int?
+    var user_id : Int?
+    
+    
+    init() { }
+    init(uid :String , messageData:[String:Any]) {
+        self.commentCount            = Int.getInt(messageData[Parameters.commentCount])
+        self.likeCount          = Int.getInt(messageData[Parameters.likeCount])
+        self.postId          = Int.getInt(messageData[Parameters.postId])
+        //self.mediaType        = String.getString(messageData[Parameters.mediaType])
+        self.body           = String.getString(messageData[Parameters.body])
+        self.core_comment_id          = Int.getInt(messageData[Parameters.core_comment_id])
+        self.created_at             = String.getString(messageData[Parameters.created_at])
+        self.poster_created_at       = String.getString(messageData[Parameters.created_at])
+        self.attachment_type           = String.getString(messageData[Parameters.attachment_type])
+        self.attachment_url           = String.getString(messageData[Parameters.attachment_url])
+        self.id          = Int.getInt(messageData[Parameters.id])
+        self.updated_at           = String.getString(messageData[Parameters.updated_at])
+        self.email           = String.getString(messageData[Parameters.email])
+        self.name           = String.getString(messageData[Parameters.username])
+        self.restaurant_name           = String.getString(messageData[Parameters.restaurant_name])
+        self.role_id         = Int.getInt(messageData[Parameters.role_id])
+        self.user_id         = Int.getInt(messageData[Parameters.userid])
+        
+     
+    }
+    
+    func createDictonary (objects:LikeCommentClass?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
+            Parameters.commentCount                       : objects?.commentCount ?? 0,
+            Parameters.likeCount                  : objects?.likeCount ?? 0 ,
+            Parameters.postId                : objects?.postId ?? 0,
+            Parameters.body                : objects?.body  ?? "",
+            Parameters.core_comment_id              : objects?.core_comment_id ?? 0,
+            Parameters.created_at                   : objects?.created_at ?? "",
+            Parameters.created_at                   : objects?.poster_created_at ?? "",
+            Parameters.attachment_type                 : objects?.attachment_type ?? "",
+            Parameters.attachment_url                 : objects?.attachment_url ?? "",
+            Parameters.id                 : objects?.id ?? 0,
+            Parameters.updated_at           : objects?.updated_at ?? "",
+            Parameters.email                        : objects?.email ?? "",
+            Parameters.username                 : objects?.name ?? "",
+            Parameters.restaurant_name                 : objects?.restaurant_name ?? "",
+            Parameters.role_id                 : objects?.role_id ?? 0,
+            Parameters.userid                 : objects?.user_id ?? 0
+        ]
+        return params
+    }
+}
+
 //MARK:- Class for Resent Users
 class RecentUser {
     var lastmessage:String?

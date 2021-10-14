@@ -91,6 +91,7 @@ class MyStoreProductDetail{
     var createdAt, updatedAt: String?
     var id: Int?
     var storeName: String?
+    var logoId: Attachment?
     
 
     init(with data: [String:Any]?) {
@@ -151,6 +152,9 @@ class MyStoreProductDetail{
         self.head = Int.getInt(data?["head"])
         
         self.updatedAt = String.getString(data?["updated_at"])
+        if let logoId = data?["logo_id"] as? [String:Any]{
+            self.logoId = Attachment.init(with: logoId)
+        }
     }
 }
 

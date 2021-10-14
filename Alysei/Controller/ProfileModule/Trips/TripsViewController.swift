@@ -59,7 +59,16 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.activitiesTitle.text = tripModel?.data?[indexPath].adventure?.adventureType
         tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
-        tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
+        
+        if tripModel?.data?[indexPath].currency == "USD" {
+            tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
+        } else if tripModel?.data?[indexPath].currency == "Euro" {
+            tripTableCell.priceTitle.text =  "€" + (tripModel?.data?[indexPath].price ?? "0")
+        } else {
+            tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
+        }
+        
+        
         tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
         tripTableCell.editButton.tag = indexPath
         tripTableCell.deleteButton.tag = indexPath
@@ -236,6 +245,7 @@ class TripsViewController: AlysieBaseViewC {
             vc.regionId = self.tripModel?.data?[indexPath].region?.id
             vc.adventureId = self.tripModel?.data?[indexPath].adventure?.adventureTypeID
             vc.intensityId = self.tripModel?.data?[indexPath].intensity?.intensityID
+            vc.currency = self.tripModel?.data?[indexPath].currency
             vc.typeofpage = "edit"
                     
         }
@@ -255,6 +265,7 @@ class TripsViewController: AlysieBaseViewC {
             vc.price = self.tripModel?.data?[indexPath].price
             vc.fulldescription = self.tripModel?.data?[indexPath].datumDescription
             vc.imgurl = self.tripModel?.data?[indexPath].attachment?.attachmentURL
+            vc.currency = self.tripModel?.data?[indexPath].currency
             vc.typeofpage = "read"
             
         }
