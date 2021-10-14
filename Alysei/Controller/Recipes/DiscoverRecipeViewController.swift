@@ -17,6 +17,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var containerTableVw: UITableView!
     @IBOutlet weak var tapPostVw: UIView!
     @IBOutlet weak var tapMarketPlaceVw: UIView!
+    @IBOutlet weak var tapNotificationVw: UIView!
     @IBOutlet weak var discoverCollectionView: UICollectionView!
     var arrayMyRecipe: [HomeTrending]? = []
     var arrayMyFavouriteRecipe: [HomeTrending]? = []
@@ -75,6 +76,9 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         let tapMarket = UITapGestureRecognizer(target: self, action: #selector(openMarketPlace))
         self.tapMarketPlaceVw.addGestureRecognizer(tapMarket)
         
+        let tapNotification = UITapGestureRecognizer(target: self, action: #selector(openNotification))
+        self.tapNotificationVw.addGestureRecognizer(tapNotification)
+        
         containerTableVw.register(UINib(nibName: "ExploreByIngridientTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByIngridientTableViewCell")
         containerTableVw.register(UINib(nibName: "ExploreByMealTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByMealTableViewCell")
         containerTableVw.register(UINib(nibName: "ExploreByRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByRecipeTableViewCell")
@@ -109,6 +113,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     
     @objc func openMarketPlace(){
         guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = true
+    }
+    
+    @objc func openNotification(){
+        guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
     }

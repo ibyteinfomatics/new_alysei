@@ -1595,7 +1595,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Tools in Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjA-v4-m79">
-                                        <rect key="frame" x="50" y="12" width="205.5" height="24"/>
+                                        <rect key="frame" x="50" y="12" width="178" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="u50-Xz-RHt"/>
                                         </constraints>
@@ -1946,7 +1946,7 @@
                                                 <rect key="frame" x="15" y="64" width="384" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-YI-2Vg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18.5" id="hgM-7i-dfP"/>
                                                         </constraints>
@@ -2013,7 +2013,7 @@
                                                 <rect key="frame" x="15" y="139" width="384" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gn-qu-lLj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18.5" id="JYP-G1-64Y"/>
                                                         </constraints>
@@ -4094,6 +4094,7 @@
                         <outlet property="searchRecipe" destination="qaN-Zr-Suj" id="7hd-uS-200"/>
                         <outlet property="searchTextField" destination="GAy-P6-22i" id="lra-Ee-BJG"/>
                         <outlet property="tapMarketPlaceVw" destination="Hpx-jH-AxF" id="sGy-Uj-65P"/>
+                        <outlet property="tapNotificationVw" destination="YUF-D9-GHR" id="ytt-R5-8lh"/>
                         <outlet property="tapPostVw" destination="4dU-fK-6hs" id="ZNo-0P-Fjr"/>
                     </connections>
                 </viewController>
@@ -10785,7 +10786,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Tools in Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp3-GL-95z">
-                                        <rect key="frame" x="50" y="12" width="204.5" height="24"/>
+                                        <rect key="frame" x="50" y="12" width="176" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Nd8-kW-S6S"/>
                                         </constraints>
@@ -11175,7 +11176,7 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StepCollectionViewCell" id="wd1-5w-Kfs" customClass="StepCollectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="2" width="54" height="35"/>
+                                                                    <rect key="frame" x="0.0" y="1.5" width="54" height="35"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SE8-Ig-Fzs">
                                                                         <rect key="frame" x="0.0" y="0.0" width="54" height="35"/>

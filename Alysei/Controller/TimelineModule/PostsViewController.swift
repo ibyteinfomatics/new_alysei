@@ -12,6 +12,7 @@ struct PostCommentsUserData {
     var postID: Int
 }
 
+var checkHavingPreferences : Int? = 0
 
 class PostsViewController: AlysieBaseViewC {
     
@@ -120,10 +121,10 @@ class PostsViewController: AlysieBaseViewC {
         self.hidesBottomBarWhenPushed = true
         //self.tabBarController?.tabBar.bounds.height = 0
     }
+    
     @objc func openRecipes(){
       
-        if AppConstants.isFirstLaunch == true{
-            AppConstants.isFirstLaunch = false
+        if checkHavingPreferences == 0{
         guard let vc = UIStoryboard(name: StoryBoardConstants.kRecipesSelection, bundle: nil).instantiateViewController(identifier: "CuisinePageControlViewController") as? CuisinePageControlViewController else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
@@ -392,6 +393,11 @@ extension PostsViewController {
                 self.newFeedModel = NewFeedSearchModel.init(with: data)
                 if self.indexOfPageToRequest == 1 { self.arrNewFeedDataModel.removeAll() }
                 self.arrNewFeedDataModel.append(contentsOf: self.newFeedModel?.data ?? [NewFeedSearchDataModel(with: [:])])
+                
+            }
+            
+            if let havingPreferences = dictResponse?["having_preferences"] as? Int{
+                checkHavingPreferences = havingPreferences
             }
             self.headerStack.isHidden = false
             self.postTableView.isHidden = false
