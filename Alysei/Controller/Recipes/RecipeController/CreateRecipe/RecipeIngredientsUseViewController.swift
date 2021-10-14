@@ -9,18 +9,18 @@ import UIKit
 
 var strIngridientQuantity = String()
 var strIngridientId = Int()
-var finalUnitIngridirnt: String?
-var finalquantityIngridirnt: Int?
+var finalUnitIngridirnt = String()
+var finalquantityIngridirnt = Int()
 
 var strToolQuantity = String()
 var strToolId = Int()
-var finalquantityTool: Int?
-var finalUnitTool: String?
+var finalquantityTool = Int()
+var finalUnitTool = String()
 
 var strTitle : String?
 var strDescription : String?
-var ingridientArray:Int? = 0
-var toolArray : Int? = 0
+var ingridientStepIdArray: [Int]? = []
+var toolStepIdArray : [Int]? = []
 
 class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UITableViewDataSource, RecipeIngredientsUsedTableViewCellProtocol, NumberOfStepsDelegateProtocol {
     
@@ -525,8 +525,10 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             cell2 = tableView.dequeueReusableCell(withIdentifier: "cell1") as! NumberofStepsTableViewCell
             strTitle = arrayStepFinalData[indexPath.row].title ?? ""
             strDescription = arrayStepFinalData[indexPath.row].description
-//            ingridientArray = arrayStepFinalData[indexPath.row].ingridentsArray?[indexPath.row] ?? 0
-//            toolArray = arrayStepFinalData[indexPath.row].toolsArray?[indexPath.row] ?? 0
+            let stepIngridientId = arrayStepFinalData[indexPath.row].ingridentsArray?[indexPath.row].recipeIngredientIds ?? 0
+            ingridientStepIdArray?.append(stepIngridientId)
+            let toolStepId = arrayStepFinalData[indexPath.row].toolsArray?[indexPath.row].recipeToolIds ?? 0
+            toolStepIdArray?.append(toolStepId)
             cell2.titleLabel.text = strTitle
             cell2.stepTitle.text = "Step \(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
@@ -632,7 +634,7 @@ extension RecipeIngredientsUseViewController{
         let minute = createRecipeJson["minute"]
         let serving = createRecipeJson["serving"]
        
-        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt!, APIConstants.kUnit: finalUnitIngridirnt!]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription!, APIConstants.kIngridients: [ingridientArray], APIConstants.kTools: [toolArray]]]]
+        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,"status": "1",APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt, APIConstants.kUnit: finalUnitIngridirnt]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription!, APIConstants.kIngridients: [ingridientStepIdArray], APIConstants.kTools: [toolStepIdArray]]]]
 
         let paramsMain: [String: Any] = ["params": params]
         
@@ -641,7 +643,7 @@ extension RecipeIngredientsUseViewController{
             if let message = resultNew?["message"] as? String{
                 self.showAlert(withMessage: message)
             }
-            
+            arrayStepFinalData.removeAll()
         }
     }
 

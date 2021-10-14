@@ -16,6 +16,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var btnStartCooking: UIButton!
     
     var checkbutton = 0
     var imgUrl1 = String()
@@ -28,7 +29,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
        else{
         tableView.reloadData()
        }
-
+       
 
     }
     
@@ -37,7 +38,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
        
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
-
+       
         getRecipeDetail()
         
         }
@@ -239,110 +240,139 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.profileImgComment.layer.cornerRadius = cell.profileImgComment.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
-            let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
-            cell.latestCommentImg.setImage(withString: imgUrl2)
-            cell.latestCommentImg.layer.cornerRadius = cell.latestCommentImg.frame.height/2
-            if recipeModel?.latestReview?.user?.name == ""{
-                cell.latestCommentUserName.text = "NA"
+            
+            if recipeModel?.latestReview?.review != ""{
+                cell.latestCommentUserName.isHidden = false
+                cell.latestCommentImg.isHidden = false
+                cell.latestCommentUserName.isHidden = false
+                cell.latestCommentDate.isHidden = false
+                cell.latestCommentTextView.isHidden = false
+                cell.rateImg1.isHidden = false
+                cell.rateImg2.isHidden = false
+                cell.rateImg3.isHidden = false
+                cell.rateImg4.isHidden = false
+                cell.rateImg5.isHidden = false
+                let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
+                cell.latestCommentImg.setImage(withString: imgUrl2)
+                cell.latestCommentImg.layer.cornerRadius = cell.latestCommentImg.frame.height/2
+                if recipeModel?.latestReview?.user?.name == ""{
+                    cell.latestCommentUserName.text = "NA"
+                }
+                else{
+                    cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
+                }
+                
+                let date = Date(timeIntervalSinceNow: -180)
+                cell.latestCommentDate.text = date.getElapsedInterval(timeStamp: String.getString(recipeModel?.latestReview?.created)) + "ago"
+                
+                cell.latestCommentTextView.text = recipeModel?.latestReview?.review
+                
+                if recipeModel?.latestReview?.rating ?? 0 == 0 {
+                    cell.rateImg1.image = UIImage(named: "icons8_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_star")
+                    cell.rateImg5.image = UIImage(named: "icons8_star")
+
+                }
+    //            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+    //                cell.rateImg1.image = UIImage(named: "Group 1142")
+    //                cell.rateImg2.image = UIImage(named: "icons8_star")
+    //                cell.rateImg3.image = UIImage(named: "icons8_star")
+    //                cell.rateImg4.image = UIImage(named: "icons8_star")
+    //               cell.rateImg5.image = UIImage(named: "icons8_star")
+    //            }
+                else if recipeModel?.latestReview?.rating ?? 0 == 1 {
+                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_star")
+                   cell.rateImg5.image = UIImage(named: "icons8_star")
+                }
+    //            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg2.image = UIImage(named: "Group 1142")
+    //                cell.rateImg3.image = UIImage(named: "icons8_star")
+    //                cell.rateImg4.image = UIImage(named: "icons8_star")
+    //                cell.rateImg5.image = UIImage(named: "icons8_star")
+    //            }
+            else if recipeModel?.latestReview?.rating ?? 0 == 2 {
+                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_star")
+                    cell.rateImg5.image = UIImage(named: "icons8_star")
+                }
+    //            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg3.image = UIImage(named: "Group 1142")
+    //                cell.rateImg4.image = UIImage(named: "icons8_star")
+    //                cell.rateImg5.image = UIImage(named: "icons8_star")
+    //            }
+            else if recipeModel?.latestReview?.rating ?? 0 == 3 {
+                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_star")
+                    cell.rateImg5.image = UIImage(named: "icons8_star")
+                }
+    //            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg4.image = UIImage(named: "Group 1142")
+    //                cell.rateImg5.image = UIImage(named: "icons8_star")
+    //            }
+                else if recipeModel?.latestReview?.rating ?? 0 == 4 {
+                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg5.image = UIImage(named: "icons8_star")
+                }
+    //            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+    //                cell.rateImg5.image = UIImage(named: "Group 1142")
+    //            }
+            else if recipeModel?.latestReview?.rating ?? 0 == 5 {
+                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                    cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
+                }
             }
             else{
-                cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
+                cell.latestCommentUserName.isHidden = true
+                cell.latestCommentImg.isHidden = true
+                cell.latestCommentUserName.isHidden = true
+                cell.latestCommentDate.isHidden = true
+                cell.latestCommentTextView.isHidden = true
+                cell.rateImg1.isHidden = true
+                cell.rateImg2.isHidden = true
+                cell.rateImg3.isHidden = true
+                cell.rateImg4.isHidden = true
+                cell.rateImg5.isHidden = true
             }
            
-//            let time = self.getcurrentdateWithTime(timeStamp: String.getString(recipeModel?.latestReview?.created))
-            let date = Date(timeIntervalSinceNow: -180)
-            cell.latestCommentDate.text = date.getElapsedInterval(timeStamp: String.getString(recipeModel?.latestReview?.created)) + "ago"
+
             
-            cell.latestCommentTextView.text = recipeModel?.latestReview?.review
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
                 viewAll.recipeReviewId = recipeModel!.recipeId!
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
-            if recipeModel?.latestReview?.rating ?? 0 == 0 {
-                cell.rateImg1.image = UIImage(named: "icons8_star")
-                cell.rateImg2.image = UIImage(named: "icons8_star")
-                cell.rateImg3.image = UIImage(named: "icons8_star")
-                cell.rateImg4.image = UIImage(named: "icons8_star")
-                cell.rateImg5.image = UIImage(named: "icons8_star")
-
-            }
-//            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
-//                cell.rateImg1.image = UIImage(named: "Group 1142")
-//                cell.rateImg2.image = UIImage(named: "icons8_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//               cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-            else if recipeModel?.latestReview?.rating ?? 0 == 1 {
-                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg2.image = UIImage(named: "icons8_star")
-                cell.rateImg3.image = UIImage(named: "icons8_star")
-                cell.rateImg4.image = UIImage(named: "icons8_star")
-               cell.rateImg5.image = UIImage(named: "icons8_star")
-            }
-//            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "Group 1142")
-//                cell.rateImg3.image = UIImage(named: "icons8_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-        else if recipeModel?.latestReview?.rating ?? 0 == 2 {
-                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg3.image = UIImage(named: "icons8_star")
-                cell.rateImg4.image = UIImage(named: "icons8_star")
-                cell.rateImg5.image = UIImage(named: "icons8_star")
-            }
-//            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "Group 1142")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-        else if recipeModel?.latestReview?.rating ?? 0 == 3 {
-                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg4.image = UIImage(named: "icons8_star")
-                cell.rateImg5.image = UIImage(named: "icons8_star")
-            }
-//            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg4.image = UIImage(named: "Group 1142")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-            else if recipeModel?.latestReview?.rating ?? 0 == 4 {
-                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg5.image = UIImage(named: "icons8_star")
-            }
-//            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg5.image = UIImage(named: "Group 1142")
-//            }
-        else if recipeModel?.latestReview?.rating ?? 0 == 5 {
-                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-                cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
-            }
+           
             
         return cell
             
         default:
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
-            
+                cell.post = true
                 cell.delegate = self
             
         return cell
@@ -394,6 +424,12 @@ extension ViewRecipeViewController{
                
             }
             setImage()
+            if stepsModel?.count == 0{
+                btnStartCooking.isHidden = true
+            }
+            else{
+                btnStartCooking.isHidden = false
+            }
             self.tableView.reloadData()
             
         }
