@@ -152,13 +152,13 @@ class PostDescTableViewCell: UITableViewCell {
 //        self.index = index
         self.index = self.data?.postID ?? 0
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
-        userName.text = modelData.subjectId?.companyName?.capitalized
+            userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
             userNickName.text = modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
-            userName.text = "\(modelData.subjectId?.name?.capitalized ?? "")"
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
             userNickName.text = modelData.subjectId?.email?.lowercased()
         }else{
   

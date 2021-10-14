@@ -95,4 +95,26 @@ struct Parameters {
     static let _friend                    = "_friend"
     static let likeStatus                 = "likestatus"
     static let anonymous_chat                = "anonymous_chat"
+    
+    
+    static let commentCount = "commentCount"
+    static let likeCount = "likeCount"
+    static let postId = "postId"
+    
+    static let body = "body"
+    static let core_comment_id = "core_comment_id"
+    static let created_at = "created_at"
+    
+    static let attachment_type = "attachment_type"
+    static let attachment_url = "attachment_url"
+    //var created_at : String?
+    static let id = "id"
+    static let updated_at = "updated_at"
+    
+    static let email = "email"
+    static let username = "name"
+    static let restaurant_name = "restaurant_name"
+    static let role_id = "role_id"
+    static let userid = "user_id"
+    
 }

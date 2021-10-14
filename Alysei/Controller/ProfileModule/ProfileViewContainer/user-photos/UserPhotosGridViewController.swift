@@ -18,7 +18,8 @@ class UserPhotosGridViewController: AlysieBaseViewC {
 
     //TODO: pagination is pending
     var count = 100
-
+    var visitorId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +44,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetchPostWithPhotsFromServer(pageNumber)
+        self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
     }
 
 
@@ -79,8 +80,8 @@ extension UserPhotosGridViewController: UICollectionViewDelegateFlowLayout {
 
 
 extension UserPhotosGridViewController {
-    func fetchPostWithPhotsFromServer(_ page: Int, count: Int = 30) {
-        let urlString = APIUrl.Profile.photoList + "?page=\(page)&per_page=\(count)"
+    func fetchPostWithPhotsFromServer(_ page: Int, count: Int = 30,visitorId: String) {
+        let urlString = APIUrl.Profile.photoList + "?page=\(page)&per_page=\(count)&visitor_profile_id=\(visitorId)"
 
         guard let request = WebServices.shared.buildURLRequest(urlString, method: .GET) else {
             return

@@ -72,6 +72,7 @@ class Certificate {
     var createdAt, updatedAt: String?
     var photoOfLabel, fceSidCertification, phytosanitaryCertificate, packagingForUsa: String?
     var foodSafetyPlan, animalHelathAslCertificate: String?
+    var conservationMethods, productProperties: [ConservationMethod]?
     
     init(with dictResponse: [String:Any]?) {
         
@@ -90,9 +91,41 @@ class Certificate {
         self.packagingForUsa = String.getString(dictResponse?["packaging_for_usa"])
         self.foodSafetyPlan = String.getString(dictResponse?["food_safety_plan"])
         self.animalHelathAslCertificate = String.getString(dictResponse?["animal_helath_asl_certificate"])
+        
+        if let data = dictResponse?["conservation_methods"] as? [[String:Any]]{
+            self.conservationMethods = data.map({ConservationMethod.init(with: $0)})
+        }
+        
+        if let data = dictResponse?["product_properties"] as? [[String:Any]]{
+            self.productProperties = data.map({ConservationMethod.init(with: $0)})
+        }
        
     }
 
+    
+}
+
+// MARK: - ConservationMethod
+class ConservationMethod {
+    var userFieldOptionid, userFieldid: Int?
+    var option: String?
+    var hint: String?
+    var parent, head: Int?
+    var createdAt, updatedAt: String?
+    
+    
+    init(with dictResponse: [String:Any]?) {
+        
+        self.option = String.getString(dictResponse?["option"])
+        self.hint = String.getString(dictResponse?["hint"])
+        self.createdAt = String.getString(dictResponse?["created_at"])
+        self.updatedAt = String.getString(dictResponse?["updated_at"])
+        self.userFieldOptionid = Int.getInt(dictResponse?["user_field_option_id"])
+        self.userFieldid = Int.getInt(dictResponse?["user_field_id"])
+        self.parent = Int.getInt(dictResponse?["parent"])
+        self.head = Int.getInt(dictResponse?["head"])
+        
+    }
     
 }
 

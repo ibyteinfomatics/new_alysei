@@ -73,6 +73,8 @@ class NetworkViewC: AlysieBaseViewC {
                 self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
             } else if self.currentIndex == 1{
                 self.callConnectionApi(api: APIUrl.kConnectionTabApi)
+            } else if self.currentIndex == 2{
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi3)
             }
             
         }
@@ -267,7 +269,8 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.remove.setTitle("Cancel", for: .normal)
 
                     networkTableCell.btnRemoveCallback = { tag in
-                        self.pendingRemoveApi(id: (self.connection?.data?[indexPath.row].userID)!)
+                        //self.pendingRemoveApi(id: (self.connection?.data?[indexPath.row].userID)!)
+                        self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
 
                     }
 
@@ -501,13 +504,13 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         var height = 200
 
         if self.connection?.data?[indexPath.row].reasonToConnect == "" {
-            height = 120
+            height = 140
         } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
 
             let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
 
 
-            height = 140 + ((tok.count-1)*20)
+            height = 160 + ((tok.count-1)*20)
         } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
 
             let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")

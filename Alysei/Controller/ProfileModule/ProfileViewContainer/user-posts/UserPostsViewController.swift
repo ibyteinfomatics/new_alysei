@@ -13,7 +13,7 @@ class UserPostsViewController: AlysieBaseViewC {
     @IBOutlet weak var vwBlank: UIView!
 
     var pageNumber = 1
-
+    var visitorId = ""
     //TODO: pagination is pending
     var count = 100
 
@@ -40,7 +40,7 @@ class UserPostsViewController: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetchPostWithPhotsFromServer(pageNumber)
+        self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
     }
 
     func updatePostList() {
@@ -50,8 +50,8 @@ class UserPostsViewController: AlysieBaseViewC {
 }
 
 extension UserPostsViewController {
-    func fetchPostWithPhotsFromServer(_ page: Int, count: Int = 30) {
-        let urlString = APIUrl.Profile.postList + "?page=\(page)&per_page=\(count)"
+    func fetchPostWithPhotsFromServer(_ page: Int, count: Int = 30,visitorId: String) {
+        let urlString = APIUrl.Profile.postList + "?page=\(page)&per_page=\(count)&visitor_profile_id=\(visitorId)"
 
         guard let request = WebServices.shared.buildURLRequest(urlString, method: .GET) else {
             return

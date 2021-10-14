@@ -295,6 +295,7 @@
 		6B805B2527058243002FC4BF /* ExploreByIngridientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B805B2327058243002FC4BF /* ExploreByIngridientTableViewCell.xib */; };
 		6B805B272705875F002FC4BF /* FilteredRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B262705875F002FC4BF /* FilteredRecipeViewController.swift */; };
 		6B805B2927059E17002FC4BF /* SearcRecipeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B2827059E17002FC4BF /* SearcRecipeDataModel.swift */; };
+		6B81327627159C7D00F2DE29 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81327527159C7D00F2DE29 /* Privacy.swift */; };
 		6B8992352702E3BC00591A2E /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992342702E3BC00591A2E /* ExploreCollectionViewCell.xib */; };
 		6B8992372702E41B00591A2E /* MyRecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992362702E41B00591A2E /* MyRecipeCollectionViewCell.xib */; };
 		6B8992392702E46700591A2E /* FoodAllergyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992382702E46700591A2E /* FoodAllergyCollectionViewCell.xib */; };
@@ -907,6 +908,7 @@
 		6B805B2327058243002FC4BF /* ExploreByIngridientTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreByIngridientTableViewCell.xib; sourceTree = "<group>"; };
 		6B805B262705875F002FC4BF /* FilteredRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredRecipeViewController.swift; sourceTree = "<group>"; };
 		6B805B2827059E17002FC4BF /* SearcRecipeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcRecipeDataModel.swift; sourceTree = "<group>"; };
+		6B81327527159C7D00F2DE29 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		6B8992342702E3BC00591A2E /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
 		6B8992362702E41B00591A2E /* MyRecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRecipeCollectionViewCell.xib; sourceTree = "<group>"; };
 		6B8992382702E46700591A2E /* FoodAllergyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodAllergyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1288,6 +1290,7 @@
 				C513C19E26144E9A0025CF27 /* SettingsScreenCollectionVC.swift */,
 				6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */,
 				6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */,
+				6B81327527159C7D00F2DE29 /* Privacy.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -3600,6 +3603,7 @@
 				61A40A1C267378BF00D7D078 /* BasicConnectFlowWorker.swift in Sources */,
 				6B805B2027057AF4002FC4BF /* QuickEasyTableViewCell.swift in Sources */,
 				C5D4DB6F268322310019DB9E /* MyStoreVC.swift in Sources */,
+				6B81327627159C7D00F2DE29 /* Privacy.swift in Sources */,
 				C56C2878268465C60042A0A3 /* MyStoreDetailRouter.swift in Sources */,
 				27A443B225AE03720002BAAC /* UITextViewSubLayerBorderWidthAndColor.swift in Sources */,
 				C5D6F7E326B1829D006FFCDF /* StateListVC.swift in Sources */,

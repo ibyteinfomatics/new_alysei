@@ -63,6 +63,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var connectButton: UIButtonExtended!
     @IBOutlet weak var backButton: UIButtonExtended!
     @IBOutlet weak var lblPercentage: UILabel!
+    @IBOutlet weak var followerstext: UILabel!
     //  @IBOutlet weak var btnBack: UIButton!
     
     //MARK: - Properties -
@@ -112,6 +113,7 @@ class ProfileViewC: AlysieBaseViewC{
     private lazy var postsViewC: UserPostsViewController = {
         
         let postsViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: UserPostsViewController.id()) as! UserPostsViewController
+        postsViewC.visitorId = self.userID != nil ? String.getString(self.userID) : ""
         return postsViewC
     }()
     
@@ -120,6 +122,7 @@ class ProfileViewC: AlysieBaseViewC{
         //        if let vc = self.storyboard?.instantiateViewController(identifier: "UserPhotosGridViewController") as? UserPhotosGridViewController {
         //        }
         let view = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: "UserPhotosGridViewController") as! UserPhotosGridViewController
+        view.visitorId = self.userID != nil ? String.getString(self.userID) : ""
         return view
     }()
     
@@ -173,6 +176,12 @@ class ProfileViewC: AlysieBaseViewC{
         
         self.btnEditProfile.layer.cornerRadius = 0.0
         self.viewSeparator.alpha = 0.0
+        
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+            followerstext.text = "Following"
+        } else {
+            followerstext.text = "Followers"
+        }
         
         /*if self.userLevel == .own {
             self.menuButton.isHidden = false

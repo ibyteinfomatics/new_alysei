@@ -32,7 +32,7 @@ class TripDatum {
     var duration: String?
     var intensity: TripIntensity?
     var website, price, datumDescription, imageID: String?
-    var status, createdAt, updatedAt: String?
+    var status, createdAt, updatedAt, currency: String?
     var user: TripUser?
     var attachment: TripAttachment?
     var adventure: TripAdventure?
@@ -48,6 +48,7 @@ class TripDatum {
         self.price = String.getString(dictResponse?["price"])
         self.imageID = String.getString(dictResponse?["image_id"])
         
+        self.currency = String.getString(dictResponse?["currency"])
         self.datumDescription = String.getString(dictResponse?["description"])
         self.status = String.getString(dictResponse?["status"])
         self.createdAt = String.getString(dictResponse?["created_at"])
