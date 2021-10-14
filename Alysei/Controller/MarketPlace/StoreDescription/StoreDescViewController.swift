@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import CoreLocation
 
 class StoreDescViewController: AlysieBaseViewC {
     
@@ -41,6 +42,8 @@ class StoreDescViewController: AlysieBaseViewC {
     @IBOutlet weak var storeAvgStar4: UIImageView!
     @IBOutlet weak var storeAvgStar5: UIImageView!
     
+    var number: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         callStoreDetailApi()
@@ -53,6 +56,15 @@ class StoreDescViewController: AlysieBaseViewC {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(callLikeDisLikeApi))
         self.vwStoreLike.addGestureRecognizer(tap)
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(callUser))
+        self.vwCall.addGestureRecognizer(tap1)
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(openWebsite))
+        self.vwWebsite.addGestureRecognizer(tap2)
+        
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(openLocation))
+        self.vwLoaction.addGestureRecognizer(tap3)
         // Do any additional setup after loading the view.
     }
     
@@ -84,6 +96,18 @@ class StoreDescViewController: AlysieBaseViewC {
             self.imgLikeUnlike.image = UIImage(named: "LikeIcon")
             
         }
+        self.number = storeDetails?.phone
+        //Create the pin location of your restaurant(you need the GPS coordinates for this)
+        
+        let doubleLat = Double.getDouble(storeDetails?.lattitude)
+        let doubleLong = Double.getDouble(storeDetails?.longitude)
+        
+        //let storeLoaction = CLLocation(latitude: doubleLat, longitude: doubleLong)//
+            //CLLocationCoordinate2D(latitude: storeDetails?.lattitude, longitude: storeDetails?.longitude)
+
+              //Center the map on the place location
+        let camera = GMSCameraPosition.camera(withLatitude: doubleLat , longitude: doubleLong, zoom: 6.0)
+        self.mapView.camera = camera
         setStarUI()
     }
     
@@ -166,6 +190,37 @@ class StoreDescViewController: AlysieBaseViewC {
             self.callUnLikeApi()
             self.imgLikeUnlike.image = UIImage(named: "LikesBlue")
             
+        }
+    }
+    @objc func callUser(){
+        if let url = URL(string: "tel://\(number ?? "")"),
+          UIApplication.shared.canOpenURL(url) {
+             if #available(iOS 10, *) {
+               UIApplication.shared.open(url, options: [:], completionHandler:nil)
+              } else {
+                  UIApplication.shared.openURL(url)
+              }
+          } else {
+            print("Error")
+                   // add error message here
+          }
+    }
+    @objc func openLocation(){
+        let storboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nextVC = storboard.instantiateViewController(identifier: "MapViewC") as? MapViewC else {return}
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        
+    }
+    
+    @objc func openWebsite(){
+        let website = (storeDetails?.website ?? "")
+        guard let url = URL(string: website) else {
+          return //be safe
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
         }
     }
     @IBAction func btnViewAllReview(_ sender: UIButton){
