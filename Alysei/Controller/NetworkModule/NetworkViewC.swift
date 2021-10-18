@@ -208,7 +208,10 @@ class NetworkViewC: AlysieBaseViewC {
                 case 7:
                     let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
                     vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+               // case 10:
+                  //  let vc = self.navigationController(withName: )
                 default:
+                    print("Not valid user")
                     break
                     //return nil
                 }

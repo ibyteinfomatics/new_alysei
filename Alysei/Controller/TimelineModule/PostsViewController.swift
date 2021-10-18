@@ -35,7 +35,7 @@ class PostsViewController: AlysieBaseViewC {
     var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = false
        // callNewFeedApi(pageNo)
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
             
