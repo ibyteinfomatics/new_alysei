@@ -57,6 +57,7 @@ struct Parameters {
     static let senderid                   = "senderid"
     static let receiverid                 = "otherId"
     static let message                    = "Messages"
+    static let post                    = "post"
     static let mediatype                  = "type"
     static let status                     = "status"
     static let img_type                   = "img_type"
@@ -100,10 +101,12 @@ struct Parameters {
     static let commentCount = "commentCount"
     static let likeCount = "likeCount"
     static let postId = "postId"
+    static let comment = "comment"
     
     static let body = "body"
     static let core_comment_id = "core_comment_id"
     static let created_at = "created_at"
+    static let poster = "poster"
     
     static let attachment_type = "attachment_type"
     static let attachment_url = "attachment_url"
@@ -111,9 +114,12 @@ struct Parameters {
     static let id = "id"
     static let updated_at = "updated_at"
     
+    static let avatar_id = "avatar_id"
     static let email = "email"
     static let username = "name"
     static let restaurant_name = "restaurant_name"
+    static let first_name = "first_name"
+    static let company_name = "company_name"
     static let role_id = "role_id"
     static let userid = "user_id"
     

@@ -225,6 +225,26 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                     cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
                     cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                    
+                    
+//                    let params: [String:Any] = [
+//
+//                        "post_id": self.arrNewFeedDataModel[indexPath.row].activityActionId!,
+//                        "like_or_unlike": 1,
+//                        "user_id": Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+//
+//                    ]
+//
+//                    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLike, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+//
+//                        let dictResponse = dictResponse as? [String:Any]
+//
+//                        print("dictResponse ",dictResponse)
+//
+//
+//
+//                    }
+                    
                 }
                 cell.reloadCallBack = { tag, section in
                     let data = self.arrNewFeedDataModel[tag ?? -1]

@@ -478,66 +478,206 @@ class ReceivedMessageClass {
     }
 }
 
-
-class LikeCommentClass {
+class PostClass {
     
     var commentCount:Int?
     var likeCount :Int?
     var postId : Int?
-    
-    var body:String?
-    var core_comment_id :Int?
-    var created_at : String?
-    
-    var attachment_type:String?
-    var attachment_url :String?
-    var poster_created_at : String?
-    var id :Int?
-    var updated_at : String?
-    
-    var email:String?
-    var name :String?
-    var restaurant_name : String?
-    var role_id :Int?
-    var user_id : Int?
-    
+   
     
     init() { }
     init(uid :String , messageData:[String:Any]) {
         self.commentCount            = Int.getInt(messageData[Parameters.commentCount])
         self.likeCount          = Int.getInt(messageData[Parameters.likeCount])
         self.postId          = Int.getInt(messageData[Parameters.postId])
-        //self.mediaType        = String.getString(messageData[Parameters.mediaType])
-        self.body           = String.getString(messageData[Parameters.body])
-        self.core_comment_id          = Int.getInt(messageData[Parameters.core_comment_id])
-        self.created_at             = String.getString(messageData[Parameters.created_at])
-        self.poster_created_at       = String.getString(messageData[Parameters.created_at])
-        self.attachment_type           = String.getString(messageData[Parameters.attachment_type])
-        self.attachment_url           = String.getString(messageData[Parameters.attachment_url])
-        self.id          = Int.getInt(messageData[Parameters.id])
-        self.updated_at           = String.getString(messageData[Parameters.updated_at])
-        self.email           = String.getString(messageData[Parameters.email])
-        self.name           = String.getString(messageData[Parameters.username])
-        self.restaurant_name           = String.getString(messageData[Parameters.restaurant_name])
-        self.role_id         = Int.getInt(messageData[Parameters.role_id])
-        self.user_id         = Int.getInt(messageData[Parameters.userid])
-        
+       
      
     }
     
-    func createDictonary (objects:LikeCommentClass?) -> Dictionary<String , Any> {
+    func createDictonary (objects:PostClass?) -> Dictionary<String , Any> {
         let params : [String:Any] = [
             Parameters.commentCount                       : objects?.commentCount ?? 0,
             Parameters.likeCount                  : objects?.likeCount ?? 0 ,
             Parameters.postId                : objects?.postId ?? 0,
+           
+        ]
+        return params
+    }
+}
+
+class LikeCommentClass {
+    
+    var commentCount:Int?
+    var likeCount :Int?
+    var postId : Int?
+    var data: CommentClass?
+    
+    init() { }
+    init(uid :String ,with messageData: [String:Any]?) {
+        self.commentCount            = Int.getInt(messageData?[Parameters.commentCount])
+        self.likeCount          = Int.getInt(messageData?[Parameters.likeCount])
+        self.postId          = Int.getInt(messageData?[Parameters.postId])
+        
+        if let data = messageData?["comment"] as? [String:Any]{
+           // self.data = data.map({CommentClass.init(with: $0)})
+            self.data =  CommentClass.init(with: data)
+           /// self.data = CommentClass(with: data as! [String : Any])
+        }
+        
+    }
+    
+    func createDictonary (objects:LikeCommentClass?,objects2:CommentClass?,objects3:PosterClass?,objects4:CommentAvatarId?) -> Dictionary<String , Any> {
+        
+        
+        let params4 : [String:Any] = [
+
+            Parameters.created_at                   : objects4?.poster_created_at ?? "",
+            Parameters.attachment_type                 : objects4?.attachment_type ?? "",
+            Parameters.attachment_url                 : objects4?.attachment_url ?? "",
+            Parameters.id                 : objects4?.id ?? 0,
+            Parameters.updated_at           : objects4?.updated_at ?? "",
+        
+        ]
+        
+        let params3 : [String:Any] = [
+        
+            Parameters.avatar_id : params4,
+            Parameters.email                        : objects3?.email ?? "",
+            Parameters.username                 : objects3?.name ?? "",
+            Parameters.restaurant_name                 : objects3?.restaurant_name ?? "",
+            Parameters.role_id                 : objects3?.role_id ?? 0,
+            Parameters.userid                 : objects3?.user_id ?? 0,
+          
+        
+        ]
+        
+        let params2 : [String:Any] = [
+        
+            Parameters.poster : params3,
+            Parameters.body                : objects2?.body  ?? "",
+            Parameters.core_comment_id              : objects2?.core_comment_id ?? 0,
+            Parameters.created_at                   : objects2?.created_at ?? "",
+            
+          
+        ]
+ 
+        let params1 : [String:Any] = [
+        
+            String.getString(objects2?.core_comment_id) : params2,
+          
+        ]
+        
+        let params : [String:Any] = [
+            
+            Parameters.comment : params1,
+            Parameters.commentCount                       : objects?.commentCount ?? 0,
+            Parameters.likeCount                  : objects?.likeCount ?? 0 ,
+            Parameters.postId                : objects?.postId ?? 0,
+            
+        ]
+       
+        
+        return params
+    }
+    
+    
+    func createDictonary (objects:LikeCommentClass?) -> Dictionary<String , Any> {
+        
+       
+        let params : [String:Any] = [
+            
+            Parameters.commentCount                       : objects?.commentCount ?? 0,
+            Parameters.likeCount                  : objects?.likeCount ?? 0 ,
+            Parameters.postId                : objects?.postId ?? 0,
+            
+        ]
+       
+        
+        return params
+    }
+    
+}
+
+
+class CommentClass {
+    
+    var body:String?
+    var core_comment_id :Int?
+    var created_at : String?
+    var data : PosterClass?
+   
+    init() { }
+    init(with messageData: [String:Any]?) {
+        
+        //messageData?.forEach {(key, value) in
+         //   let details = kSharedInstance.getDictionary(value)
+            
+            //print("body--- ",String.getString(messageData?[Parameters.body]))
+        self.body           = String.getString(messageData?[Parameters.body])
+        self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
+        self.created_at             = String.getString(messageData?[Parameters.created_at])
+            
+        if let poster = messageData?["poster"]  as? [String:Any]{
+                //self.data = (data as AnyObject).map({CommentClass.init(messageData: $0)})
+                self.data =  PosterClass.init(with: poster)
+                    // PosterClass(messageData: data as! [String : Any])
+            }
+            
+        //}
+     
+    }
+    
+    func createDictonary (objects:CommentClass?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
             Parameters.body                : objects?.body  ?? "",
             Parameters.core_comment_id              : objects?.core_comment_id ?? 0,
             Parameters.created_at                   : objects?.created_at ?? "",
-            Parameters.created_at                   : objects?.poster_created_at ?? "",
-            Parameters.attachment_type                 : objects?.attachment_type ?? "",
-            Parameters.attachment_url                 : objects?.attachment_url ?? "",
-            Parameters.id                 : objects?.id ?? 0,
-            Parameters.updated_at           : objects?.updated_at ?? "",
+           
+        ]
+        return params
+    }
+    
+}
+
+class PosterClass {
+    
+    var email:String?
+    var name :String?
+    var restaurant_name : String?
+    var role_id :Int?
+    var user_id : Int?
+    var data : CommentAvatarId?
+   
+    init() { }
+    init(with messageData: [String:Any]?) {
+        
+        self.email           = String.getString(messageData?[Parameters.email])
+        self.name           = String.getString(messageData?[Parameters.username])
+        self.restaurant_name           = String.getString(messageData?[Parameters.restaurant_name])
+        
+        if String.getString(messageData?[Parameters.company_name]) != ""{
+            self.restaurant_name = String.getString(messageData?[Parameters.company_name])
+        } else if String.getString(messageData?[Parameters.restaurant_name]) != ""{
+            self.restaurant_name = String.getString(messageData?[Parameters.restaurant_name])
+        } else if String.getString(messageData?[Parameters.first_name]) != ""{
+            self.restaurant_name = String.getString(messageData?[Parameters.first_name])+" "+String.getString(messageData?["last_name"])
+        }
+        
+        self.role_id         = Int.getInt(messageData?[Parameters.role_id])
+        self.user_id         = Int.getInt(messageData?[Parameters.userid])
+        
+        
+        if let avatar_id = messageData?["avatar_id"]  as? [String:Any]{
+            //self.data = (data as AnyObject).map({CommentClass.init(messageData: $0)})
+            self.data =  CommentAvatarId.init(with: avatar_id)
+                // PosterClass(messageData: data as! [String : Any])
+        }
+        
+    }
+    
+    
+    func createDictonary (objects:PosterClass?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
             Parameters.email                        : objects?.email ?? "",
             Parameters.username                 : objects?.name ?? "",
             Parameters.restaurant_name                 : objects?.restaurant_name ?? "",
@@ -546,6 +686,39 @@ class LikeCommentClass {
         ]
         return params
     }
+    
+}
+
+class CommentAvatarId {
+    
+    var attachment_type:String?
+    var attachment_url :String?
+    var poster_created_at : String?
+    var id :Int?
+    var updated_at : String?
+    
+    init() { }
+    init(with messageData: [String:Any]) {
+        
+        self.poster_created_at       = String.getString(messageData[Parameters.created_at])
+        self.attachment_type           = String.getString(messageData[Parameters.attachment_type])
+        self.attachment_url           = String.getString(messageData[Parameters.attachment_url])
+        self.id          = Int.getInt(messageData[Parameters.id])
+        self.updated_at           = String.getString(messageData[Parameters.updated_at])
+        
+    }
+    
+    func createDictonary (objects:CommentAvatarId?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
+            Parameters.created_at                   : objects?.poster_created_at ?? "",
+            Parameters.attachment_type                 : objects?.attachment_type ?? "",
+            Parameters.attachment_url                 : objects?.attachment_url ?? "",
+            Parameters.id                 : objects?.id ?? 0,
+            Parameters.updated_at           : objects?.updated_at ?? "",
+        ]
+        return params
+    }
+    
 }
 
 //MARK:- Class for Resent Users

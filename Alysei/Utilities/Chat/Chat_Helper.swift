@@ -37,10 +37,15 @@ class Chat_hepler {
     
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
     var messageReference    = Database.database().reference().child(Parameters.message)
+    var postReference    = Database.database().reference().child(Parameters.post)
     var resentUser = [RecentUser]()
     
     var messageclass        = [ReceivedMessageClass]()
     var chatBackupOnetoOne  = [ReceivedMessageClass]()
+    
+    var commentmessageclass        = [CommentClass]()
+    var postmessageclass        = [PostClass]()
+    var commentBackupOnetoOne  = [LikeCommentClass]()
     
     var userState :UsersState?
     var receiverprofile_image:String?
@@ -459,6 +464,40 @@ class Chat_hepler {
         
     }
     
+    func send_post(messageDic:PostClass, postId :Int) {
+        
+        let sendReference = postReference.child(String.getString(postId))
+        let message = messageDic.createDictonary(objects: messageDic)
+        sendReference.setValue(kSharedInstance.getDictionary(message))
+        
+    }
+    
+    func send_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String) {
+        
+        //countDic.data = commentDisc
+        //countDic.data?.data = poster
+        //countDic.data?.data?.data = avtar
+        
+        
+        let sendReference = postReference.child(postId)
+        //let message = countDic.createDictonary(objects: countDic, objects2: commentDisc, objects3: poster, objects4: avtar)
+        let message = countDic.createDictonary(objects: countDic)
+        
+        let message1 = commentDisc.createDictonary(objects: commentDisc)
+        let message2 = poster.createDictonary(objects: poster)
+        let message3 = avtar.createDictonary(objects: avtar)
+        
+        //sendReference.setValue(message)
+        sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).setValue(message1)
+        sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).child("poster").setValue(message2)
+        sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).child("poster").child("avatar_id").setValue(message3)
+        
+        
+        //sendReference.setValue(countDic)
+        
+        
+    }
+    
     //MARK:- Function For Send message one to one Chat
     func send_message(messageDic:ReceivedMessageClass,senderId :String , receiverId:String) {
         
@@ -545,6 +584,25 @@ class Chat_hepler {
             
         }
         
+    }
+    
+    
+    //MARK:- Func For Receive Message for One To One Chat
+    func receivce_Comment(postId :String , message:@escaping (_ result: [CommentClass]?) -> ()) -> Void {
+        
+        postReference.child(postId).child("comment").observe(.value) { [weak self] (snapshot) in
+            self?.commentmessageclass.removeAll()
+            if snapshot.exists() {
+                let msgs = kSharedInstance.getDictionary(snapshot.value)
+               // self?.postmessageclass.append(PostClass(uid: "0", messageData: msgs))
+                msgs.forEach {(key, value) in
+                    let dic = kSharedInstance.getDictionary(value)
+                    self?.commentmessageclass.append(CommentClass( with: dic))
+                    
+                }
+            }
+            message(self?.commentmessageclass)
+        }
     }
     
     //MARK:- Func For Receive Message for One To One Chat

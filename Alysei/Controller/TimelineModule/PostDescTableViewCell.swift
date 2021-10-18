@@ -147,6 +147,9 @@ class PostDescTableViewCell: UITableViewCell {
 //
 //        socket.connect()
 
+        self.viewLike.tag = index
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
+        self.viewLike.addGestureRecognizer(tap)
 
         self.data = modelData
 //        self.index = index
@@ -229,16 +232,16 @@ class PostDescTableViewCell: UITableViewCell {
             islike = 0
         }
 
-//        if (islike ?? 0) == 0 {
-//            callLikeUnlikeApi(self.islike, self.data?.activityActionId, self.index)
-//            return
-//        }
+        //if (islike ?? 0) == 0 {
+            callLikeUnlikeApi(self.islike, self.data?.activityActionId, self.index)
+          //  return
+       // }
 
-        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
-        let params = ["post_owner_id": self.data?.subjectId?.userId ?? -1,
-                      "user_id": selfID,
-                      "post_id": self.data?.postID ?? -1,
-                      "like_status": islike ?? 1]
+        //let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        //let params = ["post_owner_id": self.data?.subjectId?.userId ?? -1,
+                     // "user_id": selfID,
+                      //"post_id": self.data?.postID ?? -1,
+                      //"like_status": islike ?? 1]
 
 //        let sd = params.socketRepresentation()
 //
