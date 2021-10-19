@@ -200,8 +200,17 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
-        let data = arrProductList?.myStoreProduct?[indexPath.row]
-        nextVC.passStoreId = "\(data?.marketplace_store_id ?? 0)"
+        
+        var data = arrListData[indexPath.row]
+        if isSearch {
+            
+            data = (arrProductList?.myStoreProduct?[indexPath.row])!
+        } else {
+            data = arrListData[indexPath.row]
+        }
+        
+        
+        nextVC.passStoreId = "\(data.marketplace_store_id ?? 0)"
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
