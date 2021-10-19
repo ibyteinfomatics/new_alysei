@@ -20,6 +20,7 @@ class DietViewController: AlysieBaseViewC  {
     var showAllDiet: [MapDataModel]? = []
     var arrayPreference3: PreferencesDataModel?
     var callbackResult: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferenceNumber = 3
@@ -30,13 +31,12 @@ class DietViewController: AlysieBaseViewC  {
         saveButton.layer.borderWidth = 1
         saveButton.layer.cornerRadius = 30
         saveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-       
+        
         backButton.layer.borderWidth = 1
         backButton.layer.cornerRadius = 30
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+        
         getSavedDietMyPreferences()
-        
-        
         
     }
     
@@ -57,6 +57,88 @@ class DietViewController: AlysieBaseViewC  {
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+}
+
+extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return showAllDiet?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+        
+        let imgUrl = (kImageBaseUrl + (showAllDiet?[indexPath.row].imageId?.imgUrl ?? ""))
+        
+        let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
+        cell.image1.contentMode = .scaleAspectFit
+        cell.image1.image = mySVGImage.uiImage
+        cell.imageNameLabel.text = showAllDiet?[indexPath.row].name
+        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
+        cell.viewOfImage.layer.borderWidth = 4
+        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+        
+        if showAllDiet?[indexPath.row].isSelected == 1{
+            cell.viewOfImage.layer.borderWidth = 4
+            cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        }
+        else{
+            cell.viewOfImage.layer.borderWidth = 4
+            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+            
+        }
+        
+        cell.layoutSubviews()
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
+        
+        selectedIndexPath = indexPath
+        if  showAllDiet?[indexPath.row].isSelected == 1 {
+            showAllDiet?[indexPath.row].isSelected = 0
+            cell?.viewOfImage.layer.borderWidth = 4
+            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+            for (index,item) in arrSelectedIndex.enumerated(){
+                if item == indexPath{
+                    arrSelectedIndex.remove(at: index)
+                    
+                }
+            }
+            
+            for (index,item) in arraySelectedDiet!.enumerated(){
+                if item == showAllDiet?[indexPath.row].dietId{
+                    arraySelectedDiet?.remove(at: index)
+                }
+            }
+            
+            
+        } else {
+            showAllDiet?[indexPath.row].isSelected = 1
+            cell?.viewOfImage.layer.borderWidth = 4
+            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            arraySelectedDiet?.append(showAllDiet?[indexPath.row].dietId ?? 0)
+            arrSelectedIndex.append(selectedIndexPath!)
+            print("\(String(describing: arrSelectedIndex.count))")
+        }
+        
+        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        return cellSize
+        
+    }
+    
+}
+
+extension DietViewController{
     
     func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
         var params = [[String:Any]]()
@@ -100,93 +182,3 @@ class DietViewController: AlysieBaseViewC  {
         }
     }
 }
-extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return showAllDiet?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
-        
-        let imgUrl = (kImageBaseUrl + (showAllDiet?[indexPath.row].imageId?.imgUrl ?? ""))
-        
-        let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-        cell.image1.contentMode = .scaleAspectFit
-        cell.image1.image = mySVGImage.uiImage
-        cell.imageNameLabel.text = showAllDiet?[indexPath.row].name
-        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
-        cell.viewOfImage.layer.borderWidth = 4
-        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-        
-        if showAllDiet?[indexPath.row].isSelected == 1{
-            cell.viewOfImage.layer.borderWidth = 4
-            cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-        }
-        else{
-            cell.viewOfImage.layer.borderWidth = 4
-            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-            
-        }
-        
-//        if arraySelectedDietMyPreferences?.count != 0{
-//            saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        }
-//        else{
-//            saveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-//        }
-        
-        cell.layoutSubviews()
-        
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
-       
-        selectedIndexPath = indexPath
-        if  showAllDiet?[indexPath.row].isSelected == 1 {
-            showAllDiet?[indexPath.row].isSelected = 0
-            //            cell?.image2.image = nil
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-            for (index,item) in arrSelectedIndex.enumerated(){
-                if item == indexPath{
-                    arrSelectedIndex.remove(at: index)
-                    
-                }
-            }
-            
-            for (index,item) in arraySelectedDiet!.enumerated(){
-                if item == showAllDiet?[indexPath.row].dietId{
-                    arraySelectedDiet?.remove(at: index)
-                }
-            }
-//            if arrSelectedIndex.count == 0{
-//                saveButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
-//            }
-            
-        } else {
-            showAllDiet?[indexPath.row].isSelected = 1
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//            saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-            //            cell?.image2.image = UIImage(named: "Group 1163")
-            arraySelectedDiet?.append(showAllDiet?[indexPath.row].dietId ?? 0)
-            arrSelectedIndex.append(selectedIndexPath!)
-            print("\(String(describing: arrSelectedIndex.count))")
-        }
-        
-        saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-        
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
-        return cellSize
-        
-    }
-    
-    
-}
-

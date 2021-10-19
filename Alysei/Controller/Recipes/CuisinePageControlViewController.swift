@@ -23,7 +23,7 @@ class CuisinePageControlViewController: UIViewController {
     var cuisineID : Int?
     var selectedIndexPath: IndexPath? = nil
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +31,26 @@ class CuisinePageControlViewController: UIViewController {
         preferenceNumber = 1
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
-//        btnCusineNext.isHidden = true
+        
         cuisinePageControl.hidesForSinglePage = true
-//        btnCusineNext.layer.borderWidth = 1
+        
         btnCusineNext.layer.cornerRadius = 30
-//        btnCusineNext.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
         btnCusineNext.layer.backgroundColor  = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
         self.tabBarController?.tabBar.isHidden = true
         
         postRequestToGetCuisine()
     }
     
-
+    
     @IBAction func tapNext(_ sender: Any) {
         
         if btnCusineNext.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
-        let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FoodAllergyViewController") as! FoodAllergyViewController
-
-        arrayPreference = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: preferenceNumber)
-        arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
-        self.navigationController?.pushViewController(viewAll, animated: true)
+            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FoodAllergyViewController") as! FoodAllergyViewController
+            
+            arrayPreference = PreferencesDataModel.init(id: arraySelectedCuisine ?? [], preference: preferenceNumber)
+            arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
+            self.navigationController?.pushViewController(viewAll, animated: true)
         }
     }
     
@@ -66,22 +66,6 @@ class CuisinePageControlViewController: UIViewController {
         self.arrCuisine[indexPath.item].isSelected = false
         self.navigationController?.pushViewController(viewAll, animated: true)
     }
-    
-    
-    func postRequestToGetCuisine() -> Void{
-        self.view.isUserInteractionEnabled = false
-       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCuisine, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
-           
-           let res = response as? [String:Any]
-           
-           if let data = res?["data"] as? [[String:Any]]{
-               self.arrCuisine = data.map({SelectCuisineDataModel.init(with: $0)})
-           }
-        self.cuisineCollectionView.reloadData()
-        self.view.isUserInteractionEnabled = true
-       }
-       
-   }
     
 }
 
@@ -101,19 +85,18 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
         cell.cuisineNameLabel.text = self.arrCuisine[indexPath.row].cuisineName
         cell.imageCuisine.layer.cornerRadius = cell.imageCuisine.frame.height/2
         cell.imageCuisineSelected.layer.cornerRadius = cell.imageCuisineSelected.frame.height/2
-//        cell.layer.cornerRadius = cell.frame.height/2
-
+        
         return cell
     }
-   
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.cuisinePageControl.currentPage = indexPath.section
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.cuisineCollectionView.frame.width, height: 300.0)
-      
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -123,9 +106,9 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
         self.cuisineID = selectedCuisine
         if  arrCuisine[indexPath.row].isSelected == true {
             arrCuisine[indexPath.row].isSelected = false
-                    // it was already selected
-//                    selectedIndexPath = nil
-                    cuisineCollectionView.deselectItem(at: indexPath, animated: false)
+            // it was already selected
+            
+            cuisineCollectionView.deselectItem(at: indexPath, animated: false)
             cell?.imageCuisineSelected.isHidden = true
             
             for (index,item) in arrSelectedIndex.enumerated(){
@@ -141,17 +124,36 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
             if arrSelectedIndex.count == 0{
                 btnCusineNext.layer.backgroundColor  = UIColor.init(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
             }
-           print("deselect")
-                } else {
-                    // wasn't yet selected, so let's remember it
-                    arrCuisine[indexPath.row].isSelected = true
-                    btnCusineNext.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                    cell?.imageCuisineSelected.isHidden = false
-                    arraySelectedCuisine?.append(cuisineID ?? 0)
-                    arrSelectedIndex.append(selectedIndexPath!)
-                    print("\(String(describing: arrSelectedIndex.count))")
-                    print("select")
-                }
+            print("deselect")
+        } else {
+            // wasn't yet selected, so let's remember it
+            arrCuisine[indexPath.row].isSelected = true
+            btnCusineNext.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            cell?.imageCuisineSelected.isHidden = false
+            arraySelectedCuisine?.append(cuisineID ?? 0)
+            arrSelectedIndex.append(selectedIndexPath!)
+            print("\(String(describing: arrSelectedIndex.count))")
+            print("select")
+        }
         
     }
+}
+
+extension CuisinePageControlViewController{
+    
+    func postRequestToGetCuisine() -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCuisine, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                self.arrCuisine = data.map({SelectCuisineDataModel.init(with: $0)})
+            }
+            self.cuisineCollectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
+        }
+        
+    }
+    
 }

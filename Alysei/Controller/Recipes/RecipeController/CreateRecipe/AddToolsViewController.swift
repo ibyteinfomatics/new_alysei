@@ -254,6 +254,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
             else{
                addSteps.page = 1
                addSteps.selectedIndex = 0
+              
 //                var ingridentsArray : [IngridentArray] = []
 //                for item in selectedIngridentsArray{
 //                    let ingridients: IngridentArray = IngridentArray.init()
@@ -283,9 +284,9 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
 //                    tools.isSelected = false
 //                    toolsArray.append(tools)
 //                }
-//                addSteps.arrayIngridients = ingridentsArray
-//                addSteps.arraytools = toolsArray
-//                addSteps.page = 1
+//
+//
+
             }
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
@@ -502,6 +503,24 @@ extension AddToolsViewController: UITableViewDelegate
         }
     }
     
+    func removeDatainStep(data: ToolsArray){
+        for item in arrayStepFinalData{
+            
+            if let index = item.toolsArray?.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
+                print("Found at \(index)")
+                
+                item.toolsArray?.remove(at: index)
+            }
+        }
+        
+    }
+    
+    func addDatainStep(data: ToolsArray){
+        data.isSelected = false
+        for item in arrayStepFinalData{
+            item.toolsArray?.append(data)
+        }
+    }
     func tapForTool(indexPath: IndexPath, data: ToolsArray, checkStatus: Bool?){
         self.singleIngridientData = data
         if checkStatus == true{
@@ -510,6 +529,7 @@ extension AddToolsViewController: UITableViewDelegate
             if let index = selectedToolsArray.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
                 print("Found at \(index)")
                 selectedToolsArray.remove(at: index)
+                removeDatainStep(data: data)
             }
             self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
             
@@ -529,7 +549,8 @@ extension AddToolsViewController: UITableViewDelegate
             data.imageId = singleIngridientData?.imageId
             data.parent = singleIngridientData?.parent
             data.isSelected = true
-                selectedToolsArray.append(data)
+            selectedToolsArray.append(data)
+            addDatainStep(data: data)
 
             
             self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"

@@ -64,6 +64,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        if isFromFinalScreen == "Edit Step"{
         if arrayStepFinalData.count > selectedIndex  && selectedIndex != 1000 {
             let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! AddStepsCollectionViewCell
             let dataModel = arrayStepFinalData[selectedIndex]
@@ -73,7 +74,8 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             arraytools =  dataModel.toolsArray ?? []
             ingridientUsedCollectionView.reloadData()
             toolsUsedCollectionView.reloadData()
-        }
+         }
+//        }
     }
     
     func setStepTitle(){

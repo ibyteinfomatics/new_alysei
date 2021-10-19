@@ -32,9 +32,14 @@ class EditToolTableViewCell: UITableViewCell {
     }
     
     func updateUI() {
-        if(selectedToolsArray.contains(where: { $0.recipeToolIds == data?.recipeToolIds })) == true {
+        if(selectedEditToolArray.contains(where: { $0.recipeToolIds == data?.recipeToolIds })) == true {
             self.selectToolImgView.isHidden = false
-        } else {
+        }
+        else if (editusedToolModel.contains(where: { $0.tool?.recipeToolIds == data?.recipeToolIds }))  == true {
+            self.selectToolImgView.isHidden = false
+                
+        }
+        else {
             self.selectToolImgView.isHidden = true
         }
         let imgUrl = (kImageBaseUrl + (data?.imageId?.imgUrl ?? ""))

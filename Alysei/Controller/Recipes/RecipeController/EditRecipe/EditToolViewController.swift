@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+var selectedEditToolArray: [ToolsArray] = []
 class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, AddToolTableViewCellProtocol {
     @IBOutlet weak var addToolsView: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -37,27 +37,20 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     var arrayPickerData: [String] = []
     var selectedIndexPath : IndexPath?
     var selectedIndexPath1: IndexPath?
-    
+    var singleToolData: ToolsArray?
+    var singleUsedToolData: UsedToolsDataModel?
     var strToolQuantity = Int()
     var strToolId = Int()
     var strToolUnit = String()
     var searching = false
     var quantity: Int?
     var unit: String?
-    var singleIngridientData: ToolsArray?
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         addToolsTableView.reloadData()
-//        self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
-//        if self.addedToolQuantityLabel.text == "0 Items"{
-//            self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//        }
-//        else{
-//            self.saveButton.layer.backgroundColor =
-//                UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
-//        }
         
     }
     override func viewDidLoad() {
@@ -116,46 +109,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     
     
     @IBAction func saveButton(_ sender: Any) {
-//        if addedToolQuantityLabel.text != "0 Items" {
-//            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-//            if  arrayStepFinalData.count == 0 {
-//            var ingridentsArray : [IngridentArray] = []
-//            for item in selectedIngridentsArray{
-//                let ingridients: IngridentArray = IngridentArray.init()
-//                ingridients.recipeIngredientIds = item.recipeIngredientIds
-//                ingridients.ingridientTitle = item.ingridientTitle
-//                ingridients.imageId = item.imageId
-//                ingridients.parent = item.parent
-//                ingridients.pickerData = item.pickerData
-//                ingridients.quantity = item.quantity
-//                ingridients.unit = item.unit
-//                ingridients.createdAt = item.createdAt
-//                ingridients.updatedAt = item.updatedAt
-//                ingridients.isSelected = false
-//                ingridentsArray.append(ingridients)
-//            }
-//
-//            var toolsArray : [ToolsArray] = []
-//            for item in selectedToolsArray{
-//                let tools: ToolsArray = ToolsArray.init()
-//                tools.recipeToolIds = item.recipeToolIds
-//                tools.toolTitle = item.toolTitle
-//                tools.imageId = item.imageId
-//                tools.parent = item.parent
-//                tools.pickerData = item.pickerData
-//                tools.quantity = item.quantity
-//                tools.unit = item.unit
-//                tools.isSelected = false
-//                toolsArray.append(tools)
-//            }
-//            addSteps.arrayIngridients = ingridentsArray
-//            addSteps.arraytools = toolsArray
-//            addSteps.page = 1
-//            }
-//            else{
-//                addSteps.page = 1
-//                addSteps.selectedIndex = 0
-//            }
+
             self.navigationController?.popViewController(animated: true)
     }
     
@@ -306,33 +260,39 @@ extension EditToolViewController: UITableViewDelegate
     }
     
     func tapForTool(indexPath: IndexPath, data: ToolsArray, checkStatus: Bool?){
-        self.singleIngridientData = data
+        self.singleToolData = data
         if checkStatus == true{
             
 
-            if let index = selectedToolsArray.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
+            if let index = selectedEditToolArray.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
                 print("Found at \(index)")
-                selectedToolsArray.remove(at: index)
+                selectedEditToolArray.remove(at: index)
             }
-//            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
-//
-//            if  self.addedToolQuantityLabel.text == "0 Items"{
-//                self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//
-//            }
+            else if let index = editusedToolModel.firstIndex(where: { $0.tool?.recipeToolIds == data.recipeToolIds }) {
+                print("Found at \(index)")
+                editusedToolModel.remove(at: index)
+            }
+
             self.addToolsTableView.reloadData()
             
         }
         else{
+            let data1 = ToolsArray()
+            data1.recipeToolIds = singleToolData?.recipeToolIds
+            data1.toolTitle = singleToolData?.toolTitle
+            data1.imageId = singleToolData?.imageId
+            data1.parent = singleToolData?.parent
+            data1.isSelected = true
+            selectedEditToolArray.append(data1)
             
             
-            let data = ToolsArray()
-            data.recipeToolIds = singleIngridientData?.recipeToolIds
-            data.toolTitle = singleIngridientData?.toolTitle
-            data.imageId = singleIngridientData?.imageId
-            data.parent = singleIngridientData?.parent
+            let data = UsedToolsDataModel(with: [:])
+            data.recipeSavedToolId = editSavedtoolId;
+            data.recipeToolId = editRecipeId
+            data.toolId = singleToolData?.recipeToolIds
+            data.tool = singleToolData
             data.isSelected = true
-                selectedToolsArray.append(data)
+            editusedToolModel.append(data)
 
             
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor

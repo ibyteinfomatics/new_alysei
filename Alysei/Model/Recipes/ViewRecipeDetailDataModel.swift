@@ -178,9 +178,9 @@ class UsedToolsDataModel{
     var tool: ToolsArray?
     
     init(with dictResponse: [String:Any]){
-        self.recipeSavedToolId = Int.getInt(dictResponse["recipe_saved_ingredient_id"])
+        self.recipeSavedToolId = Int.getInt(dictResponse["recipe_saved_tool_id"])
         self.recipeToolId = Int.getInt(dictResponse["recipe_id"])
-        self.toolId = Int.getInt(dictResponse["ingredient_id"])
+        self.toolId = Int.getInt(dictResponse["tool_id"])
         self.quantityTool = String.getString(dictResponse["quantity"])
         self.unitTool = String.getString(dictResponse["unit"])
         self.createdAt = String.getString(dictResponse["created_at"])

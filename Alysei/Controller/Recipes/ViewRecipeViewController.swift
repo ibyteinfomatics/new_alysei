@@ -14,6 +14,12 @@ var usedToolModel: [UsedToolsDataModel]? = []
 class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRowDelegate {
     
     
+    @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewDeleteShare: UIView!
+    @IBOutlet weak var viewDeleteShareHeight: NSLayoutConstraint!
+    @IBOutlet weak var deleteShareTableview: UITableView!
+    @IBOutlet weak var rightIconImageVw: UIImageView!
+    @IBOutlet weak var rightIconBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var btnStartCooking: UIButton!
@@ -36,10 +42,22 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        deleteShareTableview.delegate = self
+        deleteShareTableview.dataSource = self
+        viewDeleteShare.isHidden = true
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
        
         getRecipeDetail()
+        
+        if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
+            rightIconBtn.isUserInteractionEnabled = true
+            rightIconImageVw.isHidden = false
+        }
+        else{
+            rightIconBtn.isUserInteractionEnabled = false
+            rightIconImageVw.isHidden = true
+        }
         
         }
     
@@ -54,11 +72,19 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 
     }
     
-//    @IBAction func taplike(_ sender: Any) {
-//
-//        postReqtoFavUnfavRecipe()
-//
-//    }
+    @IBAction func tapRightIcon(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected == false
+        {
+            viewDeleteShare.isHidden = true
+            
+        }
+        else{
+            viewDeleteShare.isHidden = false
+           
+        }
+    }
+    
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -75,10 +101,22 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        if tableView == deleteShareTableview{
+           return 1
+        }
+        else{
+            return 4
+        }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if tableView == deleteShareTableview{
+            viewDeleteShareHeight.constant = 40
+           return 1
+           
+        }
+        else{
         if section == 0 {
             return 1
             
@@ -101,16 +139,22 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
         }
         return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if tableView == deleteShareTableview{
+            guard let cell  = tableView.dequeueReusableCell(withIdentifier: "DeleteShareTableViewCell", for: indexPath) as? DeleteShareTableViewCell else {return UITableViewCell()}
+            cell.labelDelete.text = "Delete"
+        }
+        else{
         switch indexPath.section {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
             cell.labelRecipeName.text = recipeModel?.recipeName
            
-            cell.likeCallback = { 
+            cell.likeCallback = {
             
                 cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
                 cell.imagLike.image = recipeModel?.isFav == 0 ? UIImage(named: "like_icon") : UIImage(named: "like_icon_active")
@@ -215,7 +259,8 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.ingredientImageView.setImage(withString: imgUrl)
                 cell.ingredientNameLabel.text = usedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
                 cell.ingredientQuantityLabel.text = usedIngridientModel?[indexPath.row].quantity
-        
+                editSavedIngridientId = usedIngridientModel?[indexPath.row].recipeSavedIngridientId ?? 0
+             
                 
             }else{
                 let imgUrl = (kImageBaseUrl + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
@@ -223,6 +268,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.ingredientImageView.setImage(withString: imgUrl)
                 cell.ingredientNameLabel.text = usedToolModel?[indexPath.row].tool?.toolTitle
                 cell.ingredientQuantityLabel.text = usedToolModel?[indexPath.row].quantityTool
+                editSavedtoolId = usedToolModel?[indexPath.row].recipeSavedToolId ?? 0
             }
             
             return cell
@@ -241,7 +287,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
             
-            if recipeModel?.latestReview?.review != ""{
+            if recipeModel?.latestReview?.review != nil {
                 cell.latestCommentUserName.isHidden = false
                 cell.latestCommentImg.isHidden = false
                 cell.latestCommentUserName.isHidden = false
@@ -374,13 +420,45 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
                 cell.post = true
                 cell.delegate = self
-            
-        return cell
+            return cell
         }
-        
-        
+   
     }
+    return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == deleteShareTableview{
+            
+            //MARK:show Alert Message
+            let refreshAlert = UIAlertController(title: "", message: "All Recipe data will be lost.", preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                  // Handle Ok logic here
+                self.deleteRecipe()
+                arrayMyRecipe?.remove(at: indexPath.row)
+                let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+                self.navigationController?.pushViewController(add, animated: true)
+                
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                  print("Handle Cancel Logic here")
+//                self.viewDeleteShare.isHidden = true
+                self.dismiss(animated: true, completion: nil)
+            }))
+    
+            self.present(refreshAlert, animated: true, completion: nil)
+        }
+        else{
+           return
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == deleteShareTableview{
+            return 40
+        }
+        else{
+            
         switch indexPath.section{
         case 0:
             return 300
@@ -393,7 +471,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 400
         }
-      
+      }
     }
 }
         
@@ -426,15 +504,23 @@ extension ViewRecipeViewController{
             setImage()
             if stepsModel?.count == 0{
                 btnStartCooking.isHidden = true
+                viewStartCookingHeight.constant = 0
             }
             else{
                 btnStartCooking.isHidden = false
+                viewStartCookingHeight.constant = 70
             }
             self.tableView.reloadData()
             
         }
     }
    
+    func deleteRecipe(){
+       
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.deleteRecipe + "\(recipeId)", requestMethod: .POST,requestParameters: [:], withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+                
+              }
+        }
     
 }
 

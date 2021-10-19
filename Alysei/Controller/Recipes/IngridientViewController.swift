@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import  SVGKit
 
 class IngridientViewController: UIViewController {
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
@@ -24,6 +23,7 @@ class IngridientViewController: UIViewController {
     var showAllIngridient: [MapDataModel]? = []
     var arrayPreference4: PreferencesDataModel?
     var callbackResult: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferenceNumber = 4
@@ -50,7 +50,7 @@ class IngridientViewController: UIViewController {
             arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient, preference: preferenceNumber)
             arrayPreferencesModelData.remove(at: 3)
             arrayPreferencesModelData.insert(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0), at: 3)
-           postRequestToSaveIngridientPreferences()
+            postRequestToSaveIngridientPreferences()
             callbackResult?()
             self.navigationController?.popViewController(animated: true)
         }
@@ -61,48 +61,6 @@ class IngridientViewController: UIViewController {
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         
-    }
-    
-    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
-        var params = [[String:Any]]()
-        for preference in preferences ?? [] {
-            var pm = [String:Any]()
-            pm["preference"] = preference.preference
-            pm["id"] = preference.id
-            params.append(pm)
-        }
-        return params
-    }
-    
-    func postRequestToSaveIngridientPreferences() -> Void{
-        
-        let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
-        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
-            
-        }
-    }
-    
-    func getSavedIngridientMyPreferences() -> Void{
-        self.view.isUserInteractionEnabled = false
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
-            
-            let res = response as? [String:Any]
-            
-            if let data = res?["data"] as? [[String:Any]]{
-                self.getSavedIngridientPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
-                
-            }
-            
-            for i in (0..<(self.getSavedIngridientPreferencesModel?[3].maps?.count ?? 0))
-            {
-                self.showAllIngridient?.append(self.getSavedIngridientPreferencesModel?[3].maps?[i] ?? MapDataModel(with: [:]) )
-                
-                self.ingredientsCollectionView.reloadData()
-                self.view.isUserInteractionEnabled = true
-            }
-        }
     }
     
     
@@ -161,7 +119,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         else {
             
-           
+            
             showAllIngridient?[indexPath.row].isSelected = 1
             cell?.image2.image = UIImage(named: "Group 1165")
             
@@ -176,6 +134,52 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
         return cellSize
         
+    }
+    
+}
+
+extension IngridientViewController{
+    
+    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
+        var params = [[String:Any]]()
+        for preference in preferences ?? [] {
+            var pm = [String:Any]()
+            pm["preference"] = preference.preference
+            pm["id"] = preference.id
+            params.append(pm)
+        }
+        return params
+    }
+    
+    func postRequestToSaveIngridientPreferences() -> Void{
+        
+        let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+            
+            
+        }
+    }
+    
+    func getSavedIngridientMyPreferences() -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                self.getSavedIngridientPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
+                
+            }
+            
+            for i in (0..<(self.getSavedIngridientPreferencesModel?[3].maps?.count ?? 0))
+            {
+                self.showAllIngridient?.append(self.getSavedIngridientPreferencesModel?[3].maps?[i] ?? MapDataModel(with: [:]) )
+                
+                self.ingredientsCollectionView.reloadData()
+                self.view.isUserInteractionEnabled = true
+            }
+        }
     }
     
 }

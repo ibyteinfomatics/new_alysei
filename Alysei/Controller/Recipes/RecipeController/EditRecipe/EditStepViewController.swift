@@ -31,19 +31,31 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var stepNumber : String?
     var stepDescription: String?
     
-    var arrayIngridients = [IngridentArray()]
-    var arraytools = [ToolsArray()]
+    var arrayIngridients : [UsedIngridientDataModel] = []
+    var arraytools : [UsedToolsDataModel] = []
     
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if isFromStep == "Add Step"{
-          page = (editstepsModel!.count) + 1
+            page = (editstepsModel.count) + 1
         }
         else{
           page = pageEdit
+            if editstepsModel.count > selectedIndex  && selectedIndex != 1000 {
+                let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepCollectionViewCell
+                let dataModel = editstepsModel[selectedIndex]
+                cell.titleTextField.text = dataModel.title
+                cell.desciptionTextView.text = dataModel.description
+                arrayIngridients = dataModel.stepIngridient ?? []
+                arraytools =  dataModel.stepTool ?? []
+                ingridientUsedCollectionView.reloadData()
+                toolsUsedCollectionView.reloadData()
+            }
         }
         step1IngridientLabel.text = "\(page)"
         step1ToolLabel.text = "\(page)"
+        
+       
 
     }
     
@@ -68,7 +80,7 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.hideKeyboardWhenTappedAround()
         
         if isFromStep == "Add Step"{
-          page = (editstepsModel!.count) + 1
+            page = (editstepsModel.count) + 1
         }
         else{
           page = pageEdit
@@ -88,9 +100,32 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
 
     @IBAction func NextButton(_ sender: Any) {
+        let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepCollectionViewCell
+        if cell.titleTextField.text?.isEmpty == true{
+            showAlert(withMessage: AlertMessage.kEnterTitle)
+            return
+        }
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+            showAlert(withMessage: AlertMessage.kEnterDescription)
+            return
+        }
+        
+        else{
+            let stepdata = StepsDataModel(with: [:])
+            stepdata.title = cell.titleTextField.text ?? ""
+            stepdata.description = cell.desciptionTextView.text ?? ""
+            stepdata.stepIngridient = arrayIngridients
+            stepdata.stepTool = arraytools
+            
+            if selectedIndex == 1000 {
+                editstepsModel.append(stepdata)
+            } else {
+                editstepsModel[selectedIndex] = stepdata
+            }
+            
         self.navigationController?.popViewController(animated: true)
     }
-    
+}
     
     @IBAction func cancelButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -105,10 +140,10 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             return 1
         }
         else if collectionView == ingridientUsedCollectionView{
-            return editusedIngridientModel?.count ?? 0
+            return editusedIngridientModel.count
         }
         else if collectionView == toolsUsedCollectionView{
-            return editusedToolModel?.count ?? 0
+            return editusedToolModel.count
         }
         else{
             return 0
@@ -141,36 +176,40 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             
             let cell1 = ingridientUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepIngridientCollectionViewCell", for: indexPath) as! EditStepIngridientCollectionViewCell
             
-            let imgUrl = (kImageBaseUrl + (editusedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
-            cell1.addStepIngridientNameLabel.text = editusedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
-            cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel?[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel?[indexPath.row].unit ?? "")
-            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 14)
+            cell1.addStepIngridientNameLabel.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
+            cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
+            cell1.addStepIngridientNameLabel.font = UIFont(name: "Helvetica Neue Bold", size: 14)
             
             
-            if  editusedIngridientModel?[indexPath.row].ingridient?.isSelected == true {
-                cell1.addStepIngeidientSelectedImageView.isHidden = false
-            } else {
-                cell1.addStepIngeidientSelectedImageView.isHidden = true
+                if editusedIngridientModel[indexPath.row].isSelected == true {
+                    cell1.addStepIngeidientSelectedImageView.isHidden = false
+                } else {
+                    cell1.addStepIngeidientSelectedImageView.isHidden = true
 
-            }
+                
+            
+        }
             cell1.layoutSubviews()
 
             return cell1
         } else if collectionView == toolsUsedCollectionView {
             
             let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepToolsCollectionViewCell", for: indexPath) as! EditStepToolsCollectionViewCell
-            let imgUrl = (kImageBaseUrl + (editusedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
-            cell2.addStepToolNameLabel.text = editusedToolModel?[indexPath.row].tool?.toolTitle
+            cell2.addStepToolNameLabel.text = editusedToolModel[indexPath.row].tool?.toolTitle
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             
-            if  editusedToolModel?[indexPath.row].tool?.isSelected == true {
+         
+            if editusedToolModel[indexPath.row].isSelected == true {
                 cell2.addStepToolSelectedImageView.isHidden = false
             } else {
                 cell2.addStepToolSelectedImageView.isHidden = true
-               
+
             }
+            
             cell2.layoutSubviews()
             return cell2
         }
@@ -183,27 +222,27 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = ingridientUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? AddStepIngridientCollectionViewCell
-        let cell1 = toolsUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? AddStepToolCollectionViewCell
+        let cell = ingridientUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? EditStepIngridientCollectionViewCell
+        let cell1 = toolsUsedCollectionView.cellForItem(at: indexPath as IndexPath) as? EditStepToolsCollectionViewCell
         
         if collectionView == ingridientUsedCollectionView {
             
-            if  editusedIngridientModel?[indexPath.row].ingridient?.isSelected == true {
-                editusedIngridientModel?[indexPath.row].ingridient?.isSelected = false
+            if  editusedIngridientModel[indexPath.row].isSelected == true {
+                editusedIngridientModel[indexPath.row].isSelected = false
                 cell?.addStepIngeidientSelectedImageView.isHidden = true
             } else {
-                editusedIngridientModel?[indexPath.row].ingridient?.isSelected = true
+                editusedIngridientModel[indexPath.row].isSelected = true
                 cell?.addStepIngeidientSelectedImageView.isHidden = false
-//                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+
             }
         }
         if collectionView == toolsUsedCollectionView {
             
-            if  editusedToolModel?[indexPath.row].tool?.isSelected == true {
-                editusedToolModel?[indexPath.row].tool?.isSelected = false
+            if  editusedToolModel[indexPath.row].isSelected == true {
+                editusedToolModel[indexPath.row].isSelected = false
                 cell1?.addStepToolSelectedImageView.isHidden = true
             } else {
-                editusedToolModel?[indexPath.row].tool?.isSelected = true
+                editusedToolModel[indexPath.row].isSelected = true
                 cell1?.addStepToolSelectedImageView.isHidden = false
 //                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
             }
