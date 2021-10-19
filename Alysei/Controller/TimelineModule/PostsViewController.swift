@@ -183,7 +183,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             cell.selectionStyle = .none
         return cell
         }else{
-            if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil) {
+            if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil && arrNewFeedDataModel.count > 0) {
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "SharePostDescTableViewCell") as? SharePostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
                 if arrNewFeedDataModel.count > indexPath.row {
@@ -227,23 +227,6 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
                     
                     
-//                    let params: [String:Any] = [
-//
-//                        "post_id": self.arrNewFeedDataModel[indexPath.row].activityActionId!,
-//                        "like_or_unlike": 1,
-//                        "user_id": Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
-//
-//                    ]
-//
-//                    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLike, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-//
-//                        let dictResponse = dictResponse as? [String:Any]
-//
-//                        print("dictResponse ",dictResponse)
-//
-//
-//
-//                    }
                     
                 }
                 cell.reloadCallBack = { tag, section in

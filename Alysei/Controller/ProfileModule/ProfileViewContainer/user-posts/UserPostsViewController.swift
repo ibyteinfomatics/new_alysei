@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class UserPostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
@@ -30,6 +31,32 @@ class UserPostsViewController: AlysieBaseViewC {
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seguePostsToComment" {
+            if let model = sender as? PostCommentsUserData {
+                if let viewCon = segue.destination as? PostCommentsViewController {
+                    viewCon.postCommentsUserDataModel = model
+                }
+            }
+        }
+
+        if segue.identifier == "seguePostsToSharePost" {
+            if let dataModel = sender as? SharePost.PostData.post {
+                if let viewCon = segue.destination as? SharePostViewController {
+                    viewCon.postDataModel = dataModel
+                }
+            }
+        }
+        
+        if segue.identifier == "seguePostsToEditPost" {
+            if let dataModel = sender as? EditPost.EditData.edit {
+                if let viewCon = segue.destination as? EditPostViewController {
+                    viewCon.postDataModel = dataModel
+                }
+            }
+        }
+    }
 
     func setUI(){
         if postData.count == 0{
@@ -45,6 +72,11 @@ class UserPostsViewController: AlysieBaseViewC {
 
     func updatePostList() {
         self.userPost.reloadData()
+    }
+    
+    
+    func showCommentScreen(_ model: PostCommentsUserData) {
+        self.performSegue(withIdentifier: "seguePostsToComment", sender: model)
     }
 
 }
@@ -107,6 +139,11 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
         let data = self.postData[indexPath.row]
 //        cell.lblPostDesc?.text = data.body
        // cell.configCell(NewFeedSearchDataModel(data), indexPath.row)
+        
+//        cell.commentCallback = { postCommentsUserData in
+//            self.showCommentScreen(postCommentsUserData)
+//        }
+//        
         cell.configCell(data, indexPath.row)
         cell.sizeToFit()
         return cell

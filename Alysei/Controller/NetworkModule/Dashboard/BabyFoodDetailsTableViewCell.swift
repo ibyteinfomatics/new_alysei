@@ -12,6 +12,7 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var btnDocumentUpload: UIButton!
     @IBOutlet weak var btnDropDown: UIButton!
     @IBOutlet weak var dropDownTableView: UITableView!
+    @IBOutlet weak var propertyTableView: UITableView!
     
     @IBOutlet weak var btnDocumentUpload2: UIButton!
     @IBOutlet weak var btnDocumentUpload3: UIButton!
@@ -26,7 +27,11 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var uiview5: NSLayoutConstraint!
     @IBOutlet weak var uiview6: NSLayoutConstraint!
     
-    var lblDropDownArray: [String] = ["Papaya","Lichi","Banana","Orange","Strawberry"]
+    @IBOutlet weak var conservationheight: NSLayoutConstraint!
+    @IBOutlet weak var propertiesheight: NSLayoutConstraint!
+    
+    //var lblDropDownArray: [String] = ["Papaya","Lichi","Banana","Orange","Strawberry"]
+    var lblDropDownArray: [String] = []
     var openImageCallBack1 :(()->())?
     var openImageCallBack2 :(()->())?
     var openImageCallBack3 :(()->())?
@@ -42,6 +47,10 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
         // Initialization code
         dropDownTableView.delegate = self
         dropDownTableView.dataSource = self
+        
+        propertyTableView.delegate = self
+        propertyTableView.dataSource = self
+        
         btnDocumentUpload.layer.cornerRadius = 15
         
         btnDocumentUpload2.layer.cornerRadius = 15
@@ -103,16 +112,36 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
 }
 extension BabyFoodDetailsTableViewCell: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        /*if tableView == dropDownTableView{
+            return lblDropDownArray.count
+        } else {
+            return lblDropDownArray.count
+        }*/
+        
         return lblDropDownArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-        cell.textLabel?.text = lblDropDownArray[indexPath.row]
-        return cell
+        
+        //var cell = dropDownTableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+        //cell.textLabel?.text = lblDropDownArray[indexPath.row]
+        if tableView == dropDownTableView{
+            let cell = dropDownTableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+            cell.textLabel?.text = lblDropDownArray[indexPath.row]
+            return cell
+        } else {
+            let cell = propertyTableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
+            cell.textLabel?.text = lblDropDownArray[indexPath.row]
+            return cell
+        }
+        
+        
+        
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(lblDropDownArray.count * 30)
+        return 30//CGFloat(lblDropDownArray.count * 30)
     }
     
 }

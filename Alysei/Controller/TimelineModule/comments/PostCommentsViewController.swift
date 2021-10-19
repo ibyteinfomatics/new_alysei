@@ -99,11 +99,13 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         self.profilePhotoButton.layer.cornerRadius = self.profilePhotoButton.frame.width / 2.0
         self.profilePhotoButton.layer.masksToBounds = true
 
-        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().profilePhoto) {
+        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
-//        } else {
+//
+        } else {
             let profilePhoto = UIImage(named: "profile_icon")
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
+            
         }
 //        self.commentTextfield.becomeFirstResponder()
     }
@@ -196,7 +198,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 //poster.restaurant_name = ""
                 poster.email = String.getString(kSharedUserDefaults.loggedInUserModal.email)
                 poster.name = String.getString(kSharedUserDefaults.loggedInUserModal.userName)
-                poster.role_id = 3
+                poster.role_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
                 poster.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 
                 
@@ -210,15 +212,12 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 kChatharedInstance.send_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID) )
                 
                 self.commentTextfield.text = ""
-                self.receiveComment()
+               // self.receiveComment()
+                self.tableView.reloadData()
                 
             }
             
-            
-            
         }
-        
-        
         
     }
     
@@ -228,7 +227,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
          let dateFormatter1 = DateFormatter()
 
          //specify the date Format
-         dateFormatter1.dateFormat="yyyy-MM-dd hh:mm:ss"
+         dateFormatter1.dateFormat="yyyy-MM-dd HH:mm:ss"
 
          //get date from string
         let dateString = dateFormatter1.date(from: datetime!)
@@ -296,10 +295,12 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     }
 
     @IBAction func sendCommentButtonTapped(_ sender: UIButtonExtended) {
-        if self.commentTextfield.placeholder == "Add a reply to comment" {
-            self.sendReply(self.commentID)
+        if self.commentTextfield.text == "" {
+            //self.sendReply(self.commentID)
+            showAlert(withMessage: "Comment can't be blank.")
         } else {
             self.sendComment()
+            //self.commentTextfield.text = ""
         }
     }
 
@@ -321,12 +322,12 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"
-       // cell.model = self.model
-        //cell.viewReplyButton.tag = commentData.commentID
-        //cell.loadReplytable()
-//        cell.userImageView.setImage(withString: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=400")
         cell.userImageView.setImage(withString: imageDomain+"/"+String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

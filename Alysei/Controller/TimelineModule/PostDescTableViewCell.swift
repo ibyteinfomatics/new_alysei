@@ -43,7 +43,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var viewLike: UIView!
     @IBOutlet weak var likeImage: UIImageView!
-    @IBOutlet weak var commentImage: UIImageView!
+    @IBOutlet weak var commentImage: UIView!
     @IBOutlet weak var lblPostTime: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var menuButton: UIButton!
@@ -193,7 +193,15 @@ class PostDescTableViewCell: UITableViewCell {
         self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
         }
         likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
-
+        
+        likeCallback = { index in
+            //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+            self.lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
+            self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            
+        }
+        
+        
         self.imagePostCollectionView.isPagingEnabled = true
 
         self.imagePostCollectionView.showsHorizontalScrollIndicator = false

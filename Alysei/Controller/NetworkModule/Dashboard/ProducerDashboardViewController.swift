@@ -13,10 +13,8 @@ class ProducerDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     var connectionId = ""
     
-    var arrProperty = [String]()
     var dashboardModel:DashboardModel?
-    var dataDropDown = DropDown()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,6 +116,8 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             cell.vatno.text = dashboardModel?.data?.userData?.vatNo
             cell.fdano.text = dashboardModel?.data?.userData?.fdaNo
             
+            
+            
             cell.userimg.layer.masksToBounds = false
             cell.userimg.clipsToBounds = true
             cell.userimg.layer.borderWidth = 2
@@ -151,25 +151,56 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             
             cell.propertyCallBack = {
                 
-                self.arrProperty.removeAll()
-                for j in 0..<(self.dashboardModel?.data?.certificates![indexPath.row].productProperties?.count)!{
+                if cell.propertyTableView.isHidden {
+                    cell.lblDropDownArray.removeAll()
+                    cell.propertyTableView.isHidden = false
+                    
+                    
+                    let conser = self.dashboardModel?.data?.certificates?[indexPath.row].productProperties
+                    
+                    for i in (0..<conser!.count) {
                         
-                   self.arrProperty.append((self.dashboardModel?.data?.certificates![indexPath.row].productProperties![j].option)!)
+                        cell.lblDropDownArray.append(conser?[i].option ?? "")
+                        
+                    }
+                    
+                    cell.propertiesheight.constant = CGFloat(30 * conser!.count)
+                    self.producerTableView.reloadData()
+                    cell.propertyTableView.reloadData()
+                    
+                } else {
+                    cell.propertyTableView.isHidden = true
+                    cell.propertiesheight.constant = 0
+                    self.producerTableView.reloadData()
                 }
                 
-                self.dataDropDown.dataSource = self.arrProperty
-                self.dataDropDown.show()
-                //dataDropDown.anchorView = countryEvent
-              //  self.dataDropDown.bottomOffset = CGPoint(x: 0, y: (self.dataDropDown.anchorView?.plainView.bounds.height)!)
-                self.dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                    
-                    
-                }
-                 
             }
             
             cell.conservationCallBack = {
                 
+                                              
+                if cell.dropDownTableView.isHidden {
+                    cell.lblDropDownArray.removeAll()
+                    cell.dropDownTableView.isHidden = false
+                    
+                    let conser = self.dashboardModel?.data?.certificates?[indexPath.row].conservationMethods
+                    
+                    for i in (0..<conser!.count) {
+                        
+                        cell.lblDropDownArray.append(conser?[i].option ?? "")
+                        
+                    }
+                    
+                    cell.conservationheight.constant = CGFloat(30 * conser!.count)
+                    self.producerTableView.reloadData()
+                    cell.dropDownTableView.reloadData()
+                    
+                    
+                } else {
+                    cell.dropDownTableView.isHidden = true
+                    cell.conservationheight.constant = 0
+                    self.producerTableView.reloadData()
+                }
                 
                 
             }
@@ -230,26 +261,38 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             
             if dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel == "" {
                 cell.uiview1.constant =  0
+            } else {
+                cell.uiview1.constant =  90
             }
             
             if dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification == "" {
                 cell.uiview2.constant =  0
+            }else {
+                cell.uiview2.constant =  90
             }
             
             if dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate == "" {
                 cell.uiview3.constant =  0
+            }else {
+                cell.uiview3.constant =  90
             }
             
             if dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa == "" {
                 cell.uiview4.constant =  0
+            }else {
+                cell.uiview4.constant =  90
             }
             
             if dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan == "" {
                 cell.uiview5.constant =  0
+            }else {
+                cell.uiview5.constant =  90
             }
             
             if dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate == "" {
                 cell.uiview6.constant =  0
+            }else {
+                cell.uiview6.constant =  90
             }
             
             return cell
@@ -263,8 +306,8 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             
         }
             else {
-                
-                var checkSize = 20
+                return UITableView.automaticDimension
+                /*var checkSize = 20
                 
                 if dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel == "" {
                     checkSize = checkSize + 90
@@ -290,7 +333,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                     checkSize = checkSize + 90
                 }
                 
-                return CGFloat(660 - checkSize)
+                return CGFloat(660 - checkSize)*/
         }
     }
     

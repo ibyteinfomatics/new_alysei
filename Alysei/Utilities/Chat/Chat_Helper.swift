@@ -599,11 +599,14 @@ class Chat_hepler {
                     let dic = kSharedInstance.getDictionary(value)
                     self?.commentmessageclass.append(CommentClass( with: dic))
                     
+                    self?.commentmessageclass.sort{ Int.getInt($0.core_comment_id) > Int.getInt($1.core_comment_id) }
+                    
                 }
             }
             message(self?.commentmessageclass)
         }
     }
+    
     
     //MARK:- Func For Receive Message for One To One Chat
     func receivce_message(senderId :String , receiverId:String , message:@escaping (_ result: [ReceivedMessageClass]? , _ chatBackup : [ReceivedMessageClass]?) -> ()) -> Void {
