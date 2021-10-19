@@ -12,15 +12,18 @@ class ProductStoreVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
-    @IBOutlet weak var searchtext: UITextField!
+    @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var vwSearch: UIView!
+    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+        
     var indexOfPageToRequest = 1
     var listType: Int?
     var arrProductList:ProductsStore?
     var pushedFromVC: PushedFrom?
     var optionId: Int?
     var keywordSearch: String?
-    var searchStoreString: String?
     
+    var isSearch = false
     var arrSelectedCategories = [Int]()
     var arrSelectedProperties = [Int]()
     var arrSelectedItalianRegion = [Int]()
@@ -30,22 +33,35 @@ class ProductStoreVC: UIViewController {
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
-    
     var arrSelectedPropertiesName = [String]()
     var arrSelectedMethodName = [String]()
+    var modifiedRatingArray = [Int]()
+    var selectedRatingStringId : String?
+    var stringRatingArray = [String]()
     
+    var arrListData = [MyStoreProductDetail]()
+    var data : MyStoreProductDetail?
+    var searchTxt: String?
     var lastPage: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchtext.delegate = self
-        
+        vwSearch.isHidden =  true
+        txtSearch.attributedPlaceholder = NSAttributedString(string: "Search",
+                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        vwSearch.layer.cornerRadius = 20
+        self.hghtSearch.constant = 0
+        self.txtSearch.delegate = self
         self.lblHeading.text = keywordSearch
         callMyStoreProductApi(1)
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         indexOfPageToRequest = 1
+
         
     }
     @IBAction func backAction(_ sender: UIButton){
@@ -64,9 +80,8 @@ class ProductStoreVC: UIViewController {
         nextVC.selectFdaCertified = self.selectFdaCertified
         nextVC.selectedSortProducer = self.selectedSortProducer
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
-        
-        nextVC.arrSelectedMethodName =  self.arrSelectedMethodName
         nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
+        nextVC.arrSelectedMethodName = self.arrSelectedMethodName
         nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
             
         self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
@@ -80,8 +95,8 @@ class ProductStoreVC: UIViewController {
             self.selectFdaCertified = nextVC.selectFdaCertified
             self.selectedSortProducer = nextVC.selectedSortProducer
             self.selectedOptionsMethod = nextVC.selectedOptionsMethod
-            self.arrSelectedMethodName = nextVC.arrSelectedMethodName
             self.arrSelectedPropertiesName = nextVC.arrSelectedPropertiesName
+            self.arrSelectedMethodName = nextVC.arrSelectedMethodName
             
         }
         nextVC.clearFilterApi = { loadfilter in
@@ -94,13 +109,18 @@ class ProductStoreVC: UIViewController {
             self.selectFdaCertified = [Int]()
             self.selectedSortProducer = [Int]()
             self.selectedOptionsMethod = [Int]()
-            self.arrSelectedMethodName = [String]()
             self.arrSelectedPropertiesName = [String]()
+            self.arrSelectedMethodName = [String]()
             self.listType = 1
             self.callMyStoreProductApi(1)
         }
 
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    @IBAction func btnSearch(_ sender: UIButton){
+        self.vwSearch.isHidden = false
+        self.hghtSearch.constant = 40
+        self.isSearch = true
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // calculates where the user is in the y-axis
@@ -108,13 +128,16 @@ class ProductStoreVC: UIViewController {
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
             if indexOfPageToRequest > arrProductList?.lastPage ?? 0{
-                self.showAlert(withMessage: "No More Data Found")
+                print("No Data")
+                //self.showAlert(withMessage: "No More Data Found")
             }else{
                 // increments the number of the page to request
                 indexOfPageToRequest += 1
                 
                 // call your API for more data
+                if self.isSearch == false{
                 callMyStoreProductApi(indexOfPageToRequest)
+                }
                 
                 // tell the table view to reload with the new data
                 self.tableView.reloadData()
@@ -122,16 +145,44 @@ class ProductStoreVC: UIViewController {
         }
     }
 }
-
+extension ProductStoreVC: UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text as NSString? {
+            let txtAfterUpdate = text.replacingCharacters(in: range, with: string)
+            self.searchTxt = txtAfterUpdate
+            
+            if self.searchTxt == "" {
+                callMyStoreProductApi(1)
+                self.isSearch = false
+            }else{
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            }
+       
+    }
+        return true
+}
+}
 extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearch == false{
+            return arrListData.count
+        }else{
         return arrProductList?.myStoreProduct?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
-        let data = arrProductList?.myStoreProduct?[indexPath.row]
+       
+        if isSearch == false{
+             data = arrListData[indexPath.row]
+        }else{
+            data = arrProductList?.myStoreProduct?[indexPath.row]
+        }
+        
+        cell.configCell(data)
         let imgUrl = (kImageBaseUrl + (data?.logo_id ?? ""))
         cell.imgStore.setImage(withString: imgUrl)
         cell.lblStoreName.text = data?.storeName
@@ -156,19 +207,6 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension ProductStoreVC : UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text,
-                   let textRange = Range(range, in: text) {
-                   let updatedText = text.replacingCharacters(in: textRange,
-                                                               with: string)
-          
-            self.searchStoreString = updatedText
-            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
-            }
-                return true
-    }
-}
 extension ProductStoreVC {
     func callMyStoreProductApi(_ pageNo: Int?){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceProduct + "\(listType ?? 0)" + "?page=" + "\(pageNo ?? 0)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
@@ -178,6 +216,7 @@ extension ProductStoreVC {
                 if let data = response?["data"] as? [String:Any]{
                     self.lastPage = data["last_page"] as? Int
                     self.arrProductList = ProductsStore.init(with: data)
+                    self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
                 }
             default:
                 print("No Data")
@@ -192,16 +231,34 @@ extension ProductStoreVC {
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
         let selectedMethodString = arrSelectedMethodName?.joined(separator: ",")
         
-        let selectedCategoryStringId = arrSelectedCategories.map(String.init)
-        let selectedRegionStringId = arrSelectedItalianRegion.map(String.init)
-        let selectedRatingStringId = arrSelectedRating.map(String.init)
-        //let selectedCategoryStringId = str
+      //  let selectedCategoryStringId = arrSelectedCategories.map(String.init)
+       // let selectedRegionStringId = arrSelectedItalianRegion.map(String.init)
+        //let selectedRatingStringId = arrSelectedRating.map(String.init)
         
-<<<<<<< HEAD
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_product= " + "" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")" + "sort_by_product=" + "" + "keyword=" + "\(searchStoreString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)" + "&type=" + "1"
-=======
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "?property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertified?.first ?? -1)" + "&sort_by_producer=" + "\(selectedSortProducer?.first ?? -1)" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1"
->>>>>>> dd09bd8e0753c5e971d90da271d2dd35db961992
+        let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
+        let selectedCategoryStringId = stringCatArray?.joined(separator: ",")
+        
+        let stringRegionArray = arrSelectedItalianRegion?.compactMap({String($0)}) //{ String($0)!}
+        let selectedRegionStringId = stringRegionArray?.joined(separator: ",")
+        
+        
+        //MARK:- Rating
+        if arrSelectedRating?.count != 0{
+        for i in 0..<(arrSelectedRating?.count ?? 0){
+            self.modifiedRatingArray.append((arrSelectedRating?[i] ?? 0) + 1)
+        }
+         stringRatingArray = modifiedRatingArray.compactMap({String($0)})
+        
+        }
+        else{
+            stringRatingArray = arrSelectedRating?.compactMap({String($0)}) ?? [String]()
+        }
+         selectedRatingStringId = stringRatingArray.joined(separator: ",")
+    
+        let selectedSortProducerString = String.getString(selectedSortProducer?.first)
+        let selectFdaCertifiedString = String.getString(selectFdaCertified?.first)
+        
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertifiedString )" + "&sort_by_producer=" + "\(selectedSortProducerString )" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1" + "&keyword=" + "\(self.searchTxt ?? "")" + "&title=" + "" + "&boxid=1"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
@@ -231,8 +288,94 @@ class ProductTableViewCell: UITableViewCell{
     @IBOutlet weak var imgStore: UIImageView!
     @IBOutlet weak var vwContainer: UIView!
     
+    @IBOutlet weak var userRatingStar1: UIImageView!
+    @IBOutlet weak var userRatingStar2: UIImageView!
+    @IBOutlet weak var userRatingStar3: UIImageView!
+    @IBOutlet weak var userRatingStar4: UIImageView!
+    @IBOutlet weak var userRatingStar5: UIImageView!
+    var data: MyStoreProductDetail?
     override func awakeFromNib() {
         vwContainer.addShadow()
+        
     }
     
+    func configCell(_ data: MyStoreProductDetail?){
+        self.data = data
+        setUserRatngStarUI()
+    }
+    func setUserRatngStarUI(){
+        if self.data?.avg_rating == "0.0" || data?.avg_rating == "0" {
+            userRatingStar1.image = UIImage(named: "icons8_star")
+            userRatingStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        } else if (data?.avg_rating ?? "") >= "0.1" && (data?.avg_rating ?? "") <= "0.9" {
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if data?.avg_rating == "1.0" || data?.avg_rating == "1" {
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if (data?.avg_rating ?? "") >= "1.1"  && (data?.avg_rating ?? "") <= "1.9"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "HalfStar")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if data?.avg_rating == "2.0" || data?.avg_rating == "2"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if (data?.avg_rating ?? "") >= "2.1"  && (data?.avg_rating ?? "") <= "2.9"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "HalfStar")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if data?.avg_rating == "3.0" || data?.avg_rating == "3"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if (data?.avg_rating ?? "") >= "3.1"  && (data?.avg_rating ?? "") <= "3.9" {
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar4.image = UIImage(named: "HalfStar")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if data?.avg_rating == "4.0" || data?.avg_rating == "4"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar4.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        }else if (data?.avg_rating ?? "") >= "4.1"  && (data?.avg_rating ?? "") <= "4.9" {
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar4.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar5.image = UIImage(named: "HalfStar")
+        }else if data?.avg_rating == "5.0" || data?.avg_rating == "5"{
+            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar2.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar3.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar4.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar5.image = UIImage(named: "icons8_christmas_star")
+        }else{userRatingStar1.image = UIImage(named: "icons8_star")
+            userRatingStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+            print("Invalid Rating")
+        }
+    }
 }

@@ -40,35 +40,35 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
            imgStar5.image = UIImage(named: "icons8_star")
            
         }else if "\(data.avg_rating ?? "")" == "1" {
-            imgStar1.image = UIImage(named: "icons8_christmas_star_2")
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_star")
             imgStar3.image = UIImage(named: "icons8_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(data.avg_rating ?? "")" == "2" {
-            imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar2.image = UIImage(named: "icons8_christmas_star_2")
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
             imgStar3.image = UIImage(named: "icons8_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(data.avg_rating ?? "")" == "3" {
-            imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar3.image = UIImage(named: "icons8_christmas_star_2")
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(data.avg_rating ?? "")" == "4" {
-            imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar4.image = UIImage(named: "icons8_christmas_star_2")
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
             imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(data.avg_rating ?? "")" == "5" {
-            imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar4.image = UIImage(named: "icons8_christmas_star_2")
-            imgStar5.image = UIImage(named: "icons8_christmas_star_2")
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "icons8_christmas_star")
         }
         
         

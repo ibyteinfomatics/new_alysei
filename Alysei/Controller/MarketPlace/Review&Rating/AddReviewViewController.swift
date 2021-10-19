@@ -68,7 +68,7 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     
     @IBAction func btnStar1(_ sender: UIButton){
         reviewStarCount = 1
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
@@ -77,8 +77,8 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     }
     @IBAction func btnStar2(_ sender: UIButton){
         reviewStarCount = 2
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
@@ -86,29 +86,29 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     }
     @IBAction func btnStar3(_ sender: UIButton){
         reviewStarCount = 3
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
     @IBAction func btnStar4(_ sender: UIButton){
         reviewStarCount = 4
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
     @IBAction func btnStar5(_ sender: UIButton){
         reviewStarCount = 5
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_christmas_star_2"), for: .normal)
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         
     }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {

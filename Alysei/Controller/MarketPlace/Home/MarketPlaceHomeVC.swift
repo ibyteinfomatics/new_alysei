@@ -167,10 +167,10 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         }else if collectionView == newlyyAddedStoreCollectionView{
             guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
-            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].logoId?.attachmentURL ?? ""))
+            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.attachmentURL ?? ""))
             cell.image.setImage(withString: imgUrl)
-            cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].storeName
-            cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_sore?[indexPath.row].location
+            cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].storeName
+            cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].location
             return cell
         }else if collectionView == regionCollectionView{
             guard let cell = regionCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeRegionCViewCell", for: indexPath) as? MarketPlaceHomeRegionCViewCell  else {return UICollectionViewCell()}
@@ -307,6 +307,7 @@ extension MarketPlaceHomeVC{
             self.recentlyAddedCollectionView.reloadData()
             self.adCollectionView.reloadData()
             self.regionCollectionView.reloadData()
+            self.newlyyAddedStoreCollectionView.reloadData()
             self.hghtBottomBannerCV.constant = 400
         }
         

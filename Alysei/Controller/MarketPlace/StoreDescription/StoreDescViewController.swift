@@ -99,7 +99,7 @@ class StoreDescViewController: AlysieBaseViewC {
         self.number = storeDetails?.phone
         //Create the pin location of your restaurant(you need the GPS coordinates for this)
         
-        let doubleLat = Double.getDouble(storeDetails?.lattitude)
+        let doubleLat = Double.getDouble(storeDetails?.latitude)
         let doubleLong = Double.getDouble(storeDetails?.longitude)
         
         //let storeLoaction = CLLocation(latitude: doubleLat, longitude: doubleLong)//
@@ -208,20 +208,26 @@ class StoreDescViewController: AlysieBaseViewC {
     @objc func openLocation(){
         let storboard = UIStoryboard(name: "Login", bundle: nil)
         guard let nextVC = storboard.instantiateViewController(identifier: "MapViewC") as? MapViewC else {return}
+        nextVC.fromVC = .StoreDetail
+        nextVC.hubLatCordinate = Double.getDouble(self.storeDetails?.latitude)
+        nextVC.hubLongCordinate = Double.getDouble(self.storeDetails?.longitude)
         self.navigationController?.pushViewController(nextVC, animated: true)
         
     }
     
     @objc func openWebsite(){
         let website = (storeDetails?.website ?? "")
-        guard let url = URL(string: website) else {
-          return //be safe
-        }
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
+        print("Website----------------------------",website)
+        guard let url = URL(string: website) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        guard let url = URL(string: website) else {
+//          return //be safe
+//        }
+//        if #available(iOS 10.0, *) {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        } else {
+//            UIApplication.shared.openURL(url)
+//        }
     }
     @IBAction func btnViewAllReview(_ sender: UIButton){
         let controller = pushViewController(withName: ReviewScreenViewController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? ReviewScreenViewController

@@ -176,6 +176,7 @@ enum isCameFrom {
     case locateHub
     case B2B
     case EditPost
+    case StoreDetail
 }
 //class UserImage: {
 //

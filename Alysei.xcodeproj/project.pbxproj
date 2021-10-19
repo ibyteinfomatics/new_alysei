@@ -239,6 +239,7 @@
 		6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
 		6B543592270C168D008A72DD /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B543591270C168D008A72DD /* BlockModel.swift */; };
+		6B559633271EE6EE0040A2CF /* Marketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B559632271EE6EE0040A2CF /* Marketplace.storyboard */; };
 		6B58C9AF26256EE300D250CD /* ReviewHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58C9AE26256EE300D250CD /* ReviewHubModel.swift */; };
 		6B5A8280260C56AD00ED60B7 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A827F260C56AD00ED60B7 /* WebServices.swift */; };
 		6B5A8284260C5CD100ED60B7 /* CompanyCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A8283260C5CD100ED60B7 /* CompanyCertificates.swift */; };
@@ -406,7 +407,6 @@
 		C5197B1526E72E3C00C0894F /* CreateBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5197B0C26E72E3C00C0894F /* CreateBlogViewController.swift */; };
 		C5197B1A26E7308600C0894F /* ChatConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5197B1826E7308600C0894F /* ChatConstants.swift */; };
 		C5197B1B26E7308600C0894F /* Chat_Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5197B1926E7308600C0894F /* Chat_Helper.swift */; };
-		C51C337B2664EA78002EC412 /* Marketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51C337A2664EA78002EC412 /* Marketplace.storyboard */; };
 		C51C337F2664F5CA002EC412 /* MarketPlaceHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51C337E2664F5CA002EC412 /* MarketPlaceHomeVC.swift */; };
 		C51C33832664FB52002EC412 /* MarketPlaceWalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51C33822664FB52002EC412 /* MarketPlaceWalkthroughVC.swift */; };
 		C51D47762636A6FE00CD3863 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51D47752636A6FE00CD3863 /* PostsViewController.swift */; };
@@ -851,6 +851,7 @@
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
 		6B543591270C168D008A72DD /* BlockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModel.swift; sourceTree = "<group>"; };
+		6B559632271EE6EE0040A2CF /* Marketplace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Marketplace.storyboard; sourceTree = "<group>"; };
 		6B58C9AE26256EE300D250CD /* ReviewHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHubModel.swift; sourceTree = "<group>"; };
 		6B5A827F260C56AD00ED60B7 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 		6B5A8283260C5CD100ED60B7 /* CompanyCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCertificates.swift; sourceTree = "<group>"; };
@@ -1022,7 +1023,6 @@
 		C5197B0C26E72E3C00C0894F /* CreateBlogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBlogViewController.swift; sourceTree = "<group>"; };
 		C5197B1826E7308600C0894F /* ChatConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConstants.swift; sourceTree = "<group>"; };
 		C5197B1926E7308600C0894F /* Chat_Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat_Helper.swift; sourceTree = "<group>"; };
-		C51C337A2664EA78002EC412 /* Marketplace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Marketplace.storyboard; sourceTree = "<group>"; };
 		C51C337E2664F5CA002EC412 /* MarketPlaceHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceHomeVC.swift; sourceTree = "<group>"; };
 		C51C33822664FB52002EC412 /* MarketPlaceWalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceWalkthroughVC.swift; sourceTree = "<group>"; };
 		C51D47752636A6FE00CD3863 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
@@ -1880,9 +1880,9 @@
 				6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */,
 				6B2F94F526202F3A0030928E /* Timeline.storyboard */,
 				27B2FDE525C8782000CFEDA0 /* ProductSection.xib */,
+				6B559632271EE6EE0040A2CF /* Marketplace.storyboard */,
 				C5D6F7BA26B1828D006FFCDF /* HubSelection.storyboard */,
 				C5D6F79926B18262006FFCDF /* HubXIB */,
-				C51C337A2664EA78002EC412 /* Marketplace.storyboard */,
 				C5197AB526E72A2300C0894F /* Chat.storyboard */,
 				C5EB31B326E9C69300CCAC9E /* Recipe.storyboard */,
 			);
@@ -3002,7 +3002,6 @@
 				6B7CACC226FDD3CA00096E79 /* SanFranciscoDisplay-Bold.otf in Resources */,
 				C5D6F7AE26B18264006FFCDF /* ConfirmSelectionVC.xib in Resources */,
 				C5D6F7B926B18264006FFCDF /* StateWiseHubCollectionCell.xib in Resources */,
-				C51C337B2664EA78002EC412 /* Marketplace.storyboard in Resources */,
 				C5EB3D1426E9E57500CCAC9E /* Assets.xcassets in Resources */,
 				6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */,
 				C5D6F7B026B18264006FFCDF /* FooterCityHubTableViewCell.xib in Resources */,
@@ -3083,6 +3082,7 @@
 				27A443DB25AE03720002BAAC /* Montserrat-Italic.ttf in Resources */,
 				611BD9FB268C3D2900EAD7B5 /* CHANGELOG.md in Resources */,
 				27A443CD25AE03720002BAAC /* Montserrat-Medium.ttf in Resources */,
+				6B559633271EE6EE0040A2CF /* Marketplace.storyboard in Resources */,
 				27A443D125AE03720002BAAC /* Montserrat-ExtraLight.ttf in Resources */,
 				C5EB3CC426E9CB5700CCAC9E /* FavouriteTableViewCell.xib in Resources */,
 				27A443D925AE03720002BAAC /* Montserrat-Black.ttf in Resources */,

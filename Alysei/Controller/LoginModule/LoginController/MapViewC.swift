@@ -99,6 +99,11 @@ class MapViewC: AlysieBaseViewC {
         viewBottomHeight.constant = 0
         self.intialGoogleSetup(withLatitude:hubLatCordinate ?? 0.0, withLongitude: hubLongCordinate ?? 0.0)
        
+    }else if  fromVC == .StoreDetail {
+        viewBottom.isHidden = true
+        viewSearchLocation.isHidden = true
+        viewBottomHeight.constant = 0
+        self.intialGoogleSetup(withLatitude:hubLatCordinate ?? 0.0, withLongitude: hubLongCordinate ?? 0.0)
     }else{
     self.mapView.addSubview(self.viewSearchLocation)
         self.mapView.addSubview(self.imgViewMarker)

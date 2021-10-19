@@ -92,7 +92,7 @@ class MyStoreProductDetail{
     var id: Int?
     var storeName: String?
     var logoId: Attachment?
-    var lattitude:String?
+    var latitude:String?
     var longitude: String?
     //var phone: String?
     
@@ -155,7 +155,7 @@ class MyStoreProductDetail{
         self.parent = Int.getInt(data?["parent"])
         self.head = Int.getInt(data?["head"])
         self.longitude = String.getString(data?["longitude"])
-        self.lattitude = String.getString(data?["lattitude"])
+        self.latitude = String.getString(data?["lattitude"])
         self.updatedAt = String.getString(data?["updated_at"])
         if let logoId = data?["logo_id"] as? [String:Any]{
             self.logoId = Attachment.init(with: logoId)
