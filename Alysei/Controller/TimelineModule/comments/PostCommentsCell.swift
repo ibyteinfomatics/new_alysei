@@ -26,6 +26,7 @@ class SelfPostCommentsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        tableView.isHidden = true
         self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2.0
     }
 

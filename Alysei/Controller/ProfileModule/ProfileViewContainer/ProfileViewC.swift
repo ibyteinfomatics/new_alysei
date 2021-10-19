@@ -83,6 +83,7 @@ class ProfileViewC: AlysieBaseViewC{
     var userProfileModel: UserProfile.profileTopSectionModel!
     
     var tabload = true
+    var connectionFlagValue: Int?
     
     //var profileCompletion
     var currentIndex: Int = 0
@@ -586,7 +587,8 @@ class ProfileViewC: AlysieBaseViewC{
         if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
             
             if percentage == "100" || percentage == nil{
-                self.segueToCompleteConnectionFlow()
+               // self.segueToCompleteConnectionFlow()
+                self.connectButtonTapped()
             } else {
                 self.tabBarController?.selectedIndex = 4
             }
@@ -681,12 +683,16 @@ class ProfileViewC: AlysieBaseViewC{
         let availableToFollow = (self.userProfileModel.data?.userData?.availableToFollow ?? 1)
         let availableToConnect = (self.userProfileModel.data?.userData?.availableToConnect ?? 1)
         let connectionFlag = self.userProfileModel.data?.userData?.connectionFlag ?? 0
-        
+        self.connectionFlagValue = connectionFlag
         guard (availableToFollow == 1) || (availableToConnect == 1) || (connectionFlag > 0) else {
             self.connectButton.isHidden = true
             return
         }
-        
+        if connectionFlag == 3 {
+            self.connectButton.isHidden = true
+            self.respondeButton.isHidden = false
+        }
+        if self.connectButton.isHidden == false{
         if self.userType != .voyagers {
             //            let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
             var title = "Connect"
@@ -701,6 +707,7 @@ class ProfileViewC: AlysieBaseViewC{
                 title = "Connect"
             }
             self.connectButton.setTitle("\(title)", for: .normal)
+        }
         } else if self.userType == .voyagers {
             
             if self.visitorUserType == .voyagers {
@@ -958,7 +965,7 @@ class ProfileViewC: AlysieBaseViewC{
                     // self.viewProfileCompletion.isHidden = false
                     self.tblViewProfileCompletion.isHidden = false
                     self.headerView.isHidden = true
-                    self.tblViewPosts.isHidden = false
+                    self.tblViewPosts.isHidden = true
                     // self.profilePercentage.text = "It's at \(responseModel.data?.userData?.profilePercentage ?? 0)%"
                     //self.percentage = "\(responseModel.data?.userData?.profilePercentage ?? 0)"
                 }
@@ -1074,9 +1081,19 @@ class ProfileViewC: AlysieBaseViewC{
                     //        self.respondeButton.isHidden = false
                     //        self.messageButton.isUserInteractionEnabled = true
                     //        self.respondeButton.isUserInteractionEnabled = true
-                    
+                    if self.connectionFlagValue == 3{
+                        self.messageButton.isHidden = false
+                        self.respondeButton.isHidden = false
+                        self.respondeButton.isUserInteractionEnabled = true
+                        self.connectButton.isHidden = true
+                        self.connectButton.isUserInteractionEnabled = false
+                    }else{
+                        self.messageButton.isHidden = true
+                        self.respondeButton.isHidden = true
+                        self.respondeButton.isUserInteractionEnabled = false
                     self.connectButton.isHidden = false
                     self.connectButton.isUserInteractionEnabled = true
+                    }
                 }
                 
                 
@@ -1713,7 +1730,19 @@ extension ProfileViewC {
         if self.userType != .voyagers {
             let connectionStatus = self.userProfileModel.data?.userData?.connectionFlag ?? 0
             if connectionStatus == 0 {
-                self.performSegue(withIdentifier: "segueProfileTabToBasicConnection", sender: nil)
+               // self.performSegue(withIdentifier: "segueProfileTabToBasicConnection", sender: nil)
+                let controller = pushViewController(withName: ConnectionProductTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionProductTypeViewController
+                var pusername = ""
+                if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
+                    pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
+                }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
+                    pusername = self.userProfileModel.data?.userData?.firstName ?? ""
+                }else{
+                    pusername = self.userProfileModel.data?.userData?.companyName ?? ""
+                }
+                
+                controller?.userName = pusername
+                controller?.userID = self.userID
             } else if connectionStatus == 2 {
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
@@ -1743,6 +1772,8 @@ extension ProfileViewC {
                 alertController.addAction(cancelAction)
                 
                 self.present(alertController, animated: true, completion: nil)
+            }else if connectionStatus == 1 {
+                print("Check")
             }
             return
         } else if self.userType == .voyagers { //&& self.visitorUserType != .voyagers {

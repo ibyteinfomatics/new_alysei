@@ -338,6 +338,18 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         // showAlert(withMessage: "Post Successfully")
     }
     
+    func sendPost(id: Int) {
+        //sender data
+        let sendMessageDetails = PostClass()
+        sendMessageDetails.likeCount = 0
+        sendMessageDetails.commentCount = 0
+        sendMessageDetails.postId = id
+        
+        
+        kChatharedInstance.send_post(messageDic: sendMessageDetails, postId: id)
+        
+    }
+    
     @IBAction func changePrivacyAction(_ sender: UIButton){
         postPrivacyTableView.isHidden = false
     }
@@ -633,6 +645,9 @@ extension AddPostViewController {
     override func didUserGetData(from result: Any, type: Int) {
 //        self.showAlert(withMessage: "Post Successfully") {
 //        }
+        let results = result as? [String:Any]
+        print("post ",results?["post_id"] ?? 0)
+        sendPost(id: results?["post_id"] as? Int ?? 0)
         self.txtPost.text = ""
         self.uploadImageArray = [UIImage]()
         self.btnPostPrivacy.setTitle("Public", for: .normal)

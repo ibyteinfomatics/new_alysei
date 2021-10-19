@@ -310,6 +310,8 @@ struct APIUrl{
     static let kFollowUnfollow = "follow/user"
     static let kMarketplaceBoxFilterApi = "filter?"
     static let kMarketPlaceHome = "get/homescreen"
+    static let kPostComment = "post/comment"
+    static let kLike = "post/like"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
