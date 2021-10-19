@@ -56,35 +56,35 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
             cell.imgStar5.image = UIImage(named: "icons8_star")
            
         }else if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "1" {
-            cell.imgStar1.image = UIImage(named: "icons8_christmas_star_2")
+            cell.imgStar1.image = UIImage(named: "icons8_christmas_star")
             cell.imgStar2.image = UIImage(named: "icons8_star")
             cell.imgStar3.image = UIImage(named: "icons8_star")
             cell.imgStar4.image = UIImage(named: "icons8_star")
             cell.imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "2" {
-            cell.imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar2.image = UIImage(named: "icons8_christmas_star_2")
+            cell.imgStar1.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar2.image = UIImage(named: "icons8_christmas_star")
             cell.imgStar3.image = UIImage(named: "icons8_star")
             cell.imgStar4.image = UIImage(named: "icons8_star")
             cell.imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "3" {
-            cell.imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar3.image = UIImage(named: "icons8_christmas_star_2")
+            cell.imgStar1.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar2.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar3.image = UIImage(named: "icons8_christmas_star")
             cell.imgStar4.image = UIImage(named: "icons8_star")
             cell.imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "4" {
-            cell.imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar4.image = UIImage(named: "icons8_christmas_star_2")
+            cell.imgStar1.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar2.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar3.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar4.image = UIImage(named: "icons8_christmas_star")
             cell.imgStar5.image = UIImage(named: "icons8_star")
         }else if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "5" {
-            cell.imgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar4.image = UIImage(named: "icons8_christmas_star_2")
-            cell.imgStar5.image = UIImage(named: "icons8_christmas_star_2")
+            cell.imgStar1.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar2.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar3.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar4.image = UIImage(named: "icons8_christmas_star")
+            cell.imgStar5.image = UIImage(named: "icons8_christmas_star")
         }
         return cell
     }

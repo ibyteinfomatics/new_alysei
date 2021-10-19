@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import SVGKit
 
 class CuisinesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,6 +20,7 @@ class CuisinesViewController: UIViewController {
     var cuisineId : Int?
     var arrayPreference1: PreferencesDataModel?
     var callbackResult: (() -> Void)?
+    
     override func viewDidLoad() {
         preferenceNumber = 1
         super.viewDidLoad()
@@ -49,8 +49,7 @@ class CuisinesViewController: UIViewController {
             callbackResult?()
             self.navigationController?.popViewController(animated: true)
         }
-       
-
+        
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -58,52 +57,9 @@ class CuisinesViewController: UIViewController {
         
     }
     
-    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
-        var params = [[String:Any]]()
-        for preference in preferences ?? [] {
-            var pm = [String:Any]()
-            pm["preference"] = preference.preference
-            pm["id"] = preference.id
-            params.append(pm)
-        }
-        return params
-    }
-    
-    func postRequestToSaveCousinPreferences() -> Void{
-        
-        let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
-        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
-            
-        }
-    }
-    func getSavedCusinMyPreferences() -> Void{
-        self.view.isUserInteractionEnabled = false
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
-            
-            let res = response as? [String:Any]
-            
-            if let data = res?["data"] as? [[String:Any]]{
-                self.getSavedCousinPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
-                
-            }
-            
-            for i in (0..<(self.getSavedCousinPreferencesModel?[0].maps?.count ?? 0))
-            {
-                self.showAllCuisine?.append(self.getSavedCousinPreferencesModel?[0].maps?[i] ?? MapDataModel(with: [:]) )
-                
-                    if self.showAllCuisine?[i].isSelected == 1{
-                        arraySelectedCuisine?.append(self.showAllCuisine?[i].cousinId ?? 0 )
-                    }
-                
-                self.collectionView.reloadData()
-                self.view.isUserInteractionEnabled = true
-            }
-        }
-    }
     
 }
+
 extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,13 +85,6 @@ extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewData
             
         }
         
-//        if arraySelectedCuisine?.count != 0{
-//            SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        }
-//        else{
-//            SaveButton.layer.borderColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-//        }
-        
         cell.layoutSubviews()
         
         return cell
@@ -147,51 +96,56 @@ extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewData
         return cellSize
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
-//        selectedIndexPath = indexPath
-//        let selectedCuisine = showAllCuisine?[indexPath.row].cousinId
-//        self.cuisineId = selectedCuisine
-//        if  showAllCuisine?[indexPath.row].isSelected == 1 {
-//            showAllCuisine?[indexPath.row].isSelected = 0
-//            // it was already selected
-//            //                    selectedIndexPath = nil
-//            collectionView.deselectItem(at: indexPath, animated: false)
-//            cell?.viewOfImage.layer.borderWidth = 4
-//            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-//
-//            for (index,item) in arrSelectedIndex.enumerated(){
-//                if item == indexPath{
-//                    arrSelectedIndex.remove(at: index)
-//                }
-//            }
-//
-////            for (index,item) in arraySelectedCuisine!.enumerated(){
-////                if item == showAllCuisine?[indexPath.row].cousinId{
-////                    arraySelectedCuisine?.remove(at: index)
-////                }
-////            }
-////            if arraySelectedCuisine?.count == 0{
-////                SaveButton.layer.backgroundColor = UIColor.init(red: 201/255, green: 201/255, blue: 201/255, alpha: 1).cgColor
-////            }
-//            print("deselect")
-//        } else {
-//            // wasn't yet selected, so let's remember it
-//            showAllCuisine?[indexPath.row].isSelected = 1
-//            cell?.viewOfImage.layer.borderWidth = 4
-//            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//
-//            arraySelectedCuisine?.append(cuisineId ?? 0)
-//
-//            arrSelectedIndex.append(selectedIndexPath!)
-////            SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//            print("\(String(describing: arrSelectedIndex.count))")
-//            print("select")
-//        }
-//        SaveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//    }
 }
 
+extension CuisinesViewController{
+    
+    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
+        var params = [[String:Any]]()
+        for preference in preferences ?? [] {
+            var pm = [String:Any]()
+            pm["preference"] = preference.preference
+            pm["id"] = preference.id
+            params.append(pm)
+        }
+        return params
+    }
+    
+    func postRequestToSaveCousinPreferences() -> Void{
+        
+        let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+            
+            
+        }
+    }
+    
+    func getSavedCusinMyPreferences() -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                self.getSavedCousinPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
+                
+            }
+            
+            for i in (0..<(self.getSavedCousinPreferencesModel?[0].maps?.count ?? 0))
+            {
+                self.showAllCuisine?.append(self.getSavedCousinPreferencesModel?[0].maps?[i] ?? MapDataModel(with: [:]) )
+                
+                if self.showAllCuisine?[i].isSelected == 1{
+                    arraySelectedCuisine?.append(self.showAllCuisine?[i].cousinId ?? 0 )
+                }
+                
+                self.collectionView.reloadData()
+                self.view.isUserInteractionEnabled = true
+            }
+        }
+    }
+}
 
 
 

@@ -10,6 +10,7 @@ import SVGKit
 
 var preferenceNumber : Int?
 var arraySelectedCookingSkill: [Int]? = []
+
 class CookingSkillViewController: AlysieBaseViewC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
@@ -18,7 +19,7 @@ class CookingSkillViewController: AlysieBaseViewC {
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var arrCookingSkill = [SelectCookingSkillsDataModel]()
     var selectedIndexPath: IndexPath? = nil
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,64 +40,30 @@ class CookingSkillViewController: AlysieBaseViewC {
         arrayPreference = PreferencesDataModel.init(id: arraySelectedCookingSkill ?? [], preference: preferenceNumber)
         arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
         postRequestToSaveAllPreferences()
-       
+        
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
-        let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-        self.navigationController?.pushViewController(viewAll, animated: true)
-
+            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+            self.navigationController?.pushViewController(viewAll, animated: true)
+            
         }
-        else{}
+        else{
+            
+        }
     }
+    
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tapSkip(_ sender: Any) {
         let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-       
+        
         for i in 0..<(arrCookingSkill.count ){
-        self.arrCookingSkill[i].isSelected = false
+            self.arrCookingSkill[i].isSelected = false
             self.arrSelectedIndex.removeAll()
         }
         arrayPreferencesModelData.removeAll()
         self.navigationController?.pushViewController(viewAll, animated: true)
-    }
-    
-    func postRequestToGetCookinSkills() -> Void{
-        self.view.isUserInteractionEnabled = false
-       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCookingSkill, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
-           
-           let res = response as? [String:Any]
-           
-           if let data = res?["data"] as? [[String:Any]]{
-               self.arrCookingSkill = data.map({SelectCookingSkillsDataModel.init(with: $0)})
-           }
-           
-        self.collectionView.reloadData()
-        self.view.isUserInteractionEnabled = true
-       }
-       
-   }
-    
-    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
-        var params = [[String:Any]]()
-        for preference in preferences ?? [] {
-            var pm = [String:Any]()
-            pm["preference"] = preference.preference
-            pm["id"] = preference.id
-            params.append(pm)
-        }
-        return params
-    }
-    
-   func postRequestToSaveAllPreferences() -> Void{
-
-    let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
-        
-    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-        
-        
-      }
     }
     
 }
@@ -116,36 +83,36 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
         cell.viewOfImage.layer.borderWidth = 4
         cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
-                cell.layoutSubviews()
+        cell.layoutSubviews()
         
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
         if selectedIndexPath == indexPath {
-                    // it was already selected
-                 selectedIndexPath = indexPath
-                   
-                        cell?.viewOfImage.layer.borderWidth = 4
+            // it was already selected
+            selectedIndexPath = indexPath
+            
+            cell?.viewOfImage.layer.borderWidth = 4
             cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-
+            
             nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             
         } else {
-                    // wasn't yet selected, so let's remember it
-                   
-                    selectedIndexPath = indexPath
-                    arraySelectedCookingSkill?.append(arrCookingSkill[indexPath.row].cookinSkillId ?? 0)
-                                cell?.viewOfImage.layer.borderWidth = 4
-                                cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                    
-                                nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                   
-                    print("select")
-               }
-
+            // wasn't yet selected, so let's remember it
+            
+            selectedIndexPath = indexPath
+            arraySelectedCookingSkill?.append(arrCookingSkill[indexPath.row].cookinSkillId ?? 0)
+            cell?.viewOfImage.layer.borderWidth = 4
+            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            
+            nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            
+            print("select")
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -170,36 +137,45 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
         
     }
     
+}
+
+extension CookingSkillViewController{
     
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//            //Where elements_count is the count of all your items in that
-//            //Collection view...
-//            let cellCount = CGFloat(arrCookingSkill.count)
-//
-//            //If the cell count is zero, there is no point in calculating anything.
-//            if cellCount > 0 {
-//                let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-//                let cellWidth = flowLayout.itemSize.width + flowLayout.minimumInteritemSpacing
-//
-//                //20.00 was just extra spacing I wanted to add to my cell.
-//                let totalCellWidth = cellWidth*cellCount + 20.00 * (cellCount-1)
-//                let contentWidth = collectionView.frame.size.width - collectionView.contentInset.left - collectionView.contentInset.right
-//
-//                if (totalCellWidth < contentWidth) {
-//                    //If the number of cells that exists take up less room than the
-//                    //collection view width... then there is an actual point to centering them.
-//
-//                    //Calculate the right amount of padding to center the cells.
-//                    let padding = (contentWidth - totalCellWidth) / 2.0
-//                    return UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
-//                } else {
-//                    //Pretty much if the number of cells that exist take up
-//                    //more room than the actual collectionView width, there is no
-//                    // point in trying to center them. So we leave the default behavior.
-//                    return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
-//                }
-//            }
-//            return UIEdgeInsets.zero
-//        }
+    func postRequestToGetCookinSkills() -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCookingSkill, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                self.arrCookingSkill = data.map({SelectCookingSkillsDataModel.init(with: $0)})
+            }
+            
+            self.collectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
+        }
+        
+    }
+    
+    func createPreferencesJson(preferences:[PreferencesDataModel]?)->[[String:Any]] {
+        var params = [[String:Any]]()
+        for preference in preferences ?? [] {
+            var pm = [String:Any]()
+            pm["preference"] = preference.preference
+            pm["id"] = preference.id
+            params.append(pm)
+        }
+        return params
+    }
+    
+    func postRequestToSaveAllPreferences() -> Void{
+        
+        let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
+            
+            
+        }
+    }
+    
 }

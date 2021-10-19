@@ -17,6 +17,14 @@ class LikeRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var delegate:CategoryRowDelegate?
+    
+    var post: Bool?{
+        didSet{
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -248,10 +248,18 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
             }else{
                 print("contain no")
                 selectedIngridentsArray.append(data)
+                addDatainStep(data: data)
             }
             
             self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
             self.addIngridientsTableView.reloadData()
+        }
+    }
+    
+    func addDatainStep(data: IngridentArray){
+        data.isSelected = false
+        for item in arrayStepFinalData{
+            item.ingridentsArray?.append(data)
         }
     }
     
@@ -459,6 +467,18 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func removeDatainStep(data: IngridentArray){
+        for item in arrayStepFinalData{
+            
+            if let index = item.ingridentsArray?.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
+                print("Found at \(index)")
+                
+                item.ingridentsArray?.remove(at: index)
+            }
+        }
+        
+    }
+    
     func tapForIngridient(indexPath: IndexPath, data: IngridentArray, checkStatus: Bool?) {
         
         self.singleIngridientData = data
@@ -466,6 +486,7 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
             if let index = selectedIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
                 print("Found at \(index)")
                 selectedIngridentsArray.remove(at: index)
+                removeDatainStep(data: data)
             }
             
 //           arrayPickerData.remove(at: indexPath.row)
@@ -484,6 +505,7 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
             
         }
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

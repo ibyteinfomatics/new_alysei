@@ -26,11 +26,24 @@ class StepTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView.delegate = self
         collectionView.dataSource = self
-        // Initialization code
+        
+        var insets = self.collectionView.contentInset
+        let frameWidth = self.contentView.frame.size.width
+             let collectionViewWidth = (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize.width
+        var left1Insets = ((frameWidth) - (collectionViewWidth * (CGFloat(stepsModel?.count ?? 0)))) * 0.5
+
+               if left1Insets <= 0 {
+                  left1Insets = 0
+               }
+        insets.left = left1Insets
+               self.collectionView.contentInset =  insets
+       
     }
+    
+   
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -63,17 +76,15 @@ extension StepTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             return CGSize(width: (self.collectionView.frame.size.width/7), height: 35)
         }
     
+    
+   
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         stepTableViewCellCurrentIndex = indexPath.item
         collectionView.reloadData()
-//        if currentIndex == indexPath.item{
-//            if delegate != nil {
+
                 delegate?.cellStepTapped(index: indexPath.item)
-//                }
-//            tapViewStep!()
-//        }
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     

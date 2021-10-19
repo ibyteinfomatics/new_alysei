@@ -7,6 +7,9 @@
 
 import UIKit
 var editRecipeId = Int()
+var editSavedIngridientId = Int()
+var editSavedtoolId = Int()
+var createEditRecipeJson: [String : Any] = [:]
 class EditRecipeViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
@@ -45,7 +48,7 @@ class EditRecipeViewController: UIViewController {
     var counter = 0
     var counter1 = 0
     var counter2 = 0
-    var arrayMyRecipe: [HomeTrending]? = []
+    var arrayMyRecipe1: [HomeTrending]? = []
     var index = 0
     var picker = UIImagePickerController()
     var selectedImage = String()
@@ -67,6 +70,9 @@ class EditRecipeViewController: UIViewController {
     var arrDiet = [SelectRecipeDietDataModel]()
     var arrRegion = [SelectRegionDataModel]()
     var arrFoodIntolerance = [SelectFoodIntoleranceDataModel]()
+    var isEditImage = false
+    var imageSeleceted : UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,9 +92,18 @@ class EditRecipeViewController: UIViewController {
         addMinusServingLongPressGesture()
         
         if arrayMyRecipe!.count > 0{
-            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
-            recipeImage.setImage(withString: imgUrl)
-           
+            
+            let imageurl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
+//            recipeImage.setImage(withString: imageurl)
+            let url = URL(string: imageurl)!
+            downloadImage(from: url)
+
+//            let preBaseStr = "data:image/png;base64,"
+//            let imgString = self.imageSeleceted?.pngData()?.base64EncodedString()
+//
+//            if isEditImage == false{
+//                arraySelectedImg = preBaseStr + (imgString ?? "")
+//            }
             nameTextfield.text = arrayMyRecipe?[index].name
             
             cookingSkillLabel.text = arrayMyRecipe?[index].cookingSkill?.cookingSkillName
@@ -124,6 +139,32 @@ class EditRecipeViewController: UIViewController {
             howMuchPeopleLable.text = "\(arrayMyRecipe?[index].serving ?? 0)"
             
             editRecipeId = (arrayMyRecipe?[index].recipeId)!
+            
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+                
+                self?.imageSeleceted = UIImage(data: data)
+                self?.recipeImage.image = self?.imageSeleceted
+                let preBaseStr = "data:image/png;base64,"
+                let imgString = self?.imageSeleceted?.pngData()?.base64EncodedString()
+
+                if self?.isEditImage == false{
+                    self?.arraySelectedImg = preBaseStr + (imgString ?? "")
+                }
+            }
         }
     }
     
@@ -293,10 +334,53 @@ class EditRecipeViewController: UIViewController {
 
     }
     
-    @IBAction func editIngridient(_ sender: Any) {
+    private func validateFields() -> Void{
+        
+        if self.recipeImage.image == nil{
+          showAlert(withMessage: AlertMessage.kUploadImage)
+        }
+     else if String.getString(nameTextfield.text).isEmpty == true{
+        showAlert(withMessage: AlertMessage.kEnterName)
+      }
+      else if nameTextfield.text!.count < 3 {
+            showAlert(withMessage: AlertMessage.kEnterValidName)
+        }
+      else if String.getString(cookingSkillLabel.text) == LabelandTextFieldTitle.selectCookingSkill{
+        showAlert(withMessage: AlertMessage.kSelectCookingSkill)
+      }
+      else if String.getString(cuisineLabel.text) == LabelandTextFieldTitle.selectCuisine{
+        showAlert(withMessage: AlertMessage.kSelectCousin)
+      }
+      else if String.getString(mealLabel.text) == LabelandTextFieldTitle.selectMeal{
+        showAlert(withMessage: AlertMessage.kSelectMeal)
+      }
+      else if String.getString(courseLabel.text) == LabelandTextFieldTitle.selectCourse{
+        showAlert(withMessage: AlertMessage.kSelectCourse)
+      }
+      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
+        showAlert(withMessage: AlertMessage.kSelectDiet)
+      }
+      else if String.getString(hoursLable.text) == "0" && (String.getString(minutesLable.text) == "0"){
+        showAlert(withMessage: AlertMessage.kSelectHour)
+      }
+      else if String.getString(howMuchPeopleLable.text) == "0"{
+        showAlert(withMessage: AlertMessage.kSelecForPeople)
+      }
+      else if String.getString(regionLabel.text) == LabelandTextFieldTitle.selectRegion {
+        showAlert(withMessage: AlertMessage.kSelectRegion)
+      }
+      else{
         let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "EditScreen2ViewController") as! EditScreen2ViewController
         
         self.navigationController?.pushViewController(addSteps, animated: true)
+     }
+      
+    }
+    @IBAction func editIngridient(_ sender: Any) {
+        
+        self.validateFields()
+        createEditRecipeJson = ["recipeImage" : self.arraySelectedImg ?? "", "name" : self.nameTextfield.text ?? "", "cookingSkill" : self.cookingSkillLabel.text ?? "","cookingSkillId" : self.strSelectedId ?? 0, "cusineId" : self.strSelectedId2 ?? 0, "cusine" : self.cuisineLabel.text ?? "", "meal" : self.mealLabel.text ?? "","mealId" : self.strSelectedIdMeal ?? 0, "course" : self.courseLabel.text ?? "","courseId" : self.strSelectedIdCourse ?? 0, "diet" : self.dietLabel.text ?? "","dietId" : self.strSelecetdIdDiet ?? 0, "foodIntolerance" : self.foodIntoleranceLabel.text ?? "","foodIntoleranceId" : self.strSelectedIdIntolerance ?? 0, "hour" : Int(self.hoursLable.text!) ?? 0, "minute" : Int(self.minutesLable.text!) ?? 0, "serving" : Int(self.howMuchPeopleLable.text!) ?? 0, "region" : self.regionLabel.text ?? "", "regionId" : self.strSelectedIdRegion ?? 0]
+        
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -719,14 +803,17 @@ extension EditRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
     guard let selectedImage = info[.editedImage] as? UIImage else { return }
     self.dismiss(animated: true) { [self] in
         
-            self.recipeImage.contentMode = .scaleAspectFill
-        let scaledImage:UIImage = self.resizeImage(image: selectedImage, newWidth: 800)
+        self.recipeImage.contentMode = .scaleAspectFill
+        let scaledImage:UIImage = self.resizeImage(image: selectedImage, newWidth: 400)
         self.recipeImage.image = scaledImage
+        self.isEditImage = true
         let imgString = scaledImage.pngData()?.base64EncodedString()
         
         let preBaseStr = "data:image/png;base64,"
-        arraySelectedImg = preBaseStr + (imgString ?? "")
-
+        if isEditImage == true{
+            arraySelectedImg = preBaseStr + (imgString ?? "")
+        }
+       
     }
   }
 
@@ -919,6 +1006,8 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
             break
         }
     }
+    
+   
 }
 extension EditRecipeViewController{
 
@@ -1038,6 +1127,25 @@ extension EditRecipeViewController{
    }
     
 }
-
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
+}
 
 

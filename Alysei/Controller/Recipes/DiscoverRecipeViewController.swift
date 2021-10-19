@@ -8,7 +8,7 @@
 var selectedIndex: Int?
 
 import UIKit
-
+var arrayMyRecipe: [HomeTrending]? = []
 class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
     @IBOutlet weak var discoverRecipeView: UIView!
@@ -19,7 +19,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var tapMarketPlaceVw: UIView!
     @IBOutlet weak var tapNotificationVw: UIView!
     @IBOutlet weak var discoverCollectionView: UICollectionView!
-    var arrayMyRecipe: [HomeTrending]? = []
+   
     var arrayMyFavouriteRecipe: [HomeTrending]? = []
     
     var arrayHeader = NSMutableArray()
@@ -438,7 +438,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             cell5.recipeImageView.setImage(withString: imgUrl)
             cell5.btnEditCallback = { tag in
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "EditRecipeViewController") as! EditRecipeViewController
-                viewAll.arrayMyRecipe = self.arrayMyRecipe
+                viewAll.arrayMyRecipe1 = arrayMyRecipe
                 
                 viewAll.index = indexPath.row
                 self.navigationController?.pushViewController(viewAll, animated: true)

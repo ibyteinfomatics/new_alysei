@@ -100,10 +100,6 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         self.addMissingIngridientsTableView.delegate = self
         self.addMissingIngridientsTableView.dataSource = self
         
-        if arrayMyRecipe!.count > 0{
-           
-            
-        }
     }
     
 
@@ -121,15 +117,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         saveAndProceedTabBar.layer.shadowOpacity = 0.8
         saveAndProceedTabBar.layer.shadowColor = UIColor.gray.cgColor
         saveAndProceedTabBar.layer.shadowOffset = CGSize(width: 0 , height:2)
-        
-//        itemsButton.layer.borderWidth = 1
-//        itemsButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        itemsButton.layer.cornerRadius = 5
-//        quantityLabel.text = "0 Items"
-        
     }
-    
-    
     
     func setupUI(){
         quantityView.layer.borderWidth = 1
@@ -227,8 +215,8 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
             
             let data = UsedIngridientDataModel(with: [:])
-            data.recipeSavedIngridientId = singleUsedIngridientData?.recipeSavedIngridientId
-            data.recipeId = singleUsedIngridientData?.recipeId
+            data.recipeSavedIngridientId = editSavedIngridientId
+            data.recipeId = editRecipeId
             data.ingridientId = singleIngridientData?.recipeIngredientIds
             data.ingridient = singleIngridientData
             data.quantity = quantity
@@ -241,7 +229,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
                 print("contain yes")
             }else{
                 print("contain no")
-                editusedIngridientModel?.append(data)
+                editusedIngridientModel.append(data)
             }
             
             let data1 = IngridentArray()
@@ -268,30 +256,16 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     
     
     @IBAction func saveAndProceedButton(_ sender: UIButton) {
-//        if quantityLabel.text != "0 Items"{
-//            let addtools =  self.storyboard?.instantiateViewController(withIdentifier: "AddToolsViewController") as! AddToolsViewController
-//
-//            self.navigationController?.pushViewController(addtools, animated: true)
+
         self.navigationController?.popViewController(animated: true)
-//        }
+
         
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
-//        let cancelPopUpVC = self.storyboard?.instantiateViewController(withIdentifier: "CancelPopUpViewController") as! CancelPopUpViewController
-//
-//        cancelPopUpVC.modalPresentationStyle = .overFullScreen
-//        cancelPopUpVC.modalTransitionStyle = .crossDissolve
-//        cancelPopUpVC.Callback = {
-//            let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-//            cancelPopVC.checkbutton = 2
-//            cancelPopVC.currentIndex = 2
-//            self.navigationController?.pushViewController(cancelPopVC, animated: true)
-//
-//        }
-//        self.present(cancelPopUpVC, animated: true)
+
     }
     
     
@@ -463,6 +437,12 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
             if let index = selectedEditIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
                 print("Found at \(index)")
                 selectedEditIngridentsArray.remove(at: index)
+                
+            }
+            
+            else if let index = editusedIngridientModel.firstIndex(where: { $0.ingridient?.recipeIngredientIds == data.recipeIngredientIds }) {
+                print("Found at \(index)")
+                editusedIngridientModel.remove(at: index)
             }
             
 //            arrayPickerData.remove(at: indexPath.row)
@@ -471,6 +451,7 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
 //            if  self.quantityLabel.text == "0 Items" {
 //                self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
 //            }
+          
             self.addIngridientsTableView.reloadData()
         }
         else {

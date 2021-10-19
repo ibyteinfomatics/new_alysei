@@ -9,18 +9,16 @@ import UIKit
 
 var strIngridientQuantity = String()
 var strIngridientId = Int()
-var finalUnitIngridirnt: String?
-var finalquantityIngridirnt: Int?
+var finalUnitIngridirnt = String()
+var finalquantityIngridirnt = Int()
 
 var strToolQuantity = String()
 var strToolId = Int()
-var finalquantityTool: Int?
-var finalUnitTool: String?
+var finalquantityTool = Int()
+var finalUnitTool = String()
 
 var strTitle : String?
 var strDescription : String?
-var ingridientArray:Int? = 0
-var toolArray : Int? = 0
 
 class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UITableViewDataSource, RecipeIngredientsUsedTableViewCellProtocol, NumberOfStepsDelegateProtocol {
     
@@ -52,7 +50,8 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
     var dunamicButton  = UIButton()
     var statusLabel = UILabel()
     var statusLabel1 = UILabel()
-    
+    var selectedIngridient = [Int]()
+    var selectedTool = [Int]()
 
     @IBOutlet weak var headerLabelLeading: NSLayoutConstraint!
     
@@ -306,14 +305,42 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         self.addEditPopUpView.isHidden = false
 
        }
+    
+    func removeDatainStep(data: IngridentArray){
+        for item in arrayStepFinalData{
+            
+            if let index = item.ingridentsArray?.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
+                print("Found at \(index)")
+                
+                item.ingridentsArray?.remove(at: index)
+            }
+        }
         
+    }
+    
+    func removeDatainStep1(data: ToolsArray){
+        for item in arrayStepFinalData{
+            
+            if let index = item.toolsArray?.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
+                print("Found at \(index)")
+                
+                item.toolsArray?.remove(at: index)
+            }
+        }
+        
+    }
     func tapForDeleteIngridient(indexPath: IndexPath) {
         if indexPath.section == 0 {
+            let data = selectedIngridentsArray[indexPath.row]
+            removeDatainStep(data: data)
             selectedIngridentsArray[indexPath.row].isSelected = false
             selectedIngridentsArray.remove(at: indexPath.row)
             
             
+            
         } else if indexPath.section == 1 {
+            let data = selectedToolsArray[indexPath.row]
+            removeDatainStep1(data: data)
             selectedToolsArray[indexPath.row].isSelected = false
             selectedToolsArray.remove(at: indexPath.row)
            
@@ -525,8 +552,6 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             cell2 = tableView.dequeueReusableCell(withIdentifier: "cell1") as! NumberofStepsTableViewCell
             strTitle = arrayStepFinalData[indexPath.row].title ?? ""
             strDescription = arrayStepFinalData[indexPath.row].description
-//            ingridientArray = arrayStepFinalData[indexPath.row].ingridentsArray?[indexPath.row] ?? 0
-//            toolArray = arrayStepFinalData[indexPath.row].toolsArray?[indexPath.row] ?? 0
             cell2.titleLabel.text = strTitle
             cell2.stepTitle.text = "Step \(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
@@ -631,17 +656,60 @@ extension RecipeIngredientsUseViewController{
         let hour = createRecipeJson["hour"]
         let minute = createRecipeJson["minute"]
         let serving = createRecipeJson["serving"]
+        
+        var savedIngridientArray : [[String : Any]] = []
+        
+        for item in selectedIngridentsArray{
+            var ingridientDictionary : [String : Any] = [:]
+            ingridientDictionary["ingredient_id"] = item.recipeIngredientIds
+            ingridientDictionary["quantity"] = item.quantity
+            ingridientDictionary["unit"] = item.unit
+            savedIngridientArray.append(ingridientDictionary)
+        }
+        
+        var savedToolsArray : [[String : Any]] = []
+        
+        for item in selectedToolsArray{
+            var toolDictionary : [String : Any] = [:]
+            toolDictionary["tool_id"] = item.recipeToolIds
+            savedToolsArray.append(toolDictionary)
+        }
+        
+        var savedStepArray : [[String : Any]] = []
+        for item in arrayStepFinalData{
+            var stepDictionary : [String : Any] = [:]
+            stepDictionary["description"] = item.description
+            stepDictionary["title"] = item.title
+            for i in 0..<(item.ingridentsArray?.count ?? 0){
+                if item.ingridentsArray?[i].isSelected == true{
+                   
+                    selectedIngridient.append(item.ingridentsArray?[i].recipeIngredientIds ?? 0)
+                }
+            }
+            stepDictionary["ingredients"] = selectedIngridient
+
+            for i in 0..<(item.toolsArray?.count ?? 0){
+                if item.toolsArray?[i].isSelected == true{
+                   
+                    selectedTool.append(item.toolsArray?[i].recipeToolIds ?? 0)
+                }
+            }
+            stepDictionary["tools"] = selectedTool
+            
+            savedStepArray.append(stepDictionary)
+        }
        
-        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt!, APIConstants.kUnit: finalUnitIngridirnt!]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription!, APIConstants.kIngridients: [ingridientArray], APIConstants.kTools: [toolArray]]]]
+        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,"status": "1",APIConstants.kSavedIngridient: savedIngridientArray, APIConstants.kSavedTools: savedToolsArray, APIConstants.kRecipeStep: savedStepArray]
 
         let paramsMain: [String: Any] = ["params": params]
+        print(params)
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.saveRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-             let resultNew = dictResponse as? [String:Any]
-            if let message = resultNew?["message"] as? String{
-                self.showAlert(withMessage: message)
-            }
-            
+//             let resultNew = dictResponse as? [String:Any]
+//            if let message = resultNew?["message"] as? String{
+//                self.showAlert(withMessage: message)
+//            }
+            arrayStepFinalData.removeAll()
         }
     }
 

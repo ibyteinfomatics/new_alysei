@@ -50,6 +50,7 @@ class DataRecipe{
     var avgRating: String?
     var username: String?
     var image: ImageURL?
+    var imageUrl: String?
     var meal: SelectMealDataModel?
   
     init(with dictResponse: [String:Any]){
@@ -74,6 +75,7 @@ class DataRecipe{
         self.totalLikes = Int.getInt(dictResponse["total_likes"])
         self.avgRating = String.getString(dictResponse["avg_rating"])
         self.username = String.getString(dictResponse["username"])
+        self.imageUrl = String.getString(dictResponse["attachment_url"])
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)
         }

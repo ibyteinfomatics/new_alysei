@@ -40,6 +40,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var btnNext: UIButton!
+    var passpackageId: Int?
     
     var uploadImageArray = [UIImage]()
     // var selectedAssets = [TLPHAsset]()
@@ -465,8 +466,8 @@ extension MarketPlaceCreateStoreVC {
                                      APIConstants.kLocation: self.txtLocation.text ?? "",
                                      "lattitude": "\(self.latitude ?? "0")",
                                      APIConstants.kLongitude : "\(self.longitude ?? "0")",
-                                     APIConstants.kPhone : "\(self.userMobileNumber ?? "")"
-                                     
+                                     APIConstants.kPhone : "\(self.userMobileNumber ?? "")",
+                                     "package_id": "\(passpackageId ?? 0)"
         ]
         
        let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray,

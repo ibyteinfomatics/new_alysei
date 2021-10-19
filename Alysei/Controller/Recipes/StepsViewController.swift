@@ -23,10 +23,13 @@ class StepsViewController: UIViewController, StepDelegate {
         nextStep.layer.borderWidth = 1
         nextStep.layer.cornerRadius = 24
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-        nextStep.setTitle("Next", for: .normal)
+       
         stepTableViewCellCurrentIndex = page
-        if page == (stepsModel?.count ?? 0 - 1){
+        if page == ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Finish Cooking", for: .normal)
+        }
+        else{
+            nextStep.setTitle("Next", for: .normal)
         }
         
         let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
@@ -54,7 +57,7 @@ class StepsViewController: UIViewController, StepDelegate {
     
     
     @IBAction func tapDownBack(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: true)
+
         if page > 0{
             page = page - 1
             stepTableViewCellCurrentIndex = page
@@ -73,7 +76,16 @@ class StepsViewController: UIViewController, StepDelegate {
     
     func cellStepTapped(index: Int){
        page = index
-       tableView.reloadData()
+        if page < ((stepsModel?.count ?? 0) - 1){
+            nextStep.setTitle("Next", for: .normal)
+            tableView.reloadData()
+        }
+        else{
+            
+            nextStep.setTitle("Finish Cooking", for: .normal)
+            tableView.reloadData()
+        }
+      
         
     }
 }

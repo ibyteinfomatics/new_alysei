@@ -41,7 +41,7 @@ class MarketplaceOptionModel {
 class MaketPlaceHomeScreenModel{
     var top_banners: [TopBottomBanners]?
     var recently_added_product: [MyStoreProductDetail]?
-    var newly_added_sore : [MyStoreProductDetail]?
+    var newly_added_store : [MyStoreProductDetail]?
     var regions: [MyStoreProductDetail]?
     var bottom_banners: [TopBottomBanners]?
     init(with dictResponse: [String:Any]) {
@@ -51,8 +51,8 @@ class MaketPlaceHomeScreenModel{
         if let recentlyAddedProduct = dictResponse["recently_added_product"] as? [[String:Any]]{
             self.recently_added_product = recentlyAddedProduct.map({MyStoreProductDetail.init(with: $0)})
         }
-        if let newlyAddedSore = dictResponse["newly_added_sore"] as? [[String:Any]]{
-            self.newly_added_sore = newlyAddedSore.map({MyStoreProductDetail.init(with: $0)})
+        if let newlyAddedStore = dictResponse["newly_added_store"] as? [[String:Any]]{
+            self.newly_added_store = newlyAddedStore.map({MyStoreProductDetail.init(with: $0)})
         }
         if let regions = dictResponse["regions"] as? [[String:Any]]{
             self.regions = regions.map({MyStoreProductDetail.init(with: $0)})

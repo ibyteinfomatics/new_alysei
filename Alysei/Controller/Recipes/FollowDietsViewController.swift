@@ -7,9 +7,10 @@
 
 import UIKit
 import SVGKit
+
 var arraySelectedDiet: [Int]? = []
 class FollowDietsViewController: AlysieBaseViewC {
-
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,7 +18,7 @@ class FollowDietsViewController: AlysieBaseViewC {
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var selectedIndexPath : IndexPath?
     var arrDiet: [SelectRecipeDietDataModel]?
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,14 @@ class FollowDietsViewController: AlysieBaseViewC {
         
     }
     
-   
+    
     
     @IBAction func tapNextToingridient(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
-        let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DontSeeIngredientsViewController") as! DontSeeIngredientsViewController
+            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DontSeeIngredientsViewController") as! DontSeeIngredientsViewController
             arrayPreference = PreferencesDataModel.init(id: arraySelectedDiet ?? [], preference: preferenceNumber)
             arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
-        self.navigationController?.pushViewController(viewAll, animated: true)
+            self.navigationController?.pushViewController(viewAll, animated: true)
         }
         else{
             
@@ -61,31 +62,15 @@ class FollowDietsViewController: AlysieBaseViewC {
             self.arrSelectedIndex.removeAll()
             arraySelectedDiet?.removeAll()
             nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
-           
+            
             collectionView.reloadData()
-           
+            
             
         }
         
         self.navigationController?.pushViewController(viewAll, animated: true)
     }
     
-    func postRequestToGetDiet() -> Void{
-        self.view.isUserInteractionEnabled = false
-       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDiet, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
-           
-           let res = response as? [String:Any]
-           
-           if let data = res?["data"] as? [[String:Any]]{
-               self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
-           }
-           
-        self.collectionView.reloadData()
-        self.view.isUserInteractionEnabled = true
-       }
-       
-   }
-
 }
 extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -94,10 +79,6 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
-        
-//        if arrDiet?[indexPath.row].isSelected == false{
-//            cell.image1.image = nil
-//        }
         
         let imgUrl = (kImageBaseUrl + (arrDiet?[indexPath.row].imageId?.imgUrl ?? ""))
         
@@ -110,7 +91,7 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
         cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
         cell.layoutSubviews()
-      
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -119,7 +100,6 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
         selectedIndexPath = indexPath
         if  arrDiet?[indexPath.row].isSelected == true {
             arrDiet?[indexPath.row].isSelected = false
-//            cell?.image2.image = nil
             cell?.viewOfImage.layer.borderWidth = 4
             cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
             for (index,item) in arrSelectedIndex.enumerated(){
@@ -143,13 +123,13 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
             cell?.viewOfImage.layer.borderWidth = 4
             cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//            cell?.image2.image = UIImage(named: "Group 1163")
+            
             arraySelectedDiet?.append(arrDiet?[indexPath.row].dietId ?? 0)
             arrSelectedIndex.append(selectedIndexPath!)
             print("\(String(describing: arrSelectedIndex.count))")
         }
-       
-      }
+        
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -158,6 +138,23 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
         
     }
     
-    
 }
 
+extension FollowDietsViewController{
+    
+    func postRequestToGetDiet() -> Void{
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDiet, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
+            }
+            
+            self.collectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
+        }
+        
+    }
+}

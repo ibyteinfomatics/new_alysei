@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 var arraySelectedIngridient: [Int]? = []
 class DontSeeIngredientsViewController: AlysieBaseViewC {
     
@@ -16,6 +17,8 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var searchTextField: UITextField!
+    
+    
     var selectedIndexPath : IndexPath?
     var newSearchModel: [AddIngridientDataModel]? = []
     var ingdntArray: [IngridentArray] = []
@@ -65,7 +68,10 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
             arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))
             self.navigationController?.pushViewController(viewAll, animated: true)
         }
-        else{}
+        else{
+            
+        }
+        
     }
     @IBAction func tapBack(_ sender: Any) {
         
@@ -89,52 +95,8 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         self.navigationController?.pushViewController(viewAll, animated: true)
     }
     
-    
-    func callChooseIngridients(){
-        self.view.isUserInteractionEnabled = false
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
-            let dictResponse = dictResponse as? [String:Any]
-            
-            if let data = dictResponse?["data"] as? [[String:Any]]{
-                self.newSearchModel = data.map({AddIngridientDataModel.init(with: $0)})
-                
-            }
-            
-            for i in (0..<(self.newSearchModel?.count ?? 0)){
-                for j in (0..<(self.newSearchModel?[i].ingridents?.count ?? 0))
-                {
-                    self.ingdntArray.append(self.newSearchModel?[i].ingridents?[j] ?? IngridentArray())
-                }
-            }
-            
-//            for i in 0..<6{
-//                self.firstSixingdntArray.append(self.ingdntArray[i])
-//            }
-            
-            print("IngrdntArray-------",self.ingdntArray)
-            self.ingredientsCollectionView.reloadData()
-            self.searchTableView.reloadData()
-            self.view.isUserInteractionEnabled = true
-        }
-    }
-    
-    func callSearchIngridients(){
-       
-        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchTextPreferences)&type=2", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
-            let dictResponse = dictResponse as? [String:Any]
-            
-            if let data = dictResponse?["data"] as? [[String:Any]]{
-                self.ingridientSearchModel = data.map({SearchIngridientDataModel.init(with: $0)})
-                self.searching = true
-                self.searchTableView.reloadData()
-            }
-            
-        }
-    }
-    
 }
+
 extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.ingdntArray.count
@@ -222,7 +184,7 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
             return self.ingridientSearchModel?.count ?? 0
         }
         else{
-//            return self.firstSixingdntArray.count
+            //            return self.firstSixingdntArray.count
             return 0
             
         }
@@ -289,6 +251,54 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
         }
         
         return true
+    }
+    
+}
+
+extension DontSeeIngredientsViewController{
+    
+    func callChooseIngridients(){
+        self.view.isUserInteractionEnabled = false
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.newSearchModel = data.map({AddIngridientDataModel.init(with: $0)})
+                
+            }
+            
+            for i in (0..<(self.newSearchModel?.count ?? 0)){
+                for j in (0..<(self.newSearchModel?[i].ingridents?.count ?? 0))
+                {
+                    self.ingdntArray.append(self.newSearchModel?[i].ingridents?[j] ?? IngridentArray())
+                }
+            }
+            
+            //            for i in 0..<6{
+            //                self.firstSixingdntArray.append(self.ingdntArray[i])
+            //            }
+            
+            print("IngrdntArray-------",self.ingdntArray)
+            self.ingredientsCollectionView.reloadData()
+            self.searchTableView.reloadData()
+            self.view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func callSearchIngridients(){
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchTextPreferences)&type=2", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.ingridientSearchModel = data.map({SearchIngridientDataModel.init(with: $0)})
+                self.searching = true
+                self.searchTableView.reloadData()
+            }
+            
+        }
     }
     
 }

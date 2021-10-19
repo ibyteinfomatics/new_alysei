@@ -49,8 +49,7 @@ class CancelPopUpViewController: UIViewController {
     
     }
     @IBAction func tapCross(_ sender: Any) {
-        selectedIngridentsArray.removeAll()
-        selectedToolsArray.removeAll()
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -64,7 +63,7 @@ extension UIView {
     }
 }
 extension CancelPopUpViewController{
-    
+  
     func postRequestToSaveInDraftRecipe(){
         
         let imageId = createRecipeJson["recipeImage"] as? String
@@ -79,22 +78,56 @@ extension CancelPopUpViewController{
         let hour = createRecipeJson["hour"]
         let minute = createRecipeJson["minute"]
         let serving = createRecipeJson["serving"]
-       
-        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,"status": "0",APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt ?? 0, APIConstants.kUnit: finalUnitIngridirnt ?? ""]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId , APIConstants.kQuantity: finalquantityTool ?? 0, APIConstants.kUnit: finalUnitTool ?? ""]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription ?? "", APIConstants.kIngridients: [ingridientArray] , APIConstants.kTools: [toolArray]]]]
-
-    
-        let paramsMain: [String: Any] = ["params": params]
         
+        var savedIngridientArray : [[String : Any]] = []
+        
+        for item in selectedIngridentsArray{
+            var ingridientDictionary : [String : Any] = [:]
+            ingridientDictionary["ingredient_id"] = item.recipeIngredientIds
+            ingridientDictionary["quantity"] = item.quantity
+            ingridientDictionary["unit"] = item.unit
+            savedIngridientArray.append(ingridientDictionary)
+        }
+        
+        var savedToolsArray : [[String : Any]] = []
+        
+        for item in selectedToolsArray{
+            var toolDictionary : [String : Any] = [:]
+            toolDictionary["tool_id"] = item.recipeToolIds
+            savedToolsArray.append(toolDictionary)
+        }
+        
+        var savedStepArray : [[String : Any]] = []
+        for item in arrayStepFinalData{
+            var stepDictionary : [String : Any] = [:]
+            stepDictionary["description"] = item.description
+            stepDictionary["title"] = item.title
+            stepDictionary["ingredients"] = item.ingridentsArray?.map{ (selectedIngridentsArray) -> Int in
+                if selectedIngridentsArray.isSelected == true{
+                    return selectedIngridentsArray.recipeIngredientIds!
+                }
+              return 0
+            }
+            stepDictionary["tools"] = item.toolsArray?.map{ (selectedToolsArray) -> Int in
+                if selectedToolsArray.isSelected == true{
+                    return selectedToolsArray.recipeToolIds!
+                }
+              return 0
+            }
+            savedStepArray.append(stepDictionary)
+        }
+       
+        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,"status": "0",APIConstants.kSavedIngridient: savedIngridientArray, APIConstants.kSavedTools: savedToolsArray, APIConstants.kRecipeStep: savedStepArray]
+
+        let paramsMain: [String: Any] = ["params": params]
+        print(params)
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.draftRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
              let resultNew = dictResponse as? [String:Any]
             if let message = resultNew?["message"] as? String{
-                self.showAlert(withMessage: message, nil)
+                self.showAlert(withMessage: message)
             }
             
         }
     }
-
-    
 }

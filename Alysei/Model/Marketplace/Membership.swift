@@ -92,6 +92,9 @@ class MyStoreProductDetail{
     var id: Int?
     var storeName: String?
     var logoId: Attachment?
+    var latitude:String?
+    var longitude: String?
+    //var phone: String?
     
 
     init(with data: [String:Any]?) {
@@ -130,6 +133,7 @@ class MyStoreProductDetail{
         self.total_four_star = Int.getInt(data?["total_four_star"])
         self.total_five_star = Int.getInt(data?["total_five_star"])
         self.location = String.getString(data?["location"])
+        //self.phone = String.getString(data?["phone"])
         if let product_gallery = data?["product_gallery"] as? [[String:Any]]{
             self.product_gallery = product_gallery.map({ProductGallery.init(with: $0)})
         }
@@ -150,7 +154,8 @@ class MyStoreProductDetail{
         self.userFieldid = Int.getInt(data?["user_field_id"])
         self.parent = Int.getInt(data?["parent"])
         self.head = Int.getInt(data?["head"])
-        
+        self.longitude = String.getString(data?["longitude"])
+        self.latitude = String.getString(data?["lattitude"])
         self.updatedAt = String.getString(data?["updated_at"])
         if let logoId = data?["logo_id"] as? [String:Any]{
             self.logoId = Attachment.init(with: logoId)

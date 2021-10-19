@@ -7,9 +7,9 @@
 
 import UIKit
 var isFromStep = String()
-var editstepsModel: [StepsDataModel]? = []
-var editusedIngridientModel : [UsedIngridientDataModel]? = []
-var editusedToolModel: [UsedToolsDataModel]? = []
+var editstepsModel: [StepsDataModel] = []
+var editusedIngridientModel : [UsedIngridientDataModel] = []
+var editusedToolModel: [UsedToolsDataModel] = []
 
 class EditScreen2ViewController: UIViewController  {
     
@@ -39,7 +39,8 @@ class EditScreen2ViewController: UIViewController  {
     var strReturn1 = Int()
     var arrQuantity = NSMutableArray()
     var arrUnit = NSMutableArray()
-    
+    var selectedIngridient = [Int]()
+    var selectedTool = [Int]()
    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -139,6 +140,7 @@ class EditScreen2ViewController: UIViewController  {
             self.editunitLabel.text = String(self.strReturn)
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
+            
         default:
             break
         }
@@ -200,8 +202,21 @@ class EditScreen2ViewController: UIViewController  {
     }
     
     @IBAction func saveEditRecipe(_ sender: Any) {
-        let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-        self.navigationController?.pushViewController(add, animated: true)
+        if editusedIngridientModel.count == 0 {
+            showAlert(withMessage: AlertMessage.kSelectIngridient)
+        }
+        else if editusedToolModel.count == 0{
+            showAlert(withMessage: AlertMessage.kSelectTool)
+        }
+        else if editstepsModel.count == 0{
+            showAlert(withMessage: "Please Add Step")
+        }
+        else{
+            postRequestToSaveEditRecipe()
+            let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+            self.navigationController?.pushViewController(add, animated: true)
+        }
+        
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -209,8 +224,8 @@ class EditScreen2ViewController: UIViewController  {
     }
     
     func tapForDeleteIngridient(indexPath: IndexPath) {
-        editusedIngridientModel?[indexPath.row].isSelected = false
-        editusedIngridientModel?.remove(at: indexPath.row)
+        editusedIngridientModel[indexPath.row].isSelected = false
+        editusedIngridientModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
         editscreenTableView.deleteRows(at: [indexPath], with: .left)
         self.editscreenTableView.reloadData()
@@ -226,8 +241,8 @@ class EditScreen2ViewController: UIViewController  {
     
     func tapForDeleteIngridient1(indexPath: IndexPath) {
         
-            editusedToolModel?[indexPath.row].isSelected = false
-            editusedToolModel?.remove(at: indexPath.row)
+        editusedToolModel[indexPath.row].isSelected = false
+        editusedToolModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
         editscreenTableView.deleteRows(at: [indexPath], with: .left)
         self.editscreenTableView.reloadData()
@@ -235,7 +250,7 @@ class EditScreen2ViewController: UIViewController  {
     }
     
     func deleteClickSteps(index: IndexPath) {
-        editstepsModel?.remove(at: index.row)
+        editstepsModel.remove(at: index.row)
         editscreenTableView.beginUpdates()
         editscreenTableView.deleteRows(at: [index], with: .left)
         self.editscreenTableView.reloadData()
@@ -263,13 +278,13 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return editusedIngridientModel?.count ?? 0
+            return editusedIngridientModel.count
         }
         else if section == 1 {
-            return editusedToolModel?.count ?? 0
+            return editusedToolModel.count
         }
         else if section == 2 {
-            return editstepsModel?.count ?? 0
+            return editstepsModel.count
         }
         return 0
     }
@@ -284,7 +299,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
         
         switch (section) {
         case 0:
-            if editusedIngridientModel?.count ?? 0 == 0{
+            if editusedIngridientModel.count == 0{
                 
                 return 120
             }
@@ -293,7 +308,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
                 return 80
             }
         case 1:
-            if editusedToolModel?.count ?? 0 == 0{
+            if editusedToolModel.count == 0{
                 
                 return 120
             }
@@ -328,15 +343,15 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             dunamicButton.setTitle("  Add Ingredients to Recipe", for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraIngridients(sender:)), for: .touchUpInside)
-            if editusedIngridientModel?.count == 0{
+            if editusedIngridientModel.count == 0{
                 statusLabel.isHidden = false
-                statusLabel.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 40)
+                statusLabel.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 40)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
             else{
                 statusLabel.isHidden = true
-                statusLabel.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 0)
+                statusLabel.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 0)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
@@ -354,15 +369,15 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             dunamicButton.setTitle("  Add Tools, Appliances & Utencils", for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraTools(sender:)), for: .touchUpInside)
-            if editusedToolModel?.count == 0{
+            if editusedToolModel.count == 0{
                 statusLabel1.isHidden = false
-                statusLabel1.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 40)
+                statusLabel1.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 40)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
             else{
                 statusLabel1.isHidden = true
-                statusLabel1.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 0)
+                statusLabel1.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 0)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
@@ -372,25 +387,25 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
         case 2:
             
             setHeaderView()
-            statusLabel1.layer.borderWidth = 1
-            statusLabel1.layer.cornerRadius = 5
-            statusLabel1.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
-            statusLabel1.font = UIFont(name: "Helvetica Neue Regular", size: 14)
-            statusLabel1.textColor = UIColor.lightGray
-            headerView.addSubview(statusLabel1)
-            statusLabel1.text = "  No Step Added yet!"
+            statusLabel2.layer.borderWidth = 1
+            statusLabel2.layer.cornerRadius = 5
+            statusLabel2.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
+            statusLabel2.font = UIFont(name: "Helvetica Neue Regular", size: 14)
+            statusLabel2.textColor = UIColor.lightGray
+            headerView.addSubview(statusLabel2)
+            statusLabel2.text = "  No Step Added yet!"
             dunamicButton.setTitle("  Add Recipe Steps", for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraSteps(sender:)), for: .touchUpInside)
-            if editstepsModel?.count == 0{
-                statusLabel1.isHidden = false
-                statusLabel1.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 40)
+            if editstepsModel.count == 0{
+                statusLabel2.isHidden = false
+                statusLabel2.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 40)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
             else{
-                statusLabel1.isHidden = true
-                statusLabel1.frame = CGRect(x: 50, y: 58, width: (self.view.frame.size.width-100), height: 0)
+                statusLabel2.isHidden = true
+                statusLabel2.frame = CGRect(x: 50, y: 60, width: (self.view.frame.size.width-100), height: 0)
                 dunamicButton.frame = CGRect(x: 15, y: 10, width: (self.view.frame.size.width-30), height: 48)
                 
             }
@@ -418,10 +433,10 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             //                strIngridientId = selectedIngridentsArray[indexPath.row].recipeIngredientIds ?? 0
             //                finalUnitIngridirnt = selectedIngridentsArray[indexPath.row].unit ?? ""
             //                finalquantityIngridirnt = selectedIngridentsArray[indexPath.row].quantity ?? 0
-            cell.IngredientsNameLbl.text = editusedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
+            cell.IngredientsNameLbl.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
             //                strIngridientQuantity = selectedIngridentsArray[indexPath.row].pickerData ?? ""
-            cell.IngredientsValueLbl.text = (editusedIngridientModel?[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel?[indexPath.row].unit ?? "")
-            let imgUrl = (kImageBaseUrl + (editusedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            cell.IngredientsValueLbl.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
+            let imgUrl = (kImageBaseUrl + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell.img.setImage(withString: imgUrl)
             cell.indexPath = indexPath
             cell.IngredientsValueLbl.isHidden = false
@@ -434,11 +449,11 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             
             //            strToolId = selectedToolsArray[indexPath.row].recipeToolIds ?? 0
             
-            cell1.IngredientsNameLbl.text = editusedToolModel?[indexPath.row].tool?.toolTitle
+            cell1.IngredientsNameLbl.text = editusedToolModel[indexPath.row].tool?.toolTitle
             
             cell1.IngredientsValueLbl.isHidden = true
             
-            let imgUrl = (kImageBaseUrl + (editusedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell1.img.setImage(withString: imgUrl)
             cell1.indexPath = indexPath
             
@@ -446,10 +461,8 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             
         case 2:
             cell2 = tableView.dequeueReusableCell(withIdentifier: "EditNumberOfStepsTableViewCell") as! EditNumberOfStepsTableViewCell
-            strTitle = editstepsModel?[indexPath.row].title
-            strDescription = editstepsModel?[indexPath.row].description
-            //            ingridientArray = arrayStepFinalData[indexPath.row].ingridentsArray?[indexPath.row] ?? 0
-            //            toolArray = arrayStepFinalData[indexPath.row].toolsArray?[indexPath.row] ?? 0
+            strTitle = editstepsModel[indexPath.row].title
+            strDescription = editstepsModel[indexPath.row].description
             cell2.titleLabel.text = strTitle
             cell2.stepTitle.text = "Step \(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
@@ -531,10 +544,6 @@ extension EditScreen2ViewController{
             
             let dictResponse = dictResponse as? [String:Any]
             
-            //            if let data = dictResponse?["recipe"] as? [String:Any]{
-            //                recipeModel = ViewRecipeDetailDataModel.init(with: data)
-            //
-            //            }
             if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
                 editusedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
                 
@@ -547,37 +556,75 @@ extension EditScreen2ViewController{
                 editstepsModel = data.map({StepsDataModel.init(with: $0)})
                 
             }
-            //            if let data = dictResponse?["you_might_also_like"] as? [[String:Any]]{
-            //                youMightAlsoLikeModel = data.map({ViewRecipeDetailDataModel.init(with: $0)})
-            //
-            //            }
-            
+                    
             self.editscreenTableView.reloadData()
-            
         }
     }
     
     func postRequestToSaveEditRecipe(){
         
-        let imageId = createRecipeJson["recipeImage"] as? String
-        let name = createRecipeJson["name"]
-        let mealId = createRecipeJson["mealId"]
-        let courseId = createRecipeJson["courseId"]
-        let cousinId = createRecipeJson["cusineId"]
-        let regionId = createRecipeJson["regionId"]
-        let dietId = createRecipeJson["dietId"]
-        let foodIntoleranceId = createRecipeJson["foodIntoleranceId"]
-        let cookingSkillId = createRecipeJson["cookingSkillId"]
-        let hour = createRecipeJson["hour"]
-        let minute = createRecipeJson["minute"]
-        let serving = createRecipeJson["serving"]
+        let imageId = createEditRecipeJson["recipeImage"] as? String
+        let name = createEditRecipeJson["name"]
+        let mealId = createEditRecipeJson["mealId"]
+        let courseId = createEditRecipeJson["courseId"]
+        let cousinId = createEditRecipeJson["cusineId"]
+        let regionId = createEditRecipeJson["regionId"]
+        let dietId = createEditRecipeJson["dietId"]
+        let foodIntoleranceId = createEditRecipeJson["foodIntoleranceId"]
+        let cookingSkillId = createEditRecipeJson["cookingSkillId"]
+        let hour = createEditRecipeJson["hour"]
+        let minute = createEditRecipeJson["minute"]
+        let serving = createEditRecipeJson["serving"]
         
-        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId!,APIConstants.kSavedIngridient: [[APIConstants.kIngridientId: strIngridientId, APIConstants.kQuantity: finalquantityIngridirnt!, APIConstants.kUnit: finalUnitIngridirnt!]],APIConstants.kSavedTools: [[APIConstants.kToolId: strToolId]], APIConstants.kRecipeStep: [[APIConstants.kTitle: strTitle ?? "", APIConstants.kDescription: strDescription!, APIConstants.kIngridients: [ingridientArray], APIConstants.kTools: [toolArray]]]]
+        var savedIngridientArray : [[String : Any]] = []
         
+        for item in editusedIngridientModel{
+            var ingridientDictionary : [String : Any] = [:]
+            ingridientDictionary["ingredient_id"] = item.ingridientId
+            ingridientDictionary["quantity"] = item.quantity
+            ingridientDictionary["unit"] = item.unit
+            savedIngridientArray.append(ingridientDictionary)
+        }
+        
+        var savedToolsArray : [[String : Any]] = []
+        
+        for item in editusedToolModel{
+            var toolDictionary : [String : Any] = [:]
+            toolDictionary["tool_id"] = item.toolId
+            savedToolsArray.append(toolDictionary)
+        }
+        
+        var savedStepArray : [[String : Any]] = []
+        for item in editstepsModel{
+            var stepDictionary : [String : Any] = [:]
+            stepDictionary["description"] = item.description
+            stepDictionary["title"] = item.title
+            for i in 0..<(item.stepIngridient?.count ?? 0){
+                if item.stepIngridient?[i].isSelected == true{
+                   
+                    selectedIngridient.append(item.stepIngridient?[i].ingridientId ?? 0)
+                }
+            }
+            stepDictionary["ingredients"] = selectedIngridient
+              
+        for i in 0..<(item.stepTool?.count ?? 0){
+            if item.stepTool?[i].isSelected == true{
+               
+                selectedTool.append(item.stepTool?[i].toolId ?? 0)
+            }
+        }
+            stepDictionary["tools"] = selectedTool
+            
+            savedStepArray.append(stepDictionary)
+        }
+       
+        let params: [String:Any] = [APIConstants.kImageId: imageId!, APIConstants.kName: name!, APIConstants.kMealId: mealId!, APIConstants.kCourseId: courseId!, APIConstants.kHours: hour!, APIConstants.kminutes: minute!, APIConstants.kServing: serving!, APIConstants.kCousinId: cousinId!, APIConstants.kRegionId: regionId!, APIConstants.kDietId: dietId!, APIConstants.kIntoleranceId: foodIntoleranceId ?? 0, APIConstants.kCookingSkillId: cookingSkillId ?? 0,"status": "1", APIConstants.kSavedIngridient: savedIngridientArray, APIConstants.kSavedTools: savedToolsArray, APIConstants.kRecipeStep: savedStepArray]
+
         let paramsMain: [String: Any] = ["params": params]
+        print(params)
         
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.saveRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            let resultNew = dictResponse as? [String:Any]
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.updateRecipe + "\(editRecipeId)", requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+             let resultNew = dictResponse as? [String:Any]
             if let message = resultNew?["message"] as? String{
                 self.showAlert(withMessage: message)
             }

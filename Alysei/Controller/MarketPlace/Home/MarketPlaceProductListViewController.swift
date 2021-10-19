@@ -11,6 +11,9 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var vwSearch: UIView!
+    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+    @IBOutlet weak var searchtextField: UITextField!
     var listType:Int?
     var keywordSearch: String?
     var pushedFromVC : PushedFrom?
@@ -29,8 +32,10 @@ class MarketPlaceProductListViewController: UIViewController {
     var selectFdaCertified = [Int]()
     var selectedSortProducer = [Int]()
     var selectedOptionsMethod = [Int]()
+    var arrSelectedPropertiesName = [String]()
+    var arrSelectedMethodName = [String]()
     
-    
+    var isSearch = false
     var selecteMethodFilterName :String?
     var selectePropertiesFilterName :String?
     var selecteCategoryFilterId :String?
@@ -38,6 +43,10 @@ class MarketPlaceProductListViewController: UIViewController {
     var sortFilterId: String?
     var fdaFilterId: String?
     var selectRatingId: String?
+    var searchProductString: String?
+    var modifiedRatingArray = [Int]()
+    var selectedRatingStringId : String?
+    var stringRatingArray = [String]()
     
     //var selectFdaCertifiedId: String?
     
@@ -58,17 +67,26 @@ class MarketPlaceProductListViewController: UIViewController {
         }else{
             self.callProductListApi()
         }
-        
+        self.vwSearch.isHidden = true
+        self.hghtSearch.constant = 0
+        vwSearch.layer.cornerRadius = 20
+        searchtextField.delegate = self
+        searchtextField.attributedPlaceholder = NSAttributedString(string: "Search",
+                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @IBAction func btnSearch(_ sender: UIButton){
+        self.vwSearch.isHidden = false
+        self.hghtSearch.constant = 40
+        self.isSearch = true
+    }
     @IBAction func btnFilterAction(_ sender: UIButton){
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
-       // nextVC.identifyList = 4
+        // nextVC.identifyList = 4
         if pushedFromVC == .region {
             nextVC.loadFilter =  .region
         }else if pushedFromVC == .category{
@@ -80,52 +98,57 @@ class MarketPlaceProductListViewController: UIViewController {
         }else if pushedFromVC == .myFav{
             nextVC.loadFilter =  .myFav
         }else{
-        nextVC.loadFilter = .conservationFood
+            nextVC.loadFilter = .conservationFood
         }
         nextVC.arrSelectedCategories = self.arrSelectedCategories
         nextVC.arrSelectedProperties = self.arrSelectedProperties
         nextVC.arrSelectedItalianRegion = self.arrSelectedItalianRegion
         nextVC.arrSelectedDistance = self.arrSelectedDistance
         nextVC.arrSelectedRating = self.arrSelectedRating
-       
+        
         nextVC.selectFdaCertified = self.selectFdaCertified
         nextVC.selectedSortProducer = self.selectedSortProducer
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
-        
+        nextVC.arrSelectedMethodName =  self.arrSelectedMethodName
+        nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         
         nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
             self.arrSelectedCategories = nextVC.arrSelectedCategories
             self.arrSelectedProperties = nextVC.arrSelectedProperties
-           self.arrSelectedItalianRegion =  nextVC.arrSelectedItalianRegion
+            self.arrSelectedItalianRegion =  nextVC.arrSelectedItalianRegion
             self.arrSelectedDistance = nextVC.arrSelectedDistance
             self.arrSelectedRating = nextVC.arrSelectedRating
             
             self.selectFdaCertified = nextVC.selectFdaCertified
             self.selectedSortProducer = nextVC.selectedSortProducer
             self.selectedOptionsMethod = nextVC.selectedOptionsMethod
-            
-        self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            self.arrSelectedMethodName = nextVC.arrSelectedMethodName
+            self.arrSelectedPropertiesName = nextVC.arrSelectedPropertiesName
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
             
         }
         nextVC.clearFilterApi = { loadfilter in
             self.arrSelectedCategories = [Int]()
             self.arrSelectedProperties = [Int]()
-           self.arrSelectedItalianRegion =  [Int]()
+            self.arrSelectedItalianRegion =  [Int]()
             self.arrSelectedDistance = [Int]()
             self.arrSelectedRating = [Int]()
             
             self.selectFdaCertified = [Int]()
             self.selectedSortProducer = [Int]()
             self.selectedOptionsMethod = [Int]()
+            self.arrSelectedMethodName = [String]()
+            
+            self.arrSelectedPropertiesName = [String]()
             if loadfilter == .region{
                 self.callRegionProductListApi(1)
             }else if loadfilter == .category {
                 self.callCategoryProductListApi(1)
-        }else if loadfilter == .conservationFood {
-            self.callConservationListApi(1)
-        }else if loadfilter == .fdaCertified || loadfilter == .myFav {
+            }else if loadfilter == .conservationFood {
+                self.callConservationListApi(1)
+            }else if loadfilter == .fdaCertified || loadfilter == .myFav {
                 self.callOptionApi(1)
-        }else if loadfilter == .properties {
+            }else if loadfilter == .properties {
                 self.callConservationListApi(1)
             }else{
                 self.callProductListApi()
@@ -139,10 +162,13 @@ class MarketPlaceProductListViewController: UIViewController {
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
             if indexOfPageToRequest < lastPage ?? 0{
-                self.showAlert(withMessage: "No More Data Found")
+                // self.showAlert(withMessage: "No More Data Found")
+                print("No Data")
             }else{
                 // increments the number of the page to request
-                indexOfPageToRequest += 1
+                if isSearch == false{
+                    indexOfPageToRequest += 1
+                
                 
                 // call your API for more data
                 if pushedFromVC == .region{
@@ -158,12 +184,13 @@ class MarketPlaceProductListViewController: UIViewController {
                 }else{
                     self.callProductListApi()
                 }
-                    // tell the table view to reload with the new data
-                    self.tableView.reloadData()
                 }
+                // tell the table view to reload with the new data
+                self.tableView.reloadData()
             }
-            
         }
+        
+    }
 }
 
 extension MarketPlaceProductListViewController: UITableViewDelegate, UITableViewDataSource{
@@ -188,7 +215,24 @@ extension MarketPlaceProductListViewController: UITableViewDelegate, UITableView
     }
     
 }
-
+extension MarketPlaceProductListViewController : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange,
+                                                       with: string)
+            if updatedText == "" {
+                callOptionApi(1)
+                self.isSearch = false
+            }else{
+                self.searchProductString = updatedText
+                self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            }
+            
+        }
+        return true
+    }
+}
 extension MarketPlaceProductListViewController{
     func callProductListApi(){
         let urlString = APIUrl.kMarketPlaceProductBox + "\(listType ?? 0)" + "&keyword=" + "\(keywordSearch ?? "")"
@@ -284,21 +328,15 @@ extension MarketPlaceProductListViewController{
     
     func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?){
         
-       // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
-    
+        // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
+        
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
-        if pushedFromVC == .properties{
-            selectePropertiesFilterName = "\(keywordSearch ?? "")"
-        }else{
-            selectePropertiesFilterName = selectedPropertyString
-        }
-       
+        selectePropertiesFilterName = selectedPropertyString
+        
+        
         let selectedMethodStringName = arrSelectedMethodName?.joined(separator: ",")
-        if pushedFromVC == .conservation{
-            selecteMethodFilterName  = "\(keywordSearch ?? "")"
-        }else{
-            selecteMethodFilterName = selectedMethodStringName
-        }
+        selecteMethodFilterName = selectedMethodStringName
+        
         
         
         let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
@@ -319,32 +357,41 @@ extension MarketPlaceProductListViewController{
             selectedRegionFilterId = selectedRegionStringId
         }
         
-       
-        let stringRatingArray = arrSelectedRating?.compactMap({String($0)})
-        let selectedRatingStringId = stringRatingArray?.joined(separator: ",")
-        if selectedRatingStringId == "0"{
-            selectRatingId = "1"
-        }else if selectedRatingStringId == "1"{
-            selectRatingId = "2"
-        }else if selectedRatingStringId == "2"{
-            selectRatingId = "3"
-        }else{
-            selectRatingId = ""
+        
+//        let stringRatingArray = arrSelectedRating?.compactMap({String($0)})
+//        let selectedRatingStringId = stringRatingArray?.joined(separator: ",")
+//        if selectedRatingStringId == "0"{
+//            selectRatingId = "1"
+//        }else if selectedRatingStringId == "1"{
+//            selectRatingId = "2"
+//        }else if selectedRatingStringId == "2"{
+//            selectRatingId = "3"
+//        }else{
+//            selectRatingId = ""
+//        }
+        //MARK:- Rating
+        if arrSelectedRating?.count != 0{
+        for i in 0..<(arrSelectedRating?.count ?? 0){
+            self.modifiedRatingArray.append((arrSelectedRating?[i] ?? 0) + 1)
         }
+         stringRatingArray = modifiedRatingArray.compactMap({String($0)})
+        
+        }
+        else{
+            stringRatingArray = arrSelectedRating?.compactMap({String($0)}) ?? [String]()
+        }
+         selectedRatingStringId = stringRatingArray.joined(separator: ",")
         
         let stringFdaArray = selectFdaCertified?.compactMap({String($0)})
         let selectedFdaCertificate = stringFdaArray?.joined(separator: ",")
-        if pushedFromVC == .fdaCertified {
-            fdaFilterId = "1"
-        }else{
+        
             if selectedFdaCertificate == "0"{
-            fdaFilterId = "1"
+                fdaFilterId = "1"
             }else if selectedFdaCertificate == "1"{
                 fdaFilterId = "0"
             }else{
                 fdaFilterId = ""
             }
-        }
         
         let stringSortArray = selectedSortProducer?.compactMap({String($0)})
         let selectedSortProducerStringId = stringSortArray?.joined(separator: ",")
@@ -355,9 +402,10 @@ extension MarketPlaceProductListViewController{
         }else{
             sortFilterId = ""
         }
-    
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectRatingId ?? "")" + "type=2"
+        
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product=" + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&sort_by_product=" + "" + "&keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)" + "&type=" + "2"
+        
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
