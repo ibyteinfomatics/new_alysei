@@ -55,7 +55,7 @@ class HubsViewC: AlysieBaseViewC {
 
 extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return arruserCount?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,7 +86,9 @@ extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         }else if arruserCount?[indexPath.row].role_id == UserRoles.travelAgencies.rawValue{
             controller?.currentIndex =  B2BSearch.TravelAgencies.rawValue
         }
-       
+//        else if arruserCount?[indexPath.row].role_id == UserRoles.voyagers.rawValue{
+//            controller?.currentIndex =  B2BSearch.Voyager.rawValue
+//        }
         
     
     }

@@ -34,16 +34,17 @@ class ProducerStoreFilterVC: UIViewController {
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var subOptionTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
+  
     var selectedIndex = 0
     
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
     var arrOption = ["Categories","Properties","Italian Region","Ratings"]
     var arrConservationOption = ["Categories","Properties","Italian Region","FDA Certfied"]
-    var arrRegionOption = ["Producers","Method","Categories","Properties","FDA Certfied"]
+    var arrRegionOption = ["Product","Method","Categories","Properties","FDA Certfied"]
     var arrCategoriesOption = ["Method","Properties","FDA Certfied"]
     var arrPropertiesOption = ["Method","FDA Certfied","Categories"]
     //var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
-    var arrFdaCertifiedOption = ["Producers","Italian Region","Categories"]
+    var arrFdaCertifiedOption = ["Product","Italian Region","Categories"]
     var arrMyFavOption = ["Producers","Method","Categories","Properties","FDA Certfied","Distance","Ratings"]
     
     var arrDistance = ["Within 5 Miles","Within 10 Miles","Within 20 Miles","Within 40 Miles","Within 100 Miles"]

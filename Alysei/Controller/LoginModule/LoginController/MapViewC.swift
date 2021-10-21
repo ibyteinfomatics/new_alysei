@@ -194,6 +194,9 @@ class MapViewC: AlysieBaseViewC {
             let camera = GMSCameraPosition.camera(withLatitude: latitudeDegree ?? 0.0 , longitude: longitudeDegree ?? 0.0, zoom: 6.0)
             self.mapView.camera = camera
             self.addCircle()
+        }else if self.fromVC == .StoreDetail{
+            let camera = GMSCameraPosition.camera(withLatitude: self.hubLatCordinate ?? 0.0 , longitude: self.hubLongCordinate ?? 0.0, zoom: 12.0)
+            self.mapView.camera = camera
         }else{
             kSharedUserDefaults.latitude = latitude
             kSharedUserDefaults.longitude = longitude

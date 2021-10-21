@@ -177,6 +177,7 @@ enum isCameFrom {
     case B2B
     case EditPost
     case StoreDetail
+    case editProfile
 }
 //class UserImage: {
 //
@@ -187,6 +188,7 @@ enum B2BSearch : Int{
     case Restaurant = 2
     case Expert = 3
     case TravelAgencies = 4
+    //case Voyager = 5
     case Producer = 5
 }
 

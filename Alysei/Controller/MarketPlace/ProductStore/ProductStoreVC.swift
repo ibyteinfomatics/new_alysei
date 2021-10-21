@@ -43,6 +43,8 @@ class ProductStoreVC: UIViewController {
     var data : MyStoreProductDetail?
     var searchTxt: String?
     var lastPage: Int?
+    var typeFirst = true
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         vwSearch.isHidden =  true
@@ -82,9 +84,12 @@ class ProductStoreVC: UIViewController {
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
         nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         nextVC.arrSelectedMethodName = self.arrSelectedMethodName
-        nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
-            
-        self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+        nextVC.callApiCallBack = {
+            arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+           
+            self.arrListData = [MyStoreProductDetail]()
+            self.indexOfPageToRequest = 1
+        self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             
             self.arrSelectedCategories = nextVC.arrSelectedCategories
             self.arrSelectedProperties = nextVC.arrSelectedProperties
@@ -137,6 +142,8 @@ class ProductStoreVC: UIViewController {
                 // call your API for more data
                 if self.isSearch == false{
                 callMyStoreProductApi(indexOfPageToRequest)
+                }else{
+                    self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,indexOfPageToRequest)
                 }
                 
                 // tell the table view to reload with the new data
@@ -151,12 +158,17 @@ extension ProductStoreVC: UITextFieldDelegate{
         if let text = textField.text as NSString? {
             let txtAfterUpdate = text.replacingCharacters(in: range, with: string)
             self.searchTxt = txtAfterUpdate
-            
+            if typeFirst == true{
+                self.arrListData = [MyStoreProductDetail]()
+                self.typeFirst = false
+            }
             if self.searchTxt == "" {
+                self.arrListData = [MyStoreProductDetail]()
                 callMyStoreProductApi(1)
                 self.isSearch = false
+                self.typeFirst = true
             }else{
-            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             }
        
     }
@@ -165,22 +177,22 @@ extension ProductStoreVC: UITextFieldDelegate{
 }
 extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch == false{
+        //if isSearch == false{
             return arrListData.count
-        }else{
-        return arrProductList?.myStoreProduct?.count ?? 0
-        }
+//        }else{
+//        return arrProductList?.myStoreProduct?.count ?? 0
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
        
-        if isSearch == false{
+       // if isSearch == false{
              data = arrListData[indexPath.row]
-        }else{
-            data = arrProductList?.myStoreProduct?[indexPath.row]
-        }
+//        }else{
+//            data = arrProductList?.myStoreProduct?[indexPath.row]
+//        }
         
         cell.configCell(data)
         let imgUrl = (kImageBaseUrl + (data?.logo_id ?? ""))
@@ -201,13 +213,13 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
         
-        var data = arrListData[indexPath.row]
-        if isSearch {
-            
-            data = (arrProductList?.myStoreProduct?[indexPath.row])!
-        } else {
-            data = arrListData[indexPath.row]
-        }
+        //var data = arrListData[indexPath.row]
+//        if isSearch {
+//
+//            data = (arrProductList?.myStoreProduct?[indexPath.row])!
+//        } else {
+            let data = arrListData[indexPath.row]
+       // }
         
         
         nextVC.passStoreId = "\(data.marketplace_store_id ?? 0)"
@@ -233,8 +245,9 @@ extension ProductStoreVC {
             self.tableView.reloadData()
         }
     }
-    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?){
+    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?, _ pageNo: Int?){
         
+       
        // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
     
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
@@ -267,7 +280,7 @@ extension ProductStoreVC {
         let selectedSortProducerString = String.getString(selectedSortProducer?.first)
         let selectFdaCertifiedString = String.getString(selectFdaCertified?.first)
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertifiedString )" + "&sort_by_producer=" + "\(selectedSortProducerString )" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1" + "&keyword=" + "\(self.searchTxt ?? "")" + "&title=" + "" + "&boxid=1"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertifiedString )" + "&sort_by_producer=" + "\(selectedSortProducerString )" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1" + "&keyword=" + "\(self.searchTxt ?? "")" + "&title=" + "" + "&box_id=1" + "&page=" + "\(pageNo ?? 1)"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
@@ -278,6 +291,7 @@ extension ProductStoreVC {
                 if let data = response?["data"] as? [String:Any]{
                     self.lastPage = data["last_page"] as? Int
                     self.arrProductList = ProductsStore.init(with: data)
+                    self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
                 }
             default:
                 print("No Data")
@@ -320,7 +334,7 @@ class ProductTableViewCell: UITableViewCell{
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
         } else if (data?.avg_rating ?? "") >= "0.1" && (data?.avg_rating ?? "") <= "0.9" {
-            userRatingStar1.image = UIImage(named: "icons8_christmas_star")
+            userRatingStar1.image = UIImage(named: "HalfStar")
             userRatingStar2.image = UIImage(named: "icons8_star")
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")

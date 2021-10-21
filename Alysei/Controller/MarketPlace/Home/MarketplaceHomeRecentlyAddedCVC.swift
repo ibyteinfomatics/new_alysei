@@ -32,38 +32,68 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
         lblTotalReview.text = (data.total_reviews ?? "0") + "reviews"
         lblAvgRating.text = data.avg_rating
         
-        if "\(data.avg_rating ?? "")" == "0" {
+        if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{
            imgStar1.image = UIImage(named: "icons8_star")
             imgStar2.image = UIImage(named: "icons8_star")
             imgStar3.image = UIImage(named: "icons8_star")
             imgStar4.image = UIImage(named: "icons8_star")
            imgStar5.image = UIImage(named: "icons8_star")
            
-        }else if "\(data.avg_rating ?? "")" == "1" {
+        }else if(data.avg_rating ?? "") >= "0.1" && (data.avg_rating ?? "") <= "0.9" {
+            imgStar1.image = UIImage(named: "HalfStar")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "1" || data.avg_rating == "1.0"{
             imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_star")
             imgStar3.image = UIImage(named: "icons8_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
-        }else if "\(data.avg_rating ?? "")" == "2" {
+        }else if (data.avg_rating ?? "") >= "1.1"  && (data.avg_rating ?? "") <= "1.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "HalfStar")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "2" || data.avg_rating == "2.0" {
             imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_christmas_star")
             imgStar3.image = UIImage(named: "icons8_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
-        }else if "\(data.avg_rating ?? "")" == "3" {
+        }else if (data.avg_rating ?? "") >= "2.1"  && (data.avg_rating ?? "") <= "2.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "HalfStar")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if data.avg_rating == "3.0" || data.avg_rating == "3"{
             imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_christmas_star")
             imgStar3.image = UIImage(named: "icons8_christmas_star")
             imgStar4.image = UIImage(named: "icons8_star")
             imgStar5.image = UIImage(named: "icons8_star")
-        }else if "\(data.avg_rating ?? "")" == "4" {
+        }else if (data.avg_rating ?? "") >= "3.1"  && (data.avg_rating ?? "") <= "3.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "HalfStar")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "4" ||  data.avg_rating == "4.0" {
             imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_christmas_star")
             imgStar3.image = UIImage(named: "icons8_christmas_star")
             imgStar4.image = UIImage(named: "icons8_christmas_star")
             imgStar5.image = UIImage(named: "icons8_star")
-        }else if "\(data.avg_rating ?? "")" == "5" {
+        }else if (data.avg_rating ?? "") >= "4.1"  && (data.avg_rating ?? "") <= "4.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "HalfStar")
+        }else if "\(data.avg_rating ?? "")" == "5" || data.avg_rating == "5.0"{
             imgStar1.image = UIImage(named: "icons8_christmas_star")
             imgStar2.image = UIImage(named: "icons8_christmas_star")
             imgStar3.image = UIImage(named: "icons8_christmas_star")
@@ -73,4 +103,5 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
         
         
     }
+
 }

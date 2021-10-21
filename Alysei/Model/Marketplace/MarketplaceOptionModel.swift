@@ -43,6 +43,8 @@ class MaketPlaceHomeScreenModel{
     var recently_added_product: [MyStoreProductDetail]?
     var newly_added_store : [MyStoreProductDetail]?
     var regions: [MyStoreProductDetail]?
+    var top_favourite_products: [MyStoreProductDetail]?
+    var top_rated_products: [MyStoreProductDetail]?
     var bottom_banners: [TopBottomBanners]?
     init(with dictResponse: [String:Any]) {
         if let topBanner = dictResponse["top_banners"] as? [[String:Any]]{
@@ -53,6 +55,12 @@ class MaketPlaceHomeScreenModel{
         }
         if let newlyAddedStore = dictResponse["newly_added_store"] as? [[String:Any]]{
             self.newly_added_store = newlyAddedStore.map({MyStoreProductDetail.init(with: $0)})
+        }
+        if let top_favourite_products = dictResponse["top_favourite_products"] as? [[String:Any]]{
+            self.top_favourite_products = top_favourite_products.map({MyStoreProductDetail.init(with: $0)})
+        }
+        if let top_rated_products = dictResponse["top_rated_products"] as? [[String:Any]]{
+            self.top_rated_products = top_rated_products.map({MyStoreProductDetail.init(with: $0)})
         }
         if let regions = dictResponse["regions"] as? [[String:Any]]{
             self.regions = regions.map({MyStoreProductDetail.init(with: $0)})

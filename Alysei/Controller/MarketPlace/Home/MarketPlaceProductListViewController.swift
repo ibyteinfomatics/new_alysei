@@ -14,14 +14,17 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var vwSearch: UIView!
     @IBOutlet weak var hghtSearch: NSLayoutConstraint!
     @IBOutlet weak var searchtextField: UITextField!
+    @IBOutlet weak var btnFilter: UIButton!
     var listType:Int?
     var keywordSearch: String?
+    var filterTitle: String?
     var pushedFromVC : PushedFrom?
     var optionId: Int?
     var indexOfPageToRequest = 1
     var lastPage: Int?
     // var arrList: [MyStoreProductDetail]?
     var arrList: [ProductSearchListModel]?
+    var arrListAppData = [ProductSearchListModel]()
     
     var arrSelectedCategories = [Int]()
     var arrSelectedProperties = [Int]()
@@ -47,6 +50,7 @@ class MarketPlaceProductListViewController: UIViewController {
     var modifiedRatingArray = [Int]()
     var selectedRatingStringId : String?
     var stringRatingArray = [String]()
+    var typeFirst = true
     
     //var selectFdaCertifiedId: String?
     
@@ -55,14 +59,22 @@ class MarketPlaceProductListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if pushedFromVC == .region{
+            self.btnFilter.isHidden = false
             callRegionProductListApi(1)
         }else if pushedFromVC == .category{
+            self.btnFilter.isHidden = false
             callCategoryProductListApi(1)
         }else if pushedFromVC == .conservation {
+            self.btnFilter.isHidden = false
             callConservationListApi(1)
-        }else if pushedFromVC == .fdaCertified || pushedFromVC == .myFav {
+        }else if pushedFromVC == .fdaCertified{
+            self.btnFilter.isHidden = false
+            callOptionApi(1)
+        }else if pushedFromVC == .myFav {
+            self.btnFilter.isHidden = true
             callOptionApi(1)
         }else if pushedFromVC == .properties {
+            self.btnFilter.isHidden = false
             callConservationListApi(1)
         }else{
             self.callProductListApi()
@@ -112,7 +124,10 @@ class MarketPlaceProductListViewController: UIViewController {
         nextVC.arrSelectedMethodName =  self.arrSelectedMethodName
         nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         
-        nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+        nextVC.callApiCallBack = {
+            arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+            
+            self.arrListAppData = [ProductSearchListModel]()
             self.arrSelectedCategories = nextVC.arrSelectedCategories
             self.arrSelectedProperties = nextVC.arrSelectedProperties
             self.arrSelectedItalianRegion =  nextVC.arrSelectedItalianRegion
@@ -124,7 +139,7 @@ class MarketPlaceProductListViewController: UIViewController {
             self.selectedOptionsMethod = nextVC.selectedOptionsMethod
             self.arrSelectedMethodName = nextVC.arrSelectedMethodName
             self.arrSelectedPropertiesName = nextVC.arrSelectedPropertiesName
-            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             
         }
         nextVC.clearFilterApi = { loadfilter in
@@ -161,15 +176,13 @@ class MarketPlaceProductListViewController: UIViewController {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
-            if indexOfPageToRequest < lastPage ?? 0{
+            if indexOfPageToRequest > lastPage ?? 0{
                 // self.showAlert(withMessage: "No More Data Found")
                 print("No Data")
             }else{
                 // increments the number of the page to request
+                indexOfPageToRequest += 1
                 if isSearch == false{
-                    indexOfPageToRequest += 1
-                
-                
                 // call your API for more data
                 if pushedFromVC == .region{
                     callRegionProductListApi(indexOfPageToRequest)
@@ -184,6 +197,8 @@ class MarketPlaceProductListViewController: UIViewController {
                 }else{
                     self.callProductListApi()
                 }
+                }else{
+                    self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,indexOfPageToRequest)
                 }
                 // tell the table view to reload with the new data
                 self.tableView.reloadData()
@@ -195,13 +210,15 @@ class MarketPlaceProductListViewController: UIViewController {
 
 extension MarketPlaceProductListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrList?.count ?? 0
+        //return arrList?.count ?? 0
+        return arrListAppData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketPlaceProductListTableVCell", for: indexPath) as? MarketPlaceProductListTableVCell else {return UITableViewCell()}
         cell.selectionStyle = .none
-        cell.configCell(arrList?[indexPath.row] ?? ProductSearchListModel(with: [:]))
+        //cell.configCell(arrList?[indexPath.row] ?? ProductSearchListModel(with: [:]))
+        cell.configCell(arrListAppData[indexPath.row])
         return cell
     }
     
@@ -210,7 +227,7 @@ extension MarketPlaceProductListViewController: UITableViewDelegate, UITableView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
-        nextVC.marketplaceProductId = "\(self.arrList?[indexPath.row].marketplaceProductId ?? 0)"
+        nextVC.marketplaceProductId = "\(self.arrListAppData[indexPath.row].marketplaceProductId ?? 0)"
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -221,12 +238,38 @@ extension MarketPlaceProductListViewController : UITextFieldDelegate{
            let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
+//            if updatedText == "" {
+//                callOptionApi(1)
+//                self.isSearch = false
+//            }else{
+//                self.searchProductString = updatedText
+//                self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+//            }
+            
             if updatedText == "" {
-                callOptionApi(1)
+                self.arrListAppData = [ProductSearchListModel]()
+                if pushedFromVC == .region{
+                    callRegionProductListApi(1)
+                }else if pushedFromVC == .category{
+                    callCategoryProductListApi(1)
+                }else if pushedFromVC == .conservation {
+                    callConservationListApi(1)
+                }else if pushedFromVC == .fdaCertified || pushedFromVC == .myFav {
+                    callOptionApi(1)
+                }else if pushedFromVC == .properties {
+                    callConservationListApi(1)
+                }else{
+                    self.callProductListApi()
+                }
                 self.isSearch = false
+                self.typeFirst = true
             }else{
                 self.searchProductString = updatedText
-                self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
+            self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
+            }
+            if typeFirst == true{
+                self.arrListAppData = [ProductSearchListModel]()
+                self.typeFirst = false
             }
             
         }
@@ -243,6 +286,9 @@ extension MarketPlaceProductListViewController{
             if let data = response?["data"] as? [[String:Any]]{
                 self.arrList = data.map({ProductSearchListModel.init(with: $0)})
             }
+            for i in 0..<(self.arrList?.count ?? 0){
+                self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
+            }
             self.tableView.reloadData()
         }
         
@@ -257,6 +303,9 @@ extension MarketPlaceProductListViewController{
                 self.lastPage = data["last_page"] as? Int
                 if let subData = data["data"] as? [[String:Any]]{
                     self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                }
+                for i in 0..<(self.arrList?.count ?? 0){
+                    self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
             self.tableView.reloadData()
@@ -274,6 +323,9 @@ extension MarketPlaceProductListViewController{
                 if let subData = data["data"] as? [[String:Any]]{
                     self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
                 }
+                for i in 0..<(self.arrList?.count ?? 0){
+                    self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
+                }
             }
             self.tableView.reloadData()
         }
@@ -290,6 +342,9 @@ extension MarketPlaceProductListViewController{
                 if let subData = data["data"] as? [[String:Any]]{
                     self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
                 }
+                for i in 0..<(self.arrList?.count ?? 0){
+                    self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
+                }
             }
             self.tableView.reloadData()
         }
@@ -304,6 +359,9 @@ extension MarketPlaceProductListViewController{
                     self.lastPage = data["last_page"] as? Int
                     if let subData = data["data"] as? [[String:Any]]{
                         self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                    }
+                    for i in 0..<(self.arrList?.count ?? 0){
+                        self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
                 }
             default:
@@ -326,7 +384,7 @@ extension MarketPlaceProductListViewController{
     //
     //    }
     
-    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?){
+    func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?, _ page: Int?){
         
         // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
         
@@ -342,33 +400,21 @@ extension MarketPlaceProductListViewController{
         let stringCatArray = arrSelectedCategories?.compactMap({String($0)}) //{ String($0)!}
         let selectedCategoryStringId = stringCatArray?.joined(separator: ",")
         
-        if pushedFromVC == .category{
-            selecteCategoryFilterId = "\(optionId ?? 0)"
-        }else{
+//        if pushedFromVC == .category{
+//            selecteCategoryFilterId = "\(optionId ?? 0)"
+//        }else{
             selecteCategoryFilterId = selectedCategoryStringId
-        }
+      //  }
         
         
         let stringRegionArray = arrSelectedItalianRegion?.compactMap({String($0)}) //{ String($0)!}
         let selectedRegionStringId = stringRegionArray?.joined(separator: ",")
-        if pushedFromVC == .region {
-            selectedRegionFilterId = "\(optionId ?? 0)"
-        }else{
-            selectedRegionFilterId = selectedRegionStringId
-        }
-        
-        
-//        let stringRatingArray = arrSelectedRating?.compactMap({String($0)})
-//        let selectedRatingStringId = stringRatingArray?.joined(separator: ",")
-//        if selectedRatingStringId == "0"{
-//            selectRatingId = "1"
-//        }else if selectedRatingStringId == "1"{
-//            selectRatingId = "2"
-//        }else if selectedRatingStringId == "2"{
-//            selectRatingId = "3"
+//        if pushedFromVC == .region {
+//            selectedRegionFilterId = "\(optionId ?? 0)"
 //        }else{
-//            selectRatingId = ""
-//        }
+            selectedRegionFilterId = selectedRegionStringId
+      //  }
+    
         //MARK:- Rating
         if arrSelectedRating?.count != 0{
         for i in 0..<(arrSelectedRating?.count ?? 0){
@@ -403,8 +449,15 @@ extension MarketPlaceProductListViewController{
             sortFilterId = ""
         }
         
+        if pushedFromVC == .conservation || pushedFromVC == .properties{
+            self.filterTitle = keywordSearch
+        }else if pushedFromVC == .fdaCertified {
+            self.filterTitle = ""
+        }else{
+            self.filterTitle = "\(optionId ?? 0)"
+        }
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product=" + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&sort_by_product=" + "" + "&keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.keywordSearch ?? "")" + "&boxid=" + "\(self.listType ?? -1)" + "&type=" + "2"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product=" + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.filterTitle ?? "")" + "&box_id=" + "\(self.listType ?? 0)" + "&type=" + "2" + "&page=" + "\(page ?? 1)"
         
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
@@ -416,6 +469,9 @@ extension MarketPlaceProductListViewController{
                     self.lastPage = data["last_page"] as? Int
                     if let subData = data["data"] as? [[String:Any]]{
                         self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                    }
+                    for i in 0..<(self.arrList?.count ?? 0){
+                        self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
                 }
             default:

@@ -346,6 +346,7 @@
 		6B97B0A92713EF80003B9E68 /* EditStepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0A82713EF80003B9E68 /* EditStepCollectionViewCell.swift */; };
 		6B97B0AB2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */; };
 		6B97B0AD2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */; };
+		6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */; };
 		6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */; };
 		6BBA9952260AF55900AA7A81 /* InactiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */; };
 		6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */; };
@@ -961,6 +962,7 @@
 		6B97B0A82713EF80003B9E68 /* EditStepCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepIngridientCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepToolsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCollectionView.swift; sourceTree = "<group>"; };
 		6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCollectionView.swift; sourceTree = "<group>"; };
 		6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayLoginViewController.swift; sourceTree = "<group>"; };
@@ -2617,6 +2619,7 @@
 				C5A2F35326C130010072DA8D /* StoreDescViewController.swift */,
 				C5A2F35D26C144BC0072DA8D /* StoreDescProductCollectionViewCell.swift */,
 				C5CA9A8926C147F900BDAE25 /* StoreDescProductTableVCell.swift */,
+				6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */,
 			);
 			path = StoreDescription;
 			sourceTree = "<group>";
@@ -3327,6 +3330,7 @@
 				C56C285C268465770042A0A3 /* MyStoreDashboardWorker.swift in Sources */,
 				27A443BA25AE03720002BAAC /* IntExtended.swift in Sources */,
 				27A4439E25AE03720002BAAC /* RangeSlider.swift in Sources */,
+				6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */,
 				273737EF25B76BCE005984CF /* SettingsViewC.swift in Sources */,
 				6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */,
 				C554DB99266A29D800D4EECC /* AddProductMarketplaceVC.swift in Sources */,

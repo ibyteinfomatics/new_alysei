@@ -12,6 +12,8 @@ class MarketPlaceRegionViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var arrRegion : [MyStoreProductDetail]?
+    var listIndex: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.addShadow()
@@ -42,6 +44,7 @@ extension MarketPlaceRegionViewController: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
         nextVC.pushedFromVC = .region
+        nextVC.listType = self.listIndex
         nextVC.keywordSearch = arrRegion?[indexPath.row].name
         nextVC.optionId = arrRegion?[indexPath.row].id
         self.navigationController?.pushViewController(nextVC, animated: true)

@@ -32,22 +32,25 @@ class StoreDescViewController: AlysieBaseViewC {
     @IBOutlet weak var vwCall: UIView!
     @IBOutlet weak var vwLoaction: UIView!
     @IBOutlet weak var vwWebsite: UIView!
+   
+    @IBOutlet weak var lblOurGallery: UILabel!
     var storeDetails: MyStoreProductDetail?
     var storeProducts: [ProductSearchListModel]?
     var passStoreId: String?
-    var arrRatingReview: [RatingReviewModel]?
+    //var arrRatingReview: [RatingReviewModel]?
     @IBOutlet weak var storeAvgStar1: UIImageView!
     @IBOutlet weak var storeAvgStar2: UIImageView!
     @IBOutlet weak var storeAvgStar3: UIImageView!
     @IBOutlet weak var storeAvgStar4: UIImageView!
     @IBOutlet weak var storeAvgStar5: UIImageView!
+
     
     var number: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callStoreDetailApi()
-        callGetReviewApi()
+        //callGetReviewApi()
         imgProfile.layer.cornerRadius = 60
         imgProducer.layer.cornerRadius = 25
         imgProfile.layer.borderWidth = 2
@@ -83,19 +86,29 @@ class StoreDescViewController: AlysieBaseViewC {
         self.imgProfile.setImage(withString: kImageBaseUrl + String.getString(storeDetails?.logo_id))
         self.imgCover.setImage(withString: kImageBaseUrl + String.getString(storeDetails?.banner_id))
         self.imgProducer.setImage(withString: kImageBaseUrl + String.getString(storeDetails?.prefilled?.avatarId?.attachmentUrl))
-        if self.storeProducts?.count == 0{
-            self.imageCollectionView.isHidden = true
-            self.imgCollectionViewHeight.constant = 0
-        }else{
-            self.imageCollectionView.isHidden = false
-            self.imgCollectionViewHeight.constant = 250
-        }
+//        if self.storeProducts?.count == 0{
+//            self.imageCollectionView.isHidden = true
+//            self.imgCollectionViewHeight.constant = 0
+//        }else{
+//            self.imageCollectionView.isHidden = false
+//            self.imgCollectionViewHeight.constant = 250
+//        }
+//        if self.storeDetails?.store_gallery?.count == 0 || self.storeDetails?.store_gallery?.count == nil{
+//            self.imageCollectionView.isHidden = true
+//            self.imgCollectionViewHeight.constant = 0
+//            self.lblOurGallery.isHidden = true
+//        }else{
+//            self.imageCollectionView.isHidden = false
+//            self.imgCollectionViewHeight.constant = 250
+//            self.lblOurGallery.isHidden = false
+//        }
         if storeDetails?.is_favourite == 0{
             self.imgLikeUnlike.image = UIImage(named: "LikesBlue")
         }else{
             self.imgLikeUnlike.image = UIImage(named: "LikeIcon")
             
         }
+        self.mapView.isMyLocationEnabled = true
         self.number = storeDetails?.phone
         //Create the pin location of your restaurant(you need the GPS coordinates for this)
         
@@ -106,7 +119,7 @@ class StoreDescViewController: AlysieBaseViewC {
             //CLLocationCoordinate2D(latitude: storeDetails?.lattitude, longitude: storeDetails?.longitude)
 
               //Center the map on the place location
-        let camera = GMSCameraPosition.camera(withLatitude: doubleLat , longitude: doubleLong, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: doubleLat , longitude: doubleLong, zoom: 12.0)
         self.mapView.camera = camera
         setStarUI()
     }
@@ -119,59 +132,59 @@ class StoreDescViewController: AlysieBaseViewC {
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "1.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "icons8_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "1.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "HalfStar")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "2.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "2.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "HalfStar")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "3.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar3.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "3.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar3.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar4.image = UIImage(named: "HalfStar")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "4.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar4.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
         }else if storeDetails?.avg_rating == "4.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar4.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar5.image = UIImage(named: "HalfStar")
         }else if storeDetails?.avg_rating == "5.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar3.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar4.image = UIImage(named: "icons8_christmas_star_2")
-            storeAvgStar5.image = UIImage(named: "icons8_christmas_star_2")
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar5.image = UIImage(named: "icons8_christmas_star")
         }else{
             storeAvgStar1.image = UIImage(named: "icons8_star")
             storeAvgStar2.image = UIImage(named: "icons8_star")
@@ -237,6 +250,11 @@ class StoreDescViewController: AlysieBaseViewC {
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func moveToProfile(_ sender: UIButton){
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = storeDetails?.prefilled?.userId
+    }
 }
 
 extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
@@ -260,7 +278,7 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
             cell.totalThreeeStarProgress.setProgress(Float((storeDetails?.total_three_star ?? 0) / 100), animated: true)
             cell.totalFourStarProgress.setProgress(Float((storeDetails?.total_four_star ?? 0)  / 100), animated: true)
             cell.totalFiveStarProgress.setProgress(Float((storeDetails?.total_five_star ?? 0) / 100), animated: true)
-            if arrRatingReview?.count == nil || arrRatingReview?.count == 0{
+            if storeDetails?.latest_review == nil {
                 cell.viewComment.isHidden = true
             }else{
                 cell.viewComment.isHidden = false
@@ -269,7 +287,7 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
             cell.lblTotalReview.text = "\(self.storeDetails?.total_reviews ?? "0") reviews"
             cell.lblAvgRating.text = "\(self.storeDetails?.avg_rating ?? "0")"
             cell.avgRating = storeDetails?.avg_rating
-            cell.configCell(self.arrRatingReview?.first ?? RatingReviewModel(with: [:]))
+            cell.configCell(self.storeDetails?.latest_review ?? RatingReviewModel(with: [:]))
             return cell
         }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreDescProductTableVCell", for: indexPath) as? StoreDescProductTableVCell else {return UITableViewCell()}
@@ -281,10 +299,11 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {
-                return 170
+            if storeDetails?.latest_review == nil  {
+                //return 250
+                return UITableView.automaticDimension
             }else{
-                return UITableView.automaticDimension + 250
+                return UITableView.automaticDimension //+ 250
             }
         }else {
             return CGFloat((280 * ((self.storeProducts?.count ?? 0) / 2 )))
@@ -297,12 +316,22 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
 }
 extension StoreDescViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if ((self.storeDetails?.store_gallery?.count == 0) || (self.storeDetails?.store_gallery?.count == nil)){
+            return 1
+        }
         return storeDetails?.store_gallery?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreDescImageCollectionVCell", for: indexPath) as? StoreDescImageCollectionVCell else {return UICollectionViewCell()}
+        if ((self.storeDetails?.store_gallery?.count == 0) || (self.storeDetails?.store_gallery?.count == nil)){
+            cell.vwContainer.isHidden = false
+            cell.imgStore.isHidden = true
+        }else{
+            cell.vwContainer.isHidden = true
+            cell.imgStore.isHidden = false
         cell.imgStore.setImage(withString: kImageBaseUrl + String.getString(storeDetails?.store_gallery?[indexPath.row].attachment_url))
+        }
         return cell
     }
     
@@ -330,22 +359,22 @@ extension StoreDescViewController{
             self.tableView.reloadData()
         }
     }
-    func callGetReviewApi(){
-        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetReview + "\(self.passStoreId ?? "")" + "&type=1", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            switch statusCode {
-            case 200:
-                let response = dictResponse as? [String:Any]
-                if let data = response?["data"] as? [[String:Any]]{
-                    self.arrRatingReview = data.map({RatingReviewModel.init(with: $0)})
-                }
-            default:
-                print("invalid")
-            }
-            
-            self.tableView.reloadData()
-        }
-    }
+//    func callGetReviewApi(){
+//
+//        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetReview + "\(self.passStoreId ?? "")" + "&type=1", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+//            switch statusCode {
+//            case 200:
+//                let response = dictResponse as? [String:Any]
+//                if let data = response?["data"] as? [[String:Any]]{
+//                    self.arrRatingReview = data.map({RatingReviewModel.init(with: $0)})
+//                }
+//            default:
+//                print("invalid")
+//            }
+//
+//            self.tableView.reloadData()
+//        }
+//    }
     func callLikeApi(){
         
         let params: [String:Any] = [
