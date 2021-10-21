@@ -73,23 +73,37 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
-        nextVC.listType = self.listIndex
-      
-        if listIndex == 4{
-            nextVC.pushedFromVC = .category
-            nextVC.keywordSearch = arrOptions?[indexPath.row].name
-            nextVC.optionId = arrOptions?[indexPath.row].marketplace_product_category_id
-        }else if listIndex == 5 {
-            nextVC.pushedFromVC = .properties
-            nextVC.keywordSearch = arrOptions?[indexPath.row].option
+        let cell = tableView.cellForRow(at: indexPath) as? MarketPlaceOptionTableViewCell
+        
+        for i in 0..<(arrOptions?.count ?? 0){
+            self.arrOptions?[i].isOptionSelected = false
+        }
+        arrOptions?[indexPath.row].isOptionSelected = true
+        if arrOptions?[indexPath.row].isOptionSelected == true{
+            cell?.btnSelect.image = UIImage(named: "SelectSort")
         }else{
-            nextVC.pushedFromVC = .conservation
-            nextVC.keywordSearch = arrOptions?[indexPath.row].option
+                cell?.btnSelect.image = UIImage(named: "UnselectSort")
+            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
+            nextVC.listType = self.listIndex
+           
+        
+            if self.listIndex == 4{
+                nextVC.pushedFromVC = .category
+                nextVC.keywordSearch = self.arrOptions?[indexPath.row].name
+                nextVC.optionId = self.arrOptions?[indexPath.row].marketplace_product_category_id
+            }else if self.listIndex == 5 {
+                nextVC.pushedFromVC = .properties
+                nextVC.keywordSearch = self.arrOptions?[indexPath.row].option
+            }else{
+                nextVC.pushedFromVC = .conservation
+                nextVC.keywordSearch = self.arrOptions?[indexPath.row].option
+            }
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
         
-        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -114,7 +128,7 @@ class MarketPlaceOptionTableViewCell: UITableViewCell{
     
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var lblOption: UILabel!
-    
+    @IBOutlet weak var btnSelect: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         vwContainer.addShadow()

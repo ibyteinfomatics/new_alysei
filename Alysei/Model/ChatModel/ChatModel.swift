@@ -605,6 +605,7 @@ class CommentClass {
     var core_comment_id :Int?
     var created_at : String?
     var data : PosterClass?
+    var reply : ReplyDetailsClass?
    
     init() { }
     init(with messageData: [String:Any]?) {
@@ -621,7 +622,7 @@ class CommentClass {
                 //self.data = (data as AnyObject).map({CommentClass.init(messageData: $0)})
                 self.data =  PosterClass.init(with: poster)
                     // PosterClass(messageData: data as! [String : Any])
-            }
+        }
             
         //}
      
@@ -635,6 +636,16 @@ class CommentClass {
            
         ]
         return params
+    }
+    
+}
+
+class ReplyDetailsClass {
+    
+    init() { }
+    init(with messageData: [String:Any]?) {
+        
+        
     }
     
 }

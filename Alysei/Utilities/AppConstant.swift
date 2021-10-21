@@ -294,9 +294,12 @@ struct APIUrl{
     static let kConnectionTabApi3 = "get/connection/tabs?tab=3"
     static let kConnectionTabApi4 = "get/connection/tabs?tab=4"
     static let kEditPost = "edit/post"
+    static let kPrivacy = "get/user/privacy"
+    
     
     static let kDashboard = "view/connection?connection_id="
     
+    static let kSavePrivacy = "save/privacy"
     static let kinvitationAcceptReject = "accept/reject/request"
     static let kPendingRemove = "cancel/connection/request?visitor_profile_id="
     static let kMarketPlaceProduct = "get/box/detail/"

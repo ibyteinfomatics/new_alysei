@@ -26,7 +26,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var maximumSearchedCollectionView: UICollectionView!
     @IBOutlet weak var topSellingCollectionView: UICollectionView!
     @IBOutlet weak var adCollectionView: UICollectionView!
-    @IBOutlet weak var kitchenCollectionView: UICollectionView!
+    //@IBOutlet weak var kitchenCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var hghtBottomBannerCV: NSLayoutConstraint!
     var isCreateStore = false
@@ -146,9 +146,13 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         }else if collectionView == recentlyAddedCollectionView{
             return maketPlaceHomeScreenData?.recently_added_product?.count ?? 0
         }else if collectionView == newlyyAddedStoreCollectionView{
-            return 9
+            return  maketPlaceHomeScreenData?.newly_added_store?.count ?? 0
         }else if collectionView == adCollectionView{
             return maketPlaceHomeScreenData?.bottom_banners?.count ?? 0
+        }else if collectionView == maximumSearchedCollectionView {
+            return maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0
+        }else if collectionView == topSellingCollectionView {
+            return maketPlaceHomeScreenData?.top_rated_products?.count ?? 0
         }else{
             return 9
         }
@@ -163,13 +167,19 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         }else if collectionView == recentlyAddedCollectionView{
             guard let cell = recentlyAddedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeRecentlyAddedCVC", for: indexPath) as? MarketplaceHomeRecentlyAddedCVC else {return UICollectionViewCell()}
+           // cell.addShadow()
             cell.configCell(self.maketPlaceHomeScreenData?.recently_added_product?[indexPath.row] ?? MyStoreProductDetail(with: [:]))
+            return cell
+        }else if collectionView == maximumSearchedCollectionView{
+            guard let cell = maximumSearchedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeMaximumSearchedCVC", for: indexPath) as? MarketPlaceHomeMaximumSearchedCVC else {return UICollectionViewCell()}
+           // cell.addShadow()
+            cell.configCell(self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row] ?? MyStoreProductDetail(with: [:]))
             return cell
         }else if collectionView == newlyyAddedStoreCollectionView{
             guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
             let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.attachmentURL ?? ""))
             cell.image.setImage(withString: imgUrl)
-            cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].storeName
+            cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].name
             cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].location
             return cell
         }else if collectionView == regionCollectionView{
@@ -178,9 +188,11 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         }else if collectionView == maximumSearchedCollectionView{
             guard let cell = maximumSearchedCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeMaximumSearchedCVC", for: indexPath) as? MarketPlaceHomeMaximumSearchedCVC  else {return UICollectionViewCell()}
+            cell.configCell(self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row] ?? MyStoreProductDetail(with: [:]))
             return cell
         }else if collectionView == topSellingCollectionView{
             guard let cell = topSellingCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeTopSearchedCVC", for: indexPath) as? MarketPlaceHomeTopSearchedCVC  else {return UICollectionViewCell()}
+            cell.configCell(self.maketPlaceHomeScreenData?.top_rated_products?[indexPath.row] ?? MyStoreProductDetail(with: [:]))
             return cell
         }else if collectionView == adCollectionView{
             guard let cell = adCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCollectionVC", for: indexPath) as? AdCollectionVC  else {return UICollectionViewCell()}
@@ -188,10 +200,11 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             print("imgUrl---------------------------------------",imgUrl)
             cell.imgBanner.setImage(withString: imgUrl)
             return cell
-        }else if collectionView == kitchenCollectionView{
-            guard let cell = kitchenCollectionView.dequeueReusableCell(withReuseIdentifier: "KitchenCollectionVC", for: indexPath) as? KitchenCollectionVC  else {return UICollectionViewCell()}
-            return cell
         }
+//        else if collectionView == kitchenCollectionView{
+//            guard let cell = kitchenCollectionView.dequeueReusableCell(withReuseIdentifier: "KitchenCollectionVC", for: indexPath) as? KitchenCollectionVC  else {return UICollectionViewCell()}
+//            return cell
+//        }
         else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
             cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
@@ -206,6 +219,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             
             return cell
         }
+        
     }
     
     
@@ -213,14 +227,16 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 180)
         }else if collectionView == recentlyAddedCollectionView{
-            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 200)
+            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 220)
         }else if collectionView == adCollectionView{
             return CGSize(width: adCollectionView.frame.width / 2 , height: 200)
         }else if collectionView == regionCollectionView{
-            return CGSize(width: regionCollectionView.frame.width / 3 , height: 100)
-        }else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == maximumSearchedCollectionView) || (collectionView == topSellingCollectionView) || (collectionView == kitchenCollectionView){
-            return CGSize(width: collectionView.frame.width / 2 , height: 200)
-        }else{
+            return CGSize(width: regionCollectionView.frame.width / 4 , height: 100)
+        }
+        else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == maximumSearchedCollectionView) || (collectionView == topSellingCollectionView){
+            return CGSize(width: collectionView.frame.width / 2 , height: 220)
+        }
+        else{
             return CGSize(width: collectionView.frame.width / 3, height: 120)
         }
     }
@@ -232,7 +248,11 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             print("Check")
         }else if collectionView == newlyyAddedStoreCollectionView{
-            print("Check")
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+
+            let data = maketPlaceHomeScreenData?.newly_added_store?[indexPath.row]
+            nextVC.passStoreId = "\(data?.marketplace_store_id ?? 0)"
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }else if collectionView == recentlyAddedCollectionView {
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
             nextVC.marketplaceProductId = "\( maketPlaceHomeScreenData?.recently_added_product?[indexPath.row].marketplace_product_id ?? 0)"
@@ -244,14 +264,20 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             nextVC.optionId = self.maketPlaceHomeScreenData?.regions?[indexPath.row].id
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if collectionView == maximumSearchedCollectionView {
-           print("Check")
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
+            nextVC.marketplaceProductId = "\( maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row].marketplace_product_id ?? 0)"
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }else if collectionView == topSellingCollectionView {
-            print("Check")
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
+            nextVC.marketplaceProductId = "\( maketPlaceHomeScreenData?.top_rated_products?[indexPath.row].marketplace_product_id ?? 0)"
+            self.navigationController?.pushViewController(nextVC, animated: true)
          }else if collectionView == adCollectionView {
             print("Check")
-         }else if collectionView == kitchenCollectionView {
-            print("Check")
-         }else if collectionView == collectionView{
+         }
+//         else if collectionView == kitchenCollectionView {
+//            print("Check")
+//         }
+         else if collectionView == collectionView{
             if indexPath.row == 0{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
                 nextVC.listType = 1
@@ -259,7 +285,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }else if indexPath.row == 2 {
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
-                
+                nextVC.listIndex = indexPath.row + 1
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }else if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
@@ -308,6 +334,8 @@ extension MarketPlaceHomeVC{
             self.adCollectionView.reloadData()
             self.regionCollectionView.reloadData()
             self.newlyyAddedStoreCollectionView.reloadData()
+            self.maximumSearchedCollectionView.reloadData()
+            self.topSellingCollectionView.reloadData()
             self.hghtBottomBannerCV.constant = 400
         }
         
@@ -321,6 +349,12 @@ class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
     @IBOutlet weak var lblStoreLoaction: UILabel!
     @IBOutlet weak var lblStoreName: UILabel!
+   
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+   
+    
 }
 class MarketPlaceHomeRegionCViewCell: UICollectionViewCell{
     @IBOutlet weak var vwRegion: UIView!
@@ -343,10 +377,198 @@ class MarketPlaceHomeRegionCViewCell: UICollectionViewCell{
 }
 
 class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
+    @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var lblProductName: UILabel!
+    @IBOutlet weak var lblStoreName: UILabel!
+    @IBOutlet weak var lblAvgRating: UILabel!
+    @IBOutlet weak var lblTotalReview: UILabel!
+    @IBOutlet weak var imgStar1: UIImageView!
+    @IBOutlet weak var imgStar2: UIImageView!
+    @IBOutlet weak var imgStar3: UIImageView!
+    @IBOutlet weak var imgStar4: UIImageView!
+    @IBOutlet weak var imgStar5: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    func configCell(_ data: MyStoreProductDetail){
+        let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
+        print("imgUrl---------------------------------------",imgUrl)
+        imgProduct.setImage(withString: imgUrl)
+        
+        lblProductName.text = data.title
+        lblStoreName.text = data.storeName
+        lblTotalReview.text = (data.total_reviews ?? "0") + "reviews"
+        lblAvgRating.text = data.avg_rating
+        
+        if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{
+           imgStar1.image = UIImage(named: "icons8_star")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+           imgStar5.image = UIImage(named: "icons8_star")
+           
+        }else if(data.avg_rating ?? "") >= "0.1" && (data.avg_rating ?? "") <= "0.9" {
+            imgStar1.image = UIImage(named: "HalfStar")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "1" || data.avg_rating == "1.0"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "1.1"  && (data.avg_rating ?? "") <= "1.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "HalfStar")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "2" || data.avg_rating == "2.0" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "2.1"  && (data.avg_rating ?? "") <= "2.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "HalfStar")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if data.avg_rating == "3.0" || data.avg_rating == "3"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "3.1"  && (data.avg_rating ?? "") <= "3.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "HalfStar")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "4" ||  data.avg_rating == "4.0" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "4.1"  && (data.avg_rating ?? "") <= "4.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "HalfStar")
+        }else if "\(data.avg_rating ?? "")" == "5" || data.avg_rating == "5.0"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "icons8_christmas_star")
+        }
+        
+        
+    }
 }
 class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
+    @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var lblProductName: UILabel!
+    @IBOutlet weak var lblStoreName: UILabel!
+    @IBOutlet weak var lblAvgRating: UILabel!
+    @IBOutlet weak var lblTotalReview: UILabel!
+    @IBOutlet weak var imgStar1: UIImageView!
+    @IBOutlet weak var imgStar2: UIImageView!
+    @IBOutlet weak var imgStar3: UIImageView!
+    @IBOutlet weak var imgStar4: UIImageView!
+    @IBOutlet weak var imgStar5: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    func configCell(_ data: MyStoreProductDetail){
+        let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
+        print("imgUrl---------------------------------------",imgUrl)
+        imgProduct.setImage(withString: imgUrl)
+        
+        lblProductName.text = data.title
+        lblStoreName.text = data.storeName
+        lblTotalReview.text = (data.total_reviews ?? "0") + "reviews"
+        lblAvgRating.text = data.avg_rating
+        
+        if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{
+           imgStar1.image = UIImage(named: "icons8_star")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+           imgStar5.image = UIImage(named: "icons8_star")
+           
+        }else if(data.avg_rating ?? "") >= "0.1" && (data.avg_rating ?? "") <= "0.9" {
+            imgStar1.image = UIImage(named: "HalfStar")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "1" || data.avg_rating == "1.0"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "1.1"  && (data.avg_rating ?? "") <= "1.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "HalfStar")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "2" || data.avg_rating == "2.0" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "2.1"  && (data.avg_rating ?? "") <= "2.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "HalfStar")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if data.avg_rating == "3.0" || data.avg_rating == "3"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "3.1"  && (data.avg_rating ?? "") <= "3.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "HalfStar")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if "\(data.avg_rating ?? "")" == "4" ||  data.avg_rating == "4.0" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "icons8_star")
+        }else if (data.avg_rating ?? "") >= "4.1"  && (data.avg_rating ?? "") <= "4.9" {
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "HalfStar")
+        }else if "\(data.avg_rating ?? "")" == "5" || data.avg_rating == "5.0"{
+            imgStar1.image = UIImage(named: "icons8_christmas_star")
+            imgStar2.image = UIImage(named: "icons8_christmas_star")
+            imgStar3.image = UIImage(named: "icons8_christmas_star")
+            imgStar4.image = UIImage(named: "icons8_christmas_star")
+            imgStar5.image = UIImage(named: "icons8_christmas_star")
+        }
+        
+        
+    }
 }
 
 class AdCollectionVC: UICollectionViewCell{
