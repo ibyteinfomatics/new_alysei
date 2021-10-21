@@ -105,6 +105,8 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
         
         let companySecondTableCell = tblViewCompany.dequeueReusableCell(withIdentifier: CompanySecondTableCell.identifier(), for: indexPath) as! CompanySecondTableCell
         let obj = getCompanyFields?.dataCertificates?[indexPath.section] ?? DataCertificates.init(with: [:])
+        
+        
         companySecondTableCell.configCell(cetificateTitle[indexPath.row],certificatDesc[indexPath.row] ,indexPath.section ,indexPath.row, obj)
         companySecondTableCell.btnUploadChange.tag = indexPath.row
         companySecondTableCell.btnUploadCallBack = { index in
@@ -170,22 +172,44 @@ extension CompanyViewC: UITableViewDelegate, UITableViewDataSource{
         //case 0:
         //  return self.getCompanyFirstTableCell(indexPath)
         //default:
+        
         return self.getCompanySecondTableCell(indexPath)
         //}
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 95.0
+        
+        var height = 95.0
+        if self.selectedProductId.contains(String.getString(getCompanyFields?.dataCertificates?[indexPath.section].userFieldOptionId)) {
+            height = 95.0
+        } else if self.selectedProductId.count == 0{
+            height = 95.0
+        } else {
+            height = 0
+        }
+        
+        return CGFloat(height)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return getCompanyFields?.dataCertificates?[section].option ?? ""
         
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        
+        var height = 50
+        if self.selectedProductId.contains(String.getString(getCompanyFields?.dataCertificates?[section].userFieldOptionId)) {
+            height = 50
+        } else if self.selectedProductId.count == 0{
+            height = 50
+        } else {
+            height = 0
+        }
+        
+        return CGFloat(height)
     }
 }
 extension CompanyViewC {
@@ -246,7 +270,7 @@ extension CompanyViewC {
         
         TANetworkManager.sharedInstance.requestMultiPart(withServiceName: APIUrl.kUploadCertificate, requestMethod: .post, requestImages: imageParam, requestVideos: [:], requestData: params) { (dictResponse, error, errorType, statusCode) in
             if self.fromVC != .connectionRequest{
-            self.showAlert(withMessage: "Data Uploaded Successfully")
+            //self.showAlert(withMessage: "Data Uploaded Successfully")
             }
             self.photoOfLabelImage = UIImage()
             self.fceSidImage = UIImage()

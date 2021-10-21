@@ -47,8 +47,10 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         
         kChatharedInstance.receivce_Comment(postId: String.getString(self.postCommentsUserDataModel.postID)) { (message) in
             
+            self.commentmessages?.removeAll()
             self.commentmessages = message
-          
+            self.tableView.reloadData()
+            self.scrollToLTopRow()
         }
             
     }
@@ -137,6 +139,16 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     }
 
     //MARK: custom methods
+    
+    
+    func scrollToLTopRow() {
+        DispatchQueue.main.async {
+            if Int.getInt(self.commentmessages?.count) != 0 {
+                let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
+    }
 
     func sendComment() {
         /*guard let text = self.commentTextfield.text else {
@@ -212,7 +224,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 kChatharedInstance.send_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID) )
                 
                 self.commentTextfield.text = ""
-               // self.receiveComment()
+                self.receiveComment()
                 self.tableView.reloadData()
                 
             }
@@ -324,6 +336,10 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         cell.timeLabel.text = "\(time)"
         cell.userImageView.setImage(withString: imageDomain+"/"+String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.commentmessages?[indexPath.row].body)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

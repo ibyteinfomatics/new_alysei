@@ -583,7 +583,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBAction func connectButtonTapped(_ sender: UIButton) {
         
         //
-        
+        //mark:- Producer to importert
         if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
             
             if percentage == "100" || percentage == nil{
@@ -594,6 +594,29 @@ class ProfileViewC: AlysieBaseViewC{
             }
             
             return
+            // Mark: - producer to other user
+        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .restaurant || self.visitorUserType == .travelAgencies || self.visitorUserType == .voiceExperts || self.visitorUserType == .producer){
+            
+            self.segueToCompleteConnectionFlow()
+            
+            
+        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.voiceExperts.rawValue)) {
+            self.segueToCompleteConnectionFlow()
+            
+            
+        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer1.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer2.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer3.rawValue)){
+            
+            self.segueToCompleteConnectionFlow()
+            
+            
+        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.restaurant.rawValue)) {
+            self.segueToCompleteConnectionFlow()
+            
+            
+        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.travelAgencies.rawValue)) {
+            self.segueToCompleteConnectionFlow()
+            
+            
         } else {
             if percentage == "100" || percentage == nil{
                 
@@ -647,36 +670,108 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     private func segueToCompleteConnectionFlow() {
-        let controller = pushViewController(withName: ConnectionProductTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionProductTypeViewController
+       
+        let connectionStatus = self.userProfileModel.data?.userData?.connectionFlag ?? 0
         
-        var username = ""
+        if connectionStatus == 0 {
+            
+            //let controller = pushViewController(withName: ConnectionProductTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionProductTypeViewController
+            let controller = pushViewController(withName: BasicConnectFlowViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? BasicConnectFlowViewController
+            
+            
+            var username = ""
+            
+    //        if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+    //
+    //            username = self.userProfileModel.data?.userData?.restaurantName ?? ""
+    //
+    //        } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
+    //
+    //            username = self.userProfileModel.data?.userData?.companyName ?? ""
+    //
+    //        } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
+    //
+    //            username = self.userProfileModel.data?.userData?.firstName ?? ""
+    //
+    //        }
+            var pusername = ""
+            
+            
+            if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
+                pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
+            }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
+                pusername = self.userProfileModel.data?.userData?.firstName ?? ""
+            }else{
+                pusername = self.userProfileModel.data?.userData?.companyName ?? ""
+            }
+            
+            controller?.userName = pusername
+            controller?.userID = self.userID
         
-//        if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.companyName == nil{
-//
-//            username = self.userProfileModel.data?.userData?.restaurantName ?? ""
-//
-//        } else if self.userProfileModel.data?.userData?.firstName == nil && self.userProfileModel.data?.userData?.restaurantName == nil{
-//
-//            username = self.userProfileModel.data?.userData?.companyName ?? ""
-//
-//        } else if self.userProfileModel.data?.userData?.restaurantName == nil && self.userProfileModel.data?.userData?.companyName == nil{
-//
-//            username = self.userProfileModel.data?.userData?.firstName ?? ""
-//
-//        }
-        var pusername = ""
-        
-        
-        if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
-            pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
-        }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
-            pusername = self.userProfileModel.data?.userData?.firstName ?? ""
-        }else{
-            pusername = self.userProfileModel.data?.userData?.companyName ?? ""
+        } else if connectionStatus == 2 {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let cancelConnectionRequestAction = UIAlertAction(title: "Cancel Request", style: .default) { action in
+                self.cancelConnectionRequest()
+            }
+            cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            var title = "Block"
+            if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                title = "Block"
+            } else {
+                title = "UnBlock"
+            }
+            
+            let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+            }
+            blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            alertController.addAction(cancelConnectionRequestAction)
+            alertController.addAction(blockUserAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else if connectionStatus == 1 {
+            
+            
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                self.cancelConnectionRequest()
+            }
+            cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            var title = "Block"
+            if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                title = "Block"
+            } else {
+                title = "UnBlock"
+            }
+            
+            let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+            }
+            blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            alertController.addAction(cancelConnectionRequestAction)
+            alertController.addAction(blockUserAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
         }
         
-        controller?.userName = pusername
-        controller?.userID = self.userID
+        
     }
     
     func udpateConnectionButtonForVisitorProfile(_ visitorType: UserRoles) {

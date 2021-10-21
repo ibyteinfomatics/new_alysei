@@ -100,8 +100,8 @@ class UserProductListViewController: UIViewController, UserProductListDisplayLog
                 self.productData?[i].isSelected = false
             }
             if self.productData?[i].isSelected == true{
-                selectedProductId.append(productData?[i].optionName ?? "")
-                selectedProductId.append("\(productData?[i].userFieldOptionId ?? "")")
+                selectedProductName.append(productData?[i].optionName ?? "")
+                //selectedProductId.append("\(productData?[i].userFieldOptionId ?? "")")
                 
             }
         }
@@ -146,10 +146,14 @@ extension UserProductListViewController: UITableViewDelegate, UITableViewDataSou
             self.selectedProductId.append(data?.userFieldOptionId ?? "")
             
         } else{
-            if let index = selectedProductId.firstIndex(of: data?.optionName ?? "") {
-                self.selectedProductName.remove(at: index)
-                self.selectedProductId.remove(at: index)
-            }
+            
+            selectedProductId.removeAll { $0 == data?.userFieldOptionId ?? "" }
+            selectedProductName.removeAll { $0 == data?.optionName ?? "" }
+            
+//            if let index = selectedProductId.firstIndex(of: data?.optionName ?? "") {
+//                self.selectedProductName.remove(at: index)
+//                self.selectedProductId.remove(at: index)
+//            }
         }
         print("ProductId -------------------------\(selectedProductId)")
         self.tableView.reloadData()
