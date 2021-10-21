@@ -17,6 +17,7 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var heartBtn: UIButton!
     @IBOutlet weak var servingLabel: UILabel!
     @IBOutlet weak var outerView: UIView!
     

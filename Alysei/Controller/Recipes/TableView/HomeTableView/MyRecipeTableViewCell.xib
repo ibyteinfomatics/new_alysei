@@ -12,6 +12,9 @@
         <array key="HelveticaNeue-Light.ttf">
             <string>HelveticaNeue</string>
         </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -75,7 +78,6 @@
                                                     <constraint firstAttribute="width" constant="20" id="UET-fz-oTk"/>
                                                     <constraint firstAttribute="height" constant="22" id="r95-k4-aYY"/>
                                                 </constraints>
-                                                <state key="normal" image="icons8_filled_heart"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-T6-6uT">
                                                 <rect key="frame" x="2.5" y="26" width="55" height="17"/>
@@ -96,19 +98,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Mef-fc-yvf">
                                         <rect key="frame" x="10" y="27" width="70" height="21"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star" translatesAutoresizingMaskIntoConstraints="NO" id="aX0-2H-WuH">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="aX0-2H-WuH">
                                                 <rect key="frame" x="0.0" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-T3-XCV">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-T3-XCV">
                                                 <rect key="frame" x="14.5" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star" translatesAutoresizingMaskIntoConstraints="NO" id="PGk-WP-ZLn">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="PGk-WP-ZLn">
                                                 <rect key="frame" x="29" y="0.0" width="12" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star" translatesAutoresizingMaskIntoConstraints="NO" id="5iT-jy-I8u">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="5iT-jy-I8u">
                                                 <rect key="frame" x="44" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star" translatesAutoresizingMaskIntoConstraints="NO" id="OLp-1x-PPz">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="OLp-1x-PPz">
                                                 <rect key="frame" x="58.5" y="0.0" width="11.5" height="21"/>
                                             </imageView>
                                         </subviews>
@@ -227,6 +229,7 @@
                                 <constraints>
                                     <constraint firstItem="fgF-Hy-vOo" firstAttribute="leading" secondItem="S0d-In-GKe" secondAttribute="trailing" id="G9t-Ae-rDe"/>
                                     <constraint firstAttribute="height" constant="40" id="HKs-dx-0eT"/>
+                                    <constraint firstItem="S0d-In-GKe" firstAttribute="centerX" secondItem="Zp4-If-tyN" secondAttribute="centerX" id="dmY-7V-E6u"/>
                                     <constraint firstItem="S0d-In-GKe" firstAttribute="leading" secondItem="deI-hn-esD" secondAttribute="trailing" id="uP4-t1-a0o"/>
                                 </constraints>
                             </stackView>
@@ -263,6 +266,7 @@
             <connections>
                 <outlet property="deaftButton" destination="idR-3h-XJH" id="Yt5-TI-WtI"/>
                 <outlet property="editRecipeButton" destination="7dk-et-R1S" id="CZk-37-qI9"/>
+                <outlet property="heartBtn" destination="itF-hX-kXK" id="0S1-lE-agE"/>
                 <outlet property="likeLabel" destination="HkG-T6-6uT" id="C0y-ps-61c"/>
                 <outlet property="outerView" destination="kAm-xY-w33" id="2Qr-bd-R0Q"/>
                 <outlet property="rating1ImgVw" destination="aX0-2H-WuH" id="9x5-QX-1gE"/>
@@ -282,9 +286,8 @@
     </objects>
     <resources>
         <image name="Group 666" width="13.5" height="13.5"/>
-        <image name="icons8_christmas_star" width="13.5" height="13"/>
+        <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_edit" width="8" height="8"/>
-        <image name="icons8_filled_heart" width="18" height="15.5"/>
         <image name="icons8_time_1" width="16" height="17.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
         <systemColor name="systemBackgroundColor">

@@ -31,13 +31,15 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var stepNumber : String?
     var stepDescription: String?
     
-    var arrayIngridients : [UsedIngridientDataModel] = []
-    var arraytools : [UsedToolsDataModel] = []
+    
+    var arrayIngridients = [UsedIngridientDataModel(with: [:])]
+    var arraytools = [UsedToolsDataModel(with: [:])]
     
     
     override func viewDidAppear(_ animated: Bool) {
         if isFromStep == "Add Step"{
             page = (editstepsModel.count) + 1
+      
         }
         else{
           page = pageEdit
@@ -46,8 +48,8 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 let dataModel = editstepsModel[selectedIndex]
                 cell.titleTextField.text = dataModel.title
                 cell.desciptionTextView.text = dataModel.description
-                arrayIngridients = dataModel.stepIngridient ?? []
-                arraytools =  dataModel.stepTool ?? []
+                editusedIngridientModel = dataModel.stepIngridient ?? []
+                editusedToolModel =  dataModel.stepTool ?? []
                 ingridientUsedCollectionView.reloadData()
                 toolsUsedCollectionView.reloadData()
             }
@@ -114,8 +116,8 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
             let stepdata = StepsDataModel(with: [:])
             stepdata.title = cell.titleTextField.text ?? ""
             stepdata.description = cell.desciptionTextView.text ?? ""
-            stepdata.stepIngridient = arrayIngridients
-            stepdata.stepTool = arraytools
+            stepdata.stepIngridient = editusedIngridientModel
+            stepdata.stepTool = editusedToolModel
             
             if selectedIndex == 1000 {
                 editstepsModel.append(stepdata)
@@ -182,19 +184,20 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
             cell1.addStepIngridientNameLabel.font = UIFont(name: "Helvetica Neue Bold", size: 14)
             
-            
+            if isFromStep == "Edit Step"{
                 if editusedIngridientModel[indexPath.row].isSelected == true {
                     cell1.addStepIngeidientSelectedImageView.isHidden = false
                 } else {
                     cell1.addStepIngeidientSelectedImageView.isHidden = true
-
-                
-            
-        }
+                }
+            }
+        
             cell1.layoutSubviews()
 
             return cell1
-        } else if collectionView == toolsUsedCollectionView {
+            
+        }
+        else if collectionView == toolsUsedCollectionView {
             
             let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepToolsCollectionViewCell", for: indexPath) as! EditStepToolsCollectionViewCell
             let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
@@ -202,13 +205,14 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell2.addStepToolNameLabel.text = editusedToolModel[indexPath.row].tool?.toolTitle
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             
-         
-            if editusedToolModel[indexPath.row].isSelected == true {
-                cell2.addStepToolSelectedImageView.isHidden = false
-            } else {
-                cell2.addStepToolSelectedImageView.isHidden = true
-
+            if isFromStep == "Edit Step"{
+                if editusedToolModel[indexPath.row].isSelected == true {
+                    cell2.addStepToolSelectedImageView.isHidden = false
+                } else {
+                    cell2.addStepToolSelectedImageView.isHidden = true
+                }
             }
+            
             
             cell2.layoutSubviews()
             return cell2

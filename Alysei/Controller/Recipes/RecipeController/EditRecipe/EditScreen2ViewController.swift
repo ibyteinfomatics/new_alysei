@@ -57,7 +57,7 @@ class EditScreen2ViewController: UIViewController  {
         picker1.dataSource = self
         
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter"]
+        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
         
         editscreenTableView.register(UINib(nibName: "RecipeIngredientsUsedTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeIngredientsUsedTableViewCell")
         editscreenTableView.register(UINib(nibName: "EditRecipeIngridientTableViewCell", bundle: nil), forCellReuseIdentifier: "EditRecipeIngridientTableViewCell")
@@ -133,11 +133,13 @@ class EditScreen2ViewController: UIViewController  {
         switch picker1.tag {
         
         case 1:
-            if let stId1 = self.arrUnit[0] as? String
+            let row = picker1.selectedRow(inComponent: 0);
+            if let stId1 = self.arrUnit[row] as? String
             {
                 self.strReturn = stId1
+                self.editunitLabel.text = String(self.strReturn)
             }
-            self.editunitLabel.text = String(self.strReturn)
+            
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
             

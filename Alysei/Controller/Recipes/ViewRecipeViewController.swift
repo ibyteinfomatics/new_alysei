@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 var recipeId = Int()
 var stepsModel: [StepsDataModel]? = []
 var recipeModel : ViewRecipeDetailDataModel?
@@ -50,14 +51,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
        
         getRecipeDetail()
         
-        if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
-            rightIconBtn.isUserInteractionEnabled = true
-            rightIconImageVw.isHidden = false
-        }
-        else{
-            rightIconBtn.isUserInteractionEnabled = false
-            rightIconImageVw.isHidden = true
-        }
+        
         
         }
     
@@ -493,10 +487,12 @@ extension ViewRecipeViewController{
                 usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
                
             }
+            
             if let data = dictResponse?["steps"] as? [[String:Any]]{
                 stepsModel = data.map({StepsDataModel.init(with: $0)})
-               
+
             }
+                
             if let data = dictResponse?["you_might_also_like"] as? [[String:Any]]{
                 youMightAlsoLikeModel = data.map({ViewRecipeDetailDataModel.init(with: $0)})
                
@@ -509,6 +505,14 @@ extension ViewRecipeViewController{
             else{
                 btnStartCooking.isHidden = false
                 viewStartCookingHeight.constant = 70
+            }
+            if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
+                rightIconBtn.isUserInteractionEnabled = true
+                rightIconImageVw.isHidden = false
+            }
+            else{
+                rightIconBtn.isUserInteractionEnabled = false
+                rightIconImageVw.isHidden = true
             }
             self.tableView.reloadData()
             

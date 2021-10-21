@@ -9,8 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue-Light.ttf">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue-Bold</string>
         </array>
     </customFonts>
@@ -48,19 +50,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="i1D-Wc-j0f">
                                         <rect key="frame" x="15" y="24" width="70" height="21"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="bgQ-fq-gA6">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="bgQ-fq-gA6">
                                                 <rect key="frame" x="0.0" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Pe-gNI">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="3PU-Pe-gNI">
                                                 <rect key="frame" x="14.5" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="OCZ-gZ-TVV">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="OCZ-gZ-TVV">
                                                 <rect key="frame" x="29" y="0.0" width="12" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="50O-ZU-Usl">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="50O-ZU-Usl">
                                                 <rect key="frame" x="44" y="0.0" width="11.5" height="21"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_star_filled" translatesAutoresizingMaskIntoConstraints="NO" id="kSj-yG-ASq">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="kSj-yG-ASq">
                                                 <rect key="frame" x="58.5" y="0.0" width="11.5" height="21"/>
                                             </imageView>
                                         </subviews>
@@ -75,7 +77,6 @@
                                             <constraint firstAttribute="width" constant="20" id="eoa-c6-9iB"/>
                                             <constraint firstAttribute="height" constant="20" id="tJU-lG-GKL"/>
                                         </constraints>
-                                        <state key="normal" image="like_icon_active"/>
                                         <connections>
                                             <action selector="tapLikeButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uc0-if-a7x"/>
                                         </connections>
@@ -186,6 +187,7 @@
             </constraints>
             <size key="customSize" width="192" height="197"/>
             <connections>
+                <outlet property="heartBtn" destination="We7-LM-97f" id="zeD-Zc-gfd"/>
                 <outlet property="likeLabel" destination="0fF-iS-aBD" id="CAa-bM-Wmn"/>
                 <outlet property="outerView" destination="TJG-KV-zVS" id="Ywh-nZ-yKS"/>
                 <outlet property="ratingImg1" destination="bgQ-fq-gA6" id="3rI-YS-pMj"/>
@@ -205,10 +207,9 @@
     </objects>
     <resources>
         <image name="Group 1171" width="16" height="17.5"/>
+        <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_dining_room_1" width="12" height="13"/>
-        <image name="icons8_star_filled" width="13.5" height="13"/>
         <image name="icons8_user1" width="12" height="13"/>
-        <image name="like_icon_active" width="20" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

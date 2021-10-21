@@ -130,6 +130,12 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
                 cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + "minutes"
                 cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + "Serving"
                 cell.typeLabel.text = arrayTrending?[indexPath.item].meal?.mealName ?? "NA"
+            if arrayTrending?[indexPath.row].isFavourite == 0{
+                cell.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)
+            }
+            else{
+                cell.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
+            }
             
             if arrayTrending?[indexPath.row].avgRating ?? "0.0" == "0.0" {
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")

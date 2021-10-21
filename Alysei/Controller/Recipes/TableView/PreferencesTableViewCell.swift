@@ -40,7 +40,12 @@ class PreferencesTableViewCell: UITableViewCell {
     let imageNameLabelArray = ["A","B","C","D"]
     let titleArray = ["Favourite Cuisine","Food Alergies","Diets","Ingridients","Cooking Skill"]
    
-    
+    var post: Bool?{
+        didSet{
+            self.PrefrenceImageCollectionView.reloadData()
+        }
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
      
@@ -50,9 +55,7 @@ class PreferencesTableViewCell: UITableViewCell {
         self.PrefrenceImageCollectionView.register(cellNib, forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
         
         self.PrefrenceImageCollectionView.register(PreferencesSectionCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesSectionCollectionReusableView")
-//        self.getSavedMyPreferences()
 
-        
     }
    
     
@@ -68,17 +71,7 @@ class PreferencesTableViewCell: UITableViewCell {
        
          CATransaction.commit()
         }
-//    func setGradientBackground() {
-//
-//        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
-//        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
-//
-//        gradientLayer.colors = [colorTop, colorBottom]
-//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-//        gradientLayer.shouldRasterize = true
-//        self.headerView.layer.insertSublayer(gradientLayer, at: 0)
-//    }
+
     func config(){
         imageArray?.removeAll()
         
@@ -95,7 +88,7 @@ class PreferencesTableViewCell: UITableViewCell {
         else{
             tableViewHeight.constant = CGFloat(130*(((imageArray!.count/3) + 1 )*5))
         }
-//        self.PrefrenceImageCollectionView.reloadData()
+
     }
     
     func getSavedMyPreferences() -> Void{
@@ -122,48 +115,73 @@ class PreferencesTableViewCell: UITableViewCell {
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showCuisine?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            arraySelectedCuisine?.removeAll()
+                            for k in (0..<(self.showCuisine?.count ?? 0)){
+                                arraySelectedCuisine?.append(self.showCuisine?[k].cousinId ?? 0 )
+                            }
                         }
-
                     }
                 case 1:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showFood?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            arraySelectedFood?.removeAll()
+                            for k in (0..<(self.showFood?.count ?? 0)){
+                                arraySelectedFood?.append(self.showFood?[k].foodId ?? 0 )
+                            }
+                            
                         }
+                       
+                            
+                        
                     }
                 case 2:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showDiet?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            arraySelectedDiet?.removeAll()
+                            for k in (0..<(self.showDiet?.count ?? 0)){
+                               
+                                arraySelectedDiet?.append(self.showDiet?[k].dietId ?? 0 )
+                            }
+                            
                         }
-//                        self.PrefrenceImageCollectionView.reloadData()
+
                     }
                 case 3:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showIngridient?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            arraySelectedIngridient?.removeAll()
+                       for k in (0..<(self.showIngridient?.count ?? 0)){
+                        
+                        arraySelectedIngridient?.append(self.showIngridient?[k].ingridientId ?? 0 )
                         }
-//                        self.PrefrenceImageCollectionView.reloadData()
+                     }
+
                     }
                 case 4:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            self.showCookingSkill?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            self.showCookingSkill?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
+                            arraySelectedCookingSkill?.removeAll()
+                            for k in (0..<(self.showCookingSkill?.count ?? 0)){
+                             
+                                arraySelectedCookingSkill?.append(self.showCookingSkill?[k].cookingSkillId ?? 0 )
+                             }
+                            
                         }
-//                        self.PrefrenceImageCollectionView.reloadData()
+
                     }
                 default:
                     break
                     
                 }
-                
             }
-
-            
          self.PrefrenceImageCollectionView.reloadData()
             
         }
@@ -184,35 +202,35 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             return 1
         }
         else{
-            return (showCuisine!.count) + 1
+            return (showCuisine?.count ?? 0) + 1
         }
         case 1:
             if showFood?.count == 0{
                 return 1
             }
             else{
-            return (showFood!.count) + 1
+            return (showFood?.count ?? 0) + 1
             }
         case 2:
             if showDiet?.count == 0{
                 return 1
             }
             else{
-            return (showDiet!.count) + 1
+            return (showDiet?.count ?? 0) + 1
             }
         case 3:
             if showIngridient?.count == 0{
                 return 1
             }
             else{
-            return (showIngridient!.count) + 1
+            return (showIngridient?.count ?? 0) + 1
             }
         case 4:
             if showCookingSkill?.count == 0{
                 return 1
             }
             else{
-            return (showCookingSkill!.count) + 1
+            return (showCookingSkill?.count ?? 0) + 1
             }
         default:
             break

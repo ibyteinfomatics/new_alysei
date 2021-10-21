@@ -9,10 +9,11 @@ import UIKit
 
 class FavouriteTableViewCell: UITableViewCell {
   
-    @IBOutlet weak var editRecipeButton: UIButton!
-    @IBOutlet weak var deaftButton: UIButton!
+//    @IBOutlet weak var editRecipeButton: UIButton!
+//    @IBOutlet weak var deaftButton: UIButton!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var heartBtn: UIButton!
     @IBOutlet weak var recipeName: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!

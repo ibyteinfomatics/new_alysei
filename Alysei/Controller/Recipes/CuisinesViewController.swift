@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+var arrayPreference1: PreferencesDataModel?
+var arraySelecetdPreferenceCuisin : [Int]? = []
 class CuisinesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var SaveButton: UIButton!
@@ -18,7 +19,7 @@ class CuisinesViewController: UIViewController {
     var showSelecetdAllCuisine: [Int]? = []
     var selectedIndexPath: IndexPath? = nil
     var cuisineId : Int?
-    var arrayPreference1: PreferencesDataModel?
+    
     var callbackResult: (() -> Void)?
     
     override func viewDidLoad() {

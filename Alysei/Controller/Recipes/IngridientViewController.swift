@@ -6,6 +6,7 @@
 //
 
 import UIKit
+var arrayPreference4: PreferencesDataModel?
 
 class IngridientViewController: UIViewController {
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
@@ -21,12 +22,12 @@ class IngridientViewController: UIViewController {
     
     var getSavedIngridientPreferencesModel : [GetSavedPreferencesDataModel]? = []
     var showAllIngridient: [MapDataModel]? = []
-    var arrayPreference4: PreferencesDataModel?
+  
     var callbackResult: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        preferenceNumber = 4
+      
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
@@ -47,9 +48,20 @@ class IngridientViewController: UIViewController {
     
     @IBAction func tapSave(_ sender: Any) {
         if saveButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
-            arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient, preference: preferenceNumber)
-            arrayPreferencesModelData.remove(at: 3)
-            arrayPreferencesModelData.insert(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0), at: 3)
+            arrayPreferencesModelData.removeAll()
+            
+            arrayPreference1 = PreferencesDataModel.init(id: arraySelectedCuisine, preference: 1)
+            arrayPreference2 = PreferencesDataModel.init(id: arraySelectedFood, preference: 2)
+            arrayPreference3 = PreferencesDataModel.init(id: arraySelectedDiet, preference: 3)
+            arrayPreference4 = PreferencesDataModel.init(id: arraySelectedIngridient, preference: 4)
+            arrayPreference5 = PreferencesDataModel.init(id: arraySelectedCookingSkill, preference: 5)
+            
+            arrayPreferencesModelData.append(arrayPreference1 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreferencesModelData.append(arrayPreference2 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreferencesModelData.append(arrayPreference3 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreferencesModelData.append(arrayPreference4 ?? PreferencesDataModel(id: [], preference: 0))
+            arrayPreferencesModelData.append(arrayPreference5 ?? PreferencesDataModel(id: [], preference: 0))
+            
             postRequestToSaveIngridientPreferences()
             callbackResult?()
             self.navigationController?.popViewController(animated: true)
@@ -105,12 +117,6 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
             print("You deselected cell #\(indexPath.item)!")
             
             for (index,item) in arraySelectedIngridient!.enumerated(){
-                if item == showAllIngridient?[indexPath.row].ingridientId{
-                    arraySelectedIngridient?.remove(at: index)
-                }
-                
-            }
-            for (index,item) in arraySelectedDiet!.enumerated(){
                 if item == showAllIngridient?[indexPath.row].ingridientId{
                     arraySelectedIngridient?.remove(at: index)
                 }

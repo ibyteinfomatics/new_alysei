@@ -57,6 +57,7 @@ class HomeTrending{
     var createdAt: String?
     var updatedAt: String?
     var totalLikes: Int?
+    var isFavourite: Int?
     var avgRating: String?
     var userName: String?
     var image: ImageURL?
@@ -88,6 +89,7 @@ class HomeTrending{
         self.createdAt = String.getString(dictResponse["created_at"])
         self.updatedAt = String.getString(dictResponse["updated_at"])
         self.totalLikes = Int.getInt(dictResponse["total_likes"])
+        self.isFavourite = Int.getInt(dictResponse["is_favourite"])
         self.avgRating = String.getString(dictResponse["avg_rating"])
         self.userName = String.getString(dictResponse["username"])
         if let image = dictResponse["image"] as? [String:Any]{
@@ -140,6 +142,10 @@ class HomeQuickEasy{
     var status: String?
     var createdAt: String?
     var updatedAt: String?
+    var totalLikes: Int?
+    var isFavourite: Int?
+    var avgRating: String?
+    var userName: String?
     var image: ImageURL?
     var meal: SelectMealDataModel?
     var course: SelectCourseDataModel?
@@ -168,6 +174,10 @@ class HomeQuickEasy{
         self.status = String.getString(dictResponse["status"])
         self.createdAt = String.getString(dictResponse["created_at"])
         self.updatedAt = String.getString(dictResponse["updated_at"])
+        self.totalLikes = Int.getInt(dictResponse["total_likes"])
+        self.isFavourite = Int.getInt(dictResponse["is_favourite"])
+        self.avgRating = String.getString(dictResponse["avg_rating"])
+        self.userName = String.getString(dictResponse["username"])
         
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)

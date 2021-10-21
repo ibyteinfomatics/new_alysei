@@ -13,10 +13,12 @@ class StepsViewController: UIViewController, StepDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var stepImage: UIImageView!
     
+
+    
+    var choosestepIngridient : [UsedIngridientDataModel]? = []
+    var choosestepTool : [UsedToolsDataModel]? = []
     var page = 0
-//    var stepIngridients: [UsedIngridientDataModel]? = []
-//    var stepTools: [UsedToolsDataModel]? = []
-//
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
@@ -24,6 +26,19 @@ class StepsViewController: UIViewController, StepDelegate {
         nextStep.layer.cornerRadius = 24
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
        
+        for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
+            if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+            }
+            tableView.reloadData()
+        }
+        
+        for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
+            if stepsModel?[page].stepTool?[i].isSelected == true{
+                choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+            }
+            tableView.reloadData()
+        }
         stepTableViewCellCurrentIndex = page
         if page == ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Finish Cooking", for: .normal)
@@ -38,8 +53,26 @@ class StepsViewController: UIViewController, StepDelegate {
     
    
     @IBAction func nextStepTapped(_ sender: UIButton) {
+       
         if page < ((stepsModel?.count ?? 0) - 1){
             page = page + 1
+            
+            
+            for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
+                if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                    choosestepIngridient?.removeAll()
+                    choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+                }
+                
+            }
+            
+            for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
+                if stepsModel?[page].stepTool?[i].isSelected == true{
+                    choosestepTool?.removeAll()
+                    choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+                }
+                
+            }
             nextStep.setTitle("Next", for: .normal)
             stepTableViewCellCurrentIndex = page
             tableView.reloadData()
@@ -58,9 +91,27 @@ class StepsViewController: UIViewController, StepDelegate {
     
     @IBAction func tapDownBack(_ sender: Any) {
 
+       
         if page > 0{
             page = page - 1
             stepTableViewCellCurrentIndex = page
+           
+           
+            for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
+                if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                    choosestepIngridient?.removeAll()
+                    choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+                }
+                
+            }
+            
+            for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
+                if stepsModel?[page].stepTool?[i].isSelected == true{
+                    choosestepTool?.removeAll()
+                    choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+                }
+                
+            }
             tableView.reloadData()
             
             nextStep.setTitle("Next", for: .normal)
@@ -76,6 +127,23 @@ class StepsViewController: UIViewController, StepDelegate {
     
     func cellStepTapped(index: Int){
        page = index
+       
+       
+        for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
+            if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                choosestepIngridient?.removeAll()
+                choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+            }
+            
+        }
+        
+        for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
+            if stepsModel?[page].stepTool?[i].isSelected == true{
+                choosestepTool?.removeAll()
+                choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+            }
+            
+        }
         if page < ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Next", for: .normal)
             tableView.reloadData()
@@ -99,9 +167,9 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         else if section == 1{
-//            return stepsModel?[page].stepIngridient?[section].ingridient.count
+
             if stepsModel?.count ?? 0 > page{
-            return stepsModel?[page].stepIngridient?.count ?? 0
+            return choosestepIngridient?.count ?? 0
             }
             else{
                 return 0
@@ -112,7 +180,7 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         }
         else if section == 3{
             if (stepsModel?.count ?? 0) > page{
-                return stepsModel?[page].stepTool?.count ?? 0
+                return choosestepTool?.count ?? 0
             }
             else{
                 return 0
@@ -131,21 +199,22 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             else{return UITableViewCell()}
             cell.lblDescription.text = stepsModel?[page].description
             cell.stepLabel.text = "Step" + " " + "\(page + 1)"
-//            cell.tapViewStep = {
-//
-//            }
+
             cell.delegate = self
             cell.collectionView.reloadData()
             return cell
         
         case 1:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (stepsModel?[page].stepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (choosestepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+
             cell.ingredientImageView.setImage(withString: imgUrl)
             
-            cell.ingredientNameLabel.text = stepsModel?[page].stepIngridient?[indexPath.row].ingridient?.ingridientTitle
-            cell.ingredientQuantityLabel.text = (stepsModel?[page].stepIngridient?[indexPath.row].quantity ?? "")  + " " + (stepsModel?[page].stepIngridient?[indexPath.row].unit ?? "")
+            cell.ingredientNameLabel.text = choosestepIngridient?[indexPath.row].ingridient?.ingridientTitle
+
             
+            cell.ingredientQuantityLabel.text = (choosestepIngridient?[indexPath.row].quantity ?? "")  + " " + (choosestepIngridient?[indexPath.row].unit ?? "")
+
                 return cell
         case 2:
             guard let cell:ToolsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ToolsTableViewCell", for: indexPath) as? ToolsTableViewCell
@@ -153,11 +222,13 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 3:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (stepsModel?[page].stepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = (kImageBaseUrl + (choosestepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+
             cell.ingredientImageView.setImage(withString: imgUrl)
             
-            cell.ingredientNameLabel.text = stepsModel?[page].stepTool?[indexPath.row].tool?.toolTitle
-            cell.ingredientQuantityLabel.text = (stepsModel?[page].stepTool?[indexPath.row].quantityTool ?? "") + " " + (stepsModel?[page].stepTool?[indexPath.row].unitTool ?? "")
+            cell.ingredientNameLabel.text = choosestepTool?[indexPath.row].tool?.toolTitle
+
+            cell.ingredientQuantityLabel.text = (choosestepTool?[indexPath.row].quantityTool ?? "") + " " + (choosestepTool?[indexPath.row].unitTool ?? "")
             
                 return cell
             

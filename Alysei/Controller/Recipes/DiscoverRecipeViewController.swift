@@ -31,13 +31,14 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var isReloadData = true
     
     override func viewWillAppear(_ animated: Bool) {
-        if checkbutton == 3{
-            isReloadData = true
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-                self.containerTableVw.reloadData()
-            }
-            
-        }
+//        if checkbutton == 3{
+//           isReloadData = true
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+//                self.containerTableVw.reloadData()
+//            }
+//
+//        }
         if checkbutton == 0{
             getExploreData()
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
@@ -57,6 +58,16 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
                 self.containerTableVw.reloadData()
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if checkbutton == 3{
+            isReloadData = true 
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+                self.containerTableVw.reloadData()
+            }
+            
         }
     }
     override func viewDidLoad() {
@@ -149,7 +160,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     }
     
     func getExploreData(){
-        
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             arraySearchByIngridient?.removeAll()
@@ -194,6 +205,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
                 
             }
             containerTableVw.reloadData()
+            self.view.isUserInteractionEnabled = true
         }
     }
     
@@ -356,7 +368,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
             cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
             cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? "NA"
-            
+
+                cell4.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
+
             if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "0.0" {
                 cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
@@ -465,6 +479,12 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
             cell5.typeLabel.text = arrayMyRecipe?[indexPath.item].meal?.mealName ?? "NA"
             
+            if arrayMyRecipe?[indexPath.row].isFavourite == 0{
+                cell5.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)
+            }
+            else{
+                cell5.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
+            }
             if arrayMyRecipe?[indexPath.row].avgRating ?? "0.0" == "0.0" {
                 cell5.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell5.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
@@ -545,12 +565,12 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
+            cell6.post = true
             cell6.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
             if isReloadData{
                 cell6.config()
                 
                 cell6.getSavedMyPreferences()
-                
                 isReloadData = false
             }
             return cell6

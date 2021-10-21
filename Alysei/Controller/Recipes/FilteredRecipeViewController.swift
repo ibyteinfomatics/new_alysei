@@ -157,7 +157,14 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
                 
                 cell.timeLabel.text = "\( arrSearchRecipeDataModel?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrSearchRecipeDataModel?[indexPath.item].minutes ?? 0)" + " " + "minutes"
                 cell.servingLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].serving ?? 0)" + " " + "Serving"
-                cell.typeLabel.text = arrSearchRecipeDataModel?[indexPath.item].meal?.mealName ?? "NA"
+                cell.typeLabel.text = arrSearchRecipeDataModel?[indexPath.item].meal ?? "NA"
+            
+            if arrSearchRecipeDataModel?[indexPath.item].isFavourite == 0{
+                cell.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)
+            }
+            else{
+                cell.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
+            }
             
             if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "0.0" {
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")

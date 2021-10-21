@@ -48,10 +48,11 @@ class DataRecipe{
     var updatedAt: String?
     var totalLikes: Int?
     var avgRating: String?
+    var isFavourite: Int?
     var username: String?
     var image: ImageURL?
     var imageUrl: String?
-    var meal: SelectMealDataModel?
+    var meal: String?
   
     init(with dictResponse: [String:Any]){
         self.recipeId = Int.getInt(dictResponse["recipe_id"])
@@ -74,13 +75,14 @@ class DataRecipe{
         self.updatedAt = String.getString(dictResponse["updated_at"])
         self.totalLikes = Int.getInt(dictResponse["total_likes"])
         self.avgRating = String.getString(dictResponse["avg_rating"])
+        self.isFavourite = Int.getInt(dictResponse["is_favourite"])
         self.username = String.getString(dictResponse["username"])
         self.imageUrl = String.getString(dictResponse["attachment_url"])
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)
         }
-        if let data = dictResponse["meal"] as? [String:Any]{
-            self.meal = SelectMealDataModel.init(with: data)
-        }
+//        if let data = dictResponse["meal"] as? [String:Any]{
+            self.meal = String.getString(dictResponse["meal_name"])
+//        }
     }
 }

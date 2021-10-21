@@ -90,7 +90,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         picker1.dataSource = self
         self.addNewMissingIngridientBtn.isHidden = true
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter", "spoon", "drops"]
+        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
         setupUI()
         searchIngridientTextField.delegate = self
         callAddIngridients()
