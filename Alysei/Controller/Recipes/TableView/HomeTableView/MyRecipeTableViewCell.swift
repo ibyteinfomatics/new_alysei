@@ -32,12 +32,14 @@ class MyRecipeTableViewCell: UITableViewCell {
         editRecipeButton.layer.cornerRadius = 18
         deaftButton.layer.cornerRadius = 18
         
-        self.layer.cornerRadius = 10.0
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.8
-        self.layer.shadowRadius = 3.0
-        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        self.layer.masksToBounds = true
+        outerView.addShadow()
+        
+//        self.layer.cornerRadius = 10.0
+//        self.layer.shadowColor = UIColor.lightGray.cgColor
+//        self.layer.shadowOpacity = 0.8
+//        self.layer.shadowRadius = 3.0
+//        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+//        self.layer.masksToBounds = true
 
     }
 

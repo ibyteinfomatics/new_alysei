@@ -27,6 +27,14 @@ class FavouriteTableViewCell: UITableViewCell {
     @IBOutlet weak var rating5ImgVw: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        outerView.addShadow()
+//        outerView.layer.cornerRadius = 10.0
+//        outerView.layer.shadowColor = UIColor.lightGray.cgColor
+//        outerView.layer.shadowOpacity = 0.8
+//        outerView.layer.shadowRadius = 3.0
+//        outerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+//        outerView.layer.masksToBounds = true
+       
         // Initialization code
     }
 

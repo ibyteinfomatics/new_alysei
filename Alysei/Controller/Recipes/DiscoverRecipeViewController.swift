@@ -614,9 +614,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return 350;
             }
         case 1:
-            return 250
+            return 260
         case 2:
-            return 250
+            return 260
         case 3:
 //            let cell: PreferencesTableViewCell = tableView.cellForRow(at: indexPath) as! PreferencesTableViewCell
 //            cell.
