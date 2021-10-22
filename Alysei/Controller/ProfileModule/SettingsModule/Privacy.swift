@@ -29,6 +29,10 @@ class Privacy: AlysieBaseViewC {
     @IBOutlet weak var followlabel: UILabel!
     @IBOutlet weak var weeklylabel: UILabel!
     
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    
     
     var msgpre,followpre,weeklypre: String!
     var connect : String!
@@ -107,7 +111,7 @@ class Privacy: AlysieBaseViewC {
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
-        dataDropDown.direction = .top
+        dataDropDown.direction = .bottom
     }
     
     private func postRequestToPrivacy() -> Void{
@@ -121,6 +125,7 @@ class Privacy: AlysieBaseViewC {
           self.privacyModel = PrivacyModel.init(with: dictResponse!)
         
         //self.connect = self.privacyModel?.privacyData?.who_can_connect ?? ""
+        self.connect = ""
         
         if self.privacyModel?.privacyData?.who_can_connect ?? "" != ""{
             
@@ -132,14 +137,20 @@ class Privacy: AlysieBaseViewC {
                     self.connected.append(String(value))
                 }
                 
-                let b = (self.privacyModel?.privacyData?.who_can_connect ?? "").components(separatedBy: [","])
+                //let b = (self.privacyModel?.privacyData?.who_can_connect ?? "").components(separatedBy: [","])
                 
             } else {
                 self.connected.append(String.getString(self.privacyModel?.privacyData?.who_can_connect))
             }
             
+            let characterArray = self.connected.flatMap { $0 }
+            let stringArray2 = characterArray.map { String($0) }
+            self.connect = stringArray2.joined(separator: ",")
             
-            print("chek---- ",self.connected)
+            
+          //  print("chek---- ",self.connected)
+            
+            
         }
        
        

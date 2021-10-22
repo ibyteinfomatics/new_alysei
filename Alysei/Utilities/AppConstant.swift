@@ -502,7 +502,7 @@ struct AppConstants {
     static let profileData = "profile_data"
     static let kURL = "URL"
     static let kUrl = "Url"
-    
+    static let leaveComment = "Leave a comment"
 }
 
 struct ProfileCompletion {

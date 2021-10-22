@@ -240,7 +240,13 @@ extension ProductStoreVC {
                     self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
                 }
             default:
+                if self.arrListData.count == 0{
+                    self.showAlert(withMessage: "No producer found") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
                 print("No Data")
+                }
             }
             self.tableView.reloadData()
         }
@@ -280,7 +286,7 @@ extension ProductStoreVC {
         let selectedSortProducerString = String.getString(selectedSortProducer?.first)
         let selectFdaCertifiedString = String.getString(selectFdaCertified?.first)
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertifiedString )" + "&sort_by_producer=" + "\(selectedSortProducerString )" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1" + "&keyword=" + "\(self.searchTxt ?? "")" + "&title=" + "" + "&box_id=1" + "&page=" + "\(pageNo ?? 1)"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectedPropertyString ?? "")" + "&method=" + "\(selectedMethodString ?? "")" + "&category=" + "\(selectedCategoryStringId ?? "")" + "&region=" + "\(selectedRegionStringId ?? "")" + "&fda_certified=" + "\(selectFdaCertifiedString )" + "&sort_by_producer=" + "\(selectedSortProducerString )" + "&sort_by_product=" + "" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&type=1" + "&keyword=" + "\(self.searchTxt ?? "")" + "&title=" + "" + "&box_id=1" + "&page=" + "\(pageNo ?? 1)"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         TANetworkManager.sharedInstance.requestApi(withServiceName:urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errortype, statusCode in
