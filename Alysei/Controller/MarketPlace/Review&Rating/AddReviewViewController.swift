@@ -19,7 +19,7 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
 
     var productStoreType: String?
     var productStoreId: String?
-    var reviewStarCount: Int?
+    var reviewStarCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         txtReview.delegate = self
@@ -61,7 +61,11 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     @IBAction func btnAddReview(_ sender: UIButton){
         if (reviewStarCount == 0){
             self.showAlert(withMessage: "Please add ratings.")
-        }else{
+        }
+        else{
+        if txtReview.text == AppConstants.leaveComment{
+               txtReview.text = ""
+        }
         callAddReviewApi()
         }
     }
@@ -112,7 +116,7 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         
     }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        if textView.text == "Leave a comment"{
+        if textView.text == AppConstants.leaveComment{
             textView.text = ""
         }
         return true
@@ -128,7 +132,7 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         // and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
 
-            textView.text = "Leave a comment"
+            textView.text = AppConstants.leaveComment
             textView.textColor = UIColor.lightGray
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
@@ -162,7 +166,7 @@ extension AddReviewViewController {
         let params: [String:Any] = [
             APIConstants.kId: productStoreId ?? "",
             APIConstants.kType : productStoreType ?? "",
-            APIConstants.kRating: reviewStarCount ?? 0,
+            APIConstants.kRating: reviewStarCount ,
             APIConstants.kReview: txtReview.text ?? ""
         ]
         
@@ -170,13 +174,12 @@ extension AddReviewViewController {
             
             switch statusCode{
             case 200:
-                self.showAlert(withMessage: "Review added Successfully!")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    
+                self.showAlert(withMessage: "Review added Successfully!") {
                     self.navigationController?.popViewController(animated: true)
                 }
             case 409:
-                self.showAlert(withMessage: "You have already done a review on this product")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.showAlert(withMessage: "You have already done a review on this product") {
                     self.navigationController?.popViewController(animated: true)
                 }
             default:

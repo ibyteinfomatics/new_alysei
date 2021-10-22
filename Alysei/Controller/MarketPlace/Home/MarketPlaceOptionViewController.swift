@@ -26,6 +26,12 @@ class MarketPlaceOptionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        for i in 0..<(self.arrOptions?.count ?? 0) {
+            self.arrOptions?[i].isOptionSelected = false
+        }
+    }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
@@ -65,6 +71,11 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
         }else{
             cell.lblOption?.text = arrOptions?[indexPath.row].option
         }
+        if arrOptions?[indexPath.row].isOptionSelected == true{
+            cell.btnSelect.image = UIImage(named: "SelectSort")
+        }else{
+                cell.btnSelect.image = UIImage(named: "UnselectSort")
+            }
         cell.selectionStyle = .none
         return cell
     }
@@ -79,11 +90,7 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
             self.arrOptions?[i].isOptionSelected = false
         }
         arrOptions?[indexPath.row].isOptionSelected = true
-        if arrOptions?[indexPath.row].isOptionSelected == true{
-            cell?.btnSelect.image = UIImage(named: "SelectSort")
-        }else{
-                cell?.btnSelect.image = UIImage(named: "UnselectSort")
-            }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
             nextVC.listType = self.listIndex
@@ -104,6 +111,8 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
         
+        self.tableView.reloadData()
+        
     }
 }
 
@@ -119,6 +128,10 @@ extension MarketPlaceOptionViewController{
             }
             default:
                 print("No Data")
+            }
+            
+            for i in 0..<(self.arrOptions?.count ?? 0) {
+                self.arrOptions?[i].isSelected = false
             }
             self.tableView.reloadData()
         }

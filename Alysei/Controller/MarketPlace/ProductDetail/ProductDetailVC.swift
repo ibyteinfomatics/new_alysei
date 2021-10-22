@@ -36,13 +36,13 @@ class ProductDetailVC: AlysieBaseViewC {
         // Do any additional setup after loading the view.
     }
     
-    //    func setFavUnfavProduct(){
-    //        if self.productDetail?.product_detail?.is_favourite == 0{
-    //            self.btnLikeUnlike.setImage(UIImage(named: "like_icon"), for: .normal)
-    //        }else{
-    //            self.btnLikeUnlike.setImage(UIImage(named: "liked_icon"), for: .normal)
-    //        }
-    //    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.productDetail = ProductDetailModel.init(with: [:])
+        callProductDetailApi()
+        callGetReviewApi()
+    }
     
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
@@ -103,17 +103,34 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 8{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductRatingTableVCell", for: indexPath) as? ProductRatingTableVCell else {return UITableViewCell()}
             cell.selectionStyle = .none
-            cell.totalOneStar.text = "\(productDetail?.product_detail?.total_one_star ?? 0)"
-            cell.totalTwoStar.text = "\(productDetail?.product_detail?.total_two_star ?? 0)"
-            cell.totalThreeeStar.text = "\(productDetail?.product_detail?.total_three_star ?? 0)"
-            cell.totalFourStar.text = "\(productDetail?.product_detail?.total_four_star ?? 0)"
-            cell.totalFiveStar.text = "\(productDetail?.product_detail?.total_five_star ?? 0)"
+            let doubleTotalReview = Double(productDetail?.product_detail?.total_reviews ?? 0)
             
-            cell.totalOneStarProgress.setProgress((Float(productDetail?.product_detail?.total_one_star ?? 0) / 100), animated: true)
-            cell.totalTwoStarProgress.setProgress(Float((productDetail?.product_detail?.total_two_star ?? 0) / 100), animated: true)
-            cell.totalThreeeStarProgress.setProgress(Float((productDetail?.product_detail?.total_three_star ?? 0) / 100), animated: true)
-            cell.totalFourStarProgress.setProgress(Float((productDetail?.product_detail?.total_four_star ?? 0)  / 100), animated: true)
-            cell.totalFiveStarProgress.setProgress(Float((productDetail?.product_detail?.total_five_star ?? 0) / 100), animated: true)
+            cell.totalOneStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_one_star))))%"
+            cell.totalTwoStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_two_star))))%"
+            cell.totalThreeeStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_three_star))))%"
+            cell.totalFourStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_four_star))))%"
+            cell.totalFiveStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_five_star))))%"
+            
+            print("productDetail?.product_detail?.total_reviews------------------->",productDetail?.product_detail?.total_reviews ?? 0)
+            
+           
+            print("Double productDetail?.product_detail?.total_reviews------------------->",doubleTotalReview )
+            
+            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_one_star))), animated: false)
+            
+            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(productDetail?.product_detail?.total_two_star ?? 0))), animated: false)
+            
+            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_three_star))), animated: false)
+            
+            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_four_star))), animated: false)
+            
+            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_five_star))), animated: false)
+            
+           /* cell.totalOneStarProgress.setProgress((Float(productDetail?.product_detail?.total_one_star ?? 0) / 1), animated: true)
+            cell.totalTwoStarProgress.setProgress(Float((productDetail?.product_detail?.total_two_star ?? 0) / 2), animated: true)
+            cell.totalThreeeStarProgress.setProgress(Float((productDetail?.product_detail?.total_three_star ?? 0) / 3), animated: true)
+            cell.totalFourStarProgress.setProgress(Float((productDetail?.product_detail?.total_four_star ?? 0)  / 4), animated: true)
+            cell.totalFiveStarProgress.setProgress(Float((productDetail?.product_detail?.total_five_star ?? 0) / 5), animated: true)*/
             cell.lblProducerName.text = self.productDetail?.product_detail?.store_detail?.name
             cell.imgProducer.setImage(withString: kImageBaseUrl + String.getString(productDetail?.product_detail?.store_detail?.store_logo))
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0{

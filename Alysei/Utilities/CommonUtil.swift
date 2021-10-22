@@ -29,6 +29,8 @@ extension UIViewController: CommonUtilDelegate {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+
   
   public func showTwoButtonsAlert(title: String = "",message: String,buttonTitle: String,_ completion:(() ->Void)? = nil) -> Void{
       
@@ -40,6 +42,20 @@ extension UIViewController: CommonUtilDelegate {
         
       self.dismiss(animated: true, completion: nil)}))
       self.present(alert, animated: true, completion: nil)
+    }
+    
+    public func calculateRatingPercentage(_ totalRating: Double , _ specificStarRating: Double) -> Double{
+        
+        if totalRating == 0 {
+            return 0
+        }else{
+        
+        print("Method productDetail?.product_detail?.total_reviews------------------->",totalRating )
+        let avgRating = ((specificStarRating/totalRating) * 100)
+        
+        //return (1/avgRating)
+        return (avgRating)
+        }
     }
 }
 
@@ -244,3 +260,4 @@ class CommonUtil: NSObject {
 //  }
   
 }
+

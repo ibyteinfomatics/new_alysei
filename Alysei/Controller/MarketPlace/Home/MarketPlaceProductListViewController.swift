@@ -88,8 +88,41 @@ class MarketPlaceProductListViewController: UIViewController {
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        if isSearch == false{
+//            self.arrListAppData = [ProductSearchListModel]()
+//            if pushedFromVC == .region{
+//                self.btnFilter.isHidden = false
+//                callRegionProductListApi(1)
+//            }else if pushedFromVC == .category{
+//                self.btnFilter.isHidden = false
+//                callCategoryProductListApi(1)
+//            }else if pushedFromVC == .conservation {
+//                self.btnFilter.isHidden = false
+//                callConservationListApi(1)
+//            }else if pushedFromVC == .fdaCertified{
+//                self.btnFilter.isHidden = false
+//                callOptionApi(1)
+//            }else if pushedFromVC == .myFav {
+//                self.btnFilter.isHidden = true
+//                callOptionApi(1)
+//            }else if pushedFromVC == .properties {
+//                self.btnFilter.isHidden = false
+//                callConservationListApi(1)
+//            }else{
+//                self.callProductListApi()
+//            }
+//        }
+    //}
     @IBAction func btnBackAction(_ sender: UIButton){
-        self.navigationController?.popViewController(animated: true)
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: MarketPlaceHomeVC.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
     }
     @IBAction func btnSearch(_ sender: UIButton){
         self.vwSearch.isHidden = false
@@ -281,7 +314,8 @@ extension MarketPlaceProductListViewController{
         let urlString = APIUrl.kMarketPlaceProductBox + "\(listType ?? 0)" + "&keyword=" + "\(keywordSearch ?? "")"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
-            
+            switch statusCode{
+            case 200:
             let response = dictresponse as? [String:Any]
             if let data = response?["data"] as? [[String:Any]]{
                 self.arrList = data.map({ProductSearchListModel.init(with: $0)})
@@ -289,15 +323,25 @@ extension MarketPlaceProductListViewController{
             for i in 0..<(self.arrList?.count ?? 0){
                 self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
             }
-            self.tableView.reloadData()
+            default:
+            if (self.arrListAppData.count == 0) {
+                self.showAlert(withMessage: "No product found") {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }else{
+                print("No More Data")
+            }
         }
+            self.tableView.reloadData()
         
+    }
     }
     func callRegionProductListApi(_ pageNo: Int?){
         let urlString = APIUrl.kGetProductByRegionId + "\(optionId ?? 0)"
         let urlString1 = (urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") + "&page=" + "\(pageNo ?? 0)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
-            
+            switch statusCode{
+            case 200:
             let response = dictresponse as? [String:Any]
             if let data = response?["data"] as? [String:Any]{
                 self.lastPage = data["last_page"] as? Int
@@ -308,15 +352,24 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
+            default:
+                if (self.arrListAppData.count == 0) {
+                 self.showAlert(withMessage: "No product found") {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                }else{
+                    print("No More Data")
+                }
+        }
             self.tableView.reloadData()
         }
-        
     }
     func callCategoryProductListApi(_ pageNo : Int?){
         let urlString = APIUrl.kGetProductByCategoryId + "\(optionId ?? 0)"
         let urlString1 = (urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") + "&page=" + "\(pageNo ?? 0)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
-            
+            switch statusCode{
+            case 200:
             let response = dictresponse as? [String:Any]
             if let data = response?["data"] as? [String:Any]{
                 self.lastPage = data["last_page"] as? Int
@@ -327,15 +380,25 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
-            self.tableView.reloadData()
+            default:
+            if (self.arrListAppData.count == 0) {
+                self.showAlert(withMessage: "No product found") {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }else{
+                print("No More Data")
+            }
         }
+            self.tableView.reloadData()
         
+    }
     }
     func callConservationListApi(_ pageNo : Int?){
         let urlString = APIUrl.kMarketPlaceProductBox + "\(listType ?? 0)" + "&keyword=" + "\(keywordSearch ?? "")" + "&page=" + "\(pageNo ?? 0)"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1 , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictresponse, error, errorType, statusCode in
-            
+            switch statusCode{
+            case 200:
             let response = dictresponse as? [String:Any]
             if let data = response?["data"] as? [String:Any]{
                 self.lastPage = data["last_page"] as? Int
@@ -346,7 +409,16 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
-            self.tableView.reloadData()
+            default:
+                if (self.arrListAppData.count == 0) {
+                    self.showAlert(withMessage: "No product found") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
+                    print("No More Data")
+                }
+        }
+        self.tableView.reloadData()
         }
         
     }
@@ -365,7 +437,14 @@ extension MarketPlaceProductListViewController{
                     }
                 }
             default:
-                print("No Data")
+                if (self.arrListAppData.count == 0) {
+                    self.showAlert(withMessage: "No product found") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+              
+                }else{
+                    print("No More Data")
+                }
             }
             self.tableView.reloadData()
         }
@@ -387,7 +466,7 @@ extension MarketPlaceProductListViewController{
     func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?, _ page: Int?){
         
         // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
-        
+        self.arrListAppData = [ProductSearchListModel]()
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
         selectePropertiesFilterName = selectedPropertyString
         
@@ -457,7 +536,7 @@ extension MarketPlaceProductListViewController{
             self.filterTitle = "\(optionId ?? 0)"
         }
         
-        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product=" + "" + "&sort_by_producer=" + "\(sortFilterId ?? "")" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.filterTitle ?? "")" + "&box_id=" + "\(self.listType ?? 0)" + "&type=" + "2" + "&page=" + "\(page ?? 1)"
+        let urlString = APIUrl.kMarketplaceBoxFilterApi + "property=" + "\(selectePropertiesFilterName ?? "")" + "&method=" + "\(selecteMethodFilterName ?? "")" + "&category=" + "\(selecteCategoryFilterId ?? "")" + "&region=" + "\(selectedRegionFilterId ?? "")" + "&fda_certified=" + "\(fdaFilterId ?? "")" + "&sort_by_product=" + "\(sortFilterId ?? "")" + "&sort_by_producer=" + "" + "&rating=" + "\(selectedRatingStringId ?? "")" + "&keyword=" + "\(searchProductString ?? "")" + "&title=" + "\(self.filterTitle ?? "")" + "&box_id=" + "\(self.listType ?? 0)" + "&type=" + "2" + "&page=" + "\(page ?? 1)"
         
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
@@ -475,7 +554,11 @@ extension MarketPlaceProductListViewController{
                     }
                 }
             default:
-                print("No Data")
+                if (self.arrListAppData.count == 0) {
+                self.showAlert(withMessage: "No products found")
+                }else{
+                    print("No More Data")
+                }
             }
             self.tableView.reloadData()
         }
@@ -519,3 +602,4 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     }
     
 }
+
