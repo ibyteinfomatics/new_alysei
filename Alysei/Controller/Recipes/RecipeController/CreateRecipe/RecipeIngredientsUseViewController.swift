@@ -682,15 +682,18 @@ extension RecipeIngredientsUseViewController{
             var stepDictionary : [String : Any] = [:]
             stepDictionary["description"] = item.description
             stepDictionary["title"] = item.title
+            selectedIngridient.removeAll()
             for i in 0..<(item.ingridentsArray?.count ?? 0){
+                
                 if item.ingridentsArray?[i].isSelected == true{
                    
                     selectedIngridient.append(item.ingridentsArray?[i].recipeIngredientIds ?? 0)
                 }
             }
             stepDictionary["ingredients"] = selectedIngridient
-
+            selectedTool.removeAll()
             for i in 0..<(item.toolsArray?.count ?? 0){
+               
                 if item.toolsArray?[i].isSelected == true{
                    
                     selectedTool.append(item.toolsArray?[i].recipeToolIds ?? 0)

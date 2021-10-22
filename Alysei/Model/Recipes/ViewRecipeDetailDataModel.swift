@@ -195,7 +195,6 @@ class UsedToolsDataModel{
 
 class StepsDataModel{
     var recipeStepId: Int?
-//    var recipeNumber : Int?
     var recipeId: Int?
     var title: String?
     var description: String?

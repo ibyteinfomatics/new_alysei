@@ -769,16 +769,19 @@ extension CreateNewRecipeViewController: UIImagePickerControllerDelegate, UINavi
     guard let selectedImage = info[.editedImage] as? UIImage else { return }
     self.dismiss(animated: true) { [self] in
         
-            self.recipeImgVw.contentMode = .scaleAspectFill
-        let scaledImage:UIImage = self.resizeImage(image: selectedImage, newWidth: 800)
-        self.recipeImgVw.image = scaledImage
-        let imgString = scaledImage.pngData()?.base64EncodedString()
+        self.recipeImgVw.contentMode = .scaleAspectFill
+        let scaledImage = selectedImage.jpegData(compressionQuality: 0.5)
+        let image = UIImage(data: scaledImage!)
+//        let scaledImage:UIImage = self.resizeImage(image: selectedImage, newWidth: 800)
+        self.recipeImgVw.image = image
+        let imgString = image?.pngData()?.base64EncodedString()
         
         let preBaseStr = "data:image/png;base64,"
         arraySelectedImg = preBaseStr + (imgString ?? "")
 
     }
   }
+    
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
        let size = image.size
        

@@ -45,11 +45,14 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
           page = pageEdit
             if editstepsModel.count > selectedIndex  && selectedIndex != 1000 {
                 let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepCollectionViewCell
+                
                 let dataModel = editstepsModel[selectedIndex]
                 cell.titleTextField.text = dataModel.title
                 cell.desciptionTextView.text = dataModel.description
+            
                 editusedIngridientModel = dataModel.stepIngridient ?? []
                 editusedToolModel =  dataModel.stepTool ?? []
+                
                 ingridientUsedCollectionView.reloadData()
                 toolsUsedCollectionView.reloadData()
             }
@@ -111,7 +114,14 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
             showAlert(withMessage: AlertMessage.kEnterDescription)
             return
         }
-        
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+            showAlert(withMessage: AlertMessage.kEnterDescription)
+            return
+        }
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+            showAlert(withMessage: AlertMessage.kEnterDescription)
+            return
+        }
         else{
             let stepdata = StepsDataModel(with: [:])
             stepdata.title = cell.titleTextField.text ?? ""
@@ -130,6 +140,9 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
 }
     
     @IBAction func cancelButton(_ sender: UIButton) {
+        if isFromStep == "Edit Step"{
+            
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -185,11 +198,16 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell1.addStepIngridientNameLabel.font = UIFont(name: "Helvetica Neue Bold", size: 14)
             
             if isFromStep == "Edit Step"{
+                
                 if editusedIngridientModel[indexPath.row].isSelected == true {
                     cell1.addStepIngeidientSelectedImageView.isHidden = false
                 } else {
                     cell1.addStepIngeidientSelectedImageView.isHidden = true
                 }
+            }
+            else{
+                editusedIngridientModel[indexPath.row].isSelected = false
+                cell1.addStepIngeidientSelectedImageView.isHidden = true
             }
         
             cell1.layoutSubviews()
@@ -211,6 +229,10 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
                 } else {
                     cell2.addStepToolSelectedImageView.isHidden = true
                 }
+            }
+            else{
+                editusedToolModel[indexPath.row].isSelected = false
+                cell2.addStepToolSelectedImageView.isHidden = true
             }
             
             
@@ -240,7 +262,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
 
             }
         }
-        if collectionView == toolsUsedCollectionView {
+        else if collectionView == toolsUsedCollectionView {
             
             if  editusedToolModel[indexPath.row].isSelected == true {
                 editusedToolModel[indexPath.row].isSelected = false

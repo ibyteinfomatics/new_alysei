@@ -45,9 +45,9 @@ class EditRecipeViewController: UIViewController {
     @IBOutlet weak var plusServingBtn: UIButton!
     
     var timer: Timer?
-    var counter = 0
-    var counter1 = 0
-    var counter2 = 0
+    var counter = Int()
+    var counter1 = Int()
+    var counter2 = Int()
     var arrayMyRecipe1: [HomeTrending]? = []
     var index = 0
     var picker = UIImagePickerController()
@@ -78,8 +78,7 @@ class EditRecipeViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         self.uiSetup()
-        
-        
+       
         picker1.delegate = self
         picker1.dataSource = self
         nameTextfield.delegate = self
@@ -94,16 +93,10 @@ class EditRecipeViewController: UIViewController {
         if arrayMyRecipe!.count > 0{
             
             let imageurl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
-//            recipeImage.setImage(withString: imageurl)
+
             let url = URL(string: imageurl)!
             downloadImage(from: url)
 
-//            let preBaseStr = "data:image/png;base64,"
-//            let imgString = self.imageSeleceted?.pngData()?.base64EncodedString()
-//
-//            if isEditImage == false{
-//                arraySelectedImg = preBaseStr + (imgString ?? "")
-//            }
             nameTextfield.text = arrayMyRecipe?[index].name
             
             cookingSkillLabel.text = arrayMyRecipe?[index].cookingSkill?.cookingSkillName
@@ -137,6 +130,10 @@ class EditRecipeViewController: UIViewController {
             hoursLable.text = "\(arrayMyRecipe?[index].hours ?? 0)"
             minutesLable.text = "\(arrayMyRecipe?[index].minute ?? 0)"
             howMuchPeopleLable.text = "\(arrayMyRecipe?[index].serving ?? 0)"
+            
+            counter = arrayMyRecipe?[index].hours ?? 0
+            counter1 = arrayMyRecipe?[index].minute ?? 0
+            counter2 = arrayMyRecipe?[index].serving ?? 0
             
             editRecipeId = (arrayMyRecipe?[index].recipeId)!
             

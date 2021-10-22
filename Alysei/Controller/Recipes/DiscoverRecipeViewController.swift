@@ -63,11 +63,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     
     override func viewDidAppear(_ animated: Bool) {
         if checkbutton == 3{
-            isReloadData = true 
+           
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+                self.isReloadData = true
                 self.containerTableVw.reloadData()
             }
-            
+
         }
     }
     override func viewDidLoad() {
@@ -566,13 +567,14 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
             cell6.post = true
-            cell6.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
+            cell6.config()
+           
             if isReloadData{
-                cell6.config()
-                
                 cell6.getSavedMyPreferences()
-                isReloadData = false
+                
+//                isReloadData = false
             }
+           
             return cell6
         default:
             break
@@ -618,8 +620,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 2:
             return 260
         case 3:
-//            let cell: PreferencesTableViewCell = tableView.cellForRow(at: indexPath) as! PreferencesTableViewCell
-//            cell.
+
             return UITableView.automaticDimension
         default:
             break

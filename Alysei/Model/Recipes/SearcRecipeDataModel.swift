@@ -57,7 +57,7 @@ class DataRecipe{
     init(with dictResponse: [String:Any]){
         self.recipeId = Int.getInt(dictResponse["recipe_id"])
         self.userId = Int.getInt(dictResponse["user_id"])
-        self.name = String.getString(dictResponse["name"])
+        self.name = String.getString(dictResponse["recipe_name"])
         self.mealId = Int.getInt(dictResponse["meal_id"])
         self.courseId = Int.getInt(dictResponse["course_id"])
         self.hours = Int.getInt(dictResponse["hours"])
@@ -81,8 +81,6 @@ class DataRecipe{
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)
         }
-//        if let data = dictResponse["meal"] as? [String:Any]{
             self.meal = String.getString(dictResponse["meal_name"])
-//        }
     }
 }

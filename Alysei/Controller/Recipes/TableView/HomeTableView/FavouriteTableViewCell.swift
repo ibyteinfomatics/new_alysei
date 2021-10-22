@@ -9,8 +9,6 @@ import UIKit
 
 class FavouriteTableViewCell: UITableViewCell {
   
-//    @IBOutlet weak var editRecipeButton: UIButton!
-//    @IBOutlet weak var deaftButton: UIButton!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var heartBtn: UIButton!
@@ -25,6 +23,7 @@ class FavouriteTableViewCell: UITableViewCell {
     @IBOutlet weak var rating3ImgVw: UIImageView!
     @IBOutlet weak var rating4ImgvW: UIImageView!
     @IBOutlet weak var rating5ImgVw: UIImageView!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         outerView.addShadow()

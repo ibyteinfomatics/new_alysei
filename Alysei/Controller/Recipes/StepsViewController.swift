@@ -39,6 +39,7 @@ class StepsViewController: UIViewController, StepDelegate {
             }
             tableView.reloadData()
         }
+        
         stepTableViewCellCurrentIndex = page
         if page == ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Finish Cooking", for: .normal)

@@ -48,13 +48,15 @@ class PreferencesTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-     
+        
         PrefrenceImageCollectionView.delegate = self
         PrefrenceImageCollectionView.dataSource = self
         let cellNib = UINib(nibName: "PreferencesImageCollectionViewCell", bundle: nil)
         self.PrefrenceImageCollectionView.register(cellNib, forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
         
         self.PrefrenceImageCollectionView.register(PreferencesSectionCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesSectionCollectionReusableView")
+        
+        self.PrefrenceImageCollectionView.reloadData()
 
     }
    
@@ -73,28 +75,27 @@ class PreferencesTableViewCell: UITableViewCell {
         }
 
     func config(){
-        imageArray?.removeAll()
+                
+        let first = (((showCuisine?.count ?? 0) % 3) == 0) ? (showCuisine?.count ?? 0) / 3 : ((showCuisine?.count ?? 0) / 3) + 1
         
-        imageArray?.append(showCuisine?.count ?? 0)
-        imageArray?.append(showFood?.count ?? 0)
-        imageArray?.append(showDiet?.count ?? 0)
-        imageArray?.append(showIngridient?.count ?? 0)
-        imageArray?.append(showCookingSkill?.count ?? 0)
-//       finalHeight = (cusinHeight + foodHeight + dietHeight + ingridientHeight + cookingHeight + 100)
-        if imageArray!.count % 3 == 0 {
-            tableViewHeight.constant = CGFloat(130*((imageArray!.count/3)*5))
-
-        }
-        else{
-            tableViewHeight.constant = CGFloat(130*(((imageArray!.count/3) + 1 )*5))
-        }
+        let second = (((showFood?.count ?? 0) % 3) == 0) ? (showFood?.count ?? 0) / 3 : ((showFood?.count ?? 0) / 3) + 1
+        
+        let third = (((showDiet?.count ?? 0) % 3) == 0) ? (showDiet?.count ?? 0) / 3 : ((showDiet?.count ?? 0) / 3) + 1
+        
+        let foutrh = (((showIngridient?.count ?? 0) % 3) == 0) ? (showIngridient?.count ?? 0) / 3 : ((showIngridient?.count ?? 0) / 3) + 1
+        
+        let fifth = (((showCookingSkill?.count ?? 0) % 3) == 0) ? (showCookingSkill?.count ?? 0) / 3 : ((showCookingSkill?.count ?? 0) / 3) + 1
+        
+        
+        tableViewHeight.constant = CGFloat((140 * (first+second+third+foutrh+fifth))+200)
+        
 
     }
     
     func getSavedMyPreferences() -> Void{
         
        
-        self.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
+//        self.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
         self.showCuisine?.removeAll()
         self.showFood?.removeAll()
         self.showDiet?.removeAll()
@@ -272,16 +273,16 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 cell.imageView1.clipsToBounds = true
             }
             
-                    if showCuisine!.count % 3 == 0 {
-                        tableViewHeight.constant = CGFloat(128*(showCuisine!.count/3))
-                        cusinHeight = tableViewHeight.constant
-            
-                    }
-                    else{
-                        tableViewHeight.constant = CGFloat(128*((showCuisine!.count/3) + 1 ))
-                        cusinHeight = tableViewHeight.constant
-                    }
-            
+//                    if showCuisine!.count % 3 == 0 {
+//                        tableViewHeight.constant = CGFloat(128*(showCuisine!.count/3))
+//                        cusinHeight = tableViewHeight.constant
+//
+//                    }
+//                    else{
+//                        tableViewHeight.constant = CGFloat(128*((showCuisine!.count/3) + 1 ))
+//                        cusinHeight = tableViewHeight.constant
+//                    }
+//
 
             
         case 1:
