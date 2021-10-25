@@ -64,6 +64,10 @@ extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionV
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        _ = pushViewController(withName: PhotosPost.id(), fromStoryboard: StoryBoardConstants.kHome)
+    }
 
 }
 

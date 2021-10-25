@@ -96,7 +96,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           //_ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
-          _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         case 2:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 3:

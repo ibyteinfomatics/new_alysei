@@ -43,6 +43,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var postcount: UILabel!
     @IBOutlet weak var connectioncount: UILabel!
     @IBOutlet weak var followercount: UILabel!
+    @IBOutlet weak var featureUIview: NSLayoutConstraint!
     //    @IBOutlet weak var viewProfileCompletion: UIView!
     //    @IBOutlet weak var viewProfiletab: NSLayoutConstraint!
     //    @IBOutlet weak var profilePercentage: UILabel!
@@ -173,7 +174,9 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = postsViewC
+      //  _ = postsViewC
+       
+        
         
         self.btnEditProfile.layer.cornerRadius = 0.0
         self.viewSeparator.alpha = 0.0
@@ -265,6 +268,15 @@ class ProfileViewC: AlysieBaseViewC{
             self.btnEditProfile.isHidden = false
             self.backButton.isHidden = true
             self.btnEditProfile.isUserInteractionEnabled = true
+            
+            if self.userType == .voyagers {
+                self.featureUIview.constant = 0
+            } else {
+                self.featureUIview.constant = 140
+            }
+            
+            
+            
         case .other:
             
             self.connectButton.isHidden = false
@@ -279,6 +291,21 @@ class ProfileViewC: AlysieBaseViewC{
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftRightGesturePerformed(_:)))
         swipeRightGesture.direction = .right
         self.view.addGestureRecognizer(swipeRightGesture)
+        
+        
+        
+    }
+    
+    func inviteApi(id: Int, type: Int){
+        
+        let params: [String:Any] = [
+            "connection_id": String.getString(id),
+            "accept_or_reject": type]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            self.fetchVisiterProfileDetails(self.userID)
+        }
         
     }
     
@@ -408,7 +435,32 @@ class ProfileViewC: AlysieBaseViewC{
         }
         
         
+        //tapPhotos(UIButton())
+//
+//        let indexPath = IndexPath(row: 1, section: 0)
+//        tabsCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+//
+//        tabsCollectionView.delegate?.collectionView?(tabsCollectionView, didSelectItemAt: indexPath)
         
+        UIView.animate(withDuration: 0.01) {
+            self.tabsCollectionView.reloadData()
+        } completion: { bool in
+            
+            if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
+                //cell.isSelected = true
+                cell.isUnderlineBorderVisible(true)
+                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+            }
+            self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
+            self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
+            
+//            if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
+//
+//                self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+//            }
+            
+            
+        }
         
     }
     
@@ -601,8 +653,8 @@ class ProfileViewC: AlysieBaseViewC{
             
             
         } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.voiceExperts.rawValue)) {
+           
             self.segueToCompleteConnectionFlow()
-            
             
         }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer1.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer2.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer3.rawValue)){
             
@@ -788,31 +840,31 @@ class ProfileViewC: AlysieBaseViewC{
             self.respondeButton.isHidden = false
         }
         if self.connectButton.isHidden == false{
-        if self.userType != .voyagers {
-            //            let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
-            var title = "Connect"
-            switch connectionFlag {
-            case 0:
-                title = "Connect"
-            case 1:
-                title = "Connected"
-            case 2:
-                title = "Pending"
-            default:
-                title = "Connect"
-            }
-            self.connectButton.setTitle("\(title)", for: .normal)
-        }
-        } else if self.userType == .voyagers {
-            
-            if self.visitorUserType == .voyagers {
-                let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
+            if self.userType != .voyagers {
+                //            let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
+                var title = "Connect"
+                switch connectionFlag {
+                case 0:
+                    title = "Connect"
+                case 1:
+                    title = "Connected"
+                case 2:
+                    title = "Pending"
+                default:
+                    title = "Connect"
+                }
                 self.connectButton.setTitle("\(title)", for: .normal)
-            } else {
-                let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
-                self.connectButton.setTitle("\(title)", for: .normal)
+            } else if self.userType == .voyagers {
+                
+                if self.visitorUserType == .voyagers {
+                    let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
+                    self.connectButton.setTitle("\(title)", for: .normal)
+                } else {
+                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
+                    self.connectButton.setTitle("\(title)", for: .normal)
+                }
             }
-        } else {
+        }  else {
         }
     }
     @IBAction func btnback(_ sender: UIButton){
@@ -1019,12 +1071,12 @@ class ProfileViewC: AlysieBaseViewC{
                     self.tabsCollectionView.reloadData()
                 } completion: { bool in
                     
-                    if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TabCollectionViewCell {
+                    if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                         cell.isSelected = true
                         //                        cell.isUnderlineBorderVisible(true)
                     }
-                    self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 0, section: 0))
-                    self.tabsCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
+                    self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
+                    self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
                     
                 }
                 //                self.tabsCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
@@ -1107,6 +1159,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     func fetchVisiterProfileDetails(_ userID: Int) {
         SVProgressHUD.show()
+        
         guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.visiterProfile)\(userID)", method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
             SVProgressHUD.dismiss()
@@ -1933,6 +1986,9 @@ extension ProfileViewC {
         // acceptAction
         let acceptAction = UIAlertAction(title: "Accept Request",
                                          style: UIAlertAction.Style.default) { (action) in
+            
+            self.inviteApi(id: self.userID, type: 1)
+            
         }
         let checkMarkImage = UIImage(named: "Group 382")?.withRenderingMode(.alwaysOriginal)
         acceptAction.setValue(checkMarkImage, forKey: "image")
@@ -1942,6 +1998,7 @@ extension ProfileViewC {
         // deleteAction
         let deleteAction = UIAlertAction(title: "Delete Request",
                                          style: UIAlertAction.Style.default) { (action) in
+            self.inviteApi(id: self.userID, type: 2)
         }
         let deleteImage = UIImage(named: "Group 636")?.withRenderingMode(.alwaysOriginal)
         deleteAction.setValue(deleteImage, forKey: "image")
