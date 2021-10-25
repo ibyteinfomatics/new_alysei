@@ -230,7 +230,7 @@ class MarketPlaceProductListViewController: UIViewController {
                 }else{
                     self.callProductListApi()
                 }
-                }else{
+                }else if isSearch == true{
                     self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,indexOfPageToRequest)
                 }
                 // tell the table view to reload with the new data
@@ -251,7 +251,11 @@ extension MarketPlaceProductListViewController: UITableViewDelegate, UITableView
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketPlaceProductListTableVCell", for: indexPath) as? MarketPlaceProductListTableVCell else {return UITableViewCell()}
         cell.selectionStyle = .none
         //cell.configCell(arrList?[indexPath.row] ?? ProductSearchListModel(with: [:]))
+        if arrListAppData.count == 0 {
+            print("No Data")
+        }else{
         cell.configCell(arrListAppData[indexPath.row])
+        }
         return cell
     }
     
@@ -278,6 +282,8 @@ extension MarketPlaceProductListViewController : UITextFieldDelegate{
 //                self.searchProductString = updatedText
 //                self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName)
 //            }
+            self.isSearch = true
+            self.arrListAppData = [ProductSearchListModel]()
             
             if updatedText == "" {
                 self.arrListAppData = [ProductSearchListModel]()
@@ -296,7 +302,7 @@ extension MarketPlaceProductListViewController : UITextFieldDelegate{
                 }
                 self.isSearch = false
                 self.typeFirst = true
-            }else{
+            }else if isSearch == true {
                 self.searchProductString = updatedText
             self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             }
@@ -436,6 +442,7 @@ extension MarketPlaceProductListViewController{
                         self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
                 }
+                
             default:
                 if (self.arrListAppData.count == 0) {
                     self.showAlert(withMessage: "No product found") {
@@ -552,7 +559,12 @@ extension MarketPlaceProductListViewController{
                     for i in 0..<(self.arrList?.count ?? 0){
                         self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
+                }else{
+                    self.arrListAppData = [ProductSearchListModel]()
                 }
+            case 409:
+                self.arrListAppData = [ProductSearchListModel]()
+                //self.showAlert(withMessage: "No products found")
             default:
                 if (self.arrListAppData.count == 0) {
                 self.showAlert(withMessage: "No products found")

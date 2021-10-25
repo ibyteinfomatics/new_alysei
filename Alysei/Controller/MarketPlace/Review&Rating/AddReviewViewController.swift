@@ -64,7 +64,8 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         }
         else{
         if txtReview.text == AppConstants.leaveComment{
-               txtReview.text = ""
+            self.showAlert(withMessage: "Please enter some review.")
+               //txtReview.text = ""
         }
         callAddReviewApi()
         }

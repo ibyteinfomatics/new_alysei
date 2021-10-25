@@ -26,7 +26,7 @@ class BusinessMultiOptionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if currentIndex == B2BSearch.Hub.rawValue{
+        if currentIndex == B2BSearch.Hub.rawValue || currentIndex == B2BSearch.Voyager.rawValue{
             headerTitle.text = "Select State"
         }else{
         headerTitle.text = selectFieldType
@@ -125,7 +125,7 @@ extension BusinessMultiOptionsVC: UITableViewDelegate, UITableViewDataSource{
         }else if selectFieldType == AppConstants.ProductTypeBusiness || selectFieldType == AppConstants.RestaurantType || selectFieldType == AppConstants.Expertise || selectFieldType == AppConstants.Title  || selectFieldType == AppConstants.Speciality{
             return productType?.options?.count ?? 0
         }
-        else if (selectFieldType == AppConstants.SelectState ||  selectFieldType == AppConstants.SelectRegion)  && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue) {
+        else if (selectFieldType == AppConstants.SelectState ||  selectFieldType == AppConstants.SelectRegion)  && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue) || (currentIndex == B2BSearch.Voyager.rawValue) {
             
 
             return stateModel?.count ?? 0
@@ -155,7 +155,7 @@ extension BusinessMultiOptionsVC: UITableViewDelegate, UITableViewDataSource{
             cell.lblOption.text = productType?.options?[indexPath.row].optionName
             cell.btnCheckBox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
 
-        }else if (selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion)  && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue){
+        }else if (selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion)  && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue || (currentIndex == B2BSearch.Voyager.rawValue)){
             let data = stateModel?[indexPath.row]
             cell.lblOption.text = data?.name
             cell.btnCheckBox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
@@ -208,7 +208,7 @@ extension BusinessMultiOptionsVC: UITableViewDelegate, UITableViewDataSource{
                     self.arrSelectedId.remove(at: index)
                 }
             }
-            }else if (selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion) && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue){
+            }else if (selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion) && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue || (currentIndex == B2BSearch.Voyager.rawValue)){
                 stateModel?[indexPath.row].isSelected = !( stateModel?[indexPath.row].isSelected ?? false)
                 if self.stateModel?[indexPath.row].isSelected == true {
                     self.arrSelectedOption.append(stateModel?[indexPath.row].name ?? "")

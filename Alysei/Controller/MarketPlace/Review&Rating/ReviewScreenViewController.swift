@@ -44,7 +44,13 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewScreenTableViewCell", for: indexPath) as? ReviewScreenTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
-        cell.lblName.text = arrRatingReviewData?[indexPath.row].user?.company_name
+        if arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.restaurant.rawValue{
+        cell.lblName.text = arrRatingReviewData?[indexPath.row].user?.restaurant_name
+        }else if arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.voyagers.rawValue || arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.voiceExperts.rawValue{
+            cell.lblName.text = "\(arrRatingReviewData?[indexPath.row].user?.first_name ?? "")" + "\(arrRatingReviewData?[indexPath.row].user?.last_name ?? "")"
+        }else{
+            cell.lblName.text = arrRatingReviewData?[indexPath.row].user?.company_name
+        }
         cell.lblUserReview.text = arrRatingReviewData?[indexPath.row].review
         print("ImageUrl Image--------------------------\(kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))")
         cell.imgUser.setImage(withString: kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))

@@ -144,6 +144,12 @@ class HubUserListVC: AlysieBaseViewC {
                     controller?.passSelectOptionId = Arr ?? [""]
                 }
             }
+            if self.currentIndex == B2BSearch.Voyager.rawValue {
+                if selectFieldType == AppConstants.SelectState{
+                    let Arr =  self.selectStateId?.components(separatedBy: ",")
+                    controller?.passSelectOptionId = Arr ?? [""]
+                }
+            }
             if self.currentIndex == B2BSearch.Importer.rawValue{
                 if selectFieldType == AppConstants.Hubs{
                     let Arr =  self.selectImpHubId?.components(separatedBy: ",")
@@ -216,6 +222,12 @@ class HubUserListVC: AlysieBaseViewC {
                 let  optionId = arrSelectOptionId?.joined(separator: ",")
                 if self.currentIndex == B2BSearch.Hub.rawValue{
                     if selectFieldType == AppConstants.SelectState{
+                    businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                    self.selectStateId = optionId
+                    }
+                }
+                if self.currentIndex == B2BSearch.Voyager.rawValue{
+                    if selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion{
                     businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                     self.selectStateId = optionId
                     }
@@ -375,6 +387,8 @@ class HubUserListVC: AlysieBaseViewC {
                 self.callSearchTravelApi()
             }else if self.currentIndex == B2BSearch.Producer.rawValue {
                 self.callSearchProducerApi()
+            }else if self.currentIndex == B2BSearch.Voyager.rawValue{
+                self.callSearchVoyagerApi()
             }
         }
         return businessSearchTableCell
@@ -403,6 +417,7 @@ class HubUserListVC: AlysieBaseViewC {
 extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         
         let model = self.businessViewModel?.arrBusinessData[section]
         //let model = self.businessViewModel.arrBusinessData[currentIndex]
@@ -453,7 +468,11 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
         controller?.userLevel = .other
         let index = (indexPath.row - (self.extraCell ?? 0))
+        if arrSearchimpotrDataModel[index].userId == nil{
+            print("Invalid Cell")
+        }else{
         controller?.userID = arrSearchimpotrDataModel[index].userId
+        }
         
         
     }
@@ -602,6 +621,29 @@ extension HubUserListVC {
             
         }
     }
+    func callSearchVoyagerApi(){
+        arrSearchimpotrDataModel.removeAll()
+        cellCount = 0
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&state=" + "\(self.selectStateId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [String:Any]{
+                self.newSearchModel = NewFeedSearchModel.init(with: data)
+                if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
+                //self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
+               
+                self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
+            }
+            print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
+            cellCount = self.arrSearchimpotrDataModel.count
+            self.extraCell = 2
+            print("CellCount--------------------------------------------\(cellCount ?? 0)")
+            self.businessViewModel = BusinessSingleHubViewModel(currentIndex: self.currentIndex ?? 0)
+            self.tblViewSearchOptions.reloadData()
+            
+            
+        }
+    }
     //"&role_id="
         func getUserListFromHubSelctionApi(){
             arrSearchimpotrDataModel.removeAll()
@@ -628,6 +670,8 @@ extension HubUserListVC {
                     self.extraCell = 4
                 }else if self.currentIndex == B2BSearch.Expert.rawValue{
                     self.extraCell = 5
+                }else{
+                    self.extraCell = 2
                 }
                 self.businessViewModel = BusinessSingleHubViewModel(currentIndex: self.currentIndex ?? 0)
                 self.tblViewSearchOptions.reloadData()

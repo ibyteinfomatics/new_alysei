@@ -9,6 +9,8 @@ import UIKit
 import DropDown
 
 var cellCount: Int?
+//var B2BLoadFirstTime = true
+
 
 class BusinessViewC: AlysieBaseViewC {
     
@@ -104,7 +106,9 @@ class BusinessViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchType = 3
+        if currentIndex == 0 {
         callSearchHubApi()
+        }
         //self.tblViewHeightConstraint.constant = 300.0
     }
     
@@ -127,7 +131,9 @@ class BusinessViewC: AlysieBaseViewC {
             blankdataView.isHidden = true
         }
         
-        
+        if currentIndex == 0 {
+        callSearchHubApi()
+        }
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {

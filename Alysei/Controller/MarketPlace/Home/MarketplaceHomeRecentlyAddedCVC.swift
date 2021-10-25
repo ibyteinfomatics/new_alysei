@@ -29,7 +29,7 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
         
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
-        lblTotalReview.text = (data.total_reviews ?? "0") + "reviews"
+        lblTotalReview.text = (data.total_reviews ?? "0") + " reviews"
         lblAvgRating.text = data.avg_rating
         
         if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{

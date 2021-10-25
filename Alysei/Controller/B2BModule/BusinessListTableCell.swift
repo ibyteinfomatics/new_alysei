@@ -37,7 +37,11 @@ class BusinessListTableCell: UITableViewCell {
         case .restaurant :
             name = "\(data.restaurantName ?? "")"
         default:
+            if data.firstName == "" || data.firstName == nil {
+                name = "\(data.name ?? "")"
+            }else{
             name = "\(data.firstName ?? "") \(data.lastName ?? "")"
+            }
         }
         userName.text = name
        

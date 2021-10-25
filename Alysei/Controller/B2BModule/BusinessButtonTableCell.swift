@@ -97,6 +97,8 @@ class BusinessButtonTableCell: UITableViewCell {
         fieldValueId = B2BFieldId.speciality.rawValue
         self.callGetValueOfFieldApi()
         
+    }else if currentIndex == B2BSearch.Voyager.rawValue && businessModel?.businessHeading == AppConstants.SelectState {
+        callStateApi()
     }
         
   }

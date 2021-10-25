@@ -60,7 +60,15 @@ class ProductRatingTableVCell: UITableViewCell {
         print("Data -----------------------------------\(String(describing: data.user?.company_name))")
         print("Data----------------------------\(data.review ?? "")")
         self.data = data
-        self.lblClientName.text = data.user?.company_name
+        if data.user?.role_id == UserRoles.restaurant.rawValue{
+            lblClientName.text = data.user?.restaurant_name
+        }else if data.user?.role_id == UserRoles.voyagers.rawValue || data.user?.role_id == UserRoles.voiceExperts.rawValue{
+            
+            lblClientName.text = "\(data.user?.first_name ?? "")" + "\(data.user?.last_name ?? "")"
+        }else{
+            lblClientName.text = data.user?.company_name
+        }
+       
         self.lblClientReview.text = data.review
         
         let dateFormatterGet = DateFormatter()

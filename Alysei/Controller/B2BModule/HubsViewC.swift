@@ -14,6 +14,7 @@ class HubsViewC: AlysieBaseViewC {
     @IBOutlet weak var hubLocation: UILabel!
     @IBOutlet weak var lblSubHeading: UILabel!
     @IBOutlet weak var btnSubscribe: UIButton!
+   // @IBOutlet weak var imgHub: UIImageView!
     
     var arruserCount : [UserRoleCount]?
     var passHubId: String?
@@ -85,6 +86,8 @@ extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             controller?.currentIndex =  B2BSearch.Expert.rawValue
         }else if arruserCount?[indexPath.row].role_id == UserRoles.travelAgencies.rawValue{
             controller?.currentIndex =  B2BSearch.TravelAgencies.rawValue
+        }else if arruserCount?[indexPath.row].role_id == UserRoles.voyagers.rawValue{
+            controller?.currentIndex = B2BSearch.Voyager.rawValue
         }
 //        else if arruserCount?[indexPath.row].role_id == UserRoles.voyagers.rawValue{
 //            controller?.currentIndex =  B2BSearch.Voyager.rawValue

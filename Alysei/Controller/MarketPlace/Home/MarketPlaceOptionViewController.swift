@@ -84,8 +84,7 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? MarketPlaceOptionTableViewCell
-        
+      
         for i in 0..<(arrOptions?.count ?? 0){
             self.arrOptions?[i].isOptionSelected = false
         }
@@ -94,8 +93,8 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
             nextVC.listType = self.listIndex
-           
-        
+
+
             if self.listIndex == 4{
                 nextVC.pushedFromVC = .category
                 nextVC.keywordSearch = self.arrOptions?[indexPath.row].name
@@ -107,7 +106,7 @@ extension MarketPlaceOptionViewController: UITableViewDataSource,UITableViewDele
                 nextVC.pushedFromVC = .conservation
                 nextVC.keywordSearch = self.arrOptions?[indexPath.row].option
             }
-            
+
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
         

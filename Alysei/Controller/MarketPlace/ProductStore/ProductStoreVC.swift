@@ -61,7 +61,7 @@ class ProductStoreVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         indexOfPageToRequest = 1
 
         
@@ -158,6 +158,8 @@ extension ProductStoreVC: UITextFieldDelegate{
         if let text = textField.text as NSString? {
             let txtAfterUpdate = text.replacingCharacters(in: range, with: string)
             self.searchTxt = txtAfterUpdate
+            self.isSearch = true
+            self.arrListData = [MyStoreProductDetail]()
             if typeFirst == true{
                 self.arrListData = [MyStoreProductDetail]()
                 self.typeFirst = false
@@ -167,7 +169,7 @@ extension ProductStoreVC: UITextFieldDelegate{
                 callMyStoreProductApi(1)
                 self.isSearch = false
                 self.typeFirst = true
-            }else{
+            }else if isSearch == true{
             self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             }
        
@@ -187,6 +189,9 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        if arrListData.count == 0 {
+            print("No Data")
+        }else{
        
        // if isSearch == false{
              data = arrListData[indexPath.row]
@@ -201,8 +206,9 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
         cell.lblAddress.text = data?.location
         cell.lblTotalRating.text = data?.avg_rating
         cell.lblTotalReview.text = (data?.total_reviews ?? "0") + " Reviews"
-        
+        }
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -238,7 +244,10 @@ extension ProductStoreVC {
                     self.lastPage = data["last_page"] as? Int
                     self.arrProductList = ProductsStore.init(with: data)
                     self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
+                }else{
+                    self.arrListData = [MyStoreProductDetail]()
                 }
+                
             default:
                 if self.arrListData.count == 0{
                     self.showAlert(withMessage: "No producer found") {

@@ -32,15 +32,22 @@ class RatingReviewModel {
 
 class ReviewUserData {
     var user_id: Int?
+    var role_id: Int?
     var email: String?
     var company_name: String?
+    var restaurant_name: String?
     var avatarId: AvatarId?
+    var first_name: String?
+    var last_name: String?
     
     init(with data: [String:Any]){
         self.user_id = Int.getInt(data["user_id"])
         self.email = String.getString(data["email"])
         self.company_name = String.getString(data["company_name"])
-        
+        self.role_id = Int.getInt(data["role_id"])
+        self.restaurant_name = String.getString(data["restaurant_name"])
+        self.first_name = String.getString(data["first_name"])
+        self.last_name = String.getString(data["last_name"])
         if let avatarId = data["avatar_id"] as? [String:Any]{
             self.avatarId = AvatarId.init(with: avatarId)
         }
