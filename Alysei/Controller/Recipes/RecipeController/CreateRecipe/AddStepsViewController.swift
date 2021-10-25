@@ -72,8 +72,16 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             cell.desciptionTextView.text = dataModel.description
             arrayIngridients = dataModel.ingridentsArray ?? []
             arraytools =  dataModel.toolsArray ?? []
+            
+            if cell.desciptionTextView.text != "Your recipe direction text here..."{
+                cell.desciptionTextView.textColor = UIColor.black
+            }
+            else{
+                cell.desciptionTextView.textColor = UIColor.lightGray
+            }
             ingridientUsedCollectionView.reloadData()
             toolsUsedCollectionView.reloadData()
+            
          }
 //        }
     }
@@ -159,8 +167,8 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
             let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            cancelPopVC.checkbutton = 0
-            cancelPopVC.currentIndex = 0
+            cancelPopVC.checkbutton = 2
+            cancelPopVC.currentIndex = 2
             self.navigationController?.pushViewController(cancelPopVC, animated: true)
             
         }

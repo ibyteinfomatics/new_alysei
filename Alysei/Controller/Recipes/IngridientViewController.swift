@@ -64,7 +64,7 @@ class IngridientViewController: UIViewController {
             
             postRequestToSaveIngridientPreferences()
             callbackResult?()
-            self.navigationController?.popViewController(animated: true)
+            
         }
         
         
@@ -162,7 +162,7 @@ extension IngridientViewController{
         let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
+            self.navigationController?.popViewController(animated: true)
             
         }
     }

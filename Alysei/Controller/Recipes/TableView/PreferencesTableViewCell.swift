@@ -40,12 +40,11 @@ class PreferencesTableViewCell: UITableViewCell {
     let imageNameLabelArray = ["A","B","C","D"]
     let titleArray = ["Favourite Cuisine","Food Alergies","Diets","Ingridients","Cooking Skill"]
    
-    var post: Bool?{
-        didSet{
-            self.PrefrenceImageCollectionView.reloadData()
-        }
-        
-    }
+    var first = Int()
+    var second = Int()
+    var third = Int()
+    var fourth = Int()
+    var fifth = Int()
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -53,14 +52,17 @@ class PreferencesTableViewCell: UITableViewCell {
         PrefrenceImageCollectionView.dataSource = self
         let cellNib = UINib(nibName: "PreferencesImageCollectionViewCell", bundle: nil)
         self.PrefrenceImageCollectionView.register(cellNib, forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
-        
+        PrefrenceImageCollectionView.collectionViewLayout.invalidateLayout()
         self.PrefrenceImageCollectionView.register(PreferencesSectionCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesSectionCollectionReusableView")
-        
-        self.PrefrenceImageCollectionView.reloadData()
 
     }
    
-    
+    var post: Bool?{
+        didSet{
+            self.PrefrenceImageCollectionView.reloadData()
+        }
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -74,41 +76,23 @@ class PreferencesTableViewCell: UITableViewCell {
          CATransaction.commit()
         }
 
-    func config(){
-                
-        let first = (((showCuisine?.count ?? 0) % 3) == 0) ? (showCuisine?.count ?? 0) / 3 : ((showCuisine?.count ?? 0) / 3) + 1
-        
-        let second = (((showFood?.count ?? 0) % 3) == 0) ? (showFood?.count ?? 0) / 3 : ((showFood?.count ?? 0) / 3) + 1
-        
-        let third = (((showDiet?.count ?? 0) % 3) == 0) ? (showDiet?.count ?? 0) / 3 : ((showDiet?.count ?? 0) / 3) + 1
-        
-        let foutrh = (((showIngridient?.count ?? 0) % 3) == 0) ? (showIngridient?.count ?? 0) / 3 : ((showIngridient?.count ?? 0) / 3) + 1
-        
-        let fifth = (((showCookingSkill?.count ?? 0) % 3) == 0) ? (showCookingSkill?.count ?? 0) / 3 : ((showCookingSkill?.count ?? 0) / 3) + 1
-        
-        
-        tableViewHeight.constant = CGFloat((140 * (first+second+third+foutrh+fifth))+200)
-        
 
-    }
     
     func getSavedMyPreferences() -> Void{
-        
-       
+        self.contentView.isUserInteractionEnabled = false
 //        self.getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
         self.showCuisine?.removeAll()
         self.showFood?.removeAll()
         self.showDiet?.removeAll()
         self.showIngridient?.removeAll()
         self.showCookingSkill?.removeAll()
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { [self] (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
             
             if let data = res?["data"] as? [[String:Any]]{
                 self.getSavedPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
                 
-            }
             for i in (0..<(self.getSavedPreferencesModel?.count ?? 0)){
                 switch i{
                 case 0:
@@ -116,6 +100,7 @@ class PreferencesTableViewCell: UITableViewCell {
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showCuisine?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            self.first = 1
                             arraySelectedCuisine?.removeAll()
                             for k in (0..<(self.showCuisine?.count ?? 0)){
                                 arraySelectedCuisine?.append(self.showCuisine?[k].cousinId ?? 0 )
@@ -127,21 +112,21 @@ class PreferencesTableViewCell: UITableViewCell {
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showFood?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            self.second = ((((self.showFood?.count ?? 0) + 1) % 3) == 0) ? ((self.showFood?.count ?? 0) + 1) / 3 : (((self.showFood?.count ?? 0) + 1) / 3) + 1
                             arraySelectedFood?.removeAll()
                             for k in (0..<(self.showFood?.count ?? 0)){
                                 arraySelectedFood?.append(self.showFood?[k].foodId ?? 0 )
                             }
                             
                         }
-                       
-                            
-                        
+                   
                     }
                 case 2:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showDiet?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            self.third = ((((self.showDiet?.count ?? 0) + 1) % 3) == 0) ? ((self.showDiet?.count ?? 0) + 1) / 3 : (((self.showDiet?.count ?? 0) + 1) / 3) + 1
                             arraySelectedDiet?.removeAll()
                             for k in (0..<(self.showDiet?.count ?? 0)){
                                
@@ -149,13 +134,13 @@ class PreferencesTableViewCell: UITableViewCell {
                             }
                             
                         }
-
                     }
                 case 3:
                     for j in (0..<(self.getSavedPreferencesModel?[i].maps?.count ?? 0))
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showIngridient?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            self.fourth = ((((self.showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((self.showIngridient?.count ?? 0) + 1) / 3 : (((self.showIngridient?.count ?? 0) + 1) / 3) + 1
                             arraySelectedIngridient?.removeAll()
                        for k in (0..<(self.showIngridient?.count ?? 0)){
                         
@@ -169,25 +154,49 @@ class PreferencesTableViewCell: UITableViewCell {
                     {
                         if self.getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                             self.showCookingSkill?.append(self.getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
+                            self.fifth = 1
                             arraySelectedCookingSkill?.removeAll()
                             for k in (0..<(self.showCookingSkill?.count ?? 0)){
                              
                                 arraySelectedCookingSkill?.append(self.showCookingSkill?[k].cookingSkillId ?? 0 )
                              }
-                            
                         }
-
                     }
                 default:
                     break
                     
                 }
+     
             }
-         self.PrefrenceImageCollectionView.reloadData()
             
+        }
+    
+        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
+            finalHeight = self.tableViewHeight.constant
+        self.PrefrenceImageCollectionView.reloadData()
+        self.contentView.isUserInteractionEnabled = true
         }
     }
     
+//    func config(){
+//
+//        let first = 1
+////            (((showCuisine?.count ?? 0) % 3) == 0) ? (showCuisine?.count ?? 0) / 3 : ((showCuisine?.count ?? 0) / 3) + 1
+//
+//        let second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+//
+//        let third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+//
+//        let foutrh = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+//
+//        let fifth = 1
+////            ((((showCookingSkill?.count ?? 0) + 1) % 3) == 0) ? ((showCookingSkill?.count ?? 0) + 1) / 3 : (((showCookingSkill?.count ?? 0) + 1) / 3) + 1
+//
+//
+//        tableViewHeight.constant = CGFloat((140 * (first+second+third+foutrh+fifth))+200)
+//
+//
+//    }
 }
 extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     

@@ -47,9 +47,8 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         reviewView.layer.borderWidth = 2
         reviewView.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
         
-        commentTextView.text = "Leave a comment..."
-        commentTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha:
-                                                    1)
+        commentTextView.text = AppConstants.leaveComment
+        commentTextView.textColor = UIColor.lightGray
         reviewStarCount = 0
         setStar()
         // Do any additional setup after loading the view.
@@ -69,11 +68,15 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     @IBAction func addReviewFinal(_ sender: Any) {
         if (reviewStarCount == 0){
             self.showAlert(withMessage: "Please add ratings.")
-        }else{
+        }
+        else if ( commentTextView.text == AppConstants.leaveComment){
+            self.showAlert(withMessage: "Please leave a comment.")
+        }
+        else{
             
            postDoReview()
-            commentTextView.text = "Leave a comment..."
-            commentTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+            commentTextView.text = AppConstants.leaveComment
+            commentTextView.textColor = UIColor.lightGray
             reviewStarCount = 0
             setStar()
            
@@ -83,8 +86,8 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func cancelReview(_ sender: Any) {
         
-        commentTextView.text = "Leave a comment..."
-        commentTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        commentTextView.text = AppConstants.leaveComment
+        commentTextView.textColor = UIColor.lightGray
         self.popupView.isHidden = true
     }
     
@@ -106,6 +109,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap2star(_ sender: Any) {
+        reviewStarCount = 2
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
@@ -164,35 +168,48 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
           }
         
     }
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Leave a comment..." {
-       
-            commentTextView.text = ""
-            commentTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
-        }
-        
-        textView.becomeFirstResponder()
-    }
+   
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == ""{
-            commentTextView.text = "Leave a comment..."
-            commentTextView.resignFirstResponder()
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textView.text == AppConstants.leaveComment{
+            textView.text = ""
         }
         return true
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            commentTextView.text = "Leave a comment..."
-            commentTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-        }
-        else{
-            
-            commentTextView.textColor = .black
-        }
-        textView.resignFirstResponder()
-    }
-    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+
+            textView.text = AppConstants.leaveComment
+            textView.textColor = UIColor.lightGray
+
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+
+        // Else if the text view's placeholder is showing and the
+        // length of the replacement string is greater than 0, set
+        // the text color to black then set its text to the
+        // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+           textView.textColor = UIColor.black
+           textView.text = text
+       }
+
+        // For every other case, the text should change with the usual
+        // behavior...
+        else {
+            return true
+        }
+
+        // ...otherwise return false since the updates have already
+        // been made
+        return true
+    }
 }

@@ -254,40 +254,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
             else{
                addSteps.page = 1
                addSteps.selectedIndex = 0
-              
-//                var ingridentsArray : [IngridentArray] = []
-//                for item in selectedIngridentsArray{
-//                    let ingridients: IngridentArray = IngridentArray.init()
-//                    ingridients.recipeIngredientIds = item.recipeIngredientIds
-//                    ingridients.ingridientTitle = item.ingridientTitle
-//                    ingridients.imageId = item.imageId
-//                    ingridients.parent = item.parent
-//                    ingridients.pickerData = item.pickerData
-//                    ingridients.quantity = item.quantity
-//                    ingridients.unit = item.unit
-//                    ingridients.createdAt = item.createdAt
-//                    ingridients.updatedAt = item.updatedAt
-//                    ingridients.isSelected = false
-//                    ingridentsArray.append(ingridients)
-//                }
-//
-//                var toolsArray : [ToolsArray] = []
-//                for item in selectedToolsArray{
-//                    let tools: ToolsArray = ToolsArray.init()
-//                    tools.recipeToolIds = item.recipeToolIds
-//                    tools.toolTitle = item.toolTitle
-//                    tools.imageId = item.imageId
-//                    tools.parent = item.parent
-//                    tools.pickerData = item.pickerData
-//                    tools.quantity = item.quantity
-//                    tools.unit = item.unit
-//                    tools.isSelected = false
-//                    toolsArray.append(tools)
-//                }
-//
-//
-
             }
+            fromVC = "AddToolsViewController"
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
     }
@@ -299,8 +267,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
             let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            cancelPopVC.checkbutton = 0
-            cancelPopVC.currentIndex = 0
+            cancelPopVC.checkbutton = 2
+            cancelPopVC.currentIndex = 2
             self.navigationController?.pushViewController(cancelPopVC, animated: true)
             
         }

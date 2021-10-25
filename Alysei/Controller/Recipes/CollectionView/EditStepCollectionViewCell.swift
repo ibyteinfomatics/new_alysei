@@ -40,53 +40,56 @@ class EditStepCollectionViewCell: UICollectionViewCell {
         titleView.layer.cornerRadius = 5
         titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
         
-        if enteredValueInTxtVw == ""{
-            desciptionTextView.text = "Your recipe description text here..."
-            desciptionTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        if isFromStep == "Add Step"{
+            desciptionTextView.text = "Your recipe direction text here..."
+            desciptionTextView.textColor = UIColor.lightGray
         }
         else{
-            desciptionTextView.text = enteredValueInTxtVw
-            desciptionTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
+            desciptionTextView.textColor = UIColor.black
         }
     }
 }
 extension EditStepCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
     
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.text == "Your recipe direction text here..." {
-        if enteredValueInTxtVw == ""{
-            desciptionTextView.text = ""
-            desciptionTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textView.text == "Your recipe direction text here..."{
+            textView.text = ""
             
-           
         }
         else{
-            desciptionTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
-        }
-       
-        textView.becomeFirstResponder()
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == ""{
-            enteredValueInTxtVw = "Your recipe direction text here..."
-            descriptionView.resignFirstResponder()
+            textView.textColor = UIColor.black
         }
         return true
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            desciptionTextView.text = "Your recipe direction text here..."
-//            enteredValueInTxtVw = ""
-            desciptionTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+
+        
+        if updatedText.isEmpty {
+           
+            textView.text = "Your recipe direction text here..."
+            textView.textColor = UIColor.lightGray
+
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-        else{
-            enteredValueInTxtVw = desciptionTextView.text
-            desciptionTextView.textColor = .black
+
+        
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+           textView.textColor = UIColor.black
+            textView.text = text
+          
+       }
+
+        else {
+            
+            return true
         }
-        textView.resignFirstResponder()
+
+        return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField)

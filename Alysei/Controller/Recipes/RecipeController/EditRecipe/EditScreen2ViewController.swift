@@ -215,8 +215,7 @@ class EditScreen2ViewController: UIViewController  {
         }
         else{
             postRequestToSaveEditRecipe()
-            let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            self.navigationController?.pushViewController(add, animated: true)
+            
         }
         
     }
@@ -626,10 +625,15 @@ extension EditScreen2ViewController{
         print(params)
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.updateRecipe + "\(editRecipeId)", requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-             let resultNew = dictResponse as? [String:Any]
-            if let message = resultNew?["message"] as? String{
-                self.showAlert(withMessage: message)
-            }
+            
+            let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+            add.currentIndex = 2
+            add.checkbutton = 2
+            self.navigationController?.pushViewController(add, animated: true)
+//             let resultNew = dictResponse as? [String:Any]
+//            if let message = resultNew?["message"] as? String{
+//                self.showAlert(withMessage: message)
+//            }
             
         }
     }

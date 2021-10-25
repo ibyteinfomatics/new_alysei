@@ -285,8 +285,8 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         cancelPopUpVC.modalTransitionStyle = .crossDissolve
         cancelPopUpVC.Callback = {
             let cancelPopVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-            cancelPopVC.checkbutton = 0
-            cancelPopVC.currentIndex = 0
+            cancelPopVC.checkbutton = 2
+            cancelPopVC.currentIndex = 2
             self.navigationController?.pushViewController(cancelPopVC, animated: true)
             
         }

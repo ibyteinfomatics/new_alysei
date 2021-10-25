@@ -59,7 +59,7 @@ class DietViewController: AlysieBaseViewC  {
             
             postRequestToSaveDietPreferences()
             callbackResult?()
-            self.navigationController?.popViewController(animated: true)
+            
         }
         
         
@@ -161,7 +161,7 @@ extension DietViewController{
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             
-            
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

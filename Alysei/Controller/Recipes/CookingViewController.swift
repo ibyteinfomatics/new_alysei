@@ -57,7 +57,7 @@ class CookingViewController: UIViewController {
             
             postRequestToSaveCookingPreferences()
             callbackResult?()
-            self.navigationController?.popViewController(animated: true)
+            
         }
         
         
@@ -167,7 +167,7 @@ extension CookingViewController{
         let params = ["params": self.createPreferencesJson(preferences: arrayPreferencesModelData)]
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
+            self.navigationController?.popViewController(animated: true)
             
         }
     }

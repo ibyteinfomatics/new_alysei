@@ -6,8 +6,8 @@
 //
 
 import UIKit
-var finalheight : CGFloat?
-var finalheight1 : CGFloat?
+//var finalheight : CGFloat?
+//var finalheight1 : CGFloat?
 var arraySearchByMeal : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
 var isFrom = String()

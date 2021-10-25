@@ -252,7 +252,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.ingredientImageView.setImage(withString: imgUrl)
                 cell.ingredientNameLabel.text = usedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
-                cell.ingredientQuantityLabel.text = usedIngridientModel?[indexPath.row].quantity
+                cell.ingredientQuantityLabel.text = (usedIngridientModel?[indexPath.row].quantity ?? "0") + " " + (usedIngridientModel?[indexPath.row].unit ?? "")
                 editSavedIngridientId = usedIngridientModel?[indexPath.row].recipeSavedIngridientId ?? 0
              
                 

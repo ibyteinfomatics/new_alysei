@@ -340,7 +340,7 @@ extension FilteredRecipeViewController{
                 
             default:
                
-                self.showAlert(withMessage: "No Recipe found")
+                self.showAlert(withMessage: "Something went wrong")
                 self.viewFilter.isHidden = true
             }
             self.filteredCollectionView.reloadData()

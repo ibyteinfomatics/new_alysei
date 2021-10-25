@@ -34,8 +34,8 @@ class AddReviewRecipeViewController: UIViewController{
         allReviewTableView.delegate = self
         allReviewTableView.dataSource = self
         reviewTextView.delegate = self
-        reviewTextView.text = "Leave a comment..."
-        reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        reviewTextView.text = AppConstants.leaveComment
+        reviewTextView.textColor = UIColor.lightGray
         reviewTextView.autocorrectionType = .no
         btnAddReview.layer.cornerRadius = 5
         reviewView.layer.cornerRadius = 5
@@ -68,17 +68,22 @@ class AddReviewRecipeViewController: UIViewController{
         
         if (reviewStarCount == 0){
             self.showAlert(withMessage: "Please add ratings.")
-        }else{
+        }
+        else if ( reviewTextView.text == AppConstants.leaveComment){
+            self.showAlert(withMessage: "Please leave a comment.")
+        }
+        else{
             
         postDoReview()
-            reviewTextView.text = "Leave a comment..."
-            reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+            reviewTextView.text = AppConstants.leaveComment
+            reviewTextView.textColor = UIColor.lightGray
             reviewStarCount = 0
             setStar()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.getAllReviews()
+            }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            self.getAllReviews()
-        }
+        
         isFromComment = "Review"
     }
     
@@ -92,6 +97,7 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     @IBAction func tap2star(_ sender: Any) {
+        reviewStarCount = 2
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
@@ -123,23 +129,7 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
     }
     
-//    func ratingVaiewSet()
-//    {
-//        self.rateView.notSelectedImage = UIImage.init(named: "blank")
-//        self.rateView.halfSelectedImage = UIImage.init(named: "halfStar")
-//        self.rateView.fullSelectedImage = UIImage.init(named: "fullStar")
-//        self.rateView.rating = 0;
-//        self.rateView.editable = true;
-//        self.rateView.maxRating = 5;
-//        self.rateView.delegate = self;
-//    }
-//
-//    func rateView(_ rateView: RateView!, ratingDidChange rating: Float) {
-//        let rate = String(rating)
-//        let testRate = Int(rating)
-//        self.strRating = String(testRate)
-//        print(rate)
-//    }
+
 }
 
 extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSource{
@@ -251,78 +241,78 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension AddReviewRecipeViewController: UITextViewDelegate{
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Leave a comment..." {
-            reviewTextView.text = ""
-            reviewTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
-        }
-        
-        textView.becomeFirstResponder()
-    }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.text == "Leave a comment..." {
+//            reviewTextView.text = ""
+//            reviewTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
+//        }
+//
+//        textView.becomeFirstResponder()
+//    }
+//
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+//        if text == "\n"{
+//            reviewTextView.text = "Leave a comment..."
+//            reviewTextView.resignFirstResponder()
+//        }
+//        return true
+//    }
+//
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if textView.text == "" {
+//            reviewTextView.text = "Leave a comment..."
+//            reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+//        }
+//        else{
+//            reviewTextView.text = textView.text
+//            reviewTextView.textColor = .black
+//        }
+//        textView.resignFirstResponder()
+//    }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
-        if text == " "{
-            reviewTextView.text = "Leave a comment..."
-            reviewTextView.resignFirstResponder()
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textView.text == AppConstants.leaveComment{
+            textView.text = ""
         }
         return true
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            reviewTextView.text = "Leave a comment..."
-            reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+
+            textView.text = AppConstants.leaveComment
+            textView.textColor = UIColor.lightGray
+
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-        else{
-            reviewTextView.text = textView.text
-            reviewTextView.textColor = .black
+
+        // Else if the text view's placeholder is showing and the
+        // length of the replacement string is greater than 0, set
+        // the text color to black then set its text to the
+        // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+           textView.textColor = UIColor.black
+           textView.text = text
+       }
+
+        // For every other case, the text should change with the usual
+        // behavior...
+        else {
+            return true
         }
-        textView.resignFirstResponder()
+
+        // ...otherwise return false since the updates have already
+        // been made
+        return true
     }
-    
-//    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-//        if textView.text == "Leave a comment"{
-//            textView.text = ""
-//        }
-//        return true
-//    }
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//
-//        // Combine the textView text and the replacement text to
-//        // create the updated text string
-//        let currentText:String = textView.text
-//        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-//
-//        // If updated text view will be empty, add the placeholder
-//        // and set the cursor to the beginning of the text view
-//        if updatedText.isEmpty {
-//
-//            textView.text = "Leave a comment"
-//            textView.textColor = UIColor.lightGray
-//
-//            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-//        }
-//
-//        // Else if the text view's placeholder is showing and the
-//        // length of the replacement string is greater than 0, set
-//        // the text color to black then set its text to the
-//        // replacement string
-////         else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-////            textView.textColor = UIColor.black
-////            textView.text = text
-////        }
-//
-//        // For every other case, the text should change with the usual
-//        // behavior...
-//        else {
-//            return true
-//        }
-//
-//        // ...otherwise return false since the updates have already
-//        // been made
-//        return true
-//    }
-//
+
 }
 extension AddReviewRecipeViewController{
     func getAllReviews(){

@@ -31,14 +31,13 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var isReloadData = true
     
     override func viewWillAppear(_ animated: Bool) {
-//        if checkbutton == 3{
-//           isReloadData = true
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-//                self.containerTableVw.reloadData()
+        if checkbutton == 3{
+           isReloadData = true
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
 //            }
-//
-//        }
+
+        }
         if checkbutton == 0{
             getExploreData()
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
@@ -48,29 +47,30 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         }
         if checkbutton == 2{
             getMyAllRecipes()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                 self.containerTableVw.reloadData()
             }
+
             
         }
         if checkbutton == 1{
             getMyFavouriteRecipes()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                 self.containerTableVw.reloadData()
             }
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if checkbutton == 3{
-           
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-                self.isReloadData = true
-                self.containerTableVw.reloadData()
-            }
-
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if checkbutton == 3{
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+//                self.isReloadData = true
+//                self.containerTableVw.reloadData()
+//            }
+//
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -566,12 +566,10 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
-            cell6.post = true
-            cell6.config()
            
-            if isReloadData{
+            if isReloadData {
                 cell6.getSavedMyPreferences()
-                
+                cell6.post = true
 //                isReloadData = false
             }
            
@@ -621,7 +619,8 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             return 260
         case 3:
 
-            return UITableView.automaticDimension
+            return finalHeight
+//                UITableView.automaticDimension
         default:
             break
         }
@@ -737,7 +736,9 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             
             discoverCollectionView.reloadData()
             isReloadData = true
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
             self.containerTableVw.reloadData()
+//            }
             
             
         default:
@@ -785,6 +786,7 @@ extension DiscoverRecipeViewController{
     
     func getMyAllRecipes(){
         self.view.isUserInteractionEnabled = false
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getMyrecipe, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             switch statusCode{
             case 200:

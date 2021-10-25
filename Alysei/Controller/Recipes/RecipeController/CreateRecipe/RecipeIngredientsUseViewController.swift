@@ -19,6 +19,8 @@ var finalUnitTool = String()
 
 var strTitle : String?
 var strDescription : String?
+var fromVC = String()
+
 
 class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UITableViewDataSource, RecipeIngredientsUsedTableViewCellProtocol, NumberOfStepsDelegateProtocol {
     
@@ -293,10 +295,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             postRequestToSaveRecipe()
             selectedIngridentsArray.removeAll()
             selectedToolsArray.removeAll()
-            let discoverRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-//            discoverRecipeVC.currentIndex = 2
-//            discoverRecipeVC.checkbutton = 2
-            self.navigationController?.pushViewController(discoverRecipeVC, animated: true)
+            
         }
        
     }
@@ -576,6 +575,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         let editVC = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
         editVC.selectedIndex = index.row
         editVC.page = (index.row + 1)
+        fromVC = "RecipeIngredientsUseViewController"
         
         self.navigationController?.pushViewController(editVC, animated: true)
     }
@@ -710,6 +710,11 @@ extension RecipeIngredientsUseViewController{
         print(params)
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.saveRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            
+            let discoverRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+            discoverRecipeVC.currentIndex = 2
+            discoverRecipeVC.checkbutton = 2
+            self.navigationController?.pushViewController(discoverRecipeVC, animated: true)
 //             let resultNew = dictResponse as? [String:Any]
 //            if let message = resultNew?["message"] as? String{
 //                self.showAlert(withMessage: message)
