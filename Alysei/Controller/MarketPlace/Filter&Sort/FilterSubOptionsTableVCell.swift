@@ -83,7 +83,7 @@ class FilterSubOptionsTableVCell: UITableViewCell {
         }else{
             data.isSelected = false
         }
-        if checkHitApi == .fdaCertified || checkHitApi == .producers{
+        if checkHitApi == .fdaCertified || checkHitApi == .producers || checkHitApi == .rating{
         if data.isSelected == false{
             btnOptionSelect.setImage(UIImage(named: "UnselectSort"), for: .normal)
         }else{

@@ -93,6 +93,16 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //        self.containerView.addSubview(vc.view)
     //        vc.didMove(toParent: self)
     //    }
+    @objc func showWalkthroughView() {
+        let slideVC = MarketplaceWalkScreenViewController()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        
+        self.present(slideVC, animated: true, completion: nil)
+
+       
+    }
+
     @objc func openPost(){
         // self.navigationController?.popViewController(animated: true)
         self.tabBarController?.tabBar.isHidden = false
@@ -125,12 +135,13 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         //self.callCheckIfStoredCreated()
         //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
         if self.storeCreated == 0{
-            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
-            
-            vc.view.frame = self.containerView.bounds
-            self.addChild(vc)
-            self.containerView.addSubview(vc.view)
-            vc.didMove(toParent: self)
+//            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
+//
+//            vc.view.frame = self.containerView.bounds
+//            self.addChild(vc)
+//            self.containerView.addSubview(vc.view)
+//            vc.didMove(toParent: self)
+            showWalkthroughView()
         }else if self.storeCreated == 1 && self.productCount == 0{
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
         }else{
@@ -585,3 +596,8 @@ class KitchenCollectionVC: UICollectionViewCell{
 }
 
  
+extension MarketPlaceHomeVC: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentingWalkVC(presentedViewController: presented, presenting: presenting)
+    }
+}
