@@ -16,11 +16,6 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     
 
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewDeleteShare: UIView!
-    @IBOutlet weak var viewDeleteShareHeight: NSLayoutConstraint!
-    @IBOutlet weak var deleteShareTableview: UITableView!
-    @IBOutlet weak var rightIconImageVw: UIImageView!
-    @IBOutlet weak var rightIconBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnStartCooking: UIButton!
     
@@ -44,9 +39,6 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        deleteShareTableview.delegate = self
-        deleteShareTableview.dataSource = self
-       
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
 
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
@@ -67,13 +59,14 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         view.addSubview(backButton)
         view.addSubview(menuButton)
 
-        viewDeleteShare.isHidden = true
+        btnStartCooking.layer.borderWidth = 1
+        btnStartCooking.layer.cornerRadius = 24
+        btnStartCooking.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
-       
+    
         getRecipeDetail()
-        
-        
         
         }
     
@@ -93,8 +86,16 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         let actionSheet = UIAlertController(style: .actionSheet)
 
         
-        let deleteRecipe = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+        let deleteRecipe = UIAlertAction(title: "Delete Recipe", style: .destructive) { action in
             self.deleteRecipe()
+        }
+        
+        let shareRecipe = UIAlertAction(title: "Share Recipe", style: .default) { action in
+            let url = URL(string:"https://social.alysei.com/")
+            let activityVC = UIActivityViewController(activityItems: [url ?? ""], applicationActivities: nil)
+             activityVC.popoverPresentationController?.sourceView = self.view
+             self.present(activityVC, animated: true)
+
         }
 
 
@@ -102,9 +103,16 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 
         }
 
-        actionSheet.addAction(deleteRecipe)
-    
-        actionSheet.addAction(cancelAction)
+        if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
+            actionSheet.addAction(deleteRecipe)
+            actionSheet.addAction(shareRecipe)
+            actionSheet.addAction(cancelAction)
+        }
+        else{
+            actionSheet.addAction(shareRecipe)
+            actionSheet.addAction(cancelAction)
+        }
+        
 
 
         self.present(actionSheet, animated: true, completion: nil)
@@ -112,26 +120,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 
     }
     
-    @IBAction func tapBackHome(_ sender: Any) {
-
-            self.navigationController?.popViewController(animated: true)
-
-    }
     
-    @IBAction func tapRightIcon(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected == false
-        {
-            viewDeleteShare.isHidden = true
-            
-        }
-        else{
-            viewDeleteShare.isHidden = false
-           
-        }
-    }
-    
-   
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -148,22 +137,13 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        if tableView == deleteShareTableview{
-//           return 1
-//        }
-//        else{
-            return 4
-//        }
+
+            return 5
+
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        if tableView == deleteShareTableview{
-//            viewDeleteShareHeight.constant = 40
-//           return 1
-//
-//        }
-//        else{
         if section == 0 {
             return 1
             
@@ -182,20 +162,18 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         else if section == 2{
             return 1
         }
+        else if section == 3{
+            return 1
+        }
         else{
         return 1
         }
         return 1
-//        }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if tableView == deleteShareTableview{
-//            guard let cell  = tableView.dequeueReusableCell(withIdentifier: "DeleteShareTableViewCell", for: indexPath) as? DeleteShareTableViewCell else {return UITableViewCell()}
-//            cell.labelDelete.text = "Delete"
-//        }
-//        else{
         switch indexPath.section {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
@@ -291,8 +269,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reloadTableViewCallback = { tag in
                 self.checkbutton = tag
                 self.tableView.reloadData()
-                cell.layer.cornerRadius = 50
-                cell.layer.masksToBounds = true
 
             }
            
@@ -326,143 +302,50 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.profileImg.setImage(withString: imgUrl)
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
-
-            if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-                        cell.profileImgComment.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
-            }
-            cell.profileImgComment.layer.cornerRadius = cell.profileImgComment.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
             
-            if recipeModel?.latestReview?.review != nil {
-                cell.latestCommentUserName.isHidden = false
-                cell.latestCommentImg.isHidden = false
-                cell.latestCommentUserName.isHidden = false
-                cell.latestCommentDate.isHidden = false
-                cell.latestCommentTextView.isHidden = false
-                cell.rateImg1.isHidden = false
-                cell.rateImg2.isHidden = false
-                cell.rateImg3.isHidden = false
-                cell.rateImg4.isHidden = false
-                cell.rateImg5.isHidden = false
-                let imgUrl2 = (kImageBaseUrl + (recipeModel?.latestReview?.user?.avatarId?.imageUrl ?? ""))
-                cell.latestCommentImg.setImage(withString: imgUrl2)
-                cell.latestCommentImg.layer.cornerRadius = cell.latestCommentImg.frame.height/2
-                if recipeModel?.latestReview?.user?.name == ""{
-                    cell.latestCommentUserName.text = "NA"
-                }
-                else{
-                    cell.latestCommentUserName.text = recipeModel?.latestReview?.user?.name
-                }
-                
-                let date = Date(timeIntervalSinceNow: -180)
-                cell.latestCommentDate.text = date.getElapsedInterval(timeStamp: String.getString(recipeModel?.latestReview?.created)) + "ago"
-                
-                cell.latestCommentTextView.text = recipeModel?.latestReview?.review
-                
-                if recipeModel?.latestReview?.rating ?? 0 == 0 {
-                    cell.rateImg1.image = UIImage(named: "icons8_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_star")
-                    cell.rateImg5.image = UIImage(named: "icons8_star")
-
-                }
-    //            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
-    //                cell.rateImg1.image = UIImage(named: "Group 1142")
-    //                cell.rateImg2.image = UIImage(named: "icons8_star")
-    //                cell.rateImg3.image = UIImage(named: "icons8_star")
-    //                cell.rateImg4.image = UIImage(named: "icons8_star")
-    //               cell.rateImg5.image = UIImage(named: "icons8_star")
-    //            }
-                else if recipeModel?.latestReview?.rating ?? 0 == 1 {
-                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_star")
-                   cell.rateImg5.image = UIImage(named: "icons8_star")
-                }
-    //            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
-    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg2.image = UIImage(named: "Group 1142")
-    //                cell.rateImg3.image = UIImage(named: "icons8_star")
-    //                cell.rateImg4.image = UIImage(named: "icons8_star")
-    //                cell.rateImg5.image = UIImage(named: "icons8_star")
-    //            }
-            else if recipeModel?.latestReview?.rating ?? 0 == 2 {
-                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_star")
-                    cell.rateImg5.image = UIImage(named: "icons8_star")
-                }
-    //            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
-    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg3.image = UIImage(named: "Group 1142")
-    //                cell.rateImg4.image = UIImage(named: "icons8_star")
-    //                cell.rateImg5.image = UIImage(named: "icons8_star")
-    //            }
-            else if recipeModel?.latestReview?.rating ?? 0 == 3 {
-                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_star")
-                    cell.rateImg5.image = UIImage(named: "icons8_star")
-                }
-    //            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
-    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg4.image = UIImage(named: "Group 1142")
-    //                cell.rateImg5.image = UIImage(named: "icons8_star")
-    //            }
-                else if recipeModel?.latestReview?.rating ?? 0 == 4 {
-                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg5.image = UIImage(named: "icons8_star")
-                }
-    //            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
-    //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-    //                cell.rateImg5.image = UIImage(named: "Group 1142")
-    //            }
-            else if recipeModel?.latestReview?.rating ?? 0 == 5 {
-                    cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-                    cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
-                }
-            }
-            else{
-                cell.latestCommentUserName.isHidden = true
-                cell.latestCommentImg.isHidden = true
-                cell.latestCommentUserName.isHidden = true
-                cell.latestCommentDate.isHidden = true
-                cell.latestCommentTextView.isHidden = true
-                cell.rateImg1.isHidden = true
-                cell.rateImg2.isHidden = true
-                cell.rateImg3.isHidden = true
-                cell.rateImg4.isHidden = true
-                cell.rateImg5.isHidden = true
-            }
-           
-
+        return cell
             
+        case 3:
+            guard let cell:RatingAndReviewTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "RatingAndReviewTableViewCell") as? RatingAndReviewTableViewCell else {return UITableViewCell()}
+            
+            cell.selectionStyle = .none
+            let doubleTotalReview = Double.getDouble(recipeModel?.totalReview)
+            
+            cell.totalOneStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_one_star))))%"
+            cell.totalTwoStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_two_star))))%"
+            cell.totalThreeeStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_three_star))))%"
+            cell.totalFourStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_four_star))))%"
+            cell.totalFiveStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star))))%"
+
+
+
+            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_one_star)))/100, animated: false)
+
+            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(recipeModel?.total_two_star ?? 0)))/100, animated: false)
+
+            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_three_star)))/100, animated: false)
+
+            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_four_star)))/100, animated: false)
+
+            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star)))/100, animated: false)
+            if recipeModel?.latestReview == nil {
+                cell.viewComment.isHidden = true
+            }else{
+                cell.viewComment.isHidden = false
+    
+            }
+            cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
+            cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
+            cell.avgRating = recipeModel?.avgRating
+            cell.configCell(recipeModel?.latestReview ?? LatestReviewDataModel(with: [:]))
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
                 viewAll.recipeReviewId = recipeModel!.recipeId!
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
-           
-            
-        return cell
-            
+            return cell
         default:
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
                 cell.post = true
@@ -470,56 +353,25 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
    
-//    }
-//    return UITableViewCell()
-        
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if tableView == deleteShareTableview{
-//
-//            //MARK:show Alert Message
-//            let refreshAlert = UIAlertController(title: "", message: "All Recipe data will be lost.", preferredStyle: UIAlertController.Style.alert)
-//            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-//                  // Handle Ok logic here
-//                self.deleteRecipe()
-//                arrayMyRecipe?.remove(at: indexPath.row)
-//                let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-//                self.navigationController?.pushViewController(add, animated: true)
-//
-//            }))
-//            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-//                  print("Handle Cancel Logic here")
-////                self.viewDeleteShare.isHidden = true
-//                self.dismiss(animated: true, completion: nil)
-//            }))
-//
-//            self.present(refreshAlert, animated: true, completion: nil)
-//        }
-//        else{
-//           return
-//        }
-//    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if tableView == deleteShareTableview{
-//            return 40
-//        }
-//        else{
-            
+
         switch indexPath.section{
         case 0:
             return 230
         case 1:
             return 70
         case 2:
-            return 350
+            return 122
         case 3:
+            return UITableView.automaticDimension
+        case 4:
             return 350
         default:
             return 400
         }
-//      }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -567,12 +419,7 @@ extension ViewRecipeViewController{
                 btnStartCooking.isHidden = false
                 viewStartCookingHeight.constant = 70
             }
-            if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
-                menuButton.isHidden = false
-            }
-            else{
-                menuButton.isHidden = true
-            }
+
             self.tableView.reloadData()
         }
     }

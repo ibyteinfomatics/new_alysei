@@ -170,6 +170,7 @@ extension ViewAllQuickEasyViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
+        recipeId = (arrayQuickEasy?[indexPath.row].recipeId)!
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

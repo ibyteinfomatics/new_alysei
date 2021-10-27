@@ -210,6 +210,6 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
 
         // ...otherwise return false since the updates have already
         // been made
-        return true
+        return false
     }
 }

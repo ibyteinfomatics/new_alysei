@@ -265,7 +265,6 @@
 		6B79E66A26E74C2400B2D434 /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66526E74C2300B2D434 /* ProgressModel.swift */; };
 		6B79E66B26E74C2400B2D434 /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66626E74C2400B2D434 /* BlogModel.swift */; };
 		6B79E66C26E74C2400B2D434 /* NotificationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66726E74C2400B2D434 /* NotificationListModel.swift */; };
-		6B7A66C3271E8912008FF18B /* DeleteShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A66C2271E8912008FF18B /* DeleteShareTableViewCell.swift */; };
 		6B7AF25F270EAC8100C48528 /* MyRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7AF25E270EAC8100C48528 /* MyRecipeTableViewCell.swift */; };
 		6B7AF261270EAC8800C48528 /* MyRecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7AF260270EAC8800C48528 /* MyRecipeTableViewCell.xib */; };
 		6B7AF263270ED3B700C48528 /* ViewRecipeDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7AF262270ED3B700C48528 /* ViewRecipeDetailDataModel.swift */; };
@@ -302,6 +301,7 @@
 		6B805B272705875F002FC4BF /* FilteredRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B262705875F002FC4BF /* FilteredRecipeViewController.swift */; };
 		6B805B2927059E17002FC4BF /* SearcRecipeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B2827059E17002FC4BF /* SearcRecipeDataModel.swift */; };
 		6B81327627159C7D00F2DE29 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81327527159C7D00F2DE29 /* Privacy.swift */; };
+		6B82BF4827290D340048D458 /* RatingAndReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B82BF4727290D340048D458 /* RatingAndReviewTableViewCell.swift */; };
 		6B8992352702E3BC00591A2E /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992342702E3BC00591A2E /* ExploreCollectionViewCell.xib */; };
 		6B8992372702E41B00591A2E /* MyRecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992362702E41B00591A2E /* MyRecipeCollectionViewCell.xib */; };
 		6B8992392702E46700591A2E /* FoodAllergyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8992382702E46700591A2E /* FoodAllergyCollectionViewCell.xib */; };
@@ -595,7 +595,6 @@
 		C5EB3CE326E9CB8600CCAC9E /* FollowDietsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CCD26E9CB7F00CCAC9E /* FollowDietsViewController.swift */; };
 		C5EB3CE426E9CB8600CCAC9E /* AddIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CCE26E9CB8000CCAC9E /* AddIngredientsViewController.swift */; };
 		C5EB3CE526E9CB8600CCAC9E /* FoodAllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CCF26E9CB8000CCAC9E /* FoodAllergyViewController.swift */; };
-		C5EB3CE626E9CB8600CCAC9E /* AddQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CD026E9CB8100CCAC9E /* AddQuantityViewController.swift */; };
 		C5EB3CE726E9CB8600CCAC9E /* RecipeIngredientsUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CD126E9CB8100CCAC9E /* RecipeIngredientsUseViewController.swift */; };
 		C5EB3CE826E9CB8600CCAC9E /* CancelPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CD226E9CB8200CCAC9E /* CancelPopUpViewController.swift */; };
 		C5EB3CE926E9CB8600CCAC9E /* AddStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CD326E9CB8200CCAC9E /* AddStepsViewController.swift */; };
@@ -884,7 +883,6 @@
 		6B79E66626E74C2400B2D434 /* BlogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
 		6B79E66726E74C2400B2D434 /* NotificationListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListModel.swift; sourceTree = "<group>"; };
 		6B79E67B26E7663100B2D434 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B7A66C2271E8912008FF18B /* DeleteShareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteShareTableViewCell.swift; sourceTree = "<group>"; };
 		6B7AF25E270EAC8100C48528 /* MyRecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		6B7AF260270EAC8800C48528 /* MyRecipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRecipeTableViewCell.xib; sourceTree = "<group>"; };
 		6B7AF262270ED3B700C48528 /* ViewRecipeDetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipeDetailDataModel.swift; sourceTree = "<group>"; };
@@ -921,6 +919,7 @@
 		6B805B262705875F002FC4BF /* FilteredRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredRecipeViewController.swift; sourceTree = "<group>"; };
 		6B805B2827059E17002FC4BF /* SearcRecipeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcRecipeDataModel.swift; sourceTree = "<group>"; };
 		6B81327527159C7D00F2DE29 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
+		6B82BF4727290D340048D458 /* RatingAndReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAndReviewTableViewCell.swift; sourceTree = "<group>"; };
 		6B8992342702E3BC00591A2E /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
 		6B8992362702E41B00591A2E /* MyRecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRecipeCollectionViewCell.xib; sourceTree = "<group>"; };
 		6B8992382702E46700591A2E /* FoodAllergyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodAllergyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1216,7 +1215,6 @@
 		C5EB3CCD26E9CB7F00CCAC9E /* FollowDietsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowDietsViewController.swift; sourceTree = "<group>"; };
 		C5EB3CCE26E9CB8000CCAC9E /* AddIngredientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientsViewController.swift; sourceTree = "<group>"; };
 		C5EB3CCF26E9CB8000CCAC9E /* FoodAllergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAllergyViewController.swift; sourceTree = "<group>"; };
-		C5EB3CD026E9CB8100CCAC9E /* AddQuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuantityViewController.swift; sourceTree = "<group>"; };
 		C5EB3CD126E9CB8100CCAC9E /* RecipeIngredientsUseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeIngredientsUseViewController.swift; sourceTree = "<group>"; };
 		C5EB3CD226E9CB8200CCAC9E /* CancelPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelPopUpViewController.swift; sourceTree = "<group>"; };
 		C5EB3CD326E9CB8200CCAC9E /* AddStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStepsViewController.swift; sourceTree = "<group>"; };
@@ -2204,7 +2202,7 @@
 				C5EB3CA626E9CB5400CCAC9E /* StepTableViewCell.swift */,
 				C5EB3C9F26E9CB5000CCAC9E /* ViewDetailsTableViewCell.swift */,
 				6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */,
-				6B7A66C2271E8912008FF18B /* DeleteShareTableViewCell.swift */,
+				6B82BF4727290D340048D458 /* RatingAndReviewTableViewCell.swift */,
 			);
 			path = ViewRecipeTableView;
 			sourceTree = "<group>";
@@ -2262,7 +2260,6 @@
 				C5EB3CDB26E9CB8600CCAC9E /* SelectRecipeCategaryViewController.swift */,
 				C5EB3CC826E9CB7D00CCAC9E /* AddToolsViewController.swift */,
 				C5EB3CD326E9CB8200CCAC9E /* AddStepsViewController.swift */,
-				C5EB3CD026E9CB8100CCAC9E /* AddQuantityViewController.swift */,
 				C5EB3CCE26E9CB8000CCAC9E /* AddIngredientsViewController.swift */,
 				C5EB3CD926E9CB8500CCAC9E /* AddMissingIngridientViewController.swift */,
 				C5EB3CC626E9CB7C00CCAC9E /* AddMissingToolViewController.swift */,
@@ -3452,7 +3449,6 @@
 				C55E2AAA26B288C60083F831 /* SearchProductListVC.swift in Sources */,
 				C5EB3CEB26E9CB8600CCAC9E /* ViewRecipeViewController.swift in Sources */,
 				C5EB38C026E9CAE400CCAC9E /* AddStepToolCollectionViewCell.swift in Sources */,
-				C5EB3CE626E9CB8600CCAC9E /* AddQuantityViewController.swift in Sources */,
 				C507B8502668B9EE0014344A /* SelectMemberShipVC.swift in Sources */,
 				27A443AF25AE03720002BAAC /* MKMapViewExtended.swift in Sources */,
 				6B90663E26F89DFF00D24521 /* DietViewController.swift in Sources */,
@@ -3610,7 +3606,6 @@
 				2742856025B82EEC003F3DE5 /* EditLanguageTableCell.swift in Sources */,
 				270DD75B25D7025300BAA6D8 /* OTPVerificationViewC.swift in Sources */,
 				C517236526E5E72D00CE7572 /* SelectFoodIntoleranceDataModel.swift in Sources */,
-				6B7A66C3271E8912008FF18B /* DeleteShareTableViewCell.swift in Sources */,
 				274D90AB25B85D5D00C82A75 /* CompanyViewC.swift in Sources */,
 				273E5E7B25BB382F009AF5A4 /* AboutViewC.swift in Sources */,
 				27A4439A25AE03720002BAAC /* RSView.swift in Sources */,
@@ -3619,6 +3614,7 @@
 				27D0FAAF25CEE9FF00463FE0 /* RoleViewC.swift in Sources */,
 				27A443C825AE03720002BAAC /* UITextFieldSubLayerBorderWidthAndColor.swift in Sources */,
 				C5EB3CB426E9CB5700CCAC9E /* NumberofStepsTableViewCell.swift in Sources */,
+				6B82BF4827290D340048D458 /* RatingAndReviewTableViewCell.swift in Sources */,
 				C513C19C26144DD20025CF27 /* SettingsScreenVC.swift in Sources */,
 				C5A2F35426C130010072DA8D /* StoreDescViewController.swift in Sources */,
 				C5EB38C626E9CAE400CCAC9E /* CuisinePageControlCollectionViewCell.swift in Sources */,

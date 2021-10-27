@@ -83,7 +83,7 @@ extension AddStepsCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
             return true
         }
 
-        return true
+        return false
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField)
