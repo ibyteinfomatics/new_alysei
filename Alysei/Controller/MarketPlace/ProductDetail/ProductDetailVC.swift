@@ -116,15 +116,15 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
            
             print("Double productDetail?.product_detail?.total_reviews------------------->",doubleTotalReview )
             
-            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_one_star))), animated: false)
+            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_one_star)))/100, animated: false)
             
-            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(productDetail?.product_detail?.total_two_star ?? 0))), animated: false)
+            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(productDetail?.product_detail?.total_two_star ?? 0)))/100, animated: false)
             
-            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_three_star))), animated: false)
+            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_three_star)))/100, animated: false)
             
-            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_four_star))), animated: false)
+            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_four_star)))/100, animated: false)
             
-            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_five_star))), animated: false)
+            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_five_star)))/100, animated: false)
             
            /* cell.totalOneStarProgress.setProgress((Float(productDetail?.product_detail?.total_one_star ?? 0) / 1), animated: true)
             cell.totalTwoStarProgress.setProgress(Float((productDetail?.product_detail?.total_two_star ?? 0) / 2), animated: true)
@@ -184,11 +184,13 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
             return 60
         }else if indexPath.row == 8 {
-            
+           
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {
-                return 250
+               // return 250
+                return UITableView.automaticDimension
             }else{
-                return UITableView.automaticDimension + 300
+               // return UITableView.automaticDimension
+                return UITableView.automaticDimension + 350
             }
         }else {
             return CGFloat((270 * ((self.productDetail?.related_products?.count ?? 0) / 2 )))

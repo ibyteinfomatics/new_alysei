@@ -16,7 +16,7 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     @IBOutlet weak var btnStar4: UIButton!
     @IBOutlet weak var btnStar5: UIButton!
     @IBOutlet weak var userImage: UIImageView!
-
+    
     var productStoreType: String?
     var productStoreId: String?
     var reviewStarCount = 0
@@ -54,22 +54,24 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
-
+    
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnAddReview(_ sender: UIButton){
         if (reviewStarCount == 0){
             self.showAlert(withMessage: "Please add ratings.")
+            return
         }
-        else{
-        if txtReview.text == AppConstants.leaveComment{
+        else if (txtReview.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray) || txtReview.text == ""{
             self.showAlert(withMessage: "Please enter some review.")
-               //txtReview.text = ""
-        }
-        callAddReviewApi()
+            return
+            //txtReview.text = ""
+        }else{
+            callAddReviewApi()
         }
     }
+    
     
     @IBAction func btnStar1(_ sender: UIButton){
         reviewStarCount = 1
@@ -117,43 +119,43 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         
     }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        if textView.text == AppConstants.leaveComment{
+        if textView.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray{
             textView.text = ""
         }
         return true
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-
+        
         // Combine the textView text and the replacement text to
         // create the updated text string
         let currentText:String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-
+        
         // If updated text view will be empty, add the placeholder
         // and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
-
+            
             textView.text = AppConstants.leaveComment
             textView.textColor = UIColor.lightGray
-
+            
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-
+        
         // Else if the text view's placeholder is showing and the
         // length of the replacement string is greater than 0, set
         // the text color to black then set its text to the
         // replacement string
-         else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
             textView.textColor = UIColor.black
             textView.text = text
         }
-
+        
         // For every other case, the text should change with the usual
         // behavior...
         else {
             return true
         }
-
+        
         // ...otherwise return false since the updates have already
         // been made
         return false
@@ -175,7 +177,7 @@ extension AddReviewViewController {
             
             switch statusCode{
             case 200:
-    
+                
                 self.showAlert(withMessage: "Review added Successfully!") {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -185,7 +187,7 @@ extension AddReviewViewController {
                 }
             default:
                 break
-        }
+            }
         }
     }
 }

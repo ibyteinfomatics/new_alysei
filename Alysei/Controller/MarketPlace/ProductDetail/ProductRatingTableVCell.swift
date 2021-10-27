@@ -35,6 +35,11 @@ class ProductRatingTableVCell: UITableViewCell {
     @IBOutlet weak var totalFourStar: UILabel!
     @IBOutlet weak var totalFiveStar: UILabel!
     
+//    @IBOutlet weak var totalOneStarProgress: UIProgressView!
+//    @IBOutlet weak var totalTwoStarProgress: UIProgressView!
+//    @IBOutlet weak var totalThreeeStarProgress: UIProgressView!
+//    @IBOutlet weak var totalFourStarProgress: UIProgressView!
+//    @IBOutlet weak var totalFiveStarProgress: UIProgressView!
     @IBOutlet weak var totalOneStarProgress: UIProgressView!
     @IBOutlet weak var totalTwoStarProgress: UIProgressView!
     @IBOutlet weak var totalThreeeStarProgress: UIProgressView!
