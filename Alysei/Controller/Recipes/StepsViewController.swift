@@ -58,19 +58,20 @@ class StepsViewController: UIViewController, StepDelegate {
         if page < ((stepsModel?.count ?? 0) - 1){
             page = page + 1
             
-            
+            choosestepIngridient?.removeAll()
+            choosestepTool?.removeAll()
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
                 if stepsModel?[page].stepIngridient?[i].isSelected == true{
-                    choosestepIngridient?.removeAll()
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+                        tableView.reloadData()
                 }
                 
             }
             
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
                 if stepsModel?[page].stepTool?[i].isSelected == true{
-                    choosestepTool?.removeAll()
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+                        tableView.reloadData()
                 }
                 
             }
@@ -97,23 +98,24 @@ class StepsViewController: UIViewController, StepDelegate {
             page = page - 1
             stepTableViewCellCurrentIndex = page
            
-           
+            choosestepIngridient?.removeAll()
+            choosestepTool?.removeAll()
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
                 if stepsModel?[page].stepIngridient?[i].isSelected == true{
-                    choosestepIngridient?.removeAll()
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+                        tableView.reloadData()
                 }
                 
             }
             
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
                 if stepsModel?[page].stepTool?[i].isSelected == true{
-                    choosestepTool?.removeAll()
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+                        tableView.reloadData()
                 }
                 
             }
-            tableView.reloadData()
+           
             
             nextStep.setTitle("Next", for: .normal)
         }
@@ -129,19 +131,21 @@ class StepsViewController: UIViewController, StepDelegate {
     func cellStepTapped(index: Int){
        page = index
        
-       
+        choosestepIngridient?.removeAll()
+        choosestepTool?.removeAll()
         for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
             if stepsModel?[page].stepIngridient?[i].isSelected == true{
-                choosestepIngridient?.removeAll()
                 choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
+                   tableView.reloadData()
             }
             
         }
         
         for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
             if stepsModel?[page].stepTool?[i].isSelected == true{
-                choosestepTool?.removeAll()
+
                 choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
+                tableView.reloadData()
             }
             
         }

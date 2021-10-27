@@ -165,12 +165,7 @@ extension FoodViewController{
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.savePreferences, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             
-            let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-            for aViewController in viewControllers {
-                if aViewController is DiscoverRecipeViewController {
-                    self.navigationController!.popToViewController(aViewController, animated: true)
-                }
-            }
+            self.navigationController?.popViewController(animated: true)
             
         }
     }

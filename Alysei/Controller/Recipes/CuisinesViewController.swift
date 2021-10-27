@@ -58,7 +58,6 @@ class CuisinesViewController: UIViewController {
         
     }
     
-    
 }
 
 extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

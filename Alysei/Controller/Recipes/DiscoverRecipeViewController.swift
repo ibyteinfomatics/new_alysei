@@ -31,11 +31,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var isReloadData = true
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if checkbutton == 3{
-           isReloadData = true
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            getSavedMyPreferences()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                 self.containerTableVw.reloadData()
-//            }
+            }
 
         }
         if checkbutton == 0{
@@ -61,16 +62,6 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        if checkbutton == 3{
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-//                self.isReloadData = true
-//                self.containerTableVw.reloadData()
-//            }
-//
-//        }
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,6 +101,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.discoverCollectionView.dataSource = self
         
         getExploreData()
+    
         
     }
     
@@ -212,8 +204,8 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     
     func showAlert1(message: String) {
         
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        let alert = UIAlertController(title: AlertTitle.appName, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: ButtonTitle.kOk, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -566,14 +558,11 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 3:
             let cell6 = containerTableVw.dequeueReusableCell(withIdentifier: "PreferencesTableViewCell") as! PreferencesTableViewCell
             cell6.delegate = self
-           
-            if isReloadData {
-                cell6.getSavedMyPreferences()
-                cell6.post = true
-//                isReloadData = false
-            }
-           
+            
+            cell6.post = true
+            
             return cell6
+            
         default:
             break
             
@@ -620,7 +609,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 3:
 
             return finalHeight
-//                UITableView.automaticDimension
+
         default:
             break
         }
@@ -735,12 +724,8 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             cell?.exploreHighlightView.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             
             discoverCollectionView.reloadData()
-            isReloadData = true
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            self.containerTableVw.reloadData()
-//            }
-            
-            
+            getSavedMyPreferences()
+
         default:
             break
         }
@@ -801,7 +786,7 @@ extension DiscoverRecipeViewController{
             case 409:
                 self.showAlert1(message: "No recipe found")
             default:
-                self.showAlert1(message: "Something went wrong")
+               break
                 
             }
             self.containerTableVw.reloadData()
@@ -832,12 +817,111 @@ extension DiscoverRecipeViewController{
                 self.showAlert1(message: "You have not liked any recipe")
                 
             default:
-                self.showAlert1(message: "Something went wrong")
+                break
             }
             self.containerTableVw.reloadData()
             self.view.isUserInteractionEnabled = true
         }
     }
     
+    func getSavedMyPreferences() -> Void{
+        self.view.isUserInteractionEnabled = false
+        getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
+        showCuisine?.removeAll()
+       showFood?.removeAll()
+        showDiet?.removeAll()
+        showIngridient?.removeAll()
+       showCookingSkill?.removeAll()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { [self] (response, error, errorType, statusCode) in
+            
+            let res = response as? [String:Any]
+            
+            if let data = res?["data"] as? [[String:Any]]{
+                getSavedPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
+                
+            for i in (0..<(getSavedPreferencesModel?.count ?? 0)){
+                switch i{
+                case 0:
+                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                    {
+                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                            showCuisine?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            first = 1
+                            arraySelectedCuisine?.removeAll()
+                            for k in (0..<(showCuisine?.count ?? 0)){
+                                arraySelectedCuisine?.append(showCuisine?[k].cousinId ?? 0 )
+                            }
+                        }
+                    }
+                case 1:
+                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                    {
+                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                            showFood?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+                            arraySelectedFood?.removeAll()
+                            for k in (0..<(showFood?.count ?? 0)){
+                                arraySelectedFood?.append(showFood?[k].foodId ?? 0 )
+                            }
+                            
+                        }
+                   
+                    }
+                case 2:
+                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                    {
+                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                            showDiet?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+                            arraySelectedDiet?.removeAll()
+                            for k in (0..<(showDiet?.count ?? 0)){
+                               
+                                arraySelectedDiet?.append(showDiet?[k].dietId ?? 0 )
+                            }
+                            
+                        }
+                    }
+                case 3:
+                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                    {
+                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                            showIngridient?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                            fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+                            arraySelectedIngridient?.removeAll()
+                       for k in (0..<(showIngridient?.count ?? 0)){
+                        
+                        arraySelectedIngridient?.append(showIngridient?[k].ingridientId ?? 0 )
+                        }
+                     }
+
+                    }
+                case 4:
+                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                    {
+                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                            showCookingSkill?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
+                            fifth = 1
+                            arraySelectedCookingSkill?.removeAll()
+                            for k in (0..<(showCookingSkill?.count ?? 0)){
+                             
+                                arraySelectedCookingSkill?.append(showCookingSkill?[k].cookingSkillId ?? 0 )
+                             }
+                        }
+                    }
+                default:
+                    break
+                    
+                }
+     
+            }
+            
+        }
     
+//        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
+            finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+200)
+        self.containerTableVw.reloadData()
+            
+        self.view.isUserInteractionEnabled = true
+        }
+    }
 }

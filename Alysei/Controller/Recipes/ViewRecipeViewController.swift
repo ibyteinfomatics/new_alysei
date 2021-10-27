@@ -14,7 +14,7 @@ var usedIngridientModel : [UsedIngridientDataModel]? = []
 var usedToolModel: [UsedToolsDataModel]? = []
 class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRowDelegate {
     
-    
+
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
     @IBOutlet weak var viewDeleteShare: UIView!
     @IBOutlet weak var viewDeleteShareHeight: NSLayoutConstraint!
@@ -22,12 +22,13 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     @IBOutlet weak var rightIconImageVw: UIImageView!
     @IBOutlet weak var rightIconBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var btnStartCooking: UIButton!
     
     var checkbutton = 0
     var imgUrl1 = String()
-   
+    let recipeImageView = UIImageView()
+    let backButton = UIButton()
+    let menuButton = UIButton()
     override func viewWillAppear(_ animated: Bool) {
         
        if isFromComment == "Review" {
@@ -42,9 +43,30 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+      
         deleteShareTableview.delegate = self
         deleteShareTableview.dataSource = self
+       
+        tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
+
+        recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
+        backButton.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
+        menuButton.frame = CGRect(x: UIScreen.main.bounds.size.width-40, y: 20, width: 40, height: 40)
+        
+        backButton.setImage(UIImage(named: "back_white.png"), for: .normal)
+        menuButton.setImage(UIImage(named: "icons8_menu_vertical.png"), for: .normal)
+        recipeImageView.contentMode = .scaleAspectFill
+        recipeImageView.clipsToBounds = true
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(backAction))
+        backButton.addGestureRecognizer(tap)
+        let tap1 = UITapGestureRecognizer.init(target: self, action: #selector(menuAction))
+        menuButton.addGestureRecognizer(tap1)
+        
+        view.addSubview(recipeImageView)
+        view.addSubview(backButton)
+        view.addSubview(menuButton)
+
         viewDeleteShare.isHidden = true
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
@@ -58,6 +80,36 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     func cellTapped(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func backAction(_ tap: UITapGestureRecognizer){
+        
+        self.navigationController?.popViewController(animated: true)
+
+    }
+    
+    @objc func menuAction(_ tap: UITapGestureRecognizer){
+        
+        let actionSheet = UIAlertController(style: .actionSheet)
+
+        
+        let deleteRecipe = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+            self.deleteRecipe()
+        }
+
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+        }
+
+        actionSheet.addAction(deleteRecipe)
+    
+        actionSheet.addAction(cancelAction)
+
+
+        self.present(actionSheet, animated: true, completion: nil)
+
+
     }
     
     @IBAction func tapBackHome(_ sender: Any) {
@@ -79,6 +131,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         }
     }
     
+   
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -95,22 +148,22 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == deleteShareTableview{
-           return 1
-        }
-        else{
+//        if tableView == deleteShareTableview{
+//           return 1
+//        }
+//        else{
             return 4
-        }
+//        }
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableView == deleteShareTableview{
-            viewDeleteShareHeight.constant = 40
-           return 1
-           
-        }
-        else{
+//        if tableView == deleteShareTableview{
+//            viewDeleteShareHeight.constant = 40
+//           return 1
+//
+//        }
+//        else{
         if section == 0 {
             return 1
             
@@ -133,16 +186,16 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
         }
         return 1
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == deleteShareTableview{
-            guard let cell  = tableView.dequeueReusableCell(withIdentifier: "DeleteShareTableViewCell", for: indexPath) as? DeleteShareTableViewCell else {return UITableViewCell()}
-            cell.labelDelete.text = "Delete"
-        }
-        else{
+//        if tableView == deleteShareTableview{
+//            guard let cell  = tableView.dequeueReusableCell(withIdentifier: "DeleteShareTableViewCell", for: indexPath) as? DeleteShareTableViewCell else {return UITableViewCell()}
+//            cell.labelDelete.text = "Delete"
+//        }
+//        else{
         switch indexPath.section {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
@@ -417,45 +470,46 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
    
-    }
-    return UITableViewCell()
+//    }
+//    return UITableViewCell()
+        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == deleteShareTableview{
-            
-            //MARK:show Alert Message
-            let refreshAlert = UIAlertController(title: "", message: "All Recipe data will be lost.", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                  // Handle Ok logic here
-                self.deleteRecipe()
-                arrayMyRecipe?.remove(at: indexPath.row)
-                let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
-                self.navigationController?.pushViewController(add, animated: true)
-                
-            }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-                  print("Handle Cancel Logic here")
-//                self.viewDeleteShare.isHidden = true
-                self.dismiss(animated: true, completion: nil)
-            }))
-    
-            self.present(refreshAlert, animated: true, completion: nil)
-        }
-        else{
-           return
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if tableView == deleteShareTableview{
+//
+//            //MARK:show Alert Message
+//            let refreshAlert = UIAlertController(title: "", message: "All Recipe data will be lost.", preferredStyle: UIAlertController.Style.alert)
+//            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+//                  // Handle Ok logic here
+//                self.deleteRecipe()
+//                arrayMyRecipe?.remove(at: indexPath.row)
+//                let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+//                self.navigationController?.pushViewController(add, animated: true)
+//
+//            }))
+//            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+//                  print("Handle Cancel Logic here")
+////                self.viewDeleteShare.isHidden = true
+//                self.dismiss(animated: true, completion: nil)
+//            }))
+//
+//            self.present(refreshAlert, animated: true, completion: nil)
+//        }
+//        else{
+//           return
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == deleteShareTableview{
-            return 40
-        }
-        else{
+//        if tableView == deleteShareTableview{
+//            return 40
+//        }
+//        else{
             
         switch indexPath.section{
         case 0:
-            return 300
+            return 230
         case 1:
             return 70
         case 2:
@@ -465,7 +519,14 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 400
         }
-      }
+//      }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+     let y = 300 - (scrollView.contentOffset.y + 300)
+        let height = min(max(y, 60), 400)
+        recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
+
     }
 }
         
@@ -507,22 +568,22 @@ extension ViewRecipeViewController{
                 viewStartCookingHeight.constant = 70
             }
             if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
-                rightIconBtn.isUserInteractionEnabled = true
-                rightIconImageVw.isHidden = false
+                menuButton.isHidden = false
             }
             else{
-                rightIconBtn.isUserInteractionEnabled = false
-                rightIconImageVw.isHidden = true
+                menuButton.isHidden = true
             }
             self.tableView.reloadData()
-            
         }
     }
    
     func deleteRecipe(){
        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.deleteRecipe + "\(recipeId)", requestMethod: .POST,requestParameters: [:], withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-                
+            let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
+            add.currentIndex = 2
+            add.checkbutton = 2
+            self.navigationController?.pushViewController(add, animated: true)
               }
         }
     

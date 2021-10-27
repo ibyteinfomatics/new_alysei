@@ -417,7 +417,7 @@ extension FilteredRecipeViewController{
                 
             default:
                
-                self.showAlert(withMessage: "No Recipe found")
+                break
             }
             
         }

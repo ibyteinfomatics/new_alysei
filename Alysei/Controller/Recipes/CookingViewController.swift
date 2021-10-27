@@ -85,16 +85,17 @@ extension CookingViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.viewOfImage.layer.borderWidth = 4
         cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
-        if showAllCookingSkill?[indexPath.row].isSelected == 1{
-            selectedIndexPath = indexPath
-            cell.viewOfImage.layer.borderWidth = 4
-            cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-        }
-        else{
-            cell.viewOfImage.layer.borderWidth = 4
-            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-            
-        }
+        cell.viewOfImage.layer.borderColor = showAllCookingSkill?[indexPath.row].isSelected == 1 ? (UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor) : (UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor)
+//        if showAllCookingSkill?[indexPath.row].isSelected == 1{
+//            selectedIndexPath = indexPath
+//            cell.viewOfImage.layer.borderWidth = 4
+//            cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+//        }
+//        else{
+//            cell.viewOfImage.layer.borderWidth = 4
+//            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+//
+//        }
         
         cell.layoutSubviews()
         
@@ -102,46 +103,22 @@ extension CookingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
         
-        if selectedIndexPath == indexPath {
-            //            // it was already selected
-            selectedIndexPath = indexPath
-            
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-            
-            
-        } else {
-            arraySelectedCookingSkill?.removeAll()
-            
-            
-            // wasn't yet selected, so let's remember it
-            selectedIndexPath = indexPath
-            
-            arraySelectedCookingSkill?.append(showAllCookingSkill?[indexPath.row].cookingSkillId ?? 0)
+            for i in 0..<(showAllCookingSkill?.count ?? 0){
+                showAllCookingSkill?[i].isSelected = 0
+                arraySelectedCookingSkill?.removeAll()
+            }
+
             showAllCookingSkill?[indexPath.row].isSelected = 1
-            cell?.viewOfImage.layer.borderWidth = 4
-            cell?.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-            
-            print("select")
-        }
+             arraySelectedCookingSkill?.append(showAllCookingSkill?[indexPath.row].cookingSkillId ?? 0)
+
+        self.collectionView.reloadData()
+
         saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
-        cell?.viewOfImage.layer.borderWidth = 4
-        cell?.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-        
-        self.selectedIndexPath = nil
-        showAllCookingSkill?[indexPath.row].isSelected = 0
-        
-        print("previous Deselect")
-    }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
         return cellSize

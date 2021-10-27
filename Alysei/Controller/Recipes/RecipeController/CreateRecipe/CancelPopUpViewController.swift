@@ -32,7 +32,7 @@ class CancelPopUpViewController: UIViewController {
         self.dismiss(animated: true) {
             self.postRequestToSaveInDraftRecipe()
            
-            self.Callback?()
+           
         }
     }
     
@@ -123,11 +123,11 @@ extension CancelPopUpViewController{
         print(params)
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.draftRecipe, requestMethod: .POST, requestParameters: paramsMain, withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-             let resultNew = dictResponse as? [String:Any]
-            if let message = resultNew?["message"] as? String{
-                self.showAlert(withMessage: message)
-            }
-            
+//             let resultNew = dictResponse as? [String:Any]
+//            if let message = resultNew?["message"] as? String{
+//                self.showAlert(withMessage: message)
+//            }
+            self.Callback?()
         }
     }
 }

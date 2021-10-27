@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewDetailsTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var cell1View: UIView!
     @IBOutlet weak var energyCircularProgressView: CircularProgressView!
     @IBOutlet weak var proteinCircularProgressView: CircularProgressView!
