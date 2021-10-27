@@ -35,7 +35,8 @@ class PostsViewController: AlysieBaseViewC {
     var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false
+       // self.tabBarController?.tabBar.isHidden = false
+       // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
             
@@ -52,6 +53,8 @@ class PostsViewController: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        hidesBottomBarWhenPushed = false
         if self.role == "10" {
         if let viewController2 = self.tabBarController?.viewControllers?[1] {
 
@@ -71,8 +74,8 @@ class PostsViewController: AlysieBaseViewC {
                 
             }
         }
-        arrNewFeedDataModel.removeAll()
-
+        //arrNewFeedDataModel.removeAll()
+        arrNewFeedDataModel = [NewFeedSearchDataModel]()
         self.postTableView.separatorStyle = .singleLine
         headerStack.isHidden = true
         postTableView.isHidden = true
@@ -183,7 +186,9 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             cell.selectionStyle = .none
         return cell
         }else{
-            if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil && arrNewFeedDataModel.count > 0) {
+            if arrNewFeedDataModel.count == 0 {
+                print("No data")
+            }else if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil) {
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "SharePostDescTableViewCell") as? SharePostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
                 if arrNewFeedDataModel.count > indexPath.row {
@@ -254,6 +259,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             }
            
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -405,7 +411,8 @@ extension PostsViewController {
             self.headerStack.isHidden = false
             self.postTableView.isHidden = false
             print("Count -------------------\(self.arrNewFeedDataModel.count)")
-            DispatchQueue.main.async { self.postTableView.reloadData()}
+            self.postTableView.reloadData()
+            //DispatchQueue.main.async { self.postTableView.reloadData()}
             
         }
     }

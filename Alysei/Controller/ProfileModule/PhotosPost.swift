@@ -13,6 +13,7 @@ class PhotosPost: AlysieBaseViewC {
     
     var pageNumber = 1
     var visitorId = ""
+    var position = 0
     //TODO: pagination is pending
     var count = 100
 
@@ -30,12 +31,25 @@ class PhotosPost: AlysieBaseViewC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+        
+        
     }
+    
 
     func updatePostList() {
         self.userPost.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seguePostsToComment" {
+            if let model = sender as? PostCommentsUserData {
+                if let viewCon = segue.destination as? PostCommentsViewController {
+                    viewCon.postCommentsUserDataModel = model
+                }
+            }
+        }
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -66,6 +80,9 @@ extension PhotosPost {
                     self.postData = subData.map({NewFeedSearchDataModel.init(with: $0)})
                 }
                 self.updatePostList()
+                let indexPaths = IndexPath(row: self.position, section: 0)
+                //userPost.selectRow(at: indexPaths, animated: false, scrollPosition: .bottom)
+                self.userPost.scrollToRow(at: indexPaths, at: .top, animated: false)
             }
         }
 
@@ -81,16 +98,56 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
         guard let cell = userPost.dequeueReusableCell(withIdentifier: "PostDescTableViewCell", for: indexPath) as? PostDescTableViewCell else { return UITableViewCell() }
 
         let data = self.postData[indexPath.row]
-//        cell.lblPostDesc?.text = data.body
-       // cell.configCell(NewFeedSearchDataModel(data), indexPath.row)
-        
-//        cell.commentCallback = { postCommentsUserData in
-//            self.showCommentScreen(postCommentsUserData)
-//        }
-//
         cell.configCell(data, indexPath.row)
         cell.sizeToFit()
+        
+        
+        cell.configCell(self.postData[indexPath.row] , indexPath.row)
+       // cell.btnMoreLess.tag = indexPath.row
+        cell.relaodSection = indexPath.section
+        
+//        if data.isExpand == true{
+//            cell.lblPostDesc.numberOfLines = 0
+//            cell.btnMoreLess.setTitle("....less", for: .normal)
+//        }else{
+//            cell.lblPostDesc.numberOfLines = 2
+//            cell.btnMoreLess.setTitle("....more", for: .normal)
+//        }
+        cell.likeCallback = { index in
+            //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+            cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
+            cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            
+            
+            
+        }
+        cell.reloadCallBack = { tag, section in
+            let data = self.postData[tag ?? -1]
+            
+            if data.isExpand == false{
+                data.isExpand = true
+            }else{
+                data.isExpand = false
+            }
+            //self.postTableView.reloadData()
+            let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
+            self.userPost.reloadRows(at: [indexPath], with: .automatic)
+            self.userPost.scrollToRow(at: indexPath, at: .top, animated: false)
+
+        }
+        
+       // cell.menuDelegate = self
+
+        cell.commentCallback = { postCommentsUserData in
+            self.showCommentScreen(postCommentsUserData)
+        }
+        
+        
         return cell
+    }
+    
+    func showCommentScreen(_ model: PostCommentsUserData) {
+        self.performSegue(withIdentifier: "seguePostsToComment", sender: model)
     }
 
 

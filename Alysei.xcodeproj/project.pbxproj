@@ -238,6 +238,8 @@
 		6B360D03270AEA27006A48E4 /* TravelAgencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFF270AEA27006A48E4 /* TravelAgencyViewController.swift */; };
 		6B360D06270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360D04270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift */; };
 		6B360D07270AEA51006A48E4 /* ProducerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */; };
+		6B3756EC2728012D0011F78E /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756EB2728012D0011F78E /* AwardCell.swift */; };
+		6B3756EE27281C1E0011F78E /* AwardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756ED27281C1E0011F78E /* AwardModel.swift */; };
 		6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
 		6B543592270C168D008A72DD /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B543591270C168D008A72DD /* BlockModel.swift */; };
@@ -852,6 +854,8 @@
 		6B360CFF270AEA27006A48E4 /* TravelAgencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelAgencyViewController.swift; sourceTree = "<group>"; };
 		6B360D04270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyFoodDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerDetailTableViewCell.swift; sourceTree = "<group>"; };
+		6B3756EB2728012D0011F78E /* AwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
+		6B3756ED27281C1E0011F78E /* AwardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardModel.swift; sourceTree = "<group>"; };
 		6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngridientModel.swift; sourceTree = "<group>"; };
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
@@ -2357,6 +2361,7 @@
 			isa = PBXGroup;
 			children = (
 				6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */,
+				6B3756EB2728012D0011F78E /* AwardCell.swift */,
 			);
 			path = Award;
 			sourceTree = "<group>";
@@ -2449,6 +2454,7 @@
 				6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */,
 				6B543591270C168D008A72DD /* BlockModel.swift */,
 				6B331B3E271FEBB60094078B /* PrivacyModel.swift */,
+				6B3756ED27281C1E0011F78E /* AwardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3252,6 +3258,7 @@
 				C56C2888268465F30042A0A3 /* MyStoreInquiriesInteractor.swift in Sources */,
 				279AB34725FF436C0061FCB3 /* ConfirmSelectionTable.swift in Sources */,
 				27D0FAB625CEE9FF00463FE0 /* SelectProductTableCell.swift in Sources */,
+				6B3756EE27281C1E0011F78E /* AwardModel.swift in Sources */,
 				C5EB3CE426E9CB8600CCAC9E /* AddIngredientsViewController.swift in Sources */,
 				27A443C625AE03720002BAAC /* textEdit.swift in Sources */,
 				C5D6F7EB26B1829D006FFCDF /* ActiveCountriesCollectionViewCell.swift in Sources */,
@@ -3277,6 +3284,7 @@
 				C5D6F7E026B1829D006FFCDF /* ConfirmSelectionVC.swift in Sources */,
 				27A443C925AE03720002BAAC /* UITextFieldExtended.swift in Sources */,
 				6B67AD4E270437A200B4A4F1 /* EditPostWorker.swift in Sources */,
+				6B3756EC2728012D0011F78E /* AwardCell.swift in Sources */,
 				27A443AE25AE03720002BAAC /* GenericView.swift in Sources */,
 				27A443C025AE03720002BAAC /* UIViewController.swift in Sources */,
 				C529209526777F00000C044B /* UserProductListRouter.swift in Sources */,

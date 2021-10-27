@@ -277,15 +277,15 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
             
            
             
-            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_one_star))), animated: false)
+            cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_one_star)))/100, animated: false)
             
-            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(storeDetails?.total_two_star ?? 0))), animated: false)
+            cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(storeDetails?.total_two_star ?? 0)))/100, animated: false)
             
-            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_three_star))), animated: false)
+            cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_three_star)))/100, animated: false)
             
-            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_four_star))), animated: false)
+            cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_four_star)))/100, animated: false)
             
-            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_five_star))), animated: false)
+            cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(storeDetails?.total_five_star)))/100, animated: false)
             if storeDetails?.latest_review == nil {
                 cell.viewComment.isHidden = true
             }else{

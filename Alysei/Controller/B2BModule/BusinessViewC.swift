@@ -134,6 +134,8 @@ class BusinessViewC: AlysieBaseViewC {
         if currentIndex == 0 {
         callSearchHubApi()
         }
+        self.tabBarController?.tabBar.isHidden = false
+        hidesBottomBarWhenPushed = false
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -240,7 +242,7 @@ class BusinessViewC: AlysieBaseViewC {
         if self.searchImpDone == false{
             businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex: self.currentIndex)
         }else{
-            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 2{
+            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
                 businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
             }else{
             print("No update")
@@ -417,7 +419,7 @@ class BusinessViewC: AlysieBaseViewC {
              //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
                 let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
             let signupmodel = signUpmodel
-            for options in signupmodel.arrOptions {
+            for _ in signupmodel.arrOptions {
                 if self.signUpStepOneDataModel == nil{
                     controller?.signUpStepOneDataModel = signupmodel
                     controller?.stepOneDelegate = self

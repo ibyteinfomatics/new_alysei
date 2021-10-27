@@ -66,6 +66,12 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         let tapRecipe = UITapGestureRecognizer(target: self, action: #selector(openRecipes))
         self.recipesView.addGestureRecognizer(tapRecipe)
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
     func setUI(){
         if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             self.btnCreateStore.setTitle("Go to My Store", for: .normal)
@@ -89,7 +95,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //    }
     @objc func openPost(){
         // self.navigationController?.popViewController(animated: true)
-        
+        self.tabBarController?.tabBar.isHidden = false
         _ = pushViewController(withName: HomeViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? HomeViewC
         
         /*for controller in self.navigationController!.viewControllers as Array {
