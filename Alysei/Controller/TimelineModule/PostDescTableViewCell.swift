@@ -178,7 +178,7 @@ class PostDescTableViewCell: UITableViewCell {
 //            imagePostCollectionView.alpha = 0.0
         }else{
             if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-            imageHeightCVConstant.constant = 250
+                imageHeightCVConstant.constant = 250
             }else{
                 imageHeightCVConstant.constant = 400
             }
