@@ -168,6 +168,7 @@ class ProfileViewC: AlysieBaseViewC{
     private lazy var awardViewC: AwardsViewController = {
         
         let awardViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: AwardsViewController.id()) as! AwardsViewController
+        awardViewC.userId = String.getString(userID)
         return awardViewC
     }()
     //MARK: - ViewLifeCycle Methods -

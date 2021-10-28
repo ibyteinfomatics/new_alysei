@@ -241,6 +241,8 @@
 		6B3756EC2728012D0011F78E /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756EB2728012D0011F78E /* AwardCell.swift */; };
 		6B3756EE27281C1E0011F78E /* AwardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756ED27281C1E0011F78E /* AwardModel.swift */; };
 		6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */; };
+		6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B1272905B7002EBD25 /* AddAward.swift */; };
+		6B4606B527293D2C002EBD25 /* AwardMedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
 		6B543592270C168D008A72DD /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B543591270C168D008A72DD /* BlockModel.swift */; };
 		6B559633271EE6EE0040A2CF /* Marketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B559632271EE6EE0040A2CF /* Marketplace.storyboard */; };
@@ -857,6 +859,8 @@
 		6B3756EB2728012D0011F78E /* AwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
 		6B3756ED27281C1E0011F78E /* AwardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardModel.swift; sourceTree = "<group>"; };
 		6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngridientModel.swift; sourceTree = "<group>"; };
+		6B4606B1272905B7002EBD25 /* AddAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAward.swift; sourceTree = "<group>"; };
+		6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardMedalModel.swift; sourceTree = "<group>"; };
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
 		6B543591270C168D008A72DD /* BlockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModel.swift; sourceTree = "<group>"; };
@@ -2362,6 +2366,7 @@
 			children = (
 				6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */,
 				6B3756EB2728012D0011F78E /* AwardCell.swift */,
+				6B4606B1272905B7002EBD25 /* AddAward.swift */,
 			);
 			path = Award;
 			sourceTree = "<group>";
@@ -2455,6 +2460,7 @@
 				6B543591270C168D008A72DD /* BlockModel.swift */,
 				6B331B3E271FEBB60094078B /* PrivacyModel.swift */,
 				6B3756ED27281C1E0011F78E /* AwardModel.swift */,
+				6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3282,6 +3288,7 @@
 				279AB36525FF46850061FCB3 /* StateHubModel.swift in Sources */,
 				61971C40265A8DF3002DD260 /* TabCollectionViewCell.swift in Sources */,
 				C5D6F7E026B1829D006FFCDF /* ConfirmSelectionVC.swift in Sources */,
+				6B4606B527293D2C002EBD25 /* AwardMedalModel.swift in Sources */,
 				27A443C925AE03720002BAAC /* UITextFieldExtended.swift in Sources */,
 				6B67AD4E270437A200B4A4F1 /* EditPostWorker.swift in Sources */,
 				6B3756EC2728012D0011F78E /* AwardCell.swift in Sources */,
@@ -3300,6 +3307,7 @@
 				C5BFBA6026BBF6F000A91BF9 /* FilterSubOptionsTableVCell.swift in Sources */,
 				6B09A87C26245AC800483365 /* AddPostViewController.swift in Sources */,
 				6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */,
+				6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */,
 				C5197B1126E72E3C00C0894F /* TripsViewController.swift in Sources */,
 				6B8ACE6E26FB08F600445A00 /* SharePostDescTableViewCell.swift in Sources */,
 				27A443B525AE03720002BAAC /* UIScreenExtended.swift in Sources */,

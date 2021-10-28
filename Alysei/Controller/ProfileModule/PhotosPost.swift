@@ -106,6 +106,12 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
        // cell.btnMoreLess.tag = indexPath.row
         cell.relaodSection = indexPath.section
         
+        cell.btnLikeCallback = { index in
+            
+            print(indexPath.item)
+            
+        }
+        
 //        if data.isExpand == true{
 //            cell.lblPostDesc.numberOfLines = 0
 //            cell.btnMoreLess.setTitle("....less", for: .normal)

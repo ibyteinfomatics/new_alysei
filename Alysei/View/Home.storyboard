@@ -7077,6 +7077,12 @@ any other devices.</string>
                                                                 <constraint firstAttribute="width" constant="170" id="D2K-2e-ynQ"/>
                                                             </constraints>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmK-ou-SXn">
+                                                            <rect key="frame" x="239" y="378.5" width="56.5" height="25"/>
+                                                            <connections>
+                                                                <action selector="btnLikeAction:" destination="TGG-k6-eOw" eventType="touchUpInside" id="ymF-cP-NPg"/>
+                                                            </connections>
+                                                        </button>
                                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-BR-QN8">
                                                             <rect key="frame" x="10" y="368.5" width="394" height="25"/>
                                                         </pageControl>
@@ -7086,7 +7092,10 @@ any other devices.</string>
                                                         <constraint firstItem="sbJ-aw-V0C" firstAttribute="leading" secondItem="cLb-wy-Y8i" secondAttribute="leading" id="0bg-P6-Clo"/>
                                                         <constraint firstItem="sbJ-aw-V0C" firstAttribute="top" secondItem="cLb-wy-Y8i" secondAttribute="bottom" constant="15" id="3He-XZ-WAv"/>
                                                         <constraint firstItem="82x-Rp-DgO" firstAttribute="trailing" secondItem="sbJ-aw-V0C" secondAttribute="trailing" constant="15" id="6Hr-sM-drj"/>
+                                                        <constraint firstItem="ZmK-ou-SXn" firstAttribute="leading" secondItem="Yaq-hz-rBM" secondAttribute="leading" id="9Sj-UI-kzg"/>
                                                         <constraint firstItem="GqF-u4-tXl" firstAttribute="top" secondItem="cLb-wy-Y8i" secondAttribute="top" constant="7" id="C0p-oL-Lhj"/>
+                                                        <constraint firstItem="ZmK-ou-SXn" firstAttribute="top" secondItem="Yaq-hz-rBM" secondAttribute="top" id="KkZ-Gj-ohs"/>
+                                                        <constraint firstItem="ZmK-ou-SXn" firstAttribute="trailing" secondItem="Yaq-hz-rBM" secondAttribute="trailing" id="NvH-ie-GRB"/>
                                                         <constraint firstAttribute="trailing" secondItem="8TG-z5-vg4" secondAttribute="trailing" id="UFo-Vz-jB1"/>
                                                         <constraint firstItem="8TG-z5-vg4" firstAttribute="top" secondItem="sbJ-aw-V0C" secondAttribute="bottom" constant="15" id="UPI-EF-gvt"/>
                                                         <constraint firstItem="J3Z-om-EJq" firstAttribute="leading" secondItem="GqF-u4-tXl" secondAttribute="trailing" constant="10" id="X2K-xV-rYA"/>
@@ -7095,6 +7104,7 @@ any other devices.</string>
                                                         <constraint firstAttribute="bottom" secondItem="MdD-BR-QN8" secondAttribute="bottom" constant="17.333333333333258" id="ZKh-Me-WHo"/>
                                                         <constraint firstItem="l1w-O8-RM9" firstAttribute="top" secondItem="8TG-z5-vg4" secondAttribute="bottom" constant="15.000000000000057" id="aZV-ng-p58"/>
                                                         <constraint firstItem="l1w-O8-RM9" firstAttribute="leading" secondItem="sbJ-aw-V0C" secondAttribute="leading" id="bka-aO-2ee"/>
+                                                        <constraint firstItem="ZmK-ou-SXn" firstAttribute="bottom" secondItem="Yaq-hz-rBM" secondAttribute="bottom" id="cfE-Pp-RHd"/>
                                                         <constraint firstItem="MdD-BR-QN8" firstAttribute="top" secondItem="8TG-z5-vg4" secondAttribute="bottom" id="eJT-bJ-iSQ"/>
                                                         <constraint firstItem="sbJ-aw-V0C" firstAttribute="trailing" secondItem="J3Z-om-EJq" secondAttribute="trailing" id="f3M-lJ-kd9"/>
                                                         <constraint firstItem="Wns-E0-3oX" firstAttribute="trailing" secondItem="GqF-u4-tXl" secondAttribute="trailing" id="ioM-bj-1LL"/>
@@ -7160,7 +7170,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsG-oZ-yXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1042.0289855072465" y="2608.9285714285711"/>
+            <point key="canvasLocation" x="-1042.0289855072465" y="2608.2589285714284"/>
         </scene>
         <!--User Photos Grid View Controller-->
         <scene sceneID="mGE-xn-gLa">
@@ -13579,10 +13589,10 @@ any other devices.</string>
             </objects>
             <point key="canvasLocation" x="-2226.0869565217395" y="-2968.5267857142858"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Award-->
         <scene sceneID="G9i-kj-bEO">
             <objects>
-                <viewController id="whT-Gm-ByB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAward" id="whT-Gm-ByB" customClass="AddAward" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIb-7E-x08">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -13599,19 +13609,19 @@ any other devices.</string>
                                         <state key="normal" image="icons_left"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Award" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmO-Ua-YPk">
-                                        <rect key="frame" x="59" y="15.5" width="79.5" height="19"/>
+                                        <rect key="frame" x="59" y="15" width="89" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPd-aH-oSB">
-                                        <rect key="frame" x="363" y="9.5" width="36" height="31"/>
+                                        <rect key="frame" x="361" y="9" width="38" height="32"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="savebUtoon:" destination="whT-Gm-ByB" eventType="touchUpInside" id="V4x-sV-UCI"/>
+                                            <action selector="saveButton:" destination="whT-Gm-ByB" eventType="touchUpInside" id="kuU-Eg-hOx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -13640,7 +13650,7 @@ any other devices.</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="250"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCT-7Y-dYV">
-                                                <rect key="frame" x="140" y="115.5" width="229" height="19"/>
+                                                <rect key="frame" x="140" y="115" width="229" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -13655,7 +13665,7 @@ any other devices.</string>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfu-ZK-PRq">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="250"/>
                                                 <connections>
-                                                    <action selector="btnMediaTapped:" destination="whT-Gm-ByB" eventType="touchUpInside" id="gNx-s0-W5X"/>
+                                                    <action selector="btnMediaTapped:" destination="whT-Gm-ByB" eventType="touchUpInside" id="Uqh-Co-QiS"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -13701,10 +13711,10 @@ any other devices.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-Pw-MaG">
-                                        <rect key="frame" x="30" y="275" width="212.5" height="30"/>
+                                        <rect key="frame" x="30" y="275" width="245.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Competition / Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Td-NJ-z3X">
-                                                <rect key="frame" x="5" y="0.0" width="207.5" height="30"/>
+                                                <rect key="frame" x="5" y="0.0" width="240.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -13744,10 +13754,10 @@ any other devices.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8T-aC-phh">
-                                        <rect key="frame" x="30" y="365" width="193" height="30"/>
+                                        <rect key="frame" x="30" y="365" width="226" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name of winning Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-k6-dhg">
-                                                <rect key="frame" x="5" y="0.0" width="188" height="30"/>
+                                                <rect key="frame" x="5" y="0.0" width="232" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -13760,7 +13770,7 @@ any other devices.</string>
                                             <constraint firstAttribute="height" constant="30" id="KNb-fW-bkP"/>
                                             <constraint firstItem="fvf-k6-dhg" firstAttribute="top" secondItem="x8T-aC-phh" secondAttribute="top" id="fED-kc-obK"/>
                                             <constraint firstAttribute="bottom" secondItem="fvf-k6-dhg" secondAttribute="bottom" id="pwH-Zc-Z11"/>
-                                            <constraint firstAttribute="trailing" secondItem="fvf-k6-dhg" secondAttribute="trailing" id="zgF-MQ-a5J"/>
+                                            <constraint firstAttribute="trailing" secondItem="fvf-k6-dhg" secondAttribute="trailing" constant="-11" id="zgF-MQ-a5J"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-EL-2Qx">
@@ -13784,7 +13794,7 @@ any other devices.</string>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Y3-38-Hx6">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="60"/>
                                                 <connections>
-                                                    <action selector="CountryDropDown:" destination="whT-Gm-ByB" eventType="touchUpInside" id="51x-qS-q2d"/>
+                                                    <action selector="placeBtn:" destination="whT-Gm-ByB" eventType="touchUpInside" id="cEM-Nm-xtM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -13803,10 +13813,10 @@ any other devices.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkB-f2-tYZ">
-                                        <rect key="frame" x="30" y="455" width="247" height="30"/>
+                                        <rect key="frame" x="30" y="455" width="275" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Medal / place received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-ct-8fF">
-                                                <rect key="frame" x="5" y="8" width="233" height="22"/>
+                                                <rect key="frame" x="5" y="8" width="270" height="22"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -13819,7 +13829,7 @@ any other devices.</string>
                                             <constraint firstItem="g0G-ct-8fF" firstAttribute="top" secondItem="RkB-f2-tYZ" secondAttribute="top" constant="8" id="Ca8-P9-8px"/>
                                             <constraint firstItem="g0G-ct-8fF" firstAttribute="leading" secondItem="RkB-f2-tYZ" secondAttribute="leading" constant="5" id="E5t-DI-XIl"/>
                                             <constraint firstAttribute="bottom" secondItem="g0G-ct-8fF" secondAttribute="bottom" id="NJ6-mb-evq"/>
-                                            <constraint firstAttribute="trailing" secondItem="g0G-ct-8fF" secondAttribute="trailing" constant="9" id="b8S-91-17i"/>
+                                            <constraint firstAttribute="trailing" secondItem="g0G-ct-8fF" secondAttribute="trailing" id="b8S-91-17i"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEf-mh-meu">
@@ -13847,10 +13857,10 @@ any other devices.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIE-QS-93m">
-                                        <rect key="frame" x="40" y="545" width="124" height="30"/>
+                                        <rect key="frame" x="40" y="545" width="166" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Competition URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqN-mr-qcU">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -13860,14 +13870,14 @@ any other devices.</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="124" id="B6Y-ro-NEI"/>
+                                            <constraint firstAttribute="width" constant="166" id="B6Y-ro-NEI"/>
                                             <constraint firstAttribute="height" constant="30" id="gcC-g0-NIO"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jOU-V4-5j7" firstAttribute="top" secondItem="hZD-Zh-FbO" secondAttribute="top" id="11Y-dV-5sV"/>
-                                    <constraint firstItem="oIE-QS-93m" firstAttribute="centerX" secondItem="RkB-f2-tYZ" secondAttribute="centerX" constant="-51.5" id="1hm-Ac-NuY"/>
+                                    <constraint firstItem="oIE-QS-93m" firstAttribute="centerX" secondItem="RkB-f2-tYZ" secondAttribute="centerX" constant="-44.5" id="1hm-Ac-NuY"/>
                                     <constraint firstItem="DEf-mh-meu" firstAttribute="top" secondItem="d4n-EL-2Qx" secondAttribute="bottom" constant="30" id="3xx-gI-LbB"/>
                                     <constraint firstItem="HZa-Pw-MaG" firstAttribute="leading" secondItem="hZD-Zh-FbO" secondAttribute="leading" constant="30" id="8Wa-sU-USk"/>
                                     <constraint firstItem="x8T-aC-phh" firstAttribute="top" secondItem="wUI-WK-Y74" secondAttribute="bottom" constant="15" id="8vE-Le-geO"/>
@@ -13897,7 +13907,7 @@ any other devices.</string>
                                     <constraint firstAttribute="trailing" secondItem="OqS-gy-3Zt" secondAttribute="trailing" constant="15" id="sIo-kw-PI8"/>
                                     <constraint firstAttribute="trailing" secondItem="DEf-mh-meu" secondAttribute="trailing" constant="15" id="t0P-gm-NPl"/>
                                     <constraint firstAttribute="trailing" secondItem="jOU-V4-5j7" secondAttribute="trailing" id="vsq-nv-DaP"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x8T-aC-phh" secondAttribute="trailing" constant="191" id="wNi-ho-Dh3"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x8T-aC-phh" secondAttribute="trailing" constant="158" id="wNi-ho-Dh3"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -13914,29 +13924,28 @@ any other devices.</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cameraIcon" destination="rn1-A7-fZ5" id="A3s-VE-wJC"/>
-                        <outlet property="cameraText" destination="BCT-7Y-dYV" id="UGq-da-zLO"/>
-                        <outlet property="countryEvent" destination="2Y3-38-Hx6" id="7me-la-5Ji"/>
-                        <outlet property="countryLabel" destination="g0G-ct-8fF" id="T3e-Hw-szQ"/>
-                        <outlet property="countryTxf" destination="Hfl-dm-ZoR" id="Ecd-9h-iVT"/>
-                        <outlet property="countryView" destination="d4n-EL-2Qx" id="DcW-Xo-D8D"/>
-                        <outlet property="countryView1" destination="RkB-f2-tYZ" id="r8c-ie-XQP"/>
-                        <outlet property="headerView" destination="JxY-VK-eVq" id="WGq-wx-6d0"/>
-                        <outlet property="imageView" destination="OqS-gy-3Zt" id="syC-fF-FTL"/>
-                        <outlet property="saveButton" destination="KPd-aH-oSB" id="o7y-Ad-cad"/>
-                        <outlet property="travelAgencyLabel" destination="fvf-k6-dhg" id="d6E-Qf-VB4"/>
-                        <outlet property="travelAgencyTxf" destination="39u-RP-teb" id="X73-j5-bM4"/>
-                        <outlet property="travelAgencyView" destination="xr0-7n-F76" id="7De-BD-5tO"/>
-                        <outlet property="travelAgencyView1" destination="x8T-aC-phh" id="xDq-ZE-uKU"/>
-                        <outlet property="tripNameLabel" destination="6Td-NJ-z3X" id="P9k-H8-Cy1"/>
-                        <outlet property="tripNameTxf" destination="tIv-Ur-ISU" id="Ahh-8N-ruR"/>
-                        <outlet property="tripNameView" destination="wUI-WK-Y74" id="6Ib-en-shc"/>
-                        <outlet property="tripNameView1" destination="HZa-Pw-MaG" id="gYn-Wj-0MD"/>
-                        <outlet property="uploadImage" destination="7Va-Qn-Xu4" id="06B-77-H5Y"/>
-                        <outlet property="websiteLabel" destination="TqN-mr-qcU" id="kCO-Eh-seH"/>
-                        <outlet property="websiteTxf" destination="IAl-kp-MvI" id="ubi-vY-NAt"/>
-                        <outlet property="websiteView" destination="DEf-mh-meu" id="UN4-K0-jiA"/>
-                        <outlet property="websiteView1" destination="oIE-QS-93m" id="ylX-V7-Pmr"/>
+                        <outlet property="cameraIcon" destination="rn1-A7-fZ5" id="uB4-82-8BJ"/>
+                        <outlet property="cameraText" destination="BCT-7Y-dYV" id="qe7-WP-mIC"/>
+                        <outlet property="eventLabel" destination="6Td-NJ-z3X" id="hhp-pG-TZk"/>
+                        <outlet property="eventNameTxf" destination="tIv-Ur-ISU" id="MiK-9P-xvr"/>
+                        <outlet property="eventView" destination="HZa-Pw-MaG" id="P81-bE-Laf"/>
+                        <outlet property="eventView1" destination="wUI-WK-Y74" id="Ha8-J8-Pdf"/>
+                        <outlet property="imageView" destination="OqS-gy-3Zt" id="eMM-Ej-INo"/>
+                        <outlet property="placeBtton" destination="2Y3-38-Hx6" id="b0V-Jk-urG"/>
+                        <outlet property="placeLabel" destination="g0G-ct-8fF" id="JI9-UM-dtp"/>
+                        <outlet property="placeNameTxf" destination="Hfl-dm-ZoR" id="sQ4-rU-piE"/>
+                        <outlet property="placeView" destination="RkB-f2-tYZ" id="WEX-Ow-RbO"/>
+                        <outlet property="placeView1" destination="d4n-EL-2Qx" id="94V-uf-SO8"/>
+                        <outlet property="productLabel" destination="fvf-k6-dhg" id="j4L-5z-rfq"/>
+                        <outlet property="productNameTxf" destination="39u-RP-teb" id="08A-bS-7SP"/>
+                        <outlet property="productView" destination="x8T-aC-phh" id="wpl-7F-vdn"/>
+                        <outlet property="productView1" destination="xr0-7n-F76" id="cIJ-fV-Dnt"/>
+                        <outlet property="saveButton" destination="KPd-aH-oSB" id="64v-Nv-0qa"/>
+                        <outlet property="uploadImage" destination="7Va-Qn-Xu4" id="stN-o8-gJl"/>
+                        <outlet property="urlLabel" destination="TqN-mr-qcU" id="Scm-E4-BSb"/>
+                        <outlet property="urlNameTxf" destination="IAl-kp-MvI" id="gdR-HT-G5B"/>
+                        <outlet property="urlView" destination="oIE-QS-93m" id="5bl-8m-F4J"/>
+                        <outlet property="urlView1" destination="DEf-mh-meu" id="VkS-7z-GMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5m-FX-LjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -14307,42 +14316,42 @@ any other devices.</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fhh-fC-gvp">
-                                <rect key="frame" x="10" y="104" width="394" height="758"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="KwM-5I-ZUd">
-                                    <size key="itemSize" width="178" height="319"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KwM-5I-ZUd">
+                                    <size key="itemSize" width="205" height="315"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AwardCell" id="Anx-LK-pCU" customClass="AwardCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="319"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="205" height="315"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Aem-iV-KGt">
-                                            <rect key="frame" x="0.0" y="0.0" width="178" height="319"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="205" height="315"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="E3X-mK-xGe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="178" height="246"/>
+                                                    <rect key="frame" x="10" y="5" width="185" height="246"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="246" id="73z-8S-45M"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Competition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erj-1i-eeC">
-                                                    <rect key="frame" x="2" y="251" width="174" height="18.5"/>
+                                                    <rect key="frame" x="10" y="256" width="193" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                                     <color key="textColor" name="blackColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Product:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-Qr-O9o">
-                                                    <rect key="frame" x="2" y="269.5" width="174" height="17"/>
+                                                    <rect key="frame" x="10" y="274.5" width="193" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxP-Bw-bjF">
-                                                    <rect key="frame" x="5" y="200" width="35" height="35"/>
+                                                    <rect key="frame" x="10" y="209" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="1OI-9M-uWi"/>
                                                         <constraint firstAttribute="height" constant="35" id="WEz-Kj-Ebb"/>
@@ -14353,7 +14362,7 @@ any other devices.</string>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFe-EO-hUc">
-                                                    <rect key="frame" x="143" y="200" width="30" height="35"/>
+                                                    <rect key="frame" x="165" y="209" width="30" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="qMS-sW-mtq"/>
                                                         <constraint firstAttribute="width" constant="30" id="xoq-l9-qLs"/>
@@ -14363,25 +14372,35 @@ any other devices.</string>
                                                         <action selector="btnDeleteAction:" destination="Anx-LK-pCU" eventType="touchUpInside" id="M49-oz-Md1"/>
                                                     </connections>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silver" translatesAutoresizingMaskIntoConstraints="NO" id="ctr-EG-1qM">
+                                                    <rect key="frame" x="12" y="5" width="36" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="Oyy-x0-v9r"/>
+                                                        <constraint firstAttribute="width" constant="36" id="kpG-W8-6B9"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ey7-Qr-O9o" secondAttribute="trailing" constant="2" id="37t-T9-h7V"/>
-                                                <constraint firstItem="EFe-EO-hUc" firstAttribute="top" secondItem="Aem-iV-KGt" secondAttribute="top" constant="200" id="85T-eU-EJA"/>
-                                                <constraint firstItem="ey7-Qr-O9o" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="2" id="Aax-2o-BAn"/>
-                                                <constraint firstItem="E3X-mK-xGe" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" id="CgV-Mn-D72"/>
+                                                <constraint firstItem="ey7-Qr-O9o" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="10" id="Aax-2o-BAn"/>
+                                                <constraint firstItem="E3X-mK-xGe" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="10" id="CgV-Mn-D72"/>
+                                                <constraint firstItem="EFe-EO-hUc" firstAttribute="centerY" secondItem="pxP-Bw-bjF" secondAttribute="centerY" id="CqA-lI-3Ay"/>
+                                                <constraint firstItem="ctr-EG-1qM" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="12" id="HfW-rL-qo4"/>
                                                 <constraint firstItem="ey7-Qr-O9o" firstAttribute="top" secondItem="erj-1i-eeC" secondAttribute="bottom" id="PCb-LX-iYx"/>
-                                                <constraint firstItem="pxP-Bw-bjF" firstAttribute="top" secondItem="Aem-iV-KGt" secondAttribute="top" constant="200" id="ZXI-I9-vzH"/>
-                                                <constraint firstAttribute="trailing" secondItem="E3X-mK-xGe" secondAttribute="trailing" id="brv-1f-Erg"/>
-                                                <constraint firstItem="E3X-mK-xGe" firstAttribute="top" secondItem="Aem-iV-KGt" secondAttribute="top" id="bxV-AN-DXs"/>
-                                                <constraint firstAttribute="trailing" secondItem="EFe-EO-hUc" secondAttribute="trailing" constant="5" id="gLS-i6-Yqt"/>
-                                                <constraint firstItem="pxP-Bw-bjF" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="5" id="pvB-2q-7GH"/>
+                                                <constraint firstItem="ctr-EG-1qM" firstAttribute="top" secondItem="E3X-mK-xGe" secondAttribute="top" id="RIK-l5-SMt"/>
+                                                <constraint firstAttribute="trailing" secondItem="E3X-mK-xGe" secondAttribute="trailing" constant="10" id="brv-1f-Erg"/>
+                                                <constraint firstItem="E3X-mK-xGe" firstAttribute="top" secondItem="Aem-iV-KGt" secondAttribute="top" constant="5" id="bxV-AN-DXs"/>
+                                                <constraint firstItem="pxP-Bw-bjF" firstAttribute="bottom" secondItem="E3X-mK-xGe" secondAttribute="bottom" constant="-7" id="hcO-SM-duC"/>
+                                                <constraint firstItem="EFe-EO-hUc" firstAttribute="trailing" secondItem="E3X-mK-xGe" secondAttribute="trailing" id="jB4-3R-cnY"/>
+                                                <constraint firstItem="pxP-Bw-bjF" firstAttribute="leading" secondItem="E3X-mK-xGe" secondAttribute="leading" id="mpQ-Kz-HcF"/>
                                                 <constraint firstItem="erj-1i-eeC" firstAttribute="top" secondItem="E3X-mK-xGe" secondAttribute="bottom" constant="5" id="sL8-zm-bjD"/>
-                                                <constraint firstItem="erj-1i-eeC" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="2" id="tZZ-ci-EEp"/>
+                                                <constraint firstItem="erj-1i-eeC" firstAttribute="leading" secondItem="Aem-iV-KGt" secondAttribute="leading" constant="10" id="tZZ-ci-EEp"/>
                                                 <constraint firstAttribute="trailing" secondItem="erj-1i-eeC" secondAttribute="trailing" constant="2" id="yu8-LL-hg2"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="178" height="319"/>
+                                        <size key="customSize" width="205" height="315"/>
                                         <connections>
+                                            <outlet property="awardimg" destination="ctr-EG-1qM" id="VCt-rA-TiG"/>
                                             <outlet property="competitionName" destination="erj-1i-eeC" id="16w-Lt-2rR"/>
                                             <outlet property="deleteButton" destination="EFe-EO-hUc" id="CqX-Sx-MPu"/>
                                             <outlet property="editButton" destination="pxP-Bw-bjF" id="pUV-wa-2Ha"/>
@@ -14396,9 +14415,9 @@ any other devices.</string>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ld3-tE-5jr" secondAttribute="trailing" id="3Ye-4K-t7v"/>
                             <constraint firstItem="zgO-v9-WbK" firstAttribute="top" secondItem="Ld3-tE-5jr" secondAttribute="bottom" id="9os-o2-HOs"/>
-                            <constraint firstItem="fhh-fC-gvp" firstAttribute="leading" secondItem="aha-Se-EFd" secondAttribute="leading" constant="10" id="EKj-Qt-B0q"/>
+                            <constraint firstItem="fhh-fC-gvp" firstAttribute="leading" secondItem="aha-Se-EFd" secondAttribute="leading" id="EKj-Qt-B0q"/>
                             <constraint firstItem="IVE-18-zyf" firstAttribute="leading" secondItem="aha-Se-EFd" secondAttribute="leading" id="GUX-1R-dA4"/>
-                            <constraint firstAttribute="trailing" secondItem="fhh-fC-gvp" secondAttribute="trailing" constant="10" id="HE9-6A-awX"/>
+                            <constraint firstAttribute="trailing" secondItem="fhh-fC-gvp" secondAttribute="trailing" id="HE9-6A-awX"/>
                             <constraint firstItem="fhh-fC-gvp" firstAttribute="top" secondItem="IVE-18-zyf" secondAttribute="bottom" constant="10" id="JeI-WN-UYP"/>
                             <constraint firstItem="Ld3-tE-5jr" firstAttribute="top" secondItem="aCS-YW-RW3" secondAttribute="bottom" constant="50" id="fvK-A4-fec"/>
                             <constraint firstItem="zgO-v9-WbK" firstAttribute="top" secondItem="fhh-fC-gvp" secondAttribute="bottom" id="mGh-PJ-ykn"/>
@@ -14411,7 +14430,7 @@ any other devices.</string>
                         <outlet property="awardCollectionView" destination="fhh-fC-gvp" id="0dH-WY-mdo"/>
                         <outlet property="countLabel" destination="LSm-ra-Ql0" id="x9s-tn-UXi"/>
                         <outlet property="createAwardButton" destination="rNt-Zr-sxF" id="kYW-2B-aOF"/>
-                        <outlet property="vwBlank" destination="IVE-18-zyf" id="RAk-H3-hbL"/>
+                        <outlet property="vwBlank" destination="Ld3-tE-5jr" id="0ac-u9-Z84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jso-2F-USU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -18485,13 +18504,13 @@ AAAAAAABG/w
         <image name="icon_sideMenu" width="22" height="19"/>
         <image name="icon_uncheckedBox" width="26" height="26"/>
         <image name="icons8_add_user_male" width="23" height="23"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
         <image name="icons8_forward-1" width="11.5" height="21"/>
         <image name="icons8_gallery_1" width="33.5" height="25.5"/>
         <image name="icons8_pencil" width="13" height="13"/>
-        <image name="icons8_shop_3" width="17.5" height="17.5"/>
+        <image name="icons8_shop_3" width="16" height="16"/>
         <image name="icons8_trash_1" width="10.5" height="13"/>
         <image name="icons_grey_checkbox" width="13" height="13"/>
         <image name="icons_invitations" width="15.5" height="16"/>
@@ -18515,6 +18534,7 @@ AAAAAAABG/w
         <image name="select_role3" width="78" height="78"/>
         <image name="settings" width="19" height="19"/>
         <image name="share_icon" width="128" height="104.5"/>
+        <image name="silver" width="24" height="38"/>
         <image name="user_icon_normal" width="128" height="128"/>
         <image name="vertical_menu_icon" width="6" height="21.5"/>
         <image name="walkthrough_bg2" width="376" height="812"/>

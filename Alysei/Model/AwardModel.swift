@@ -32,6 +32,7 @@ class AwardDatum {
     var status, deletedAt, createdAt, updatedAt: String?
     var user: AwardUser?
     var attachment: AwardAttachment?
+    var medal: AwardMedal?
 
     
     
@@ -56,6 +57,10 @@ class AwardDatum {
         
         if let user = dictResponse?["user"] as? [String:Any]{
             self.user =  AwardUser.init(with: user)
+        }
+        
+        if let medal = dictResponse?["medal"] as? [String:Any]{
+            self.medal =  AwardMedal.init(with: medal)
         }
         
     }
@@ -102,6 +107,21 @@ class AwardUser {
             self.avatarid =  AwardAttachment.init(with: attachment)
         }
         
+    }
+    
+    
+}
+
+class AwardMedal {
+    
+    var medal_id:Int?
+    var name, createdAt, updatedAt: String?
+    
+    init(with dictResponse: [String:Any]?) {
+        self.medal_id = Int.getInt(dictResponse?["medal_id"])
+        self.name = String.getString(dictResponse?["name"])
+        self.createdAt = String.getString(dictResponse?["created_at"])
+        self.updatedAt = String.getString(dictResponse?["updated_at"])
     }
     
     

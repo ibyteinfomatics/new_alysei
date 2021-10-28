@@ -62,6 +62,8 @@ class PostDescTableViewCell: UITableViewCell {
     var currentIndex: Int?
     var reloadCallBack: ((Int?,Int?) -> Void)? = nil
     var relaodSection : Int?
+    
+    var btnLikeCallback:((Int) -> Void)? = nil
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -78,6 +80,7 @@ class PostDescTableViewCell: UITableViewCell {
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
+        tap.numberOfTouchesRequired = 1
         self.viewLike.addGestureRecognizer(tap)
 
 
@@ -89,7 +92,7 @@ class PostDescTableViewCell: UITableViewCell {
 
 
         let showCommentsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showCommentsScreen))
-        showCommentsGesture.numberOfTapsRequired = 1
+        showCommentsGesture.numberOfTouchesRequired = 1
         self.commentImage.addGestureRecognizer(showCommentsGesture)
 
 
@@ -117,35 +120,14 @@ class PostDescTableViewCell: UITableViewCell {
         reloadCallBack?(sender.tag, relaodSection)
     }
     
+    @IBAction func btnLikeAction(_ sender: UIButton){
+        btnLikeCallback?(sender.tag)
+    }
+    
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
 
-//        socket.on(clientEvent: .connect) {data, ack in
-//            print("socket connected")
-//
-//            print(data)
-//            print(ack)
-//
-//            print("socket is connected")
-//
-//            let userIDSD = ["user_id": selfID].socketRepresentation()
-//
-//            self.socket.emit("init", userIDSD) {
-//                print("init done")
-//            }
-//
-//            self.socket.on("connected") { connectedData, connectedAck in
-//                print(connectedData)
-//            }
-//
-//        }
-//
-//        socket.on(clientEvent: .error) { data, ack in
-//            print(data)
-//        }
-//
-//        socket.connect()
 
         self.viewLike.tag = index
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))

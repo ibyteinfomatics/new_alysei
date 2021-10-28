@@ -327,11 +327,6 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             self.present(picker, animated: true, completion: nil)
         }
         
-        
-        // alertToAddImage()
-        
-        
-        
     }
     
     private func alertToAddImage() -> Void {
@@ -806,7 +801,6 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         
         let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray[0],
                                          APIConstants.kImageName: "image_id"]
-        
         
         CommonUtil.sharedInstance.postRequestToImageUpload(withParameter: params, url: APIUrl.kCreateEvent, image: imageParam, controller: self, type: 0)
         

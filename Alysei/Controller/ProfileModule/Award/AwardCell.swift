@@ -14,6 +14,7 @@ class AwardCell: UICollectionViewCell {
     @IBOutlet weak var winningproduct: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var awardimg: UIImageView!
     
     var btnDeleteCallback:((Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil

@@ -15,7 +15,7 @@ class AwardsViewController: AlysieBaseViewC {
     @IBOutlet weak var vwBlank: UIView!
     
     var awardModel:AwardModel?
-    var userId: String?
+    var userId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class AwardsViewController: AlysieBaseViewC {
     @IBAction func create(_ sender: UIButton) {
       
         check = "create"
-        _ = pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome)
+        _ = pushViewController(withName: AddAward.id(), fromStoryboard: StoryBoardConstants.kHome)
       
     }
     
@@ -49,7 +49,7 @@ class AwardsViewController: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kAwardList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kAwardList + userId , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
           let dictResponse = dictResponse as? [String:Any]
           
@@ -89,6 +89,10 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         cell.competitionName.text = awardModel?.data?[indexPath.item].awardName
         
+        if userId != ""{
+            cell.deleteButton.isHidden = true
+            cell.editButton.isHidden = true
+        }
         
         if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
                    
@@ -96,10 +100,61 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 
         }
         
-      
+        if awardModel?.data?[indexPath.item].medal?.name == "Silver"{
+            cell.awardimg.image = UIImage(named: "silver")
+        } else if awardModel?.data?[indexPath.item].medal?.name == "Gold"{
+            cell.awardimg.image = UIImage(named: "gold")
+        } else if awardModel?.data?[indexPath.item].medal?.name == "Bronze"{
+            cell.awardimg.image = UIImage(named: "bronze")
+        }
+        
         
         cell.rewardImage.layer.cornerRadius = 10
-        cell.rewardImage.setImage(withString: String.getString(kImageBaseUrl+(awardModel?.data?[indexPath.item].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        cell.rewardImage.setImage(withString: String.getString(kImageBaseUrl+(awardModel?.data?[indexPath.item].attachment?.attachmenturl)! ), placeholder: UIImage(named: "image_placeholder"))
+        
+        
+        cell.btnEditCallback = { tag in
+            
+            let vc = self.pushViewController(withName: AddAward.id(), fromStoryboard: StoryBoardConstants.kHome) as! AddAward
+            vc.typeofpage = "edit"
+            vc.award_id = self.awardModel?.data?[indexPath.item].awardid
+            vc.eventName = self.awardModel?.data?[indexPath.item].awardName
+            vc.productName = self.awardModel?.data?[indexPath.item].winningProduct
+            vc.placeName = self.awardModel?.data?[indexPath.item].medal?.name
+            vc.url = self.awardModel?.data?[indexPath.item].competitionurl
+            vc.imgurl = self.awardModel?.data?[indexPath.item].attachment?.attachmenturl
+            
+        }
+        
+        cell.btnDeleteCallback = { tag in
+            
+            
+            //MARK:show Alert Message
+            let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this Award?", preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+               
+                self.disableWindowInteraction()
+                
+                let params: [String:Any] = [
+                    "award_id": String.getString(self.awardModel?.data?[indexPath.item].awardid)]
+               
+                //CommonUtil.sharedInstance.postRequestToImageUpload(withParameter: params, url: APIUrl.kAwardCreate, image: [:], controller: self, type: 0)
+              
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kAwardDelete, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                    
+                    self.postRequestToGetAward()
+                }
+                
+                
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+                  
+                self.parent?.dismiss(animated: true, completion: nil)
+            }))
+            //let parent = self.parentViewController?.presentedViewController as? HubsListVC
+            self.parent?.present(refreshAlert, animated: true, completion: nil)
+            
+        }
         
         return cell
 

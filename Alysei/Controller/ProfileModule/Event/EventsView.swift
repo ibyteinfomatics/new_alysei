@@ -85,7 +85,7 @@ class EventsView: AlysieBaseViewC {
             
             //MARK:show Alert Message
             let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this event?", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                
                 self.disableWindowInteraction()
               
@@ -94,7 +94,7 @@ class EventsView: AlysieBaseViewC {
                     self.postRequest()
                 }
             }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
                   
                 self.parent?.dismiss(animated: true, completion: nil)
             }))
