@@ -26,7 +26,7 @@ class PresentingWalkVC: UIPresentationController {
               // size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height * 0.3))
 //        CGRect(origin: CGPoint(x: 0, y: self.containerView!.frame.height * 0.59),
 //               size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height * 0.3))
-      CGRect(x: 0, y: self.containerView!.bounds.maxY - 380, width: self.containerView!.frame.width, height: 300)
+      CGRect(x: 0, y: self.containerView!.bounds.maxY - 450, width: self.containerView!.frame.width, height: 800)
     }
 
     override func presentationTransitionWillBegin() {

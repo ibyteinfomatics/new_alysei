@@ -29,16 +29,37 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //@IBOutlet weak var kitchenCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var hghtBottomBannerCV: NSLayoutConstraint!
+    
+    
+    //
+    @IBOutlet weak var walkView1: UIView!
+    @IBOutlet weak var vwwWalkContainer1: UIView!
+    @IBOutlet weak var vwwWalkContainer2: UIView!
+    @IBOutlet weak var walkView1Leading: NSLayoutConstraint!
+    @IBOutlet weak var walkView1Trailing: NSLayoutConstraint!
+    @IBOutlet weak var walkView1Top: NSLayoutConstraint!
+    @IBOutlet weak var walkView1Bottom: NSLayoutConstraint!
+    @IBOutlet weak var walkView1height: NSLayoutConstraint!
+    @IBOutlet weak var pageControl1: UIView!
+    @IBOutlet weak var pageControl2: UIView!
+    @IBOutlet weak var pageControl3: UIView!
+    @IBOutlet weak var pageContrl1Width: NSLayoutConstraint!
+    @IBOutlet weak var pageContrl2Width: NSLayoutConstraint!
+    @IBOutlet weak var pageContrl3Width: NSLayoutConstraint!
+    
+  
     var isCreateStore = false
     var productCount: Int?
     var storeCreated: Int?
+    var nextWalkCount = 0
     var maketPlaceHomeScreenData: MaketPlaceHomeScreenModel?
-   
+   private var isBottomSheetShown = false
     
     
     var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
-    //
+
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // headerView.addShadow()
@@ -46,6 +67,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         subheaderView.addShadow()
         callCheckIfStoredCreated()
         callMarketPlaceHomeApi()
+        setBottomUI()
         print("kSharedUserDefaults.loggedInUserModal.isStoreCreated----------------\(kSharedUserDefaults.loggedInUserModal.isStoreCreated ?? "")")
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             self.btnCreateStore.isHidden = false
@@ -66,11 +88,32 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         let tapRecipe = UITapGestureRecognizer(target: self, action: #selector(openRecipes))
         self.recipesView.addGestureRecognizer(tapRecipe)
     }
+    
+    func setBottomUI() {
+        walkView1.layer.maskedCorners = [.layerMaxXMinYCorner]
+        walkView1.clipsToBounds = true
+        pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl3.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageControl2.layer.borderWidth = 0.5
+        pageControl2.layer.borderColor = UIColor.white.cgColor
+        pageControl3.layer.borderWidth = 0.5
+        pageControl3.layer.borderColor = UIColor.white.cgColor
+        pageControl1.layer.backgroundColor = UIColor.white.cgColor
+        pageContrl1Width.constant = 25
+        pageContrl2Width.constant = 10
+        pageContrl3Width.constant = 10
+        vwwWalkContainer1.isHidden = false
+        vwwWalkContainer2.isHidden = true
+        
+    }
     override func viewDidDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
+        //self.walkView1Trailing.constant = self.view.frame.width
+        self.walkView1Top.constant = self.view.frame.height
     }
     func setUI(){
         if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
@@ -97,12 +140,113 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         let slideVC = MarketplaceWalkScreenViewController()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
-        
+
         self.present(slideVC, animated: true, completion: nil)
 
-       
+
     }
 
+    func animate1View(){
+        //self.view.isUserInteractionEnabled = false
+       if (isBottomSheetShown) {
+            UIView.animate(withDuration: 0.5) {
+                self.walkView1height.constant = 420
+                self.view.layoutIfNeeded()
+            } completion: { _ in
+               self.isBottomSheetShown = false
+                UIView.animate(withDuration: 0.5) {
+                    self.walkView1height.constant = 0
+                   self.walkView1Trailing.constant = self.view.frame.width
+//                    //self.view.isUserInteractionEnabled = true
+                    self.view.layoutIfNeeded()
+                } completion: { (status) in
+                   print("No to be used")
+               }
+           }
+
+        }else{
+        UIView.animate(withDuration: 0.5) {
+            self.walkView1height.constant = 485
+            self.walkView1Top.constant = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.isBottomSheetShown = true
+            UIView.animate(withDuration: 0.5) {
+                self.walkView1height.constant = 470
+                self.view.layoutIfNeeded()
+            } completion: { _ in
+               // print("Completion")
+            }
+        }
+        }
+    }
+    func animate2View(){
+        //self.view.isUserInteractionEnabled = false
+        pageContrl1Width.constant = 10
+        pageContrl2Width.constant = 25
+        pageContrl3Width.constant = 10
+        pageControl1.layer.borderWidth = 0.5
+        pageControl1.layer.borderColor = UIColor.white.cgColor
+        pageControl3.layer.borderWidth = 0.5
+        pageControl3.layer.borderColor = UIColor.white.cgColor
+        pageControl2.layer.backgroundColor = UIColor.white.cgColor
+        UIView.animate(withDuration: 0.5) {
+            self.vwwWalkContainer2.isHidden = false
+            self.walkView1height.constant = self.view.frame.height / 2 + 300
+            self.walkView1Trailing.constant = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.isBottomSheetShown = true
+            UIView.animate(withDuration: 0.5) {
+                    self.walkView1height.constant = self.view.frame.height / 2 + 280
+                    self.view.layoutIfNeeded()
+            } completion: { _ in
+               // print("Completion")
+            }
+        }
+        }
+    @IBAction func nextAction(_ sender: UIButton){
+        nextWalkCount = +1
+        if nextWalkCount == 1 {
+            vwwWalkContainer1.isHidden = true
+            
+          animate2View()
+        }else if nextWalkCount == 2 {
+            UIView.animate(withDuration: 0.5) {
+                self.walkView1height.constant = self.view.frame.height / 2 + 270
+                self.walkView1Trailing.constant = 0
+                self.view.layoutIfNeeded()
+            } completion: { _ in
+                self.isBottomSheetShown = true
+                UIView.animate(withDuration: 0.5) {
+                    self.walkView1height.constant = self.view.frame.height / 2 + 180
+                    self.view.layoutIfNeeded()
+                } completion: { _ in
+                    print("Completion")
+                }
+
+            }
+        }else{
+            print("Invalid Page")
+        }
+    }
+    //MARK:- Bottom Sheet Animation
+//    func addBottomSheetView() {
+//        // 1- Init bottomSheetVC
+//        let bottomSheetVC = MarketplaceWalkScreenViewController()
+//
+//        // 2- Add bottomSheetVC as a child view
+//        self.addChild(bottomSheetVC)
+//        self.view.addSubview(bottomSheetVC.view)
+//        bottomSheetVC.didMove(toParent: self)
+//
+//        // 3- Adjust bottomSheet frame and initial position.
+//        let height = view.frame.height
+//        let width  = view.frame.width
+//        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+//    }
+   
+    
     @objc func openPost(){
         // self.navigationController?.popViewController(animated: true)
         self.tabBarController?.tabBar.isHidden = false
@@ -137,11 +281,12 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         if self.storeCreated == 0{
 //            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
 //
-//            vc.view.frame = self.containerView.bounds
+//           vc.view.frame = self.containerView.bounds
 //            self.addChild(vc)
 //            self.containerView.addSubview(vc.view)
-//            vc.didMove(toParent: self)
-            showWalkthroughView()
+//           vc.didMove(toParent: self)
+            //showWalkthroughView()
+            animate1View()
         }else if self.storeCreated == 1 && self.productCount == 0{
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
         }else{
