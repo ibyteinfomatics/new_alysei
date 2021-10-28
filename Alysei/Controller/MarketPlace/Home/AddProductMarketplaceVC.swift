@@ -583,7 +583,8 @@ extension AddProductMarketplaceVC{
             APIConstants.kHandlingInstruction: self.txtProductHandleIns.text ?? "",
             APIConstants.kDispatchInstruction: self.txtProductDispatchIns.text ?? "",
             APIConstants.kAvailableForSample: self.txtProductSample.text ?? "",
-            APIConstants.kProductPrice: self.txtProductPrice.text ?? ""
+            APIConstants.kProductPrice: self.txtProductPrice.text ?? "",
+            "unit": "\(lblQunatityLabel.text ?? "")"
         ]
         
         let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray,
