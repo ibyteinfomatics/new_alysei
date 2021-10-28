@@ -28,21 +28,25 @@ class FilteredRecipeViewController: UIViewController {
    
     
     override func viewWillAppear(_ animated: Bool) {
+        indexOfPageToRequest = 1
         if searching == true{
             
             if isFrom == "Meal"{
                 self.viewHeader.isHidden = true
                 self.labelRecipe.text = searchTitle
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
                 
             }
             else if isFrom == "Ingridients"{
                 self.viewHeader.isHidden = true
                 self.labelRecipe.text = searchTitle
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
               
             }
             else if isFrom == "Region"{
                 self.viewHeader.isHidden = true
                 self.labelRecipe.text = searchTitle
+                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, "", "", "", "", "", "")
                
             }
            
@@ -50,25 +54,30 @@ class FilteredRecipeViewController: UIViewController {
                 self.viewHeader.isHidden = false
                 self.viewFilter.isHidden = true
                 self.labelRecipe.text = searchText
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
             }
                 
-            callSearchRecipe(searchTitle, indexOfPageToRequest, "", "", "", "", "", "")
+//            callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
            
             
             
         }
         else if isFilterLoading == true{
             self.viewHeader.isHidden = true
-            
-            if isFrom == "Meal" || isFrom == "Ingridients" || isFrom == "Region" {
+           
+            if isFrom == "Meal" || isFrom == "Ingridients"  {
             let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
             
-            callSearchRecipe(searchTitle, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+            callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+            }
+            else if isFrom == "Region" {
+                let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
+                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
             }
             else{
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
                 
-                callSearchRecipe(updatedText, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+                callSearchRecipe(updatedText, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
                 
             }
 
@@ -87,8 +96,13 @@ class FilteredRecipeViewController: UIViewController {
         filteredCollectionView.dataSource = self
         if searching == true{
             self.searchRecipeTextField.resignFirstResponder()
-
-            callSearchRecipe(searchTitle,indexOfPageToRequest, "", "", "", "", "", "")
+            if isFrom == "Region"{
+                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, "", "", "", "", "", "")
+            }
+            else{
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
+            }
+            
         }
         else{
             self.viewFilter.isHidden = true
@@ -282,7 +296,7 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
                                                                    with: string)
                 updatedText = updateText
                 
-                callSearchRecipe(updatedText, indexOfPageToRequest, "", "", "", "", "", "")
+                callSearchRecipe(updatedText,"", indexOfPageToRequest, "", "", "", "", "", "")
                     }
             
         }
@@ -309,9 +323,9 @@ extension UILabel {
 
 extension FilteredRecipeViewController{
     
-    func callSearchRecipe(_ text: String, _ pageNo: Int?, _ time: String?, _ noOfIngridient: String?, _ meal: String?, _ cousin: String?, _ childIngridient: String?, _ parentId: String?){
+    func callSearchRecipe(_ text: String, _ regionId: String?, _ pageNo: Int?, _ time: String?, _ noOfIngridient: String?, _ meal: String?, _ cousin: String?, _ childIngridient: String?, _ parentId: String?){
         
-       let originalUrl = "\(APIUrl.Recipes.getSearchRecipe)\(text)&page=pageNo" + "\(time ?? "" )" + "&no_of_ingredients=" + "\(noOfIngridient ?? "" )" + "&meal_type=" + "\(meal ?? "")" + "&cousin_id=" + "\(cousin ?? "")" + "&child_ingredient=" + "\(childIngridient ?? "")" + "&parent_ingredient=" + "\(parentId ?? "")"
+        let originalUrl = "\(APIUrl.Recipes.getSearchRecipe)\(text)" + "&region_id=" + "\(regionId ?? "")" + "&page=" + "\(pageNo ?? 0)" + "\(time ?? "" )" + "&no_of_ingredients=" + "\(noOfIngridient ?? "" )" + "&meal_type=" + "\(meal ?? "")" + "&cousin_id=" + "\(cousin ?? "")" + "&child_ingredient=" + "\(childIngridient ?? "")" + "&parent_ingredient=" + "\(parentId ?? "")"
       
         let urlString = originalUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
@@ -362,7 +376,7 @@ extension FilteredRecipeViewController{
 
                 // call your API for more data
 
-                    callSearchRecipe(searchTitle, indexOfPageToRequest, "", "", "", "", "", "")
+                    callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
                    
                 // tell the table view to reload with the new data
                 self.filteredCollectionView.reloadData()
@@ -379,7 +393,7 @@ extension FilteredRecipeViewController{
                     
                 // call your API for more data
 //                     getFilterRecipe()
-                    callSearchRecipe(searchTitle, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+                    callSearchRecipe(searchTitle,"", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
 
                 // tell the table view to reload with the new data
                 self.filteredCollectionView.reloadData()

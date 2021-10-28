@@ -135,7 +135,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
         isFilterLoading = false
         parentIngridientId = (arraySearchByIngridient?[indexPath.item].recipeIngredientIds)!
         searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
-        searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
+//        searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
             

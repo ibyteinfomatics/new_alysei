@@ -29,6 +29,11 @@ class ViewRecipeDetailDataModel{
     var isFav: Int?
     var avgRating: String?
     var totalReview: Int?
+    var total_one_star: Int?
+    var total_two_star: Int?
+    var total_three_star: Int?
+    var total_four_star: Int?
+    var total_five_star: Int?
     var latestReview: LatestReviewDataModel?
     var image: ImageURL?
     var meal: SelectMealDataModel?
@@ -58,6 +63,11 @@ class ViewRecipeDetailDataModel{
         self.isFav = Int.getInt(dictResponse["is_favourite"])
         self.avgRating = String.getString(dictResponse["avg_rating"])
         self.totalReview = Int.getInt(dictResponse["total_reviews"])
+        self.total_one_star = Int.getInt(dictResponse["total_one_star"])
+        self.total_two_star = Int.getInt(dictResponse["total_two_star"])
+        self.total_three_star = Int.getInt(dictResponse["total_three_star"])
+        self.total_four_star = Int.getInt(dictResponse["total_four_star"])
+        self.total_five_star = Int.getInt(dictResponse["total_five_star"])
         
         if let data = dictResponse["latest_review"] as? [String:Any]{
             self.latestReview = LatestReviewDataModel.init(with: data)

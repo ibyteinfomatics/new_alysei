@@ -10,25 +10,25 @@ import UIKit
 class RecipeByTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewProfileButton: UIButton!
-    @IBOutlet weak var leaveACommentButton: UIButton!
+//    @IBOutlet weak var leaveACommentButton: UIButton!
     @IBOutlet weak var profileImg: UIImageView!
     
-    @IBOutlet weak var profileImgComment: UIImageView!
+//    @IBOutlet weak var profileImgComment: UIImageView!
     @IBOutlet weak var labelUserName: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     
-    @IBOutlet weak var latestCommentImg: UIImageView!
-    @IBOutlet weak var latestCommentUserName: UILabel!
-    @IBOutlet weak var latestCommentDate: UILabel!
-    @IBOutlet weak var latestCommentTextView: UILabel!
+//    @IBOutlet weak var latestCommentImg: UIImageView!
+//    @IBOutlet weak var latestCommentUserName: UILabel!
+//    @IBOutlet weak var latestCommentDate: UILabel!
+//    @IBOutlet weak var latestCommentTextView: UILabel!
+//
+//    @IBOutlet weak var rateImg1: UIImageView!
+//    @IBOutlet weak var rateImg2: UIImageView!
+//    @IBOutlet weak var rateImg3: UIImageView!
+//    @IBOutlet weak var rateImg4: UIImageView!
+//    @IBOutlet weak var rateImg5: UIImageView!
     
-    @IBOutlet weak var rateImg1: UIImageView!
-    @IBOutlet weak var rateImg2: UIImageView!
-    @IBOutlet weak var rateImg3: UIImageView!
-    @IBOutlet weak var rateImg4: UIImageView!
-    @IBOutlet weak var rateImg5: UIImageView!
-    
-    var btnAddReviewCallback:(() -> Void)? = nil
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -39,10 +39,7 @@ class RecipeByTableViewCell: UITableViewCell {
     func setUi(){ viewProfileButton.layer.borderWidth = 1
             viewProfileButton.layer.cornerRadius = 16
             viewProfileButton.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
-    
-            leaveACommentButton.layer.borderWidth = 1
-            leaveACommentButton.layer.cornerRadius = 20
-            leaveACommentButton.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
+
     }
     
     
@@ -53,10 +50,7 @@ class RecipeByTableViewCell: UITableViewCell {
     }
     @IBAction func viewProfileButton(_ sender: Any) {
     }
-    @IBAction func leaveACommentTapped(_ sender: UIButton) {
-        
-        btnAddReviewCallback?()
-    }
+    
     
     
 

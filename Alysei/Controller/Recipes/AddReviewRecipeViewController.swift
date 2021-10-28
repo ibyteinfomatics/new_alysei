@@ -235,7 +235,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return UITableView.automaticDimension
     }
     
 }
@@ -310,7 +310,7 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
 
         // ...otherwise return false since the updates have already
         // been made
-        return true
+        return false
     }
 
 }

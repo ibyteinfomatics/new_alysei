@@ -128,7 +128,7 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
         isFrom = "Meal"
         mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
         searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
-        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
+//        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
             }

@@ -13,7 +13,9 @@ class StepsViewController: UIViewController, StepDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var stepImage: UIImageView!
     
-
+    @IBOutlet weak var backBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var nextBtnLeading: NSLayoutConstraint!
+    
     
     var choosestepIngridient : [UsedIngridientDataModel]? = []
     var choosestepTool : [UsedToolsDataModel]? = []
@@ -43,9 +45,16 @@ class StepsViewController: UIViewController, StepDelegate {
         stepTableViewCellCurrentIndex = page
         if page == ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Finish Cooking", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_cooking_pot.png"), for: .normal)
+            backButton.isHidden = true
+            backBtnWidth.constant = 0
+            
         }
         else{
             nextStep.setTitle("Next", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
+            backButton.isHidden = false
+            backBtnWidth.constant = 55
         }
         
         let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
@@ -76,11 +85,17 @@ class StepsViewController: UIViewController, StepDelegate {
                 
             }
             nextStep.setTitle("Next", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
+            backButton.isHidden = false
+            backBtnWidth.constant = 55
             stepTableViewCellCurrentIndex = page
             tableView.reloadData()
            
             if page == ((stepsModel?.count ?? 0) - 1){
                 nextStep.setTitle("Finish Cooking", for: .normal)
+                nextStep.setImage(UIImage(named: "icons8_cooking_pot.png"), for: .normal)
+                backBtnWidth.constant = 0
+                backButton.isHidden = true
             }
         }
         else{
@@ -118,6 +133,7 @@ class StepsViewController: UIViewController, StepDelegate {
            
             
             nextStep.setTitle("Next", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
         }
         else{
             self.navigationController?.popViewController(animated: true)
@@ -151,11 +167,17 @@ class StepsViewController: UIViewController, StepDelegate {
         }
         if page < ((stepsModel?.count ?? 0) - 1){
             nextStep.setTitle("Next", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
+            backButton.isHidden = false
+            backBtnWidth.constant = 55
             tableView.reloadData()
         }
         else{
             
             nextStep.setTitle("Finish Cooking", for: .normal)
+            nextStep.setImage(UIImage(named: "icons8_cooking_pot.png"), for: .normal)
+            backButton.isHidden = true
+            backBtnWidth.constant = 0
             tableView.reloadData()
         }
       

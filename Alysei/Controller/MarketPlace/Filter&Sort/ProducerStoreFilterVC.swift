@@ -48,7 +48,7 @@ class ProducerStoreFilterVC: UIViewController {
     var arrMyFavOption = ["Producers","Method","Categories","Properties","FDA Certfied","Distance","Ratings"]
     
     var arrDistance = ["Within 5 Miles","Within 10 Miles","Within 20 Miles","Within 40 Miles","Within 100 Miles"]
-    var arrRating = ["Most rated stores","5 star stores", "Most searched"]
+    var arrRating = ["Most rated stores","5 star stores"]
     var arrFdaCertified = ["Yes","No"]
     var arrSortProducer = ["Sort by A to Z","Sort by Z to A"]
     var arrFilterOptions = [FilterModel]()
@@ -347,7 +347,7 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                     self.selectedOptionsId.append(selectedId ?? -1)
                     self.arrSelectedName.append(selectName ?? "")
                 }
-            }else  if checkApi == .distance ||  checkApi == .rating{
+            }else  if checkApi == .distance {
                 let selectedIndex = indexPath.row
                 if self.selectedOptionsId.contains(selectedIndex){
                     if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedIndex ) {
@@ -356,6 +356,16 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 }else{
                     self.selectedOptionsId.append(selectedIndex )
                 }
+            }else if checkApi == .rating{
+                let data = arrRatingOptions[indexPath.row]
+                for i in 0..<arrRating.count{
+                    arrRatingOptions[i].isSelected = false
+                }
+                data.isSelected = !(data.isSelected ?? false)
+                
+                self.selectedOptionsId = []
+                self.selectedOptionsId.append(indexPath.row)
+                
             }else if checkApi == .fdaCertified{
                 let data = arrOptionFdaCert[indexPath.row]
                 for i in 0..<arrOptionFdaCert.count{
