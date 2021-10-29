@@ -15,7 +15,7 @@ import UIKit
 protocol MyStoreDashboardBusinessLogic
 {
   func doSomething(request: MyStoreDashboard.Something.Request)
-    func callDashBoardApi()
+    func callDashBoardApi(_ sortBy: Int?)
     func callCategoryApi()
 }
 
@@ -26,6 +26,7 @@ protocol MyStoreDashboardDataStore
 
 class MyStoreDashboardInteractor: MyStoreDashboardBusinessLogic, MyStoreDashboardDataStore
 {
+    
   var presenter: MyStoreDashboardPresentationLogic?
   var worker: MyStoreDashboardWorker?
   //var name: String = ""
@@ -41,8 +42,8 @@ class MyStoreDashboardInteractor: MyStoreDashboardBusinessLogic, MyStoreDashboar
     presenter?.presentSomething(response: response)
   }
     
-    func callDashBoardApi(){
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDashbordScreen, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errType, statusCode) in
+    func callDashBoardApi(_ sortBy: Int?){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDashbordScreen + "1", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errType, statusCode) in
             
             let response = dictResponse as? [String:Any]
             

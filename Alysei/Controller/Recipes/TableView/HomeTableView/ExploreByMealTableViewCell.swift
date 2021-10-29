@@ -84,9 +84,15 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCollectionViewCell", for: indexPath) as? ExploreCollectionViewCell {
             
            
-                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
-                
-                cell.itemImgVw.setImage(withString: imgUrl)
+//                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
+//
+//                cell.itemImgVw.setImage(withString: imgUrl)
+            
+            if let strUrl = "\(kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
                 

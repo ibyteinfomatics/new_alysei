@@ -66,16 +66,6 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         super.viewWillAppear(animated)
         
         addIngridientsTableView.reloadData()
-//        self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
-//        if self.quantityLabel.text == "0 Items"{
-//            self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
-//        }
-//        else{
-//            self.saveButton.layer.backgroundColor =
-//                UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
-//        }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -264,10 +254,17 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     
     @IBAction func cancelButton(_ sender: UIButton) {
         
-        self.navigationController?.popViewController(animated: true)
+        if searching == true{
+            self.searching = false
+            self.searchIngridientTextField.text = ""
+            addIngridientsTableView.reloadData()
+            self.addMissingIngridientsButton.isHidden = false
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
 
     }
-    
     
     
     @IBAction func tapForAddMissingIngridients(_ sender: UIButton) {
@@ -580,17 +577,27 @@ extension EditIngridientViewController{
     func callSearchIngridients(){
        
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchText)&type=2" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.ingridientSearchModel = data.map({IngridentArray.init(with: $0)})
                 self.searching = true
-                self.addIngridientsTableView.reloadData()
+
             }
             
+            case 409:
+                self.ingridientSearchModel = [IngridentArray]()
+                self.newSearchModel = [AddIngridientDataModel]()
+                self.showAlert(withMessage: "No Ingridients found")
             
+            default:
+              break
+            }
+            self.addIngridientsTableView.reloadData()
         }
+        
     }
 }
 

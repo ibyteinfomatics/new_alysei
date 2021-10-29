@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-K7-LTy">
                         <rect key="frame" x="5" y="0.0" width="376" height="240"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bm-UB-n6r">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bm-UB-n6r" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="376" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="Q12-mE-Hfq"/>

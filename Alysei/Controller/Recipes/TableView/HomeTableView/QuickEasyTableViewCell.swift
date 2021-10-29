@@ -71,9 +71,15 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
             
             
             
-            let imgUrl = (kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
-            
-            cell.trendingImgVw.setImage(withString: imgUrl)
+//            let imgUrl = (kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
+//
+//            cell.trendingImgVw.setImage(withString: imgUrl)
+//
+            if let strUrl = "\(kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
             
             cell.trendingImgVw.contentMode = .scaleAspectFill
             cell.recipeNameLbl.text = arrayQuickEasy?[indexPath.item].name

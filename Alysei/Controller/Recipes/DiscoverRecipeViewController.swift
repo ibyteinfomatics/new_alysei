@@ -156,11 +156,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
-            arraySearchByIngridient?.removeAll()
-            arraySearchByMeal?.removeAll()
-            arraySearchByRegion?.removeAll()
-            arrayTrending?.removeAll()
-            arrayQuickEasy?.removeAll()
+
+            arraySearchByIngridient = [IngridentArray]()
+            arraySearchByMeal = [SelectMealDataModel]()
+            arraySearchByRegion = [SelectRegionDataModel]()
+            arrayTrending = [HomeTrending]()
+            arrayQuickEasy = [HomeQuickEasy]()
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -343,9 +344,15 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             
         case 1:
             let cell4 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
-            let imgUrl = (kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))
-            
-            cell4.recipeImageView.setImage(withString: imgUrl)
+//            let imgUrl = (kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))
+//
+//            cell4.recipeImageView.setImage(withString: imgUrl)
+//
+            if let strUrl = "\(kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell4.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
             
             cell4.recipeImageView.contentMode = .scaleAspectFill
             cell4.recipeName.text = arrayMyFavouriteRecipe?[indexPath.item].name
@@ -440,9 +447,15 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             return cell4
         case 2:
             let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "MyRecipeTableViewCell") as! MyRecipeTableViewCell
-            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
-            
-            cell5.recipeImageView.setImage(withString: imgUrl)
+//            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
+//            
+//            cell5.recipeImageView.setImage(withString: imgUrl)
+//            
+            if let strUrl = "\(kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell5.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
             cell5.btnEditCallback = { tag in
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "EditRecipeViewController") as! EditRecipeViewController
                 viewAll.arrayMyRecipe1 = arrayMyRecipe

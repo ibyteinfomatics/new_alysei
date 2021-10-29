@@ -8,7 +8,7 @@
 import UIKit
 
 class ExploreCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var itemImgVw: UIImageView!
+    @IBOutlet weak var itemImgVw: ImageLoader!
     
     @IBOutlet weak var itemNameLbl: UILabel!
     

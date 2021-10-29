@@ -409,6 +409,7 @@ struct APIUrl{
         static let doReview = kBASEURL + "do/review"
         static let updateRecipe = kBASEURL + "update/recipe/"
         static let deleteRecipe = kBASEURL + "delete/recipe/"
+        static let searchTool = kBASEURL + "search/tools?keyword="
         
     }
 }
