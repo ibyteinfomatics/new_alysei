@@ -86,16 +86,7 @@ extension CookingViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
         cell.viewOfImage.layer.borderColor = showAllCookingSkill?[indexPath.row].isSelected == 1 ? (UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor) : (UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor)
-//        if showAllCookingSkill?[indexPath.row].isSelected == 1{
-//            selectedIndexPath = indexPath
-//            cell.viewOfImage.layer.borderWidth = 4
-//            cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        }
-//        else{
-//            cell.viewOfImage.layer.borderWidth = 4
-//            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
-//
-//        }
+
         
         cell.layoutSubviews()
         

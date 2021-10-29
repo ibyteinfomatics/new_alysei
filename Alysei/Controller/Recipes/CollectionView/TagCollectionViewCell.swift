@@ -20,6 +20,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.tagLabel.textColor = .black
     }
+    
+    
     override var isSelected: Bool {
             didSet {
                 self.backgroundColor =  isSelected ? UIColor(red: 59/255, green: 156/255, blue: 128/255, alpha: 1) : UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
