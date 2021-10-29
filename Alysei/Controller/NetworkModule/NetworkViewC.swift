@@ -488,6 +488,12 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
 
 extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+        controller?.userLevel = .other
+        controller?.userID = self.connection?.data?[indexPath.row].userID
+    }
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
