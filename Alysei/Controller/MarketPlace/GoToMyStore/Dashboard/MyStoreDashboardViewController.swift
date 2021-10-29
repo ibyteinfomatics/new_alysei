@@ -79,7 +79,7 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     doSomething()
     imgStore.layer.borderWidth = 1.5
     imgStore.layer.borderColor = UIColor.white.cgColor
-    self.interactor?.callDashBoardApi()
+    self.interactor?.callDashBoardApi(1)
     self.interactor?.callCategoryApi()
   }
     

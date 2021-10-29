@@ -35,6 +35,11 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var walkView1: UIView!
     @IBOutlet weak var vwwWalkContainer1: UIView!
     @IBOutlet weak var vwwWalkContainer2: UIView!
+
+    @IBOutlet weak var walkView2Img: UIImageView!
+    @IBOutlet weak var walkView2Tilte:UILabel!
+    @IBOutlet weak var walkView2SubTitle: UILabel!
+    
     @IBOutlet weak var walkView1Leading: NSLayoutConstraint!
     @IBOutlet weak var walkView1Trailing: NSLayoutConstraint!
     @IBOutlet weak var walkView1Top: NSLayoutConstraint!
@@ -43,10 +48,35 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var pageControl1: UIView!
     @IBOutlet weak var pageControl2: UIView!
     @IBOutlet weak var pageControl3: UIView!
+    @IBOutlet weak var pageControl4: UIView!
+    @IBOutlet weak var pageControl5: UIView!
+    @IBOutlet weak var pageControl6: UIView!
     @IBOutlet weak var pageContrl1Width: NSLayoutConstraint!
     @IBOutlet weak var pageContrl2Width: NSLayoutConstraint!
     @IBOutlet weak var pageContrl3Width: NSLayoutConstraint!
     
+    @IBOutlet weak var pageContrl4Width: NSLayoutConstraint!
+    @IBOutlet weak var pageContrl5Width: NSLayoutConstraint!
+    @IBOutlet weak var pageContrl6Width: NSLayoutConstraint!
+    
+    @IBOutlet weak var walkSubView1: UIView!
+    @IBOutlet weak var walkSubView2: UIView!
+    @IBOutlet weak var walkSubView3: UIView!
+    
+    @IBOutlet weak var walkSubView1Img: UIImageView!
+    @IBOutlet weak var walkSubView1Title: UILabel!
+    @IBOutlet weak var walkSubView1SubTitle: UILabel!
+    
+    @IBOutlet weak var walkSubView2Img: UIImageView!
+    @IBOutlet weak var walkSubView2Title: UILabel!
+    @IBOutlet weak var walkSubView2SubTitle: UILabel!
+    
+    @IBOutlet weak var walkSubView3Img: UIImageView!
+    @IBOutlet weak var walkSubView3Title: UILabel!
+    @IBOutlet weak var walkSubView3SubTitle: UILabel!
+    @IBOutlet weak var vwwWalkContainer2BgImg: UIImageView!
+    @IBOutlet weak var walkSubView3Height: NSLayoutConstraint!
+    @IBOutlet weak var walknextBtn: UIButton!
   
     var isCreateStore = false
     var productCount: Int?
@@ -59,7 +89,8 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
 
-   
+    var originalPosition: CGPoint?
+      var currentPositionTouched: CGPoint?
     override func viewDidLoad() {
         super.viewDidLoad()
         // headerView.addShadow()
@@ -68,6 +99,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         callCheckIfStoredCreated()
         callMarketPlaceHomeApi()
         setBottomUI()
+        walknextBtn.setTitle("Next", for: .normal)
         print("kSharedUserDefaults.loggedInUserModal.isStoreCreated----------------\(kSharedUserDefaults.loggedInUserModal.isStoreCreated ?? "")")
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             self.btnCreateStore.isHidden = false
@@ -87,6 +119,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         
         let tapRecipe = UITapGestureRecognizer(target: self, action: #selector(openRecipes))
         self.recipesView.addGestureRecognizer(tapRecipe)
+        
+      // let  panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
+        //view.addGestureRecognizer(panGestureRecognizer)
     }
     
     func setBottomUI() {
@@ -115,6 +150,13 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         //self.walkView1Trailing.constant = self.view.frame.width
         self.walkView1Top.constant = self.view.frame.height
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.nextWalkCount = 0
+        self.walkView1.isHidden = true
+        self.vwwWalkContainer1.isHidden = true
+        self.vwwWalkContainer2.isHidden = true
+    }
     func setUI(){
         if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             self.btnCreateStore.setTitle("Go to My Store", for: .normal)
@@ -127,6 +169,8 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "SearchProductVC") as? SearchProductVC else {return}
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    
     
     //    override func viewWillAppear(_ animated: Bool) {
     //        let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceHomeVC") as! MarketPlaceHomeVC
@@ -147,24 +191,13 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     }
 
     func animate1View(){
-        //self.view.isUserInteractionEnabled = false
-       if (isBottomSheetShown) {
-            UIView.animate(withDuration: 0.5) {
-                self.walkView1height.constant = 420
-                self.view.layoutIfNeeded()
-            } completion: { _ in
-               self.isBottomSheetShown = false
-                UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = 0
-                   self.walkView1Trailing.constant = self.view.frame.width
-//                    //self.view.isUserInteractionEnabled = true
-                    self.view.layoutIfNeeded()
-                } completion: { (status) in
-                   print("No to be used")
-               }
-           }
-
-        }else{
+        self.headerView.isUserInteractionEnabled = false
+        self.containerView.isUserInteractionEnabled = false
+        self.containerView.alpha = 0.5
+        self.headerView.alpha = 0.5
+        self.walkView1.isHidden = false
+        self.vwwWalkContainer1.isHidden = false
+        self.vwwWalkContainer2.isHidden = true
         UIView.animate(withDuration: 0.5) {
             self.walkView1height.constant = 485
             self.walkView1Top.constant = 0
@@ -178,56 +211,152 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
                // print("Completion")
             }
         }
-        }
     }
-    func animate2View(){
-        //self.view.isUserInteractionEnabled = false
-        pageContrl1Width.constant = 10
-        pageContrl2Width.constant = 25
-        pageContrl3Width.constant = 10
-        pageControl1.layer.borderWidth = 0.5
-        pageControl1.layer.borderColor = UIColor.white.cgColor
-        pageControl3.layer.borderWidth = 0.5
-        pageControl3.layer.borderColor = UIColor.white.cgColor
-        pageControl2.layer.backgroundColor = UIColor.white.cgColor
+    func animateView3(){
+        self.vwwWalkContainer1.isHidden = true
+        self.vwwWalkContainer2.isHidden = false
+        self.walkSubView3.isHidden = true
+        self.walkSubView3Height.constant = 0
+        vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
+        walkView2Tilte.text = "Connect with buyers"
+        walkView2SubTitle.text = "When you create a listing,buyers will be able to contact you on social alysei."
+        walkView2Img.image = UIImage(named: "Group 1096")
+        
+       
+        walkSubView1Img.image = UIImage(named: "icons8_reply")
+        walkSubView1Title.text = "Reply to inquiry"
+        walkSubView1SubTitle.text = "Being responsive can help you build trust with buyers"
+        walkSubView2Img.image = UIImage(named: "icons8_sell")
+        walkSubView2Title.text = "Report Suspicious behaviour"
+        walkSubView2SubTitle.text = "If something doesn't feel right, you can report the conversation to us."
+        
+      
+        
+        pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl5.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl6.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageContrl4Width.constant = 10
+        pageContrl5Width.constant = 10
+        pageContrl6Width.constant = 25
+        pageControl4.layer.borderWidth = 0.5
+        pageControl4.layer.borderColor = UIColor.white.cgColor
+        pageControl5.layer.borderWidth = 0.5
+        pageControl5.layer.borderColor = UIColor.white.cgColor
+        pageControl5.layer.backgroundColor = UIColor.clear.cgColor
+        pageControl6.layer.backgroundColor = UIColor.white.cgColor
         UIView.animate(withDuration: 0.5) {
             self.vwwWalkContainer2.isHidden = false
-            self.walkView1height.constant = self.view.frame.height / 2 + 300
+            self.walkView1height.constant = self.view.frame.height / 2 + 260
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 280
+                    self.walkView1height.constant = self.view.frame.height / 2 + 240
+                    self.view.layoutIfNeeded()
+            } completion: { _ in
+               // print("Completion")
+            }
+        }
+       
+    }
+    func animate2View(){
+        //self.view.isUserInteractionEnabled = false
+        self.vwwWalkContainer1.isHidden = true
+        self.vwwWalkContainer2.isHidden = false
+        self.walkSubView3.isHidden = false
+       vwwWalkContainer2BgImg.image = UIImage(named: "Layer 2")
+        self.walkSubView3Height.constant = 55
+        walkView2Img.image = UIImage(named: "Group 1091")
+        walkView2Tilte.text = "Create your store"
+        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers learn more about what you're selling."
+       
+        walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
+        walkSubView1Title.text = "Add clear photos"
+        walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you're listing"
+        
+        walkSubView2Img.image = UIImage(named: "icons8_sell")
+        walkSubView2Title.text = "Offer a fire price"
+        walkSubView2SubTitle.text = "Use similiar listings as a guide for choosing your price"
+        
+        walkSubView3Img.image = UIImage(named: "icons8_rocket")
+        walkSubView3Title.text = "Boost your listing"
+        walkSubView3SubTitle.text = "You can boost your listing so that it reaches more people on Alysei"
+        
+//        walkSubView3Img.image = UIImage(named: "icons8_rocket")
+//        walkSubView2Title.text = "Boost your listing"
+//        walkSubView2SubTitle.text = "You can boost your listing so that it reaches more people on Alysei"
+        
+        
+        pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl5.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl6.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageContrl4Width.constant = 10
+        pageContrl5Width.constant = 25
+        pageContrl6Width.constant = 10
+        pageControl4.layer.borderWidth = 0.5
+        pageControl4.layer.borderColor = UIColor.white.cgColor
+        pageControl6.layer.borderWidth = 0.5
+        pageControl6.layer.borderColor = UIColor.white.cgColor
+        pageControl5.layer.backgroundColor = UIColor.white.cgColor
+        pageControl6.layer.backgroundColor = UIColor.clear.cgColor
+        UIView.animate(withDuration: 0.5) {
+            self.vwwWalkContainer2.isHidden = false
+            self.walkView1height.constant = self.view.frame.height / 2 + 320
+            self.walkView1Trailing.constant = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.isBottomSheetShown = true
+            UIView.animate(withDuration: 0.5) {
+                    self.walkView1height.constant = self.view.frame.height / 2 + 300
                     self.view.layoutIfNeeded()
             } completion: { _ in
                // print("Completion")
             }
         }
         }
-    @IBAction func nextAction(_ sender: UIButton){
-        nextWalkCount = +1
-        if nextWalkCount == 1 {
+    @IBAction func backAction(_ sender: UIButton){
+        if nextWalkCount == 2{
+            nextWalkCount = 1
+            self.walknextBtn.setTitle("Next", for: .normal)
             vwwWalkContainer1.isHidden = true
-            
-          animate2View()
-        }else if nextWalkCount == 2 {
-            UIView.animate(withDuration: 0.5) {
-                self.walkView1height.constant = self.view.frame.height / 2 + 270
-                self.walkView1Trailing.constant = 0
-                self.view.layoutIfNeeded()
-            } completion: { _ in
-                self.isBottomSheetShown = true
-                UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 180
-                    self.view.layoutIfNeeded()
-                } completion: { _ in
-                    print("Completion")
-                }
-
-            }
+            vwwWalkContainer1.isHidden = false
+            animate2View()
+           
+        }else if nextWalkCount == 1 {
+            nextWalkCount = 0
+            vwwWalkContainer1.isHidden = false
+            vwwWalkContainer1.isHidden = true
+            animate1View()
         }else{
-            print("Invalid Page")
+            self.headerView.isUserInteractionEnabled = true
+            self.containerView.isUserInteractionEnabled = true
+            self.containerView.alpha = 1
+            self.headerView.alpha = 1
+            self.walkView1.isHidden = true
+            
+        }
+    }
+    @IBAction func nextAction(_ sender: UIButton){
+        
+        if nextWalkCount == 0 {
+            self.walknextBtn.setTitle("Next", for: .normal)
+            vwwWalkContainer1.isHidden = true
+            nextWalkCount = 1
+          animate2View()
+        }else if nextWalkCount == 1 {
+            self.walknextBtn.setTitle("Done", for: .normal)
+            animateView3()
+            nextWalkCount = 2
+           
+            }else{
+                self.walkView1.isHidden = true
+                nextWalkCount = 0
+                self.headerView.isUserInteractionEnabled = true
+                self.containerView.isUserInteractionEnabled = true
+                self.containerView.alpha = 1
+                self.headerView.alpha = 1
+                _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         }
     }
     //MARK:- Bottom Sheet Animation
@@ -286,6 +415,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
 //            self.containerView.addSubview(vc.view)
 //           vc.didMove(toParent: self)
             //showWalkthroughView()
+           
             animate1View()
         }else if self.storeCreated == 1 && self.productCount == 0{
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
