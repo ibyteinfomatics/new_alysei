@@ -94,11 +94,13 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.editButton.isHidden = true
         }
         
-        if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
+        cell.winningproduct.text = "Winning Product: \(awardModel?.data?[indexPath.item].winningProduct ?? "" )"
+        
+        /*if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
                    
             cell.winningproduct.attributedText = attributedString//awardModel?.data?[indexPath.item].winningProduct
                 
-        }
+        }*/
         
         if awardModel?.data?[indexPath.item].medal?.name == "Silver"{
             cell.awardimg.image = UIImage(named: "silver")
@@ -161,7 +163,7 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2, height: 320)
+        return CGSize(width: collectionView.frame.width/2, height: 280)
     }
     
     

@@ -498,6 +498,33 @@ class Chat_hepler {
         
     }
     
+    
+    func send_reply_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String, replypostId :String) {
+        
+        //countDic.data = commentDisc
+        //countDic.data?.data = poster
+        //countDic.data?.data?.data = avtar
+        
+        
+        let sendReference = postReference.child(postId).child("comment").child(replypostId)
+        //let message = countDic.createDictonary(objects: countDic, objects2: commentDisc, objects3: poster, objects4: avtar)
+        let message = countDic.createDictonary(objects: countDic)
+        
+        let message1 = commentDisc.createDictonary(objects: commentDisc)
+        let message2 = poster.createDictonary(objects: poster)
+        let message3 = avtar.createDictonary(objects: avtar)
+        
+        //sendReference.setValue(message)
+        sendReference.child("ReplyDetails").child(String.getString(commentDisc.core_comment_id)).setValue(message1)
+        sendReference.child("ReplyDetails").child(String.getString(commentDisc.core_comment_id)).child("poster").setValue(message2)
+        sendReference.child("ReplyDetails").child(String.getString(commentDisc.core_comment_id)).child("poster").child("avatar_id").setValue(message3)
+        
+        
+        //sendReference.setValue(countDic)
+        
+        
+    }
+    
     //MARK:- Function For Send message one to one Chat
     func send_message(messageDic:ReceivedMessageClass,senderId :String , receiverId:String) {
         
@@ -594,12 +621,14 @@ class Chat_hepler {
             self?.commentmessageclass.removeAll()
             if snapshot.exists() {
                 let msgs = kSharedInstance.getDictionary(snapshot.value)
-               // self?.postmessageclass.append(PostClass(uid: "0", messageData: msgs))
+               
                 msgs.forEach {(key, value) in
+                   
                     let dic = kSharedInstance.getDictionary(value)
                     self?.commentmessageclass.append(CommentClass( with: dic))
                     
                     self?.commentmessageclass.sort{ Int.getInt($0.core_comment_id) > Int.getInt($1.core_comment_id) }
+                    
                     
                 }
             }

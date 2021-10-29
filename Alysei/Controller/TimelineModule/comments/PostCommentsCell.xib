@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THZ-L1-kt0">
-                        <rect key="frame" x="70" y="35" width="270" height="271.5"/>
+                        <rect key="frame" x="70" y="35" width="270" height="146.5"/>
                         <string key="text">Label
 Label
 Label</string>
@@ -52,7 +52,7 @@ Label</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI5-aq-Zir">
-                        <rect key="frame" x="70" y="321.5" width="24" height="15"/>
+                        <rect key="frame" x="70" y="196.5" width="24" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="lo4-6s-dxf"/>
                         </constraints>
@@ -61,7 +61,7 @@ Label</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-0K-UIE">
-                        <rect key="frame" x="114" y="319" width="40" height="20"/>
+                        <rect key="frame" x="114" y="194" width="40" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="QOt-u0-Hf0"/>
                             <constraint firstAttribute="height" constant="20" id="wXe-Rf-BCa"/>
@@ -71,19 +71,34 @@ Label</string>
                             <color key="titleColor" name="grey2"/>
                         </state>
                         <connections>
-                            <action selector="replyButtonTapped" destination="cfk-7C-ZKB" eventType="touchUpInside" id="cYK-KS-7WF"/>
+                            <action selector="replyButtonTapped:" destination="cfk-7C-ZKB" eventType="touchUpInside" id="L7L-fm-bNX"/>
                         </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jom-BF-UP6">
-                        <rect key="frame" x="80" y="349" width="240" height="0.0"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyN-VO-NPz">
+                        <rect key="frame" x="70" y="219" width="116" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="4dF-ug-8HV"/>
+                            <constraint firstAttribute="width" constant="116" id="OLl-zZ-SYP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="----- View 10 Reply">
+                            <color key="titleColor" name="grey2"/>
+                        </state>
+                        <connections>
+                            <action selector="viewreplyButtonTapped:" destination="cfk-7C-ZKB" eventType="touchUpInside" id="t7E-nP-40P"/>
+                        </connections>
+                    </button>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jom-BF-UP6">
+                        <rect key="frame" x="80" y="249" width="240" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" id="2nV-nF-bri"/>
+                            <constraint firstAttribute="height" constant="100" id="2nV-nF-bri"/>
                         </constraints>
                     </tableView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="jom-BF-UP6" secondAttribute="trailing" constant="20" id="05k-0o-foO"/>
+                    <constraint firstItem="jom-BF-UP6" firstAttribute="top" secondItem="qyN-VO-NPz" secondAttribute="bottom" constant="10" id="43s-ce-k8L"/>
                     <constraint firstItem="SSP-Dm-3jQ" firstAttribute="leading" secondItem="a6O-3W-3c8" secondAttribute="trailing" constant="15" id="Ar1-fD-BnS"/>
                     <constraint firstItem="CXb-0K-UIE" firstAttribute="leading" secondItem="xI5-aq-Zir" secondAttribute="trailing" constant="20" id="Hgx-he-9cF"/>
                     <constraint firstItem="SSP-Dm-3jQ" firstAttribute="top" secondItem="QDn-QJ-PlQ" secondAttribute="top" constant="10" id="K14-Bx-2qv"/>
@@ -93,22 +108,27 @@ Label</string>
                     <constraint firstItem="xI5-aq-Zir" firstAttribute="leading" secondItem="QDn-QJ-PlQ" secondAttribute="leadingMargin" constant="50" id="Zpg-05-SaJ"/>
                     <constraint firstItem="THZ-L1-kt0" firstAttribute="top" secondItem="SSP-Dm-3jQ" secondAttribute="bottom" constant="5" id="fpv-4r-H2N"/>
                     <constraint firstAttribute="trailing" secondItem="THZ-L1-kt0" secondAttribute="trailing" constant="20" id="gWk-Ek-Jzd"/>
+                    <constraint firstItem="qyN-VO-NPz" firstAttribute="leading" secondItem="QDn-QJ-PlQ" secondAttribute="leadingMargin" constant="50" id="grc-Nb-8ch"/>
                     <constraint firstAttribute="trailing" secondItem="SSP-Dm-3jQ" secondAttribute="trailing" constant="20" id="hmu-Sb-Hgi"/>
-                    <constraint firstItem="jom-BF-UP6" firstAttribute="top" secondItem="CXb-0K-UIE" secondAttribute="bottom" constant="10" id="qM3-00-5zB"/>
+                    <constraint firstItem="qyN-VO-NPz" firstAttribute="top" secondItem="xI5-aq-Zir" secondAttribute="bottom" constant="7.5" id="qY4-7F-hax"/>
                     <constraint firstItem="xI5-aq-Zir" firstAttribute="top" secondItem="THZ-L1-kt0" secondAttribute="bottom" constant="15" id="rk5-hR-0Cj"/>
                     <constraint firstItem="a6O-3W-3c8" firstAttribute="leading" secondItem="QDn-QJ-PlQ" secondAttribute="leading" constant="10" id="uEM-bY-J31"/>
                     <constraint firstItem="CXb-0K-UIE" firstAttribute="top" secondItem="THZ-L1-kt0" secondAttribute="bottom" constant="12.5" id="xon-R9-9sk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jom-BF-UP6" secondAttribute="bottom" constant="4" id="yhR-X0-4TS"/>
+                    <constraint firstItem="qyN-VO-NPz" firstAttribute="top" secondItem="CXb-0K-UIE" secondAttribute="bottom" constant="5" id="zaZ-n3-oqC"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="descriptionLabel" destination="THZ-L1-kt0" id="yhT-Vm-zP5"/>
+                <outlet property="replyBtn" destination="CXb-0K-UIE" id="X2S-VP-YJR"/>
                 <outlet property="tableView" destination="jom-BF-UP6" id="MrW-7n-W1q"/>
+                <outlet property="tableViewconstraint" destination="2nV-nF-bri" id="Rx1-VQ-FE8"/>
                 <outlet property="timeLabel" destination="xI5-aq-Zir" id="F7z-Sp-imB"/>
                 <outlet property="userImageView" destination="a6O-3W-3c8" id="blg-hM-40j"/>
                 <outlet property="userNameLabel" destination="SSP-Dm-3jQ" id="sW4-64-FGI"/>
-                <outlet property="viewReplyButton" destination="CXb-0K-UIE" id="Ptn-QP-ZLG"/>
+                <outlet property="viewReplyButton" destination="qyN-VO-NPz" id="YBt-Jq-6Bu"/>
+                <outlet property="viewReplyButtonconstraint" destination="4dF-ug-8HV" id="2TV-aO-UKg"/>
             </connections>
             <point key="canvasLocation" x="69.565217391304358" y="77.008928571428569"/>
         </tableViewCell>
