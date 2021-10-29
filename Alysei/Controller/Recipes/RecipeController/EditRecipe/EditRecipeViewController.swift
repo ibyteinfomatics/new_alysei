@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 var editRecipeId = Int()
 var editSavedIngridientId = Int()
 var editSavedtoolId = Int()
@@ -13,7 +14,7 @@ var createEditRecipeJson: [String : Any] = [:]
 class EditRecipeViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeImage: ImageLoader!
     @IBOutlet weak var cameraOpenView: UIView!
     @IBOutlet weak var selectMealView: UIView!
     @IBOutlet weak var selectCourseView: UIView!
@@ -92,10 +93,17 @@ class EditRecipeViewController: UIViewController {
         
         if arrayMyRecipe!.count > 0{
             
-            let imageurl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
-
-            let url = URL(string: imageurl)!
-            downloadImage(from: url)
+//            let imageurl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
+//
+//            let url = URL(string: imageurl)!
+           
+            
+            if let strUrl = "\(kImageBaseUrl)\((arrayMyRecipe?[index].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                self.recipeImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+                downloadImage(from: imgUrl)
+            }
 
             nameTextfield.text = arrayMyRecipe?[index].name
             

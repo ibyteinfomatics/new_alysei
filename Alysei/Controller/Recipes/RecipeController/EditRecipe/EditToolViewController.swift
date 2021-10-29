@@ -15,13 +15,14 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     @IBOutlet weak var addMissingToolButton: UIButton!
     @IBOutlet weak var addToolsTableView: UITableView!
     @IBOutlet weak var addMissingToolView: UIView!
-    
+    @IBOutlet weak var searchToolTextField: UITextField!
     
     @IBOutlet weak var addMissingToolTableView: UITableView!
    
     @IBOutlet weak var addNewMissingToolBtn: UIButton!
     @IBOutlet weak var addMissingToolPopUpHeight: NSLayoutConstraint!
     var newSearchModel: [AddToolsDataModel]? = []
+    var toolSearchModel: [ToolsArray] = []
     var addMissingToolModel: [ToolTypeDataModel]? = []
     
     var array1 = NSMutableArray()
@@ -33,7 +34,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     var strReturn1 = Int()
     var arrQuantity = NSMutableArray()
     var arrUnit = NSMutableArray()
-    
+    var searchText = String()
     var arrayPickerData: [String] = []
     var selectedIndexPath : IndexPath?
     var selectedIndexPath1: IndexPath?
@@ -55,7 +56,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchToolTextField.delegate = self
         self.addNewMissingToolBtn.isHidden = true
         setUI()
        
@@ -114,8 +115,15 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-        
+        if searching == true{
+            self.searching = false
+            self.searchToolTextField.text = ""
+            addToolsTableView.reloadData()
+            self.addMissingToolButton.isHidden = false
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     
@@ -139,7 +147,12 @@ extension EditToolViewController: UITableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == addToolsTableView{
+            if searching == true{
+                return 1
+            }
+            else{
             return self.newSearchModel?.count ?? 0
+            }
         }
         if tableView == addMissingToolTableView{
             return 1
@@ -152,7 +165,12 @@ extension EditToolViewController: UITableViewDelegate
         
         if tableView == addToolsTableView{
             
+            if searching == true{
+                return self.toolSearchModel.count
+            }
+            else{
             return newSearchModel?[section].tools?.count ?? 0
+            }
         }
         if tableView == addMissingToolTableView{
             if self.addMissingToolModel?.count == 1{
@@ -195,7 +213,12 @@ extension EditToolViewController: UITableViewDelegate
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if tableView == addToolsTableView{
+            if searching == true{
+                return ""
+            }
+            else{
             return self.newSearchModel?[section].toolDataName
+            }
         }
         else{
             return ""
@@ -211,7 +234,12 @@ extension EditToolViewController: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == addToolsTableView{
+            if searching == true{
+                return 0
+            }
+            else{
             return 40
+            }
         }
         else{
             return 0
@@ -226,8 +254,12 @@ extension EditToolViewController: UITableViewDelegate
             cell.indexPath = indexPath
             cell.addToolDelegate = self
             
+            if searching == true {
+                cell.data = toolSearchModel[indexPath.row]
+            }
+            else{
             cell.data = newSearchModel?[indexPath.section].tools?[indexPath.row]
-            
+            }
             return cell
         }
         else{
@@ -309,7 +341,7 @@ extension EditToolViewController: UITableViewDelegate
 extension EditToolViewController{
     
     func callAddTools(){
-        
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeTools, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -317,13 +349,43 @@ extension EditToolViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.newSearchModel = data.map({AddToolsDataModel.init(with: $0)})
+                for i in (0..<(self.newSearchModel?.count ?? 0)){
+                    for j in (0..<(self.newSearchModel?[i].tools?.count ?? 0))
+                    {
+                        self.toolSearchModel.append(self.newSearchModel?[i].tools?[j] ?? ToolsArray())
+                    }
+                }
                 self.addToolsTableView.reloadData()
-                
+                self.view.isUserInteractionEnabled = true
                 
             }
         }
     }
     
+    func callSearchTools(){
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchTool)\(searchText)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
+            let dictResponse = dictResponse as? [String:Any]
+            
+            if let data = dictResponse?["data"] as? [[String:Any]]{
+                self.toolSearchModel = data.map({ToolsArray.init(with: $0)})
+                self.searching = true
+            }
+                
+            case 409:
+                self.newSearchModel = [AddToolsDataModel]()
+                self.toolSearchModel = [ToolsArray]()
+                self.showAlert(withMessage: "No Tools found")
+            
+            default:
+              break
+            }
+            self.addToolsTableView.reloadData()
+        }
+   
+    }
     func callListTools(){
        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeTools, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
@@ -335,5 +397,30 @@ extension EditToolViewController{
                 self.addMissingToolTableView.reloadData()
             }
         }
+    }
+}
+extension EditToolViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchToolTextField.becomeFirstResponder()
+        return true
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        
+        searchText = string
+        if searchText.count > 0 {
+            
+            callSearchTools()
+            self.addMissingToolButton.isHidden = true
+            hideKeyboardWhenTappedAround()
+        }
+        else{
+            self.searching = false
+            addToolsTableView.reloadData()
+            self.addMissingToolButton.isHidden = false
+        }
+        
+        return true
     }
 }

@@ -91,9 +91,14 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
             
           
                 
-                let imgUrl = (kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
-                
-                cell.itemImgVw.setImage(withString: imgUrl)
+//                let imgUrl = (kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
+//
+//                cell.itemImgVw.setImage(withString: imgUrl)
+            if let strUrl = "\(kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
                

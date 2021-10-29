@@ -29,7 +29,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-KV-zVS">
                         <rect key="frame" x="5" y="14" width="320" height="285"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8C-ux-2SH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8C-ux-2SH" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="144" id="5L4-74-YP3"/>

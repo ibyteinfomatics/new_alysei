@@ -10,7 +10,7 @@ import UIKit
 class TrendingCollectionViewCell: UICollectionViewCell {
 
     
-    @IBOutlet weak var trendingImgVw: UIImageView!
+    @IBOutlet weak var trendingImgVw: ImageLoader!
     
     @IBOutlet weak var recipeNameLbl: UILabel!
     @IBOutlet weak var likeLabel: UILabel!

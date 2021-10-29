@@ -127,6 +127,8 @@ class FilteredRecipeViewController: UIViewController {
     @IBAction func tapBack(_ sender: Any) {
         searching = false
         isFrom = ""
+        str1 =  String()
+        str2 =  String()
         strTime = String()
         strNoOfIngridient = String()
         strMeal = String()
@@ -371,9 +373,7 @@ extension FilteredRecipeViewController{
                 self.showAlert(withMessage: "No Recipe found")
                 
             default:
-               
-                self.showAlert(withMessage: "Something went wrong")
-                self.viewFilter.isHidden = true
+                break
             }
             self.filteredCollectionView.reloadData()
             

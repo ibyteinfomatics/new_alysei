@@ -93,8 +93,9 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
         setupUI()
         searchIngridientTextField.delegate = self
+        searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true
         callAddIngridients()
-        addIndridentPopupView.translatesAutoresizingMaskIntoConstraints = false
+//        addIndridentPopupView.translatesAutoresizingMaskIntoConstraints = false
         
         self.viewAddMissingIngridient.isHidden = true
         self.addIndridentPopupView.isHidden = true
@@ -596,7 +597,7 @@ extension AddIngredientsViewController: UIPickerViewDelegate, UIPickerViewDataSo
 extension AddIngredientsViewController{
     
     func callAddIngridients(){
-        
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -611,6 +612,7 @@ extension AddIngredientsViewController{
                     }
                 }
                 self.addIngridientsTableView.reloadData()
+                self.view.isUserInteractionEnabled = true
             }
             
             if let data = dictResponse?["types"] as? [[String:Any]]{
@@ -622,19 +624,30 @@ extension AddIngredientsViewController{
     }
     
     func callSearchIngridients(){
-        disableWindowInteraction()
+
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchText)&type=2" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.ingridientSearchModel = data.map({IngridentArray.init(with: $0)})
                 self.searching = true
-                self.addIngridientsTableView.reloadData()
+
             }
             
+            case 409:
+                self.ingridientSearchModel = [IngridentArray]()
+                self.newSearchModel = [AddIngridientDataModel]()
+                self.showAlert(withMessage: "No Ingridients found")
             
+            default:
+              break
+            }
+            self.addIngridientsTableView.reloadData()
+
         }
+      
     }
 }
 
@@ -652,7 +665,7 @@ extension AddIngredientsViewController: UITextFieldDelegate{
             
             callSearchIngridients()
             self.addMissingIngridientsButton.isHidden = true
-            hideKeyboardWhenTappedAround()
+//            hideKeyboardWhenTappedAround()
         }
         else{
             self.searching = false

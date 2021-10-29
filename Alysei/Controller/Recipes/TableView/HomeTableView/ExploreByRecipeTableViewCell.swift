@@ -90,9 +90,13 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchByRegionCollectionViewCell", for: indexPath) as? SearchByRegionCollectionViewCell {
             
-            let imgUrl = (kImageBaseUrl + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))
-            
-            cell.countryImgVw.setImage(withString: imgUrl)
+//            let imgUrl = (kImageBaseUrl + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))
+            if let strUrl = "\(kImageBaseUrl + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                  let imgUrl = URL(string: strUrl) {
+                 print("ImageUrl-----------------------------------------\(imgUrl)")
+                cell.countryImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            }
+//            cell.countryImgVw.setImage(withString: imgUrl)
             cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
             cell.countryImgVw.contentMode = .scaleAspectFit
             

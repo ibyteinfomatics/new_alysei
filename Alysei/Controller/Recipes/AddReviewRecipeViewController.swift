@@ -341,7 +341,7 @@ extension AddReviewRecipeViewController{
                 self.showAlert(withMessage: "Review added Successfully!")
                 
             case 409:
-                self.showAlert(withMessage: "You have already done a review on this product")
+                self.showAlert(withMessage: "You have already done a review on this Recipe")
                 
             default:
                 break
