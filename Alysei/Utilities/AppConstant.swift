@@ -416,7 +416,7 @@ struct APIUrl{
 }
 
 struct AppConstants {
-    
+    static var recipeWalkthrough = false
     static let Select = "select"
     static let Checkbox = "checkbox"
     static let Radio = "radio"

@@ -3873,7 +3873,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpq-0c-FK4">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layer 1" translatesAutoresizingMaskIntoConstraints="NO" id="SyG-eA-H0C">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 5296" translatesAutoresizingMaskIntoConstraints="NO" id="SyG-eA-H0C">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-ms-jbn">
@@ -3887,8 +3887,11 @@
                                                 <state key="normal" title="Next">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="nextAction:" destination="CzX-Fz-L7X" eventType="touchUpInside" id="YdV-XY-zav"/>
+                                                </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarketplaceAnim1" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-Mt-WDe">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_cooking_lyxy" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-Mt-WDe">
                                                 <rect key="frame" x="132" y="40" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="xGT-VA-82Z"/>
@@ -3900,7 +3903,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is some tips to help you sell with confidence." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il6-lp-1IH">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is some tips to help you sell with confidence." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il6-lp-1IH">
                                                 <rect key="frame" x="10" y="251.5" width="394" height="42"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3960,10 +3963,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsh-os-eo4">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layer 2" translatesAutoresizingMaskIntoConstraints="NO" id="qJf-FC-n6S">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 5297" translatesAutoresizingMaskIntoConstraints="NO" id="qJf-FC-n6S">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1096" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-BN-h4y">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_Hamburger_8ge6" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-BN-h4y">
                                                 <rect key="frame" x="132" y="40" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="ksE-cf-FYj"/>
@@ -4212,6 +4215,7 @@
                         <outlet property="containerTableVw" destination="0az-ta-83g" id="6Dy-t4-okO"/>
                         <outlet property="discoverCollectionView" destination="O5D-oZ-66g" id="HQW-bA-Aga"/>
                         <outlet property="discoverRecipeView" destination="4Ap-TB-a8T" id="6P9-AG-ddA"/>
+                        <outlet property="headerView" destination="pkx-Bb-2n4" id="Cl7-uW-IXo"/>
                         <outlet property="pageContrl1Width" destination="8IM-5K-zdY" id="s1e-xc-8bK"/>
                         <outlet property="pageContrl2Width" destination="CO8-H1-Dy7" id="V1d-Il-Awi"/>
                         <outlet property="pageContrl3Width" destination="0Vv-J5-gxB" id="OP6-cj-kG6"/>
@@ -4254,7 +4258,11 @@
                         <outlet property="walkView2Img" destination="1WG-BN-h4y" id="VZF-7W-743"/>
                         <outlet property="walkView2SubTitle" destination="UhL-YU-H6u" id="34J-J0-Cl7"/>
                         <outlet property="walkView2Tilte" destination="JPr-Vj-2Fj" id="0qF-1q-rKk"/>
-                        <outlet property="walknextBtn" destination="H4a-pf-BFV" id="621-lT-Ja9"/>
+                        <outlet property="walkVw1Img" destination="kgv-Mt-WDe" id="dzY-Ac-l6a"/>
+                        <outlet property="walkVw1SubTitle" destination="il6-lp-1IH" id="bh5-Tu-Yxh"/>
+                        <outlet property="walkVw1Title" destination="LdL-5u-jTf" id="K92-Bs-WnT"/>
+                        <outlet property="walkVwContainer1Img" destination="SyG-eA-H0C" id="cvL-pq-ab6"/>
+                        <outlet property="walknextBtn" destination="KkT-ms-jbn" id="fVZ-LS-8jU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfy-5x-PGw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -11791,7 +11799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivt-QU-ZYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.0000000000002" y="788.83928571428567"/>
+            <point key="canvasLocation" x="1997" y="733"/>
         </scene>
     </scenes>
     <resources>
@@ -11804,15 +11812,16 @@
         <image name="Don't see ingredients" width="375" height="812"/>
         <image name="Favourite Cuisines" width="375" height="812"/>
         <image name="Food Allergies" width="375" height="812"/>
-        <image name="Group 1096" width="177.5" height="152.5"/>
         <image name="Group 1127" width="21" height="21"/>
         <image name="Group 1144" width="18" height="18"/>
         <image name="Group 1155" width="98" height="98"/>
         <image name="Group 1171" width="16" height="17.5"/>
         <image name="Group 380" width="21" height="21"/>
-        <image name="Group 419" width="22" height="18"/>
+        <image name="Group 419" width="23" height="18.5"/>
         <image name="Group 504" width="81" height="40"/>
         <image name="Group 5295" width="39" height="39"/>
+        <image name="Group 5296" width="375" height="555"/>
+        <image name="Group 5297" width="375" height="653"/>
         <image name="Group 636" width="24" height="24"/>
         <image name="Group 665" width="16" height="17.5"/>
         <image name="Group 666" width="13.5" height="13.5"/>
@@ -11822,10 +11831,7 @@
         <image name="Group 673" width="35" height="35"/>
         <image name="Group 674" width="35" height="35"/>
         <image name="Group 680" width="19" height="14"/>
-        <image name="Layer 1" width="375" height="478"/>
-        <image name="Layer 2" width="375" height="644"/>
         <image name="MENU" width="55" height="55"/>
-        <image name="MarketplaceAnim1" width="181.5" height="156.5"/>
         <image name="NotificationNew" width="13" height="16.5"/>
         <image name="Rectangle 2637" width="140" height="140"/>
         <image name="Subtract" width="24" height="24"/>
@@ -11847,7 +11853,7 @@
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="17.5" height="17.5"/>
+        <image name="icons8_search" width="23" height="23"/>
         <image name="icons8_shop_3" width="17.5" height="17.5"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
@@ -11858,6 +11864,8 @@
         <image name="like_icon_active" width="20" height="18"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="search_icon_grey" width="18" height="18"/>
+        <image name="undraw_Hamburger_8ge6" width="291.5" height="165"/>
+        <image name="undraw_cooking_lyxy" width="227" height="191.5"/>
         <namedColor name="blackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

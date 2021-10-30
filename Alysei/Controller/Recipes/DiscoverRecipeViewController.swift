@@ -8,10 +8,14 @@
 var selectedIndex: Int?
 
 import UIKit
+
+var recipeWalkthroughId = [String]()
+
 var arrayMyRecipe: [HomeTrending]? = []
-class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
+class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
     @IBOutlet weak var discoverRecipeView: UIView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchRecipe: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var containerTableVw: UITableView!
@@ -24,7 +28,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var walkView1: UIView!
     @IBOutlet weak var vwwWalkContainer1: UIView!
     @IBOutlet weak var vwwWalkContainer2: UIView!
-
+    
     @IBOutlet weak var walkView2Img: UIImageView!
     @IBOutlet weak var walkView2Tilte:UILabel!
     @IBOutlet weak var walkView2SubTitle: UILabel!
@@ -66,8 +70,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     @IBOutlet weak var vwwWalkContainer2BgImg: UIImageView!
     @IBOutlet weak var walkSubView3Height: NSLayoutConstraint!
     @IBOutlet weak var walknextBtn: UIButton!
-  
-   
+    
+    @IBOutlet weak var walkVw1Img: UIImageView!
+    @IBOutlet weak var walkVw1Title: UILabel!
+    @IBOutlet weak var walkVw1SubTitle: UILabel!
+    @IBOutlet weak var walkVwContainer1Img: UIImageView!
+    
     var arrayMyFavouriteRecipe: [HomeTrending]? = []
     
     var arrayHeader = NSMutableArray()
@@ -78,45 +86,12 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     var currentIndex : Int? = 0
     var isReloadData = true
     var nextWalkCount = 0
-    private var isBottomSheetShown = false
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if checkbutton == 3{
-            getSavedMyPreferences()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                self.containerTableVw.reloadData()
-            }
-
-        }
-        if checkbutton == 0{
-            getExploreData()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-                
-                self.containerTableVw.reloadData()
-            }
-        }
-        if checkbutton == 2{
-            getMyAllRecipes()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                self.containerTableVw.reloadData()
-            }
-
-            
-        }
-        if checkbutton == 1{
-            getMyFavouriteRecipes()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                self.containerTableVw.reloadData()
-            }
-        }
-        self.nextWalkCount = 0
-        self.walkView1.isHidden = true
-        self.vwwWalkContainer1.isHidden = true
-        self.vwwWalkContainer2.isHidden = true
-    }
+    //    private var isBottomSheetShown = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         discoverRecipeView.layer.masksToBounds = false
         discoverRecipeView.layer.shadowRadius = 2
@@ -154,15 +129,70 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.discoverCollectionView.dataSource = self
         
         getExploreData()
-        walknextBtn.setTitle("Next", for: .normal)
-        setBottomUI()
+        
     }
     
+    func setBottomUI() {
+        walkView1.layer.maskedCorners = [.layerMaxXMinYCorner]
+        walkView1.clipsToBounds = true
+        pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl3.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageControl2.layer.borderWidth = 0.5
+        pageControl2.layer.borderColor = UIColor.white.cgColor
+        pageControl3.layer.borderWidth = 0.5
+        pageControl3.layer.borderColor = UIColor.white.cgColor
+        pageControl1.layer.backgroundColor = UIColor.white.cgColor
+        pageContrl1Width.constant = 25
+        pageContrl2Width.constant = 10
+        pageContrl3Width.constant = 10
+        walkView1.isHidden = false
+        vwwWalkContainer1.isHidden = false
+        vwwWalkContainer2.isHidden = true
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         //self.walkView1Trailing.constant = self.view.frame.width
         self.walkView1Top.constant = self.view.frame.height
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if checkbutton == 3{
+            getSavedMyPreferences()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+            
+        }
+        if checkbutton == 0{
+            getExploreData()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+                
+                self.containerTableVw.reloadData()
+            }
+        }
+        if checkbutton == 2{
+            getMyAllRecipes()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+            
+            
+        }
+        if checkbutton == 1{
+            getMyFavouriteRecipes()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.containerTableVw.reloadData()
+            }
+        }
+        self.nextWalkCount = 0
+        self.walkView1.isHidden = true
+        self.vwwWalkContainer1.isHidden = true
+        self.vwwWalkContainer2.isHidden = true
+    }
+    
     @objc func openPost(){
         for controller in self.navigationController!.viewControllers as Array {
             if controller.isKind(of: HomeViewC.self) {
@@ -187,26 +217,39 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
     
     
     @IBAction func createNewRecipeButton(_ sender: Any) {
-        let createNewRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateNewRecipeViewController") as! CreateNewRecipeViewController
-        self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
+        if AppConstants.recipeWalkthrough == false{
+            walknextBtn.setTitle("Next", for: .normal)
+            animate1View()
+            setBottomUI()
+        }
+        else{
+            let createNewRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateNewRecipeViewController") as! CreateNewRecipeViewController
+            self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
+        }
+        
+        
     }
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
             self.walknextBtn.setTitle("Next", for: .normal)
             vwwWalkContainer1.isHidden = true
-            vwwWalkContainer1.isHidden = false
+            vwwWalkContainer2.isHidden = false
             animate2View()
-           
+            
         }else if nextWalkCount == 1 {
             nextWalkCount = 0
             vwwWalkContainer1.isHidden = false
-            vwwWalkContainer1.isHidden = true
+            vwwWalkContainer2.isHidden = true
             animate1View()
         }else{
-
             self.walkView1.isHidden = true
-            
+            self.headerView.isUserInteractionEnabled = true
+            self.discoverRecipeView.isUserInteractionEnabled = true
+            self.containerTableVw.isUserInteractionEnabled = true
+            self.discoverRecipeView.alpha = 1
+            self.headerView.alpha = 1
+            self.containerTableVw.alpha = 1
         }
     }
     @IBAction func nextAction(_ sender: UIButton){
@@ -215,20 +258,28 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
             self.walknextBtn.setTitle("Next", for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
-          animate2View()
+            animate2View()
         }else if nextWalkCount == 1 {
             self.walknextBtn.setTitle("Done", for: .normal)
             animateView3()
             nextWalkCount = 2
-           
-            }else{
-                self.walkView1.isHidden = true
-                nextWalkCount = 0
-//                self.headerView.isUserInteractionEnabled = true
-//                self.containerView.isUserInteractionEnabled = true
-//                self.containerView.alpha = 1
-//                self.headerView.alpha = 1
-//                _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+            
+        }else{
+            self.walkView1.isHidden = true
+            nextWalkCount = 0
+            self.headerView.isUserInteractionEnabled = true
+            self.discoverRecipeView.isUserInteractionEnabled = true
+            self.containerTableVw.isUserInteractionEnabled = true
+            self.discoverRecipeView.alpha = 1
+            self.headerView.alpha = 1
+            self.containerTableVw.alpha = 1
+            AppConstants.recipeWalkthrough = true
+            let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
+            recipeWalkthroughId.append(userId)
+            _ = pushViewController(withName: CreateNewRecipeViewController.id(), fromStoryboard: StoryBoardConstants.kRecipesSelection)
+             
+            
+            
         }
     }
     func cellTapped(){
@@ -254,7 +305,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
         self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
-
+            
             arraySearchByIngridient = [IngridentArray]()
             arraySearchByMeal = [SelectMealDataModel]()
             arraySearchByRegion = [SelectRegionDataModel]()
@@ -298,6 +349,7 @@ class DiscoverRecipeViewController: UIViewController, UIScrollViewDelegate, Cate
             }
             containerTableVw.reloadData()
             self.view.isUserInteractionEnabled = true
+            
         }
     }
     
@@ -442,13 +494,13 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             
         case 1:
             let cell4 = containerTableVw.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell") as! FavouriteTableViewCell
-//            let imgUrl = (kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))
-//
-//            cell4.recipeImageView.setImage(withString: imgUrl)
-//
+            //            let imgUrl = (kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))
+            //
+            //            cell4.recipeImageView.setImage(withString: imgUrl)
+            //
             if let strUrl = "\(kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-                  let imgUrl = URL(string: strUrl) {
-                 print("ImageUrl-----------------------------------------\(imgUrl)")
+               let imgUrl = URL(string: strUrl) {
+                print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell4.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
             }
             
@@ -466,9 +518,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
             cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
             cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? "NA"
-
-                cell4.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
-
+            
+            cell4.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
+            
             if arrayMyFavouriteRecipe?[indexPath.row].avgRating ?? "0.0" == "0.0" {
                 cell4.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell4.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
@@ -545,13 +597,13 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             return cell4
         case 2:
             let cell5 = containerTableVw.dequeueReusableCell(withIdentifier: "MyRecipeTableViewCell") as! MyRecipeTableViewCell
-//            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
-//            
-//            cell5.recipeImageView.setImage(withString: imgUrl)
-//            
+            //            let imgUrl = (kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))
+            //
+            //            cell5.recipeImageView.setImage(withString: imgUrl)
+            //
             if let strUrl = "\(kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-                  let imgUrl = URL(string: strUrl) {
-                 print("ImageUrl-----------------------------------------\(imgUrl)")
+               let imgUrl = URL(string: strUrl) {
+                print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell5.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
             }
             cell5.btnEditCallback = { tag in
@@ -718,9 +770,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         case 2:
             return 260
         case 3:
-
+            
             return finalHeight
-
+            
         default:
             break
         }
@@ -836,7 +888,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             
             discoverCollectionView.reloadData()
             getSavedMyPreferences()
-
+            
         default:
             break
         }
@@ -897,7 +949,7 @@ extension DiscoverRecipeViewController{
             case 409:
                 self.showAlert1(message: "No recipe found")
             default:
-               break
+                break
                 
             }
             self.containerTableVw.reloadData()
@@ -939,10 +991,10 @@ extension DiscoverRecipeViewController{
         self.view.isUserInteractionEnabled = false
         getSavedPreferencesModel = [GetSavedPreferencesDataModel]()
         showCuisine?.removeAll()
-       showFood?.removeAll()
+        showFood?.removeAll()
         showDiet?.removeAll()
         showIngridient?.removeAll()
-       showCookingSkill?.removeAll()
+        showCookingSkill?.removeAll()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getsavedPreferences, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { [self] (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
@@ -950,189 +1002,193 @@ extension DiscoverRecipeViewController{
             if let data = res?["data"] as? [[String:Any]]{
                 getSavedPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
                 
-            for i in (0..<(getSavedPreferencesModel?.count ?? 0)){
-                switch i{
-                case 0:
-                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
-                    {
-                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            showCuisine?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                            first = 1
-                            arraySelectedCuisine?.removeAll()
-                            for k in (0..<(showCuisine?.count ?? 0)){
-                                arraySelectedCuisine?.append(showCuisine?[k].cousinId ?? 0 )
+                for i in (0..<(getSavedPreferencesModel?.count ?? 0)){
+                    switch i{
+                    case 0:
+                        for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                        {
+                            if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                                showCuisine?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                                first = 1
+                                arraySelectedCuisine?.removeAll()
+                                for k in (0..<(showCuisine?.count ?? 0)){
+                                    arraySelectedCuisine?.append(showCuisine?[k].cousinId ?? 0 )
+                                }
                             }
                         }
-                    }
-                case 1:
-                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
-                    {
-                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            showFood?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                            second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
-                            arraySelectedFood?.removeAll()
-                            for k in (0..<(showFood?.count ?? 0)){
-                                arraySelectedFood?.append(showFood?[k].foodId ?? 0 )
-                            }
-                            
-                        }
-                   
-                    }
-                case 2:
-                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
-                    {
-                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            showDiet?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                            third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
-                            arraySelectedDiet?.removeAll()
-                            for k in (0..<(showDiet?.count ?? 0)){
-                               
-                                arraySelectedDiet?.append(showDiet?[k].dietId ?? 0 )
+                    case 1:
+                        for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                        {
+                            if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                                showFood?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                                second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+                                arraySelectedFood?.removeAll()
+                                for k in (0..<(showFood?.count ?? 0)){
+                                    arraySelectedFood?.append(showFood?[k].foodId ?? 0 )
+                                }
+                                
                             }
                             
                         }
-                    }
-                case 3:
-                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
-                    {
-                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            showIngridient?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                            fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
-                            arraySelectedIngridient?.removeAll()
-                       for k in (0..<(showIngridient?.count ?? 0)){
+                    case 2:
+                        for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                        {
+                            if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                                showDiet?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                                third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+                                arraySelectedDiet?.removeAll()
+                                for k in (0..<(showDiet?.count ?? 0)){
+                                    
+                                    arraySelectedDiet?.append(showDiet?[k].dietId ?? 0 )
+                                }
+                                
+                            }
+                        }
+                    case 3:
+                        for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                        {
+                            if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                                showIngridient?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
+                                fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+                                arraySelectedIngridient?.removeAll()
+                                for k in (0..<(showIngridient?.count ?? 0)){
+                                    
+                                    arraySelectedIngridient?.append(showIngridient?[k].ingridientId ?? 0 )
+                                }
+                            }
+                            
+                        }
+                    case 4:
+                        for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
+                        {
+                            if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
+                                showCookingSkill?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
+                                fifth = 1
+                                arraySelectedCookingSkill?.removeAll()
+                                for k in (0..<(showCookingSkill?.count ?? 0)){
+                                    
+                                    arraySelectedCookingSkill?.append(showCookingSkill?[k].cookingSkillId ?? 0 )
+                                }
+                            }
+                        }
+                    default:
+                        break
                         
-                        arraySelectedIngridient?.append(showIngridient?[k].ingridientId ?? 0 )
-                        }
-                     }
-
                     }
-                case 4:
-                    for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
-                    {
-                        if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
-                            showCookingSkill?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
-                            fifth = 1
-                            arraySelectedCookingSkill?.removeAll()
-                            for k in (0..<(showCookingSkill?.count ?? 0)){
-                             
-                                arraySelectedCookingSkill?.append(showCookingSkill?[k].cookingSkillId ?? 0 )
-                             }
-                        }
-                    }
-                default:
-                    break
                     
                 }
-     
+                
             }
             
-        }
-    
-//        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
+            //        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
             finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+200)
-        self.containerTableVw.reloadData()
+            self.containerTableVw.reloadData()
             
-        self.view.isUserInteractionEnabled = true
+            self.view.isUserInteractionEnabled = true
         }
     }
 }
 extension DiscoverRecipeViewController{
     func animate1View(){
-//        self.headerView.isUserInteractionEnabled = false
-//        self.containerView.isUserInteractionEnabled = false
-//        self.containerView.alpha = 0.5
-//        self.headerView.alpha = 0.5
+        self.headerView.isUserInteractionEnabled = false
+        self.discoverRecipeView.isUserInteractionEnabled = false
+        self.containerTableVw.isUserInteractionEnabled = false
+        self.discoverRecipeView.alpha = 0.5
+        self.headerView.alpha = 0.5
+        self.containerTableVw.alpha = 0.5
         self.walkView1.isHidden = false
         self.vwwWalkContainer1.isHidden = false
         self.vwwWalkContainer2.isHidden = true
+        walkVwContainer1Img.image = UIImage(named: "Group 5296")
+        walkVw1Img.image = UIImage(named: "undraw_cooking_lyxy")
+        walkVw1Title.text = "Create your Recipes"
+        walkVw1SubTitle.text = "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software"
+        
+        pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl3.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageContrl1Width.constant = 25
+        pageContrl2Width.constant = 10
+        pageContrl3Width.constant = 10
+        pageControl3.layer.borderWidth = 0.5
+        pageControl3.layer.borderColor = UIColor.white.cgColor
+        pageControl2.layer.borderWidth = 0.5
+        pageControl2.layer.borderColor = UIColor.white.cgColor
+        pageControl3.layer.backgroundColor = UIColor.clear.cgColor
+        pageControl1.layer.backgroundColor = UIColor.white.cgColor
+        
         UIView.animate(withDuration: 0.5) {
-            self.walkView1height.constant = 485
+            self.walkView1height.constant = 520
             self.walkView1Top.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                self.walkView1height.constant = 470
+                self.walkView1height.constant = 500
                 self.view.layoutIfNeeded()
             } completion: { _ in
-               // print("Completion")
+                // print("Completion")
             }
         }
     }
     func animateView3(){
-        self.vwwWalkContainer1.isHidden = true
-        self.vwwWalkContainer2.isHidden = false
-        self.walkSubView3.isHidden = true
-        self.walkSubView3Height.constant = 0
-        vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
-        walkView2Tilte.text = "Connect with buyers"
-        walkView2SubTitle.text = "When you create a listing,buyers will be able to contact you on social alysei."
-        walkView2Img.image = UIImage(named: "Group 1096")
+        self.vwwWalkContainer1.isHidden = false
+        self.vwwWalkContainer2.isHidden = true
+        walkVwContainer1Img.image = UIImage(named: "Group 5298")
+        walkVw1Img.image = UIImage(named: "Group 5299")
+        walkVw1Title.text = "Share your Recipe with others"
+        walkVw1SubTitle.text = "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software"
         
-       
-        walkSubView1Img.image = UIImage(named: "icons8_reply")
-        walkSubView1Title.text = "Reply to inquiry"
-        walkSubView1SubTitle.text = "Being responsive can help you build trust with buyers"
-        walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Report Suspicious behaviour"
-        walkSubView2SubTitle.text = "If something doesn't feel right, you can report the conversation to us."
-        
-      
-        
-        pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
-        pageControl5.layer.cornerRadius = self.pageControl2.frame.height / 2
-        pageControl6.layer.cornerRadius = self.pageControl3.frame.height / 2
-        pageContrl4Width.constant = 10
-        pageContrl5Width.constant = 10
-        pageContrl6Width.constant = 25
-        pageControl4.layer.borderWidth = 0.5
-        pageControl4.layer.borderColor = UIColor.white.cgColor
-        pageControl5.layer.borderWidth = 0.5
-        pageControl5.layer.borderColor = UIColor.white.cgColor
-        pageControl5.layer.backgroundColor = UIColor.clear.cgColor
-        pageControl6.layer.backgroundColor = UIColor.white.cgColor
+        pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
+        pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
+        pageControl3.layer.cornerRadius = self.pageControl3.frame.height / 2
+        pageContrl1Width.constant = 10
+        pageContrl2Width.constant = 10
+        pageContrl3Width.constant = 25
+        pageControl1.layer.borderWidth = 0.5
+        pageControl1.layer.borderColor = UIColor.white.cgColor
+        pageControl2.layer.borderWidth = 0.5
+        pageControl2.layer.borderColor = UIColor.white.cgColor
+        pageControl1.layer.backgroundColor = UIColor.clear.cgColor
+        pageControl3.layer.backgroundColor = UIColor.white.cgColor
         UIView.animate(withDuration: 0.5) {
-            self.vwwWalkContainer2.isHidden = false
-            self.walkView1height.constant = self.view.frame.height / 2 + 260
+            self.vwwWalkContainer1.isHidden = false
+            self.walkView1height.constant = 520
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.isBottomSheetShown = true
+            //            self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 240
-                    self.view.layoutIfNeeded()
+                self.walkView1height.constant = 500
+                self.view.layoutIfNeeded()
             } completion: { _ in
-               // print("Completion")
+                // print("Completion")
             }
         }
-       
+        
+        
     }
     func animate2View(){
         //self.view.isUserInteractionEnabled = false
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = false
         self.walkSubView3.isHidden = false
-       vwwWalkContainer2BgImg.image = UIImage(named: "Layer 2")
+        vwwWalkContainer2BgImg.image = UIImage(named: "Group 5297")
         self.walkSubView3Height.constant = 55
-        walkView2Img.image = UIImage(named: "Group 1091")
-        walkView2Tilte.text = "Create your store"
-        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers learn more about what you're selling."
-       
+        walkView2Img.image = UIImage(named: "undraw_Hamburger_8ge6")
+        walkView2Tilte.text = "Instructions to create"
+        walkView2SubTitle.text = "Add Ingredients and Tools Used"
+        
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
         walkSubView1Title.text = "Add clear photos"
         walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you're listing"
         
-        walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Offer a fire price"
-        walkSubView2SubTitle.text = "Use similiar listings as a guide for choosing your price"
+        walkSubView2Img.image = UIImage(named: "icons8_industrial_scales_connected")
+        walkSubView2Title.text = "Add Ingredients and Tools Used"
+        walkSubView2SubTitle.text = "Use accurate amount and unit for ingredients"
         
-        walkSubView3Img.image = UIImage(named: "icons8_rocket")
-        walkSubView3Title.text = "Boost your listing"
-        walkSubView3SubTitle.text = "You can boost your listing so that it reaches more people on Alysei"
-        
-//        walkSubView3Img.image = UIImage(named: "icons8_rocket")
-//        walkSubView2Title.text = "Boost your listing"
-//        walkSubView2SubTitle.text = "You can boost your listing so that it reaches more people on Alysei"
+        walkSubView3Img.image = UIImage(named: "icons8_stairs")
+        walkSubView3Title.text = "Divide your recipe in steps"
+        walkSubView3SubTitle.text = "You can divide our recipe in steps so that viewers can easily understand the procedure."
         
         
         pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
@@ -1153,33 +1209,14 @@ extension DiscoverRecipeViewController{
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.isBottomSheetShown = true
+            //            self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 300
-                    self.view.layoutIfNeeded()
+                self.walkView1height.constant = self.view.frame.height / 2 + 300
+                self.view.layoutIfNeeded()
             } completion: { _ in
-               // print("Completion")
+                // print("Completion")
             }
         }
-        }
-    func setBottomUI() {
-        walkView1.layer.maskedCorners = [.layerMaxXMinYCorner]
-        walkView1.clipsToBounds = true
-       
-        pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
-        pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
-        pageControl3.layer.cornerRadius = self.pageControl3.frame.height / 2
-        pageControl2.layer.borderWidth = 0.5
-        pageControl2.layer.borderColor = UIColor.white.cgColor
-        pageControl3.layer.borderWidth = 0.5
-        pageControl3.layer.borderColor = UIColor.white.cgColor
-        pageControl1.layer.backgroundColor = UIColor.white.cgColor
-        pageContrl1Width.constant = 25
-        pageContrl2Width.constant = 10
-        pageContrl3Width.constant = 10
-        vwwWalkContainer1.isHidden = false
-        vwwWalkContainer2.isHidden = true
-        
     }
-
+    
 }
