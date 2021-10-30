@@ -20,6 +20,7 @@ class MembershipViewC: AlysieBaseViewC {
   //MARK: - Properties -
   var from = ""
   var currentIndex: Int = 0
+    var fromvc: FromVC?
     
     private lazy var postViewC: PostsViewController = {
 
@@ -58,6 +59,7 @@ class MembershipViewC: AlysieBaseViewC {
   
   override func viewDidLayoutSubviews(){
     super.viewDidLayoutSubviews()
+    
     self.viewBlueHeading.makeCornerRadius(radius: 5.0)
   }
 
@@ -65,7 +67,11 @@ class MembershipViewC: AlysieBaseViewC {
   
   @IBAction func tapBack(_ sender: UIButton) {
     
-    self.navigationController?.popViewController(animated: true)
+    if fromvc == .Notification {
+        kSharedAppDelegate.pushToTabBarViewC()
+    } else {
+        self.navigationController?.popViewController(animated: true)
+    }
     
   }
   

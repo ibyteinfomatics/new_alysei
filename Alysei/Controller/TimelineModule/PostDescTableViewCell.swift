@@ -124,6 +124,8 @@ class PostDescTableViewCell: UITableViewCell {
         btnLikeCallback?(sender.tag)
     }
     
+    
+    
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0

@@ -12,6 +12,7 @@ class NetworkViewC: AlysieBaseViewC {
   //MARK: - Properties -
   
   var currentIndex: Int = 0
+    var fromvc: FromVC?
   
   //MARK: - IBOutlet -
   
@@ -57,7 +58,17 @@ class NetworkViewC: AlysieBaseViewC {
             blankdataView.isHidden = true
         }
         
-        callConnectionApi(api: APIUrl.kConnectionTabApi1)
+        if currentIndex == 0 {
+            callConnectionApi(api: APIUrl.kConnectionTabApi1)
+        } else if currentIndex == 1 {
+            callConnectionApi(api: APIUrl.kConnectionTabApi)
+        } else if currentIndex == 2 {
+            callConnectionApi(api: APIUrl.kConnectionTabApi3)
+        } else if currentIndex == 3 {
+            callConnectionApi(api: APIUrl.kConnectionTabApi4)
+        }
+        
+        //callConnectionApi(api: APIUrl.kConnectionTabApi1)
         
     }
     
