@@ -134,7 +134,9 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
                 alert(msg: "Please enter medal name!")
             } else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
-            }  else {
+            } /*else if String.getString(self.urlNameTxf.text).isURL() == false{
+                alert(msg: "Please enter valid competition URL!")
+            }*/ else {
                 updateRewardApi()
             }
             
@@ -150,9 +152,9 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
                 alert(msg: "Please enter medal name!")
             } else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
-            } else if urlNameTxf.text?.isURL() == false{
+            } /*else if String.getString(self.urlNameTxf.text).isURL() == false{
                 alert(msg: "Please enter valid competition URL!")
-            } else {
+            }*/ else {
                 createRewardApi()
             }
             

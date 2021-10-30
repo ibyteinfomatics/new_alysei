@@ -35,7 +35,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     var postOwnerID: Int!
     var commentID: Int! // this is to be used when user taps on reply button.
     
-    var like = 0,comment = 0 , postid : Int!
+    var like = 0,comment = 0 , postid = 0
     var commentId = 0
     var replyTap = false
 
@@ -47,7 +47,9 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     
     func receiveComment() {
         
-        kChatharedInstance.receivce_Comment(postId: String.getString(self.postCommentsUserDataModel.postID)) { (message) in
+        
+        
+        kChatharedInstance.receivce_Comment(postId: String.getString(self.postid)) { (message) in
             
             self.commentmessages?.removeAll()
             self.commentmessages = message
@@ -101,8 +103,14 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         //self.tableView.allowsSelection = false
 
         self.commentTextfield.delegate = self
+        
+        if postid > 0 {
+            self.interactor?.fetchComments(self.postid)
+        } else {
+            self.interactor?.fetchComments(self.postCommentsUserDataModel.postID)
+        }
 
-        self.interactor?.fetchComments(self.postCommentsUserDataModel.postID)
+        
         self.profilePhotoButton.layer.cornerRadius = self.profilePhotoButton.frame.width / 2.0
         self.profilePhotoButton.layer.masksToBounds = true
 
@@ -123,6 +131,9 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        if postid == 0 {
+           postid = self.postCommentsUserDataModel.postID
+        }
         receiveComment()
     }
 
@@ -177,7 +188,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         
         let params: [String:Any] = [
             
-            "post_id": self.postCommentsUserDataModel.postID,
+            "post_id": self.postid,
             "comment": self.commentTextfield.text,
             "user_id" : Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
             
@@ -202,7 +213,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 let likecomment = LikeCommentClass()
                 likecomment.likeCount = self.like
                 likecomment.commentCount = self.comment
-                likecomment.postId = self.postCommentsUserDataModel.postID
+                likecomment.postId = self.postid
                 
                 let comment = CommentClass()
                 comment.body = self.commentTextfield.text
@@ -233,7 +244,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 avatar.id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 avatar.updated_at = dateString
                 
-                kChatharedInstance.send_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID) )
+                kChatharedInstance.send_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postid) )
                 
                 self.commentTextfield.text = ""
                 self.commentId = 0
@@ -250,7 +261,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
        
         let params: [String:Any] = [
             
-            "post_id": self.postCommentsUserDataModel.postID,
+            "post_id": self.postid,
             "reply": self.commentTextfield.text,
             "user_id" : Int.getInt(kSharedUserDefaults.loggedInUserModal.userId),
             "comment_id":comment_id
@@ -276,7 +287,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 let likecomment = LikeCommentClass()
                 likecomment.likeCount = self.like
                 likecomment.commentCount = self.comment
-                likecomment.postId = self.postCommentsUserDataModel.postID
+                likecomment.postId = self.postid
                 
                 let comment = CommentClass()
                 comment.body = self.commentTextfield.text
@@ -307,7 +318,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 avatar.id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 avatar.updated_at = dateString
                 
-                kChatharedInstance.send_reply_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID), replypostId: comment_id )
+                kChatharedInstance.send_reply_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postid), replypostId: comment_id )
                 
                 self.commentTextfield.text = ""
                 self.commentId = 0
@@ -378,7 +389,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
         let requestModel = PostComments.Reply.Request(post_owner_id: self.postCommentsUserDataModel.userID,
                                                      user_id: selfID,
-                                                     post_id: self.postCommentsUserDataModel.postID,
+                                                     post_id: self.postid,
                                                      comment_id: commentID,
                                                      comment: text)
         self.interactor?.postReply(requestModel)
@@ -434,6 +445,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
            // self.replyTap = true
             self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
             self.commentTextfield.becomeFirstResponder()
+            self.commentTextfield.placeholder = "Leave a Reply"
         }
         cell.btnViewReplyCallback = {tag in
             
@@ -494,7 +506,7 @@ extension PostCommentsViewController: CommnentReplyProtocol {
 
 extension PostCommentsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.commentTextfield.placeholder = "Leave a comment"
+        //self.commentTextfield.placeholder = "Leave a comment"
         self.commentId = 0
     }
 }

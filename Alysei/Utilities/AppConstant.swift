@@ -298,7 +298,7 @@ struct APIUrl{
     static let kPrivacy = "get/user/privacy"
     static let kAwardList = "get/award/listing/"
     static let kAwardCreate = "create/award"
-    static let kAwardUpdate = "edit/award/"
+    static let kAwardUpdate = "update/award"
     static let kAwardDelete = "delete/award"
     static let kAwardMedal = "get/medal/types"
     
@@ -352,6 +352,7 @@ struct APIUrl{
 
         static let photoList = kBASEURL + "get/all/user/post/1"
         static let postList = kBASEURL + "get/all/user/post/0"
+        static let onePost = kBASEURL + "get/post/detail?post_id="
 
         static let visiterProfile = kBASEURL + "get/visitor/profile?visitor_profile_id="
     }
@@ -418,7 +419,7 @@ struct APIUrl{
 }
 
 struct AppConstants {
-    
+    static var recipeWalkthrough = false
     static let Select = "select"
     static let Checkbox = "checkbox"
     static let Radio = "radio"

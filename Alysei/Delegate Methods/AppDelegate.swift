@@ -241,10 +241,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         navigationController.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
-        /*kSharedAppDelegate.window = self.window
-        self.window?.rootViewController = nil
-        self.window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: nextvc)*/
+       
+        
+    }
+    
+    func moveToPost(postid:String){
+        
+        let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
+        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "PhotosPost") as? PhotosPost else { return }
+        nextvc.postId = postid
+        nextvc.fromvc = .Notification
+        let navigationController = UINavigationController(rootViewController: nextvc)
+        navigationController.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+    }
+    
+    func moveToNetwork(index:Int){
+        
+        let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
+        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "NetworkViewC") as? NetworkViewC else { return }
+        nextvc.currentIndex = index
+        nextvc.fromvc = .Notification
+        let navigationController = UINavigationController(rootViewController: nextvc)
+        navigationController.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+    }
+    
+    func moveToMemberShip(){
+        
+        let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
+        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "MembershipViewC") as? MembershipViewC else { return }
+        nextvc.fromvc = .Notification
+        let navigationController = UINavigationController(rootViewController: nextvc)
+        navigationController.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
         
     }
     

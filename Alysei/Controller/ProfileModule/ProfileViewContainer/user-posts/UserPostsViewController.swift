@@ -8,6 +8,9 @@
 import UIKit
 
 
+
+
+
 class UserPostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
@@ -139,15 +142,57 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
         guard let cell = userPost.dequeueReusableCell(withIdentifier: "PostDescTableViewCell", for: indexPath) as? PostDescTableViewCell else { return UITableViewCell() }
 
         let data = self.postData[indexPath.row]
-//        cell.lblPostDesc?.text = data.body
-       // cell.configCell(NewFeedSearchDataModel(data), indexPath.row)
-        
-//        cell.commentCallback = { postCommentsUserData in
-//            self.showCommentScreen(postCommentsUserData)
-//        }
-//        
+
         cell.configCell(data, indexPath.row)
+        
         cell.sizeToFit()
+        
+        cell.relaodSection = indexPath.section
+        
+        cell.btnLikeCallback = { index in
+            
+            print(indexPath.item)
+            
+        }
+        
+//        if data.isExpand == true{
+//            cell.lblPostDesc.numberOfLines = 0
+//            cell.btnMoreLess.setTitle("....less", for: .normal)
+//        }else{
+//            cell.lblPostDesc.numberOfLines = 2
+//            cell.btnMoreLess.setTitle("....more", for: .normal)
+//        }
+        cell.likeCallback = { index in
+            //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+            cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
+            cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            
+            
+            
+        }
+        cell.reloadCallBack = { tag, section in
+            let data = self.postData[tag ?? -1]
+            
+            if data.isExpand == false{
+                data.isExpand = true
+            }else{
+                data.isExpand = false
+            }
+            //self.postTableView.reloadData()
+            let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
+            self.userPost.reloadRows(at: [indexPath], with: .automatic)
+            self.userPost.scrollToRow(at: indexPath, at: .top, animated: false)
+
+        }
+        
+       // cell.menuDelegate = self
+
+        cell.commentCallback = { postCommentsUserData in
+            //self.showCommentScreen(postCommentsUserData)
+            let vc = self.pushViewController(withName: PostCommentsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? PostCommentsViewController
+            vc?.postid = data.postID ?? 0
+        }
+        
         return cell
     }
 
