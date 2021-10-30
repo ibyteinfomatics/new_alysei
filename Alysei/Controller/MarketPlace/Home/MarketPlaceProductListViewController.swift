@@ -15,6 +15,7 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var hghtSearch: NSLayoutConstraint!
     @IBOutlet weak var searchtextField: UITextField!
     @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var btnSearch: UIButton!
     var listType:Int?
     var keywordSearch: String?
     var filterTitle: String?
@@ -51,6 +52,8 @@ class MarketPlaceProductListViewController: UIViewController {
     var selectedRatingStringId : String?
     var stringRatingArray = [String]()
     var typeFirst = true
+    var entityIndex: Int?
+    
     
     //var selectFdaCertifiedId: String?
     
@@ -58,6 +61,12 @@ class MarketPlaceProductListViewController: UIViewController {
     //var homearrList: []
     override func viewDidLoad() {
         super.viewDidLoad()
+        if pushedFromVC == .viewAllEntities{
+            btnSearch.isHidden = true
+            btnFilter.isHidden = true
+            callAllEntitiesApi(entityIndex ?? 0,1)
+        }else{
+            btnSearch.isHidden = false
         if pushedFromVC == .region{
             self.btnFilter.isHidden = false
             callRegionProductListApi(1)
@@ -78,6 +87,7 @@ class MarketPlaceProductListViewController: UIViewController {
             callConservationListApi(1)
         }else{
             self.callProductListApi()
+        }
         }
         self.vwSearch.isHidden = true
         self.hghtSearch.constant = 0
@@ -132,6 +142,7 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBAction func btnFilterAction(_ sender: UIButton){
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProducerStoreFilterVC") as? ProducerStoreFilterVC else{return}
         // nextVC.identifyList = 4
+        
         if pushedFromVC == .region {
             nextVC.loadFilter =  .region
         }else if pushedFromVC == .category{
@@ -202,6 +213,7 @@ class MarketPlaceProductListViewController: UIViewController {
                 self.callProductListApi()
             }
         }
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -215,6 +227,10 @@ class MarketPlaceProductListViewController: UIViewController {
             }else{
                 // increments the number of the page to request
                 indexOfPageToRequest += 1
+                if pushedFromVC == .viewAllEntities{
+                    
+                    callAllEntitiesApi(entityIndex ?? 0,indexOfPageToRequest)
+                }else{
                 if isSearch == false{
                 // call your API for more data
                 if pushedFromVC == .region{
@@ -232,6 +248,7 @@ class MarketPlaceProductListViewController: UIViewController {
                 }
                 }else if isSearch == true{
                     self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,indexOfPageToRequest)
+                }
                 }
                 // tell the table view to reload with the new data
                 self.tableView.reloadData()
@@ -575,6 +592,37 @@ extension MarketPlaceProductListViewController{
             self.tableView.reloadData()
         }
     }
+    func callAllEntitiesApi(_ entityIndex: Int, _ indexOfPageToRequest: Int){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.getAllEntities +  "\(entityIndex)" + "?page=" + "\(indexOfPageToRequest)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
+                let response = dictResponse as? [String:Any]
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
+                    if let subData = data["data"] as? [[String:Any]]{
+                        self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
+                    }
+                    for i in 0..<(self.arrList?.count ?? 0){
+                        self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
+                    }
+                }else{
+                    self.arrListAppData = [ProductSearchListModel]()
+                }
+            case 409:
+                self.arrListAppData = [ProductSearchListModel]()
+                //self.showAlert(withMessage: "No products found")
+            default:
+                if (self.arrListAppData.count == 0) {
+                self.showAlert(withMessage: "No products found")
+                }else{
+                    print("No More Data")
+                }
+            }
+            self.tableView.reloadData()
+        }
+        
+    }
+
     
     
 }

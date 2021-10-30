@@ -15,6 +15,8 @@ class ProductStoreVC: UIViewController {
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var vwSearch: UIView!
     @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var btnSearch: UIButton!
         
     var indexOfPageToRequest = 1
     var listType: Int?
@@ -22,6 +24,7 @@ class ProductStoreVC: UIViewController {
     var pushedFromVC: PushedFrom?
     var optionId: Int?
     var keywordSearch: String?
+    //var pushedFromVC: PushedFrom?
     
     var isSearch = false
     var arrSelectedCategories = [Int]()
@@ -54,7 +57,16 @@ class ProductStoreVC: UIViewController {
         self.hghtSearch.constant = 0
         self.txtSearch.delegate = self
         self.lblHeading.text = keywordSearch
+        
+        if pushedFromVC == .viewAllEntities{
+            self.btnSearch.isHidden = true
+            self.btnFilter.isHidden = true
+            callAllEntitiesApi(2,1)
+        }else{
+            self.btnSearch.isHidden = false
+            self.btnFilter.isHidden = false
         callMyStoreProductApi(1)
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -138,12 +150,15 @@ class ProductStoreVC: UIViewController {
             }else{
                 // increments the number of the page to request
                 indexOfPageToRequest += 1
-                
+                if pushedFromVC == .viewAllEntities{
+                    callAllEntitiesApi(2,indexOfPageToRequest)
+                }else{
                 // call your API for more data
                 if self.isSearch == false{
                 callMyStoreProductApi(indexOfPageToRequest)
                 }else{
                     self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,indexOfPageToRequest)
+                }
                 }
                 
                 // tell the table view to reload with the new data
@@ -315,7 +330,26 @@ extension ProductStoreVC {
         }
     }
     
-    
+    func callAllEntitiesApi(_ entityIndex: Int, _ indexOfPageToRequest: Int){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.getAllEntities +  "\(entityIndex)" + "?page=" + "\(indexOfPageToRequest)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
+                let response = dictResponse as? [String:Any]
+               
+                if let data = response?["data"] as? [String:Any]{
+                    self.lastPage = data["last_page"] as? Int
+                    self.arrProductList = ProductsStore.init(with: data)
+                    self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
+                }
+            default:
+                print("No Data")
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+    }
+
 }
 
 class ProductTableViewCell: UITableViewCell{

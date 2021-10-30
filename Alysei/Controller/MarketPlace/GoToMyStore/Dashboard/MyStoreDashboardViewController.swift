@@ -16,7 +16,7 @@ import DropDown
 protocol MyStoreDashboardDisplayLogic: class
 {
   func displaySomething(viewModel: MyStoreDashboard.Something.ViewModel)
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int)
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int)
     func categoryCount(_ CategoryCount: Int)
 }
 
@@ -77,9 +77,10 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
   {
     super.viewDidLoad()
     doSomething()
+    selectSort = 1
     imgStore.layer.borderWidth = 1.5
     imgStore.layer.borderColor = UIColor.white.cgColor
-    self.interactor?.callDashBoardApi(1)
+    self.interactor?.callDashBoardApi()
     self.interactor?.callCategoryApi()
   }
     
@@ -92,7 +93,10 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     @IBOutlet weak var lblTotalProduct: UILabel!
     @IBOutlet weak var lblTotalCategories: UILabel!
     
-    
+    var totalProduct: Int?
+    var totalCategory: Int?
+    var totalEnquiry: Int?
+    var totalReview: Int?
    
     
   func doSomething()
@@ -106,10 +110,14 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
   {
     //nameTextField.text = viewModel.name
   }
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int) {
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int) {
         self.imgStore.setImage(withString: kImageBaseUrl + String.getString(imgProfile))
         self.imgCoverImg.setImage(withString: kImageBaseUrl + String.getString(imgCover))
         self.lblTotalProduct.text = "\(totalProduct)"
+        self.totalProduct = totalProduct
+        self.totalCategory = totalCategory
+        self.totalEnquiry = totalEnquiry
+        self.totalReview = totalReview
         self.tableView.reloadData()
         
     }
@@ -128,7 +136,11 @@ extension MyStoreDashboardViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTableViewCell", for: indexPath) as? AnalyticsTableViewCell else{return UITableViewCell()}
-        cell.configeCell(self.lblTotalProduct.text ?? "")
+        cell.selectionStyle = .none
+        cell.configeCell(self.totalProduct ?? 0, self.totalCategory ?? 0, self.totalEnquiry ?? 0, self.totalReview ?? 0 )
+        cell.callApi = {
+            self.interactor?.callDashBoardApi()
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

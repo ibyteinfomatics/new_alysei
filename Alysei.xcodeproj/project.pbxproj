@@ -551,6 +551,7 @@
 		C5D6F7F526B1829D006FFCDF /* CountryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6F7D826B1829D006FFCDF /* CountryListCollectionViewCell.swift */; };
 		C5D6F7F626B1829D006FFCDF /* HubCountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6F7D926B1829D006FFCDF /* HubCountryListViewController.swift */; };
 		C5D6F7F726B1829D006FFCDF /* HubStateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6F7DA26B1829D006FFCDF /* HubStateListViewController.swift */; };
+		C5E2476B272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E2476A272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift */; };
 		C5E9A39E26B7DE5C0005AE89 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9A39D26B7DE5C0005AE89 /* ProductDetailVC.swift */; };
 		C5E9A3A126B7E3DD0005AE89 /* ProductDetailTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9A3A026B7E3DD0005AE89 /* ProductDetailTableVC.swift */; };
 		C5E9A3A426B7EAC50005AE89 /* ProductDescriptionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9A3A326B7EAC50005AE89 /* ProductDescriptionTableVC.swift */; };
@@ -1176,6 +1177,7 @@
 		C5D6F7D826B1829D006FFCDF /* CountryListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5D6F7D926B1829D006FFCDF /* HubCountryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubCountryListViewController.swift; sourceTree = "<group>"; };
 		C5D6F7DA26B1829D006FFCDF /* HubStateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubStateListViewController.swift; sourceTree = "<group>"; };
+		C5E2476A272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceFirstTiimeVC.swift; sourceTree = "<group>"; };
 		C5E9A39D26B7DE5C0005AE89 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		C5E9A3A026B7E3DD0005AE89 /* ProductDetailTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTableVC.swift; sourceTree = "<group>"; };
 		C5E9A3A326B7EAC50005AE89 /* ProductDescriptionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionTableVC.swift; sourceTree = "<group>"; };
@@ -2700,6 +2702,7 @@
 				C571082B26D8E58800BEB31C /* MarketPlaceRegionViewController.swift */,
 				C571082E26D8F63A00BEB31C /* MarketPlaceProductListViewController.swift */,
 				C543C5E527144C8E00F14B07 /* MarketplaceHomeRecentlyAddedCVC.swift */,
+				C5E2476A272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3520,6 +3523,7 @@
 				C5EB3CBC26E9CB5700CCAC9E /* FavouriteTableViewCell.swift in Sources */,
 				61A40A1D267378BF00D7D078 /* BasicConnectFlowRouter.swift in Sources */,
 				C587D14D26413BE6002D72DF /* NewFeedModel.swift in Sources */,
+				C5E2476B272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift in Sources */,
 				27A443B125AE03720002BAAC /* DateExtended.swift in Sources */,
 				610D718C2628B24E000FA104 /* EventsPresenter.swift in Sources */,
 				C5EB3CAD26E9CB5700CCAC9E /* RecipeIngredientsUsedTableViewCell.swift in Sources */,

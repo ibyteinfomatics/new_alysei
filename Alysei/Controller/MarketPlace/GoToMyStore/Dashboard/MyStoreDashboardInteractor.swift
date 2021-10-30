@@ -15,7 +15,7 @@ import UIKit
 protocol MyStoreDashboardBusinessLogic
 {
   func doSomething(request: MyStoreDashboard.Something.Request)
-    func callDashBoardApi(_ sortBy: Int?)
+    func callDashBoardApi()
     func callCategoryApi()
 }
 
@@ -42,16 +42,20 @@ class MyStoreDashboardInteractor: MyStoreDashboardBusinessLogic, MyStoreDashboar
     presenter?.presentSomething(response: response)
   }
     
-    func callDashBoardApi(_ sortBy: Int?){
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDashbordScreen + "1", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errType, statusCode) in
+    func callDashBoardApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDashbordScreen + "/" + "\(selectSort ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errType, statusCode) in
             
             let response = dictResponse as? [String:Any]
             
             let imgBanner = response?["logo"] as? String
             let imgCover = response?["banner"] as? String
             let totalProduct = response?["total_product"] as? Int
+            let totalCategory = response?["total_category"] as? Int
+            let totalEnquiries = response?["total_enquiries"] as? Int
+            let totalReviews = response?["total_reviews"] as? Int
             
-            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0)
+            
+            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0, totalCategory ?? 0, totalEnquiries ?? 0, totalReviews ?? 0)
         }
     }
     

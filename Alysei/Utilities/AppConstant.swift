@@ -213,6 +213,7 @@ struct APIUrl{
     static let kUpdateUserProfile  =  "update/user/profile"
     static let kChangePassword = "change/password"
     
+    static let getAllEntities = "get/all/entities/for/homescreen/"
     static let kgetHubs = "get/hubs"
     static let kGetCitiesByStateId = "get/cities?state_id="
     static let kGetHubCountries  =  "get/hub/countries"
@@ -321,6 +322,8 @@ struct APIUrl{
     static let kPostComment = "post/comment"
     static let kPostReplyComment = "reply/post/comment"
     static let kLike = "post/like"
+   
+    
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -956,6 +959,7 @@ enum PushedFrom: Int {
     case fdaCertified
     case properties
     case myFav
+    case viewAllEntities
     
 }
 
