@@ -150,7 +150,9 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
                 alert(msg: "Please enter medal name!")
             } else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
-            }  else {
+            } else if urlNameTxf.text?.isURL() == false{
+                alert(msg: "Please enter valid competition URL!")
+            } else {
                 createRewardApi()
             }
             
@@ -331,11 +333,11 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         
         if textField == self.urlNameTxf {
             
-            self.productLabel.isHidden = false
-            self.productLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
-            self.productNameTxf.placeholder = "Competition URL"
-            self.productView.isHidden = false
-            productView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            self.urlLabel.isHidden = false
+            self.urlLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.urlNameTxf.placeholder = "Competition URL"
+            self.urlView.isHidden = false
+            urlView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            
         }
         

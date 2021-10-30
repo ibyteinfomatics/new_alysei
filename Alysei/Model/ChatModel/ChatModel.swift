@@ -605,27 +605,36 @@ class CommentClass {
     var core_comment_id :Int?
     var created_at : String?
     var data : PosterClass?
-    var reply : ReplyDetailsClass?
+    var reply = [ReplyDetailsClass]()
+    var isSelected = false
    
     init() { }
     init(with messageData: [String:Any]?) {
         
-        //messageData?.forEach {(key, value) in
-         //   let details = kSharedInstance.getDictionary(value)
-            
-            //print("body--- ",String.getString(messageData?[Parameters.body]))
         self.body           = String.getString(messageData?[Parameters.body])
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
             
         if let poster = messageData?["poster"]  as? [String:Any]{
-                //self.data = (data as AnyObject).map({CommentClass.init(messageData: $0)})
-                self.data =  PosterClass.init(with: poster)
-                    // PosterClass(messageData: data as! [String : Any])
+            self.data =  PosterClass.init(with: poster)
         }
+        
+        if let ReplyDetails = messageData?["ReplyDetails"]  as? [String:Any]{
             
-        //}
-     
+            //self.reply = ReplyDetails.map({ReplyDetailsClass.init(with: $0)})
+            reply.removeAll()
+            ReplyDetails.forEach {(key, value) in
+                
+                let dic = kSharedInstance.getDictionary(value)
+                reply.append(ReplyDetailsClass( with: dic))
+                
+                
+                print("hello reply ",dic)
+                
+            }
+        }
+        
+             
     }
     
     func createDictonary (objects:CommentClass?) -> Dictionary<String , Any> {
@@ -642,9 +651,23 @@ class CommentClass {
 
 class ReplyDetailsClass {
     
+    var body:String?
+    var core_comment_id :Int?
+    var created_at : String?
+    var data : PosterClass?
+    
     init() { }
     init(with messageData: [String:Any]?) {
         
+        self.body           = String.getString(messageData?[Parameters.body])
+        self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
+        self.created_at             = String.getString(messageData?[Parameters.created_at])
+            
+        if let poster = messageData?["poster"]  as? [String:Any]{
+            self.data =  PosterClass.init(with: poster)
+        }
+        
+        print("body--",body ?? "")
         
     }
     

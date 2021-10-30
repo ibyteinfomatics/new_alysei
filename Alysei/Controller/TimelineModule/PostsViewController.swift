@@ -80,6 +80,9 @@ class PostsViewController: AlysieBaseViewC {
         headerStack.isHidden = true
         postTableView.isHidden = true
         callNewFeedApi(1)
+        
+        
+        
     }
 
 

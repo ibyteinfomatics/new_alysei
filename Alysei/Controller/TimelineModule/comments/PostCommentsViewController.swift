@@ -36,6 +36,8 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     var commentID: Int! // this is to be used when user taps on reply button.
     
     var like = 0,comment = 0 , postid : Int!
+    var commentId = 0
+    var replyTap = false
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -96,7 +98,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         self.tableView.tableFooterView = UIView()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.allowsSelection = false
+        //self.tableView.allowsSelection = false
 
         self.commentTextfield.delegate = self
 
@@ -111,6 +113,10 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
             let profilePhoto = UIImage(named: "profile_icon")
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
             
+        }
+        
+        for i in 0..<(self.commentmessages?.count ?? 0){
+            self.commentmessages?[i].isSelected = false
         }
 //        self.commentTextfield.becomeFirstResponder()
     }
@@ -167,17 +173,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     }
 
     func sendComment() {
-        /*guard let text = self.commentTextfield.text else {
-            showAlert(withMessage: "Comment can't be blank.")
-            return
-        }
-
-        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
-        let requestModel = PostComments.Post.Request(post_owner_id: self.postCommentsUserDataModel.userID,
-                                                     user_id: selfID,
-                                                     post_id: self.postCommentsUserDataModel.postID,
-                                                     comment: text)
-        self.interactor?.postComment(requestModel)*/
+        
         
         let params: [String:Any] = [
             
@@ -240,6 +236,81 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
                 kChatharedInstance.send_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID) )
                 
                 self.commentTextfield.text = ""
+                self.commentId = 0
+                self.receiveComment()
+                self.tableView.reloadData()
+                
+            }
+            
+        }
+        
+    }
+    
+    func sendReplyComment(comment_id : String) {
+       
+        let params: [String:Any] = [
+            
+            "post_id": self.postCommentsUserDataModel.postID,
+            "reply": self.commentTextfield.text,
+            "user_id" : Int.getInt(kSharedUserDefaults.loggedInUserModal.userId),
+            "comment_id":comment_id
+            
+        ]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPostReplyComment, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            
+            if let data = dictResponse?["data"] as? [String:Any]{
+                
+                let core_comment_id = Int.getInt(data["core_comment_id"])
+                
+                //print("core_comment_id ",core_comment_id)
+                
+                let date = Date()
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let dateString = df.string(from: date)
+                
+                let likecomment = LikeCommentClass()
+                likecomment.likeCount = self.like
+                likecomment.commentCount = self.comment
+                likecomment.postId = self.postCommentsUserDataModel.postID
+                
+                let comment = CommentClass()
+                comment.body = self.commentTextfield.text
+                comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
+                comment.created_at = dateString
+                
+                let poster = PosterClass()
+                
+                if kSharedUserDefaults.loggedInUserModal.companyName != ""{
+                    poster.restaurant_name = kSharedUserDefaults.loggedInUserModal.companyName
+                } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
+                    poster.restaurant_name = kSharedUserDefaults.loggedInUserModal.restaurantName
+                } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
+                    poster.restaurant_name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                }
+                
+                //poster.restaurant_name = ""
+                poster.email = String.getString(kSharedUserDefaults.loggedInUserModal.email)
+                poster.name = String.getString(kSharedUserDefaults.loggedInUserModal.userName)
+                poster.role_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
+                poster.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                
+                
+                let avatar = CommentAvatarId()
+                avatar.attachment_type = "jpg"
+                avatar.attachment_url = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+                avatar.poster_created_at = dateString
+                avatar.id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                avatar.updated_at = dateString
+                
+                kChatharedInstance.send_reply_comment(countDic: likecomment, commentDisc: comment, poster: poster, avtar: avatar, postId: String.getString(self.postCommentsUserDataModel.postID), replypostId: comment_id )
+                
+                self.commentTextfield.text = ""
+                self.commentId = 0
                 self.receiveComment()
                 self.tableView.reloadData()
                 
@@ -327,7 +398,14 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
             //self.sendReply(self.commentID)
             showAlert(withMessage: "Comment can't be blank.")
         } else {
-            self.sendComment()
+            
+            
+            if self.commentId != 0 {
+                self.sendReplyComment(comment_id: String.getString(self.commentId))
+            } else {
+                self.sendComment()
+            }
+            
             //self.commentTextfield.text = ""
         }
     }
@@ -345,6 +423,44 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         }
         cell.commentReplyDelegate = self
         
+        let data = self.commentmessages?[indexPath.row]
+        if data?.isSelected == true {
+            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [])
+        } else {
+            cell.setReply([])
+        }
+        //cell.replyBtn.tag = indexPath.row
+        cell.btnReplyCallback = {tag in
+           // self.replyTap = true
+            self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+            self.commentTextfield.becomeFirstResponder()
+        }
+        cell.btnViewReplyCallback = {tag in
+            
+            if data?.isSelected == true {
+                data?.isSelected = false
+                cell.setReply([])
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                
+                data?.isSelected = true
+                cell.setReply(self.commentmessages?[indexPath.row].reply ?? [])
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+
+            
+        }
+        
+        if self.commentmessages?[indexPath.row].reply.count ?? 0 > 0 {
+            //cell.viewReplyButtonconstraint.constant = 20
+            cell.viewReplyButton.isHidden = false
+            cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0) Reply", for: .normal)
+        } else {
+            
+            //cell.viewReplyButtonconstraint.constant = 0
+            cell.viewReplyButton.isHidden = true
+        }
+        
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
         
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
@@ -352,6 +468,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         cell.timeLabel.text = "\(time)"
         cell.userImageView.setImage(withString: imageDomain+"/"+String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -359,6 +476,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableView.automaticDimension
     }
 }
@@ -366,6 +484,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
 
 extension PostCommentsViewController: CommnentReplyProtocol {
     func addReplyToComment(_ commentID: Int) {
+        
         self.commentID = commentID
         self.commentTextfield.placeholder = "Add a reply to comment"
         self.commentTextfield.becomeFirstResponder()
@@ -376,5 +495,6 @@ extension PostCommentsViewController: CommnentReplyProtocol {
 extension PostCommentsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.commentTextfield.placeholder = "Leave a comment"
+        self.commentId = 0
     }
 }

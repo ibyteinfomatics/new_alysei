@@ -319,6 +319,7 @@ struct APIUrl{
     static let kMarketplaceBoxFilterApi = "filter?"
     static let kMarketPlaceHome = "get/homescreen"
     static let kPostComment = "post/comment"
+    static let kPostReplyComment = "reply/post/comment"
     static let kLike = "post/like"
     
     enum FeaturedProduct {
