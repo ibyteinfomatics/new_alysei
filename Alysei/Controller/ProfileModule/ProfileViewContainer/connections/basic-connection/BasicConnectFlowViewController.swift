@@ -121,12 +121,17 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
 //        controller?.userID = self.userID
         vwConfirm.isHidden = false
        // self.navigationController?.popViewController(animated: true)
-        for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: ProfileViewC.self) {
-                self.navigationController!.popToViewController(controller, animated: true)
-                break
+        
+        if self.navigationController!.viewControllers != nil {
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: ProfileViewC.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
             }
         }
+        
+        
        
         
     }

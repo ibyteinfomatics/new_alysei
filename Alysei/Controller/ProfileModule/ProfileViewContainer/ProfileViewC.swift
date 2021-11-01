@@ -88,6 +88,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     //var profileCompletion
     var currentIndex: Int = 0
+    var tabposition: Int = 1
     var profileCompletionModel: [ProfileCompletionModel]?
     //    var signUpViewModel: SignUpViewModel!
     //    var userType: UserRoles!
@@ -175,7 +176,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  _ = postsViewC
+        //_ = postsViewC
        
         
         
@@ -293,6 +294,8 @@ class ProfileViewC: AlysieBaseViewC{
         swipeRightGesture.direction = .right
         self.view.addGestureRecognizer(swipeRightGesture)
         
+        self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
+        self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
         
         
     }
@@ -445,6 +448,7 @@ class ProfileViewC: AlysieBaseViewC{
         
         UIView.animate(withDuration: 0.01) {
             self.tabsCollectionView.reloadData()
+            
         } completion: { bool in
             
             if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
@@ -452,8 +456,8 @@ class ProfileViewC: AlysieBaseViewC{
                 cell.isUnderlineBorderVisible(true)
                 cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
-            self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
-            self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
+            //self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
+            //self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
             
 //            if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
 //

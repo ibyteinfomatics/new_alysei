@@ -72,6 +72,15 @@ class NetworkViewC: AlysieBaseViewC {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func inviteApi(id: Int, type: Int){
         
         let params: [String:Any] = [
@@ -503,7 +512,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
         controller?.userLevel = .other
-        controller?.userID = self.connection?.data?[indexPath.row].userID
+        controller?.userID = self.connection?.data?[indexPath.row].user?.userID
     }
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

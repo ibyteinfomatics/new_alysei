@@ -42,6 +42,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var imagePostCollectionView: UICollectionView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var viewLike: UIView!
+    @IBOutlet weak var viewShare: UIView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var commentImage: UIView!
     @IBOutlet weak var lblPostTime: UILabel!
@@ -52,6 +53,7 @@ class PostDescTableViewCell: UITableViewCell {
 
     var data: NewFeedSearchDataModel?
     var likeCallback:((Int) -> Void)? = nil
+    var shareCallback:(()->())?
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
     var islike: Int?
     var index: Int?
@@ -91,6 +93,10 @@ class PostDescTableViewCell: UITableViewCell {
         self.imagePostCollectionView.addGestureRecognizer(tap2)
 
 
+        let showSharesGesture = UITapGestureRecognizer(target: self, action: #selector(self.showShareScreen))
+        showSharesGesture.numberOfTouchesRequired = 1
+        self.viewShare.addGestureRecognizer(showSharesGesture)
+        
         let showCommentsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showCommentsScreen))
         showCommentsGesture.numberOfTouchesRequired = 1
         self.commentImage.addGestureRecognizer(showCommentsGesture)
@@ -124,7 +130,9 @@ class PostDescTableViewCell: UITableViewCell {
         btnLikeCallback?(sender.tag)
     }
     
-    
+    @objc func showShareScreen(_ tap: UITapGestureRecognizer) {
+        self.shareCallback?()
+    }
     
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 

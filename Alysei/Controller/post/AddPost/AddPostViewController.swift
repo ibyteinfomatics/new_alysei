@@ -51,6 +51,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
+        postPrivacyTableView.delegate = self
+        postPrivacyTableView.dataSource = self
         //setUI()
         // Do any additional setup after loading the view.
     }
@@ -352,6 +354,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     
     @IBAction func changePrivacyAction(_ sender: UIButton){
         postPrivacyTableView.isHidden = false
+        postPrivacyTableView.reloadData()
     }
 //    private func showImagePicker(withSourceType type: UIImagePickerController.SourceType,mediaType: MediaType) -> Void {
         
