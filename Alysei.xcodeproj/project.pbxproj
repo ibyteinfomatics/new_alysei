@@ -495,6 +495,8 @@
 		C5A2F35A26C13D5B0072DA8D /* StoreRatingReviewTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2F35926C13D5B0072DA8D /* StoreRatingReviewTableVCell.swift */; };
 		C5A2F35E26C144BC0072DA8D /* StoreDescProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A2F35D26C144BC0072DA8D /* StoreDescProductCollectionViewCell.swift */; };
 		C5AAB85826171896000557B6 /* LiquidCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB85726171896000557B6 /* LiquidCollectionViewLayout.swift */; };
+		C5B7B46B272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B7B46A272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift */; };
+		C5B7B46E273000E500FE7897 /* MarketplaceHomeAdTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B7B46D273000E500FE7897 /* MarketplaceHomeAdTableVC.swift */; };
 		C5B87764264A6A20009048E6 /* CustomPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B87763264A6A20009048E6 /* CustomPhotoPickerViewController.swift */; };
 		C5B98113263FE55B002BFA23 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B98112263FE55B002BFA23 /* UserPostsViewController.swift */; };
 		C5B98116263FE65D002BFA23 /* UserPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B98115263FE65D002BFA23 /* UserPostsTableViewCell.swift */; };
@@ -1122,6 +1124,8 @@
 		C5A2F35926C13D5B0072DA8D /* StoreRatingReviewTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreRatingReviewTableVCell.swift; path = Alysei/Controller/MarketPlace/StoreDescription/StoreRatingReviewTableVCell.swift; sourceTree = SOURCE_ROOT; };
 		C5A2F35D26C144BC0072DA8D /* StoreDescProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5AAB85726171896000557B6 /* LiquidCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidCollectionViewLayout.swift; sourceTree = "<group>"; };
+		C5B7B46A272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHomeTopFavTableVC.swift; sourceTree = "<group>"; };
+		C5B7B46D273000E500FE7897 /* MarketplaceHomeAdTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHomeAdTableVC.swift; sourceTree = "<group>"; };
 		C5B87763264A6A20009048E6 /* CustomPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhotoPickerViewController.swift; sourceTree = "<group>"; };
 		C5B98112263FE55B002BFA23 /* UserPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
 		C5B98115263FE65D002BFA23 /* UserPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsTableViewCell.swift; sourceTree = "<group>"; };
@@ -2706,6 +2710,8 @@
 				C571082E26D8F63A00BEB31C /* MarketPlaceProductListViewController.swift */,
 				C543C5E527144C8E00F14B07 /* MarketplaceHomeRecentlyAddedCVC.swift */,
 				C5E2476A272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift */,
+				C5B7B46A272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift */,
+				C5B7B46D273000E500FE7897 /* MarketplaceHomeAdTableVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3485,6 +3491,7 @@
 				C507B8502668B9EE0014344A /* SelectMemberShipVC.swift in Sources */,
 				27A443AF25AE03720002BAAC /* MKMapViewExtended.swift in Sources */,
 				6B90663E26F89DFF00D24521 /* DietViewController.swift in Sources */,
+				C5B7B46E273000E500FE7897 /* MarketplaceHomeAdTableVC.swift in Sources */,
 				61A40A1B267378BF00D7D078 /* BasicConnectFlowPresenter.swift in Sources */,
 				27A443B725AE03720002BAAC /* UIImageViewBorderWidthAndColor.swift in Sources */,
 				27A443A525AE03720002BAAC /* UILabelCornerRadius.swift in Sources */,
@@ -3522,6 +3529,7 @@
 				274D90AA25B85D5D00C82A75 /* UpdatePasswordViewC.swift in Sources */,
 				C5197AEA26E72AA800C0894F /* ConnectionTabModel.swift in Sources */,
 				C52920432677575D000C044B /* ConnectionProductTypeWorker.swift in Sources */,
+				C5B7B46B272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift in Sources */,
 				6B360D06270AEA51006A48E4 /* BabyFoodDetailsTableViewCell.swift in Sources */,
 				6B97B0A92713EF80003B9E68 /* EditStepCollectionViewCell.swift in Sources */,
 				C5EB3CBC26E9CB5700CCAC9E /* FavouriteTableViewCell.swift in Sources */,

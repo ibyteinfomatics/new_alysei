@@ -96,6 +96,7 @@ class MyStoreProductDetail{
     var longitude: String?
     var latest_review: RatingReviewModel?
     var isOptionSelected = false
+    var flagId : FlagId?
     //var isSelected = false
     //var phone: String?
     
@@ -148,6 +149,9 @@ class MyStoreProductDetail{
         }
         if let storePreValue = data?["prefilled"] as? [String:Any]{
             self.prefilled = SubjectData.init(with: storePreValue)
+        }
+        if let flagId = data?["flag_id"] as? [String:Any]{
+            self.flagId = FlagId.init(data: flagId)
         }
         if let latest_review = data?["latest_review"] as? [String:Any]{
             self.latest_review = RatingReviewModel.init(with: latest_review)
