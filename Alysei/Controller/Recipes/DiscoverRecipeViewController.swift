@@ -10,7 +10,6 @@ var selectedIndex: Int?
 import UIKit
 
 var recipeWalkthroughId = [String]()
-
 var arrayMyRecipe: [HomeTrending]? = []
 class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
@@ -217,14 +216,21 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     
     
     @IBAction func createNewRecipeButton(_ sender: Any) {
-        if AppConstants.recipeWalkthrough == false{
-            walknextBtn.setTitle("Next", for: .normal)
-            animate1View()
-            setBottomUI()
-        }
-        else{
+//        if AppConstants.recipeWalkthrough == false{
+//            walknextBtn.setTitle("Next", for: .normal)
+//            animate1View()
+//            setBottomUI()
+//        }
+         let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
+         let retriveArrayData = kSharedUserDefaults.array(forKey:  "SavedWalkthrough")
+        if ((retriveArrayData?.contains(obj: userId)) != nil){
             let createNewRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateNewRecipeViewController") as! CreateNewRecipeViewController
             self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
+         }
+        else{
+            walknextBtn.setTitle("Next", for: .normal)
+                       animate1View()
+                       setBottomUI()
         }
         
         
@@ -273,9 +279,15 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
             self.discoverRecipeView.alpha = 1
             self.headerView.alpha = 1
             self.containerTableVw.alpha = 1
-            AppConstants.recipeWalkthrough = true
+//            AppConstants.recipeWalkthrough = true
             let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
             recipeWalkthroughId.append(userId)
+            kSharedUserDefaults.setValue(recipeWalkthroughId, forKey: "SavedWalkthrough")
+//
+//            let retriveArrayData = kSharedUserDefaults.object(forKey:  "SavedWalkthrough") as? NSData
+//            if (retriveArrayData != nil) == recipeWalkthroughId.contains(userId){
+//
+//            }
             _ = pushViewController(withName: CreateNewRecipeViewController.id(), fromStoryboard: StoryBoardConstants.kRecipesSelection)
              
             
@@ -1009,7 +1021,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showCuisine?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                                first = 1
+//                                first = 1
                                 arraySelectedCuisine?.removeAll()
                                 for k in (0..<(showCuisine?.count ?? 0)){
                                     arraySelectedCuisine?.append(showCuisine?[k].cousinId ?? 0 )
@@ -1021,7 +1033,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showFood?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                                second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+//                                second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
                                 arraySelectedFood?.removeAll()
                                 for k in (0..<(showFood?.count ?? 0)){
                                     arraySelectedFood?.append(showFood?[k].foodId ?? 0 )
@@ -1035,7 +1047,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showDiet?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                                third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+//                                third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
                                 arraySelectedDiet?.removeAll()
                                 for k in (0..<(showDiet?.count ?? 0)){
                                     
@@ -1049,7 +1061,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showIngridient?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-                                fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+//                                fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
                                 arraySelectedIngridient?.removeAll()
                                 for k in (0..<(showIngridient?.count ?? 0)){
                                     
@@ -1063,7 +1075,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showCookingSkill?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
-                                fifth = 1
+//                                fifth = 1
                                 arraySelectedCookingSkill?.removeAll()
                                 for k in (0..<(showCookingSkill?.count ?? 0)){
                                     
@@ -1079,7 +1091,11 @@ extension DiscoverRecipeViewController{
                 }
                 
             }
-            
+            first = 1
+            second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+            third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+            fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+            fifth = 1
             //        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
             finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+200)
             self.containerTableVw.reloadData()

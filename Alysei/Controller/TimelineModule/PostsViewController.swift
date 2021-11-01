@@ -198,17 +198,25 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.configCell(arrNewFeedDataModel[indexPath.row] , indexPath.row)
                     let data = arrNewFeedDataModel[indexPath.row]
                     cell.menuDelegate = self
-//                    cell.likeCallback = { index in
-//                        //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
-//                        cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
-//                        cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
-//                    }
-
-                   // cell.menuDelegate = self
-
-//                    cell.commentCallback = { postCommentsUserData in
-//                        self.showCommentScreen(postCommentsUserData)
-//                    }
+                    
+                    cell.shareCallback = {
+                        
+                        //self.sharePost(data.postID ?? 0)
+                        
+                    }
+                    
+                    cell.likeCallback = { index in
+                        //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+                        cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
+                        cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                        
+                        
+                        
+                    }
+                    
+                    cell.commentCallback = { postCommentsUserData in
+                        self.showCommentScreen(postCommentsUserData)
+                    }
                 }
                 return cell
                 
@@ -229,6 +237,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.lblPostDesc.numberOfLines = 2
                     cell.btnMoreLess.setTitle("....more", for: .normal)
                 }
+                
+                cell.shareCallback = {
+                    
+                    self.sharePost(data.postID ?? 0)
+                    
+                }
+                
                 cell.likeCallback = { index in
                     //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                     cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"

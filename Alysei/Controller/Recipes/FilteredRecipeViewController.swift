@@ -57,7 +57,7 @@ class FilteredRecipeViewController: UIViewController {
             else{
                 self.viewHeader.isHidden = false
                 self.viewFilter.isHidden = true
-                self.labelRecipe.text = searchText
+                self.labelRecipe.text = updatedText
                 callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
             }
                 
@@ -67,25 +67,29 @@ class FilteredRecipeViewController: UIViewController {
             
         }
         else if isFilterLoading == true{
-            self.viewHeader.isHidden = true
+           
            
             
             if isFrom == "Meal" {
+                self.viewHeader.isHidden = true
             let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
             
             callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
                 
             }
             else if isFrom == "Ingridients"  {
+                self.viewHeader.isHidden = true
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
                 
                 callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
             }
             else if isFrom == "Region" {
+                self.viewHeader.isHidden = true
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
                 callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
             }
             else{
+                self.viewHeader.isHidden = true
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
                 
                 callSearchRecipe(updatedText, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)

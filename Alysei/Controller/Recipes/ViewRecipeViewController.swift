@@ -311,6 +311,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell:RatingAndReviewTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "RatingAndReviewTableViewCell") as? RatingAndReviewTableViewCell else {return UITableViewCell()}
             
             cell.selectionStyle = .none
+            
             let doubleTotalReview = Double.getDouble(recipeModel?.totalReview)
             
             cell.totalOneStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_one_star))))%"

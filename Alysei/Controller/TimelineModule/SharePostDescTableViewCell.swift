@@ -34,11 +34,12 @@ class SharePostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var viewLike: UIView!
     @IBOutlet weak var likeImage: UIImageView!
-    @IBOutlet weak var commentImage: UIImageView!
+    @IBOutlet weak var commentImage: UIView!
     @IBOutlet weak var lblPostTime: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var viewShare: UIView!
     @IBOutlet weak var lblSharePostDesc: UILabel!
     @IBOutlet weak var lblSharedUserName: UILabel!
     @IBOutlet weak var lblSharedUserEmail: UILabel!
@@ -52,9 +53,36 @@ class SharePostDescTableViewCell: UITableViewCell {
     var imageArray = [String]()
     var menuDelegate: ShareEditMenuProtocol!
     
+    var likeCallback:((Int) -> Void)? = nil
+    var commentCallback:((PostCommentsUserData) -> Void)? = nil
+    var islike: Int?
+    var shareCallback:(()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUI()
+        
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
+        tap.numberOfTouchesRequired = 1
+        self.viewLike.addGestureRecognizer(tap)
+
+
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(likeAction))
+        tap2.numberOfTapsRequired = 2
+
+
+        self.imagePostCollectionView.addGestureRecognizer(tap2)
+
+
+        let showCommentsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showCommentsScreen))
+        showCommentsGesture.numberOfTouchesRequired = 1
+        self.commentImage.addGestureRecognizer(showCommentsGesture)
+        
+        let showSharesGesture = UITapGestureRecognizer(target: self, action: #selector(self.showShareScreen))
+        showSharesGesture.numberOfTouchesRequired = 1
+        self.viewShare.addGestureRecognizer(showSharesGesture)
+        
         // Initialization code
     }
     func setUI(){
@@ -148,6 +176,13 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     //self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
     }
     likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+    
+    likeCallback = { index in
+        //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+        self.lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
+        self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+        
+    }
 
     self.imagePostCollectionView.isPagingEnabled = true
 
@@ -186,6 +221,53 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
        // self.menuDelegate.menuBttonTapped(4, userID: 5)
         self.menuDelegate.menuBttonTapped(self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
         
+    }
+    
+    @objc func likeAction(_ tap: UITapGestureRecognizer){
+        if self.data?.likeFlag == 0 {
+            islike = 1
+        }else{
+            islike = 0
+        }
+
+        callLikeUnlikeApi(self.islike, self.data?.activityActionId, self.index)
+        
+
+    }
+    
+    @objc func showShareScreen(_ tap: UITapGestureRecognizer) {
+        self.shareCallback?()
+    }
+
+    @objc func showCommentsScreen() {
+        let model = PostCommentsUserData(userID: self.data?.subjectId?.userId ?? -1,
+                                         postID: self.data?.postID ?? 0)
+        self.commentCallback?(model)
+    }
+    
+}
+
+extension SharePostDescTableViewCell {
+    
+    func callLikeUnlikeApi(_ isLike: Int?, _ postId: Int? ,_ indexPath: Int?){
+        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+
+        let params: [String:Any] = [
+            "post_id": postId ?? 0,
+            "like_or_unlike": isLike ?? 0,
+            "user_id": selfID
+
+        ]
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLikeApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            self.data?.likeFlag = isLike
+            if isLike == 0{
+            self.data?.likeCount = ((self.data?.likeCount ?? 1) - 1)
+            }else{
+                self.data?.likeCount = ((self.data?.likeCount ?? 1) + 1)
+            }
+             self.likeCallback?(indexPath ?? 0)
+            
+        }
     }
 }
 

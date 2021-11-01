@@ -16,7 +16,7 @@ protocol PostCommentsDisplayLogic: class {
     func loadComments(_ response: PostComments.Comment.Response)
 }
 
-class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
+class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
     var interactor: PostCommentsBusinessLogic?
     var router: (NSObjectProtocol & PostCommentsRoutingLogic & PostCommentsDataPassing)?
 
@@ -47,15 +47,21 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     
     func receiveComment() {
         
-        
-        
         kChatharedInstance.receivce_Comment(postId: String.getString(self.postid)) { (message) in
             
             self.commentmessages?.removeAll()
             self.commentmessages = message
             self.tableView.reloadData()
             self.scrollToLTopRow()
+            
+            if self.commentmessages?.count ?? 0 == 0{
+                self.vwBlank.isHidden = false
+            }else{
+                self.vwBlank.isHidden = true
+            }
+            
         }
+        
             
     }
         
@@ -86,6 +92,12 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
             }
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      self.viewNavigation.drawBottomShadow()
+       // self.tableView.drawBottomShadow()
+    }
 
     // MARK:- View lifecycle
 
@@ -103,6 +115,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         //self.tableView.allowsSelection = false
 
         self.commentTextfield.delegate = self
+        
         
         if postid > 0 {
             self.interactor?.fetchComments(self.postid)
@@ -134,10 +147,14 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         if postid == 0 {
            postid = self.postCommentsUserDataModel.postID
         }
+        bottomViewForCommentTextField.layer.borderWidth = 1
+        bottomViewForCommentTextField.layer.borderColor = UIColor.lightGray.cgColor
         receiveComment()
+        
     }
 
     // MARK:- IBOutlets
+    @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var backButton: UIButtonExtended!
     @IBOutlet weak var titleLabel: UILabelExtended!
     @IBOutlet weak var tableView: UITableView!
@@ -146,6 +163,7 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
     @IBOutlet weak var commentTextfield: UITextFieldBorderWidthAndColor!
     @IBOutlet weak var profilePhotoButton: UIButtonExtended!
     @IBOutlet weak var sendCommentButton: UIButtonExtended!
+    @IBOutlet weak var vwBlank: UIView!
 
     // MARK:- protocol methods
     func loadComments(_ response: PostComments.Comment.Response) {
@@ -178,7 +196,8 @@ class PostCommentsViewController: UIViewController, PostCommentsDisplayLogic {
         DispatchQueue.main.async {
             if Int.getInt(self.commentmessages?.count) != 0 {
                 let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
-                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                //self.commentTextfield.becomeFirstResponder()
             }
         }
     }
