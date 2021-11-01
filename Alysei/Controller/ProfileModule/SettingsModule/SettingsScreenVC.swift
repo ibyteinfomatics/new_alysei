@@ -83,9 +83,12 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             case 9:
               _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 8:
-                //kSharedUserDefaults.clearAllData()
+              
                 let token = kSharedUserDefaults.getDeviceToken()
+                let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
                 kSharedUserDefaults.clearAllData()
+                kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
+                
                 kSharedUserDefaults.setDeviceToken(deviceToken: token)
             default:
               break
@@ -109,9 +112,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
-           // kSharedUserDefaults.clearAllData()
+          
         default:
           break
         }
@@ -138,9 +143,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
-           // kSharedUserDefaults.clearAllData()
         default:
           break
         }
@@ -163,7 +169,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
            // kSharedUserDefaults.clearAllData()
         default:
@@ -188,7 +196,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
             
           //  kSharedUserDefaults.clearAllData()
@@ -214,7 +224,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
           //  kSharedUserDefaults.clearAllData()
         default:

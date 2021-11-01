@@ -132,7 +132,15 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             addSteps.page = (page - 1)
             addSteps.selectedIndex = (page - 2)
             self.navigationController?.pushViewController(addSteps, animated: true)
-        } else {
+        }
+//        else if selectedIndex > 0 && selectedIndex == 1000{
+//            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
+//
+//            addSteps.page = (page - 1)
+//            addSteps.selectedIndex = (page - 2)
+//            self.navigationController?.pushViewController(addSteps, animated: true)
+//        }
+        else {
             if selectedIndex != 1000 {
                 
                 if let destinationViewController = navigationController?.viewControllers

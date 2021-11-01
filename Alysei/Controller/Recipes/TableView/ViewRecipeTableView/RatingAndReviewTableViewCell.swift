@@ -57,15 +57,15 @@ class RatingAndReviewTableViewCell: UITableViewCell {
 
     func configCell(_ data: LatestReviewDataModel){
         self.data = data
-//        print("Data -----------------------------------\(String(describing: data.user?.company_name))")
+//        print("Data -----------------------------------\(String(describing: data.user?.compnyName))")
 //        print("Data----------------------------\(data.review ?? "")")
-//        if data.user?.role_id == UserRoles.restaurant.rawValue{
-//            lblClientName.text = data.user?.restaurant_name
-//        }else if data.user?.role_id == UserRoles.voyagers.rawValue || data.user?.role_id == UserRoles.voiceExperts.rawValue{
+//        if data.user?.roleId == UserRoles.restaurant.rawValue{
+//            lblClientName.text = data.user?.restaurantName
+//        }else if data.user?.roleId == UserRoles.voyagers.rawValue || data.user?.roleId == UserRoles.voiceExperts.rawValue{
             
             lblClientName.text = "\(data.user?.name ?? "")"
 //        }else{
-//            lblClientName.text = data.user?.company_name
+//            lblClientName.text = data.user?.compnyName
 //        }
        
         self.lblClientReview.text = data.review

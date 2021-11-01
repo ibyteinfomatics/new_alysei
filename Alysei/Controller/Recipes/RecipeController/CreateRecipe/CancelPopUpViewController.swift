@@ -40,6 +40,7 @@ class CancelPopUpViewController: UIViewController {
         self.dismiss(animated: true) {
             selectedIngridentsArray.removeAll()
             selectedToolsArray.removeAll()
+            arrayStepFinalData.removeAll()
             self.Callback?()
         }
         

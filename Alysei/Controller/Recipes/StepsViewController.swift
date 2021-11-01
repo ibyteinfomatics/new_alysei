@@ -84,6 +84,7 @@ class StepsViewController: UIViewController, StepDelegate {
                 }
                 
             }
+            
             nextStep.setTitle("Next", for: .normal)
             nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
             backButton.isHidden = false
@@ -229,6 +230,7 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
 
             cell.delegate = self
             cell.collectionView.reloadData()
+            
             return cell
         
         case 1:

@@ -57,7 +57,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <view alpha="0.60999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-GJ-tKo">
+                            <view alpha="0.35999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-GJ-tKo">
                                 <rect key="frame" x="0.0" y="120" width="376" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB6-Nh-K2z">
@@ -118,7 +118,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.68662308673469385" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="UZd-9e-evN" firstAttribute="top" secondItem="IB6-Nh-K2z" secondAttribute="bottom" id="T0T-iZ-xk6"/>
                                     <constraint firstItem="IB6-Nh-K2z" firstAttribute="top" secondItem="i0M-GJ-tKo" secondAttribute="top" constant="10" id="aFw-rV-xTq"/>
@@ -130,11 +130,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvk-dF-fCY">
-                                <rect key="frame" x="15" y="177" width="101.5" height="19.5"/>
+                                <rect key="frame" x="15" y="177" width="114" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19.5" id="Jxm-wx-gEY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
