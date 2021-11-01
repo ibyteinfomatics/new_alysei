@@ -11,8 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue-Light.ttf">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -3554,7 +3556,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Wrk-FY-Bhd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="tapSearchRecipe:" destination="CzX-Fz-L7X" eventType="touchUpInside" id="HfJ-2f-CQZ"/>
                                                     </connections>
@@ -10293,12 +10298,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TrO-N8-UpG">
-                                                            <rect key="frame" x="15" y="51.5" width="384" height="38"/>
+                                                            <rect key="frame" x="157" y="51.5" width="100" height="38"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="38" id="IRR-f8-RrT"/>
+                                                                <constraint firstAttribute="width" constant="100" id="Wvw-Hm-DqP"/>
                                                             </constraints>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bXK-7r-FvB">
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bXK-7r-FvB">
                                                                 <size key="itemSize" width="54" height="35"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -10370,12 +10376,10 @@
                                                         <constraint firstAttribute="bottom" secondItem="Bz4-uU-d9e" secondAttribute="bottom" constant="5" id="Cxd-GC-XUK"/>
                                                         <constraint firstAttribute="trailing" secondItem="NcP-qn-FLP" secondAttribute="trailing" constant="15" id="F6R-hN-GpD"/>
                                                         <constraint firstItem="vfS-hQ-j2u" firstAttribute="top" secondItem="TrO-N8-UpG" secondAttribute="bottom" constant="15" id="Lcm-DD-gWR"/>
-                                                        <constraint firstItem="TrO-N8-UpG" firstAttribute="leading" secondItem="WR8-oS-auh" secondAttribute="leading" constant="15" id="NPp-nx-wuc"/>
                                                         <constraint firstItem="Bz4-uU-d9e" firstAttribute="top" secondItem="NcP-qn-FLP" secondAttribute="bottom" constant="15" id="WXX-1g-YTm"/>
                                                         <constraint firstItem="vfS-hQ-j2u" firstAttribute="leading" secondItem="WR8-oS-auh" secondAttribute="leading" constant="15" id="YF7-A4-ELB"/>
                                                         <constraint firstItem="TrO-N8-UpG" firstAttribute="top" secondItem="ozT-gM-UEg" secondAttribute="bottom" constant="15" id="Yex-Hi-gMm"/>
                                                         <constraint firstAttribute="trailing" secondItem="vfS-hQ-j2u" secondAttribute="trailing" constant="15" id="aUc-Oe-bNd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TrO-N8-UpG" secondAttribute="trailing" constant="15" id="amS-4i-XWN"/>
                                                         <constraint firstItem="NcP-qn-FLP" firstAttribute="top" secondItem="vfS-hQ-j2u" secondAttribute="bottom" constant="10" id="eKc-Ua-gXi"/>
                                                         <constraint firstItem="ozT-gM-UEg" firstAttribute="centerX" secondItem="WR8-oS-auh" secondAttribute="centerX" id="h02-Dm-d6h"/>
                                                         <constraint firstAttribute="trailing" secondItem="Bz4-uU-d9e" secondAttribute="trailing" constant="15" id="m83-pU-uBI"/>
@@ -10559,7 +10563,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Alexender" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vn-2Q-ftg">
                                                             <rect key="frame" x="15" y="36.5" width="94" height="19"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-Bl-LzF">
@@ -10629,7 +10633,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4T-Cg-gyU">
                                                             <rect key="frame" x="100" y="66.5" width="82.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-LF-Pwo">
@@ -11026,7 +11030,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@gemachua" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqp-Xs-NB4">
                                                                     <rect key="frame" x="0.0" y="32.5" width="77" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -11180,7 +11184,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiU-iP-Riw">
                                                             <rect key="frame" x="10" y="54.5" width="364" height="130.5"/>
                                                             <string key="text">The desire to nurture the Estate’s exceptional qualities has shaped Ornellaia’s philosophy since the beginning. Ornellaia is a cuvée of Cabernet Sauvignon, Merlot, Cabernet Franc &amp; Petit Verdot and the faithful expression of unique terroir developed in harmony with nature.</string>
-                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -11215,15 +11219,15 @@
                                                         <constraint firstAttribute="height" constant="19" id="Efa-Oe-iDJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating &amp; Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGy-zG-FRL">
-                                                    <rect key="frame" x="15" y="15" width="125.5" height="19"/>
+                                                    <rect key="frame" x="15" y="15" width="141" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="f7T-xV-evs"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -11847,14 +11851,14 @@
         <image name="icons8_image_1" width="34.5" height="27.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
-        <image name="icons8_left" width="24" height="18.5"/>
+        <image name="icons8_left" width="19" height="15"/>
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
         <image name="icons8_search" width="18" height="18"/>
-        <image name="icons8_shop_3" width="17.5" height="17.5"/>
+        <image name="icons8_shop_3" width="16" height="16"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
@@ -11895,9 +11899,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
