@@ -31,14 +31,24 @@ class AddReviewRecipeViewController: UIViewController{
     var viewRecipeCommentModel: ViewRecipeDetailDataModel?
     var arrAllReviewModel: [LatestReviewDataModel]? = []
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        IQKeyboardManager.shared.enable = false
-//
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        IQKeyboardManager.shared.enable = true
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+       
+        IQKeyboardManager.shared.enable = false
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +66,6 @@ class AddReviewRecipeViewController: UIViewController{
         reviewStarCount = 0
         setStar()
         
-        // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
-//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-          
-              // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
-//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
             userImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
@@ -78,22 +83,37 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-//           // if keyboard size is not available for some reason, dont do anything
-//           return
-//        }
-//
-//      // move the root view up by the distance of keyboard height
-//      self.viewComment.frame.origin.y = 0 - keyboardSize.height
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//      // move back the root view origin to zero
-//      self.viewComment.frame.origin.y = 0
-//    }
+    //MARK: custom methods
+    @objc func keyboardWillShow(notification: NSNotification) {
+        var keyboardSize: CGSize = CGSize.zero
+        if let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+            keyboardSize = value.cgRectValue.size
+            if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+                addCommentViewBottom.constant = keyboardSize.height-34
+            }else {
+                addCommentViewBottom.constant = keyboardSize.height
+            }
+            self.view.layoutIfNeeded()
+            scrollToLTopRow()
+            
+        }
+    }
     
+    @objc func keyboardWillHide(notification: NSNotification){
+        addCommentViewBottom.constant = 4
+        self.view.layoutIfNeeded()
+    }
+    
+    func scrollToLTopRow() {
+        DispatchQueue.main.async {
+            if Int.getInt(self.arrAllReviewModel?.count) != 0 {
+                //let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.allReviewTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                //self.commentTextfield.becomeFirstResponder()
+            }
+        }
+    }
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

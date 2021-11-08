@@ -28,7 +28,7 @@ class RecipeByTableViewCell: UITableViewCell {
 //    @IBOutlet weak var rateImg4: UIImageView!
 //    @IBOutlet weak var rateImg5: UIImageView!
     
-   
+    var btnViewProfileCallback:(() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -49,6 +49,7 @@ class RecipeByTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func viewProfileButton(_ sender: Any) {
+        btnViewProfileCallback?()
     }
     
     

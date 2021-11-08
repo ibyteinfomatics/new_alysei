@@ -68,7 +68,7 @@ class ProfileViewC: AlysieBaseViewC{
     //  @IBOutlet weak var btnBack: UIButton!
     
     //MARK: - Properties -
-    
+    var fromRecipe: String? = ""
     var percentage: String?
     
     var contactDetail = [ContactDetail.view.tableCellModel]()
@@ -358,7 +358,10 @@ class ProfileViewC: AlysieBaseViewC{
         
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        if fromRecipe == ""{
         self.tabBarController?.tabBar.isHidden = false
+        }
+        
         // self.viewProfileCompletion.isHidden = true
         // self.viewProfileHeight.constant = 0
         

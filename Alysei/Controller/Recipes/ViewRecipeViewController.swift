@@ -12,7 +12,7 @@ var stepsModel: [StepsDataModel]? = []
 var recipeModel : ViewRecipeDetailDataModel?
 var usedIngridientModel : [UsedIngridientDataModel]? = []
 var usedToolModel: [UsedToolsDataModel]? = []
-class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRowDelegate {
+class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRowDelegate {
     
     
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
@@ -32,7 +32,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         else{
             tableView.reloadData()
         }
-        
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
@@ -304,6 +304,15 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
+            
+            cell.btnViewProfileCallback = {
+                
+                let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                controller?.userLevel = .other
+                controller?.fromRecipe = "Recipe"
+                
+                controller?.userID = recipeModel?.userId
+            }
             
             return cell
             
