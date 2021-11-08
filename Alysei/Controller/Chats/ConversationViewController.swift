@@ -22,7 +22,7 @@ class ConversationViewController: AlysieBaseViewC {
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var chatTblView: UITableView!
-    @IBOutlet weak var chatTextView: UITextView!
+    @IBOutlet weak var chatTextView: IQTextView!
     @IBOutlet weak var txtMsgHeightConstraint: NSLayoutConstraint!
     @IBOutlet var bottomViewBottmConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewBottom: UIView!
@@ -84,10 +84,10 @@ class ConversationViewController: AlysieBaseViewC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //self.navigationController?.navigationBar.isHidden = false
+        IQKeyboardManager.shared.enable = false
         self.tabBarController?.tabBar.isHidden = true
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        //IQKeyboardManager.shared.enable = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.btnDelete.isHidden = true
         
         chatTblView.reloadData()
@@ -109,12 +109,14 @@ class ConversationViewController: AlysieBaseViewC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
         
+        
     }
   
-    @objc func keyboardWillShow(notification: NSNotification) {
+   /* @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.txtMsgHeightConstraint.constant = keyboardSize.height
             self.view.layoutIfNeeded()
@@ -125,14 +127,14 @@ class ConversationViewController: AlysieBaseViewC {
             }
             
         }
-    }
+    }*/
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         chatTextView.resignFirstResponder()
         return true
     }
     
-    @objc func keyboardWillHide(notification: NSNotification){
+    /*@objc func keyboardWillHide(notification: NSNotification){
         self.txtMsgHeightConstraint.constant = 0
         
         chatTextView.inputView = nil
@@ -142,6 +144,26 @@ class ConversationViewController: AlysieBaseViewC {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             chatTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom:0, right: 0)
             }
+    }*/
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        var keyboardSize: CGSize = CGSize.zero
+        if let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+            keyboardSize = value.cgRectValue.size
+            if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+                bottomViewBottmConstraint.constant = keyboardSize.height-34
+            }else {
+                bottomViewBottmConstraint.constant = keyboardSize.height
+            }
+            self.view.layoutIfNeeded()
+            scrollToLastRow()
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        bottomViewBottmConstraint.constant = 0
+        self.view.layoutIfNeeded()
     }
     
     //Function for Register  Nib in for Table View

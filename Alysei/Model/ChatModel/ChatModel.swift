@@ -374,9 +374,9 @@ extension MessageList {
 
 class MessageObject {
     var SendingTime =  Int()
-    var messages = [MessageClass]()
+    var messages = [ReceivedMessageClass]()
     
-    init(time :Int , messageList:[MessageClass]) {
+    init(time :Int , messageList:[ReceivedMessageClass]) {
         self.messages = messageList
         self.SendingTime = time
     }

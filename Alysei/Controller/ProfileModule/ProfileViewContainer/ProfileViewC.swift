@@ -1498,7 +1498,14 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         if collectionView == self.tabsCollectionView {
             if let cell = self.getTabCollectionViewCell(indexPath) as? TabCollectionViewCell {
                 cell.backgroundColor = .clear
-                cell.isUnderlineBorderVisible(false)
+                
+                
+                if indexPath.row == 1 {
+                    cell.isUnderlineBorderVisible(true)
+                } else {
+                    cell.isUnderlineBorderVisible(false)
+                }
+                
                 return cell
             }
         }
