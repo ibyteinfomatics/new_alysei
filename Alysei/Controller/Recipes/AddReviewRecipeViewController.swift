@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 var isFromComment = String()
 
@@ -17,17 +18,28 @@ class AddReviewRecipeViewController: UIViewController{
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var btnAddReview: UIButton!
     
+    @IBOutlet weak var viewComment: UIView!
     @IBOutlet weak var btnStar1: UIButton!
     @IBOutlet weak var btnStar2: UIButton!
     @IBOutlet weak var btnStar3: UIButton!
     @IBOutlet weak var btnStar4: UIButton!
     @IBOutlet weak var btnStar5: UIButton!
+    @IBOutlet weak var addCommentViewBottom: NSLayoutConstraint!
     
     var reviewStarCount: Int?
     var recipeReviewId = Int()
     var viewRecipeCommentModel: ViewRecipeDetailDataModel?
     var arrAllReviewModel: [LatestReviewDataModel]? = []
-//    var imageUrl = String()
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        IQKeyboardManager.shared.enable = false
+//
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        IQKeyboardManager.shared.enable = true
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,12 +56,18 @@ class AddReviewRecipeViewController: UIViewController{
         reviewStarCount = 0
         setStar()
         
+        // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
+//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+          
+              // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-                   userImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            userImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
         }
         userImageVw.layer.cornerRadius = userImageVw.frame.height/2
         getAllReviews()
-
+        
     }
     
     func setStar(){
@@ -59,7 +77,23 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
-
+    
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//           // if keyboard size is not available for some reason, dont do anything
+//           return
+//        }
+//
+//      // move the root view up by the distance of keyboard height
+//      self.viewComment.frame.origin.y = 0 - keyboardSize.height
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//      // move back the root view origin to zero
+//      self.viewComment.frame.origin.y = 0
+//    }
+    
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -74,7 +108,7 @@ class AddReviewRecipeViewController: UIViewController{
         }
         else{
             
-        postDoReview()
+            postDoReview()
             reviewTextView.text = AppConstants.leaveComment
             reviewTextView.textColor = UIColor.lightGray
             reviewStarCount = 0
@@ -129,7 +163,7 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
     }
     
-
+    
 }
 
 extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSource{
@@ -159,57 +193,57 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-
+            
         }
-//            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
-//                cell.rateImg1.image = UIImage(named: "Group 1142")
-//                cell.rateImg2.image = UIImage(named: "icons8_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//               cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
+        //            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+        //                cell.rateImg1.image = UIImage(named: "Group 1142")
+        //                cell.rateImg2.image = UIImage(named: "icons8_star")
+        //                cell.rateImg3.image = UIImage(named: "icons8_star")
+        //                cell.rateImg4.image = UIImage(named: "icons8_star")
+        //               cell.rateImg5.image = UIImage(named: "icons8_star")
+        //            }
         else if arrAllReviewModel?[indexPath.row].rating == 1 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
-           cell.rateImg5.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
         }
-//            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "Group 1142")
-//                cell.rateImg3.image = UIImage(named: "icons8_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-    else if arrAllReviewModel?[indexPath.row].rating == 2 {
+        //            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+        //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg2.image = UIImage(named: "Group 1142")
+        //                cell.rateImg3.image = UIImage(named: "icons8_star")
+        //                cell.rateImg4.image = UIImage(named: "icons8_star")
+        //                cell.rateImg5.image = UIImage(named: "icons8_star")
+        //            }
+        else if arrAllReviewModel?[indexPath.row].rating == 2 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
         }
-//            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "Group 1142")
-//                cell.rateImg4.image = UIImage(named: "icons8_star")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
-    else if arrAllReviewModel?[indexPath.row].rating == 3 {
+        //            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+        //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg3.image = UIImage(named: "Group 1142")
+        //                cell.rateImg4.image = UIImage(named: "icons8_star")
+        //                cell.rateImg5.image = UIImage(named: "icons8_star")
+        //            }
+        else if arrAllReviewModel?[indexPath.row].rating == 3 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
         }
-//            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg4.image = UIImage(named: "Group 1142")
-//                cell.rateImg5.image = UIImage(named: "icons8_star")
-//            }
+        //            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+        //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg4.image = UIImage(named: "Group 1142")
+        //                cell.rateImg5.image = UIImage(named: "icons8_star")
+        //            }
         else if arrAllReviewModel?[indexPath.row].rating == 4{
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
@@ -217,14 +251,14 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
             cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
         }
-//            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
-//                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-//                cell.rateImg5.image = UIImage(named: "Group 1142")
-//            }
-    else if arrAllReviewModel?[indexPath.row].rating == 5 {
+        //            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+        //                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+        //                cell.rateImg5.image = UIImage(named: "Group 1142")
+        //            }
+        else if arrAllReviewModel?[indexPath.row].rating == 5 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
@@ -241,34 +275,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension AddReviewRecipeViewController: UITextViewDelegate{
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.text == "Leave a comment..." {
-//            reviewTextView.text = ""
-//            reviewTextView.textColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.86)
-//        }
-//
-//        textView.becomeFirstResponder()
-//    }
-//
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
-//        if text == "\n"{
-//            reviewTextView.text = "Leave a comment..."
-//            reviewTextView.resignFirstResponder()
-//        }
-//        return true
-//    }
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView.text == "" {
-//            reviewTextView.text = "Leave a comment..."
-//            reviewTextView.textColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-//        }
-//        else{
-//            reviewTextView.text = textView.text
-//            reviewTextView.textColor = .black
-//        }
-//        textView.resignFirstResponder()
-//    }
+    
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == AppConstants.leaveComment{
@@ -277,42 +284,42 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
         return true
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-
+        
         // Combine the textView text and the replacement text to
         // create the updated text string
         let currentText:String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-
+        
         // If updated text view will be empty, add the placeholder
         // and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
-
+            
             textView.text = AppConstants.leaveComment
             textView.textColor = UIColor.lightGray
-
+            
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
-
+        
         // Else if the text view's placeholder is showing and the
         // length of the replacement string is greater than 0, set
         // the text color to black then set its text to the
         // replacement string
         else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-           textView.textColor = UIColor.black
-           textView.text = text
-       }
-
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+        
         // For every other case, the text should change with the usual
         // behavior...
         else {
             return true
         }
-
+        
         // ...otherwise return false since the updates have already
         // been made
         return false
     }
-
+    
 }
 extension AddReviewRecipeViewController{
     func getAllReviews(){
@@ -322,7 +329,7 @@ extension AddReviewRecipeViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.arrAllReviewModel = data.map({LatestReviewDataModel.init(with: $0)})
-               
+                
             }
             
             self.allReviewTableView.reloadData()
@@ -333,7 +340,7 @@ extension AddReviewRecipeViewController{
     func postDoReview(){
         
         let params: [String:Any] = ["recipe_id": recipeReviewId ,"rating": reviewStarCount ?? 0, "review": self.reviewTextView.text ?? ""]
-            
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.doReview, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             
             switch statusCode{
@@ -346,10 +353,10 @@ extension AddReviewRecipeViewController{
             default:
                 break
             }
-          }
+        }
         allReviewTableView.reloadData()
         
     }
-   
-   
+    
+    
 }

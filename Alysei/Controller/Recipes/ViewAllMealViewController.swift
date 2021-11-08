@@ -43,6 +43,7 @@ class ViewAllMealViewController: UIViewController {
     }
     
     func getSearchByMeal(){
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
@@ -58,11 +59,12 @@ class ViewAllMealViewController: UIViewController {
                 
             }
             self.collectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
     }
     }
     
     func callSearchMeal(){
-
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getSearchMeal + searchText , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -71,7 +73,7 @@ class ViewAllMealViewController: UIViewController {
                 self.arraySearchByMeal = data.map({SelectMealDataModel.init(with: $0)})
                 self.searching1 = true
                 self.collectionView.reloadData()
-
+                self.view.isUserInteractionEnabled = true
             }
             
             

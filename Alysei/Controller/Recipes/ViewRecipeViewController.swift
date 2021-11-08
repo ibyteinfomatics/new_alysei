@@ -14,7 +14,7 @@ var usedIngridientModel : [UsedIngridientDataModel]? = []
 var usedToolModel: [UsedToolsDataModel]? = []
 class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRowDelegate {
     
-
+    
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnStartCooking: UIButton!
@@ -26,21 +26,21 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     let menuButton = UIButton()
     override func viewWillAppear(_ animated: Bool) {
         
-       if isFromComment == "Review" {
+        if isFromComment == "Review" {
             self.getRecipeDetail()
         }
-       else{
-        tableView.reloadData()
-       }
-       
-
+        else{
+            tableView.reloadData()
+        }
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
-
+        
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
         backButton.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
         menuButton.frame = CGRect(x: UIScreen.main.bounds.size.width-40, y: 20, width: 40, height: 40)
@@ -58,17 +58,17 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         view.addSubview(recipeImageView)
         view.addSubview(backButton)
         view.addSubview(menuButton)
-
+        
         btnStartCooking.layer.borderWidth = 1
         btnStartCooking.layer.cornerRadius = 24
         btnStartCooking.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
-    
+        
         getRecipeDetail()
         
-        }
+    }
     
     func cellTapped(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
@@ -78,13 +78,13 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
     @objc func backAction(_ tap: UITapGestureRecognizer){
         
         self.navigationController?.popViewController(animated: true)
-
+        
     }
     
     @objc func menuAction(_ tap: UITapGestureRecognizer){
         
         let actionSheet = UIAlertController(style: .actionSheet)
-
+        
         
         let deleteRecipe = UIAlertAction(title: "Delete Recipe", style: .destructive) { action in
             self.deleteRecipe()
@@ -93,16 +93,16 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         let shareRecipe = UIAlertAction(title: "Share Recipe", style: .default) { action in
             let url = URL(string:"https://social.alysei.com/")
             let activityVC = UIActivityViewController(activityItems: [url ?? ""], applicationActivities: nil)
-             activityVC.popoverPresentationController?.sourceView = self.view
-             self.present(activityVC, animated: true)
-
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true)
+            
         }
-
-
+        
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-
+            
         }
-
+        
         if recipeModel?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? "0"){
             actionSheet.addAction(deleteRecipe)
             actionSheet.addAction(shareRecipe)
@@ -113,11 +113,11 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
             actionSheet.addAction(cancelAction)
         }
         
-
-
+        
+        
         self.present(actionSheet, animated: true, completion: nil)
-
-
+        
+        
     }
     
     
@@ -126,7 +126,7 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-  func setImage(){
+    func setImage(){
         let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
         recipeImageView.setImage(withString: imgUrl)
     }
@@ -137,9 +137,9 @@ class ViewRecipeViewController: UIViewController, ViewRecipeDelegate, CategoryRo
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-
-            return 5
-
+        
+        return 5
+        
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -148,16 +148,16 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
             
         }else if section == 1{
-     switch checkbutton {
-        case 0:
-
-            return usedIngridientModel?.count ?? 0
-        case 1:
-            return usedToolModel?.count ?? 0
-        
-     default:
-        print("Invalid")
-        }
+            switch checkbutton {
+            case 0:
+                
+                return usedIngridientModel?.count ?? 0
+            case 1:
+                return usedToolModel?.count ?? 0
+                
+            default:
+                print("Invalid")
+            }
         }
         else if section == 2{
             return 1
@@ -166,10 +166,10 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         else{
-        return 1
+            return 1
         }
         return 1
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -178,9 +178,9 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell  = tableView.dequeueReusableCell(withIdentifier: "ViewDetailsTableViewCell", for: indexPath) as? ViewDetailsTableViewCell else {return UITableViewCell()}
             cell.labelRecipeName.text = recipeModel?.recipeName
-           
-            cell.likeCallback = {
             
+            cell.likeCallback = {
+                
                 cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
                 cell.imagLike.image = recipeModel?.isFav == 0 ? UIImage(named: "like_icon") : UIImage(named: "like_icon_active")
                 
@@ -192,86 +192,86 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.labelTime.text = "\( recipeModel?.hours ?? 0)" + " " + "hours" + " " + "\( recipeModel?.minute ?? 0)" + " " + "minutes"
             cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + "Serving"
             cell.labelMealType.text = recipeModel?.meal?.mealName ?? "NA"
-        
-        if recipeModel?.avgRating ?? "0.0" == "0.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_star")
-            cell.rateImg2.image = UIImage(named: "icons8_star")
-            cell.rateImg3.image = UIImage(named: "icons8_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-
-        }
-        else if recipeModel?.avgRating ?? "0.0" == "0.5" {
-            cell.rateImg1.image = UIImage(named: "Group 1142")
-            cell.rateImg2.image = UIImage(named: "icons8_star")
-            cell.rateImg3.image = UIImage(named: "icons8_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-           cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if recipeModel?.avgRating ?? "0.0" == "1.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_star")
-            cell.rateImg3.image = UIImage(named: "icons8_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-           cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if recipeModel?.avgRating ?? "0.0" == "1.5" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "Group 1142")
-            cell.rateImg3.image = UIImage(named: "icons8_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if recipeModel?.avgRating ?? "0.0" == "2.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if recipeModel?.avgRating ?? "0.0" == "2.5" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "Group 1142")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if recipeModel?.avgRating ?? "0.0" == "3.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "icons8_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if recipeModel?.avgRating ?? "0.0" == "3.5" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "Group 1142")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if recipeModel?.avgRating ?? "0.0" == "4.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if recipeModel?.avgRating ?? "0.0" == "4.5" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg5.image = UIImage(named: "Group 1142")
-        }else if recipeModel?.avgRating ?? "0.0" == "5.0" {
-            cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
-        }
+            
+            if recipeModel?.avgRating ?? "0.0" == "0.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_star")
+                cell.rateImg2.image = UIImage(named: "icons8_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+                
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+                cell.rateImg1.image = UIImage(named: "Group 1142")
+                cell.rateImg2.image = UIImage(named: "icons8_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "1.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "Group 1142")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "2.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "Group 1142")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "3.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "Group 1142")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "4.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg5.image = UIImage(named: "Group 1142")
+            }else if recipeModel?.avgRating ?? "0.0" == "5.0" {
+                cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
+                cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
+            }
             cell.reloadTableViewCallback = { tag in
                 self.checkbutton = tag
                 self.tableView.reloadData()
-
+                
             }
-           
+            
             return cell
         case 1:
             guard let cell:ViewRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
@@ -283,7 +283,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.ingredientNameLabel.text = usedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
                 cell.ingredientQuantityLabel.text = (usedIngridientModel?[indexPath.row].quantity ?? "0") + " " + (usedIngridientModel?[indexPath.row].unit ?? "")
                 editSavedIngridientId = usedIngridientModel?[indexPath.row].recipeSavedIngridientId ?? 0
-             
+                
                 
             }else{
                 let imgUrl = (kImageBaseUrl + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
@@ -305,7 +305,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
             
-        return cell
+            return cell
             
         case 3:
             guard let cell:RatingAndReviewTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "RatingAndReviewTableViewCell") as? RatingAndReviewTableViewCell else {return UITableViewCell()}
@@ -319,23 +319,23 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.totalThreeeStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_three_star))))%"
             cell.totalFourStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_four_star))))%"
             cell.totalFiveStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star))))%"
-
-
-
+            
+            
+            
             cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_one_star)))/100, animated: false)
-
+            
             cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(recipeModel?.total_two_star ?? 0)))/100, animated: false)
-
+            
             cell.totalThreeeStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_three_star)))/100, animated: false)
-
+            
             cell.totalFourStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_four_star)))/100, animated: false)
-
+            
             cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star)))/100, animated: false)
             if recipeModel?.latestReview == nil {
                 cell.viewComment.isHidden = true
             }else{
                 cell.viewComment.isHidden = false
-    
+                
             }
             cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
             cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
@@ -349,16 +349,16 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             guard let cell:LikeRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "LikeRecipeTableViewCell") as? LikeRecipeTableViewCell else {return UITableViewCell()}
-                cell.post = true
-                cell.delegate = self
+            cell.post = true
+            cell.delegate = self
             return cell
         }
-   
+        
     }
     
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         switch indexPath.section{
         case 0:
             return 230
@@ -376,40 +376,41 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     let y = 300 - (scrollView.contentOffset.y + 300)
+        let y = 300 - (scrollView.contentOffset.y + 300)
         let height = min(max(y, 60), 400)
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
-
+        
     }
 }
-        
+
 extension ViewRecipeViewController{
     func getRecipeDetail(){
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDeatail + "\(recipeId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["recipe"] as? [String:Any]{
                 recipeModel = ViewRecipeDetailDataModel.init(with: data)
-               
+                
             }
             if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
                 usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
-               
+                
             }
             if let data = dictResponse?["used_tools"] as? [[String:Any]]{
                 usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
-               
+                
             }
             
             if let data = dictResponse?["steps"] as? [[String:Any]]{
                 stepsModel = data.map({StepsDataModel.init(with: $0)})
-
-            }
                 
+            }
+            
             if let data = dictResponse?["you_might_also_like"] as? [[String:Any]]{
                 youMightAlsoLikeModel = data.map({ViewRecipeDetailDataModel.init(with: $0)})
-               
+                
             }
             setImage()
             if stepsModel?.count == 0{
@@ -420,51 +421,53 @@ extension ViewRecipeViewController{
                 btnStartCooking.isHidden = false
                 viewStartCookingHeight.constant = 70
             }
-
+            
             self.tableView.reloadData()
+            self.view.isUserInteractionEnabled = true
         }
     }
-   
+    
     func deleteRecipe(){
-       
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.deleteRecipe + "\(recipeId)", requestMethod: .POST,requestParameters: [:], withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
             add.currentIndex = 2
             add.checkbutton = 2
             self.navigationController?.pushViewController(add, animated: true)
-              }
+            
         }
+    }
     
 }
 
 extension Date {
     
     func getElapsedInterval(timeStamp :String?) -> String {
-            
-            let interval = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
-            
-            if let year = interval.year, year > 0 {
-                return year == 1 ? "\(year)" + " " + "year" :
-                    "\(year)" + " " + "years"
-            } else if let month = interval.month, month > 0 {
-                return month == 1 ? "\(month)" + " " + "month" :
-                    "\(month)" + " " + "months"
-            } else if let day = interval.day, day > 0 {
-                return day == 1 ? "\(day)" + " " + "day" :
-                    "\(day)" + " " + "days"
-            } else if let hour = interval.hour, hour > 0 {
-                return hour == 1 ? "\(hour)" + " " + "hour" :
-                    "\(hour)" + " " + "hours"
-            } else if let minute = interval.minute, minute > 0 {
-                return minute == 1 ? "\(minute)" + " " + "minute" :
-                    "\(minute)" + " " + "minutes"
-            } else if let second = interval.second, second > 0 {
-                return second == 1 ? "\(second)" + " " + "second" :
-                    "\(second)" + " " + "seconds"
-            } else {
-                return "a moment ago"
-            }
-            
+        
+        let interval = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
+        
+        if let year = interval.year, year > 0 {
+            return year == 1 ? "\(year)" + " " + "year" :
+                "\(year)" + " " + "years"
+        } else if let month = interval.month, month > 0 {
+            return month == 1 ? "\(month)" + " " + "month" :
+                "\(month)" + " " + "months"
+        } else if let day = interval.day, day > 0 {
+            return day == 1 ? "\(day)" + " " + "day" :
+                "\(day)" + " " + "days"
+        } else if let hour = interval.hour, hour > 0 {
+            return hour == 1 ? "\(hour)" + " " + "hour" :
+                "\(hour)" + " " + "hours"
+        } else if let minute = interval.minute, minute > 0 {
+            return minute == 1 ? "\(minute)" + " " + "minute" :
+                "\(minute)" + " " + "minutes"
+        } else if let second = interval.second, second > 0 {
+            return second == 1 ? "\(second)" + " " + "second" :
+                "\(second)" + " " + "seconds"
+        } else {
+            return "a moment ago"
         }
+        
+    }
 }
 

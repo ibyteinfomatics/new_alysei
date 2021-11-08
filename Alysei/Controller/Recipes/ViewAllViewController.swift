@@ -42,6 +42,7 @@ class ViewAllViewController: UIViewController {
     }
     
     func getSearchByIngridients(){
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
@@ -56,11 +57,12 @@ class ViewAllViewController: UIViewController {
                 }
             }
             self.collectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
     }
     }
     
     func callSearchIngridients(){
-
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchText)&type=1" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -69,7 +71,7 @@ class ViewAllViewController: UIViewController {
                 self.arraySearchByIngridient = data.map({IngridentArray.init(with: $0)})
                 self.searching1 = true
                 self.collectionView.reloadData()
-
+                self.view.isUserInteractionEnabled = true
             }
             
             

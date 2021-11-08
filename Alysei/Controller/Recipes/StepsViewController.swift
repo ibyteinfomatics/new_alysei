@@ -8,6 +8,7 @@
 import UIKit
 
 class StepsViewController: UIViewController, StepDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextStep: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -27,7 +28,7 @@ class StepsViewController: UIViewController, StepDelegate {
         nextStep.layer.borderWidth = 1
         nextStep.layer.cornerRadius = 24
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-       
+        
         for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
             if stepsModel?[page].stepIngridient?[i].isSelected == true{
                 choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
@@ -39,6 +40,7 @@ class StepsViewController: UIViewController, StepDelegate {
             if stepsModel?[page].stepTool?[i].isSelected == true{
                 choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
             }
+            
             tableView.reloadData()
         }
         
@@ -61,9 +63,9 @@ class StepsViewController: UIViewController, StepDelegate {
         stepImage.setImage(withString: imgUrl)
     }
     
-   
+    
     @IBAction func nextStepTapped(_ sender: UIButton) {
-       
+        
         if page < ((stepsModel?.count ?? 0) - 1){
             page = page + 1
             
@@ -72,7 +74,7 @@ class StepsViewController: UIViewController, StepDelegate {
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
                 if stepsModel?[page].stepIngridient?[i].isSelected == true{
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
-                        tableView.reloadData()
+                    tableView.reloadData()
                 }
                 
             }
@@ -80,7 +82,7 @@ class StepsViewController: UIViewController, StepDelegate {
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
                 if stepsModel?[page].stepTool?[i].isSelected == true{
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
-                        tableView.reloadData()
+                    tableView.reloadData()
                 }
                 
             }
@@ -91,7 +93,7 @@ class StepsViewController: UIViewController, StepDelegate {
             backBtnWidth.constant = 55
             stepTableViewCellCurrentIndex = page
             tableView.reloadData()
-           
+            
             if page == ((stepsModel?.count ?? 0) - 1){
                 nextStep.setTitle("Finish Cooking", for: .normal)
                 nextStep.setImage(UIImage(named: "icons8_cooking_pot.png"), for: .normal)
@@ -108,18 +110,18 @@ class StepsViewController: UIViewController, StepDelegate {
     
     
     @IBAction func tapDownBack(_ sender: Any) {
-
-       
+        
+        
         if page > 0{
             page = page - 1
             stepTableViewCellCurrentIndex = page
-           
+            
             choosestepIngridient?.removeAll()
             choosestepTool?.removeAll()
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
                 if stepsModel?[page].stepIngridient?[i].isSelected == true{
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
-                        tableView.reloadData()
+                    tableView.reloadData()
                 }
                 
             }
@@ -127,11 +129,11 @@ class StepsViewController: UIViewController, StepDelegate {
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
                 if stepsModel?[page].stepTool?[i].isSelected == true{
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
-                        tableView.reloadData()
+                    tableView.reloadData()
                 }
                 
             }
-           
+            
             
             nextStep.setTitle("Next", for: .normal)
             nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
@@ -146,21 +148,21 @@ class StepsViewController: UIViewController, StepDelegate {
     }
     
     func cellStepTapped(index: Int){
-       page = index
-       
+        page = index
+        
         choosestepIngridient?.removeAll()
         choosestepTool?.removeAll()
         for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
             if stepsModel?[page].stepIngridient?[i].isSelected == true{
                 choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
-                   tableView.reloadData()
+                tableView.reloadData()
             }
             
         }
         
         for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
             if stepsModel?[page].stepTool?[i].isSelected == true{
-
+                
                 choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
                 tableView.reloadData()
             }
@@ -181,23 +183,23 @@ class StepsViewController: UIViewController, StepDelegate {
             backBtnWidth.constant = 0
             tableView.reloadData()
         }
-      
+        
         
     }
 }
 extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
-    
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
         }
         else if section == 1{
-
+            
             if stepsModel?.count ?? 0 > page{
-            return choosestepIngridient?.count ?? 0
+                return choosestepIngridient?.count ?? 0
             }
             else{
                 return 0
@@ -227,24 +229,24 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             else{return UITableViewCell()}
             cell.lblDescription.text = stepsModel?[page].description
             cell.stepLabel.text = "Step" + " " + "\(page + 1)"
-
+            
             cell.delegate = self
             cell.collectionView.reloadData()
             
             return cell
-        
+            
         case 1:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
             let imgUrl = (kImageBaseUrl + (choosestepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
-
+            
             cell.ingredientImageView.setImage(withString: imgUrl)
             
             cell.ingredientNameLabel.text = choosestepIngridient?[indexPath.row].ingridient?.ingridientTitle
-
+            
             
             cell.ingredientQuantityLabel.text = (choosestepIngridient?[indexPath.row].quantity ?? "")  + " " + (choosestepIngridient?[indexPath.row].unit ?? "")
-
-                return cell
+            
+            return cell
         case 2:
             guard let cell:ToolsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ToolsTableViewCell", for: indexPath) as? ToolsTableViewCell
             else{return UITableViewCell()}
@@ -252,14 +254,14 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         case 3:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
             let imgUrl = (kImageBaseUrl + (choosestepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
-
+            
             cell.ingredientImageView.setImage(withString: imgUrl)
             
             cell.ingredientNameLabel.text = choosestepTool?[indexPath.row].tool?.toolTitle
-
+            
             cell.ingredientQuantityLabel.text = (choosestepTool?[indexPath.row].quantityTool ?? "") + " " + (choosestepTool?[indexPath.row].unitTool ?? "")
             
-                return cell
+            return cell
             
         default:
             return UITableViewCell()
@@ -278,5 +280,5 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-    
+
 

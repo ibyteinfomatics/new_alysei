@@ -12,6 +12,11 @@ class ViewAllQuickEasyViewController: UIViewController {
     @IBOutlet weak var quickEasyCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     var arrayQuickEasy : [HomeQuickEasy]?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getQuickEasy()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +38,7 @@ class ViewAllQuickEasyViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     func getQuickEasy(){
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
@@ -47,6 +53,7 @@ class ViewAllQuickEasyViewController: UIViewController {
                 }
             }
             self.quickEasyCollectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
     }
     }
 

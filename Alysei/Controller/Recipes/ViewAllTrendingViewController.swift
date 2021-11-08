@@ -12,6 +12,11 @@ class ViewAllTrendingViewController: UIViewController {
     @IBOutlet weak var trendingCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     var arrayTrending : [HomeTrending]?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getTrending()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +37,9 @@ class ViewAllTrendingViewController: UIViewController {
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     func getTrending(){
+        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
@@ -47,6 +54,7 @@ class ViewAllTrendingViewController: UIViewController {
                 }
             }
             self.trendingCollectionView.reloadData()
+            self.view.isUserInteractionEnabled = true
     }
     }
 

@@ -9,11 +9,10 @@
 import UIKit
 
 class TagCollectionReusableView: UICollectionReusableView {
+    
    @IBOutlet var tagHeaderLabel: UILabel!
     @IBOutlet weak var tagCountLabel: UILabel!
+    
 }
 
-//class CustomButton: UIButton {
-//    var section: Int = 0
-//    var row : Int = 0
-//}
+
