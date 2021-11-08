@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 protocol PostCommentsDisplayLogic: class {
     func loadComments(_ response: PostComments.Comment.Response)
@@ -52,7 +53,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
             self.commentmessages?.removeAll()
             self.commentmessages = message
             self.tableView.reloadData()
-            self.scrollToLTopRow()
+            //self.scrollToLTopRow()
             
             if self.commentmessages?.count ?? 0 == 0{
                 self.vwBlank.isHidden = false
@@ -104,8 +105,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
         self.tableView.register(UINib(nibName: "PostCommentsCell", bundle: nil), forCellReuseIdentifier: "cell")
 
@@ -114,7 +114,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         self.tableView.dataSource = self
         //self.tableView.allowsSelection = false
 
-        self.commentTextfield.delegate = self
+        //self.commentTextfield.delegate = self
         
         
         if postid > 0 {
@@ -139,6 +139,9 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         for i in 0..<(self.commentmessages?.count ?? 0){
             self.commentmessages?[i].isSelected = false
         }
+        
+        tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0)
+        tableView.rowHeight = UITableView.automaticDimension
 //        self.commentTextfield.becomeFirstResponder()
     }
     
@@ -147,23 +150,29 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         if postid == 0 {
            postid = self.postCommentsUserDataModel.postID
         }
+        IQKeyboardManager.shared.enable = false
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         bottomViewForCommentTextField.layer.borderWidth = 1
         bottomViewForCommentTextField.layer.borderColor = UIColor.lightGray.cgColor
         receiveComment()
         
     }
-
+    
+    @IBOutlet weak var commentTextfield: IQTextView!
     // MARK:- IBOutlets
     @IBOutlet weak var viewNavigation: UIView!
-    @IBOutlet weak var backButton: UIButtonExtended!
+    //@IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabelExtended!
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var bottomViewForCommentTextField: UIView!
-    @IBOutlet weak var commentTextfield: UITextFieldBorderWidthAndColor!
-    @IBOutlet weak var profilePhotoButton: UIButtonExtended!
-    @IBOutlet weak var sendCommentButton: UIButtonExtended!
+   // @IBOutlet weak var commentTextfield: UITextFieldBorderWidthAndColor!
+    @IBOutlet weak var profilePhotoButton: UIButton!
+    @IBOutlet weak var sendCommentButton: UIButton!
     @IBOutlet weak var vwBlank: UIView!
+    @IBOutlet var bottomViewBottmConstraint: NSLayoutConstraint!
 
     // MARK:- protocol methods
     func loadComments(_ response: PostComments.Comment.Response) {
@@ -175,27 +184,44 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
 //            self.commentTextfield.becomeFirstResponder()
 //        }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+        
+        
+    }
 
     //MARK: custom methods
     @objc func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+        var keyboardSize: CGSize = CGSize.zero
+        if let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+            keyboardSize = value.cgRectValue.size
+            if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+                bottomViewBottmConstraint.constant = keyboardSize.height-34
+            }else {
+                bottomViewBottmConstraint.constant = keyboardSize.height
             }
+            self.view.layoutIfNeeded()
+            scrollToLTopRow()
+            
         }
     }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        bottomViewBottmConstraint.constant = 0
+        self.view.layoutIfNeeded()
     }
+  
     
     func scrollToLTopRow() {
         DispatchQueue.main.async {
             if Int.getInt(self.commentmessages?.count) != 0 {
-                let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
+                //let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
+                let indexPath = IndexPath(row: 0, section: 0)
                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
                 //self.commentTextfield.becomeFirstResponder()
             }
