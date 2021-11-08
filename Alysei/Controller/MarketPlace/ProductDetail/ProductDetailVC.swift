@@ -13,7 +13,7 @@ class ProductDetailVC: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     var arrRatingReview: [RatingReviewModel]?
     @IBOutlet weak var lblProductName: UILabel!
-    
+    @IBOutlet weak var btnSendEnquiry: UIButton!
     
     
     // @IBOutlet weak var btnLikeUnlike: UIButton!
@@ -59,7 +59,14 @@ class ProductDetailVC: AlysieBaseViewC {
         self.tableView.setContentOffset(CGPoint(x: 0, y: UIApplication.shared.statusBarFrame.height ), animated: true)
     }
     
-    
+    @IBAction func btnSendEnquiryAction(_ sender: UIButton){
+  
+        let controller = self.pushViewController(withName: InquiryFormViewC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryFormViewC
+        controller?.passproductId = self.marketplaceProductId
+        controller?.passproductName = self.productDetail?.product_detail?.title
+        controller?.passProductPrice = self.productDetail?.product_detail?.product_price
+       
+    }
     
 }
 
@@ -187,13 +194,13 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
            
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {
                // return 250
-                return UITableView.automaticDimension
+                return UITableView.automaticDimension + 240
             }else{
                // return UITableView.automaticDimension
                 return UITableView.automaticDimension + 350
             }
         }else {
-            return CGFloat((270 * ((self.productDetail?.related_products?.count ?? 0) / 2 )))
+            return CGFloat((250 * ((self.productDetail?.related_products?.count ?? 0) / 2 )))
         }
     }
     
@@ -229,7 +236,7 @@ extension ProductDetailVC {
             if let data = response?["data"] as? [String:Any]{
                 self.productDetail = ProductDetailModel.init(with: data)
             }
-            self.lblProductName.text = self.productDetail?.product_detail?.title
+            self.lblProductName.text = self.productDetail?.product_detail?.title?.capitalized
             //self.setFavUnfavProduct()
             
             self.tableView.reloadData()

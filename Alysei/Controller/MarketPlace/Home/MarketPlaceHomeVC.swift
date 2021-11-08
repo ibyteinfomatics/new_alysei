@@ -618,22 +618,24 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 180)
         }else if collectionView == recentlyAddedCollectionView{
-            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 220)
+            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 250)
         }
 //        else if collectionView == adCollectionView{
 //            return CGSize(width: adCollectionView.frame.width / 2 , height: 200)
 //        }
         else if collectionView == regionCollectionView{
             return CGSize(width: regionCollectionView.frame.width / 4 , height: 120)
+        }else if (collectionView == newlyyAddedStoreCollectionView){
+            return CGSize(width: collectionView.frame.width / 2 , height: 220)
         }
         else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == topSellingCollectionView){
-            return CGSize(width: collectionView.frame.width / 2 , height: 220)
+            return CGSize(width: collectionView.frame.width / 2 , height: 250)
         }
 //        else if (collectionView == maximumSearchedCollectionView){
 //            return CGSize(width: collectionView.frame.width / 2 , height: 220)
 //        }
         else{
-            return CGSize(width: collectionView.frame.width / 3, height: 120)
+            return CGSize(width: collectionView.frame.width / 3, height: 150)
         }
     }
 

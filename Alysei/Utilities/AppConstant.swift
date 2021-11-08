@@ -323,7 +323,7 @@ struct APIUrl{
     static let kPostReplyComment = "reply/post/comment"
     static let kLike = "post/like"
    
-    
+    static let kSaveInquiry = "save/product/enquery"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -652,6 +652,7 @@ struct APIConstants {
     static let kAvailableForSample = "available_for_sample"
     static let kProductPrice = "product_price"
     static let kProductCategoryId = "product_category_id"
+    static let kProductId = "product_id"
     static let kProductSubCategoryId = "product_subcategory_id"
     static let kbrandLabelId = "brand_label_id"
     static let kMarketPlaceProduct_id = "marketplace_product_id"
