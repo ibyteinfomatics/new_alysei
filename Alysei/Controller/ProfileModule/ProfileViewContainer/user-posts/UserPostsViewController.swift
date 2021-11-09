@@ -6,16 +6,13 @@
 //
 
 import UIKit
-
-
-
-
+import ScrollingPageControl
 
 class UserPostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
     @IBOutlet weak var vwBlank: UIView!
-
+   // @IBOutlet var vwpageControl: ScrollingPageControl!
     var pageNumber = 1
     var visitorId : String?
     //TODO: pagination is pending
@@ -165,7 +162,7 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
         cell.likeCallback = { index in
             //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
             cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
-            cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
             
             
             

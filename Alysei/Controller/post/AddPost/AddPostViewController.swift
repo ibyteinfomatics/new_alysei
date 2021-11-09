@@ -51,6 +51,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
+        postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
         //setUI()
@@ -83,10 +84,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             postRequestToGetProgressPrfile()
             
         }
-        
-       
-        
-        
+     
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {

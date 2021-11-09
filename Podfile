@@ -25,5 +25,6 @@ pod 'Firebase/Database'
 #pod 'PocketSVG', '~> 2.6'
 pod 'SVGKit'
 pod 'Firebase/Messaging'
+pod 'ScrollingPageControl'
   
 end

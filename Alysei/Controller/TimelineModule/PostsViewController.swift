@@ -22,7 +22,7 @@ class PostsViewController: AlysieBaseViewC {
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var headerStack: UIView!
     @IBOutlet weak var tableviewheight: NSLayoutConstraint!
- 
+   
     //@IBOutlet weak var postView: UIView!
     
     var scrollCallBack: (() -> Void)? = nil
@@ -81,10 +81,8 @@ class PostsViewController: AlysieBaseViewC {
         postTableView.isHidden = true
         callNewFeedApi(1)
         
-        
-        
     }
-
+  
 
     //MARK:- segue
 
@@ -208,7 +206,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.likeCallback = { index in
                         //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                         cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
-                        cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                        cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
                         
                         
                         
@@ -247,7 +245,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.likeCallback = { index in
                     //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                     cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
-                    cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                    cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
                     
                     
                     
