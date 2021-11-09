@@ -11,8 +11,8 @@ class DiscoverTableViewCell: UITableViewCell {
     
     @IBOutlet weak var discoverCollectionView: UICollectionView!
     
-    var storyUser = ["Add Post","Elans","Patrik","Musky","Peter","Tesla"]
-    var storyImage  = ["AddStory","user_icon_active","select_role2","select_role3","select_role1","select_role4"]
+    var storyUser = ["Events","Trips","Blogs","Restaurants"]
+    var storyImage  = ["select_role2","select_role3","select_role1","select_role4"]
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,7 +28,7 @@ class DiscoverTableViewCell: UITableViewCell {
 
 extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,6 +40,10 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: discoverCollectionView.width / 5, height: 140)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Name ",storyUser[indexPath.item])
     }
     
 }

@@ -234,6 +234,10 @@
 		6B23867826FD96DD00D4CC1B /* AlyseiBGV 2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */; };
 		6B2F94F626202F3A0030928E /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2F94F526202F3A0030928E /* Timeline.storyboard */; };
 		6B331B3F271FEBB60094078B /* PrivacyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B331B3E271FEBB60094078B /* PrivacyModel.swift */; };
+		6B34E99D273A357C00D63378 /* EventDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E99C273A357C00D63378 /* EventDiscover.swift */; };
+		6B34E99F273A35A500D63378 /* TripDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E99E273A35A500D63378 /* TripDiscover.swift */; };
+		6B34E9A1273A35B500D63378 /* BlogDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E9A0273A35B500D63378 /* BlogDiscover.swift */; };
+		6B34E9A3273A35E200D63378 /* RestaurantDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */; };
 		6B360CF8270ADC4B006A48E4 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */; };
 		6B360CFB270AE9ED006A48E4 /* ImporterDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */; };
 		6B360D00270AEA27006A48E4 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */; };
@@ -860,6 +864,10 @@
 		6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlyseiBGV 2.mp4"; sourceTree = "<group>"; };
 		6B2F94F526202F3A0030928E /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		6B331B3E271FEBB60094078B /* PrivacyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModel.swift; sourceTree = "<group>"; };
+		6B34E99C273A357C00D63378 /* EventDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDiscover.swift; sourceTree = "<group>"; };
+		6B34E99E273A35A500D63378 /* TripDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDiscover.swift; sourceTree = "<group>"; };
+		6B34E9A0273A35B500D63378 /* BlogDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDiscover.swift; sourceTree = "<group>"; };
+		6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDiscover.swift; sourceTree = "<group>"; };
 		6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImporterDashboardViewController.swift; sourceTree = "<group>"; };
 		6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
@@ -2525,6 +2533,10 @@
 				2716627225BC84EB000C0189 /* NotificationViewC.swift */,
 				2716627125BC84EB000C0189 /* NotificationTableCell.swift */,
 				C5197AF626E72CB600C0894F /* NotificationList.swift */,
+				6B34E99C273A357C00D63378 /* EventDiscover.swift */,
+				6B34E99E273A35A500D63378 /* TripDiscover.swift */,
+				6B34E9A0273A35B500D63378 /* BlogDiscover.swift */,
+				6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -3393,6 +3405,7 @@
 				27A4439E25AE03720002BAAC /* RangeSlider.swift in Sources */,
 				6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */,
 				273737EF25B76BCE005984CF /* SettingsViewC.swift in Sources */,
+				6B34E99D273A357C00D63378 /* EventDiscover.swift in Sources */,
 				6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */,
 				C554DB99266A29D800D4EECC /* AddProductMarketplaceVC.swift in Sources */,
 				27B24AC525B46C7D00694F27 /* TabBarViewC.swift in Sources */,
@@ -3429,6 +3442,7 @@
 				610D71912628B24E000FA104 /* EventsInteractor.swift in Sources */,
 				C52920462677575D000C044B /* ConnectionProductTypeViewController.swift in Sources */,
 				27D0FAB025CEE9FF00463FE0 /* RoleCollectionCell.swift in Sources */,
+				6B34E99F273A35A500D63378 /* TripDiscover.swift in Sources */,
 				C517236626E5E72D00CE7572 /* SelectRecipeDietDataModel.swift in Sources */,
 				27A443C525AE03720002BAAC /* UITextFieldPaddingView.swift in Sources */,
 				6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */,
@@ -3469,6 +3483,7 @@
 				6B97B0912713EE62003B9E68 /* EditIngridientViewController.swift in Sources */,
 				27A443B925AE03720002BAAC /* UIImageViewExtended.swift in Sources */,
 				C5D6F7E126B1829D006FFCDF /* ActiveCollectionViewCell.swift in Sources */,
+				6B34E9A3273A35E200D63378 /* RestaurantDiscover.swift in Sources */,
 				C5EB3CE226E9CB8600CCAC9E /* DontSeeIngredientsViewController.swift in Sources */,
 				C5197B1026E72E3C00C0894F /* CreateTripsViewController.swift in Sources */,
 				27484D0625BB120500CCFC61 /* YourDataViewC.swift in Sources */,
@@ -3502,6 +3517,7 @@
 				C55E2AAA26B288C60083F831 /* SearchProductListVC.swift in Sources */,
 				C5EB3CEB26E9CB8600CCAC9E /* ViewRecipeViewController.swift in Sources */,
 				C5EB38C026E9CAE400CCAC9E /* AddStepToolCollectionViewCell.swift in Sources */,
+				6B34E9A1273A35B500D63378 /* BlogDiscover.swift in Sources */,
 				C507B8502668B9EE0014344A /* SelectMemberShipVC.swift in Sources */,
 				27A443AF25AE03720002BAAC /* MKMapViewExtended.swift in Sources */,
 				6B90663E26F89DFF00D24521 /* DietViewController.swift in Sources */,

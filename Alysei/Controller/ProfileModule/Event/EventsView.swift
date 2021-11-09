@@ -23,15 +23,14 @@ class EventsView: AlysieBaseViewC {
         eventsTableView.dataSource = self
         createEventButton.layer.cornerRadius = 18
        
-        
     }
+    
     func setUI(){
         if self.eventModel?.data?.count ?? 0 == 0{
             self.vwBlank.isHidden = false
-        }else{self.vwBlank.isHidden = true
-            
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         if userId != ""{
             createEventButton.isHidden = true
