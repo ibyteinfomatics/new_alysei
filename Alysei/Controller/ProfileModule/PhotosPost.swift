@@ -160,7 +160,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             cell.likeCallback = { index in
                 //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                 cell.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
-                cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                cell.likeImage.image = data.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
                 
                 
                 
@@ -232,12 +232,12 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             }else{
                 cell.userImage.setImage(withString: kImageBaseUrl + String.getString(data?.subjectId?.avatarId?.attachmentUrl))
             }
-            cell.likeImage.image = data?.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            cell.likeImage.image = data?.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
             
             cell.likeCallback = { index in
                 //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                 cell.lblPostLikeCount.text = "\(data?.likeCount ?? 0)"
-                cell.likeImage.image = data?.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+                cell.likeImage.image = data?.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
                 
             }
             

@@ -344,6 +344,7 @@
 		6B90663E26F89DFF00D24521 /* DietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90663D26F89DFF00D24521 /* DietViewController.swift */; };
 		6B90664026F89E1600D24521 /* IngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90663F26F89E1600D24521 /* IngridientViewController.swift */; };
 		6B90664226F89E3300D24521 /* CookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90664126F89E3300D24521 /* CookingViewController.swift */; };
+		6B94822F273A477600EC8D10 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94822E273A477500EC8D10 /* TriangleView.swift */; };
 		6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */; };
 		6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */; };
 		6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */; };
@@ -977,6 +978,7 @@
 		6B90663D26F89DFF00D24521 /* DietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietViewController.swift; sourceTree = "<group>"; };
 		6B90663F26F89E1600D24521 /* IngridientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientViewController.swift; sourceTree = "<group>"; };
 		6B90664126F89E3300D24521 /* CookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingViewController.swift; sourceTree = "<group>"; };
+		6B94822E273A477500EC8D10 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
 		6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreen2ViewController.swift; sourceTree = "<group>"; };
@@ -2763,6 +2765,7 @@
 			children = (
 				C51D47752636A6FE00CD3863 /* PostsViewController.swift */,
 				C51D47842636C72500CD3863 /* PostDescTableViewCell.swift */,
+				6B94822E273A477500EC8D10 /* TriangleView.swift */,
 				C51D47792636AD4C00CD3863 /* DiscoverTableViewCell.swift */,
 				C51D477C2636B67900CD3863 /* DiscoverCollectionViewCell.swift */,
 				61EAB555269A238D00793F18 /* comments */,
@@ -3268,6 +3271,7 @@
 				2716627925BD4310000C0189 /* BusinessViewC.swift in Sources */,
 				C5D6F7F726B1829D006FFCDF /* HubStateListViewController.swift in Sources */,
 				61A8CB4C261D98CA00B99233 /* ContactDetailInteractor.swift in Sources */,
+				6B94822F273A477600EC8D10 /* TriangleView.swift in Sources */,
 				C5EB38C826E9CAE400CCAC9E /* ExploreCollectionViewCell.swift in Sources */,
 				27A443B325AE03720002BAAC /* UITextViewBorderWidthAndColor.swift in Sources */,
 				610AF2522691BB1D007AD426 /* AboutViewCTextOnlyCell.swift in Sources */,
