@@ -31,11 +31,12 @@ class EventDiscover: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(eventId!)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(eventId ?? "" )", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
           let dictResponse = dictResponse as? [String:Any]
-          
-          self.eventModel = EventModel.init(with: dictResponse)
+        if let data = dictResponse?["data"] as? [String:Any]{
+          self.eventModel = EventModel.init(with: data)
+        }
         
         self.eventsTableView.reloadData()
       }
@@ -44,7 +45,7 @@ class EventDiscover: AlysieBaseViewC {
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
-        
+        _ = pushViewController(withName: EventFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventFilterVC
     }
     
 

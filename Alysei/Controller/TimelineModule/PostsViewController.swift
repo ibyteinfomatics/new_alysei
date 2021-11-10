@@ -184,6 +184,24 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
+            cell.pushCallback = { index in
+                switch index {
+                case 0:
+                    let controller = self.pushViewController(withName: EventDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventDiscover
+                    controller?.eventId = "events"
+                case 1:
+                    let controller = self.pushViewController(withName: TripDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? TripDiscover
+                   controller?.tripId = "trips"
+                case 2:
+                    let controller = self.pushViewController(withName: BlogDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogDiscover
+                    controller?.blogId = "blogs"
+                case 3:
+                    let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
+                 //   controller?.rest = "blogs"
+                default:
+                    print("Invalid")
+                }
+            }
             cell.selectionStyle = .none
         return cell
         }else{
