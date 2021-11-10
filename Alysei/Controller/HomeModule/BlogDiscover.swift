@@ -28,6 +28,9 @@ class BlogDiscover: AlysieBaseViewC {
         
         _ = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC
     }
+    @IBAction func btnBackAction(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
     
     private func postRequestToGetBlog() -> Void{
       
@@ -35,9 +38,10 @@ class BlogDiscover: AlysieBaseViewC {
     
       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(blogId!)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
-          let dictResponse = dictResponse as? [String:Any]
-          
-          self.blogModel = BlogModel.init(with: dictResponse)
+        let dictResponse = dictResponse as? [String:Any]
+      if let data = dictResponse?["data"] as? [String:Any]{
+        self.blogModel = BlogModel.init(with: data)
+      }
         
         self.blogTableView.reloadData()
       }

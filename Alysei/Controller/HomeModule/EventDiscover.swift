@@ -48,6 +48,9 @@ class EventDiscover: AlysieBaseViewC {
         _ = pushViewController(withName: EventFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventFilterVC
     }
     
+    @IBAction func btnBackAction(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
 
     private func getEventTableCell(_ indexPath: Int) -> UITableViewCell{
         

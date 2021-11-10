@@ -59,7 +59,8 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.activitiesTitle.text = tripModel?.data?[indexPath].adventure?.adventureType
         tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
-        
+        tripTableCell.moreInfoButton.layer.cornerRadius = 10
+        tripTableCell.interestedButton.layer.cornerRadius = 10
         if tripModel?.data?[indexPath].currency == "USD" {
             tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
         } else if tripModel?.data?[indexPath].currency == "Euro" {

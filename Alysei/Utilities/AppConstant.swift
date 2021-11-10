@@ -496,6 +496,7 @@ struct AppConstants {
     static let SelectCountry = "Select Country"
     static let Speciality = "Speciality"
     static let ProductTypeBusiness = "Product Type"
+    static let Producttype = "Product type"
     static let SelectUserType = "Select User Type"
     static let GetStarted = "Get Started"
     static let Next = "Next"

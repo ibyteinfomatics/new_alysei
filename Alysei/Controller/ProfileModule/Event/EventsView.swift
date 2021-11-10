@@ -28,6 +28,8 @@ class EventsView: AlysieBaseViewC {
     func setUI(){
         if self.eventModel?.data?.count ?? 0 == 0{
             self.vwBlank.isHidden = false
+        }else{
+            self.vwBlank.isHidden = true
         }
     }
     

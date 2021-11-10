@@ -29,17 +29,20 @@ class TripDiscover: AlysieBaseViewC {
         _ = pushViewController(withName: TripsFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? TripsFilterVC
         
     }
-    
+    @IBAction func btnBackAction(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
     private func postRequestToGetTrip() -> Void{
       
       disableWindowInteraction()
     
       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(tripId!)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
-          let dictResponse = dictResponse as? [String:Any]
-          
-          self.tripModel = TripModel.init(with: dictResponse)
-        
+        let dictResponse = dictResponse as? [String:Any]
+      if let data = dictResponse?["data"] as? [String:Any]{
+        self.tripModel = TripModel.init(with: data)
+      }
+      
         self.tripsTableView.reloadData()
       }
       

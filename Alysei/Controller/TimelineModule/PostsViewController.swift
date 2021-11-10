@@ -28,6 +28,7 @@ class PostsViewController: AlysieBaseViewC {
     var scrollCallBack: (() -> Void)? = nil
     var newFeedModel: NewFeedSearchModel?
     var arrNewFeedDataModel = [NewFeedSearchDataModel]()
+    var arrDiscoverDataModel = [NewDiscoverDataModel]()
     var selectedPostId: Int?
     var likeUnlike: Int?
     var indexOfPageToRequest = 1
@@ -184,18 +185,19 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
+            cell.configCell(arrDiscoverDataModel)
             cell.pushCallback = { index in
-                switch index {
-                case 0:
+                switch self.arrDiscoverDataModel[index].discover_alysei_id {
+                case 1:
                     let controller = self.pushViewController(withName: EventDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventDiscover
                     controller?.eventId = "events"
-                case 1:
+                case 2:
                     let controller = self.pushViewController(withName: TripDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? TripDiscover
                    controller?.tripId = "trips"
-                case 2:
+                case 3:
                     let controller = self.pushViewController(withName: BlogDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogDiscover
                     controller?.blogId = "blogs"
-                case 3:
+                case 4:
                     let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
                  //   controller?.rest = "blogs"
                 default:
@@ -439,11 +441,17 @@ extension PostsViewController {
                 
             }
             
+            if let discover_alysei = dictResponse?["discover_alysei"] as? [[String:Any]]{
+                self.arrDiscoverDataModel = discover_alysei.map({NewDiscoverDataModel.init(with: $0)})
+            }
+            
+            
             if let havingPreferences = dictResponse?["having_preferences"] as? Int{
                 checkHavingPreferences = havingPreferences
             }
             self.headerStack.isHidden = false
             self.postTableView.isHidden = false
+            print("CountDiscover -------------------\(self.arrDiscoverDataModel.count)")
             print("Count -------------------\(self.arrNewFeedDataModel.count)")
             self.postTableView.reloadData()
             //DispatchQueue.main.async { self.postTableView.reloadData()}
