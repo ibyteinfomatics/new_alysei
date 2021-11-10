@@ -136,8 +136,6 @@ extension InquiryFormViewC{
             
             switch statusCode {
             case 200:
-                //_ = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
-                
                 
                 let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
                 vc?.name = self.name ?? ""
@@ -148,7 +146,8 @@ extension InquiryFormViewC{
                 vc?.productId = self.passproductId ?? ""
                 vc?.productName = self.passproductName ?? ""
                 vc?.productImage = self.productImage ?? ""
-                
+            case 409:
+                self.showAlert(withMessage: "You already submitted a query on this product")
             default:
                 self.showAlert(withMessage: "Network Error")
             }
