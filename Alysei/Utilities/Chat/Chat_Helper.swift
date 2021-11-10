@@ -750,17 +750,17 @@ class Chat_hepler {
     
     //MARK:- Func For Receive Message for One To One Chat
     
-    func inquiryreceivce_message(senderId :String , receiverId:String , message:@escaping (_ result: [InquiryReceivedMessageClass]? , _ chatBackup : [InquiryReceivedMessageClass]?) -> ()) -> Void {
+    func inquiryreceivce_message(senderId :String , receiverId:String, storeId:String , message:@escaping (_ result: [InquiryReceivedMessageClass]? , _ chatBackup : [InquiryReceivedMessageClass]?) -> ()) -> Void {
         
-        let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))"//self.createNode(senderId: senderId, receiverId: receiverId)
+        let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
         if String.getString(messageNode) == Parameters.emptyString {
             print(Parameters.alertmessage)
             return
         }
         
-        messageReference.child("PrivateMessages").child(messageNode).observe(.value) { [weak self] (snapshot) in
-            self?.chatBackupOnetoOne.removeAll()
-            self?.messageclass.removeAll()
+        inquirymessageReference.child("PrivateMessages").child(messageNode).observe(.value) { [weak self] (snapshot) in
+            self?.inquirychatBackupOnetoOne.removeAll()
+            self?.inquirymessageclass.removeAll()
             if snapshot.exists() {
                 let msgs = kSharedInstance.getDictionary(snapshot.value)
                 msgs.forEach {(key, value) in
@@ -839,7 +839,7 @@ class Chat_hepler {
             return
         }
         self.inquiry_resentUser.removeAll()
-        resentReference.child("user_\(userid)").observe(.value) { [weak self](snapshot) in
+        inquiryresentReference.child("New").child("user_\(userid)").observe(.value) { [weak self](snapshot) in
             self?.inquiry_resentUser.removeAll()
             if snapshot.exists() {
                 let usersDetails = kSharedInstance.getDictionary(snapshot.value)

@@ -19,6 +19,15 @@ class InquiryFormViewC: AlysieBaseViewC {
     var passproductId: String?
     var passproductName: String?
     var passProductPrice: String?
+    
+    var storeId : String?
+    var storeName : String?
+    var productImage : String?
+    
+    var name : String?
+    var userId : String?
+    var profileImageUrl : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtMessage.delegate = self
@@ -58,16 +67,8 @@ class InquiryFormViewC: AlysieBaseViewC {
         if txtMessage.text == "Message"{
             self.showAlert(withMessage: "Please enter some message")
         }else{
-          //  self.callSaveInquiryApi()
-            let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
-            vc?.name = ""
-            vc?.userId = ""
-            vc?.profileImageUrl = ""
-            vc?.storeId = ""
-            vc?.storeName = ""
-            vc?.productId = ""
-            vc?.productName = ""
-            vc?.productImage = ""
+            self.callSaveInquiryApi()
+            
             
 
         }
@@ -135,8 +136,19 @@ extension InquiryFormViewC{
             
             switch statusCode {
             case 200:
-                _ = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
-                //_ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+                //_ = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+                
+                
+                let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+                vc?.name = self.name ?? ""
+                vc?.userId = self.userId ?? ""
+                vc?.profileImageUrl = self.profileImageUrl ?? ""
+                vc?.storeId = self.storeId ?? ""
+                vc?.storeName = self.storeName ?? ""
+                vc?.productId = self.passproductId ?? ""
+                vc?.productName = self.passproductName ?? ""
+                vc?.productImage = self.productImage ?? ""
+                
             default:
                 self.showAlert(withMessage: "Network Error")
             }

@@ -327,6 +327,11 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
             }
         }
         }
+    
+    @IBAction func messageAction(_ sender: UIButton){
+        _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+    }
+    
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1

@@ -41,8 +41,18 @@ class BasicConnectFlowInteractor: BasicConnectFlowBusinessLogic, BasicConnectFlo
 //            request.httpBody = body
 
             WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-               print("Success---------------------------Successssss")
-                self.presenter?.showConnectionConfirmScreen()
+               
+                
+                
+                if statusCode == 200 {
+                    print("Success---------------------------Successssss")
+                    self.presenter?.showConnectionConfirmScreen()
+                } else if statusCode == 409{
+                    self.presenter?.showAlert(msg: "You are not autorized user.")
+                } else {
+                    self.presenter?.showAlert(msg: "Something went wrong.")
+                }
+                
             }
         } catch {
             print(error.localizedDescription)

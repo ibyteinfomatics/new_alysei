@@ -14,10 +14,17 @@ import UIKit
 
 protocol BasicConnectFlowPresentationLogic {
     func showConnectionConfirmScreen()
+    func showAlert(msg: String)
 }
 
 class BasicConnectFlowPresenter: BasicConnectFlowPresentationLogic {
+    
+    func showAlert(msg: String) {
+        self.viewController?.alert(msg: msg)
+    }
+    
     weak var viewController: BasicConnectFlowDisplayLogic?
+    
     
    
     func showConnectionConfirmScreen() {

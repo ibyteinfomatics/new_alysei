@@ -32,6 +32,10 @@ class InquiryConversation: AlysieBaseViewC {
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnGift: UIButton!
     
+    @IBOutlet weak var itemImg: UIImageView!
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var productView: UIView!
+    
     @IBOutlet weak var btnDelete: UIButton!
     
     let textViewMaxHeight:CGFloat = 100.0
@@ -101,12 +105,21 @@ class InquiryConversation: AlysieBaseViewC {
     private func initialSetup() {
         chatTblView.rowHeight = UITableView.automaticDimension
         lblUserName.text = name
+        
+        self.itemName.text = productName
+        
+        if productImage.contains(imageDomain) {
+            itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
+        } else {
+            itemImg.setImage(withString: imageDomain+"/"+productImage, placeholder: UIImage(named: "image_placeholder"))
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
-      self.viewNavigation.drawBottomShadow()
-        self.viewNavigation.layer.backgroundColor = UIColor.init(hexString: "#33A386").cgColor
+      self.productView.drawBottomShadow()
+       // self.viewNavigation.layer.backgroundColor = UIColor.init(hexString: "#33A386").cgColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -167,7 +180,7 @@ class InquiryConversation: AlysieBaseViewC {
     
     //MARK:- func for receiveMessgae
     func receiveMessage() {
-        kChatharedInstance.inquiryreceivce_message(senderId: String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId: String.getString(userId)) { (message, deletedMessage) in
+        kChatharedInstance.inquiryreceivce_message(senderId: String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId: String.getString(userId), storeId: productId ) { (message, deletedMessage) in
             //chatInstanse.updateRecentChatMessageCount(receiverId: String.getString(self.receiverDetails?.receiverId), senderId: String.getString(self.receiverDetails?.senderId))
             self.messages?.removeAll()
             self.messages =  message
@@ -330,6 +343,8 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
                 
+                
+                
                 textCell.lblMessage.text = objects?.message
                 textCell.likeImgView.isHidden = true
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -339,7 +354,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 textCell.lbltime.text = time
                 
-                textCell.LongDeleteCallBack = {
+                /*textCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -359,13 +374,14 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }
+                }*/
                 
                 return textCell
                 
             case .photos? :
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
+                
                 photoCell.sendimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
                 photoCell.btnLike.isHidden = true
                 
@@ -382,7 +398,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                     self.present(controller, animated: true)
                 }
                 
-                photoCell.LongDeleteCallBack = {
+                /*photoCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -402,7 +418,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }
+                }*/
                 
                 return photoCell
                 
@@ -426,7 +442,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 textCell.lbltime.text = time
                 
-                textCell.LongDeleteCallBack = {
+                /*textCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -446,7 +462,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }
+                }*/
                 
                 if String.getString(objects?.senderImage).contains(imageDomain) {
                     textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
@@ -469,7 +485,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 photoCell.time.text = time
                 
-                photoCell.LongDeleteCallBack = {
+                /*photoCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -489,7 +505,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }
+                }*/
                 
                 //OPEN IMAGE
                 photoCell.openImageCallBack = {
@@ -524,7 +540,7 @@ extension InquiryConversation {
         
         sendMessageDetails.deleted = ""
         sendMessageDetails.like = false
-        sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( userId)
+        sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( userId)+"_"+productId
         
         sendMessageDetails.storeId = storeId
         sendMessageDetails.storeName = storeName
@@ -549,7 +565,7 @@ extension InquiryConversation {
         sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
-        kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: storeId)
+        kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
         //sendChatNotification(userId: self.receiverDetails?.receiverId ?? "")
         
         //notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(userId))
@@ -602,7 +618,7 @@ extension InquiryConversation {
                     
                     sendMessageDetails.deleted = ""
                     sendMessageDetails.like = false
-                    sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( self?.userId)
+                    sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( self?.userId)+"_"+String.getString(self?.productId)
                     
                     sendMessageDetails.storeId = self?.storeId
                     sendMessageDetails.storeName = self?.storeName
@@ -625,7 +641,7 @@ extension InquiryConversation {
                     sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
-                    kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.storeId ?? "")
+                    kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")
                     
                     //self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
 

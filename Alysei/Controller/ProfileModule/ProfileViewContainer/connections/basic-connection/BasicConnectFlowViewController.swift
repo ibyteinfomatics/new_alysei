@@ -15,9 +15,12 @@ import UIKit
 protocol BasicConnectFlowDisplayLogic: AnyObject {
     
     func showConnectionScreen()
+    func alert(msg : String)
 }
 
 class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayLogic {
+    
+    
     var interactor: BasicConnectFlowBusinessLogic?
     var router: (NSObjectProtocol & BasicConnectFlowRoutingLogic & BasicConnectFlowDataPassing)?
 
@@ -116,6 +119,11 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     @IBAction func closeButton(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func alert(msg:String){
+        self.showAlert(withMessage: msg)
+    }
+    
     func showConnectionScreen() {
 //        let controller = pushViewController(withName: ConnectionConfirmVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionConfirmVC
 //        controller?.userID = self.userID
