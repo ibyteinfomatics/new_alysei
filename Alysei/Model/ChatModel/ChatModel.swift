@@ -410,6 +410,96 @@ class ChatbackupOnetoOne {
     }
 }
 
+class InquiryReceivedMessageClass {
+    var chat_id:String?
+    var deleted :String?
+    var like : Bool?
+    var mediaType :messageType?
+    var message :String?
+    var receiverImage:String?
+    var receiverName:String?
+    var receiverid :String?
+    var senderImage:String?
+    var senderName:String?
+    var senderid :String?
+    var timestamp : String?
+    
+    var productImage:String?
+    var productName:String?
+    var productId :String?
+    var storeId :String?
+    var storeName :String?
+    
+    var uid :String?
+    var messageFrom:MessageFrom?
+    init() { }
+    init(uid :String , messageData:[String:Any]) {
+        self.chat_id            = String.getString(messageData[Parameters.chat_id])
+        self.deleted          = String.getString(messageData[Parameters.deleted])
+        self.like          = Bool.getBool(messageData[Parameters.like])
+        //self.mediaType        = String.getString(messageData[Parameters.mediaType])
+        self.message           = String.getString(messageData[Parameters.messages])
+        self.receiverImage             = String.getString(messageData[Parameters.receiverImage])
+        self.receiverName           = String.getString(messageData[Parameters.receiverName])
+        self.receiverid           = String.getString(messageData[Parameters.receiverids])
+        self.senderImage           = String.getString(messageData[Parameters.senderImage])
+        self.senderName           = String.getString(messageData[Parameters.senderName])
+        self.senderid           = String.getString(messageData[Parameters.senderid])
+        
+        self.storeName           = String.getString(messageData[Parameters.storeName])
+        self.storeId           = String.getString(messageData[Parameters.storeId])
+        self.productId           = String.getString(messageData[Parameters.productId])
+        self.productName           = String.getString(messageData[Parameters.productName])
+        self.productImage           = String.getString(messageData[Parameters.productImage])
+        
+        self.uid           = String.getString(messageData[Parameters.uid])
+        self.timestamp         = String.getString(messageData[Parameters.timestamp])
+        
+        self.messageFrom         = String.getString(messageData[Parameters.senderid]) == String.getString(kSharedUserDefaults.loggedInUserModal.userId) ? .sender : .receiver
+        //MARK:- Switch for media type
+        switch  String.getString(messageData[Parameters.mediaType]) {
+        case "text":
+            self.mediaType = .text
+        case "photos":
+            self.mediaType = .photos
+        case "video":
+            self.mediaType = .video
+        case "document":
+            self.mediaType = .document
+        case "location":
+            self.mediaType = .location
+        default:
+            self.mediaType = .none
+        }
+    }
+    func createDictonary (objects:InquiryReceivedMessageClass?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
+            Parameters.chat_id                       : objects?.chat_id ?? "",
+            Parameters.deleted                  : objects?.deleted ?? "" ,
+            Parameters.like                : objects?.like ?? "",
+            Parameters.messages                : objects?.message  ?? "",
+            Parameters.receiverImage              : objects?.receiverImage ?? "",
+            Parameters.receiverName                   : objects?.receiverName ?? "",
+            Parameters.receiverids                 : objects?.receiverid ?? "",
+            Parameters.senderImage                 : objects?.senderImage ?? "",
+            Parameters.sendername                 : objects?.senderName ?? "",
+            Parameters.senderid           : objects?.senderid ?? "",
+            
+            Parameters.storeName                 : objects?.storeName ?? "",
+            Parameters.storeId                 : objects?.storeId ?? "",
+            Parameters.productId                 : objects?.productId ?? "",
+            Parameters.productName                 : objects?.productName ?? "",
+            Parameters.profile_image           : objects?.productImage ?? "",
+            
+            Parameters.uid                        : objects?.uid ?? "",
+            Parameters.timestamp                 : objects?.timestamp ?? "",
+            Parameters.mediaType                 : objects?.mediaType?.rawValue ?? ""
+        ]
+        return params
+    }
+}
+
+
 class ReceivedMessageClass {
     var chat_id:String?
     var deleted :String?
@@ -756,7 +846,8 @@ class CommentAvatarId {
 }
 
 //MARK:- Class for Resent Users
-class RecentUser {
+
+class InquiryRecentUser {
     var lastmessage:String?
     var mediaType:String?
     var otherId:String?
@@ -767,6 +858,12 @@ class RecentUser {
     var readCount =  Int()
     var uid :String?
     var userTyping :Bool = false
+    
+    var productImage:String?
+    var productName:String?
+    var productId :String?
+    var storeId :String?
+    var storeName :String?
     
     init() { }
     init(userdata:[String:Any]) {
@@ -780,6 +877,66 @@ class RecentUser {
         self.readState         = String.getString(userdata[Parameters.readState])
         self.uid        = String.getString(userdata[Parameters.uid])
         self.userTyping = Bool.getBool(userdata[Parameters.userTyping])
+        
+        self.storeId           = String.getString(userdata[Parameters.storeId])
+        self.storeName           = String.getString(userdata[Parameters.storeName])
+        self.productId           = String.getString(userdata[Parameters.productId])
+        self.productName           = String.getString(userdata[Parameters.productName])
+        self.productImage           = String.getString(userdata[Parameters.productImage])
+        
+    }
+    //MARK:- Func for createDictonary
+    func createDictonary(objects:InquiryRecentUser?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
+            Parameters.lastmessage                     : objects?.lastmessage ?? "" ,
+            Parameters.mediaType                     : objects?.mediaType ?? "" ,
+            Parameters.otherId                     : objects?.otherId ?? "" ,
+            Parameters.otherImage                     : objects?.otherImage ?? "" ,
+            Parameters.otherName                     : objects?.otherName ?? "" ,
+            Parameters.timestamp                           : objects?.timestamp ?? "",
+            Parameters.readCount                           : objects?.readCount ?? "",
+            Parameters.readState                        : objects?.readState ?? "",
+            Parameters.uid                        : objects?.uid ?? "",
+            Parameters.userTyping                        : objects?.userTyping ?? "",
+            
+            Parameters.storeId                 : objects?.storeId ?? "",
+            Parameters.storeName                 : objects?.storeName ?? "",
+            Parameters.productId                 : objects?.productId ?? "",
+            Parameters.productName                 : objects?.productName ?? "",
+            Parameters.profile_image           : objects?.productImage ?? ""
+        ]
+        return params
+    }
+}
+
+class RecentUser {
+    var lastmessage:String?
+    var mediaType:String?
+    var otherId:String?
+    var otherImage :String?
+    var otherName : String?
+    var readState:String?
+    var timestamp =  Int()
+    var readCount =  Int()
+    var uid :String?
+    var userTyping :Bool = false
+    
+    
+    
+    init() { }
+    init(userdata:[String:Any]) {
+        self.lastmessage         = String.getString(userdata[Parameters.lastmessage])
+        self.mediaType = String.getString(userdata[Parameters.mediaType])
+        self.otherId       = String.getString(userdata[Parameters.otherId])
+        self.otherImage     = String.getString(userdata[Parameters.otherImage])
+        self.otherName      = String.getString(userdata[Parameters.otherName])
+        self.timestamp      = Int.getInt(userdata[Parameters.timestamp])
+        self.readCount      = Int.getInt(userdata[Parameters.readCount])
+        self.readState         = String.getString(userdata[Parameters.readState])
+        self.uid        = String.getString(userdata[Parameters.uid])
+        self.userTyping = Bool.getBool(userdata[Parameters.userTyping])
+        
+       
         
     }
     //MARK:- Func for createDictonary
@@ -795,6 +952,8 @@ class RecentUser {
             Parameters.readState                        : objects?.readState ?? "",
             Parameters.uid                        : objects?.uid ?? "",
             Parameters.userTyping                        : objects?.userTyping ?? ""
+            
+            
         ]
         return params
     }

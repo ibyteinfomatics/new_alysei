@@ -46,6 +46,12 @@ struct Parameters {
     static let senderImage                 = "senderImage"
     static let senderName                 = "senderName"
     
+    static let storeId                 = "storeId"
+    static let storeName                 = "storeName"
+    static let productId                 = "productId"
+    static let productName                 = "productName"
+    static let productImage                 = "productImage"
+    
     static let createdBy                  = "createdBy"
     static let UserSeenCount              = "UserSeenCount"
     static let CreatedBy                  = "group_id"

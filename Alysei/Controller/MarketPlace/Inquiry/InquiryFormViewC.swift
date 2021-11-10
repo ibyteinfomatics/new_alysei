@@ -58,7 +58,18 @@ class InquiryFormViewC: AlysieBaseViewC {
         if txtMessage.text == "Message"{
             self.showAlert(withMessage: "Please enter some message")
         }else{
-            self.callSaveInquiryApi()
+          //  self.callSaveInquiryApi()
+            let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+            vc?.name = ""
+            vc?.userId = ""
+            vc?.profileImageUrl = ""
+            vc?.storeId = ""
+            vc?.storeName = ""
+            vc?.productId = ""
+            vc?.productName = ""
+            vc?.productImage = ""
+            
+
         }
     }
 
@@ -124,7 +135,8 @@ extension InquiryFormViewC{
             
             switch statusCode {
             case 200:
-                _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+                _ = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+                //_ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
             default:
                 self.showAlert(withMessage: "Network Error")
             }

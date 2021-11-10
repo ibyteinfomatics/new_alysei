@@ -238,6 +238,7 @@
 		6B34E99F273A35A500D63378 /* TripDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E99E273A35A500D63378 /* TripDiscover.swift */; };
 		6B34E9A1273A35B500D63378 /* BlogDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E9A0273A35B500D63378 /* BlogDiscover.swift */; };
 		6B34E9A3273A35E200D63378 /* RestaurantDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */; };
+		6B34E9A5273A8D4800D63378 /* InquiryConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E9A4273A8D4800D63378 /* InquiryConversation.swift */; };
 		6B360CF8270ADC4B006A48E4 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */; };
 		6B360CFB270AE9ED006A48E4 /* ImporterDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */; };
 		6B360D00270AEA27006A48E4 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */; };
@@ -869,6 +870,7 @@
 		6B34E99E273A35A500D63378 /* TripDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDiscover.swift; sourceTree = "<group>"; };
 		6B34E9A0273A35B500D63378 /* BlogDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDiscover.swift; sourceTree = "<group>"; };
 		6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDiscover.swift; sourceTree = "<group>"; };
+		6B34E9A4273A8D4800D63378 /* InquiryConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryConversation.swift; sourceTree = "<group>"; };
 		6B360CF7270ADC4B006A48E4 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		6B360CFA270AE9ED006A48E4 /* ImporterDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImporterDashboardViewController.swift; sourceTree = "<group>"; };
 		6B360CFC270AEA27006A48E4 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
@@ -2188,6 +2190,7 @@
 			children = (
 				6B8830F92738F13E001800D3 /* InquiryFormViewC.swift */,
 				6B8830FB2739003C001800D3 /* InquiryChatVC.swift */,
+				6B34E9A4273A8D4800D63378 /* InquiryConversation.swift */,
 			);
 			path = Inquiry;
 			sourceTree = "<group>";
@@ -3018,16 +3021,14 @@
 				27BC687C25AC564100A01B6A /* Sources */,
 				27BC687D25AC564100A01B6A /* Frameworks */,
 				27BC687E25AC564100A01B6A /* Resources */,
-				0D3C4267B4BCC686C8D0364B /* [CP] Embed Pods Frameworks */,
-				1097061AF9A9D2FF0A457B8F /* [CP] Copy Pods Resources */,
+				5E1CF0E0363641B7570E3872 /* [CP] Embed Pods Frameworks */,
+				8F75DA4783245BC7FF04E0E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Alysei;
-			packageProductDependencies = (
-			);
 			productName = Alysie;
 			productReference = 27BC688025AC564100A01B6A /* Alysei.app */;
 			productType = "com.apple.product-type.application";
@@ -3174,7 +3175,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D3C4267B4BCC686C8D0364B /* [CP] Embed Pods Frameworks */ = {
+		5E1CF0E0363641B7570E3872 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3189,23 +3190,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1097061AF9A9D2FF0A457B8F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		70C7DE043D925BCD4500FDF3 /* [CP] Check Pods Manifest.lock */ = {
@@ -3228,6 +3212,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F75DA4783245BC7FF04E0E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alysei/Pods-Alysei-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3283,6 +3284,7 @@
 				6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */,
 				6B97B0AB2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift in Sources */,
 				6B331B3F271FEBB60094078B /* PrivacyModel.swift in Sources */,
+				6B34E9A5273A8D4800D63378 /* InquiryConversation.swift in Sources */,
 				C5D6F7E826B1829D006FFCDF /* HubNameCollectionViewCell.swift in Sources */,
 				6B97B0932713EE6C003B9E68 /* EditToolViewController.swift in Sources */,
 				C5EB3CB926E9CB5700CCAC9E /* AddMissingToolsTableViewCell.swift in Sources */,
