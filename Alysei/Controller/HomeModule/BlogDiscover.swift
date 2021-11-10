@@ -26,7 +26,7 @@ class BlogDiscover: AlysieBaseViewC {
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
-        
+        _ = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC
     }
     
     private func postRequestToGetBlog() -> Void{

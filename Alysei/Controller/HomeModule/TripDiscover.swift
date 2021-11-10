@@ -26,7 +26,7 @@ class TripDiscover: AlysieBaseViewC {
     }
     
     @IBAction func filterBtn(_ sender: UIButton) {
-        
+        _ = pushViewController(withName: TripsFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? TripsFilterVC
         
     }
     

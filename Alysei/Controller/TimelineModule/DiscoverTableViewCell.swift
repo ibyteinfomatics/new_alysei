@@ -13,6 +13,7 @@ class DiscoverTableViewCell: UITableViewCell {
     
     var storyUser = ["Events","Trips","Blogs","Restaurants"]
     var storyImage  = ["select_role2","select_role3","select_role1","select_role4"]
+    var pushCallback: ((Int) ->Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,6 +44,7 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushCallback?(indexPath.row)
         print("Name ",storyUser[indexPath.item])
     }
     

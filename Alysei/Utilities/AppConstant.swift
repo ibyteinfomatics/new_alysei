@@ -301,7 +301,7 @@ struct APIUrl{
     static let kAwardUpdate = "update/award"
     static let kAwardDelete = "delete/award"
     static let kAwardMedal = "get/medal/types"
-    static let kGetDiscoverListing  =  "get/circle/detail/"
+    static let kGetDiscoverListing  =  "get/circle/detail?type="
     
     static let kDashboard = "view/connection?connection_id="
     

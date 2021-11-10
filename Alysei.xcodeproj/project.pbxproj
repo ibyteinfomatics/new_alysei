@@ -346,6 +346,10 @@
 		6B90664026F89E1600D24521 /* IngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90663F26F89E1600D24521 /* IngridientViewController.swift */; };
 		6B90664226F89E3300D24521 /* CookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90664126F89E3300D24521 /* CookingViewController.swift */; };
 		6B94822F273A477600EC8D10 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94822E273A477500EC8D10 /* TriangleView.swift */; };
+		6B948232273A825200EC8D10 /* RestaurantFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948231273A825200EC8D10 /* RestaurantFilterVC.swift */; };
+		6B948234273A855000EC8D10 /* BlogFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948233273A855000EC8D10 /* BlogFilterVC.swift */; };
+		6B948236273A856400EC8D10 /* EventFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948235273A856400EC8D10 /* EventFilterVC.swift */; };
+		6B948238273A872D00EC8D10 /* TripsFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948237273A872D00EC8D10 /* TripsFilterVC.swift */; };
 		6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */; };
 		6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */; };
 		6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */; };
@@ -981,6 +985,10 @@
 		6B90663F26F89E1600D24521 /* IngridientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientViewController.swift; sourceTree = "<group>"; };
 		6B90664126F89E3300D24521 /* CookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingViewController.swift; sourceTree = "<group>"; };
 		6B94822E273A477500EC8D10 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		6B948231273A825200EC8D10 /* RestaurantFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFilterVC.swift; sourceTree = "<group>"; };
+		6B948233273A855000EC8D10 /* BlogFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogFilterVC.swift; sourceTree = "<group>"; };
+		6B948235273A856400EC8D10 /* EventFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterVC.swift; sourceTree = "<group>"; };
+		6B948237273A872D00EC8D10 /* TripsFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsFilterVC.swift; sourceTree = "<group>"; };
 		6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
 		6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreen2ViewController.swift; sourceTree = "<group>"; };
@@ -2408,6 +2416,17 @@
 			name = MyPreferencesCollectionView;
 			sourceTree = "<group>";
 		};
+		6B948230273A820600EC8D10 /* DiscoverFilter */ = {
+			isa = PBXGroup;
+			children = (
+				6B948231273A825200EC8D10 /* RestaurantFilterVC.swift */,
+				6B948233273A855000EC8D10 /* BlogFilterVC.swift */,
+				6B948235273A856400EC8D10 /* EventFilterVC.swift */,
+				6B948237273A872D00EC8D10 /* TripsFilterVC.swift */,
+			);
+			path = DiscoverFilter;
+			sourceTree = "<group>";
+		};
 		6B95715E26FDB354000C63B5 /* Award */ = {
 			isa = PBXGroup;
 			children = (
@@ -2516,6 +2535,7 @@
 		A808779425ADD4D900AA4A69 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6B948230273A820600EC8D10 /* DiscoverFilter */,
 				C5EB374926E9CACA00CCAC9E /* Recipes */,
 				C5197AEC26E72BBF00C0894F /* Chats */,
 				C51C337D2664F599002EC412 /* MarketPlace */,
@@ -3306,6 +3326,7 @@
 				C5CA9A8A26C147F900BDAE25 /* StoreDescProductTableVCell.swift in Sources */,
 				C5EB3CDE26E9CB8600CCAC9E /* AddToolsViewController.swift in Sources */,
 				277D18A225BF3935007CA5C7 /* BusinessFiltersTableCell.swift in Sources */,
+				6B948238273A872D00EC8D10 /* TripsFilterVC.swift in Sources */,
 				C52920472677575D000C044B /* ConnectionProductTypeInteractor.swift in Sources */,
 				277D189D25BEC8C3007CA5C7 /* NetworkCategoryCollectionCell.swift in Sources */,
 				C5EB3CE326E9CB8600CCAC9E /* FollowDietsViewController.swift in Sources */,
@@ -3363,6 +3384,8 @@
 				27D0FABA25CEE9FF00463FE0 /* SignUpFormViewC.swift in Sources */,
 				C5197B0F26E72E3C00C0894F /* EventsView.swift in Sources */,
 				C5EB3CDC26E9CB8600CCAC9E /* AddMissingToolViewController.swift in Sources */,
+				6B948234273A855000EC8D10 /* BlogFilterVC.swift in Sources */,
+				6B948232273A825200EC8D10 /* RestaurantFilterVC.swift in Sources */,
 				C5BFBA6026BBF6F000A91BF9 /* FilterSubOptionsTableVCell.swift in Sources */,
 				6B09A87C26245AC800483365 /* AddPostViewController.swift in Sources */,
 				6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */,
@@ -3429,6 +3452,7 @@
 				C5D6F7E926B1829D006FFCDF /* ShowHubSelectionTableViewCell.swift in Sources */,
 				6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */,
 				61A8CB48261D98CA00B99233 /* ContactDetailWorker.swift in Sources */,
+				6B948236273A856400EC8D10 /* EventFilterVC.swift in Sources */,
 				C56C28BD26846EEA0042A0A3 /* AnalyticsTableViewCell.swift in Sources */,
 				C54F862826BD0FCB00501775 /* RatingReviewModel.swift in Sources */,
 				27B4E8FC25EF957D00623E45 /* AddFeaturedModel.swift in Sources */,
