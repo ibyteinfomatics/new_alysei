@@ -199,7 +199,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     controller?.blogId = "blogs"
                 case 4:
                     let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
-                 //   controller?.rest = "blogs"
+                    controller?.restId = "restaurants"
                 default:
                     print("Invalid")
                 }

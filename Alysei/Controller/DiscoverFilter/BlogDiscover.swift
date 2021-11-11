@@ -15,6 +15,9 @@ class BlogDiscover: AlysieBaseViewC {
     
     var blogModel:BlogModel?
     var blogId: String?
+    
+    var passSpecialization: String?
+    var passBlogTitle: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,14 @@ class BlogDiscover: AlysieBaseViewC {
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
-        _ = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC
+        let controller = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC
+        controller?.passSpecialization = self.passSpecialization
+        controller?.passBlogTitle = self.passBlogTitle
+        controller?.passSelectedDataCallback = {  passSpecialization, passBlogTitle in
+            self.passSpecialization = passSpecialization
+            self.passBlogTitle = passBlogTitle
+            
+        }
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)

@@ -15,7 +15,6 @@ class EventFilterVC: UIViewController {
     @IBOutlet weak var vw3: UIView!
     @IBOutlet weak var vw4: UIView!
     @IBOutlet weak var lblEventType: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblRegistrationType: UILabel!
     @IBOutlet weak var lblRestType: UILabel!
     @IBOutlet weak var dateTxf: UITextField!
@@ -25,19 +24,25 @@ class EventFilterVC: UIViewController {
     var arrEventType = ["Public","Private"]
     var arrRegistrationType = ["Free","Paid"]
     var selectDate: Date?
+    
+    var productType: ProductType?
+    var arrProductType = [String]()
+    var restauId: Int?
    
+    var passSelectedDataCallback: ((String,String,String,String,String) -> Void)? = nil
+    
+    var clearFiltercCallBack: (() -> Void)? = nil
+    
+    var passSelectedDate: String?
+    var passSelectedEventType: String?
+    var passSelectedRegistrationType: String?
+    var passSelectedRestType: String?
+    var passRestId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwHeader.addShadow()
-     
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM, yyyy"
-        dateTxf.text = formatter.string(from: Date())
-        vw1.addBorder()
-        vw2.addBorder()
-        vw3.addBorder()
-        vw4.addBorder()
-        showDatePicker()
+        setDataAndUI()
+        
 //        let dateTap = UITapGestureRecognizer(target: self, action: #selector(opendatepicker))
 //        self.vw1.addGestureRecognizer(dateTap)
         
@@ -46,7 +51,50 @@ class EventFilterVC: UIViewController {
         
         let regTap = UITapGestureRecognizer(target: self, action: #selector(openRegistTypedropDown))
         self.vw3.addGestureRecognizer(regTap)
+        
+        let resTap = UITapGestureRecognizer(target: self, action: #selector(openRestaurantdropDown))
+        self.vw4.addGestureRecognizer(resTap)
+        
+        callGetValueOfFieldApi()
        
+    }
+    
+    func setDataAndUI(){
+        
+        vwHeader.addShadow()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        if passSelectedDate == "" || passSelectedDate == nil{
+            dateTxf.text = formatter.string(from: Date())
+        }else{
+        dateTxf.text = passSelectedDate
+        }
+        
+        if passSelectedEventType == "" || passSelectedEventType == nil{
+            lblEventType.text = "Public"
+        }else{
+            lblEventType.text = passSelectedEventType
+        }
+        
+        if passSelectedRegistrationType == "" || passSelectedRegistrationType == nil{
+            lblRegistrationType.text = "Free"
+        }else{
+            lblRegistrationType.text = passSelectedEventType
+        }
+        if passSelectedRestType == "" || passSelectedRestType == nil{
+            lblRestType.text = AppConstants.kSelectRestType
+        }else{
+            lblRestType.text = passSelectedRestType
+        }
+        
+        
+        vw1.addBorder()
+        vw2.addBorder()
+        vw3.addBorder()
+        vw4.addBorder()
+        showDatePicker()
+          
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
@@ -55,6 +103,29 @@ class EventFilterVC: UIViewController {
 //    //Create a DatePicker
 //
 //    }
+    
+    @IBAction func btnFilterAction(_ sender: UIButton){
+        if lblRestType.text == AppConstants.kSelectRestType {
+            passSelectedRestType = ""
+        }else{
+            passSelectedRestType = lblRestType.text
+        }
+        self.passSelectedDataCallback?(dateTxf.text ?? "",lblEventType.text ?? "",lblRegistrationType.text ?? "", passSelectedRestType ?? "",passRestId ?? "")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnClearAction(_ sender: UIButton){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateTxf.text = formatter.string(from: Date())
+        lblEventType.text = "Public"
+        lblRegistrationType.text = "Free"
+        passRestId = ""
+        lblRestType.text = AppConstants.kSelectRestType
+        clearFiltercCallBack?()
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     func showDatePicker(){
         //Formate Date
         datePicker.datePickerMode = .date
@@ -81,7 +152,7 @@ class EventFilterVC: UIViewController {
     @objc func donedatePicker(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM, yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         dateTxf.text = formatter.string(from: datePicker.date)
         
         self.view.endEditing(true)
@@ -96,7 +167,8 @@ class EventFilterVC: UIViewController {
        }
     
     @objc func onDoneButtonTapped() {
-        self.lblDate.text = "\(selectDate ?? Date())"
+        //self.lblDate.text = "\(selectDate ?? Date())"
+        self.dateTxf.text = "\(selectDate ?? Date())"
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
     }
@@ -116,6 +188,7 @@ class EventFilterVC: UIViewController {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblEventType.text = item
+            restauId = Int.getInt(self.productType?.options?[index].id)
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
@@ -140,4 +213,45 @@ class EventFilterVC: UIViewController {
         dataDropDown.selectionBackgroundColor = UIColor.clear
         dataDropDown.direction = .bottom
     }
+    
+    @objc func openRestaurantdropDown(){
+        dataDropDown.dataSource = arrProductType
+        dataDropDown.show()
+    
+        dataDropDown.anchorView = vw4
+
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+        
+            self.lblRestType.text = item
+            self.passRestId = self.productType?.options?[index].id
+        }
+        dataDropDown.cellHeight = 40
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .bottom
+    }
+    
+    func callGetValueOfFieldApi(){
+        self.arrProductType.removeAll()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetFieldValue + "10", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let response = dictResponse as? [String:Any]
+            
+            if let data = response?["data"] as? [String:Any]{
+                self.productType = ProductType.init(with: data)
+                for product in 0..<(self.productType?.options?.count ?? 0) {
+                    self.arrProductType.append(self.productType?.options?[product].optionName ?? "")
+                }
+            }
+            
+            
+        }
+        
+    }
+    
+   // http://alyseiapi.ibyteworkshop.com/public/api/get/stories/byfilter?type=events&date=2020-05-04&event_type=public&registration_type=paid&restaurant_type=4
+    
+    
+    
 }

@@ -373,7 +373,11 @@ struct APIUrl{
         static let kSearchApi = "search?search_type="
         
     }
-    
+    enum Discover {
+        
+        static let kDiscoverEventSearch = "get/stories/byfilter?type=events"
+        static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
+    }
     enum Recipes {
         static let getrecipeCategory = kBASEURL + "get/recipe/categories"
         static let getrecipeIngridents = kBASEURL + "get/recipe/ingredients"
@@ -515,6 +519,7 @@ struct AppConstants {
     static let kURL = "URL"
     static let kUrl = "Url"
     static let leaveComment = "Leave a comment"
+    static let kSelectRestType = "Select Restaurant"
 }
 
 struct ProfileCompletion {

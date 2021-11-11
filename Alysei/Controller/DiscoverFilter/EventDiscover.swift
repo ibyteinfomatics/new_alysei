@@ -15,6 +15,14 @@ class EventDiscover: AlysieBaseViewC {
     var eventModel:EventModel?
     var eventId: String?
     var hostname,location,website:String?
+    
+    //Mark: FilterData
+    
+    var selectedDate: String?
+    var selectedEventType: String?
+    var selectedRegistrationType: String?
+    var selectedRestType: String?
+    var passRestId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +53,29 @@ class EventDiscover: AlysieBaseViewC {
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
-        _ = pushViewController(withName: EventFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventFilterVC
+        let controller = pushViewController(withName: EventFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventFilterVC
+        controller?.passSelectedDate = self.selectedDate
+        controller?.passSelectedEventType = self.selectedEventType
+        controller?.passSelectedRegistrationType = self.selectedRegistrationType
+        controller?.passSelectedRestType = self.selectedRestType
+        controller?.passRestId =  passRestId
+        controller?.passSelectedDataCallback = { passSelectedDate,passEventType,passRegistrationType,passRestType,passRestId in
+            self.selectedDate = passSelectedDate
+            self.selectedEventType = passEventType
+            self.selectedRegistrationType? = passRegistrationType
+            self.selectedRestType = passRestType
+            self.passRestId = passRestId
+            self.callFilterApi()
+        }
+        controller?.clearFiltercCallBack = {
+            self.selectedDate = ""
+            self.selectedEventType = ""
+            self.selectedRegistrationType? = ""
+            self.selectedRestType = ""
+            self.passRestId = ""
+            self.eventId = "events"
+            self.postRequest()
+        }
     }
     
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -118,13 +148,45 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 189
+        return 158
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("index--- ",indexPath.row)
+        
+        let indexPath = indexPath.row
+        
+        let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+        vc.hostname = self.eventModel?.data?[indexPath].hostName
+        vc.eventname = self.eventModel?.data?[indexPath].eventName
+        vc.location = self.eventModel?.data?[indexPath].location
+        vc.date = self.eventModel?.data?[indexPath].date
+        vc.time = self.eventModel?.data?[indexPath].time
+        vc.fulldescription = self.eventModel?.data?[indexPath].datumDescription
+        vc.website = self.eventModel?.data?[indexPath].website
+        vc.eventYype = self.eventModel?.data?[indexPath].eventType
+        vc.registrationType = self.eventModel?.data?[indexPath].registrationType
+        vc.imgurl = self.eventModel?.data?[indexPath].attachment?.attachmenturl
+        vc.typeofpage = "read"
+        
     }
     
     
     
+}
+extension EventDiscover {
+    
+    func callFilterApi () {
+        self.eventModel = EventModel(with: [:])
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverEventSearch + "&date=" + "\(selectedDate ?? "")" + "&event_type=" + "\(selectedEventType ?? "")" + "&registration_type=" + "\(selectedRegistrationType ?? "")" + "&restaurant_type=" + "\(passRestId ?? "")" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+          if let data = dictResponse?["data"] as? [String:Any]{
+            self.eventModel = EventModel.init(with: data)
+          }
+          
+          self.eventsTableView.reloadData()
+        }
+        
+    }
 }

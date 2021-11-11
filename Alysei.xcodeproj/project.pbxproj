@@ -380,6 +380,7 @@
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
+		6BFF3DF5273CD830006AC16B /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
 		A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A808778625ADB4F400AA4A69 /* Login.storyboard */; };
 		A84EECF925B19F6F00429B1D /* EditProfileViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84EECF825B19F6F00429B1D /* EditProfileViewC.swift */; };
@@ -1019,6 +1020,7 @@
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
+		6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A84EECF825B19F6F00429B1D /* EditProfileViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewC.swift; sourceTree = "<group>"; };
@@ -2423,6 +2425,10 @@
 				6B948233273A855000EC8D10 /* BlogFilterVC.swift */,
 				6B948235273A856400EC8D10 /* EventFilterVC.swift */,
 				6B948237273A872D00EC8D10 /* TripsFilterVC.swift */,
+				6B34E99C273A357C00D63378 /* EventDiscover.swift */,
+				6B34E99E273A35A500D63378 /* TripDiscover.swift */,
+				6B34E9A0273A35B500D63378 /* BlogDiscover.swift */,
+				6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */,
 			);
 			path = DiscoverFilter;
 			sourceTree = "<group>";
@@ -2528,6 +2534,7 @@
 				6B3756ED27281C1E0011F78E /* AwardModel.swift */,
 				6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */,
 				6B06B13A272D126B009B741E /* SinglePostModel.swift */,
+				6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2558,10 +2565,6 @@
 				2716627225BC84EB000C0189 /* NotificationViewC.swift */,
 				2716627125BC84EB000C0189 /* NotificationTableCell.swift */,
 				C5197AF626E72CB600C0894F /* NotificationList.swift */,
-				6B34E99C273A357C00D63378 /* EventDiscover.swift */,
-				6B34E99E273A35A500D63378 /* TripDiscover.swift */,
-				6B34E9A0273A35B500D63378 /* BlogDiscover.swift */,
-				6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -3612,6 +3615,7 @@
 				610AF2502691BAFB007AD426 /* AboutViewCCollectionViewCell.swift in Sources */,
 				273E5E7725BB381E009AF5A4 /* PostsViewC.swift in Sources */,
 				27A443BF25AE03720002BAAC /* RSDatePicker.swift in Sources */,
+				6BFF3DF5273CD830006AC16B /* RestaurantModel.swift in Sources */,
 				C5EB3CEE26E9CB8600CCAC9E /* CuisinesViewController.swift in Sources */,
 				C529209726777F00000C044B /* UserProductListViewController.swift in Sources */,
 				6B97B0952713EE74003B9E68 /* EditStepViewController.swift in Sources */,
