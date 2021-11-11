@@ -70,7 +70,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - Properties -
     var fromRecipe: String? = ""
     var percentage: String?
-    
+    var picker = UIImagePickerController()
     var contactDetail = [ContactDetail.view.tableCellModel]()
     var contactDetilViewModel: ContactDetail.Contact.Response!
     var signUpViewModel: SignUpViewModel!
@@ -85,7 +85,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     var tabload = true
     var connectionFlagValue: Int?
-    
+    var progressUserData: UserData?
     //var profileCompletion
     var currentIndex: Int = 0
     var tabposition: Int = 1
@@ -1456,7 +1456,13 @@ class ProfileViewC: AlysieBaseViewC{
             if let perData = response?["data"] as? [String:Any]{
                 self.percentage = perData["profile_percentage"] as? String
                 self.setPercentageUI(self.percentage ?? "0")
+                self.progressUserData = UserData.init(with: perData)
+                
+                if let progUserData = perData["user_details"] as? [String:Any]{
+                    self.progressUserData = UserData.init(with: progUserData)
+                }
             }
+           
             if let data = response?["data_progress"] as? [[String:Any]]{
                 let profileArray = kSharedInstance.getArray(withDictionary: data)
                 self.profileCompletionModel = profileArray.map{ProfileCompletionModel(with: $0)}
@@ -1790,6 +1796,27 @@ extension ProfileViewC: AnimationProfileCallBack{
             self.performSegue(withIdentifier: "segueProfileTabToContactDetail", sender: self)
         case ProfileCompletion.FeaturedProducts, ProfileCompletion.FeaturedRecipe, ProfileCompletion.FeaturedPackages:
             self.addFeaturedProductButtonTapped(UIButton())
+            
+        case ProfileCompletion.ProfilePicture, ProfileCompletion.CoverImage:
+            
+            
+            let storyboard = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
+            guard let nextVC = storyboard.instantiateViewController(identifier:  UpdateProfileCoverImgVC.id()) as?  UpdateProfileCoverImgVC else{return}
+            nextVC.passprofilePicUrl = self.progressUserData?.avatarid?.attachmenturl
+            nextVC.passCoverPicUrl = self.progressUserData?.coverid?.attachmenturl
+            nextVC.imagePickerCallback = {
+                self.postRequestToGetProgress()
+            }
+            self.navigationController?.present(nextVC, animated: true, completion: nil)
+            
+        case ProfileCompletion.Ourtrips, ProfileCompletion.OurProducts, ProfileCompletion.About, ProfileCompletion.CoverImage, ProfileCompletion.OurMenu :
+            
+            let storyboard = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
+            guard let nextVC = storyboard.instantiateViewController(identifier:  UpdateProfileDescVC.id()) as? UpdateProfileDescVC else{return}
+            nextVC.passUserFieldId = profileCompletionModel?[indexPath.row].user_field_id
+            nextVC.passheaderTitle =  profileCompletionModel?[indexPath.row].title
+            //self.navigationController?.present(nextVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(nextVC, animated: true)
         default:
             // let controller = pushViewController(withName: EditProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? EditProfileViewC
             // controller?.signUpViewModel = self.signUpViewModel
@@ -1814,6 +1841,8 @@ extension ProfileViewC: AnimationProfileCallBack{
         }
     }
 }
+
+
 
 extension ProfileViewC{
     

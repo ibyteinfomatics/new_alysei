@@ -167,6 +167,7 @@ struct StoryBoardConstants {
     static let kHubSelection = "HubSelection"
     static let kRecipesSelection = "Recipe"
     static let kChat = "Chat"
+    static let kUpdateProfile = "UpdateProfile"
 }
 
 struct Notifications {
@@ -324,6 +325,8 @@ struct APIUrl{
     static let kLike = "post/like"
    
     static let kSaveInquiry = "save/product/enquery"
+    static let kSaveProfileCover = "update/avatar/cover/image"
+    static let kSaveUpdateProfileField = "update/user/field"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -535,6 +538,7 @@ struct ProfileCompletion {
     static let FeaturedBlog = "Featured"
     static let Ourtrips  = "Our trips"
     static let ContactInfo = "Contact Info"
+    static let OurMenu = "Our Menu"
 }
 
 struct PlaceholderImages {
@@ -637,6 +641,7 @@ struct APIConstants {
     static let kSelectedAddressTwo = "selected_address_two"
     static let emoji = "emoji"
     static let userFieldOptionId = "user_field_option_id"
+    static let userFieldId = "user_field_id"
     static let fceSidCertification = "fce_sid_certification"
     static let phytosanitaryCertificate = "phytosanitary_certificate"
     static let packagingForUsa = "packaging_for_usa"

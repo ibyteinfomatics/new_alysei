@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Update Profile Cover ImgVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="UpdateProfileCoverImgVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="UpdateProfileCoverImgVC" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qY-gI-WcC">
+                                <rect key="frame" x="0.0" y="313.5" width="414" height="582.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="UDW-LR-66Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="sw6-6Z-GNw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-vh-72L">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.19735863095238096" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcL-aA-h6h">
+                                        <rect key="frame" x="196.5" y="10" width="207.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="  Change Cover Picture" image="camera_icon_white">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnUpdateCover:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sPR-YW-1XJ"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-AF-CcQ">
+                                        <rect key="frame" x="147" y="140" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="Rta-tF-ob4"/>
+                                            <constraint firstAttribute="width" secondItem="dgg-AF-CcQ" secondAttribute="height" multiplier="1:1" id="qiC-n7-oYh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kW-iI-MG8">
+                                        <rect key="frame" x="112" y="265" width="190" height="33"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="  Change Profile Picture">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnUpdateProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tha-aI-H8G"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkg-BK-4cp">
+                                        <rect key="frame" x="50" y="316" width="314" height="50"/>
+                                        <color key="backgroundColor" name="macraggeBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="DvI-dY-zBp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnSaveAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wS1-FS-FYm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kTR-vh-72L" firstAttribute="bottom" secondItem="UDW-LR-66Z" secondAttribute="bottom" id="3Pv-dq-6zw"/>
+                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="centerX" secondItem="6qY-gI-WcC" secondAttribute="centerX" id="4Aa-LD-JyT"/>
+                                    <constraint firstItem="UDW-LR-66Z" firstAttribute="leading" secondItem="6qY-gI-WcC" secondAttribute="leading" id="4hC-HZ-Kx3"/>
+                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="leading" secondItem="6qY-gI-WcC" secondAttribute="leading" constant="50" id="IHQ-Rc-vIc"/>
+                                    <constraint firstItem="UDW-LR-66Z" firstAttribute="top" secondItem="6qY-gI-WcC" secondAttribute="top" id="Koe-rv-Z27"/>
+                                    <constraint firstAttribute="trailing" secondItem="tkg-BK-4cp" secondAttribute="trailing" constant="50" id="Ldu-0w-vxk"/>
+                                    <constraint firstItem="kTR-vh-72L" firstAttribute="trailing" secondItem="UDW-LR-66Z" secondAttribute="trailing" id="Nf7-8F-RQV"/>
+                                    <constraint firstAttribute="trailing" secondItem="UDW-LR-66Z" secondAttribute="trailing" id="Oqq-jH-kEI"/>
+                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="top" secondItem="5kW-iI-MG8" secondAttribute="bottom" constant="18" id="QvP-bR-EAn"/>
+                                    <constraint firstAttribute="trailing" secondItem="dcL-aA-h6h" secondAttribute="trailing" constant="10" id="SQQ-Fh-Bdi"/>
+                                    <constraint firstItem="kTR-vh-72L" firstAttribute="top" secondItem="UDW-LR-66Z" secondAttribute="top" id="WYH-YL-q4V"/>
+                                    <constraint firstItem="dgg-AF-CcQ" firstAttribute="bottom" secondItem="UDW-LR-66Z" secondAttribute="bottom" constant="60" id="cgo-Ag-c0N"/>
+                                    <constraint firstItem="5kW-iI-MG8" firstAttribute="centerX" secondItem="dgg-AF-CcQ" secondAttribute="centerX" id="gYk-pn-CMT"/>
+                                    <constraint firstItem="dgg-AF-CcQ" firstAttribute="centerX" secondItem="6qY-gI-WcC" secondAttribute="centerX" id="h29-F7-Rt8"/>
+                                    <constraint firstItem="dcL-aA-h6h" firstAttribute="top" secondItem="6qY-gI-WcC" secondAttribute="top" constant="10" id="kyB-G7-NWI"/>
+                                    <constraint firstItem="kTR-vh-72L" firstAttribute="leading" secondItem="UDW-LR-66Z" secondAttribute="leading" id="r35-lD-xBl"/>
+                                    <constraint firstItem="5kW-iI-MG8" firstAttribute="top" secondItem="dgg-AF-CcQ" secondAttribute="bottom" constant="5" id="xlk-oM-S7q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.17142325680272108" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6qY-gI-WcC" secondAttribute="bottom" id="9ej-ZQ-AdH"/>
+                            <constraint firstItem="6qY-gI-WcC" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.65" id="QIr-8o-Exd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6qY-gI-WcC" secondAttribute="trailing" id="kLb-Sd-T2I"/>
+                            <constraint firstItem="6qY-gI-WcC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ulN-Y2-j5g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgCoverPic" destination="UDW-LR-66Z" id="6dt-Sp-O0O"/>
+                        <outlet property="imgProfilePic" destination="dgg-AF-CcQ" id="Fcx-WR-BR3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.927536231884062" y="22.767857142857142"/>
+        </scene>
+        <!--Update Profile DescVC-->
+        <scene sceneID="pii-fV-IeH">
+            <objects>
+                <viewController storyboardIdentifier="UpdateProfileDescVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4TB-xn-UGq" customClass="UpdateProfileDescVC" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yfM-HK-dp8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pic-k3-Q45">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLd-4s-1ek">
+                                        <rect key="frame" x="15" y="63" width="24" height="22"/>
+                                        <state key="normal" image="back_black"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-WJ-i1w">
+                                        <rect key="frame" x="69" y="63.5" width="37" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI0-h7-f0e">
+                                        <rect key="frame" x="349" y="49" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rI0-h7-f0e" secondAttribute="height" multiplier="1:1" id="DXb-sL-JId"/>
+                                            <constraint firstAttribute="height" constant="50" id="Jc8-z0-a2y"/>
+                                        </constraints>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="btnSaveAction:" destination="4TB-xn-UGq" eventType="touchUpInside" id="FOa-kO-BrB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="VLd-4s-1ek" firstAttribute="leading" secondItem="pic-k3-Q45" secondAttribute="leading" constant="15" id="Mp4-Ht-kTR"/>
+                                    <constraint firstItem="qKj-WJ-i1w" firstAttribute="centerY" secondItem="VLd-4s-1ek" secondAttribute="centerY" id="Ryg-Yc-HsT"/>
+                                    <constraint firstAttribute="height" constant="100" id="VMq-8J-Ezg"/>
+                                    <constraint firstAttribute="trailing" secondItem="rI0-h7-f0e" secondAttribute="trailing" constant="15" id="WeG-QT-umO"/>
+                                    <constraint firstItem="rI0-h7-f0e" firstAttribute="centerY" secondItem="qKj-WJ-i1w" secondAttribute="centerY" id="gFi-Ov-gEC"/>
+                                    <constraint firstAttribute="bottom" secondItem="VLd-4s-1ek" secondAttribute="bottom" constant="15" id="lso-XA-cuX"/>
+                                    <constraint firstItem="qKj-WJ-i1w" firstAttribute="leading" secondItem="VLd-4s-1ek" secondAttribute="trailing" constant="30" id="mSG-hs-tQf"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9qT-7R-2uK">
+                                <rect key="frame" x="10" y="110" width="394" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="LbM-PJ-4JR"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8bI-UH-VUo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8bI-UH-VUo" firstAttribute="trailing" secondItem="9qT-7R-2uK" secondAttribute="trailing" constant="10" id="1UO-YI-YDv"/>
+                            <constraint firstItem="8bI-UH-VUo" firstAttribute="trailing" secondItem="pic-k3-Q45" secondAttribute="trailing" id="CcP-u9-cQH"/>
+                            <constraint firstItem="pic-k3-Q45" firstAttribute="top" secondItem="yfM-HK-dp8" secondAttribute="top" id="R6f-Gn-QEf"/>
+                            <constraint firstItem="pic-k3-Q45" firstAttribute="leading" secondItem="8bI-UH-VUo" secondAttribute="leading" id="Voc-Nj-sjr"/>
+                            <constraint firstItem="9qT-7R-2uK" firstAttribute="top" secondItem="pic-k3-Q45" secondAttribute="bottom" constant="10" id="raR-E7-tux"/>
+                            <constraint firstItem="9qT-7R-2uK" firstAttribute="leading" secondItem="8bI-UH-VUo" secondAttribute="leading" constant="10" id="zE8-lb-0bX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headerTitle" destination="qKj-WJ-i1w" id="eu4-uz-wK9"/>
+                        <outlet property="lbltitle" destination="qKj-WJ-i1w" id="dE1-IR-gvm"/>
+                        <outlet property="txtDesc" destination="9qT-7R-2uK" id="UCX-TQ-pbX"/>
+                        <outlet property="vwHeader" destination="pic-k3-Q45" id="V7W-zo-fsf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mq-f9-4Xe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="23"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back_black" width="24" height="18.5"/>
+        <image name="camera_icon_white" width="19.5" height="15.5"/>
+        <image name="image_placeholder" width="41" height="33"/>
+        <image name="profile_icon" width="26" height="26"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="macraggeBlue">
+            <color red="0.0" green="0.27058823529411763" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

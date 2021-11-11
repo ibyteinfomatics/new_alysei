@@ -49,7 +49,9 @@ class DataClass {
     var email: String?
     var roleId: Int?
     var alyseiReview, alyseiCertification, alyseiRecognition, alyseiQualitymark: String?
-
+    var user_details: UserData?
+    
+    
     init(with dictResponse:  [String:Any]?) {
         self.userId = Int.getInt(dictResponse?["user_id"])
         self.email = String.getString(dictResponse?["email"])

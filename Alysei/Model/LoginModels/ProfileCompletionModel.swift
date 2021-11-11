@@ -11,9 +11,11 @@ class ProfileCompletionModel {
     var title : String?
     var status: Bool?
     var isSelected: Bool?
+    var user_field_id: Int?
     
     init(with data: [String:Any]) {
         self.title = String.getString(data["title"])
         self.status = Int.getInt(data["status"]) == 0 ? false: true
+        self.user_field_id = Int.getInt(data["user_field_id"])
     }
 }
