@@ -11,7 +11,7 @@ class TripDiscover: AlysieBaseViewC {
     
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
-    
+    @IBOutlet weak var vwHeader: UIView!
     var tripModel:TripModel?
     var tripId: String?
     
@@ -27,9 +27,11 @@ class TripDiscover: AlysieBaseViewC {
     var regionId,adventureId,intensityId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         // Do any additional setup after loading the view.
+        self.tripId = "trips"
         postRequestToGetTrip()
     }
     
@@ -81,7 +83,7 @@ class TripDiscover: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(tripId!)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.tripId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
         let dictResponse = dictResponse as? [String:Any]
       if let data = dictResponse?["data"] as? [String:Any]{

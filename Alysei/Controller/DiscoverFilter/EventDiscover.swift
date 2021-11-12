@@ -11,7 +11,7 @@ class EventDiscover: AlysieBaseViewC {
   
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var eventsTableView: UITableView!
-    
+    @IBOutlet weak var vwHeader: UIView!
     var eventModel:EventModel?
     var eventId: String?
     var hostname,location,website:String?
@@ -27,6 +27,8 @@ class EventDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        eventId = "events"
+        vwHeader.drawBottomShadow()
         eventsTableView.delegate = self
         eventsTableView.dataSource = self
 

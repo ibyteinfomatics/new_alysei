@@ -61,7 +61,7 @@ class EventFilterVC: UIViewController {
     
     func setDataAndUI(){
         
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         

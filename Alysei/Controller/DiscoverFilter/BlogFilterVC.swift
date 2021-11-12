@@ -25,11 +25,14 @@ class BlogFilterVC: AlysieBaseViewC {
     var specializationId: Int?
     var dataDropDown = DropDown()
     
-    var passSelectedDataCallback: ((String,String) -> Void)? = nil
+    var passSelectedDataCallback: ((Int,String) -> Void)? = nil
+    
+    var clearFiltercCallBack: (() -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()
         
@@ -60,13 +63,15 @@ class BlogFilterVC: AlysieBaseViewC {
     
     @IBAction func btnFilterAction(_ sender: UIButton){
         setData()
-        self.passSelectedDataCallback?(passSpecialization ?? "",passBlogTitle ?? "")
+        self.passSelectedDataCallback?(specializationId ?? 0,self.lblBlogTitle.text ?? "")
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnClearAction(_ sender: UIButton){
         self.passSpecialization = ""
         self.passBlogTitle = ""
+        clearFiltercCallBack?()
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func openSpecializationdropDown(){

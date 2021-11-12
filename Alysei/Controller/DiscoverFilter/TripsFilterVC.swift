@@ -66,7 +66,7 @@ class TripsFilterVC: AlysieBaseViewC {
     var clearfilterCallback: (() -> Void)? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         setData()
         vw1.addBorder()
         vw2.addBorder()

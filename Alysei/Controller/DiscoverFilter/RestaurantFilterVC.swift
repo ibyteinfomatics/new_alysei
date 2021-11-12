@@ -29,14 +29,18 @@ class RestaurantFilterVC: AlysieBaseViewC {
     var arrHubType = [String]()
     var hubId: Int?
     var dataDropDown = DropDown()
+    
+    var passSelectedDataCallback: ((Int,Int) -> Void)? = nil
+    
+    var clearFiltercCallBack: (() -> Void)? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()
-    
+        setData()
         getRestaurant()
         getHub()
         
@@ -48,17 +52,35 @@ class RestaurantFilterVC: AlysieBaseViewC {
         // Do any additional setup after loading the view.
     }
     
+    func setData(){
+        if self.passHubs == "" || self.passHubs == nil{
+            self.lblhubs.text = "Hubs"
+        }else{
+            self.passHubs = self.lblhubs.text
+        }
+        
+        if self.passRestType == "" || self.passRestType == nil{
+            self.lblreatau.text = "Restaurant Type"
+        }else{
+            self.passRestType = self.lblreatau.text
+        }
+    }
+    
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnFilterAction(_ sender: UIButton){
-        
+        setData()
+        self.passSelectedDataCallback?(hubId ?? 0,restauId ?? 0)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnClearAction(_ sender: UIButton){
         self.passHubs = ""
         self.passRestType = ""
+        clearFiltercCallBack?()
+        self.navigationController?.popViewController(animated: true)
     }
     
     

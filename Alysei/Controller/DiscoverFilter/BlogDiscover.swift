@@ -12,7 +12,7 @@ class BlogDiscover: AlysieBaseViewC {
     
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var blogTableView: UITableView!
-    
+    @IBOutlet weak var vwHeader: UIView!
     var blogModel:BlogModel?
     var blogId: String?
     
@@ -21,8 +21,10 @@ class BlogDiscover: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         blogTableView.delegate = self
         blogTableView.dataSource = self
+        blogId = "blogs"
         postRequestToGetBlog()
         // Do any additional setup after loading the view.
     }
@@ -33,9 +35,15 @@ class BlogDiscover: AlysieBaseViewC {
         controller?.passSpecialization = self.passSpecialization
         controller?.passBlogTitle = self.passBlogTitle
         controller?.passSelectedDataCallback = {  passSpecialization, passBlogTitle in
-            self.passSpecialization = passSpecialization
+            self.passSpecialization = String.getString(passSpecialization)
             self.passBlogTitle = passBlogTitle
-            
+            self.callFilterApi ()
+        }
+        
+        controller?.clearFiltercCallBack = {
+            self.passBlogTitle = ""
+            self.passSpecialization = ""
+            self.callFilterApi()
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -46,7 +54,7 @@ class BlogDiscover: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(blogId!)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.blogId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
         let dictResponse = dictResponse as? [String:Any]
       if let data = dictResponse?["data"] as? [String:Any]{
@@ -121,4 +129,22 @@ extension BlogDiscover: UITableViewDelegate, UITableViewDataSource{
         return 140
     }
     
+}
+
+extension BlogDiscover {
+    
+    func callFilterApi () {
+        self.blogModel = BlogModel(with: [:])
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverBlogSearch + "&title=" + String.getString(self.passBlogTitle)+"&specialization="+String.getString(self.passSpecialization), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+              if let data = dictResponse?["data"] as? [String:Any]{
+                self.blogModel = BlogModel.init(with: data)
+              }
+                
+            self.blogTableView.reloadData()
+              
+        }
+        
+    }
 }

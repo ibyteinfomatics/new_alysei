@@ -22,7 +22,7 @@ class SpecializationModel{
             self.data = data.map({SpecializationData.init(with: $0)})
         }
         
-        if let data = dictResponse?["data"] as? [[String:Any]]{
+        if let data = dictResponse?["hubs"] as? [[String:Any]]{
             self.hubdata = data.map({AllHubnData.init(with: $0)})
         }
         

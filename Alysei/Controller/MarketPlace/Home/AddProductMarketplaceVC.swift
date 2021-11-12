@@ -172,7 +172,8 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
         config.library.maxNumberOfItems = 100000
-        config.showsPhotoFilters = false
+        config.showsPhotoFilters = true
+        
         
         config.library.preselectedItems = ypImages
         let picker = YPImagePicker(configuration: config)

@@ -380,6 +380,8 @@ struct APIUrl{
     enum Discover {
         static let kGetSpecialization = "get/specialization"
         static let kDiscoverEventSearch = "get/stories/byfilter?type=events"
+        static let kDiscoverBlogSearch = "get/stories/byfilter?type=blogs"
+        static let kDiscoverRestaurantSearch = "get/stories/byfilter?type=restaurants"
         static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
         static let kRestaurantTypes = "get/restaurant/types"
         static let kAllHubs = "get/all/hubs"

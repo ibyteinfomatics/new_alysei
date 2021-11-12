@@ -11,21 +11,39 @@ class RestaurantDiscover: AlysieBaseViewC {
     
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
-    
+    @IBOutlet weak var vwHeader: UIView!
     var restModel:RestaurantModel?
     var restId: String?
 
+    var passHubs: String?
+    var passRestType: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        vwHeader.drawBottomShadow()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
+        restId = "restaurants"
         postRequestToGetRestaurant()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func filterBtn(_ sender: UIButton) {
-        _ = pushViewController(withName: RestaurantFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantFilterVC
+        
+        let controller = pushViewController(withName: RestaurantFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantFilterVC
+        controller?.passHubs = self.passHubs
+        controller?.passRestType = self.passRestType
+        controller?.passSelectedDataCallback = {  passHubs, passRestType in
+            self.passHubs = String.getString(passHubs)
+            self.passRestType = String.getString(passRestType)
+            self.callFilterApi ()
+        }
+        
+        controller?.clearFiltercCallBack = {
+            self.passHubs = ""
+            self.passRestType = ""
+            self.callFilterApi()
+        }
         
     }
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -96,4 +114,22 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
         controller?.userID = self.restModel?.data?[indexPath.row].userid
     }
     
+}
+extension RestaurantDiscover {
+    
+    func callFilterApi () {
+        self.restModel = RestaurantModel(with: [:])
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverRestaurantSearch + "&hubs=" + String.getString(self.passHubs)+"&restaurant_type="+String.getString(self.passRestType), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+          if let data = dictResponse?["data"] as? [String:Any]{
+            self.restModel = RestaurantModel.init(with: data)
+          }
+          
+            self.tripsTableView.reloadData()
+              
+        }
+        
+    }
 }

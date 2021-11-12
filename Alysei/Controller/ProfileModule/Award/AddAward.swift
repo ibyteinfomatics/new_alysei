@@ -67,7 +67,8 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
             
-            
+            self.cameraIcon.isHidden = true
+            self.cameraText.isHidden = true
             eventNameTxf.text = eventName
             productNameTxf.text = productName
             urlNameTxf.text = url
@@ -132,9 +133,9 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
                 alert(msg: "Please enter winning product name!")
             } else if placeNameTxf.text == "" {
                 alert(msg: "Please enter medal name!")
-            } else if urlNameTxf.text == "" {
+            } /*else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
-            } /*else if String.getString(self.urlNameTxf.text).isURL() == false{
+            } else if String.getString(self.urlNameTxf.text).isURL() == false{
                 alert(msg: "Please enter valid competition URL!")
             }*/ else {
                 updateRewardApi()
@@ -150,9 +151,9 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
                 alert(msg: "Please enter winning product name!")
             } else if placeNameTxf.text == "" {
                 alert(msg: "Please enter medal name!")
-            } else if urlNameTxf.text == "" {
+            } /*else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
-            } /*else if String.getString(self.urlNameTxf.text).isURL() == false{
+            } else if String.getString(self.urlNameTxf.text).isURL() == false{
                 alert(msg: "Please enter valid competition URL!")
             }*/ else {
                 createRewardApi()
@@ -169,7 +170,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             var config = YPImagePickerConfiguration()
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
-            config.showsPhotoFilters = false
+            config.showsPhotoFilters = true
             
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)
