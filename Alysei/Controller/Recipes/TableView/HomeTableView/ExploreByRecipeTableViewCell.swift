@@ -122,7 +122,7 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
-        return CGSize(width: self.collectionVwRegion.frame.width / 3, height: 150.0)
+        return CGSize(width: self.collectionVwRegion.frame.width/3 - 20, height: 150.0)
        }
 
 }

@@ -29,6 +29,7 @@ class GetSavedPreferencesDataModel{
 class MapDataModel{
     var cousinId: Int?
     var name: String?
+    var title: String?
     var imageId: ImageURL?
     var status : String?
     var isSelected: Int?
@@ -48,6 +49,7 @@ class MapDataModel{
             self.imageId = ImageURL.init(with: image)
         }
             self.name = String.getString(dictResponse["name"])
+            self.title = String.getString(dictResponse["title"])
             self.status = String.getString(dictResponse["status"])
             self.isSelected = Int.getInt(dictResponse["is_selected"])
         

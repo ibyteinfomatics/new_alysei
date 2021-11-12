@@ -88,7 +88,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         let imgUrl = (kImageBaseUrl + (self.showAllIngridient?[indexPath.row].imageId?.imgUrl ?? ""))
         cell.image2.setImage(withString: "")
         cell.image1.setImage(withString: imgUrl)
-        cell.imageNameLabel.text = self.showAllIngridient?[indexPath.item].name
+        cell.imageNameLabel.text = self.showAllIngridient?[indexPath.item].title
         cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
         cell.viewOfImage.layer.borderWidth = 4
         cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor

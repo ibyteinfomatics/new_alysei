@@ -12,7 +12,7 @@ var stepsModel: [StepsDataModel]? = []
 var recipeModel : ViewRecipeDetailDataModel?
 var usedIngridientModel : [UsedIngridientDataModel]? = []
 var usedToolModel: [UsedToolsDataModel]? = []
-class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRowDelegate {
+class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRowDelegate{
     
     
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
@@ -91,11 +91,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         }
         
         let shareRecipe = UIAlertAction(title: "Share Recipe", style: .default) { action in
-            let url = URL(string:"https://social.alysei.com/")
-            let activityVC = UIActivityViewController(activityItems: [url ?? ""], applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            self.present(activityVC, animated: true)
-            
+            self.share()
         }
         
         
@@ -120,6 +116,28 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         
     }
     
+    func share(){
+        let message = "Checkout" + " " + (recipeModel?.recipeName ?? "") +  " " + "from Alysei app."
+        
+        //                let appName = "Alysei"
+        //                let appScheme = "\(appName)://app"
+        //                let appUrl = URL(string: appScheme)
+        let url = URL(string:"https://alyseiweb.ibyteworkshop.com/")
+        
+        //            if UIApplication.shared.canOpenURL(appUrl! as URL) {
+        //                UIApplication.shared.open(appUrl!)
+        //            } else {
+        //                UIApplication.shared.open(url!)
+        //            }
+        
+        
+        
+        let activityVC : UIActivityViewController  = UIActivityViewController(activityItems: [(message + "\n" + "\(url ?? URL(fileURLWithPath: ""))")], applicationActivities: nil)
+        activityVC.view.backgroundColor = UIColor.white
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+        
+    }
     
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController

@@ -149,7 +149,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
-        return CGSize(width: self.collectionVw.frame.width / 4, height: 180.0)
+        return CGSize(width: self.collectionVw.frame.width/3 - 20 , height: 180.0)
        }
 //    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 //        {

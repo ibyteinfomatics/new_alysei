@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
   //MARK: - Properties -
   
   var window: UIWindow?
+ 
   //var locationManager: CLLocationManager!
   var googleAPIKey = "AIzaSyDX4HE7708TQYkE0WoOlzTDlq7_9nneUHY"
  //var googleAPIKey = "AIzaSyCHoKV0CQU2zctfEt3-8H-cX2skMbMpmsM"
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     //Current location
     // Ask for Authorisation from the User.
     self.locationManager.requestAlwaysAuthorization()
-  changeTabBarFont()
+    changeTabBarFont()
     // For use in foreground
     self.locationManager.requestWhenInUseAuthorization()
 
@@ -54,7 +55,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     return true
   }
+  
+//    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]) -> Bool {
+//        print(url)
+//        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
+//        let host = urlComponents?.host ?? ""
+//        print(host)
+//        if host == ""{
+//            let sb = UIStoryboard(name: "Recipe", bundle: nil)
+//            let vc = sb.instantiateViewController(identifier: "DiscoverRecipeViewController") as? DiscoverRecipeViewController
+//            window?.rootViewController = vc
+//        }
+//      return true
+//    }
     
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        guard let url = userActivity.webpageURL else{
+            return false
+        }
+        
+        let sb = UIStoryboard(name: "Recipe", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "DiscoverRecipeViewController") as? DiscoverRecipeViewController
+        
+        guard let viewController = vc else {
+            application.canOpenURL(url)
+            return false
+        }
+        
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+
+//            guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+//                let url = userActivity.webpageURL, let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+//                    return false
+//                }
+
+
+            //FOR A URL "https://yourwebsite.com/testing/24
+            //this will print the ID 24
+            
+//            if (components.path.contains("")) {
+//                if let theid = Int(url.lastPathComponent) {
+//                    print("test id from deep link \(theid)")
+//                }
+//            }
+            
+            
+            return true
+    }
     func changeTabBarFont(){
         let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)]
                 UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)

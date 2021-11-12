@@ -264,6 +264,7 @@
 		6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */; };
 		6B6F084C261EC41400BA2D2B /* EditSettingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */; };
 		6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */; };
+		6B74FFDE273E40FA0063EAEC /* apple-app-site-association.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */; };
 		6B76ADEB27105725002855CD /* AddReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */; };
 		6B76ADED2710584B002855CD /* AddReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */; };
 		6B79E66826E74C2400B2D434 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B79E66326E74C2200B2D434 /* TripModel.swift */; };
@@ -891,6 +892,8 @@
 		6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostInteractor.swift; sourceTree = "<group>"; };
 		6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeViewController.swift; sourceTree = "<group>"; };
 		6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "apple-app-site-association.rtf"; sourceTree = "<group>"; };
+		6B74FFDF273E41C20063EAEC /* AlyseiDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlyseiDebug.entitlements; sourceTree = "<group>"; };
 		6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewRecipeViewController.swift; sourceTree = "<group>"; };
 		6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewTableViewCell.swift; sourceTree = "<group>"; };
 		6B79E66226E74B3400B2D434 /* Alysei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alysei.entitlements; sourceTree = "<group>"; };
@@ -1867,6 +1870,7 @@
 			children = (
 				611BD9FA268C3D2900EAD7B5 /* CHANGELOG.md */,
 				6B79E66226E74B3400B2D434 /* Alysei.entitlements */,
+				6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */,
 				27BC688225AC564100A01B6A /* Alysei */,
 				27BC688125AC564100A01B6A /* Products */,
 				C4D53758216B553EA7E32FEE /* Pods */,
@@ -1885,6 +1889,7 @@
 		27BC688225AC564100A01B6A /* Alysei */ = {
 			isa = PBXGroup;
 			children = (
+				6B74FFDF273E41C20063EAEC /* AlyseiDebug.entitlements */,
 				6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */,
 				61C7BE42267CAFA6006DB3BB /* Countries.json */,
 				6B79E67B26E7663100B2D434 /* Info.plist */,
@@ -3077,6 +3082,7 @@
 				27B2FDE625C8782000CFEDA0 /* ProductSection.xib in Resources */,
 				6B7CACC126FDD3CA00096E79 /* SanFranciscoDisplay-Semibold.otf in Resources */,
 				27A443D425AE03720002BAAC /* Montserrat-MediumItalic.ttf in Resources */,
+				6B74FFDE273E40FA0063EAEC /* apple-app-site-association.rtf in Resources */,
 				6B7CACCB26FDD3CA00096E79 /* SanFranciscoText-Heavy.otf in Resources */,
 				27A443CE25AE03720002BAAC /* Montserrat-BoldItalic.ttf in Resources */,
 				C5D6F7AA26B18264006FFCDF /* HubNameCollectionViewCell.xib in Resources */,
@@ -3865,7 +3871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Alysei/Alysei.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Alysei/AlyseiDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;

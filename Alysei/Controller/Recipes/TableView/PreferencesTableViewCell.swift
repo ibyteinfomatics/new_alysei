@@ -215,7 +215,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 
                 cell.imageView.setImage(withString: imgUrl)
                 cell.imageView.contentMode = .scaleAspectFit
-                cell.imageNameLabel.text = showIngridient?[indexPath.row].name
+                cell.imageNameLabel.text = showIngridient?[indexPath.row].title
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
 
