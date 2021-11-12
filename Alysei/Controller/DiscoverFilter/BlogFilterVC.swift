@@ -6,18 +6,24 @@
 //
 
 import UIKit
+import DropDown
 
-class BlogFilterVC: UIViewController {
+class BlogFilterVC: AlysieBaseViewC {
     @IBOutlet weak var vwHeader: UIView!
     
     @IBOutlet weak var lblSpecialization:UILabel!
-    @IBOutlet weak var lblBlogTitle: UILabel!
+    @IBOutlet weak var lblBlogTitle: UITextField!
     
     @IBOutlet weak var vw1: UIView!
     @IBOutlet weak var vw2: UIView!
     
     var passSpecialization: String?
     var passBlogTitle: String?
+    var specializationModel: SpecializationModel?
+    
+    var arrProductType = [String]()
+    var specializationId: Int?
+    var dataDropDown = DropDown()
     
     var passSelectedDataCallback: ((String,String) -> Void)? = nil
     override func viewDidLoad() {
@@ -26,19 +32,26 @@ class BlogFilterVC: UIViewController {
         vwHeader.addShadow()
         vw1.addBorder()
         vw2.addBorder()
+        
+        getSpecialization()
+        
+        let specializationTap = UITapGestureRecognizer(target: self, action: #selector(openSpecializationdropDown))
+        self.vw1.addGestureRecognizer(specializationTap)
+        
+        
         // Do any additional setup after loading the view.
     }
     func setData(){
-        if self.passSpecialization == "" {
+        if self.passSpecialization == "" || self.passSpecialization == nil{
             self.lblSpecialization.text = "Specialization"
         }else{
             self.passSpecialization = self.lblSpecialization.text
         }
         
-        if self.passBlogTitle == "" {
-            self.lblBlogTitle.text = "Blog Titles"
+        if self.passBlogTitle == "" || self.passBlogTitle == nil{
+            self.lblBlogTitle.placeholder = "Blog Titles"
         }else{
-            self.passSpecialization = self.lblBlogTitle.text
+            self.passBlogTitle = self.lblBlogTitle.text
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -46,17 +59,7 @@ class BlogFilterVC: UIViewController {
     }
     
     @IBAction func btnFilterAction(_ sender: UIButton){
-        if self.passSpecialization == "" {
-            self.lblSpecialization.text = "Specialization"
-        }else{
-            self.passSpecialization = self.lblSpecialization.text
-        }
-        
-        if self.passBlogTitle == "" {
-            self.lblBlogTitle.text = "Blog Titles"
-        }else{
-            self.passSpecialization = self.lblBlogTitle.text
-        }
+        setData()
         self.passSelectedDataCallback?(passSpecialization ?? "",passBlogTitle ?? "")
         self.navigationController?.popViewController(animated: true)
     }
@@ -65,4 +68,41 @@ class BlogFilterVC: UIViewController {
         self.passSpecialization = ""
         self.passBlogTitle = ""
     }
+    
+    @objc func openSpecializationdropDown(){
+        dataDropDown.dataSource = arrProductType
+        dataDropDown.show()
+    
+        dataDropDown.anchorView = vw1
+
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+        
+            self.lblSpecialization.text = item
+            specializationId = Int.getInt(self.specializationModel?.data?[index].id)
+        }
+        dataDropDown.cellHeight = 40
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .bottom
+    }
+    
+    
+    private func getSpecialization() -> Void{
+      
+      disableWindowInteraction()
+    
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kGetSpecialization, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+          
+          let response = dictResponse as? [String:Any]
+          
+            self.specializationModel = SpecializationModel.init(with: response)
+            for product in 0..<(self.specializationModel?.data?.count ?? 0) {
+                self.arrProductType.append(self.specializationModel?.data?[product].title ?? "")
+            }
+        
+      }
+      
+    }
+    
 }

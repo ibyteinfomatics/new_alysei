@@ -375,11 +375,14 @@ struct APIUrl{
         //static let kKeywordSearch = "search?search_type=3&keyword="
         static let kSearchApi = "search?search_type="
         
+
     }
     enum Discover {
-        
+        static let kGetSpecialization = "get/specialization"
         static let kDiscoverEventSearch = "get/stories/byfilter?type=events"
         static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
+        static let kRestaurantTypes = "get/restaurant/types"
+        static let kAllHubs = "get/all/hubs"
     }
     enum Recipes {
         static let getrecipeCategory = kBASEURL + "get/recipe/categories"

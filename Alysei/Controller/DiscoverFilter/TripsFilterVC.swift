@@ -145,38 +145,7 @@ class TripsFilterVC: AlysieBaseViewC {
 
     
     @IBAction func btnFilterAction(_ sender: UIButton){
-        if passSelectedCountry == "" ||  passSelectedCountry == nil {
-            countryLabel.text = "Country"
-        }else{
-            passSelectedCountry = countryLabel.text ?? ""
-        }
-        if passRegions == ""  || passRegions == nil{
-            regionLabel.text = "Region"
-        }else{
-            passRegions = regionLabel.text ?? ""
-        }
-        
-        if passAdventure == "" || passAdventure == nil{
-            adventuresLabel.text = "Adventures"
-        }else{
-            passAdventure = adventuresLabel.text ?? ""
-        }
-        if passDuration == "" || passDuration == nil{
-            durationLabel.text = "Duration"
-        }else{
-            passDuration = durationLabel.text ?? ""
-        }
-        
-        if passIntensity == "" || passIntensity == nil{
-            durationLabel.text = "Intensity"
-        }else{
-            passIntensity = durationLabel.text ?? ""
-        }
-        if passprice == "" || passprice == nil{
-            currencyLabel.placeholder = "Price"
-        }else{
-            passprice = currencyLabel.text ?? ""
-        }
+        setData()
         self.passSelectedDataCallback?(passSelectedCountry ?? "",passRegions ?? "",passAdventure ?? "", passDuration ?? "", passIntensity ?? "", passprice ?? "", regionId ?? "",adventureId ?? "", intensityId ?? "")
         self.navigationController?.popViewController(animated: true)
     }

@@ -202,9 +202,9 @@ class InquiryConversation: AlysieBaseViewC {
     
     
     @IBAction func btnDeleteTapped(_ sender: Any) {
-        kChatharedInstance.deletePerticularMessage(msgId: self.selectedChat, user_id: (String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_"+(String.getString(userId)))
+        kChatharedInstance.deleteEnquiryPerticularMessage(msgId: self.selectedChat, user_id: (String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_"+(String.getString(userId))+"_"+productId)
         
-        kChatharedInstance.deletePerticularMessage(msgId: self.selectedChat, user_id: (String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_"+(String.getString(userId)))
+        //kChatharedInstance.deleteEnquiryPerticularMessage(msgId: self.selectedChat, user_id: (String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_"+(String.getString(userId))+"_"+productId)
         
        // self.senderselectedChat.removeAll()
         btnDelete.isHidden = true
@@ -354,7 +354,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 textCell.lbltime.text = time
                 
-                /*textCell.LongDeleteCallBack = {
+                textCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -374,7 +374,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }*/
+                }
                 
                 return textCell
                 
@@ -398,7 +398,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                     self.present(controller, animated: true)
                 }
                 
-                /*photoCell.LongDeleteCallBack = {
+                photoCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -418,7 +418,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }*/
+                }
                 
                 return photoCell
                 
@@ -442,7 +442,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 textCell.lbltime.text = time
                 
-                /*textCell.LongDeleteCallBack = {
+                textCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -462,7 +462,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }*/
+                }
                 
                 if String.getString(objects?.senderImage).contains(imageDomain) {
                     textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
@@ -485,7 +485,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 photoCell.time.text = time
                 
-                /*photoCell.LongDeleteCallBack = {
+                photoCell.LongDeleteCallBack = {
                     //textCell.bgView.backgroundColor = UIColor.darkGray
                     
                     if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
@@ -505,7 +505,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                         self.btnDelete.isHidden = true
                     }
                     
-                }*/
+                }
                 
                 //OPEN IMAGE
                 photoCell.openImageCallBack = {

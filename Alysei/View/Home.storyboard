@@ -12,10 +12,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue-Light.ttf">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -7374,14 +7372,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="394" height="89.666664123535156"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="394" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="89.666664123535156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="34.666666666666664" width="374" height="44.999999999999993"/>
+                                                    <rect key="frame" x="10" y="35" width="374" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7422,7 +7420,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10.000000000000002" width="374" height="19.666666666666671"/>
+                                                    <rect key="frame" x="10" y="10" width="374" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7444,7 +7442,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.99999809265137" width="394" height="61.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="114.33333396911621" width="394" height="61.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="61.333332061767578"/>
@@ -7482,7 +7480,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="175.33333015441895" width="394" height="61.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="175.66666603088379" width="394" height="61.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="61.333332061767578"/>
@@ -18747,18 +18745,9 @@ any other devices.</string>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
-                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-XM-NCF">
-                                                            <rect key="frame" x="359" y="16.666666666666686" width="20" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="dUh-XM-NCF" secondAttribute="height" multiplier="1:1" id="kc4-ae-Ypk"/>
-                                                                <constraint firstAttribute="height" constant="20" id="tWA-uQ-lrR"/>
-                                                            </constraints>
-                                                            <state key="normal" image="dropdown_selector"/>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="dUh-XM-NCF" secondAttribute="trailing" constant="15" id="5HE-Mf-myQ"/>
                                                         <constraint firstItem="EHM-bx-gWo" firstAttribute="centerY" secondItem="sD5-jT-YIN" secondAttribute="centerY" id="bmK-ml-7o7"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -18938,27 +18927,21 @@ any other devices.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gq-5g-N2N">
                                                     <rect key="frame" x="0.0" y="68.666666666666671" width="394" height="58.333333333333329"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog Titles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aX-Kg-SgN">
-                                                            <rect key="frame" x="15" y="18.666666666666657" width="84.666666666666671" height="21"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0j-SN-97V">
-                                                            <rect key="frame" x="359" y="19" width="20" height="20"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Blog Titles" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-WW-fnu">
+                                                            <rect key="frame" x="15" y="12" width="364" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="CoC-aF-mtY"/>
-                                                                <constraint firstAttribute="width" secondItem="I0j-SN-97V" secondAttribute="height" multiplier="1:1" id="kNf-rT-hhi"/>
+                                                                <constraint firstAttribute="height" constant="34" id="W52-Rf-vqa"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="jzJ-bN-yHD"/>
                                                             </constraints>
-                                                            <state key="normal" image="dropdown_selector"/>
-                                                        </button>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="I0j-SN-97V" firstAttribute="centerY" secondItem="6aX-Kg-SgN" secondAttribute="centerY" id="DZe-78-P8d"/>
-                                                        <constraint firstItem="6aX-Kg-SgN" firstAttribute="centerY" secondItem="6gq-5g-N2N" secondAttribute="centerY" id="gYo-ch-WyW"/>
-                                                        <constraint firstItem="6aX-Kg-SgN" firstAttribute="leading" secondItem="6gq-5g-N2N" secondAttribute="leading" constant="15" id="tHE-A0-04b"/>
-                                                        <constraint firstAttribute="trailing" secondItem="I0j-SN-97V" secondAttribute="trailing" constant="15" id="vwY-hp-aPF"/>
+                                                        <constraint firstItem="4OD-WW-fnu" firstAttribute="leading" secondItem="6gq-5g-N2N" secondAttribute="leading" constant="15" id="WzV-Oo-Pnn"/>
+                                                        <constraint firstItem="4OD-WW-fnu" firstAttribute="centerY" secondItem="6gq-5g-N2N" secondAttribute="centerY" id="fws-ca-WYS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4OD-WW-fnu" secondAttribute="trailing" constant="15" id="hwY-Zf-d5t"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -19015,7 +18998,7 @@ any other devices.</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lblBlogTitle" destination="6aX-Kg-SgN" id="68s-4r-UqB"/>
+                        <outlet property="lblBlogTitle" destination="4OD-WW-fnu" id="VSU-cK-88E"/>
                         <outlet property="lblSpecialization" destination="TbO-AX-gP9" id="d3g-Zr-36J"/>
                         <outlet property="vw1" destination="pTm-He-KSJ" id="mQK-bI-dBU"/>
                         <outlet property="vw2" destination="6gq-5g-N2N" id="EYK-lb-ybw"/>
@@ -19044,6 +19027,9 @@ any other devices.</string>
                                             <constraint firstAttribute="height" constant="20" id="oJA-Cu-O7s"/>
                                         </constraints>
                                         <state key="normal" image="cross_icon_black"/>
+                                        <connections>
+                                            <action selector="btnBackAction:" destination="d8a-6W-yT6" eventType="touchUpInside" id="4qk-9h-Bxi"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgI-RQ-Ikq">
                                         <rect key="frame" x="70" y="60" width="48.666666666666657" height="24"/>
@@ -19057,6 +19043,9 @@ any other devices.</string>
                                         <state key="normal" title="Clear Filter">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnClearAction:" destination="d8a-6W-yT6" eventType="touchUpInside" id="lOd-qC-zAJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -19175,6 +19164,9 @@ any other devices.</string>
                                 <state key="normal" title="Apply Filter">
                                     <color key="titleColor" name="whiteColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnFilterAction:" destination="d8a-6W-yT6" eventType="touchUpInside" id="aqj-rc-yW4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dz6-v7-I0b"/>
@@ -19191,6 +19183,13 @@ any other devices.</string>
                             <constraint firstItem="zAh-xp-bjC" firstAttribute="leading" secondItem="dz6-v7-I0b" secondAttribute="leading" id="vfL-3R-2mK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblhubs" destination="XzE-29-csr" id="e38-3y-TNs"/>
+                        <outlet property="lblreatau" destination="JMn-9H-nid" id="nv7-DG-0vN"/>
+                        <outlet property="vw1" destination="rZL-9y-FfF" id="Ljh-b0-18t"/>
+                        <outlet property="vw2" destination="b8o-7Y-2gN" id="dIz-4J-SdC"/>
+                        <outlet property="vwHeader" destination="cGm-3T-eeT" id="Ujh-Sm-Fhz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frn-kn-V02" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -20477,7 +20476,7 @@ AAAAAAABG/w
         <image name="icon_uncheckedBox" width="26" height="26"/>
         <image name="icons8_add_user_male" width="23" height="22.666666030883789"/>
         <image name="icons8_comments" width="20.666666030883789" height="19"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.333333969116211" height="10.666666984558105"/>
         <image name="icons8_forward-1" width="11.333333015441895" height="21"/>

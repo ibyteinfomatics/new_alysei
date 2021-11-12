@@ -281,6 +281,13 @@ class Chat_hepler {
         }
         
        
+    }
+    
+    func deleteEnquiryPerticularMessage(msgId: [String],user_id: String) {
+        
+        for i in 0..<msgId.count {
+            self.inquirymessageReference.child("PrivateMessages").child(user_id).child(msgId[i]).removeValue()
+        }
         
        
     }
