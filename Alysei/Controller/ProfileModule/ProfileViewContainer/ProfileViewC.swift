@@ -1800,8 +1800,8 @@ extension ProfileViewC: AnimationProfileCallBack{
         case ProfileCompletion.ProfilePicture, ProfileCompletion.CoverImage:
             
             
-            let storyboard = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
-            guard let nextVC = storyboard.instantiateViewController(identifier:  UpdateProfileCoverImgVC.id()) as?  UpdateProfileCoverImgVC else{return}
+            let storyboard1 = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
+            guard let nextVC = storyboard1.instantiateViewController(identifier:  UpdateProfileCoverImgVC.id()) as?  UpdateProfileCoverImgVC else{return}
             nextVC.passprofilePicUrl = self.progressUserData?.avatarid?.attachmenturl
             nextVC.passCoverPicUrl = self.progressUserData?.coverid?.attachmenturl
             nextVC.imagePickerCallback = {
@@ -1811,8 +1811,8 @@ extension ProfileViewC: AnimationProfileCallBack{
             
         case ProfileCompletion.Ourtrips, ProfileCompletion.OurProducts, ProfileCompletion.About, ProfileCompletion.CoverImage, ProfileCompletion.OurMenu :
             
-            let storyboard = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
-            guard let nextVC = storyboard.instantiateViewController(identifier:  UpdateProfileDescVC.id()) as? UpdateProfileDescVC else{return}
+            let storyboard1 = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
+            guard let nextVC = storyboard1.instantiateViewController(identifier:  UpdateProfileDescVC.id()) as? UpdateProfileDescVC else{return}
             nextVC.passUserFieldId = profileCompletionModel?[indexPath.row].user_field_id
             nextVC.passheaderTitle =  profileCompletionModel?[indexPath.row].title
             //self.navigationController?.present(nextVC, animated: true, completion: nil)
