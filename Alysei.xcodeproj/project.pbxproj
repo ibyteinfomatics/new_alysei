@@ -258,6 +258,7 @@
 		6B58C9AF26256EE300D250CD /* ReviewHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58C9AE26256EE300D250CD /* ReviewHubModel.swift */; };
 		6B5A8280260C56AD00ED60B7 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A827F260C56AD00ED60B7 /* WebServices.swift */; };
 		6B5A8284260C5CD100ED60B7 /* CompanyCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A8283260C5CD100ED60B7 /* CompanyCertificates.swift */; };
+		6B5F1010273E201D0016561A /* UpdateProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B5F100F273E201C0016561A /* UpdateProfile.storyboard */; };
 		6B65FFB326034900002832C8 /* SelectRoleViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B65FFB226034900002832C8 /* SelectRoleViewC.swift */; };
 		6B65FFC92603561E002832C8 /* CustomCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B65FFC62603561D002832C8 /* CustomCellCollectionViewCell.swift */; };
 		6B65FFCA2603561E002832C8 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B65FFC72603561D002832C8 /* CustomCollectionViewLayout.swift */; };
@@ -303,7 +304,6 @@
 		6B7CACD026FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */; };
 		6B7CACD126FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */; };
 		6B7CACD226FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */; };
-		6B7FB471273D43D7008A87BB /* UpdateProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7FB470273D43D7008A87BB /* UpdateProfile.storyboard */; };
 		6B7FB478273D458E008A87BB /* UpdateProfileDescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */; };
 		6B7FB479273D458E008A87BB /* UpdateProfileCoverImgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */; };
 		6B805B1C270576EE002FC4BF /* ExploreByMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */; };
@@ -899,6 +899,7 @@
 		6B58C9AE26256EE300D250CD /* ReviewHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHubModel.swift; sourceTree = "<group>"; };
 		6B5A827F260C56AD00ED60B7 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 		6B5A8283260C5CD100ED60B7 /* CompanyCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCertificates.swift; sourceTree = "<group>"; };
+		6B5F100F273E201C0016561A /* UpdateProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateProfile.storyboard; sourceTree = "<group>"; };
 		6B65FFB226034900002832C8 /* SelectRoleViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewC.swift; sourceTree = "<group>"; };
 		6B65FFC62603561D002832C8 /* CustomCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B65FFC72603561D002832C8 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -946,7 +947,6 @@
 		6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-HeavyItalic.otf"; sourceTree = "<group>"; };
 		6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Black.otf"; sourceTree = "<group>"; };
-		6B7FB470273D43D7008A87BB /* UpdateProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UpdateProfile.storyboard; path = ../../../new_alysei/Alysei/View/UpdateProfile.storyboard; sourceTree = "<group>"; };
 		6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDescVC.swift; sourceTree = "<group>"; };
 		6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileCoverImgVC.swift; sourceTree = "<group>"; };
 		6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreByMealTableViewCell.swift; sourceTree = "<group>"; };
@@ -1940,7 +1940,7 @@
 				6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */,
 				6B2F94F526202F3A0030928E /* Timeline.storyboard */,
 				27B2FDE525C8782000CFEDA0 /* ProductSection.xib */,
-				6B7FB470273D43D7008A87BB /* UpdateProfile.storyboard */,
+				6B5F100F273E201C0016561A /* UpdateProfile.storyboard */,
 				6B559632271EE6EE0040A2CF /* Marketplace.storyboard */,
 				C5D6F7BA26B1828D006FFCDF /* HubSelection.storyboard */,
 				C5D6F79926B18262006FFCDF /* HubXIB */,
@@ -3150,7 +3150,6 @@
 				C5D6F7B126B18264006FFCDF /* CountrySelectionTableViewCell.xib in Resources */,
 				27A4439525AE03720002BAAC /* README.md in Resources */,
 				27A443DA25AE03720002BAAC /* Montserrat-Regular.ttf in Resources */,
-				6B7FB471273D43D7008A87BB /* UpdateProfile.storyboard in Resources */,
 				C5EB31B426E9C69300CCAC9E /* Recipe.storyboard in Resources */,
 				C5D6F7B726B18264006FFCDF /* ShowHubSelectionTableViewCell.xib in Resources */,
 				61EAB565269A285000793F18 /* PostCommentsCell.xib in Resources */,
@@ -3162,6 +3161,7 @@
 				6B7AF261270EAC8800C48528 /* MyRecipeTableViewCell.xib in Resources */,
 				27A443D025AE03720002BAAC /* Montserrat-ThinItalic.ttf in Resources */,
 				6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */,
+				6B5F1010273E201D0016561A /* UpdateProfile.storyboard in Resources */,
 				6BC4C0CF26006AA600791DCD /* OverLayLoginViewController.xib in Resources */,
 				274635F025DC35AD0010C1C6 /* Splash.storyboard in Resources */,
 				C5D6F7AB26B18264006FFCDF /* StateListVC.xib in Resources */,
