@@ -11,6 +11,7 @@ class NewFeedSearchModel{
     var currentPage: Int?
     var data: [NewFeedSearchDataModel]?
     var importerSeacrhData : [SubjectData]?
+   // var discover_alysei : [NewDiscoverDataModel]?
     var firstPageUrl: String?
     var lastPageUrl: String?
     var lastPage: Int?
@@ -23,10 +24,40 @@ class NewFeedSearchModel{
         if let data = dictResponse["data"] as? [[String:Any]]{
             self.importerSeacrhData = data.map({SubjectData.init(with: $0)})
         }
+//        if let discover_alysei = dictResponse["discover_alysei"] as? [[String:Any]]{
+//            self.discover_alysei = discover_alysei.map({NewDiscoverDataModel.init(with: $0)})
+//        }
         self.firstPageUrl = String.getString(dictResponse["first_page_url"])
         self.lastPageUrl = String.getString(dictResponse["last_page_url"])
         self.lastPage = Int.getInt(dictResponse["last_page"])
     }
+}
+
+class NewDiscoverDataModel{
+    
+    var title: String?
+    var discover_alysei_id: Int?
+    var image_id: Int?
+    var description: String?
+    var status: String?
+    var name: String?
+    var image: AttachmentLink?
+    
+    init(with dictResponse: [String:Any]){
+        
+        self.title = String.getString(dictResponse["title"])
+        self.discover_alysei_id = Int.getInt(dictResponse["discover_alysei_id"])
+        self.image_id = Int.getInt(dictResponse["image_id"])
+        self.description = String.getString(dictResponse["description"])
+        self.status = String.getString(dictResponse["status"])
+        self.name = String.getString(dictResponse["name"])
+       
+        if let image = dictResponse["attachment"] as? [String:Any]{
+            self.image = AttachmentLink.init(with: image)
+        }
+        
+    }
+    
 }
 
 class NewFeedSearchDataModel{

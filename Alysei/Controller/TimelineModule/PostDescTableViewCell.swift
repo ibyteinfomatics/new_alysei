@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ScrollingPageControl
 //import SocketIO
 
 //struct PostLikeUnlikeRequestModel: Codable, SocketData {
@@ -50,6 +51,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btnMoreLess: UIButton!
+    @IBOutlet var vwpageControl: ScrollingPageControl!
 
     var data: NewFeedSearchDataModel?
     var likeCallback:((Int) -> Void)? = nil
@@ -66,6 +68,8 @@ class PostDescTableViewCell: UITableViewCell {
     var relaodSection : Int?
     
     var btnLikeCallback:((Int) -> Void)? = nil
+    var pages = 0
+    let stackView = UIStackView()
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -74,13 +78,14 @@ class PostDescTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        pageControlUI()
         imagePostCollectionView.delegate = self
         imagePostCollectionView.dataSource = self
         imagePostCollectionView.isHidden = false
        // lblPostDesc.numberOfLines = 2
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
+        self.vwpageControl.selectedPage = pages
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
         tap.numberOfTouchesRequired = 1
         self.viewLike.addGestureRecognizer(tap)
@@ -88,10 +93,7 @@ class PostDescTableViewCell: UITableViewCell {
 
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(likeAction))
         tap2.numberOfTapsRequired = 2
-
-
         self.imagePostCollectionView.addGestureRecognizer(tap2)
-
 
         let showSharesGesture = UITapGestureRecognizer(target: self, action: #selector(self.showShareScreen))
         showSharesGesture.numberOfTouchesRequired = 1
@@ -108,7 +110,21 @@ class PostDescTableViewCell: UITableViewCell {
         
         // Initialization code
     }
-    
+    func pageControlUI(){
+        let startIndex = IndexPath(item: 0, section: 0)
+        imagePostCollectionView.scrollToItem(at: startIndex, at: .centeredHorizontally, animated: false)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.backgroundColor = .clear
+        self.vwpageControl.addSubview(stackView)
+        stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.vwpageControl.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.vwpageControl.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.vwpageControl.bottomAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalTo: self.vwpageControl.heightAnchor).isActive = true
+    }
     override func prepareForReuse() {
         super.prepareForReuse()
     }
@@ -184,12 +200,12 @@ class PostDescTableViewCell: UITableViewCell {
         }else{
         self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
         }
-        likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+        likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
         
         likeCallback = { index in
             //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
             self.lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
-            self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+            self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
             
         }
         
@@ -207,11 +223,23 @@ class PostDescTableViewCell: UITableViewCell {
             }
         }
 
-        if imageArray.count <= 0 {
+        if imageArray.count <= 0 || imageArray.count == 1{
             self.pageControl.alpha = 0
+            self.vwpageControl.alpha = 0
         } else {
             self.pageControl.alpha = 1
             self.pageControl.numberOfPages = imageArray.count
+            self.vwpageControl.alpha = 1
+            self.pages = imageArray.count
+            self.vwpageControl.pages = pages
+            
+            (0..<(pages )).map { $0 % 2 == 0 ? UIColor.clear : UIColor.clear }.forEach { color in
+                let item = UIView()
+                item.translatesAutoresizingMaskIntoConstraints = false
+                item.backgroundColor = color
+                stackView.addArrangedSubview(item)
+                item.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+            }
         }
         let  wordContains = modelData.body?.count ?? 0
         //let lblSize = lblPostDesc.numberOfLines
@@ -320,6 +348,9 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageControl.currentPage = indexPath.row
+       
+        vwpageControl.selectedPage = indexPath.row
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -363,6 +394,14 @@ extension PostDescTableViewCell {
             
         }
     }
+   
+        func viewForDot(at index: Int) -> UIView? {
+            guard index == 0 else { return nil }
+            let view = TriangleView()
+            view.isOpaque = false
+            return view
+        }
+    
 }
 
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{

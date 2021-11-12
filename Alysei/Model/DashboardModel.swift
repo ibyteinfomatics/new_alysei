@@ -139,11 +139,16 @@ class UserData {
     var vatNo, fdaNo: String?
     var avatarid: Avatarid?
     var reasonToConnect: String?
+    var coverid: Avatarid?
     
     init(with dictResponse: [String:Any]?) {
         
         if let data = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarid =  Avatarid.init(with: data)
+        }
+        
+        if let coverid = dictResponse?["cover_id"] as? [String:Any]{
+            self.coverid =  Avatarid.init(with: coverid)
         }
         
         self.companyName = String.getString(dictResponse?["company_name"])

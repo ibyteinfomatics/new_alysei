@@ -167,6 +167,7 @@ struct StoryBoardConstants {
     static let kHubSelection = "HubSelection"
     static let kRecipesSelection = "Recipe"
     static let kChat = "Chat"
+    static let kUpdateProfile = "UpdateProfile"
 }
 
 struct Notifications {
@@ -301,7 +302,7 @@ struct APIUrl{
     static let kAwardUpdate = "update/award"
     static let kAwardDelete = "delete/award"
     static let kAwardMedal = "get/medal/types"
-    
+    static let kGetDiscoverListing  =  "get/circle/detail?type="
     
     static let kDashboard = "view/connection?connection_id="
     
@@ -324,6 +325,8 @@ struct APIUrl{
     static let kLike = "post/like"
    
     static let kSaveInquiry = "save/product/enquery"
+    static let kSaveProfileCover = "update/avatar/cover/image"
+    static let kSaveUpdateProfileField = "update/user/field"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -372,8 +375,17 @@ struct APIUrl{
         //static let kKeywordSearch = "search?search_type=3&keyword="
         static let kSearchApi = "search?search_type="
         
+
     }
-    
+    enum Discover {
+        static let kGetSpecialization = "get/specialization"
+        static let kDiscoverEventSearch = "get/stories/byfilter?type=events"
+        static let kDiscoverBlogSearch = "get/stories/byfilter?type=blogs"
+        static let kDiscoverRestaurantSearch = "get/stories/byfilter?type=restaurants"
+        static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
+        static let kRestaurantTypes = "get/restaurant/types"
+        static let kAllHubs = "get/all/hubs"
+    }
     enum Recipes {
         static let getrecipeCategory = kBASEURL + "get/recipe/categories"
         static let getrecipeIngridents = kBASEURL + "get/recipe/ingredients"
@@ -496,6 +508,7 @@ struct AppConstants {
     static let SelectCountry = "Select Country"
     static let Speciality = "Speciality"
     static let ProductTypeBusiness = "Product Type"
+    static let Producttype = "Product type"
     static let SelectUserType = "Select User Type"
     static let GetStarted = "Get Started"
     static let Next = "Next"
@@ -514,6 +527,7 @@ struct AppConstants {
     static let kURL = "URL"
     static let kUrl = "Url"
     static let leaveComment = "Leave a comment"
+    static let kSelectRestType = "Select Restaurant"
 }
 
 struct ProfileCompletion {
@@ -529,6 +543,7 @@ struct ProfileCompletion {
     static let FeaturedBlog = "Featured"
     static let Ourtrips  = "Our trips"
     static let ContactInfo = "Contact Info"
+    static let OurMenu = "Our Menu"
 }
 
 struct PlaceholderImages {
@@ -631,6 +646,7 @@ struct APIConstants {
     static let kSelectedAddressTwo = "selected_address_two"
     static let emoji = "emoji"
     static let userFieldOptionId = "user_field_option_id"
+    static let userFieldId = "user_field_id"
     static let fceSidCertification = "fce_sid_certification"
     static let phytosanitaryCertificate = "phytosanitary_certificate"
     static let packagingForUsa = "packaging_for_usa"

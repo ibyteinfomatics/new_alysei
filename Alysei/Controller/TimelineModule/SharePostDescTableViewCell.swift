@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ScrollingPageControl
+
 struct SharedPostLikeUnlikeRequestModel: Codable {
     let postOwnerID: Int
     let userID: Int
@@ -47,7 +49,8 @@ class SharePostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var lblSharedPostDesc: UILabel!
     @IBOutlet weak var lblSharedUserTitle: UILabel!
     @IBOutlet weak var vwHeader: UIView!
-
+    @IBOutlet var vwpageControl: ScrollingPageControl!
+    
     var data: NewFeedSearchDataModel?
     var index: Int?
     var imageArray = [String]()
@@ -57,9 +60,11 @@ class SharePostDescTableViewCell: UITableViewCell {
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
     var islike: Int?
     var shareCallback:(()->())?
-    
+    var pages = 0
+    let stackView = UIStackView()
     override func awakeFromNib() {
         super.awakeFromNib()
+        pageControlUI()
         setUI()
         
         
@@ -92,6 +97,21 @@ class SharePostDescTableViewCell: UITableViewCell {
         self.imgSharedUserImage.layer.cornerRadius = self.userImage.frame.height / 2
         self.imgSharedUserImage.layer.masksToBounds = true
         self.menuButton?.imageView?.contentMode = .scaleAspectFit
+    }
+    func pageControlUI(){
+        let startIndex = IndexPath(item: 0, section: 0)
+        imagePostCollectionView.scrollToItem(at: startIndex, at: .centeredHorizontally, animated: false)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.backgroundColor = .clear
+        self.vwpageControl.addSubview(stackView)
+        stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.vwpageControl.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.vwpageControl.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.vwpageControl.bottomAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalTo: self.vwpageControl.heightAnchor).isActive = true
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -175,12 +195,12 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.sharedPostData?.subjectId?.avatarId?.attachmentUrl))
     //self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
     }
-    likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+    likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
     
     likeCallback = { index in
         //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
         self.lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
-        self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "like_icon") : UIImage(named: "liked_icon")
+        self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
         
     }
 
@@ -207,11 +227,23 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
             }
     print("ImageArrayCount---------------------------\(imageArray.count)")
 
-    if imageArray.count <= 0 {
+    if imageArray.count <= 0 || imageArray.count == 1{
         self.pageControl.alpha = 0
+        self.vwpageControl.alpha = 0
     } else {
         self.pageControl.alpha = 1
         self.pageControl.numberOfPages = imageArray.count
+        self.vwpageControl.alpha = 1
+        self.pages = imageArray.count
+        self.vwpageControl.pages = pages
+        
+        (0..<(pages )).map { $0 % 2 == 0 ? UIColor.clear : UIColor.clear }.forEach { color in
+            let item = UIView()
+            item.translatesAutoresizingMaskIntoConstraints = false
+            item.backgroundColor = color
+            stackView.addArrangedSubview(item)
+            item.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        }
     }
 
     self.imagePostCollectionView.reloadData()
@@ -300,6 +332,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageControl.currentPage = indexPath.row
+        vwpageControl.selectedPage = indexPath.row
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

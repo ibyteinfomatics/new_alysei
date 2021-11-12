@@ -65,6 +65,22 @@ class ProductDetailVC: AlysieBaseViewC {
         controller?.passproductId = self.marketplaceProductId
         controller?.passproductName = self.productDetail?.product_detail?.title
         controller?.passProductPrice = self.productDetail?.product_detail?.product_price
+        
+        controller?.productImage = self.productDetail?.product_detail?.product_gallery?.first?.attachment_url
+        controller?.storeId = String.getString(self.productDetail?.product_detail?.store_detail?.marketPlaceStoreId)
+        controller?.storeName = self.productDetail?.product_detail?.store_detail?.name
+        
+        if self.productDetail?.product_detail?.user_detail?.compnyName != ""{
+            controller?.name = self.productDetail?.product_detail?.user_detail?.compnyName
+        } else if self.productDetail?.product_detail?.user_detail?.restaurantName != ""{
+            controller?.name = self.productDetail?.product_detail?.user_detail?.restaurantName
+        } else if self.productDetail?.product_detail?.user_detail?.name != ""{
+            controller?.name = self.productDetail?.product_detail?.user_detail?.name
+        }
+        
+        
+        controller?.userId = String.getString(self.productDetail?.product_detail?.user_detail?.userId)
+        controller?.profileImageUrl = self.productDetail?.product_detail?.user_detail?.avatarId?.imageUrl
        
     }
     

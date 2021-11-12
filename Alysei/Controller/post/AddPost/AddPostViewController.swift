@@ -51,6 +51,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
+        postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
         //setUI()
@@ -83,10 +84,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             postRequestToGetProgressPrfile()
             
         }
-        
-       
-        
-        
+     
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -253,7 +251,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
         config.library.maxNumberOfItems = 100000
-        config.showsPhotoFilters = false
+        config.showsPhotoFilters = true
         self.descriptionPost = txtPost.text
         config.library.preselectedItems = ypImages
         let picker = YPImagePicker(configuration: config)

@@ -36,11 +36,28 @@ class SelectProductViewC: AlysieBaseViewC {
     
    override func viewDidLoad() {
     super.viewDidLoad()
+//    if self.signUpStepOneDataModel != nil{
+//      self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepOneDataModel.title)
+//    }
+//    else{
+//      self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepTwoDataModel.title)
+//    }
+    
     if self.signUpStepOneDataModel != nil{
-      self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepOneDataModel.title)
+        
+        if self.signUpStepOneDataModel.title == AppConstants.Producttype{
+            self.lblNavigation.text = String.getString(self.signUpStepOneDataModel.placeholder)
+        }else{
+            self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepOneDataModel.placeholder)
+        }
+      
     }
     else{
-      self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepTwoDataModel.title)
+        if self.signUpStepTwoDataModel.title == AppConstants.Producttype{
+            self.lblNavigation.text = String.getString(self.signUpStepTwoDataModel.placeholder)
+        }else{
+      self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepTwoDataModel.placeholder)
+        }
     }
    
    }

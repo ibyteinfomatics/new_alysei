@@ -72,18 +72,27 @@ class AlysieBaseViewC: UIViewController {
                                     locality = String.getString(component["long_name"])
                                 }
                             }
-                            if ((String.getString(sublocality3).isEmpty == true) && (String.getString(sublocality2).isEmpty == true) && (String.getString(sublocality1).isEmpty == true)){
-                                
-                                if String.getString(locality).isEmpty == true{
-                                    completionBlock(String.getString(address))
+                            
+                            
+                            
+                            if (String.getString(address).isEmpty == false) {
+                                completionBlock(String.getString(address))
+                            } else {
+                                if ((String.getString(sublocality3).isEmpty == true) && (String.getString(sublocality2).isEmpty == true) && (String.getString(sublocality1).isEmpty == true)){
+                                    
+                                    if String.getString(locality).isEmpty == true{
+                                        completionBlock(String.getString(address))
+                                    }
+                                    else{
+                                        completionBlock(String.getString(locality))
+                                    }
                                 }
-                                else{
-                                    completionBlock(String.getString(locality))
+                                else {
+                                    completionBlock(sublocality3 + sublocality2 + sublocality1)
                                 }
                             }
-                            else {
-                                completionBlock(sublocality3 + sublocality2 + sublocality1)
-                            }
+                            
+                            
                         }
                     }
                 }

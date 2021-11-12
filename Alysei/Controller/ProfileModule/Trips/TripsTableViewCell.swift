@@ -62,8 +62,7 @@ class TripsTableViewCell: UITableViewCell {
         view4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         view5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         
-        moreInfoButton.layer.cornerRadius = 10
-        interestedButton.layer.cornerRadius = 10
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

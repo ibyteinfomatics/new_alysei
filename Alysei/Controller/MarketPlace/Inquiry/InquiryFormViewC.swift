@@ -19,6 +19,15 @@ class InquiryFormViewC: AlysieBaseViewC {
     var passproductId: String?
     var passproductName: String?
     var passProductPrice: String?
+    
+    var storeId : String?
+    var storeName : String?
+    var productImage : String?
+    
+    var name : String?
+    var userId : String?
+    var profileImageUrl : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtMessage.delegate = self
@@ -31,7 +40,7 @@ class InquiryFormViewC: AlysieBaseViewC {
     func setData(){
         lblProductDesc.text = passproductName?.capitalized
         lblProductPrice.text = "$" + "\(passProductPrice ?? "")"
-        txtMessage.text = "Message"
+        txtMessage.text = "Hi is this product is available?"
         txtMessage.textColor = UIColor.lightGray
         txtMessage.layer.borderWidth = 0.5
         txtMessage.layer.borderColor = UIColor.lightGray.cgColor
@@ -59,7 +68,58 @@ class InquiryFormViewC: AlysieBaseViewC {
             self.showAlert(withMessage: "Please enter some message")
         }else{
             self.callSaveInquiryApi()
+            
+            
+
         }
+    }
+    
+    func sendMessage() {
+        //sender data
+        var name = ""
+        
+        let sendMessageDetails = InquiryReceivedMessageClass()
+        sendMessageDetails.receiverid = String.getString( userId)
+        sendMessageDetails.senderid = String.getString(kSharedUserDefaults.loggedInUserModal.userId)
+        sendMessageDetails.mediaType = .text
+       
+        
+        sendMessageDetails.deleted = ""
+        sendMessageDetails.like = false
+        sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( userId)+"_"+String.getString(self.passproductId)
+        
+        sendMessageDetails.storeId = storeId
+        sendMessageDetails.storeName = storeName
+        sendMessageDetails.productId = self.passproductId
+        sendMessageDetails.productName = self.passproductName
+        sendMessageDetails.productImage = productImage
+        
+        if kSharedUserDefaults.loggedInUserModal.companyName != ""{
+            sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
+            name = kSharedUserDefaults.loggedInUserModal.companyName ?? ""
+        } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
+            sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
+            name = kSharedUserDefaults.loggedInUserModal.restaurantName ?? ""
+        } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
+            sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+            name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+        }
+        
+        sendMessageDetails.message = name+"\n"+String.getString(kSharedUserDefaults.loggedInUserModal.email)+"\n"+String.getString(kSharedUserDefaults.loggedInUserModal.phone)+"\n"+txtMessage.text
+        
+        sendMessageDetails.senderImage = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+        
+        //"public/uploads/2021/08/2327781571627986351.jpg"//kImageBaseUrl+UserDetailBasedElements().profilePhoto
+        
+        sendMessageDetails.receiverImage = profileImageUrl
+        sendMessageDetails.receiverName = name
+        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+        //sendMessageDetails.uid = String.getString(self.chatTextView.text)
+        
+        kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: self.passproductId ?? "")
+        //sendChatNotification(userId: self.receiverDetails?.receiverId ?? "")
+        
+        //notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(userId))
     }
 
 }
@@ -124,7 +184,18 @@ extension InquiryFormViewC{
             
             switch statusCode {
             case 200:
-                _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+                self.sendMessage()
+                let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+                vc?.name = self.name ?? ""
+                vc?.userId = self.userId ?? ""
+                vc?.profileImageUrl = self.profileImageUrl ?? ""
+                vc?.storeId = self.storeId ?? ""
+                vc?.storeName = self.storeName ?? ""
+                vc?.productId = self.passproductId ?? ""
+                vc?.productName = self.passproductName ?? ""
+                vc?.productImage = self.productImage ?? ""
+            case 409:
+                self.showAlert(withMessage: "You already submitted a query on this product")
             default:
                 self.showAlert(withMessage: "Network Error")
             }

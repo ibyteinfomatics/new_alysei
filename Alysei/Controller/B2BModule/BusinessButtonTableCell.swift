@@ -170,7 +170,7 @@ func callStateApi() {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetAllHubs, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let response = dictResponse as? [String:Any]
-            if let data = response?["hubs"] as? [[String:Any]]{
+           if let data = response?["hubs"] as? [[String:Any]]{
                 self.userhubs = data.map({HubCityArray.init(with: $0)})
                 for hub in 0..<(self.userhubs?.count ?? 0) {
                     self.arrHubName.append(self.userhubs?[hub].title ?? "")

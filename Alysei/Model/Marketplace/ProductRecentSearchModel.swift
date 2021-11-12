@@ -52,6 +52,7 @@ class ProductSearchListModel {
     var avg_rating: String?
     var labels: Labels?
     var store_detail : ProductSearchListModel?
+    var user_detail : UserDataModel?
     var name: String?
     var store_logo: String?
     var rating: String?
@@ -99,6 +100,10 @@ class ProductSearchListModel {
         }
         if let store_detail = data["store_detail"] as? [String:Any]{
             self.store_detail = ProductSearchListModel.init(with: store_detail)
+        }
+        
+        if let user_detail = data["user"] as? [String:Any]{
+            self.user_detail = UserDataModel.init(with: user_detail)
         }
     }
     

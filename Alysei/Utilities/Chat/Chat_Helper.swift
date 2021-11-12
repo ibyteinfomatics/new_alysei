@@ -35,10 +35,17 @@ class Chat_hepler {
     var ChatBackupOnetoOne = [ChatbackupOnetoOne]()
     var ResentUser = [ResentUsers]()
     
+    var inquiryresentReference     = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
+    var inquirymessageReference    = Database.database().reference().child("Inquiry").child(Parameters.message)
+    
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
     var messageReference    = Database.database().reference().child(Parameters.message)
     var postReference    = Database.database().reference().child(Parameters.post)
     var resentUser = [RecentUser]()
+    var inquiry_resentUser = [InquiryRecentUser]()
+    
+    var inquirymessageclass        = [InquiryReceivedMessageClass]()
+    var inquirychatBackupOnetoOne  = [InquiryReceivedMessageClass]()
     
     var messageclass        = [ReceivedMessageClass]()
     var chatBackupOnetoOne  = [ReceivedMessageClass]()
@@ -54,6 +61,7 @@ class Chat_hepler {
     let resentReferense = Database.database().reference().child(Parameters.ResentMessage)
     
     var Resentuser:[RecentUser]?
+    var Inquiry_Resentuser:[InquiryRecentUser]?
     var unread: Int = 0
     
     
@@ -273,6 +281,13 @@ class Chat_hepler {
         }
         
        
+    }
+    
+    func deleteEnquiryPerticularMessage(msgId: [String],user_id: String) {
+        
+        for i in 0..<msgId.count {
+            self.inquirymessageReference.child("PrivateMessages").child(user_id).child(msgId[i]).removeValue()
+        }
         
        
     }
@@ -526,6 +541,41 @@ class Chat_hepler {
     }
     
     //MARK:- Function For Send message one to one Chat
+    
+    
+    func inquirysend_message(messageDic:InquiryReceivedMessageClass,senderId :String , receiverId:String, storeId:String) {
+        
+        inquiryreceiveUsers(otherId: receiverId)
+        
+        let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
+        if String.getString(messageNode) == Parameters.emptyString {
+            print(Parameters.alertmessage)
+            return
+        }
+        
+        let sendReference = inquirymessageReference.child("PrivateMessages").child(messageNode).childByAutoId()
+        messageDic.uid = sendReference.key
+        let message = messageDic.createDictonary(objects: messageDic)
+        print("send message to node \(messageNode) with key \(sendReference.key ?? "") with message \(message)")
+        sendReference.setValue(kSharedInstance.getDictionary(message))
+        
+        //recevier semd messgae
+        let recemessageNode = "\(String.getString(receiverId))_\(String.getString(senderId))_\(storeId)"//self.createNode(senderId: receiverId, receiverId: senderId)
+        if String.getString(recemessageNode) == Parameters.emptyString {
+            print(Parameters.alertmessage)
+            return
+        }
+        let receiveReference = inquirymessageReference.child("PrivateMessages").child(recemessageNode).child(sendReference.key!)
+        //messageDic.uid = sendReference.key
+        //let recmessage = messageDic.createDictonary(objects: messageDic)
+        print("send message to node \(recemessageNode) with key \(receiveReference.key ?? "") with message \(message)")
+        receiveReference.setValue(kSharedInstance.getDictionary(message))
+        
+        self.inquiry_resentUser(messageDetails: messageDic)
+        
+    }
+    
+    
     func send_message(messageDic:ReceivedMessageClass,senderId :String , receiverId:String) {
         
         receiveUsers(otherId: receiverId)
@@ -559,6 +609,51 @@ class Chat_hepler {
     }
     
     //MARK:- Func For send Resent Users and retrived data On resent Users Submit Data to Users Every User Submit 2 Node  Sender and Receiver
+    func inquiry_resentUser(messageDetails:InquiryReceivedMessageClass) {
+        let senderId = messageDetails.senderid ?? ""
+        let receiverId = messageDetails.receiverid ?? ""
+        if String.getString(senderId) == Parameters.emptyString || String.getString(receiverId) == Parameters.emptyString {
+            print(Parameters.alertmessage)
+            return
+        }
+        let receiverDetails = [ Parameters.uid : String.getString(messageDetails.uid),
+                                Parameters.otherId : String.getString(receiverId),
+                                Parameters.lastmessage : String.getString(messageDetails.message),
+                                Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
+                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                                Parameters.otherImage : String.getString(messageDetails.receiverImage) ,
+                                Parameters.otherName : String.getString(messageDetails.receiverName),
+                                
+                                Parameters.storeId : String.getString(messageDetails.storeId),
+                                Parameters.storeName : String.getString(messageDetails.storeName),
+                                Parameters.productId : String.getString(messageDetails.productId),
+                                Parameters.productName : String.getString(messageDetails.productName),
+                                Parameters.productImage : String.getString(messageDetails.productImage),
+                                
+                                Parameters.readCount : 0,
+                                Parameters.userTyping : false] as [String : Any]
+        
+        let senderDetails =   [Parameters.uid : String.getString(messageDetails.uid),
+                               Parameters.otherId : String.getString(senderId),
+                               Parameters.lastmessage : String.getString(messageDetails.message),
+                               Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
+                               Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                               Parameters.otherImage : String.getString(messageDetails.senderImage) ,
+                               Parameters.otherName : String.getString(messageDetails.senderName),
+                               
+                               Parameters.storeId : String.getString(messageDetails.storeId),
+                               Parameters.storeName : String.getString(messageDetails.storeName),
+                               Parameters.productId : String.getString(messageDetails.productId),
+                               Parameters.productName : String.getString(messageDetails.productName),
+                               Parameters.productImage : String.getString(messageDetails.productImage),
+                               
+                               Parameters.readCount : unread, // increase count
+                               Parameters.userTyping : false] as [String : Any]
+        
+        inquiryresentReference.child("New").child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
+        inquiryresentReference.child("New").child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+    }
+    
     func resentUser(messageDetails:ReceivedMessageClass) {
         let senderId = messageDetails.senderid ?? ""
         let receiverId = messageDetails.receiverid ?? ""
@@ -614,6 +709,29 @@ class Chat_hepler {
     }
     
     
+    func inquiryreceiveUsers(otherId: String) {
+        
+        kChatharedInstance.inquiry_receiveResentUsers(userid:otherId) { (users) in
+            self.Inquiry_Resentuser?.removeAll()
+            self.Inquiry_Resentuser = users
+            
+            self.unread = 0
+            for i in 0..<(self.Inquiry_Resentuser?.count ?? 0){
+                
+                if self.Inquiry_Resentuser![i].otherId == String.getString(kSharedUserDefaults.loggedInUserModal.userId) {
+                    self.unread = self.Inquiry_Resentuser![i].readCount + 1
+                    
+                }
+                
+            }
+            
+            print("unread count ",self.unread)
+            
+        }
+        
+    }
+    
+    
     //MARK:- Func For Receive Message for One To One Chat
     func receivce_Comment(postId :String , message:@escaping (_ result: [CommentClass]?) -> ()) -> Void {
         
@@ -638,6 +756,38 @@ class Chat_hepler {
     
     
     //MARK:- Func For Receive Message for One To One Chat
+    
+    func inquiryreceivce_message(senderId :String , receiverId:String, storeId:String , message:@escaping (_ result: [InquiryReceivedMessageClass]? , _ chatBackup : [InquiryReceivedMessageClass]?) -> ()) -> Void {
+        
+        let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
+        if String.getString(messageNode) == Parameters.emptyString {
+            print(Parameters.alertmessage)
+            return
+        }
+        
+        inquirymessageReference.child("PrivateMessages").child(messageNode).observe(.value) { [weak self] (snapshot) in
+            self?.inquirychatBackupOnetoOne.removeAll()
+            self?.inquirymessageclass.removeAll()
+            if snapshot.exists() {
+                let msgs = kSharedInstance.getDictionary(snapshot.value)
+                msgs.forEach {(key, value) in
+                    let dic = kSharedInstance.getDictionary(value)
+                    let isDeleted =  String.getString(dic[Parameters.deleted]).components(separatedBy: Parameters.saparaterString)
+                    
+                    if !(isDeleted.contains(String.getString(senderId))) {
+                        self?.inquirymessageclass.append(InquiryReceivedMessageClass(uid: String.getString(key), messageData: dic))
+                        self?.inquirymessageclass.sort{ Int.getInt($0.timestamp) < Int.getInt($1.timestamp) }
+                    } else {
+                        self?.inquirychatBackupOnetoOne.append(InquiryReceivedMessageClass(uid: String.getString(key), messageData: dic))
+                        self?.inquirychatBackupOnetoOne.sort{ Int.getInt($0.timestamp) < Int.getInt($1.timestamp)}
+                    }
+                    
+                }
+            }
+            message(self?.inquirymessageclass, self?.inquirychatBackupOnetoOne)
+        }
+    }
+    
     func receivce_message(senderId :String , receiverId:String , message:@escaping (_ result: [ReceivedMessageClass]? , _ chatBackup : [ReceivedMessageClass]?) -> ()) -> Void {
         
         let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))"//self.createNode(senderId: senderId, receiverId: receiverId)
@@ -690,6 +840,53 @@ class Chat_hepler {
     }
     
     //MARK:- Func For Resent Users retrived on Recent Screen user User Id
+    func inquiry_receiveResentUsers(userid:String, resentUsers:@escaping (_ result: [InquiryRecentUser]?) -> ()) -> Void{
+        if userid == Parameters.emptyString {
+            print(Parameters.alertmessage)
+            return
+        }
+        self.inquiry_resentUser.removeAll()
+        inquiryresentReference.child("New").child("user_\(userid)").observe(.value) { [weak self](snapshot) in
+            self?.inquiry_resentUser.removeAll()
+            if snapshot.exists() {
+                let usersDetails = kSharedInstance.getDictionary(snapshot.value)
+                self?.inquiry_resentUser.removeAll()
+                usersDetails.forEach {(key, value) in
+                    let details = kSharedInstance.getDictionary(value)
+                    //details[Parameters.otherId] = key
+                    
+                    let resentusersDetails = InquiryRecentUser()
+                    resentusersDetails.lastmessage     =  String.getString(details[Parameters.lastmessage])
+                    resentusersDetails.mediaType    =  String.getString(details[Parameters.mediaType])
+                    resentusersDetails.otherId       =  String.getString(details[Parameters.otherId])
+                    resentusersDetails.otherName    =  String.getString(details[Parameters.otherName])
+                    resentusersDetails.otherImage      =  String.getString(details[Parameters.otherImage])
+                    resentusersDetails.readState       = String.getString(details[Parameters.readState])
+                    
+                    resentusersDetails.storeId       = String.getString(details[Parameters.storeId])
+                    resentusersDetails.storeName       = String.getString(details[Parameters.storeName])
+                    resentusersDetails.productId       = String.getString(details[Parameters.productId])
+                    resentusersDetails.productName       = String.getString(details[Parameters.productName])
+                    resentusersDetails.productImage       = String.getString(details[Parameters.productImage])
+                    
+                    resentusersDetails.timestamp       = Int.getInt(details[Parameters.timestamp])
+                    resentusersDetails.readCount       = Int.getInt(details[Parameters.readCount])
+                    resentusersDetails.uid = String.getString(details[Parameters.uid])
+                    resentusersDetails.userTyping      = Bool.getBool(details[Parameters.userTyping])
+                    
+                    let firstIndex = self?.inquiry_resentUser.firstIndex{$0.otherId == resentusersDetails.otherId}
+                    if firstIndex != nil { self?.inquiry_resentUser.remove(at: firstIndex!) }
+                    self?.inquiry_resentUser.append(resentusersDetails)
+                    self?.inquiry_resentUser.sort { $0.timestamp > $1.timestamp }
+                  //  self?.resentUser = self?.resentUser.uniqueArray(map: {$0.uid}) ?? []
+                    resentUsers(self?.inquiry_resentUser)
+                    
+                }
+            }
+        }
+    }
+    
+    
     func receiveResentUsers(userid:String, resentUsers:@escaping (_ result: [RecentUser]?) -> ()) -> Void{
         if userid == Parameters.emptyString {
             print(Parameters.alertmessage)
