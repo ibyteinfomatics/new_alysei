@@ -10,8 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue-Light.ttf">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue-Bold</string>
         </array>
     </customFonts>
@@ -65,10 +67,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkg-BK-4cp">
-                                        <rect key="frame" x="50" y="316" width="314" height="50"/>
+                                        <rect key="frame" x="50" y="316" width="314" height="40"/>
                                         <color key="backgroundColor" name="macraggeBlue"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="DvI-dY-zBp"/>
+                                            <constraint firstAttribute="height" constant="40" id="DvI-dY-zBp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Save">
@@ -133,6 +135,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLd-4s-1ek">
                                         <rect key="frame" x="15" y="63" width="24" height="22"/>
                                         <state key="normal" image="back_black"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="4TB-xn-UGq" eventType="touchUpInside" id="F9x-PD-baA"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-WJ-i1w">
                                         <rect key="frame" x="69" y="63.5" width="37" height="21"/>

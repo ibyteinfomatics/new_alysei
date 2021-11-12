@@ -621,12 +621,12 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchHubApi()
         case 1:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             self.searchImpDone = false
             callSearchImporterApi()
         case 2:
             self.searchType = 2
-            self.extraCell =  B2BSeacrhExtraCell.restaurant.rawValue
+            self.extraCell =  B2BSeacrhExtraCell.restaurantImporter.rawValue
             self.searchImpDone = false
             callSearchResturntApi()
         case 3:
@@ -636,12 +636,12 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchExpertApi()
         case 4:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             self.searchImpDone = false
             callSearchTravelApi()
         case 5:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             self.searchImpDone = false
             callSearchProducerApi()
         default:
@@ -717,10 +717,15 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-        controller?.userLevel = .other
-        let index = indexPath.row - (self.extraCell ?? 0)
-        controller?.userID = arrSearchimpotrDataModel[index].userId
+        let cell = tableView.cellForRow(at: indexPath) as? BusinessListTableCell
+        
+        if tableView.cellForRow(at: indexPath) == cell{
+            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+            controller?.userLevel = .other
+            let index = indexPath.row - (self.extraCell ?? 0)
+            controller?.userID = arrSearchimpotrDataModel[index].userId
+        }
+       
         
     }
     
@@ -774,7 +779,7 @@ extension BusinessViewC {
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
                 // self.searchImpDone = false
             }
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             //            self.selectImpHubId = ""
             //            self.selectImpProductId = ""
             //            self.selectImpRegionTypeId = ""
@@ -812,7 +817,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             //            self.selectProducerHubId = ""
             //            self.selectProducerProductType = ""
             //            self.selectProducerRegionId = ""
@@ -846,7 +851,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurant.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             //            self.resHubId = ""
             //            self.resTypeId = ""
             //            self.restPickUp = ""
@@ -910,7 +915,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.producrImporterTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
             //            self.selectTravelHubId = ""
             //            self.selectTravelSpecialityId = ""
             //            self.selectTravelCountryId = ""

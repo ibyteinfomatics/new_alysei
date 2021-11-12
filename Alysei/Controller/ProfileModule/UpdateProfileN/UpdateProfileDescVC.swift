@@ -31,6 +31,10 @@ class UpdateProfileDescVC: AlysieBaseViewC {
             callSaVeApi()
         }
     }
+    
+    @IBAction func backAction(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }
 

@@ -20,7 +20,7 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     @IBOutlet weak var lbleTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewLine: UIView!
-  
+    var animationCallback:((_ index: Int?, _ cell: ProfileCompletionTableViewCell) -> Void)? = nil
     //MARK: - Properties -
   
     var delegate: AnimationProfileCallBack?
@@ -32,20 +32,15 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     //MARK: - Public Methods -
     
     public func configure(_ indexPath: IndexPath,currentIndex:Int){
-      
-      //lbleTitle.text = StaticArrayData.ArrayProducerProfileCompletionDict[indexPath.row].name
-      //lblDescription.text = StaticArrayData.kMemb9ershipData[indexPath.row].status
-        //self.viewLine.isHidden = (indexPath.row == (StaticArrayData.ArrayProducerProfileCompletionDict.count - 1)) ? true : false
-        //self.viewLine.isHidden = (indexPath.row == ()) ? true : false
-    
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
-        if indexPath.row == currentIndex{
 
           print(indexPath.row)
           print(currentIndex)
-          self.delegate?.animateViews(currentIndex, cell: self)
-        }
+           // self.animationCallback?(currentIndex,self)
+            self.animationCallback?(indexPath.row,self)
+         // self.delegate?.animateViews(currentIndex, cell: self)
+        //   }
       }
     
   }

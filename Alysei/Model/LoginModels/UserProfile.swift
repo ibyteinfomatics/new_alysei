@@ -51,6 +51,7 @@ enum UserProfile {
         var connectionFlag: Int?
         var availableToFollow: Int?
         var availableToConnect: Int?
+        var whoCanViewProfile: String?
         var blockFlag: Int?
         
          private enum CodingKeys: String, CodingKey {
@@ -65,6 +66,7 @@ enum UserProfile {
             case lastName = "last_name"
             case profilePercentage = "profile_percentage"
             case followFlag = "follow_flag"
+            case whoCanViewProfile = "who_can_view_profile"
             case availableToFollow = "available_to_follow"
             case availableToConnect = "available_to_connect"
             case connectionFlag = "connection_flag"
