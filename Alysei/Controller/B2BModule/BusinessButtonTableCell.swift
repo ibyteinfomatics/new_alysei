@@ -12,7 +12,10 @@ import DropDown
 var expertCountryId:String?
 var travelCountryId:String?
 
-
+enum IdentifyUserForProduct {
+    case productImporter
+    case productProducer
+}
 
 class BusinessButtonTableCell: UITableViewCell {
 
@@ -41,8 +44,8 @@ class BusinessButtonTableCell: UITableViewCell {
     var userRoleId: String?
     var pushVCCallback: (([HubCityArray]?,GetRoleViewModel,ProductType, [StateModel],[SignUpOptionsDataModel],String) -> Void)? = nil
     
-    var pushToProductTypeScreen:((SignUpStepOneDataModel) -> Void)? = nil
-    
+    var pushToProductTypeScreen:((SignUpStepOneDataModel,IdentifyUserForProduct) -> Void)? = nil
+    var identifyUserForProduct: IdentifyUserForProduct?
     
     
   override func awakeFromNib() {
@@ -64,8 +67,14 @@ class BusinessButtonTableCell: UITableViewCell {
     }
     else if (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.Hubs){
         self.callUserHubsApi()
-    }else if (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness) || (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness){
+    }else if (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness) {
         fieldValueId = B2BFieldId.productType.rawValue
+        self.identifyUserForProduct = .productImporter
+        self.callGetValueOfFieldApi()
+        
+    }else if (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness){
+        fieldValueId = B2BFieldId.productType.rawValue
+        self.identifyUserForProduct = .productProducer
         self.callGetValueOfFieldApi()
     }else if (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.RestaurantType){
         fieldValueId = B2BFieldId.restaurantType.rawValue
@@ -203,7 +212,7 @@ func callStateApi() {
                 //self.opendropDown()
                 if self.fieldValueId == B2BFieldId.productType.rawValue{
 //                    self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),self.productType ?? ProductType(with: [:]),[StateModel](),[SignUpOptionsDataModel](),AppConstants.ProductTypeBusiness)
-                    self.pushToProductTypeScreen?(self.productoption ?? SignUpStepOneDataModel(withDictionary: [:]))
+                    self.pushToProductTypeScreen?(self.productoption ?? SignUpStepOneDataModel(withDictionary: [:]), self.identifyUserForProduct ?? .productImporter)
                 }else if self.fieldValueId == B2BFieldId.restaurantType.rawValue{
                     self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),self.productType ?? ProductType(with: [:]),[StateModel](),[SignUpOptionsDataModel](),AppConstants.RestaurantType)
                 }else if self.fieldValueId == B2BFieldId.expertise.rawValue{

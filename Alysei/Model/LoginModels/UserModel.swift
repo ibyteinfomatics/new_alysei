@@ -222,6 +222,7 @@ enum DropDownCheck {
 
 enum B2BSeacrhExtraCell: Int{
   //  case producrImporterTravel = 4
-    case restaurantImporter = 4
+    case importer = 5
+    case restaurantProducerTravel = 4
     case voExpert = 6
 }

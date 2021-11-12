@@ -27,7 +27,7 @@ class BusinessViewC: AlysieBaseViewC {
     var businessViewModel = BusinessViewModel(currentIndex: 0)
     var txtkeywordSearch : String?
     var searchType:Int?
-    
+    var identifyUserForProduct: IdentifyUserForProduct?
     var newSearchModel: NewFeedSearchModel?
     var arrSearchDataModel = [NewFeedSearchDataModel]()
     var arrSearchimpotrDataModel = [SubjectData]()
@@ -242,10 +242,18 @@ class BusinessViewC: AlysieBaseViewC {
         if self.searchImpDone == false{
             businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex: self.currentIndex)
         }else{
-            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
+            if identifyUserForProduct == .productImporter{
+            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 2{
                 businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
             }else{
             print("No update")
+            }
+            }else{
+                if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
+                    businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                }else{
+                print("No update")
+                }
             }
         }
         
@@ -415,7 +423,7 @@ class BusinessViewC: AlysieBaseViewC {
                 
             }
         }
-        businessButtonTableCell.pushToProductTypeScreen = { signUpmodel in
+        businessButtonTableCell.pushToProductTypeScreen = { signUpmodel, IdentifyUserForProduct in
              //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
                 let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
             let signupmodel = signUpmodel
@@ -621,12 +629,13 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchHubApi()
         case 1:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importer.rawValue
             self.searchImpDone = false
+            self.identifyUserForProduct = .productImporter
             callSearchImporterApi()
         case 2:
             self.searchType = 2
-            self.extraCell =  B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell =  B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             self.searchImpDone = false
             callSearchResturntApi()
         case 3:
@@ -636,13 +645,14 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchExpertApi()
         case 4:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             self.searchImpDone = false
             callSearchTravelApi()
         case 5:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             self.searchImpDone = false
+            self.identifyUserForProduct = .productProducer
             callSearchProducerApi()
         default:
             break
@@ -768,7 +778,7 @@ extension BusinessViewC {
         }
         
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.distributer3.rawValue)" + "&hubs=" + "\(self.selectImpHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.distributer3.rawValue)" + "&hub_id=" + "\(self.selectImpHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -779,7 +789,7 @@ extension BusinessViewC {
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
                 // self.searchImpDone = false
             }
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importer.rawValue
             //            self.selectImpHubId = ""
             //            self.selectImpProductId = ""
             //            self.selectImpRegionTypeId = ""
@@ -805,7 +815,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hubs=" + "\(self.selectProducerHubId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.selectProducerHubId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -817,7 +827,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             //            self.selectProducerHubId = ""
             //            self.selectProducerProductType = ""
             //            self.selectProducerRegionId = ""
@@ -839,7 +849,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hubs=" + "\(self.resHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.resHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let dictResponse = dicResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -851,7 +861,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             //            self.resHubId = ""
             //            self.resTypeId = ""
             //            self.restPickUp = ""
@@ -870,7 +880,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hubs=" + "\(self.selectExpertHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.selectExpertHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -903,7 +913,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hubs=" + "\(self.selectTravelHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.selectTravelHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -915,7 +925,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantImporter.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
             //            self.selectTravelHubId = ""
             //            self.selectTravelSpecialityId = ""
             //            self.selectTravelCountryId = ""

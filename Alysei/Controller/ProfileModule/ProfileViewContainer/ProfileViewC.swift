@@ -313,8 +313,6 @@ class ProfileViewC: AlysieBaseViewC{
             }
             
         } else {
-            
-            
             blankdataView.isHidden = true
             self.postRequestToGetFields()
             self.fetchContactDetail()

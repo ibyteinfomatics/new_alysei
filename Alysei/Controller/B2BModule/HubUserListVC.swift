@@ -51,7 +51,16 @@ class HubUserListVC: AlysieBaseViewC {
     var passUserTitle: String?
     
     var searchImpDone = false
+    var signUpStepOneDataModel: SignUpStepOneDataModel!
+    var selectPrdctCatgryOptnNme :String?
+    var selectFieldType:String?
     
+    var identifyUserForProduct: IdentifyUserForProduct?
+    var selectedProducWithCategory: String? = nil {
+        didSet {
+            self.tblViewSearchOptions.reloadData()
+        }
+    }
     private var currentChild: UIViewController {
         return self.children.last!
     }
@@ -95,16 +104,7 @@ class HubUserListVC: AlysieBaseViewC {
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-    
-//MARK: Private Method
-//    private func getBusinessCategoryCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
-//
-//        let businessCategoryCollectionCell = collectionViewBusinessCategory.dequeueReusableCell(withReuseIdentifier: BusinessCategoryCollectionCell.identifier(), for: indexPath) as! BusinessCategoryCollectionCell
-//        //_ = (self.currentIndex == 0) ? self.moveToNew(childViewController: selectedHubsViewC, fromController: self.currentChild) :   self.moveToNew(childViewController: businessListViewC, fromController: self.currentChild)
-//        businessCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex ?? 0)
-//        return businessCategoryCollectionCell
-//    }
-    
+
     private func getBusinessTextFieldTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessTextFieldTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessTextFieldTableCell.identifier()) as! BusinessTextFieldTableCell
@@ -121,14 +121,21 @@ class HubUserListVC: AlysieBaseViewC {
         if self.searchImpDone == false{
             businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0)
         }else{
+            if identifyUserForProduct == .productImporter{
+            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
+                businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+            }else{
             print("No update")
+            }
+            }else{
+                if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 0{
+                    businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                }else{
+                print("No update")
+                }
+            }
         }
-//            businessButtonTableCell.pushToProductTypeScreen = { productType in
-//                let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
-//                let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
-//                controller?.signUpStepOneDataModel = model
-//                controller?.stepOneDelegate = self
-//            }
+
         businessButtonTableCell.pushVCCallback = { arruserHubs,getRoleViewModel,productType,stateModel,arrStateRegionById,selectFieldType in
             let controller = self.pushViewController(withName: BusinessMultiOptionsVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BusinessMultiOptionsVC
             controller?.arrUserHubs = arruserHubs ?? [HubCityArray]()
@@ -321,7 +328,35 @@ class HubUserListVC: AlysieBaseViewC {
             }
             
         }
-
+        businessButtonTableCell.pushToProductTypeScreen = { signUpmodel, IdentifyUserForProduct in
+             //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
+                let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
+            let signupmodel = signUpmodel
+            for _ in signupmodel.arrOptions {
+                if self.signUpStepOneDataModel == nil{
+                    controller?.signUpStepOneDataModel = signupmodel
+                    controller?.stepOneDelegate = self
+                    return
+                }
+//                for selectedOptions in self.signUpStepOneDataModel.arrOptions{
+//                    options.isSelected = selectedOptions.id == options.id
+//                    for suboptions in options.arrSubSections{
+//
+//                        for selectedSuboptions in selectedOptions.arrSubSections {
+//
+//                            for subSuboptions in suboptions.arrSubOptions{
+//                                for selectedSubSuboption in selectedSuboptions.arrSubOptions{
+//                                    subSuboptions.isSelected = subSuboptions.userFieldOptionId == selectedSubSuboption.userFieldOptionId
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+            }
+           
+                controller?.signUpStepOneDataModel = signupmodel
+                controller?.stepOneDelegate = self
+            }
         return businessButtonTableCell
     }
     
@@ -492,7 +527,7 @@ extension HubUserListVC {
     func callSearchImporterApi(){
         arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hubs=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(self.selectImpProductId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(self.selectImpProductId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -521,7 +556,7 @@ extension HubUserListVC {
     func callSearchProducerApi(){
         arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hubs=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(selectProducerProductType ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(selectProducerProductType ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -532,7 +567,7 @@ extension HubUserListVC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = 4
+            self.extraCell = 3
 //            self.selectProducerProductType = ""
 //            self.selectProducerRegionId = ""
 //            self.horecaValue = ""
@@ -549,7 +584,7 @@ extension HubUserListVC {
     func callSearchResturntApi(){
         arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hubs=" + "\(self.passHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let dictResponse = dicResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -574,7 +609,7 @@ extension HubUserListVC {
     func callSearchExpertApi(){
         arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hubs=" + "\(self.passHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -600,7 +635,7 @@ extension HubUserListVC {
     func callSearchTravelApi(){
         arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hubs=" + "\(self.passHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -661,7 +696,7 @@ extension HubUserListVC {
                 print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
                 cellCount = self.arrSearchimpotrDataModel.count
                 if self.currentIndex == B2BSearch.Producer.rawValue{
-                    self.extraCell = 4
+                    self.extraCell = 3
                 }else if self.currentIndex == B2BSearch.Importer.rawValue{
                     self.extraCell = 4
                 }else if self.currentIndex == B2BSearch.Restaurant.rawValue{
@@ -682,3 +717,66 @@ extension HubUserListVC {
             }
         }
 
+//SelectProduct Tapped Done
+
+extension HubUserListVC: TappedDoneStepOne{
+    
+    func tapDone(_ signUpStepOneDataModel: SignUpStepOneDataModel) {
+        
+        self.signUpStepOneDataModel = nil
+        self.signUpStepOneDataModel = signUpStepOneDataModel
+        signUpStepOneDataModel.selectedValue = self.createStringForProducts()
+        print("Values----------------------------------------",signUpStepOneDataModel.selectedValue ?? "")
+        self.selectedProducWithCategory = signUpStepOneDataModel.selectedValue
+        self.selectPrdctCatgryOptnNme = signUpStepOneDataModel.selectedOptionName
+        self.searchImpDone = true
+        self.selectFieldType = AppConstants.ProductTypeBusiness
+        self.navigationController?.popViewController(animated: true)
+        self.tblViewSearchOptions.reloadData()
+    }
+    private func createStringForProducts() -> String {
+        let filteredSelectedProduct = self.signUpStepOneDataModel.arrOptions.map({$0}).filter({$0.isSelected == true})
+        
+        var selectedProductNames: [String] = []
+        var selectedProductOptionIds: [String] = []
+        var selectedSubProductOptionIds: [String] = []
+        
+        for index in 0..<filteredSelectedProduct.count {
+            
+            //var selectedProductId: [String] = []
+            var selectedSubProductIdLocal: [String] = []
+            
+            selectedProductNames.append(String.getString(filteredSelectedProduct[index].optionName))
+            selectedProductOptionIds.append(String.getString(filteredSelectedProduct[index].userFieldOptionId))
+            
+            let sections = filteredSelectedProduct[index].arrSubSections
+            
+            for sectionIndex in 0..<sections.count {
+                
+                print("arrSelectedSubOptions",sections[sectionIndex].arrSelectedSubOptions)
+                selectedSubProductIdLocal.append(contentsOf: sections[sectionIndex].arrSelectedSubOptions.map({$0}))
+            }
+            selectedSubProductOptionIds.append(contentsOf: selectedSubProductIdLocal)
+        }
+        
+        switch filteredSelectedProduct.count {
+        case 0:
+            print("No Products found")
+            self.signUpStepOneDataModel.selectedOptionName = ""
+        case 1:
+            self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0]
+        //     case 2:
+        //      self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0] + ", " + selectedProductNames[1]
+        default:
+            let remainingProducts = (selectedProductNames.count - 1)
+            self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0] + " & " + String.getString(remainingProducts) + " more"
+        }
+        print("product",selectedProductOptionIds)
+        print("sub product",selectedSubProductOptionIds)
+        
+        let mergeArray = selectedProductOptionIds + selectedSubProductOptionIds
+        return mergeArray.joined(separator: ", ")
+    }
+   
+
+}

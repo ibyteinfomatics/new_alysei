@@ -129,72 +129,7 @@ extension MarketPlaceFirstTiimeVC: UICollectionViewDelegate,UICollectionViewData
     return CGSize(width: kScreenWidth, height:kScreenHeight)
   }
 }
-//extension MarketPlaceFirstTiimeVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalkthroughCVC", for: indexPath) as? WalkthroughCVC else {return UICollectionViewCell()}
-//        cell.bgImage.image = UIImage(named: bgImage[indexPath.row])
-//        cell.img.image =  UIImage(named: imgArray[indexPath.row])
-//        cell.lblTitle.text = titleArray[indexPath.row]
-//        cell.lblSubTitle.text = subTitleArray[indexPath.row]
-//        if indexPath.row == 0 || indexPath.row == 1{
-//            cell.btnNext.setTitle("Next", for: .normal)
-//        }else{
-//            cell.btnNext.setTitle("Done", for: .normal)
-//        }
-//
-//        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
-//            cell.lblUserName.text = kSharedUserDefaults.loggedInUserModal.restaurantName
-//        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(UserRoles.voiceExperts.rawValue)"{
-//            cell.lblUserName.text = "\(kSharedUserDefaults.loggedInUserModal.firstName ?? "")" + "\(kSharedUserDefaults.loggedInUserModal.lastName ?? "")"
-//        }else{
-//            cell.lblUserName.text = kSharedUserDefaults.loggedInUserModal.companyName
-//        }
-//        cell.callBackNext = {
-//
-//            if indexPath.row == 0 || indexPath.row == 1{
-//
-//                let currentIndexPath =  indexPath.item // collectionView.indexPath(for: cell)!
-//              if currentIndexPath < 2{
-//
-//                let indexPath = IndexPath(item: currentIndexPath + 1, section: 0)
-//                self.collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-//               // self.collectionView.reloadItems(at: [indexPath])
-//              }
-//            }else{
-//                self.navigationController?.popViewController(animated: false)
-//            }
-//
-//
-//
-//        }
-//        if indexPath.row == 0 {
-//            cell.view1W.constant = 25
-//            cell.view2W.constant = 10
-//            cell.view3W.constant = 10
-//
-//        }else if indexPath.row == 1 {
-//            cell.view1W.constant = 10
-//            cell.view2W.constant = 25
-//            cell.view3W.constant = 10
-//        }else{
-//            cell.view1W.constant = 10
-//            cell.view2W.constant = 10
-//            cell.view3W.constant = 25
-//        }
-//
-//        return cell
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
-//    }
-//}
-//
+
 extension MarketPlaceFirstTiimeVC: GetStartedDelegateWalk{
   
   
@@ -204,7 +139,7 @@ extension MarketPlaceFirstTiimeVC: GetStartedDelegateWalk{
       
       //let walkthroughArray = self.getWalkThroughViewModel.arrWalkThroughs.count
       let currentIndexPath = collectionViewTutorial.indexPath(for: cell)!
-      if currentIndexPath.item < StaticArrayData.kTutorialDict.count - 1{
+      if currentIndexPath.item < titleArray.count - 1{
         
         let indexPath = IndexPath(item: currentIndexPath.item+1, section: 0)
         self.collectionViewTutorial.scrollToItem(at: indexPath, at: .right, animated: true)

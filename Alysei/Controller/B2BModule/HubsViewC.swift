@@ -80,8 +80,10 @@ extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             controller?.currentIndex = B2BSearch.Restaurant.rawValue
         }else if arruserCount?[indexPath.row].role_id == UserRoles.producer.rawValue{
             controller?.currentIndex = B2BSearch.Producer.rawValue
+            controller?.identifyUserForProduct = .productProducer
         }else if arruserCount?[indexPath.row].role_id == UserRoles.distributer1.rawValue || arruserCount?[indexPath.row].role_id == UserRoles.distributer2.rawValue || arruserCount?[indexPath.row].role_id == UserRoles.distributer3.rawValue{
             controller?.currentIndex = B2BSearch.Importer.rawValue
+            controller?.identifyUserForProduct = .productImporter
         }else if arruserCount?[indexPath.row].role_id == UserRoles.voiceExperts.rawValue{
             controller?.currentIndex =  B2BSearch.Expert.rawValue
         }else if arruserCount?[indexPath.row].role_id == UserRoles.travelAgencies.rawValue{
