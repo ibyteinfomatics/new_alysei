@@ -114,7 +114,7 @@ class StepsViewController: UIViewController, StepDelegate {
         
         if page > 0{
             page = page - 1
-            stepTableViewCellCurrentIndex = page
+            
             
             choosestepIngridient?.removeAll()
             choosestepTool?.removeAll()
@@ -134,9 +134,10 @@ class StepsViewController: UIViewController, StepDelegate {
                 
             }
             
-            
+            stepTableViewCellCurrentIndex = page
             nextStep.setTitle("Next", for: .normal)
             nextStep.setImage(UIImage(named: "icons8_left1.png"), for: .normal)
+            tableView.reloadData()
         }
         else{
             self.navigationController?.popViewController(animated: true)
@@ -228,6 +229,7 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             guard let cell:StepTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StepTableViewCell", for: indexPath) as? StepTableViewCell
             else{return UITableViewCell()}
             cell.lblDescription.text = stepsModel?[page].description
+            cell.lblTitle.text = stepsModel?[page].title
             cell.stepLabel.text = "Step" + " " + "\(page + 1)"
             
             cell.delegate = self

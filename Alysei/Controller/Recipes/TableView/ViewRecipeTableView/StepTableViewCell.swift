@@ -19,6 +19,7 @@ class StepTableViewCell: UITableViewCell {
     @IBOutlet weak var stepView: UIView!
     
     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     var delegate: StepDelegate?
     var tapViewStep:(()->())?
     var arrStep = String()
