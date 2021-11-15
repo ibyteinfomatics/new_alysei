@@ -18,6 +18,7 @@ enum UserProfile {
         var about: String?
         var postCount: Int?
         var followerCount: Int?
+        var followingcount: Int?
         var connectionCount: Int?
         var userData: userDataModel?
         var contactTab: contactTab?
@@ -29,6 +30,7 @@ enum UserProfile {
             case userData = "user_data"
             case connectionCount = "connection_count"
             case followerCount = "follower_count"
+            case followingcount = "following_count"
             case contactTab = "contact_tab"
             case aboutTab = "about_tab"
         }

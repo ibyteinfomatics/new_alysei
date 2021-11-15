@@ -67,10 +67,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkg-BK-4cp">
-                                        <rect key="frame" x="50" y="316" width="314" height="40"/>
+                                        <rect key="frame" x="50" y="492.5" width="314" height="40"/>
                                         <color key="backgroundColor" name="macraggeBlue"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="DvI-dY-zBp"/>
+                                            <constraint firstAttribute="width" constant="314" id="3c2-Fc-RWf"/>
+                                            <constraint firstAttribute="height" constant="40" id="fDk-Ud-lRW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Save">
@@ -84,14 +85,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="kTR-vh-72L" firstAttribute="bottom" secondItem="UDW-LR-66Z" secondAttribute="bottom" id="3Pv-dq-6zw"/>
-                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="centerX" secondItem="6qY-gI-WcC" secondAttribute="centerX" id="4Aa-LD-JyT"/>
                                     <constraint firstItem="UDW-LR-66Z" firstAttribute="leading" secondItem="6qY-gI-WcC" secondAttribute="leading" id="4hC-HZ-Kx3"/>
-                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="leading" secondItem="6qY-gI-WcC" secondAttribute="leading" constant="50" id="IHQ-Rc-vIc"/>
+                                    <constraint firstAttribute="bottom" secondItem="tkg-BK-4cp" secondAttribute="bottom" constant="50" id="9BH-Cd-7Yu"/>
                                     <constraint firstItem="UDW-LR-66Z" firstAttribute="top" secondItem="6qY-gI-WcC" secondAttribute="top" id="Koe-rv-Z27"/>
-                                    <constraint firstAttribute="trailing" secondItem="tkg-BK-4cp" secondAttribute="trailing" constant="50" id="Ldu-0w-vxk"/>
+                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="centerX" secondItem="6qY-gI-WcC" secondAttribute="centerX" id="NJ5-tA-rXO"/>
                                     <constraint firstItem="kTR-vh-72L" firstAttribute="trailing" secondItem="UDW-LR-66Z" secondAttribute="trailing" id="Nf7-8F-RQV"/>
                                     <constraint firstAttribute="trailing" secondItem="UDW-LR-66Z" secondAttribute="trailing" id="Oqq-jH-kEI"/>
-                                    <constraint firstItem="tkg-BK-4cp" firstAttribute="top" secondItem="5kW-iI-MG8" secondAttribute="bottom" constant="18" id="QvP-bR-EAn"/>
                                     <constraint firstAttribute="trailing" secondItem="dcL-aA-h6h" secondAttribute="trailing" constant="10" id="SQQ-Fh-Bdi"/>
                                     <constraint firstItem="kTR-vh-72L" firstAttribute="top" secondItem="UDW-LR-66Z" secondAttribute="top" id="WYH-YL-q4V"/>
                                     <constraint firstItem="dgg-AF-CcQ" firstAttribute="bottom" secondItem="UDW-LR-66Z" secondAttribute="bottom" constant="60" id="cgo-Ag-c0N"/>

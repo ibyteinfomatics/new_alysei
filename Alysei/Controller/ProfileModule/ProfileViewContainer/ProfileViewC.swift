@@ -229,11 +229,9 @@ class ProfileViewC: AlysieBaseViewC{
     
     func inviteApi(id: Int, type: Int){
         
-        let params: [String:Any] = [
-            "connection_id": String.getString(id),
-            "accept_or_reject": type]
+        let params: [String:Any] = [:]
         
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(userID)+"&accept_or_reject="+String.getString(type), requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             self.fetchVisiterProfileDetails(self.userID)
         }
@@ -786,13 +784,20 @@ class ProfileViewC: AlysieBaseViewC{
             }
             guard let data = data else { return }
             do {
+               
                 let responseModel = try JSONDecoder().decode(UserProfile.profileTopSectionModel.self, from: data)
                 print(responseModel)
                 
                 self.userProfileModel = responseModel
                 self.postcount.text = String.getString(responseModel.data?.postCount)
                 self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
-                self.followercount.text = String.getString(responseModel.data?.followerCount)
+                
+                
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                    self.followercount.text = String.getString(responseModel.data?.followingcount)
+                } else {
+                    self.followercount.text = String.getString(responseModel.data?.followerCount)
+                }
                 
                 if let username = responseModel.data?.userData?.username {
                     self.usernameLabel.text = "@\(username)".lowercased()
@@ -875,6 +880,7 @@ class ProfileViewC: AlysieBaseViewC{
             SVProgressHUD.dismiss()
             guard let data = data else { return }
             do {
+                
                 let responseModel = try JSONDecoder().decode(UserProfile.profileTopSectionModel.self, from: data)
                 print(responseModel)
                 self.userProfileModel = responseModel
@@ -882,7 +888,13 @@ class ProfileViewC: AlysieBaseViewC{
                 self.fetchAboutDetail()
                 
                 self.postcount.text = String.getString(responseModel.data?.postCount)
-                self.followercount.text = String.getString(responseModel.data?.followerCount)
+                //self.followercount.text = String.getString(responseModel.data?.followerCount)
+                
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                    self.followercount.text = String.getString(responseModel.data?.followingcount)
+                } else {
+                    self.followercount.text = String.getString(responseModel.data?.followerCount)
+                }
                 
                 if let username = responseModel.data?.userData?.username {
                     self.usernameLabel.text = "@\(username)".lowercased()
@@ -893,6 +905,8 @@ class ProfileViewC: AlysieBaseViewC{
                 self.visitorUserType = roleID
                 self.udpateConnectionButtonForVisitorProfile(roleID)
                 self.updateListingTitle()
+                
+                //self.collectionViewAddProduct.reloadData()
                 
                 if self.userProfileModel.data?.userData?.connectionFlag == 1 || self.userProfileModel.data?.userData?.followFlag == 1 ||  self.userProfileModel.data?.userData?.whoCanViewProfile == "anyone"{
                                     self.tabsCollectionView.reloadData()
@@ -1096,7 +1110,7 @@ class ProfileViewC: AlysieBaseViewC{
     private func postRequestToGetFields() -> Void{
         
         disableWindowInteraction()
-        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
     }
     //MARK:- HandleViewTap
     

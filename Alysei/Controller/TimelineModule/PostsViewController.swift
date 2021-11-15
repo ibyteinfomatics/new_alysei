@@ -190,15 +190,19 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 switch self.arrDiscoverDataModel[index].discover_alysei_id {
                 case 1:
                     let controller = self.pushViewController(withName: EventDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? EventDiscover
+                    self.tabBarController?.tabBar.isHidden = true
                     controller?.eventId = "events"
                 case 2:
                     let controller = self.pushViewController(withName: TripDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? TripDiscover
+                    self.tabBarController?.tabBar.isHidden = true
                    controller?.tripId = "trips"
                 case 3:
                     let controller = self.pushViewController(withName: BlogDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogDiscover
+                    self.tabBarController?.tabBar.isHidden = true
                     controller?.blogId = "blogs"
                 case 4:
                     let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
+                    self.tabBarController?.tabBar.isHidden = true
                     controller?.restId = "restaurants"
                 default:
                     print("Invalid")

@@ -110,31 +110,31 @@ class TripsFilterVC: AlysieBaseViewC {
         if passRegions == "" || passRegions == nil {
             regionLabel.text = "Regions"
         }else{
-            regionLabel.text = passSelectedCountry
+            regionLabel.text = passRegions
         }
         
         if passAdventure == "" || passAdventure == nil {
             adventuresLabel.text = "Adventures"
         }else{
-            adventuresLabel.text = passSelectedCountry
+            adventuresLabel.text = passAdventure
         }
         
         if passDuration == "" || passDuration == nil {
             durationLabel.text = "Duration"
         }else{
-            durationLabel.text = passSelectedCountry
+            durationLabel.text = passDuration
         }
         
         if passIntensity == "" || passIntensity == nil {
             intensityLabel.text = "Intensity"
         }else{
-            intensityLabel.text = passSelectedCountry
+            intensityLabel.text = passIntensity
         }
 
         if passprice == "" || passprice == nil {
             currencyLabel.placeholder = "Price"
         }else{
-            currencyLabel.text = passSelectedCountry
+            currencyLabel.text = passprice
         }
     }
     
@@ -157,8 +157,8 @@ class TripsFilterVC: AlysieBaseViewC {
         passDuration = ""
         passIntensity = ""
         passprice = ""
-        self.clearfilterCallback?()
-        self.navigationController?.popViewController(animated: true)
+       // self.clearfilterCallback?()
+       // self.navigationController?.popViewController(animated: true)
     }
     private func getInensity() -> Void{
       
