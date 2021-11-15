@@ -38,7 +38,13 @@ class AddStepsCollectionViewCell: UICollectionViewCell {
             desciptionTextView.textColor = UIColor.lightGray
         }
         else{
-            desciptionTextView.textColor = UIColor.black
+            if desciptionTextView.text == "Your recipe direction text here..."{
+                desciptionTextView.textColor = UIColor.lightGray
+            }
+            else{
+                desciptionTextView.textColor = UIColor.black
+            }
+           
         }
     }
 }
@@ -97,6 +103,11 @@ extension AddStepsCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
         return true
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (titleTextField.text! as NSString).replacingCharacters(in: range, with: string)
+        let numberOfChars = newText.count
+        return numberOfChars < 36
+    }
     func textFieldDidEndEditing(_ textField: UITextField)
     {
         textField.resignFirstResponder()

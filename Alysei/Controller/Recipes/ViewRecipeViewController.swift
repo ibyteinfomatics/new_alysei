@@ -360,8 +360,14 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.totalFiveStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star)))/100, animated: false)
             if recipeModel?.latestReview == nil {
                 cell.viewComment.isHidden = true
+                cell.heightuserName.constant = 0
+                cell.heightStackView.constant = 0
+                cell.vwCommentTop.constant = 0
             }else{
                 cell.viewComment.isHidden = false
+                cell.heightuserName.constant = 17.5
+                cell.heightStackView.constant = 15
+                cell.vwCommentTop.constant = 20
                 
             }
             cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
