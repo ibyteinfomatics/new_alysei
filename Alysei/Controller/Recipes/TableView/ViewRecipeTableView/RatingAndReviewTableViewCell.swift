@@ -41,6 +41,9 @@ class RatingAndReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var totalFourStarProgress: UIProgressView!
     @IBOutlet weak var totalFiveStarProgress: UIProgressView!
    
+    @IBOutlet weak var heightuserName: NSLayoutConstraint!
+    @IBOutlet weak var heightStackView: NSLayoutConstraint!
+    @IBOutlet weak var vwCommentTop: NSLayoutConstraint!
     var btnAddReviewCallback:(() -> Void)? = nil
     var data: LatestReviewDataModel?
     var avgRating:String?
