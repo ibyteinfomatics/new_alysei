@@ -565,10 +565,10 @@ extension InquiryConversation {
         sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
-        kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
+        kChatharedInstance.inquirysend_message(child: "Opened", messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
         //sendChatNotification(userId: self.receiverDetails?.receiverId ?? "")
         
-        //notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(userId))
+        notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(userId))
     }
     
     func notificationApi(fromid: String, toid: String){
@@ -641,9 +641,9 @@ extension InquiryConversation {
                     sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
-                    kChatharedInstance.inquirysend_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")
+                    kChatharedInstance.inquirysend_message(child: "Opened", messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")
                     
-                    //self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
+                    self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
 
                 case 400:
                     self?.showAlert(withMessage: String.getString(dicResponse["message"]))

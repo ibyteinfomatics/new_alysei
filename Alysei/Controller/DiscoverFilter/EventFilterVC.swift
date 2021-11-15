@@ -27,7 +27,7 @@ class EventFilterVC: UIViewController {
     
     var productType: ProductType?
     var arrProductType = [String]()
-    var restauId: Int?
+   // var restauId: Int?
    
     var passSelectedDataCallback: ((String,String,String,String,String) -> Void)? = nil
     
@@ -37,7 +37,7 @@ class EventFilterVC: UIViewController {
     var passSelectedEventType: String?
     var passSelectedRegistrationType: String?
     var passSelectedRestType: String?
-    var passRestId: String?
+    var passRestId,eventType,regisatrationType,dateget: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,21 +66,24 @@ class EventFilterVC: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         
         if passSelectedDate == "" || passSelectedDate == nil{
-            dateTxf.text = formatter.string(from: Date())
+           // dateTxf.text = formatter.string(from: Date())
         }else{
         dateTxf.text = passSelectedDate
+            dateget  = passSelectedDate
         }
         
         if passSelectedEventType == "" || passSelectedEventType == nil{
-            lblEventType.text = "Public"
+            //lblEventType.text = "Public"
         }else{
             lblEventType.text = passSelectedEventType
+            eventType = passSelectedEventType
         }
         
         if passSelectedRegistrationType == "" || passSelectedRegistrationType == nil{
-            lblRegistrationType.text = "Free"
+            //lblRegistrationType.text = "Free"
         }else{
             lblRegistrationType.text = passSelectedEventType
+            regisatrationType = passSelectedEventType
         }
         if passSelectedRestType == "" || passSelectedRestType == nil{
             lblRestType.text = AppConstants.kSelectRestType
@@ -110,20 +113,24 @@ class EventFilterVC: UIViewController {
         }else{
             passSelectedRestType = lblRestType.text
         }
-        self.passSelectedDataCallback?(dateTxf.text ?? "",lblEventType.text ?? "",lblRegistrationType.text ?? "", passSelectedRestType ?? "",passRestId ?? "")
+        self.passSelectedDataCallback?(dateget ?? "",eventType ?? "",regisatrationType ?? "", passSelectedRestType ?? "",passRestId ?? "")
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnClearAction(_ sender: UIButton){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        dateTxf.text = formatter.string(from: Date())
-        lblEventType.text = "Public"
-        lblRegistrationType.text = "Free"
+        dateTxf.text = "Choose Date"
+        lblEventType.text = "Select Event"
+        lblRegistrationType.text = "Select Registration"
+        lblRestType.text = "Select Restaurant"
         passRestId = ""
-        lblRestType.text = AppConstants.kSelectRestType
-        clearFiltercCallBack?()
-        self.navigationController?.popViewController(animated: true)
+        dateget = ""
+        eventType = ""
+        regisatrationType = ""
+        //lblRestType.text = AppConstants.kSelectRestType
+        //clearFiltercCallBack?()
+        //self.navigationController?.popViewController(animated: true)
         
     }
     func showDatePicker(){
@@ -154,7 +161,7 @@ class EventFilterVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         dateTxf.text = formatter.string(from: datePicker.date)
-        
+        dateget = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     
@@ -188,7 +195,7 @@ class EventFilterVC: UIViewController {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblEventType.text = item
-            restauId = Int.getInt(self.productType?.options?[index].id)
+            eventType = item
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
@@ -207,6 +214,7 @@ class EventFilterVC: UIViewController {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblRegistrationType.text = item
+            regisatrationType = item
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
@@ -224,7 +232,7 @@ class EventFilterVC: UIViewController {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblRestType.text = item
-            self.passRestId = self.productType?.options?[index].id
+            self.passRestId = self.productType?.options?[index].userFieldOptionId
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white

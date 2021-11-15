@@ -20,6 +20,7 @@ class InquiryChatVC: AlysieBaseViewC {
     @IBOutlet weak var lblOpened: UILabel!
     @IBOutlet weak var lblClosed: UILabel!
     @IBOutlet weak var tblViewNotification: UITableView!
+    var type : String?
     
     var ResentUser:[InquiryRecentUser]?
     var resentReference     = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
@@ -39,7 +40,8 @@ class InquiryChatVC: AlysieBaseViewC {
         
         tblViewNotification.dataSource = self
         tblViewNotification.delegate = self
-        receiveUsers()
+        receiveUsers(child: "New")
+        type = "New"
     }
     
     @objc func openNewChatList(){
@@ -50,6 +52,10 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomNew.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
         vwBottomOpened.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        self.ResentUser?.removeAll()
+        self.tblViewNotification.reloadData()
+        receiveUsers(child: "New")
+        type = "New"
     }
     @objc func openOpenedList(){
         lblNew.font = UIFont(name:"HelveticaNeue-Regular", size: 18.0)
@@ -58,6 +64,10 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomNew.layer.backgroundColor =  UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomOpened.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        self.ResentUser?.removeAll()
+        self.tblViewNotification.reloadData()
+        receiveUsers(child: "Opened")
+        type = "Opened"
     }
     @objc func openClosedList(){
         lblNew.font = UIFont(name:"HelveticaNeue-Regular", size: 18.0)
@@ -66,6 +76,10 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomNew.layer.backgroundColor =  UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomOpened.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomClosed.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
+        self.ResentUser?.removeAll()
+        self.tblViewNotification.reloadData()
+        receiveUsers(child: "Closed")
+        type = "Closed"
     }
     
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -73,13 +87,14 @@ class InquiryChatVC: AlysieBaseViewC {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func receiveUsers() {
+    func receiveUsers(child: String) {
         
-        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
+        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
             self.ResentUser?.removeAll()
             self.ResentUser = users
             self.tblViewNotification.reloadData()
         }
+        
     }
     
     private func getNotificationTableCell(index: Int) -> UITableViewCell{
@@ -188,19 +203,24 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+       // if type == "New" {
+            let receiverDetails = [ Parameters.uid : String.getString(self.ResentUser?[indexPath.row].uid),
+                                    Parameters.otherId : String.getString(self.ResentUser?[indexPath.row].otherId),
+                                    Parameters.lastmessage : String.getString(self.ResentUser?[indexPath.row].lastmessage),
+                                    Parameters.mediaType    : String.getString(self.ResentUser?[indexPath.row].mediaType) ,
+                                    Parameters.timeStamp : String.getString(self.ResentUser?[indexPath.row].timestamp),
+                                    Parameters.otherImage : String.getString(self.ResentUser?[indexPath.row].otherImage) ,
+                                    Parameters.otherName : String.getString(self.ResentUser?[indexPath.row].otherName),
+                                    Parameters.readCount : 0,
+                                    Parameters.userTyping : false] as [String : Any]
+            
+            resentReference.child("New").child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            
+            
+            
+       // }
         
         
-        let receiverDetails = [ Parameters.uid : String.getString(self.ResentUser?[indexPath.row].uid),
-                                Parameters.otherId : String.getString(self.ResentUser?[indexPath.row].otherId),
-                                Parameters.lastmessage : String.getString(self.ResentUser?[indexPath.row].lastmessage),
-                                Parameters.mediaType    : String.getString(self.ResentUser?[indexPath.row].mediaType) ,
-                                Parameters.timeStamp : String.getString(self.ResentUser?[indexPath.row].timestamp),
-                                Parameters.otherImage : String.getString(self.ResentUser?[indexPath.row].otherImage) ,
-                                Parameters.otherName : String.getString(self.ResentUser?[indexPath.row].otherName),
-                                Parameters.readCount : 0,
-                                Parameters.userTyping : false] as [String : Any]
-        
-        resentReference.child("New").child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
         
         let vc = pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as! InquiryConversation
        // let vc = storyboard?.instantiateViewController(withIdentifier: "ConversationViewController") as!  ConversationViewController

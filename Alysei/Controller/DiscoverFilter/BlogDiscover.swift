@@ -29,6 +29,15 @@ class BlogDiscover: AlysieBaseViewC {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func filterBtn(_ sender: UIButton) {
         
         let controller = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC

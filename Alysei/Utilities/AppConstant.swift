@@ -308,6 +308,7 @@ struct APIUrl{
     
     static let kSavePrivacy = "save/privacy"
     static let kinvitationAcceptReject = "accept/reject/request"
+    static let kotherAcceptReject = "accept/reject/connection/request/from/profile?"
     static let kPendingRemove = "cancel/connection/request?visitor_profile_id="
     static let kMarketPlaceProduct = "get/box/detail/"
     static let kBlockList = "get/block/user/list"

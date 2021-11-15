@@ -543,9 +543,9 @@ class Chat_hepler {
     //MARK:- Function For Send message one to one Chat
     
     
-    func inquirysend_message(messageDic:InquiryReceivedMessageClass,senderId :String , receiverId:String, storeId:String) {
+    func inquirysend_message(child:String,messageDic:InquiryReceivedMessageClass,senderId :String , receiverId:String, storeId:String) {
         
-        inquiryreceiveUsers(otherId: receiverId)
+        inquiryreceiveUsers(otherId: receiverId, child: child)
         
         let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
         if String.getString(messageNode) == Parameters.emptyString {
@@ -571,7 +571,7 @@ class Chat_hepler {
         print("send message to node \(recemessageNode) with key \(receiveReference.key ?? "") with message \(message)")
         receiveReference.setValue(kSharedInstance.getDictionary(message))
         
-        self.inquiry_resentUser(messageDetails: messageDic)
+        self.inquiry_resentUser(messageDetails: messageDic, child: child)
         
     }
     
@@ -609,7 +609,7 @@ class Chat_hepler {
     }
     
     //MARK:- Func For send Resent Users and retrived data On resent Users Submit Data to Users Every User Submit 2 Node  Sender and Receiver
-    func inquiry_resentUser(messageDetails:InquiryReceivedMessageClass) {
+    func inquiry_resentUser(messageDetails:InquiryReceivedMessageClass,child : String) {
         let senderId = messageDetails.senderid ?? ""
         let receiverId = messageDetails.receiverid ?? ""
         if String.getString(senderId) == Parameters.emptyString || String.getString(receiverId) == Parameters.emptyString {
@@ -650,8 +650,8 @@ class Chat_hepler {
                                Parameters.readCount : unread, // increase count
                                Parameters.userTyping : false] as [String : Any]
         
-        inquiryresentReference.child("New").child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
-        inquiryresentReference.child("New").child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+        inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
+        inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
     }
     
     func resentUser(messageDetails:ReceivedMessageClass) {
@@ -709,9 +709,9 @@ class Chat_hepler {
     }
     
     
-    func inquiryreceiveUsers(otherId: String) {
+    func inquiryreceiveUsers(otherId: String,child: String) {
         
-        kChatharedInstance.inquiry_receiveResentUsers(userid:otherId) { (users) in
+        kChatharedInstance.inquiry_receiveResentUsers(userid:otherId, child: child) { (users) in
             self.Inquiry_Resentuser?.removeAll()
             self.Inquiry_Resentuser = users
             
@@ -840,13 +840,13 @@ class Chat_hepler {
     }
     
     //MARK:- Func For Resent Users retrived on Recent Screen user User Id
-    func inquiry_receiveResentUsers(userid:String, resentUsers:@escaping (_ result: [InquiryRecentUser]?) -> ()) -> Void{
+    func inquiry_receiveResentUsers(userid:String,child: String, resentUsers:@escaping (_ result: [InquiryRecentUser]?) -> ()) -> Void{
         if userid == Parameters.emptyString {
             print(Parameters.alertmessage)
             return
         }
         self.inquiry_resentUser.removeAll()
-        inquiryresentReference.child("New").child("user_\(userid)").observe(.value) { [weak self](snapshot) in
+        inquiryresentReference.child(child).child("user_\(userid)").observe(.value) { [weak self](snapshot) in
             self?.inquiry_resentUser.removeAll()
             if snapshot.exists() {
                 let usersDetails = kSharedInstance.getDictionary(snapshot.value)
