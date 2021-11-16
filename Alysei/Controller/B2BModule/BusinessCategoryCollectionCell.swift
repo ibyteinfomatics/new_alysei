@@ -11,9 +11,10 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
   
   //MARK: - IBOutlet -
   
-  @IBOutlet weak var lblBusinessHeading: UILabel!
-  @IBOutlet weak var imgViewBusiness: UIImageView!
-  @IBOutlet weak var viewBottom: UIView!
+    @IBOutlet weak var viewBusiness: UIView!
+    @IBOutlet weak var lblBusinessHeading: UILabel!
+    @IBOutlet weak var imgViewBusiness: UIImageView!
+ 
   
   override func layoutSubviews() {
     
@@ -24,7 +25,7 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
   override func layoutIfNeeded() {
     
     super.layoutIfNeeded()
-    self.viewBottom.drawBottomShadow()
+//    self.viewBottom.drawBottomShadow()
   }
   
   //MARK: - Public Methods -
@@ -32,15 +33,23 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
   public func configureData(indexPath: IndexPath, currentIndex: Int) -> Void{
     
     self.lblBusinessHeading.text = StaticArrayData.kBusinessCategoryDict[indexPath.item].name
-    self.imgViewBusiness.image = UIImage(named: StaticArrayData.kBusinessCategoryDict[indexPath.item].image)
+    self.viewBusiness.layer.cornerRadius = 22
+    
     
     if indexPath.item == currentIndex{
-      
-      self.viewBottom.isHidden = false
-      
+        self.imgViewBusiness.image = UIImage(named: StaticArrayData.kBusinessCategoryDict[indexPath.item].image)
+        self.lblBusinessHeading.textColor = .white
+        self.viewBusiness.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+       
+        self.viewBusiness.layer.borderColor = UIColor.clear.cgColor
+        self.viewBusiness.layer.borderWidth = 0
     }
     else{
-      self.viewBottom.isHidden = true
+        self.imgViewBusiness.image = UIImage(named: StaticArrayData.kInactiveBusinessCategoryDict[indexPath.item].image)
+        self.lblBusinessHeading.textColor = .black
+        self.viewBusiness.backgroundColor = .white
+        self.viewBusiness.layer.borderColor = UIColor.black.cgColor
+        self.viewBusiness.layer.borderWidth = 1
     }
     
   }

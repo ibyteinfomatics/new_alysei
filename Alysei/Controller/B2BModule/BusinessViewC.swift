@@ -666,9 +666,21 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
         //self.tblViewSearchOptions.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        if indexPath.item == 0  {
+            return CGSize(width: 100 , height: 45.0)
+        }
+        else if indexPath.item == 1{
+            return CGSize(width: 145 , height: 45.0)
+        }
+        else if indexPath.item == 2{
+            return CGSize(width: 185 , height: 45.0)
+        }
+        else{
+            return CGSize(width: 135 , height: 45.0)
+        }
         
-        return CGSize(width: 145.0, height: 45.0)
     }
     
 }
