@@ -20,10 +20,11 @@ class NetworkViewC: AlysieBaseViewC {
   @IBOutlet weak var tblViewNetwork: UITableView!
   //@IBOutlet weak var tblViewInviteNetwork: UITableView!
     
+    
     // blank data view
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var logout: UIButton!
-    @IBOutlet weak var viewBlankHeading: UIView!
+//    @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     
     var connection:ConnectionTabModel?
@@ -484,6 +485,7 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         
     self.currentIndex = indexPath.item
     self.collectionViewNetworkCategory.reloadData()
+    collectionViewNetworkCategory.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     if indexPath.row == 0 {
         callConnectionApi(api: APIUrl.kConnectionTabApi1)
     } else if indexPath.row == 1 {
@@ -498,7 +500,18 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize(width: kScreenWidth/3.0, height: 45.0)
+//    return CGSize(width: kScreenWidth/3.0, height: 45.0)
+
+     if indexPath.item == 1{
+        return CGSize(width: 145 , height: 45.0)
+    }
+    else if indexPath.item == 2{
+        return CGSize(width: 120 , height: 45.0)
+    }
+    else{
+        return CGSize(width: 130 , height: 45.0)
+    }
+    
   }
     
 }
