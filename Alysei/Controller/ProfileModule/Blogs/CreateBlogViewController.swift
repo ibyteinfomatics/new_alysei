@@ -29,7 +29,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     @IBOutlet weak var cameraText: UILabel!
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var uploadImage: UIImageView!
-    
+    @IBOutlet weak var headerText: UILabel!
     var blogtitle,fulldescription,imgurl,draft:String?
     var blo_id: Int?
     var typeofpage: String?
@@ -75,6 +75,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         }
         
         if typeofpage == "read" {
+            headerText.text = "Blog"
             draftView.isHidden = true
             saveButton.isHidden = true
             blogTxf.isUserInteractionEnabled = true

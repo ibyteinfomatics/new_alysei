@@ -20,10 +20,10 @@ class InquiryChatVC: AlysieBaseViewC {
     @IBOutlet weak var lblOpened: UILabel!
     @IBOutlet weak var lblClosed: UILabel!
     @IBOutlet weak var tblViewNotification: UITableView!
-    var type : String?
+    var type = "New"
     
     var ResentUser:[InquiryRecentUser]?
-    var resentReference     = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
+    var resentReference  = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,13 @@ class InquiryChatVC: AlysieBaseViewC {
         
         tblViewNotification.dataSource = self
         tblViewNotification.delegate = self
-        receiveUsers(child: "New")
         type = "New"
+        
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        receiveUsers(child: String.getString(type))
     }
     
     @objc func openNewChatList(){
@@ -158,7 +163,7 @@ class InquiryChatVC: AlysieBaseViewC {
         dateFormatter.locale =  Locale(identifier:  "en")
         let localDate = dateFormatter.string(from: date)
         
-        let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
+            let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
             let components = Calendar.current.dateComponents(units, from: date, to: Date())
 
             if components.year! > 0 {
@@ -203,22 +208,29 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       // if type == "New" {
-            let receiverDetails = [ Parameters.uid : String.getString(self.ResentUser?[indexPath.row].uid),
-                                    Parameters.otherId : String.getString(self.ResentUser?[indexPath.row].otherId),
-                                    Parameters.lastmessage : String.getString(self.ResentUser?[indexPath.row].lastmessage),
-                                    Parameters.mediaType    : String.getString(self.ResentUser?[indexPath.row].mediaType) ,
-                                    Parameters.timeStamp : String.getString(self.ResentUser?[indexPath.row].timestamp),
-                                    Parameters.otherImage : String.getString(self.ResentUser?[indexPath.row].otherImage) ,
-                                    Parameters.otherName : String.getString(self.ResentUser?[indexPath.row].otherName),
-                                    Parameters.readCount : 0,
-                                    Parameters.userTyping : false] as [String : Any]
+        let receiverDetails = [ Parameters.uid : String.getString(self.ResentUser?[indexPath.row].uid),
+                                Parameters.otherId : String.getString(self.ResentUser?[indexPath.row].otherId),
+                                Parameters.lastmessage : String.getString(self.ResentUser?[indexPath.row].lastmessage),
+                                Parameters.mediaType    : String.getString(self.ResentUser?[indexPath.row].mediaType) ,
+                                Parameters.timeStamp : String.getString(self.ResentUser?[indexPath.row].timestamp),
+                                Parameters.otherImage : String.getString(self.ResentUser?[indexPath.row].otherImage) ,
+                                Parameters.otherName : String.getString(self.ResentUser?[indexPath.row].otherName),
+                                Parameters.readCount : 0,
+                                Parameters.userTyping : false] as [String : Any]
+        
+        if type == "New" {
             
-            resentReference.child("New").child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            
+        } else if type == "Opened" {
+            
+            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            
+        } else {
             
             
             
-       // }
+        }
         
         
         
@@ -228,6 +240,7 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
         vc.modalTransitionStyle = .crossDissolve
         //vc.receiverDetails = self.ResentUser?[indexPath.row]
         vc.userId = self.ResentUser?[indexPath.row].otherId
+        vc.type = type
         vc.name = self.ResentUser?[indexPath.row].otherName
         vc.profileImageUrl = imageDomain+"/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
         

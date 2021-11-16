@@ -67,9 +67,19 @@ class InquiryFormViewC: AlysieBaseViewC {
         if txtMessage.text == "Message"{
             self.showAlert(withMessage: "Please enter some message")
         }else{
-            self.callSaveInquiryApi()
+           // self.callSaveInquiryApi()
             
-            
+            self.sendMessage()
+            let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+            vc?.name = self.name ?? ""
+            vc?.userId = self.userId ?? ""
+            vc?.profileImageUrl = self.profileImageUrl ?? ""
+            vc?.storeId = self.storeId ?? ""
+            vc?.type = "New"
+            vc?.storeName = self.storeName ?? ""
+            vc?.productId = self.passproductId ?? ""
+            vc?.productName = self.passproductName ?? ""
+            vc?.productImage = self.productImage ?? ""
 
         }
     }
@@ -190,6 +200,7 @@ extension InquiryFormViewC{
                 vc?.userId = self.userId ?? ""
                 vc?.profileImageUrl = self.profileImageUrl ?? ""
                 vc?.storeId = self.storeId ?? ""
+                vc?.type = "New"
                 vc?.storeName = self.storeName ?? ""
                 vc?.productId = self.passproductId ?? ""
                 vc?.productName = self.passproductName ?? ""

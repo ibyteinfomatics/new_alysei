@@ -356,6 +356,7 @@
 		6B948236273A856400EC8D10 /* EventFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948235273A856400EC8D10 /* EventFilterVC.swift */; };
 		6B948238273A872D00EC8D10 /* TripsFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948237273A872D00EC8D10 /* TripsFilterVC.swift */; };
 		6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */; };
+		6B96B3A42743BC2F00D40CC2 /* ShowMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */; };
 		6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */; };
 		6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */; };
 		6B97B0912713EE62003B9E68 /* EditIngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0902713EE62003B9E68 /* EditIngridientViewController.swift */; };
@@ -1002,6 +1003,7 @@
 		6B948235273A856400EC8D10 /* EventFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterVC.swift; sourceTree = "<group>"; };
 		6B948237273A872D00EC8D10 /* TripsFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsFilterVC.swift; sourceTree = "<group>"; };
 		6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
+		6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapMarker.swift; sourceTree = "<group>"; };
 		6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
 		6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreen2ViewController.swift; sourceTree = "<group>"; };
 		6B97B0902713EE62003B9E68 /* EditIngridientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIngridientViewController.swift; sourceTree = "<group>"; };
@@ -2453,6 +2455,7 @@
 				6B34E99E273A35A500D63378 /* TripDiscover.swift */,
 				6B34E9A0273A35B500D63378 /* BlogDiscover.swift */,
 				6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */,
+				6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */,
 			);
 			path = DiscoverFilter;
 			sourceTree = "<group>";
@@ -3793,6 +3796,7 @@
 				C5EB3CB226E9CB5700CCAC9E /* LikeRecipeTableViewCell.swift in Sources */,
 				6B65FFC92603561E002832C8 /* CustomCellCollectionViewCell.swift in Sources */,
 				C5D6F7AC26B18264006FFCDF /* SelectHubStateCViewCell.swift in Sources */,
+				6B96B3A42743BC2F00D40CC2 /* ShowMapMarker.swift in Sources */,
 				C5197B0D26E72E3C00C0894F /* EventsTableViewCell.swift in Sources */,
 				27D0FAB725CEE9FF00463FE0 /* SignUpViewC.swift in Sources */,
 				6B8830FC2739003C001800D3 /* InquiryChatVC.swift in Sources */,

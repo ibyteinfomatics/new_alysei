@@ -9,7 +9,7 @@ import UIKit
 import Photos
 import YPImagePicker
 import IQKeyboardManagerSwift
-
+import DropDown
 
 class InquiryConversation: AlysieBaseViewC {
     
@@ -31,6 +31,7 @@ class InquiryConversation: AlysieBaseViewC {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnGift: UIButton!
+    @IBOutlet weak var morebtn: UIButton!
     
     @IBOutlet weak var itemImg: UIImageView!
     @IBOutlet weak var itemName: UILabel!
@@ -62,6 +63,7 @@ class InquiryConversation: AlysieBaseViewC {
     
     var name : String?
     var userId : String?
+    var type: String?
     var sendImage : UIImage?
     //var userName : String?
     var profileImageUrl : String?
@@ -69,6 +71,9 @@ class InquiryConversation: AlysieBaseViewC {
     // camera image
     var ypImages = [YPMediaItem]()
     var imagesFromSource = [UIImage]()
+    
+    var arrMoreType = ["Closed"]
+    var dataDropDown = DropDown()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +85,11 @@ class InquiryConversation: AlysieBaseViewC {
         chatTblView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0)
         
        // print("image",kSharedUserDefaults.loggedInUserModal.avatar?.imageURL)
-        
+        morebtn.isHidden = true
         initialSetup()
         registerNib()
         receiveMessage()
+       
         // Do any additional setup after loading the view.
     }
     
@@ -98,6 +104,24 @@ class InquiryConversation: AlysieBaseViewC {
         
         chatTblView.reloadData()
        
+    }
+    
+    func openMoredropDown(){
+        dataDropDown.dataSource = arrMoreType
+        dataDropDown.show()
+    
+        dataDropDown.anchorView = btnMenu
+
+        //dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+       // dataDropDown.bottomOffset = CGPoint(x: 0, y:100)
+//        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+//
+//            print(item)
+//        }
+        dataDropDown.cellHeight = 40
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .bottom
     }
     
     
@@ -189,6 +213,10 @@ class InquiryConversation: AlysieBaseViewC {
         }
     }
     
+    @IBAction func moreTapped(_ sender: UIButton) {
+        openMoredropDown()
+    }
+    
     @IBAction func btnBackTapped(_ sender: UIButton) {
         
         /*if fromvc == .Notification {
@@ -247,6 +275,7 @@ class InquiryConversation: AlysieBaseViewC {
     
     @IBAction func sendTextMessage(_ sender: Any) {
         if chatTextView.text != "" {
+            //type = "Opened"
             self.sendMessage()
             chatTextView.text = ""
         }
@@ -340,7 +369,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
             switch objects?.mediaType {
             
             case .text? :
-                
+                type = "New"
                 guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
                 
                 
@@ -379,7 +408,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 return textCell
                 
             case .photos? :
-                
+                type = "New"
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
                 
                 photoCell.sendimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
@@ -430,6 +459,12 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
             
             switch objects?.mediaType {
             case .text? :
+                type = "Opened"
+                
+                if indexPath.row == 0 {
+                    morebtn.isHidden = false
+                }
+                
                 guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
                 
                 textCell.lblMessage.text = objects?.message
@@ -475,7 +510,7 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 return textCell
             case .photos? :
-                
+                type = "Opened"
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
                 
                 photoCell.receiveimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
@@ -565,7 +600,7 @@ extension InquiryConversation {
         sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
-        kChatharedInstance.inquirysend_message(child: "Opened", messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
+        kChatharedInstance.inquirysend_message(child: String.getString(type), messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
         //sendChatNotification(userId: self.receiverDetails?.receiverId ?? "")
         
         notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(userId))
@@ -641,7 +676,7 @@ extension InquiryConversation {
                     sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
-                    kChatharedInstance.inquirysend_message(child: "Opened", messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")
+                    kChatharedInstance.inquirysend_message(child: String.getString(self?.type), messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")
                     
                     self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
 

@@ -69,6 +69,14 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var headerText: UILabel!
+    @IBOutlet weak var drop1: UIButton!
+    @IBOutlet weak var drop2: UIButton!
+    @IBOutlet weak var drop3: UIButton!
+    @IBOutlet weak var drop4: UIButton!
+    @IBOutlet weak var drop5: UIButton!
+    @IBOutlet weak var drop6: UIImageView!
+    
     var countryId,regionId,adventureId,intensityId: Int!
     
     var dataDropDown = DropDown()
@@ -185,6 +193,13 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
         if typeofpage == "read" {
             
+            headerText.text = "Trips/Packages"
+            drop1.isHidden = true
+            drop2.isHidden = true
+            drop3.isHidden = true
+            drop4.isHidden = true
+            drop5.isHidden = true
+            drop6.isHidden = true
             saveButton.isHidden = true
             tripNameTxf.isUserInteractionEnabled = true
            

@@ -292,6 +292,13 @@ class Chat_hepler {
        
     }
     
+    
+    func deleteUser(child:String, user_id: String,receiverId:String) {
+        
+        self.inquiryresentReference.child(child).child(user_id).child(receiverId).removeValue()
+       
+    }
+    
     //MARK:- Func For send Resent Users and retrived data On resent Users Submit Data to Users Every User Submit 2 Node Data Sender and Receiver
     func updatereadStateUser(lastmessage:String, Receiverid:String , Senderid :String  , name:String , profile_image:String , readState :String, isMsgSend: Bool, lastTimestamp: String, msgReceiverId: String, unreadCount: Int, friendStatus: Bool, userSenderId: String , blockId:String = "") {
         
@@ -650,8 +657,17 @@ class Chat_hepler {
                                Parameters.readCount : unread, // increase count
                                Parameters.userTyping : false] as [String : Any]
         
-        inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
-        inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+        if child == "New" {
+            inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
+            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+        } else {
+            deleteUser(child: "New", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId)
+            
+            inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
+            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+        }
+        
+        
     }
     
     func resentUser(messageDetails:ReceivedMessageClass) {
@@ -723,6 +739,10 @@ class Chat_hepler {
                     
                 }
                 
+            }
+            
+            if self.Inquiry_Resentuser?.count == 0 {
+                self.unread = 1
             }
             
             print("unread count ",self.unread)

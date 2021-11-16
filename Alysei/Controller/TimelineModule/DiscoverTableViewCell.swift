@@ -45,7 +45,7 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }else{
             cell.imgStory.setImage(withString: kImageBaseUrl + String.getString(data?[indexPath.row].image?.attachmentUrl))
         }
-        cell.userName.text = data?[indexPath.row].name
+        cell.userName.text = data?[indexPath.row].title
         return cell
     }
     

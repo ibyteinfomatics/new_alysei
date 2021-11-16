@@ -29,6 +29,8 @@ class RestaurantUser {
     var email: String
     var companyName: String?
     var restaurantName: String?
+    var lattitude: String?
+    var longitude: String?
     var address: String?
     var roleid: Int?
     var avatarid: EventAttachment?
@@ -42,6 +44,9 @@ class RestaurantUser {
         self.address = String.getString(dictResponse?["address"])
         self.userid = Int.getInt(dictResponse?["user_id"])
         self.roleid = Int.getInt(dictResponse?["role_id"])
+        
+        self.lattitude = String.getString(dictResponse?["lattitude"])
+        self.longitude = String.getString(dictResponse?["longitude"])
         
         if let avatar_id = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarid =  EventAttachment.init(with: avatar_id)

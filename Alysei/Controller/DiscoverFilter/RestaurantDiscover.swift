@@ -18,6 +18,10 @@ class RestaurantDiscover: AlysieBaseViewC {
     var passHubs: String?
     var passRestType: String?
     
+    var lat = [Double]()
+    var long = [Double]()
+    var name = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
@@ -35,6 +39,23 @@ class RestaurantDiscover: AlysieBaseViewC {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @IBAction func mapBtn(_ sender: UIButton) {
+        
+        let count  = restModel?.data?.count ?? 0
+        
+        for index in 0..<count {
+            name.append(String.getString(restModel?.data?[index].name)+String.getString(restModel?.data?[index].address))
+            lat.append(Double.getDouble(restModel?.data?[index].lattitude))
+            long.append(Double.getDouble(restModel?.data?[index].longitude))
+            
+        }
+        
+        let controller = pushViewController(withName: ShowMapMarker.id(), fromStoryboard: StoryBoardConstants.kHome) as? ShowMapMarker
+        controller?.lat = lat
+        controller?.long = long
+        controller?.name = name
     }
     
     @IBAction func filterBtn(_ sender: UIButton) {

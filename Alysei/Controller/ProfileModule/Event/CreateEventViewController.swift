@@ -59,6 +59,10 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var headerText: UILabel!
+    @IBOutlet weak var drop1: UIButton!
+    @IBOutlet weak var drop2: UIButton!
+    
     var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl: String?
     var event_id: Int?
     var typeofpage: String?
@@ -177,6 +181,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         
         if typeofpage == "read" {
             
+            headerText.text = "Event"
+            drop1.isHidden = true
+            drop2.isHidden = true
             saveButton.isHidden = true
             eventNameTxf.isUserInteractionEnabled = false
             dateTxf.isUserInteractionEnabled = false

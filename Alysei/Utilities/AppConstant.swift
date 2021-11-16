@@ -709,6 +709,19 @@ struct OtherConstant {
 
 struct StaticArrayData {
     
+    static let kInactiveNetworkCategoryDict = [(image: "icons8_add_user_group_man_man", name: "Invitations"),
+                                           (image: "icons_people_inactive", name: "Connections"),
+                                           (image: "icons8_data_pending", name: "Pending"),
+                                           kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons8_attendance", name: "Following") : (image: "icons8_attendance", name: "Followers")]
+    
+    static let kInactiveBusinessCategoryDict = [(image: "icons8_hubB2B", name: "Hubs"),
+                                            (image: "icons8_Partially_Shipped", name: "Importers & Distributors"),
+                                            (image: "icons8_restaurant", name: "Italian Restaurants in US"),
+                                            (image: "icons8_hand_with_pen", name: "Voice of Experts"),
+                                            (image: "icons8_waypoint_map", name: "Travel Agencies"),
+                                            (image: "1924790", name: "Producer"),
+        ]
+    
     static let kTutorialDict = [(image: "Alysei Splash Screen 1", title: "Welcome to Alysei", description: "Connect to social platform Alysei and follow your interests in restaurants,events,wine,food,cooking classes,recipes,blogs and more."),
                                 (image: "Alysei Splash Screen 2", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
                                 (image: "Alysei Splash Screen 3", title: "Lorem Ipsum", description: "Promote your brand on a collaborative network of certified US-based Producers, Importers, and Distributors."),
