@@ -93,7 +93,7 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
     
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.row == 2{
-        return 60
+        return 90
     }else{
     return 60
     }

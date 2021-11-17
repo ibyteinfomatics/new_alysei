@@ -16,6 +16,9 @@ class EventDiscover: AlysieBaseViewC {
     var eventId: String?
     var hostname,location,website:String?
     
+    var indexOfPageToRequest = 1
+    var eventData = [EventDatum]()
+    
     //Mark: FilterData
     
     var selectedDate: String?
@@ -32,7 +35,7 @@ class EventDiscover: AlysieBaseViewC {
         eventsTableView.delegate = self
         eventsTableView.dataSource = self
 
-        postRequest()
+        postRequest(indexOfPageToRequest)
         // Do any additional setup after loading the view.
     }
     
@@ -46,21 +49,7 @@ class EventDiscover: AlysieBaseViewC {
     }
     
    
-    private func postRequest() -> Void{
-      
-      disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(eventId ?? "" )", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-          let dictResponse = dictResponse as? [String:Any]
-        if let data = dictResponse?["data"] as? [String:Any]{
-          self.eventModel = EventModel.init(with: data)
-        }
-        
-        self.eventsTableView.reloadData()
-      }
-      
-    }
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
@@ -76,7 +65,7 @@ class EventDiscover: AlysieBaseViewC {
             self.selectedRegistrationType? = passRegistrationType
             self.selectedRestType = passRestType
             self.passRestId = passRestId
-            self.callFilterApi()
+            self.callFilterApi(1)
         }
         controller?.clearFiltercCallBack = {
             self.selectedDate = ""
@@ -85,7 +74,7 @@ class EventDiscover: AlysieBaseViewC {
             self.selectedRestType = ""
             self.passRestId = ""
             self.eventId = "events"
-            self.postRequest()
+            self.postRequest(1)
         }
     }
     
@@ -97,23 +86,23 @@ class EventDiscover: AlysieBaseViewC {
         
         let eventTableCell = eventsTableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier()) as! EventsTableViewCell
         
-        eventTableCell.eventTitle.text = eventModel?.data?[indexPath].eventName
-        eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
-        eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
-        eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
+        eventTableCell.eventTitle.text = eventData[indexPath].eventName
+        eventTableCell.hostTitle.text = eventData[indexPath].hostName
+        eventTableCell.locationTitle.text = eventData[indexPath].location
+        eventTableCell.dateTitle.text = eventData[indexPath].date
         
         
-        if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
-            eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
+        if ((eventData[indexPath].time?.contains(":")) == true) {
+            eventTableCell.timeTitle.text = eventData[indexPath].time
         } else {
-            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
+            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventData[indexPath].time)
         }
         
         eventTableCell.eventImage.layer.masksToBounds = false
         eventTableCell.eventImage.clipsToBounds = true
         eventTableCell.eventImage.layer.cornerRadius = 5
         
-        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventModel?.data?[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventData[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         
         return eventTableCell
         
@@ -149,7 +138,7 @@ class EventDiscover: AlysieBaseViewC {
 extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventModel?.data?.count ?? 0
+        return eventData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -168,16 +157,16 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
         let indexPath = indexPath.row
         
         let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
-        vc.hostname = self.eventModel?.data?[indexPath].hostName
-        vc.eventname = self.eventModel?.data?[indexPath].eventName
-        vc.location = self.eventModel?.data?[indexPath].location
-        vc.date = self.eventModel?.data?[indexPath].date
-        vc.time = self.eventModel?.data?[indexPath].time
-        vc.fulldescription = self.eventModel?.data?[indexPath].datumDescription
-        vc.website = self.eventModel?.data?[indexPath].website
-        vc.eventYype = self.eventModel?.data?[indexPath].eventType
-        vc.registrationType = self.eventModel?.data?[indexPath].registrationType
-        vc.imgurl = self.eventModel?.data?[indexPath].attachment?.attachmenturl
+        vc.hostname = eventData[indexPath].hostName
+        vc.eventname = eventData[indexPath].eventName
+        vc.location = eventData[indexPath].location
+        vc.date = eventData[indexPath].date
+        vc.time = eventData[indexPath].time
+        vc.fulldescription = eventData[indexPath].datumDescription
+        vc.website = eventData[indexPath].website
+        vc.eventYype = eventData[indexPath].eventType
+        vc.registrationType = eventData[indexPath].registrationType
+        vc.imgurl = eventData[indexPath].attachment?.attachmenturl
         vc.typeofpage = "read"
         
     }
@@ -187,17 +176,44 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
 }
 extension EventDiscover {
     
-    func callFilterApi () {
-        self.eventModel = EventModel(with: [:])
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverEventSearch + "&date=" + "\(selectedDate ?? "")" + "&event_type=" + "\(selectedEventType ?? "")" + "&registration_type=" + "\(selectedRegistrationType ?? "")" + "&restaurant_type=" + "\(passRestId ?? "")" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+    func callFilterApi (_ pageNo: Int?) {
+      //  self.eventModel = EventModel(with: [:])
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverEventSearch + "&date=" + "\(selectedDate ?? "")" + "&event_type=" + "\(selectedEventType ?? "")" + "&registration_type=" + "\(selectedRegistrationType ?? "")" + "&restaurant_type=" + "\(passRestId ?? "")"+"&page=\(pageNo ?? 1)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
           if let data = dictResponse?["data"] as? [String:Any]{
             self.eventModel = EventModel.init(with: data)
+            
+            if self.indexOfPageToRequest == 1 { self.eventData.removeAll() }
+            
+            self.eventData.append(contentsOf: self.eventModel?.data ?? [EventDatum(with: [:])])
           }
           
           self.eventsTableView.reloadData()
         }
         
     }
+    
+    
+    private func postRequest(_ pageNo: Int?) -> Void{
+      
+      disableWindowInteraction()
+    
+      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(eventId ?? "" )"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+          
+          let dictResponse = dictResponse as? [String:Any]
+        if let data = dictResponse?["data"] as? [String:Any]{
+          self.eventModel = EventModel.init(with: data)
+            
+            if self.indexOfPageToRequest == 1 { self.eventData.removeAll() }
+            
+            self.eventData.append(contentsOf: self.eventModel?.data ?? [EventDatum(with: [:])])
+            
+        }
+        
+        self.eventsTableView.reloadData()
+      }
+      
+    }
+    
 }

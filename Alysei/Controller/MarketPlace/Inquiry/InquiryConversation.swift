@@ -37,6 +37,8 @@ class InquiryConversation: AlysieBaseViewC {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var productView: UIView!
     
+    @IBOutlet weak var deleteView: UIView!
+    
     @IBOutlet weak var btnDelete: UIButton!
     
     let textViewMaxHeight:CGFloat = 100.0
@@ -85,7 +87,7 @@ class InquiryConversation: AlysieBaseViewC {
         chatTblView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0)
         
        // print("image",kSharedUserDefaults.loggedInUserModal.avatar?.imageURL)
-        morebtn.isHidden = true
+        morebtn.isHidden = false
         initialSetup()
         registerNib()
         receiveMessage()
@@ -110,9 +112,9 @@ class InquiryConversation: AlysieBaseViewC {
         dataDropDown.dataSource = arrMoreType
         dataDropDown.show()
     
-        dataDropDown.anchorView = btnMenu
+        dataDropDown.anchorView = deleteView
 
-        //dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
        // dataDropDown.bottomOffset = CGPoint(x: 0, y:100)
 //        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
 //

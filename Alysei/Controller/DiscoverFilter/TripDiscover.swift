@@ -13,9 +13,12 @@ class TripDiscover: AlysieBaseViewC {
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
     var tripModel:TripModel?
+    var tripData = [TripDatum]()
     var tripId: String?
     
     var agencyname,website:String?
+    
+    var indexOfPageToRequest = 1
 
     
     var passSelectedCountry: String?
@@ -32,7 +35,7 @@ class TripDiscover: AlysieBaseViewC {
         tripsTableView.dataSource = self
         // Do any additional setup after loading the view.
         self.tripId = "trips"
-        postRequestToGetTrip()
+        postRequestToGetTrip(indexOfPageToRequest)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +72,7 @@ class TripDiscover: AlysieBaseViewC {
             self.regionId = regionId
             self.adventureId = adventureId
             self.intensityId = intensityId
-            self.callFilterApi()
+            self.callFilterApi(1)
         }
         controller?.clearfilterCallback = {
             self.passSelectedCountry = ""
@@ -82,51 +85,37 @@ class TripDiscover: AlysieBaseViewC {
             self.adventureId = ""
             self.intensityId = ""
             self.tripId = "trips"
-            self.postRequestToGetTrip()
+            self.postRequestToGetTrip(1)
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-    private func postRequestToGetTrip() -> Void{
-      
-      disableWindowInteraction()
     
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.tripId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-        let dictResponse = dictResponse as? [String:Any]
-      if let data = dictResponse?["data"] as? [String:Any]{
-        self.tripModel = TripModel.init(with: data)
-      }
-      
-        self.tripsTableView.reloadData()
-      }
-      
-    }
     
     private func getEventTableCell(_ indexPath: Int) -> UITableViewCell{
         
         let tripTableCell = tripsTableView.dequeueReusableCell(withIdentifier: TripsTableViewCell.identifier()) as! TripsTableViewCell
         
-        tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
-        tripTableCell.travelTitle.text = tripModel?.data?[indexPath].travelAgency
+        tripTableCell.tripTitle.text = tripData[indexPath].tripName
+        tripTableCell.travelTitle.text = tripData[indexPath].travelAgency
         
-        tripTableCell.activitiesTitle.text = tripModel?.data?[indexPath].adventure?.adventureType
-        tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
-        tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
+        tripTableCell.activitiesTitle.text = tripData[indexPath].adventure?.adventureType
+        tripTableCell.locationTitle.text = tripData[indexPath].region?.name
+        tripTableCell.tripTitle.text = tripData[indexPath].tripName
         
-        if tripModel?.data?[indexPath].currency == "USD" {
-            tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
-        } else if tripModel?.data?[indexPath].currency == "Euro" {
-            tripTableCell.priceTitle.text =  "€" + (tripModel?.data?[indexPath].price ?? "0")
+        if tripData[indexPath].currency == "USD" {
+            tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
+        } else if tripData[indexPath].currency == "Euro" {
+            tripTableCell.priceTitle.text =  "€" + (tripData[indexPath].price ?? "0")
         } else {
-            tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
+            tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
         }
         
         
-        tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
+        tripTableCell.configCell(tripData[indexPath] ?? TripDatum(with: [:]))
         
-        if tripModel?.data?[indexPath].intensity?.intensity == "Level 1" {
+        if tripData[indexPath].intensity?.intensity == "Level 1" {
 
             tripTableCell.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
@@ -134,7 +123,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.view4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.view5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].intensity?.intensity == "Level 2" {
+        } else if tripData[indexPath].intensity?.intensity == "Level 2" {
 
             tripTableCell.view2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -142,7 +131,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.view4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.view5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].intensity?.intensity == "Level 3" {
+        } else if tripData[indexPath].intensity?.intensity == "Level 3" {
 
             tripTableCell.view3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -150,7 +139,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.view4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.view5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].intensity?.intensity == "Level 4" {
+        } else if tripData[indexPath].intensity?.intensity == "Level 4" {
 
             tripTableCell.view4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -158,7 +147,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.view3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].intensity?.intensity == "Level 5" {
+        } else if tripData[indexPath].intensity?.intensity == "Level 5" {
 
             tripTableCell.view5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -169,7 +158,7 @@ class TripDiscover: AlysieBaseViewC {
         }
 
 
-        if tripModel?.data?[indexPath].duration == "1 Day" {
+        if tripData[indexPath].duration == "1 Day" {
 
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
@@ -180,7 +169,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "2 Days" {
+        } else if tripData[indexPath].duration == "2 Days" {
 
             tripTableCell.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -190,7 +179,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "3 Days" {
+        } else if tripData[indexPath].duration == "3 Days" {
 
             tripTableCell.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -200,7 +189,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "4 Days" {
+        } else if tripData[indexPath].duration == "4 Days" {
 
             tripTableCell.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -210,7 +199,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "5 Days" {
+        } else if tripData[indexPath].duration == "5 Days" {
 
             tripTableCell.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -220,7 +209,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "6 Days" {
+        } else if tripData[indexPath].duration == "6 Days" {
             
             tripTableCell.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -230,7 +219,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
 
-        } else if tripModel?.data?[indexPath].duration == "7 Days" {
+        } else if tripData[indexPath].duration == "7 Days" {
             
             tripTableCell.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             tripTableCell.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -246,10 +235,31 @@ class TripDiscover: AlysieBaseViewC {
         tripTableCell.tripImage.clipsToBounds = true
         tripTableCell.tripImage.layer.cornerRadius = 5
         
-        tripTableCell.tripImage.setImage(withString: String.getString(kImageBaseUrl+(tripModel?.data?[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
+        tripTableCell.tripImage.setImage(withString: String.getString(kImageBaseUrl+(tripData[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return tripTableCell
         
+    }
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > tripModel?.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                postRequestToGetTrip(indexOfPageToRequest)
+
+            // tell the table view to reload with the new data
+            self.tripsTableView.reloadData()
+            }
+        }
     }
     
 
@@ -267,7 +277,7 @@ class TripDiscover: AlysieBaseViewC {
 extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tripModel?.data?.count ?? 0
+        return tripData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -303,17 +313,42 @@ extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
     
 }
 extension TripDiscover {
+    
+    private func postRequestToGetTrip(_ pageNo: Int?) -> Void{
+      
+      disableWindowInteraction()
+    
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.tripId ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+          
+        let dictResponse = dictResponse as? [String:Any]
+      if let data = dictResponse?["data"] as? [String:Any]{
+        self.tripModel = TripModel.init(with: data)
+        
+        if self.indexOfPageToRequest == 1 { self.tripData.removeAll() }
+        
+        self.tripData.append(contentsOf: self.tripModel?.data ?? [TripDatum(with: [:])])
+        
+      }
+      
+        self.tripsTableView.reloadData()
+      }
+      
+    }
    
-    func callFilterApi () {
-        self.tripModel = TripModel(with: [:])
+    func callFilterApi (_ pageNo: Int?) {
+        //self.tripModel = TripModel(with: [:])
         let str = passDuration
         let trimmedDurationStr = str?.trimmingCharacters(in: .whitespaces)
        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverTripsSearch + "&region=" + "\(regionId ?? "" )" + "&adventure_type=" + "\(adventureId ?? "" )" + "&duration=" + "\(trimmedDurationStr ?? "")" + "&intensity=" + "\(intensityId ?? "")"  + "&price=" + "\(passprice ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverTripsSearch + "&region=" + "\(regionId ?? "" )" + "&adventure_type=" + "\(adventureId ?? "" )" + "&duration=" + "\(trimmedDurationStr ?? "")" + "&intensity=" + "\(intensityId ?? "")"  + "&price=" + "\(passprice ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
           if let data = dictResponse?["data"] as? [String:Any]{
             self.tripModel = TripModel.init(with: data)
+            
+            if self.indexOfPageToRequest == 1 { self.tripData.removeAll() }
+            
+            self.tripData.append(contentsOf: self.tripModel?.data ?? [TripDatum(with: [:])])
           }
           
           self.tripsTableView.reloadData()

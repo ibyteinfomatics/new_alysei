@@ -111,9 +111,12 @@ extension UserPhotosGridViewController {
 //                        innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
 //                          return innerResult
 //                      }
-//
                     var innerResult = res
-                  innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
+                    if innerData.attachments.first?.attachment_link.attachment_url != nil {
+                        innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
+                    }
+                    
+                  
                     return innerResult
                    
 //                  let result =  innerData.attachments.reduce([String]()) { resultInner, attachments in

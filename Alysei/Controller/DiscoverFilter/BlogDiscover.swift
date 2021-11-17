@@ -14,10 +14,13 @@ class BlogDiscover: AlysieBaseViewC {
     @IBOutlet weak var blogTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
     var blogModel:BlogModel?
+    var blogData = [BlogDatum]()
     var blogId: String?
     
     var passSpecialization: String?
     var passBlogTitle: String?
+    
+    var indexOfPageToRequest = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,7 @@ class BlogDiscover: AlysieBaseViewC {
         blogTableView.delegate = self
         blogTableView.dataSource = self
         blogId = "blogs"
-        postRequestToGetBlog()
+        postRequestToGetBlog(indexOfPageToRequest)
         // Do any additional setup after loading the view.
     }
     
@@ -46,44 +49,30 @@ class BlogDiscover: AlysieBaseViewC {
         controller?.passSelectedDataCallback = {  passSpecialization, passBlogTitle in
             self.passSpecialization = String.getString(passSpecialization)
             self.passBlogTitle = passBlogTitle
-            self.callFilterApi ()
+            self.callFilterApi (1)
         }
         
         controller?.clearFiltercCallBack = {
             self.passBlogTitle = ""
             self.passSpecialization = ""
-            self.callFilterApi()
+            self.callFilterApi(1)
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func postRequestToGetBlog() -> Void{
-      
-      disableWindowInteraction()
-    
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.blogId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-        let dictResponse = dictResponse as? [String:Any]
-      if let data = dictResponse?["data"] as? [String:Any]{
-        self.blogModel = BlogModel.init(with: data)
-      }
-        
-        self.blogTableView.reloadData()
-      }
-      
-    }
+   
     
     private func getBlogTableCell(_ indexPath: Int) -> UITableViewCell{
         
         let blogTableCell = blogTableView.dequeueReusableCell(withIdentifier: BlogsTableViewCell.identifier()) as! BlogsTableViewCell
         
-        blogTableCell.blogTitle.text = blogModel?.data?[indexPath].title
-        blogTableCell.blogDescription.text = blogModel?.data?[indexPath].datumDescription
+        blogTableCell.blogTitle.text = blogData[indexPath].title
+        blogTableCell.blogDescription.text = blogData[indexPath].datumDescription
         
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-        blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].date)
+        blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].date)
         
         blogTableCell.blogImage.layer.masksToBounds = false
         blogTableCell.blogImage.clipsToBounds = true
@@ -96,19 +85,39 @@ class BlogDiscover: AlysieBaseViewC {
                 
             check = "show"
             let vc = self.pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateBlogViewController
-            vc.blogtitle = self.blogModel?.data?[indexPath].title
-            vc.fulldescription = self.blogModel?.data?[indexPath].datumDescription
-            vc.draft = self.blogModel?.data?[indexPath].status
-            vc.imgurl = self.blogModel?.data?[indexPath].attachment?.attachmentURL
+            vc.blogtitle = self.blogData[indexPath].title
+            vc.fulldescription = self.blogData[indexPath].datumDescription
+            vc.draft = self.blogData[indexPath].status
+            vc.imgurl = self.blogData[indexPath].attachment?.attachmentURL
             vc.typeofpage = "read"
                     
         }
         
         
-        blogTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(blogModel?.data?[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        blogTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(blogData[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > blogModel?.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                postRequestToGetBlog(indexOfPageToRequest)
+
+            // tell the table view to reload with the new data
+            self.blogTableView.reloadData()
+            }
+        }
     }
     
 
@@ -126,7 +135,7 @@ class BlogDiscover: AlysieBaseViewC {
 extension BlogDiscover: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return blogModel?.data?.count ?? 0
+        return blogData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,9 +151,9 @@ extension BlogDiscover: UITableViewDelegate, UITableViewDataSource{
 
 extension BlogDiscover {
     
-    func callFilterApi () {
-        self.blogModel = BlogModel(with: [:])
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverBlogSearch + "&title=" + String.getString(self.passBlogTitle)+"&specialization="+String.getString(self.passSpecialization), requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+    func callFilterApi (_ pageNo: Int?) {
+       // self.blogModel = BlogModel(with: [:])
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverBlogSearch + "&title=" + String.getString(self.passBlogTitle)+"&specialization="+String.getString(self.passSpecialization)+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
               if let data = dictResponse?["data"] as? [String:Any]{
@@ -156,4 +165,26 @@ extension BlogDiscover {
         }
         
     }
+    
+    private func postRequestToGetBlog(_ pageNo: Int?) -> Void{
+      
+      disableWindowInteraction()
+    
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.blogId ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+          
+        let dictResponse = dictResponse as? [String:Any]
+      if let data = dictResponse?["data"] as? [String:Any]{
+        self.blogModel = BlogModel.init(with: data)
+        
+        if self.indexOfPageToRequest == 1 { self.blogData.removeAll() }
+        
+        self.blogData.append(contentsOf: self.blogModel?.data ?? [BlogDatum(with: [:])])
+               
+      }
+        
+        self.blogTableView.reloadData()
+      }
+      
+    }
+    
 }

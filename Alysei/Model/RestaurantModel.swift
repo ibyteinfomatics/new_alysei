@@ -10,6 +10,9 @@ import Foundation
 class RestaurantModel {
     var success: Int?
     var data: [RestaurantUser]?
+    var firstPageUrl: String?
+    var lastPageUrl: String?
+    var lastPage: Int?
 
     init(with dictResponse: [String:Any]?) {
         
@@ -18,6 +21,10 @@ class RestaurantModel {
         if let data = dictResponse?["data"] as? [[String:Any]]{
             self.data = data.map({RestaurantUser.init(with: $0)})
         }
+        
+        self.firstPageUrl = String.getString(dictResponse?["first_page_url"])
+        self.lastPageUrl = String.getString(dictResponse?["last_page_url"])
+        self.lastPage = Int.getInt(dictResponse?["last_page"])
         
     }
 }
