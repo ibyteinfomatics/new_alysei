@@ -1439,7 +1439,7 @@ extension ProfileViewC: AnimationProfileCallBack{
             }
             self.navigationController?.present(nextVC, animated: true, completion: nil)
             
-        case ProfileCompletion.Ourtrips, ProfileCompletion.OurProducts, ProfileCompletion.About, ProfileCompletion.OurMenu :
+        case ProfileCompletion.Ourtrips, ProfileCompletion.OurProducts, ProfileCompletion.About, ProfileCompletion.OurMenu, ProfileCompletion.Ourtours :
             
             let storyboard1 = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
             guard let nextVC = storyboard1.instantiateViewController(identifier:  UpdateProfileDescVC.id()) as? UpdateProfileDescVC else{return}

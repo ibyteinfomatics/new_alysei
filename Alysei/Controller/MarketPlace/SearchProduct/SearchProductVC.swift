@@ -98,9 +98,13 @@ extension SearchProductVC {
             }
             self.searchTableView.reloadData()
             case 409:
+                if self.arrRecentSearch?.count == 0{
+                    print("Data exist")
+                }else{
                 self.arrRecentSearch = [ProductSearchListModel]()
                 self.searchTableView.reloadData()
                 self.showAlert(withMessage: "No Product found")
+                }
                 
             default:
                 print("No Data")

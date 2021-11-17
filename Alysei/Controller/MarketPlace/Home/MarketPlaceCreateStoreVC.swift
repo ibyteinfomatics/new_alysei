@@ -31,7 +31,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var txtWebsite: UITextField!
     @IBOutlet weak var txtStoreRegion: UITextField!
-    @IBOutlet weak var txtLocation: UITextField!
+    @IBOutlet weak var txtLocation: UILabel!
     @IBOutlet weak var txtProducerMobileNumber: UITextField!
     @IBOutlet weak var txtProducerEmail: UITextField!
     @IBOutlet weak var imageLabel: UILabel!

@@ -562,7 +562,11 @@ class BusinessViewC: AlysieBaseViewC {
     private func getBusinessListTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessListTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessListTableCell.identifier()) as! BusinessListTableCell
+        if arrSearchimpotrDataModel.count == 0{
+            print("check")
+        }else{
         businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
+        }
         return businessListTableCell
     }
     
@@ -631,21 +635,28 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             self.searchType = 2
             self.extraCell = B2BSeacrhExtraCell.importer.rawValue
             self.searchImpDone = false
+            //self.selectProducerProductType = ""
+            self.arrSearchimpotrDataModel.removeAll()
+            self.selectedProducWithCategory = ""
+            self.selectPrdctCatgryOptnNme = ""
             self.identifyUserForProduct = .productImporter
             callSearchImporterApi()
         case 2:
             self.searchType = 2
             self.extraCell =  B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
             callSearchResturntApi()
         case 3:
             self.searchType = 2
             self.extraCell = B2BSeacrhExtraCell.voExpert.rawValue
+            self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
             callSearchExpertApi()
         case 4:
             self.searchType = 2
             self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
             callSearchTravelApi()
         case 5:
@@ -697,7 +708,8 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         switch model.businessCellType {
         case .tableListCell:
             //return model.cellCount
-            return model.cellCount
+            return arrSearchimpotrDataModel.count
+           return model.cellCount
         default:
             return self.businessViewModel.arrBusinessData.count
         }

@@ -505,9 +505,16 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
             if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 2 {
                 return  200
             }
+            else if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
+                return 0
+            }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0)  == 1  || (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) == 2 {
+                return 290
+                
+            }
             else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2 == 0{
-                return CGFloat(200 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) - 50)
-            }else {
+                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) - 50)
+            }
+            else {
                 return CGFloat(200 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 200)
             }
 //            else{
@@ -623,7 +630,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 180)
         }else if collectionView == recentlyAddedCollectionView{
-            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 250)
+            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 270)
         }
 //        else if collectionView == adCollectionView{
 //            return CGSize(width: adCollectionView.frame.width / 2 , height: 200)
