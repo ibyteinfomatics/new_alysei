@@ -89,7 +89,7 @@ extension SearchProductListVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 170
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,6 +128,12 @@ extension SearchProductListVC {
                     self.arrProductList = data.map({ProductSearchListModel.init(with: $0)})
                 }
                 self.tableView.reloadData()
+            case 409:
+                if self.arrProductList?.count != 0 {
+                    print("Product Exist")
+                }else{
+                    self.showAlert(withMessage: "No products found")
+                }
             default:
                 self.showAlert(withMessage: "No products found")
             }

@@ -216,7 +216,7 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
                 return UITableView.automaticDimension + 350
             }
         }else {
-            return CGFloat((250 * ((self.productDetail?.related_products?.count ?? 0) / 2 )))
+            return CGFloat((250 * ((self.productDetail?.related_products?.count ?? 0) / 2 )) + 20)
         }
     }
     

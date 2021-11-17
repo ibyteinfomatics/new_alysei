@@ -543,6 +543,7 @@ struct ProfileCompletion {
     static let FeaturedRecipe = "Featured Menu"
     static let FeaturedBlog = "Featured"
     static let Ourtrips  = "Our trips"
+    static let Ourtours  = "Our Tours"
     static let ContactInfo = "Contact Info"
     static let OurMenu = "Our Menu"
 }
