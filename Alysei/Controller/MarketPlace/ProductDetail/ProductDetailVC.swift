@@ -88,7 +88,11 @@ class ProductDetailVC: AlysieBaseViewC {
 
 extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.productDetail?.product_detail?.brand_label_id == "0" {
+            return 9
+        }else{
         return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,6 +125,13 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDescOptionTableVC", for: indexPath) as? ProductDescOptionTableVC else {return UITableViewCell()}
             cell.selectionStyle = .none
+            if indexPath.row == 3 &&  self.productDetail?.product_detail?.brand_label_id == "0"{
+                cell.lblOptionTitle.isHidden = true
+                cell.lblOptionValue.isHidden = true
+            }else{
+                cell.lblOptionTitle.isHidden = false
+                cell.lblOptionValue.isHidden = false
+            }
             cell.configCell(productDetail ?? ProductDetailModel(with: [:]), indexPath.row)
             return cell
         }else if indexPath.row == 8{
@@ -201,16 +212,20 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 580
+            return 600
         }else if indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 6{
             return UITableView.automaticDimension
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
+            if indexPath.row == 3 &&  self.productDetail?.product_detail?.brand_label_id == "0"{
+                return 0
+            }else{
             return 60
+            }
         }else if indexPath.row == 8 {
            
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {
                // return 250
-                return UITableView.automaticDimension + 240
+                return UITableView.automaticDimension + 300
             }else{
                // return UITableView.automaticDimension
                 return UITableView.automaticDimension + 350

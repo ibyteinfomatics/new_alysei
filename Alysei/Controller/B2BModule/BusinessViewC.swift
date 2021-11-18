@@ -565,6 +565,7 @@ class BusinessViewC: AlysieBaseViewC {
         if arrSearchimpotrDataModel.count == 0{
             print("check")
         }else{
+
         businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
         }
         return businessListTableCell
@@ -633,7 +634,7 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchHubApi()
         case 1:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.importer.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importerTravel.rawValue
             self.searchImpDone = false
             //self.selectProducerProductType = ""
             self.arrSearchimpotrDataModel.removeAll()
@@ -643,7 +644,7 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchImporterApi()
         case 2:
             self.searchType = 2
-            self.extraCell =  B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell =  B2BSeacrhExtraCell.restaurantProducer.rawValue
             self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
             callSearchResturntApi()
@@ -655,13 +656,13 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             callSearchExpertApi()
         case 4:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importerTravel.rawValue
             self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
             callSearchTravelApi()
         case 5:
             self.searchType = 2
-            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducer.rawValue
             self.searchImpDone = false
             self.identifyUserForProduct = .productProducer
             callSearchProducerApi()
@@ -708,7 +709,10 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         switch model.businessCellType {
         case .tableListCell:
             //return model.cellCount
-            return arrSearchimpotrDataModel.count
+           // return arrSearchimpotrDataModel.count
+            if currentIndex == B2BSearch.TravelAgencies.rawValue{
+                return arrSearchimpotrDataModel.count
+            }
            return model.cellCount
         default:
             return self.businessViewModel.arrBusinessData.count
@@ -813,7 +817,7 @@ extension BusinessViewC {
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
                 // self.searchImpDone = false
             }
-            self.extraCell = B2BSeacrhExtraCell.importer.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importerTravel.rawValue
             //            self.selectImpHubId = ""
             //            self.selectImpProductId = ""
             //            self.selectImpRegionTypeId = ""
@@ -851,7 +855,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducer.rawValue
             //            self.selectProducerHubId = ""
             //            self.selectProducerProductType = ""
             //            self.selectProducerRegionId = ""
@@ -885,7 +889,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.restaurantProducer.rawValue
             //            self.resHubId = ""
             //            self.resTypeId = ""
             //            self.restPickUp = ""
@@ -949,7 +953,7 @@ extension BusinessViewC {
             //self.collectionViewBusinessCategory.reloadData()
             print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")
             cellCount = self.arrSearchimpotrDataModel.count
-            self.extraCell = B2BSeacrhExtraCell.restaurantProducerTravel.rawValue
+            self.extraCell = B2BSeacrhExtraCell.importerTravel.rawValue
             //            self.selectTravelHubId = ""
             //            self.selectTravelSpecialityId = ""
             //            self.selectTravelCountryId = ""
