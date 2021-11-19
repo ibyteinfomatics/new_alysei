@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyStoreVC: UIViewController {
+class MyStoreVC: AlysieBaseViewC {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var productView: UIView!
@@ -116,7 +116,7 @@ class MyStoreVC: UIViewController {
         vc.didMove(toParent: self)
     }
     @objc func loadinquiry(){
-        print("load Inquiry")
+        _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)

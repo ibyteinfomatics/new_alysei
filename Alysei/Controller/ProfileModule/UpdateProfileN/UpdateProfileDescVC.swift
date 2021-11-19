@@ -20,6 +20,7 @@ class UpdateProfileDescVC: AlysieBaseViewC {
         super.viewDidLoad()
         vwHeader.addShadow()
         txtDesc.addBorder()
+        txtDesc.delegate = self
         headerTitle.text = passheaderTitle
         // Do any additional setup after loading the view.
     }
@@ -55,4 +56,16 @@ extension UpdateProfileDescVC{
         }
     }
 }
+}
+
+extension UpdateProfileDescVC: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let spaceCount = textView.text.filter{$0 == " "}.count
+        if spaceCount <= 200{
+            return true
+        }else{
+            return false
+        }
+    }
+
 }

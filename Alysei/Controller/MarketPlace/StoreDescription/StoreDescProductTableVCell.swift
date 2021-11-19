@@ -10,6 +10,7 @@ import UIKit
 class StoreDescProductTableVCell: UITableViewCell {
     @IBOutlet weak var storeProductCollectionView: UICollectionView!
     var storeProduct: [ProductSearchListModel]?
+    var pushCallback: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,5 +45,8 @@ extension StoreDescProductTableVCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.storeProductCollectionView.frame.width / 3, height: 280)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushCallback?()
+       
+    }
 }
