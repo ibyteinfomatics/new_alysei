@@ -43,6 +43,17 @@ struct NumberContants {
     static let kMinPasswordLength = 8
 }
 
+extension UILabel {
+    func calculateMaxLines() -> Int {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(Float.infinity))
+        let charSize = font.lineHeight
+        let text = (self.text ?? "") as NSString
+        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        let linesRoundedUp = Int(ceil(textSize.height/charSize))
+        return linesRoundedUp
+    }
+}
+
 struct FunctionsConstants {
     
     static let kSharedUserDefaults = UserDefaults.standard
@@ -297,7 +308,7 @@ struct APIUrl{
     static let kConnectionTabApi4 = "get/connection/tabs?tab=4"
     static let kEditPost = "edit/post"
     static let kPrivacy = "get/user/privacy"
-    static let kAwardList = "get/award/listing/"
+    static let kAwardList = "get/award/listing?visitor_profile_id="
     static let kAwardCreate = "create/award"
     static let kAwardUpdate = "update/award"
     static let kAwardDelete = "delete/award"

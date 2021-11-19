@@ -92,6 +92,9 @@ class HomeViewC: AlysieBaseViewC {
         
         self.viewBlankHeading.makeCornerRadius(radius: 5.0)
         //postRequestToGetProgress()
+        membershipView.isHidden = true
+        blankdataView.isHidden = true
+        
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)

@@ -45,6 +45,10 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var featureUIview: NSLayoutConstraint!
     @IBOutlet weak var headerView: UIView!
     
+    @IBOutlet weak var addbtn: NSLayoutConstraint!
+    @IBOutlet weak var addimg: NSLayoutConstraint!
+    @IBOutlet weak var addtext: NSLayoutConstraint!
+    
     //ProfileCompletionView
     
     @IBOutlet weak var tblViewProfileCompletion: UITableView!
@@ -166,11 +170,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.userType = selfUserType
             }
         }
-        let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - 20 - topMargin
-        
-        let someHeight = (self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0
-        self.tblViewPosts.tableHeaderView?.setHeight(someHeight)
+       
         self.btnPosts.isSelected = true
         self.tblViewProfileCompletion.isHidden = true
         self.headerView.isHidden = true
@@ -207,6 +207,10 @@ class ProfileViewC: AlysieBaseViewC{
             
             
         case .other:
+            
+            self.addbtn.constant = 0
+            self.addimg.constant = 0
+            self.addtext.constant = 0
             
             self.connectButton.isHidden = false
             self.connectButton.isUserInteractionEnabled = true
@@ -340,6 +344,31 @@ class ProfileViewC: AlysieBaseViewC{
                 cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
         }
+        
+        
+        // Scroll update show
+        let line = self.aboutLabel.calculateMaxLines()
+        var shownumber = 70
+        
+        if line == 5 {
+            shownumber = 70
+        } else if line == 4 {
+            shownumber = 90
+        } else if line == 3 {
+            shownumber = 110
+        } else if line == 2 {
+            shownumber = 130
+        } else if line == 1 {
+            shownumber = 150
+        }
+        
+        let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
+        
+        let someHeight = (self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0
+        self.tblViewPosts.tableHeaderView?.setHeight(someHeight - CGFloat(shownumber))
+        
+        self.tblViewPosts.contentInsetAdjustmentBehavior = .never
         
     }
     
@@ -804,6 +833,10 @@ class ProfileViewC: AlysieBaseViewC{
                 }
                 self.aboutLabel.text = "\(responseModel.data?.about ?? "")"
                 
+                if self.aboutLabel.calculateMaxLines() > 5 {
+                    self.aboutLabel.numberOfLines = 5
+                }
+                
                 let roleID = UserRoles(rawValue: responseModel.data?.userData?.roleID ?? 0) ?? .voyagers
                 self.userType = roleID
                 
@@ -900,6 +933,10 @@ class ProfileViewC: AlysieBaseViewC{
                     self.usernameLabel.text = "@\(username)".lowercased()
                 }
                 self.aboutLabel.text = "\(responseModel.data?.about ?? "")"
+                
+                if self.aboutLabel.calculateMaxLines() > 5 {
+                    self.aboutLabel.numberOfLines = 5
+                }
                 
                 let roleID = UserRoles(rawValue: responseModel.data?.userData?.roleID ?? 0) ?? .voyagers
                 self.visitorUserType = roleID

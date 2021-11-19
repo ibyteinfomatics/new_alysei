@@ -27,6 +27,11 @@ class AwardsViewController: AlysieBaseViewC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if userId != ""{
+            createAwardButton.isHidden = true
+        } else {
+            createAwardButton.isHidden = false
+        }
         postRequestToGetAward()
     }
     
