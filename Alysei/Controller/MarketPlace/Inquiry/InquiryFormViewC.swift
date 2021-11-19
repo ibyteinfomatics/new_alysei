@@ -103,6 +103,7 @@ class InquiryFormViewC: AlysieBaseViewC {
         sendMessageDetails.productId = self.passproductId
         sendMessageDetails.productName = self.passproductName
         sendMessageDetails.productImage = productImage
+        sendMessageDetails.producerUserId = String.getString(userId)
         
         if kSharedUserDefaults.loggedInUserModal.companyName != ""{
             sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName

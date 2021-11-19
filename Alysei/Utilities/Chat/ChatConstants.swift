@@ -51,6 +51,7 @@ struct Parameters {
     static let productId                 = "productId"
     static let productName                 = "productName"
     static let productImage                 = "productImage"
+    static let producerUserId                 = "producerUserId"
     
     static let createdBy                  = "createdBy"
     static let UserSeenCount              = "UserSeenCount"

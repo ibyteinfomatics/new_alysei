@@ -630,7 +630,7 @@ class Chat_hepler {
                                 Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
                                 Parameters.otherImage : String.getString(messageDetails.receiverImage) ,
                                 Parameters.otherName : String.getString(messageDetails.receiverName),
-                                
+                                Parameters.producerUserId : String.getString(messageDetails.producerUserId),
                                 Parameters.storeId : String.getString(messageDetails.storeId),
                                 Parameters.storeName : String.getString(messageDetails.storeName),
                                 Parameters.productId : String.getString(messageDetails.productId),
@@ -647,7 +647,7 @@ class Chat_hepler {
                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
                                Parameters.otherImage : String.getString(messageDetails.senderImage) ,
                                Parameters.otherName : String.getString(messageDetails.senderName),
-                               
+                               Parameters.producerUserId : String.getString(messageDetails.producerUserId),
                                Parameters.storeId : String.getString(messageDetails.storeId),
                                Parameters.storeName : String.getString(messageDetails.storeName),
                                Parameters.productId : String.getString(messageDetails.productId),
@@ -658,13 +658,31 @@ class Chat_hepler {
                                Parameters.userTyping : false] as [String : Any]
         
         if child == "New" {
-            inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
-            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
-        } else {
-            deleteUser(child: "New", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId)
+            inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
+            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+        } else if child == "Opened"{
+            deleteUser(child: "New", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId+"_\(String.getString(messageDetails.productId))")
             
-            inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)").updateChildValues(receiverDetails)
-            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)").updateChildValues(senderDetails)
+            inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
+            inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+        } else if child == "Closed" {
+            
+            deleteUser(child: "Closed", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId+"_\(String.getString(messageDetails.productId))")
+            
+            deleteUser(child: "Closed", user_id: "user_"+receiverId, receiverId: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_\(String.getString(messageDetails.productId))")
+            
+            inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
+            inquiryresentReference.child("Opened").child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+            
+        } else if child == "Blocked" {
+            
+            deleteUser(child: "Opened", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId+"_\(String.getString(messageDetails.productId))")
+            
+            deleteUser(child: "Opened", user_id: "user_"+receiverId, receiverId: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId))+"_\(String.getString(messageDetails.productId))")
+            
+            inquiryresentReference.child("Closed").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
+            inquiryresentReference.child("Closed").child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+            
         }
         
         
@@ -888,14 +906,15 @@ class Chat_hepler {
                     resentusersDetails.productId       = String.getString(details[Parameters.productId])
                     resentusersDetails.productName       = String.getString(details[Parameters.productName])
                     resentusersDetails.productImage       = String.getString(details[Parameters.productImage])
+                    resentusersDetails.producerUserId       = String.getString(details[Parameters.producerUserId])
                     
                     resentusersDetails.timestamp       = Int.getInt(details[Parameters.timestamp])
                     resentusersDetails.readCount       = Int.getInt(details[Parameters.readCount])
                     resentusersDetails.uid = String.getString(details[Parameters.uid])
                     resentusersDetails.userTyping      = Bool.getBool(details[Parameters.userTyping])
                     
-                    let firstIndex = self?.inquiry_resentUser.firstIndex{$0.otherId == resentusersDetails.otherId}
-                    if firstIndex != nil { self?.inquiry_resentUser.remove(at: firstIndex!) }
+                   // let firstIndex = self?.inquiry_resentUser.firstIndex{$0.productId == resentusersDetails.productId}
+                   // if firstIndex != nil { self?.inquiry_resentUser.remove(at: firstIndex!) }
                     self?.inquiry_resentUser.append(resentusersDetails)
                     self?.inquiry_resentUser.sort { $0.timestamp > $1.timestamp }
                   //  self?.resentUser = self?.resentUser.uniqueArray(map: {$0.uid}) ?? []

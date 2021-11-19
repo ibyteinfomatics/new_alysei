@@ -425,6 +425,7 @@ class InquiryReceivedMessageClass {
     var timestamp : String?
     
     var productImage:String?
+    var producerUserId:String?
     var productName:String?
     var productId :String?
     var storeId :String?
@@ -445,7 +446,7 @@ class InquiryReceivedMessageClass {
         self.senderImage           = String.getString(messageData[Parameters.senderImage])
         self.senderName           = String.getString(messageData[Parameters.senderName])
         self.senderid           = String.getString(messageData[Parameters.senderid])
-        
+        self.producerUserId     = String.getString(messageData[Parameters.producerUserId])
         self.storeName           = String.getString(messageData[Parameters.storeName])
         self.storeId           = String.getString(messageData[Parameters.storeId])
         self.productId           = String.getString(messageData[Parameters.productId])
@@ -484,7 +485,7 @@ class InquiryReceivedMessageClass {
             Parameters.senderImage                 : objects?.senderImage ?? "",
             Parameters.sendername                 : objects?.senderName ?? "",
             Parameters.senderid           : objects?.senderid ?? "",
-            
+            Parameters.producerUserId       : objects?.producerUserId ?? "",
             Parameters.storeName                 : objects?.storeName ?? "",
             Parameters.storeId                 : objects?.storeId ?? "",
             Parameters.productId                 : objects?.productId ?? "",
@@ -860,6 +861,7 @@ class InquiryRecentUser {
     var userTyping :Bool = false
     
     var productImage:String?
+    var producerUserId:String?
     var productName:String?
     var productId :String?
     var storeId :String?
@@ -883,6 +885,7 @@ class InquiryRecentUser {
         self.productId           = String.getString(userdata[Parameters.productId])
         self.productName           = String.getString(userdata[Parameters.productName])
         self.productImage           = String.getString(userdata[Parameters.productImage])
+        self.producerUserId           = String.getString(userdata[Parameters.producerUserId])
         
     }
     //MARK:- Func for createDictonary
@@ -898,7 +901,7 @@ class InquiryRecentUser {
             Parameters.readState                        : objects?.readState ?? "",
             Parameters.uid                        : objects?.uid ?? "",
             Parameters.userTyping                        : objects?.userTyping ?? "",
-            
+            Parameters.producerUserId               :objects?.producerUserId ?? "",
             Parameters.storeId                 : objects?.storeId ?? "",
             Parameters.storeName                 : objects?.storeName ?? "",
             Parameters.productId                 : objects?.productId ?? "",

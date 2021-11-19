@@ -44,6 +44,8 @@ class InquiryConversation: AlysieBaseViewC {
     let textViewMaxHeight:CGFloat = 100.0
     let textViewMinHeight:CGFloat = 34.0
     
+    var new_opend = true
+    
     var storeId = ""
     var storeName = ""
     var productId = ""
@@ -76,6 +78,9 @@ class InquiryConversation: AlysieBaseViewC {
     
     var arrMoreType = ["Closed"]
     var dataDropDown = DropDown()
+    
+    var ResentUser:[InquiryRecentUser]?
+    var position = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +92,14 @@ class InquiryConversation: AlysieBaseViewC {
         chatTblView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0)
         
        // print("image",kSharedUserDefaults.loggedInUserModal.avatar?.imageURL)
-        morebtn.isHidden = false
+        morebtn.isHidden = true
         initialSetup()
         registerNib()
         receiveMessage()
+        
+        if type == "Closed" && ResentUser?[position].producerUserId == String.getString(kSharedUserDefaults.loggedInUserModal.userId){
+            viewBottom.isHidden = true
+        }
        
         // Do any additional setup after loading the view.
     }
@@ -104,6 +113,7 @@ class InquiryConversation: AlysieBaseViewC {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.btnDelete.isHidden = true
         
+        print("profileImageUrl ",String.getString(profileImageUrl))
         chatTblView.reloadData()
        
     }
@@ -115,11 +125,47 @@ class InquiryConversation: AlysieBaseViewC {
         dataDropDown.anchorView = deleteView
 
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
-       // dataDropDown.bottomOffset = CGPoint(x: 0, y:100)
-//        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-//
-//            print(item)
-//        }
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+
+            
+            
+            let sendMessageDetails = InquiryReceivedMessageClass()
+            sendMessageDetails.receiverid = String.getString( userId)
+            sendMessageDetails.senderid = String.getString(kSharedUserDefaults.loggedInUserModal.userId)
+            sendMessageDetails.mediaType = .text
+            sendMessageDetails.message = self.ResentUser?[position].lastmessage
+            
+            sendMessageDetails.deleted = ""
+            sendMessageDetails.like = false
+            sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( userId)+"_"+productId
+            
+            sendMessageDetails.storeId = self.ResentUser?[position].storeId
+            sendMessageDetails.storeName = self.ResentUser?[position].storeName
+            sendMessageDetails.productId = self.ResentUser?[position].productId
+            sendMessageDetails.productName = self.ResentUser?[position].productName
+            sendMessageDetails.productImage = self.ResentUser?[position].productImage
+            sendMessageDetails.producerUserId = String.getString( userId)
+            
+            if kSharedUserDefaults.loggedInUserModal.companyName != ""{
+                sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
+            } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
+                sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
+            } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
+                sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+            }
+            
+            sendMessageDetails.senderImage = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+            
+            //"public/uploads/2021/08/2327781571627986351.jpg"//kImageBaseUrl+UserDetailBasedElements().profilePhoto
+            
+            sendMessageDetails.receiverImage = self.ResentUser?[position].otherImage
+            sendMessageDetails.receiverName = self.ResentUser?[position].otherName
+            sendMessageDetails.timestamp = String.getString(self.ResentUser?[position].timestamp)
+            
+            kChatharedInstance.inquiry_resentUser(messageDetails: sendMessageDetails, child: "Blocked")
+            self.navigationController?.popViewController(animated: true)
+            
+        }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
@@ -278,6 +324,11 @@ class InquiryConversation: AlysieBaseViewC {
     @IBAction func sendTextMessage(_ sender: Any) {
         if chatTextView.text != "" {
             //type = "Opened"
+            
+            if new_opend == true {
+                type = "New"
+            }
+            
             self.sendMessage()
             chatTextView.text = ""
         }
@@ -371,7 +422,9 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
             switch objects?.mediaType {
             
             case .text? :
-                type = "New"
+                if type == "New" || type == "Opened"{
+                    //type = "New"
+                }
                 guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
                 
                 
@@ -410,7 +463,12 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 return textCell
                 
             case .photos? :
-                type = "New"
+                
+                if type == "New" || type == "Opened"{
+                    //type = "New"
+                }
+                
+                
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
                 
                 photoCell.sendimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
@@ -461,10 +519,14 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
             
             switch objects?.mediaType {
             case .text? :
-                type = "Opened"
                 
-                if indexPath.row == 0 {
+                new_opend = false
+                if indexPath.row == 0 && type == "Opened"{
                     morebtn.isHidden = false
+                }
+                
+                if type == "New"{
+                    type = "Opened"
                 }
                 
                 guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
@@ -512,7 +574,16 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 
                 return textCell
             case .photos? :
-                type = "Opened"
+                if indexPath.row == 0 && type == "Opened"{
+                    morebtn.isHidden = false
+                }
+                
+                new_opend = false
+                
+                if type == "New"{
+                    type = "Opened"
+                }
+                
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
                 
                 photoCell.receiveimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
@@ -570,7 +641,7 @@ extension InquiryConversation {
     func sendMessage() {
         //sender data
         let sendMessageDetails = InquiryReceivedMessageClass()
-        sendMessageDetails.receiverid = String.getString( userId)
+        sendMessageDetails.receiverid = String.getString(userId)
         sendMessageDetails.senderid = String.getString(kSharedUserDefaults.loggedInUserModal.userId)
         sendMessageDetails.mediaType = .text
         sendMessageDetails.message = String.getString(self.chatTextView.text)
@@ -584,7 +655,7 @@ extension InquiryConversation {
         sendMessageDetails.productId = productId
         sendMessageDetails.productName = productName
         sendMessageDetails.productImage = productImage
-        
+        sendMessageDetails.producerUserId = String.getString(userId)
         if kSharedUserDefaults.loggedInUserModal.companyName != ""{
             sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
         } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
@@ -597,7 +668,7 @@ extension InquiryConversation {
         
         //"public/uploads/2021/08/2327781571627986351.jpg"//kImageBaseUrl+UserDetailBasedElements().profilePhoto
         
-        sendMessageDetails.receiverImage = profileImageUrl
+        sendMessageDetails.receiverImage = String.getString(profileImageUrl)
         sendMessageDetails.receiverName = name
         sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
@@ -662,6 +733,7 @@ extension InquiryConversation {
                     sendMessageDetails.productId = self?.productId
                     sendMessageDetails.productName = self?.productName
                     sendMessageDetails.productImage = self?.productImage
+                    sendMessageDetails.producerUserId = String.getString(self?.userId)
                     
                     if kSharedUserDefaults.loggedInUserModal.companyName != ""{
                         sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
@@ -673,7 +745,7 @@ extension InquiryConversation {
                     
                     sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
                     
-                    sendMessageDetails.receiverImage = self?.profileImageUrl
+                    sendMessageDetails.receiverImage = String.getString(self?.profileImageUrl)
                     sendMessageDetails.receiverName = self?.name
                     sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)

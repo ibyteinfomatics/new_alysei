@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ypk-vo-wky">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ypk-vo-wky">
                         <rect key="frame" x="15" y="5" width="262.5" height="155"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="155" id="OKX-2v-GrO"/>
@@ -75,7 +75,7 @@
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79Y-Df-zm0">
                         <rect key="frame" x="25" y="27.5" width="242.5" height="50"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="save_picture" translatesAutoresizingMaskIntoConstraints="NO" id="jBo-GT-Vcn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jBo-GT-Vcn">
                                 <rect key="frame" x="10" y="12.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="fYF-bR-2q4"/>
@@ -167,12 +167,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chat_imagePlaceholder" width="1651" height="800"/>
         <image name="chat_like-selected" width="17.5" height="15.5"/>
         <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_double_tick" width="15.956999778747559" height="9.1840000152587891"/>
+        <image name="image_placeholder" width="41" height="33"/>
         <image name="liked_icon" width="128" height="113"/>
-        <image name="save_picture" width="14" height="14"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -22,6 +22,8 @@ class InquiryChatVC: AlysieBaseViewC {
     @IBOutlet weak var tblViewNotification: UITableView!
     var type = "New"
     
+    var usercount = 0
+    
     var ResentUser:[InquiryRecentUser]?
     var resentReference  = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
 
@@ -46,6 +48,18 @@ class InquiryChatVC: AlysieBaseViewC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if type == "New" {
+            
+        } else if type == "Opened" {
+            
+        } else if type == "Closed" {
+            
+        }
+        usercount = 0
+        print("usercount111 ",usercount)
+        self.ResentUser?.removeAll()
+        self.tblViewNotification.reloadData()
         receiveUsers(child: String.getString(type))
     }
     
@@ -59,6 +73,7 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
+        usercount = 0
         receiveUsers(child: "New")
         type = "New"
     }
@@ -71,6 +86,7 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
+        usercount = 0
         receiveUsers(child: "Opened")
         type = "Opened"
     }
@@ -83,6 +99,7 @@ class InquiryChatVC: AlysieBaseViewC {
         vwBottomClosed.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
+        usercount = 0
         receiveUsers(child: "Closed")
         type = "Closed"
     }
@@ -94,12 +111,21 @@ class InquiryChatVC: AlysieBaseViewC {
     
     func receiveUsers(child: String) {
         
+        self.usercount = 0
         kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
+            self.usercount = 1
+            print("usercount222 ",self.usercount)
             self.ResentUser?.removeAll()
             self.ResentUser = users
             self.tblViewNotification.reloadData()
         }
-        
+        print("usercount ",usercount)
+        if usercount == 0 {
+            //self.ResentUser?.removeAll()
+            //self.tblViewNotification.reloadData()
+            
+        }
+        //self.usercount = 0
     }
     
     private func getNotificationTableCell(index: Int) -> UITableViewCell{
@@ -199,6 +225,8 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
   }
         
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  
+    
     return self.getNotificationTableCell(index: indexPath.row)
   }
         
@@ -220,15 +248,15 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
         
         if type == "New" {
             
-            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))_\(String.getString(self.ResentUser?[indexPath.row].productId))").updateChildValues(receiverDetails)
             
         } else if type == "Opened" {
             
-            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))").updateChildValues(receiverDetails)
+            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))_\(String.getString(self.ResentUser?[indexPath.row].productId))").updateChildValues(receiverDetails)
             
-        } else {
+        } else if type == "Closed" {
             
-            
+            resentReference.child(String.getString(type)).child("user_\(String.getString(kSharedUserDefaults.loggedInUserModal.userId))").child("user_\(String.getString(self.ResentUser?[indexPath.row].otherId))_\(String.getString(self.ResentUser?[indexPath.row].productId))").updateChildValues(receiverDetails)
             
         }
         
@@ -254,6 +282,8 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
             vc.profileImageUrl = imageDomain+img
         }
         
+        vc.ResentUser = self.ResentUser
+        vc.position = indexPath.row
         vc.storeId = self.ResentUser?[indexPath.row].storeId ?? ""
         vc.storeName = self.ResentUser?[indexPath.row].storeName ?? ""
         vc.productName = self.ResentUser?[indexPath.row].productName ?? ""
