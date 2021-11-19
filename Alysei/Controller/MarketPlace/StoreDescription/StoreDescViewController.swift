@@ -300,9 +300,9 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
         }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreDescProductTableVCell", for: indexPath) as? StoreDescProductTableVCell else {return UITableViewCell()}
             cell.configCell(storeProducts)
-            cell.pushCallback = {
+            cell.pushCallback = { id in
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
-                nextVC.marketplaceProductId = "\( self.storeProducts?[indexPath.row].marketplaceProductId ?? 0)"
+                nextVC.marketplaceProductId = "\(id)"
                          self.navigationController?.pushViewController(nextVC, animated: true)
             }
            

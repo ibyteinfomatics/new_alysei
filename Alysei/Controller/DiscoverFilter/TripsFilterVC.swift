@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 class TripsFilterVC: AlysieBaseViewC {
-
+    
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var vw0: UIView!
     @IBOutlet weak var vw1: UIView!
@@ -59,7 +59,7 @@ class TripsFilterVC: AlysieBaseViewC {
     var passIntensity:String?
     var passprice:String?
     
-   
+    
     
     var passSelectedDataCallback: ((String,String,String,String,String,String,_ regionid: String?,_ adventureId: String?,_ intensityId: String?) -> Void)? = nil
     
@@ -90,9 +90,9 @@ class TripsFilterVC: AlysieBaseViewC {
         let intensity = UITapGestureRecognizer(target: self, action: #selector(intensityDropDown))
         self.vw4.addGestureRecognizer(intensity)
         
-//        let currency = UITapGestureRecognizer(target: self, action: #selector(currencyDropDown))
-//        self.vw5.addGestureRecognizer(currency)
-//        
+        //        let currency = UITapGestureRecognizer(target: self, action: #selector(currencyDropDown))
+        //        self.vw5.addGestureRecognizer(currency)
+        //
         getInensity()
         getAdventure()
         postRequestToGetCountries()
@@ -130,22 +130,61 @@ class TripsFilterVC: AlysieBaseViewC {
         }else{
             intensityLabel.text = passIntensity
         }
-
+        
         if passprice == "" || passprice == nil {
             currencyLabel.placeholder = "Price"
         }else{
             currencyLabel.text = passprice
         }
     }
-    
+    func setFilterData(){
+        
+    }
     
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     
     @IBAction func btnFilterAction(_ sender: UIButton){
-        setData()
+        if countryLabel.text == "Country" {
+            passSelectedCountry = ""
+        }else{
+            passSelectedCountry = countryLabel.text
+        }
+        
+        if regionLabel.text == "Regions"{
+            passRegions = ""
+        }else{
+            passRegions =  regionLabel.text
+        }
+        
+        
+        if  adventuresLabel.text == "Adventures"{
+            passAdventure = ""
+        }else{
+            passAdventure = adventuresLabel.text
+        }
+        
+        if  durationLabel.text == "Duration"{
+            passDuration = ""
+        }else{
+            passDuration = durationLabel.text
+        }
+        
+        if intensityLabel.text == "Intensity"{
+            passIntensity = ""
+        }else{
+            passIntensity = intensityLabel.text
+        }
+        
+        if currencyLabel.text == ""{
+            currencyLabel.placeholder = "Price"
+            passprice = ""
+        }else{
+            passprice = currencyLabel.text
+        }
+        
         self.passSelectedDataCallback?(passSelectedCountry ?? "",passRegions ?? "",passAdventure ?? "", passDuration ?? "", passIntensity ?? "", passprice ?? "", regionId ?? "",adventureId ?? "", intensityId ?? "")
         self.navigationController?.popViewController(animated: true)
     }
@@ -157,43 +196,52 @@ class TripsFilterVC: AlysieBaseViewC {
         passDuration = ""
         passIntensity = ""
         passprice = ""
-       // self.clearfilterCallback?()
-       // self.navigationController?.popViewController(animated: true)
+        regionId = ""
+        adventureId = ""
+        intensityId = ""
+        countryLabel.text = "Country"
+        adventuresLabel.text = "Adventures"
+        durationLabel.text = "Duration"
+        intensityLabel.text = "Intensity"
+        currencyLabel.placeholder = "Price"
+        
+        // self.clearfilterCallback?()
+        // self.navigationController?.popViewController(animated: true)
     }
     private func getInensity() -> Void{
-      
-      disableWindowInteraction()
-    
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetIntensity, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-          let dictResponse = dictResponse as? [String:Any]
-          
-          self.intensityModel = IntensityModel.init(with: dictResponse)
-            
-          for i in 0..<(self.intensityModel?.data?.count)! {
-                self.intensityarrData.append(self.intensityModel?.data?[i].intensity ?? "")
-          }
         
-      }
-      
+        disableWindowInteraction()
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetIntensity, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            
+            self.intensityModel = IntensityModel.init(with: dictResponse)
+            
+            for i in 0..<(self.intensityModel?.data?.count)! {
+                self.intensityarrData.append(self.intensityModel?.data?[i].intensity ?? "")
+            }
+            
+        }
+        
     }
     
     private func getAdventure() -> Void{
-      
-          disableWindowInteraction()
         
-          TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetAdventure+"?type=all", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-              
-              let dictResponse = dictResponse as? [String:Any]
-              
-              self.adventureModel = AdventureModel.init(with: dictResponse)
-                
-              for i in 0..<(self.adventureModel?.data?.count)! {
-                    self.adventurearrData.append(self.adventureModel?.data?[i].adventure_type ?? "")
-              }
+        disableWindowInteraction()
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetAdventure+"?type=all", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-          }
-      
+            let dictResponse = dictResponse as? [String:Any]
+            
+            self.adventureModel = AdventureModel.init(with: dictResponse)
+            
+            for i in 0..<(self.adventureModel?.data?.count)! {
+                self.adventurearrData.append(self.adventureModel?.data?[i].adventure_type ?? "")
+            }
+            
+        }
+        
     }
     
     func callGetStatesWithCountryIdApi(_ expertCountryId: String){
@@ -203,8 +251,8 @@ class TripsFilterVC: AlysieBaseViewC {
             let response = dicResponse as? [String:Any]
             //let filterCountry = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.kCountry})
             if let array = response?[APIConstants.kData] as? ArrayOfDictionary{
-              self.regionarrOptions = array.map({SignUpOptionsDataModel(withDictionary: $0)})
-           }
+                self.regionarrOptions = array.map({SignUpOptionsDataModel(withDictionary: $0)})
+            }
             for i in 0..<self.regionarrOptions.count {
                 self.regionarrCountryStateName.append(self.regionarrOptions[i].name ?? "")
             }
@@ -215,21 +263,21 @@ class TripsFilterVC: AlysieBaseViewC {
     }
     
     private func postRequestToGetCountries() -> Void{
-      
-      disableWindowInteraction()
-       
+        
+        disableWindowInteraction()
+        
         arrOptions.removeAll()
         arrCountryStateName.removeAll()
         TANetworkManager.sharedInstance.requestApi(withServiceName: "https://alyseiapi.ibyteworkshop.com/public/api/get/countries?param=trips", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let response = dicResponse as? [String:Any]
             //let filterCountry = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.kCountry})
             if let array = response?[APIConstants.kData] as? ArrayOfDictionary{
-              self.arrOptions = array.map({SignUpOptionsDataModel(withDictionary: $0)})
-           }
+                self.arrOptions = array.map({SignUpOptionsDataModel(withDictionary: $0)})
+            }
             for i in 0..<self.arrOptions.count {
                 self.arrCountryStateName.append(self.arrOptions[i].name ?? "")
             }
-           
+            
             
         }
         
@@ -244,7 +292,7 @@ class TripsFilterVC: AlysieBaseViewC {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             //self.btnReport.setTitle(item, for: .normal)
             currencyLabel.text = item
-          
+            
         }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
@@ -263,7 +311,7 @@ class TripsFilterVC: AlysieBaseViewC {
             //self.btnReport.setTitle(item, for: .normal)
             durationLabel.text = item
             
-             }
+        }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
@@ -272,18 +320,18 @@ class TripsFilterVC: AlysieBaseViewC {
     
     
     @objc func countrydropDown(){
-       self.dataDropDown.dataSource = self.arrCountryStateName
+        self.dataDropDown.dataSource = self.arrCountryStateName
         dataDropDown.show()
         dataDropDown.anchorView = vw0
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             //self.btnReport.setTitle(item, for: .normal)
             countryLabel.text = item
-              countryId = (arrOptions[index].id)
+            countryId = (arrOptions[index].id)
             
             
             callGetStatesWithCountryIdApi(String.getString(self.arrOptions[index].id))
-           
+            
         }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
@@ -292,7 +340,7 @@ class TripsFilterVC: AlysieBaseViewC {
     }
     
     @objc func regiondropDown(){
-         self.dataDropDown.dataSource = self.regionarrCountryStateName
+        self.dataDropDown.dataSource = self.regionarrCountryStateName
         dataDropDown.show()
         dataDropDown.anchorView = vw1
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
@@ -302,7 +350,7 @@ class TripsFilterVC: AlysieBaseViewC {
             regionId = (regionarrOptions[index].id)
             
             
-            }
+        }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
@@ -310,7 +358,7 @@ class TripsFilterVC: AlysieBaseViewC {
     }
     
     @objc func intensityDropDown(){
-         self.dataDropDown.dataSource = self.intensityarrData
+        self.dataDropDown.dataSource = self.intensityarrData
         dataDropDown.show()
         dataDropDown.anchorView = self.vw4
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
@@ -319,7 +367,7 @@ class TripsFilterVC: AlysieBaseViewC {
             intensityLabel.text = item
             intensityId = "\(self.intensityModel?.data?[index].intensity_id ?? 0)"
             
-              }
+        }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
@@ -336,12 +384,12 @@ class TripsFilterVC: AlysieBaseViewC {
             adventuresLabel.text = item
             adventureId = "\(self.adventureModel?.data?[index].adventure_type_id ?? 0)"
             
-             }
+        }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white
         dataDropDown.selectionBackgroundColor = UIColor.clear
         dataDropDown.direction = .bottom
     }
     
-
+    
 }

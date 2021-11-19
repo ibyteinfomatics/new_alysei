@@ -16,6 +16,7 @@ class SimilarProductTableVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       
         // Initialization code
     }
 
@@ -48,7 +49,12 @@ extension SimilarProductTableVCell: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.collectonView.frame.width / 2, height: 270)
     }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showProductDetailCallBack?(data?.related_products?[indexPath.row].marketplaceProductId ?? 0)
     }
