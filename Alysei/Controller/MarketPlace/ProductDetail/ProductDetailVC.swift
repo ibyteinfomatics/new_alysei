@@ -225,13 +225,17 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
            
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {
                // return 250
-                return UITableView.automaticDimension + 300
+                return UITableView.automaticDimension + 290
             }else{
                // return UITableView.automaticDimension
                 return UITableView.automaticDimension + 350
             }
         }else {
+            if self.productDetail?.related_products?.count == 1 || self.productDetail?.related_products?.count == 2 {
+        return 280
+            }else{
             return CGFloat((250 * ((self.productDetail?.related_products?.count ?? 0) / 2 )) + 20)
+            }
         }
     }
     
