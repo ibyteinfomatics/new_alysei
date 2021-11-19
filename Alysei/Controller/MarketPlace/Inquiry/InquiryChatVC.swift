@@ -19,10 +19,18 @@ class InquiryChatVC: AlysieBaseViewC {
     @IBOutlet weak var lblNew: UILabel!
     @IBOutlet weak var lblOpened: UILabel!
     @IBOutlet weak var lblClosed: UILabel!
+    @IBOutlet weak var newCount: UILabel!
+    @IBOutlet weak var openedCount: UILabel!
     @IBOutlet weak var tblViewNotification: UITableView!
     var type = "New"
     
     var usercount = 0
+    
+    var newunread: Int = 0
+    var openedunread: Int = 0
+    
+    var NewResentUser:[InquiryRecentUser]?
+    var OpenedResentUser:[InquiryRecentUser]?
     
     var ResentUser:[InquiryRecentUser]?
     var resentReference  = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
@@ -49,6 +57,15 @@ class InquiryChatVC: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
+        openedCount.layer.cornerRadius = 13
+        openedCount.layer.masksToBounds = true
+        openedCount.textColor = UIColor.white
+        
+        newCount.layer.cornerRadius = 13
+        newCount.layer.masksToBounds = true
+        newCount.textColor = UIColor.white
+        
         if type == "New" {
             
         } else if type == "Opened" {
@@ -61,6 +78,11 @@ class InquiryChatVC: AlysieBaseViewC {
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
         receiveUsers(child: String.getString(type))
+        
+        self.newCount.isHidden = true
+        self.openedCount.isHidden = true
+        newInquiryCount(child: "New")
+        openedInquiryCount(child: "Opened")
     }
     
     @objc func openNewChatList(){
@@ -108,6 +130,70 @@ class InquiryChatVC: AlysieBaseViewC {
         
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func newInquiryCount(child: String) {
+        
+        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
+           
+            self.NewResentUser?.removeAll()
+            self.NewResentUser = users
+            
+            self.newunread = 0
+            for i in 0..<(self.NewResentUser?.count ?? 0){
+                
+                if self.NewResentUser![i].readCount != 0 {
+                    self.newunread = self.newunread + 1
+                    
+                }
+                
+            }
+            
+            print("unread count ",self.newunread)
+            
+            if self.newunread == 0 {
+                self.newCount.isHidden = true
+            } else {
+                self.newCount.isHidden = false
+            }
+            
+            self.newCount.text = String.getString(self.newunread)
+            
+        }
+        
+    }
+    
+    
+    func openedInquiryCount(child: String) {
+        
+        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
+           
+            self.OpenedResentUser?.removeAll()
+            self.OpenedResentUser = users
+            
+            self.openedunread = 0
+            for i in 0..<(self.OpenedResentUser?.count ?? 0){
+                
+                if self.OpenedResentUser![i].readCount != 0 {
+                    self.openedunread = self.openedunread + 1
+                    
+                }
+                
+            }
+            
+            print("unread count ",self.openedunread)
+            
+            if self.openedunread == 0 {
+                self.openedCount.isHidden = true
+            } else {
+                self.openedCount.isHidden = false
+            }
+            
+            self.openedCount.text = String.getString(self.openedunread)
+            
+        }
+        
+    }
+    
     
     func receiveUsers(child: String) {
         

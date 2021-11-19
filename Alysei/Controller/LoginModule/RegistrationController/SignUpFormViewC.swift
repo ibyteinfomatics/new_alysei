@@ -14,6 +14,7 @@ class SignUpFormViewC: AlysieBaseViewC{
     
   @IBOutlet weak var tblViewSignUpForm: UITableView!
   @IBOutlet weak var lblMemberName: UILabel!
+    @IBOutlet weak var header: UIView!
   @IBOutlet weak var btnSubmit: UIButtonExtended!
   
   //MARK: - Properties -
@@ -27,7 +28,7 @@ class SignUpFormViewC: AlysieBaseViewC{
   override func viewDidLoad() {
     
     super.viewDidLoad()
-    
+    header.drawBottomShadow()
     if getRoleDataModel.first?.roleId == "9"{
       self.getCurrentLocation()
     }

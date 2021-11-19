@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -231,6 +231,17 @@
                                                                 <action selector="messageAction:" destination="l2c-aC-gf5" eventType="touchUpInside" id="3lY-wP-00K"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-OE-CfB">
+                                                            <rect key="frame" x="391" y="0.0" width="20" height="20"/>
+                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.63921568630000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="U8e-Qu-2Pp"/>
+                                                                <constraint firstAttribute="width" constant="20" id="fq0-4C-Kte"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover Marketplace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MY9-nd-oZX">
                                                             <rect key="frame" x="20" y="6.6666666666666661" width="181.66666666666666" height="21.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
@@ -246,7 +257,9 @@
                                                         <constraint firstItem="4et-GB-ebp" firstAttribute="leading" secondItem="LdH-SW-Dcp" secondAttribute="leading" constant="20" id="UxC-Od-HHq"/>
                                                         <constraint firstItem="6Yf-sx-Hj2" firstAttribute="centerY" secondItem="LdH-SW-Dcp" secondAttribute="centerY" id="WQH-ZR-tce"/>
                                                         <constraint firstItem="4et-GB-ebp" firstAttribute="centerY" secondItem="LdH-SW-Dcp" secondAttribute="centerY" id="cu0-2X-giV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="jHm-OE-CfB" secondAttribute="trailing" constant="3" id="p6d-Sh-xhx"/>
                                                         <constraint firstAttribute="height" constant="35" id="pha-pd-MNf"/>
+                                                        <constraint firstItem="jHm-OE-CfB" firstAttribute="top" secondItem="LdH-SW-Dcp" secondAttribute="top" id="vq6-Vu-9ZA"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2c-ow-qX5">
@@ -1020,7 +1033,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeTopFavTableVC" rowHeight="262" id="KWd-5Z-vRM" customClass="MarketplaceHomeTopFavTableVC" customModule="Alysei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1823" width="414" height="262"/>
+                                                <rect key="frame" x="0.0" y="1819.3333339691162" width="414" height="262"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KWd-5Z-vRM" id="SX0-ie-1jY">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
@@ -1191,7 +1204,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeAdTableVC" rowHeight="262" id="g9N-bi-QQR" customClass="MarketplaceHomeAdTableVC" customModule="Alysei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="2085" width="414" height="262"/>
+                                                <rect key="frame" x="0.0" y="2081.3333339691162" width="414" height="262"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9N-bi-QQR" id="lgb-tW-Zd2">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
@@ -1618,6 +1631,7 @@
                         <outlet property="lblDiscover" destination="MY9-nd-oZX" id="czd-G1-pIw"/>
                         <outlet property="marketplaceView" destination="xnv-aN-fdJ" id="LJX-nB-K1O"/>
                         <outlet property="newlyyAddedStoreCollectionView" destination="hNK-DU-Hrv" id="WOC-l2-kOh"/>
+                        <outlet property="openednewCount" destination="jHm-OE-CfB" id="gM2-JC-YbG"/>
                         <outlet property="pageContrl1Width" destination="cwQ-Db-o1r" id="RbH-0J-bp7"/>
                         <outlet property="pageContrl2Width" destination="Qn8-pT-pr1" id="TNp-fr-F5C"/>
                         <outlet property="pageContrl3Width" destination="IW7-Oy-0yK" id="QIg-Nb-Ysc"/>
@@ -1976,7 +1990,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketPlaceOptionTableViewCell" rowHeight="113" id="dU3-rs-baw" customClass="MarketPlaceOptionTableViewCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="113"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dU3-rs-baw" id="iuf-sW-aTP">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
@@ -2188,7 +2202,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductTableViewCell" rowHeight="144" id="D6O-OF-9Eb" customClass="ProductTableViewCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="144"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D6O-OF-9Eb" id="tIg-ek-m4Q">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
@@ -2571,7 +2585,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnalyticsTableViewCell" rowHeight="252" id="wFV-qS-XFu" customClass="AnalyticsTableViewCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="336" width="414" height="252"/>
+                                        <rect key="frame" x="0.0" y="332.33333396911621" width="414" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wFV-qS-XFu" id="dGh-sQ-00r">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="252"/>
@@ -3285,7 +3299,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectMemberShipTableCell" rowHeight="83" id="YhS-H8-Nhj" customClass="SelectMemberShipTableCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="83"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YhS-H8-Nhj" id="OuX-mP-gTL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
@@ -4825,7 +4839,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchProductTableVC" rowHeight="82" id="z7z-01-6RG" customClass="SearchProductTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="82"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z7z-01-6RG" id="Bba-0Q-eKY">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
@@ -5012,7 +5026,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductListTableVCell" rowHeight="192" id="lcp-Tj-Fwk" customClass="ProductListTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="192"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lcp-Tj-Fwk" id="SJg-JW-d0D">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
@@ -5252,14 +5266,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductDetailTableVC" rowHeight="468" id="F2l-DV-24U" customClass="ProductDetailTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="468"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="468"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2l-DV-24U" id="j9t-WV-nBk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-dR-075">
-                                                    <rect key="frame" x="146.33333333333334" y="306.33333333333331" width="121.33333333333334" height="27.333333333333314"/>
+                                                    <rect key="frame" x="147" y="307.33333333333331" width="120.33333333333331" height="26.333333333333314"/>
                                                     <color key="pageIndicatorTintColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="currentPageIndicatorTintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </pageControl>
@@ -5336,7 +5350,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Opm-jf-kut">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="291.33333333333331"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="292.33333333333331"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="O9C-51-RRm">
                                                         <size key="itemSize" width="417" height="299.5"/>
@@ -5346,7 +5360,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductImageColectionViewCell" id="Taa-ZA-qcn" customClass="ProductImageColectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-4" width="417" height="299.5"/>
+                                                            <rect key="frame" x="0.0" y="-3.6666666666666665" width="417" height="299.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W1M-6d-2zb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="417" height="299.5"/>
@@ -5420,7 +5434,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductDescriptionTableVC" rowHeight="132" id="4uY-os-0Kp" customClass="ProductDescriptionTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="496" width="414" height="132"/>
+                                        <rect key="frame" x="0.0" y="492.33333396911621" width="414" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4uY-os-0Kp" id="s1l-pt-Ykl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
@@ -5472,7 +5486,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductDescOptionTableVC" rowHeight="35" id="fy7-hM-V8N" customClass="ProductDescOptionTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="628" width="414" height="35"/>
+                                        <rect key="frame" x="0.0" y="624.33333396911621" width="414" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fy7-hM-V8N" id="QdJ-gh-u8k">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
@@ -5507,7 +5521,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductRatingTableVCell" rowHeight="406" id="t2C-CW-7JQ" customClass="ProductRatingTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="663" width="414" height="406"/>
+                                        <rect key="frame" x="0.0" y="659.33333396911621" width="414" height="406"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t2C-CW-7JQ" id="wST-pf-WQO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="406"/>
@@ -6002,7 +6016,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimilarProductTableVCell" rowHeight="295" id="ktV-mi-IsY" customClass="SimilarProductTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1069" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="1065.3333339691162" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ktV-mi-IsY" id="K8H-ZV-xQG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
@@ -6408,7 +6422,7 @@
                                 <color key="sectionIndexBackgroundColor" name="grey2"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterOptionTableVCell" rowHeight="70" id="Gul-ZB-cZC" customClass="FilterOptionTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="170" height="70"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="170" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gul-ZB-cZC" id="Dnk-UJ-h67">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="70"/>
@@ -6455,7 +6469,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterSubOptionsTableVCell" rowHeight="74" id="Ate-QN-RlF" customClass="FilterSubOptionsTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="244" height="74"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="244" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ate-QN-RlF" id="sXC-JM-L6w">
                                             <rect key="frame" x="0.0" y="0.0" width="244" height="74"/>
@@ -7089,7 +7103,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoreRatingReviewTableVCell" rowHeight="375" id="Jhd-Y3-58N" customClass="StoreRatingReviewTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1151" width="414" height="375"/>
+                                        <rect key="frame" x="0.0" y="1147.3333339691162" width="414" height="375"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jhd-Y3-58N" id="9oZ-oD-Kiz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
@@ -7545,7 +7559,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoreDescProductTableVCell" rowHeight="335" id="vLo-0h-TpA" customClass="StoreDescProductTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1526" width="414" height="335"/>
+                                        <rect key="frame" x="0.0" y="1522.3333339691162" width="414" height="335"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vLo-0h-TpA" id="Tzh-kn-VHr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="335"/>
@@ -7804,7 +7818,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewScreenTableViewCell" rowHeight="155" id="fXj-DS-Ncp" customClass="ReviewScreenTableViewCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="155"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fXj-DS-Ncp" id="fxh-zA-0nA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
@@ -8174,7 +8188,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketPlaceProductListTableVCell" rowHeight="192" id="SmC-hV-BcH" customClass="MarketPlaceProductListTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="192"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SmC-hV-BcH" id="mHm-03-6Xd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
@@ -8429,7 +8443,7 @@
                                 <color key="sectionIndexBackgroundColor" name="grey2"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterOptionTableVCell" rowHeight="70" id="1td-Qt-ul1" customClass="FilterOptionTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="170" height="70"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="170" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1td-Qt-ul1" id="qjw-Lk-pmD">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="70"/>
@@ -8476,7 +8490,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterSubOptionsTableVCell" rowHeight="74" id="DEi-UC-HSJ" customClass="FilterSubOptionsTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="244" height="74"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="244" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEi-UC-HSJ" id="f2a-Vu-Bge">
                                             <rect key="frame" x="0.0" y="0.0" width="244" height="74"/>
@@ -9208,14 +9222,27 @@
                                                     <constraint firstAttribute="height" constant="2" id="sJ3-Ve-lS0"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbN-Yw-bYW">
+                                                <rect key="frame" x="19" y="17" width="26" height="26"/>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.63921568630000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="5nI-Aw-KpB"/>
+                                                    <constraint firstAttribute="width" constant="26" id="hfb-X7-qFH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="t9n-A7-3k0" secondAttribute="bottom" constant="5" id="GyH-e7-9CH"/>
                                             <constraint firstItem="qFu-Hv-Bm7" firstAttribute="centerX" secondItem="acq-lg-8ns" secondAttribute="centerX" id="HMk-MH-0Ha"/>
                                             <constraint firstItem="t9n-A7-3k0" firstAttribute="leading" secondItem="acq-lg-8ns" secondAttribute="leading" id="LG6-XI-9wp"/>
+                                            <constraint firstItem="nbN-Yw-bYW" firstAttribute="centerY" secondItem="qFu-Hv-Bm7" secondAttribute="centerY" id="OBl-iS-VLm"/>
                                             <constraint firstItem="qFu-Hv-Bm7" firstAttribute="centerY" secondItem="acq-lg-8ns" secondAttribute="centerY" id="OJS-5J-f9b"/>
                                             <constraint firstAttribute="trailing" secondItem="t9n-A7-3k0" secondAttribute="trailing" id="a8N-pI-KDJ"/>
+                                            <constraint firstItem="qFu-Hv-Bm7" firstAttribute="leading" secondItem="nbN-Yw-bYW" secondAttribute="trailing" constant="5" id="ywJ-z8-h12"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAu-Bu-XrX">
@@ -9225,6 +9252,17 @@
                                                 <rect key="frame" x="36.666666666666664" y="19.666666666666671" width="64.666666666666686" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhP-ve-XJf">
+                                                <rect key="frame" x="8.6666666666666572" y="17" width="26" height="26"/>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.63921568630000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="EHM-mk-aO3"/>
+                                                    <constraint firstAttribute="width" constant="26" id="s84-JP-lmb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXk-je-x3U">
@@ -9239,9 +9277,11 @@
                                         <constraints>
                                             <constraint firstItem="7qQ-EQ-4pu" firstAttribute="centerY" secondItem="PAu-Bu-XrX" secondAttribute="centerY" id="0Lc-81-5tH"/>
                                             <constraint firstAttribute="bottom" secondItem="bXk-je-x3U" secondAttribute="bottom" constant="5" id="Kw3-qr-l6j"/>
+                                            <constraint firstItem="7qQ-EQ-4pu" firstAttribute="leading" secondItem="fhP-ve-XJf" secondAttribute="trailing" constant="2" id="Ymb-ML-TKc"/>
                                             <constraint firstAttribute="trailing" secondItem="bXk-je-x3U" secondAttribute="trailing" id="dNG-TJ-wiU"/>
                                             <constraint firstItem="bXk-je-x3U" firstAttribute="leading" secondItem="PAu-Bu-XrX" secondAttribute="leading" id="hi0-Oc-wQ8"/>
                                             <constraint firstItem="7qQ-EQ-4pu" firstAttribute="centerX" secondItem="PAu-Bu-XrX" secondAttribute="centerX" id="x8q-NH-DFB"/>
+                                            <constraint firstItem="fhP-ve-XJf" firstAttribute="centerY" secondItem="7qQ-EQ-4pu" secondAttribute="centerY" id="yxe-zy-2BA"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSP-Jo-3Rw">
@@ -9280,7 +9320,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationTableCell" rowHeight="80" id="O0m-vT-ltl" customClass="NotificationTableCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O0m-vT-ltl" id="rmt-7x-j4O">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -9402,6 +9442,8 @@
                         <outlet property="lblClosed" destination="1Sc-9o-P5d" id="rDa-8p-llN"/>
                         <outlet property="lblNew" destination="qFu-Hv-Bm7" id="8Fd-R6-d3e"/>
                         <outlet property="lblOpened" destination="7qQ-EQ-4pu" id="4nN-qr-LKN"/>
+                        <outlet property="newCount" destination="nbN-Yw-bYW" id="vOO-Dx-XGe"/>
+                        <outlet property="openedCount" destination="fhP-ve-XJf" id="ItJ-Mj-DT7"/>
                         <outlet property="tblViewNotification" destination="7Ac-9H-8PF" id="q2J-7P-w7x"/>
                         <outlet property="vwBottomClosed" destination="3JF-TT-op8" id="rn1-1t-GRJ"/>
                         <outlet property="vwBottomNew" destination="t9n-A7-3k0" id="VXr-ax-qSJ"/>

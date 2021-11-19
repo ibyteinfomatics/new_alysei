@@ -59,7 +59,7 @@ class FeaturedProductTableCell: UITableViewCell {
     
     self.productCategoriesDataModel = model
     self.lblTitle.text = model.title
-    self.lblAddProductHeading.text = AppConstants.Add + String.getString(model.title)
+    //self.lblAddProductHeading.text = AppConstants.Add + String.getString(model.title)
     self.collectionViewProducts.reloadData()
   }
 }

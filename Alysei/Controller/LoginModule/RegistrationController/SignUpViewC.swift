@@ -11,6 +11,7 @@ class SignUpViewC: AlysieBaseViewC {
     
     @IBOutlet weak var tblViewSignUp: UITableView!
     @IBOutlet weak var lblMemberName: UILabel!
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var btnProceedNext: UIButtonExtended!
    
     //MARK:  - Properties -
@@ -23,6 +24,7 @@ class SignUpViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        header.drawBottomShadow()
         self.lblMemberName.text = String.getString(self.getRoleDataModel.first?.name)
         self.btnProceedNext.setTitle((kSharedInstance.signUpViewModel.arrSignUpStepTwo.count != 0) ? AppConstants.ProceedNext : AppConstants.Submit, for: .normal)
     }

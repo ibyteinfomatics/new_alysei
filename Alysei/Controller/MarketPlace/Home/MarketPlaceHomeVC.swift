@@ -77,11 +77,18 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBOutlet weak var vwwWalkContainer2BgImg: UIImageView!
     @IBOutlet weak var walkSubView3Height: NSLayoutConstraint!
     @IBOutlet weak var walknextBtn: UIButton!
+    @IBOutlet weak var openednewCount: UILabel!
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
 
   
     @IBOutlet weak var topSellingCollHeight: NSLayoutConstraint!
+    
+    var newunread: Int = 0
+    var openedunread: Int = 0
+    
+    var NewResentUser:[InquiryRecentUser]?
+    var OpenedResentUser:[InquiryRecentUser]?
     
     var isCreateStore = false
     var productCount: Int?
@@ -127,6 +134,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         let tapRecipe = UITapGestureRecognizer(target: self, action: #selector(openRecipes))
         self.recipesView.addGestureRecognizer(tapRecipe)
         
+        openednewCount.layer.cornerRadius = 10
+        openednewCount.layer.masksToBounds = true
+        openednewCount.textColor = UIColor.white
       // let  panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         //view.addGestureRecognizer(panGestureRecognizer)
     }
@@ -168,6 +178,23 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.walkView1.isHidden = true
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = true
+        
+        openednewCount.isHidden = true
+        newInquiryCount(child: "New")
+        openedInquiryCount(child: "Opened")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
+            if self.newunread == 0 &&  self.openedunread == 0 {
+                self.openednewCount.isHidden = true
+            } else {
+                self.openednewCount.isHidden = false
+            }
+            
+            self.openednewCount.text = String.getString(self.openedunread+self.newunread)
+            
+        })
+        
+        
     }
     func setUI(){
         if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
@@ -182,7 +209,54 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    func newInquiryCount(child: String) {
+        
+        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
+           
+            self.NewResentUser?.removeAll()
+            self.NewResentUser = users
+            
+            self.newunread = 0
+            for i in 0..<(self.NewResentUser?.count ?? 0){
+                
+                if self.NewResentUser![i].readCount != 0 {
+                    self.newunread = self.newunread + 1
+                    
+                }
+                
+            }
+            
+            print("unread count ",self.newunread)
+            
+            
+        }
+        
+    }
     
+    
+    func openedInquiryCount(child: String) {
+        
+        kChatharedInstance.inquiry_receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId), child: child) { (users) in
+           
+            self.OpenedResentUser?.removeAll()
+            self.OpenedResentUser = users
+            
+            self.openedunread = 0
+            for i in 0..<(self.OpenedResentUser?.count ?? 0){
+                
+                if self.OpenedResentUser![i].readCount != 0 {
+                    self.openedunread = self.openedunread + 1
+                    
+                }
+                
+            }
+            
+            print("unread count ",self.openedunread)
+     
+            
+        }
+        
+    }
     
     //    override func viewWillAppear(_ animated: Bool) {
     //        let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceHomeVC") as! MarketPlaceHomeVC

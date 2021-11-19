@@ -149,9 +149,10 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             name = "\(kSharedUserDefaults.loggedInUserModal.firstName ?? "") \(kSharedUserDefaults.loggedInUserModal.lastName ?? "")"
         }
         userName.text = name
-        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
+        
+        if let profilePhoto =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "") {
           //  if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
-            self.userImage.image = profilePhoto
+            self.userImage.setImage(withString: imageDomain+"/"+profilePhoto, placeholder: UIImage(named: "image_placeholder"))
             self.userImage.layer.cornerRadius = (self.userImage.frame.width / 2.0)
             self.userImage.layer.borderWidth = 5.0
             self.userImage.layer.masksToBounds = true

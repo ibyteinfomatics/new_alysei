@@ -71,6 +71,8 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
         self.imgViewProfile.setImage(withString: imgPUrl)
 
         self.imgViewProfile.roundCorners(.allCorners, radius: (self.imgViewProfile.frame.width / 2.0))
+        
+        fetchProductsFromProfile()
     }
 
     func fetchProductsFromProfile() {
@@ -88,12 +90,13 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 
         }
 
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         scrollToTop()
-        fetchProductsFromProfile()
+        
        self.tableViewEditProfile.reloadData()
     }
     func scrollToTop(){

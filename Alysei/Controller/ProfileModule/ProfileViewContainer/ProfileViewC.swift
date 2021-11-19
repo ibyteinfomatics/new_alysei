@@ -167,7 +167,7 @@ class ProfileViewC: AlysieBaseViewC{
             }
         }
         let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - 70 - topMargin
+        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - 20 - topMargin
         
         let someHeight = (self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0
         self.tblViewPosts.tableHeaderView?.setHeight(someHeight)

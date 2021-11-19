@@ -62,7 +62,7 @@ class Chat_hepler {
     
     var Resentuser:[RecentUser]?
     var Inquiry_Resentuser:[InquiryRecentUser]?
-    var unread: Int = 0
+    var unread: Int = 1
     
     
     //MARK:- Function For Send message one to one Chat
@@ -552,33 +552,39 @@ class Chat_hepler {
     
     func inquirysend_message(child:String,messageDic:InquiryReceivedMessageClass,senderId :String , receiverId:String, storeId:String) {
         
+       // unread = 0
         inquiryreceiveUsers(otherId: receiverId, child: child)
         
-        let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
-        if String.getString(messageNode) == Parameters.emptyString {
-            print(Parameters.alertmessage)
-            return
-        }
-        
-        let sendReference = inquirymessageReference.child("PrivateMessages").child(messageNode).childByAutoId()
-        messageDic.uid = sendReference.key
-        let message = messageDic.createDictonary(objects: messageDic)
-        print("send message to node \(messageNode) with key \(sendReference.key ?? "") with message \(message)")
-        sendReference.setValue(kSharedInstance.getDictionary(message))
-        
-        //recevier semd messgae
-        let recemessageNode = "\(String.getString(receiverId))_\(String.getString(senderId))_\(storeId)"//self.createNode(senderId: receiverId, receiverId: senderId)
-        if String.getString(recemessageNode) == Parameters.emptyString {
-            print(Parameters.alertmessage)
-            return
-        }
-        let receiveReference = inquirymessageReference.child("PrivateMessages").child(recemessageNode).child(sendReference.key!)
-        //messageDic.uid = sendReference.key
-        //let recmessage = messageDic.createDictonary(objects: messageDic)
-        print("send message to node \(recemessageNode) with key \(receiveReference.key ?? "") with message \(message)")
-        receiveReference.setValue(kSharedInstance.getDictionary(message))
-        
-        self.inquiry_resentUser(messageDetails: messageDic, child: child)
+        //DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
+            let messageNode = "\(String.getString(senderId))_\(String.getString(receiverId))_\(storeId)"//self.createNode(senderId: senderId, receiverId: receiverId)
+            if String.getString(messageNode) == Parameters.emptyString {
+                print(Parameters.alertmessage)
+                return
+            }
+            
+            let sendReference = self.inquirymessageReference.child("PrivateMessages").child(messageNode).childByAutoId()
+            messageDic.uid = sendReference.key
+            let message = messageDic.createDictonary(objects: messageDic)
+            print("send message to node \(messageNode) with key \(sendReference.key ?? "") with message \(message)")
+            sendReference.setValue(kSharedInstance.getDictionary(message))
+            
+            //recevier semd messgae
+            let recemessageNode = "\(String.getString(receiverId))_\(String.getString(senderId))_\(storeId)"//self.createNode(senderId: receiverId, receiverId: senderId)
+            if String.getString(recemessageNode) == Parameters.emptyString {
+                print(Parameters.alertmessage)
+                return
+            }
+            let receiveReference = self.inquirymessageReference.child("PrivateMessages").child(recemessageNode).child(sendReference.key!)
+            //messageDic.uid = sendReference.key
+            //let recmessage = messageDic.createDictonary(objects: messageDic)
+            print("send message to node \(recemessageNode) with key \(receiveReference.key ?? "") with message \(message)")
+            receiveReference.setValue(kSharedInstance.getDictionary(message))
+            
+            
+            self.inquiry_resentUser(messageDetails: messageDic, child: child)
+       // })
+            
+            
         
     }
     
@@ -640,6 +646,7 @@ class Chat_hepler {
                                 Parameters.readCount : 0,
                                 Parameters.userTyping : false] as [String : Any]
         
+      
         let senderDetails =   [Parameters.uid : String.getString(messageDetails.uid),
                                Parameters.otherId : String.getString(senderId),
                                Parameters.lastmessage : String.getString(messageDetails.message),
@@ -657,14 +664,17 @@ class Chat_hepler {
                                Parameters.readCount : unread, // increase count
                                Parameters.userTyping : false] as [String : Any]
         
+        
         if child == "New" {
             inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
             inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+           // unread = 0
         } else if child == "Opened"{
             deleteUser(child: "New", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId+"_\(String.getString(messageDetails.productId))")
             
             inquiryresentReference.child(child).child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
             inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+            //unread = 0
         } else if child == "Closed" {
             
             deleteUser(child: "Closed", user_id: "user_"+(String.getString(kSharedUserDefaults.loggedInUserModal.userId)), receiverId: "user_"+receiverId+"_\(String.getString(messageDetails.productId))")
@@ -673,6 +683,7 @@ class Chat_hepler {
             
             inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
             inquiryresentReference.child("Opened").child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+           // unread = 0
             
         } else if child == "Blocked" {
             
@@ -682,6 +693,7 @@ class Chat_hepler {
             
             inquiryresentReference.child("Closed").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
             inquiryresentReference.child("Closed").child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
+           // unread = 0
             
         }
         
@@ -726,7 +738,7 @@ class Chat_hepler {
             self.Resentuser?.removeAll()
             self.Resentuser = users
             
-            self.unread = 0
+            //self.unread = 0
             for i in 0..<(self.Resentuser?.count ?? 0){
                 
                 if self.Resentuser![i].otherId == String.getString(kSharedUserDefaults.loggedInUserModal.userId) {
@@ -749,7 +761,7 @@ class Chat_hepler {
             self.Inquiry_Resentuser?.removeAll()
             self.Inquiry_Resentuser = users
             
-            self.unread = 0
+            //self.unread = 0
             for i in 0..<(self.Inquiry_Resentuser?.count ?? 0){
                 
                 if self.Inquiry_Resentuser![i].otherId == String.getString(kSharedUserDefaults.loggedInUserModal.userId) {
