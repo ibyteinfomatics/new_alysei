@@ -715,7 +715,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             return CGSize(width: collectionView.frame.width / 2 , height: 220)
         }
         else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == topSellingCollectionView){
-            return CGSize(width: collectionView.frame.width / 2 , height: 250)
+            return CGSize(width: collectionView.frame.width / 2 , height: 280)
         }
 //        else if (collectionView == maximumSearchedCollectionView){
 //            return CGSize(width: collectionView.frame.width / 2 , height: 220)
