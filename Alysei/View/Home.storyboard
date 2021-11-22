@@ -15581,25 +15581,25 @@ any other devices.</string>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your age on your profile ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xm-vb-M7H">
-                                            <rect key="frame" x="10" y="111" width="394" height="21"/>
+                                            <rect key="frame" x="10" y="101" width="394" height="0.0"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="UuY-zq-omQ"/>
+                                                <constraint firstAttribute="height" id="UuY-zq-omQ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                             <color key="textColor" name="grey2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nas-Cj-bIK">
-                                            <rect key="frame" x="10" y="142" width="394" height="60"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nas-Cj-bIK">
+                                            <rect key="frame" x="10" y="101" width="394" height="0.0"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuZ-hu-DDW">
-                                                    <rect key="frame" x="15" y="20.666666666666657" width="338.66666666666669" height="18.666666666666671"/>
+                                                    <rect key="frame" x="15" y="-9.6666666666666714" width="338.66666666666669" height="19.666666666666668"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                     <color key="textColor" name="blackColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jht-DL-ctL">
-                                                    <rect key="frame" x="368.66666666666669" y="19" width="13" height="22"/>
+                                                    <rect key="frame" x="368.66666666666669" y="-11" width="13" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="dSx-kT-uhU"/>
                                                         <constraint firstAttribute="height" constant="22" id="iT8-y0-WVd"/>
@@ -15607,7 +15607,7 @@ any other devices.</string>
                                                     <state key="normal" image="dropdown_selector"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fJ-zk-oxf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
                                                     <connections>
                                                         <action selector="btnEventDropDown:" destination="R8e-ZS-n7c" eventType="touchUpInside" id="LTb-6L-NBU"/>
                                                         <action selector="btnageDropDown:" destination="RF2-BU-vmT" eventType="touchUpInside" id="rj4-yQ-ZVL"/>
@@ -15616,7 +15616,7 @@ any other devices.</string>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="2Ek-Up-S7W"/>
+                                                <constraint firstAttribute="height" id="2Ek-Up-S7W"/>
                                                 <constraint firstItem="RuZ-hu-DDW" firstAttribute="centerY" secondItem="nas-Cj-bIK" secondAttribute="centerY" id="2zQ-iw-j5W"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jht-DL-ctL" secondAttribute="trailing" constant="12.5" id="4OV-f7-zfj"/>
                                                 <constraint firstItem="3fJ-zk-oxf" firstAttribute="top" secondItem="nas-Cj-bIK" secondAttribute="top" id="Bl3-0h-CuB"/>
@@ -15629,7 +15629,7 @@ any other devices.</string>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can view your profile ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z4-6l-Jxi">
-                                            <rect key="frame" x="10" y="212" width="394" height="21"/>
+                                            <rect key="frame" x="10" y="111" width="394" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="4g8-EK-Zmi"/>
                                             </constraints>
@@ -15638,10 +15638,10 @@ any other devices.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egi-CL-xK0">
-                                            <rect key="frame" x="10" y="243" width="394" height="60"/>
+                                            <rect key="frame" x="10" y="142" width="394" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Ye-eFF">
-                                                    <rect key="frame" x="15" y="20.666666666666686" width="338.66666666666669" height="18.666666666666671"/>
+                                                    <rect key="frame" x="15" y="20.666666666666657" width="338.66666666666669" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                     <color key="textColor" name="blackColor"/>
                                                     <nil key="highlightedColor"/>
@@ -15677,7 +15677,7 @@ any other devices.</string>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can connect with you ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct8-LE-FM8">
-                                            <rect key="frame" x="10" y="313" width="394" height="21"/>
+                                            <rect key="frame" x="10" y="212" width="394" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ZbT-EW-pPu"/>
                                             </constraints>
@@ -15686,7 +15686,7 @@ any other devices.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3cx-XF-4Eg">
-                                            <rect key="frame" x="0.0" y="349" width="414" height="202"/>
+                                            <rect key="frame" x="0.0" y="248" width="414" height="202"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="202" id="wtz-AC-A9H"/>
@@ -15734,13 +15734,13 @@ any other devices.</string>
                                             </connections>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Prefrences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2m-wt-Gn9">
-                                            <rect key="frame" x="10" y="561" width="394" height="19.666666666666629"/>
+                                            <rect key="frame" x="10" y="460" width="394" height="19.666666666666686"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                             <color key="textColor" name="grey2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRj-pp-8oa">
-                                            <rect key="frame" x="10" y="593.66666666666663" width="20" height="20"/>
+                                            <rect key="frame" x="10" y="492.66666666666669" width="20" height="20.000000000000057"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="Aj3-u0-q3p"/>
                                                 <constraint firstAttribute="height" constant="20" id="mIS-5P-EhN"/>
@@ -15751,13 +15751,13 @@ any other devices.</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Private Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-lp-l6j">
-                                            <rect key="frame" x="40" y="595.66666666666663" width="354" height="17"/>
+                                            <rect key="frame" x="40" y="494.66666666666669" width="354" height="17"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWf-UI-2Jb">
-                                            <rect key="frame" x="10" y="624.66666666666663" width="20" height="20"/>
+                                            <rect key="frame" x="10" y="523.66666666666663" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="XBu-da-oXY"/>
                                                 <constraint firstAttribute="height" constant="20" id="kMu-XJ-DhJ"/>
@@ -15768,13 +15768,13 @@ any other devices.</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email when someone requests to follow me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-Pa-MGP">
-                                            <rect key="frame" x="40" y="626.66666666666663" width="354" height="16.666666666666629"/>
+                                            <rect key="frame" x="40" y="525.66666666666663" width="354" height="16.666666666666629"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JND-Vc-E4q">
-                                            <rect key="frame" x="10" y="656.66666666666663" width="20" height="20"/>
+                                            <rect key="frame" x="10" y="555.66666666666663" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="PU4-FA-5fi"/>
                                                 <constraint firstAttribute="width" constant="20" id="ujf-jJ-lLR"/>
@@ -15785,7 +15785,7 @@ any other devices.</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive weekly updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcK-bT-OP1">
-                                            <rect key="frame" x="40" y="658.33333333333337" width="354" height="17"/>
+                                            <rect key="frame" x="40" y="557.33333333333337" width="354" height="17"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -15793,7 +15793,7 @@ any other devices.</string>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="nas-Cj-bIK" firstAttribute="top" secondItem="7xm-vb-M7H" secondAttribute="bottom" constant="10" id="2nt-E2-2hk"/>
+                                        <constraint firstItem="nas-Cj-bIK" firstAttribute="top" secondItem="7xm-vb-M7H" secondAttribute="bottom" id="2nt-E2-2hk"/>
                                         <constraint firstItem="JND-Vc-E4q" firstAttribute="leading" secondItem="naH-wR-r3T" secondAttribute="leading" constant="10" id="650-gt-0Hd"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CcK-bT-OP1" secondAttribute="bottom" constant="10" id="6nW-W1-ySG"/>
                                         <constraint firstAttribute="trailing" secondItem="mkL-lp-l6j" secondAttribute="trailing" constant="20" id="6uK-iR-jIw"/>
@@ -15801,7 +15801,7 @@ any other devices.</string>
                                         <constraint firstItem="m2m-wt-Gn9" firstAttribute="top" secondItem="3cx-XF-4Eg" secondAttribute="bottom" constant="10" id="7g1-Wx-2b6"/>
                                         <constraint firstAttribute="trailing" secondItem="ct8-LE-FM8" secondAttribute="trailing" constant="10" id="8gG-77-PQh"/>
                                         <constraint firstItem="m2m-wt-Gn9" firstAttribute="leading" secondItem="naH-wR-r3T" secondAttribute="leading" constant="10" id="8ly-bs-87N"/>
-                                        <constraint firstItem="7xm-vb-M7H" firstAttribute="top" secondItem="RBK-Qa-HI6" secondAttribute="bottom" constant="10" id="A0T-YP-9hL"/>
+                                        <constraint firstItem="7xm-vb-M7H" firstAttribute="top" secondItem="RBK-Qa-HI6" secondAttribute="bottom" id="A0T-YP-9hL"/>
                                         <constraint firstItem="mkL-lp-l6j" firstAttribute="top" secondItem="m2m-wt-Gn9" secondAttribute="bottom" constant="15" id="A2d-qf-1gn"/>
                                         <constraint firstItem="JND-Vc-E4q" firstAttribute="top" secondItem="WWf-UI-2Jb" secondAttribute="bottom" constant="12" id="Aro-kT-OV4"/>
                                         <constraint firstItem="mkL-lp-l6j" firstAttribute="leading" secondItem="cRj-pp-8oa" secondAttribute="trailing" constant="10" id="BXM-Zt-Gry"/>

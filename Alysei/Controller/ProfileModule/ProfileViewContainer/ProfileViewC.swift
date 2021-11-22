@@ -1677,8 +1677,26 @@ extension ProfileViewC {
             request.httpBody = model.urlEncoded()
             
             WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-                print("Success---------------------------Successssss")
-                self.fetchVisiterProfileDetails(self.userID)
+                
+                
+                if statusCode == 200 {
+                    print("Success---------------------------Successssss")
+                    self.fetchVisiterProfileDetails(self.userID)
+                } else if statusCode == 409 {
+                    
+                    do {
+                                //create json object from data
+                        if let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any] {
+                                    print(json)
+                                }
+                            } catch let error {
+                                print(error.localizedDescription)
+                            }
+                    
+                    
+                    self.showAlert(withMessage: "Error")
+                }
+                
             }
         } catch {
             print(error.localizedDescription)

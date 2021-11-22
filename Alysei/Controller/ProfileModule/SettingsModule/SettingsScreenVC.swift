@@ -99,17 +99,15 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           //_ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
-          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 2:
           _ = pushViewController(withName: UpdatePasswordViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 3:
-          _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
+          _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 3:
-          _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
