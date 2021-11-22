@@ -13,9 +13,11 @@ class AddFeatureTableCell: UITableViewCell {
   
   @IBOutlet weak var txtFieldAddFeature: UITextField!
   @IBOutlet weak var lblAddFeature: UILabel!
-    @IBOutlet weak var txtViewAddFeature: UITextView!
+  @IBOutlet weak var txtViewAddFeature: UITextView!
     var callback: (() -> Void)? = nil
     var userLevel: UserLevel?
+    
+    var urlFeatureProduct: String?
   //MARK: - Properties -
   
   var productFieldsDataModel: ProductFieldsDataModel!
@@ -26,6 +28,7 @@ class AddFeatureTableCell: UITableViewCell {
     self.txtFieldAddFeature.makeCornerRadius(radius: 5.0)
     self.txtFieldAddFeature.addTarget(self, action: #selector(AddFeatureTableCell.textFieldEditingChanged(_:)),for: UIControl.Event.editingChanged)
     self.txtViewAddFeature.makeCornerRadius(radius: 5.0)
+    
   }
     
     func setTextViewUI(){
@@ -39,7 +42,7 @@ class AddFeatureTableCell: UITableViewCell {
     }
   
   //MARK: - Public Methods -
-  
+   
   @objc func textFieldEditingChanged(_ sender: UITextFieldExtended){
 
     self.productFieldsDataModel.selectedValue = String.getString(self.txtFieldAddFeature.text)
@@ -50,8 +53,11 @@ class AddFeatureTableCell: UITableViewCell {
     self.productFieldsDataModel = model
     lblAddFeature.text = model.productTitle
     if userLevel == .other{
-       // txtFieldAddFeature.isE = false
-       // txtViewAddFeature.isEdita
+        txtFieldAddFeature.isUserInteractionEnabled = false
+        txtViewAddFeature.isUserInteractionEnabled = false
+    }else{
+        txtFieldAddFeature.isUserInteractionEnabled = true
+        txtViewAddFeature.isUserInteractionEnabled = true
     }
     if model.productTitle == AppConstants.kDescription{
         txtFieldAddFeature.isHidden = true
@@ -60,28 +66,30 @@ class AddFeatureTableCell: UITableViewCell {
         txtFieldAddFeature.isHidden = false
         txtViewAddFeature.isHidden = true
     }
-    
+    if (model.productTitle == AppConstants.URL) || (model.productTitle == AppConstants.URL){
+        urlFeatureProduct = model.selectedValue
+    }
     switch model.type {
     case AppConstants.Calander:
-      txtFieldAddFeature.isUserInteractionEnabled = false
+    //  txtFieldAddFeature.isUserInteractionEnabled = false
       txtFieldAddFeature.text = String.getString(model.selectedValue)
     case AppConstants.Select:
-      txtFieldAddFeature.isUserInteractionEnabled = false
+     // txtFieldAddFeature.isUserInteractionEnabled = false
       txtFieldAddFeature.text = String.getString(model.selectedOptionName)
     default:
       txtFieldAddFeature.text = String.getString(model.selectedValue)
-      txtFieldAddFeature.isUserInteractionEnabled = true
+     // txtFieldAddFeature.isUserInteractionEnabled = true
         
     }
     if model.productTitle == AppConstants.kDescription{
         if model.selectedValue != "" {
             txtViewAddFeature.textColor = .black
-            //txtViewAddFeature.isUserInteractionEnabled = false
+            txtViewAddFeature.text = String.getString(model.selectedValue)
         }else{
             txtViewAddFeature.textColor = .lightGray
-            //txtViewAddFeature.isUserInteractionEnabled = true
+            txtViewAddFeature.text = AppConstants.kDescription
         }
-        txtViewAddFeature.text = String.getString(model.selectedValue)
+        
         
     }
   }
