@@ -279,6 +279,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
    }
     
+    func moveInqueryChat(receiverid:String,username:String){
+        
+        let storyboard = UIStoryboard(name: StoryBoardConstants.kChat, bundle: nil)
+        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "InquiryConversation") as? InquiryConversation else { return }
+        nextvc.userId = receiverid
+        nextvc.name = username
+        nextvc.fromvc = .Notification
+        let navigationController = UINavigationController(rootViewController: nextvc)
+        navigationController.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+       
+        
+    }
+    
     func moveChat(receiverid:String,username:String){
         
         let storyboard = UIStoryboard(name: StoryBoardConstants.kChat, bundle: nil)

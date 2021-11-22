@@ -1650,7 +1650,7 @@ extension ProfileViewC {
     }
     
     func cancelConnectionRequest() {
-        let urlString = "\(APIUrl.Connection.cancelConnectionRequest)\(self.userID ?? -1)"
+        let urlString = "\(APIUrl.Connection.cancelConnectionRequest)\(self.userID ?? -1)&accept_or_reject=2"
         guard var request = WebServices.shared.buildURLRequest(urlString, method: .POST) else {
             return
         }

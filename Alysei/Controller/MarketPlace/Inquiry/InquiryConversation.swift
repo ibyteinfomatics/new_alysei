@@ -54,7 +54,7 @@ class InquiryConversation: AlysieBaseViewC {
     
     var receiverid  =  String()
     var receivername = String()
-    //var fromvc: FromVC?
+    var fromvc: FromVC?
     var selectedChat = [String]()
     /*var receiverselectedChat = [String]()
     var senderselectedImageChat = [String]()
@@ -267,11 +267,11 @@ class InquiryConversation: AlysieBaseViewC {
     
     @IBAction func btnBackTapped(_ sender: UIButton) {
         
-        /*if fromvc == .Notification {
+        if fromvc == .Notification {
             kSharedAppDelegate.pushToTabBarViewC()
-        } else {*/
+        } else {
             self.navigationController?.popViewController(animated: true)
-        //}
+        }
         
         
     }
@@ -683,7 +683,8 @@ extension InquiryConversation {
         
        let parameters: [String:Any] = [
             "from_id": fromid,
-            "to_id": toid]
+        "to_id": toid,
+        "type": "enquery"]
         
         /*let parameters: [String:Any] = [
             "from_id": toid,

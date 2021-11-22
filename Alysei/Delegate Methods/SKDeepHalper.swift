@@ -49,6 +49,9 @@ class SKDeepHalper {
             
         case 9:
             kSharedAppDelegate.moveToMemberShip()
+        case 10:
+            kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(json?["redirect_to_id"]), username: String.getString(json?["sender_name"]))
+       
         default:
             kSharedAppDelegate.pushToTabBarViewC()
     

@@ -574,7 +574,8 @@ extension ConversationViewController {
         
        let parameters: [String:Any] = [
             "from_id": fromid,
-            "to_id": toid]
+            "to_id": toid,
+            "type": "chat"]
         
         /*let parameters: [String:Any] = [
             "from_id": toid,
