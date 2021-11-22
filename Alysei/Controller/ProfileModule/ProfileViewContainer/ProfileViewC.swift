@@ -64,6 +64,8 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var lblPercentage: UILabel!
     @IBOutlet weak var followerstext: UILabel!
     
+   // @IBOutlet weak var featureCollectionView: UICollectionView!
+    
     //MARK: - Properties -
     var fromRecipe: String? = ""
     var percentage: String?
@@ -86,6 +88,10 @@ class ProfileViewC: AlysieBaseViewC{
     var currentIndex: Int = 0
     var tabposition: Int = 1
     var profileCompletionModel: [ProfileCompletionModel]?
+    
+    //MARK: GetFeature Listing Data
+    var featureListingId: String?
+    var currentProductTitle: String?
     
     //MARK: - Properties -
     
@@ -735,6 +741,10 @@ class ProfileViewC: AlysieBaseViewC{
         let product = productCategoryDataModel?.arrAllProducts[indexPath.row]
         let featuredProductCollectionCell = collectionViewAddProduct.dequeueReusableCell(withReuseIdentifier: FeaturedProductCollectionCell.identifier(), for: indexPath) as! FeaturedProductCollectionCell
         featuredProductCollectionCell.configure(withAllProductsDataModel: product,pushedFrom: 1)
+  //      featuredProductCollectionCell.delegate = self
+//        if self.signUpViewModel != nil {
+//            featuredProductCollectionCell.configureData(withProductCategoriesDataModel: self.signUpViewModel.arrProductCategories[indexPath.section])
+//        }
         return featuredProductCollectionCell
     }
     
@@ -1290,7 +1300,13 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             
             
         }
-        }else{
+        }
+        if collectionView == collectionViewAddProduct {
+            let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
+            let product = productCategoryDataModel?.arrAllProducts[indexPath.row]
+            self.postRequestToGetFeatureListing(product?.featuredListingId ?? "", navigationTitle: "Featured Product")
+        }
+        else{
             print("Invalid data")
         }
     }
@@ -1540,36 +1556,56 @@ extension ProfileViewC{
             }
         }
     }
-    
+
     override func didUserGetData(from result: Any, type: Int) {
         
-        if editProfileViewCon == nil {
-            //            self.initiateEditProfileViewController()
+        switch  type {
+        case 2:
+            var arrSelectedFields: [ProductFieldsDataModel] = []
+            let dicResult = kSharedInstance.getDictionary(result)
+            let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
+            if let fields = dicData[APIConstants.kFields] as? ArrayOfDictionary{
+                arrSelectedFields = fields.map({ProductFieldsDataModel(withDictionary: $0)})
+            }
+           
+            //self.postRequestToUpdateUserProfile()
+            let controller = self.pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+            controller?.userLevel = self.userLevel
+            controller?.arrSelectedFields = arrSelectedFields
+            controller?.featureListingId = self.featureListingId
+            controller?.currentNavigationTitle = self.currentProductTitle
+           // controller?.delegate = self
+        default:
+            
+            if editProfileViewCon == nil {
+                //            self.initiateEditProfileViewController()
+            }
+            
+            let dicResult = kSharedInstance.getDictionary(result)
+            let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
+            self.signUpViewModel = SignUpViewModel(dicData, roleId: nil)
+            editProfileViewCon?.signUpViewModel = self.signUpViewModel
+            self.collectionViewAddProduct.reloadData()
+            editProfileViewCon?.userType = self.userType ?? .voyagers
+            editProfileViewCon?.tableViewEditProfile?.reloadData()
+            print("Some")
+            
         }
         
-        let dicResult = kSharedInstance.getDictionary(result)
-        let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
-        self.signUpViewModel = SignUpViewModel(dicData, roleId: nil)
-        editProfileViewCon?.signUpViewModel = self.signUpViewModel
-        self.collectionViewAddProduct.reloadData()
-        editProfileViewCon?.userType = self.userType ?? .voyagers
-        editProfileViewCon?.tableViewEditProfile?.reloadData()
-        print("Some")
     }
     
 }
-
 extension ProfileViewC: ContactViewEditProtocol {
     func editContactDetail() {
         self.performSegue(withIdentifier: "segueProfileTabToContactDetail", sender: self)
     }
 }
 
-extension ProfileViewC: AddFeaturedProductCallBack {
-    func productAdded() {
-    }
-    
-}
+//extension ProfileViewC: AddFeaturedProductCallBack {
+//    func productAdded() {
+//    }
+//
+//}
 
 //MARK:- connection request module
 extension ProfileViewC {
@@ -1674,7 +1710,24 @@ extension ProfileViewC {
             self.fetchVisiterProfileDetails(self.userID)
         }
     }
-    
+    //MARK:- Get feature Listing
+        
+//        func callGetFeatureListing(_ featureListingId: String){
+//            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetFeatureListing +  featureListingId, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dicResponse, error, errorType, statusCode in
+//                var arrSelectedFields: [ProductFieldsDataModel] = []
+//                let dicData = dicResponse as? [String:Any]
+//                if let fields = dicData?[APIConstants.kFields] as? ArrayOfDictionary{
+//                    arrSelectedFields = fields.map({ProductFieldsDataModel(withDictionary: $0)})
+//                }
+//
+//                //self.postRequestToUpdateUserProfile()
+//                let controller = self.pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+//                controller?.arrSelectedFields = arrSelectedFields
+//                controller?.featureListingId = self.featureListingId
+//                controller?.currentNavigationTitle = self.currentProductTitle
+//                controller?.delegate = self
+//            }
+//        }
     
     func respondButtonTapped() {
         
@@ -1727,3 +1780,45 @@ extension ProfileViewC {
         showAlert(withMessage: "Message functionality will be implemented here")
     }
 }
+extension ProfileViewC {
+    private func postRequestToGetFeatureListing(_ featureListingId: String,navigationTitle: String) -> Void{
+
+        self.featureListingId = featureListingId
+        self.currentProductTitle = navigationTitle
+
+        disableWindowInteraction()
+        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetFeatureListing + featureListingId, method: .GET, controller: self, type: 2, param: [:], btnTapped: UIButton())
+    }
+}
+extension ProfileViewC: AddFeaturedProductCallBack {
+    func productAdded() {
+        print("Push------")
+    }
+    
+    
+    func tappedAddProduct(withProductCategoriesDataModel model: ProductCategoriesDataModel, featureListingId: String?) {
+        if featureListingId == nil{
+            //self.postRequestToUpdateUserProfile()
+            let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+            controller?.productCategoriesDataModel = model
+            controller?.delegate = self
+        }
+        else{
+            self.postRequestToGetFeatureListing(String.getString(featureListingId), navigationTitle: String.getString(model.title))
+        }
+    }
+    }
+    
+//    func tappedAddProduct(withProductCategoriesDataModel model: ProductCategoriesDataModel, featureListingId: String?) {
+//
+//        if featureListingId == nil{
+//            //self.postRequestToUpdateUserProfile()
+//            let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+//            controller?.productCategoriesDataModel = model
+//            controller?.delegate = self
+//        }
+//        else{
+//            self.postRequestToGetFeatureListing(String.getString(featureListingId), navigationTitle: String.getString(model.title))
+//        }
+//    }
+

@@ -15,6 +15,7 @@ class AddFeatureTableCell: UITableViewCell {
   @IBOutlet weak var lblAddFeature: UILabel!
     @IBOutlet weak var txtViewAddFeature: UITextView!
     var callback: (() -> Void)? = nil
+    var userLevel: UserLevel?
   //MARK: - Properties -
   
   var productFieldsDataModel: ProductFieldsDataModel!
@@ -48,6 +49,10 @@ class AddFeatureTableCell: UITableViewCell {
       
     self.productFieldsDataModel = model
     lblAddFeature.text = model.productTitle
+    if userLevel == .other{
+       // txtFieldAddFeature.isE = false
+       // txtViewAddFeature.isEdita
+    }
     if model.productTitle == AppConstants.kDescription{
         txtFieldAddFeature.isHidden = true
         txtViewAddFeature.isHidden = false
@@ -66,6 +71,18 @@ class AddFeatureTableCell: UITableViewCell {
     default:
       txtFieldAddFeature.text = String.getString(model.selectedValue)
       txtFieldAddFeature.isUserInteractionEnabled = true
+        
+    }
+    if model.productTitle == AppConstants.kDescription{
+        if model.selectedValue != "" {
+            txtViewAddFeature.textColor = .black
+            //txtViewAddFeature.isUserInteractionEnabled = false
+        }else{
+            txtViewAddFeature.textColor = .lightGray
+            //txtViewAddFeature.isUserInteractionEnabled = true
+        }
+        txtViewAddFeature.text = String.getString(model.selectedValue)
+        
     }
   }
 
