@@ -17,6 +17,10 @@ class ProducerDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var fdano: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     
+    @IBOutlet weak var fdalabelconstraint: NSLayoutConstraint!
+    @IBOutlet weak var fdanumberconstraint: NSLayoutConstraint!
+    @IBOutlet weak var fdalineconstraint: NSLayoutConstraint!
+    
     var btnAcceptCallback:((Int) -> Void)? = nil
     var btnDeclineCallback:((Int) -> Void)? = nil
     

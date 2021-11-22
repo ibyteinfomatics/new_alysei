@@ -31,6 +31,7 @@ class InquiryChatVC: AlysieBaseViewC {
     
     var NewResentUser:[InquiryRecentUser]?
     var OpenedResentUser:[InquiryRecentUser]?
+    var userType: UserRoles!
     
     var ResentUser:[InquiryRecentUser]?
     var resentReference  = Database.database().reference().child("Inquiry").child(Parameters.ResentMessage)
@@ -52,6 +53,8 @@ class InquiryChatVC: AlysieBaseViewC {
         tblViewNotification.delegate = self
         type = "New"
         
+        
+        
        
     }
     
@@ -65,6 +68,17 @@ class InquiryChatVC: AlysieBaseViewC {
         newCount.layer.cornerRadius = 13
         newCount.layer.masksToBounds = true
         newCount.textColor = UIColor.white
+        
+        if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
+            if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
+                self.userType = selfUserType
+            }
+        }
+        
+        if self.userType != .producer {
+            self.vwNew.isHidden = true
+            openOpenedList()
+        }
         
         if type == "New" {
             

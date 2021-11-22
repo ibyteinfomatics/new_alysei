@@ -32,11 +32,11 @@ enum BasicConnectFlow {
             private enum CodingKeys: String, CodingKey {
                 case userID = "user_id"
                 case reason = "reason_to_connect"
-                case selectProductId = "user_field_option_id"
+                case selectProductId = "product_ids"
             }
 
             func urlEncoded() -> Data? {
-                let body = "user_id=\(userID)&reason_to_connect=\(reason ?? "")&user_field_option_id=\(selectProductId ?? "")"
+                let body = "user_id=\(userID)&reason_to_connect=\(reason ?? "")&product_ids=\(selectProductId ?? "")"
                 return body.data(using: .utf8)
             }
 //            func data() -> Data? {

@@ -116,7 +116,11 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             cell.vatno.text = dashboardModel?.data?.userData?.vatNo
             cell.fdano.text = dashboardModel?.data?.userData?.fdaNo
             
-            
+            if dashboardModel?.data?.userData?.fdaNo == "" {
+                cell.fdalineconstraint.constant = 0
+                cell.fdalabelconstraint.constant = 0
+                cell.fdanumberconstraint.constant = 0
+            }
             
             cell.userimg.layer.masksToBounds = false
             cell.userimg.clipsToBounds = true
