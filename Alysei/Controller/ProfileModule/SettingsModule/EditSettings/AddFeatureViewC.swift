@@ -23,6 +23,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var lblNavigationHeading: UILabel!
     var addDesc = false
     var addUrl = false
+    var userLevel: UserLevel?
   //MARK: - Properties -
 
   var productCategoriesDataModel: ProductCategoriesDataModel!
@@ -162,7 +163,9 @@ class AddFeatureViewC: AlysieBaseViewC {
         self.tblViewAddFeature.reloadRows(at: [rIndexPath], with: .none)
     }
     let model = (self.arrSelectedFields.count == 0) ? self.productCategoriesDataModel.arrProductFields[indexPath.row] : self.arrSelectedFields[indexPath.row]
+    addFeatureTableCell.userLevel = self.userLevel
     addFeatureTableCell.configure(withProductFieldsDataModel: model)
+    
     return addFeatureTableCell
   }
   
