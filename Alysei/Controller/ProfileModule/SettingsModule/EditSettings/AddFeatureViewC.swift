@@ -157,6 +157,10 @@ class AddFeatureViewC: AlysieBaseViewC {
   private func getAddFeatureCell(_ indexPath: IndexPath) -> UITableViewCell{
       
     let addFeatureTableCell = tblViewAddFeature.dequeueReusableCell(withIdentifier: AddFeatureTableCell.identifier() , for: indexPath) as! AddFeatureTableCell
+    addFeatureTableCell.callback = {
+        let rIndexPath = IndexPath(row: 2, section: 0)
+        self.tblViewAddFeature.reloadRows(at: [rIndexPath], with: .none)
+    }
     let model = (self.arrSelectedFields.count == 0) ? self.productCategoriesDataModel.arrProductFields[indexPath.row] : self.arrSelectedFields[indexPath.row]
     addFeatureTableCell.configure(withProductFieldsDataModel: model)
     return addFeatureTableCell
@@ -321,14 +325,22 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
 //      return (model.type != AppConstants.File) ? 100.0 : 0.0
 //    }
    // else{
+    if model.productTitle == AppConstants.kDescription {
+        return UITableView.automaticDimension
+    }else{
     return (model.type != AppConstants.File) ? 100.0 : 0.0
+    }
     //}
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     
     let model = (self.arrSelectedFields.count == 0) ? self.productCategoriesDataModel.arrProductFields[indexPath.row] : self.arrSelectedFields[indexPath.row]
+    if model.productTitle == AppConstants.kDescription {
+        return UITableView.automaticDimension
+    }else{
     return (model.type != AppConstants.File) ? 140.0 : 0.0
+    }
   }
 }
 

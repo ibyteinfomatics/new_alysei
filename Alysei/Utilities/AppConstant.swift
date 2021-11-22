@@ -484,7 +484,7 @@ struct AppConstants {
 
     static let RestaurantName = "Restaurant Name"
     static let EnterRestaurantName = "Enter Restaurant Name"
-
+   static let kDescription = "Description"
 
 
     static let EnterURL = "Enter URL"

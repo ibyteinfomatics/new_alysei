@@ -13,16 +13,29 @@ class AddFeatureTableCell: UITableViewCell {
   
   @IBOutlet weak var txtFieldAddFeature: UITextField!
   @IBOutlet weak var lblAddFeature: UILabel!
-  
+    @IBOutlet weak var txtViewAddFeature: UITextView!
+    var callback: (() -> Void)? = nil
   //MARK: - Properties -
   
   var productFieldsDataModel: ProductFieldsDataModel!
     
   override func awakeFromNib() {
     super.awakeFromNib()
+    setTextViewUI()
     self.txtFieldAddFeature.makeCornerRadius(radius: 5.0)
     self.txtFieldAddFeature.addTarget(self, action: #selector(AddFeatureTableCell.textFieldEditingChanged(_:)),for: UIControl.Event.editingChanged)
+    self.txtViewAddFeature.makeCornerRadius(radius: 5.0)
   }
+    
+    func setTextViewUI(){
+        txtViewAddFeature.layer.borderColor = UIColor.darkGray.cgColor
+        txtViewAddFeature.layer.borderWidth = 1
+        txtViewAddFeature.textColor = UIColor.lightGray
+        txtViewAddFeature.text = AppConstants.kDescription
+        txtViewAddFeature.delegate = self
+        txtViewAddFeature.textContainer.heightTracksTextView = true
+        txtViewAddFeature.isScrollEnabled = false
+    }
   
   //MARK: - Public Methods -
   
@@ -35,6 +48,13 @@ class AddFeatureTableCell: UITableViewCell {
       
     self.productFieldsDataModel = model
     lblAddFeature.text = model.productTitle
+    if model.productTitle == AppConstants.kDescription{
+        txtFieldAddFeature.isHidden = true
+        txtViewAddFeature.isHidden = false
+    }else{
+        txtFieldAddFeature.isHidden = false
+        txtViewAddFeature.isHidden = true
+    }
     
     switch model.type {
     case AppConstants.Calander:
@@ -49,4 +69,30 @@ class AddFeatureTableCell: UITableViewCell {
     }
   }
 
+}
+extension AddFeatureTableCell: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = AppConstants.kDescription
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let spaceCount = textView.text.filter{$0 == " "}.count
+        if spaceCount <= 199{
+            callback?()
+            return true
+        }else{
+            return false
+        }
+        
+    }
 }
