@@ -308,6 +308,14 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let model = (self.arrSelectedFields.count == 0) ? self.productCategoriesDataModel.arrProductFields[indexPath.row] : self.arrSelectedFields[indexPath.row]
+    if userLevel == .other && ( model.productTitle == AppConstants.kURL || model.productTitle == AppConstants.kUrl) {
+        let website = (model.selectedValue ?? "")
+            print("Website----------------------------",website)
+            guard let url = URL(string: website) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }else{
+    
+    
     
     switch model.type {
     case AppConstants.Calander:
@@ -316,6 +324,7 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
       self.openPicker(model: model, keyValue: nil)
     default:
       break
+    }
     }
   }
     
