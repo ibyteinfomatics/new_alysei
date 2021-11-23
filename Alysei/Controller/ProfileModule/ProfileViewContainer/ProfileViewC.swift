@@ -9,6 +9,7 @@ import UIKit
 import SVProgressHUD
 
 var check = "";
+
 class ProfileViewC: AlysieBaseViewC{
     
     //MARK: - IBOutlet -
@@ -71,7 +72,8 @@ class ProfileViewC: AlysieBaseViewC{
     var percentage: String?
     var picker = UIImagePickerController()
     var contactDetail = [ContactDetail.view.tableCellModel]()
-    var contactDetilViewModel: ContactDetail.Contact.Response!
+  //  var contactDetilViewModel: ContactDetail.Contact.Response!
+    var contactDetilViewModel: UserProfile.contactTab!
     var signUpViewModel: SignUpViewModel!
     var userLevel: UserLevel = .own
     var userID: Int!
@@ -210,8 +212,6 @@ class ProfileViewC: AlysieBaseViewC{
                 self.featureUIview.constant = 140
             }
             
-            
-            
         case .other:
             
             self.addbtn.constant = 0
@@ -234,6 +234,11 @@ class ProfileViewC: AlysieBaseViewC{
         self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
         self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
         
+        //MARK: SelectTab
+//        self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: currentSelectedIndexPath, section: 0))
+//        self.tabsCollectionView.selectItem(at: IndexPath(item: currentSelectedIndexPath, section: 0), animated: true, scrollPosition: .top)
+       
+        
         
     }
     
@@ -250,8 +255,8 @@ class ProfileViewC: AlysieBaseViewC{
     
     @objc func swipeLeftRightGesturePerformed(_ gesture: UISwipeGestureRecognizer) {
         
-        print("\(gesture.direction)")
-        print("self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ",self.tabsCollectionView.indexPathsForSelectedItems?.last?.row )
+      //  print("\(gesture.direction)")
+       // print("self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ",self.tabsCollectionView.indexPathsForSelectedItems?.last?.row )
         let totalRows = ProfileTabRows().noOfRows(self.userType)
        
         if gesture.direction == .right {
@@ -261,6 +266,7 @@ class ProfileViewC: AlysieBaseViewC{
             }
             if ((self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) > 0)  {
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
+                
                 self.collectionView(self.tabsCollectionView, didDeselectItemAt: IndexPath(item: row, section: 0))
                 self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: row - 1, section: 0))
                 self.tabsCollectionView.selectItem(at: IndexPath(item: row - 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
@@ -277,7 +283,8 @@ class ProfileViewC: AlysieBaseViewC{
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
                 self.collectionView(self.tabsCollectionView, didDeselectItemAt: IndexPath(item: row, section: 0))
                 self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: row + 1, section: 0))
-                self.tabsCollectionView.selectItem(at: IndexPath(item: row + 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+              //  self.tabsCollectionView.selectItem(at: IndexPath(item: row + 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                tapContact(UIButton())
             }
         }
         
@@ -287,6 +294,8 @@ class ProfileViewC: AlysieBaseViewC{
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+       
         setNeedsStatusBarAppearanceUpdate()
         if fromRecipe == ""{
         self.tabBarController?.tabBar.isHidden = false
@@ -304,7 +313,8 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 blankdataView.isHidden = true
                 self.postRequestToGetFields()
-                self.fetchContactDetail()
+               // self.fetchContactDetail()
+                self.fetchProfileDetails()
                 self.currentIndex = 0
                 self.postRequestToGetProgress()
                 if check == "" {
@@ -323,7 +333,8 @@ class ProfileViewC: AlysieBaseViewC{
         } else {
             blankdataView.isHidden = true
             self.postRequestToGetFields()
-            self.fetchContactDetail()
+           // self.fetchContactDetail()
+            self.fetchProfileDetails()
             self.currentIndex = 0
             self.postRequestToGetProgress()
             if check == "" {
@@ -344,13 +355,12 @@ class ProfileViewC: AlysieBaseViewC{
             self.tabsCollectionView.reloadData()
             
         } completion: { bool in
-            
             if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
                 cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
-        }
-        
+            }
+
         
         // Scroll update show
         let line = self.aboutLabel.calculateMaxLines()
@@ -550,6 +560,7 @@ class ProfileViewC: AlysieBaseViewC{
                 }
             } else {
                 self.tabBarController?.selectedIndex = 4
+                self.segueToCompleteConnectionFlow()
             }
         }
     }
@@ -668,12 +679,25 @@ class ProfileViewC: AlysieBaseViewC{
             } else if self.userType == .voyagers {
                 
                 if self.visitorUserType == .voyagers {
-                    let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Pending" : "Connect"
-                    self.connectButton.setTitle("\(title)", for: .normal)
-                } else {
-                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
-                    self.connectButton.setTitle("\(title)", for: .normal)
-                }
+                                    //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Connected" : "Pending"
+                                    //self.connectButton.setTitle("\(title)", for: .normal)
+                                    var title = "Connect"
+                                    switch connectionFlag {
+                                    case 0:
+                                        title = "Connect"
+                                    case 1:
+                                        title = "Connected"
+                                    case 2:
+                                        title = "Pending"
+                                    default:
+                                        title = "Connect"
+                                    }
+                                    self.connectButton.setTitle("\(title)", for: .normal)
+                                    
+                                } else {
+                                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Follow" : "Unfollow"
+                                    self.connectButton.setTitle("\(title)", for: .normal)
+                                }
             }
         }  else {
         }
@@ -856,12 +880,13 @@ class ProfileViewC: AlysieBaseViewC{
                     self.tabsCollectionView.reloadData()
                 } completion: { bool in
                     
+                    
+                    //MARK: SelectTab
                     if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                         cell.isSelected = true
                     }
                     self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: 1, section: 0))
                     self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
-                    
                 }
                 self.editProfileViewCon?.userType = self.userType
                 
@@ -897,6 +922,30 @@ class ProfileViewC: AlysieBaseViewC{
                 kSharedUserDefaults.synchronize()
                 self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
                 
+                //MARK: For self Contact Detail
+                self.contactDetilViewModel = responseModel.data?.contactTab
+                self.contactDetail.removeAll()
+                self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_email",
+                                                                            title: "Email", value: responseModel.data?.contactTab?.email ?? ""))
+                if let phone = responseModel.data?.contactTab?.phone {
+                    let countryCode = ((responseModel.data?.contactTab?.country_code?.count ?? 0) > 0) ? "+\(responseModel.data?.contactTab?.country_code ?? "") " : ""
+                    
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_call",
+                                                                                title: "Phone", value: "\(countryCode)\(phone)"))
+                }
+                if let address = responseModel.data?.contactTab?.address {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_pin",
+                                                                                title: "Address", value: address))
+                }
+                if let website = responseModel.data?.contactTab?.website {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_world-wide-web",
+                                                                                title: "Website", value: website))
+                }
+                if let facebook = responseModel.data?.contactTab?.fbLink {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_facebook",
+                                                                                title: "Facebook", value: facebook))
+                }
+                
                 
             } catch {
                 print(error.localizedDescription)
@@ -928,9 +977,17 @@ class ProfileViewC: AlysieBaseViewC{
                 print(responseModel)
                 self.userProfileModel = responseModel
                 
-                self.fetchAboutDetail()
-                
                 self.postcount.text = String.getString(responseModel.data?.postCount)
+                                self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
+                                
+                                
+                                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                                    self.followercount.text = String.getString(responseModel.data?.followingcount)
+                                } else {
+                                    self.followercount.text = String.getString(responseModel.data?.followerCount)
+                                }
+                
+                //self.postcount.text = String.getString(responseModel.data?.postCount)
                 //self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
                 if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
@@ -985,6 +1042,29 @@ class ProfileViewC: AlysieBaseViewC{
                 self.respondeButton.isHidden = true
                 self.connectButton.isHidden = true
                 
+                //MARk:- For Visitor Contact
+                self.contactDetilViewModel = responseModel.data?.contactTab
+                self.contactDetail.removeAll()
+                self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_email",
+                                                                            title: "Email", value: responseModel.data?.contactTab?.email ?? ""))
+                if let phone = responseModel.data?.contactTab?.phone {
+                    let countryCode = ((responseModel.data?.contactTab?.country_code?.count ?? 0) > 0) ? "+\(responseModel.data?.contactTab?.country_code ?? "") " : ""
+                    
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_call",
+                                                                                title: "Phone", value: "\(countryCode)\(phone)"))
+                }
+                if let address = responseModel.data?.contactTab?.address {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_pin",
+                                                                                title: "Address", value: address))
+                }
+                if let website = responseModel.data?.contactTab?.website {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_world-wide-web",
+                                                                                title: "Website", value: website))
+                }
+                if let facebook = responseModel.data?.contactTab?.fbLink {
+                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_facebook",
+                                                                                title: "Facebook", value: facebook))
+                }
                 
                 switch self.userLevel {
                 case .own:
@@ -1014,117 +1094,10 @@ class ProfileViewC: AlysieBaseViewC{
             if (error != nil) { print(error.debugDescription) }
         }
     }
-    
-    func fetchContactDetail() {
-        var id = ""
-        if userID != 0 || userID != nil {
-            id = "/\(String.getString(userID))"
-        }
-        
-        SVProgressHUD.show()
-        guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.fetchContactDetails)"+id, method: .GET) else { return }
-        WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
-            SVProgressHUD.dismiss()
-            guard let data = data else { return }
-            do {
-                let responseModel = try JSONDecoder().decode(ContactDetail.Contact.Response.self, from: data)
-                print(responseModel)
-                self.contactDetilViewModel = responseModel
-                self.contactDetail.removeAll()
-                self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_email",
-                                                                            title: "Email", value: responseModel.data.email))
-                if let phone = responseModel.data.phone {
-                    let countryCode = ((responseModel.data.country_code?.count ?? 0) > 0) ? "+\(responseModel.data.country_code ?? "") " : ""
-                    
-                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_call",
-                                                                                title: "Phone", value: "\(countryCode)\(phone)"))
-                }
-                if let address = responseModel.data.address {
-                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_pin",
-                                                                                title: "Address", value: address))
-                }
-                if let website = responseModel.data.website {
-                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_world-wide-web",
-                                                                                title: "Website", value: website))
-                }
-                if let facebook = responseModel.data.fb_link {
-                    self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_facebook",
-                                                                                title: "Facebook", value: facebook))
-                }
-                print(self.contactDetail.count)
-            } catch {
-                print(error.localizedDescription)
-            }
-            if (error != nil) { print(error.debugDescription) }
-        }
+    func fetchContactData(_ data: [String:Any]){
+       
     }
-    
-    
-    private func convertDataToAboutModel(_ data: Data) {
-        self.editProfileViewCon?.userType = self.userType
-        
-        do {
-            switch self.userType {
-            case .producer, .distributer1, .distributer2, .distributer3:
-                let modelType = AboutView.Response<AboutView.producerDataModel>.self
-                let responseModel = try JSONDecoder().decode(modelType, from: data)
-                let intermediatorModel = AboutView.intermediatorModel(responseModel, userRole: self.userType)
-                print(intermediatorModel)
-                self.aboutViewModel = AboutView.viewModel(userRole: self.userType,
-                                                          detail: intermediatorModel.detail,
-                                                          staticDetail: intermediatorModel.staticDetail,
-                                                          subDetail: intermediatorModel.subDetail,
-                                                          staticSubdetail: intermediatorModel.staticSubdetail,
-                                                          rows: intermediatorModel.rows,
-                                                          listTitle: intermediatorModel.listTitle)
-            case .voiceExperts:
-                let modelType = AboutView.Response<AboutView.voiceExpertDataModel>.self
-                let responseModel = try JSONDecoder().decode(modelType, from: data)
-                let intermediatorModel = AboutView.intermediatorModel(responseModel, userRole: self.userType)
-                print(intermediatorModel)
-                self.aboutViewModel = AboutView.viewModel(userRole: self.userType,
-                                                          detail: intermediatorModel.detail,
-                                                          staticDetail: intermediatorModel.staticDetail,
-                                                          subDetail: intermediatorModel.subDetail,
-                                                          staticSubdetail: intermediatorModel.staticSubdetail,
-                                                          rows: intermediatorModel.rows,
-                                                          listTitle: intermediatorModel.listTitle,
-                                                          secondList: intermediatorModel.secondList,
-                                                          secondListTitle: intermediatorModel.secondListTitle)
-            case .travelAgencies:
-                let modelType = AboutView.Response<AboutView.travelAgencyDataModel>.self
-                let responseModel = try JSONDecoder().decode(modelType, from: data)
-                let intermediatorModel = AboutView.intermediatorModel(responseModel, userRole: self.userType)
-                print(intermediatorModel)
-                self.aboutViewModel = AboutView.viewModel(userRole: self.userType,
-                                                          detail: intermediatorModel.detail,
-                                                          staticDetail: intermediatorModel.staticDetail,
-                                                          subDetail: intermediatorModel.subDetail,
-                                                          staticSubdetail: intermediatorModel.staticSubdetail,
-                                                          rows: intermediatorModel.rows,
-                                                          listTitle: intermediatorModel.listTitle)
-            case .restaurant:
-                let modelType = AboutView.Response<AboutView.restaurantDataModel>.self
-                let responseModel = try JSONDecoder().decode(modelType, from: data)
-                let intermediatorModel = AboutView.intermediatorModel(responseModel, userRole: self.userType)
-                print(intermediatorModel)
-                self.aboutViewModel = AboutView.viewModel(userRole: self.userType,
-                                                          detail: intermediatorModel.detail,
-                                                          staticDetail: intermediatorModel.staticDetail,
-                                                          subDetail: intermediatorModel.subDetail,
-                                                          staticSubdetail: intermediatorModel.staticSubdetail,
-                                                          rows: intermediatorModel.rows)
-            default:
-                print("some")
-            }
-            
-            
-            
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-    }
+
     //MARK:  - Private Methods -
     
     private func getProfileCompletionTableCell(_ indexPath: IndexPath) -> UITableViewCell{
@@ -1139,21 +1112,7 @@ class ProfileViewC: AlysieBaseViewC{
         }
         return cell
     }
-    
-    func fetchAboutDetail() {
-        SVProgressHUD.show()
-        guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.fetchAboutDetails)", method: .GET) else { return }
-        WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
-            SVProgressHUD.dismiss()
-            guard let data = data else { return }
-            self.convertDataToAboutModel(data)
-            if (error != nil) {
-                print(error.debugDescription)
-            }
-        }
-    }
-    
-    
+
     private func postRequestToGetFields() -> Void{
         
         disableWindowInteraction()
@@ -1263,6 +1222,9 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         
         let totalRows = ProfileTabRows().noOfRows(self.userType)
         
+//        if currentSelectedIndexPath != indexPath.row {
+//            currentSelectedIndexPath = indexPath.row
+//        }
         if totalRows > indexPath.row{
         if collectionView == self.tabsCollectionView {
             let totalRows = ProfileTabRows().noOfRows(self.userType)
@@ -1295,9 +1257,20 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
                 cell.imageView.tintColor = UIColor(named: "blueberryColor")
+
                 self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                
+
             }
             
+//            let sIndexPath = IndexPath(item: currentSelectedIndexPath, section: 0)
+//            if let cell = self.tabsCollectionView.cellForItem(at: sIndexPath) as? TabCollectionViewCell {
+//                cell.isUnderlineBorderVisible(true)
+//                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+//
+//                self.tabsCollectionView.selectItem(at: sIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+//
+//            }
             
         }
         }
@@ -1528,7 +1501,9 @@ extension ProfileViewC{
         if segue.identifier == "segueProfileTabToContactDetail" {
             if let viewCon = segue.destination as? ContactDetailViewController {
                 viewCon.userType = self.userType
-                viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
+                
+                viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink, country_code: self.contactDetilViewModel.country_code)
+             //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
             }
         }
         
@@ -1728,25 +1703,7 @@ extension ProfileViewC {
             self.fetchVisiterProfileDetails(self.userID)
         }
     }
-    //MARK:- Get feature Listing
-        
-//        func callGetFeatureListing(_ featureListingId: String){
-//            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetFeatureListing +  featureListingId, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dicResponse, error, errorType, statusCode in
-//                var arrSelectedFields: [ProductFieldsDataModel] = []
-//                let dicData = dicResponse as? [String:Any]
-//                if let fields = dicData?[APIConstants.kFields] as? ArrayOfDictionary{
-//                    arrSelectedFields = fields.map({ProductFieldsDataModel(withDictionary: $0)})
-//                }
-//
-//                //self.postRequestToUpdateUserProfile()
-//                let controller = self.pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
-//                controller?.arrSelectedFields = arrSelectedFields
-//                controller?.featureListingId = self.featureListingId
-//                controller?.currentNavigationTitle = self.currentProductTitle
-//                controller?.delegate = self
-//            }
-//        }
-    
+
     func respondButtonTapped() {
         
         let alert:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -1826,17 +1783,5 @@ extension ProfileViewC: AddFeaturedProductCallBack {
         }
     }
     }
-    
-//    func tappedAddProduct(withProductCategoriesDataModel model: ProductCategoriesDataModel, featureListingId: String?) {
-//
-//        if featureListingId == nil{
-//            //self.postRequestToUpdateUserProfile()
-//            let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
-//            controller?.productCategoriesDataModel = model
-//            controller?.delegate = self
-//        }
-//        else{
-//            self.postRequestToGetFeatureListing(String.getString(featureListingId), navigationTitle: String.getString(model.title))
-//        }
-//    }
+
 

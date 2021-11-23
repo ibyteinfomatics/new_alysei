@@ -22,7 +22,8 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var interactor: ContactDetailBusinessLogic?
     var router: (NSObjectProtocol & ContactDetailRoutingLogic & ContactDetailDataPassing)?
 
-    var viewModel: ContactDetail.Contact.ViewModel!
+   // var viewModel: ContactDetail.Contact.ViewModel!
+    var viewModel:UserProfile.contactTab!
     var locationManager: CLLocationManager!
     var userType: UserRoles = .voyagers
     var flagView: FlagView!
@@ -94,12 +95,12 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
 
         if viewModel != nil {
-            self.emailTextField.text = "\(viewModel.email)"
+            self.emailTextField.text = "\(viewModel.email ?? "")"
             self.phoneTextField.text = "\(viewModel.phone ?? "")"
             self.addressTextField.text = "\(viewModel.address ?? "")"
-            self.websiteTextField.text = "\(viewModel.websiteURL ?? "")"
-            self.facebookTextField.text = "\(viewModel.facebookURL ?? "")"
-            self.countryCode = viewModel.countryCode ?? self.countryCode
+            self.websiteTextField.text = "\(viewModel.website ?? "")"
+            self.facebookTextField.text = "\(viewModel.fbLink ?? "")"
+            self.countryCode = viewModel.country_code ?? self.countryCode
         }
         
         self.phoneTextField.keyboardType = .numberPad

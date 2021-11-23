@@ -146,9 +146,10 @@ extension UserPhotosGridViewController {
 //                    self.photos.append(contentsOf: photosURLList)
 //                    self.photos.append(contentsOf: photosURLList)
 //                    self.photos.append(contentsOf: photosURLList)
-                    self.setUI()
+                    
                     self.updatePhotosList()
                 }
+                self.setUI()
             } catch {
                 print(error.localizedDescription)
             }
