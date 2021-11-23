@@ -17,6 +17,7 @@ class FilteredRecipeViewController: UIViewController {
     @IBOutlet weak var viewHeader: UIView!
     
     @IBOutlet weak var viewFilter: UIView!
+    @IBOutlet weak var BlankView: UIView!
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
@@ -100,7 +101,7 @@ class FilteredRecipeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        BlankView.isHidden = true
         let cellNib = UINib(nibName: "MyRecipeCollectionViewCell", bundle: nil)
         self.filteredCollectionView.register(cellNib, forCellWithReuseIdentifier: "MyRecipeCollectionViewCell")
         self.searchRecipeTextField.delegate = self
@@ -367,6 +368,7 @@ extension FilteredRecipeViewController{
                     self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
                     searching = true
                     self.viewFilter.isHidden = false
+                    self.BlankView.isHidden = true
                     self.filteredCollectionView.reloadData()
                     
                 }
@@ -374,8 +376,8 @@ extension FilteredRecipeViewController{
                 self.arrSearchRecipeDataModel?.removeAll()
                 self.filteredCollectionView.reloadData()
                 self.viewFilter.isHidden = true
-                self.showAlert(withMessage: "No Recipe found")
-                
+//                self.showAlert(withMessage: "No Recipe found")
+                self.BlankView.isHidden = false
             default:
                 break
             }

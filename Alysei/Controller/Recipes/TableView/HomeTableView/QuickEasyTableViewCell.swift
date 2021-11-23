@@ -21,11 +21,11 @@ class QuickEasyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionVwTrending.delegate = self
         self.collectionVwTrending.dataSource = self
-        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)
+//        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)
         // Register the xib for collection view cell
         let cellNib = UINib(nibName: "TrendingCollectionViewCell", bundle: nil)
         self.collectionVwTrending.register(cellNib, forCellWithReuseIdentifier: "TrendingCollectionViewCell")
-        setGradientBackground()
+//        setGradientBackground()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

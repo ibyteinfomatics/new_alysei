@@ -274,11 +274,11 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             return UITableView.automaticDimension
         case 1:
-            return 60
+            return 95
         case 2:
             return 40
         default:
-            return 60
+            return 95
         }
     }
 }

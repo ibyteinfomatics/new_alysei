@@ -444,7 +444,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             case 0:
                 
                 cell1.quickSearchLbl.text = "Quick Search By Ingridients"
-                cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell1.delegate = self
                 cell1.post = true
                 cell1.tapViewAll = {[self] in
@@ -458,7 +458,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             case 1:
                 
                 cell.quickSearchLbl.text = "Quick Search By Meal"
-                cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell.delegate = self
                 cell.tapViewAll = { [self] in
                     
@@ -471,14 +471,14 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 
             case 2:
                 
-                cell2.quickSearchByRegionLabel.text = "Quick Search By Region"
-                cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell2.quickSearchByRegionLabel.text = "Search By Italian Region"
+                cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell2.delegate = self
                 return cell2
                 
             case 3:
                 cell3.quickSearchTrendingLabel.text = "Trending Now"
-                cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell3.delegate = self
                 cell3.tapViewAllTrending = { [self] in
                     
@@ -489,7 +489,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return cell3
             case 4:
                 cellQuick.quickSearchTrendingLabel.text = "Quick Easy"
-                cellQuick.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+                cellQuick.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cellQuick.delegate = self
                 cellQuick.tapViewAllTrending = { [self] in
                     
