@@ -848,6 +848,11 @@ extension MarketPlaceHomeVC{
 
 class MarketplaceHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
+    
+    override func awakeFromNib() {
+        image.layer.cornerRadius = 15
+        image.layer.masksToBounds = true
+    }
 }
 class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
@@ -856,6 +861,8 @@ class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
    
     override func awakeFromNib() {
         super.awakeFromNib()
+        image.layer.cornerRadius = 15
+        image.layer.masksToBounds = true
     }
    
     
@@ -872,6 +879,8 @@ class MarketPlaceHomeRegionCViewCell: UICollectionViewCell{
         vwRegion.addShadow()
         vwRegion.layer.borderWidth = 0.5
         vwRegion.layer.borderColor = UIColor.black.cgColor
+        imgRegion.layer.cornerRadius = 15
+        imgRegion.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {
@@ -900,6 +909,8 @@ class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
         let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
+        imgProduct.layer.cornerRadius = 15
+        imgProduct.layer.masksToBounds = true
         
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
@@ -997,7 +1008,8 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
         let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
-        
+        imgProduct.layer.cornerRadius = 15
+        imgProduct.layer.masksToBounds = true
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
         lblTotalReview.text = (data.total_reviews ?? "0") + " reviews"
@@ -1078,6 +1090,11 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
 
 class AdCollectionVC: UICollectionViewCell{
     @IBOutlet weak var imgBanner: UIImageView!
+    
+    override func awakeFromNib() {
+        imgBanner.layer.cornerRadius = 15
+        imgBanner.layer.masksToBounds = true
+    }
 }
 class KitchenCollectionVC: UICollectionViewCell{
     

@@ -11,7 +11,7 @@ class SearchProductVC: UIViewController {
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var txtSearch: UITextField!
-    
+   
     
     var arrRecentSearch: [ProductSearchListModel]?
     var isSearchEnable = false

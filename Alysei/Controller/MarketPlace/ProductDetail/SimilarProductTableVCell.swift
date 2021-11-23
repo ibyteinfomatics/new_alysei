@@ -47,14 +47,9 @@ extension SimilarProductTableVCell: UICollectionViewDelegate, UICollectionViewDa
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectonView.frame.width / 2, height: 270)
+        return CGSize(width: self.collectonView.frame.width / 2, height: 280)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
+  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showProductDetailCallBack?(data?.related_products?[indexPath.row].marketplaceProductId ?? 0)
     }
@@ -75,6 +70,8 @@ class SimilarProductCollectionVCell: UICollectionViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        imgProduct.layer.cornerRadius = 15
+        imgProduct.layer.masksToBounds = true
     }
     
     func configCell(_ data: ProductSearchListModel){

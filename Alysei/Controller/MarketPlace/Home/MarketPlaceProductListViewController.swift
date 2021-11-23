@@ -16,6 +16,7 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var searchtextField: UITextField!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var blankScreen: UIView!
     var listType:Int?
     var keywordSearch: String?
     var filterTitle: String?
@@ -61,6 +62,7 @@ class MarketPlaceProductListViewController: UIViewController {
     //var homearrList: []
     override func viewDidLoad() {
         super.viewDidLoad()
+        blankScreen.isHidden = true
         if pushedFromVC == .viewAllEntities{
             btnSearch.isHidden = true
             btnFilter.isHidden = true
@@ -346,12 +348,19 @@ extension MarketPlaceProductListViewController{
             for i in 0..<(self.arrList?.count ?? 0){
                 self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
             }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
             default:
             if (self.arrListAppData.count == 0) {
-                self.showAlert(withMessage: "No product found") {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                self.blankScreen.isHidden = false
+//                self.showAlert(withMessage: "No product found") {
+//                    self.navigationController?.popViewController(animated: true)
+//                }
             }else{
+                self.blankScreen.isHidden = true
                 print("No More Data")
             }
         }
@@ -375,12 +384,19 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
             default:
                 if (self.arrListAppData.count == 0) {
-                 self.showAlert(withMessage: "No product found") {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                    self.blankScreen.isHidden = false
+//                 self.showAlert(withMessage: "No product found") {
+//                    self.navigationController?.popViewController(animated: true)
+//                }
                 }else{
+                    self.blankScreen.isHidden = true
                     print("No More Data")
                 }
         }
@@ -403,12 +419,20 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
+                
             default:
             if (self.arrListAppData.count == 0) {
-                self.showAlert(withMessage: "No product found") {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                self.blankScreen.isHidden = true
+//                self.showAlert(withMessage: "No product found") {
+//                    self.navigationController?.popViewController(animated: true)
+//                }
             }else{
+                self.blankScreen.isHidden = false
                 print("No More Data")
             }
         }
@@ -432,12 +456,19 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
             default:
                 if (self.arrListAppData.count == 0) {
-                    self.showAlert(withMessage: "No product found") {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    self.blankScreen.isHidden = false
+//                    self.showAlert(withMessage: "No product found") {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
                 }else{
+                    self.blankScreen.isHidden = true
                     print("No More Data")
                 }
         }
@@ -459,14 +490,21 @@ extension MarketPlaceProductListViewController{
                         self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
                 }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
                 
             default:
                 if (self.arrListAppData.count == 0) {
-                    self.showAlert(withMessage: "No product found") {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    self.blankScreen.isHidden = false
+//                    self.showAlert(withMessage: "No product found") {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
               
                 }else{
+                    self.blankScreen.isHidden = true
                     print("No More Data")
                 }
             }
@@ -579,13 +617,20 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.arrListAppData = [ProductSearchListModel]()
                 }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
             case 409:
                 self.arrListAppData = [ProductSearchListModel]()
                 //self.showAlert(withMessage: "No products found")
             default:
                 if (self.arrListAppData.count == 0) {
-                self.showAlert(withMessage: "No products found")
+                    self.blankScreen.isHidden = true
+                //self.showAlert(withMessage: "No products found")
                 }else{
+                    self.blankScreen.isHidden = false
                     print("No More Data")
                 }
             }
@@ -608,13 +653,20 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.arrListAppData = [ProductSearchListModel]()
                 }
+                if self.arrListAppData.count == 0 {
+                    self.blankScreen.isHidden = false
+                }else{
+                    self.blankScreen.isHidden = true
+                }
             case 409:
                 self.arrListAppData = [ProductSearchListModel]()
                 //self.showAlert(withMessage: "No products found")
             default:
                 if (self.arrListAppData.count == 0) {
-                self.showAlert(withMessage: "No products found")
+                    self.blankScreen.isHidden = false
+               // self.showAlert(withMessage: "No products found")
                 }else{
+                    self.blankScreen.isHidden = true
                     print("No More Data")
                 }
             }
