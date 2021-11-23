@@ -118,6 +118,8 @@ class UserDataModel{
     var name: String?
     var email: String?
     var compnyName: String?
+    var first_name: String?
+    var last_name: String?
     var restaurantName: String?
     var roleId: Int?
     var avatarId: AvatarDataModel?
@@ -125,6 +127,8 @@ class UserDataModel{
     init(with dictResponse: [String:Any]){
         self.userId = Int.getInt(dictResponse["user_id"])
         self.name = String.getString(dictResponse["name"])
+        self.first_name = String.getString(dictResponse["first_name"])
+        self.last_name = String.getString(dictResponse["last_name"])
         self.email = String.getString(dictResponse["email"])
         self.compnyName = String.getString(dictResponse["company_name"])
         self.restaurantName = String.getString(dictResponse["restaurant_name"])

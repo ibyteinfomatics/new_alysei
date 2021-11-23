@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AwardCollectionViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M18-Hp-KeF">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Waq-iu-nbY">
+                                <rect key="frame" x="10" y="5" width="110" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="HZM-Xt-c2e"/>
+                                    <constraint firstAttribute="height" constant="120" id="NDU-C4-Xhm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Award Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK1-ve-tJU">
+                                <rect key="frame" x="10" y="130" width="110" height="19.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Product: Silver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-Sc-a4o">
+                                <rect key="frame" x="10" y="151.5" width="110" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-Yb-zoq">
+                                <rect key="frame" x="15" y="10" width="25" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ven-t6-RtJ"/>
+                                    <constraint firstAttribute="width" constant="25" id="bLf-ty-8Pc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="centerX" secondItem="M18-Hp-KeF" secondAttribute="centerX" id="56a-YP-JE2"/>
+                            <constraint firstAttribute="trailing" secondItem="TQc-Sc-a4o" secondAttribute="trailing" constant="10" id="IGr-jT-rhE"/>
+                            <constraint firstItem="rK1-ve-tJU" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="JwJ-4z-KhO"/>
+                            <constraint firstItem="1Pt-Yb-zoq" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="15" id="Q5Q-PI-hdS"/>
+                            <constraint firstItem="1Pt-Yb-zoq" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="10" id="Sc2-mU-R1L"/>
+                            <constraint firstItem="Waq-iu-nbY" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="b0t-p9-D3V"/>
+                            <constraint firstAttribute="trailing" secondItem="Waq-iu-nbY" secondAttribute="trailing" constant="10" id="b9n-Zk-nqt"/>
+                            <constraint firstItem="rK1-ve-tJU" firstAttribute="centerX" secondItem="M18-Hp-KeF" secondAttribute="centerX" id="ciz-rm-puf"/>
+                            <constraint firstItem="rK1-ve-tJU" firstAttribute="top" secondItem="Waq-iu-nbY" secondAttribute="bottom" constant="5" id="e7Y-9l-oOV"/>
+                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="top" secondItem="rK1-ve-tJU" secondAttribute="bottom" constant="2" id="gDN-rl-g2u"/>
+                            <constraint firstItem="Waq-iu-nbY" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="5" id="j3I-pz-ZEK"/>
+                            <constraint firstAttribute="trailing" secondItem="rK1-ve-tJU" secondAttribute="trailing" constant="10" id="oEz-Lh-07f"/>
+                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="q7I-IL-kSg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="M18-Hp-KeF" secondAttribute="bottom" id="emz-XE-0gF"/>
+                <constraint firstItem="M18-Hp-KeF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iK4-PS-ROD"/>
+                <constraint firstItem="M18-Hp-KeF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oY9-4G-02F"/>
+            </constraints>
+            <size key="customSize" width="109" height="151"/>
+            <connections>
+                <outlet property="awardimg" destination="1Pt-Yb-zoq" id="zeL-jK-F5d"/>
+                <outlet property="competitionName" destination="rK1-ve-tJU" id="pbP-WQ-QV7"/>
+                <outlet property="rewardImage" destination="Waq-iu-nbY" id="h3K-6R-bHh"/>
+                <outlet property="winningproduct" destination="TQc-Sc-a4o" id="oA2-Hf-KMN"/>
+            </connections>
+            <point key="canvasLocation" x="129.71014492753625" y="71.316964285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image_placeholder" width="41" height="33"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

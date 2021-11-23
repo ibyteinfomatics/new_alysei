@@ -68,6 +68,7 @@ class NewFeedSearchDataModel{
     var postID: Int?
     var attachmentCount: Int?
     var commentCount: Int?
+    var follower_count: Int?
     var likeCount: Int?
     var privacy: String?
     var likeFlag: Int?
@@ -90,6 +91,7 @@ class NewFeedSearchDataModel{
         self.body = String.getString(dictResponse["body"])
         self.attachmentCount = Int.getInt(dictResponse["attachment_count"])
         self.commentCount = Int.getInt(dictResponse["comment_count"])
+        self.follower_count = Int.getInt(dictResponse["follower_count"])
         self.likeCount = Int.getInt(dictResponse["like_count"])
         self.privacy = String.getString(dictResponse["privacy"])
         self.id = Int.getInt(dictResponse["id"])

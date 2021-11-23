@@ -24,6 +24,7 @@ class PostsViewController: AlysieBaseViewC {
     @IBOutlet weak var tableviewheight: NSLayoutConstraint!
    
     //@IBOutlet weak var postView: UIView!
+    var userType: UserRoles!
     
     var scrollCallBack: (() -> Void)? = nil
     var newFeedModel: NewFeedSearchModel?
@@ -252,13 +253,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.btnMoreLess.tag = indexPath.row
                 cell.relaodSection = indexPath.section
                 
-                if data.isExpand == true{
+                /*if data.isExpand == true{
                     cell.lblPostDesc.numberOfLines = 0
                     cell.btnMoreLess.setTitle("....less", for: .normal)
                 }else{
                     cell.lblPostDesc.numberOfLines = 2
                     cell.btnMoreLess.setTitle("....more", for: .normal)
-                }
+                }*/
                 
                 cell.shareCallback = {
                     

@@ -48,6 +48,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var imgSharedUserImage: UIImageView!
     @IBOutlet weak var lblSharedPostDesc: UILabel!
     @IBOutlet weak var lblSharedUserTitle: UILabel!
+    @IBOutlet weak var follower: UILabel!
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet var vwpageControl: ScrollingPageControl!
     
@@ -129,7 +130,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     self.data = modelData
 //        self.index = index
     self.index = self.data?.postID ?? 0
-    if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
+    /*if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
     
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
@@ -152,10 +153,53 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         //userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")" + "\(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
        // userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = modelData.subjectId?.name?.capitalized
+        lblSharedUserEmail.text = modelData.subjectId?.email?.capitalized
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
        // userNickName.text = modelData.subjectId?.name?.capitalized
+    }*/
+    
+    if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserEmail.text = "Producer"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
+        lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
+        lblSharedUserEmail.text = "Restaurant"//modelData.subjectId?.email?.lowercased()
+    }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
+        lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        lblSharedUserEmail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
+        lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        lblSharedUserEmail.text = "Voice Of Experts"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserEmail.text = "Importer"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserEmail.text = "Distributer"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserEmail.text = "Importer & Distributer"//modelData.subjectId?.email?.lowercased()
+    }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
+        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
+        lblSharedUserEmail.text = "Travel Agencies"//modelData.subjectId?.email?.lowercased()
     }
+    
+    if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
+        
+        follower.isHidden = true
+    } else {
+        follower.isHidden = false
+        follower.text = "\(modelData.follower_count ?? 0) Followers"
+    }
+    
     if modelData.sharedPostData?.subjectId?.roleId == UserRoles.producer.rawValue{
         userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.restaurant.rawValue{

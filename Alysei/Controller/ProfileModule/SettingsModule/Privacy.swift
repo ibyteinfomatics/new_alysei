@@ -254,7 +254,7 @@ extension Privacy: UITableViewDelegate, UITableViewDataSource{
         
             let characterArray = connected.flatMap { $0 }
             let stringArray2 = characterArray.map { String($0) }
-            connect = stringArray2.joined(separator: ",")
+            connect = connected.joined(separator: ",")
         
         print("connect ",connect!)
                         

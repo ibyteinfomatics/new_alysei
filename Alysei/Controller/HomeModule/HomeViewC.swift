@@ -261,6 +261,11 @@ class HomeViewC: AlysieBaseViewC {
     }
  
   //MARK:  - IBAction -
+    
+    @IBAction func tapSearch(_ sender: Any) {
+        
+        _ = pushViewController(withName: UniversalSearchViewController.id(), fromStoryboard: StoryBoardConstants.kHome)
+    }
   
   @IBAction func tapNotification(_ sender: UIButton) {
     
