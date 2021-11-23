@@ -34,7 +34,7 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
         self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
         collectionVw.collectionViewLayout.invalidateLayout()
-        setGradientBackground()
+//        setGradientBackground()
         self.collectionVw.delegate = self
         self.collectionVw.dataSource = self
         self.collectionVw.reloadData()

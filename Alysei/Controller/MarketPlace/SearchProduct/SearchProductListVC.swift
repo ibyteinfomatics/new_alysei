@@ -14,6 +14,7 @@ class SearchProductListVC: UIViewController {
     var arrProductList: [ProductSearchListModel]?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var blankView: UIView!
     
     var selectedSampleIndex: Int?
     var selectedCategoryId: [String]?
@@ -24,7 +25,7 @@ class SearchProductListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        blankView.isHidden = true
         self.sortFilterView.addShadow()
         lblTitle.text = selectProductName
         //trimmedProductName = selectProductName?.replacingOccurrences(of: " ", with: "")
@@ -128,13 +129,20 @@ extension SearchProductListVC {
                     self.arrProductList = data.map({ProductSearchListModel.init(with: $0)})
                 }
                 self.tableView.reloadData()
+                if self.arrProductList?.count == 0 {
+                    self.blankView.isHidden = true
+                }else{
+                    self.blankView.isHidden = false
+                }
             case 409:
                 if self.arrProductList?.count != 0 {
                     print("Product Exist")
                 }else{
+                    self.blankView.isHidden = false
                     self.showAlert(withMessage: "No products found")
                 }
             default:
+                self.blankView.isHidden = false
                 self.showAlert(withMessage: "No products found")
             }
         }

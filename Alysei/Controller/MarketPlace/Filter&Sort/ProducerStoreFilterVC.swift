@@ -341,11 +341,19 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 if self.selectedOptionsId.contains(selectedId ?? -1){
                     if let itemToRemoveIndex = selectedOptionsId.firstIndex(of: selectedId ?? -1) {
                         self.selectedOptionsId.remove(at: itemToRemoveIndex)
+                        if checkApi == .categories {
+                            print("No remove")
+                        }else{
                         self.arrSelectedName.remove(at: itemToRemoveIndex)
+                        }
                     }
                 }else{
                     self.selectedOptionsId.append(selectedId ?? -1)
+                    if checkApi == .categories {
+                        print("No add")
+                    }else{
                     self.arrSelectedName.append(selectName ?? "")
+                    }
                 }
             }else  if checkApi == .distance {
                 let selectedIndex = indexPath.row

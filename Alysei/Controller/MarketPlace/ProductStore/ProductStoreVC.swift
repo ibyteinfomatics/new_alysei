@@ -17,6 +17,7 @@ class ProductStoreVC: UIViewController {
     @IBOutlet weak var hghtSearch: NSLayoutConstraint!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var blankView: UIView!
         
     var indexOfPageToRequest = 1
     var listType: Int?
@@ -57,7 +58,7 @@ class ProductStoreVC: UIViewController {
         self.hghtSearch.constant = 0
         self.txtSearch.delegate = self
         self.lblHeading.text = keywordSearch
-        
+        self.blankView.isHidden = true
         if pushedFromVC == .viewAllEntities{
             self.btnSearch.isHidden = true
             self.btnFilter.isHidden = true
@@ -268,7 +269,13 @@ extension ProductStoreVC {
                     self.showAlert(withMessage: "No producer found") {
                         self.navigationController?.popViewController(animated: true)
                     }
+                    if self.arrListData.count == 0 {
+                        self.blankView.isHidden = false
+                    }else{
+                        self.blankView.isHidden = true
+                    }
                 }else{
+                  //  self.blankView.isHidden = false
                 print("No Data")
                 }
             }
@@ -322,8 +329,14 @@ extension ProductStoreVC {
                     self.lastPage = data["last_page"] as? Int
                     self.arrProductList = ProductsStore.init(with: data)
                     self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
+                    if self.arrListData.count == 0 {
+                        self.blankView.isHidden = false
+                    }else{
+                        self.blankView.isHidden = true
+                    }
                 }
             default:
+                //self.blankView.isHidden = false
                 print("No Data")
             }
             self.tableView.reloadData()
@@ -341,7 +354,10 @@ extension ProductStoreVC {
                     self.arrProductList = ProductsStore.init(with: data)
                     self.arrListData.append(contentsOf: self.arrProductList?.myStoreProduct ?? [MyStoreProductDetail]())
                 }
+                
+                
             default:
+                
                 print("No Data")
             }
             

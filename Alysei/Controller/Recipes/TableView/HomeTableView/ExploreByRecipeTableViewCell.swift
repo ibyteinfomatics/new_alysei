@@ -25,7 +25,7 @@ class ExploreByRecipeTableViewCell: UITableViewCell {
         // Register the xib for collection view cell
         let cellNib = UINib(nibName: "SearchByRegionCollectionViewCell", bundle: nil)
         self.collectionVwRegion.register(cellNib, forCellWithReuseIdentifier: "SearchByRegionCollectionViewCell")
-        setGradientBackground()
+//        setGradientBackground()
         
        
         

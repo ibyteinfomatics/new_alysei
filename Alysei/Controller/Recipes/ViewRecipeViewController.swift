@@ -373,6 +373,80 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
             cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
             cell.avgRating = recipeModel?.avgRating
+            
+            if recipeModel?.avgRating ?? "0.0" == "0.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+                
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "0.5" {
+                cell.storeAvgStar1.image = UIImage(named: "Group 1142")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "1.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "1.5" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "Group 1142")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "2.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "2.5" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "Group 1142")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "3.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "3.5" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar4.image = UIImage(named: "Group 1142")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }else if recipeModel?.avgRating ?? "0.0" == "4.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_star")
+            }
+            else if recipeModel?.avgRating ?? "0.0" == "4.5" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar5.image = UIImage(named: "Group 1142")
+            }else if recipeModel?.avgRating ?? "0.0" == "5.0" {
+                cell.storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
+                cell.storeAvgStar5.image = UIImage(named: "icons8_christmas_star")
+            }
             cell.configCell(recipeModel?.latestReview ?? LatestReviewDataModel(with: [:]))
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
@@ -394,9 +468,9 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section{
         case 0:
-            return 230
+            return 200
         case 1:
-            return 70
+            return 95
         case 2:
             return 122
         case 3:

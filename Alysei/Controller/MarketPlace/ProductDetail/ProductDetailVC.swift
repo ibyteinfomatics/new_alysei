@@ -232,9 +232,9 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
             }
         }else {
             if self.productDetail?.related_products?.count == 1 || self.productDetail?.related_products?.count == 2 {
-        return CGFloat(250)
+        return CGFloat(320)
             }else{
-            return CGFloat((250 * ((self.productDetail?.related_products?.count ?? 0) / 2 )) + 20)
+            return CGFloat((280 * ((self.productDetail?.related_products?.count ?? 0) / 2)) + 50)
             }
         }
     }
