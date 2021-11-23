@@ -314,7 +314,7 @@ class ProfileViewC: AlysieBaseViewC{
                 blankdataView.isHidden = true
                 self.postRequestToGetFields()
                // self.fetchContactDetail()
-                self.fetchProfileDetails()
+               // self.fetchProfileDetails()
                 self.currentIndex = 0
                 self.postRequestToGetProgress()
                 if check == "" {
@@ -334,7 +334,7 @@ class ProfileViewC: AlysieBaseViewC{
             blankdataView.isHidden = true
             self.postRequestToGetFields()
            // self.fetchContactDetail()
-            self.fetchProfileDetails()
+           // self.fetchProfileDetails()
             self.currentIndex = 0
             self.postRequestToGetProgress()
             if check == "" {

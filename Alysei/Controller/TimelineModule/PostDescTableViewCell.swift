@@ -244,7 +244,7 @@ class PostDescTableViewCell: UITableViewCell {
         if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
             print("No Data")
         }else{
-            for i in  0..<(modelData.attachmentCount ?? 0) {
+            for i in  0..<(modelData.attachments?.count ?? 0) {
                 self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
             }
         }

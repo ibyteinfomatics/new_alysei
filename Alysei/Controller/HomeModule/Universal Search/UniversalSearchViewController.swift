@@ -399,7 +399,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             case 0:
                 switch indexPath.section{
                 case 0:
-                    universalSearchTableView.allowsSelection = true
+                    
                     if arraySearchByPeople?.count == 0{
                         cell1.noItemLabel.isHidden = false
                         cell1.mainVw.isHidden = true
@@ -433,7 +433,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell1
                 case 1:
-                    universalSearchTableView.allowsSelection = false
+                    
                     if arraySearchByBolg?.count == 0{
                         cell2.noItemLabel.isHidden = false
                         cell2.mainVw.isHidden = true
@@ -462,7 +462,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell2
                 case 2:
-                    universalSearchTableView.allowsSelection = true
+                    
                     if arraySearchByTrips?.count == 0{
                         cell3.noItemLabel.isHidden = false
                         cell3.mainVw.isHidden = true
@@ -607,7 +607,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell3
                 case 3:
-                    universalSearchTableView.allowsSelection = true
+                    
                     if arraySearchByEvents?.count == 0{
                         cell4.noItemLabel.isHidden = false
                         cell4.mainVw.isHidden = true
@@ -627,7 +627,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell4
                 case 4:
-                    universalSearchTableView.allowsSelection = false
+                   
                     if arraySearchByPost.count == 0{
                         cell5.noItemLabel.isHidden = false
                         cell5.containerView.isHidden = true
@@ -680,7 +680,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell5
                 default:
-                    universalSearchTableView.allowsSelection = false
+                    
                     if arraySearchByAward?.count == 0{
                         cell6.noItemLabel.isHidden = false
                     }
@@ -904,7 +904,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 }
                 return cell4
             case 5:
-                universalSearchTableView.allowsSelection = false
+               
                 if arraySearchByPost.count == 0{
                     cell5.noItemLabel.isHidden = false
                     cell5.containerView.isHidden = true
@@ -1041,8 +1041,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
         
         return 0
     }
-    
-    
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchType == 0{
             switch indexPath.section {

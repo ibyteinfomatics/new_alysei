@@ -41,6 +41,7 @@ class GetRoleDataModel: NSObject {
   var image: String?
   var name: String?
   var roleId: String?
+  var kdescription: String?
   var slug: String?
   var isSelected: Bool?
   
@@ -48,6 +49,7 @@ class GetRoleDataModel: NSObject {
     
     self.displayName = String.getString(dictRoles[APIConstants.kDisplayName])
     self.image = String.getString(dictRoles[APIConstants.kImage])
+    self.kdescription = String.getString(dictRoles[APIConstants.kDescription])
     self.name = String.getString(dictRoles[APIConstants.kName])
     self.roleId = String.getString(dictRoles[APIConstants.kRoleId])
     self.slug = String.getString(dictRoles[APIConstants.kSlug])

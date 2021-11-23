@@ -20,6 +20,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var viewNavigation: UIView!
   @IBOutlet weak var imgViewProduct: UIImageView!
   @IBOutlet weak var btnUploadImage: UIButton!
+    @IBOutlet weak var btnUpload: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
     var addDesc = false
     var addUrl = false
@@ -37,12 +38,17 @@ class AddFeatureViewC: AlysieBaseViewC {
   
   override func viewDidLoad() {
     
+    if userLevel == .other {
+        btnUpload.isHidden = true
+        btnUploadImage.isHidden = true
+    }
     super.viewDidLoad()
     self.initialImageSetUp()
   }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    
 //        self.delegate?.productAdded()
 //        self.navigationController?.popViewController(animated: true)
 

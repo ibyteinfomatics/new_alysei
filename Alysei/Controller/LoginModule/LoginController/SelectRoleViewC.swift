@@ -140,6 +140,8 @@ class RoleTableVieCell: UITableViewCell{
     public func configureData(withGetRoleDataModel model: GetRoleDataModel,_ indexPath: Int) -> Void {
         //imgRole.image = UIImage(named: imageArray[indexPath])
         lblRoleName.text = model.name
+        lblRoleDesc.text = model.kdescription
+        
         if let strUrl = "\(kImageBaseUrl)\(model.image ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
