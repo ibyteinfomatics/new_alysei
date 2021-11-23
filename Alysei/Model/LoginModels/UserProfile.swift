@@ -82,6 +82,7 @@ enum UserProfile {
         var website: String?
         var address: String?
         var email: String?
+        var country_code: String?
         var phone: String?
         var roleID: Int?
         var userID: Int?

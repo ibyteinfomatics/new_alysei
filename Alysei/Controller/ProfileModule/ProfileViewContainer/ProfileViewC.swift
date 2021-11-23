@@ -1502,7 +1502,7 @@ extension ProfileViewC{
             if let viewCon = segue.destination as? ContactDetailViewController {
                 viewCon.userType = self.userType
                 
-                viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink, country_code: self.contactDetilViewModel.country_code)
+                viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, country_code: self.contactDetilViewModel.country_code, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink)
              //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
             }
         }
