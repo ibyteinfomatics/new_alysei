@@ -49,6 +49,8 @@ class StoreDescViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         imgCover.layer.cornerRadius = 20
         imgCover.layer.masksToBounds = true
         callStoreDetailApi()
@@ -315,13 +317,17 @@ extension StoreDescViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            if storeDetails?.latest_review == nil  {
-                //return 250
-                return UITableView.automaticDimension
-            }else{
-                return UITableView.automaticDimension //+ 250
-            }
+            return UITableView.automaticDimension
+//            if (storeDetails?.latest_review == nil) {
+//               // return 550
+//                return UITableView.automaticDimension // + 100
+//            }else{
+//                return UITableView.automaticDimension //+ 250
+//            }
         }else {
+            if self.storeProducts?.count == 1 || self.storeProducts?.count == 2 {
+                return 280
+            }
             return CGFloat((280 * ((self.storeProducts?.count ?? 0) / 2 )))
             
             // return CGFloat((250 * (6 / 2)))

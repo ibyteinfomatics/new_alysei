@@ -14,7 +14,7 @@ class AddFeatureTableCell: UITableViewCell {
     @IBOutlet weak var txtFieldAddFeature: UITextField!
     @IBOutlet weak var lblAddFeature: UILabel!
     @IBOutlet weak var txtViewAddFeature: UITextView!
-    var callback: (() -> Void)? = nil
+    var callback: ((String) -> Void)? = nil
     var userLevel: UserLevel?
     
     var urlFeatureProduct: String?
@@ -68,7 +68,10 @@ class AddFeatureTableCell: UITableViewCell {
             txtViewAddFeature.isHidden = true
         }
         if (model.productTitle == AppConstants.URL) || (model.productTitle == AppConstants.URL){
-            urlFeatureProduct = model.selectedValue
+            self.urlFeatureProduct = model.selectedValue
+        }
+        if model.productTitle == AppConstants.kDescription{
+            
         }
         switch model.type {
         case AppConstants.Calander:
@@ -113,8 +116,10 @@ extension AddFeatureTableCell: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let spaceCount = textView.text.count
         if spaceCount <= 199{
-            callback?()
+            self.productFieldsDataModel.selectedValue = String.getString(self.txtViewAddFeature.text)
+            callback?(textView.text)
             return true
+            
         }else{
             if text == "" && range.length > 0  {
                 print("Backspace was pressed")
