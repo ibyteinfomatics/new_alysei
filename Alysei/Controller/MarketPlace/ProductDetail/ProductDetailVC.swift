@@ -14,6 +14,7 @@ class ProductDetailVC: AlysieBaseViewC {
     var arrRatingReview: [RatingReviewModel]?
     @IBOutlet weak var lblProductName: UILabel!
     @IBOutlet weak var btnSendEnquiry: UIButton!
+    @IBOutlet weak var btnenquiryHght: NSLayoutConstraint!
     
     
     // @IBOutlet weak var btnLikeUnlike: UIButton!
@@ -30,6 +31,8 @@ class ProductDetailVC: AlysieBaseViewC {
     var sellerName: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnSendEnquiry.isHidden = true
+        btnenquiryHght.constant = 0
         headerView.addShadow()
         callProductDetailApi()
         callGetReviewApi()
@@ -273,6 +276,13 @@ extension ProductDetailVC {
             }
             self.lblProductName.text = self.productDetail?.product_detail?.title?.capitalized
             //self.setFavUnfavProduct()
+            if "\(self.productDetail?.product_detail?.userId ?? 0)" == kSharedUserDefaults.loggedInUserModal.userId {
+                self.btnSendEnquiry.isHidden = true
+                self.btnenquiryHght.constant = 0
+            }else{
+                self.btnSendEnquiry.isHidden = false
+                self.btnenquiryHght.constant = 60
+            }
             
             self.tableView.reloadData()
             

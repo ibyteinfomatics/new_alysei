@@ -49,6 +49,8 @@ class StoreDescViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imgCover.layer.cornerRadius = 20
+        imgCover.layer.masksToBounds = true
         callStoreDetailApi()
         //callGetReviewApi()
         imgProfile.layer.cornerRadius = 60

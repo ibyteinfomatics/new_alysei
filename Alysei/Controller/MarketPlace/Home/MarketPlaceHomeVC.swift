@@ -576,10 +576,10 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 2 {
-                return  200
-            }
-            else if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
+//            if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 2 {
+//                return  200
+//            }
+             if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
                 return 0
             }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0)  == 1  || (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) == 2 {
                 return 290
@@ -702,7 +702,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == imageCollectionView{
-            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 180)
+            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 190)
         }else if collectionView == recentlyAddedCollectionView{
             return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 270)
         }
@@ -711,7 +711,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
 //        }
         else if collectionView == regionCollectionView{
             return CGSize(width: regionCollectionView.frame.width / 4 , height: 120)
-        }else if (collectionView == newlyyAddedStoreCollectionView){
+        }
+        else if (collectionView == newlyyAddedStoreCollectionView){
             return CGSize(width: collectionView.frame.width / 2 , height: 220)
         }
         else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == topSellingCollectionView){
@@ -850,8 +851,8 @@ class MarketplaceHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
     
     override func awakeFromNib() {
-        image.layer.cornerRadius = 15
-        image.layer.masksToBounds = true
+      //  image.layer.cornerRadius = 27
+     //   image.layer.masksToBounds = true
     }
 }
 class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
@@ -1008,7 +1009,7 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
         let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
-        imgProduct.layer.cornerRadius = 15
+        imgProduct.layer.cornerRadius = 20
         imgProduct.layer.masksToBounds = true
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
@@ -1092,8 +1093,7 @@ class AdCollectionVC: UICollectionViewCell{
     @IBOutlet weak var imgBanner: UIImageView!
     
     override func awakeFromNib() {
-        imgBanner.layer.cornerRadius = 15
-        imgBanner.layer.masksToBounds = true
+     
     }
 }
 class KitchenCollectionVC: UICollectionViewCell{

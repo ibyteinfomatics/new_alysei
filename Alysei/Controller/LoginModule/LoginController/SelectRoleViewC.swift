@@ -74,11 +74,12 @@ extension SelectRoleViewC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 5 {
-        return 250
-        }else{
-            return 150
-        }
+        //if indexPath.row == 5 {
+           return UITableView.automaticDimension
+//        return 250
+//        }else{
+//            return 150
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -148,7 +149,7 @@ class RoleTableVieCell: UITableViewCell{
             self.imgRole.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
         if model.isSelected == true{
-            containerView.backgroundColor = UIColor.init(hexString: "#174E85")
+            containerView.backgroundColor = UIColor.init(hexString: "009A9E")  //#174E85
             lblRoleName.textColor = UIColor.white
             lblRoleDesc.textColor = UIColor.white
             //self.imgViewSelected.isHidden = false
@@ -156,7 +157,7 @@ class RoleTableVieCell: UITableViewCell{
         }
         else{
             containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-            lblRoleName.textColor = UIColor.black
+            lblRoleName.textColor = UIColor.init(hexString: "004577")
             lblRoleDesc.textColor = UIColor.black
             //self.imgViewSelected.isHidden = true
         }

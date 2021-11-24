@@ -21,6 +21,8 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        imgProduct.layer.cornerRadius = 20
+        imgProduct.layer.masksToBounds = true
     }
     func configCell(_ data: MyStoreProductDetail){
         let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))

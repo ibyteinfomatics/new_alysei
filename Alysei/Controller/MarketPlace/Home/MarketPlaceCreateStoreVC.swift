@@ -89,6 +89,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     }
     
     func setDataUI(){
+       
         self.txtProducerEmail.text =  self.userEmail
         self.txtStoreName.text = self.userStoreName
         self.txtWebsite.text = self.userWebsite
@@ -447,6 +448,10 @@ class ImageMaketPlaceCollectionViewCell:UICollectionViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewAddImage.layer.cornerRadius = 20
+        viewAddImage.layer.masksToBounds = true
+        image.layer.cornerRadius = 20
+        image.layer.masksToBounds = true
         viewAddImage.layer.borderWidth = 0.5
         viewAddImage.layer.borderColor = UIColor.black.cgColor
     }
