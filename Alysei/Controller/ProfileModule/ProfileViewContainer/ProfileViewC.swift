@@ -360,7 +360,7 @@ class ProfileViewC: AlysieBaseViewC{
                 cell.isUnderlineBorderVisible(true)
                 cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
-            }
+        }
 
         
         // Scroll update show

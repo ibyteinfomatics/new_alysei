@@ -49,7 +49,7 @@ struct ProfileTabRows {
         case .restaurant:
             return ["Post" , "Photos", "About", "Contact", "Awards", "Events"]
         case .voyagers:
-            return ["Post" , "Photos", "About", "Contact", "Awards"]
+            return ["Post" , "Photos", "About", "Contact"]
         }
     }
 
@@ -71,7 +71,7 @@ struct ProfileTabRows {
         case .restaurant:
             return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards"  ,"icons8_event"]
         case .voyagers:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ]
+            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal"]
         }
     }
 

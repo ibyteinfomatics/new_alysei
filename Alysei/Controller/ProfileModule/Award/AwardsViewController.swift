@@ -128,6 +128,7 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             vc.eventName = self.awardModel?.data?[indexPath.item].awardName
             vc.productName = self.awardModel?.data?[indexPath.item].winningProduct
             vc.placeName = self.awardModel?.data?[indexPath.item].medal?.name
+            vc.medal_id = String.getString(self.awardModel?.data?[indexPath.item].medal?.medal_id)
             vc.url = self.awardModel?.data?[indexPath.item].competitionurl
             vc.imgurl = self.awardModel?.data?[indexPath.item].attachment?.attachmenturl
             

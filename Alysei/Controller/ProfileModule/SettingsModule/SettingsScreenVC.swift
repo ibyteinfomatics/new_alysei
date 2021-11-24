@@ -63,8 +63,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3" {
             switch indexPath.row {
-            case 1:
-                print("MarketPlace")
+           
             case 0:
              // _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
                 _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
