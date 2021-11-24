@@ -46,7 +46,7 @@ class UniversalSearchViewController: AlysieBaseViewC {
         universalSearchTableView.isHidden = true
         dividerView.isHidden = true
         searchTextField.delegate = self
-        self.tabBarController?.tabBar.isHidden = true
+       // self.tabBarController?.tabBar.isHidden = true
         self.dividerView.layer.backgroundColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
         universalSearchTableView.register(UINib(nibName: "PeopelTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopelTableViewCell")
@@ -58,6 +58,16 @@ class UniversalSearchViewController: AlysieBaseViewC {
         universalSearchTableView.register(UINib(nibName: "AwardTableViewCell", bundle: nil), forCellReuseIdentifier: "AwardTableViewCell")
         //        universalSearchTableView.register(UINib(nibName: "FeaturedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeaturedTableViewCell")
         
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

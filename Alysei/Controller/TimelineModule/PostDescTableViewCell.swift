@@ -69,6 +69,7 @@ class PostDescTableViewCell: UITableViewCell {
     var relaodSection : Int?
     
     var btnLikeCallback:((Int) -> Void)? = nil
+    var profileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
@@ -83,6 +84,7 @@ class PostDescTableViewCell: UITableViewCell {
         imagePostCollectionView.delegate = self
         imagePostCollectionView.dataSource = self
         imagePostCollectionView.isHidden = false
+        btnMoreLess.isHidden = true
        // lblPostDesc.numberOfLines = 2
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
@@ -103,6 +105,11 @@ class PostDescTableViewCell: UITableViewCell {
         let showCommentsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showCommentsScreen))
         showCommentsGesture.numberOfTouchesRequired = 1
         self.commentImage.addGestureRecognizer(showCommentsGesture)
+        
+        let userimg = UITapGestureRecognizer(target: self, action: #selector(self.profileScreen(_:)))
+        userimg.numberOfTouchesRequired = 1
+        self.userImage.isUserInteractionEnabled = true
+        self.userImage.addGestureRecognizer(userimg)
 
 
         self.menuButton?.imageView?.contentMode = .scaleAspectFit
@@ -149,6 +156,10 @@ class PostDescTableViewCell: UITableViewCell {
     
     @objc func showShareScreen(_ tap: UITapGestureRecognizer) {
         self.shareCallback?()
+    }
+    
+    @objc func profileScreen(_ tap: UITapGestureRecognizer) {
+        self.profileCallback?()
     }
     
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {

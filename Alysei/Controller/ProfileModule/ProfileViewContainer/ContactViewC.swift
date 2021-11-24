@@ -24,6 +24,7 @@ class ContactViewC: AlysieBaseViewC {
   
     @IBOutlet weak var tblViewContactUs: UITableView!
     @IBOutlet var editContactDetailButton: UIButtonExtended!
+    var userLevel: UserLevel = .own
 
   //MARK: - ViewLifeCycle Methods -
   
@@ -40,10 +41,13 @@ class ContactViewC: AlysieBaseViewC {
 
     self.tblViewContactUs.allowsSelection = false
 
-    let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureMethod(_:)))
-    self.view.addGestureRecognizer(tap)
-    self.tblViewContactUs.addGestureRecognizer(tap)
+    //let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureMethod(_:)))
+    //self.view.addGestureRecognizer(tap)
+    //self.tblViewContactUs.addGestureRecognizer(tap)
     
+    if userLevel == .other {
+        editContactDetailButton.isHidden = true
+    }
 
   }
 

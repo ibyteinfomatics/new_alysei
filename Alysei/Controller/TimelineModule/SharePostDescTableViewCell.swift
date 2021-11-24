@@ -61,6 +61,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
     var islike: Int?
     var shareCallback:(()->())?
+    var profileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
     override func awakeFromNib() {
@@ -88,6 +89,11 @@ class SharePostDescTableViewCell: UITableViewCell {
         let showSharesGesture = UITapGestureRecognizer(target: self, action: #selector(self.showShareScreen))
         showSharesGesture.numberOfTouchesRequired = 1
         self.viewShare.addGestureRecognizer(showSharesGesture)
+        
+        let userimg = UITapGestureRecognizer(target: self, action: #selector(self.profileScreen(_:)))
+        userimg.numberOfTouchesRequired = 1
+        self.userImage.isUserInteractionEnabled = true
+        self.userImage.addGestureRecognizer(userimg)
         
         // Initialization code
     }
@@ -314,6 +320,11 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     @objc func showShareScreen(_ tap: UITapGestureRecognizer) {
         self.shareCallback?()
     }
+    
+    @objc func profileScreen(_ tap: UITapGestureRecognizer) {
+        self.profileCallback?()
+    }
+    
 
     @objc func showCommentsScreen() {
         let model = PostCommentsUserData(userID: self.data?.subjectId?.userId ?? -1,

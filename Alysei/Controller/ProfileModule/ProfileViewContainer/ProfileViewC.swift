@@ -151,6 +151,7 @@ class ProfileViewC: AlysieBaseViewC{
     private lazy var contactViewC: ContactViewC = {
         
         let contactViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: ContactViewC.id()) as! ContactViewC
+        contactViewC.userLevel = userLevel
         return contactViewC
     }()
     
@@ -364,10 +365,10 @@ class ProfileViewC: AlysieBaseViewC{
         
         // Scroll update show
         let line = self.aboutLabel.calculateMaxLines()
-        var shownumber = 70
+        var shownumber = 50
         
         if line == 5 {
-            shownumber = 70
+            shownumber = 50
         } else if line == 4 {
             shownumber = 90
         } else if line == 3 {
@@ -695,7 +696,7 @@ class ProfileViewC: AlysieBaseViewC{
                                     self.connectButton.setTitle("\(title)", for: .normal)
                                     
                                 } else {
-                                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Follow" : "Unfollow"
+                                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
                                     self.connectButton.setTitle("\(title)", for: .normal)
                                 }
             }
@@ -991,8 +992,10 @@ class ProfileViewC: AlysieBaseViewC{
                 //self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
                 if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                    self.featureUIview.constant = 0
                     self.followercount.text = String.getString(responseModel.data?.followingcount)
                 } else {
+                    self.featureUIview.constant = 140
                     self.followercount.text = String.getString(responseModel.data?.followerCount)
                 }
                 

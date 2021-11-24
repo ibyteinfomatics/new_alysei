@@ -222,6 +222,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     let data = arrNewFeedDataModel[indexPath.row]
                     cell.menuDelegate = self
                     
+                    cell.profileCallback = {
+                        //print("ids  ",data.subjectId?.userId)
+                        let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                        controller?.userLevel = .other
+                        controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    
                     cell.shareCallback = {
                         
                         //self.sharePost(data.postID ?? 0)
@@ -260,6 +267,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.lblPostDesc.numberOfLines = 2
                     cell.btnMoreLess.setTitle("....more", for: .normal)
                 }*/
+                
+                cell.profileCallback = {
+                    //print("ids  ",data.subjectId?.userId)
+                    let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                    controller?.userLevel = .other
+                    controller?.userID = data.subjectId?.userId ?? 0
+                }
                 
                 cell.shareCallback = {
                     

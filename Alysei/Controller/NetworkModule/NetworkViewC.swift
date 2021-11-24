@@ -26,6 +26,8 @@ class NetworkViewC: AlysieBaseViewC {
     @IBOutlet weak var logout: UIButton!
 //    @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
+    @IBOutlet weak var blankdata: UIView!
+    @IBOutlet weak var blanktext: UILabel!
     
     var connection:ConnectionTabModel?
   //MARK: - ViewLifeCycle Methods -
@@ -58,6 +60,7 @@ class NetworkViewC: AlysieBaseViewC {
         } else {
             blankdataView.isHidden = true
         }
+        
         
         if currentIndex == 0 {
             callConnectionApi(api: APIUrl.kConnectionTabApi1)
@@ -114,6 +117,18 @@ class NetworkViewC: AlysieBaseViewC {
     
     func callConnectionApi(api: String){
         
+        blankdata.isHidden = true
+        
+        if currentIndex == 0 {
+            blanktext.text = "You have no invitations right now!"
+        } else if currentIndex == 1 {
+            blanktext.text = "You have no connections right now!"
+        } else if currentIndex == 2 {
+            blanktext.text = "You have no pending invites right now!"
+        } else if currentIndex == 3 {
+            blanktext.text = "You have no followers right now!"
+        }
+        
         self.connection?.data?.removeAll()
         self.tblViewNetwork.reloadData()
         //self.tblViewInviteNetwork.reloadData()
@@ -125,6 +140,12 @@ class NetworkViewC: AlysieBaseViewC {
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.connection = ConnectionTabModel.init(with: dictResponse)
                 
+            }
+            
+            if self.connection?.data?.count ?? 0 > 0 {
+                self.blankdata.isHidden = true
+            } else {
+                self.blankdata.isHidden = false
             }
             
 //            if self.currentIndex == 0 {
@@ -229,8 +250,10 @@ class NetworkViewC: AlysieBaseViewC {
                 case 7:
                     let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
                     vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-               // case 10:
-                  //  let vc = self.navigationController(withName: )
+                case 10:
+                    let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                    controller?.userLevel = .other
+                    controller?.userID = self.connection?.data?[indexPath.row].user?.userID
                 default:
                     print("Not valid user")
                     break
@@ -312,158 +335,6 @@ class NetworkViewC: AlysieBaseViewC {
         }
         
     }
-  
-//  private func getNetworkTableCell(_ indexPath: IndexPath) -> UITableViewCell{
-//
-//
-//   // var networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
-//
-//    if currentIndex == 0 {
-//
-//        guard  let networkCTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkConnectionTableViewCell.identifier()) as? NetworkConnectionTableViewCell else{return UITableViewCell()}
-//
-//        networkCTableCell.email.text = self.connection?.data?[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
-//
-//        if connection?.data?[indexPath.row].user?.companyName != "" {
-//            networkCTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
-//        } else if connection?.data?[indexPath.row].user?.firstname != ""{
-//            networkCTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
-//        } else {
-//            networkCTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
-//        }
-//        return networkCTableCell
-//    }else{
-//
-//        if currentIndex == 3 {
-//            guard let networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as? NetworkTableCell else{return UITableViewCell()}
-//            networkTableCell.remove.isHidden = true
-//        } else if currentIndex == 1{
-//            networkTableCell.remove.isHidden = false
-//            networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
-//            networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
-//        } else if currentIndex == 2{
-//            networkTableCell.remove.isHidden = false
-//            networkTableCell.remove.setTitleColor(.red, for: .normal)
-//            networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
-//        }
-//
-//        networkTableCell.img.layer.masksToBounds = false
-//        networkTableCell.img.clipsToBounds = true
-//        networkTableCell.img.layer.borderWidth = 2
-//        networkTableCell.img.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
-//        networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
-//
-//        if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-//            networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
-//        }
-//
-//
-//
-//        networkTableCell.btnViewCallback = { tag in
-//
-//            let type = self.connection?.data?[indexPath.row].user?.roleID
-//
-//            switch type {
-//            case 4,5,6:
-//                let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
-//                vc.role = type!
-//                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//            case 3:
-//
-//                let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
-//
-//                switch role {
-//                case 9,7,8,3:
-//                    let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
-//                    vc.role = type!
-//                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//                default:
-//                    let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
-//                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//                }
-//
-//
-//            case 8:
-//                let vc = self.pushViewController(withName: TravelAgencyViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! TravelAgencyViewController
-//                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//            case 9:
-//                let vc = self.pushViewController(withName: RestaurantViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! RestaurantViewController
-//                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//            case 7:
-//                let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
-//                vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
-//            default:
-//                break
-//                //return nil
-//            }
-//
-//
-//        }
-//
-//        networkTableCell.btnAcceptCallback = { tag in
-//
-//            self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 1)
-//
-//        }
-//
-//        networkTableCell.btnDeclineCallback = { tag in
-//            self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
-//
-//        }
-//    //return networkTableCell
-//        else {
-//      //  let networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as! NetworkTableCell
-//        //networkTableCell.name.text = self.connection?.data?[indexPath.row].user?.companyName
-//        networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
-//
-//        if connection?.data?[indexPath.row].user?.companyName != "" {
-//            networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
-//        } else if connection?.data?[indexPath.row].user?.firstname != ""{
-//            networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
-//        } else {
-//            networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
-//        }
-//
-//        if currentIndex == 3 {
-//            networkTableCell.remove.isHidden = true
-//        } else if currentIndex == 1{
-//            networkTableCell.remove.tag = indexPath.row
-//            networkTableCell.remove.isHidden = false
-//            networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
-//            networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
-//            networkTableCell.remove.setTitle("Remove", for: .normal)
-//
-//            networkTableCell.btnRemoveCallback = { tag in
-//                self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
-//
-//            }
-//
-//        } else if currentIndex == 2{
-//            networkTableCell.remove.tag = indexPath.row
-//            networkTableCell.remove.isHidden = false
-//            networkTableCell.remove.setTitleColor(.red, for: .normal)
-//            networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
-//            networkTableCell.remove.setTitle("Cancel", for: .normal)
-//
-//            networkTableCell.btnRemoveCallback = { tag in
-//                self.pendingRemoveApi(id: (self.connection?.data?[indexPath.row].userID)!)
-//
-//            }
-//
-//        }
-//
-//        networkTableCell.img.layer.masksToBounds = false
-//        networkTableCell.img.clipsToBounds = true
-//        networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
-//
-//        if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-//            networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
-//        }
-//    }
-//
-//    return networkTableCell
-//    }
-//  }
 
 }
 
