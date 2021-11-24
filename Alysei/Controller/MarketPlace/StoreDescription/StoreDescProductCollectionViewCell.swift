@@ -21,6 +21,8 @@ class StoreDescProductCollectionViewCell: UICollectionViewCell {
     
     var avgRating :String?
     override func awakeFromNib() {
+        imgProduct.layer.cornerRadius = 20
+        imgProduct.layer.masksToBounds = true
         super.awakeFromNib()
     }
     

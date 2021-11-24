@@ -60,12 +60,19 @@ extension UpdateProfileDescVC{
 
 extension UpdateProfileDescVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let spaceCount = textView.text.filter{$0 == " "}.count
+        let spaceCount = textView.text.count
         if spaceCount <= 200{
             return true
         }else{
-            return false
-        }
-    }
+            if text == "" && range.length > 0  {
+                print("Backspace was pressed")
+                return true
+            }
+            else{
+                return false
+                
+            }
+            
+        }    }
 
 }

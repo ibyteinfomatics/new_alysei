@@ -88,8 +88,6 @@ class AddFeatureViewC: AlysieBaseViewC {
           showAlert(withMessage: AlertMessage.kUploadImage)
             return
         }
-    }
-    for i in 1..<(currentArray.count){
         if currentArray[i].productTitle == AppConstants.URL   {
             if  currentArray[i].selectedValue != ""{
                 self.addUrl = true
@@ -101,6 +99,9 @@ class AddFeatureViewC: AlysieBaseViewC {
             }
         }
     }
+//    for i in 1..<(currentArray.count){
+//
+//    }
     if addDesc == false && addUrl == false{
         self.showAlert(withMessage: AlertMessage.kEnterDescriptionUrl)
         return
@@ -164,7 +165,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   private func getAddFeatureCell(_ indexPath: IndexPath) -> UITableViewCell{
       
     let addFeatureTableCell = tblViewAddFeature.dequeueReusableCell(withIdentifier: AddFeatureTableCell.identifier() , for: indexPath) as! AddFeatureTableCell
-    addFeatureTableCell.callback = {
+    addFeatureTableCell.callback = { text in
         let rIndexPath = IndexPath(row: 2, section: 0)
         self.tblViewAddFeature.reloadRows(at: [rIndexPath], with: .none)
     }
