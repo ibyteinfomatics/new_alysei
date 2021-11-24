@@ -118,6 +118,7 @@ class ProductStoreVC: UIViewController {
             
         }
         nextVC.clearFilterApi = { loadfilter in
+            self.arrListData.removeAll()
             self.arrSelectedCategories = [Int]()
             self.arrSelectedProperties = [Int]()
            self.arrSelectedItalianRegion =  [Int]()
@@ -263,7 +264,10 @@ extension ProductStoreVC {
                 }else{
                     self.arrListData = [MyStoreProductDetail]()
                 }
-                
+            case 409:
+                if self.indexOfPageToRequest == 1{
+                    self.blankView.isHidden = false
+                }
             default:
                 if self.arrListData.count == 0{
                     self.showAlert(withMessage: "No producer found") {

@@ -10,6 +10,7 @@ import UIKit
 class FilterSubOptionsTableVCell: UITableViewCell {
     @IBOutlet weak var labelSubOptions: UILabel!
     @IBOutlet weak var btnOptionSelect: UIButton!
+
     var selectedCategory: [Int]?
     var id: Int?
 
@@ -28,9 +29,11 @@ class FilterSubOptionsTableVCell: UITableViewCell {
         switch filterSelectedIndex{
         case 0,2:
             if data.isSelected == false{
-            btnOptionSelect.setImage(UIImage(named: "UnselectSort"), for: .normal)
+            btnOptionSelect.setImage(UIImage(named: "Ellipse 384"), for: .normal)
+             
             }else{
-                btnOptionSelect.setImage(UIImage(named: "SelectSort"), for: .normal)
+                btnOptionSelect.setImage(UIImage(named: "Group 5303"), for: .normal)
+              
             }
             labelSubOptions.text =  data.name
         case 1:
@@ -39,9 +42,9 @@ class FilterSubOptionsTableVCell: UITableViewCell {
                 category.isSelected = true
             }
             if category.isSelected == false{
-            btnOptionSelect.setImage(UIImage(named: "icons_grey_checkbox"), for: .normal)
+            btnOptionSelect.setImage(UIImage(named: "checkbox_2"), for: .normal)
             }else{
-                btnOptionSelect.setImage(UIImage(named: "FilterMultiSelect"), for: .normal)
+                btnOptionSelect.setImage(UIImage(named: "icons8_checked_checkbox_1"), for: .normal)
             }
             labelSubOptions.text =  category.name
         default:

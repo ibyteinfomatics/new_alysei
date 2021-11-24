@@ -189,6 +189,8 @@ class MarketPlaceProductListViewController: UIViewController {
             
         }
         nextVC.clearFilterApi = { loadfilter in
+            //self.arrList?.removeAll()
+            self.arrListAppData.removeAll()
             self.arrSelectedCategories = [Int]()
             self.arrSelectedProperties = [Int]()
             self.arrSelectedItalianRegion =  [Int]()
@@ -353,6 +355,10 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.blankScreen.isHidden = true
                 }
+            case 409:
+                if self.indexOfPageToRequest == 1{
+                    self.blankScreen.isHidden = false
+                }
             default:
             if (self.arrListAppData.count == 0) {
                 self.blankScreen.isHidden = false
@@ -389,6 +395,10 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.blankScreen.isHidden = true
                 }
+            case 409:
+                if self.indexOfPageToRequest == 1{
+                    self.blankScreen.isHidden = false
+                }
             default:
                 if (self.arrListAppData.count == 0) {
                     self.blankScreen.isHidden = false
@@ -424,7 +434,10 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.blankScreen.isHidden = true
                 }
-                
+            case 409:
+                if self.indexOfPageToRequest == 1{
+                    self.blankScreen.isHidden = false
+                }
             default:
             if (self.arrListAppData.count == 0) {
                 self.blankScreen.isHidden = true
@@ -461,6 +474,10 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.blankScreen.isHidden = true
                 }
+            case 409:
+                if self.indexOfPageToRequest == 1 {
+                    self.blankScreen.isHidden = false
+                }
             default:
                 if (self.arrListAppData.count == 0) {
                     self.blankScreen.isHidden = false
@@ -495,7 +512,10 @@ extension MarketPlaceProductListViewController{
                 }else{
                     self.blankScreen.isHidden = true
                 }
-                
+            case 409:
+                if self.indexOfPageToRequest == 1{
+                    self.blankScreen.isHidden = false
+                }
             default:
                 if (self.arrListAppData.count == 0) {
                     self.blankScreen.isHidden = false
@@ -623,7 +643,11 @@ extension MarketPlaceProductListViewController{
                     self.blankScreen.isHidden = true
                 }
             case 409:
-                self.arrListAppData = [ProductSearchListModel]()
+               // self.arrListAppData = [ProductSearchListModel]()
+                if self.indexOfPageToRequest == 1 {
+                    self.blankScreen.isHidden = false
+                }
+               
                 //self.showAlert(withMessage: "No products found")
             default:
                 if (self.arrListAppData.count == 0) {

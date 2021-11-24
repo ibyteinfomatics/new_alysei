@@ -128,12 +128,13 @@ extension SearchProductListVC {
                 if  let data = response?["data"] as? [[String:Any]]{
                     self.arrProductList = data.map({ProductSearchListModel.init(with: $0)})
                 }
-                self.tableView.reloadData()
                 if self.arrProductList?.count == 0 {
-                    self.blankView.isHidden = true
-                }else{
                     self.blankView.isHidden = false
+                }else{
+                    self.blankView.isHidden = true
                 }
+                self.tableView.reloadData()
+                
             case 409:
                 if self.arrProductList?.count != 0 {
                     print("Product Exist")
