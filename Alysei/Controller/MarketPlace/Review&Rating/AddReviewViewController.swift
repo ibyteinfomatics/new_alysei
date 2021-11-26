@@ -16,6 +16,8 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     @IBOutlet weak var btnStar4: UIButton!
     @IBOutlet weak var btnStar5: UIButton!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var btnAddReview: UIButton!
+   
     
     var productStoreType: String?
     var productStoreId: String?
@@ -30,9 +32,12 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         
         if isEditReview == true
         {
+            btnAddReview.setTitle("Edit Review", for: .normal)
+            setReviewStarUI()
             txtReview.textColor = UIColor.black
             txtReview.text = editReviewData?.review
         }else {
+            btnAddReview.setTitle("Add Review", for: .normal)
             txtReview.textColor = UIColor.lightGray
             setStar()
         txtReview.text = "Leave a comment"
@@ -67,7 +72,53 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
-    
+    func setReviewStarUI(){
+        if "\(editReviewData?.rating ?? "")" == "0" {
+            reviewStarCount = 0
+            btnStar1.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+       
+        }else if "\(editReviewData?.rating ?? "")" == "1" {
+            reviewStarCount = 1
+            btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+            btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+            btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+       
+    }else if "\(editReviewData?.rating ?? "")" == "2" {
+        reviewStarCount = 2
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+    }else if "\(editReviewData?.rating ?? "")" == "3" {
+        reviewStarCount = 3
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+    }else if "\(editReviewData?.rating ?? "")" == "4" {
+        reviewStarCount = 4
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+    }else if "\(editReviewData?.rating ?? "")" == "5" {
+        reviewStarCount = 5
+        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+        btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+    }
+    }
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
@@ -210,5 +261,26 @@ extension AddReviewViewController {
     
     func callEditReviewApi(){
         print("Edit Review")
+        let params: [String:Any] = [
+            APIConstants.kmarketplaceReviewRatingId: editReviewData?.marketplace_review_rating_id ?? "",
+            APIConstants.kType : productStoreType ?? "",
+            APIConstants.kRating: reviewStarCount ,
+            APIConstants.kReview: txtReview.text ?? ""
+        ]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kUpdateReview, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, erroType, statusCode) in
+            
+            switch statusCode{
+            case 200:
+                
+                self.showAlert(withMessage: "Review updated Successfully!") {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            case 409:
+                print("Error")
+            default:
+                break
+            }
+        }
     }
 }

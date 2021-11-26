@@ -282,6 +282,7 @@ struct APIUrl{
     static let kProductCategory = "get/marketplace/product/categories/all"
     
     static let kSubmitReview = "do/review/store/product"
+    static let kUpdateReview = "update/marketplace/rating"
     
     static let kUpdateEvent = "update/event"
     static let kUpdateBlog = "update/blog"
@@ -643,6 +644,7 @@ struct APIConstants {
     static let kHidden = "hidden"
     static let kMessage = "message"
     static let kId = "id"
+    static let kmarketplaceReviewRatingId  = "marketplace_review_rating_id"
     static let kPhonecode = "phonecode"
     static let kCountryId = "country_id"
     static let kStateId = "state_id"

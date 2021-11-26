@@ -7935,7 +7935,6 @@
                                             <constraint firstAttribute="width" constant="40" id="Dnw-4i-kLQ"/>
                                             <constraint firstAttribute="height" constant="40" id="ZT9-Eg-e0g"/>
                                         </constraints>
-                                        <state key="normal" image="add_icon_blue"/>
                                         <connections>
                                             <action selector="addReview:" destination="yjQ-W3-Leg" eventType="touchUpInside" id="uMv-jO-K9j"/>
                                         </connections>
@@ -7985,17 +7984,8 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@michal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnU-eK-aBh">
-                                                    <rect key="frame" x="95" y="45" width="71.666666666666686" height="17.666666666666671"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="17.5" id="QvD-C5-Eek"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBg-CG-uQ5">
-                                                    <rect key="frame" x="95" y="63.666666666666657" width="309" height="60.333333333333343"/>
+                                                    <rect key="frame" x="95" y="45" width="309" height="63"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -8036,41 +8026,25 @@
                                                         <constraint firstAttribute="height" constant="1" id="S1x-iK-lZk"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJc-Xh-bZB">
-                                                    <rect key="frame" x="374" y="-3.6666666666666661" width="30" height="30.333333333333329"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="A2k-3f-Is4"/>
-                                                        <constraint firstAttribute="width" secondItem="lJc-Xh-bZB" secondAttribute="height" multiplier="1:1" id="da8-5q-6i6"/>
-                                                    </constraints>
-                                                    <state key="normal" image="Group 637-1"/>
-                                                    <connections>
-                                                        <action selector="btnEditReviewAction:" destination="fXj-DS-Ncp" eventType="touchUpInside" id="cEd-is-qAT"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="28b-d0-r2X" secondAttribute="bottom" constant="5" id="5B7-K3-PUp"/>
                                                 <constraint firstItem="28b-d0-r2X" firstAttribute="leading" secondItem="fxh-zA-0nA" secondAttribute="leading" id="9fv-DI-6lC"/>
-                                                <constraint firstItem="mnU-eK-aBh" firstAttribute="top" secondItem="Kw3-ub-lpa" secondAttribute="bottom" id="Acv-74-uzi"/>
                                                 <constraint firstAttribute="trailing" secondItem="nfT-Hd-w72" secondAttribute="trailing" constant="10" id="HAj-td-GvD"/>
-                                                <constraint firstItem="mnU-eK-aBh" firstAttribute="leading" secondItem="Kw3-ub-lpa" secondAttribute="leading" id="Iwp-ch-bom"/>
+                                                <constraint firstItem="UBg-CG-uQ5" firstAttribute="leading" secondItem="Kw3-ub-lpa" secondAttribute="leading" id="Hme-4M-vy6"/>
                                                 <constraint firstItem="LYk-Fy-55a" firstAttribute="leading" secondItem="fxh-zA-0nA" secondAttribute="leading" constant="15" id="N57-eH-16j"/>
                                                 <constraint firstItem="Kw3-ub-lpa" firstAttribute="leading" secondItem="LYk-Fy-55a" secondAttribute="trailing" constant="20" id="QIq-lT-fFQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="lJc-Xh-bZB" secondAttribute="trailing" constant="10" id="RJV-UA-jcJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="28b-d0-r2X" secondAttribute="trailing" id="Sl6-7n-C1C"/>
-                                                <constraint firstItem="UBg-CG-uQ5" firstAttribute="top" secondItem="mnU-eK-aBh" secondAttribute="bottom" constant="1" id="Xpf-FL-KZI"/>
                                                 <constraint firstItem="nfT-Hd-w72" firstAttribute="centerY" secondItem="Kw3-ub-lpa" secondAttribute="centerY" id="d43-0V-zhv"/>
-                                                <constraint firstItem="lJc-Xh-bZB" firstAttribute="centerY" secondItem="Kw3-ub-lpa" secondAttribute="centerY" constant="-18.5" id="exh-Ib-juQ"/>
                                                 <constraint firstItem="nfT-Hd-w72" firstAttribute="leading" secondItem="Kw3-ub-lpa" secondAttribute="trailing" constant="10" id="f02-sC-nAh"/>
-                                                <constraint firstItem="UBg-CG-uQ5" firstAttribute="leading" secondItem="mnU-eK-aBh" secondAttribute="leading" id="fHl-j3-ATW"/>
                                                 <constraint firstItem="Kw3-ub-lpa" firstAttribute="centerY" secondItem="LYk-Fy-55a" secondAttribute="centerY" constant="-10" id="h4s-50-4FK"/>
+                                                <constraint firstItem="UBg-CG-uQ5" firstAttribute="top" secondItem="Kw3-ub-lpa" secondAttribute="bottom" id="hHk-vb-cz9"/>
                                                 <constraint firstAttribute="trailing" secondItem="UBg-CG-uQ5" secondAttribute="trailing" constant="10" id="qw6-Eb-xTU"/>
-                                                <constraint firstItem="28b-d0-r2X" firstAttribute="top" secondItem="UBg-CG-uQ5" secondAttribute="bottom" constant="25" id="vcG-YP-QVH"/>
+                                                <constraint firstItem="28b-d0-r2X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UBg-CG-uQ5" secondAttribute="bottom" constant="10" id="vcG-YP-QVH"/>
                                                 <constraint firstItem="LYk-Fy-55a" firstAttribute="top" secondItem="fxh-zA-0nA" secondAttribute="top" constant="10" id="ztE-Ws-Ryd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btnEditReview" destination="lJc-Xh-bZB" id="ABR-gm-mHe"/>
                                             <outlet property="imgStar1" destination="IOT-Lh-uXH" id="UKd-mc-0NO"/>
                                             <outlet property="imgStar2" destination="qSB-0r-C0h" id="Qbo-vc-ajk"/>
                                             <outlet property="imgStar3" destination="5qA-qo-XeW" id="IAD-Ri-CEf"/>
@@ -8103,6 +8077,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnEditAdd" destination="s9T-X1-Lhi" id="2Ki-lH-TE0"/>
                         <outlet property="headerView" destination="IgA-C8-bEo" id="Jgv-7Q-EOJ"/>
                         <outlet property="tableView" destination="LcW-uZ-6j4" id="6ac-AF-J6N"/>
                     </connections>
@@ -8262,6 +8237,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9zq-Go-HFx"/>
                     <connections>
+                        <outlet property="btnAddReview" destination="hSD-xB-fed" id="y6e-zW-Ie9"/>
                         <outlet property="btnStar1" destination="GfV-a0-2DB" id="ZjC-RK-Mc2"/>
                         <outlet property="btnStar2" destination="90a-cx-jWB" id="2Xs-Zn-wj4"/>
                         <outlet property="btnStar3" destination="JdY-5y-Xz1" id="bmM-SC-s8P"/>
@@ -9664,7 +9640,6 @@
         <image name="Group 547" width="21" height="17"/>
         <image name="Group 584" width="22" height="17.666666030883789"/>
         <image name="Group 636" width="24" height="24"/>
-        <image name="Group 637-1" width="24" height="24"/>
         <image name="Group 650" width="12" height="11"/>
         <image name="Group 651" width="21.333333969116211" height="12"/>
         <image name="Group 680" width="19" height="14"/>
@@ -9684,7 +9659,6 @@
         <image name="Website" width="42" height="42"/>
         <image name="activity_welcome_bg" width="376" height="812"/>
         <image name="add_icon" width="42" height="42"/>
-        <image name="add_icon_blue" width="25" height="25"/>
         <image name="back_black" width="24" height="18.666666030883789"/>
         <image name="back_white" width="24" height="18.666666030883789"/>
         <image name="button_compass.png" width="40" height="40"/>

@@ -10,9 +10,13 @@ import UIKit
 class ReviewScreenViewController: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnEditAdd : UIButton!
+    
     var productStoreType: String?
     var productStoreId: String?
     var arrRatingReviewData: [RatingReviewModel]?
+    var isReviewed: Int?
+    var isAddReview: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +33,18 @@ class ReviewScreenViewController: AlysieBaseViewC {
     }
     
     @IBAction func addReview(_ sender: UIButton){
+        
         let controller = self.pushViewController(withName: AddReviewViewController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddReviewViewController
-        controller?.productStoreId = self.productStoreId
+        if isAddReview == true{
+            controller?.productStoreId = self.productStoreId
+            controller?.editReviewData = self.arrRatingReviewData?.first
+        }else{
+            controller?.productStoreId = "\(self.arrRatingReviewData?.first?.marketplace_review_rating_id ?? 0)"
+        }
+       
+       
         controller?.productStoreType = self.productStoreType
-        controller?.isEditReview = false
+        controller?.isEditReview = isAddReview
     }
 }
 
@@ -45,11 +57,7 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewScreenTableViewCell", for: indexPath) as? ReviewScreenTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
-        if "\(arrRatingReviewData?[indexPath.row].user?.user_id ?? 0)" == kSharedUserDefaults.loggedInUserModal.userId {
-            cell.btnEditReview.isHidden = true
-        }else{
-            cell.btnEditReview.isHidden = true
-        }
+        
         if arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.restaurant.rawValue{
         cell.lblName.text = arrRatingReviewData?[indexPath.row].user?.restaurant_name
         }else if arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.voyagers.rawValue || arrRatingReviewData?[indexPath.row].user?.role_id == UserRoles.voiceExperts.rawValue{
@@ -60,7 +68,7 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
         cell.lblUserReview.text = arrRatingReviewData?[indexPath.row].review
         print("ImageUrl Image--------------------------\(kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))")
         cell.imgUser.setImage(withString: kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))
-        cell.btnEditReview.tag = indexPath.row
+        
         if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "0" {
             cell.imgStar1.image = UIImage(named: "icons8_star")
             cell.imgStar2.image = UIImage(named: "icons8_star")
@@ -99,13 +107,13 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
             cell.imgStar4.image = UIImage(named: "icons8_christmas_star")
             cell.imgStar5.image = UIImage(named: "icons8_christmas_star")
         }
-        cell.editReviewCallback = { index in
-            let controller = self.pushViewController(withName: "AddReviewViewController", fromStoryboard: StoryBoardConstants.kMarketplace) as? AddReviewViewController
-            controller?.productStoreId = self.productStoreId
-            controller?.productStoreType = self.productStoreType
-            controller?.editReviewData = self.arrRatingReviewData?[index]
-            controller?.isEditReview = true
-        }
+//        cell.editReviewCallback = { index in
+//            let controller = self.pushViewController(withName: "AddReviewViewController", fromStoryboard: StoryBoardConstants.kMarketplace) as? AddReviewViewController
+//            controller?.productStoreId = "\(self.arrRatingReviewData?[indexPath.row].marketplace_review_rating_id ?? 0)"
+//            controller?.productStoreType = self.productStoreType
+//            controller?.editReviewData = self.arrRatingReviewData?[index]
+//            controller?.isEditReview = self.isAddReview
+//        }
         return cell
     }
     
@@ -121,6 +129,14 @@ extension ReviewScreenViewController {
             let response = dictResponse as? [String:Any]
             if let data = response?["data"] as? [[String:Any]]{
                 self.arrRatingReviewData = data.map({RatingReviewModel.init(with: $0)})
+            }
+            self.isReviewed = response?["is_rated"] as? Int
+            if self.isReviewed == 0 || self.isReviewed == nil {
+                self.isAddReview = false
+                self.btnEditAdd.setImage(UIImage(named: "add_icon_blue"), for: .normal)
+            }else{
+                self.isAddReview = true
+                self.btnEditAdd.setImage(UIImage(named: "icons8_edit_3"), for: .normal)
             }
             self.tableView.reloadData()
         }
