@@ -289,8 +289,8 @@
 		6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */; };
 		6B6F084C261EC41400BA2D2B /* EditSettingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */; };
 		6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */; };
-		6B7426872750E242000B0900 /* StoreDescrptnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7426862750E242000B0900 /* StoreDescrptnViewController.swift */; };
-		6B7426892750E29D000B0900 /* StoreDescTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7426882750E29D000B0900 /* StoreDescTopTableViewCell.swift */; };
+		6B74268B2750E95A000B0900 /* StoreDescrptnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */; };
+		6B74268D2750E963000B0900 /* StoreDescTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */; };
 		6B74FFDE273E40FA0063EAEC /* apple-app-site-association.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */; };
 		6B76ADEB27105725002855CD /* AddReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */; };
 		6B76ADED2710584B002855CD /* AddReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEC2710584B002855CD /* AddReviewTableViewCell.swift */; };
@@ -954,8 +954,8 @@
 		6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostInteractor.swift; sourceTree = "<group>"; };
 		6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeViewController.swift; sourceTree = "<group>"; };
 		6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
-		6B7426862750E242000B0900 /* StoreDescrptnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreDescrptnViewController.swift; path = "../../../../../new_alysei 3/Alysei/Controller/MarketPlace/StoreDescription/StoreDescrptnViewController.swift"; sourceTree = "<group>"; };
-		6B7426882750E29D000B0900 /* StoreDescTopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreDescTopTableViewCell.swift; path = "../../../../../new_alysei 3/Alysei/Controller/MarketPlace/StoreDescription/StoreDescTopTableViewCell.swift"; sourceTree = "<group>"; };
+		6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescrptnViewController.swift; sourceTree = "<group>"; };
+		6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescTopTableViewCell.swift; sourceTree = "<group>"; };
 		6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "apple-app-site-association.rtf"; sourceTree = "<group>"; };
 		6B74FFDF273E41C20063EAEC /* AlyseiDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlyseiDebug.entitlements; sourceTree = "<group>"; };
 		6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewRecipeViewController.swift; sourceTree = "<group>"; };
@@ -2802,11 +2802,11 @@
 		C519FFBE26C3973D00245E7A /* StoreDescription */ = {
 			isa = PBXGroup;
 			children = (
+				6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */,
+				6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */,
 				C5A2F35926C13D5B0072DA8D /* StoreRatingReviewTableVCell.swift */,
 				C5A2F35626C134150072DA8D /* StoreDescImageCollectionVCell.swift */,
-				6B7426862750E242000B0900 /* StoreDescrptnViewController.swift */,
 				C5A2F35D26C144BC0072DA8D /* StoreDescProductCollectionViewCell.swift */,
-				6B7426882750E29D000B0900 /* StoreDescTopTableViewCell.swift */,
 				C5CA9A8926C147F900BDAE25 /* StoreDescProductTableVCell.swift */,
 				6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */,
 			);
@@ -3449,6 +3449,7 @@
 				277D189D25BEC8C3007CA5C7 /* NetworkCategoryCollectionCell.swift in Sources */,
 				C5EB3CE326E9CB8600CCAC9E /* FollowDietsViewController.swift in Sources */,
 				C5AAB85826171896000557B6 /* LiquidCollectionViewLayout.swift in Sources */,
+				6B74268B2750E95A000B0900 /* StoreDescrptnViewController.swift in Sources */,
 				27B4E8FD25EF957D00623E45 /* SignUpModel.swift in Sources */,
 				6B360CF8270ADC4B006A48E4 /* DashboardModel.swift in Sources */,
 				C5E9A3AA26B7ED200005AE89 /* ProductRatingTableVCell.swift in Sources */,
@@ -3638,8 +3639,8 @@
 				C5197B1026E72E3C00C0894F /* CreateTripsViewController.swift in Sources */,
 				27484D0625BB120500CCFC61 /* YourDataViewC.swift in Sources */,
 				6B90662A26F83FD200D24521 /* DiscoverRecipeHomeCollectionViewCell.swift in Sources */,
+				6B74268D2750E963000B0900 /* StoreDescTopTableViewCell.swift in Sources */,
 				6B3CB129274BC10D00D5E683 /* AwardTableViewCell.swift in Sources */,
-				6B7426892750E29D000B0900 /* StoreDescTopTableViewCell.swift in Sources */,
 				27A443A225AE03720002BAAC /* UserDefaultsExtended.swift in Sources */,
 				C5F1F623267882C7005A25A8 /* ProductListTViewCell.swift in Sources */,
 				61C7BE3B267C89F0006DB3BB /* Flag.swift in Sources */,
@@ -3902,7 +3903,6 @@
 				C5D6F7F226B1829D006FFCDF /* HubListTableViewCell.swift in Sources */,
 				C5D6F7F526B1829D006FFCDF /* CountryListCollectionViewCell.swift in Sources */,
 				27D4A15725BDE31400FB7039 /* BusinessListViewC.swift in Sources */,
-				6B7426872750E242000B0900 /* StoreDescrptnViewController.swift in Sources */,
 				27A443B425AE03720002BAAC /* UITextViewExtended.swift in Sources */,
 				610AF2542691BB3C007AD426 /* AboutViewCTextSwitchCell.swift in Sources */,
 				278ACAA825BB045C0054ACB6 /* MembershipViewC.swift in Sources */,

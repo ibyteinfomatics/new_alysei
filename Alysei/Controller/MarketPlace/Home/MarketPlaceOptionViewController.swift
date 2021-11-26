@@ -21,7 +21,7 @@ class MarketPlaceOptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lblHead.text = passHeading
-        headerView.addShadow()
+        headerView.drawBottomShadow()
         callOptionApi()
         // Do any additional setup after loading the view.
     }

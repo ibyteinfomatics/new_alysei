@@ -15,6 +15,7 @@ class StoreDescrptnViewController: AlysieBaseViewC {
     var storeProducts: [ProductSearchListModel]?
     var passStoreId: String?
 
+    
     var number : String?
     override func viewDidLoad() {
         super.viewDidLoad()

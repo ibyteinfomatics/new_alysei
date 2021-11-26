@@ -11,6 +11,7 @@ import CoreLocation
 
 class StoreDescTopTableViewCell: UITableViewCell {
     
+    
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var imgCover : UIImageView!
