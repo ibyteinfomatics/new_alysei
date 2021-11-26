@@ -23,9 +23,8 @@ class UniversalSearchViewController: AlysieBaseViewC {
     
     var currentIndex : Int = -1
     var searchType : Int = 0
-    var searchText = String()
     var updatedText = String()
-    
+    var loadIndex = 0
     var arraySearchByPeople : [UserDataModel]? = []
     var arraySearchByBolg : [BlogDatum]? = []
     var arraySearchByTrips : [TripDatum]? = []
@@ -48,7 +47,7 @@ class UniversalSearchViewController: AlysieBaseViewC {
         universalSearchTableView.isHidden = true
         dividerView.isHidden = true
         searchTextField.delegate = self
-       // self.tabBarController?.tabBar.isHidden = true
+        // self.tabBarController?.tabBar.isHidden = true
         self.dividerView.layer.backgroundColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
         universalSearchTableView.register(UINib(nibName: "PeopelTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopelTableViewCell")
@@ -60,7 +59,7 @@ class UniversalSearchViewController: AlysieBaseViewC {
         universalSearchTableView.register(UINib(nibName: "AwardTableViewCell", bundle: nil), forCellReuseIdentifier: "AwardTableViewCell")
         //        universalSearchTableView.register(UINib(nibName: "FeaturedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeaturedTableViewCell")
         
-       
+        
         
     }
     
@@ -76,7 +75,7 @@ class UniversalSearchViewController: AlysieBaseViewC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-
+        
         if segue.identifier == "seguePostsToSharePost" {
             if let dataModel = sender as? SharePost.PostData.post {
                 if let viewCon = segue.destination as? SharePostViewController {
@@ -110,6 +109,14 @@ class UniversalSearchViewController: AlysieBaseViewC {
         self.searchTextField.text = nil
         dividerView.isHidden = true
         searchTap = false
+        loadIndex = 0
+        searchType = 0
+        arraySearchByPeople?.removeAll()
+        arraySearchByBolg?.removeAll()
+        arraySearchByTrips?.removeAll()
+        arraySearchByEvents?.removeAll()
+        arraySearchByPost.removeAll()
+        universalSearchTableView.reloadData()
         universalSearchTableView.isHidden = true
         bubbleCollectionView.reloadData()
         
@@ -139,7 +146,7 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) -> Void {
         self.currentIndex = indexPath.item
-        
+        self.loadIndex = indexPath.item
         switch currentIndex {
         case 0:
             self.searchType = 0
@@ -155,15 +162,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 1:
             self.searchType = 1
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByEvents?.removeAll()
-            arraySearchByBolg?.removeAll()
-            arraySearchByTrips?.removeAll()
-            arraySearchByPost.removeAll()
-            arraySearchByAward?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByEvents?.removeAll()
+                arraySearchByBolg?.removeAll()
+                arraySearchByTrips?.removeAll()
+                arraySearchByPost.removeAll()
+                arraySearchByAward?.removeAll()
             }
             else{
                 searchTap = false
@@ -171,15 +178,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 2:
             self.searchType = 2
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByEvents?.removeAll()
-            arraySearchByPeople?.removeAll()
-            arraySearchByTrips?.removeAll()
-            arraySearchByPost.removeAll()
-            arraySearchByAward?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByEvents?.removeAll()
+                arraySearchByPeople?.removeAll()
+                arraySearchByTrips?.removeAll()
+                arraySearchByPost.removeAll()
+                arraySearchByAward?.removeAll()
             }
             else{
                 searchTap = false
@@ -188,15 +195,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 3:
             self.searchType = 3
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByEvents?.removeAll()
-            arraySearchByPeople?.removeAll()
-            arraySearchByBolg?.removeAll()
-            arraySearchByPost.removeAll()
-            arraySearchByAward?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByEvents?.removeAll()
+                arraySearchByPeople?.removeAll()
+                arraySearchByBolg?.removeAll()
+                arraySearchByPost.removeAll()
+                arraySearchByAward?.removeAll()
             }
             else{
                 searchTap = false
@@ -205,15 +212,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 4:
             self.searchType = 4
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByTrips?.removeAll()
-            arraySearchByPeople?.removeAll()
-            arraySearchByBolg?.removeAll()
-            arraySearchByPost.removeAll()
-            arraySearchByAward?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByTrips?.removeAll()
+                arraySearchByPeople?.removeAll()
+                arraySearchByBolg?.removeAll()
+                arraySearchByPost.removeAll()
+                arraySearchByAward?.removeAll()
             }
             else{
                 searchTap = false
@@ -222,15 +229,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 5:
             self.searchType = 5
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByTrips?.removeAll()
-            arraySearchByPeople?.removeAll()
-            arraySearchByBolg?.removeAll()
-            arraySearchByEvents?.removeAll()
-            arraySearchByAward?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByTrips?.removeAll()
+                arraySearchByPeople?.removeAll()
+                arraySearchByBolg?.removeAll()
+                arraySearchByEvents?.removeAll()
+                arraySearchByAward?.removeAll()
             }
             else{
                 searchTap = false
@@ -238,15 +245,15 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         case 6:
             self.searchType = 6
             if self.searchTextField.text != ""{
-            searchTap = true
-            dividerView.isHidden = false
-            universalSearchTableView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            arraySearchByTrips?.removeAll()
-            arraySearchByPeople?.removeAll()
-            arraySearchByBolg?.removeAll()
-            arraySearchByPost.removeAll()
-            arraySearchByEvents?.removeAll()
+                searchTap = true
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                arraySearchByTrips?.removeAll()
+                arraySearchByPeople?.removeAll()
+                arraySearchByBolg?.removeAll()
+                arraySearchByPost.removeAll()
+                arraySearchByEvents?.removeAll()
             }
             else{
                 searchTap = false
@@ -264,10 +271,10 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if indexPath.item == 0{
-        return CGSize(width: 100 , height: 45.0)
+            return CGSize(width: 100 , height: 45.0)
         }
         else{
-        return CGSize(width: 150 , height: 45.0)
+            return CGSize(width: 150 , height: 45.0)
         }
     }
     
@@ -459,7 +466,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         }
                         
                         cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
-                       
+                        
                         
                         
                         if self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl != nil {
@@ -668,7 +675,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     return cell4
                 case 4:
-                   
+                    
                     if arraySearchByPost.count == 0{
                         cell5.noItemLabel.isHidden = false
                         cell5.containerView.isHidden = true
@@ -696,20 +703,20 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                                 
                                 
                             }
-//                            cell5.reloadCallBack = { tag, section in
-                                //                    let data = self.arraySearchByPost[tag ?? -1]
-                                
-                                //                    if data.isExpand == false{
-                                //                        data.isExpand = true
-                                //                    }else{
-                                //                        data.isExpand = false
-                                //                    }
-//                                self.universalSearchTableView.reloadData()
-//                                let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
-//                                self.universalSearchTableView.reloadRows(at: [indexPath], with: .automatic)
-//                                self.universalSearchTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-//
-//                            }
+                            //                            cell5.reloadCallBack = { tag, section in
+                            //                    let data = self.arraySearchByPost[tag ?? -1]
+                            
+                            //                    if data.isExpand == false{
+                            //                        data.isExpand = true
+                            //                    }else{
+                            //                        data.isExpand = false
+                            //                    }
+                            //                                self.universalSearchTableView.reloadData()
+                            //                                let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
+                            //                                self.universalSearchTableView.reloadRows(at: [indexPath], with: .automatic)
+                            //                                self.universalSearchTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                            //
+                            //                            }
                             
                             cell5.menuDelegate = self
                             
@@ -945,7 +952,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 }
                 return cell4
             case 5:
-               
+                
                 if arraySearchByPost.count == 0{
                     cell5.noItemLabel.isHidden = false
                     cell5.containerView.isHidden = true
@@ -961,31 +968,31 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell5.shareCallback = {
                             
                             self.sharePost(data.postID ?? 0)
-
+                            
                         }
                         
                         cell5.likeCallback = { index in
-
+                            
                             cell5.lblPostLikeCount.text = "\(data.likeCount ?? 0)"
                             cell5.likeImage.image = data.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
                             
                             
                             
                         }
-//                        cell5.reloadCallBack = { tag, section in
-                            //                    let data = self.arraySearchByPost[tag ?? -1]
-                            
-                            //                    if data.isExpand == false{
-                            //                        data.isExpand = true
-                            //                    }else{
-                            //                        data.isExpand = false
-                            //                    }
-//                            self.universalSearchTableView.reloadData()
-//                            let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
-//                            self.universalSearchTableView.reloadRows(at: [indexPath], with: .automatic)
-//                            self.universalSearchTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-//
-//                        }
+                        //                        cell5.reloadCallBack = { tag, section in
+                        //                    let data = self.arraySearchByPost[tag ?? -1]
+                        
+                        //                    if data.isExpand == false{
+                        //                        data.isExpand = true
+                        //                    }else{
+                        //                        data.isExpand = false
+                        //                    }
+                        //                            self.universalSearchTableView.reloadData()
+                        //                            let indexPath = IndexPath(row: tag ?? -1, section: indexPath.section)
+                        //                            self.universalSearchTableView.reloadRows(at: [indexPath], with: .automatic)
+                        //                            self.universalSearchTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                        //
+                        //                        }
                         
                         cell5.menuDelegate = self
                         
@@ -1082,7 +1089,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
         
         return 0
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchType == 0{
             switch indexPath.section {
@@ -1096,7 +1103,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 
                 tripTab(indexPath: indexPath)
                 
-               
+                
             case 3:
                 
                 eventTab(indexPath: indexPath)
@@ -1115,23 +1122,23 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
             controller?.userLevel = .other
             controller?.userID = self.arraySearchByPeople?[indexPath.row].userId
-            }
-            else if searchType == 2{
-                return
-            }
-            else if searchType == 3{
-                tripTab(indexPath: indexPath)
-            }
-            else if searchType == 4{
-                eventTab(indexPath: indexPath)
-            }
-            else if searchType == 5{
-               return
-            }
-            else if searchType == 6{
-                return
-
-            }
+        }
+        else if searchType == 2{
+            return
+        }
+        else if searchType == 3{
+            tripTab(indexPath: indexPath)
+        }
+        else if searchType == 4{
+            eventTab(indexPath: indexPath)
+        }
+        else if searchType == 5{
+            return
+        }
+        else if searchType == 6{
+            return
+            
+        }
     }
     
 }
@@ -1221,7 +1228,7 @@ extension UniversalSearchViewController: EditMenuProtocol {
                                                            postOwnerDetail: editData.subjectId,
                                                            postDescription: "\(editData.body ?? "")",
                                                            postID: postID)
-                        self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
+            self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
         }
     }
     
@@ -1232,8 +1239,8 @@ extension UniversalSearchViewController: EditMenuProtocol {
                                                              postOwnerDetail: searchDataModel.subjectId,
                                                              postDescription: "\(searchDataModel.body ?? "")",
                                                              postID: postID)
-                                        
-                        self.performSegue(withIdentifier: "seguePostsToSharePost", sender: sharePostDataModel)
+            
+            self.performSegue(withIdentifier: "seguePostsToSharePost", sender: sharePostDataModel)
         }
     }
     
@@ -1248,35 +1255,32 @@ extension UniversalSearchViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
-        searchText = string
-        
-        if searchText.count > 0 {
-            searchUniversal = true
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updateText = text.replacingCharacters(in: textRange,
+                                                      with: string)
+           
+            if updateText.count > 0 {
+                searchUniversal = true
                 searchTap = true
-                currentIndex = 0
-      
-            
-            if let text = textField.text,
-               let textRange = Range(range, in: text) {
-                let updateText = text.replacingCharacters(in: textRange,
-                                                          with: string)
+                currentIndex = loadIndex
                 updatedText = updateText
-                if updateText.count > 0{
-                    dividerView.isHidden = false
-                    universalSearchTableView.isHidden = false
-                }
+                dividerView.isHidden = false
+                universalSearchTableView.isHidden = false
+                
                 getUniversalSearchData(1, updateText)
                 bubbleCollectionView.reloadData()
             }
             
         }
         else{
-            
             searchUniversal = false
             searchTap = false
+            loadIndex = 0
             dividerView.isHidden = true
             universalSearchTableView.isHidden = true
             universalSearchTableView.reloadData()
+            bubbleCollectionView.reloadData()
         }
         
         return true
@@ -1371,9 +1375,9 @@ extension UniversalSearchViewController{
                 
                 if let awards = data["awards"] as? [String:Any]{
                     if let award1 = awards["data"] as? [[String:Any]]{
-                    let award = award1.map({AwardDatum.init(with: $0)})
-                    arraySearchByAward = award
-                    print("\(String(describing: arraySearchByAward?.count))")
+                        let award = award1.map({AwardDatum.init(with: $0)})
+                        arraySearchByAward = award
+                        print("\(String(describing: arraySearchByAward?.count))")
                     }
                 }
                 

@@ -315,16 +315,14 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
-        searchText = string
-        
-        
-        if searchText.count > 0 {
+        if let text = textField.text,
+                   let textRange = Range(range, in: text) {
+                   let updateText = text.replacingCharacters(in: textRange,
+                                                               with: string)
+        if updateText.count > 0 {
             searching = true
             filteredCollectionView.isHidden = false
-            if let text = textField.text,
-                       let textRange = Range(range, in: text) {
-                       let updateText = text.replacingCharacters(in: textRange,
-                                                                   with: string)
+            
                 updatedText = updateText
                 
                 callSearchRecipe(updatedText,"", indexOfPageToRequest, "", "", "", "", "", "")
