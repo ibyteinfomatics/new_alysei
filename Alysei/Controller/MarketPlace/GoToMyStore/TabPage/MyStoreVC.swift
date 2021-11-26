@@ -24,12 +24,14 @@ class MyStoreVC: AlysieBaseViewC {
     @IBOutlet weak var viewContProduct: UIView!
     @IBOutlet weak var viewContInquiry: UIView!
     @IBOutlet weak var lblStoreName: UILabel!
+    @IBOutlet weak var vwheader: UIView!
     
     var userStoreName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         callGetFieldStoreApi()
+        vwheader.drawBottomShadow()
         //stackView.addSubview
         self.loadDashboard()
         selectDashboardUI()

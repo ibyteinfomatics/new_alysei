@@ -17,7 +17,8 @@ class SelectMemberShipVC: AlysieBaseViewC {
     var memberShipData : [Membership]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerView.addShadow()
+       // headerView.addShadow()
+        headerView.drawBottomShadow()
         callMemberShipApi()
         
         //btnNext.isUserInteractionEnabled = false

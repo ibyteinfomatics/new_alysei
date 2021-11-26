@@ -33,7 +33,7 @@ class ProductDetailVC: AlysieBaseViewC {
         super.viewDidLoad()
         self.btnSendEnquiry.isHidden = true
         btnenquiryHght.constant = 0
-        headerView.addShadow()
+        headerView.drawBottomShadow()
         callProductDetailApi()
         callGetReviewApi()
         // Do any additional setup after loading the view.
@@ -179,7 +179,10 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
             cell.pushCallBack = { tag in
                 switch tag{
                 case 0:
-                    guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else {return}
+                  //  guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else {return}
+                    
+                    guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescrptnViewController") as? StoreDescrptnViewController else {return}
+
                     nextVC.passStoreId = "\(self.productDetail?.product_detail?.marketPlaceStoreId ?? 0)"
                     self.navigationController?.pushViewController(nextVC, animated: true)
                     

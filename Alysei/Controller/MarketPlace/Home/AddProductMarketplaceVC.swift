@@ -48,6 +48,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     @IBOutlet weak var lblHeadingLeading: NSLayoutConstraint!
     @IBOutlet weak var btnback: UIButton!
     
+    
     var uploadImageArray = [UIImage]()
     //var selectedAssets = [TLPHAsset]()
     var imagesFromSource = [UIImage]()
@@ -321,11 +322,15 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         case 2:
             showInfo("Dispatch Instruction can contains max 200 words")
             print("2")
+        case 3:
+            showInfo("Lorem Ipsum is simply dummy text of the printing")
+            print("3")
             
         default:
             break
         }
     }
+    
     func showInfo(_ message: String){
         self.showAlert(withMessage: message)
     }

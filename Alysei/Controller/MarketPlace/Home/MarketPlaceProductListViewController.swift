@@ -11,12 +11,13 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
-    @IBOutlet weak var vwSearch: UIView!
-    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+//    @IBOutlet weak var vwSearch: UIView!
+//    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
     @IBOutlet weak var searchtextField: UITextField!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var blankScreen: UIView!
+    @IBOutlet weak var vwSearchUnderLine: UIView!
     var listType:Int?
     var keywordSearch: String?
     var filterTitle: String?
@@ -91,16 +92,21 @@ class MarketPlaceProductListViewController: UIViewController {
             self.callProductListApi()
         }
         }
-        self.vwSearch.isHidden = true
-        self.hghtSearch.constant = 0
-        vwSearch.layer.cornerRadius = 20
+        //self.vwSearch.isHidden = true
+        //vwSearch.layer.cornerRadius = 20
         searchtextField.delegate = self
         searchtextField.attributedPlaceholder = NSAttributedString(string: "Search",
                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchtextField.isHidden = true
+        self.vwSearchUnderLine.isHidden = true
+        self.lblHeading.isHidden = false
+        self.searchtextField.resignFirstResponder()
+    }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        if isSearch == false{
@@ -137,8 +143,10 @@ class MarketPlaceProductListViewController: UIViewController {
         }
     }
     @IBAction func btnSearch(_ sender: UIButton){
-        self.vwSearch.isHidden = false
-        self.hghtSearch.constant = 40
+        self.searchtextField.isHidden = false
+        self.vwSearchUnderLine.isHidden = false
+        self.lblHeading.isHidden = true
+        self.searchtextField.becomeFirstResponder()
         self.isSearch = true
     }
     @IBAction func btnFilterAction(_ sender: UIButton){
@@ -281,7 +289,7 @@ extension MarketPlaceProductListViewController: UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}

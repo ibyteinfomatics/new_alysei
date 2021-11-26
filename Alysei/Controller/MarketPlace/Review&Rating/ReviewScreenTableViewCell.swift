@@ -18,6 +18,8 @@ class ReviewScreenTableViewCell: UITableViewCell {
     @IBOutlet weak var imgStar4: UIImageView!
     @IBOutlet weak var imgStar5: UIImageView!
     @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var btnEditReview: UIButton!
+    var editReviewCallback: ((Int) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +31,10 @@ class ReviewScreenTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func btnEditReviewAction( _ sender: UIButton){
+        editReviewCallback?(sender.tag)
     }
 
 }

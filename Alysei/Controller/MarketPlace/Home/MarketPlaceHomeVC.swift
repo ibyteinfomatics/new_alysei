@@ -99,7 +99,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
    private var isBottomSheetShown = false
     
     
-    var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
+    //var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
+    
+    var marketPlaceOptions = ["icons8_online_store_2", "icons8_wooden_beer_keg_1-1" , "icons8_geography-1" ,"icons8_sorting-1", "icons8_property_script", "icons8_certificate_1-1", "Group 5304", "hot", "icons8_popular-1"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
 
     var originalPosition: CGPoint?
@@ -109,7 +111,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         // headerView.addShadow()
         // movetoWalkthrough()
         self.tabBarController?.tabBar.isHidden = true
-        subheaderView.addShadow()
+        subheaderView.drawBottomShadow()
         callCheckIfStoredCreated()
         callMarketPlaceHomeApi()
         setBottomUI()
@@ -733,7 +735,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             print("Check")
         }else if collectionView == newlyyAddedStoreCollectionView{
-            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+           // guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+            guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescrptnViewController") as? StoreDescrptnViewController else{return}
 
             let data = maketPlaceHomeScreenData?.newly_added_store?[indexPath.row]
             nextVC.passStoreId = "\(data?.marketplace_store_id ?? 0)"

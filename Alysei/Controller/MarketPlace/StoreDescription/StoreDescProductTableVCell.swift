@@ -23,6 +23,7 @@ class StoreDescProductTableVCell: UITableViewCell {
     }
 
     func configCell(_ data: [ProductSearchListModel]?){
+        self.storeProductCollectionView.reloadData()
         self.storeProduct = data
     }
 }

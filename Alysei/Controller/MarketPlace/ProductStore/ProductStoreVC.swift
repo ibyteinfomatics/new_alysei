@@ -13,11 +13,12 @@ class ProductStoreVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
     @IBOutlet weak var txtSearch: UITextField!
-    @IBOutlet weak var vwSearch: UIView!
-    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+    //@IBOutlet weak var vwSearch: UIView!
+    //@IBOutlet weak var hghtSearch: NSLayoutConstraint!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var blankView: UIView!
+    @IBOutlet weak var vwSearchUnderLine: UIView!
         
     var indexOfPageToRequest = 1
     var listType: Int?
@@ -51,11 +52,11 @@ class ProductStoreVC: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwSearch.isHidden =  true
+      //  vwSearch.isHidden =  true
         txtSearch.attributedPlaceholder = NSAttributedString(string: "Search",
                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        vwSearch.layer.cornerRadius = 20
-        self.hghtSearch.constant = 0
+       // vwSearch.layer.cornerRadius = 20
+        //self.hghtSearch.constant = 0
         self.txtSearch.delegate = self
         self.lblHeading.text = keywordSearch
         self.blankView.isHidden = true
@@ -75,6 +76,10 @@ class ProductStoreVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.txtSearch.isHidden = true
+        self.vwSearchUnderLine.isHidden = true
+        self.lblHeading.isHidden = false
+        self.txtSearch.resignFirstResponder()
         indexOfPageToRequest = 1
 
         
@@ -137,8 +142,11 @@ class ProductStoreVC: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     @IBAction func btnSearch(_ sender: UIButton){
-        self.vwSearch.isHidden = false
-        self.hghtSearch.constant = 40
+        self.txtSearch.isHidden = false
+        self.lblHeading.isHidden = true
+        self.txtSearch.becomeFirstResponder()
+        self.vwSearchUnderLine.isHidden = false
+      //  self.hghtSearch.constant = 40
         self.isSearch = true
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -220,8 +228,9 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
         let imgUrl = (kImageBaseUrl + (data?.logo_id ?? ""))
         cell.imgStore.setImage(withString: imgUrl)
         cell.lblStoreName.text = data?.storeName
-        cell.lblAddress.text = data?.location
+            cell.lblAddress.text = data?.region?.name
         cell.lblTotalRating.text = data?.avg_rating
+            cell.lblProductType.text = data?.product_category_name
         cell.lblTotalReview.text = (data?.total_reviews ?? "0") + " Reviews"
         }
         return cell
@@ -229,12 +238,14 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 170
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+      //  guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescViewController") as? StoreDescViewController else{return}
+        
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "StoreDescrptnViewController") as? StoreDescrptnViewController else{return}
         
         //var data = arrListData[indexPath.row]
 //        if isSearch {
@@ -385,6 +396,8 @@ class ProductTableViewCell: UITableViewCell{
     @IBOutlet weak var userRatingStar3: UIImageView!
     @IBOutlet weak var userRatingStar4: UIImageView!
     @IBOutlet weak var userRatingStar5: UIImageView!
+    @IBOutlet weak var lblProductType: UILabel!
+    
     var data: MyStoreProductDetail?
     override func awakeFromNib() {
         vwContainer.addShadow()

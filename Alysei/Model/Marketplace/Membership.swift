@@ -97,6 +97,8 @@ class MyStoreProductDetail{
     var latest_review: RatingReviewModel?
     var isOptionSelected = false
     var flagId : FlagId?
+    var region: Regions?
+    var product_category_name: String?
     //var isSelected = false
     //var phone: String?
     
@@ -137,6 +139,7 @@ class MyStoreProductDetail{
         self.total_four_star = Int.getInt(data?["total_four_star"])
         self.total_five_star = Int.getInt(data?["total_five_star"])
         self.location = String.getString(data?["location"])
+        self.product_category_name = String.getString(data?["product_category_name"])
         //self.phone = String.getString(data?["phone"])
         if let product_gallery = data?["product_gallery"] as? [[String:Any]]{
             self.product_gallery = product_gallery.map({ProductGallery.init(with: $0)})
@@ -170,9 +173,20 @@ class MyStoreProductDetail{
         if let logoId = data?["logo_id"] as? [String:Any]{
             self.logoId = Attachment.init(with: logoId)
         }
+        if let region = data?["region"] as? [String:Any]{
+            self.region = Regions.init(with: region)
+        }
     }
 }
-
+class Regions {
+    var id: String?
+    var name: String?
+    
+    init(with data: [String:Any]) {
+        self.id = String.getString(data["id"])
+        self.name = String.getString(data["name"])
+    }
+}
 
 class ProductGallery{
     var marketplace_product_gallery_id: Int?

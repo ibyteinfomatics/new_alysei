@@ -15,7 +15,7 @@ class MarketPlaceHomeCollectionVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bgView.layer.backgroundColor = UIColor.darkGray.withAlphaComponent(0.2).cgColor
+       // bgView.layer.backgroundColor = UIColor.darkGray.withAlphaComponent(0.2).cgColor
         bgView.layer.cornerRadius = 15
         bgView.addShadow()
     }

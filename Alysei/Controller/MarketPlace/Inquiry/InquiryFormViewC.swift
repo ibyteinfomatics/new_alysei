@@ -15,6 +15,7 @@ class InquiryFormViewC: AlysieBaseViewC {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtMessage: UITextView!
+    @IBOutlet weak var vwInquiry: UIView!
 
     var passproductId: String?
     var passproductName: String?
@@ -31,7 +32,7 @@ class InquiryFormViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtMessage.delegate = self
-       
+        vwInquiry.drawBottomShadow()
         setData()
        
         // Do any additional setup after loading the view.

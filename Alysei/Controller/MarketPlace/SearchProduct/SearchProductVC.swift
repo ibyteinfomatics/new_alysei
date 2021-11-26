@@ -17,7 +17,7 @@ class SearchProductVC: UIViewController {
     var isSearchEnable = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         txtSearch.delegate = self
         callRecentListApi()
         

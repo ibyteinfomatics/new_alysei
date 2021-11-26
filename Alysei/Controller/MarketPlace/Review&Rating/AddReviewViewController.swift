@@ -20,18 +20,31 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     var productStoreType: String?
     var productStoreId: String?
     var reviewStarCount = 0
+    var editReviewData : RatingReviewModel?
+    var isEditReview : Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtReview.delegate = self
-        headerView.addShadow()
-        setStar()
+        headerView.drawBottomShadow()
+        
+        if isEditReview == true
+        {
+            txtReview.textColor = UIColor.black
+            txtReview.text = editReviewData?.review
+        }else {
+            txtReview.textColor = UIColor.lightGray
+            setStar()
         txtReview.text = "Leave a comment"
-        txtReview.textColor = UIColor.lightGray
+        }
+        
         txtReview.layer.borderColor = UIColor.lightGray.cgColor
         txtReview.layer.borderWidth = 0.5
         setImage()
         // Do any additional setup after loading the view.
     }
+    
+    
     
     func setImage(){
         _ = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
@@ -68,7 +81,11 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
             return
             //txtReview.text = ""
         }else{
+            if isEditReview == true {
+                callEditReviewApi()
+            }else{
             callAddReviewApi()
+            }
         }
     }
     
@@ -189,5 +206,9 @@ extension AddReviewViewController {
                 break
             }
         }
+    }
+    
+    func callEditReviewApi(){
+        print("Edit Review")
     }
 }
