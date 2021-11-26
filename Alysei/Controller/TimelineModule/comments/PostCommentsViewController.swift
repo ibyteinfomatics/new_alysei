@@ -57,6 +57,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
             
             if self.commentmessages?.count ?? 0 == 0{
                 self.vwBlank.isHidden = false
+                self.commentTextfield.becomeFirstResponder()
             }else{
                 self.vwBlank.isHidden = true
             }
@@ -151,6 +152,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
            postid = self.postCommentsUserDataModel.postID
         }
         IQKeyboardManager.shared.enable = false
+        //self.commentTextfield.becomeFirstResponder()
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -179,7 +181,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         self.model = response
         self.commentTextfield.text = ""
         self.tableView.reloadData()
-        self.commentTextfield.resignFirstResponder()
+       // self.commentTextfield.resignFirstResponder()
 //        if !self.commentTextfield.isFirstResponder {
 //            self.commentTextfield.becomeFirstResponder()
 //        }

@@ -51,6 +51,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
+        
         postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
@@ -84,6 +85,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             postRequestToGetProgressPrfile()
             
         }
+        
+        if txtPost.textColor == UIColor.lightGray {
+            txtPost.becomeFirstResponder()
+            txtPost.text = nil
+            txtPost.textColor = UIColor.black
+        }
+        
+        
      
     }
     
@@ -253,10 +262,17 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         config.screens = [.library, .photo]
         config.library.maxNumberOfItems = 100000
         config.showsPhotoFilters = true
+        //config.library.onlySquare = true
+        //config.overlayView = UIView()
+        //config.targetImageSize = .original
+        //config.library.preSelectItemOnMultipleSelection = true
+         //config.library.defaultMultipleSelection = false
+
+
         self.descriptionPost = txtPost.text
         config.library.preselectedItems = ypImages
         let picker = YPImagePicker(configuration: config)
-
+        
         picker.didFinishPicking { [unowned picker] items, cancelled in
             self.ypImages = items
             for item in items {
@@ -266,8 +282,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                     self.imgWidth = photo.asset?.pixelWidth
                     self.imgHeight = photo.asset?.pixelHeight
                     
-                    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHeight>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgHeight ?? 0)
-                    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHWidth>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgWidth ?? 0)
+                    //print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHeight>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgHeight ?? 0)
+                    //print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ImgHWidth>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",self.imgWidth ?? 0)
                     print(photo)
                 
                 case .video(let video):

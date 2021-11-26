@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "profile_awards.png",
+      "filename" : "icons8_certificate_1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "profile_awards@2x.png",
+      "filename" : "icons8_certificate_1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "profile_awards@3x.png",
+      "filename" : "icons8_certificate_1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

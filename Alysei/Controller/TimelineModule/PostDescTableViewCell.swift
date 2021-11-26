@@ -53,7 +53,9 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btnMoreLess: UIButton!
     @IBOutlet var vwpageControl: ScrollingPageControl!
-
+    @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
+    
+    
     var data: NewFeedSearchDataModel?
     var likeCallback:((Int) -> Void)? = nil
     var shareCallback:(()->())?
@@ -176,29 +178,29 @@ class PostDescTableViewCell: UITableViewCell {
         self.index = self.data?.postID ?? 0
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Producer"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
-            userNickName.text = "Restaurant"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Voyager,"//modelData.subjectId?.email?.lowercased()
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voice Of Experts"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Distributer"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer & Distributer"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Travel Agencies"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
         }/*else{
   
             userName.text = modelData.subjectId?.companyName?.capitalized
@@ -222,11 +224,47 @@ class PostDescTableViewCell: UITableViewCell {
             imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
         }else{
-            if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-                imageHeightCVConstant.constant = 250
-            }else{
-                imageHeightCVConstant.constant = 400
+            
+            if modelData.attachments?.count ?? 0 > 1 {
+                
+                //var numbers = [Int]()
+                var height1 = 0,height2 = 0,height3 = 0,height = 0
+                for i in  0..<(modelData.attachments?.count ?? 0) {
+                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
+                        height1 = 350
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
+                        height2 = 200
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) {
+                        height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0
+                                                * 72 / 96)-200) //500
+                    }
+                }
+            
+                if height3 > height1 && height3 > height2{
+                    height = height3
+                } else if height1 > height3 && height1 > height2{
+                    height = height1
+                } else if height2 > height3 && height2 > height1{
+                    height = height2
+                }
+                
+                
+                imageHeightCVConstant.constant = CGFloat(height)//500
+               
+            } else {
+                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+                    imageHeightCVConstant.constant = 350
+                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
+                    imageHeightCVConstant.constant = 200
+                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
+                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0
+                                                                * 72 / 96)-150//500
+                }
             }
+            
+            
 //            imagePostCollectionView.alpha = 1.0
         }
         self.userImage.layer.borderWidth = 0.5
@@ -367,14 +405,14 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
             return UICollectionViewCell()
         }
 
-        print("ImageArray---------------------------------\(self.imageArray)")
+        //print("ImageArray---------------------------------\(self.imageArray)")
 //        for i in 0..<imageArray.count {
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
 
         cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
-        cell.imagePost.contentMode = .scaleAspectFill
+        //cell.imagePost.contentMode = .scaleAspectFill
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }
@@ -387,21 +425,67 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         self.pageControl.currentPage = indexPath.row
        
         vwpageControl.selectedPage = indexPath.row
+        
+       // self.collectionView(self.imagePostCollectionView, cellForItemAt: IndexPath(item: 1, section: 0))
+        //self.collectionView(self.imagePostCollectionView, layout: UICollectionViewLayout, sizeForItemAt: indexPath)
+        
+        /*if self.data?.attachments?.count ?? 0 > 1 {
+            var height = 0
+            if self.data?.attachments?[indexPath.row].attachmentLink?.height == self.data?.attachments?[indexPath.row].attachmentLink?.width {
+                 height = 350
+             } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) {
+                height = 200
+             } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) {
+                height = Int(CGFloat(self.data?.attachments?[indexPath.row].attachmentLink?.height ?? 0
+                                        * 72 / 96)-150)//500
+             }
+            
+            let cellSize = CGSize(width:self.imagePostCollectionView.frame.width , height:CGFloat(height))
+
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.itemSize = cellSize
+            imagePostCollectionView.setCollectionViewLayout(layout, animated: true)
+        }*/
+        
+        
+        
+       /* if self.data?.attachments?[indexPath.row].attachmentLink?.height == self.data?.attachments?[indexPath.row].attachmentLink?.width {
+            imageHeightCVConstant.constant = 350
+        } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) {
+            imageHeightCVConstant.constant = 200
+        } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) {
+            imageHeightCVConstant.constant = CGFloat(self.data?.attachments?[indexPath.row].attachmentLink?.height ?? 0
+                                                        * 72 / 96)-150//500
+        }*/
        
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
         let data = self.data?.attachments?[indexPath.row]
-        if data?.attachmentLink?.height == data?.attachmentLink?.width{
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 250);
-        }else{
-            let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
-        }
-            
         
-       
+        if self.data?.attachments?.count ?? 0 > 1 {
+            //data = self.data?.attachments?[1]
+        }
+        
+        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
+        } else {
+            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
+                                                                                                * 72 / 96)-150)
+        }
+        
+        
+        
     }
 //
 //     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

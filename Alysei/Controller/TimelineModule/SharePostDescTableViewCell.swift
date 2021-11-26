@@ -167,35 +167,35 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Producer"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Producer,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
-        lblSharedUserEmail.text = "Restaurant"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
     }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Voyager,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text = "Voice Of Experts"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Importer"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Importer,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Distributer"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Importer & Distributer"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Travel Agencies"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
     }
     
     if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
@@ -225,8 +225,16 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
     }else{
-        imageHeightCVConstant.constant = 220
-//            imagePostCollectionView.alpha = 1.0
+        //imageHeightCVConstant.constant = 220
+          //  imagePostCollectionView.alpha = 1.0
+        if modelData.sharedPostData?.attachments?.first?.attachmentLink?.height == modelData.sharedPostData?.attachments?.first?.attachmentLink?.width {
+            imageHeightCVConstant.constant = 350
+        } else if Int.getInt(modelData.sharedPostData?.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.sharedPostData?.attachments?.first?.attachmentLink?.height) {
+            imageHeightCVConstant.constant = 200
+        } else {
+            imageHeightCVConstant.constant = CGFloat(modelData.sharedPostData?.attachments?.first?.attachmentLink?.height ?? 0
+                                                        * 72 / 96)-250//500
+        }
     }
     self.userImage.layer.borderWidth = 0.5
     self.userImage.layer.borderColor = UIColor.lightGray.cgColor
@@ -376,7 +384,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
 //        }
 
         cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
-        cell.imagePost.contentMode = .scaleAspectFill
+       // cell.imagePost.contentMode = .scaleAspectFill
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }
@@ -392,7 +400,24 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
-        return CGSize(width: (self.imagePostCollectionView.frame.width), height: 220);
+       // return CGSize(width: (self.imagePostCollectionView.frame.width), height: 220);
+        
+        let data = self.data?.sharedPostData?.attachments?[indexPath.row]
+        
+        
+        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
+        } else {
+            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
+                                                                                                * 72 / 96)-250)
+        }
+        
     }
 //
 //     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

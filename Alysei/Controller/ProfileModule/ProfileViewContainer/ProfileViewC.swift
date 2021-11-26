@@ -89,6 +89,10 @@ class ProfileViewC: AlysieBaseViewC{
     //var profileCompletion
     var currentIndex: Int = 0
     var tabposition: Int = 1
+    
+    var someHeight: Int = 1
+    var shownumber = 50
+    
     var profileCompletionModel: [ProfileCompletionModel]?
     
     //MARK: GetFeature Listing Data
@@ -199,6 +203,11 @@ class ProfileViewC: AlysieBaseViewC{
         self.respondeButton.isHidden = true
         self.connectButton.isHidden = true
         
+        let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
+        
+        someHeight = Int((self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0)
+        
         //self.btnBack.isHidden = userLevel == .other ? false : true
         switch self.userLevel {
         case .own:
@@ -284,8 +293,8 @@ class ProfileViewC: AlysieBaseViewC{
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
                 self.collectionView(self.tabsCollectionView, didDeselectItemAt: IndexPath(item: row, section: 0))
                 self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: row + 1, section: 0))
-              //  self.tabsCollectionView.selectItem(at: IndexPath(item: row + 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                tapContact(UIButton())
+                self.tabsCollectionView.selectItem(at: IndexPath(item: row + 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                //tapContact(UIButton())
             }
         }
         
@@ -365,7 +374,7 @@ class ProfileViewC: AlysieBaseViewC{
         
         // Scroll update show
         let line = self.aboutLabel.calculateMaxLines()
-        var shownumber = 50
+        
         
         if line == 5 {
             shownumber = 50
@@ -379,13 +388,10 @@ class ProfileViewC: AlysieBaseViewC{
             shownumber = 150
         }
         
-        let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-        let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
         
-        let someHeight = (self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0
-        self.tblViewPosts.tableHeaderView?.setHeight(someHeight - CGFloat(shownumber))
+        self.tblViewPosts.tableHeaderView?.setHeight(CGFloat(someHeight) - CGFloat(shownumber))
         
-        self.tblViewPosts.contentInsetAdjustmentBehavior = .never
+        self.tblViewPosts.contentInsetAdjustmentBehavior = .always
         
     }
     
