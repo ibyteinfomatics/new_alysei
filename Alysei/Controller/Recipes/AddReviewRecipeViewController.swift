@@ -11,7 +11,7 @@ import IQKeyboardManagerSwift
 var isFromComment = String()
 
 class AddReviewRecipeViewController: UIViewController{
-    
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var allReviewTableView: UITableView!
     @IBOutlet weak var userImageVw: UIImageView!
     @IBOutlet weak var reviewView: UIView!
@@ -75,6 +75,10 @@ class AddReviewRecipeViewController: UIViewController{
         
     }
     
+    override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      self.headerView.drawBottomShadow()
+    }
     func setStar(){
         btnStar1.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)

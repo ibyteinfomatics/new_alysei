@@ -49,9 +49,7 @@
                                     <constraint firstAttribute="height" constant="30" id="TcU-aP-xMz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="View All">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="View All"/>
                                 <connections>
                                     <action selector="tapByRegionViewAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d4f-i6-4CB"/>
                                 </connections>
@@ -70,7 +68,7 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="htw-SW-7dM">
-                        <rect key="frame" x="0.0" y="45" width="320" height="129"/>
+                        <rect key="frame" x="10" y="45" width="300" height="129"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Z5-JR-qOg">
                             <size key="itemSize" width="128" height="128"/>
@@ -81,15 +79,13 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="htw-SW-7dM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2bM-eP-4QZ"/>
                     <constraint firstItem="lX4-pC-At8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7TZ-JA-ndQ"/>
                     <constraint firstItem="htw-SW-7dM" firstAttribute="top" secondItem="lX4-pC-At8" secondAttribute="bottom" constant="5" id="KPT-e4-xVh"/>
-                    <constraint firstAttribute="trailing" secondItem="htw-SW-7dM" secondAttribute="trailing" id="Tdu-Yv-hdW"/>
                     <constraint firstAttribute="bottom" secondItem="htw-SW-7dM" secondAttribute="bottom" constant="7" id="WNS-uq-BT9"/>
                     <constraint firstItem="lX4-pC-At8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bvh-HG-wi3"/>
+                    <constraint firstItem="htw-SW-7dM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dMP-xy-khk"/>
                     <constraint firstAttribute="trailing" secondItem="lX4-pC-At8" secondAttribute="trailing" id="fBi-vR-Mfc"/>
-                    <constraint firstAttribute="trailing" secondItem="htw-SW-7dM" secondAttribute="trailing" id="pBP-DZ-kZU"/>
-                    <constraint firstItem="htw-SW-7dM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zxr-UU-xDr"/>
+                    <constraint firstAttribute="trailing" secondItem="htw-SW-7dM" secondAttribute="trailing" constant="10" id="rYg-xM-Nfl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

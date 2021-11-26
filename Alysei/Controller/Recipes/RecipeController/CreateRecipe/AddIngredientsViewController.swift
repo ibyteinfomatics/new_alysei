@@ -111,7 +111,11 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
             
         }
     }
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        addIngredientsView.drawBottomShadow()
+    }
     
     func setUI(){
         

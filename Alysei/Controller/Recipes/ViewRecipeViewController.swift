@@ -117,7 +117,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func share(){
-        let message = "Checkout" + " " + (recipeModel?.recipeName ?? "") +  " " + "from Alysei app."
+        let message = ("Checkout" + " " + (recipeModel?.recipeName ?? "") +  " " + "from Alysei app.")
         
         //                let appName = "Alysei"
         //                let appScheme = "\(appName)://app"
@@ -202,6 +202,9 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
                 cell.imagLike.image = recipeModel?.isFav == 0 ? UIImage(named: "like_icon") : UIImage(named: "like_icon_active")
                 
+            }
+            cell.shareCallback = {
+                self.share()
             }
             cell.imagLike.image = recipeModel?.isFav == 1 ? UIImage(named: "like_icon_active") : UIImage(named: "like_icon")
             cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
@@ -472,7 +475,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 95
         case 2:
-            return 122
+            return 110
         case 3:
             return UITableView.automaticDimension
         case 4:

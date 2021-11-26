@@ -56,12 +56,7 @@ class FilterRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = false
-        headerView.layer.masksToBounds = false
-        headerView.layer.shadowRadius = 2
-        headerView.layer.shadowOpacity = 0.2
-        headerView.layer.shadowColor = UIColor.lightGray.cgColor
-        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
-        
+
         footerView.layer.masksToBounds = false
         footerView.layer.shadowRadius = 2
         footerView.layer.shadowOpacity = 0.8
@@ -96,6 +91,11 @@ class FilterRecipeViewController: UIViewController {
         getCuisine()
         getChildIngridients()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      self.headerView.drawBottomShadow()
     }
     
     @IBAction func clearAllTapped(_ sender: UIButton) {

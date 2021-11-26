@@ -11,6 +11,7 @@ var isFilterLoading = false
 
 class FilteredRecipeViewController: UIViewController {
 
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchRecipeTextField: UITextField!
     @IBOutlet weak var filteredCollectionView: UICollectionView!
     @IBOutlet weak var labelRecipe: UILabel!
@@ -21,10 +22,7 @@ class FilteredRecipeViewController: UIViewController {
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
-//    var indexOfPageToRequestFilter1 = 1
-//    var indexOfPageToRequestFilter1 = 1
-//    var indexOfPageToRequestFilter2 = 1
-//    var indexOfPageToRequestFilter3 = 1
+
    
    
     var searchText = String()
@@ -61,11 +59,7 @@ class FilteredRecipeViewController: UIViewController {
                 self.labelRecipe.text = updatedText
                 callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
             }
-                
-//            callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
-           
-            
-            
+  
         }
         else if isFilterLoading == true{
            
@@ -127,6 +121,10 @@ class FilteredRecipeViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      self.headerView.drawBottomShadow()
+    }
 
    
     @IBAction func tapBack(_ sender: Any) {
@@ -145,6 +143,13 @@ class FilteredRecipeViewController: UIViewController {
     }
     
     
+    @IBAction func tapCross(_ sender: Any) {
+        self.searchRecipeTextField.text = nil
+        self.labelRecipe.text = ""
+        self.viewFilter.isHidden = true
+        self.BlankView.isHidden = true
+        filteredCollectionView.isHidden = true
+    }
     
     @IBAction func tapToGoFilter(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilterRecipeViewController") as! FilterRecipeViewController
@@ -315,6 +320,7 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
         
         if searchText.count > 0 {
             searching = true
+            filteredCollectionView.isHidden = false
             if let text = textField.text,
                        let textRange = Range(range, in: text) {
                        let updateText = text.replacingCharacters(in: textRange,

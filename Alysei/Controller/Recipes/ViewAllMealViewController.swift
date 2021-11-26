@@ -22,12 +22,13 @@ class ViewAllMealViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchIngridientTextField.delegate = self
-        headerView.layer.masksToBounds = false
-        headerView.layer.shadowRadius = 2
-        headerView.layer.shadowOpacity = 0.2
-        headerView.layer.shadowColor = UIColor.lightGray.cgColor
-        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
         getSearchByMeal()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
     }
     
     @IBAction func tapBack(_ sender: Any) {

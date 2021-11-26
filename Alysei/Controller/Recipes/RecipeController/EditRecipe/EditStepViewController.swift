@@ -8,7 +8,7 @@
 import UIKit
 
 class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
     @IBOutlet weak var nextView: UIView!
     @IBOutlet weak var nextButton: UIButton!
@@ -100,8 +100,10 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
 //        step1ToolLabel.text = "\(page)"
 //
 //    }
-    override func viewDidLayoutSubviews() {
-        self.scrollVw.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
     }
 
     @IBAction func NextButton(_ sender: Any) {

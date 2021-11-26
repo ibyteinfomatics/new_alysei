@@ -12,7 +12,7 @@ var editusedIngridientModel : [UsedIngridientDataModel] = []
 var editusedToolModel: [UsedToolsDataModel] = []
 
 class EditScreen2ViewController: UIViewController  {
-    
+    @IBOutlet weak var headerViewUp: UIView!
     @IBOutlet weak var editscreenTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -69,6 +69,11 @@ class EditScreen2ViewController: UIViewController  {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerViewUp.drawBottomShadow()
+    }
     func setupUI(){
         addEditQuantityView.layer.borderWidth = 1
         addEditQuantityView.layer.borderColor = UIColor.init(red: 238/255, green: 238/255, blue: 238/255, alpha: 1).cgColor

@@ -34,18 +34,19 @@ class ViewDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var labelServing: UILabel!
     @IBOutlet weak var labelMealType: UILabel!
     @IBOutlet weak var imagLike: UIImageView!
-    
-//    @IBOutlet weak var btnImgLike: UIButton!
+
     @IBOutlet weak var labelEnergyValue: UILabel!
     @IBOutlet weak var viewLike: UIView!
-    //    @IBOutlet weak var tapLikeUnLike: UIButton!
+    @IBOutlet weak var viewshare: UIView!
+    
     var reloadTableViewCallback:((Int) ->Void)? = nil
+    var shareCallback:(() ->Void)? = nil
     var islike: Int?
     enum source {
         case button1
         case button2
     }
-//    var data: ViewRecipeDetailDataModel?
+
     var likeCallback:( () -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +55,9 @@ class ViewDetailsTableViewCell: UITableViewCell {
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
         self.viewLike.addGestureRecognizer(tap)
+        
+        let tap1 = UITapGestureRecognizer.init(target: self, action: #selector(shareAction))
+        self.viewshare.addGestureRecognizer(tap1)
     }
     
     @objc func likeAction(_ tap: UITapGestureRecognizer){
@@ -66,6 +70,10 @@ class ViewDetailsTableViewCell: UITableViewCell {
         
         postReqtoFavUnfavRecipe(islike, recipeId)
 
+    }
+    
+   @objc func shareAction(){
+    shareCallback?()
     }
     
     func setUi(){

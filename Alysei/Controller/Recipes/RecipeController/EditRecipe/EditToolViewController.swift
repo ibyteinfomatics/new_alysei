@@ -8,6 +8,7 @@
 import UIKit
 var selectedEditToolArray: [ToolsArray] = []
 class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, AddToolTableViewCellProtocol {
+   
     @IBOutlet weak var addToolsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -72,6 +73,11 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
         self.addMissingToolTableView.dataSource = self
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        addToolsView.drawBottomShadow()
+    }
 
     func setUI(){
         

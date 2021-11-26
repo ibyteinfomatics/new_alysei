@@ -262,13 +262,11 @@
 		6B3CB130274BC10D00D5E683 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB11C274BC10C00D5E683 /* EventTableViewCell.xib */; };
 		6B3CB131274BC10D00D5E683 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB11D274BC10C00D5E683 /* CompanyTableViewCell.swift */; };
 		6B3CB132274BC10D00D5E683 /* CompanyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB11E274BC10C00D5E683 /* CompanyTableViewCell.xib */; };
-		6B3CB133274BC10D00D5E683 /* AwardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB11F274BC10C00D5E683 /* AwardCollectionViewCell.xib */; };
 		6B3CB134274BC10D00D5E683 /* BlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB120274BC10C00D5E683 /* BlogTableViewCell.swift */; };
 		6B3CB135274BC10D00D5E683 /* BlogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB121274BC10C00D5E683 /* BlogTableViewCell.xib */; };
 		6B3CB136274BC10D00D5E683 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB122274BC10C00D5E683 /* PostTableViewCell.xib */; };
 		6B3CB137274BC10D00D5E683 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB123274BC10C00D5E683 /* TripTableViewCell.swift */; };
 		6B3CB138274BC10D00D5E683 /* UniversalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB124274BC10D00D5E683 /* UniversalSearchViewController.swift */; };
-		6B3CB139274BC10D00D5E683 /* AwardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB125274BC10D00D5E683 /* AwardTableViewCell.xib */; };
 		6B3CB13A274BC10D00D5E683 /* FeaturedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB126274BC10D00D5E683 /* FeaturedTableViewCell.swift */; };
 		6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B1272905B7002EBD25 /* AddAward.swift */; };
 		6B4606B527293D2C002EBD25 /* AwardMedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */; };
@@ -394,6 +392,8 @@
 		6B97B0AB2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */; };
 		6B97B0AD2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */; };
 		6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */; };
+		6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */; };
+		6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */; };
 		6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */; };
 		6BBA9952260AF55900AA7A81 /* InactiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */; };
 		6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */; };
@@ -925,13 +925,11 @@
 		6B3CB11C274BC10C00D5E683 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		6B3CB11D274BC10C00D5E683 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 		6B3CB11E274BC10C00D5E683 /* CompanyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyTableViewCell.xib; sourceTree = "<group>"; };
-		6B3CB11F274BC10C00D5E683 /* AwardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCollectionViewCell.xib; sourceTree = "<group>"; };
 		6B3CB120274BC10C00D5E683 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
 		6B3CB121274BC10C00D5E683 /* BlogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogTableViewCell.xib; sourceTree = "<group>"; };
 		6B3CB122274BC10C00D5E683 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		6B3CB123274BC10C00D5E683 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		6B3CB124274BC10D00D5E683 /* UniversalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalSearchViewController.swift; sourceTree = "<group>"; };
-		6B3CB125274BC10D00D5E683 /* AwardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardTableViewCell.xib; sourceTree = "<group>"; };
 		6B3CB126274BC10D00D5E683 /* FeaturedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewCell.swift; sourceTree = "<group>"; };
 		6B4606B1272905B7002EBD25 /* AddAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAward.swift; sourceTree = "<group>"; };
 		6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardMedalModel.swift; sourceTree = "<group>"; };
@@ -1061,6 +1059,8 @@
 		6B97B0AA2713EF85003B9E68 /* EditStepIngridientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepIngridientCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B97B0AC2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStepToolsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardTableViewCell.xib; sourceTree = "<group>"; };
+		6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCollectionViewCell.xib; sourceTree = "<group>"; };
 		6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCollectionView.swift; sourceTree = "<group>"; };
 		6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCollectionView.swift; sourceTree = "<group>"; };
 		6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayLoginViewController.swift; sourceTree = "<group>"; };
@@ -2235,9 +2235,9 @@
 			isa = PBXGroup;
 			children = (
 				6B3CB116274BC10B00D5E683 /* AwardCollectionViewCell.swift */,
-				6B3CB11F274BC10C00D5E683 /* AwardCollectionViewCell.xib */,
+				6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */,
 				6B3CB115274BC10B00D5E683 /* AwardTableViewCell.swift */,
-				6B3CB125274BC10D00D5E683 /* AwardTableViewCell.xib */,
+				6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */,
 				6B3CB120274BC10C00D5E683 /* BlogTableViewCell.swift */,
 				6B3CB121274BC10C00D5E683 /* BlogTableViewCell.xib */,
 				6B3CB11D274BC10C00D5E683 /* CompanyTableViewCell.swift */,
@@ -3210,6 +3210,7 @@
 				6B7CACC426FDD3CA00096E79 /* SanFranciscoDisplay-Ultralight.otf in Resources */,
 				6113776D263212B600EEBFDA /* Colors.xcassets in Resources */,
 				27B2FDE625C8782000CFEDA0 /* ProductSection.xib in Resources */,
+				6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */,
 				6B7CACC126FDD3CA00096E79 /* SanFranciscoDisplay-Semibold.otf in Resources */,
 				27A443D425AE03720002BAAC /* Montserrat-MediumItalic.ttf in Resources */,
 				6B74FFDE273E40FA0063EAEC /* apple-app-site-association.rtf in Resources */,
@@ -3218,7 +3219,6 @@
 				C5D6F7AA26B18264006FFCDF /* HubNameCollectionViewCell.xib in Resources */,
 				6B3CB130274BC10D00D5E683 /* EventTableViewCell.xib in Resources */,
 				6B7CACC026FDD3CA00096E79 /* SanFranciscoText-SemiboldItalic.otf in Resources */,
-				6B3CB133274BC10D00D5E683 /* AwardCollectionViewCell.xib in Resources */,
 				6B89924B2702E90000591A2E /* RecipeIngredientsUsedTableViewCell.xib in Resources */,
 				6B3CB132274BC10D00D5E683 /* CompanyTableViewCell.xib in Resources */,
 				6B3CB136274BC10D00D5E683 /* PostTableViewCell.xib in Resources */,
@@ -3231,7 +3231,7 @@
 				27BC68A125AC56C000A01B6A /* LaunchScreen.storyboard in Resources */,
 				6B23867826FD96DD00D4CC1B /* AlyseiBGV 2.mp4 in Resources */,
 				6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */,
-				6B3CB139274BC10D00D5E683 /* AwardTableViewCell.xib in Resources */,
+				6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */,
 				C5D6F7B126B18264006FFCDF /* CountrySelectionTableViewCell.xib in Resources */,
 				27A4439525AE03720002BAAC /* README.md in Resources */,
 				6B3CB12C274BC10D00D5E683 /* FeaturedTableViewCell.xib in Resources */,

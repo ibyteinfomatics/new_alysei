@@ -12,8 +12,10 @@ var searchUniversal = false
 var searchTap = false
 let titleArrayUniversal = ["People","Blogs","Trips","Events","Posts", "Awards"]
 let titleUniversal = ["All","People","Blogs","Trips","Events","Posts", "Awards"]
+
 class UniversalSearchViewController: AlysieBaseViewC {
     
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bubbleCollectionView: UICollectionView!
     @IBOutlet weak var universalSearchTableView: UITableView!
@@ -58,6 +60,8 @@ class UniversalSearchViewController: AlysieBaseViewC {
         universalSearchTableView.register(UINib(nibName: "AwardTableViewCell", bundle: nil), forCellReuseIdentifier: "AwardTableViewCell")
         //        universalSearchTableView.register(UINib(nibName: "FeaturedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeaturedTableViewCell")
         
+       
+        
     }
     
     
@@ -90,7 +94,11 @@ class UniversalSearchViewController: AlysieBaseViewC {
         }
     }
     
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        headerView.drawBottomShadow()
+    }
     
     @IBAction func tapBackBtn(_ sender: Any) {
         
@@ -101,7 +109,9 @@ class UniversalSearchViewController: AlysieBaseViewC {
     @IBAction func tapCancelBtn(_ sender: Any) {
         self.searchTextField.text = nil
         dividerView.isHidden = true
+        searchTap = false
         universalSearchTableView.isHidden = true
+        bubbleCollectionView.reloadData()
         
     }
 }
@@ -123,19 +133,6 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         
         let businessCategoryCollectionCell = bubbleCollectionView.dequeueReusableCell(withReuseIdentifier: UniversalSearchCollectionViewCell.identifier(), for: indexPath) as! UniversalSearchCollectionViewCell
         
-        if  searchTap == true{
-            businessCategoryCollectionCell.lblBusinessHeading.textColor = .white
-            businessCategoryCollectionCell.viewBusiness.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-            
-            businessCategoryCollectionCell.viewBusiness.layer.borderColor = UIColor.clear.cgColor
-            businessCategoryCollectionCell.viewBusiness.layer.borderWidth = 0
-        }
-        else{
-            businessCategoryCollectionCell.lblBusinessHeading.textColor = .black
-            businessCategoryCollectionCell.viewBusiness.backgroundColor = .white
-            businessCategoryCollectionCell.viewBusiness.layer.borderColor = UIColor.black.cgColor
-            businessCategoryCollectionCell.viewBusiness.layer.borderWidth = 1
-        }
         businessCategoryCollectionCell.configData(indexPath: indexPath, currentIndex: self.currentIndex)
         return businessCategoryCollectionCell
     }
@@ -146,12 +143,18 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
         switch currentIndex {
         case 0:
             self.searchType = 0
-            searchTap = true
-            dividerView.isHidden = false
-            getUniversalSearchData(1, updatedText)
-            universalSearchTableView.isHidden = false
+            if self.searchTextField.text != ""{
+                searchTap = true
+                dividerView.isHidden = false
+                getUniversalSearchData(1, updatedText)
+                universalSearchTableView.isHidden = false
+            }
+            else{
+                searchTap = false
+            }
         case 1:
             self.searchType = 1
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -161,8 +164,13 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByTrips?.removeAll()
             arraySearchByPost.removeAll()
             arraySearchByAward?.removeAll()
+            }
+            else{
+                searchTap = false
+            }
         case 2:
             self.searchType = 2
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -172,9 +180,14 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByTrips?.removeAll()
             arraySearchByPost.removeAll()
             arraySearchByAward?.removeAll()
+            }
+            else{
+                searchTap = false
+            }
             
         case 3:
             self.searchType = 3
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -184,9 +197,14 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByBolg?.removeAll()
             arraySearchByPost.removeAll()
             arraySearchByAward?.removeAll()
+            }
+            else{
+                searchTap = false
+            }
             
         case 4:
             self.searchType = 4
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -196,9 +214,14 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByBolg?.removeAll()
             arraySearchByPost.removeAll()
             arraySearchByAward?.removeAll()
+            }
+            else{
+                searchTap = false
+            }
             
         case 5:
             self.searchType = 5
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -208,9 +231,13 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByBolg?.removeAll()
             arraySearchByEvents?.removeAll()
             arraySearchByAward?.removeAll()
-            
+            }
+            else{
+                searchTap = false
+            }
         case 6:
             self.searchType = 6
+            if self.searchTextField.text != ""{
             searchTap = true
             dividerView.isHidden = false
             universalSearchTableView.isHidden = false
@@ -220,7 +247,10 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             arraySearchByBolg?.removeAll()
             arraySearchByPost.removeAll()
             arraySearchByEvents?.removeAll()
-            
+            }
+            else{
+                searchTap = false
+            }
         default:
             break
         }
@@ -233,9 +263,12 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: 120 , height: 45.0)
-        
-        
+        if indexPath.item == 0{
+        return CGSize(width: 100 , height: 45.0)
+        }
+        else{
+        return CGSize(width: 150 , height: 45.0)
+        }
     }
     
 }
@@ -290,17 +323,15 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             return 0
         }
         
-        
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         if searchType == 0{
             return 40
         }
         else{
             return 0
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -1221,10 +1252,9 @@ extension UniversalSearchViewController: UITextFieldDelegate{
         
         if searchText.count > 0 {
             searchUniversal = true
-           // if searchTap == false{
                 searchTap = true
                 currentIndex = 0
-           //}
+      
             
             if let text = textField.text,
                let textRange = Range(range, in: text) {
@@ -1243,6 +1273,7 @@ extension UniversalSearchViewController: UITextFieldDelegate{
         else{
             
             searchUniversal = false
+            searchTap = false
             dividerView.isHidden = true
             universalSearchTableView.isHidden = true
             universalSearchTableView.reloadData()
@@ -1338,10 +1369,12 @@ extension UniversalSearchViewController{
                     }
                 }
                 
-                if let awards = data["awards"] as? [[String:Any]]{
-                    let award = awards.map({AwardDatum.init(with: $0)})
+                if let awards = data["awards"] as? [String:Any]{
+                    if let award1 = awards["data"] as? [[String:Any]]{
+                    let award = award1.map({AwardDatum.init(with: $0)})
                     arraySearchByAward = award
                     print("\(String(describing: arraySearchByAward?.count))")
+                    }
                 }
                 
             }

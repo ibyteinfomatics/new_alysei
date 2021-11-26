@@ -36,7 +36,7 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = self.awardCollectionView.dequeueReusableCell(withReuseIdentifier: "AwardCell", for: indexPath) as? AwardCell else {
+        guard let cell = self.awardCollectionView.dequeueReusableCell(withReuseIdentifier: "AwardCollectionViewCell", for: indexPath) as? AwardCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.competitionName.text = arraySearchByAward?[indexPath.item].awardName
@@ -67,7 +67,7 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2, height: 280)
+        return CGSize(width: 200, height: 250)
     }
     
 }

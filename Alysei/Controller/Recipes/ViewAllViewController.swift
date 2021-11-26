@@ -21,13 +21,14 @@ class ViewAllViewController: UIViewController {
         collectionView.dataSource = self
         searchIngridientTextField.delegate = self
         searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true
-        headerView.layer.masksToBounds = false
-        headerView.layer.shadowRadius = 2
-        headerView.layer.shadowOpacity = 0.2
-        headerView.layer.shadowColor = UIColor.lightGray.cgColor
-        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
         searchIngridientTextField.keyboardType = .default
         getSearchByIngridients()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
     }
     
     @IBAction func tapBack(_ sender: Any) {

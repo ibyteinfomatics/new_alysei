@@ -29,7 +29,8 @@ class NetworkCategoryCollectionCell: UICollectionViewCell {
     if indexPath.item == currentIndex{
         self.imgViewNetwork.image = UIImage(named: StaticArrayData.kNetworkCategoryDict[indexPath.item].image)
         self.lblNetworkHeading.textColor = .white
-        self.viewNetwork.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+        self.viewNetwork.layer.backgroundColor = UIColor.init(red: 96/255, green: 96/255, blue: 96/255, alpha: 1).cgColor
+//            UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
        
         self.viewNetwork.layer.borderColor = UIColor.clear.cgColor
         self.viewNetwork.layer.borderWidth = 0
@@ -37,9 +38,9 @@ class NetworkCategoryCollectionCell: UICollectionViewCell {
     else{
         self.imgViewNetwork.image = UIImage(named: StaticArrayData.kInactiveNetworkCategoryDict[indexPath.item].image)
         self.lblNetworkHeading.textColor = .black
-        self.viewNetwork.backgroundColor = .white
-        self.viewNetwork.layer.borderColor = UIColor.black.cgColor
-        self.viewNetwork.layer.borderWidth = 1
+        self.viewNetwork.layer.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1).cgColor
+        self.viewNetwork.layer.borderColor = UIColor.clear.cgColor
+        self.viewNetwork.layer.borderWidth = 0
     }
   }
 }

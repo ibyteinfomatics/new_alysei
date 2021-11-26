@@ -103,7 +103,11 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         
     }
     
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        addToolsView.drawBottomShadow()
+    }
     func setUI(){
         
         addToolsTableView.delegate = self

@@ -13,6 +13,7 @@ var stepData: [String:Any] = [:]
 var arrayStepFinalData:[stepDataModel] = []
 class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
     @IBOutlet weak var nextView: UIView!
     @IBOutlet weak var nextButton: UIButton!
@@ -86,14 +87,19 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
 
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
+    }
     func setStepTitle(){
         step1IngridientLabel.text = "\(page)"
         step1ToolLabel.text = "\(page)"
         
     }
-    override func viewDidLayoutSubviews() {
-        self.scrollVw.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
-    }
+//    override func viewDidLayoutSubviews() {
+//        self.scrollVw.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
+//    }
     
     @IBAction func NextButton(_ sender: Any) {
         
@@ -133,13 +139,13 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             addSteps.selectedIndex = (page - 2)
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
-//        else if selectedIndex > 0 && selectedIndex == 1000{
-//            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-//
-//            addSteps.page = (page - 1)
-//            addSteps.selectedIndex = (page - 2)
-//            self.navigationController?.pushViewController(addSteps, animated: true)
-//        }
+        else if selectedIndex > 0 {
+            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
+
+            addSteps.page = (page - 1)
+            addSteps.selectedIndex = (page - 2)
+            self.navigationController?.pushViewController(addSteps, animated: true)
+        }
         else {
             if selectedIndex != 1000 {
                 
@@ -163,11 +169,8 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             }
             else
             {
-//                self.navigationController?.popViewController(animated: true)
-                let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-                addSteps.page = (page - 1)
-                addSteps.selectedIndex = (page - 2)
-                self.navigationController?.pushViewController(addSteps, animated: true)
+                self.navigationController?.popViewController(animated: true)
+
             }
         }
     }
@@ -435,7 +438,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
     {
         
         if collectionView == addStepsCollectionView{
-            return CGSize(width: self.addStepsCollectionView.frame.width, height: 270.0)
+            return CGSize(width: self.addStepsCollectionView.frame.width, height: 292.0)
         }
         if collectionView == ingridientUsedCollectionView{
             return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 240)

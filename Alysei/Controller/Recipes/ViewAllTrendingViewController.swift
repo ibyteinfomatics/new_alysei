@@ -23,15 +23,15 @@ class ViewAllTrendingViewController: UIViewController {
         trendingCollectionView.delegate = self
         trendingCollectionView.dataSource = self
         
-        headerView.layer.masksToBounds = false
-        headerView.layer.shadowRadius = 2
-        headerView.layer.shadowOpacity = 0.2
-        headerView.layer.shadowColor = UIColor.lightGray.cgColor
-        headerView.layer.shadowOffset = CGSize(width: 0 , height:2)
-        
         let cellNib = UINib(nibName: "MyRecipeCollectionViewCell", bundle: nil)
         self.trendingCollectionView.register(cellNib, forCellWithReuseIdentifier: "MyRecipeCollectionViewCell")
         getTrending()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
     }
     
     @IBAction func tapBack(_ sender: Any) {

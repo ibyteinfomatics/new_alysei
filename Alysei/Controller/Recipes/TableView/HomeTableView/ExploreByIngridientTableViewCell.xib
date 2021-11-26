@@ -43,9 +43,7 @@
                                     <constraint firstAttribute="height" constant="30" id="uEc-9O-BxS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="View All">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="View All"/>
                                 <connections>
                                     <action selector="tapViewAll1:" destination="W6O-Vb-KS0" eventType="touchUpInside" id="gle-df-FwG"/>
                                 </connections>
@@ -61,7 +59,7 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="x3S-YI-qUB">
-                        <rect key="frame" x="5" y="50" width="310" height="200"/>
+                        <rect key="frame" x="10" y="50" width="300" height="200"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="aAJ-eA-qdD"/>
@@ -80,11 +78,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="wL9-lh-Ji3" firstAttribute="leading" secondItem="J6k-Q0-ReO" secondAttribute="leading" id="1N9-z5-Jkw"/>
-                    <constraint firstItem="x3S-YI-qUB" firstAttribute="leading" secondItem="J6k-Q0-ReO" secondAttribute="leading" constant="5" id="F95-aj-fgk"/>
+                    <constraint firstItem="x3S-YI-qUB" firstAttribute="leading" secondItem="J6k-Q0-ReO" secondAttribute="leading" constant="10" id="F95-aj-fgk"/>
                     <constraint firstAttribute="bottom" secondItem="x3S-YI-qUB" secondAttribute="bottom" constant="5" id="Htw-sW-es0"/>
                     <constraint firstItem="x3S-YI-qUB" firstAttribute="top" secondItem="wL9-lh-Ji3" secondAttribute="bottom" constant="10" id="kIw-n2-8jc"/>
                     <constraint firstItem="wL9-lh-Ji3" firstAttribute="top" secondItem="J6k-Q0-ReO" secondAttribute="top" id="l8y-Ad-dsa"/>
-                    <constraint firstAttribute="trailing" secondItem="x3S-YI-qUB" secondAttribute="trailing" constant="5" id="oer-5b-Wh3"/>
+                    <constraint firstAttribute="trailing" secondItem="x3S-YI-qUB" secondAttribute="trailing" constant="10" id="oer-5b-Wh3"/>
                     <constraint firstAttribute="trailing" secondItem="wL9-lh-Ji3" secondAttribute="trailing" id="zXH-vt-arN"/>
                 </constraints>
             </tableViewCellContentView>

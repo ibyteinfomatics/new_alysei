@@ -8,6 +8,7 @@
 import UIKit
 var selectedEditIngridentsArray: [IngridentArray] = []
 class EditIngridientViewController: UIViewController, EditIngridientsTableViewCellProtocol, AddIngridientsTableViewCellProtocol {
+   
     @IBOutlet weak var addIngredientsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -92,7 +93,11 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
 
+        addIngredientsView.drawBottomShadow()
+    }
     func setUI(){
         
         addIngredientsView.layer.masksToBounds = false

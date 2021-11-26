@@ -23,7 +23,7 @@ var fromVC = String()
 
 
 class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UITableViewDataSource, RecipeIngredientsUsedTableViewCellProtocol, NumberOfStepsDelegateProtocol {
-    
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     //    @IBOutlet weak var heightTableView: NSLayoutConstraint!
     @IBOutlet weak var saveButton: UIButton!
@@ -92,6 +92,12 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         self.tableView.reloadData()
         self.setFooterView()
        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        headerView.drawBottomShadow()
     }
     
     func setupUI(){
@@ -377,7 +383,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 50 //CGFloat(70 * (arrlbl1.count))
+        return 70 //CGFloat(70 * (arrlbl1.count))
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         

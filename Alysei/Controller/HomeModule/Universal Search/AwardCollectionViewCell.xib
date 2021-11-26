@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,57 +17,55 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AwardCollectionViewCell" customModule="Alysei" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AwardCollectionViewCell" id="gTV-IL-0wX" customClass="AwardCollectionViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M18-Hp-KeF">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Waq-iu-nbY">
-                                <rect key="frame" x="10" y="5" width="110" height="120"/>
+                                <rect key="frame" x="10" y="5" width="180" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="HZM-Xt-c2e"/>
-                                    <constraint firstAttribute="height" constant="120" id="NDU-C4-Xhm"/>
+                                    <constraint firstAttribute="width" constant="180" id="HZM-Xt-c2e"/>
+                                    <constraint firstAttribute="height" constant="180" id="NDU-C4-Xhm"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Award Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK1-ve-tJU">
-                                <rect key="frame" x="10" y="130" width="110" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Award Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK1-ve-tJU">
+                                <rect key="frame" x="10" y="190" width="185" height="19.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Product: Silver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-Sc-a4o">
-                                <rect key="frame" x="10" y="151.5" width="110" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Product: Silver" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-Sc-a4o">
+                                <rect key="frame" x="10" y="214.5" width="185" height="17.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-Yb-zoq">
-                                <rect key="frame" x="15" y="10" width="25" height="35"/>
+                                <rect key="frame" x="15" y="5" width="31" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Ven-t6-RtJ"/>
-                                    <constraint firstAttribute="width" constant="25" id="bLf-ty-8Pc"/>
+                                    <constraint firstAttribute="height" constant="54" id="Ven-t6-RtJ"/>
+                                    <constraint firstAttribute="width" constant="31" id="bLf-ty-8Pc"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="centerX" secondItem="M18-Hp-KeF" secondAttribute="centerX" id="56a-YP-JE2"/>
-                            <constraint firstAttribute="trailing" secondItem="TQc-Sc-a4o" secondAttribute="trailing" constant="10" id="IGr-jT-rhE"/>
+                            <constraint firstItem="rK1-ve-tJU" firstAttribute="top" secondItem="Waq-iu-nbY" secondAttribute="bottom" constant="5" id="CYr-3J-tEf"/>
+                            <constraint firstAttribute="trailing" secondItem="TQc-Sc-a4o" secondAttribute="trailing" constant="5" id="IGr-jT-rhE"/>
                             <constraint firstItem="rK1-ve-tJU" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="JwJ-4z-KhO"/>
                             <constraint firstItem="1Pt-Yb-zoq" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="15" id="Q5Q-PI-hdS"/>
-                            <constraint firstItem="1Pt-Yb-zoq" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="10" id="Sc2-mU-R1L"/>
+                            <constraint firstItem="1Pt-Yb-zoq" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="5" id="Sc2-mU-R1L"/>
+                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="top" secondItem="rK1-ve-tJU" secondAttribute="bottom" constant="5" id="ZmJ-bS-ShL"/>
                             <constraint firstItem="Waq-iu-nbY" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="b0t-p9-D3V"/>
                             <constraint firstAttribute="trailing" secondItem="Waq-iu-nbY" secondAttribute="trailing" constant="10" id="b9n-Zk-nqt"/>
-                            <constraint firstItem="rK1-ve-tJU" firstAttribute="centerX" secondItem="M18-Hp-KeF" secondAttribute="centerX" id="ciz-rm-puf"/>
-                            <constraint firstItem="rK1-ve-tJU" firstAttribute="top" secondItem="Waq-iu-nbY" secondAttribute="bottom" constant="5" id="e7Y-9l-oOV"/>
-                            <constraint firstItem="TQc-Sc-a4o" firstAttribute="top" secondItem="rK1-ve-tJU" secondAttribute="bottom" constant="2" id="gDN-rl-g2u"/>
                             <constraint firstItem="Waq-iu-nbY" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="5" id="j3I-pz-ZEK"/>
-                            <constraint firstAttribute="trailing" secondItem="rK1-ve-tJU" secondAttribute="trailing" constant="10" id="oEz-Lh-07f"/>
+                            <constraint firstAttribute="trailing" secondItem="rK1-ve-tJU" secondAttribute="trailing" constant="5" id="oEz-Lh-07f"/>
                             <constraint firstItem="TQc-Sc-a4o" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="q7I-IL-kSg"/>
                         </constraints>
                     </view>
@@ -86,7 +84,7 @@
                 <outlet property="rewardImage" destination="Waq-iu-nbY" id="h3K-6R-bHh"/>
                 <outlet property="winningproduct" destination="TQc-Sc-a4o" id="oA2-Hf-KMN"/>
             </connections>
-            <point key="canvasLocation" x="129.71014492753625" y="71.316964285714278"/>
+            <point key="canvasLocation" x="128.98550724637681" y="70.3125"/>
         </collectionViewCell>
     </objects>
     <resources>

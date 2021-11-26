@@ -59,9 +59,7 @@
                                     <constraint firstAttribute="height" constant="30" id="phg-9R-LT4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="View All">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="View All"/>
                                 <connections>
                                     <action selector="tapTrendingViewAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nzi-j6-eWN"/>
                                 </connections>
