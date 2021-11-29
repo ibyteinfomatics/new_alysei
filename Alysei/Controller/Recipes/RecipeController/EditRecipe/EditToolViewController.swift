@@ -425,13 +425,13 @@ extension EditToolViewController: UITextFieldDelegate{
             self.addMissingToolButton.isHidden = true
             hideKeyboardWhenTappedAround()
           }
-        }
         else{
             self.searching = false
             addToolsTableView.reloadData()
             self.addMissingToolButton.isHidden = false
         }
-        
+      }
+       
         return true
     }
 }

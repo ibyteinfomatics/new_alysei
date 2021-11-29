@@ -1271,17 +1271,17 @@ extension UniversalSearchViewController: UITextFieldDelegate{
                 getUniversalSearchData(1, updateText)
                 bubbleCollectionView.reloadData()
             }
-            
+            else{
+                searchUniversal = false
+                searchTap = false
+                loadIndex = 0
+                dividerView.isHidden = true
+                universalSearchTableView.isHidden = true
+                universalSearchTableView.reloadData()
+                bubbleCollectionView.reloadData()
+            }
         }
-        else{
-            searchUniversal = false
-            searchTap = false
-            loadIndex = 0
-            dividerView.isHidden = true
-            universalSearchTableView.isHidden = true
-            universalSearchTableView.reloadData()
-            bubbleCollectionView.reloadData()
-        }
+        
         
         return true
     }

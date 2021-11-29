@@ -10,14 +10,14 @@ import IQKeyboardManagerSwift
 
 var isFromComment = String()
 
-class AddReviewRecipeViewController: UIViewController{
+class AddReviewRecipeViewController: AlysieBaseViewC{
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var allReviewTableView: UITableView!
     @IBOutlet weak var userImageVw: UIImageView!
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var btnAddReview: UIButton!
-    
+    @IBOutlet weak var btnEditAdd : UIButton!
     @IBOutlet weak var viewComment: UIView!
     @IBOutlet weak var btnStar1: UIButton!
     @IBOutlet weak var btnStar2: UIButton!
@@ -30,25 +30,28 @@ class AddReviewRecipeViewController: UIViewController{
     var recipeReviewId = Int()
     var viewRecipeCommentModel: ViewRecipeDetailDataModel?
     var arrAllReviewModel: [LatestReviewDataModel]? = []
+    var isReviewed: Int?
+    var isAddReview: Bool?
     
     override func viewWillAppear(_ animated: Bool) {
+        getAllReviews()
        
-        IQKeyboardManager.shared.enable = false
-        self.tabBarController?.tabBar.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        IQKeyboardManager.shared.enable = false
+//        self.tabBarController?.tabBar.isHidden = true
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
-        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
-        
-        
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enableAutoToolbar = true
+//        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+//        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+//
+//
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,106 +90,120 @@ class AddReviewRecipeViewController: UIViewController{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
     
-    //MARK: custom methods
-    @objc func keyboardWillShow(notification: NSNotification) {
-        var keyboardSize: CGSize = CGSize.zero
-        if let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
-            keyboardSize = value.cgRectValue.size
-            if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
-                addCommentViewBottom.constant = keyboardSize.height-34
-            }else {
-                addCommentViewBottom.constant = keyboardSize.height
-            }
-            self.view.layoutIfNeeded()
-            scrollToLTopRow()
-            
-        }
-    }
+//    //MARK: custom methods
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        var keyboardSize: CGSize = CGSize.zero
+//        if let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+//            keyboardSize = value.cgRectValue.size
+//            if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+//                addCommentViewBottom.constant = keyboardSize.height-34
+//            }else {
+//                addCommentViewBottom.constant = keyboardSize.height
+//            }
+//            self.view.layoutIfNeeded()
+//            scrollToLTopRow()
+//
+//        }
+//    }
     
-    @objc func keyboardWillHide(notification: NSNotification){
-        addCommentViewBottom.constant = 4
-        self.view.layoutIfNeeded()
-    }
+//    @objc func keyboardWillHide(notification: NSNotification){
+//        addCommentViewBottom.constant = 4
+//        self.view.layoutIfNeeded()
+//    }
     
-    func scrollToLTopRow() {
-        DispatchQueue.main.async {
-            if Int.getInt(self.arrAllReviewModel?.count) != 0 {
-                //let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
-                let indexPath = IndexPath(row: 0, section: 0)
-                self.allReviewTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-                //self.commentTextfield.becomeFirstResponder()
-            }
-        }
-    }
+//    func scrollToLTopRow() {
+//        DispatchQueue.main.async {
+//            if Int.getInt(self.arrAllReviewModel?.count) != 0 {
+//                //let indexPath = IndexPath(row: Int.getInt(self.commentmessages?.count) - 1, section: 0)
+//                let indexPath = IndexPath(row: 0, section: 0)
+//                self.allReviewTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+//                //self.commentTextfield.becomeFirstResponder()
+//            }
+//        }
+//    }
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func tapAddReview(_ sender: Any) {
+    @IBAction func addReview(_ sender: UIButton){
         
-        if (reviewStarCount == 0){
-            self.showAlert(withMessage: "Please add ratings.")
-        }
-        else if ( reviewTextView.text == AppConstants.leaveComment){
-            self.showAlert(withMessage: "Please leave a comment.")
-        }
-        else{
+        let controller = self.pushViewController(withName: AddEditReviewRecipeViewController.id(), fromStoryboard: StoryBoardConstants.kRecipesSelection) as? AddEditReviewRecipeViewController
+        if isAddReview == true{
+            controller?.recipeReviewId = (self.arrAllReviewModel?.first?.recipeReviewRateId ?? 0)
+            controller?.recipeReviewId = self.recipeReviewId
+            controller?.editReviewData = self.arrAllReviewModel?.first
+        }else{
+            controller?.recipeReviewId = self.recipeReviewId
             
-            postDoReview()
-            reviewTextView.text = AppConstants.leaveComment
-            reviewTextView.textColor = UIColor.lightGray
-            reviewStarCount = 0
-            setStar()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                self.getAllReviews()
-            }
         }
-        
-        isFromComment = "Review"
+       
+        controller?.isEditReview = isAddReview
     }
+//    @IBAction func tapAddReview(_ sender: Any) {
+//
+//        if (reviewStarCount == 0){
+//            self.showAlert(withMessage: "Please add ratings.")
+//        }
+//        else if ( reviewTextView.text == AppConstants.leaveComment){
+//            self.showAlert(withMessage: "Please leave a comment.")
+//        }
+//        else{
+//
+////            postDoReview()
+//            reviewTextView.text = AppConstants.leaveComment
+//            reviewTextView.textColor = UIColor.lightGray
+//            reviewStarCount = 0
+//            setStar()
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+//                self.getAllReviews()
+//            }
+//        }
+//
+//        isFromComment = "Review"
+//    }
     
-    @IBAction func tap1star(_ sender: Any) {
-        
-        reviewStarCount = 1
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
-    }
-    @IBAction func tap2star(_ sender: Any) {
-        reviewStarCount = 2
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
-    }
-    @IBAction func tap3star(_ sender: Any) {
-        reviewStarCount = 3
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
-    }
-    @IBAction func tap4star(_ sender: Any) {
-        reviewStarCount = 4
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
-    }
-    @IBAction func tap5star(_ sender: Any) {
-        reviewStarCount = 5
-        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-        btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
-    }
-    
+//    @IBAction func tap1star(_ sender: Any) {
+//
+//        reviewStarCount = 1
+//        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+//    }
+//    @IBAction func tap2star(_ sender: Any) {
+//        reviewStarCount = 2
+//        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar3.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+//    }
+//    @IBAction func tap3star(_ sender: Any) {
+//        reviewStarCount = 3
+//        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
+//        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+//    }
+//    @IBAction func tap4star(_ sender: Any) {
+//        reviewStarCount = 4
+//        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
+//    }
+//    @IBAction func tap5star(_ sender: Any) {
+//        reviewStarCount = 5
+//        btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar2.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar3.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//        btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
+//    }
+//
     
 }
 
@@ -346,6 +363,7 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
     
 }
 extension AddReviewRecipeViewController{
+    
     func getAllReviews(){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getAllReviews + "\(recipeReviewId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
@@ -355,32 +373,18 @@ extension AddReviewRecipeViewController{
                 self.arrAllReviewModel = data.map({LatestReviewDataModel.init(with: $0)})
                 
             }
-            
+            self.isReviewed = dictResponse?["is_rated"] as? Int
+            if self.isReviewed == 0 || self.isReviewed == nil {
+                self.isAddReview = false
+                self.btnEditAdd.setImage(UIImage(named: "add_icon_blue"), for: .normal)
+            }else{
+                self.isAddReview = true
+                self.btnEditAdd.setImage(UIImage(named: "icons8_edit_3"), for: .normal)
+            }
             self.allReviewTableView.reloadData()
             
         }
     }
     
-    func postDoReview(){
-        
-        let params: [String:Any] = ["recipe_id": recipeReviewId ,"rating": reviewStarCount ?? 0, "review": self.reviewTextView.text ?? ""]
-        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.doReview, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
-            
-            switch statusCode{
-            case 200:
-                self.showAlert(withMessage: "Review added Successfully!")
-                
-            case 409:
-                self.showAlert(withMessage: "You have already done a review on this Recipe")
-                
-            default:
-                break
-            }
-        }
-        allReviewTableView.reloadData()
-        
-    }
-    
-    
+ 
 }

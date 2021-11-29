@@ -43,6 +43,11 @@ class ViewAllMealViewController: UIViewController {
     
     }
     
+    @IBAction func tapCross(_ sender: Any) {
+        self.searchIngridientTextField.text = nil
+        self.getSearchByMeal()
+    }
+    
     func getSearchByMeal(){
         self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeHomeScreen
@@ -65,17 +70,29 @@ class ViewAllMealViewController: UIViewController {
     }
     
     func callSearchMeal(){
-        self.view.isUserInteractionEnabled = false
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getSearchMeal + searchText , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
-            
-            let dictResponse = dictResponse as? [String:Any]
-            
-            if let data = dictResponse?["data"] as? [[String:Any]]{
-                self.arraySearchByMeal = data.map({SelectMealDataModel.init(with: $0)})
-                self.searching1 = true
+
+        TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchMeal)\(searchText)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
+                let dictResponse = dictResponse as? [String:Any]
+                
+                if let data = dictResponse?["data"] as? [[String:Any]]{
+                    self.arraySearchByMeal = data.map({SelectMealDataModel.init(with: $0)})
+                    self.searching1 = true
+                    self.collectionView.reloadData()
+                   
+                }
+            case 409:
+                self.arraySearchByMeal?.removeAll()
                 self.collectionView.reloadData()
-                self.view.isUserInteractionEnabled = true
+                self.showAlert(withMessage: "No Meal Found")
+            default:
+                self.arraySearchByMeal?.removeAll()
+                self.collectionView.reloadData()
+                self.showAlert(withMessage: "Internal Server Error")
+            
             }
+            
             
             
         }
@@ -121,22 +138,25 @@ extension ViewAllMealViewController: UITextFieldDelegate{
         searchIngridientTextField.becomeFirstResponder()
         return true
     }
-    
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
-        searchText = string
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updateText = text.replacingCharacters(in: textRange,
+                                                      with: string)
+        searchText = updateText
         if searchText.count > 0 {
-            
-           callSearchMeal()
+            callSearchMeal()
            hideKeyboardWhenTappedAround()
         }
         else{
             self.searching1 = false
-           getSearchByMeal()
+            self.searchIngridientTextField.text = nil
+            getSearchByMeal()
             collectionView.reloadData()
         }
-        
+     }
         return true
     }
 }

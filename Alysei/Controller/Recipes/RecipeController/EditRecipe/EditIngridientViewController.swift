@@ -626,13 +626,13 @@ extension EditIngridientViewController: UITextFieldDelegate{
             self.addMissingIngridientsButton.isHidden = true
             hideKeyboardWhenTappedAround()
          }
-        }
         else{
             self.searching = false
             addIngridientsTableView.reloadData()
             self.addMissingIngridientsButton.isHidden = false
         }
-        
+      }
+      
         return true
     }
 }

@@ -226,6 +226,7 @@
 		61F84E2426D251EA00435AB8 /* SharePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F84E2326D251EA00435AB8 /* SharePostCollectionViewCell.swift */; };
 		6B06B13B272D126B009B741E /* SinglePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B06B13A272D126B009B741E /* SinglePostModel.swift */; };
 		6B09A87C26245AC800483365 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A87B26245AC800483365 /* AddPostViewController.swift */; };
+		6B0A701F275490FD00AD92BF /* AddEditReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0A701E275490FD00AD92BF /* AddEditReviewRecipeViewController.swift */; };
 		6B0AF4FC26E8CF2500F9B034 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */; };
 		6B13371E27292696005D79E5 /* MarketplaceWalkScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B13371C27292696005D79E5 /* MarketplaceWalkScreenViewController.swift */; };
 		6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */; };
@@ -890,6 +891,7 @@
 		61F84E2326D251EA00435AB8 /* SharePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B06B13A272D126B009B741E /* SinglePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostModel.swift; sourceTree = "<group>"; };
 		6B09A87B26245AC800483365 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		6B0A701E275490FD00AD92BF /* AddEditReviewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewRecipeViewController.swift; sourceTree = "<group>"; };
 		6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6B13371C27292696005D79E5 /* MarketplaceWalkScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceWalkScreenViewController.swift; sourceTree = "<group>"; };
 		6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketplaceWalkScreenViewController.xib; sourceTree = "<group>"; };
@@ -2336,6 +2338,7 @@
 				C5EB3CC726E9CB7C00CCAC9E /* AddStepsInRecipeViewController.swift */,
 				6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */,
 				6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */,
+				6B0A701E275490FD00AD92BF /* AddEditReviewRecipeViewController.swift */,
 			);
 			name = ViewRecipe;
 			path = ..;
@@ -3507,6 +3510,7 @@
 				6B948232273A825200EC8D10 /* RestaurantFilterVC.swift in Sources */,
 				C5BFBA6026BBF6F000A91BF9 /* FilterSubOptionsTableVCell.swift in Sources */,
 				6B09A87C26245AC800483365 /* AddPostViewController.swift in Sources */,
+				6B0A701F275490FD00AD92BF /* AddEditReviewRecipeViewController.swift in Sources */,
 				6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */,
 				6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */,
 				C5197B1126E72E3C00C0894F /* TripsViewController.swift in Sources */,

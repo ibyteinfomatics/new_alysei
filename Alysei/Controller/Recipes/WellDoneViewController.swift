@@ -37,9 +37,13 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnAddReview.layer.cornerRadius = 5
         btnCancel.layer.cornerRadius = 5
         reviewOuterView.layer.cornerRadius = 5
-        let imgUrl = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
-        self.profileImageVw.setImage(withString: imgUrl)
-        
+       
+        if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
+            profileImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            self.profileImageVw.layer.cornerRadius = (self.profileImageVw.frame.width / 2.0)
+            self.profileImageVw.layer.borderWidth = 5.0
+            self.profileImageVw.layer.masksToBounds = true
+        }
         let imgUrl1 = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
         recipeImageView.setImage(withString: imgUrl1)
         
