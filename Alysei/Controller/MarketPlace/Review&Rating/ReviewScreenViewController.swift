@@ -36,10 +36,11 @@ class ReviewScreenViewController: AlysieBaseViewC {
         
         let controller = self.pushViewController(withName: AddReviewViewController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddReviewViewController
         if isAddReview == true{
-            controller?.productStoreId = self.productStoreId
+            controller?.productStoreId = "\(self.arrRatingReviewData?.first?.marketplace_review_rating_id ?? 0)"
             controller?.editReviewData = self.arrRatingReviewData?.first
         }else{
-            controller?.productStoreId = "\(self.arrRatingReviewData?.first?.marketplace_review_rating_id ?? 0)"
+            controller?.productStoreId = self.productStoreId
+            
         }
        
        
