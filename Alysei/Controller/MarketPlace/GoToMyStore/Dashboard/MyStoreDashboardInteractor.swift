@@ -53,9 +53,10 @@ class MyStoreDashboardInteractor: MyStoreDashboardBusinessLogic, MyStoreDashboar
             let totalCategory = response?["total_category"] as? Int
             let totalEnquiries = response?["total_enquiries"] as? Int
             let totalReviews = response?["total_reviews"] as? Int
+            let productCount = response?["product_counts"] as? Int
             
             
-            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0, totalCategory ?? 0, totalEnquiries ?? 0, totalReviews ?? 0)
+            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0, totalCategory ?? 0, totalEnquiries ?? 0, totalReviews ?? 0,productCount ?? 0)
         }
     }
     

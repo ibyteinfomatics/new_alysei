@@ -340,7 +340,7 @@ struct APIUrl{
     static let kSaveInquiry = "save/product/enquery"
     static let kSaveProfileCover = "update/avatar/cover/image"
     static let kSaveUpdateProfileField = "update/user/field"
-    
+    static let kLogout = "logout"
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
         
@@ -440,7 +440,7 @@ struct APIUrl{
         static let updateRecipe = kBASEURL + "update/recipe/"
         static let deleteRecipe = kBASEURL + "delete/recipe/"
         static let searchTool = kBASEURL + "search/tools?keyword="
-        
+        static let editReview = kBASEURL + "update/review"
     }
 }
 
@@ -714,6 +714,7 @@ struct APIConstants {
     static let kRecipeStep = "recipe_steps"
     static let kIngridients = "ingredients"
     static let kTools = "tools"
+    static let kRecipeReviewRatingId = "recipe_review_rating_id"
 }
 
 struct OtherConstant {

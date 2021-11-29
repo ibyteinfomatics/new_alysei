@@ -10,6 +10,7 @@ import SVProgressHUD
 
 var check = "";
 
+
 class ProfileViewC: AlysieBaseViewC{
     
     //MARK: - IBOutlet -
@@ -399,9 +400,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
     }
     
     override func viewDidLayoutSubviews(){
@@ -416,9 +415,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - IBAction -
     
     @IBAction func btnLogout(_ sender: UIButton){
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
     }
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
@@ -849,7 +846,7 @@ class ProfileViewC: AlysieBaseViewC{
             SVProgressHUD.dismiss()
             if statusCode == 401 {
                 let token = kSharedUserDefaults.getDeviceToken()
-                kSharedUserDefaults.clearAllData()
+             //   kSharedUserDefaults.clearAllData()
                 kSharedUserDefaults.setDeviceToken(deviceToken: token)
             }
             guard let data = data else { return }
@@ -926,6 +923,7 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 kSharedUserDefaults.loggedInUserModal.firstName = responseModel.data?.userData?.firstName
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
+                
                 kSharedUserDefaults.synchronize()
                 self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
                 

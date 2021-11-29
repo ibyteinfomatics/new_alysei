@@ -34,7 +34,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var imgReview: UIImageView!
     var privacyArray = ["Public","Followers","Just Me"]
     var privacyImageArray = ["Public","Friends","OnlyMe"]
-    
+    var progressUserData: UserData?
     var postDesc: String?
 //    var picker = UIImagePickerController()
     var uploadImageArray = [UIImage]()
@@ -97,9 +97,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
+        
       //kSharedUserDefaults.clearAllData()
     }
     
@@ -119,11 +118,20 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                     self.text.text = "Complete your profile in order to start Posting"
                 } else {
                   self.blankdataView.isHidden = true
-                    self.setUI()
+                 //   self.setUI()
                 }
                 
                
 
+            }
+            
+            if let perData = response?["data"] as? [String:Any]{
+                self.progressUserData = UserData.init(with: perData)
+                
+                if let progUserData = perData["user_details"] as? [String:Any]{
+                    self.progressUserData = UserData.init(with: progUserData)
+                    self.setUI()
+                }
             }
             
         }
@@ -159,9 +167,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         }
         userName.text = name
         
-        if let profilePhoto =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "") {
-          //  if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
-            self.userImage.setImage(withString: imageDomain+"/"+profilePhoto, placeholder: UIImage(named: "image_placeholder"))
+        if let profilePhoto = self.progressUserData?.avatarid?.attachmenturl {
+            
+            self.userImage.setImage(withString: kImageBaseUrl + profilePhoto, placeholder: UIImage(named: "user_icon_normal"))
             self.userImage.layer.cornerRadius = (self.userImage.frame.width / 2.0)
             self.userImage.layer.borderWidth = 5.0
             self.userImage.layer.masksToBounds = true
@@ -343,7 +351,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
     @IBAction func postAction(_ sender: UIButton){
-        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) {
+        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
 //            showAlert(withMessage: "Please enter some post")
             showAlert(withMessage: "Post can't be empty")
 
@@ -410,6 +418,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
 }
+
 //MARK:- Custom Picker
 extension AddPostViewController: TLPhotosPickerLogDelegate {
     //For Log User Interaction
@@ -624,42 +633,8 @@ extension AddPostViewController {
         
         print("ImageParam------------------------------\(imageParam)")
         CommonUtil.sharedInstance.postRequestToImageUpload(withParameter: params, url: APIUrl.kPost, image: imageParam, controller: self, type: 0)
-        //
-        //        TANetworkManager.sharedInstance.requestMultiPart(withServiceName: APIUrl.kPost, requestMethod: .post, requestImages: imageParam, requestVideos: [:], requestData: params) { (dictResponse, error, errorType, statusCode) in
-        //            self.showAlert(withMessage: "Post Successfully")
-        //            self.txtPost.text = ""
-        //            self.collectionViewImage.isHidden = true
-        //            self.collectionViewHeight.constant = 0
-        //            self.uploadImageArray = [UIImage]()
-        //            self.btnPostPrivacy.setTitle("Public", for: .normal)
-        //            self.imgPrivacy.image = UIImage(named: "Public")
-        //        }
-        //
-        //      }
-        
-        
-        //        TANetworkManager.sharedInstance.requestMultiPart(withServiceName: APIUrl.kPost, requestMethod: .post, requestImages: imageParam, requestVideos: [:], requestData: params) { (dictResponse, error, errorType, statusCode) in
-        //            self.showAlert(withMessage: "Post Successfully")
-        //            self.txtPost.text = ""
-        //            self.collectionViewImage.isHidden = true
-        //            self.collectionViewHeight.constant = 0
-        //            self.uploadImageArray = [UIImage]()
-        //            self.btnPostPrivacy.setTitle("Public", for: .normal)
-        //            self.imgPrivacy.image = UIImage(named: "Public")
-        //        }
-        
-        //        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPost, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errortype, statuscode) in
-        //            self.showAlert(withMessage: "Post Successfully")
-        //            self.txtPost.text = ""
-        //            self.collectionViewImage.isHidden = true
-        //            self.collectionViewHeight.constant = 0
-        //            self.uploadImageArray = [UIImage]()
-        //            self.btnPostPrivacy.setTitle("Public", for: .normal)
-        //            self.imgPrivacy.image = UIImage(named: "Public")
-        //        }
-        //    }
+      
     }
-    
     override func didUserGetData(from result: Any, type: Int) {
 //        self.showAlert(withMessage: "Post Successfully") {
 //        }

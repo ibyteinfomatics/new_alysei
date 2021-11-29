@@ -139,11 +139,10 @@ class BusinessViewC: AlysieBaseViewC {
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
      // kSharedUserDefaults.clearAllData()
     }
+   
     
     //MARK: - IBAction -
     
@@ -748,7 +747,7 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
             // let cellSize = CGFloat(model.cellCount) / 3.0
             return 220.0  //* cellSize
         case .tableListCell:
-            return 66.0
+            return  120.0 //66.0
         default:
             return 70.0
         }

@@ -50,7 +50,7 @@ extension UpdatePasswordViewC {
             self.showAlert(withMessage: "Password Updated Successfully")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 let token = kSharedUserDefaults.getDeviceToken()
-                kSharedUserDefaults.clearAllData()
+               // kSharedUserDefaults.clearAllData()
                 kSharedUserDefaults.setDeviceToken(deviceToken: token)
                // kSharedUserDefaults.clearAllData()
             }

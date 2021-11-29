@@ -494,7 +494,7 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
             // let cellSize = CGFloat(model.cellCount) / 3.0
             return 180.0  //* cellSize
         case .tableListCell:
-            return 66.0
+            return 120.0 // 66.0
         default:
             return 70.0
         }

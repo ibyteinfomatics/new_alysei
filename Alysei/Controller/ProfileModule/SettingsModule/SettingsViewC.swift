@@ -35,10 +35,10 @@ class SettingsViewC: AlysieBaseViewC {
   }
   
   @IBAction func tapLogout(_ sender: UIButton) {
-
-    kSharedUserDefaults.clearAllData()
+    kSharedAppDelegate.callLogoutApi()
+   // kSharedUserDefaults.clearAllData()
   }
-  
+ 
   //MARK: - Private Methods -
     
   private func getSettingTableCell(_ indexPath: IndexPath) -> UITableViewCell{

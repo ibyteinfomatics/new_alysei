@@ -156,13 +156,11 @@ class HomeViewC: AlysieBaseViewC {
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
      // kSharedUserDefaults.clearAllData()
     }
     
-    
+   
     
     private func getMembershipTableCell(_ indexPath: Int) -> UITableViewCell{
       

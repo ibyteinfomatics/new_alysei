@@ -32,9 +32,7 @@ class SettingsScreenVC: AlysieBaseViewC {
       self.navigationController?.popViewController(animated: true)
     }
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        kSharedAppDelegate.callLogoutApi()
      // kSharedUserDefaults.clearAllData()
     }
 }
@@ -85,10 +83,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
               
                 let token = kSharedUserDefaults.getDeviceToken()
                 let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-                kSharedUserDefaults.clearAllData()
+               // kSharedUserDefaults.clearAllData()
                 kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
                 
                 kSharedUserDefaults.setDeviceToken(deviceToken: token)
+                kSharedAppDelegate.callLogoutApi()
             default:
               break
             }
@@ -110,9 +109,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 6:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-            kSharedUserDefaults.clearAllData()
+            //kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
+            kSharedAppDelegate.callLogoutApi()
           
         default:
           break
@@ -141,9 +141,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-            kSharedUserDefaults.clearAllData()
+            //kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
+            kSharedAppDelegate.callLogoutApi()
         default:
           break
         }
@@ -167,10 +168,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-            kSharedUserDefaults.clearAllData()
+          //  kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
            // kSharedUserDefaults.clearAllData()
+            kSharedAppDelegate.callLogoutApi()
         default:
           break
         }
@@ -194,10 +196,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 7:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-            kSharedUserDefaults.clearAllData()
+           // kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
-            
+            kSharedAppDelegate.callLogoutApi()
           //  kSharedUserDefaults.clearAllData()
         default:
           break
@@ -222,9 +224,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 7:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
-            kSharedUserDefaults.clearAllData()
+           // kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
+            kSharedAppDelegate.callLogoutApi()
           //  kSharedUserDefaults.clearAllData()
         default:
           break

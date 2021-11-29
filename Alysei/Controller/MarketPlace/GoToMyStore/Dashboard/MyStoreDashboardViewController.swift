@@ -16,7 +16,7 @@ import DropDown
 protocol MyStoreDashboardDisplayLogic: class
 {
   func displaySomething(viewModel: MyStoreDashboard.Something.ViewModel)
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int)
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int)
     func categoryCount(_ CategoryCount: Int)
 }
 
@@ -110,10 +110,10 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
   {
     //nameTextField.text = viewModel.name
   }
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int) {
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int) {
         self.imgStore.setImage(withString: kImageBaseUrl + String.getString(imgProfile))
         self.imgCoverImg.setImage(withString: kImageBaseUrl + String.getString(imgCover))
-        self.lblTotalProduct.text = "\(totalProduct)"
+        self.lblTotalProduct.text = "\(productCount)"
         self.totalProduct = totalProduct
         self.totalCategory = totalCategory
         self.totalEnquiry = totalEnquiry

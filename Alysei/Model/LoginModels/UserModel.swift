@@ -38,13 +38,15 @@ class UserModel: NSObject{
     var cover: cover?
     var phone: String?// newly constructed struct for cover id
     var UserAvatar_id: UserAvatar?
+    var userData: UserDataModel?
+    var avatarImage: String?
  // var cover_id: AllProductsDataModel?
    
     
   init(withDictionary dicResult: [String:Any]){
     
     super.init()
-    
+    self.avatarImage = String.getString(["avatar_image"])
     self.logout = Bool.getBool(dicResult["logout"])
     
     self.latitude = Double.getDouble(dicResult[APIConstants.kLatitude])
@@ -74,6 +76,9 @@ class UserModel: NSObject{
     if let avatardata = dictData["avatar_id"] as? [String:Any]{
         self.UserAvatar_id = UserAvatar.init(with: avatardata)
     }
+    if let userData = dictData["user_details"] as? [String:Any] {
+        self.userData = UserDataModel.init(with: userData)
+    }
   // self.avatarId = String.getString(dictRoles[APIConstants.kAvatarId])
    
 
@@ -89,7 +94,7 @@ class UserModel: NSObject{
     print(self)
 
   }
-    
+   
     class UserAvatar{
         var attachment_url: String?
         var id: Int?

@@ -15,12 +15,13 @@ import UIKit
 protocol MyStoreDashboardPresentationLogic
 {
   func presentSomething(response: MyStoreDashboard.Something.Response)
-    func passDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int)
+    func passDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productcount: Int)
     func getCategoryValue(_ categoryValue: Int)
 }
 
 class MyStoreDashboardPresenter: MyStoreDashboardPresentationLogic
 {
+    
   weak var viewController: MyStoreDashboardDisplayLogic?
   
   // MARK: Do something
@@ -31,8 +32,8 @@ class MyStoreDashboardPresenter: MyStoreDashboardPresentationLogic
     viewController?.displaySomething(viewModel: viewModel)
   }
     
-    func passDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProdcut: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int){
-        self.viewController?.displayDashboardData(imgProfile,imgCover,totalProdcut,totalCategory , totalEnquiry , totalReview)
+    func passDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProdcut: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int,  _ productcount: Int){
+        self.viewController?.displayDashboardData(imgProfile,imgCover,totalProdcut,totalCategory , totalEnquiry , totalReview, productcount)
     }
     
     func getCategoryValue(_ categoryCount : Int){

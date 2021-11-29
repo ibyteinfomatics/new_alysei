@@ -104,7 +104,7 @@ class InquiryChatVC: AlysieBaseViewC {
         lblOpened.font = UIFont(name:"HelveticaNeue-Regular", size: 18.0)
         lblClosed.font = UIFont(name:"HelveticaNeue-Regular", size: 18.0)
       
-        vwBottomNew.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
+        vwBottomNew.layer.backgroundColor = UIColor.init(hexString: "37A282").cgColor
         vwBottomOpened.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.ResentUser?.removeAll()
@@ -118,7 +118,7 @@ class InquiryChatVC: AlysieBaseViewC {
         lblOpened.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
         lblClosed.font = UIFont(name:"HelveticaNeue-Regular", size: 18.0)
         vwBottomNew.layer.backgroundColor =  UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        vwBottomOpened.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
+        vwBottomOpened.layer.backgroundColor = UIColor.init(hexString: "37A282").cgColor
         vwBottomClosed.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
@@ -132,7 +132,7 @@ class InquiryChatVC: AlysieBaseViewC {
         lblClosed.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
         vwBottomNew.layer.backgroundColor =  UIColor.lightGray.withAlphaComponent(0.5).cgColor
         vwBottomOpened.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        vwBottomClosed.layer.backgroundColor = UIColor.init(hexString: "009A9E").cgColor
+        vwBottomClosed.layer.backgroundColor = UIColor.init(hexString: "37A282").cgColor
         self.ResentUser?.removeAll()
         self.tblViewNotification.reloadData()
         usercount = 0

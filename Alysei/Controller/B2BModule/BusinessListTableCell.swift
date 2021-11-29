@@ -46,10 +46,10 @@ class BusinessListTableCell: UITableViewCell {
         userName.text = name
        
         userLocation.text = data.email
-        if String.getString(data.avatarId?.attachmentUrl) == "" {
+     if String.getString(data.avatarId?.attachmentUrl) == "" {
             userImage.image = UIImage(named: "profile_icon")
         }else{
-        userImage.setImage(withString: kImageBaseUrl + String.getString(data.avatarId?.attachmentUrl))
+            userImage.setImage(withString: kImageBaseUrl + String.getString(data.avatarId?.attachmentUrl))
         }
        
    }

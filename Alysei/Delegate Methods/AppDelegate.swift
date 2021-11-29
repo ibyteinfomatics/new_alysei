@@ -259,6 +259,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
      self.window?.makeKeyAndVisible()
  }
     
+    public func callLogoutApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLogout, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errotype, statusCode in
+            let token = kSharedUserDefaults.getDeviceToken()
+            kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setDeviceToken(deviceToken: token)
+        }
+    }
+    
     public func pushToBlanktViewC() {
          
        /*let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)

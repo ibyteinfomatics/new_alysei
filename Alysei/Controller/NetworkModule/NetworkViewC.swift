@@ -161,9 +161,7 @@ class NetworkViewC: AlysieBaseViewC {
   //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
-        let token = kSharedUserDefaults.getDeviceToken()
-        kSharedUserDefaults.clearAllData()
-        kSharedUserDefaults.setDeviceToken(deviceToken: token)
+       kSharedAppDelegate.callLogoutApi()
 
       //kSharedUserDefaults.clearAllData()
     }
