@@ -9,6 +9,7 @@ import UIKit
 
 class MarketPlaceHomeVC: AlysieBaseViewC {
     
+//    @IBOutlet weak var collectnMainViewHeight: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var postView: UIView!
     @IBOutlet weak var btnCreateStore: UIButton!
@@ -101,7 +102,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     
     //var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
     
-    var marketPlaceOptions = ["icons8_online_store_2", "icons8_wooden_beer_keg_1-1" , "icons8_geography-1" ,"icons8_sorting-1", "icons8_property_script", "icons8_certificate_1-1", "Group 5304", "hot", "icons8_popular-1"]
+    var marketPlaceOptions = ["pStore", "cnsrvationMtd" , "ItlanRgn" ,"4", "prdctPrprties", "fda", "myFav", "mostPoplr", "promotion"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
 
     var originalPosition: CGPoint?
@@ -625,6 +626,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         }else if collectionView == regionCollectionView{
             return self.maketPlaceHomeScreenData?.regions?.count ?? 0
         }else{
+//            collectnMainViewHeight.constant = 370
+//                (((self.collectionView.frame.width / 3) * 3) + 60)
             return 9
         }
     }
@@ -720,9 +723,9 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == topSellingCollectionView){
             return CGSize(width: collectionView.frame.width / 2 , height: 280)
         }
-//        else if (collectionView == maximumSearchedCollectionView){
-//            return CGSize(width: collectionView.frame.width / 2 , height: 220)
-//        }
+        else if (collectionView == collectionView){
+            return CGSize(width: collectionView.frame.width / 3 , height: collectionView.frame.width / 3)
+        }
         else{
             return CGSize(width: collectionView.frame.width / 3, height: 150)
         }

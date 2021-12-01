@@ -226,7 +226,7 @@
                                                                 <constraint firstAttribute="width" secondItem="6Yf-sx-Hj2" secondAttribute="height" multiplier="1:1" id="YU1-5d-fR9"/>
                                                                 <constraint firstAttribute="height" constant="30" id="bDN-ZC-ZQg"/>
                                                             </constraints>
-                                                            <state key="normal" image="MessagesProd"/>
+                                                            <state key="normal" image="inquiry"/>
                                                             <connections>
                                                                 <action selector="messageAction:" destination="l2c-aC-gf5" eventType="touchUpInside" id="3lY-wP-00K"/>
                                                             </connections>
@@ -362,8 +362,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="u05-2w-lQT" secondAttribute="bottom" constant="10" id="378-vv-EET"/>
                                                         <constraint firstAttribute="trailing" secondItem="u05-2w-lQT" secondAttribute="trailing" constant="10" id="CHI-D3-bQN"/>
                                                         <constraint firstItem="u05-2w-lQT" firstAttribute="top" secondItem="Y9x-mB-mxr" secondAttribute="top" constant="10" id="UKA-V0-et2"/>
-                                                        <constraint firstAttribute="height" constant="380" id="WhC-Rn-I9X"/>
                                                         <constraint firstItem="u05-2w-lQT" firstAttribute="leading" secondItem="Y9x-mB-mxr" secondAttribute="leading" constant="10" id="aGF-Z8-oOz"/>
+                                                        <constraint firstAttribute="height" constant="350" id="cKN-Gu-xva"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPb-BS-FAP">
@@ -9652,7 +9652,6 @@
         <image name="Location-1" width="42" height="42"/>
         <image name="MarketPlaceBg" width="240" height="240"/>
         <image name="MarketplaceAnim1" width="181.33332824707031" height="156.33332824707031"/>
-        <image name="MessagesProd" width="22.666666030883789" height="17.333333969116211"/>
         <image name="NotificationNew" width="13" height="16.666666030883789"/>
         <image name="UnselectSort" width="16" height="16"/>
         <image name="Walkthrough Screen – 20" width="375" height="832"/>
@@ -9688,6 +9687,7 @@
         <image name="image_placeholder" width="41" height="33"/>
         <image name="info_icon" width="20" height="20"/>
         <image name="inquiries_inactive" width="20.666666030883789" height="15"/>
+        <image name="inquiry" width="30" height="21"/>
         <image name="like_icon" width="128" height="112.33333587646484"/>
         <image name="marketplace_Store" width="28" height="26.666666030883789"/>
         <image name="producer_signup_bg" width="376" height="160"/>

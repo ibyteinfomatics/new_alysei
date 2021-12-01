@@ -71,7 +71,7 @@ class FilterRecipeViewController: UIViewController {
         collectionView.dataSource = self
         
         let layout = TagFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 140, height: 40)
+        layout.estimatedItemSize = CGSize(width: 10, height: 40)
         collectionView.collectionViewLayout = layout
         
         if isFrom == "Ingridients"{

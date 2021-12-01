@@ -271,10 +271,10 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if indexPath.item == 0{
-            return CGSize(width: 100 , height: 45.0)
+            return CGSize(width: 100 , height: 55.0)
         }
         else{
-            return CGSize(width: 150 , height: 45.0)
+            return CGSize(width: 150 , height: 55.0)
         }
     }
     
@@ -1036,7 +1036,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         return 80
                     }
                     else{
-                        return 150
+                        return UITableView.automaticDimension
                     }
                 case 2:
                     if arraySearchByTrips?.count == 0{

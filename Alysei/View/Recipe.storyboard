@@ -11,10 +11,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue-Light.ttf">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -1391,7 +1389,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Tools in Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjA-v4-m79">
-                                        <rect key="frame" x="50" y="20" width="178" height="24"/>
+                                        <rect key="frame" x="50" y="20" width="205.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="u50-Xz-RHt"/>
                                         </constraints>
@@ -1743,7 +1741,7 @@
                                                 <rect key="frame" x="15" y="64" width="384" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-YI-2Vg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18.5" id="hgM-7i-dfP"/>
                                                         </constraints>
@@ -1810,7 +1808,7 @@
                                                 <rect key="frame" x="15" y="139" width="384" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gn-qu-lLj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18.5" id="JYP-G1-64Y"/>
                                                         </constraints>
@@ -3692,8 +3690,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wic-pa-WSZ">
-                                        <rect key="frame" x="371" y="7" width="28" height="32.5"/>
-                                        <state key="normal" image="Group 667"/>
+                                        <rect key="frame" x="369" y="7" width="30" height="30"/>
+                                        <state key="normal" image="create_recipe"/>
                                         <connections>
                                             <action selector="createNewRecipeButton:" destination="CzX-Fz-L7X" eventType="touchUpInside" id="4XT-Ey-ldx"/>
                                         </connections>
@@ -9528,7 +9526,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Tools in Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp3-GL-95z">
-                                        <rect key="frame" x="50" y="20" width="176" height="24"/>
+                                        <rect key="frame" x="50" y="20" width="204.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Nd8-kW-S6S"/>
                                         </constraints>
@@ -9910,7 +9908,7 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StepCollectionViewCell" id="wd1-5w-Kfs" customClass="StepCollectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="1.5" width="54" height="35"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="54" height="35"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SE8-Ig-Fzs">
                                                                         <rect key="frame" x="0.0" y="0.0" width="54" height="35"/>
@@ -10672,7 +10670,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@gemachua" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nA-Om-jFg">
-                                                                    <rect key="frame" x="0.0" y="22" width="77" height="16.5"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="91" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -10777,7 +10775,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YER-m2-Wka">
-                                                    <rect key="frame" x="349" y="9" width="50" height="31"/>
+                                                    <rect key="frame" x="345" y="8.5" width="54" height="32"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <state key="normal" title="See All"/>
                                                     <connections>
@@ -10788,7 +10786,7 @@
                                                     <rect key="frame" x="15" y="149" width="384" height="195"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Client Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-fC-PbI">
-                                                            <rect key="frame" x="10" y="10" width="311.5" height="17.5"/>
+                                                            <rect key="frame" x="10" y="10" width="307.5" height="17.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17.5" id="4pp-2Z-pYD"/>
                                                             </constraints>
@@ -10833,7 +10831,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Oct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnL-XY-1YQ">
-                                                            <rect key="frame" x="331.5" y="10" width="42.5" height="17.5"/>
+                                                            <rect key="frame" x="327.5" y="10" width="46.5" height="17.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17.5" id="PPW-db-FnV"/>
                                                             </constraints>
@@ -10867,7 +10865,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating &amp; Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-EL-qwM">
-                                                    <rect key="frame" x="15" y="15" width="141" height="19"/>
+                                                    <rect key="frame" x="15" y="15" width="164" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="R8H-sB-AC1"/>
                                                     </constraints>
@@ -10889,7 +10887,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="219" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wx3-rs-ql1">
-                                                                    <rect key="frame" x="5" y="-1" width="10" height="20"/>
+                                                                    <rect key="frame" x="5" y="-1.5" width="10" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="10" id="S7c-Co-sIU"/>
                                                                     </constraints>
@@ -10912,7 +10910,7 @@
                                                                     </constraints>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="578" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg2-wm-zNK">
-                                                                    <rect key="frame" x="177" y="1" width="37" height="16.5"/>
+                                                                    <rect key="frame" x="177" y="0.5" width="37" height="17.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="37" id="9lj-bY-Xrk"/>
                                                                     </constraints>
@@ -10940,7 +10938,7 @@
                                                             <rect key="frame" x="0.0" y="18" width="219" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-Q9-WZS">
-                                                                    <rect key="frame" x="5" y="-1" width="10" height="20"/>
+                                                                    <rect key="frame" x="5" y="-1.5" width="10" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="10" id="pGN-Cv-xjH"/>
                                                                     </constraints>
@@ -10963,7 +10961,7 @@
                                                                     </constraints>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-cx-2Tz">
-                                                                    <rect key="frame" x="177" y="1" width="37" height="16.5"/>
+                                                                    <rect key="frame" x="177" y="0.5" width="37" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                     <color key="textColor" name="grey3"/>
                                                                     <nil key="highlightedColor"/>
@@ -10988,7 +10986,7 @@
                                                             <rect key="frame" x="0.0" y="36" width="219" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1R3-Vn-Q1x">
-                                                                    <rect key="frame" x="5" y="0.5" width="10" height="17.5"/>
+                                                                    <rect key="frame" x="5" y="0.0" width="10" height="18.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="10" id="VM5-Ai-Pz4"/>
                                                                     </constraints>
@@ -11011,7 +11009,7 @@
                                                                     </constraints>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="578" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgM-Bo-nVD">
-                                                                    <rect key="frame" x="177" y="1" width="37" height="16.5"/>
+                                                                    <rect key="frame" x="177" y="0.5" width="37" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                     <color key="textColor" name="grey3"/>
                                                                     <nil key="highlightedColor"/>
@@ -11034,7 +11032,7 @@
                                                             <rect key="frame" x="0.0" y="54" width="219" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-Fb-ip5">
-                                                                    <rect key="frame" x="5" y="-0.5" width="10" height="19"/>
+                                                                    <rect key="frame" x="5" y="-1" width="10" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="10" id="Ef4-QI-4di"/>
                                                                     </constraints>
@@ -11057,7 +11055,7 @@
                                                                     </constraints>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="578" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w32-OJ-Utq">
-                                                                    <rect key="frame" x="177" y="1" width="37" height="16.5"/>
+                                                                    <rect key="frame" x="177" y="0.5" width="37" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                     <color key="textColor" name="grey3"/>
                                                                     <nil key="highlightedColor"/>
@@ -11080,7 +11078,7 @@
                                                             <rect key="frame" x="0.0" y="72" width="219" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6A-vt-o3L">
-                                                                    <rect key="frame" x="5" y="-0.5" width="10" height="19"/>
+                                                                    <rect key="frame" x="5" y="-1" width="10" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="10" id="bFa-ez-H8m"/>
                                                                     </constraints>
@@ -11103,7 +11101,7 @@
                                                                     </constraints>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="578" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NH-jf-5OE">
-                                                                    <rect key="frame" x="177" y="1" width="37" height="16.5"/>
+                                                                    <rect key="frame" x="177" y="0.5" width="37" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                     <color key="textColor" name="grey3"/>
                                                                     <nil key="highlightedColor"/>
@@ -12121,6 +12119,7 @@
         <image name="back_white" width="24" height="18.5"/>
         <image name="camera_icon_white-1" width="19.5" height="15.5"/>
         <image name="cloud_icon_normal" width="51" height="43.5"/>
+        <image name="create_recipe" width="30" height="30"/>
         <image name="cross_icon_black" width="22" height="22"/>
         <image name="icons8_Cooking" width="24" height="25"/>
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
@@ -12129,13 +12128,13 @@
         <image name="icons8_image_1" width="38" height="30.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
-        <image name="icons8_left" width="24" height="18.5"/>
+        <image name="icons8_left" width="19" height="15"/>
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
-        <image name="icons8_plus" width="14" height="14"/>
+        <image name="icons8_plus" width="27" height="27"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="19.5" height="19.5"/>
+        <image name="icons8_search" width="23" height="23"/>
         <image name="icons8_shop_3" width="16" height="16"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
