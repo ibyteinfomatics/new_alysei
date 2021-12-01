@@ -9,6 +9,7 @@ import UIKit
 import SVProgressHUD
 
 var check = "";
+var profileTabImage: UIImage?
 
 
 class ProfileViewC: AlysieBaseViewC{
@@ -719,13 +720,36 @@ class ProfileViewC: AlysieBaseViewC{
         let thumbRect = self.percentageSlider.thumbRect(forBounds: self.percentageSlider.bounds, trackRect: trackRect, value: self.percentageSlider.value)
         self.lblPercentage.transform = CGAffineTransform(translationX: thumbRect.origin.x + self.percentageSlider.frame.origin.x - 9, y: self.percentageSlider.frame.origin.y + 35)
     }
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+                
+                profileTabImage = UIImage(data: data)
+              
+                self?.tabBarController?.addSubviewToLastTabItem(profileTabImage ?? UIImage())
+            }
+        }
+    }
+    
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
     private func initialSetUp(_ profileImage: String , _ coverImage: String) -> Void{
         
         self.imgViewCover.image = UIImage(named: "coverPhoto")
         self.imgViewProfile.image = UIImage(named: "profile_icon")
         let imgUrl = (kImageBaseUrl + coverImage)
+        
         self.imgViewCover.setImage(withString: imgUrl)
         let imgPUrl = (kImageBaseUrl + profileImage)
+        
+    
         if imgPUrl != "" {
             self.imgViewProfile.setImage(withString: imgPUrl)
             self.imgViewProfile.layer.cornerRadius = (self.imgViewProfile.frame.width / 2.0)
@@ -925,8 +949,11 @@ class ProfileViewC: AlysieBaseViewC{
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
                 
                 kSharedUserDefaults.synchronize()
-                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+                let urlP = URL(string: "\(kImageBaseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 
+                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+              
                 //MARK: For self Contact Detail
                 self.contactDetilViewModel = responseModel.data?.contactTab
                 self.contactDetail.removeAll()
@@ -1113,6 +1140,7 @@ class ProfileViewC: AlysieBaseViewC{
         //cell.delegate = self
         cell.configure(indexPath, currentIndex: self.currentIndex)
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
+        cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
         cell.animationCallback = { currentIndex, cell in
         self.animateViews(indexPath.row , cell: cell)
@@ -1792,3 +1820,23 @@ extension ProfileViewC: AddFeaturedProductCallBack {
     }
 
 
+extension UITabBarController {
+    
+    func addSubviewToLastTabItem(_ image: UIImage) {
+        
+        if let lastTabBarButton = self.tabBar.subviews.last, let tabItemImageView = lastTabBarButton.subviews.first {
+            if let accountTabBarItem = self.tabBar.items?.last {
+                accountTabBarItem.selectedImage = nil
+                accountTabBarItem.image = nil
+            }
+            let imgView = UIImageView()
+            imgView.frame = tabItemImageView.frame
+            imgView.layer.cornerRadius = tabItemImageView.frame.height/2
+            imgView.layer.masksToBounds = true
+            imgView.contentMode = .scaleAspectFill
+            imgView.clipsToBounds = true
+            imgView.image = image
+            self.tabBar.subviews.last?.addSubview(imgView)
+        }
+    }
+}

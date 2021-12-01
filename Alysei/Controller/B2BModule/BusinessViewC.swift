@@ -62,6 +62,7 @@ class BusinessViewC: AlysieBaseViewC {
     var restDelivery:String?
     var paginationData = false
     var searchImpDone = false
+    var loadFirst = true
     //var selectedProducWithCategory:String
     var selectedProducWithCategory: String? = nil {
         didSet {
@@ -106,6 +107,7 @@ class BusinessViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchType = 3
+       // loadFirst = true
         if currentIndex == 0 {
         callSearchHubApi()
         }
@@ -131,7 +133,7 @@ class BusinessViewC: AlysieBaseViewC {
             blankdataView.isHidden = true
         }
         
-        if currentIndex == 0 {
+        if currentIndex == 0 && loadFirst == true{
         callSearchHubApi()
         }
         self.tabBarController?.tabBar.isHidden = false
@@ -149,6 +151,10 @@ class BusinessViewC: AlysieBaseViewC {
     @IBAction func tapNotification(_ sender: UIButton) {
         
         _ = pushViewController(withName: NotificationViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+    }
+    
+    @IBAction func tapSearch(_ sender: UIButton){
+        _ = pushViewController(withName: UniversalSearchViewController.id(), fromStoryboard: StoryBoardConstants.kHome)
     }
     
     //MARK:- Pagination
@@ -259,6 +265,7 @@ class BusinessViewC: AlysieBaseViewC {
       
         businessButtonTableCell.pushVCCallback = { arruserHubs,getRoleViewModel,productType,stateModel,arrStateRegionById,selectFieldType in
             let controller = self.pushViewController(withName: BusinessMultiOptionsVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BusinessMultiOptionsVC
+            self.loadFirst = false
             controller?.arrUserHubs = arruserHubs ?? [HubCityArray]()
             controller?.selectFieldType = selectFieldType
             self.selectFieldType = ""
@@ -269,6 +276,7 @@ class BusinessViewC: AlysieBaseViewC {
             controller?.currentIndex = self.currentIndex
             if self.currentIndex == B2BSearch.Hub.rawValue{
                 if selectFieldType == AppConstants.SelectState ||  selectFieldType == AppConstants.SelectRegion{
+                    
                     let Arr =  self.selectStateId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
                 }
@@ -347,73 +355,150 @@ class BusinessViewC: AlysieBaseViewC {
                 let  optionId = arrSelectOptionId?.joined(separator: ",")
                 if self.currentIndex == B2BSearch.Hub.rawValue{
                     if selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle("Select State" , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectStateId = optionId
                     }
                 }
                 if self.currentIndex == B2BSearch.Importer.rawValue{
                     if selectFieldType == AppConstants.Hubs{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectImpHubId = optionId
-                    }else if selectFieldType == AppConstants.SelectUserType{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
+                       
+                    }else if selectFieldType == AppConstants.SelectUserType{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
+                        }else{
+                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectImpRoleId = optionId
                     }else if selectFieldType == AppConstants.ProductTypeBusiness{
+                        if self.selectedProducWithCategory == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+                        }
                         self.selectImpProductId = optionId
                     }else if selectFieldType == AppConstants.SelectState{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectImpRegionTypeId = optionId
                     }
                 }else if self.currentIndex == B2BSearch.Restaurant.rawValue{
                     if selectFieldType == AppConstants.Hubs{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.resHubId = optionId
                     }else if selectFieldType == AppConstants.RestaurantType{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.RestaurantType , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.resTypeId = optionId
                     }
                 }else if self.currentIndex == B2BSearch.Expert.rawValue{
                     if selectFieldType == AppConstants.Hubs{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectExpertHubId = optionId
                     }else if selectFieldType == AppConstants.Expertise{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Expertise , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectExpertExpertiseId = optionId
                     }else if selectFieldType == AppConstants.Title{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Title , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectExpertTitleId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectExpertRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectExpertRegionId = optionId
                     }
                 }else if self.currentIndex == B2BSearch.TravelAgencies.rawValue{
                     if selectFieldType == AppConstants.Hubs{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectTravelHubId = optionId
                     }else if selectFieldType == AppConstants.Speciality{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Speciality , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectTravelSpecialityId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectTravelRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectTravelRegionId = optionId
                     }
                     
                 }else if self.currentIndex == B2BSearch.Producer.rawValue{
                     if selectFieldType == AppConstants.Hubs{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectProducerHubId = optionId
                     }else if selectFieldType == AppConstants.ProductTypeBusiness{
+                        if self.selectedProducWithCategory == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+                        }
                         self.selectProducerProductType = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
+                        if optionName == ""{
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                        }else{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        }
                         self.selectProducerRegionId = optionId
                     }
                     
@@ -771,11 +856,12 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
 
 extension BusinessViewC: TappedHubs{
     
-    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?){
+    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?, _ hubImageUrl: String?){
         let controller = pushViewController(withName: HubsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? HubsViewC
         controller?.passHubId = hubId
         controller?.passHubName = hubName
         controller?.passHubLocation = hubLocation
+        controller?.passHubImageUrl = hubImageUrl
     }
 }
 
@@ -783,7 +869,11 @@ extension BusinessViewC: TappedHubs{
 extension BusinessViewC {
     func callSearchHubApi(){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&keyword=" + "\(txtkeywordSearch ?? "")" + "&state=" + "\(self.selectStateId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            switch statusCode {
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
+            
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
@@ -791,13 +881,23 @@ extension BusinessViewC {
                 self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
                 // self.selectStateId = ""
                 // self.searchImpDone = false
+                self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
+                self.collectionViewBusinessCategory.reloadData()
+                self.tblViewSearchOptions.reloadData()
+                self.view.isUserInteractionEnabled = true
             }
-            self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
-            self.collectionViewBusinessCategory.reloadData()
-            self.tblViewSearchOptions.reloadData()
-            self.view.isUserInteractionEnabled = true
-            
+                
+            default:
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchDataModel.removeAll()
+                }
+                self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
+                self.collectionViewBusinessCategory.reloadData()
+                self.tblViewSearchOptions.reloadData()
+                self.view.isUserInteractionEnabled = true
+            }
         }
+           
     }
     func callSearchImporterApi(){
         if paginationData == false{

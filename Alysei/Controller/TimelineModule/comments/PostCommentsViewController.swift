@@ -105,8 +105,8 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
         
         self.tableView.register(UINib(nibName: "PostCommentsCell", bundle: nil), forCellReuseIdentifier: "cell")
 
@@ -145,6 +145,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         tableView.rowHeight = UITableView.automaticDimension
 //        self.commentTextfield.becomeFirstResponder()
     }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {

@@ -184,7 +184,7 @@ class PostDescTableViewCell: UITableViewCell {
             userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voyager,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
@@ -201,7 +201,8 @@ class PostDescTableViewCell: UITableViewCell {
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
-        }/*else{
+        }
+        /*else{
   
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = modelData.subjectId?.email?.lowercased()

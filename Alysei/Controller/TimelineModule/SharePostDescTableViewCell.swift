@@ -175,7 +175,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text = "Voyager,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
     }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
@@ -276,12 +276,12 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     if (modelData.sharedPostData?.attachments?.isEmpty == true) || (modelData.sharedPostData?.attachmentCount == 0){
              print("No Data")
             }else{
-                    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
-                        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-                
-                
-                
-                    }
+//                    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
+//                        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+//                    }
+                for i in  0..<(modelData.sharedPostData?.attachments?.count ?? 0) {
+                    self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                }
             }
     print("ImageArrayCount---------------------------\(imageArray.count)")
 

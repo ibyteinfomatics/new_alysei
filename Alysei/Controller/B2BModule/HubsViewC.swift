@@ -14,20 +14,25 @@ class HubsViewC: AlysieBaseViewC {
     @IBOutlet weak var hubLocation: UILabel!
     @IBOutlet weak var lblSubHeading: UILabel!
     @IBOutlet weak var btnSubscribe: UIButton!
+    @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var imgHub: UIImageView!
    // @IBOutlet weak var imgHub: UIImageView!
     
     var arruserCount : [UserRoleCount]?
     var passHubId: String?
     var passHubName: String?
     var passHubLocation: String?
+    var passHubImageUrl: String?
     var getRoleViewModel: GetRoleViewModel!
     var isHubSubscribed: Int?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         hubName.text = passHubName
         hubLocation.text = passHubLocation
+        self.imgHub.setImage(withString: kImageBaseUrl + String.getString(passHubImageUrl))
         lblSubHeading.text = "Join the \(passHubName ?? "") to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community."
         callUserCountApi()
         // Do any additional setup after loading the view.

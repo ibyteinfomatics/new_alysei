@@ -9,6 +9,7 @@ import UIKit
 
 class HubUserListVC: AlysieBaseViewC {
     
+    @IBOutlet weak var vwHeader: UIView!
     var currentIndex:Int?
     var businessViewModel: BusinessSingleHubViewModel?
     var searchType:Int?
@@ -92,6 +93,7 @@ class HubUserListVC: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         self.searchType = 2
         lblTiltle.text = passUserTitle
         self.getUserListFromHubSelctionApi()
@@ -515,11 +517,12 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
 }
 extension HubUserListVC: TappedHubs{
     
-    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?){
+    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?, _ hubImageUrl: String?){
         let controller = pushViewController(withName: HubsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? HubsViewC
         controller?.passHubId = hubId
         controller?.passHubName = hubName
         controller?.passHubLocation = hubLocation
+    controller?.passHubImageUrl = hubImageUrl
     }
 }
 
