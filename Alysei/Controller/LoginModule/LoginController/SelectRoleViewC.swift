@@ -75,7 +75,7 @@ extension SelectRoleViewC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //if indexPath.row == 5 {
-           return UITableView.automaticDimension
+           return  UITableView.automaticDimension
 //        return 250
 //        }else{
 //            return 150

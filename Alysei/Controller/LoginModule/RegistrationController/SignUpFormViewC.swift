@@ -266,7 +266,8 @@ extension SignUpFormViewC: UITableViewDataSource, UITableViewDelegate{
         
         if selectedIndex.contains(indexPath.row) || model.parentId?.isEmpty == true{
           model.isHidden = false
-          return 110.0
+         // return 110.0
+            return 90.0
         }
         else{
           model.isHidden = true
@@ -274,11 +275,13 @@ extension SignUpFormViewC: UITableViewDataSource, UITableViewDelegate{
         }
        }
     case AppConstants.Text,AppConstants.Multiselect,AppConstants.Map:
-      return 110.0
+     // return 110.0
+        return 90
     case AppConstants.Radio:
-      return 130.0
+      return 97.0
     case AppConstants.Checkbox:
-      return 118.0
+     // return 118.0
+      return 100
     case AppConstants.Terms:
       return 95.0
     default:

@@ -67,18 +67,24 @@ class BlogsViewController: AlysieBaseViewC {
         
         blogTableCell.blogTitle.text = blogModel?.data?[indexPath].title
         blogTableCell.blogDescription.text = blogModel?.data?[indexPath].datumDescription
-        
+        let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
+        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
+        blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-        blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].date)
-        
-        blogTableCell.blogImage.layer.masksToBounds = false
-        blogTableCell.blogImage.clipsToBounds = true
-        blogTableCell.blogImage.layer.cornerRadius = 5
+        blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].createdAt)
+//
+//        blogTableCell.blogImage.layer.masksToBounds = false
+//        blogTableCell.blogImage.clipsToBounds = true
+//        blogTableCell.blogImage.layer.cornerRadius = 5
         
         blogTableCell.editButton.tag = indexPath
         blogTableCell.deleteButton.tag = indexPath
         blogTableCell.readMoreButton.tag = indexPath
-        
+        if String.getString(blogModel?.data?[indexPath].status) == "0"{
+            blogTableCell.lblDraftPublsh.text = "Draft"
+        }else{
+            blogTableCell.lblDraftPublsh.text = "Publish"
+        }
         blogTableCell.btnDeleteCallback = { tag in
           
             
@@ -171,7 +177,7 @@ extension BlogsViewController: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return UITableView.automaticDimension
     }
     
 }

@@ -228,17 +228,17 @@ extension SignUpViewC: UITableViewDataSource,UITableViewDelegate{
         
         switch model.name {
         case AppConstants.Password:
-            return 158.0
+            return 130.0
         case AppConstants.EnterYourCity:
             let cityModel = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.kCity})
             if cityModel.first?.selectedOptionName == AppConstants.Other{
-                return 105.0
+                return 85.0
             }
             else{
                 return 0.0
             }
         default:
-            return (model.type == AppConstants.Terms) ? 95.0 : 105.0
+            return (model.type == AppConstants.Terms) ? 95.0 : 85.0
         }
     }
     

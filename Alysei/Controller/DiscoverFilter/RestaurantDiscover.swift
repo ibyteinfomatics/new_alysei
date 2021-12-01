@@ -104,8 +104,7 @@ class RestaurantDiscover: AlysieBaseViewC {
         restTableCell.blogImage.layer.masksToBounds = false
         restTableCell.blogImage.clipsToBounds = true
         restTableCell.blogImage.layer.cornerRadius = 5
-        
-        
+       
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
             restTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(restauUser[indexPath].avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         } else {

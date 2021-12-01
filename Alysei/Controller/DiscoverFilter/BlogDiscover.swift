@@ -13,6 +13,8 @@ class BlogDiscover: AlysieBaseViewC {
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var blogTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
+    
+    
     var blogModel:BlogModel?
     var blogData = [BlogDatum]()
     var blogId: String?
@@ -72,11 +74,18 @@ class BlogDiscover: AlysieBaseViewC {
         blogTableCell.blogDescription.text = blogData[indexPath].datumDescription
         
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-        blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].date)
-        
-        blogTableCell.blogImage.layer.masksToBounds = false
-        blogTableCell.blogImage.clipsToBounds = true
-        blogTableCell.blogImage.layer.cornerRadius = 5
+        blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
+        if String.getString(blogData[indexPath].status) == "0"{
+            blogTableCell.lblDraftPublsh.text = "Draft"
+        }else{
+            blogTableCell.lblDraftPublsh.text = "Publish"
+        }
+        let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
+        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
+        blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
+//        blogTableCell.blogImage.layer.masksToBounds = false
+//        blogTableCell.blogImage.clipsToBounds = true
+//        blogTableCell.blogImage.layer.cornerRadius = 5
         
         blogTableCell.readMoreButton.tag = indexPath
         
@@ -144,7 +153,7 @@ extension BlogDiscover: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return UITableView.automaticDimension
     }
     
 }

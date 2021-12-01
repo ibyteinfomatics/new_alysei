@@ -36,7 +36,7 @@ class HomeViewC: AlysieBaseViewC {
     @IBOutlet weak var countshow: UIButton!
 
   var fullScreenImageView = UIImageView()
-    
+    var progressUserData: UserData?
     var ResentUser:[RecentUser]?
   
   //MARK: - Properties -
@@ -119,9 +119,7 @@ class HomeViewC: AlysieBaseViewC {
         self.countshow.isHidden = true
         receiveUsers()
         
-        
-        
-         
+    
     }
     
     
@@ -251,8 +249,11 @@ class HomeViewC: AlysieBaseViewC {
                     self.imgReview.image = UIImage(named: "")
                 }
                 
-               
-
+                if let progUserData = data["user_details"] as? [String:Any]{
+                    self.progressUserData = UserData.init(with: progUserData)
+                    let urlP = URL(string: "\(kImageBaseUrl + "\(self.progressUserData?.avatarid?.attachmenturl  ?? "")")")
+                    self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
+                }
             }
             
         }
@@ -394,3 +395,28 @@ extension HomeViewC: AnimationCallBack{
   }
 }
 
+extension HomeViewC{
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+                
+                profileTabImage = UIImage(data: data)
+                if profileTabImage == UIImage() || profileTabImage == nil {
+                    self?.tabBarController?.addSubviewToLastTabItem(UIImage(named: "profile_icon") ?? UIImage())
+                }else{
+                self?.tabBarController?.addSubviewToLastTabItem(profileTabImage ?? UIImage())
+                }
+            }
+        }
+    }
+    
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+}

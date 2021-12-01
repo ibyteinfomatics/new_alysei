@@ -39,6 +39,7 @@ class BlogDatum {
     var status, createdAt, updatedAt: String?
     var user: BlogUser?
     var attachment: Attachment?
+   
     
     init(with dictResponse: [String:Any]?) {
         
@@ -52,7 +53,7 @@ class BlogDatum {
         self.blogID = Int.getInt(dictResponse?["blog_id"])
         self.userID = Int.getInt(dictResponse?["user_id"])
         self.imageID = Int.getInt(dictResponse?["image_id"])
-        
+       
         if let user = dictResponse?["user"] as? [String:Any]{
             self.user =  BlogUser.init(with: user)
         }
@@ -94,7 +95,8 @@ class BlogUser {
     var restaurantName: String?
     var roleID: Int?
     var avatarID: Attachment?
-    
+    var firstName: String?
+    var lastName:String?
     
     init(with dictResponse: [String:Any]?) {
         self.name = String.getString(dictResponse?["name"])
@@ -103,7 +105,8 @@ class BlogUser {
         self.restaurantName = String.getString(dictResponse?["restaurant_name"])
         self.userID = Int.getInt(dictResponse?["user_id"])
         self.roleID = Int.getInt(dictResponse?["role_id"])
-        
+        self.firstName = String.getString(dictResponse?["first_name"])
+        self.lastName = String.getString(dictResponse?["last_name"])
         if let avatar_id = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarID =  Attachment.init(with: avatar_id)
         }

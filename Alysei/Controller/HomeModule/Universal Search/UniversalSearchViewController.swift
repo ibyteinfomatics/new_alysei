@@ -508,6 +508,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             
                         }
                     }
+                    
                     return cell2
                 case 2:
                     
