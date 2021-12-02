@@ -725,17 +725,17 @@ struct OtherConstant {
 
 struct StaticArrayData {
     
-    static let kInactiveNetworkCategoryDict = [(image: "icons8_add_user_group_man_man", name: "Invitations"),
-                                           (image: "icons_people_inactive", name: "Connections"),
-                                           (image: "icons8_data_pending", name: "Pending"),
-                                           kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons8_attendance", name: "Following") : (image: "icons8_attendance", name: "Followers")]
+    static let kInactiveNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
+                                           (image: "connections", name: "Connections"),
+                                           (image: "pending", name: "Pending"),
+                                           kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
     
-    static let kInactiveBusinessCategoryDict = [(image: "icons8_hubB2B", name: "Hubs"),
-                                            (image: "icons8_Partially_Shipped", name: "Importers & Distributors"),
-                                            (image: "icons8_restaurant", name: "Italian Restaurants in US"),
-                                            (image: "icons8_hand_with_pen", name: "Voice of Experts"),
-                                            (image: "icons8_waypoint_map", name: "Travel Agencies"),
-                                            (image: "1924790", name: "Producer"),
+    static let kInactiveBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
+                                            (image: "importers&distributors", name: "Importers & Distributors"),
+                                            (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
+                                            (image: "voiceofexperts", name: "Voice of Experts"),
+                                            (image: "travelagencies", name: "Travel Agencies"),
+                                            (image: "producers", name: "Producer"),
         ]
     
     static let kTutorialDict = [(image: "Alysei Splash Screen 1", title: "Welcome to Alysei", description: "Connect to social platform Alysei and follow your interests in restaurants,events,wine,food,cooking classes,recipes,blogs and more."),
@@ -858,18 +858,18 @@ struct StaticArrayData {
                                   (image: "Ellipse 22", name: "Quality Mark", status: "You will receive an official quality mark on your profile.")]
     
     
-    static let kBusinessCategoryDict = [(image: "b2btab1_icon", name: "Hubs"),
-                                        (image: "b2btab2_icon", name: "Importers & Distributors"),
-                                        (image: "b2btab3_icon", name: "Italian Restaurants in US"),
-                                        (image: "b2btab4_icon", name: "Voice of Experts"),
-                                        (image: "b2btab5_icon", name: "Travel Agencies"),
-                                        (image: "b2btab6_icon", name: "Producer"),
+    static let kBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
+                                        (image: "importers&distributors", name: "Importers & Distributors"),
+                                        (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
+                                        (image: "voiceofexperts", name: "Voice of Experts"),
+                                        (image: "travelagencies", name: "Travel Agencies"),
+                                        (image: "producers", name: "Producer"),
     ]
     
-    static let kNetworkCategoryDict = [(image: "icons_invitations", name: "Invitations"),
-                                       (image: "icons8_people", name: "Connections"),
-                                       (image: "icons_pending", name: "Pending"),
-                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons_invitations", name: "Following") : (image: "icons_invitations", name: "Followers")]
+    static let kNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
+                                       (image: "connections", name: "Connections"),
+                                       (image: "pending", name: "Pending"),
+                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),

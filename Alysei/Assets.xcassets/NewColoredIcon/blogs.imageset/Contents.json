@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "blogs.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "blogs (1).png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "blogs (2).png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

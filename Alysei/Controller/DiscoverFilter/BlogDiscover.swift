@@ -103,7 +103,7 @@ class BlogDiscover: AlysieBaseViewC {
         }
         
         
-        blogTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(blogData[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        blogTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(blogData[indexPath].attachment?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         
@@ -178,7 +178,7 @@ extension BlogDiscover {
     private func postRequestToGetBlog(_ pageNo: Int?) -> Void{
       
       disableWindowInteraction()
-    
+     
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(self.blogId ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
         let dictResponse = dictResponse as? [String:Any]

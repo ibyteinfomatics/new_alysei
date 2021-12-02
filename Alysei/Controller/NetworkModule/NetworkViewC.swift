@@ -177,7 +177,7 @@ class NetworkViewC: AlysieBaseViewC {
   private func getNetworkCategoryCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
     
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
-    
+    networkCategoryCollectionCell.viewNetwork.layer.cornerRadius = networkCategoryCollectionCell.viewNetwork.frame.height / 2
     networkCategoryCollectionCell.lblNetworkCount.isHidden = true
     networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
     return networkCategoryCollectionCell
@@ -372,13 +372,13 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
 //    return CGSize(width: kScreenWidth/3.0, height: 45.0)
 
      if indexPath.item == 1{
-        return CGSize(width: 145 , height: 45.0)
+        return CGSize(width: 150 , height: 55.0)
     }
     else if indexPath.item == 2{
-        return CGSize(width: 120 , height: 45.0)
+        return CGSize(width: 130 , height: 55.0)
     }
     else{
-        return CGSize(width: 130 , height: 45.0)
+        return CGSize(width: 135 , height: 55.0)
     }
     
   }

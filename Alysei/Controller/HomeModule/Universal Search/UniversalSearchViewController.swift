@@ -1073,7 +1073,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             case 1:
                 return 80
             case 2:
-                return 150
+                return UITableView.automaticDimension
             case 3:
                 return 150
             case 4:

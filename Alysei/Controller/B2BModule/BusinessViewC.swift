@@ -765,16 +765,16 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if indexPath.item == 0  {
-            return CGSize(width: 100 , height: 45.0)
+            return CGSize(width: 110 , height: 55.0)
         }
         else if indexPath.item == 1{
-            return CGSize(width: 145 , height: 45.0)
+            return CGSize(width: 150 , height: 55.0)
         }
         else if indexPath.item == 2{
-            return CGSize(width: 185 , height: 45.0)
+            return CGSize(width: 190 , height: 55.0)
         }
         else{
-            return CGSize(width: 135 , height: 45.0)
+            return CGSize(width: 140 , height: 55.0)
         }
         
     }

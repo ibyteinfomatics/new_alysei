@@ -369,7 +369,7 @@ class ProfileViewC: AlysieBaseViewC{
         } completion: { bool in
             if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
-                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+               // cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
         }
 
@@ -808,8 +808,8 @@ class ProfileViewC: AlysieBaseViewC{
         let imageName = ProfileTabRows().imageName(self.userType)[indexPath.row]
         
         let title = ProfileTabRows().rowsTitle(self.userType)[indexPath.row]
-        cell.imageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
-        cell.imageView.tintColor = UIColor(named: "grey2")
+        cell.imageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
+        //cell.imageView.tintColor = UIColor(named: "grey2")
         cell.titleLabel.text = title
         return cell
         
@@ -1291,7 +1291,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             
             if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
-                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+                //cell.imageView.tintColor = UIColor(named: "blueberryColor")
 
                 self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
                 
@@ -1325,7 +1325,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         if collectionView == self.tabsCollectionView {
             if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(false)
-                cell.imageView.tintColor = UIColor(named: "grey2")
+                //cell.imageView.tintColor = UIColor(named: "grey2")
             }
         }
     }

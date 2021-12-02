@@ -30,7 +30,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //@IBOutlet weak var kitchenCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
   //  @IBOutlet weak var hghtBottomBannerCV: NSLayoutConstraint!
-    
+    @IBOutlet weak var tapNotificationVw: UIView!
     
     //
     @IBOutlet weak var walkView1: UIView!
@@ -140,6 +140,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         openednewCount.layer.cornerRadius = 10
         openednewCount.layer.masksToBounds = true
         openednewCount.textColor = UIColor.white
+        
+        let tapNotification = UITapGestureRecognizer(target: self, action: #selector(openNotification))
+        self.tapNotificationVw.addGestureRecognizer(tapNotification)
       // let  panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         //view.addGestureRecognizer(panGestureRecognizer)
     }
@@ -198,6 +201,11 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         })
         
         
+    }
+    @objc func openNotification(){
+        guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = true
     }
     func setUI(){
         if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){

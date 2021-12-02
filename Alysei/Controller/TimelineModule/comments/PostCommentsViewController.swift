@@ -17,7 +17,7 @@ protocol PostCommentsDisplayLogic: class {
     func loadComments(_ response: PostComments.Comment.Response)
 }
 
-class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
+class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     var interactor: PostCommentsBusinessLogic?
     var router: (NSObjectProtocol & PostCommentsRoutingLogic & PostCommentsDataPassing)?
 
@@ -115,7 +115,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         self.tableView.dataSource = self
         //self.tableView.allowsSelection = false
 
-        //self.commentTextfield.delegate = self
+        self.commentTextfield.delegate = self
         
         
         if postid > 0 {
@@ -378,7 +378,11 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic {
         }
         
     }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//    }
     
+
     func getcurrentdateWithTime(datetime :String?) -> String {
         
         //initialize the Date Formatter
@@ -552,9 +556,32 @@ extension PostCommentsViewController: CommnentReplyProtocol {
 
 }
 
-extension PostCommentsViewController: UITextFieldDelegate {
+extension PostCommentsViewController: UITextFieldDelegate ,UITextViewDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         //self.commentTextfield.placeholder = "Leave a comment"
         self.commentId = 0
+      
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+// hides text views
+func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if (text == "\n") {
+        textView.resignFirstResponder()
+        return false
+    }
+    return true
+}
+// hides text fields
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if (string == "\n") {
+        textField.resignFirstResponder()
+        return false
+    }
+    return true
+}
 }
