@@ -29,16 +29,13 @@ class BlogsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgUser.layer.cornerRadius = self.imgUser.frame.height / 2
-        imgUser.layer.masksToBounds = true
-        editButton.makeCornerRadius(radius: self.editButton.frame.height / 2)
-        deleteButton.makeCornerRadius(radius: self.deleteButton.frame.height / 2)
+        
         vwContainer.layer.shadowColor = UIColor.darkGray.withAlphaComponent(0.8).cgColor
         vwContainer.layer.shadowRadius = 2
         vwContainer.layer.shadowOpacity = 0.8
         vwContainer.layer.shadowOffset = .zero
         
-        vwContainerlbl.layer.cornerRadius = 15
+        
         
         // Initialization code
     }

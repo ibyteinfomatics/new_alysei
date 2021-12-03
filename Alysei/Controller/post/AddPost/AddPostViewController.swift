@@ -74,9 +74,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 blankdataView.isHidden = false
                 imgReview.image = UIImage(named: "Review")
                 text.text = "Your profile is not reviewed from admin"
-                
+                txtPost.resignFirstResponder()
             } else if Int.getInt(data["alysei_review"]) == 1{
-                
+               // txtPost.becomeFirstResponder()
                 postRequestToGetProgressPrfile()
                 
             }
@@ -87,7 +87,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         }
         
         if txtPost.textColor == UIColor.lightGray {
-            txtPost.becomeFirstResponder()
+           
             txtPost.text = nil
             txtPost.textColor = UIColor.black
         }
@@ -116,7 +116,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                   self.blankdataView.isHidden = false
                     self.imgReview.image = UIImage(named: "ProfileCompletion")
                     self.text.text = "Complete your profile in order to start Posting"
+                    self.txtPost.resignFirstResponder()
                 } else {
+                    self.txtPost.becomeFirstResponder()
                   self.blankdataView.isHidden = true
                  //   self.setUI()
                 }

@@ -76,7 +76,11 @@ class BlogsViewController: AlysieBaseViewC {
 //        blogTableCell.blogImage.layer.masksToBounds = false
 //        blogTableCell.blogImage.clipsToBounds = true
 //        blogTableCell.blogImage.layer.cornerRadius = 5
-        
+        blogTableCell.imgUser.layer.cornerRadius = blogTableCell.imgUser.frame.height / 2
+        blogTableCell.imgUser.layer.masksToBounds = true
+        blogTableCell.editButton.makeCornerRadius(radius: blogTableCell.editButton.frame.height / 2)
+        blogTableCell.deleteButton.makeCornerRadius(radius: blogTableCell.deleteButton.frame.height / 2)
+        blogTableCell.vwContainerlbl.layer.cornerRadius = 15
         blogTableCell.editButton.tag = indexPath
         blogTableCell.deleteButton.tag = indexPath
         blogTableCell.readMoreButton.tag = indexPath

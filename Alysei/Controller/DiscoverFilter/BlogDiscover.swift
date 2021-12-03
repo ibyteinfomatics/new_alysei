@@ -72,7 +72,11 @@ class BlogDiscover: AlysieBaseViewC {
         
         blogTableCell.blogTitle.text = blogData[indexPath].title
         blogTableCell.blogDescription.text = blogData[indexPath].datumDescription
-        
+        blogTableCell.imgUser.layer.cornerRadius = blogTableCell.imgUser.frame.height / 2
+        blogTableCell.imgUser.layer.masksToBounds = true
+        blogTableCell.editButton.makeCornerRadius(radius: blogTableCell.editButton.frame.height / 2)
+        blogTableCell.deleteButton.makeCornerRadius(radius: blogTableCell.deleteButton.frame.height / 2)
+        blogTableCell.vwContainerlbl.layer.cornerRadius = 15
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
         blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
         if String.getString(blogData[indexPath].status) == "0"{
@@ -80,9 +84,13 @@ class BlogDiscover: AlysieBaseViewC {
         }else{
             blogTableCell.lblDraftPublsh.text = "Publish"
         }
-        let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
+//        let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
+//        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
+//        blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
+        
+        let imageurl = blogData[indexPath].user?.avatarID?.attachmentURL
         blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
-        blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
+        blogTableCell.lblAuthorName.text = "\(blogData[indexPath].user?.firstName ?? "")" + "\(blogData[indexPath].user?.lastName ?? "")"
 //        blogTableCell.blogImage.layer.masksToBounds = false
 //        blogTableCell.blogImage.clipsToBounds = true
 //        blogTableCell.blogImage.layer.cornerRadius = 5
