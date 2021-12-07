@@ -27,19 +27,20 @@ class TripTableViewCell: UITableViewCell {
     @IBOutlet weak var tripTitle: UILabel!
     @IBOutlet weak var travelTitle: UILabel!
     @IBOutlet weak var locationTitle: UILabel!
-    @IBOutlet weak var activitiesTitle: UILabel!
+   // @IBOutlet weak var activitiesTitle: UILabel!
     @IBOutlet weak var priceTitle: UILabel!
     @IBOutlet weak var noItemLabel: UILabel!
     
     @IBOutlet weak var mainVw: UIView!
     
-    
+    @IBOutlet weak var userImage: UIImageView!
 
     var data: TripDatum?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.userImage.layer.cornerRadius = self.userImage.frame.height/2
         view1.layer.cornerRadius = view1.frame.size.width/2
         view2.layer.cornerRadius = view2.frame.size.width/2
         view3.layer.cornerRadius = view3.frame.size.width/2

@@ -97,12 +97,18 @@ class EventDiscover: AlysieBaseViewC {
         } else {
             eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventData[indexPath].time)
         }
+        let imageUrl = (kImageBaseUrl + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        eventTableCell.userImage.setImage(withString: imageUrl)
+        
+        
+        eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2
+        eventTableCell.userImage.layer.masksToBounds = true
         
         eventTableCell.eventImage.layer.masksToBounds = false
         eventTableCell.eventImage.clipsToBounds = true
         eventTableCell.eventImage.layer.cornerRadius = 5
         
-        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventData[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventData[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return eventTableCell
         
@@ -148,7 +154,7 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 158
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

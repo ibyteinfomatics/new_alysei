@@ -496,8 +496,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                         cell2.readMoreButton.isHidden = false
                         cell2.readMoreButton.tag = indexPath.row
+                        let imageUrl = kImageBaseUrl + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
+                        cell2.userImage.setImage(withString: imageUrl)
                         cell2.btnReadMoreCallback = { tag in
-                            
+                           
                             check = "show"
                             let vc = self.pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateBlogViewController
                             vc.blogtitle = self.arraySearchByBolg?[indexPath.row].title
@@ -523,7 +525,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell3.tripImage.setImage(withString: imgUrl)
                         cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                         cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
-                        cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
+                       // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
                         cell3.locationTitle.text = arraySearchByTrips?[indexPath.row].region?.name
                         
                         if arraySearchByTrips?[indexPath.row].currency == "USD" {
@@ -534,6 +536,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell3.priceTitle.text =  "$" + (arraySearchByTrips?[indexPath.row].price ?? "0")
                         }
                         
+                        let imageUrl = (kImageBaseUrl + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
+                        cell3.userImage.setImage(withString: imageUrl)
                         
                         cell3.configCell(arraySearchByTrips?[indexPath.row] ?? TripDatum(with: [:]))
                         
@@ -672,6 +676,9 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
                         cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                         cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
+                        let imgUrlUser = (kImageBaseUrl + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
+                        cell4.userImage.setImage(withString: imgUrlUser)
+                        
                         
                     }
                     return cell4
@@ -772,6 +779,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                     cell2.readMoreButton.isHidden = false
                     cell2.readMoreButton.tag = indexPath.row
+                    let imageUrl = kImageBaseUrl + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
+                    cell2.userImage.setImage(withString: imageUrl)
                     cell2.btnReadMoreCallback = { tag in
                         
                         check = "show"
@@ -800,7 +809,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell3.tripImage.setImage(withString: imgUrl)
                     cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                     cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
-                    cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
+                   // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
                     cell3.locationTitle.text = arraySearchByTrips?[indexPath.row].region?.name
                     
                     if arraySearchByTrips?[indexPath.row].currency == "USD" {
@@ -813,7 +822,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     
                     
                     cell3.configCell(arraySearchByTrips?[indexPath.row] ?? TripDatum(with: [:]))
-                    
+                    let imageUrl = (kImageBaseUrl + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
+                    cell3.userImage.setImage(withString: imageUrl)
                     if arraySearchByTrips?[indexPath.row].intensity?.intensity == "Level 1" {
                         
                         cell3.view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -949,7 +959,11 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
                     cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                     cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
-                    
+                    let imageUrl = (kImageBaseUrl + (arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
+                    cell4.userImage.setImage(withString: imageUrl)
+                    cell4.userImage.layer.cornerRadius =  cell4.userImage.frame.height / 2
+                    cell4.userImage.layer.masksToBounds = true
+                   
                 }
                 return cell4
             case 5:
@@ -1044,14 +1058,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         return 80
                     }
                     else{
-                        return 150
+                        return UITableView.automaticDimension
                     }
                 case 3:
                     if arraySearchByEvents?.count == 0{
                         return 80
                     }
                     else{
-                        return 150
+                        return UITableView.automaticDimension
                     }
                 case 4:
                     if arraySearchByPost.count == 0{
@@ -1075,9 +1089,9 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             case 2:
                 return UITableView.automaticDimension
             case 3:
-                return 150
+                return UITableView.automaticDimension
             case 4:
-                return 150
+                return UITableView.automaticDimension
             case 5:
                 return 380
             case 6:

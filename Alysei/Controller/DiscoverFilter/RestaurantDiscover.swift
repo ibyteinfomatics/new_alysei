@@ -12,6 +12,8 @@ class RestaurantDiscover: AlysieBaseViewC {
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var userImage: UIImageView!
+    
     var restModel:RestaurantModel?
     var restauUser = [RestaurantUser]()
     var restId: String?
@@ -100,13 +102,16 @@ class RestaurantDiscover: AlysieBaseViewC {
         restTableCell.blogTitle.text = restauUser[indexPath].restaurantName
         restTableCell.blogDescription.text = restauUser[indexPath].address
         
+        restTableCell.imgUser.layer.cornerRadius =  restTableCell.imgUser.frame.height / 2
+        let imageUrl = kImageBaseUrl + (restauUser[indexPath].avatarid?.attachmenturl ?? "")
+        restTableCell.imgUser.setImage(withString: imageUrl)
        
         restTableCell.blogImage.layer.masksToBounds = false
         restTableCell.blogImage.clipsToBounds = true
         restTableCell.blogImage.layer.cornerRadius = 5
        
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
-            restTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(restauUser[indexPath].avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+            restTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(restauUser[indexPath].avatarid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
         } else {
             restTableCell.blogImage.image = UIImage(named: "image_placeholder")
         }
@@ -153,7 +158,7 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

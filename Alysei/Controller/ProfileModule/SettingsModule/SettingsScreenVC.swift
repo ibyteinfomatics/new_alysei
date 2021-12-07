@@ -13,6 +13,8 @@ class SettingsScreenVC: AlysieBaseViewC {
     @IBOutlet weak var settingCollectionView: UICollectionView!
     @IBOutlet weak var viewShadow: UIView!
     var userId: String?
+    
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()

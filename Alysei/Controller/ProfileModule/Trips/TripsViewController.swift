@@ -56,7 +56,7 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
         tripTableCell.travelTitle.text = tripModel?.data?[indexPath].travelAgency
         
-        tripTableCell.activitiesTitle.text = tripModel?.data?[indexPath].adventure?.adventureType
+     //   tripTableCell.activitiesTitle.text = tripModel?.data?[indexPath].adventure?.adventureType
         tripTableCell.locationTitle.text = tripModel?.data?[indexPath].region?.name
         tripTableCell.tripTitle.text = tripModel?.data?[indexPath].tripName
         tripTableCell.moreInfoButton.layer.cornerRadius = 10
@@ -69,7 +69,8 @@ class TripsViewController: AlysieBaseViewC {
             tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
         }
         
-        
+        let imageUrl = kImageBaseUrl + (tripModel?.data?[indexPath].user?.avatarID?.attachmentURL ?? "")
+        tripTableCell.userImage.setImage(withString: imageUrl)
         tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
         tripTableCell.editButton.tag = indexPath
         tripTableCell.deleteButton.tag = indexPath
@@ -313,7 +314,7 @@ extension TripsViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return UITableView.automaticDimension
     }
     
 }

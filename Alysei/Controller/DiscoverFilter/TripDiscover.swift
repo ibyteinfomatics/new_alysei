@@ -100,7 +100,7 @@ class TripDiscover: AlysieBaseViewC {
         tripTableCell.tripTitle.text = tripData[indexPath].tripName
         tripTableCell.travelTitle.text = tripData[indexPath].travelAgency
         
-        tripTableCell.activitiesTitle.text = tripData[indexPath].adventure?.adventureType
+    //    tripTableCell.activitiesTitle.text = tripData[indexPath].adventure?.adventureType
         tripTableCell.locationTitle.text = tripData[indexPath].region?.name
         tripTableCell.tripTitle.text = tripData[indexPath].tripName
         
@@ -112,8 +112,11 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
         }
         
+        let imageUrl = kImageBaseUrl + (tripData[indexPath].user?.avatarID?.attachmentURL ?? "")
+        tripTableCell.userImage.setImage(withString: imageUrl)
+        tripTableCell.userImage.layer.cornerRadius =  tripTableCell.userImage.frame.height / 2
         
-        tripTableCell.configCell(tripData[indexPath] ?? TripDatum(with: [:]))
+        tripTableCell.configCell(tripData[indexPath])
         
         if tripData[indexPath].intensity?.intensity == "Level 1" {
 
@@ -288,7 +291,7 @@ extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 137
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

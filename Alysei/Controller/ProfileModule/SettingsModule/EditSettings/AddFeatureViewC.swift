@@ -20,8 +20,10 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var viewNavigation: UIView!
   @IBOutlet weak var imgViewProduct: UIImageView!
   @IBOutlet weak var btnUploadImage: UIButton!
-    @IBOutlet weak var btnUpload: UIButton!
+  @IBOutlet weak var btnUpload: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
+  @IBOutlet weak var btnCamera: UIButton!
+    
     var addDesc = false
     var addUrl = false
     var userLevel: UserLevel?
@@ -41,8 +43,10 @@ class AddFeatureViewC: AlysieBaseViewC {
     if userLevel == .other {
         btnUpload.isHidden = true
         btnUploadImage.isHidden = true
+        
     }
     super.viewDidLoad()
+    btnCamera.isHidden = true
     self.initialImageSetUp()
   }
 
@@ -290,7 +294,7 @@ extension AddFeatureViewC: UIImagePickerControllerDelegate, UINavigationControll
     
     guard let selectedImage = info[.editedImage] as? UIImage else { return }
     self.dismiss(animated: true) {
-      
+        self.btnCamera.isHidden = false
       self.imgViewProduct.image = selectedImage
 
     }

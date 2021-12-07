@@ -60,6 +60,11 @@ class EventsView: AlysieBaseViewC {
         eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
         eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
         
+        let imageUrl = (kImageBaseUrl + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        eventTableCell.userImage.setImage(withString: imageUrl)
+        
+        eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2
+        eventTableCell.userImage.layer.masksToBounds = true
         
         if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
             eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
@@ -67,7 +72,7 @@ class EventsView: AlysieBaseViewC {
             eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
         }
         
-        eventTableCell.moreButton.layer.cornerRadius = 10
+        eventTableCell.moreButton.layer.cornerRadius =  eventTableCell.moreButton.frame.height / 2
         
         eventTableCell.editButton.tag = indexPath
         eventTableCell.deleteButton.tag = indexPath
@@ -139,9 +144,9 @@ class EventsView: AlysieBaseViewC {
             
         }
         
-        eventTableCell.eventImage.layer.masksToBounds = false
-        eventTableCell.eventImage.clipsToBounds = true
-        eventTableCell.eventImage.layer.cornerRadius = 5
+//        eventTableCell.eventImage.layer.masksToBounds = false
+//        eventTableCell.eventImage.clipsToBounds = true
+//        eventTableCell.eventImage.layer.cornerRadius = 5
         
         eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventModel?.data?[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         
@@ -194,7 +199,7 @@ extension EventsView: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 189
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

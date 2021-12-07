@@ -168,7 +168,7 @@ class PostDescTableViewCell: UITableViewCell {
 
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
 
-
+     
         self.viewLike.tag = index
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
         self.viewLike.addGestureRecognizer(tap)
@@ -237,9 +237,11 @@ class PostDescTableViewCell: UITableViewCell {
                         height1 = 350
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
                         height2 = 200
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) {
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
                         height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0
                                                 * 72 / 96)-200) //500
+                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
+                        height = 500
                     }
                 }
             
@@ -260,8 +262,7 @@ class PostDescTableViewCell: UITableViewCell {
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
                     imageHeightCVConstant.constant = 200
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0
-                                                                * 72 / 96)-150//500
+                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
                 }
             }
             
@@ -411,9 +412,9 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
-
+        cell.imagePost.contentMode = .scaleToFill
         cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
-        //cell.imagePost.contentMode = .scaleAspectFill
+        
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }
@@ -481,8 +482,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
         } else {
             //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
-                                                                                                * 72 / 96)-150)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
         }
         
         

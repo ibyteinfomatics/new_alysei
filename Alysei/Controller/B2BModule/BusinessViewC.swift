@@ -847,12 +847,9 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
             let index = indexPath.row - (self.extraCell ?? 0)
             controller?.userID = arrSearchimpotrDataModel[index].userId
         }
-       
-        
+      
     }
-    
 }
-
 
 extension BusinessViewC: TappedHubs{
     
@@ -864,7 +861,6 @@ extension BusinessViewC: TappedHubs{
         controller?.passHubImageUrl = hubImageUrl
     }
 }
-
 
 extension BusinessViewC {
     func callSearchHubApi(){

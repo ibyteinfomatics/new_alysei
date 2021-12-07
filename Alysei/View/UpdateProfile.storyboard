@@ -150,6 +150,7 @@
                                             <constraint firstAttribute="width" secondItem="rI0-h7-f0e" secondAttribute="height" multiplier="1:1" id="DXb-sL-JId"/>
                                             <constraint firstAttribute="height" constant="50" id="Jc8-z0-a2y"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="btnSaveAction:" destination="4TB-xn-UGq" eventType="touchUpInside" id="FOa-kO-BrB"/>
@@ -174,23 +175,40 @@
                                     <constraint firstAttribute="height" constant="200" id="LbM-PJ-4JR"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-5I-nFb">
+                                <rect key="frame" x="362.5" y="325" width="41.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjZ-q4-rhj">
+                                <rect key="frame" x="347" y="325" width="10.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8bI-UH-VUo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8bI-UH-VUo" firstAttribute="trailing" secondItem="9qT-7R-2uK" secondAttribute="trailing" constant="10" id="1UO-YI-YDv"/>
                             <constraint firstItem="8bI-UH-VUo" firstAttribute="trailing" secondItem="pic-k3-Q45" secondAttribute="trailing" id="CcP-u9-cQH"/>
+                            <constraint firstItem="yuZ-5I-nFb" firstAttribute="top" secondItem="9qT-7R-2uK" secondAttribute="bottom" constant="15" id="Jq7-I2-gri"/>
+                            <constraint firstItem="8bI-UH-VUo" firstAttribute="trailing" secondItem="yuZ-5I-nFb" secondAttribute="trailing" constant="10" id="O75-Xo-5GE"/>
                             <constraint firstItem="pic-k3-Q45" firstAttribute="top" secondItem="yfM-HK-dp8" secondAttribute="top" id="R6f-Gn-QEf"/>
                             <constraint firstItem="pic-k3-Q45" firstAttribute="leading" secondItem="8bI-UH-VUo" secondAttribute="leading" id="Voc-Nj-sjr"/>
+                            <constraint firstItem="wjZ-q4-rhj" firstAttribute="centerY" secondItem="yuZ-5I-nFb" secondAttribute="centerY" id="bcm-LB-62S"/>
                             <constraint firstItem="9qT-7R-2uK" firstAttribute="top" secondItem="pic-k3-Q45" secondAttribute="bottom" constant="10" id="raR-E7-tux"/>
+                            <constraint firstItem="yuZ-5I-nFb" firstAttribute="leading" secondItem="wjZ-q4-rhj" secondAttribute="trailing" constant="5" id="wft-DX-bBz"/>
                             <constraint firstItem="9qT-7R-2uK" firstAttribute="leading" secondItem="8bI-UH-VUo" secondAttribute="leading" constant="10" id="zE8-lb-0bX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="headerTitle" destination="qKj-WJ-i1w" id="eu4-uz-wK9"/>
+                        <outlet property="lblTextCount" destination="wjZ-q4-rhj" id="iOd-b2-12r"/>
                         <outlet property="lbltitle" destination="qKj-WJ-i1w" id="dE1-IR-gvm"/>
                         <outlet property="txtDesc" destination="9qT-7R-2uK" id="UCX-TQ-pbX"/>
                         <outlet property="vwHeader" destination="pic-k3-Q45" id="V7W-zo-fsf"/>
@@ -198,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mq-f9-4Xe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781" y="23"/>
+            <point key="canvasLocation" x="779.71014492753625" y="22.767857142857142"/>
         </scene>
     </scenes>
     <resources>

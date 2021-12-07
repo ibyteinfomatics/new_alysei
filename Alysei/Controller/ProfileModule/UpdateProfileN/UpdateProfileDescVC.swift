@@ -13,6 +13,7 @@ class UpdateProfileDescVC: AlysieBaseViewC {
     @IBOutlet weak var txtDesc: UITextView!
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var lblTextCount: UILabel!
 
     var passUserFieldId: Int?
     var passheaderTitle: String?
@@ -61,11 +62,19 @@ extension UpdateProfileDescVC{
 extension UpdateProfileDescVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let spaceCount = textView.text.count
-        if spaceCount <= 200{
+        
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let finalText = updatedText.removeWhitespace()
+        if finalText.count <= 200{
+         //   let finalText = updatedText.removeWhitespace()
+            self.lblTextCount.text = "\(finalText.count)"
             return true
         }else{
             if text == "" && range.length > 0  {
                 print("Backspace was pressed")
+              //  let finalText = textView.text.removeWhitespace()
+                self.lblTextCount.text = "\(finalText.count)"
                 return true
             }
             else{
@@ -73,6 +82,17 @@ extension UpdateProfileDescVC: UITextViewDelegate {
                 
             }
             
-        }    }
+        }
+        
+    }
 
 }
+extension String {
+    func replace(string:String, replacement:String) -> String {
+        return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+    }
+
+    func removeWhitespace() -> String {
+        return self.replace(string: " ", replacement: "")
+    }
+  }

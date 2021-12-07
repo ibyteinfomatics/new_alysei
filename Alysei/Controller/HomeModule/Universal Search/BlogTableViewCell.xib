@@ -52,7 +52,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMY-ze-OU6">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMY-ze-OU6">
                                 <rect key="frame" x="15" y="165" width="36" height="35"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                                 <state key="normal" image="icons8_pencil"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6E-ff-iY6">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6E-ff-iY6">
                                 <rect key="frame" x="527" y="165" width="35" height="35"/>
                                 <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -108,7 +108,7 @@
                                     <constraint firstAttribute="width" constant="50" id="XUe-ez-ELN"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iS2-RF-ze9">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iS2-RF-ze9">
                                 <rect key="frame" x="469" y="5" width="100" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQh-8U-qOd">
@@ -167,7 +167,6 @@
                 <constraints>
                     <constraint firstItem="FuJ-Jf-jHC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4kz-xd-Lx0"/>
                     <constraint firstItem="33N-Ix-EOs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Eds-xm-Fat"/>
-                    <constraint firstAttribute="bottom" secondItem="33N-Ix-EOs" secondAttribute="bottom" constant="4" id="KwM-Ru-NLf"/>
                     <constraint firstAttribute="bottom" secondItem="33N-Ix-EOs" secondAttribute="bottom" constant="8" id="NjG-zY-xFR"/>
                     <constraint firstAttribute="trailing" secondItem="FuJ-Jf-jHC" secondAttribute="trailing" constant="40" id="adn-gj-Blg"/>
                     <constraint firstAttribute="trailing" secondItem="33N-Ix-EOs" secondAttribute="trailing" constant="8" id="d9t-8N-f0Y"/>
@@ -185,6 +184,7 @@
                 <outlet property="mainVw" destination="33N-Ix-EOs" id="T9o-bK-ANR"/>
                 <outlet property="noItemLabel" destination="FuJ-Jf-jHC" id="4H2-7Q-xFm"/>
                 <outlet property="readMoreButton" destination="ivE-E3-6Va" id="jR2-dA-wdq"/>
+                <outlet property="userImage" destination="va0-hP-DWE" id="Zkw-KM-sLx"/>
             </connections>
             <point key="canvasLocation" x="139.85507246376812" y="271.54017857142856"/>
         </tableViewCell>
