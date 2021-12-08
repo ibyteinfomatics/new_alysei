@@ -107,6 +107,8 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.ingredientsImage.setImage(withString: imgUrl)
         cell.ingredientsImage.layer.cornerRadius = cell.ingredientsImage.frame.height/2
         cell.ingredientsImage.contentMode = .scaleAspectFill
+        cell.ingredientsImage.layer.borderWidth = 1
+        cell.ingredientsImage.layer.borderColor = UIColor.lightGray.cgColor
         cell.ingredientsLabel.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
        
         return cell
@@ -127,8 +129,13 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 180)
-        return cellSize
+        if MobileDeviceType.IS_IPHONE_6 == true {
+            return CGSize(width: self.collectionView.frame.width/3 - 10 , height: 160.0)
+        }
+        else{
+            return CGSize(width: self.collectionView.frame.width/3 - 25 , height: 160.0)
+        }
+       
     }
 }
 extension ViewAllViewController: UITextFieldDelegate{

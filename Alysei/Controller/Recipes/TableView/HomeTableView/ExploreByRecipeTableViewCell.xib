@@ -34,19 +34,15 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick search by ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qd-Ny-QFZ">
-                                <rect key="frame" x="15" y="5" width="239.5" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="SEe-Go-GPf"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="16" width="239.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-ku-JAg">
-                                <rect key="frame" x="238" y="5" width="67" height="30"/>
+                                <rect key="frame" x="238" y="11" width="67" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="PfU-Hz-8iW"/>
-                                    <constraint firstAttribute="height" constant="30" id="TcU-aP-xMz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="View All"/>
@@ -58,17 +54,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3L3-KM-9e3" secondAttribute="trailing" id="6uz-BX-J3w"/>
-                            <constraint firstItem="1Qd-Ny-QFZ" firstAttribute="top" secondItem="3L3-KM-9e3" secondAttribute="bottom" constant="4" id="Fba-IM-We4"/>
                             <constraint firstAttribute="trailing" secondItem="8ct-ku-JAg" secondAttribute="trailing" constant="15" id="IKq-6W-Oph"/>
                             <constraint firstAttribute="height" constant="40" id="IMU-GO-FJg"/>
                             <constraint firstItem="1Qd-Ny-QFZ" firstAttribute="leading" secondItem="lX4-pC-At8" secondAttribute="leading" constant="15" id="Mhk-Cd-KT8"/>
+                            <constraint firstItem="8ct-ku-JAg" firstAttribute="centerY" secondItem="1Qd-Ny-QFZ" secondAttribute="centerY" id="Uhu-pe-t6j"/>
                             <constraint firstItem="3L3-KM-9e3" firstAttribute="top" secondItem="lX4-pC-At8" secondAttribute="top" id="ZZC-ea-iyi"/>
-                            <constraint firstItem="8ct-ku-JAg" firstAttribute="top" secondItem="3L3-KM-9e3" secondAttribute="bottom" constant="4" id="ZbR-Ny-mzy"/>
+                            <constraint firstItem="1Qd-Ny-QFZ" firstAttribute="top" secondItem="3L3-KM-9e3" secondAttribute="bottom" constant="15" id="oME-OQ-rmN"/>
                             <constraint firstItem="3L3-KM-9e3" firstAttribute="leading" secondItem="lX4-pC-At8" secondAttribute="leading" id="oQF-jd-s12"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="htw-SW-7dM">
-                        <rect key="frame" x="10" y="45" width="300" height="129"/>
+                        <rect key="frame" x="10" y="53" width="300" height="121"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Z5-JR-qOg">
                             <size key="itemSize" width="128" height="128"/>
@@ -80,7 +76,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="lX4-pC-At8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7TZ-JA-ndQ"/>
-                    <constraint firstItem="htw-SW-7dM" firstAttribute="top" secondItem="lX4-pC-At8" secondAttribute="bottom" constant="5" id="KPT-e4-xVh"/>
+                    <constraint firstItem="htw-SW-7dM" firstAttribute="top" secondItem="lX4-pC-At8" secondAttribute="bottom" constant="13" id="KPT-e4-xVh"/>
                     <constraint firstAttribute="bottom" secondItem="htw-SW-7dM" secondAttribute="bottom" constant="7" id="WNS-uq-BT9"/>
                     <constraint firstItem="lX4-pC-At8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bvh-HG-wi3"/>
                     <constraint firstItem="htw-SW-7dM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dMP-xy-khk"/>

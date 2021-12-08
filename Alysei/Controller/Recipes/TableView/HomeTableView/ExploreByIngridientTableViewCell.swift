@@ -11,7 +11,8 @@ import UIKit
 var arraySearchByMeal : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
 var isFrom = String()
-
+var ingridentHeight = CGFloat()
+var mealHeight = CGFloat()
 class ExploreByIngridientTableViewCell: UITableViewCell {
 
     @IBOutlet weak var quickSearchLbl: UILabel!
@@ -99,8 +100,10 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
             }
-                cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
+                cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.width/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
+                cell.itemImgVw.layer.borderWidth = 1
+                cell.itemImgVw.layer.borderColor = UIColor.lightGray.cgColor
                
                 cell.itemNameLbl.text =  arraySearchByIngridient?[indexPath.item].ingridientTitle ?? ""
                
@@ -149,7 +152,13 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
-        return CGSize(width: self.collectionVw.frame.width/3 - 20 , height: 180.0)
+        if MobileDeviceType.IS_IPHONE_6 == true {
+            return CGSize(width: self.collectionVw.frame.width/3 - 15 , height: 160.0)
+        }
+        else{
+            return CGSize(width: self.collectionVw.frame.width/3 - 30 , height: 160.0)
+        }
+        
        }
 //    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 //        {

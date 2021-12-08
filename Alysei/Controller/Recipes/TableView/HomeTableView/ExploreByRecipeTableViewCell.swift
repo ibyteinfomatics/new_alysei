@@ -97,7 +97,9 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
                 cell.countryImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
             }
 //            cell.countryImgVw.setImage(withString: imgUrl)
-            cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
+            cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.width/2
+            cell.countryImgVw.layer.borderWidth = 1
+            cell.countryImgVw.layer.borderColor = UIColor.lightGray.cgColor
             cell.countryImgVw.contentMode = .scaleAspectFit
             
              
@@ -122,7 +124,7 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
-        return CGSize(width: self.collectionVwRegion.frame.width/3 - 20, height: 150.0)
+        return CGSize(width: 100, height: 150.0)
        }
 
 }

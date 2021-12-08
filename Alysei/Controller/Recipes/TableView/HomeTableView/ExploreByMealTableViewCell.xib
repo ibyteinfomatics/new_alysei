@@ -34,19 +34,14 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick search by ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGE-Mi-fqQ">
-                                <rect key="frame" x="15" y="5" width="239.5" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="sU3-IP-ynO"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="16" width="239.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTY-yk-Wxj">
-                                <rect key="frame" x="238" y="5" width="67" height="30"/>
+                                <rect key="frame" x="238" y="11" width="67" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0W3-BJ-GfX"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="YLq-1F-WvP"/>
                                     <constraint firstAttribute="width" constant="67" id="msi-uf-5EN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
@@ -59,20 +54,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KGE-Mi-fqQ" firstAttribute="leading" secondItem="LbG-u5-H17" secondAttribute="leading" constant="15" id="4HK-7B-Gjd"/>
-                            <constraint firstItem="KGE-Mi-fqQ" firstAttribute="top" secondItem="csf-qi-ivg" secondAttribute="bottom" constant="4" id="EYX-8K-cie"/>
                             <constraint firstItem="csf-qi-ivg" firstAttribute="top" secondItem="LbG-u5-H17" secondAttribute="top" id="FtO-aj-mo0"/>
                             <constraint firstAttribute="height" constant="40" id="Qv1-iS-RO5"/>
-                            <constraint firstItem="dTY-yk-Wxj" firstAttribute="top" secondItem="csf-qi-ivg" secondAttribute="bottom" constant="4" id="TbA-yI-Kk3"/>
+                            <constraint firstItem="KGE-Mi-fqQ" firstAttribute="top" secondItem="csf-qi-ivg" secondAttribute="bottom" constant="15" id="YMy-cT-Cw1"/>
                             <constraint firstItem="csf-qi-ivg" firstAttribute="leading" secondItem="LbG-u5-H17" secondAttribute="leading" id="YeO-Vs-oPF"/>
+                            <constraint firstItem="dTY-yk-Wxj" firstAttribute="centerY" secondItem="KGE-Mi-fqQ" secondAttribute="centerY" id="fGj-7B-YrF"/>
                             <constraint firstAttribute="trailing" secondItem="dTY-yk-Wxj" secondAttribute="trailing" constant="15" id="ljM-WJ-WM7"/>
                             <constraint firstAttribute="trailing" secondItem="csf-qi-ivg" secondAttribute="trailing" id="yIG-W3-u04"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-ln-y02">
-                        <rect key="frame" x="10" y="50" width="300" height="200"/>
+                        <rect key="frame" x="10" y="53" width="300" height="197"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="j45-ev-Jhv"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="197" id="j45-ev-Jhv"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="FLD-Qd-CkC">
                             <size key="itemSize" width="128" height="128"/>
@@ -86,10 +81,10 @@
                     <constraint firstItem="gk3-ln-y02" firstAttribute="leading" secondItem="rym-ey-rgj" secondAttribute="leading" constant="10" id="Dhs-x2-78t"/>
                     <constraint firstItem="LbG-u5-H17" firstAttribute="leading" secondItem="rym-ey-rgj" secondAttribute="leading" id="G4p-Wk-D1f"/>
                     <constraint firstAttribute="trailing" secondItem="LbG-u5-H17" secondAttribute="trailing" id="Oud-Hq-wdf"/>
+                    <constraint firstItem="gk3-ln-y02" firstAttribute="top" secondItem="LbG-u5-H17" secondAttribute="bottom" constant="13" id="Spk-Jb-1GW"/>
                     <constraint firstAttribute="trailing" secondItem="gk3-ln-y02" secondAttribute="trailing" constant="10" id="YHH-Rb-LNv"/>
                     <constraint firstItem="LbG-u5-H17" firstAttribute="top" secondItem="rym-ey-rgj" secondAttribute="top" id="dHR-fU-Iok"/>
                     <constraint firstAttribute="bottom" secondItem="gk3-ln-y02" secondAttribute="bottom" constant="5" id="t3G-Gd-9DY"/>
-                    <constraint firstItem="gk3-ln-y02" firstAttribute="top" secondItem="LbG-u5-H17" secondAttribute="bottom" constant="10" id="wW3-ee-yd6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="WuK-yb-gIZ"/>

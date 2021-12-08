@@ -377,9 +377,11 @@ extension AddReviewRecipeViewController{
             if self.isReviewed == 0 || self.isReviewed == nil {
                 self.isAddReview = false
                 self.btnEditAdd.setImage(UIImage(named: "add_icon_blue"), for: .normal)
+//                self.btnEditAdd.tintColor = .blue
             }else{
                 self.isAddReview = true
                 self.btnEditAdd.setImage(UIImage(named: "icons8_edit_3"), for: .normal)
+                self.btnEditAdd.tintColor = .black
             }
             self.allReviewTableView.reloadData()
             

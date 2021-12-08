@@ -102,80 +102,79 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
             }
             
-            if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "0.0" {
+            if arrayQuickEasy?[indexPath.row].avgRating == "0.0" || arrayQuickEasy?[indexPath.row].avgRating  == "0" {
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-
-            }
-            else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "0.5" {
-                cell.ratingImg1.image = UIImage(named: "Group 1142")
-                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
-               cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "1.0" {
-                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
-               cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "1.5" {
-                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
-                cell.ratingImg2.image = UIImage(named: "Group 1142")
-                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
-                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "2.0" {
-                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")
+            }  else if (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") >= ("0.1") && (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") <= ("0.9") {
+                cell.ratingImg1.image = UIImage(named: "HalfStar")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "2.5" {
+            }else if arrayQuickEasy?[indexPath.row].avgRating == ("1.0") || arrayQuickEasy?[indexPath.row].avgRating  == ("1") {
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if (arrayQuickEasy?[indexPath.row].avgRating ?? "0") >= ("1.1") && (arrayQuickEasy?[indexPath.row].avgRating ?? "0") <= ("1.9"){
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "HalfStar")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayQuickEasy?[indexPath.row].avgRating == ("2.0") || arrayQuickEasy?[indexPath.row].avgRating  == ("2"){
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
-                cell.ratingImg3.image = UIImage(named: "Group 1142")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "3.0" {
+            }else if (arrayQuickEasy?[indexPath.row].avgRating ?? "0") >= ("2.1") && (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") <= ("2.9"){
+                cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
+                cell.ratingImg3.image = UIImage(named: "HalfStar")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrayQuickEasy?[indexPath.row].avgRating  == ("3.0") || arrayQuickEasy?[indexPath.row].avgRating  == ("3"){
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "3.5" {
+            }else if (arrayQuickEasy?[indexPath.row].avgRating ?? "0") >= ("3.1") && (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") <= ("3.9") {
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
-                cell.ratingImg4.image = UIImage(named: "Group 1142")
+                cell.ratingImg4.image = UIImage(named: "HalfStar")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "4.0" {
+            }else if arrayQuickEasy?[indexPath.row].avgRating  == ("4.0") || arrayQuickEasy?[indexPath.row].avgRating  == ("4"){
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "4.5" {
+            }else if (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") >= ("4.1") && (arrayQuickEasy?[indexPath.row].avgRating  ?? "0") <= ("4.9"){
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
-                cell.ratingImg5.image = UIImage(named: "Group 1142")
-            }else if arrayQuickEasy?[indexPath.row].avgRating ?? "0.0" == "5.0" {
+                cell.ratingImg5.image = UIImage(named: "HalfStar")
+            }else if arrayQuickEasy?[indexPath.row].avgRating  == ("5.0") || arrayQuickEasy?[indexPath.row].avgRating  == ("5"){
                 cell.ratingImg1.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg2.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg3.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg4.image = UIImage(named: "icons8_christmas_star")
                 cell.ratingImg5.image = UIImage(named: "icons8_christmas_star")
+            }else{cell.ratingImg1.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg2.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg3.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg4.image = UIImage(named: "icons8_christmas_star_2")
+                cell.ratingImg5.image = UIImage(named: "icons8_christmas_star_2")
+                print("Invalid Rating")
             }
-            
             
             return cell
             

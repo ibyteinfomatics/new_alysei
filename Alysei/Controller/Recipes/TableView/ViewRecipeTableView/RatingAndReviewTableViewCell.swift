@@ -163,68 +163,73 @@ class RatingAndReviewTableViewCell: UITableViewCell {
         }
     }
     func setStarUI(){
-        if avgRating == "0.0" || avgRating == "0"{
-            storeAvgStar1.image = UIImage(named: "icons8_star")
+        if recipeModel?.avgRating == "0.0" || recipeModel?.avgRating  == "0" {
+           storeAvgStar1.image = UIImage(named: "icons8_star")
             storeAvgStar2.image = UIImage(named: "icons8_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "1.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+        }  else if (recipeModel?.avgRating  ?? "0") >= ("0.1") && (recipeModel?.avgRating  ?? "0") <= ("0.9") {
+            storeAvgStar1.image = UIImage(named: "HalfStar")
             storeAvgStar2.image = UIImage(named: "icons8_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "1.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar2.image = UIImage(named: "HalfStar")
+        }else if recipeModel?.avgRating == ("1.0") || recipeModel?.avgRating  == ("1") {
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+            storeAvgStar2.image = UIImage(named: "icons8_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "2.0"{
+        }else if (recipeModel?.avgRating ?? "0") >= ("1.1") && (recipeModel?.avgRating ?? "0") <= ("1.9"){
             storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+           storeAvgStar2.image = UIImage(named: "HalfStar")
+            storeAvgStar3.image = UIImage(named: "icons8_star")
+            storeAvgStar4.image = UIImage(named: "icons8_star")
+           storeAvgStar5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating == ("2.0") || recipeModel?.avgRating  == ("2"){
+            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+           storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "2.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+        }else if (recipeModel?.avgRating ?? "0") >= ("2.1") && (recipeModel?.avgRating  ?? "0") <= ("2.9"){
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "HalfStar")
-            storeAvgStar4.image = UIImage(named: "icons8_star")
+           storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "3.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+        }else if recipeModel?.avgRating  == ("3.0") || recipeModel?.avgRating  == ("3"){
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar4.image = UIImage(named: "icons8_star")
+           storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "3.5"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+        }else if (recipeModel?.avgRating ?? "0") >= ("3.1") && (recipeModel?.avgRating  ?? "0") <= ("3.9") {
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar4.image = UIImage(named: "HalfStar")
-            storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "4.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+           storeAvgStar4.image = UIImage(named: "HalfStar")
+           storeAvgStar5.image = UIImage(named: "icons8_star")
+        }else if recipeModel?.avgRating  == ("4.0") || recipeModel?.avgRating  == ("4"){
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "4.5"{
+        }else if (recipeModel?.avgRating  ?? "0") >= ("4.1") && (recipeModel?.avgRating  ?? "0") <= ("4.9"){
             storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+           storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar5.image = UIImage(named: "HalfStar")
-        }else if avgRating == "5.0"{
-            storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
-            storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
+        }else if recipeModel?.avgRating  == ("5.0") || recipeModel?.avgRating  == ("5"){
+           storeAvgStar1.image = UIImage(named: "icons8_christmas_star")
+           storeAvgStar2.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar3.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar4.image = UIImage(named: "icons8_christmas_star")
             storeAvgStar5.image = UIImage(named: "icons8_christmas_star")
-        }else{
-            storeAvgStar1.image = UIImage(named: "icons8_star")
+        }else{storeAvgStar1.image = UIImage(named: "icons8_star")
             storeAvgStar2.image = UIImage(named: "icons8_star")
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
