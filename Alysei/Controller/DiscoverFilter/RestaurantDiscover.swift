@@ -153,11 +153,11 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
         return self.getBlogTableCell(indexPath.row)
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
         return UITableView.automaticDimension
     }
     

@@ -26,6 +26,7 @@ class EventDiscover: AlysieBaseViewC {
     var selectedRegistrationType: String?
     var selectedRestType: String?
     var passRestId: String?
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +91,7 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.hostTitle.text = eventData[indexPath].hostName
         eventTableCell.locationTitle.text = eventData[indexPath].location
         eventTableCell.dateTitle.text = eventData[indexPath].date
-        
+        eventTableCell.lblLikeCount.text = "\(eventData[indexPath].like_counts ?? 0)"
         
         if ((eventData[indexPath].time?.contains(":")) == true) {
             eventTableCell.timeTitle.text = eventData[indexPath].time
@@ -220,6 +221,21 @@ extension EventDiscover {
         self.eventsTableView.reloadData()
       }
       
+    }
+    
+    func callInterestesApi(){
+        
+        let params: [String:Any] = [
+        "like_or_unlike": "",
+        "event_id": ""
+            ]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kInterestedEvent, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            if let data = dictResponse?["data"] as? [String:Any]{
+            }
+        }
     }
     
 }

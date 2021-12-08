@@ -399,6 +399,8 @@ struct APIUrl{
         static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
         static let kRestaurantTypes = "get/restaurant/types"
         static let kAllHubs = "get/all/hubs"
+        static let kInterestedEvent = "like/unlike/event"
+       
     }
     enum Recipes {
         static let getrecipeCategory = kBASEURL + "get/recipe/categories"

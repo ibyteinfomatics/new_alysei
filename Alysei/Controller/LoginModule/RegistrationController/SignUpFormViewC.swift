@@ -408,7 +408,7 @@ extension SignUpFormViewC: SaveAddressCallback{
     func addressSaved(_ model: SignUpStepTwoDataModel, addressLineOne: String, addressLineTwo: String, mapAddress: String?) {
     
     self.navigationController?.popViewController(animated: true)
-        model.selectedValue = addressLineOne +  " " + addressLineTwo + ", " + "\((mapAddress ?? ""))"
+        model.selectedValue = addressLineOne +  " " + addressLineTwo //+ ", " + "\((mapAddress ?? ""))"
     model.selectedAddressLineOne = addressLineOne
     model.selectedAddressLineTwo = addressLineTwo
     

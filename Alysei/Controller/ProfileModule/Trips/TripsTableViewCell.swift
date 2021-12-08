@@ -56,8 +56,7 @@ class TripsTableViewCell: UITableViewCell {
         duview5.layer.cornerRadius = duview5.frame.size.width/2
         duview6.layer.cornerRadius = duview6.frame.size.width/2
         duview7.layer.cornerRadius = duview7.frame.size.width/2
-        editButton.layer.cornerRadius = editButton.frame.height / 2
-        deleteButton.layer.cornerRadius = deleteButton.frame.height / 2
+       
         view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         view2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         view3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor

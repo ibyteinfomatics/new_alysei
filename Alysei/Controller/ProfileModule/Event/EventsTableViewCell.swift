@@ -18,6 +18,12 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTitle: UILabel!
     @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var lblLikeCount: UILabel!
+    @IBOutlet weak var btnInterested: UIButton!
+    
+    var isInterested = 0
+   
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +33,7 @@ class EventsTableViewCell: UITableViewCell {
     var btnDeleteCallback:((Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil
     var btnMoreCallback:((Int) -> Void)? = nil
+    var callInterestedCallback: ((Int) -> Void)? = nil
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -44,6 +51,9 @@ class EventsTableViewCell: UITableViewCell {
     
     @IBAction func btnEditAction(_ sender: UIButton){
         btnEditCallback?(sender.tag)
+    }
+    @IBAction func btnInterestedAction(_ sender: UIButton){
+        callInterestedCallback?(sender.tag)
     }
 
 }

@@ -38,7 +38,7 @@ class EventDatum {
     var status, createdAt, updatedAt: String?
     var user: EventUser?
     var attachment: EventAttachment?
-
+    var like_counts: Int?
         
     init(with dictResponse: [String:Any]?) {
         
@@ -57,6 +57,7 @@ class EventDatum {
         self.eventid = Int.getInt(dictResponse?["event_id"])
         self.userid = Int.getInt(dictResponse?["user_id"])
         self.imageid = Int.getInt(dictResponse?["image_id"])
+        self.like_counts = Int.getInt(dictResponse?["like_counts"])
         
         if let user = dictResponse?["user"] as? [String:Any]{
             self.user =  EventUser.init(with: user)

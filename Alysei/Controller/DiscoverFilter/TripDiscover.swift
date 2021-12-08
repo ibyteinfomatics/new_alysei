@@ -103,7 +103,8 @@ class TripDiscover: AlysieBaseViewC {
     //    tripTableCell.activitiesTitle.text = tripData[indexPath].adventure?.adventureType
         tripTableCell.locationTitle.text = tripData[indexPath].region?.name
         tripTableCell.tripTitle.text = tripData[indexPath].tripName
-        
+//        tripTableCell.editButton.layer.cornerRadius = tripTableCell.editButton.frame.height / 2
+//        tripTableCell.deleteButton.layer.cornerRadius = tripTableCell.deleteButton.frame.height / 2
         if tripData[indexPath].currency == "USD" {
             tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
         } else if tripData[indexPath].currency == "Euro" {

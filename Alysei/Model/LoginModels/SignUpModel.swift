@@ -345,6 +345,7 @@ class SignUpStepTwoDataModel: NSObject{
     self.placeholder = String.getString(dictStepTwo[APIConstants.kPlaceholder])
     self.selectedAddressLineOne = String.getString(dictStepTwo[APIConstants.kSelectedAddressOne])
     self.selectedAddressLineTwo = String.getString(dictStepTwo[APIConstants.kSelectedAddressTwo])
+    
     self.userFieldId = String.getString(dictStepTwo[APIConstants.kUserFieldId])
     self.parentId = String.getString(dictStepTwo[APIConstants.kParentId])
     self.isHidden = Bool.getBool(dictStepTwo[APIConstants.kHidden])

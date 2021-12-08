@@ -258,7 +258,7 @@ class EventFilterVC: UIViewController {
         
     }
     
-   // http://alyseiapi.ibyteworkshop.com/public/api/get/stories/byfilter?type=events&date=2020-05-04&event_type=public&registration_type=paid&restaurant_type=4
+
     
     
     
