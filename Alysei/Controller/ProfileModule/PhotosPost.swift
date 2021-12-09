@@ -10,6 +10,7 @@ import UIKit
 class PhotosPost: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
+    @IBOutlet weak var uiview: UIView!
     
     var pageNumber = 1
     var visitorId = ""
@@ -25,6 +26,7 @@ class PhotosPost: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        uiview.drawBottomShadow()
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
         // Do any additional setup after loading the view.
@@ -33,6 +35,7 @@ class PhotosPost: AlysieBaseViewC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        userPost.isHidden = true
         if postId == "" {
             self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
         } else {
@@ -92,6 +95,7 @@ extension PhotosPost {
                 if let subData = data["data"] as? [[String:Any]]{
                     self.postData = subData.map({NewFeedSearchDataModel.init(with: $0)})
                 }
+                self.userPost.isHidden = false
                 self.updatePostList()
                 let indexPaths = IndexPath(row: self.position, section: 0)
                 //userPost.selectRow(at: indexPaths, animated: false, scrollPosition: .bottom)
@@ -111,6 +115,7 @@ extension PhotosPost {
             if let data = response?["data"]  as? [String:Any]{
                 
                 self.singlePostData = SinglePostDataModel.init(with: data)
+                self.userPost.isHidden = false
                 self.updatePostList()
                 
             }

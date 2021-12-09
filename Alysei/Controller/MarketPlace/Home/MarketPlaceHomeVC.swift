@@ -12,6 +12,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
 //    @IBOutlet weak var collectnMainViewHeight: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var postView: UIView!
+    @IBOutlet weak var view1: NSLayoutConstraint!
     @IBOutlet weak var btnCreateStore: UIButton!
     @IBOutlet weak var marketplaceView: UIView!
     @IBOutlet weak var headerView: UIView!
@@ -592,15 +593,10 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
 //            }
              if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
                 return 0
-            }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0)  == 1  || (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) == 2 {
-                return 290
-                
-            }
-            else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2 == 0{
-                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) - 50)
-            }
-            else {
-                return CGFloat(200 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 200)
+            }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) % 2 == 0{
+                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
+            } else {
+                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 290)
             }
 //            else{
 //            return CGFloat(200 * (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) + 200)
@@ -731,7 +727,9 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         else if (collectionView == newlyyAddedStoreCollectionView) || (collectionView == topSellingCollectionView){
             return CGSize(width: collectionView.frame.width / 2 , height: 280)
         }
-        else if (collectionView == collectionView){
+        else if (collectionView == self.collectionView){
+            
+            view1.constant = collectionView.frame.width
             return CGSize(width: collectionView.frame.width / 3 , height: collectionView.frame.width / 3)
         }
         else{
@@ -739,7 +737,6 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         }
     }
 
-    
     
    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

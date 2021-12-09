@@ -34,17 +34,14 @@ class MembershipViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     
     super.viewDidLoad()
+      
+      if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+          tblViewMembership.isScrollEnabled = false
+      } else {
+          tblViewMembership.isScrollEnabled = true
+      }
     
     let topTapbarPosition = self.tabBarController?.tabBar.frame.size.height ?? 0
-    
-    /*if topTapbarPosition > 50 {
-        //tableviewheight.constant = 200
-        tableviewheight.constant = self.view.frame.height - 120 - topTapbarPosition
-    } else {
-        tableviewheight.constant = self.view.frame.height - 350
-       // tableviewheight.constant = 200
-    }*/
-    
     
   }
     
@@ -157,7 +154,7 @@ extension MembershipViewC: UITableViewDataSource, UITableViewDelegate{
   }
     
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100.0
+    return 150
   }
     
 }
