@@ -92,7 +92,15 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.locationTitle.text = eventData[indexPath].location
         eventTableCell.dateTitle.text = eventData[indexPath].date
         eventTableCell.lblLikeCount.text = "\(eventData[indexPath].like_counts ?? 0)"
-        
+        eventTableCell.configCell(eventData[indexPath])
+        eventTableCell.btnInterested.tag = indexPath
+        eventTableCell.btnInterestedWidth.constant = 180
+        eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
+        eventTableCell.callInterestedCallback = { index in
+            let reloadIndexPath = IndexPath(row: index, section: 0)
+            self.postRequest(1)
+            self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+        }
         if ((eventData[indexPath].time?.contains(":")) == true) {
             eventTableCell.timeTitle.text = eventData[indexPath].time
         } else {
@@ -222,20 +230,6 @@ extension EventDiscover {
       }
       
     }
-    
-    func callInterestesApi(){
-        
-        let params: [String:Any] = [
-        "like_or_unlike": "",
-        "event_id": ""
-            ]
-        
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kInterestedEvent, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { dictResponse, error, errorType, statusCode in
-            
-            let dictResponse = dictResponse as? [String:Any]
-            if let data = dictResponse?["data"] as? [String:Any]{
-            }
-        }
-    }
+  
     
 }
