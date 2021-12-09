@@ -21,11 +21,11 @@ class QuickEasyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionVwTrending.delegate = self
         self.collectionVwTrending.dataSource = self
-//        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)
+        //        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)
         // Register the xib for collection view cell
         let cellNib = UINib(nibName: "TrendingCollectionViewCell", bundle: nil)
         self.collectionVwTrending.register(cellNib, forCellWithReuseIdentifier: "TrendingCollectionViewCell")
-//        setGradientBackground()
+        //        setGradientBackground()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,8 +42,8 @@ class QuickEasyTableViewCell: UITableViewCell {
     }
     func setGradientBackground() {
         
-//        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
-//        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
+        //        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
+        //        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
         let colorTop =  UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
         gradientLayer.colors = [colorTop, colorBottom]
@@ -71,14 +71,18 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
             
             
             
-//            let imgUrl = (kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
-//
-//            cell.trendingImgVw.setImage(withString: imgUrl)
-//
-            if let strUrl = "\(kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-                  let imgUrl = URL(string: strUrl) {
-                 print("ImageUrl-----------------------------------------\(imgUrl)")
-                cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            //            let imgUrl = (kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
+            //
+            //            cell.trendingImgVw.setImage(withString: imgUrl)
+            if (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? "") == ""{
+                cell.trendingImgVw.image = UIImage(named: "image_placeholder.png")
+            }
+            else{
+                if let strUrl = "\(kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                   let imgUrl = URL(string: strUrl) {
+                    print("ImageUrl-----------------------------------------\(imgUrl)")
+                    cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+                }
             }
             
             cell.trendingImgVw.contentMode = .scaleAspectFill
@@ -89,8 +93,8 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.userNameLabel.text = "NA"
             }
             else{
-            cell.userNameLabel.text = arrayQuickEasy?[indexPath.item].userName
-        }
+                cell.userNameLabel.text = arrayQuickEasy?[indexPath.item].userName
+            }
             cell.timeLabel.text = "\( arrayQuickEasy?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayQuickEasy?[indexPath.item].minute ?? 0)" + " " + "minutes"
             cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + "Serving"
             cell.typeLabel.text = arrayQuickEasy?[indexPath.item].meal?.mealName

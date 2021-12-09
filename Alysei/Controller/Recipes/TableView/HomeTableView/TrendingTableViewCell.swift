@@ -118,11 +118,17 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
 //                let imgUrl = (kImageBaseUrl + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))
 //
 //                cell.trendingImgVw.setImage(withString: imgUrl)
-            if let strUrl = "\(kImageBaseUrl + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-                  let imgUrl = URL(string: strUrl) {
-                 print("ImageUrl-----------------------------------------\(imgUrl)")
-                cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+            if (arrayTrending?[indexPath.item].image?.imgUrl ?? "") == ""{
+                cell.trendingImgVw.image = UIImage(named: "image_placeholder.png")
             }
+            else{
+                if let strUrl = "\(kImageBaseUrl + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                      let imgUrl = URL(string: strUrl) {
+                     print("ImageUrl-----------------------------------------\(imgUrl)")
+                    cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+                }
+            }
+           
             
                 cell.trendingImgVw.contentMode = .scaleAspectFill
                 cell.recipeNameLbl.text = arrayTrending?[indexPath.item].name

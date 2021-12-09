@@ -87,11 +87,15 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
 //                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
 //
 //                cell.itemImgVw.setImage(withString: imgUrl)
-            
+            if (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? "") == ""{
+                cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
+            }
+            else{
             if let strUrl = "\(kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+             }
             }
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill

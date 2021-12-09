@@ -31,7 +31,7 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+      
 //        outerView.layer.cornerRadius = 10.0
 //
 //    // border

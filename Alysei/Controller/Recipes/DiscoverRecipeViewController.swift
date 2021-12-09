@@ -1112,7 +1112,7 @@ extension DiscoverRecipeViewController{
             fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
             fifth = 1
             //        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
-            finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+200)
+            finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+210)
             self.containerTableVw.reloadData()
             
             self.view.isUserInteractionEnabled = true
