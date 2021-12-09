@@ -171,7 +171,10 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.btnEditProfile.layer.cornerRadius = 0.0
+        self.btnEditProfile.layer.cornerRadius = 5
+        self.btnEditProfile.layer.masksToBounds = true
+        self.btnEditProfile.layer.borderWidth = 1
+        self.btnEditProfile.layer.borderColor = UIColor.gray.cgColor
         self.viewSeparator.alpha = 0.0
         
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{

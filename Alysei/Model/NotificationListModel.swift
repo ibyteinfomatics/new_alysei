@@ -73,7 +73,7 @@ class NotiDatum {
     var body: String?
     var redirectTo: String?
     var redirectToid: Int?
-    var isRead, createdAt, updatedAt: String?
+    var isRead, createdAt, updatedAt,sender_name: String?
     var user: NotiUser?
 
     
@@ -91,6 +91,7 @@ class NotiDatum {
             self.isRead = String.getString(dictResponse?["is_read"])
             self.createdAt = String.getString(dictResponse?["created_at"])
             self.updatedAt = String.getString(dictResponse?["updated_at"])
+            self.sender_name = String.getString(dictResponse?["sender_name"])
             
             if let data = dictResponse?["user"] as? [String:Any]{
                 self.user =  NotiUser.init(with: data)

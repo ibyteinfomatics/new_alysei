@@ -136,6 +136,36 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
       return 80.0
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let type = notimodel?.data?.data?[indexPath.row].notificationType
+        
+        switch Int.getInt(type) {
+        case 1:
+            kSharedAppDelegate.moveChat(receiverid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid), username: String.getString(notimodel?.data?.data?[indexPath.row].sender_name))
+            
+        case 2,6,7,8:
+            kSharedAppDelegate.moveToPost(postid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid))
+            
+        case 3:
+            kSharedAppDelegate.moveToNetwork(index: 0)
+            
+        case 4:
+            kSharedAppDelegate.moveToNetwork(index: 1)
+            
+        case 5:
+            kSharedAppDelegate.moveToNetwork(index: 3)
+            
+        case 9:
+            kSharedAppDelegate.moveToMemberShip()
+        case 10:
+            kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid), username: String.getString(notimodel?.data?.data?[indexPath.row].sender_name))
+       
+        default:
+            kSharedAppDelegate.pushToTabBarViewC()
+    
+        }
+        
+    }
     
 }

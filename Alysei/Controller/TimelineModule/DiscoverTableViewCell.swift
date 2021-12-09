@@ -45,6 +45,12 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }else{
             cell.imgStory.setImage(withString: kImageBaseUrl + String.getString(data?[indexPath.row].image?.attachmentUrl))
         }
+        
+        cell.imgStory.layer.cornerRadius = (cell.imgStory.frame.width / 2.0)
+        cell.imgStory.layer.borderWidth = 5.0
+        
+        cell.imgStory.layer.borderColor = UIColor.init(hexString: RolesBorderColor.producer.rawValue).cgColor
+        
         cell.userName.text = data?[indexPath.row].title
         return cell
     }
