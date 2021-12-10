@@ -13,10 +13,11 @@ class YourDataViewC: AlysieBaseViewC {
   
   @IBOutlet weak var viewNavigation: UIView!
   
+    
   //MARK: - ViewLifeCycle Methods -
   
   override func viewDidLoad() {
-    
+    viewNavigation.drawBottomShadow()  
    super.viewDidLoad()
   }
   

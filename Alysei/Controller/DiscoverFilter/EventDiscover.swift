@@ -106,7 +106,7 @@ class EventDiscover: AlysieBaseViewC {
         } else {
             eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventData[indexPath].time)
         }
-        let imageUrl = (kImageBaseUrl + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        let imageUrl = (kImageBaseUrl + (eventData[indexPath].user?.avatarid?.attachmenturl ?? ""))
         eventTableCell.userImage.setImage(withString: imageUrl)
         
         
@@ -136,7 +136,25 @@ class EventDiscover: AlysieBaseViewC {
         return localDate
             
     }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > eventModel?.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                postRequest(indexOfPageToRequest)
+
+            // tell the table view to reload with the new data
+            self.eventsTableView.reloadData()
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation
@@ -182,6 +200,7 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
         vc.eventYype = eventData[indexPath].eventType
         vc.registrationType = eventData[indexPath].registrationType
         vc.imgurl = eventData[indexPath].attachment?.attachmenturl
+        vc.bookingUrl = eventData[indexPath].url
         vc.typeofpage = "read"
         
     }

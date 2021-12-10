@@ -122,6 +122,7 @@ class EventsView: AlysieBaseViewC {
             vc.eventYype = self.eventModel?.data?[indexPath].eventType
             vc.registrationType = self.eventModel?.data?[indexPath].registrationType
             vc.imgurl = self.eventModel?.data?[indexPath].attachment?.attachmenturl
+            vc.bookingUrl = self.eventModel?.data?[indexPath].url
             vc.typeofpage = "read"
             
         }

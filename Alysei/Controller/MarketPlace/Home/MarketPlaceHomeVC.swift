@@ -798,6 +798,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
                 nextVC.listType = indexPath.row + 1
                 nextVC.keywordSearch = arrMarketPlace[indexPath.row]
                 self.navigationController?.pushViewController(nextVC, animated: true)
+            }else if indexPath.row == 8{
+                self.showAlert(withMessage: "Coming Soon....")
             }
             else{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}

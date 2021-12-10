@@ -3391,34 +3391,34 @@
                                 <rect key="frame" x="0.0" y="69" width="375" height="598"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RoleTableVieCell" rowHeight="157" id="Fqc-nH-LCx" customClass="RoleTableVieCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="157"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RoleTableVieCell" rowHeight="137" id="Fqc-nH-LCx" customClass="RoleTableVieCell" customModule="Alysei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fqc-nH-LCx" id="zUu-Uj-gZp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-qf-tgP">
-                                                    <rect key="frame" x="15" y="10" width="345" height="137"/>
+                                                    <rect key="frame" x="15" y="10" width="345" height="117"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role2" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-9y-yWY" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="230" y="12" width="110" height="113"/>
+                                                            <rect key="frame" x="230" y="12" width="110" height="93"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="tcg-9y-yWY" secondAttribute="height" multiplier="1:1" id="Ymd-8V-fyf"/>
                                                                 <constraint firstAttribute="width" constant="110" id="bzJ-WX-0sL"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay_on_role_selection-1" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-qr-ZP3">
-                                                            <rect key="frame" x="230" y="12" width="110" height="113"/>
+                                                            <rect key="frame" x="230" y="12" width="110" height="93"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Producer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02f-Td-hV4">
-                                                            <rect key="frame" x="10" y="5" width="210" height="52"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Producer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02f-Td-hV4">
+                                                            <rect key="frame" x="10" y="8" width="210" height="21.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.27058823529411763" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" name="macraggeBlue"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lco-UQ-RPg">
-                                                            <rect key="frame" x="10" y="62" width="210" height="70"/>
+                                                            <rect key="frame" x="10" y="37.5" width="210" height="70"/>
                                                             <string key="text">Loreu loreum loruem loreun Loreu loreum loruem loreun Loreu loreum loruem loreun Loreu loreum loruem loreun Loreu loreum Loreu loreum loruem loreun Loreu loreum </string>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <nil key="textColor"/>
@@ -3429,16 +3429,17 @@
                                                     <constraints>
                                                         <constraint firstItem="Lco-UQ-RPg" firstAttribute="trailing" secondItem="02f-Td-hV4" secondAttribute="trailing" id="1iH-zk-MxR"/>
                                                         <constraint firstItem="eTf-qr-ZP3" firstAttribute="leading" secondItem="tcg-9y-yWY" secondAttribute="leading" id="Gcs-43-X1k"/>
-                                                        <constraint firstItem="Lco-UQ-RPg" firstAttribute="top" secondItem="02f-Td-hV4" secondAttribute="bottom" constant="5" id="Ifh-yM-mOp"/>
+                                                        <constraint firstItem="Lco-UQ-RPg" firstAttribute="top" secondItem="02f-Td-hV4" secondAttribute="bottom" constant="8" id="Ifh-yM-mOp"/>
                                                         <constraint firstItem="eTf-qr-ZP3" firstAttribute="trailing" secondItem="tcg-9y-yWY" secondAttribute="trailing" id="Iof-kw-Vs2"/>
                                                         <constraint firstItem="Lco-UQ-RPg" firstAttribute="leading" secondItem="02f-Td-hV4" secondAttribute="leading" id="LPE-pK-ssb"/>
                                                         <constraint firstAttribute="bottom" secondItem="tcg-9y-yWY" secondAttribute="bottom" constant="12" id="TlA-UA-muc"/>
                                                         <constraint firstItem="02f-Td-hV4" firstAttribute="leading" secondItem="Zef-qf-tgP" secondAttribute="leading" constant="10" id="Twu-1A-jVf"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Lco-UQ-RPg" secondAttribute="bottom" constant="5" id="Yc9-HG-0gt"/>
                                                         <constraint firstItem="eTf-qr-ZP3" firstAttribute="bottom" secondItem="tcg-9y-yWY" secondAttribute="bottom" id="aMU-1y-iZP"/>
                                                         <constraint firstAttribute="trailing" secondItem="tcg-9y-yWY" secondAttribute="trailing" constant="5" id="f7h-y2-MEf"/>
                                                         <constraint firstItem="tcg-9y-yWY" firstAttribute="top" secondItem="Zef-qf-tgP" secondAttribute="top" constant="12" id="fKd-pY-q4F"/>
-                                                        <constraint firstItem="02f-Td-hV4" firstAttribute="top" secondItem="Zef-qf-tgP" secondAttribute="top" constant="5" id="kc9-5Z-bML"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Lco-UQ-RPg" secondAttribute="bottom" constant="3" id="hUD-s1-Kqc"/>
+                                                        <constraint firstItem="02f-Td-hV4" firstAttribute="top" secondItem="Zef-qf-tgP" secondAttribute="top" constant="8" id="kc9-5Z-bML"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eTf-qr-ZP3" secondAttribute="bottom" constant="12" id="qht-3D-fIy"/>
                                                         <constraint firstItem="eTf-qr-ZP3" firstAttribute="top" secondItem="tcg-9y-yWY" secondAttribute="top" id="qkq-av-jHV"/>
                                                         <constraint firstItem="eTf-qr-ZP3" firstAttribute="centerY" secondItem="Zef-qf-tgP" secondAttribute="centerY" id="rLZ-WV-Eni"/>
                                                         <constraint firstItem="tcg-9y-yWY" firstAttribute="leading" secondItem="02f-Td-hV4" secondAttribute="trailing" constant="10" id="wT3-R8-KRX"/>

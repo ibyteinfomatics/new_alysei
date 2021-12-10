@@ -22,7 +22,7 @@ class HomeViewC: AlysieBaseViewC {
     // memebership view
     @IBOutlet weak var tblViewMembership: UITableView!
     @IBOutlet weak var viewBlueHeading: UIView!
-    @IBOutlet weak var viewBottom: UIView!
+   // @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var membershipView: UIView!
     var currentIndex: Int = 0
     
@@ -295,19 +295,35 @@ extension HomeViewC{
 }
 
 extension HomeViewC: UITableViewDataSource, UITableViewDelegate{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return progressmodel?.alyseiProgress?.count ?? 0
-  }
-    
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return self.getMembershipTableCell(indexPath.row)
-  }
-    
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-    return 90.0
-  }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      if section == 0{
+      return progressmodel?.alyseiProgress?.count ?? 0
+      }
+      return 1
+    }
+      
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      if indexPath.section == 0 {
+      return self.getMembershipTableCell(indexPath.row)
+      }else{
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BottomViewCell", for: indexPath) as? BottomViewCell else {return UITableViewCell()}
+          return cell
+      }
+    }
+      
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      if indexPath.section == 0{
+        if indexPath.row == (progressmodel?.alyseiProgress?.count ?? 0) - 1  {
+            return 90
+        }
+      return 140
+      }
+      return 110
+    }
     
 }
 
