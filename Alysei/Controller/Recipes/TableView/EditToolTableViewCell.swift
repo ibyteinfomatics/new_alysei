@@ -42,7 +42,7 @@ class EditToolTableViewCell: UITableViewCell {
         else {
             self.selectToolImgView.isHidden = true
         }
-        let imgUrl = (kImageBaseUrl + (data?.imageId?.imgUrl ?? ""))
+        let imgUrl = ((data?.imageId?.baseUrl ?? "") + (data?.imageId?.imgUrl ?? ""))
         img.setImage(withString: imgUrl)
         label2.text = data?.toolTitle
     }

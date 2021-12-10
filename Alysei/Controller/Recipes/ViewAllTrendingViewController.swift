@@ -75,7 +75,7 @@ extension ViewAllTrendingViewController: UICollectionViewDelegate, UICollectionV
             cell.deaftButton.isHidden = true
             cell.editRecipeButton.isHidden = true
           
-                let imgUrl = (kImageBaseUrl + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))
+                let imgUrl = ((arrayTrending?[indexPath.item].image?.baseUrl ?? "") + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))
                 
                 cell.recipeImageView.setImage(withString: imgUrl)
             

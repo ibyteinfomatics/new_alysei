@@ -78,7 +78,7 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.trendingImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-                if let strUrl = "\(kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                if let strUrl = "\((arrayQuickEasy?[indexPath.item].image?.baseUrl ?? "") + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                    let imgUrl = URL(string: strUrl) {
                     print("ImageUrl-----------------------------------------\(imgUrl)")
                     cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

@@ -91,7 +91,7 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
                 cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-            if let strUrl = "\(kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((arraySearchByMeal?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
@@ -149,10 +149,10 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
         if MobileDeviceType.IS_IPHONE_6 == true {
-            return CGSize(width: self.collectionVw.frame.width/3 - 15 , height: 180.0)
+            return CGSize(width: self.collectionVw.frame.width/3 - 15 , height: 160.0)
         }
         else{
-            return CGSize(width: self.collectionVw.frame.width/3 - 30 , height: 180.0)
+            return CGSize(width: self.collectionVw.frame.width/3 - 30 , height: 160.0)
         }
        }
 //    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize

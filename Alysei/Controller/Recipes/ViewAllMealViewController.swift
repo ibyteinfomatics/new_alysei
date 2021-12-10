@@ -106,7 +106,7 @@ extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ViewAllCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ViewAllCollectionViewCell", for: indexPath) as! ViewAllCollectionViewCell
-        let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
+        let imgUrl = ((arraySearchByMeal?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
         
         cell.ingredientsImage.setImage(withString: imgUrl)
         cell.ingredientsImage.layer.cornerRadius = cell.ingredientsImage.frame.height/2

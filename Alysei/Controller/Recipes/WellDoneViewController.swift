@@ -44,7 +44,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
             self.profileImageVw.layer.borderWidth = 5.0
             self.profileImageVw.layer.masksToBounds = true
         }
-        let imgUrl1 = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+        let imgUrl1 = ((recipeModel?.image?.baseUrl ?? "") + (recipeModel?.image?.imgUrl ?? ""))
         recipeImageView.setImage(withString: imgUrl1)
         
         reviewView.layer.cornerRadius = 5

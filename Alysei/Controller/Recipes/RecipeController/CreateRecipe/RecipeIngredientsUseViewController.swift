@@ -532,7 +532,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
                 cell.IngredientsNameLbl.text = selectedIngridentsArray[indexPath.row].ingridientTitle
                 strIngridientQuantity = selectedIngridentsArray[indexPath.row].pickerData ?? ""
                 cell.IngredientsValueLbl.text = strIngridientQuantity
-                let imgUrl = (kImageBaseUrl + (selectedIngridentsArray[indexPath.row].imageId?.imgUrl ?? ""))
+                let imgUrl = ((selectedIngridentsArray[indexPath.item].imageId?.baseUrl ?? "") + (selectedIngridentsArray[indexPath.row].imageId?.imgUrl ?? ""))
                 cell.img.setImage(withString: imgUrl)
                 cell.indexPath = indexPath
                 cell.editBtn.isHidden = false
@@ -553,7 +553,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             cell.IngredientsValueLbl.isHidden = true
 //            cell.IngredientsValueLbl.text = strToolQuantity
            
-            let imgUrl = (kImageBaseUrl + (selectedToolsArray[indexPath.row].imageId?.imgUrl ?? ""))
+            let imgUrl = ((selectedToolsArray[indexPath.item].imageId?.baseUrl ?? "") + (selectedToolsArray[indexPath.row].imageId?.imgUrl ?? ""))
             cell.img.setImage(withString: imgUrl)
             cell.indexPath = indexPath
             return cell

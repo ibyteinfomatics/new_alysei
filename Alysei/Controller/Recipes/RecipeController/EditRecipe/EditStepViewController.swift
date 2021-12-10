@@ -193,7 +193,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             
             let cell1 = ingridientUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepIngridientCollectionViewCell", for: indexPath) as! EditStepIngridientCollectionViewCell
             
-            let imgUrl = (kImageBaseUrl + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedIngridientModel[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
             cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
@@ -220,7 +220,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
         else if collectionView == toolsUsedCollectionView {
             
             let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "EditStepToolsCollectionViewCell", for: indexPath) as! EditStepToolsCollectionViewCell
-            let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedToolModel[indexPath.row].tool?.imageId?.baseUrl ?? "") + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = editusedToolModel[indexPath.row].tool?.toolTitle
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)

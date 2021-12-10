@@ -178,7 +178,7 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
             
             cell.editRecipeButton.isHidden = true
             cell.deaftButton.isHidden = true
-            let imgUrl = (kImageBaseUrl + (arrSearchRecipeDataModel?[indexPath.item].imageUrl ?? ""))
+            let imgUrl = ((arrSearchRecipeDataModel?[indexPath.item].image?.baseUrl ?? "") + (arrSearchRecipeDataModel?[indexPath.item].imageUrl ?? ""))
             
             cell.recipeImageView.setImage(withString: imgUrl)
             

@@ -13,6 +13,8 @@ var arraySearchByIngridient : [IngridentArray]? = []
 var isFrom = String()
 var ingridentHeight = CGFloat()
 var mealHeight = CGFloat()
+var regionHeight = CGFloat()
+var trendingHeight = CGFloat()
 class ExploreByIngridientTableViewCell: UITableViewCell {
 
     @IBOutlet weak var quickSearchLbl: UILabel!
@@ -99,7 +101,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
                 cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-            if let strUrl = "\(kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((arraySearchByIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

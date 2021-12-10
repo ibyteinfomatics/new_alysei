@@ -442,7 +442,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             cell.IngredientsNameLbl.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
             //                strIngridientQuantity = selectedIngridentsArray[indexPath.row].pickerData ?? ""
             cell.IngredientsValueLbl.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
-            let imgUrl = (kImageBaseUrl + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedIngridientModel[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell.img.setImage(withString: imgUrl)
             cell.indexPath = indexPath
             cell.IngredientsValueLbl.isHidden = false
@@ -459,7 +459,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             
             cell1.IngredientsValueLbl.isHidden = true
             
-            let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedToolModel[indexPath.row].tool?.imageId?.baseUrl ?? "") + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell1.img.setImage(withString: imgUrl)
             cell1.indexPath = indexPath
             

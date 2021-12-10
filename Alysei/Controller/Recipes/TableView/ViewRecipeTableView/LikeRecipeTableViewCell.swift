@@ -49,7 +49,7 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LikeRecipeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeRecipeCollectionViewCell", for: indexPath) as! LikeRecipeCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (youMightAlsoLikeModel?[indexPath.item].image?.imgUrl ?? ""))
+        let imgUrl = ((youMightAlsoLikeModel?[indexPath.item].image?.baseUrl ?? "") + (youMightAlsoLikeModel?[indexPath.item].image?.imgUrl ?? ""))
         
         cell.imageView?.setImage(withString: imgUrl)
         cell.recipeNameLabel.text = youMightAlsoLikeModel?[indexPath.row].recipeName

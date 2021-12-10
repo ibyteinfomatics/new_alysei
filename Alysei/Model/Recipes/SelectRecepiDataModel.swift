@@ -26,10 +26,12 @@ class ImageURL{
    
     var imgUrl: String?
     var id: Int?
+    var baseUrl: String?
     init(with dictResponse: [String:Any]){
        
             self.id = Int.getInt(dictResponse["id"])
             self.imgUrl = String.getString(dictResponse["attachment_url"])
+            self.baseUrl = String.getString(dictResponse["base_url"])
         }
     }
 

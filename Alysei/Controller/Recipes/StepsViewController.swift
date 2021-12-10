@@ -59,7 +59,7 @@ class StepsViewController: UIViewController, StepDelegate {
             backBtnWidth.constant = 55
         }
         
-        let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+        let imgUrl = ((recipeModel?.image?.baseUrl ?? "") + (recipeModel?.image?.imgUrl ?? ""))
         stepImage.setImage(withString: imgUrl)
     }
     
@@ -239,7 +239,7 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             
         case 1:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (choosestepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((choosestepIngridient?[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (choosestepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             
             cell.ingredientImageView.setImage(withString: imgUrl)
             
@@ -255,7 +255,7 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 3:
             guard let cell: ViewRecipeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (choosestepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((choosestepTool?[indexPath.row].tool?.imageId?.baseUrl ?? "") + (choosestepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             
             cell.ingredientImageView.setImage(withString: imgUrl)
             

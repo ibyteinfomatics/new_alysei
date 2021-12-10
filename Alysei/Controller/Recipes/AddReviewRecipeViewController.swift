@@ -215,7 +215,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddReviewTableViewCell") as! AddReviewTableViewCell
         
-        let imgUrl = (kImageBaseUrl + (arrAllReviewModel?[indexPath.row].user?.avatarId?.imageUrl ?? ""))
+        let imgUrl = ((arrAllReviewModel?[indexPath.row].user?.avatarId?.baseUrl ?? "") + (arrAllReviewModel?[indexPath.row].user?.avatarId?.imageUrl ?? ""))
         cell.userProfileImg.setImage(withString: imgUrl)
         cell.userProfileImg.layer.cornerRadius = cell.userProfileImg.frame.height/2
         if arrAllReviewModel?[indexPath.row].user?.name == ""{

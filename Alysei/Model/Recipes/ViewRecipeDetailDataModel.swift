@@ -143,11 +143,13 @@ class UserDataModel{
 class AvatarDataModel{
     var id: Int?
     var imageUrl: String?
+    var baseUrl: String?
     var imageType: String?
     
     init(with dictResponse: [String:Any]){
         self.id = Int.getInt(dictResponse["id"])
         self.imageUrl = String.getString(dictResponse["attachment_url"])
+        self.baseUrl = String.getString(dictResponse["base_url"])
         self.imageType = String.getString(dictResponse["attachment_type"])
     }
 }

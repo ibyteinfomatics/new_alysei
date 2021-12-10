@@ -128,7 +128,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         switch indexPath.section {
         case 0:
             if indexPath.row < showCuisine!.count {
-                let imgUrl = (kImageBaseUrl + (showCuisine?[indexPath.item].imageId?.imgUrl ?? ""))
+                let imgUrl = ((showCuisine?[indexPath.item].imageId?.baseUrl ?? "") + (showCuisine?[indexPath.item].imageId?.imgUrl ?? ""))
                 
                 cell.imageView.setImage(withString: imgUrl)
                 
@@ -157,7 +157,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         case 1:
             if indexPath.row < showFood!.count {
 
-                let imgUrl = (kImageBaseUrl + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
+                let imgUrl = ((showFood?[indexPath.item].imageId?.baseUrl ?? "") + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
                 cell.imageView.image = mySVGImage.uiImage
@@ -184,7 +184,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
 
         case 2:
             if indexPath.row < showDiet!.count {
-                let imgUrl = (kImageBaseUrl + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
+                let imgUrl = ((showDiet?[indexPath.item].imageId?.baseUrl ?? "") + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
                 cell.imageView.image = mySVGImage.uiImage
@@ -211,7 +211,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
 
         case 3:
             if indexPath.row < showIngridient!.count {
-                let imgUrl = (kImageBaseUrl + (showIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
+                let imgUrl = ((showIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (showIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
                 
                 cell.imageView.setImage(withString: imgUrl)
                 cell.imageView.contentMode = .scaleAspectFit
@@ -237,7 +237,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
 
         case 4:
             if indexPath.row < showCookingSkill!.count {
-                let imgUrl = (kImageBaseUrl + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
+                let imgUrl = ((showCookingSkill?[indexPath.item].imageId?.baseUrl ?? "") + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
                 cell.imageView.image = mySVGImage.uiImage

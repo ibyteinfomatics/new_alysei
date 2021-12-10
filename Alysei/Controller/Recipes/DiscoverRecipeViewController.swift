@@ -85,8 +85,6 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     var currentIndex : Int? = 0
     var isReloadData = true
     var nextWalkCount = 0
-    //    private var isBottomSheetShown = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,21 +214,21 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     
     
     @IBAction func createNewRecipeButton(_ sender: Any) {
-//        if AppConstants.recipeWalkthrough == false{
-//            walknextBtn.setTitle("Next", for: .normal)
-//            animate1View()
-//            setBottomUI()
-//        }
-         let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
-         let retriveArrayData = kSharedUserDefaults.array(forKey:  "SavedWalkthrough")
+        //        if AppConstants.recipeWalkthrough == false{
+        //            walknextBtn.setTitle("Next", for: .normal)
+        //            animate1View()
+        //            setBottomUI()
+        //        }
+        let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
+        let retriveArrayData = kSharedUserDefaults.array(forKey:  "SavedWalkthrough")
         if ((retriveArrayData?.contains(obj: userId)) != nil){
             let createNewRecipeVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateNewRecipeViewController") as! CreateNewRecipeViewController
             self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
-         }
+        }
         else{
             walknextBtn.setTitle("Next", for: .normal)
-                       animate1View()
-                       setBottomUI()
+            animate1View()
+            setBottomUI()
         }
         
         
@@ -279,17 +277,17 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
             self.discoverRecipeView.alpha = 1
             self.headerView.alpha = 1
             self.containerTableVw.alpha = 1
-//            AppConstants.recipeWalkthrough = true
+            //            AppConstants.recipeWalkthrough = true
             let userId = kSharedUserDefaults.loggedInUserModal.userId ?? ""
             recipeWalkthroughId.append(userId)
             kSharedUserDefaults.setValue(recipeWalkthroughId, forKey: "SavedWalkthrough")
-//
-//            let retriveArrayData = kSharedUserDefaults.object(forKey:  "SavedWalkthrough") as? NSData
-//            if (retriveArrayData != nil) == recipeWalkthroughId.contains(userId){
-//
-//            }
+            //
+            //            let retriveArrayData = kSharedUserDefaults.object(forKey:  "SavedWalkthrough") as? NSData
+            //            if (retriveArrayData != nil) == recipeWalkthroughId.contains(userId){
+            //
+            //            }
             _ = pushViewController(withName: CreateNewRecipeViewController.id(), fromStoryboard: StoryBoardConstants.kRecipesSelection)
-             
+            
             
             
         }
@@ -359,22 +357,53 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 }
                 
             }
-            if (((arraySearchByIngridient?.count ?? 0) % 3) == 0){
-                ingridentHeight = CGFloat((160 * ((arraySearchByIngridient?.count ?? 0) / 3)) + 10)
+            
+            if arraySearchByIngridient?.count != 0{
+                if (((arraySearchByIngridient?.count ?? 0) % 3) == 0){
+                    ingridentHeight = CGFloat((160 * ((arraySearchByIngridient?.count ?? 0) / 3)) + 10)
+                }
+                else{
+                    let abc = 160 * (((arraySearchByIngridient?.count ?? 0) / 3) + 1)
+                    ingridentHeight = CGFloat( abc + 10)
+                }
             }
             else{
-                 let abc = 160 * (((arraySearchByIngridient?.count ?? 0) / 3) + 1)
-                ingridentHeight = CGFloat( abc + 10)
+                ingridentHeight = 0
             }
             
-            if (((arraySearchByMeal?.count ?? 0) % 3) == 0){
-                mealHeight = CGFloat((180 * ((arraySearchByMeal?.count ?? 0) / 3)) + 20)
+            if arraySearchByIngridient?.count != 0{
+                if (((arraySearchByMeal?.count ?? 0) % 3) == 0){
+                    mealHeight = CGFloat((160 * ((arraySearchByMeal?.count ?? 0) / 3)) + 40)
+                }
+                else{
+                    let heightMeal = 160 * (((arraySearchByMeal?.count ?? 0) / 3) + 1)
+                    mealHeight = CGFloat(heightMeal + 40)
+                }
             }
             else{
-                 let heightMeal = 180 * (((arraySearchByMeal?.count ?? 0) / 3) + 1)
-                mealHeight = CGFloat(heightMeal + 20)
+                mealHeight = 0
             }
-
+            
+            if arraySearchByRegion?.count == 0{
+                regionHeight = 0
+            }
+            else{
+                regionHeight = 200
+            }
+            
+            if arrayTrending?.count == 0{
+                trendingHeight = 0
+            }
+            else{
+                trendingHeight = 360
+            }
+            
+            if arrayQuickEasy?.count == 0{
+                trendingHeight = 0
+            }
+            else{
+                trendingHeight = 360
+            }
             containerTableVw.reloadData()
             self.view.isUserInteractionEnabled = true
             
@@ -526,7 +555,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             //
             //            cell4.recipeImageView.setImage(withString: imgUrl)
             //
-            if let strUrl = "\(kImageBaseUrl + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((arrayMyFavouriteRecipe?[indexPath.item].image?.baseUrl ?? "") + (arrayMyFavouriteRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                let imgUrl = URL(string: strUrl) {
                 print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell4.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
@@ -630,7 +659,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             //
             //            cell5.recipeImageView.setImage(withString: imgUrl)
             //
-            if let strUrl = "\(kImageBaseUrl + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((arrayMyRecipe?[indexPath.item].image?.baseUrl ?? "") + (arrayMyRecipe?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                let imgUrl = URL(string: strUrl) {
                 print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell5.recipeImageView.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
@@ -780,17 +809,17 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             if (indexPath.section == 2)
             {
                 
-                return 200
+                return regionHeight
             }
             if (indexPath.section == 3)
             {
                 
-                return 360
+                return trendingHeight
             }
             if (indexPath.section == 4)
             {
                 
-                return 360
+                return trendingHeight
             }
         case 1:
             return 260
@@ -894,8 +923,6 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
             getMyFavouriteRecipes()
             self.containerTableVw.reloadData()
             
-            
-            
         case 2:
             
             checkbutton = 2
@@ -944,11 +971,13 @@ extension DiscoverRecipeViewController: PreferencesDelegate{
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func pluscellTapped3(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "IngridientViewController") as! IngridientViewController
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func pluscellTapped4(){
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CookingViewController") as! CookingViewController
@@ -1036,7 +1065,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showCuisine?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-//                                first = 1
+                                
                                 arraySelectedCuisine?.removeAll()
                                 for k in (0..<(showCuisine?.count ?? 0)){
                                     arraySelectedCuisine?.append(showCuisine?[k].cousinId ?? 0 )
@@ -1048,7 +1077,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showFood?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-//                                second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
+                                
                                 arraySelectedFood?.removeAll()
                                 for k in (0..<(showFood?.count ?? 0)){
                                     arraySelectedFood?.append(showFood?[k].foodId ?? 0 )
@@ -1062,7 +1091,7 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showDiet?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-//                                third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
+                                
                                 arraySelectedDiet?.removeAll()
                                 for k in (0..<(showDiet?.count ?? 0)){
                                     
@@ -1076,21 +1105,20 @@ extension DiscoverRecipeViewController{
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showIngridient?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]) )
-//                                fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+                                
                                 arraySelectedIngridient?.removeAll()
                                 for k in (0..<(showIngridient?.count ?? 0)){
                                     
                                     arraySelectedIngridient?.append(showIngridient?[k].ingridientId ?? 0 )
                                 }
                             }
-                            
                         }
                     case 4:
                         for j in (0..<(getSavedPreferencesModel?[i].maps?.count ?? 0))
                         {
                             if getSavedPreferencesModel?[i].maps?[j].isSelected == 1{
                                 showCookingSkill?.append(getSavedPreferencesModel?[i].maps?[j] ?? MapDataModel(with: [:]))
-//                                fifth = 1
+                                
                                 arraySelectedCookingSkill?.removeAll()
                                 for k in (0..<(showCookingSkill?.count ?? 0)){
                                     
@@ -1111,7 +1139,7 @@ extension DiscoverRecipeViewController{
             third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
             fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
             fifth = 1
-            //        self.tableViewHeight.constant = CGFloat((140 * (self.first+self.second+self.third+self.fourth+self.fifth))+200)
+            
             finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+210)
             self.containerTableVw.reloadData()
             
@@ -1187,7 +1215,7 @@ extension DiscoverRecipeViewController{
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            //            self.isBottomSheetShown = true
+            
             UIView.animate(withDuration: 0.5) {
                 self.walkView1height.constant = 500
                 self.view.layoutIfNeeded()
@@ -1199,7 +1227,7 @@ extension DiscoverRecipeViewController{
         
     }
     func animate2View(){
-        //self.view.isUserInteractionEnabled = false
+        
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = false
         self.walkSubView3.isHidden = false
@@ -1240,7 +1268,6 @@ extension DiscoverRecipeViewController{
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            //            self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
                 self.walkView1height.constant = self.view.frame.height / 2 + 300
                 self.view.layoutIfNeeded()

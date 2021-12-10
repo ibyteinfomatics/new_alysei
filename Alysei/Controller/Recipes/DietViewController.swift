@@ -80,7 +80,7 @@ extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (showAllDiet?[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((showAllDiet?[indexPath.row].imageId?.baseUrl ?? "") + (showAllDiet?[indexPath.row].imageId?.imgUrl ?? ""))
         
         let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
         cell.image1.contentMode = .scaleAspectFit

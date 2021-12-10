@@ -80,7 +80,7 @@ extension CuisinePageControlViewController : UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cuisineCollectionView.dequeueReusableCell(withReuseIdentifier: "CuisinePageControlCollectionViewCell", for: indexPath) as! CuisinePageControlCollectionViewCell
-        let imgUrl = (kImageBaseUrl + (self.arrCuisine[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((arrCuisine[indexPath.row].imageId?.baseUrl ?? "") + (self.arrCuisine[indexPath.row].imageId?.imgUrl ?? ""))
         cell.imageCuisine.setImage(withString: imgUrl)
         cell.cuisineNameLabel.text = self.arrCuisine[indexPath.row].cuisineName
         cell.imageCuisine.layer.cornerRadius = cell.imageCuisine.frame.height/2

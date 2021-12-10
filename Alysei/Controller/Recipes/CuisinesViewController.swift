@@ -68,7 +68,7 @@ extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
-        let imgUrl = (kImageBaseUrl + (showAllCuisine?[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((showAllCuisine?[indexPath.row].imageId?.baseUrl ?? "") + (showAllCuisine?[indexPath.row].imageId?.imgUrl ?? ""))
         cell.image1.setImage(withString: imgUrl)
         cell.image1.contentMode = .scaleToFill
         cell.imageNameLabel.text = showAllCuisine?[indexPath.row].name

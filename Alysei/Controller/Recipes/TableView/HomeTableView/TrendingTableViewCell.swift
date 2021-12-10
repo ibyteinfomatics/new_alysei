@@ -122,7 +122,7 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
                 cell.trendingImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-                if let strUrl = "\(kImageBaseUrl + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                if let strUrl = "\((arrayTrending?[indexPath.item].image?.baseUrl ?? "") + (arrayTrending?[indexPath.item].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                       let imgUrl = URL(string: strUrl) {
                      print("ImageUrl-----------------------------------------\(imgUrl)")
                     cell.trendingImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
