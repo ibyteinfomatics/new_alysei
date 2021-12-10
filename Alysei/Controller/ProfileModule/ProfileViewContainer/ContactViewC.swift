@@ -39,7 +39,7 @@ class ContactViewC: AlysieBaseViewC {
     self.editContactDetailButton.isUserInteractionEnabled = true
     self.tblViewContactUs.isUserInteractionEnabled = true
 
-    self.tblViewContactUs.allowsSelection = false
+    self.tblViewContactUs.allowsSelection = true
 
     //let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureMethod(_:)))
     //self.view.addGestureRecognizer(tap)
@@ -64,11 +64,11 @@ class ContactViewC: AlysieBaseViewC {
   }
 
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let view = touches.first?.view {
-            print(view.debugDescription)
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let view = touches.first?.view {
+//            print(view.debugDescription)
+//        }
+//    }
 
 
   //MARK: - Private Methods -
@@ -102,4 +102,13 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
     return 60
     }
   }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            let website = (self.tableData[indexPath.row].value )
+            print("Website----------------------------",website)
+            guard let url = URL(string: website) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 }

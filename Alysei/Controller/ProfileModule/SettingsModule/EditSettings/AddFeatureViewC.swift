@@ -365,6 +365,7 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
     return (model.type != AppConstants.File) ? 140.0 : 0.0
     }
   }
+    
 }
 
 extension AddFeatureViewC{

@@ -1144,6 +1144,7 @@ class ProfileViewC: AlysieBaseViewC{
         cell.configure(indexPath, currentIndex: self.currentIndex)
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
         cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
+        cell.configCell(profileCompletionModel?[indexPath.row] ?? ProfileCompletionModel(with: [:]),cell)
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
         cell.animationCallback = { currentIndex, cell in
         self.animateViews(indexPath.row , cell: cell)

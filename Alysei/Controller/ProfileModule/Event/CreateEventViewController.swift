@@ -70,7 +70,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
 
     
     
-    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl: String?
+    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,bookingUrl: String?
     var event_id: Int?
     var typeofpage: String?
     
@@ -128,12 +128,13 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         descriptionTextView.textContainer.heightTracksTextView = true
         descriptionTextView.isScrollEnabled = false
         bookingUrlView.isHidden = true
-        bookingUrlView1.isHidden = true
+     //   bookingUrlView1.isHidden = true
         heightbookingUrl.constant = 0
         if eventname != nil {
             hostNameTxf.text = hostname
             eventNameTxf.text = eventname
             locationNameTxf.text = location
+            bookingTxf.text = bookingUrl
             dateTxf.text = date
             timeTxf.text = time
             descriptionTextView.text = fulldescription
@@ -200,6 +201,19 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             descriptionTextView.isUserInteractionEnabled = false
             eventTxf.isUserInteractionEnabled = false
             registrationTxf.isUserInteractionEnabled = false
+            if bookingUrl != "" || bookingUrl == nil {
+                heightbookingUrl.constant = 60
+                bookingUrlView.isHidden = false
+                bookingUrlView1.isHidden = false
+                bookingTxf.isHidden = false
+                bookingTxf.isUserInteractionEnabled = false
+            }else{
+                bookingUrlView.isHidden = true
+                bookingUrlView1.isHidden = true
+                heightbookingUrl.constant = 0
+                bookingTxf.isHidden = true
+                bookingTxf.isUserInteractionEnabled = true
+            }
             
         }
         
@@ -272,8 +286,6 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             else {
                 createEventApi()
             }
-            
-            
         }
         
     }
@@ -704,7 +716,14 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         websiteView1.isHidden = true
         eventView1.isHidden = true
         registrationView1.isHidden = true
+        if bookingUrl ==  nil || bookingUrl == "" {
         bookingUrlView1.isHidden = true
+        vwHeadBooking.isHidden = true
+        }else{
+            bookingUrlView1.isHidden = false
+            vwHeadBooking.isHidden = false
+            vwHeadBooking.textColor =  UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        }
         
         
         eventNameTxf.autocorrectionType = .no
