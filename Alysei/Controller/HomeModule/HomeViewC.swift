@@ -103,12 +103,10 @@ class HomeViewC: AlysieBaseViewC {
             postRequestToGetProgressPrfile()
         } else {
             if Int.getInt(data["alysei_review"]) == 0 {
-                
                 postRequestToGetProgress()
                 
                
             } else if Int.getInt(data["alysei_review"]) == 1{
-                
                 postRequestToGetProgressPrfile()
                 
             }
