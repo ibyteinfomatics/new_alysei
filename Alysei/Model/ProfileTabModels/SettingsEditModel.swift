@@ -209,6 +209,8 @@ class AllProductsDataModel: NSObject{
   var featuredListingId: String?
   var featuredListingTypeId: String?
   var imagePath: String?
+  var base_url:String?
+    var image: AttachmentLink?
   
   var arrOptions: [AllProductsOptionsModel] = []
 
@@ -220,7 +222,9 @@ class AllProductsDataModel: NSObject{
     self.productDescription = String.getString(dictFeaturedProduct[APIConstants.kDescription])
     self.featuredListingId = String.getString(dictFeaturedProduct[APIConstants.kFeaturedListingId])
     self.featuredListingTypeId = String.getString(dictFeaturedProduct[APIConstants.kFeaturedListingTypeId])
-    
+    if let image = dictFeaturedProduct["image"] as? [String:Any]{
+        self.image = AttachmentLink.init(with: image)
+    }
     let dictImage = kSharedInstance.getDictionary(dictFeaturedProduct[APIConstants.kImage])
     self.imagePath = String.getString(dictImage[APIConstants.kAttachmentUrl])
   }

@@ -25,7 +25,7 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
         imgProduct.layer.masksToBounds = true
     }
     func configCell(_ data: MyStoreProductDetail){
-        let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
+        let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
         

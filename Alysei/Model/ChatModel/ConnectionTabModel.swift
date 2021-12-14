@@ -87,7 +87,7 @@ class User {
 class AvatarID {
     var id: Int
     var attachmentURL, attachmentType, createdAt, updatedAt: String
-
+    var baseUrl: String?
  
     init(with dictResponse:  [String:Any]?) {
         self.id = Int.getInt(dictResponse?["id"])
@@ -95,6 +95,7 @@ class AvatarID {
         self.attachmentType = String.getString(dictResponse?["attachment_type"])
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])
+        self.baseUrl = String.getString(dictResponse?["base_url"])
     }
     
 }

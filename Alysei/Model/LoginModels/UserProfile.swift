@@ -112,10 +112,12 @@ enum UserProfile {
     struct imageAttachementModel: Codable {
         var id: Int?
         var imageURL: String?
+        var base_url:String?
 
         private enum CodingKeys: String, CodingKey {
             case id
             case imageURL = "attachment_url"
+            case base_url
         }
 
     }

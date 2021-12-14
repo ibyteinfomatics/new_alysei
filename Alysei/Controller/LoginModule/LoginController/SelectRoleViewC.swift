@@ -67,8 +67,10 @@ extension SelectRoleViewC : UITableViewDelegate, UITableViewDataSource{
         roleCollectionCell.configureData(withGetRoleDataModel: self.getRoleViewModel.arrRoles[indexPath.item], indexPath.item)
         if indexPath.row == self.getRoleViewModel.arrRoles.count - 1 {
             roleCollectionCell.containerBottomConstraint.constant = 100
+            
         }else{
             roleCollectionCell.containerBottomConstraint.constant = 0
+           
         }
         return roleCollectionCell
     }
@@ -131,6 +133,7 @@ class RoleTableVieCell: UITableViewCell{
     @IBOutlet weak var imgViewSelected: UIImageView!
     @IBOutlet weak var lblRoleDesc: UILabel!
     @IBOutlet weak var containerBottomConstraint: NSLayoutConstraint!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()

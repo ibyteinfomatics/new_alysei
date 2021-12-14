@@ -19,7 +19,7 @@ class UpdateProfileDescVC: AlysieBaseViewC {
     var passheaderTitle: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwHeader.addShadow()
+        vwHeader.drawBottomShadow()
         txtDesc.addBorder()
         txtDesc.delegate = self
         headerTitle.text = passheaderTitle

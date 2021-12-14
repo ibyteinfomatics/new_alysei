@@ -55,9 +55,10 @@ class CountryModel {
 
 class FlagId{
     var attachmentUrl: String?
-    
+    var baseUrl: String?
     init(data: [String:Any]?) {
         self.attachmentUrl = String.getString(data?["attachment_url"])
+        self.baseUrl = String.getString(data?["baseUrl"])
     }
     init() { }
 }

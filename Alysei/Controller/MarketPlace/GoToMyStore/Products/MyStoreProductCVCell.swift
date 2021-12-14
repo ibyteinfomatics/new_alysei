@@ -36,6 +36,7 @@ class MyStoreProductCVCell: UICollectionViewCell {
         lblProductName.text = data.title
         self.lblRating.text = data.avg_rating
         print("Test Image------------------------------\(data )")
+        //let baseUrl = data.product_gallery?.first?.baseurl
         self.imgProduct.setImage(withString: kImageBaseUrl + String.getString(data.product_gallery?.first?.attachment_url))
         setUserRatngStarUI()
     }

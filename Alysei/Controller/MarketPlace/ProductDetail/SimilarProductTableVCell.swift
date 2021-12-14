@@ -39,7 +39,8 @@ extension SimilarProductTableVCell: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarProductCollectionVCell", for: indexPath) as? SimilarProductCollectionVCell else {return UICollectionViewCell()}
         cell.labelProductName.text = data?.related_products?[indexPath.row].title
-        cell.imgProduct.setImage(withString: kImageBaseUrl + String.getString(data?.related_products?[indexPath.row].product_gallery?.first?.attachment_url))
+        let baseurl = (data?.related_products?[indexPath.row].product_gallery?.first?.baseUrl ?? "")
+        cell.imgProduct.setImage(withString: baseurl + String.getString(data?.related_products?[indexPath.row].product_gallery?.first?.attachment_url))
         cell.lblavgRating.text = data?.related_products?[indexPath.row].avg_rating
         cell.configCell(data?.related_products?[indexPath.row] ?? ProductSearchListModel(with: [:]))
         return cell
