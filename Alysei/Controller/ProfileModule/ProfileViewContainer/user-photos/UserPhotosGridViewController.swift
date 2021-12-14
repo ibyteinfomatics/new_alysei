@@ -60,7 +60,8 @@ extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionV
             return UICollectionViewCell()
         }
 
-        cell.imageView.setImage(withString: "\(kImageBaseUrl)\(self.photos[indexPath.row])")
+        ///////cell.imageView.setImage(withString: "\(kImageBaseUrl)\(self.photos[indexPath.row])")
+        cell.imageView.setImage(withString: "\(self.photos[indexPath.row])")
 
         return cell
     }
@@ -113,7 +114,8 @@ extension UserPhotosGridViewController {
 //                      }
                     var innerResult = res
                     if innerData.attachments.first?.attachment_link.attachment_url != nil {
-                        innerResult.append((innerData.attachments.first?.attachment_link.attachment_url)!)
+                        let baseurl = innerData.attachments.first?.attachment_link.base_url ?? ""
+                        innerResult.append(baseurl + (innerData.attachments.first?.attachment_link.attachment_url ?? ""))
                     }
                     
                   
@@ -130,22 +132,6 @@ extension UserPhotosGridViewController {
                 if photosURLList.count > 0 {
                     self.pageNumber += 1
                     self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
-//                    self.photos.append(contentsOf: photosURLList)
                     
                     self.updatePhotosList()
                 }
@@ -187,6 +173,7 @@ extension UserPhotosGridViewController {
 
         struct attachment_link: Codable {
             var attachment_url: String
+            var base_url: String
         }
     }
 }

@@ -639,7 +639,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == imageCollectionView{
             guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeImageCVC", for: indexPath) as? MarketplaceHomeImageCVC else {return UICollectionViewCell()}
-            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
+            let baseUrl = self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.baseUrl ?? ""
+            let imgUrl = (baseUrl + (self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
             print("imgUrl---------------------------------------",imgUrl)
             cell.image.setImage(withString: imgUrl)
             return cell
@@ -657,7 +658,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
 //        }
         else if collectionView == newlyyAddedStoreCollectionView{
             guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
-            let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.attachmentURL ?? ""))
+            let baseUrl = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.baseUrl ?? ""
+            let imgUrl = (baseUrl + (self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.attachmentURL ?? ""))
             cell.image.setImage(withString: imgUrl)
             cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].name
             cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].location
@@ -665,7 +667,8 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         }else if collectionView == regionCollectionView{
             guard let cell = regionCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeRegionCViewCell", for: indexPath) as? MarketPlaceHomeRegionCViewCell  else {return UICollectionViewCell()}
             cell.lblRegionName.text = self.maketPlaceHomeScreenData?.regions?[indexPath.row].name
-            let imgUrl = (kImageBaseUrl + ( self.maketPlaceHomeScreenData?.regions?[indexPath.row].flagId?.attachmentUrl ?? ""))
+            let baseUrl = self.maketPlaceHomeScreenData?.regions?[indexPath.row].flagId?.baseUrl ?? ""
+            let imgUrl = (baseUrl + ( self.maketPlaceHomeScreenData?.regions?[indexPath.row].flagId?.attachmentUrl ?? ""))
             cell.imgRegion.setImage(withString: imgUrl)
             return cell
         }
@@ -920,7 +923,8 @@ class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
         super.awakeFromNib()
     }
     func configCell(_ data: MyStoreProductDetail){
-        let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
+      //  let baseUrl = data.
+        let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
         imgProduct.layer.cornerRadius = 15
@@ -1019,7 +1023,7 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
         super.awakeFromNib()
     }
     func configCell(_ data: MyStoreProductDetail){
-        let imgUrl = (kImageBaseUrl + (data.logo_id ?? ""))
+        let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
         print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
         imgProduct.layer.cornerRadius = 20

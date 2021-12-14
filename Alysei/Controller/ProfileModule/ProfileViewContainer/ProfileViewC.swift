@@ -743,14 +743,14 @@ class ProfileViewC: AlysieBaseViewC{
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    private func initialSetUp(_ profileImage: String , _ coverImage: String) -> Void{
+    private func initialSetUp(_ profileImage: String , _ coverImage: String, baseUrl: String) -> Void{
         
         self.imgViewCover.image = UIImage(named: "coverPhoto")
         self.imgViewProfile.image = UIImage(named: "profile_icon")
-        let imgUrl = (kImageBaseUrl + coverImage)
+        let imgUrl = (baseUrl + coverImage)
         
         self.imgViewCover.setImage(withString: imgUrl)
-        let imgPUrl = (kImageBaseUrl + profileImage)
+        let imgPUrl = (baseUrl + profileImage)
         
     
         if imgPUrl != "" {
@@ -847,6 +847,20 @@ class ProfileViewC: AlysieBaseViewC{
     //    Featured Trips (Travel Agencies)
     //    Featured Blogs (Voice of experts)
     private func updateListingTitle() {
+        if userLevel == .other {
+            switch self.visitorUserType {
+            case .distributer1, .distributer2, .distributer3, .producer:
+                self.featuredListingTitleLabel.text = "Featured Product"
+            case .restaurant:
+                self.featuredListingTitleLabel.text = "Featured Menu"
+            case .travelAgencies:
+                self.featuredListingTitleLabel.text = "Featured Packages"
+            case .voiceExperts:
+                self.featuredListingTitleLabel.text = "Featured"
+            default:
+                print("no user role found")
+            }
+        }else{
         switch self.userType {
         case .distributer1, .distributer2, .distributer3, .producer:
             self.featuredListingTitleLabel.text = "Featured Product"
@@ -858,6 +872,7 @@ class ProfileViewC: AlysieBaseViewC{
             self.featuredListingTitleLabel.text = "Featured"
         default:
             print("no user role found")
+        }
         }
     }
     
@@ -952,10 +967,11 @@ class ProfileViewC: AlysieBaseViewC{
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
                 
                 kSharedUserDefaults.synchronize()
-                let urlP = URL(string: "\(kImageBaseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
+                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
                 self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 
-                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "",baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))
               
                 //MARK: For self Contact Detail
                 self.contactDetilViewModel = responseModel.data?.contactTab
@@ -1073,7 +1089,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.lblDisplayNameNavigation.text = "\(name)".capitalized
                 self.headerView.isHidden = true
                 self.tblViewPosts.isHidden = false
-                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "", baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))
                 self.btnEditProfile.isHidden = true
                 self.messageButton.isHidden = true
                 self.respondeButton.isHidden = true

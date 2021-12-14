@@ -51,7 +51,8 @@ class FeaturedProductCollectionCell: UICollectionViewCell {
   public func configure(withAllProductsDataModel model: AllProductsDataModel?,pushedFrom: Int = 0) -> Void{
 
     self.model = model
-    self.imgViewProduct.setImage(withString: kImageBaseUrl + String.getString(model?.imagePath))
+    let baseUrl = model?.image?.baseUrl ?? ""
+    self.imgViewProduct.setImage(withString: baseUrl + String.getString(model?.imagePath))
     self.lblProductName.text = model?.productTitle
   }
     

@@ -70,7 +70,8 @@ extension ProductDetailTableVC: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductImageColectionViewCell", for: indexPath) as? ProductImageColectionViewCell else {return UICollectionViewCell()}
         print("Current Page ---------------------\(indexPath.row )")
       //  self.pageControl.currentPage = indexPath.row
-        cell.imgProduct.setImage(withString: kImageBaseUrl + String.getString(data?.product_detail?.product_gallery?[indexPath.row].attachment_url))
+        let baseUrl = data?.product_detail?.product_gallery?[indexPath.row].baseUrl ?? ""
+        cell.imgProduct.setImage(withString: baseUrl + String.getString(data?.product_detail?.product_gallery?[indexPath.row].attachment_url))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

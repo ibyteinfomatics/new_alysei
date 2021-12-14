@@ -3009,7 +3009,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSublayer" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 2" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUh-Qd-p4N" customClass="UITextFieldExtended" customModule="Alysei" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="House no. / Flat no. / Floor/ Building / Landmark" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUh-Qd-p4N" customClass="UITextFieldExtended" customModule="Alysei" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="70" width="315" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="cVN-mN-vKI"/>
@@ -3387,7 +3387,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-Zg-s0x">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-Zg-s0x">
                                 <rect key="frame" x="0.0" y="69" width="375" height="598"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -3485,12 +3485,12 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your role" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpC-5v-64q">
-                                        <rect key="frame" x="87.5" y="17" width="200" height="40"/>
+                                        <rect key="frame" x="70" y="17" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="a98-6P-11e"/>
                                             <constraint firstAttribute="height" constant="40" id="fan-nl-mTh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -3500,7 +3500,7 @@
                                     <constraint firstItem="8mx-Y0-Z3i" firstAttribute="leading" secondItem="zUv-RH-fdW" secondAttribute="leading" constant="15" id="4oo-OR-oNQ"/>
                                     <constraint firstItem="8mx-Y0-Z3i" firstAttribute="centerY" secondItem="zUv-RH-fdW" secondAttribute="centerY" constant="5" id="8vo-Po-lAb"/>
                                     <constraint firstItem="GpC-5v-64q" firstAttribute="centerY" secondItem="8mx-Y0-Z3i" secondAttribute="centerY" id="9c2-Mc-Nk9"/>
-                                    <constraint firstItem="GpC-5v-64q" firstAttribute="centerX" secondItem="zUv-RH-fdW" secondAttribute="centerX" id="uhe-49-SAj"/>
+                                    <constraint firstItem="GpC-5v-64q" firstAttribute="leading" secondItem="8mx-Y0-Z3i" secondAttribute="trailing" constant="15" id="ecz-MW-OrZ"/>
                                     <constraint firstAttribute="height" constant="64" id="zP8-Rm-sG5"/>
                                 </constraints>
                             </view>

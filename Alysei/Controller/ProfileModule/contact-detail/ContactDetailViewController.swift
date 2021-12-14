@@ -86,7 +86,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        vwHeader.drawBottomShadow()
         self.emailTextField.placeholder = "email@example.com"
         self.phoneTextField.placeholder = "9999999999"
         self.facebookTextField.placeholder = "https://www.facebook.com"
@@ -118,6 +118,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     @IBOutlet var addressTextField: UITextFieldExtended!
     @IBOutlet var websiteTextField: UITextFieldExtended!
     @IBOutlet var facebookTextField: UITextFieldExtended!
+    @IBOutlet weak var vwHeader: UIView!
 
     // MARK:- protocol methods
 

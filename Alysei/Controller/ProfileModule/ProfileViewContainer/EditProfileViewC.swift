@@ -17,7 +17,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
     @IBOutlet weak var btnCoverPhoto: UIButton!
     @IBOutlet weak var imgViewProfile: UIImageView!
     @IBOutlet weak var imgViewCoverPhoto: UIImageView!
-
+    @IBOutlet weak var vwheader: UIView!
     //MARK:  - Properties -
 
     var isProfilePhotoCaptured = false
@@ -43,10 +43,11 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
     //MARK:  - ViewLifeCycle Methods -
 
     override func viewDidLoad() {
-
+      
         super.viewDidLoad()
 //        print("Profile Pic----------------------------------------------\(signUpViewModel.profileData?.avatarID?.attachmentURL ?? "")")
 //        print("Cover Pic----------------------------------------------\(signUpViewModel.profileData?.coverID?.attachmentURL ?? "")")
+        vwheader.drawBottomShadow()
         if fromProfileCompletion == true && forProfileCompletionProfile == true{
             self.tapProfilePhoto(UIButton())
         }

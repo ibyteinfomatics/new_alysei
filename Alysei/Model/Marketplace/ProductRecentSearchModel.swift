@@ -114,10 +114,12 @@ class ProductGalleryModel {
     var marketplace_product_gallery_id: Int?
     var marketplace_product_id: Int?
     var attachment_url: String?
+    var baseUrl: String?
     
     init(with data: [String:Any]){
         self.marketplace_product_gallery_id = Int.getInt(data["marketplace_product_gallery_id"])
         self.marketplace_product_id = Int.getInt(data["marketplace_product_id"])
         self.attachment_url = String.getString(data["attachment_url"])
+        self.baseUrl = String.getString(data["baseUrl"])
     }
 }

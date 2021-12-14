@@ -202,7 +202,8 @@ class NetworkViewC: AlysieBaseViewC {
             }
             
             if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                networkCTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+                let baseUrl = self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? ""
+                networkCTableCell.img.setImage(withString: String.getString(baseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
             }
             networkCTableCell.btnAcceptCallback = { tag in
                 
