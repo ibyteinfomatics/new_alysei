@@ -171,12 +171,14 @@ class UserData {
 class Avatarid {
     var id: Int?
     var attachmenturl, attachmentType: String?
+    var baseUrl: String?
     var height, width: Int?
     var createdAt, updatedAt: String?
     
     init(with dictResponse: [String:Any]?) {
         
         self.attachmenturl = String.getString(dictResponse?["attachment_url"])
+        self.baseUrl = String.getString(dictResponse?["base_url"])
         self.attachmentType = String.getString(dictResponse?["attachment_type"])
         self.id = Int.getInt(dictResponse?["id"])
         self.height = Int.getInt(dictResponse?["height"])

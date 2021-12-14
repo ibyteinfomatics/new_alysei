@@ -6,15 +6,19 @@
 //
 
 import UIKit
+
 var parentIngridientId = Int()
+
 class ViewAllViewController: UIViewController {
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
+    
     var arraySearchByIngridient : [IngridentArray]? = []
     var searchText = String()
     var searching1 = false
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -27,7 +31,7 @@ class ViewAllViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-
+        
         headerView.drawBottomShadow()
     }
     
@@ -64,22 +68,22 @@ class ViewAllViewController: UIViewController {
             }
             self.collectionView.reloadData()
             self.view.isUserInteractionEnabled = true
-    }
+        }
     }
     
     func callSearchIngridients(){
-       
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchText)&type=1" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             switch statusCode{
             case 200:
-            let dictResponse = dictResponse as? [String:Any]
-            
-            if let data = dictResponse?["data"] as? [[String:Any]]{
-                self.arraySearchByIngridient = data.map({IngridentArray.init(with: $0)})
-                self.searching1 = true
-                self.collectionView.reloadData()
-               
-            }
+                let dictResponse = dictResponse as? [String:Any]
+                
+                if let data = dictResponse?["data"] as? [[String:Any]]{
+                    self.arraySearchByIngridient = data.map({IngridentArray.init(with: $0)})
+                    self.searching1 = true
+                    self.collectionView.reloadData()
+                    
+                }
             case 409:
                 self.arraySearchByIngridient?.removeAll()
                 self.collectionView.reloadData()
@@ -87,17 +91,16 @@ class ViewAllViewController: UIViewController {
             default:
                 self.arraySearchByIngridient?.removeAll()
                 self.collectionView.reloadData()
-//                self.showAlert(withMessage: "Internal Server Error")
-            
+                self.showAlert(withMessage: "Internal Server Error")
             }
         }
     }
-
+    
 }
 extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return self.arraySearchByIngridient?.count ?? 0
+        return self.arraySearchByIngridient?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,7 +113,7 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.ingredientsImage.layer.borderWidth = 1
         cell.ingredientsImage.layer.borderColor = UIColor.lightGray.cgColor
         cell.ingredientsLabel.text = arraySearchByIngridient?[indexPath.item].ingridientTitle
-       
+        
         return cell
     }
     
@@ -120,7 +123,7 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
         parentIngridientId = (arraySearchByIngridient?[indexPath.item].recipeIngredientIds)!
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
-       searching = true
+        searching = true
         vc.indexOfPageToRequest = 1
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -135,7 +138,7 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         else{
             return CGSize(width: self.collectionView.frame.width/3 - 25 , height: 160.0)
         }
-       
+        
     }
 }
 extension ViewAllViewController: UITextFieldDelegate{
@@ -151,18 +154,18 @@ extension ViewAllViewController: UITextFieldDelegate{
            let textRange = Range(range, in: text) {
             let updateText = text.replacingCharacters(in: textRange,
                                                       with: string)
-        searchText = updateText
-        if searchText.count > 0 {
-            callSearchIngridients()
-           hideKeyboardWhenTappedAround()
+            searchText = updateText
+            if searchText.count > 0 {
+                callSearchIngridients()
+                hideKeyboardWhenTappedAround()
+            }
+            else{
+                self.searching1 = false
+                self.searchIngridientTextField.text = nil
+                getSearchByIngridients()
+                collectionView.reloadData()
+            }
         }
-        else{
-            self.searching1 = false
-            self.searchIngridientTextField.text = nil
-            getSearchByIngridients()
-            collectionView.reloadData()
-        }
-     }
         return true
     }
 }

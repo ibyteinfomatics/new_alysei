@@ -72,7 +72,7 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
        
-            return  arraySearchByMeal?.count ?? 0
+            return  firstSixMealArray?.count ?? 0
         
        
 
@@ -87,11 +87,11 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
 //                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
 //
 //                cell.itemImgVw.setImage(withString: imgUrl)
-            if (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? "") == ""{
+            if (firstSixMealArray?[indexPath.item].imageId?.imgUrl ?? "") == ""{
                 cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-            if let strUrl = "\((arraySearchByMeal?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((firstSixMealArray?[indexPath.item].imageId?.baseUrl ?? "") + (firstSixMealArray?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
@@ -102,7 +102,7 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
             cell.itemImgVw.layer.borderWidth = 1
             cell.itemImgVw.layer.borderColor = UIColor.lightGray.cgColor
                 
-                cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName ?? ""
+                cell.itemNameLbl.text = firstSixMealArray?[indexPath.item].mealName ?? ""
                
           
            
@@ -138,8 +138,8 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isFrom = "Meal"
-        mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
-        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        mealType = firstSixMealArray?[indexPath.row].mealName ?? ""
+        searchTitle = firstSixMealArray?[indexPath.row].mealName ?? ""
 //        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()

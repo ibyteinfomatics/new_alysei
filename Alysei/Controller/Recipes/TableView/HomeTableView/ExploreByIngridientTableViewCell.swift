@@ -9,12 +9,15 @@ import UIKit
 //var finalheight : CGFloat?
 //var finalheight1 : CGFloat?
 var arraySearchByMeal : [SelectMealDataModel]? = []
+var firstSixMealArray : [SelectMealDataModel]? = []
 var arraySearchByIngridient : [IngridentArray]? = []
+var firstSixingdntArray : [IngridentArray]? = []
 var isFrom = String()
 var ingridentHeight = CGFloat()
 var mealHeight = CGFloat()
 var regionHeight = CGFloat()
 var trendingHeight = CGFloat()
+var quickeasyHeight = CFloat()
 class ExploreByIngridientTableViewCell: UITableViewCell {
 
     @IBOutlet weak var quickSearchLbl: UILabel!
@@ -83,7 +86,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-            return arraySearchByIngridient?.count ?? 0
+            return firstSixingdntArray?.count ?? 0
 
     }
     
@@ -97,11 +100,11 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
 //                let imgUrl = (kImageBaseUrl + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
 //
 //                cell.itemImgVw.setImage(withString: imgUrl)
-            if (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? "") == ""{
+            if (firstSixingdntArray?[indexPath.item].imageId?.imgUrl ?? "") == ""{
                 cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
             }
             else{
-            if let strUrl = "\((arraySearchByIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByIngridient?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((firstSixingdntArray?[indexPath.item].imageId?.baseUrl ?? "") + (firstSixingdntArray?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
@@ -112,7 +115,7 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
                 cell.itemImgVw.layer.borderWidth = 1
                 cell.itemImgVw.layer.borderColor = UIColor.lightGray.cgColor
                
-                cell.itemNameLbl.text =  arraySearchByIngridient?[indexPath.item].ingridientTitle ?? ""
+                cell.itemNameLbl.text =  firstSixingdntArray?[indexPath.item].ingridientTitle ?? ""
                
            
             
@@ -148,8 +151,8 @@ extension ExploreByIngridientTableViewCell: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isFrom = "Ingridients"
         isFilterLoading = false
-        parentIngridientId = (arraySearchByIngridient?[indexPath.item].recipeIngredientIds)!
-        searchTitle = arraySearchByIngridient?[indexPath.row].ingridientTitle ?? ""
+        parentIngridientId = (firstSixingdntArray?[indexPath.item].recipeIngredientIds)!
+        searchTitle = firstSixingdntArray?[indexPath.row].ingridientTitle ?? ""
 //        searchId = "\(arraySearchByIngridient?[indexPath.row].recipeIngredientIds ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()

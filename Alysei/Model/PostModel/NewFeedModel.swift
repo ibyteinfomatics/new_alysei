@@ -184,10 +184,12 @@ class SubjectData: Codable {
 class Avatar: Codable {
     var id: Int?
     var attachmentUrl: String?
+    var baseUrl: String?
     
     init(with dictResponse: [String:Any]){
         self.id = Int.getInt(dictResponse["id"])
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
+        self.baseUrl = String.getString(dictResponse["base_url"])
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -213,11 +215,13 @@ class Attachments: Codable{
 
 class AttachmentLink: Codable {
     var attachmentUrl: String?
+    var baseUrl : String?
     var height: Int?
     var width: Int?
     
     init(with dictResponse: [String:Any]){
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
+        self.baseUrl = String.getString(dictResponse["base_url"])
         self.height = Int.getInt(dictResponse["height"])
         self.width = Int.getInt(dictResponse["width"])
     }

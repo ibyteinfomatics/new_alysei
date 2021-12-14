@@ -125,7 +125,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         self.discoverCollectionView.delegate = self
         self.discoverCollectionView.dataSource = self
         
-        getExploreData()
+       getExploreData()
         
     }
     
@@ -317,7 +317,9 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
             arraySearchByIngridient = [IngridentArray]()
+            firstSixingdntArray = [IngridentArray]()
             arraySearchByMeal = [SelectMealDataModel]()
+            firstSixMealArray = [SelectMealDataModel]()
             arraySearchByRegion = [SelectRegionDataModel]()
             arrayTrending = [HomeTrending]()
             arrayQuickEasy = [HomeQuickEasy]()
@@ -328,6 +330,16 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 if let ingridients = data["ingredients"] as? [[String:Any]]{
                     let ingridient = ingridients.map({IngridentArray.init(with: $0)})
                     arraySearchByIngridient = ingridient
+                    
+                    if arraySearchByIngridient?.count ?? 0 <= 6{
+                        firstSixingdntArray = arraySearchByIngridient
+                    }
+                    else{
+                        for i in 0..<6{
+                            firstSixingdntArray?.append(arraySearchByIngridient?[i] ?? IngridentArray())
+                           }
+                    }
+                            
                     print("\(String(describing: arraySearchByIngridient?.count))")
                     
                 }
@@ -335,6 +347,13 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 if let meals = data["meals"] as? [[String:Any]]{
                     let meal = meals.map({SelectMealDataModel.init(with: $0)})
                     arraySearchByMeal = meal
+                    if arraySearchByIngridient?.count ?? 0 <= 6{
+                        firstSixMealArray = arraySearchByMeal
+                    }
+                    else{
+                    for i in 0..<6{                        firstSixMealArray?.append(arraySearchByMeal?[i] ?? SelectMealDataModel(with: [:]))
+                       }
+                    }
                     print("\(String(describing: arraySearchByMeal?.count))")
                 }
                 
@@ -358,25 +377,25 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 
             }
             
-            if arraySearchByIngridient?.count != 0{
-                if (((arraySearchByIngridient?.count ?? 0) % 3) == 0){
-                    ingridentHeight = CGFloat((160 * ((arraySearchByIngridient?.count ?? 0) / 3)) + 10)
+            if firstSixingdntArray?.count != 0{
+                if (((firstSixingdntArray?.count ?? 0) % 3) == 0){
+                    ingridentHeight = CGFloat((160 * ((firstSixingdntArray?.count ?? 0) / 3)) + 20)
                 }
                 else{
                     let abc = 160 * (((arraySearchByIngridient?.count ?? 0) / 3) + 1)
-                    ingridentHeight = CGFloat( abc + 10)
+                    ingridentHeight = CGFloat( abc + 20)
                 }
             }
             else{
                 ingridentHeight = 0
             }
             
-            if arraySearchByIngridient?.count != 0{
-                if (((arraySearchByMeal?.count ?? 0) % 3) == 0){
-                    mealHeight = CGFloat((160 * ((arraySearchByMeal?.count ?? 0) / 3)) + 40)
+            if firstSixMealArray?.count != 0{
+                if (((firstSixMealArray?.count ?? 0) % 3) == 0){
+                    mealHeight = CGFloat((160 * ((firstSixMealArray?.count ?? 0) / 3)) + 40)
                 }
                 else{
-                    let heightMeal = 160 * (((arraySearchByMeal?.count ?? 0) / 3) + 1)
+                    let heightMeal = 160 * (((firstSixMealArray?.count ?? 0) / 3) + 1)
                     mealHeight = CGFloat(heightMeal + 40)
                 }
             }
@@ -388,6 +407,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 regionHeight = 0
             }
             else{
+            
                 regionHeight = 200
             }
             
@@ -399,10 +419,10 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
             }
             
             if arrayQuickEasy?.count == 0{
-                trendingHeight = 0
+                quickeasyHeight = 0
             }
             else{
-                trendingHeight = 360
+                quickeasyHeight = 360
             }
             containerTableVw.reloadData()
             self.view.isUserInteractionEnabled = true
@@ -509,7 +529,6 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                     
                     let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllMealViewController") as! ViewAllMealViewController
                     self.navigationController?.pushViewController(viewAll, animated: true)
-                    
                 }
                 
                 return cell
@@ -519,6 +538,12 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 cell2.quickSearchByRegionLabel.text = "Search By Italian Region"
                 cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell2.delegate = self
+                cell2.tapViewAllRecipe = { [self] in
+                    
+                    let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllRegionViewController") as! ViewAllRegionViewController
+                    self.navigationController?.pushViewController(viewAll, animated: true)
+                    
+                }
                 return cell2
                 
             case 3:
@@ -819,7 +844,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             if (indexPath.section == 4)
             {
                 
-                return trendingHeight
+                return CGFloat(quickeasyHeight)
             }
         case 1:
             return 260

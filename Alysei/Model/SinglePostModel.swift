@@ -117,10 +117,12 @@ class SinglePostData: Codable {
 class SinglePostAvatar: Codable {
     var id: Int?
     var attachmentUrl: String?
+    var baseUrl: String?
     
     init(with dictResponse: [String:Any]){
         self.id = Int.getInt(dictResponse["id"])
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
+        self.baseUrl = String.getString(dictResponse["base_url"])
     }
 
     private enum CodingKeys: String, CodingKey {

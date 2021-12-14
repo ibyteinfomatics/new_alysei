@@ -235,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4d3-yf-CgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4813" y="768"/>
+            <point key="canvasLocation" x="4196" y="779"/>
         </scene>
         <!--Cancel Pop Up View Controller-->
         <scene sceneID="vFE-NQ-w2L">
@@ -397,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skE-lP-qmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3886.9565217391309" y="778.79464285714278"/>
+            <point key="canvasLocation" x="3465" y="779"/>
         </scene>
         <!--Add Missing Ingridient View Controller-->
         <scene sceneID="Gkg-Zq-cgk">
@@ -452,16 +452,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-oo-0y2">
-                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
+                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUL-wc-eVX">
-                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-Ak-1US">
-                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -679,7 +679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Pz-ik-hVV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6739" y="-141"/>
+            <point key="canvasLocation" x="6754" y="-119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mPI-e9-nNI">
@@ -751,16 +751,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="an8-j4-2Zh">
-                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
+                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNN-Nh-Pgk">
-                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-sM-Z4M">
-                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -978,7 +978,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttb-lv-5yu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7541" y="-141"/>
+            <point key="canvasLocation" x="7546" y="-119"/>
         </scene>
         <!--Cuisines View Controller-->
         <scene sceneID="oL5-cC-sQ6">
@@ -1922,7 +1922,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqm-hC-T4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7472" y="753"/>
+            <point key="canvasLocation" x="7201" y="779"/>
         </scene>
         <!--View All Quick Easy View Controller-->
         <scene sceneID="fGb-mK-NmR">
@@ -1993,7 +1993,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJg-Nc-u1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8280" y="753"/>
+            <point key="canvasLocation" x="7936" y="779"/>
         </scene>
         <!--Add Steps View Controller-->
         <scene sceneID="aDi-mz-DgH">
@@ -3512,7 +3512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIZ-6p-HGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9199" y="-1074"/>
+            <point key="canvasLocation" x="9404" y="779"/>
         </scene>
         <!--Add Review Recipe View Controller-->
         <scene sceneID="TZW-hp-jfR">
@@ -3945,7 +3945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpz-sd-d9U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9948" y="779"/>
+            <point key="canvasLocation" x="10139" y="779"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="Dhc-JR-ZjN">
@@ -4968,7 +4968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pml-D9-HYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015.9420289855075" y="807.58928571428567"/>
+            <point key="canvasLocation" x="2730" y="779"/>
         </scene>
         <!--View Recipe View Controller-->
         <scene sceneID="C3X-Jb-76E">
@@ -6805,7 +6805,7 @@
                                     <constraint firstAttribute="height" constant="20" id="dap-7G-4iw"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon_active" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-Wm-XiC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-Wm-XiC">
                                 <rect key="frame" x="15" y="164.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eLI-Wm-XiC" secondAttribute="height" multiplier="1:1" id="3c9-5R-ktt"/>
@@ -6909,7 +6909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fS-jm-p7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10761" y="779"/>
+            <point key="canvasLocation" x="10888" y="779"/>
         </scene>
         <!--Discover Recipe View Controller-->
         <scene sceneID="8yQ-dd-e87">
@@ -7745,16 +7745,16 @@
                                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-1S-PLg">
-                                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
+                                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbS-J5-Lb1">
-                                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
+                                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-WD-Z23">
-                                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
+                                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -11685,7 +11685,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3p6-cb-w9m">
                                 <rect key="frame" x="15" y="173" width="384" height="689"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="F8W-f6-Elw">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="F8W-f6-Elw">
                                     <size key="itemSize" width="73" height="103"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -11769,7 +11769,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xc5-tx-ZCt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5691" y="779"/>
+            <point key="canvasLocation" x="4958" y="779"/>
         </scene>
         <!--View All Meal View Controller-->
         <scene sceneID="EtQ-Z4-DUF">
@@ -11854,7 +11854,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dK6-Go-RSy">
                                 <rect key="frame" x="15" y="173" width="384" height="689"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="8Ln-DS-PbC">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8Ln-DS-PbC">
                                     <size key="itemSize" width="73" height="103"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -11938,7 +11938,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tO-VX-MI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6559" y="767"/>
+            <point key="canvasLocation" x="5720" y="779"/>
         </scene>
         <!--Filtered Recipe View Controller-->
         <scene sceneID="XBp-Z6-QPK">
@@ -12145,7 +12145,124 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nP-r9-dIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9145" y="767"/>
+            <point key="canvasLocation" x="8665" y="779"/>
+        </scene>
+        <!--View All Region View Controller-->
+        <scene sceneID="6Gu-lL-Fy9">
+            <objects>
+                <viewController storyboardIdentifier="ViewAllRegionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JTV-R8-KxD" customClass="ViewAllRegionViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z3r-Ne-ejb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rch-Da-8Ed">
+                                <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="def-32-aY6">
+                                        <rect key="frame" x="15" y="21" width="24" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="Gkj-6e-QPH"/>
+                                            <constraint firstAttribute="height" constant="22" id="QJ5-wH-ODJ"/>
+                                        </constraints>
+                                        <state key="normal" image="left_arrow_black"/>
+                                        <connections>
+                                            <action selector="tapBack:" destination="JTV-R8-KxD" eventType="touchUpInside" id="oV7-j1-uaW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Italian Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cv3-Pg-YHG">
+                                        <rect key="frame" x="59" y="21.5" width="208.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Cv3-Pg-YHG" firstAttribute="centerY" secondItem="Rch-Da-8Ed" secondAttribute="centerY" id="Byo-Po-GKU"/>
+                                    <constraint firstItem="def-32-aY6" firstAttribute="centerY" secondItem="Rch-Da-8Ed" secondAttribute="centerY" id="Pf5-Ud-r4v"/>
+                                    <constraint firstAttribute="height" constant="64" id="ikN-hI-PBq"/>
+                                    <constraint firstItem="Cv3-Pg-YHG" firstAttribute="leading" secondItem="def-32-aY6" secondAttribute="trailing" constant="20" id="mJa-qQ-hHV"/>
+                                    <constraint firstItem="def-32-aY6" firstAttribute="leading" secondItem="Rch-Da-8Ed" secondAttribute="leading" constant="15" id="uH8-rg-W7r"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-gq-eH8">
+                                <rect key="frame" x="15" y="118" width="384" height="0.0"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_search" translatesAutoresizingMaskIntoConstraints="NO" id="CTe-nV-zKQ">
+                                        <rect key="frame" x="10" y="-12.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CTe-nV-zKQ" secondAttribute="height" multiplier="1:1" id="7fS-D3-zk9"/>
+                                            <constraint firstAttribute="height" constant="25" id="ekY-nn-ZU2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoX-aK-SfL">
+                                        <rect key="frame" x="349" y="-10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ame-AE-ung"/>
+                                            <constraint firstAttribute="width" constant="20" id="qDf-m2-Oj4"/>
+                                        </constraints>
+                                        <state key="normal" image="cross_icon_black"/>
+                                        <connections>
+                                            <action selector="tapCross:" destination="JTV-R8-KxD" eventType="touchUpInside" id="qbc-24-Bjg"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Italian Region" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DC5-Ni-rle">
+                                        <rect key="frame" x="45" y="-17" width="294" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="tw1-2x-HLI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="CTe-nV-zKQ" firstAttribute="leading" secondItem="ypH-gq-eH8" secondAttribute="leading" constant="10" id="5Du-N3-5MQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="LoX-aK-SfL" secondAttribute="trailing" constant="15" id="8Lw-do-zcp"/>
+                                    <constraint firstItem="CTe-nV-zKQ" firstAttribute="centerY" secondItem="ypH-gq-eH8" secondAttribute="centerY" id="EUx-ZS-yTt"/>
+                                    <constraint firstAttribute="height" id="cfV-U3-mFG"/>
+                                    <constraint firstItem="LoX-aK-SfL" firstAttribute="centerY" secondItem="ypH-gq-eH8" secondAttribute="centerY" id="mXW-Ij-FM0"/>
+                                    <constraint firstItem="LoX-aK-SfL" firstAttribute="leading" secondItem="DC5-Ni-rle" secondAttribute="trailing" constant="10" id="n7x-PS-mpP"/>
+                                    <constraint firstItem="DC5-Ni-rle" firstAttribute="leading" secondItem="CTe-nV-zKQ" secondAttribute="trailing" constant="10" id="qOE-na-hf2"/>
+                                    <constraint firstItem="DC5-Ni-rle" firstAttribute="centerY" secondItem="ypH-gq-eH8" secondAttribute="centerY" id="wfg-j3-0WX"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YzS-GL-0JV">
+                                <rect key="frame" x="15" y="128" width="384" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6Df-Qb-SlM">
+                                    <size key="itemSize" width="73" height="103"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4VW-UF-Kz1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4VW-UF-Kz1" firstAttribute="trailing" secondItem="ypH-gq-eH8" secondAttribute="trailing" constant="15" id="ASl-8r-9m9"/>
+                            <constraint firstItem="Rch-Da-8Ed" firstAttribute="leading" secondItem="4VW-UF-Kz1" secondAttribute="leading" id="PE7-E8-l3P"/>
+                            <constraint firstItem="4VW-UF-Kz1" firstAttribute="trailing" secondItem="YzS-GL-0JV" secondAttribute="trailing" constant="15" id="TWs-0U-jmK"/>
+                            <constraint firstItem="YzS-GL-0JV" firstAttribute="leading" secondItem="4VW-UF-Kz1" secondAttribute="leading" constant="15" id="VFq-O5-b5k"/>
+                            <constraint firstItem="Rch-Da-8Ed" firstAttribute="top" secondItem="4VW-UF-Kz1" secondAttribute="top" id="XnD-dD-63l"/>
+                            <constraint firstItem="ypH-gq-eH8" firstAttribute="leading" secondItem="4VW-UF-Kz1" secondAttribute="leading" constant="15" id="Yr6-3Z-E82"/>
+                            <constraint firstItem="Rch-Da-8Ed" firstAttribute="trailing" secondItem="4VW-UF-Kz1" secondAttribute="trailing" id="bv5-xT-MFi"/>
+                            <constraint firstItem="YzS-GL-0JV" firstAttribute="bottom" secondItem="4VW-UF-Kz1" secondAttribute="bottom" id="qtj-KL-C9V"/>
+                            <constraint firstItem="YzS-GL-0JV" firstAttribute="top" secondItem="ypH-gq-eH8" secondAttribute="bottom" constant="10" id="roJ-5U-NHE"/>
+                            <constraint firstItem="ypH-gq-eH8" firstAttribute="top" secondItem="Rch-Da-8Ed" secondAttribute="bottom" constant="10" id="wNS-Jg-xVS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="YzS-GL-0JV" id="Mro-Kj-MHt"/>
+                        <outlet property="headerView" destination="Rch-Da-8Ed" id="0BY-A6-hjo"/>
+                        <outlet property="searchIngridientTextField" destination="DC5-Ni-rle" id="03p-m2-A43"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mBk-eb-b4P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6472" y="779"/>
         </scene>
     </scenes>
     <resources>
@@ -12189,7 +12306,7 @@
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_dining_room_1" width="12" height="13"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
-        <image name="icons8_image_1" width="34.5" height="27.5"/>
+        <image name="icons8_image_1" width="38" height="30.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
         <image name="icons8_left" width="24" height="18.5"/>
@@ -12198,7 +12315,7 @@
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="27" height="27"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="23" height="23"/>
+        <image name="icons8_search" width="17.5" height="17.5"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
@@ -12217,7 +12334,6 @@
         <image name="share_icon" width="128" height="104.5"/>
         <image name="undraw_Hamburger_8ge6" width="291.5" height="165"/>
         <image name="undraw_cooking_lyxy" width="227" height="191.5"/>
-        <image name="user_icon_active" width="128" height="128"/>
         <namedColor name="blackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
