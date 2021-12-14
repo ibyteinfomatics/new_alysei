@@ -323,7 +323,6 @@ extension FilteredRecipeViewController: UITextFieldDelegate{
                 self.BlankView.isHidden = true
                 filteredCollectionView.reloadData()
             }
-
             
         }
                 
