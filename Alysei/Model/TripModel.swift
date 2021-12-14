@@ -115,10 +115,11 @@ class TripAdventure {
 // MARK: - Attachment
 class TripAttachment {
     var id: Int?
-    var attachmentURL, attachmentType, createdAt, updatedAt: String?
+    var attachmentURL, baseUrl, attachmentType, createdAt, updatedAt: String?
 
     init(with dictResponse: [String:Any]?) {
         self.attachmentURL = String.getString(dictResponse?["attachment_url"])
+        self.baseUrl = String.getString(dictResponse?["base_url"])
         self.attachmentType = String.getString(dictResponse?["attachment_type"])
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])

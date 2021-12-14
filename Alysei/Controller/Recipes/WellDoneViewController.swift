@@ -39,7 +39,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         reviewOuterView.layer.cornerRadius = 5
        
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            profileImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            profileImageVw.setImage(withString: "\(kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? "")\(imageURLString)")
             self.profileImageVw.layer.cornerRadius = (self.profileImageVw.frame.width / 2.0)
             self.profileImageVw.layer.borderWidth = 5.0
             self.profileImageVw.layer.masksToBounds = true

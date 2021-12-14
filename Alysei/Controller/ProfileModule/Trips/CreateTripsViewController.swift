@@ -84,7 +84,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     
     var DayarrData = ["1 Day","2 Days","3 Days","4 Days","5 Days","6 Days","7 Days"]
     
-    var tripname,agency,website,price,country,region,adventure,intensity,duration,fulldescription,imgurl,currency: String?
+    var tripname,agency,website,price,country,region,adventure,intensity,duration,fulldescription,imgurl,baseURL,currency: String?
     var trip_id: Int?
     var typeofpage: String?
     
@@ -141,7 +141,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             intensityTxf.text = intensity
             priceTxf.text = price
             descriptionTextView.text = fulldescription
-            uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString((baseURL ?? "") + imgurl!), placeholder: UIImage(named: "image_placeholder"))
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
             

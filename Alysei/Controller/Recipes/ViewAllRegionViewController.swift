@@ -114,7 +114,7 @@ extension ViewAllRegionViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchByRegionCollectionVieCell", for: indexPath) as? SearchByRegionCollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchByRegionCollectionViewCell", for: indexPath) as? SearchByRegionCollectionViewCell {
             
             //            let imgUrl = (kImageBaseUrl + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))
             if (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? "") == ""{

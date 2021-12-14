@@ -377,7 +377,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configCell(recipeModel?.latestReview ?? LatestReviewDataModel(with: [:]))
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
-                viewAll.recipeReviewId = recipeModel!.recipeId!
+                viewAll.recipeReviewId = recipeModel?.recipeId ?? 0
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
             return cell

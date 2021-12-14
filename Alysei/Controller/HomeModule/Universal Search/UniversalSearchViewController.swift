@@ -470,7 +470,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         
                         
                         if self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl != nil {
-                            cell1.peopleImgView.setImage(withString: String.getString(kImageBaseUrl+(self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+                            cell1.peopleImgView.setImage(withString: String.getString((self.arraySearchByPeople?[indexPath.row].avatarId?.baseUrl ?? "")+(self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
                         }
                         
                         cell1.peopleImgView.layer.masksToBounds = false
@@ -489,14 +489,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     else{
                         cell2.noItemLabel.isHidden = true
                         cell2.mainVw.isHidden = false
-                        let imgUrl = (kImageBaseUrl + (self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""))
+                        let imgUrl = ((self.arraySearchByBolg?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""))
                         cell2.blogImage.setImage(withString: imgUrl)
                         cell2.blogTitle.text = arraySearchByBolg?[indexPath.row].title
                         cell2.blogDescription.text = arraySearchByBolg?[indexPath.row].datumDescription
                         cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                         cell2.readMoreButton.isHidden = false
                         cell2.readMoreButton.tag = indexPath.row
-                        let imageUrl = kImageBaseUrl + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
+                        let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
                         cell2.userImage.setImage(withString: imageUrl)
                         cell2.btnReadMoreCallback = { tag in
                            
@@ -506,6 +506,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             vc.fulldescription = self.arraySearchByBolg?[indexPath.row].datumDescription
                             vc.draft = self.arraySearchByBolg?[indexPath.row].status
                             vc.imgurl = self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""
+                            vc.baseUrl = self.arraySearchByBolg?[indexPath.row].attachment?.baseUrl ?? ""
                             vc.typeofpage = "read"
                             
                         }
@@ -521,7 +522,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     else{
                         cell3.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
-                        let imgUrl = (kImageBaseUrl + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? ""))
+                        let imgUrl = ((self.arraySearchByTrips?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? ""))
                         cell3.tripImage.setImage(withString: imgUrl)
                         cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                         cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
@@ -536,7 +537,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell3.priceTitle.text =  "$" + (arraySearchByTrips?[indexPath.row].price ?? "0")
                         }
                         
-                        let imageUrl = (kImageBaseUrl + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
+                        let imageUrl = ("\(arraySearchByTrips?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
                         cell3.userImage.setImage(withString: imageUrl)
                         
                         cell3.configCell(arraySearchByTrips?[indexPath.row] ?? TripDatum(with: [:]))
@@ -669,14 +670,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     else{
                         cell4.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
-                        let imgUrl = (kImageBaseUrl + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
+                        let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
                         cell4.eventImage.setImage(withString: imgUrl)
                         cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                         cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                         cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
                         cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                         cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
-                        let imgUrlUser = (kImageBaseUrl + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
+                        let imgUrlUser = ((self.arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
                         cell4.userImage.setImage(withString: imgUrlUser)
                         
                         
@@ -757,10 +758,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell1.mainVw.isHidden = false
                     cell1.labelPeopleName.text = arraySearchByPeople?[indexPath.row].name
                     cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
-                    let imgUrl = (kImageBaseUrl + (self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? ""))
-                    
-                    cell1.peopleImgView.setImage(withString: imgUrl)
+                    let imgUrl = ((self.arraySearchByPeople?[indexPath.row].avatarId?.baseUrl ?? "") + (self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? ""))
+                    cell1.peopleImgView.layer.masksToBounds = false
+                    cell1.peopleImgView.clipsToBounds = true
+                    cell1.peopleImgView.layer.borderWidth = 2
+                    cell1.peopleImgView.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
                     cell1.peopleImgView.layer.cornerRadius = cell1.peopleImgView.frame.width/2
+                    cell1.peopleImgView.setImage(withString: imgUrl)
+                    
                 }
                 return cell1
             case 2:
@@ -772,14 +777,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 else{
                     cell2.noItemLabel.isHidden = true
                     cell2.mainVw.isHidden = false
-                    let imgUrl = (kImageBaseUrl + (self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""))
+                    let imgUrl = ((self.arraySearchByBolg?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""))
                     cell2.blogImage.setImage(withString: imgUrl)
                     cell2.blogTitle.text = arraySearchByBolg?[indexPath.row].title
                     cell2.blogDescription.text = arraySearchByBolg?[indexPath.row].datumDescription
                     cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                     cell2.readMoreButton.isHidden = false
                     cell2.readMoreButton.tag = indexPath.row
-                    let imageUrl = kImageBaseUrl + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
+                    let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
                     cell2.userImage.setImage(withString: imageUrl)
                     cell2.btnReadMoreCallback = { tag in
                         
@@ -789,6 +794,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         vc.fulldescription = self.arraySearchByBolg?[indexPath.row].datumDescription
                         vc.draft = self.arraySearchByBolg?[indexPath.row].status
                         vc.imgurl = self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""
+                        vc.baseUrl = self.arraySearchByBolg?[indexPath.row].attachment?.baseUrl ?? ""
                         vc.typeofpage = "read"
                         
                     }
@@ -805,7 +811,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell3.noItemLabel.isHidden = true
                     cell3.mainVw.isHidden = false
                     
-                    let imgUrl = (kImageBaseUrl + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? ""))
+                    let imgUrl = ((self.arraySearchByTrips?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? ""))
                     cell3.tripImage.setImage(withString: imgUrl)
                     cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                     cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
@@ -822,7 +828,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     
                     cell3.lblDuration.text = arraySearchByTrips?[indexPath.row].duration
                     cell3.configCell(arraySearchByTrips?[indexPath.row] ?? TripDatum(with: [:]))
-                    let imageUrl = (kImageBaseUrl + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
+                    let imageUrl = ("\(arraySearchByTrips?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByTrips?[indexPath.row].user?.avatarID?.attachmentURL ?? "")")
                     cell3.userImage.setImage(withString: imageUrl)
                     if arraySearchByTrips?[indexPath.row].intensity?.intensity == "Level 1" {
                         
@@ -952,14 +958,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 else{
                     cell4.noItemLabel.isHidden = true
                     cell4.mainVw.isHidden = false
-                    let imgUrl = (kImageBaseUrl + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
+                    let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
                     cell4.eventImage.setImage(withString: imgUrl)
                     cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                     cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                     cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
                     cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                     cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
-                    let imageUrl = (kImageBaseUrl + (arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
+                    let imageUrl = ((arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
                     cell4.userImage.setImage(withString: imageUrl)
                     cell4.userImage.layer.cornerRadius =  cell4.userImage.frame.height / 2
                     cell4.userImage.layer.masksToBounds = true
@@ -1317,6 +1323,7 @@ extension UniversalSearchViewController{
         vc.price = self.arraySearchByTrips?[indexPath.row].price
         vc.fulldescription = self.arraySearchByTrips?[indexPath.row].datumDescription
         vc.imgurl = self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL
+        vc.baseURL = self.arraySearchByTrips?[indexPath.row].attachment?.baseUrl
         vc.currency = self.arraySearchByTrips?[indexPath.row].currency
         vc.typeofpage = "read"
     }
@@ -1333,6 +1340,7 @@ extension UniversalSearchViewController{
         vc.eventYype = self.arraySearchByEvents?[indexPath.row].eventType
         vc.registrationType = self.arraySearchByEvents?[indexPath.row].registrationType
         vc.imgurl = self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl
+        vc.baseUrl = self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl
         vc.bookingUrl = self.arraySearchByEvents?[indexPath.row].url
         
         vc.typeofpage = "read"

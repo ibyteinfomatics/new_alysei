@@ -261,15 +261,12 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 cell.imageView1.image = UIImage(named: "")
                 cell.imageView1.clipsToBounds = true
             }
-            
-
+         
         default:
             break
         }
-        
-   
+      
        return cell
-        
     }
     
     

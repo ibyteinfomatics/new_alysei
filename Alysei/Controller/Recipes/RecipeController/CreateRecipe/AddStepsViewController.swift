@@ -381,7 +381,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
         } else if collectionView == toolsUsedCollectionView {
             
             let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "AddStepToolCollectionViewCell", for: indexPath) as! AddStepToolCollectionViewCell
-            let imgUrl = ((arrayIngridients[indexPath.row].imageId?.baseUrl ?? "") + (arraytools[indexPath.row].imageId?.imgUrl ?? ""))
+            let imgUrl = ((arraytools[indexPath.row].imageId?.baseUrl ?? "") + (arraytools[indexPath.row].imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = arraytools[indexPath.row].toolTitle
             

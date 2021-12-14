@@ -70,7 +70,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
 
     
     
-    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,bookingUrl: String?
+    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,baseUrl,bookingUrl: String?
     var event_id: Int?
     var typeofpage: String?
     
@@ -142,7 +142,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             websiteTxf.text = website
             eventTxf.text = eventYype
             registrationTxf.text = registrationType
-            uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString((baseUrl ?? "") + imgurl!), placeholder: UIImage(named: "image_placeholder"))
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
             

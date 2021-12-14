@@ -23,13 +23,9 @@ class FilteredRecipeViewController: UIViewController {
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
     
-    
-    
     var searchText = String()
     var updatedText = String()
-    
-    
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         indexOfPageToRequest = 1
         if searching == true{
@@ -63,8 +59,6 @@ class FilteredRecipeViewController: UIViewController {
         }
         else if isFilterLoading == true{
             
-            
-            
             if isFrom == "Meal" {
                 self.viewHeader.isHidden = true
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
@@ -88,7 +82,7 @@ class FilteredRecipeViewController: UIViewController {
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
                 
                 callSearchRecipe(updatedText, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
-                
+
             }
             
         }
@@ -284,11 +278,8 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star")
             }
             return cell
-            
-            
         }
-        
-        
+       
         return UICollectionViewCell()
     }
     
@@ -301,7 +292,6 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewRecipeViewController") as! ViewRecipeViewController
         recipeId = (arrSearchRecipeDataModel?[indexPath.row].recipeId)!
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
 }

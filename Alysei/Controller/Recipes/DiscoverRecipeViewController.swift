@@ -308,7 +308,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func tapSearchRecipe(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FilteredRecipeViewController") as! FilteredRecipeViewController
         isFilterLoading = false
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     func getExploreData(){
@@ -347,7 +347,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 if let meals = data["meals"] as? [[String:Any]]{
                     let meal = meals.map({SelectMealDataModel.init(with: $0)})
                     arraySearchByMeal = meal
-                    if arraySearchByIngridient?.count ?? 0 <= 6{
+                    if arraySearchByMeal?.count ?? 0 <= 6{
                         firstSixMealArray = arraySearchByMeal
                     }
                     else{
@@ -451,7 +451,6 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             
             return 1
         case 2:
-            
             return 1
         case 3:
             return 1
@@ -1248,8 +1247,7 @@ extension DiscoverRecipeViewController{
                 // print("Completion")
             }
         }
-        
-        
+     
     }
     func animate2View(){
         
@@ -1273,7 +1271,6 @@ extension DiscoverRecipeViewController{
         walkSubView3Img.image = UIImage(named: "icons8_stairs")
         walkSubView3Title.text = "Divide your recipe in steps"
         walkSubView3SubTitle.text = "You can divide our recipe in steps so that viewers can easily understand the procedure."
-        
         
         pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl5.layer.cornerRadius = self.pageControl2.frame.height / 2

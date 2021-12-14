@@ -64,7 +64,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         //            self.userImage.layer.borderColor = UIColor.white.cgColor
         //        }
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            userImage.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            userImage.setImage(withString: "\(kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? "")\(imageURLString)")
             self.userImage.layer.cornerRadius = (self.userImage.frame.width / 2.0)
             self.userImage.layer.borderWidth = 5.0
             self.userImage.layer.masksToBounds = true

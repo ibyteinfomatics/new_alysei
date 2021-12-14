@@ -60,7 +60,7 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         
         cell.rewardImage.layer.cornerRadius = 10
-        cell.rewardImage.setImage(withString: String.getString(kImageBaseUrl+(arraySearchByAward?[indexPath.item].attachment?.attachmenturl)! ), placeholder: UIImage(named: "image_placeholder"))
+        cell.rewardImage.setImage(withString: String.getString((arraySearchByAward?[indexPath.item].attachment?.baseUrl)!) + ((arraySearchByAward?[indexPath.item].attachment?.attachmenturl)!), placeholder: UIImage(named: "image_placeholder"))
         
         return cell
 
