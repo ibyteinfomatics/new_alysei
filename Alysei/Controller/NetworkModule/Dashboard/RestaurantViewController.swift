@@ -9,7 +9,7 @@ import UIKit
 
 class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var btnDecline: UIButton!
-    
+    @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var reason: UILabel!
     @IBOutlet weak var about: UILabel!
@@ -19,12 +19,14 @@ class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var ourmenu: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var restType: UILabel!
     
     var connectionId = ""
     var dashboardModel:DashboardModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         
@@ -73,7 +75,7 @@ class RestaurantViewController: AlysieBaseViewC {
             self.scrollview.isHidden = false
             self.name.text = self.dashboardModel?.data?.userData?.restaurantName
             self.reason.text = self.dashboardModel?.data?.userData?.reasonToConnect
-            
+            //self.restType.text = self.dashboardModel?.data?.userData?.ty
             self.userimg.layer.masksToBounds = false
             self.userimg.clipsToBounds = true
             self.userimg.layer.borderWidth = 2
@@ -87,6 +89,7 @@ class RestaurantViewController: AlysieBaseViewC {
             
             self.about.text = self.dashboardModel?.data?.aboutMember?[3].value
             self.ourmenu.text = self.dashboardModel?.data?.aboutMember?[4].value
+            self.restType.text = self.dashboardModel?.data?.aboutMember?[2].value
             //self.pickup.text = self.dashboardModel?.data?.aboutMember?[2].value
             //self.pickupDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value
             //self.deliveryDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value

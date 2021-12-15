@@ -31,6 +31,7 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerView.drawBottomShadow()
 //        headerView.layer.masksToBounds = false
 //        headerView.layer.shadowRadius = 2
 //        headerView.layer.shadowOpacity = 0.2

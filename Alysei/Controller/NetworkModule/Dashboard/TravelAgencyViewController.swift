@@ -20,6 +20,7 @@ class TravelAgencyViewController: AlysieBaseViewC {
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var vwHeader: UIView!
     
     var connectionId = ""
     var dashboardModel:DashboardModel?
@@ -27,6 +28,7 @@ class TravelAgencyViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
     

@@ -17,7 +17,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        headerView.drawBottomShadow()
         producerTableView.delegate = self
         producerTableView.dataSource = self
 //        headerView.layer.masksToBounds = false

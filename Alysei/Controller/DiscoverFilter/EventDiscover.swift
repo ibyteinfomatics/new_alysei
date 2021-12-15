@@ -90,7 +90,7 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.eventTitle.text = eventData[indexPath].eventName
         eventTableCell.hostTitle.text = eventData[indexPath].hostName
         eventTableCell.locationTitle.text = eventData[indexPath].location
-        eventTableCell.dateTitle.text = eventData[indexPath].date
+       // eventTableCell.dateTitle.text = eventData[indexPath].date
         eventTableCell.lblLikeCount.text = "\(eventData[indexPath].like_counts ?? 0)"
         eventTableCell.configCell(eventData[indexPath])
         eventTableCell.btnInterested.tag = indexPath
@@ -101,11 +101,24 @@ class EventDiscover: AlysieBaseViewC {
             self.postRequest(1)
             self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
         }
-        if ((eventData[indexPath].time?.contains(":")) == true) {
-            eventTableCell.timeTitle.text = eventData[indexPath].time
-        } else {
-            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventData[indexPath].time)
-        }
+//        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+//
+//        if let date = dateFormatterGet.date(from: eventData[indexPath].createdAt ?? "") {
+//            print(dateFormatterGet.string(from: date))
+//            eventTableCell.timeTitle.text = "\(dateFormatterGet.string(from: date))"
+//        }
+        //let date = formatter.date(from: eventData[indexPath].time ?? "")
+        
+//        if ((eventData[indexPath].time?.contains(":")) == true) {
+//            eventTableCell.timeTitle.text = eventData[indexPath].createdAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeZone = .current
+        dateFormatter.dateFormat = "yyyy-MMM-dd"
+//        } else {
+        eventTableCell.dateTitle.text = "\(dateFormatter.date(from: (eventData[indexPath].createdAt ?? "")) ?? Date())"
+       // }
         let imageUrl = (kImageBaseUrl + (eventData[indexPath].user?.avatarid?.attachmenturl ?? ""))
         eventTableCell.userImage.setImage(withString: imageUrl)
         
@@ -124,16 +137,16 @@ class EventDiscover: AlysieBaseViewC {
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
-        let date = Date(timeIntervalSince1970: time)
+       // let time = Double.getDouble(timeStamp) / 1000
+       // let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "yyyy-MMM-dd"
         dateFormatter.locale =  Locale(identifier:  "en")
-        let localDate = dateFormatter.string(from: date)
+        let localDate = dateFormatter.date(from: timeStamp ?? "")
         
-        return localDate
+        return "\(localDate ?? Date())"
             
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
