@@ -243,6 +243,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
         //                cell.rateImg4.image = UIImage(named: "icons8_star")
         //               cell.rateImg5.image = UIImage(named: "icons8_star")
         //            }
+        
         else if arrAllReviewModel?[indexPath.row].rating == 1 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")

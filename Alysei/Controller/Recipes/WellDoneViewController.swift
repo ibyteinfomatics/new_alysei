@@ -65,6 +65,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tapForRateFinal(_ sender: Any) {
         self.popupView.isHidden = false
     }
@@ -168,12 +169,10 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
                 break
             }
            
-            
           }
         
     }
    
-    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == AppConstants.leaveComment{
             textView.text = ""

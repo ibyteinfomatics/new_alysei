@@ -424,8 +424,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    
-   
 }
 
 extension ViewRecipeViewController{

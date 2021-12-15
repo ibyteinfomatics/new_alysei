@@ -605,11 +605,14 @@ extension EditScreen2ViewController{
             var stepDictionary : [String : Any] = [:]
             stepDictionary["description"] = item.description
             stepDictionary["title"] = item.title
+//            item.stepIngridient = editusedIngridientModel
+//            item.stepTool = editusedToolModel
             for i in 0..<(item.stepIngridient?.count ?? 0){
                 if item.stepIngridient?[i].isSelected == true{
                    
                     selectedIngridient.append(item.stepIngridient?[i].ingridientId ?? 0)
                 }
+               
             }
             stepDictionary["ingredients"] = selectedIngridient
               

@@ -377,13 +377,15 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
                 
             }
             
+            // SearchByIngridient cell height ---------
+            
             if firstSixingdntArray?.count != 0{
                 if (((firstSixingdntArray?.count ?? 0) % 3) == 0){
                     ingridentHeight = CGFloat((160 * ((firstSixingdntArray?.count ?? 0) / 3)) + 20)
                 }
                 else{
-                    let abc = 160 * (((arraySearchByIngridient?.count ?? 0) / 3) + 1)
-                    ingridentHeight = CGFloat( abc + 20)
+                    let heightIngridient = 160 * (((arraySearchByIngridient?.count ?? 0) / 3) + 1)
+                    ingridentHeight = CGFloat(heightIngridient + 20)
                 }
             }
             else{
