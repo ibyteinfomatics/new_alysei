@@ -11,6 +11,7 @@ class BusinessMultiOptionsVC: UIViewController {
     
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var vwHeader: UIView!
     
     var arrUserHubs: [HubCityArray]?
     var getRoleViewModel: GetRoleViewModel!
@@ -26,6 +27,7 @@ class BusinessMultiOptionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         if currentIndex == B2BSearch.Hub.rawValue || currentIndex == B2BSearch.Voyager.rawValue{
             headerTitle.text = "Select State"
         }else{

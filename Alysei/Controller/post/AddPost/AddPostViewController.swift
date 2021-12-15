@@ -353,7 +353,12 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
     @IBAction func postAction(_ sender: UIButton){
-        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
+//        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
+////            showAlert(withMessage: "Please enter some post")
+//            showAlert(withMessage: "Post can't be empty")
+//
+//        }
+        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) && (txtPost.text == "") {
 //            showAlert(withMessage: "Please enter some post")
             showAlert(withMessage: "Post can't be empty")
 
