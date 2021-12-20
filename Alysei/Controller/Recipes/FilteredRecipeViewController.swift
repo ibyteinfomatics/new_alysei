@@ -210,78 +210,78 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
                 cell.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
             }
             
-            if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "0.0" {
+            if arrSearchRecipeDataModel?[indexPath.row].avgRating == "0.0" || arrSearchRecipeDataModel?[indexPath.row].avgRating  == "0" {
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-                
-            }
-            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "0.5" {
-                cell.rating1ImgVw.image = UIImage(named: "Group 1142")
+            }  else if (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") >= ("0.1") && (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") <= ("0.9") {
+                cell.rating1ImgVw.image = UIImage(named: "HalfStar")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "1.0" {
+            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating == ("1.0") || arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("1") {
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "1.5" {
+            }else if (arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0") >= ("1.1") && (arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0") <= ("1.9"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
-                cell.rating2ImgVw.image = UIImage(named: "Group 1142")
+                cell.rating2ImgVw.image = UIImage(named: "HalfStar")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "2.0" {
-                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
-                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "2.5" {
+            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating == ("2.0") || arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("2"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
-                cell.rating3ImgVw.image = UIImage(named: "Group 1142")
+                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "3.0" {
+            }else if (arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0") >= ("2.1") && (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") <= ("2.9"){
+                cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
+                cell.rating3ImgVw.image = UIImage(named: "HalfStar")
+                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("3.0") || arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("3"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "3.5" {
+            }else if (arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0") >= ("3.1") && (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") <= ("3.9") {
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
-                cell.rating4ImgvW.image = UIImage(named: "Group 1142")
+                cell.rating4ImgvW.image = UIImage(named: "HalfStar")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "4.0" {
+            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("4.0") || arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("4"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
-            }
-            else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "4.5" {
+            }else if (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") >= ("4.1") && (arrSearchRecipeDataModel?[indexPath.row].avgRating  ?? "0") <= ("4.9"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
-                cell.rating5ImgVw.image = UIImage(named: "Group 1142")
-            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating ?? "0.0" == "5.0" {
+                cell.rating5ImgVw.image = UIImage(named: "HalfStar")
+            }else if arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("5.0") || arrSearchRecipeDataModel?[indexPath.row].avgRating  == ("5"){
                 cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star")
                 cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star")
                 cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star")
+            }else{cell.rating1ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell.rating2ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell.rating3ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                cell.rating4ImgvW.image = UIImage(named: "icons8_christmas_star_2")
+                cell.rating5ImgVw.image = UIImage(named: "icons8_christmas_star_2")
+                print("Invalid Rating")
             }
             return cell
             

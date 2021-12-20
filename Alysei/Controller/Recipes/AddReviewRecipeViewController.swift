@@ -123,6 +123,7 @@ class AddReviewRecipeViewController: AlysieBaseViewC{
 //    }
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+//        isFromComment = "Review"
     }
     
     @IBAction func addReview(_ sender: UIButton){

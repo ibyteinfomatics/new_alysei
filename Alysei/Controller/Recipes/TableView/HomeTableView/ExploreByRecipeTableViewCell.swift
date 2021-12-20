@@ -98,6 +98,8 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
             }
 //            cell.countryImgVw.setImage(withString: imgUrl)
             cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
+            cell.countryImgVw.layer.borderWidth = 1
+            cell.countryImgVw.layer.borderColor = UIColor.black.cgColor
             cell.countryImgVw.contentMode = .scaleAspectFit
             
              
