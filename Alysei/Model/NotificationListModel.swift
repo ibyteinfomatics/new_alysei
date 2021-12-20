@@ -109,6 +109,8 @@ class NotiUser {
     var email: String?
     var companyName: String?
     var roleid, avatarid: Int?
+    var base_url: String?
+    var avatar_image: String?
     
         init(with dictResponse: [String:Any]?) {
             self.userid = Int.getInt(dictResponse?["user_id"])
@@ -117,6 +119,8 @@ class NotiUser {
             self.companyName = String.getString(dictResponse?["company_name"])
             self.roleid = Int.getInt(dictResponse?["role_id"])
             self.avatarid = Int.getInt(dictResponse?["avatar_id"])
+            self.base_url = String.getString(dictResponse?["base_url"])
+            self.avatar_image = String.getString(dictResponse?["avatar_image"])
         }
     
 }

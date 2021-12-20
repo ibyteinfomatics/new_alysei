@@ -58,7 +58,7 @@ class FlagId{
     var baseUrl: String?
     init(data: [String:Any]?) {
         self.attachmentUrl = String.getString(data?["attachment_url"])
-        self.baseUrl = String.getString(data?["baseUrl"])
+        self.baseUrl = String.getString(data?["base_url"])
     }
     init() { }
 }

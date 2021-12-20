@@ -24,6 +24,8 @@ class AnalyticsTableViewCell: UITableViewCell {
     var totalCategory: Int?
     var totalEnquiry: Int?
     var totalReview: Int?
+    var logobaseUrl: String?
+    var bannerbaseUrl:String?
     var callApi:(() -> Void)? = nil
     
     override func awakeFromNib() {
@@ -55,11 +57,13 @@ class AnalyticsTableViewCell: UITableViewCell {
         dataDropDown.selectionBackgroundColor = UIColor.clear
         dataDropDown.direction = .bottom
     }
-    func configeCell(_ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int){
+    func configeCell(_ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ logobaseUrl: String, _ bannerbaseUrl: String){
         self.totalProduct = totalProduct
         self.totalCategory = totalCategory
         self.totalEnquiry = totalEnquiry
         self.totalReview = totalReview
+        self.logobaseUrl = logobaseUrl
+        self.bannerbaseUrl = bannerbaseUrl
         self.collectionView.reloadData()
     }
 

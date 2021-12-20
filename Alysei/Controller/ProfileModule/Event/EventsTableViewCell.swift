@@ -22,8 +22,9 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var btnInterested: UIButton!
     @IBOutlet weak var btnInterestedWidth: NSLayoutConstraint!
     
-    var isInterested = 0
+    var isInterested: Int?
     var data : EventDatum?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,7 @@ class EventsTableViewCell: UITableViewCell {
     var btnEditCallback:((Int) -> Void)? = nil
     var btnMoreCallback:((Int) -> Void)? = nil
     var callInterestedCallback: ((Int) -> Void)? = nil
+    var callVisitCallback: ((Int) -> Void)? = nil
     var index: Int?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,13 +63,17 @@ class EventsTableViewCell: UITableViewCell {
     }
     @IBAction func btnInterestedAction(_ sender: UIButton){
         self.index = sender.tag
-        if isInterested == 0 {
+        if data?.is_event_liked?.count == 0 {
             isInterested = 1
         }else {
             isInterested = 0
         }
         callInterestesApi(sender.tag, isInterested)
     }
+    
+//    @IBAction func btnVisit(_ sender: UIButton){
+//        callVisitCallback?(data?.eventid ?? 0)
+//    }
 
 }
 extension EventsTableViewCell {
@@ -82,8 +88,7 @@ extension EventsTableViewCell {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kInterestedEvent, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { dictResponse, error, errorType, statusCode in
             switch statusCode{
             case 200:
-                self.btnInterested.backgroundColor = UIColor.red
-                self.btnInterested.setTitle("UnInterested", for: .normal)
+                
                 self.callInterestedCallback?(index ?? -1)
             default:
                 print("Error")

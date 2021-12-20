@@ -25,6 +25,8 @@ class ContactViewC: AlysieBaseViewC {
     @IBOutlet weak var tblViewContactUs: UITableView!
     @IBOutlet var editContactDetailButton: UIButtonExtended!
     var userLevel: UserLevel = .own
+    
+    var openUrlCallBack: ((URL) -> Void)? = nil
 
   //MARK: - ViewLifeCycle Methods -
   
@@ -108,7 +110,8 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
             let website = (self.tableData[indexPath.row].value )
             print("Website----------------------------",website)
             guard let url = URL(string: website) else { return }
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            openUrlCallBack?(url)
+           
         }
     }
 }

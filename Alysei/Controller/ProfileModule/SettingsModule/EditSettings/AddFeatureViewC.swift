@@ -27,6 +27,7 @@ class AddFeatureViewC: AlysieBaseViewC {
     var addDesc = false
     var addUrl = false
     var userLevel: UserLevel?
+    var fromVC: isCameFrom?
   //MARK: - Properties -
 
   var productCategoriesDataModel: ProductCategoriesDataModel!
@@ -217,6 +218,9 @@ class AddFeatureViewC: AlysieBaseViewC {
   }
   
   private func initialImageSetUp() -> Void{
+    if fromVC == .settings{
+        self.lblNavigationHeading.text = AppConstants.kAddFeature
+    }else{
     
     if arrSelectedFields.count != 0{
       
@@ -226,6 +230,7 @@ class AddFeatureViewC: AlysieBaseViewC {
     }
     else{
       self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.productCategoriesDataModel.title)
+    }
     }
 
   }

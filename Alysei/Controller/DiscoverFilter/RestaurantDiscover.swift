@@ -103,7 +103,9 @@ class RestaurantDiscover: AlysieBaseViewC {
         restTableCell.blogDescription.text = restauUser[indexPath].address
         
         restTableCell.imgUser.layer.cornerRadius =  restTableCell.imgUser.frame.height / 2
-        let imageUrl = kImageBaseUrl + (restauUser[indexPath].avatarid?.attachmenturl ?? "")
+        
+        let baseurl = restauUser[indexPath].avatarid?.baseUrl ?? ""
+        let imageUrl = baseurl + (restauUser[indexPath].avatarid?.attachmenturl ?? "")
         restTableCell.imgUser.setImage(withString: imageUrl)
        
         restTableCell.blogImage.layer.masksToBounds = false
@@ -111,7 +113,8 @@ class RestaurantDiscover: AlysieBaseViewC {
         restTableCell.blogImage.layer.cornerRadius = 5
        
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
-            restTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(restauUser[indexPath].avatarid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+            let baseurlImg = restauUser[indexPath].avatarid?.baseUrl ?? ""
+            restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].avatarid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
         } else {
             restTableCell.blogImage.image = UIImage(named: "image_placeholder")
         }

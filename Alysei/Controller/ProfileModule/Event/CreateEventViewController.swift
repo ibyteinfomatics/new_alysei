@@ -258,8 +258,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: "Please select registration type!")
             } else if bookingUrlView.isHidden == false || bookingTxf.text == "" {
                 alert(msg: "Please enter booking url!")
-            }
-                else {
+            }else if bookingTxf.text?.isURL() == false{
+                alert(msg: "Please enter valid booking url!")
+            }else {
                 updateEventApi()
             }
             

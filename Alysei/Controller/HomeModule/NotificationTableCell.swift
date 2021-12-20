@@ -22,7 +22,7 @@ class NotificationTableCell: UITableViewCell {
     
     public func configure(){
       
-      imgViewNotification.image = UIImage.init(named: "select_role4")
+    
         name.text = "Anthony Tran is now connected with you."
         message.text = "few seconds ago"
     }

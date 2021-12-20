@@ -16,6 +16,7 @@ class MarketPlaceWalkthroughVC: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         btn1Animation()
         btn2Animation()
         btn3Animation()

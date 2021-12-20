@@ -112,8 +112,8 @@ class TripDiscover: AlysieBaseViewC {
         } else {
             tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
         }
-        
-        let imageUrl = kImageBaseUrl + (tripData[indexPath].user?.avatarID?.attachmentURL ?? "")
+        let baseUrl = tripData[indexPath].user?.avatarID?.baseUrl ?? ""
+        let imageUrl = baseUrl + (tripData[indexPath].user?.avatarID?.attachmentURL ?? "")
         tripTableCell.userImage.setImage(withString: imageUrl)
         tripTableCell.userImage.layer.cornerRadius =  tripTableCell.userImage.frame.height / 2
         
@@ -239,7 +239,8 @@ class TripDiscover: AlysieBaseViewC {
         tripTableCell.tripImage.clipsToBounds = true
         tripTableCell.tripImage.layer.cornerRadius = 5
         
-        tripTableCell.tripImage.setImage(withString: String.getString(kImageBaseUrl+(tripData[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
+        let baseUrlImg = tripData[indexPath].attachment?.baseUrl ?? ""
+        tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return tripTableCell
         

@@ -71,7 +71,17 @@ class BlogsViewController: AlysieBaseViewC {
         blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
         blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-        blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].createdAt)
+        //blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].createdAt)
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+        let date: Date? = dateFormatterGet.date(from: blogModel?.data?[indexPath].createdAt ?? "")
+        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+        let datep = dateFormatterPrint.string(from: date ?? Date())
+        blogTableCell.dateTimeLabel.text = datep
 //
 //        blogTableCell.blogImage.layer.masksToBounds = false
 //        blogTableCell.blogImage.clipsToBounds = true

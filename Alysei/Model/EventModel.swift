@@ -40,7 +40,7 @@ class EventDatum {
     var attachment: EventAttachment?
     var like_counts: Int?
     var url:String?
-        
+    var is_event_liked: [EventLike]?
     init(with dictResponse: [String:Any]?) {
         
         self.eventName = String.getString(dictResponse?["event_name"])
@@ -67,12 +67,20 @@ class EventDatum {
         if let attachment = dictResponse?["attachment"] as? [String:Any]{
             self.attachment =  EventAttachment.init(with: attachment)
         }
-        
+        if let isEventLiked = dictResponse?["is_event_liked"] as? [[String:Any]]{
+            self.is_event_liked =  isEventLiked.map({EventLike.init(with: $0)})
+        }
     }
 
     
 }
-
+class EventLike {
+    var event_id: String?
+    
+    init(with data: [String:Any]) {
+        self.event_id = String.getString(data["event_id"])
+    }
+}
 // MARK: - Attachment
 class EventAttachment {
     var id: Int?

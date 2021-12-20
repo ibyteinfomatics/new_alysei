@@ -67,6 +67,8 @@ class MyStoreProductDetail{
     var phone: String?
     var logo_id: String?
     var banner_id: String?
+    var banner_base_url:String?
+    
     var product_gallery: [ProductGallery]?
     var store_gallery: [ProductGallery]?
     var prefilled: SubjectData?
@@ -99,6 +101,7 @@ class MyStoreProductDetail{
     var flagId : FlagId?
     var region: Regions?
     var product_category_name: String?
+    var logo_base_url: String?
     var base_url: String?
     //var isSelected = false
     //var phone: String?
@@ -142,7 +145,7 @@ class MyStoreProductDetail{
         self.location = String.getString(data?["location"])
         self.product_category_name = String.getString(data?["product_category_name"])
         //self.phone = String.getString(data?["phone"])
-        self.base_url = String.getString(data?["base_url"])
+        self.logo_base_url = String.getString(data?["logo_base_url"])
         if let product_gallery = data?["product_gallery"] as? [[String:Any]]{
             self.product_gallery = product_gallery.map({ProductGallery.init(with: $0)})
         }
@@ -178,6 +181,9 @@ class MyStoreProductDetail{
         if let region = data?["region"] as? [String:Any]{
             self.region = Regions.init(with: region)
         }
+        self.base_url = String.getString(data?["base_url"])
+        self.banner_base_url = String.getString(data?["banner_base_url"])
+        
     }
 }
 class Regions {
@@ -196,6 +202,7 @@ class ProductGallery{
     var attachment_url: String?
     var marketplace_store_gallery_id: String?
     var marketplace_store_id: String?
+    var baseUrl: String?
     
     init(with data: [String:Any]?) {
         self.marketplace_product_gallery_id = Int.getInt(data?["marketplace_product_gallery_id"])
@@ -203,6 +210,7 @@ class ProductGallery{
         self.attachment_url = String.getString(data?["attachment_url"])
         self.marketplace_store_gallery_id = String.getString(data?["marketplace_store_gallery_id"])
         self.marketplace_store_id = String.getString(data?["marketplace_store_id"])
+        self.baseUrl = String.getString(data?["base_url"])
     }
     
 }

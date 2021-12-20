@@ -714,7 +714,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == imageCollectionView{
-            return CGSize(width: imageCollectionView.frame.width / 1.5 , height: 190)
+            return CGSize(width: imageCollectionView.frame.width / 1.2 , height: 190)
         }else if collectionView == recentlyAddedCollectionView{
             return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 270)
         }

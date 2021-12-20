@@ -99,8 +99,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         self.txtStoreRegion.text = self.userRegion
         if fromVC == .myStoreDashboard {
             self.txtDescription.text = self.storeDescription
-            self.imgProfile.setImage(withString: (storeData?.base_url ?? "") + String.getString(storeData?.logo_id))
-            self.imgCover.setImage(withString: kImageBaseUrl + String.getString(storeData?.banner_id))
+            self.imgProfile.setImage(withString: (storeData?.logo_base_url ?? "") + String.getString(storeData?.logo_id))
+            self.imgCover.setImage(withString: (storeData?.banner_base_url ?? "") + String.getString(storeData?.banner_id))
         }
         view1.addBorder()
         view2.addBorder()

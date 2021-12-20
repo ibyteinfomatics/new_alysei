@@ -185,6 +185,7 @@ enum isCameFrom {
     case EditPost
     case StoreDetail
     case editProfile
+    case settings
 }
 //class UserImage: {
 //

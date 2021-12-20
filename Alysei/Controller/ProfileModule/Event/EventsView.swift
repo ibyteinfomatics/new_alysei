@@ -7,11 +7,13 @@
 
 import UIKit
 
+
 class EventsView: AlysieBaseViewC {
     @IBOutlet weak var myEventsLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var vwBlank: UIView!
+   
     
     var eventModel:EventModel?
     var userId: String?
@@ -54,23 +56,37 @@ class EventsView: AlysieBaseViewC {
     private func getEventTableCell(_ indexPath: Int) -> UITableViewCell{
         
         let eventTableCell = eventsTableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier()) as! EventsTableViewCell
-        
+        if (self.userId ?? "") == kSharedUserDefaults.loggedInUserModal.userId {
+            eventTableCell.btnInterested.isHidden = true
+        }else{
+            eventTableCell.btnInterested.isHidden = false
+        }
         eventTableCell.eventTitle.text = eventModel?.data?[indexPath].eventName
         eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
         eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
-        eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
+      //  eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
         
         let imageUrl = (kImageBaseUrl + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? ""))
         eventTableCell.userImage.setImage(withString: imageUrl)
         
         eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2
         eventTableCell.userImage.layer.masksToBounds = true
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+        let date: Date? = dateFormatterGet.date(from: eventModel?.data?[indexPath].createdAt ?? "")
+        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+        let datep = dateFormatterPrint.string(from: date ?? Date())
+        eventTableCell.dateTitle.text = datep
         
-        if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
-            eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
-        } else {
-            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
-        }
+//        if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
+//            eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
+//        } else {
+//            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
+//        }
         
         eventTableCell.moreButton.layer.cornerRadius =  eventTableCell.moreButton.frame.height / 2
         
@@ -149,7 +165,7 @@ class EventsView: AlysieBaseViewC {
 //        eventTableCell.eventImage.clipsToBounds = true
 //        eventTableCell.eventImage.layer.cornerRadius = 5
         
-        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventModel?.data?[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventModel?.data?[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return eventTableCell
         

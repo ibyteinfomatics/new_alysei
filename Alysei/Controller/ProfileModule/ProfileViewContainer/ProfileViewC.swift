@@ -158,6 +158,13 @@ class ProfileViewC: AlysieBaseViewC{
         
         let contactViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: ContactViewC.id()) as! ContactViewC
         contactViewC.userLevel = userLevel
+        contactViewC.openUrlCallBack = { url in
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+               UIApplication.shared.openURL(url)
+            }
+        }
         return contactViewC
     }()
     

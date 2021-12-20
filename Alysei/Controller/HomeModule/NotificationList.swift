@@ -46,6 +46,11 @@ class NotificationList: AlysieBaseViewC {
         let dateSt:Int = Int(dateStamp)
         
         //let timeInterval  = notimodel?.data?.data?[index].createdAt
+        notificationTableCell.imgViewNotification.layer.cornerRadius = notificationTableCell.imgViewNotification.layer.frame.height / 2
+        notificationTableCell.layer.masksToBounds = true
+        
+        let baseUrl = notimodel?.data?.data?[index].user?.base_url ?? ""
+        notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notimodel?.data?.data?[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         let dateString = getcurrentdateWithTime(timeStamp: String.getString(dateSt))
         print("formatted date is =  \(dateString)")

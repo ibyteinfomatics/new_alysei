@@ -32,7 +32,7 @@ class Privacy: AlysieBaseViewC {
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
-    
+    @IBOutlet weak var vwHeader: UIView!
     
     var msgpre,followpre,weeklypre: String!
     var connect : String!
@@ -44,7 +44,7 @@ class Privacy: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        vwHeader.drawBottomShadow()
         tableView.dataSource = self
         tableView.delegate = self
         postRequestToPrivacy()

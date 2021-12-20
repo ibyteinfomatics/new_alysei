@@ -16,7 +16,7 @@ import DropDown
 protocol MyStoreDashboardDisplayLogic: class
 {
   func displaySomething(viewModel: MyStoreDashboard.Something.ViewModel)
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int)
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int, _ logobaseUrl: String, _ bannerbaseUrl: String)
     func categoryCount(_ CategoryCount: Int)
 }
 
@@ -97,6 +97,8 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     var totalCategory: Int?
     var totalEnquiry: Int?
     var totalReview: Int?
+    var logobaseUrl:String?
+    var bannerbaseUrl: String?
    
     
   func doSomething()
@@ -110,14 +112,16 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
   {
     //nameTextField.text = viewModel.name
   }
-    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int) {
-        self.imgStore.setImage(withString: kImageBaseUrl + String.getString(imgProfile))
-        self.imgCoverImg.setImage(withString: kImageBaseUrl + String.getString(imgCover))
+    func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int,_ logobaseUrl: String,_ bannerbaseUrl: String) {
+        self.imgStore.setImage(withString: logobaseUrl + String.getString(imgProfile))
+        self.imgCoverImg.setImage(withString: bannerbaseUrl + String.getString(imgCover))
         self.lblTotalProduct.text = "\(productCount)"
         self.totalProduct = totalProduct
         self.totalCategory = totalCategory
         self.totalEnquiry = totalEnquiry
         self.totalReview = totalReview
+        self.logobaseUrl = logobaseUrl
+        self.bannerbaseUrl = bannerbaseUrl
         self.tableView.reloadData()
         
     }
@@ -137,7 +141,7 @@ extension MyStoreDashboardViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTableViewCell", for: indexPath) as? AnalyticsTableViewCell else{return UITableViewCell()}
         cell.selectionStyle = .none
-        cell.configeCell(self.totalProduct ?? 0, self.totalCategory ?? 0, self.totalEnquiry ?? 0, self.totalReview ?? 0 )
+        cell.configeCell(self.totalProduct ?? 0, self.totalCategory ?? 0, self.totalEnquiry ?? 0, self.totalReview ?? 0 , logobaseUrl ?? "", bannerbaseUrl ?? "")
         cell.callApi = {
             self.interactor?.callDashBoardApi()
         }

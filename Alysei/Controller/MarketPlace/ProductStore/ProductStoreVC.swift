@@ -225,7 +225,7 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
 //        }
         
         cell.configCell(data)
-            let imgUrl = ((data?.base_url ?? "") + (data?.logo_id ?? ""))
+            let imgUrl = ((data?.logo_base_url ?? "") + (data?.logo_id ?? ""))
         cell.imgStore.setImage(withString: imgUrl)
         cell.lblStoreName.text = data?.storeName
             cell.lblAddress.text = data?.region?.name

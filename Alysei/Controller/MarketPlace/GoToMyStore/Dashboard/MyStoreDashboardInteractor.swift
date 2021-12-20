@@ -54,9 +54,11 @@ class MyStoreDashboardInteractor: MyStoreDashboardBusinessLogic, MyStoreDashboar
             let totalEnquiries = response?["total_enquiries"] as? Int
             let totalReviews = response?["total_reviews"] as? Int
             let productCount = response?["product_counts"] as? Int
+            let logo_base_url = response?["logo_base_url"] as? String
+            let banner_base_url = response?["banner_base_url"] as? String
             
             
-            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0, totalCategory ?? 0, totalEnquiries ?? 0, totalReviews ?? 0,productCount ?? 0)
+            self.presenter?.passDashboardData(imgBanner ?? "",imgCover ?? "",totalProduct ?? 0, totalCategory ?? 0, totalEnquiries ?? 0, totalReviews ?? 0,productCount ?? 0, logo_base_url ?? "",banner_base_url ?? "")
         }
     }
     

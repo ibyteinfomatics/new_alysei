@@ -493,7 +493,17 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell2.blogImage.setImage(withString: imgUrl)
                         cell2.blogTitle.text = arraySearchByBolg?[indexPath.row].title
                         cell2.blogDescription.text = arraySearchByBolg?[indexPath.row].datumDescription
-                        cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
+                        //cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
+                        let dateFormatterGet = DateFormatter()
+                        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+                        let dateFormatterPrint = DateFormatter()
+                        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+                        let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
+                        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+                        let datep = dateFormatterPrint.string(from: date ?? Date())
+                        cell2.dateTimeLabel.text = datep
                         cell2.readMoreButton.isHidden = false
                         cell2.readMoreButton.tag = indexPath.row
                         let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
@@ -675,12 +685,53 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                         cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                         cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
-                        cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
-                        cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
+                        //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
+                       // cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
                         let imgUrlUser = ((self.arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
                         cell4.userImage.setImage(withString: imgUrlUser)
+                        let dateFormatterGet = DateFormatter()
+                        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+                        let dateFormatterPrint = DateFormatter()
+                        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+                        let date: Date? = dateFormatterGet.date(from: self.arraySearchByEvents?[indexPath.row].user?.avatarid?.createdAt ?? "")
+                        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+                        let datep = dateFormatterPrint.string(from: date ?? Date())
+                        cell4.dateTitle.text = datep
                         
-                        
+                        cell4.btnInterested.tag = indexPath.row
+                        cell4.configCell(arraySearchByEvents?[indexPath.row] ?? EventDatum(with: [:]))
+                        if arraySearchByEvents?[indexPath.row].is_event_liked?.count == 0{
+                            cell4.btnInterestedWidth.constant = 180
+                            cell4.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
+                            cell4.btnInterested.setTitle("Are you Interested?", for: .normal)
+                        }else{
+                            cell4.btnInterested.backgroundColor = UIColor.red
+                            cell4.btnInterested.setTitle("Uninterested", for: .normal)
+                        }
+                        cell4.callInterestedCallback = { index in
+                           
+                            let reloadIndexPath = IndexPath(row: index, section: 0)
+                            self.getUniversalSearchData(1, self.updatedText)
+                            self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+                        }
+                        cell4.callVisitCallback = { index in
+                            
+                            let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+                            vc.hostname = self.arraySearchByEvents?[indexPath.row].hostName
+                            vc.eventname = self.arraySearchByEvents?[indexPath.row].eventName
+                            vc.location = self.arraySearchByEvents?[indexPath.row].location
+                            vc.date = self.arraySearchByEvents?[indexPath.row].date
+                            vc.time = self.arraySearchByEvents?[indexPath.row].time
+                            vc.fulldescription = self.arraySearchByEvents?[indexPath.row].datumDescription
+                            vc.website = self.arraySearchByEvents?[indexPath.row].website
+                            vc.eventYype = self.arraySearchByEvents?[indexPath.row].eventType
+                            vc.registrationType = self.arraySearchByEvents?[indexPath.row].registrationType
+                            vc.imgurl = self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl
+                            vc.bookingUrl = self.arraySearchByEvents?[indexPath.row].url
+                            vc.typeofpage = "read"
+                        }
                     }
                     return cell4
                 case 4:
@@ -781,7 +832,17 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell2.blogImage.setImage(withString: imgUrl)
                     cell2.blogTitle.text = arraySearchByBolg?[indexPath.row].title
                     cell2.blogDescription.text = arraySearchByBolg?[indexPath.row].datumDescription
-                    cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
+                    //cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+                    let dateFormatterPrint = DateFormatter()
+                    dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+                    let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
+                    print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+                    let datep = dateFormatterPrint.string(from: date ?? Date())
+                    cell2.dateTimeLabel.text = datep
                     cell2.readMoreButton.isHidden = false
                     cell2.readMoreButton.tag = indexPath.row
                     let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
@@ -963,13 +1024,56 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                     cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                     cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
-                    cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
+                    //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+                    let dateFormatterPrint = DateFormatter()
+                    dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+
+                    let date: Date? = dateFormatterGet.date(from: arraySearchByEvents?[indexPath.row].createdAt ?? "")
+                    print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+                    let datep = dateFormatterPrint.string(from: date ?? Date())
+                    cell4.dateTitle.text = datep
                     cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
                     let imageUrl = ((arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
                     cell4.userImage.setImage(withString: imageUrl)
                     cell4.userImage.layer.cornerRadius =  cell4.userImage.frame.height / 2
                     cell4.userImage.layer.masksToBounds = true
+                    cell4.btnInterested.tag = indexPath.row
                    
+                    cell4.configCell(arraySearchByEvents?[indexPath.row] ?? EventDatum(with: [:]))
+                    if arraySearchByEvents?[indexPath.row].is_event_liked?.count == 0{
+                        cell4.btnInterestedWidth.constant = 180
+                        cell4.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
+                        cell4.btnInterested.setTitle("Are you Interested?", for: .normal)
+                    }else{
+                        cell4.btnInterested.backgroundColor = UIColor.red
+                        cell4.btnInterested.setTitle("Uninterested", for: .normal)
+                    }
+                    cell4.callInterestedCallback = { index in
+                       
+                        let reloadIndexPath = IndexPath(row: index, section: 0)
+                        self.getUniversalSearchData(1, self.updatedText)
+                        self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+                    }
+                    cell4.callVisitCallback = { index in
+                        
+                        let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+                        vc.hostname = self.arraySearchByEvents?[indexPath.row].hostName
+                        vc.eventname = self.arraySearchByEvents?[indexPath.row].eventName
+                        vc.location = self.arraySearchByEvents?[indexPath.row].location
+                        vc.date = self.arraySearchByEvents?[indexPath.row].date
+                        vc.time = self.arraySearchByEvents?[indexPath.row].time
+                        vc.fulldescription = self.arraySearchByEvents?[indexPath.row].datumDescription
+                        vc.website = self.arraySearchByEvents?[indexPath.row].website
+                        vc.eventYype = self.arraySearchByEvents?[indexPath.row].eventType
+                        vc.registrationType = self.arraySearchByEvents?[indexPath.row].registrationType
+                        vc.imgurl = self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl
+                        vc.bookingUrl = self.arraySearchByEvents?[indexPath.row].url
+                        vc.baseUrl = self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl
+                        vc.typeofpage = "read"
+                    }
                 }
                 return cell4
             case 5:
@@ -1126,7 +1230,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 
                 
             case 3:
-                
+                print("Event tab")
                 eventTab(indexPath: indexPath)
                 
                 
@@ -1151,7 +1255,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             tripTab(indexPath: indexPath)
         }
         else if searchType == 4{
-            eventTab(indexPath: indexPath)
+         //  eventTab(indexPath: indexPath)
         }
         else if searchType == 5{
             return

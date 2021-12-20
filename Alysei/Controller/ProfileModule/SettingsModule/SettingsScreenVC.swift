@@ -13,7 +13,7 @@ class SettingsScreenVC: AlysieBaseViewC {
     @IBOutlet weak var settingCollectionView: UICollectionView!
     @IBOutlet weak var viewShadow: UIView!
     var userId: String?
-    
+    var signUpViewModel: SignUpViewModel!
     
    
     override func viewDidLoad() {
@@ -157,6 +157,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
         case 1:
           _ = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        case 2:
+            print("AddFeature")
+            CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(kSharedUserDefaults.loggedInUserModal.userId), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+            
         case 3:
           _ = pushViewController(withName: Privacy.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 4:
@@ -265,4 +269,38 @@ extension SettingsScreenVC: CHTCollectionViewDelegateWaterfallLayout {
     }
 }
 
+extension SettingsScreenVC{
+override func didUserGetData(from result: Any, type: Int) {
+        
+        
+        
+        let dicResult = kSharedInstance.getDictionary(result)
+        let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
+        self.signUpViewModel = SignUpViewModel(dicData, roleId: nil)
+        print("Some")
+    let productCategoriesDataModel = self.signUpViewModel?.arrProductCategories.first
+    
+    let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+    controller?.productCategoriesDataModel = productCategoriesDataModel
+    controller?.delegate = self
+        
+    }
+    
+}
 
+extension SettingsScreenVC: AddFeaturedProductCallBack {
+    func productAdded() {
+        print("Push------")
+    }
+    
+    
+    func tappedAddProduct(withProductCategoriesDataModel model: ProductCategoriesDataModel, featureListingId: String?) {
+        if featureListingId == nil{
+            //self.postRequestToUpdateUserProfile()
+            let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
+            controller?.productCategoriesDataModel = model
+            controller?.delegate = self
+        }
+              
+    }
+    }

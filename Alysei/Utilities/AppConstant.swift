@@ -544,6 +544,7 @@ struct AppConstants {
     static let kUrl = "Url"
     static let leaveComment = "Leave a comment"
     static let kSelectRestType = "Select Restaurant"
+    static let kAddFeature = "Add Featured"
 }
 
 struct ProfileCompletion {
