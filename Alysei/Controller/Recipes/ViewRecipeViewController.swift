@@ -19,6 +19,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnStartCooking: UIButton!
     
+    @IBOutlet weak var tableVwTop: NSLayoutConstraint!
     var checkbutton = 0
     var imgUrl1 = String()
     let recipeImageView = UIImageView()
@@ -27,22 +28,28 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     
     override func viewWillAppear(_ animated: Bool) {
             self.getRecipeDetail()
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
         self.tabBarController?.tabBar.isHidden = true
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
         
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
-        backButton.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
-        menuButton.frame = CGRect(x: UIScreen.main.bounds.size.width-40, y: 20, width: 40, height: 40)
+        backButton.frame = CGRect(x: 0, y: 30, width: 40, height: 40)
+        menuButton.frame = CGRect(x: UIScreen.main.bounds.size.width-40, y: 30, width: 40, height: 40)
         
         backButton.setImage(UIImage(named: "back_white.png"), for: .normal)
         menuButton.setImage(UIImage(named: "icons8_menu_vertical.png"), for: .normal)
+        backButton.contentMode = .scaleAspectFill
+        menuButton.contentMode = .scaleAspectFill
         recipeImageView.contentMode = .scaleAspectFill
         recipeImageView.clipsToBounds = true
         
@@ -61,7 +68,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
-        
+        recipeImageView.image = UIImage(named: "image_placeholder.png")
         getRecipeDetail()
         
     }
@@ -141,20 +148,20 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func setImage(){
-        let imgUrl = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
-        recipeImageView.setImage(withString: imgUrl)
+
+        let imgUrl = ((recipeModel?.image?.baseUrl ?? "") + (recipeModel?.image?.imgUrl ?? ""))
+        
+            recipeImageView.setImage(withString: imgUrl)
+      
     }
 }
-
-
 
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 5
-        
-        
+     
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -164,7 +171,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 1{
             switch checkbutton {
             case 0:
-                
                 return usedIngridientModel?.count ?? 0
             case 1:
                 return usedToolModel?.count ?? 0
@@ -183,7 +189,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         return 1
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -286,7 +291,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reloadTableViewCallback = { tag in
                 self.checkbutton = tag
                 self.tableView.reloadData()
-                
             }
             
             return cell
@@ -294,7 +298,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell:ViewRecipeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "ViewRecipeTableViewCell", for: indexPath) as? ViewRecipeTableViewCell else {return UITableViewCell()}
             if checkbutton == 0{
                 
-                let imgUrl = (kImageBaseUrl + (usedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+                let imgUrl = ((usedIngridientModel?[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (usedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
                 
                 cell.ingredientImageView.setImage(withString: imgUrl)
                 cell.ingredientNameLabel.text = usedIngridientModel?[indexPath.row].ingridient?.ingridientTitle
@@ -303,7 +307,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 
             }else{
-                let imgUrl = (kImageBaseUrl + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+                let imgUrl = ((usedToolModel?[indexPath.row].tool?.imageId?.baseUrl ?? "") + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
                 
                 cell.ingredientImageView.setImage(withString: imgUrl)
                 cell.ingredientNameLabel.text = usedToolModel?[indexPath.row].tool?.toolTitle
@@ -315,7 +319,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 2:
             guard let cell:RecipeByTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "RecipeByTableViewCell") as? RecipeByTableViewCell else {return UITableViewCell()}
-            let imgUrl = (kImageBaseUrl + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
+            let imgUrl = ((recipeModel?.userMain?.avatarId?.baseUrl ?? "") + (recipeModel?.userMain?.avatarId?.imageUrl ?? ""))
             
             cell.profileImg.setImage(withString: imgUrl)
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
@@ -369,15 +373,19 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.vwCommentTop.constant = 20
                 
             }
+            
             cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
             cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
             cell.avgRating = recipeModel?.avgRating
             
+<<<<<<< HEAD
             
+=======
+>>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
             cell.configCell(recipeModel?.latestReview ?? LatestReviewDataModel(with: [:]))
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
-                viewAll.recipeReviewId = recipeModel!.recipeId!
+                viewAll.recipeReviewId = recipeModel?.recipeId ?? 0
                 self.navigationController?.pushViewController(viewAll, animated: true)
             }
             return cell
@@ -401,7 +409,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 95
         case 2:
-            return 110
+            return 100
         case 3:
             return UITableView.automaticDimension
         case 4:
@@ -413,10 +421,17 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = 300 - (scrollView.contentOffset.y + 300)
-        let height = min(max(y, 60), 400)
+        let height = min(max(y, 80), 400)
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
+        if scrollView.contentOffset.y > 0{
+            tableVwTop.constant = 88
+        }
+        else{
+            tableVwTop.constant = 10
+        }
         
     }
+    
 }
 
 extension ViewRecipeViewController{

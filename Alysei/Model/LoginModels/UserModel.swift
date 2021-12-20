@@ -97,10 +97,12 @@ class UserModel: NSObject{
    
     class UserAvatar{
         var attachment_url: String?
+        var baseUrl: String?
         var id: Int?
         
         init(with data: [String:Any]){
             self.attachment_url = String.getString(data["attachment_url"])
+            self.baseUrl = String.getString(data["base_url"])
             self.id = Int.getInt(data["i"])
         }
     }
@@ -114,7 +116,7 @@ class UserModel: NSObject{
 
         init(_ dict: [String: Any], for imageName: String) {
             self.id = dict["id"] as? Int
-            self.imageURL = "\(kImageBaseUrl)" + (dict["attachment_url"] as? String ?? "")
+            self.imageURL = "\((dict["base_url"] as? String ?? "") + (dict["attachment_url"] as? String ?? ""))"
             if let imageURL = self.imageURL {
                 LocalStorage.shared.saveImage(imageURL, fileName: imageName)
             }

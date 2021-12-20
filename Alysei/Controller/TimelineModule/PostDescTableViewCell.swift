@@ -168,7 +168,7 @@ class PostDescTableViewCell: UITableViewCell {
 
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
 
-
+     
         self.viewLike.tag = index
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
         self.viewLike.addGestureRecognizer(tap)
@@ -237,9 +237,11 @@ class PostDescTableViewCell: UITableViewCell {
                         height1 = 350
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
                         height2 = 200
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) {
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
                         height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0
                                                 * 72 / 96)-200) //500
+                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
+                        height = 500
                     }
                 }
             
@@ -260,8 +262,8 @@ class PostDescTableViewCell: UITableViewCell {
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
                     imageHeightCVConstant.constant = 200
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0
-                                                                * 72 / 96)-150//500
+                //imageHeightCVConstant.constant = 350
+                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
                 }
             }
             
@@ -270,7 +272,9 @@ class PostDescTableViewCell: UITableViewCell {
         }
         self.userImage.layer.borderWidth = 0.5
         self.userImage.layer.borderColor = UIColor.lightGray.cgColor
-        print("ImageUrl--------------------------------\(String.getString(modelData.subjectId?.avatarId?.attachmentUrl) )")
+        
+       // let baseUrl =
+      //  print("ImageUrl--------------------------------\(String.getString(modelData.subjectId?.avatarId?.attachmentUrl) )")
         if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) == ""{
             self.userImage.image = UIImage(named: "profile_icon")
         }else{
@@ -295,8 +299,12 @@ class PostDescTableViewCell: UITableViewCell {
             print("No Data")
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
-                self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                let baseUrl = modelData.attachments?[i].attachmentLink?.baseUrl ?? ""
+                self.imageArray.append(baseUrl + "\(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")")
+                
             }
+            
+            print("LoadImageArray------------------------------\(imageArray)")
         }
 
         if imageArray.count <= 0 || imageArray.count == 1{
@@ -411,9 +419,11 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
-
-        cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
-        //cell.imagePost.contentMode = .scaleAspectFill
+        cell.imagePost.contentMode = .scaleToFill
+       // cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
+        print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
+        cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
+        
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }
@@ -481,8 +491,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
         } else {
             //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
-                                                                                                * 72 / 96)-150)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
         }
         
         

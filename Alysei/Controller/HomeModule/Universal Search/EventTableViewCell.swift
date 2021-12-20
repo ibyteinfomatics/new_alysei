@@ -16,10 +16,15 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTitle: UILabel!
     @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var noItemLabel: UILabel!
+    @IBOutlet weak var btnVisit: UIButton!
     
     @IBOutlet weak var mainVw: UIView!
+    @IBOutlet weak var userImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.userImage.layer.cornerRadius = self.userImage.frame.height / 2
+        btnVisit.layer.cornerRadius = self.btnVisit.frame.height / 2
+        btnVisit.layer.masksToBounds = true
         // Initialization code
         
     }

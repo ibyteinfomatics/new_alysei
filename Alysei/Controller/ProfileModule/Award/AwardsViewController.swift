@@ -117,7 +117,8 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         
         cell.rewardImage.layer.cornerRadius = 10
-        cell.rewardImage.setImage(withString: String.getString(kImageBaseUrl+(awardModel?.data?[indexPath.item].attachment?.attachmenturl)! ), placeholder: UIImage(named: "image_placeholder"))
+        let baseUrl = awardModel?.data?[indexPath.item].attachment?.baseUrl ?? ""
+        cell.rewardImage.setImage(withString: String.getString(baseUrl+(awardModel?.data?[indexPath.item].attachment?.attachmenturl)! ), placeholder: UIImage(named: "image_placeholder"))
         
         
         cell.btnEditCallback = { tag in

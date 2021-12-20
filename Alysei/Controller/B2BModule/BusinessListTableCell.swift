@@ -46,27 +46,54 @@ class BusinessListTableCell: UITableViewCell {
         userName.text = name
         
         if data.roleId == UserRoles.producer.rawValue{
-            userLocation.text = "Producer," + "\(data.follower_count ?? 0) Followers"
+            if let attributedString = self.createAttributedString(stringArray: ["Producer,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            }
+          //  userLocation.text = "Producer," + "\(data.follower_count ?? 0) Followers"
         }else if data.roleId == UserRoles.restaurant.rawValue{
-            userLocation.text = "Restaurant," + "\(data.follower_count ?? 0) Followers"
+           // userLocation.text = "Restaurant," + "\(data.follower_count ?? 0) Followers"
+            if let attributedString = self.createAttributedString(stringArray: ["Restaurant,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            }
         }else if(data.roleId == UserRoles.voyagers.rawValue){
             userLocation.text = "Voyager"
+            
         }else if data.roleId == UserRoles.voiceExperts.rawValue{
-            userLocation.text = "Voice Of Experts," + "\(data.follower_count ?? 0) Followers"
+           // userLocation.text = "Voice Of Experts," + "\(data.follower_count ?? 0) Followers"
+            if let attributedString = self.createAttributedString(stringArray: ["Voice Of Experts,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            }
         }else if data.roleId == UserRoles.distributer1.rawValue {
-            userLocation.text = "Importer," + "\(data.follower_count ?? 0) Followers"
+           // userLocation.text = "Importer," + "\(data.follower_count ?? 0) Followers"
+            if let attributedString = self.createAttributedString(stringArray: ["Importer,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            }
         }else if data.roleId == UserRoles.distributer2.rawValue{
-            userLocation.text = "Distributer," + "\(data.follower_count ?? 0) Followers"
+            //userLocation.text = "Distributer," + "\(data.follower_count ?? 0) Followers"
+            if let attributedString = self.createAttributedString(stringArray: ["Distributer,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            }
         }else if data.roleId == UserRoles.distributer3.rawValue{
-            userLocation.text = "Importer & Distributer," + "\(data.follower_count ?? 0) Followers"
+           // userLocation.text = "Importer & Distributer," + "\(data.follower_count ?? 0) Followers"
+            
+            if let attributedString = self.createAttributedString(stringArray: ["Importer & Distributer,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            
+            }
+            
         }else if data.roleId == UserRoles.travelAgencies.rawValue{
-            userLocation.text = "Travel Agencies," + "\(data.follower_count ?? 0) Followers"
+           // userLocation.text = "Travel Agencies," + "\(data.follower_count ?? 0) Followers"
+            
+            if let attributedString = self.createAttributedString(stringArray: ["Travel Agencies,","\(data.follower_count ?? 0)" + " Followers"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]) {
+                userLocation.attributedText = attributedString
+            
+            }
         }
       //  userLocation.text = data.email
      if String.getString(data.avatarId?.attachmentUrl) == "" {
             userImage.image = UIImage(named: "profile_icon")
         }else{
-            userImage.setImage(withString: kImageBaseUrl + String.getString(data.avatarId?.attachmentUrl))
+            userImage.setImage(withString:  String.getString(data.avatarId?.baseUrl) + String.getString(data.avatarId?.attachmentUrl))
         }
        
    }

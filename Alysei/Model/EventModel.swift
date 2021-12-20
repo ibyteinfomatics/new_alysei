@@ -38,7 +38,8 @@ class EventDatum {
     var status, createdAt, updatedAt: String?
     var user: EventUser?
     var attachment: EventAttachment?
-
+    var like_counts: Int?
+    var url:String?
         
     init(with dictResponse: [String:Any]?) {
         
@@ -57,7 +58,8 @@ class EventDatum {
         self.eventid = Int.getInt(dictResponse?["event_id"])
         self.userid = Int.getInt(dictResponse?["user_id"])
         self.imageid = Int.getInt(dictResponse?["image_id"])
-        
+        self.like_counts = Int.getInt(dictResponse?["like_counts"])
+        self.url = String.getString(dictResponse?["url"])
         if let user = dictResponse?["user"] as? [String:Any]{
             self.user =  EventUser.init(with: user)
         }
@@ -74,11 +76,12 @@ class EventDatum {
 // MARK: - Attachment
 class EventAttachment {
     var id: Int?
-    var attachmenturl, attachmentType, createdAt, updatedAt: String?
+    var attachmenturl, baseUrl, attachmentType, createdAt, updatedAt: String?
 
     
     init(with dictResponse: [String:Any]?) {
         self.attachmenturl = String.getString(dictResponse?["attachment_url"])
+        self.baseUrl = String.getString(dictResponse?["base_url"])
         self.attachmentType = String.getString(dictResponse?["attachment_type"])
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])

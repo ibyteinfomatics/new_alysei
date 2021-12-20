@@ -142,10 +142,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
         self.navigationController?.pushViewController(addmissIngridient, animated: true)
         
     }
-    
-    
-    
-    
+
 }
 
 extension EditToolViewController: UITableViewDelegate

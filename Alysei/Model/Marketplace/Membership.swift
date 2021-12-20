@@ -99,6 +99,7 @@ class MyStoreProductDetail{
     var flagId : FlagId?
     var region: Regions?
     var product_category_name: String?
+    var base_url: String?
     //var isSelected = false
     //var phone: String?
     
@@ -141,6 +142,7 @@ class MyStoreProductDetail{
         self.location = String.getString(data?["location"])
         self.product_category_name = String.getString(data?["product_category_name"])
         //self.phone = String.getString(data?["phone"])
+        self.base_url = String.getString(data?["base_url"])
         if let product_gallery = data?["product_gallery"] as? [[String:Any]]{
             self.product_gallery = product_gallery.map({ProductGallery.init(with: $0)})
         }

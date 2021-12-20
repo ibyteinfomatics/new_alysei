@@ -86,7 +86,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        vwHeader.drawBottomShadow()
         self.emailTextField.placeholder = "email@example.com"
         self.phoneTextField.placeholder = "9999999999"
         self.facebookTextField.placeholder = "https://www.facebook.com"
@@ -118,6 +118,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     @IBOutlet var addressTextField: UITextFieldExtended!
     @IBOutlet var websiteTextField: UITextFieldExtended!
     @IBOutlet var facebookTextField: UITextFieldExtended!
+    @IBOutlet weak var vwHeader: UIView!
 
     // MARK:- protocol methods
 
@@ -160,7 +161,8 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
                     }else if mapAddressModel.address1 == "" {
                         self?.addressTextField.text = "\(mapAddressModel.address2), \(mapAddressModel.mapAddress)".capitalized
                     }else{
-                    self?.addressTextField.text = "\(mapAddressModel.address1), \(mapAddressModel.address2), \(mapAddressModel.mapAddress)".capitalized
+                    self?.addressTextField.text = "\(mapAddressModel.address1), \(mapAddressModel.address2)"
+                        //, \(mapAddressModel.mapAddress)".capitalized
                     }
                 }
 //                controller?.delegate = self
@@ -314,8 +316,10 @@ extension ContactDetailViewController: SaveAddressCallback {
 //        latModel.first?.selectedValue = String(kSharedUserDefaults.latitude)
 //        let longModel = kSharedInstance.signUpViewModel.arrSignUpStepTwo.filter({$0.name == AppConstants.KeyLongitude})
 //        longModel.first?.selectedValue = String(kSharedUserDefaults.longitude)
+           print("AddressLine1 ", addressLineOne)
+            print("AddressLine2", addressLineTwo)
 
-        self.addressTextField.text = "\(addressLineOne) \(addressLineTwo) \(mapAddress)"
+            self.addressTextField.text = "\(addressLineOne) \(addressLineTwo)" //" \(mapAddress)"
 
 
     }

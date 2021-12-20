@@ -13,6 +13,8 @@ class SettingsScreenVC: AlysieBaseViewC {
     @IBOutlet weak var settingCollectionView: UICollectionView!
     @IBOutlet weak var viewShadow: UIView!
     var userId: String?
+    
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3" {
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
             switch indexPath.row {
            
             case 0:
@@ -91,7 +93,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             default:
               break
             }
-    }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
         switch indexPath.row {
         case 0:
           //_ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
@@ -118,7 +120,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           break
         }
 
-    }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "9" {
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" {
         switch indexPath.row {
         case 0:
          // _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
@@ -148,7 +150,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         default:
           break
         }
-    }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "7"{
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)"{
         switch indexPath.row {
         case 0:
           //_ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
@@ -176,7 +178,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         default:
           break
         }
-    }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "8"{
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
         switch indexPath.row {
         case 0:
          // _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
@@ -191,9 +193,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
-          _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
+          _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
            // kSharedUserDefaults.clearAllData()
@@ -219,9 +221,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
-          _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 7:
+          _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
            // kSharedUserDefaults.clearAllData()

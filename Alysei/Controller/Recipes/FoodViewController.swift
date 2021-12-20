@@ -84,7 +84,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (showAllFood?[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((showAllFood?[indexPath.row].imageId?.baseUrl ?? "") + (showAllFood?[indexPath.row].imageId?.imgUrl ?? ""))
         let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
         cell.image1.contentMode = .scaleAspectFit
         cell.image1.image = mySVGImage.uiImage

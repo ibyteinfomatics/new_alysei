@@ -70,7 +70,7 @@ struct UserDetailBasedElements {
     }()
     
     var coverPhoto: String = {
-       // return "profilePhoto-\(kSharedUserDefaults.loggedInUserModal.userId ?? "").jpg"
+        // return "profilePhoto-\(kSharedUserDefaults.loggedInUserModal.userId ?? "").jpg"
         return "coverPhoto-\(kSharedUserDefaults.loggedInUserModal.userId ?? "").jpg"
     }()
 }
@@ -146,7 +146,7 @@ struct  AlertMessage{
     static let kenterQuantity = "Please enter Quantity"
     static let kEnterValidName = "Please enter more than 3 character."
     static let kEnterDescriptionUrl = "Please enter Description or Url."
-
+    
 }
 struct LabelandTextFieldTitle{
     static let recipeName = "Recipe Name"
@@ -291,7 +291,7 @@ struct APIUrl{
     static let kDeleteEvent = "delete/event?event_id="
     static let kDeleteBlog = "delete/blog?blog_id="
     static let kDeleteTrip = "delete/trip?trip_id="
-       
+    
     static let kCreateEvent = "create/event"
     static let kGetIntensity = "get/intensity/list"
     static let kGetAdventure = "get/adventure/types"
@@ -336,7 +336,7 @@ struct APIUrl{
     static let kPostComment = "post/comment"
     static let kPostReplyComment = "reply/post/comment"
     static let kLike = "post/like"
-   
+    
     static let kSaveInquiry = "save/product/enquery"
     static let kSaveProfileCover = "update/avatar/cover/image"
     static let kSaveUpdateProfileField = "update/user/field"
@@ -345,7 +345,7 @@ struct APIUrl{
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
         
     }
-
+    
     enum Posts {
         static let comments = kBASEURL + "get/post/comments?post_id="
         static let sharePost = kBASEURL + "share/post"
@@ -357,23 +357,23 @@ struct APIUrl{
         static let removeProfilePhoto = kBASEURL + "remove/cover/profile/image?image_type=1"
         static let removeCoverPhoto = kBASEURL + "remove/cover/profile/image?image_type=2"
     }
-
+    
     enum Profile {
         static let memberProfile = kBASEURL + "get/member/profile"
         static let userProfile = kBASEURL + "get/profile"
-
+        
         static let fetchContactDetails = kBASEURL + "get/member/contact/tab"
         static let updateContactDetails = kBASEURL + "update/contact/details"
-
+        
         static let fetchAboutDetails = kBASEURL + "get/member/about/tab"
-
+        
         static let photoList = kBASEURL + "get/all/user/post/1"
         static let postList = kBASEURL + "get/all/user/post/0"
         static let onePost = kBASEURL + "get/post/detail?post_id="
-
+        
         static let visiterProfile = kBASEURL + "get/visitor/profile?visitor_profile_id="
     }
-
+    
     enum Connection {
         static let sendRequest = kBASEURL + "send/connection/request"
         static let sendFollowRequest = kBASEURL + "follow/user"
@@ -381,7 +381,7 @@ struct APIUrl{
         static let blockConnectionRequest = kBASEURL + "block/user"
         static let kProductTypeCategory = kBASEURL + "get/marketplace/product/categories"
     }
-
+    
     enum ReviewHub{
         static let kReviewHub = kBASEURL + "review/hubs"
     }
@@ -389,7 +389,7 @@ struct APIUrl{
         //static let kKeywordSearch = "search?search_type=3&keyword="
         static let kSearchApi = "search?search_type="
         
-
+        
     }
     enum Discover {
         static let kGetSpecialization = "get/specialization"
@@ -399,6 +399,8 @@ struct APIUrl{
         static let kDiscoverTripsSearch = "get/stories/byfilter?type=trips"
         static let kRestaurantTypes = "get/restaurant/types"
         static let kAllHubs = "get/all/hubs"
+        static let kInterestedEvent = "like/unlike/event"
+        
     }
     enum Recipes {
         static let getrecipeCategory = kBASEURL + "get/recipe/categories"
@@ -415,10 +417,10 @@ struct APIUrl{
         static let getFoodIntolerance = kBASEURL + "get/food/intolerance"
         static let addNewIngridient = kBASEURL + "add/ingredients"
         static let saveRecipe = kBASEURL + "create/recipe"
-//        static let draftRecipe = kBASEURL + "save/in/draft/recipe"
+        //        static let draftRecipe = kBASEURL + "save/in/draft/recipe"
         static let draftRecipe = kBASEURL + "save/update/draft/recipe"
         static let getAllReviews = kBASEURL + "get/reviews?recipe_id="
-
+        
         
         static let getMyRecipe = kBASEURL + "get/myrecipes"
         static let getHomeScreen = kBASEURL + "get/home/screen"
@@ -426,10 +428,10 @@ struct APIUrl{
         static let searchIngridient = kBASEURL + "search/ingredients?keyword="
         static let savePreferences = kBASEURL + "save/preference"
         static let getsavedPreferences = kBASEURL + "get/saved/preferences"
-       
+        
         static let getRecipeHomeScreen = kBASEURL + "get/home/screen"
         static let getSearchMeal = kBASEURL + "search/meal?keyword="
-
+        
         static let getChildIngridient = kBASEURL + "get/child/ingredients/"
         static let getFilterRecipe = kBASEURL + "filter/recipe?cook_time="
         static let getFavouriteRecipe = kBASEURL + "get/my/favourite/recipes"
@@ -479,16 +481,16 @@ struct AppConstants {
     static let LastName = "Last Name"
     static let DisplayName = "Display Name"
     //static let DisplayName = "Company Name"
-
+    
     static let Language = "Language"
     static let EnterFirstName = "Enter First Name"
     static let EnterLastName = "Enter Last Name"
-
+    
     static let RestaurantName = "Restaurant Name"
     static let EnterRestaurantName = "Enter Restaurant Name"
-   static let kDescription = "Description"
-
-
+    static let kDescription = "Description"
+    
+    
     static let EnterURL = "Enter URL"
     static let EnterUsername = "Enter Username"
     static let EnterDisplayName = "Enter Display Name"
@@ -602,7 +604,7 @@ struct APIConstants {
     static let kPassword = "password"
     static let kConfirmPassword = "confirm_password"
     static let kDisplayName = "display_name"
-   // static let kDisplayName = "company_name"
+    // static let kDisplayName = "company_name"
     static let kCompanyName = "company_name"
     static let kRestaurantName = "restaurant_name"
     static let kWebsite = "website"
@@ -628,7 +630,7 @@ struct APIConstants {
     static let kStepOne = "step_1"
     static let kStepTwo = "step_2"
     static let kHead = "head"
-   // static let kOption = "ç"
+    // static let kOption = "ç"
     static let kOptions = "options"
     static let kOption = "option"
     static let kUserFieldId = "user_field_id"
@@ -725,24 +727,25 @@ struct OtherConstant {
 
 struct StaticArrayData {
     
-    static let kInactiveNetworkCategoryDict = [(image: "icons8_add_user_group_man_man", name: "Invitations"),
-                                           (image: "icons_people_inactive", name: "Connections"),
-                                           (image: "icons8_data_pending", name: "Pending"),
-                                           kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons8_attendance", name: "Following") : (image: "icons8_attendance", name: "Followers")]
+    static let kInactiveNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
+                                               (image: "connections", name: "Connections"),
+                                               (image: "pending", name: "Pending"),
+                                               kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
     
-    static let kInactiveBusinessCategoryDict = [(image: "icons8_hubB2B", name: "Hubs"),
-                                            (image: "icons8_Partially_Shipped", name: "Importers & Distributors"),
-                                            (image: "icons8_restaurant", name: "Italian Restaurants in US"),
-                                            (image: "icons8_hand_with_pen", name: "Voice of Experts"),
-                                            (image: "icons8_waypoint_map", name: "Travel Agencies"),
-                                            (image: "1924790", name: "Producer"),
-        ]
+    static let kInactiveBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
+                                                (image: "importers&distributors", name: "Importers & Distributors"),
+                                                (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
+                                                (image: "voiceofexperts", name: "Voice of Experts"),
+                                                (image: "travelagencies", name: "Travel Agencies"),
+                                                (image: "producers", name: "Producer"),
+    ]
     
     static let kTutorialDict = [(image: "Alysei Splash Screen 1", title: "Welcome to Alysei", description: "Connect to social platform Alysei and follow your interests in restaurants,events,wine,food,cooking classes,recipes,blogs and more."),
                                 (image: "Alysei Splash Screen 2", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
                                 (image: "Alysei Splash Screen 3", title: "Lorem Ipsum", description: "Promote your brand on a collaborative network of certified US-based Producers, Importers, and Distributors."),
                                 (image: "Alysei Splash Screen 4", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
                                 (image: "Alysei Splash Screen 5", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster.")]
+    
     
     static let kSettingScreenDict = [(image: "icons8_settings", name: "Settings"),
                                      (image: "icons8_business", name: "Company"),
@@ -763,23 +766,21 @@ struct StaticArrayData {
                                               (image: "icons8_purchase_order", name: "Billing"),
                                               (image: "icons8_exit", name: "Logout"),
                                               (image: "icons8_secure_cloud", name: "Your Data")
-                                              ]
+    ]
     
-    static let kSettingImprtrColScreenDict = [
-                                              (image: "icons8_settings", name: "Settings"),
+    static let kSettingImprtrColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                               (image: "icons8_shop", name: "Marketplace"),
                                               (image: "icons8_security_lock", name: "Privacy"),
                                               (image: "icons8_privacy", name: "Password"),
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_exit", name: "Logout"),
-                                              (image: "icons8_secure_cloud", name: "Your Data")
-                                             
-                                              ]
+                                              (image: "icons8_secure_cloud", name: "Your Data"),
+                                              (image: "icons8_exit", name: "Logout")
+                                              
+    ]
     
-    static let kSettingRestColScreenDict = [
-                                            (image: "icons8_settings", name: "Settings"),
+    static let kSettingRestColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                             (image: "icons8_shop", name: "Marketplace"),
                                             (image: "calendar (2)", name: "Events"),
                                             (image: "icons8_security_lock", name: "Privacy"),
@@ -788,9 +789,10 @@ struct StaticArrayData {
                                             (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
                                             (image: "icons8_exit", name: "Logout"),
-                                            (image: "icons8_secure_cloud", name: "Your Data")
+                                            (image: "icons8_secure_cloud", name: "Your Data"),
                                             
-                                            ]
+                                            
+    ]
     
     static let kSettingVoyaColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                             
@@ -803,45 +805,44 @@ struct StaticArrayData {
                                             (image: "icons8_secure_cloud", name: "Your Data")
                                             
                                             
-                                            ]
-
-    static let kSettingTravlColScreenDict = [
-                                             (image: "icons8_settings", name: "Settings"),
+    ]
+    
+    static let kSettingTravlColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                              (image: "icons8_shop", name: "Marketplace"),
                                              (image: "icons8_security_lock", name: "Privacy"),
                                              (image: "icons8_privacy", name: "Password"),
                                              (image: "icons8_unavailable", name: "Blocking"),
                                              (image: "icons8_debit_card_1", name: "Membership"),
                                              (image: "icons8_purchase_order", name: "Billing"),
+                                             
+                                             (image: "icons8_secure_cloud", name: "Your Data"),
                                              (image: "icons8_exit", name: "Logout"),
-                                             (image: "icons8_secure_cloud", name: "Your Data")
-                                              
+                                             
                                              
     ]
     
-    static let kSettingExpertColScreenDict = [
-                                              (image: "icons8_settings", name: "Settings"),
-                                             (image: "icons8_shop", name: "Marketplace"),
+    static let kSettingExpertColScreenDict = [(image: "icons8_settings", name: "Settings"),
+                                              (image: "icons8_shop", name: "Marketplace"),
                                               (image: "Featured", name: "Featured"),
                                               (image: "icons8_security_lock", name: "Privacy"),
                                               (image: "icons8_privacy", name: "Password"),
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
-                                                (image: "icons8_exit", name: "Logout"),
+                                              (image: "icons8_exit", name: "Logout"),
                                               (image: "icons8_secure_cloud", name: "Your Data")
                                               
-                                              ]
+    ]
     
     //MARK: EditSettingCollectionView
     static let kEditSettingUserColScreenDict = [
-                                              (image: "editSettingprofile", name: "User Settings"),
-                                               (image: "community", name: "Edit Hub")
-                                              ]
+        (image: "editSettingprofile", name: "User Settings"),
+        (image: "community", name: "Edit Hub")
+    ]
     
     static let kEditSettingVoyColScreenDict = [
-                                              (image: "editSettingprofile", name: "Edit Profile")
-                                              ]
+        (image: "editSettingprofile", name: "Edit Profile")
+    ]
     
     
     
@@ -858,18 +859,18 @@ struct StaticArrayData {
                                   (image: "Ellipse 22", name: "Quality Mark", status: "You will receive an official quality mark on your profile.")]
     
     
-    static let kBusinessCategoryDict = [(image: "b2btab1_icon", name: "Hubs"),
-                                        (image: "b2btab2_icon", name: "Importers & Distributors"),
-                                        (image: "b2btab3_icon", name: "Italian Restaurants in US"),
-                                        (image: "b2btab4_icon", name: "Voice of Experts"),
-                                        (image: "b2btab5_icon", name: "Travel Agencies"),
-                                        (image: "b2btab6_icon", name: "Producer"),
+    static let kBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
+                                        (image: "importers&distributors", name: "Importers & Distributors"),
+                                        (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
+                                        (image: "voiceofexperts", name: "Voice of Experts"),
+                                        (image: "travelagencies", name: "Travel Agencies"),
+                                        (image: "producers", name: "Producer"),
     ]
     
-    static let kNetworkCategoryDict = [(image: "icons_invitations", name: "Invitations"),
-                                       (image: "icons8_people", name: "Connections"),
-                                       (image: "icons_pending", name: "Pending"),
-                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "icons_invitations", name: "Following") : (image: "icons_invitations", name: "Followers")]
+    static let kNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
+                                       (image: "connections", name: "Connections"),
+                                       (image: "pending", name: "Pending"),
+                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),
@@ -883,13 +884,13 @@ struct StaticArrayData {
     static let kRestaurantFilter = ["PickUp","Delivery"]
     
     static let kEventArray = ["Adventure","Tech","Family","Wellness","Fitness","Photography","Food & Drink","Writing","Culture"]
-   
+    
     static let ArrayProducerProfileCompletionDict = [(name: "HubSelection", status: "Your account is being                                                         reviewed by our staff."),
-                                   (name: "Profile Picture", status: "You have been officially certified by our staff."),
-                                  (name: "Banner (Cover Picture)", status: "Your have been recognized by our app."),
-                                  (name: "About", status: "You will receive an official quality mark on your profile."),
-                                  (name: "Our Products", status: "You will receive an official quality mark on your profile."),
-                                  (name: "Featured Products", status: "You will receive an official quality mark on your profile.")]
+                                                     (name: "Profile Picture", status: "You have been officially certified by our staff."),
+                                                     (name: "Banner (Cover Picture)", status: "Your have been recognized by our app."),
+                                                     (name: "About", status: "You will receive an official quality mark on your profile."),
+                                                     (name: "Our Products", status: "You will receive an official quality mark on your profile."),
+                                                     (name: "Featured Products", status: "You will receive an official quality mark on your profile.")]
 }
 
 struct StaticArrSelectOption {

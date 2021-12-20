@@ -31,7 +31,13 @@ class MembersWalkthroughViewC: AlysieBaseViewC {
     
     let walkthroughCollectionCell = collectionViewWalkthrough.dequeueReusableCell(withReuseIdentifier: MemberWalkthroughCollectionCell.identifier(), for: indexPath) as! MemberWalkthroughCollectionCell
     walkthroughCollectionCell.paging.numberOfPages = self.getWalkThroughViewModel.arrWalkThroughs.count
+    if indexPath.item == self.getWalkThroughViewModel.arrWalkThroughs.count - 1 {
+        walkthroughCollectionCell.btnSkip.isHidden = true
+    }else{
+        walkthroughCollectionCell.btnSkip.isHidden = false
+    }
     walkthroughCollectionCell.configureData(withGetWalkThroughDataModel: self.getWalkThroughViewModel.arrWalkThroughs[indexPath.item], indexPath: indexPath, viewModel: self.getWalkThroughViewModel)
+    
     walkthroughCollectionCell.delegate = self
     return walkthroughCollectionCell
   }

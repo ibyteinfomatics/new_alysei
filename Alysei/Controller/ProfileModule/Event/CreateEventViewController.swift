@@ -62,8 +62,15 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     @IBOutlet weak var headerText: UILabel!
     @IBOutlet weak var drop1: UIButton!
     @IBOutlet weak var drop2: UIButton!
+    @IBOutlet weak var bookingUrlView: UIView!
+    @IBOutlet weak var bookingUrlView1: UIView!
+    @IBOutlet weak var bookingTxf: UITextField!
+    @IBOutlet weak var heightbookingUrl: NSLayoutConstraint!
+    @IBOutlet weak var vwHeadBooking: UILabel!
+
     
-    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl: String?
+    
+    var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,baseUrl,bookingUrl: String?
     var event_id: Int?
     var typeofpage: String?
     
@@ -120,11 +127,14 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         
         descriptionTextView.textContainer.heightTracksTextView = true
         descriptionTextView.isScrollEnabled = false
-        
+        bookingUrlView.isHidden = true
+     //   bookingUrlView1.isHidden = true
+        heightbookingUrl.constant = 0
         if eventname != nil {
             hostNameTxf.text = hostname
             eventNameTxf.text = eventname
             locationNameTxf.text = location
+            bookingTxf.text = bookingUrl
             dateTxf.text = date
             timeTxf.text = time
             descriptionTextView.text = fulldescription
@@ -132,7 +142,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             websiteTxf.text = website
             eventTxf.text = eventYype
             registrationTxf.text = registrationType
-            uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString((baseUrl ?? "") + imgurl!), placeholder: UIImage(named: "image_placeholder"))
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
             
@@ -191,6 +201,19 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             descriptionTextView.isUserInteractionEnabled = false
             eventTxf.isUserInteractionEnabled = false
             registrationTxf.isUserInteractionEnabled = false
+            if bookingUrl != "" || bookingUrl == nil {
+                heightbookingUrl.constant = 60
+                bookingUrlView.isHidden = false
+                bookingUrlView1.isHidden = false
+                bookingTxf.isHidden = false
+                bookingTxf.isUserInteractionEnabled = false
+            }else{
+                bookingUrlView.isHidden = true
+                bookingUrlView1.isHidden = true
+                heightbookingUrl.constant = 0
+                bookingTxf.isHidden = true
+                bookingTxf.isUserInteractionEnabled = true
+            }
             
         }
         
@@ -233,7 +256,10 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: "Please select event type!")
             } else if registrationTxf.text == "" {
                 alert(msg: "Please select registration type!")
-            } else {
+            } else if bookingUrlView.isHidden == false || bookingTxf.text == "" {
+                alert(msg: "Please enter booking url!")
+            }
+                else {
                 updateEventApi()
             }
             
@@ -254,11 +280,12 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: "Please select event type!")
             } else if registrationTxf.text == "" {
                 alert(msg: "Please select registration type!")
-            } else {
+            }else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
+                alert(msg: "Please enter booking url!")
+            }
+            else {
                 createEventApi()
             }
-            
-            
         }
         
     }
@@ -287,6 +314,18 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             //self.btnReport.setTitle(item, for: .normal)
             registrationTxf.text = item
+            if item == "Paid"{
+                bookingUrlView.isHidden = false
+                bookingUrlView1.isHidden = true
+                vwHeadBooking.isHidden = true
+                vwHeadBooking.textColor =  UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+                heightbookingUrl.constant = 60
+            }else{
+                bookingUrlView.isHidden = true
+                bookingUrlView1.isHidden = true
+                vwHeadBooking.isHidden = true
+                heightbookingUrl.constant = 0
+            }
             
         }
         dataDropDown.cellHeight = 40
@@ -400,6 +439,18 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             eventNameLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
             
         }
+        if textField == self.bookingTxf
+        {
+            self.vwHeadBooking.isHidden = false
+            self.bookingTxf.placeholder = ""
+            self.bookingUrlView.isHidden = false
+            bookingUrlView1.isHidden = false
+            vwHeadBooking.isHidden = false
+            self.bookingUrlView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+            
+            vwHeadBooking.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
+            
+        }
         else if textField == self.hostNameTxf{
             
             self.hostNameLabel.isHidden = false
@@ -510,6 +561,19 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.eventNameTxf.placeholder = "Event Name"
                 self.eventNameView.isHidden = false
                 nameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+            //}
+            
+            
+        }
+        if textField == self.bookingTxf
+        {
+            //if self.eventNameTxf.text == ""
+           // {
+                self.vwHeadBooking.isHidden = false
+                self.vwHeadBooking.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+                self.bookingTxf.placeholder = "Booking Url"
+                self.bookingUrlView.isHidden = false
+            bookingUrlView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //}
             
             
@@ -637,7 +701,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         websiteLabel.isHidden = true
         eventLabel.isHidden = true
         registrationLabel.isHidden = true
-        
+        vwHeadBooking.isHidden = true
         
         descriptionTextView.text = "Description"
         descriptionTextView.textColor = .lightGray
@@ -652,6 +716,14 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         websiteView1.isHidden = true
         eventView1.isHidden = true
         registrationView1.isHidden = true
+        if bookingUrl ==  nil || bookingUrl == "" {
+        bookingUrlView1.isHidden = true
+        vwHeadBooking.isHidden = true
+        }else{
+            bookingUrlView1.isHidden = false
+            vwHeadBooking.isHidden = false
+            vwHeadBooking.textColor =  UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        }
         
         
         eventNameTxf.autocorrectionType = .no
@@ -662,6 +734,8 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         descriptionTextView.autocorrectionType = .no
         websiteTxf.autocorrectionType = .no
         eventTxf.autocorrectionType = .no
+        bookingTxf.autocorrectionType = .no
+        
         
         
         eventNameTxf.delegate = self
@@ -686,6 +760,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         locationNameView.layer.borderWidth = 2
         locationNameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         
+        bookingUrlView.layer.cornerRadius = 4
+        bookingUrlView.layer.borderWidth = 2
+        bookingUrlView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         
         dateView.layer.cornerRadius = 4
         dateView.layer.borderWidth = 2
@@ -803,6 +880,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             "website": websiteTxf.text ?? "",
             "event_type": eventTxf.text ?? "",
             "registration_type": registrationTxf.text ?? "",
+            "url": bookingTxf.text ?? ""
             
         ]
         
@@ -828,6 +906,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             "event_type": eventTxf.text ?? "",
             "registration_type": registrationTxf.text ?? "",
             "event_id": String.getString(event_id),
+            "url": bookingTxf.text ?? ""
             
         ]
         

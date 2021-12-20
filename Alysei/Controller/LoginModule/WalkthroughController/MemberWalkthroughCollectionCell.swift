@@ -59,6 +59,7 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
     self.lblDescription.text = model?.walkthroughDescription
     //self.paging.numberOfPages = 1
     self.paging.currentPage = indexPath.item
+    
   }
 }
 

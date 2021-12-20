@@ -45,10 +45,9 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         txtReview.layer.borderColor = UIColor.lightGray.cgColor
         txtReview.layer.borderWidth = 0.5
         setImage()
+        
         // Do any additional setup after loading the view.
     }
-    
-    
     
     func setImage(){
         //        _ = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
@@ -64,12 +63,13 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         //            self.userImage.layer.borderColor = UIColor.white.cgColor
         //        }
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            userImage.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            userImage.setImage(withString: "\(kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? "")\(imageURLString)")
             self.userImage.layer.cornerRadius = (self.userImage.frame.width / 2.0)
             self.userImage.layer.borderWidth = 5.0
             self.userImage.layer.masksToBounds = true
         }
     }
+    
     func setStar(){
         btnStar1.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar2.setImage(UIImage(named: "icons8_star"), for: .normal)
@@ -77,6 +77,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     func setReviewStarUI(){
         if (editReviewData?.rating ?? 0) == 0 {
             reviewStarCount = 0
@@ -124,9 +125,11 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
             btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         }
     }
+    
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func btnAddReview(_ sender: UIButton){
         if (reviewStarCount == 0){
             self.showAlert(withMessage: "Please add ratings.")
@@ -155,6 +158,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
+    
     @IBAction func btnStar2(_ sender: UIButton){
         reviewStarCount = 2
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -164,6 +168,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
+    
     @IBAction func btnStar3(_ sender: UIButton){
         reviewStarCount = 3
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -173,6 +178,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
+    
     @IBAction func btnStar4(_ sender: UIButton){
         reviewStarCount = 4
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -182,6 +188,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
         
     }
+    
     @IBAction func btnStar5(_ sender: UIButton){
         reviewStarCount = 5
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -191,12 +198,15 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         btnStar5.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         
     }
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
         if textView.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray{
             textView.text = ""
         }
         return true
     }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // Combine the textView text and the replacement text to

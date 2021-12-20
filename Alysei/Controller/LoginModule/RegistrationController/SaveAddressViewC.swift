@@ -43,9 +43,9 @@ class SaveAddressViewC: AlysieBaseViewC {
     
     if self.signUpStepTwoDataModel != nil{
       self.txtFieldAddress1.text = self.signUpStepTwoDataModel.selectedAddressLineOne
-      self.txtFieldAddress2.text = self.signUpStepTwoDataModel.selectedAddressLineTwo
+      //self.txtFieldAddress2.text = self.signUpStepTwoDataModel.selectedAddressLineTwo
     }
-    
+    self.txtFieldAddress1.text =  self.mapAddress
   }
   
   @objc func keyboardWillShow(sender: NSNotification) {
@@ -68,11 +68,14 @@ class SaveAddressViewC: AlysieBaseViewC {
     }
     else{
         if self.signUpStepTwoDataModel != nil {
-            self.delegate?.addressSaved(self.signUpStepTwoDataModel, addressLineOne: String.getString((self.txtFieldAddress1.text)), addressLineTwo: String.getString((self.txtFieldAddress2.text)), mapAddress: self.mapAddress)
+            self.delegate?.addressSaved(self.signUpStepTwoDataModel, addressLineOne: String.getString((self.txtFieldAddress2.text)), addressLineTwo: String.getString((self.txtFieldAddress1.text)), mapAddress: "")
+
         } else {
-            let mapAddressModel = MapAddressModel(address1: String.getString((self.txtFieldAddress1.text)),
-                                                  address2: String.getString((self.txtFieldAddress2.text)),
-                                                  mapAddress: self.mapAddress ?? "")
+            let mapAddressModel = MapAddressModel(address1: String.getString((self.txtFieldAddress2.text)),
+                                                  address2: String.getString((self.txtFieldAddress1.text)),
+                                                  mapAddress: "")
+            
+            
             self.dismiss?(mapAddressModel)
             self.dismiss(animated: false, completion: nil)
         }

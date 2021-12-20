@@ -13,8 +13,8 @@ class MembershipViewC: AlysieBaseViewC {
     
   @IBOutlet weak var tblViewMembership: UITableView!
   @IBOutlet weak var viewBlueHeading: UIView!
-    @IBOutlet weak var viewBottom: UIView!
-  @IBOutlet weak var tableviewheight: NSLayoutConstraint!
+  //  @IBOutlet weak var viewBottom: UIView!
+ // @IBOutlet weak var tableviewheight: NSLayoutConstraint!
   var progressmodel:ProgressModel?
     @IBOutlet weak var backbutton: UIButton!
   //MARK: - Properties -
@@ -34,23 +34,20 @@ class MembershipViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     
     super.viewDidLoad()
+      
+      if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
+          tblViewMembership.isScrollEnabled = false
+      } else {
+          tblViewMembership.isScrollEnabled = true
+      }
     
     let topTapbarPosition = self.tabBarController?.tabBar.frame.size.height ?? 0
-    
-    /*if topTapbarPosition > 50 {
-        //tableviewheight.constant = 200
-        tableviewheight.constant = self.view.frame.height - 120 - topTapbarPosition
-    } else {
-        tableviewheight.constant = self.view.frame.height - 350
-       // tableviewheight.constant = 200
-    }*/
-    
     
   }
     
     override func viewWillAppear(_ animated: Bool) {
         tblViewMembership.isHidden = true
-        self.viewBottom.isHidden = true
+      //  self.viewBottom.isHidden = true
         //self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
         
@@ -129,7 +126,7 @@ class MembershipViewC: AlysieBaseViewC {
             
         }
         
-        self.viewBottom.isHidden = false
+       // self.viewBottom.isHidden = false
         self.tblViewMembership.isHidden = false
         self.tblViewMembership.reloadData()
     }
@@ -148,16 +145,35 @@ class MembershipViewC: AlysieBaseViewC {
 
 extension MembershipViewC: UITableViewDataSource, UITableViewDelegate{
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if section == 0{
     return progressmodel?.alyseiProgress?.count ?? 0
+    }
+    return 1
   }
     
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if indexPath.section == 0 {
     return self.getMembershipTableCell(indexPath.row)
+    }else{
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "BottomViewCell", for: indexPath) as? BottomViewCell else {return UITableViewCell()}
+        return cell
+    }
   }
     
+    
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100.0
+    if indexPath.section == 0{
+      if indexPath.row == (progressmodel?.alyseiProgress?.count ?? 0) - 1  {
+          return 90
+      }
+    return 140
+    }
+    return 110
   }
     
 }
@@ -253,4 +269,7 @@ extension MembershipViewC{
     
   }
   
+}
+class BottomViewCell: UITableViewCell{
+    
 }

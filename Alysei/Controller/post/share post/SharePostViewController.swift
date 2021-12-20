@@ -81,7 +81,8 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         self.usernameLabel.text = "\(name)"
 
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            self.userProfileImage.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            let baseImageUrl = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? ""
+            self.userProfileImage.setImage(withString: "\(baseImageUrl)\(imageURLString)")
 
             self.userProfileImage.contentMode = .scaleAspectFill
             self.userProfileImage.layer.cornerRadius = self.userProfileImage.frame.height / 2.0
@@ -110,7 +111,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         }else{
             postOwner = self.postDataModel.postOwnerDetail?.companyName ?? ""
         }
-        let imgUrl = (kImageBaseUrl + ( self.postDataModel.postOwnerDetail?.avatarId?.attachmentUrl ?? ""))
+        let imgUrl = ((self.postDataModel.postOwnerDetail?.avatarId?.baseUrl ?? "") + ( self.postDataModel.postOwnerDetail?.avatarId?.attachmentUrl ?? ""))
         self.postOwnerImage.setImage(withString: imgUrl)
         self.lblPostDesc.text = self.postDataModel.postDescription
         
@@ -214,7 +215,7 @@ extension SharePostViewController: UICollectionViewDelegate, UICollectionViewDat
             return UICollectionViewCell()
         }
 
-        let imageString = kImageBaseUrl + "\(self.postDataModel.attachments?[indexPath.row].attachmentLink?.attachmentUrl ?? "")"
+        let imageString = "\((self.postDataModel.attachments?[indexPath.row].attachmentLink?.baseUrl ?? "") + (self.postDataModel.attachments?[indexPath.row].attachmentLink?.attachmentUrl ?? ""))"
 
         if let url = URL(string: imageString) {
             cell.image.contentMode = .scaleAspectFill

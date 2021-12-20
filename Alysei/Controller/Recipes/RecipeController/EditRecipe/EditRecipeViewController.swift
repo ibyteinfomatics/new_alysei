@@ -98,7 +98,7 @@ class EditRecipeViewController: UIViewController {
 //            let url = URL(string: imageurl)!
            
             
-            if let strUrl = "\(kImageBaseUrl)\((arrayMyRecipe?[index].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if let strUrl = "\((arrayMyRecipe?[index].image?.baseUrl ?? "") + (arrayMyRecipe?[index].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 self.recipeImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

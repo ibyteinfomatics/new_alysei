@@ -42,7 +42,7 @@ class EditIngridientTableViewCell: UITableViewCell {
         else {
             self.selectImgView.isHidden = true
         }
-        let imgUrl = (kImageBaseUrl + (data?.imageId?.imgUrl ?? ""))
+        let imgUrl = ((data?.imageId?.baseUrl ?? "") + (data?.imageId?.imgUrl ?? ""))
         ingridientsImageView.setImage(withString: imgUrl)
         ingredientsNameLabel.text = data?.ingridientTitle
     }

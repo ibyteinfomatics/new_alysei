@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Uoi-K4-W4b">
-                        <rect key="frame" x="10" y="50" width="300" height="263"/>
+                        <rect key="frame" x="10" y="53" width="300" height="260"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Exr-Bz-v1g">
                             <size key="itemSize" width="128" height="128"/>
@@ -44,19 +44,15 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick search by ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rX3-ax-z34">
-                                <rect key="frame" x="15" y="5" width="239.5" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="tiB-i6-nW6"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="16" width="239.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-DF-6y6">
-                                <rect key="frame" x="238" y="5" width="67" height="30"/>
+                                <rect key="frame" x="238" y="11" width="67" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="6fM-vR-TEb"/>
-                                    <constraint firstAttribute="height" constant="30" id="phg-9R-LT4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="View All"/>
@@ -68,13 +64,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zxy-cn-MOr" secondAttribute="trailing" id="7ae-VS-a1q"/>
+                            <constraint firstItem="rX3-ax-z34" firstAttribute="top" secondItem="zxy-cn-MOr" secondAttribute="bottom" constant="15" id="9p8-tv-uxe"/>
                             <constraint firstItem="zxy-cn-MOr" firstAttribute="leading" secondItem="396-en-yM1" secondAttribute="leading" id="DUb-yg-efu"/>
-                            <constraint firstItem="wnF-DF-6y6" firstAttribute="top" secondItem="zxy-cn-MOr" secondAttribute="bottom" constant="4" id="Pbh-Z5-nzY"/>
                             <constraint firstAttribute="height" constant="40" id="Yag-o5-pjH"/>
                             <constraint firstItem="zxy-cn-MOr" firstAttribute="top" secondItem="396-en-yM1" secondAttribute="top" id="Zx1-k0-fUB"/>
+                            <constraint firstItem="wnF-DF-6y6" firstAttribute="centerY" secondItem="rX3-ax-z34" secondAttribute="centerY" id="dLp-5F-53B"/>
                             <constraint firstItem="rX3-ax-z34" firstAttribute="leading" secondItem="396-en-yM1" secondAttribute="leading" constant="15" id="dRb-If-4kr"/>
                             <constraint firstAttribute="trailing" secondItem="wnF-DF-6y6" secondAttribute="trailing" constant="15" id="h0h-Nv-bvx"/>
-                            <constraint firstItem="rX3-ax-z34" firstAttribute="top" secondItem="zxy-cn-MOr" secondAttribute="bottom" constant="4" id="uBx-pg-GC0"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -85,7 +81,7 @@
                     <constraint firstAttribute="bottom" secondItem="Uoi-K4-W4b" secondAttribute="bottom" constant="10" id="L7Y-t5-qPK"/>
                     <constraint firstItem="Uoi-K4-W4b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Qqz-vy-wGJ"/>
                     <constraint firstAttribute="trailing" secondItem="396-en-yM1" secondAttribute="trailing" id="g8d-lL-5I4"/>
-                    <constraint firstItem="Uoi-K4-W4b" firstAttribute="top" secondItem="396-en-yM1" secondAttribute="bottom" constant="10" id="wye-su-Uls"/>
+                    <constraint firstItem="Uoi-K4-W4b" firstAttribute="top" secondItem="396-en-yM1" secondAttribute="bottom" constant="13" id="wye-su-Uls"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

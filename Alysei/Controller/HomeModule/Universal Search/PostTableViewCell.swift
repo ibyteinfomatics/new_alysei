@@ -134,18 +134,18 @@ class PostTableViewCell: UITableViewCell {
         if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) == ""{
             self.userImage.image = UIImage(named: "profile_icon")
         }else{
-            self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
+            self.userImage.setImage(withString: String.getString(modelData.subjectId?.avatarId?.baseUrl) + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
         }
         likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
     
-        self.imgPost.setImage(withString: kImageBaseUrl + String.getString(imageArray.first))
+        self.imgPost.setImage(withString: String.getString(imageArray.first))
 
         self.imageArray.removeAll()
         if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
             print("No Data")
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
-                self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                self.imageArray.append((modelData.attachments?[i].attachmentLink?.baseUrl ?? "") + (modelData.attachments?[i].attachmentLink?.attachmentUrl ?? ""))
             }
         }
         

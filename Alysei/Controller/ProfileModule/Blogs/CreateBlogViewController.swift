@@ -30,7 +30,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var uploadImage: UIImageView!
     @IBOutlet weak var headerText: UILabel!
-    var blogtitle,fulldescription,imgurl,draft:String?
+    var blogtitle,fulldescription,imgurl,baseUrl,draft:String?
     var blo_id: Int?
     var typeofpage: String?
     
@@ -53,7 +53,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             blogTxf.text = blogtitle
             descriptionTextView.text = fulldescription
             descriptionTextView.textColor = .black
-            uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString((baseUrl ?? "")+imgurl!), placeholder: UIImage(named: "image_placeholder"))
             
             if draft == "1" {
                 switchBar.isOn = true

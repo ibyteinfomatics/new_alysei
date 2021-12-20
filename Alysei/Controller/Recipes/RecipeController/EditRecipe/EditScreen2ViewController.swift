@@ -442,7 +442,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             cell.IngredientsNameLbl.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
             //                strIngridientQuantity = selectedIngridentsArray[indexPath.row].pickerData ?? ""
             cell.IngredientsValueLbl.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
-            let imgUrl = (kImageBaseUrl + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedIngridientModel[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (editusedIngridientModel[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
             cell.img.setImage(withString: imgUrl)
             cell.indexPath = indexPath
             cell.IngredientsValueLbl.isHidden = false
@@ -459,7 +459,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             
             cell1.IngredientsValueLbl.isHidden = true
             
-            let imgUrl = (kImageBaseUrl + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+            let imgUrl = ((editusedToolModel[indexPath.row].tool?.imageId?.baseUrl ?? "") + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell1.img.setImage(withString: imgUrl)
             cell1.indexPath = indexPath
             
@@ -605,11 +605,14 @@ extension EditScreen2ViewController{
             var stepDictionary : [String : Any] = [:]
             stepDictionary["description"] = item.description
             stepDictionary["title"] = item.title
+//            item.stepIngridient = editusedIngridientModel
+//            item.stepTool = editusedToolModel
             for i in 0..<(item.stepIngridient?.count ?? 0){
                 if item.stepIngridient?[i].isSelected == true{
                    
                     selectedIngridient.append(item.stepIngridient?[i].ingridientId ?? 0)
                 }
+               
             }
             stepDictionary["ingredients"] = selectedIngridient
               

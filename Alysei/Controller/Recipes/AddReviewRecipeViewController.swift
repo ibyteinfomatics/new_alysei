@@ -216,7 +216,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddReviewTableViewCell") as! AddReviewTableViewCell
         
-        let imgUrl = (kImageBaseUrl + (arrAllReviewModel?[indexPath.row].user?.avatarId?.imageUrl ?? ""))
+        let imgUrl = ((arrAllReviewModel?[indexPath.row].user?.avatarId?.baseUrl ?? "") + (arrAllReviewModel?[indexPath.row].user?.avatarId?.imageUrl ?? ""))
         cell.userProfileImg.setImage(withString: imgUrl)
         cell.userProfileImg.layer.cornerRadius = cell.userProfileImg.frame.height/2
         if arrAllReviewModel?[indexPath.row].user?.name == ""{
@@ -244,6 +244,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
         //                cell.rateImg4.image = UIImage(named: "icons8_star")
         //               cell.rateImg5.image = UIImage(named: "icons8_star")
         //            }
+        
         else if arrAllReviewModel?[indexPath.row].rating == 1 {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
@@ -378,9 +379,11 @@ extension AddReviewRecipeViewController{
             if self.isReviewed == 0 || self.isReviewed == nil {
                 self.isAddReview = false
                 self.btnEditAdd.setImage(UIImage(named: "add_icon_blue"), for: .normal)
+//                self.btnEditAdd.tintColor = .blue
             }else{
                 self.isAddReview = true
                 self.btnEditAdd.setImage(UIImage(named: "icons8_edit_3"), for: .normal)
+                self.btnEditAdd.tintColor = .black
             }
             self.allReviewTableView.reloadData()
             

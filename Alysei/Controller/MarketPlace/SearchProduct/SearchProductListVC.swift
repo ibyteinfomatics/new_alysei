@@ -173,7 +173,8 @@ class ProductListTableVCell: UITableViewCell{
         lblStoreName.text = data.store_name
         lblProductCategoryName.text = data.product_category_name
         lblReview.text = "\(data.total_reviews ?? 0) ratings"
-        self.imgProduct.setImage(withString: kImageBaseUrl + String.getString(data.product_gallery?.first?.attachment_url))
+        let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
+        self.imgProduct.setImage(withString: baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
         if data.available_for_sample == "Yes" {
             lblSampleAvailabel.isHidden = false
             imgAvailableForSample.isHidden = false

@@ -105,7 +105,7 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (self.ingdntArray[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((ingdntArray[indexPath.row].imageId?.baseUrl ?? "") + (self.ingdntArray[indexPath.row].imageId?.imgUrl ?? ""))
         cell.image2.setImage(withString: "")
         cell.image1.setImage(withString: imgUrl)
         cell.imageNameLabel.text = self.ingdntArray[indexPath.item].ingridientTitle

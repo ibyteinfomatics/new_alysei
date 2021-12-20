@@ -74,7 +74,7 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
-        let imgUrl = (kImageBaseUrl + (arrCookingSkill[indexPath.row].imageId?.imgUrl ?? ""))
+        let imgUrl = ((arrCookingSkill[indexPath.row].imageId?.baseUrl ?? "") + (arrCookingSkill[indexPath.row].imageId?.imgUrl ?? ""))
         let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
         cell.image1.contentMode = .scaleAspectFit
         cell.image1.image = mySVGImage.uiImage

@@ -49,7 +49,7 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LikeRecipeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeRecipeCollectionViewCell", for: indexPath) as! LikeRecipeCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (youMightAlsoLikeModel?[indexPath.item].image?.imgUrl ?? ""))
+        let imgUrl = ((youMightAlsoLikeModel?[indexPath.item].image?.baseUrl ?? "") + (youMightAlsoLikeModel?[indexPath.item].image?.imgUrl ?? ""))
         
         cell.imageView?.setImage(withString: imgUrl)
         cell.recipeNameLabel.text = youMightAlsoLikeModel?[indexPath.row].recipeName
@@ -59,78 +59,78 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? "NA"
         cell.likeLLabel.text = "\(youMightAlsoLikeModel?[indexPath.row].favCount ?? 0 )" + " " + "Likes"
         
-        if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "0.0" {
+        if youMightAlsoLikeModel?[indexPath.row].avgRating == "0.0" || youMightAlsoLikeModel?[indexPath.row].avgRating  == "0" {
             cell.rateImg1.image = UIImage(named: "icons8_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-            
-        }
-        else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "0.5" {
-            cell.rateImg1.image = UIImage(named: "Group 1142")
+        }  else if (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") >= ("0.1") && (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") <= ("0.9") {
+            cell.rateImg1.image = UIImage(named: "HalfStar")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "1.0" {
+        }else if youMightAlsoLikeModel?[indexPath.row].avgRating == ("1.0") || youMightAlsoLikeModel?[indexPath.row].avgRating  == ("1") {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "1.5" {
+        }else if (youMightAlsoLikeModel?[indexPath.row].avgRating ?? "0") >= ("1.1") && (youMightAlsoLikeModel?[indexPath.row].avgRating ?? "0") <= ("1.9"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg2.image = UIImage(named: "Group 1142")
+            cell.rateImg2.image = UIImage(named: "HalfStar")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "2.0" {
+        }else if youMightAlsoLikeModel?[indexPath.row].avgRating == ("2.0") || youMightAlsoLikeModel?[indexPath.row].avgRating  == ("2"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "2.5" {
+        }else if (youMightAlsoLikeModel?[indexPath.row].avgRating ?? "0") >= ("2.1") && (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") <= ("2.9"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg3.image = UIImage(named: "Group 1142")
+            cell.rateImg3.image = UIImage(named: "HalfStar")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "3.0" {
+        }else if youMightAlsoLikeModel?[indexPath.row].avgRating  == ("3.0") || youMightAlsoLikeModel?[indexPath.row].avgRating  == ("3"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg4.image = UIImage(named: "icons8_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "3.5" {
+        }else if (youMightAlsoLikeModel?[indexPath.row].avgRating ?? "0") >= ("3.1") && (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") <= ("3.9") {
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg4.image = UIImage(named: "Group 1142")
+            cell.rateImg4.image = UIImage(named: "HalfStar")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "4.0" {
+        }else if youMightAlsoLikeModel?[indexPath.row].avgRating  == ("4.0") || youMightAlsoLikeModel?[indexPath.row].avgRating  == ("4"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg5.image = UIImage(named: "icons8_star")
-        }
-        else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "4.5" {
+        }else if (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") >= ("4.1") && (youMightAlsoLikeModel?[indexPath.row].avgRating  ?? "0") <= ("4.9"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
-            cell.rateImg5.image = UIImage(named: "Group 1142")
-        }else if youMightAlsoLikeModel?[indexPath.item].avgRating ?? "0.0" == "5.0" {
+            cell.rateImg5.image = UIImage(named: "HalfStar")
+        }else if youMightAlsoLikeModel?[indexPath.row].avgRating  == ("5.0") || youMightAlsoLikeModel?[indexPath.row].avgRating  == ("5"){
             cell.rateImg1.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg2.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg3.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg4.image = UIImage(named: "icons8_christmas_star")
             cell.rateImg5.image = UIImage(named: "icons8_christmas_star")
+        }else{cell.rateImg1.image = UIImage(named: "icons8_star")
+            cell.rateImg2.image = UIImage(named: "icons8_star")
+            cell.rateImg3.image = UIImage(named: "icons8_star")
+            cell.rateImg4.image = UIImage(named: "icons8_star")
+            cell.rateImg5.image = UIImage(named: "icons8_star")
+            print("Invalid Rating")
         }
         return cell
         

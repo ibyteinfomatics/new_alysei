@@ -35,7 +35,8 @@ extension StoreDescProductTableVCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = storeProductCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreDescProductCollectionViewCell", for: indexPath) as? StoreDescProductCollectionViewCell else {return UICollectionViewCell()}
-        cell.imgProduct.setImage(withString: kImageBaseUrl + String.getString(storeProduct?[indexPath.row].product_gallery?.first?.attachment_url))
+        let baseUrl = storeProduct?[indexPath.row].product_gallery?.first?.baseUrl ?? ""
+        cell.imgProduct.setImage(withString: baseUrl + String.getString(storeProduct?[indexPath.row].product_gallery?.first?.attachment_url))
         cell.labelProductName.text = storeProduct?[indexPath.row].title
         cell.avgRating = storeProduct?[indexPath.row].avg_rating
         cell.configCell(storeProduct?[indexPath.row] ?? ProductSearchListModel(with: [:]))

@@ -21,6 +21,7 @@ class TripsTableViewCell: UITableViewCell {
     @IBOutlet weak var duview5: UIView!
     @IBOutlet weak var duview6: UIView!
     @IBOutlet weak var duview7: UIView!
+    @IBOutlet weak var lblDuration: UILabel!
     
     @IBOutlet weak var tripImage: UIImageView!
     @IBOutlet weak var tripTitle: UILabel!
@@ -28,11 +29,12 @@ class TripsTableViewCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var travelTitle: UILabel!
     @IBOutlet weak var locationTitle: UILabel!
-    @IBOutlet weak var activitiesTitle: UILabel!
+   // @IBOutlet weak var activitiesTitle: UILabel!
     @IBOutlet weak var priceTitle: UILabel!
     
     @IBOutlet weak var moreInfoButton: UIButton!
     @IBOutlet weak var interestedButton: UIButton!
+    @IBOutlet weak var userImage: UIImageView!
     
     var btnDeleteCallback:((Int,Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil
@@ -48,14 +50,14 @@ class TripsTableViewCell: UITableViewCell {
         view4.layer.cornerRadius = view4.frame.size.width/2
         view5.layer.cornerRadius = view5.frame.size.width/2
         
-        duview1.layer.cornerRadius = duview1.frame.size.width/2
-        duview2.layer.cornerRadius = duview2.frame.size.width/2
-        duview3.layer.cornerRadius = duview3.frame.size.width/2
-        duview4.layer.cornerRadius = duview4.frame.size.width/2
-        duview5.layer.cornerRadius = duview5.frame.size.width/2
-        duview6.layer.cornerRadius = duview6.frame.size.width/2
-        duview7.layer.cornerRadius = duview7.frame.size.width/2
-        
+//        duview1.layer.cornerRadius = duview1.frame.size.width/2
+//        duview2.layer.cornerRadius = duview2.frame.size.width/2
+//        duview3.layer.cornerRadius = duview3.frame.size.width/2
+//        duview4.layer.cornerRadius = duview4.frame.size.width/2
+//        duview5.layer.cornerRadius = duview5.frame.size.width/2
+//        duview6.layer.cornerRadius = duview6.frame.size.width/2
+//        duview7.layer.cornerRadius = duview7.frame.size.width/2
+       
         view1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         view2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         view3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor

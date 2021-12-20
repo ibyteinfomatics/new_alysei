@@ -57,21 +57,21 @@ struct ProfileTabRows {
     func imageName(_ userRole: UserRoles) -> [String] {
         switch userRole {
         case .producer:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ]
+            return ["all", "photos", "about", "contact", "awards" ]
         case .distributer1:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ]
+            return ["all", "photos", "about", "contact", "awards" ]
         case .distributer2:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ]
+            return ["all", "photos", "about", "contact", "awards" ]
         case .distributer3:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ]
+            return ["all", "photos", "about", "contact", "awards" ]
         case .voiceExperts:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ,"icons8_rss_1"]
+            return ["all", "photos", "about", "contact", "awards" ,"blogs"]
         case .travelAgencies:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards" ,"icons8_traveler"]
+            return ["all", "photos", "about", "contact", "awards" ,"trips"]
         case .restaurant:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal", "profile_awards"  ,"icons8_event"]
+            return ["all", "photos", "about", "contact", "awards"  ,"events"]
         case .voyagers:
-            return ["posts_icon_normal", "photo-icon-normal", "about_icon_normal", "contact_icon_normal"]
+            return ["all", "photos", "about", "contact"]
         }
     }
 

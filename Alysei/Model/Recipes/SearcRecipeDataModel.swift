@@ -52,6 +52,7 @@ class DataRecipe{
     var username: String?
     var image: ImageURL?
     var imageUrl: String?
+    var base_url: String?
     var meal: String?
   
     init(with dictResponse: [String:Any]){
@@ -78,6 +79,7 @@ class DataRecipe{
         self.isFavourite = Int.getInt(dictResponse["is_favourite"])
         self.username = String.getString(dictResponse["username"])
         self.imageUrl = String.getString(dictResponse["attachment_url"])
+        self.base_url = String.getString(dictResponse["base_url"])
         if let image = dictResponse["image"] as? [String:Any]{
             self.image = ImageURL.init(with: image)
         }

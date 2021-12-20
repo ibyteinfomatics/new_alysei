@@ -364,7 +364,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             
             let cell1 = ingridientUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "AddStepIngridientCollectionViewCell", for: indexPath) as! AddStepIngridientCollectionViewCell
             
-            let imgUrl = (kImageBaseUrl + (arrayIngridients[indexPath.row].imageId?.imgUrl ?? ""))
+            let imgUrl = ((arrayIngridients[indexPath.row].imageId?.baseUrl ?? "") + (arrayIngridients[indexPath.row].imageId?.imgUrl ?? ""))
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = arrayIngridients[indexPath.row].ingridientTitle
             cell1.addStepIngridientQuantityLabel.text = arrayIngridients[indexPath.row].pickerData ?? ""
@@ -381,7 +381,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
         } else if collectionView == toolsUsedCollectionView {
             
             let cell2 = toolsUsedCollectionView.dequeueReusableCell(withReuseIdentifier: "AddStepToolCollectionViewCell", for: indexPath) as! AddStepToolCollectionViewCell
-            let imgUrl = (kImageBaseUrl + (arraytools[indexPath.row].imageId?.imgUrl ?? ""))
+            let imgUrl = ((arraytools[indexPath.row].imageId?.baseUrl ?? "") + (arraytools[indexPath.row].imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = arraytools[indexPath.row].toolTitle
             

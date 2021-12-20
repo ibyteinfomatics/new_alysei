@@ -225,6 +225,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             }else{
                 print("contain no")
                 editusedIngridientModel.append(data)
+                
             }
             
             let data1 = IngridentArray()

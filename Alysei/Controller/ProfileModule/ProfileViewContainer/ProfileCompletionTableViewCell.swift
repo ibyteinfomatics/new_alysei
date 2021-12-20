@@ -20,6 +20,8 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     @IBOutlet weak var lbleTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewLine: UIView!
+    @IBOutlet weak var btnArrow: UIImageView!
+    
     var animationCallback:((_ index: Int?, _ cell: ProfileCompletionTableViewCell) -> Void)? = nil
     //MARK: - Properties -
   
@@ -44,5 +46,16 @@ class ProfileCompletionTableViewCell: UITableViewCell {
       }
     
   }
+    
+    func configCell(_ data: ProfileCompletionModel, _ cell: ProfileCompletionTableViewCell){
+        if data.status == true{
+            btnArrow.isHidden = true
+            cell.isUserInteractionEnabled = false
+        }else{
+            btnArrow.isHidden = false
+            cell.isUserInteractionEnabled = true
+        }
+        
+    }
 
 }

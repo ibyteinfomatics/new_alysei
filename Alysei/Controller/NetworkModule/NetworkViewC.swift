@@ -177,7 +177,7 @@ class NetworkViewC: AlysieBaseViewC {
   private func getNetworkCategoryCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
     
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
-    
+    networkCategoryCollectionCell.viewNetwork.layer.cornerRadius = networkCategoryCollectionCell.viewNetwork.frame.height / 2
     networkCategoryCollectionCell.lblNetworkCount.isHidden = true
     networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
     return networkCategoryCollectionCell
@@ -202,7 +202,8 @@ class NetworkViewC: AlysieBaseViewC {
             }
             
             if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                networkCTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+                let baseUrl = self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? ""
+                networkCTableCell.img.setImage(withString: String.getString(baseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
             }
             networkCTableCell.btnAcceptCallback = { tag in
                 
@@ -372,13 +373,13 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
 //    return CGSize(width: kScreenWidth/3.0, height: 45.0)
 
      if indexPath.item == 1{
-        return CGSize(width: 145 , height: 45.0)
+        return CGSize(width: 150 , height: 55.0)
     }
     else if indexPath.item == 2{
-        return CGSize(width: 120 , height: 45.0)
+        return CGSize(width: 130 , height: 55.0)
     }
     else{
-        return CGSize(width: 130 , height: 45.0)
+        return CGSize(width: 135 , height: 55.0)
     }
     
   }

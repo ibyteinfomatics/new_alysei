@@ -282,21 +282,20 @@ extension MapViewC: GMSAutocompleteViewControllerDelegate {
 extension MapViewC: SaveAddressCallback{
     func addressSaved(_ model: SignUpStepTwoDataModel, addressLineOne: String, addressLineTwo: String, mapAddress: String?) {
         self.dismiss(animated: true){
-            self.delegate?.addressSaved(model, addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, mapAddress: mapAddress)
+            print("AddressLine1 ", addressLineOne)
+             print("AddressLine2", addressLineTwo)
+
+          //  self.delegate?.addressSaved(model, addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, mapAddress: "")
+            self.delegate?.addressSaved(model, addressLineOne: "\(addressLineOne + ",")", addressLineTwo: addressLineTwo, mapAddress: "")
         }
     }
-    
-  
-//    func addressSaved(_ model: SignUpStepTwoDataModel, addressLineOne: String, addressLineTwo: String, mapAddress:String) {
-//
-//
-//  }
+
 }
 extension CGFloat {
   func getMiles() -> CGFloat{
        return self * 0.000621371192
   }
-  func getMeters() -> CGFloat {
+   func getMeters() -> CGFloat {
        return self * 1609.344
   }
 }

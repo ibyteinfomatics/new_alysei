@@ -171,7 +171,10 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.btnEditProfile.layer.cornerRadius = 0.0
+        self.btnEditProfile.layer.cornerRadius = 5
+        self.btnEditProfile.layer.masksToBounds = true
+        self.btnEditProfile.layer.borderWidth = 1
+        self.btnEditProfile.layer.borderColor = UIColor.gray.cgColor
         self.viewSeparator.alpha = 0.0
         
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
@@ -369,7 +372,7 @@ class ProfileViewC: AlysieBaseViewC{
         } completion: { bool in
             if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
-                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+               // cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
         }
 
@@ -740,14 +743,14 @@ class ProfileViewC: AlysieBaseViewC{
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    private func initialSetUp(_ profileImage: String , _ coverImage: String) -> Void{
+    private func initialSetUp(_ profileImage: String , _ coverImage: String, baseUrl: String) -> Void{
         
         self.imgViewCover.image = UIImage(named: "coverPhoto")
         self.imgViewProfile.image = UIImage(named: "profile_icon")
-        let imgUrl = (kImageBaseUrl + coverImage)
+        let imgUrl = (baseUrl + coverImage)
         
         self.imgViewCover.setImage(withString: imgUrl)
-        let imgPUrl = (kImageBaseUrl + profileImage)
+        let imgPUrl = (baseUrl + profileImage)
         
     
         if imgPUrl != "" {
@@ -808,8 +811,8 @@ class ProfileViewC: AlysieBaseViewC{
         let imageName = ProfileTabRows().imageName(self.userType)[indexPath.row]
         
         let title = ProfileTabRows().rowsTitle(self.userType)[indexPath.row]
-        cell.imageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
-        cell.imageView.tintColor = UIColor(named: "grey2")
+        cell.imageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
+        //cell.imageView.tintColor = UIColor(named: "grey2")
         cell.titleLabel.text = title
         return cell
         
@@ -844,6 +847,20 @@ class ProfileViewC: AlysieBaseViewC{
     //    Featured Trips (Travel Agencies)
     //    Featured Blogs (Voice of experts)
     private func updateListingTitle() {
+        if userLevel == .other {
+            switch self.visitorUserType {
+            case .distributer1, .distributer2, .distributer3, .producer:
+                self.featuredListingTitleLabel.text = "Featured Product"
+            case .restaurant:
+                self.featuredListingTitleLabel.text = "Featured Menu"
+            case .travelAgencies:
+                self.featuredListingTitleLabel.text = "Featured Packages"
+            case .voiceExperts:
+                self.featuredListingTitleLabel.text = "Featured"
+            default:
+                print("no user role found")
+            }
+        }else{
         switch self.userType {
         case .distributer1, .distributer2, .distributer3, .producer:
             self.featuredListingTitleLabel.text = "Featured Product"
@@ -855,6 +872,7 @@ class ProfileViewC: AlysieBaseViewC{
             self.featuredListingTitleLabel.text = "Featured"
         default:
             print("no user role found")
+        }
         }
     }
     
@@ -949,10 +967,11 @@ class ProfileViewC: AlysieBaseViewC{
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
                 
                 kSharedUserDefaults.synchronize()
-                let urlP = URL(string: "\(kImageBaseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
+                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
                 self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 
-                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "",baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))
               
                 //MARK: For self Contact Detail
                 self.contactDetilViewModel = responseModel.data?.contactTab
@@ -1070,7 +1089,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.lblDisplayNameNavigation.text = "\(name)".capitalized
                 self.headerView.isHidden = true
                 self.tblViewPosts.isHidden = false
-                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "")
+                self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "", baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))
                 self.btnEditProfile.isHidden = true
                 self.messageButton.isHidden = true
                 self.respondeButton.isHidden = true
@@ -1141,6 +1160,7 @@ class ProfileViewC: AlysieBaseViewC{
         cell.configure(indexPath, currentIndex: self.currentIndex)
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
         cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
+        cell.configCell(profileCompletionModel?[indexPath.row] ?? ProfileCompletionModel(with: [:]),cell)
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
         cell.animationCallback = { currentIndex, cell in
         self.animateViews(indexPath.row , cell: cell)
@@ -1291,7 +1311,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             
             if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
-                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+                //cell.imageView.tintColor = UIColor(named: "blueberryColor")
 
                 self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
                 
@@ -1325,7 +1345,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         if collectionView == self.tabsCollectionView {
             if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(false)
-                cell.imageView.tintColor = UIColor(named: "grey2")
+                //cell.imageView.tintColor = UIColor(named: "grey2")
             }
         }
     }

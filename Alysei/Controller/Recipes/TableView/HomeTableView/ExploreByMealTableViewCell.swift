@@ -72,7 +72,7 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
        
-            return  arraySearchByMeal?.count ?? 0
+            return  firstSixMealArray?.count ?? 0
         
        
 
@@ -87,16 +87,22 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
 //                let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
 //
 //                cell.itemImgVw.setImage(withString: imgUrl)
-            
-            if let strUrl = "\(kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            if (firstSixMealArray?[indexPath.item].imageId?.imgUrl ?? "") == ""{
+                cell.itemImgVw.image = UIImage(named: "image_placeholder.png")
+            }
+            else{
+            if let strUrl = "\((firstSixMealArray?[indexPath.item].imageId?.baseUrl ?? "") + (firstSixMealArray?[indexPath.item].imageId?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                   let imgUrl = URL(string: strUrl) {
                  print("ImageUrl-----------------------------------------\(imgUrl)")
                 cell.itemImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+             }
             }
                 cell.itemImgVw.layer.cornerRadius = cell.itemImgVw.frame.height/2
                 cell.itemImgVw.contentMode = .scaleAspectFill
+            cell.itemImgVw.layer.borderWidth = 1
+            cell.itemImgVw.layer.borderColor = UIColor.lightGray.cgColor
                 
-                cell.itemNameLbl.text = arraySearchByMeal?[indexPath.item].mealName ?? ""
+                cell.itemNameLbl.text = firstSixMealArray?[indexPath.item].mealName ?? ""
                
           
            
@@ -132,8 +138,8 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isFrom = "Meal"
-        mealType = arraySearchByMeal?[indexPath.row].mealName ?? ""
-        searchTitle = arraySearchByMeal?[indexPath.row].mealName ?? ""
+        mealType = firstSixMealArray?[indexPath.row].mealName ?? ""
+        searchTitle = firstSixMealArray?[indexPath.row].mealName ?? ""
 //        searchId = "\(arraySearchByMeal?[indexPath.row].recipeMealId ?? -1)"
         if delegate != nil {
             delegate?.cellTappedForSearchRecipe()
@@ -142,7 +148,12 @@ extension ExploreByMealTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
        {
-        return CGSize(width: self.collectionVw.frame.width/3 - 20, height: 180.0)
+        if MobileDeviceType.IS_IPHONE_6 == true {
+            return CGSize(width: self.collectionVw.frame.width/3 - 15 , height: 160.0)
+        }
+        else{
+            return CGSize(width: self.collectionVw.frame.width/3 - 30 , height: 160.0)
+        }
        }
 //    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 //        {

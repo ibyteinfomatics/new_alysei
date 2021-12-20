@@ -26,6 +26,7 @@ class EventDiscover: AlysieBaseViewC {
     var selectedRegistrationType: String?
     var selectedRestType: String?
     var passRestId: String?
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,39 +90,84 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.eventTitle.text = eventData[indexPath].eventName
         eventTableCell.hostTitle.text = eventData[indexPath].hostName
         eventTableCell.locationTitle.text = eventData[indexPath].location
-        eventTableCell.dateTitle.text = eventData[indexPath].date
-        
-        
-        if ((eventData[indexPath].time?.contains(":")) == true) {
-            eventTableCell.timeTitle.text = eventData[indexPath].time
-        } else {
-            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventData[indexPath].time)
+       // eventTableCell.dateTitle.text = eventData[indexPath].date
+        eventTableCell.lblLikeCount.text = "\(eventData[indexPath].like_counts ?? 0)"
+        eventTableCell.configCell(eventData[indexPath])
+        eventTableCell.btnInterested.tag = indexPath
+        eventTableCell.btnInterestedWidth.constant = 180
+        eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
+        eventTableCell.callInterestedCallback = { index in
+            let reloadIndexPath = IndexPath(row: index, section: 0)
+            self.postRequest(1)
+            self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
         }
+//        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+//
+//        if let date = dateFormatterGet.date(from: eventData[indexPath].createdAt ?? "") {
+//            print(dateFormatterGet.string(from: date))
+//            eventTableCell.timeTitle.text = "\(dateFormatterGet.string(from: date))"
+//        }
+        //let date = formatter.date(from: eventData[indexPath].time ?? "")
+        
+//        if ((eventData[indexPath].time?.contains(":")) == true) {
+//            eventTableCell.timeTitle.text = eventData[indexPath].createdAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeZone = .current
+        dateFormatter.dateFormat = "yyyy-MMM-dd"
+//        } else {
+        eventTableCell.dateTitle.text = "\(dateFormatter.date(from: (eventData[indexPath].createdAt ?? "")) ?? Date())"
+       // }
+        let imageUrl = (kImageBaseUrl + (eventData[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        eventTableCell.userImage.setImage(withString: imageUrl)
+        
+        
+        eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2
+        eventTableCell.userImage.layer.masksToBounds = true
         
         eventTableCell.eventImage.layer.masksToBounds = false
         eventTableCell.eventImage.clipsToBounds = true
         eventTableCell.eventImage.layer.cornerRadius = 5
         
-        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventData[indexPath].attachment?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventData[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return eventTableCell
         
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
-        let date = Date(timeIntervalSince1970: time)
+       // let time = Double.getDouble(timeStamp) / 1000
+       // let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "yyyy-MMM-dd"
         dateFormatter.locale =  Locale(identifier:  "en")
-        let localDate = dateFormatter.string(from: date)
+        let localDate = dateFormatter.date(from: timeStamp ?? "")
         
-        return localDate
+        return "\(localDate ?? Date())"
             
     }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > eventModel?.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                postRequest(indexOfPageToRequest)
+
+            // tell the table view to reload with the new data
+            self.eventsTableView.reloadData()
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation
@@ -148,7 +194,7 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 158
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,6 +213,7 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
         vc.eventYype = eventData[indexPath].eventType
         vc.registrationType = eventData[indexPath].registrationType
         vc.imgurl = eventData[indexPath].attachment?.attachmenturl
+        vc.bookingUrl = eventData[indexPath].url
         vc.typeofpage = "read"
         
     }
@@ -215,5 +262,6 @@ extension EventDiscover {
       }
       
     }
+  
     
 }

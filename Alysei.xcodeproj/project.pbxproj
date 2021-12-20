@@ -232,7 +232,6 @@
 		6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */; };
 		6B13372127296700005D79E5 /* PresentingWalkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B13372027296700005D79E5 /* PresentingWalkVC.swift */; };
 		6B21D2F12726AA4100E4DCF6 /* PhotosPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B21D2F02726AA4100E4DCF6 /* PhotosPost.swift */; };
-		6B23867826FD96DD00D4CC1B /* AlyseiBGV 2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */; };
 		6B2F94F626202F3A0030928E /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2F94F526202F3A0030928E /* Timeline.storyboard */; };
 		6B331B3F271FEBB60094078B /* PrivacyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B331B3E271FEBB60094078B /* PrivacyModel.swift */; };
 		6B34E99D273A357C00D63378 /* EventDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E99C273A357C00D63378 /* EventDiscover.swift */; };
@@ -327,6 +326,7 @@
 		6B7CACD026FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */; };
 		6B7CACD126FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */; };
 		6B7CACD226FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */; };
+		6B7DCDB3275F313A0066536F /* AlyseiBGV3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */; };
 		6B7FB478273D458E008A87BB /* UpdateProfileDescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */; };
 		6B7FB479273D458E008A87BB /* UpdateProfileCoverImgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */; };
 		6B805B1C270576EE002FC4BF /* ExploreByMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */; };
@@ -377,6 +377,7 @@
 		6B948236273A856400EC8D10 /* EventFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948235273A856400EC8D10 /* EventFilterVC.swift */; };
 		6B948238273A872D00EC8D10 /* TripsFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B948237273A872D00EC8D10 /* TripsFilterVC.swift */; };
 		6B95716026FDB36E000C63B5 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */; };
+		6B963D382767157100A082B6 /* ViewAllRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B963D372767157100A082B6 /* ViewAllRegionViewController.swift */; };
 		6B96B3A42743BC2F00D40CC2 /* ShowMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */; };
 		6B97B08C2713ED53003B9E68 /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */; };
 		6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */; };
@@ -897,7 +898,6 @@
 		6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketplaceWalkScreenViewController.xib; sourceTree = "<group>"; };
 		6B13372027296700005D79E5 /* PresentingWalkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentingWalkVC.swift; sourceTree = "<group>"; };
 		6B21D2F02726AA4100E4DCF6 /* PhotosPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPost.swift; sourceTree = "<group>"; };
-		6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlyseiBGV 2.mp4"; sourceTree = "<group>"; };
 		6B2F94F526202F3A0030928E /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		6B331B3E271FEBB60094078B /* PrivacyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModel.swift; sourceTree = "<group>"; };
 		6B34E99C273A357C00D63378 /* EventDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDiscover.swift; sourceTree = "<group>"; };
@@ -996,6 +996,7 @@
 		6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-HeavyItalic.otf"; sourceTree = "<group>"; };
 		6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Black.otf"; sourceTree = "<group>"; };
+		6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiBGV3.mp4; sourceTree = "<group>"; };
 		6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDescVC.swift; sourceTree = "<group>"; };
 		6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileCoverImgVC.swift; sourceTree = "<group>"; };
 		6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreByMealTableViewCell.swift; sourceTree = "<group>"; };
@@ -1046,6 +1047,7 @@
 		6B948235273A856400EC8D10 /* EventFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterVC.swift; sourceTree = "<group>"; };
 		6B948237273A872D00EC8D10 /* TripsFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsFilterVC.swift; sourceTree = "<group>"; };
 		6B95715F26FDB36E000C63B5 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
+		6B963D372767157100A082B6 /* ViewAllRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllRegionViewController.swift; sourceTree = "<group>"; };
 		6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapMarker.swift; sourceTree = "<group>"; };
 		6B97B08B2713ED53003B9E68 /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
 		6B97B08E2713EE5A003B9E68 /* EditScreen2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScreen2ViewController.swift; sourceTree = "<group>"; };
@@ -1970,7 +1972,7 @@
 				6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */,
 				61C7BE42267CAFA6006DB3BB /* Countries.json */,
 				6B79E67B26E7663100B2D434 /* Info.plist */,
-				6B23867726FD96DD00D4CC1B /* AlyseiBGV 2.mp4 */,
+				6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */,
 				6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */,
 				2770AA5525AE1BBC00A2F10B /* AlysieBaseViewC.swift */,
 				C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */,
@@ -2438,6 +2440,7 @@
 				6B90661B26F83D8600D24521 /* FilterRecipeViewController.swift */,
 				C5EB3CD426E9CB8300CCAC9E /* ViewAllViewController.swift */,
 				6B89924C2702E9F300591A2E /* ViewAllMealViewController.swift */,
+				6B963D372767157100A082B6 /* ViewAllRegionViewController.swift */,
 				6B8992502702EA0B00591A2E /* ViewAllTrendingViewController.swift */,
 				6B89924E2702E9FF00591A2E /* ViewAllQuickEasyViewController.swift */,
 				6B805B262705875F002FC4BF /* FilteredRecipeViewController.swift */,
@@ -3216,6 +3219,7 @@
 				6B7CACC426FDD3CA00096E79 /* SanFranciscoDisplay-Ultralight.otf in Resources */,
 				6113776D263212B600EEBFDA /* Colors.xcassets in Resources */,
 				27B2FDE625C8782000CFEDA0 /* ProductSection.xib in Resources */,
+				6B7DCDB3275F313A0066536F /* AlyseiBGV3.mp4 in Resources */,
 				6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */,
 				6B7CACC126FDD3CA00096E79 /* SanFranciscoDisplay-Semibold.otf in Resources */,
 				27A443D425AE03720002BAAC /* Montserrat-MediumItalic.ttf in Resources */,
@@ -3235,7 +3239,6 @@
 				6B8992412702E7CC00591A2E /* ExploreByRecipeTableViewCell.xib in Resources */,
 				C5197AE126E72A4F00C0894F /* SenderImageCell.xib in Resources */,
 				27BC68A125AC56C000A01B6A /* LaunchScreen.storyboard in Resources */,
-				6B23867826FD96DD00D4CC1B /* AlyseiBGV 2.mp4 in Resources */,
 				6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */,
 				6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */,
 				C5D6F7B126B18264006FFCDF /* CountrySelectionTableViewCell.xib in Resources */,
@@ -3879,6 +3882,7 @@
 				C56C287A268465C60042A0A3 /* MyStoreDetailViewController.swift in Sources */,
 				276E16B025DD8C5E00B17ACF /* SplashViewC.swift in Sources */,
 				612576F626CEFDC700E3EED5 /* SharePostViewController.swift in Sources */,
+				6B963D382767157100A082B6 /* ViewAllRegionViewController.swift in Sources */,
 				C53A040526663ED800D07797 /* MarketPlaceWalkThroughDescVC.swift in Sources */,
 				C5D68D542660CBF700B759F8 /* BusinessMultiOptionsVC.swift in Sources */,
 				6B89924D2702E9F300591A2E /* ViewAllMealViewController.swift in Sources */,

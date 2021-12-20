@@ -39,12 +39,12 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         reviewOuterView.layer.cornerRadius = 5
        
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            profileImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            profileImageVw.setImage(withString: "\(kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? "")\(imageURLString)")
             self.profileImageVw.layer.cornerRadius = (self.profileImageVw.frame.width / 2.0)
             self.profileImageVw.layer.borderWidth = 5.0
             self.profileImageVw.layer.masksToBounds = true
         }
-        let imgUrl1 = (kImageBaseUrl + (recipeModel?.image?.imgUrl ?? ""))
+        let imgUrl1 = ((recipeModel?.image?.baseUrl ?? "") + (recipeModel?.image?.imgUrl ?? ""))
         recipeImageView.setImage(withString: imgUrl1)
         
         reviewView.layer.cornerRadius = 5
@@ -65,6 +65,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tapForRateFinal(_ sender: Any) {
         self.popupView.isHidden = false
     }
@@ -168,12 +169,10 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
                 break
             }
            
-            
           }
         
     }
    
-    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == AppConstants.leaveComment{
             textView.text = ""

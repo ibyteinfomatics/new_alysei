@@ -8,17 +8,19 @@
 import UIKit
 
 class ViewAllMealViewController: UIViewController {
-
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
+    
     var arraySearchByMeal : [SelectMealDataModel]? = []
     var searchText = String()
     var searching1 = false
     var delegate: SearchRecipeDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         searchIngridientTextField.delegate = self
@@ -27,20 +29,20 @@ class ViewAllMealViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-
+        
         headerView.drawBottomShadow()
     }
     
     @IBAction func tapBack(_ sender: Any) {
         if searching1 == true{
-        self.searching1 = false
-        self.searchIngridientTextField.text = ""
-        getSearchByMeal()
-    }
-    else{
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+            self.searching1 = false
+            self.searchIngridientTextField.text = ""
+            getSearchByMeal()
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     @IBAction func tapCross(_ sender: Any) {
@@ -66,11 +68,11 @@ class ViewAllMealViewController: UIViewController {
             }
             self.collectionView.reloadData()
             self.view.isUserInteractionEnabled = true
-    }
+        }
     }
     
     func callSearchMeal(){
-
+        
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.getSearchMeal)\(searchText)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             switch statusCode{
             case 200:
@@ -80,7 +82,7 @@ class ViewAllMealViewController: UIViewController {
                     self.arraySearchByMeal = data.map({SelectMealDataModel.init(with: $0)})
                     self.searching1 = true
                     self.collectionView.reloadData()
-                   
+                    
                 }
             case 409:
                 self.arraySearchByMeal?.removeAll()
@@ -90,27 +92,26 @@ class ViewAllMealViewController: UIViewController {
                 self.arraySearchByMeal?.removeAll()
                 self.collectionView.reloadData()
                 self.showAlert(withMessage: "Internal Server Error")
-            
             }
-            
-            
-            
         }
     }
 }
+
 extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return self.arraySearchByMeal?.count ?? 0
+        return self.arraySearchByMeal?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ViewAllCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ViewAllCollectionViewCell", for: indexPath) as! ViewAllCollectionViewCell
-        let imgUrl = (kImageBaseUrl + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
+        let imgUrl = ((arraySearchByMeal?[indexPath.item].imageId?.baseUrl ?? "") + (arraySearchByMeal?[indexPath.item].imageId?.imgUrl ?? ""))
         
         cell.ingredientsImage.setImage(withString: imgUrl)
         cell.ingredientsImage.layer.cornerRadius = cell.ingredientsImage.frame.height/2
         cell.ingredientsImage.contentMode = .scaleAspectFill
+        cell.ingredientsImage.layer.borderWidth = 1
+        cell.ingredientsImage.layer.borderColor = UIColor.lightGray.cgColor
         cell.ingredientsLabel.text = arraySearchByMeal?[indexPath.item].mealName
         return cell
     }
@@ -129,8 +130,12 @@ extension ViewAllMealViewController: UICollectionViewDelegate, UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 180)
-        return cellSize
+        if MobileDeviceType.IS_IPHONE_6 == true {
+            return CGSize(width: self.collectionView.frame.width/3 - 10 , height: 160.0)
+        }
+        else{
+            return CGSize(width: self.collectionView.frame.width/3 - 25 , height: 160.0)
+        }
     }
 }
 extension ViewAllMealViewController: UITextFieldDelegate{
@@ -138,25 +143,25 @@ extension ViewAllMealViewController: UITextFieldDelegate{
         searchIngridientTextField.becomeFirstResponder()
         return true
     }
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
         if let text = textField.text,
            let textRange = Range(range, in: text) {
             let updateText = text.replacingCharacters(in: textRange,
                                                       with: string)
-        searchText = updateText
-        if searchText.count > 0 {
-            callSearchMeal()
-           hideKeyboardWhenTappedAround()
+            searchText = updateText
+            if searchText.count > 0 {
+                callSearchMeal()
+                hideKeyboardWhenTappedAround()
+            }
+            else{
+                self.searching1 = false
+                self.searchIngridientTextField.text = nil
+                getSearchByMeal()
+                collectionView.reloadData()
+            }
         }
-        else{
-            self.searching1 = false
-            self.searchIngridientTextField.text = nil
-            getSearchByMeal()
-            collectionView.reloadData()
-        }
-     }
         return true
     }
 }

@@ -80,9 +80,10 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
         
-        let imgUrl = (kImageBaseUrl + (arrDiet?[indexPath.row].imageId?.imgUrl ?? ""))
-        
+        let imgUrl = ((arrDiet?[indexPath.row].imageId?.baseUrl ?? "") + (arrDiet?[indexPath.row].imageId?.imgUrl ?? ""))
+        print(imgUrl)
         let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
+       
         cell.image1.contentMode = .scaleAspectFit
         cell.image1.image = mySVGImage.uiImage
         cell.imageNameLabel.text = arrDiet?[indexPath.row].dietName

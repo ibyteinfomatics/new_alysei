@@ -15,13 +15,19 @@ class BlogTableViewCell: UITableViewCell {
     @IBOutlet weak var readMoreButton: UIButton!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var noItemLabel: UILabel!
-    
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var mainVw: UIView!
     var btnReadMoreCallback:((Int) -> Void)? = nil
    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.userImage.layer.cornerRadius = self.userImage.frame.height/2
+        mainVw.layer.shadowColor = UIColor.darkGray.withAlphaComponent(0.8).cgColor
+        mainVw.layer.shadowRadius = 2
+        mainVw.layer.shadowOpacity = 0.8
+        mainVw.layer.shadowOffset = .zero
         // Initialization code
     }
 

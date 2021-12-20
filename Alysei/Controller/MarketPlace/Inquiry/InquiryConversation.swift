@@ -329,6 +329,10 @@ class InquiryConversation: AlysieBaseViewC {
                 type = "New"
             }
             
+            if type == "Closed"{
+                morebtn.isHidden = false
+            }
+            
             self.sendMessage()
             chatTextView.text = ""
         }

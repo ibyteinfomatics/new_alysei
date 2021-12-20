@@ -29,7 +29,7 @@ class MyRecipeCollectionViewCell: UICollectionViewCell {
         // Initialization code
         editRecipeButton.layer.cornerRadius = 18
         deaftButton.layer.cornerRadius = 18
-        
+        recipeImageView.image = UIImage(named: "image_placeholder.png")
 //        // drop shadow
 //        outerView.layer.cornerRadius = 10.0
 //        outerView.layer.shadowColor = UIColor.black.cgColor

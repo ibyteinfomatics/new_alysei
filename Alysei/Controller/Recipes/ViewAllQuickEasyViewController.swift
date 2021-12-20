@@ -74,7 +74,7 @@ extension ViewAllQuickEasyViewController: UICollectionViewDelegate, UICollection
             cell.deaftButton.isHidden = true
             cell.editRecipeButton.isHidden = true
           
-                let imgUrl = (kImageBaseUrl + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
+                let imgUrl = ((arrayQuickEasy?[indexPath.item].image?.baseUrl ?? "") + (arrayQuickEasy?[indexPath.item].image?.imgUrl ?? ""))
                 
                 cell.recipeImageView.setImage(withString: imgUrl)
             
