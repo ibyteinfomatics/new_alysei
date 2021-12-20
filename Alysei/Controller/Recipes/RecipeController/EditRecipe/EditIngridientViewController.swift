@@ -225,7 +225,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             }else{
                 print("contain no")
                 editusedIngridientModel.append(data)
-                
+                addDatainStep(data: data)
             }
             
             let data1 = IngridentArray()
@@ -244,12 +244,30 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             }else{
                 print("contain no")
                 selectedEditIngridentsArray.append(data1)
+               
             }
 
             self.addIngridientsTableView.reloadData()
         }
     }
     
+    func addDatainStep(data: UsedIngridientDataModel){
+        data.isSelected = false
+        for item in editstepsModel{
+            item.stepIngridient?.append(data)
+        }
+    }
+    func removeEditDatainStep(data: IngridentArray){
+        for item in editstepsModel{
+            
+            if let index = item.stepIngridient?.firstIndex(where: { $0.ingridient?.recipeIngredientIds == data.recipeIngredientIds }) {
+                print("Found at \(index)")
+                
+                item.stepIngridient?.remove(at: index)
+            }
+        }
+        
+    }
     
     @IBAction func saveAndProceedButton(_ sender: UIButton) {
 
@@ -440,13 +458,16 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
             if let index = selectedEditIngridentsArray.firstIndex(where: { $0.recipeIngredientIds == data.recipeIngredientIds }) {
                 print("Found at \(index)")
                 selectedEditIngridentsArray.remove(at: index)
-                
+                removeEditDatainStep(data: data)
+
             }
             
-            else if let index = editusedIngridientModel.firstIndex(where: { $0.ingridient?.recipeIngredientIds == data.recipeIngredientIds }) {
+            if let index = editusedIngridientModel.firstIndex(where: { $0.ingridient?.recipeIngredientIds == data.recipeIngredientIds }) {
                 print("Found at \(index)")
                 editusedIngridientModel.remove(at: index)
+                removeEditDatainStep(data: data)
             }
+            
             
 //            arrayPickerData.remove(at: indexPath.row)
 //            self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"

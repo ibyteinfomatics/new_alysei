@@ -7,6 +7,7 @@
 
 import UIKit
 
+var arrayselectedIngridientId : [Int]? = []
 class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
@@ -31,25 +32,34 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var stepNumber : String?
     var stepDescription: String?
     
-    
-    var arrayIngridients = [UsedIngridientDataModel(with: [:])]
-    var arraytools = [UsedToolsDataModel(with: [:])]
-    
-    
+    var selectedIngridientArray = [UsedIngridientDataModel]()
+    var selectedToolArray = [UsedToolsDataModel]()
+//    var arrayIngridients = [UsedIngridientDataModel(with: [:])]
+//    var arraytools = [UsedToolsDataModel(with: [:])]
+//
+
     override func viewDidAppear(_ animated: Bool) {
         if isFromStep == "Add Step"{
             page = (editstepsModel.count) + 1
-      
+            
+            for i in 0..<(editusedIngridientModel.count){
+                editusedIngridientModel[i].isSelected = false
+            }
+            for i in 0..<(editusedToolModel.count){
+                editusedToolModel[i].isSelected = false
+            }
+            ingridientUsedCollectionView.reloadData()
+            toolsUsedCollectionView.reloadData()
         }
         else{
           page = pageEdit
             if editstepsModel.count > selectedIndex  && selectedIndex != 1000 {
                 let cell = self.addStepsCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepCollectionViewCell
-                
+
                 let dataModel = editstepsModel[selectedIndex]
                 cell.titleTextField.text = dataModel.title
                 cell.desciptionTextView.text = dataModel.description
-            
+
                 editusedIngridientModel = dataModel.stepIngridient ?? []
                 editusedToolModel =  dataModel.stepTool ?? []
                 
@@ -60,8 +70,6 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
         step1IngridientLabel.text = "\(page)"
         step1ToolLabel.text = "\(page)"
         
-       
-
     }
     
     override func viewDidLoad() {
@@ -81,25 +89,23 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
         nextButton.layer.borderWidth = 1
         nextButton.layer.cornerRadius = 24
         nextButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-//        setStepTitle()
+
         self.hideKeyboardWhenTappedAround()
-        
         if isFromStep == "Add Step"{
             page = (editstepsModel.count) + 1
+            
         }
         else{
-          page = pageEdit
-        }
+            page = pageEdit
+
+       }
         
         step1IngridientLabel.text = "\(page)"
         step1ToolLabel.text = "\(page)"
+       
     }
     
-//    func setStepTitle(){
-//        step1IngridientLabel.text = "\(page)"
-//        step1ToolLabel.text = "\(page)"
-//
-//    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
@@ -157,10 +163,20 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             return 1
         }
         else if collectionView == ingridientUsedCollectionView{
-            return editusedIngridientModel.count
+//            if isFromStep == "Edit Step"{
+                return editusedIngridientModel.count
+//            }
+//            else{
+//                return selectedIngridientArray.count
+//            }
         }
         else if collectionView == toolsUsedCollectionView{
+//            if isFromStep == "Edit Step"{
             return editusedToolModel.count
+//            }
+//            else{
+//                return selectedToolArray.count
+//            }
         }
         else{
             return 0
@@ -201,16 +217,19 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             
             if isFromStep == "Edit Step"{
                 
+
                 if editusedIngridientModel[indexPath.row].isSelected == true {
                     cell1.addStepIngeidientSelectedImageView.isHidden = false
-                } else {
+                }
+                else {
                     cell1.addStepIngeidientSelectedImageView.isHidden = true
                 }
             }
-            else{
-                editusedIngridientModel[indexPath.row].isSelected = false
-                cell1.addStepIngeidientSelectedImageView.isHidden = true
-            }
+//            else{
+//
+//                editusedIngridientModel[indexPath.item].isSelected = false
+//                cell1.addStepIngeidientSelectedImageView.isHidden = true
+//            }
         
             cell1.layoutSubviews()
 
@@ -224,16 +243,18 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = editusedToolModel[indexPath.row].tool?.toolTitle
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
-            
+           
             if isFromStep == "Edit Step"{
                 if editusedToolModel[indexPath.row].isSelected == true {
                     cell2.addStepToolSelectedImageView.isHidden = false
+                   
                 } else {
                     cell2.addStepToolSelectedImageView.isHidden = true
+                    
                 }
             }
             else{
-                editusedToolModel[indexPath.row].isSelected = false
+                editusedToolModel[indexPath.item].isSelected = false
                 cell2.addStepToolSelectedImageView.isHidden = true
             }
             
@@ -257,11 +278,16 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             
             if  editusedIngridientModel[indexPath.row].isSelected == true {
                 editusedIngridientModel[indexPath.row].isSelected = false
+                
                 cell?.addStepIngeidientSelectedImageView.isHidden = true
+//                selectedIngridientArray.remove(at: indexPath.row)
             } else {
                 editusedIngridientModel[indexPath.row].isSelected = true
+                
                 cell?.addStepIngeidientSelectedImageView.isHidden = false
-
+//                let selectIngridientId = editusedIngridientModel[indexPath.row].ingridientId ?? 0
+//                arrayselectedIngridientId?.append(selectIngridientId)
+//                selectedIngridientArray.append(editusedIngridientModel[indexPath.row])
             }
         }
         else if collectionView == toolsUsedCollectionView {

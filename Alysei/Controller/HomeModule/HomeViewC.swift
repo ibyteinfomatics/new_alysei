@@ -17,7 +17,7 @@ class HomeViewC: AlysieBaseViewC {
   @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var imgReview: UIImageView!
-    var progressmodel:ProgressModel? 
+    var progressmodel:ProgressModel?
     
     // memebership view
     @IBOutlet weak var tblViewMembership: UITableView!
@@ -62,7 +62,7 @@ class HomeViewC: AlysieBaseViewC {
   //MARK: -  ViewLifeCycle Methods -
   
   override func viewDidLoad() {
-    super.viewDidLoad()   
+    super.viewDidLoad()
    // _ = membershipViewC
     fullScreenImageView.alpha = 0.0
     fullScreenImageView.isUserInteractionEnabled = false
@@ -316,9 +316,14 @@ extension HomeViewC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       if indexPath.section == 0{
         if indexPath.row == (progressmodel?.alyseiProgress?.count ?? 0) - 1  {
-            return 90
+            if MobileDeviceType.IS_IPHONE_6 == true {
+                return 100
+            }
+            else{
+                return 180
+            }
         }
-      return 140
+      return 100
       }
       return 110
     }

@@ -835,29 +835,20 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             if (indexPath.section == 2)
             {
                 
-<<<<<<< HEAD
-                return 200
-=======
                 return regionHeight
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
+
             }
             if (indexPath.section == 3)
             {
                 
-<<<<<<< HEAD
-                return 350
-=======
                 return trendingHeight
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
+
             }
             if (indexPath.section == 4)
             {
-                
-<<<<<<< HEAD
-                return 350
-=======
+            
                 return CGFloat(quickeasyHeight)
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
+
             }
         case 1:
             return 260

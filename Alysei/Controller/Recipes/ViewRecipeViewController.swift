@@ -28,11 +28,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     
     override func viewWillAppear(_ animated: Bool) {
             self.getRecipeDetail()
-<<<<<<< HEAD
-
-=======
             
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
         self.tabBarController?.tabBar.isHidden = true
         
     }
@@ -378,10 +374,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
             cell.avgRating = recipeModel?.avgRating
             
-<<<<<<< HEAD
-            
-=======
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
             cell.configCell(recipeModel?.latestReview ?? LatestReviewDataModel(with: [:]))
             cell.btnAddReviewCallback = {
                 let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewRecipeViewController") as! AddReviewRecipeViewController
@@ -448,7 +440,9 @@ extension ViewRecipeViewController{
             if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
                 usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
                 
-            }
+                }
+                
+            
             if let data = dictResponse?["used_tools"] as? [[String:Any]]{
                 usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
                 
@@ -456,6 +450,20 @@ extension ViewRecipeViewController{
             
             if let data = dictResponse?["steps"] as? [[String:Any]]{
                 stepsModel = data.map({StepsDataModel.init(with: $0)})
+                
+//                for i in (0..<(stepsModel?.count ?? 0)){
+//                    for j in (0..<(stepsModel?[i].stepIngridient?.count ?? 0)){
+//
+//                        if stepsModel?[i].stepIngridient?[j].isSelected == true {
+//                            selectedIngridientArray.append(stepsModel?[i].stepIngridient?[j] ?? UsedIngridientDataModel(with: [:]) )
+//                        }
+//
+//                    }
+//                    arrayselectedIngridientId?.removeAll()
+//                    for k in (0..<(selectedIngridientArray.count)){
+//                        arrayselectedIngridientId?.append(selectedIngridientArray[k].ingridientId ?? 0 )
+//                    }
+//                }
                 
             }
             
@@ -484,6 +492,7 @@ extension ViewRecipeViewController{
             let add = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
             add.currentIndex = 2
             add.checkbutton = 2
+            arrayMyRecipe?.removeAll()
             self.navigationController?.pushViewController(add, animated: true)
             
         }

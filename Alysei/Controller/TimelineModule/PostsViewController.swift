@@ -37,7 +37,7 @@ class PostsViewController: AlysieBaseViewC {
     var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.tabBarController?.tabBar.isHidden = false
+//        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
@@ -51,8 +51,9 @@ class PostsViewController: AlysieBaseViewC {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(openNotificationPlace))
         self.notificationView.addGestureRecognizer(tap1)
         
-//        let urlP = URL(string: "\(kImageBaseUrl + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
+//        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
 //        self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
+//
         
         // Do any additional setup after loading the view.
     }
@@ -86,6 +87,9 @@ class PostsViewController: AlysieBaseViewC {
         headerStack.isHidden = true
         postTableView.isHidden = true
         callNewFeedApi(1)
+//        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
+//               self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
+       //
         
     }
   
@@ -484,28 +488,28 @@ extension PostsViewController {
    
 }
  
-//extension PostsViewController{
-//    func downloadImage(from url: URL) {
-//        print("Download Started")
-//        getData(from: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//            print(response?.suggestedFilename ?? url.lastPathComponent)
-//            print("Download Finished")
-//            // always update the UI from the main thread
-//            DispatchQueue.main.async() { [weak self] in
-//
-//                profileTabImage = UIImage(data: data)
-//                if profileTabImage == UIImage() || profileTabImage == nil {
-//                    self?.tabBarController?.addSubviewToLastTabItem(UIImage(named: "profile_icon") ?? UIImage())
-//                }else{
-//                self?.tabBarController?.addSubviewToLastTabItem(profileTabImage ?? UIImage())
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-//}
+extension PostsViewController{
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+
+                profileTabImage = UIImage(data: data)
+                if profileTabImage == UIImage() || profileTabImage == nil {
+                    self?.tabBarController?.addSubviewToLastTabItem(UIImage(named: "profile_icon") ?? UIImage())
+                }else{
+                self?.tabBarController?.addSubviewToLastTabItem(profileTabImage ?? UIImage())
+                }
+            }
+        }
+    }
+
+
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+}

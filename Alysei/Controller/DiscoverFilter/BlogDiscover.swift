@@ -75,21 +75,12 @@ class BlogDiscover: AlysieBaseViewC {
         blogTableCell.imgUser.layer.cornerRadius = blogTableCell.imgUser.frame.height / 2
         blogTableCell.imgUser.layer.masksToBounds = true
         blogTableCell.editButton.makeCornerRadius(radius: blogTableCell.editButton.frame.height / 2)
+        blogTableCell.editButton.isHidden = true
         blogTableCell.deleteButton.makeCornerRadius(radius: blogTableCell.deleteButton.frame.height / 2)
+        blogTableCell.deleteButton.isHidden = true
         blogTableCell.vwContainerlbl.layer.cornerRadius = 15
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-       // blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
-
-        let date: Date? = dateFormatterGet.date(from: blogData[indexPath].createdAt ?? "")
-        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
-        let datep = dateFormatterPrint.string(from: date ?? Date())
-        blogTableCell.dateTimeLabel.text = datep
-        
+        blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
         if String.getString(blogData[indexPath].status) == "0"{
             blogTableCell.lblDraftPublsh.text = "Draft"
         }else{
@@ -99,9 +90,10 @@ class BlogDiscover: AlysieBaseViewC {
 //        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
 //        blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
         
-        let baseUrl = blogData[indexPath].user?.avatarID?.baseUrl ?? ""
-        let imageurl = blogData[indexPath].user?.avatarID?.attachmentURL
-        blogTableCell.imgUser.setImage(withString: (baseUrl + "\(imageurl ?? "")"))
+        
+        let imageurl = "\(blogData[indexPath].user?.avatarID?.baseUrl ?? "")"
+ + "\(blogData[indexPath].user?.avatarID?.attachmentURL ?? "")"
+        blogTableCell.imgUser.setImage(withString: imageurl)
         blogTableCell.lblAuthorName.text = "\(blogData[indexPath].user?.firstName ?? "")" + "\(blogData[indexPath].user?.lastName ?? "")"
 //        blogTableCell.blogImage.layer.masksToBounds = false
 //        blogTableCell.blogImage.clipsToBounds = true
@@ -122,9 +114,8 @@ class BlogDiscover: AlysieBaseViewC {
                     
         }
         
-        let baseUrlImg = blogData[indexPath].attachment?.baseUrl ?? ""
         
-        blogTableCell.blogImage.setImage(withString: String.getString(baseUrlImg + (blogData[indexPath].attachment?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        blogTableCell.blogImage.setImage(withString: String.getString((blogData[indexPath].attachment?.baseUrl ?? "") + (blogData[indexPath].attachment?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         

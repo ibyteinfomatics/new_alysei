@@ -31,11 +31,11 @@ class EditIngridientTableViewCell: UITableViewCell {
         }
     }
     func updateUI() {
-        if (selectedEditIngridentsArray.contains(where: { $0.recipeIngredientIds == data?.recipeIngredientIds })) == true {
-            self.selectImgView.isHidden = false
-                
-        }
-        else if (editusedIngridientModel.contains(where: { $0.ingridient?.recipeIngredientIds == data?.recipeIngredientIds })) == true {
+//        if (selectedEditIngridentsArray.contains(where: { $0.recipeIngredientIds == data?.recipeIngredientIds })) == true {
+//            self.selectImgView.isHidden = false
+//
+//        }
+         if (editusedIngridientModel.contains(where: { $0.ingridient?.recipeIngredientIds == data?.recipeIngredientIds })) == true {
             self.selectImgView.isHidden = false
                 
         }

@@ -278,7 +278,7 @@ class PostDescTableViewCell: UITableViewCell {
         if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) == ""{
             self.userImage.image = UIImage(named: "profile_icon")
         }else{
-        self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
+        self.userImage.setImage(withString: (String.getString(modelData.subjectId?.avatarId?.baseUrl)) + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
         }
         likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
         

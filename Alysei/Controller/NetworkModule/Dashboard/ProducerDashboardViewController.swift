@@ -133,7 +133,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
             cell.userimg.addGestureRecognizer(tapGestureRecognizer)
             
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
-                cell.userimg.setImage(withString: String.getString(kImageBaseUrl+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+                cell.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "") + (self.dashboardModel?.data?.userData?.avatarid?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
             }
             
             

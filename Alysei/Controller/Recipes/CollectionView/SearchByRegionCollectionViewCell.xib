@@ -23,10 +23,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="102" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-<<<<<<< HEAD
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Qw4-8s-sh9" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="94" height="94"/>
-=======
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="td1-M6-g27">
                         <rect key="frame" x="4" y="5" width="94" height="94"/>
                         <subviews>
@@ -39,7 +35,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
                         <constraints>
                             <constraint firstAttribute="height" constant="94" id="O2y-Og-dQr"/>
                             <constraint firstAttribute="width" constant="94" id="Vg1-gX-UYO"/>

@@ -8,7 +8,8 @@
 import UIKit
 var selectedEditToolArray: [ToolsArray] = []
 class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, AddToolTableViewCellProtocol {
-   
+    
+    
     @IBOutlet weak var addToolsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -302,24 +303,20 @@ extension EditToolViewController: UITableViewDelegate
             if let index = selectedEditToolArray.firstIndex(where: { $0.recipeToolIds == data.recipeToolIds }) {
                 print("Found at \(index)")
                 selectedEditToolArray.remove(at: index)
+
             }
-            else if let index = editusedToolModel.firstIndex(where: { $0.tool?.recipeToolIds == data.recipeToolIds }) {
+            if let index = editusedToolModel.firstIndex(where: { $0.tool?.recipeToolIds == data.recipeToolIds }) {
                 print("Found at \(index)")
+                
                 editusedToolModel.remove(at: index)
+                removeEditDatainStep1(data: data)
             }
+            
 
             self.addToolsTableView.reloadData()
             
         }
         else{
-            let data1 = ToolsArray()
-            data1.recipeToolIds = singleToolData?.recipeToolIds
-            data1.toolTitle = singleToolData?.toolTitle
-            data1.imageId = singleToolData?.imageId
-            data1.parent = singleToolData?.parent
-            data1.isSelected = true
-            selectedEditToolArray.append(data1)
-            
             
             let data = UsedToolsDataModel(with: [:])
             data.recipeSavedToolId = editSavedtoolId;
@@ -327,8 +324,29 @@ extension EditToolViewController: UITableViewDelegate
             data.toolId = singleToolData?.recipeToolIds
             data.tool = singleToolData
             data.isSelected = true
-            editusedToolModel.append(data)
+            
+            if (((newSearchModel?.contains(where: { $0.toolId == data.toolId }))) == true)  {
+                print("contain yes")
+            }else{
+                print("contain no")
+                editusedToolModel.append(data)
+                addDatainStep1(data: data)
+            }
+            
+            let data1 = ToolsArray()
+            data1.recipeToolIds = singleToolData?.recipeToolIds
+            data1.toolTitle = singleToolData?.toolTitle
+            data1.imageId = singleToolData?.imageId
+            data1.parent = singleToolData?.parent
+            data1.isSelected = true
+            if (((newSearchModel?.contains(where: { $0.toolId == data1.recipeToolIds }))) == true)  {
+                print("contain yes")
+            }else{
+                print("contain no")
+                selectedEditToolArray.append(data1)
 
+            }
+           
             
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
             self.addToolsTableView.reloadData()
@@ -336,6 +354,26 @@ extension EditToolViewController: UITableViewDelegate
         }
         
         
+    }
+    
+    
+    func removeEditDatainStep1(data: ToolsArray){
+        for item in editstepsModel{
+
+            if let index = item.stepTool?.firstIndex(where: { $0.tool?.recipeToolIds == data.recipeToolIds }) {
+                print("Found at \(index)")
+
+                item.stepTool?.remove(at: index)
+            }
+        }
+
+    }
+    
+    func addDatainStep1(data: UsedToolsDataModel){
+        data.isSelected = false
+        for item in editstepsModel{
+            item.stepTool?.append(data)
+        }
     }
     
 }

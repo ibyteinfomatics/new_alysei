@@ -51,7 +51,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
-        imagesFromSource.removeAll()
+        
         postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
@@ -171,7 +171,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         
         if let profilePhoto = self.progressUserData?.avatarid?.attachmenturl {
             
-            self.userImage.setImage(withString: kImageBaseUrl + profilePhoto, placeholder: UIImage(named: "user_icon_normal"))
+            self.userImage.setImage(withString: (self.progressUserData?.avatarid?.baseUrl ?? "") + profilePhoto, placeholder: UIImage(named: "user_icon_normal"))
             self.userImage.layer.cornerRadius = (self.userImage.frame.width / 2.0)
             self.userImage.layer.borderWidth = 5.0
             self.userImage.layer.masksToBounds = true

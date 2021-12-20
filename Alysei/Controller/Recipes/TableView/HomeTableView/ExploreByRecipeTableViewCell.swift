@@ -94,24 +94,23 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
             if (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? "") == ""{
                 cell.countryImgVw.image = UIImage(named: "image_placeholder.png")
             }
-<<<<<<< HEAD
+
 //            cell.countryImgVw.setImage(withString: imgUrl)
             cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
             cell.countryImgVw.layer.borderWidth = 1
             cell.countryImgVw.layer.borderColor = UIColor.black.cgColor
-=======
-            else{
+          
                 if let strUrl = "\((arraySearchByRegion?[indexPath.item].regionImage?.baseUrl ?? "") + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                    let imgUrl = URL(string: strUrl) {
                     print("ImageUrl-----------------------------------------\(imgUrl)")
                     cell.countryImgVw.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
                 }
-            }
+            
             //            cell.countryImgVw.setImage(withString: imgUrl)
             cell.outerView.layer.cornerRadius = cell.outerView.frame.width/2
             cell.outerView.layer.borderWidth = 1
             cell.outerView.layer.borderColor = UIColor.lightGray.cgColor
->>>>>>> 5aea281379920a0deea04b9601babdd3a8586268
+
             cell.countryImgVw.contentMode = .scaleAspectFit
             
             cell.countryNameLbl.text = arraySearchByRegion?[indexPath.item].regionName ?? ""

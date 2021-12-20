@@ -166,6 +166,7 @@ class UsedIngridientDataModel{
     var isSelected: Bool?
     var ingridient: IngridentArray?
     
+    
     init(with dictResponse: [String:Any]){
         self.recipeSavedIngridientId = Int.getInt(dictResponse["recipe_saved_ingredient_id"])
         self.recipeId = Int.getInt(dictResponse["recipe_id"])

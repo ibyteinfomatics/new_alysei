@@ -9,7 +9,9 @@ import UIKit
 var isFromStep = String()
 var editstepsModel: [StepsDataModel] = []
 var editusedIngridientModel : [UsedIngridientDataModel] = []
+var editusedIngridientModel1 : [UsedIngridientDataModel] = []
 var editusedToolModel: [UsedToolsDataModel] = []
+var editusedToolModel1: [UsedToolsDataModel] = []
 
 class EditScreen2ViewController: UIViewController  {
     @IBOutlet weak var headerViewUp: UIView!
@@ -173,6 +175,70 @@ class EditScreen2ViewController: UIViewController  {
     @objc func addExtraSteps(sender:AnyObject){
         isFromStep = "Add Step"
         let add = self.storyboard?.instantiateViewController(withIdentifier: "EditStepViewController") as! EditStepViewController
+        
+            
+//            var ingridentsArray : [UsedIngridientDataModel] = []
+//
+//            for item in editusedIngridientModel{
+//
+//                let ingridients: UsedIngridientDataModel = UsedIngridientDataModel.init(with: [:])
+//
+//                ingridients.ingridientId = item.ingridientId
+//
+//                ingridients.ingridient?.ingridientTitle = item.ingridient?.ingridientTitle
+//
+//                ingridients.ingridient?.imageId = item.ingridient?.imageId
+//
+//                ingridients.isSelected = false
+//
+//                ingridentsArray.append(ingridients)
+//
+//            }
+//
+//
+//
+//            var toolsArray : [UsedToolsDataModel] = []
+//
+//            for item in editusedToolModel{
+//
+//                let tools: UsedToolsDataModel = UsedToolsDataModel.init(with: [:])
+//
+//                tools.recipeToolId = item.recipeToolId
+//
+//                tools.tool?.toolTitle = item.tool?.toolTitle
+//
+//                tools.tool?.imageId = item.tool?.imageId
+//
+//                tools.isSelected = false
+//
+//                toolsArray.append(tools)
+//
+//
+//
+//                add.selectedIngridientArray = ingridentsArray
+//
+//                add.selectedToolArray = toolsArray
+            
+//                let stepdata = StepsDataModel(with: [:])
+//
+//
+//            stepdata.stepIngridient = selectedIngridientArray
+//
+//            stepdata.stepTool = selectedToolArray
+//
+            
+            
+//            if selectedIndex == 1000 {
+//
+//                arrayStepFinalData.append(stepdata)
+//
+//            } else {
+//
+//                arrayStepFinalData[selectedIndex] = stepdata
+//
+//            }
+            
+//        }
         self.navigationController?.pushViewController(add, animated: true)
     }
     
@@ -229,8 +295,35 @@ class EditScreen2ViewController: UIViewController  {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func removeEditDatainStep(data: UsedIngridientDataModel){
+        for item in editstepsModel{
+            
+            if let index = item.stepIngridient?.firstIndex(where: { $0.recipeSavedIngridientId == data.recipeSavedIngridientId }) {
+                print("Found at \(index)")
+                
+                item.stepIngridient?.remove(at: index)
+            }
+        }
+        
+    }
+    
+    func removeEditDatainStep1(data: UsedToolsDataModel){
+        for item in editstepsModel{
+            
+            if let index = item.stepTool?.firstIndex(where: { $0.recipeSavedToolId == data.recipeSavedToolId }) {
+                print("Found at \(index)")
+                
+                item.stepTool?.remove(at: index)
+            }
+        }
+        
+    }
+    
     func tapForDeleteIngridient(indexPath: IndexPath) {
+        let data = editusedIngridientModel[indexPath.row]
+        removeEditDatainStep(data: data)
         editusedIngridientModel[indexPath.row].isSelected = false
+        
         editusedIngridientModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
         editscreenTableView.deleteRows(at: [indexPath], with: .left)
@@ -246,8 +339,10 @@ class EditScreen2ViewController: UIViewController  {
     
     
     func tapForDeleteIngridient1(indexPath: IndexPath) {
-        
+        let data = editusedToolModel[indexPath.row]
+        removeEditDatainStep1(data: data)
         editusedToolModel[indexPath.row].isSelected = false
+        
         editusedToolModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
         editscreenTableView.deleteRows(at: [indexPath], with: .left)
@@ -267,8 +362,8 @@ class EditScreen2ViewController: UIViewController  {
     func editClickSteps(index: IndexPath) {
         let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditStepViewController") as! EditStepViewController
                 isFromStep = "Edit Step"
-                editVC.selectedIndex = index.row
-                editVC.pageEdit = (index.row + 1)
+        editVC.selectedIndex = index.row
+        editVC.pageEdit = (index.row + 1)
         
         self.navigationController?.pushViewController(editVC, animated: true)
     }
@@ -605,8 +700,8 @@ extension EditScreen2ViewController{
             var stepDictionary : [String : Any] = [:]
             stepDictionary["description"] = item.description
             stepDictionary["title"] = item.title
-//            item.stepIngridient = editusedIngridientModel
-//            item.stepTool = editusedToolModel
+
+            selectedIngridient.removeAll()
             for i in 0..<(item.stepIngridient?.count ?? 0){
                 if item.stepIngridient?[i].isSelected == true{
                    
@@ -615,7 +710,7 @@ extension EditScreen2ViewController{
                
             }
             stepDictionary["ingredients"] = selectedIngridient
-              
+            selectedTool.removeAll()
         for i in 0..<(item.stepTool?.count ?? 0){
             if item.stepTool?[i].isSelected == true{
                

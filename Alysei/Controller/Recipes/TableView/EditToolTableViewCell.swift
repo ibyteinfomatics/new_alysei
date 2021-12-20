@@ -32,10 +32,10 @@ class EditToolTableViewCell: UITableViewCell {
     }
     
     func updateUI() {
-        if(selectedEditToolArray.contains(where: { $0.recipeToolIds == data?.recipeToolIds })) == true {
-            self.selectToolImgView.isHidden = false
-        }
-        else if (editusedToolModel.contains(where: { $0.tool?.recipeToolIds == data?.recipeToolIds }))  == true {
+//        if(selectedEditToolArray.contains(where: { $0.recipeToolIds == data?.recipeToolIds })) == true {
+//            self.selectToolImgView.isHidden = false
+//        }
+        if (editusedToolModel.contains(where: { $0.tool?.recipeToolIds == data?.recipeToolIds }))  == true {
             self.selectToolImgView.isHidden = false
                 
         }
@@ -58,9 +58,9 @@ class EditToolTableViewCell: UITableViewCell {
     @IBAction func TapForAddTool(_ sender: UIButton) {
         
         if self.selectToolImgView.isHidden == true {
-            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]), checkStatus: false)
+            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]),checkStatus: false)
         } else {
-            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]), checkStatus: true)
+            addToolDelegate?.tapForTool(indexPath: indexPath ?? IndexPath(row: sender.tag, section: 0),data: data ?? ToolsArray(with: [:]),checkStatus: true)
 
         }
     }

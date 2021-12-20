@@ -281,7 +281,7 @@ class NetworkViewC: AlysieBaseViewC {
             networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
             
             if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+                networkTableCell.img.setImage(withString: String.getString((self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? "") + (self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
             //}else{
                 networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
 
@@ -327,7 +327,7 @@ class NetworkViewC: AlysieBaseViewC {
                 networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
 
                 if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                    networkTableCell.img.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+                    networkTableCell.img.setImage(withString: String.getString((self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? "") +  (self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
                 }
             }
             return networkTableCell
