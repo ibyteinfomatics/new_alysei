@@ -96,9 +96,9 @@ extension ExploreByRecipeTableViewCell: UICollectionViewDelegate, UICollectionVi
             }
 
 //            cell.countryImgVw.setImage(withString: imgUrl)
-            cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
-            cell.countryImgVw.layer.borderWidth = 1
-            cell.countryImgVw.layer.borderColor = UIColor.black.cgColor
+//            cell.countryImgVw.layer.cornerRadius = cell.countryImgVw.frame.height/2
+//            cell.countryImgVw.layer.borderWidth = 1
+//            cell.countryImgVw.layer.borderColor = UIColor.black.cgColor
           
                 if let strUrl = "\((arraySearchByRegion?[indexPath.item].regionImage?.baseUrl ?? "") + (arraySearchByRegion?[indexPath.item].regionImage?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
                    let imgUrl = URL(string: strUrl) {
