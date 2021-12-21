@@ -43,6 +43,8 @@
     if let userData = dictData["profile_data"] as? [String:Any]{
         self.profileData = ProfileData.init(with: userData)
     }
+    
+    
 
   }
   

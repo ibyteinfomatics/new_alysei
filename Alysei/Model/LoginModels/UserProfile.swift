@@ -35,8 +35,7 @@ enum UserProfile {
             case aboutTab = "about_tab"
         }
     }
-
-
+    
     struct userDataModel: Codable {
         var avatar: avatar?
         var cover: cover?
@@ -122,3 +121,7 @@ enum UserProfile {
 
     }
 }
+//
+//struct ProductCategoriesDataModel {
+//
+//}

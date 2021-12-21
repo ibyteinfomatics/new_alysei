@@ -73,7 +73,7 @@ extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
       let width = (kScreenWidth - 70.0)/3
-      return CGSize(width: width, height: width + 52.0)
+      return CGSize(width: width, height: width + 62.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

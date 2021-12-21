@@ -80,7 +80,18 @@ class BlogDiscover: AlysieBaseViewC {
         blogTableCell.deleteButton.isHidden = true
         blogTableCell.vwContainerlbl.layer.cornerRadius = 15
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
-        blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
+       // blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
+        
+         let dateFormatterGet = DateFormatter()
+         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+         let dateFormatterPrint = DateFormatter()
+         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+
+         let date: Date? = dateFormatterGet.date(from: blogData[indexPath].createdAt ?? "")
+         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
+         let datep = dateFormatterPrint.string(from: date ?? Date())
+        blogTableCell.dateTimeLabel.text = datep
         if String.getString(blogData[indexPath].status) == "0"{
             blogTableCell.lblDraftPublsh.text = "Draft"
         }else{
