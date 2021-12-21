@@ -137,7 +137,7 @@ class RoleTableVieCell: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgRole.layer.cornerRadius = 55
+        imgRole.layer.cornerRadius = self.imgRole.layer.frame.height / 2
         containerView.layer.cornerRadius = 10
     }
     

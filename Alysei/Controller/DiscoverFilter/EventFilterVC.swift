@@ -63,7 +63,7 @@ class EventFilterVC: UIViewController {
         
         vwHeader.drawBottomShadow()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "MMM dd,yyyy"
         
         if passSelectedDate == "" || passSelectedDate == nil{
            // dateTxf.text = formatter.string(from: Date())

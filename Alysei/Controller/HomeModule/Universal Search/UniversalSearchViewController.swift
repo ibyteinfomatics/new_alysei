@@ -498,7 +498,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
                         let dateFormatterPrint = DateFormatter()
-                        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+                        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
                         let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
                         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
@@ -693,7 +693,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
                         let dateFormatterPrint = DateFormatter()
-                        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+                        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
                         let date: Date? = dateFormatterGet.date(from: self.arraySearchByEvents?[indexPath.row].user?.avatarid?.createdAt ?? "")
                         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
@@ -837,7 +837,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
                     let dateFormatterPrint = DateFormatter()
-                    dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+                    dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
                     let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
                     print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
@@ -1029,7 +1029,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
                     let dateFormatterPrint = DateFormatter()
-                    dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+                    dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
                     let date: Date? = dateFormatterGet.date(from: arraySearchByEvents?[indexPath.row].createdAt ?? "")
                     print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018

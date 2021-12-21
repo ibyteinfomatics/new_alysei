@@ -75,7 +75,7 @@ class EventsView: AlysieBaseViewC {
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy HH:mm a"
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
         let date: Date? = dateFormatterGet.date(from: eventModel?.data?[indexPath].createdAt ?? "")
         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018

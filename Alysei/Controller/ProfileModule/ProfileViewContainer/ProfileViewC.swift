@@ -96,7 +96,7 @@ class ProfileViewC: AlysieBaseViewC{
     var shownumber = 50
     
     var profileCompletionModel: [ProfileCompletionModel]?
-    
+    var userProducts: [ProductCategoriesDataModel]?
     //MARK: GetFeature Listing Data
     var featureListingId: String?
     var currentProductTitle: String?
@@ -529,14 +529,19 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func connectButtonTapped(_ sender: UIButton) {
+       
+        if  percentage != nil {
+            self.tabBarController?.selectedIndex = 4
+        }
+        else{
         //mark:- Producer to importert
         if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
             
-            if percentage == "100" || percentage == nil{
+          //  if percentage == "100" || percentage == nil{
                 self.connectButtonTapped()
-            } else {
-                self.tabBarController?.selectedIndex = 4
-            }
+          //  } else {
+                
+          //  }
             
             return
             // Mark: - producer to other user
@@ -578,11 +583,49 @@ class ProfileViewC: AlysieBaseViewC{
                 self.segueToCompleteConnectionFlow()
             }
         }
+        }
     }
-    
+    func sendConnectionRequest(_ model: BasicConnectFlow.Connection.request) {
+        do {
+            let urlString = APIUrl.Connection.sendRequest
+
+            let body = try JSONEncoder().encode(model)
+
+            guard var request = WebServices.shared.buildURLRequest(urlString, method: .POST) else {
+                return
+            }
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpBody = model.urlEncoded()
+
+//            request.httpBody = body
+
+            WebServices.shared.request(request) { data, URLResponse, statusCode, error in
+               
+                
+                
+                if statusCode == 200 {
+                    print("Success---------------------------Successssss")
+                    self.fetchVisiterProfileDetails(self.userID)
+                } else if statusCode == 409{
+                    self.showAlert(withMessage: "You are not autorized user.")
+                } else {
+                    self.showAlert(withMessage: "Something went wrong.")
+                }
+                
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     private func segueToCompleteConnectionFlow() {
        
         let connectionStatus = self.userProfileModel.data?.userData?.connectionFlag ?? 0
+        if self.userType == .voyagers && self.visitorUserType == .voyagers && connectionStatus == 0{
+            let requestModel = BasicConnectFlow.Connection.request(userID: self.userID ?? 0,reason: "",selectProductId: "")
+            sendConnectionRequest(requestModel)
+            
+        }else{
         
         if connectionStatus == 0 {
             let controller = pushViewController(withName: BasicConnectFlowViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? BasicConnectFlowViewController
@@ -661,6 +704,7 @@ class ProfileViewC: AlysieBaseViewC{
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
             
+        }
         }
     }
     
@@ -857,7 +901,7 @@ class ProfileViewC: AlysieBaseViewC{
         if userLevel == .other {
             switch self.visitorUserType {
             case .distributer1, .distributer2, .distributer3, .producer:
-                self.featuredListingTitleLabel.text = "Featured Product"
+                self.featuredListingTitleLabel.text = "Featured Products"
             case .restaurant:
                 self.featuredListingTitleLabel.text = "Featured Menu"
             case .travelAgencies:
@@ -870,7 +914,7 @@ class ProfileViewC: AlysieBaseViewC{
         }else{
         switch self.userType {
         case .distributer1, .distributer2, .distributer3, .producer:
-            self.featuredListingTitleLabel.text = "Featured Product"
+            self.featuredListingTitleLabel.text = "Featured Products"
         case .restaurant:
             self.featuredListingTitleLabel.text = "Featured Menu"
         case .travelAgencies:
@@ -1028,12 +1072,17 @@ class ProfileViewC: AlysieBaseViewC{
         guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.visiterProfile)\(userID)", method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
             SVProgressHUD.dismiss()
+           
             guard let data = data else { return }
             do {
                 
                 let responseModel = try JSONDecoder().decode(UserProfile.profileTopSectionModel.self, from: data)
+               // let dicResult = kSharedInstance.getDictionary(data)
+                //let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
+               
                 print(responseModel)
                 self.userProfileModel = responseModel
+               
                 
                 self.postcount.text = String.getString(responseModel.data?.postCount)
                                 self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
@@ -1178,7 +1227,7 @@ class ProfileViewC: AlysieBaseViewC{
     private func postRequestToGetFields() -> Void{
         
         disableWindowInteraction()
-        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+     CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
     }
     //MARK:- HandleViewTap
     
@@ -1255,8 +1304,11 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
             return ProfileTabRows().noOfRows(self.userType)
         }
         
+        
         let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
         return productCategoryDataModel?.arrAllProducts.count ?? 0
+        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -1697,7 +1749,9 @@ extension ProfileViewC {
                 print("Check")
             }
             return
-        } else if self.userType == .voyagers { //&& self.visitorUserType != .voyagers {
+        } else if  self.userType == .voyagers && self.visitorUserType == .voyagers{
+            self.segueToCompleteConnectionFlow()
+        }else if self.userType == .voyagers { //&& self.visitorUserType != .voyagers {
             let followStatus = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? 0 : 1
             let model = ProfileScreenModels.VoyagersConnectRequest(userID: self.userID, followStatus: followStatus)
             self.voyagersFollwUnFollowRequest(model)
