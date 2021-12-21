@@ -323,7 +323,7 @@ extension EditToolViewController: UITableViewDelegate
             data.recipeToolId = editRecipeId
             data.toolId = singleToolData?.recipeToolIds
             data.tool = singleToolData
-            data.isSelected = true
+            data.isSelected = 1
             
             if (((newSearchModel?.contains(where: { $0.toolId == data.toolId }))) == true)  {
                 print("contain yes")
@@ -370,7 +370,7 @@ extension EditToolViewController: UITableViewDelegate
     }
     
     func addDatainStep1(data: UsedToolsDataModel){
-        data.isSelected = false
+        data.isSelected = 0
         for item in editstepsModel{
             item.stepTool?.append(data)
         }

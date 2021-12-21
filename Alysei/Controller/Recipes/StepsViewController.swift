@@ -30,14 +30,14 @@ class StepsViewController: UIViewController, StepDelegate {
         nextStep.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         
         for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
-            if stepsModel?[page].stepIngridient?[i].isSelected == true{
+            if stepsModel?[page].stepIngridient?[i].isSelected == 1{
                 choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
             }
             tableView.reloadData()
         }
         
         for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
-            if stepsModel?[page].stepTool?[i].isSelected == true{
+            if stepsModel?[page].stepTool?[i].isSelected == 1{
                 choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
             }
             
@@ -72,7 +72,7 @@ class StepsViewController: UIViewController, StepDelegate {
             choosestepIngridient?.removeAll()
             choosestepTool?.removeAll()
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
-                if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                if stepsModel?[page].stepIngridient?[i].isSelected == 1{
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
                     tableView.reloadData()
                 }
@@ -80,7 +80,7 @@ class StepsViewController: UIViewController, StepDelegate {
             }
             
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
-                if stepsModel?[page].stepTool?[i].isSelected == true{
+                if stepsModel?[page].stepTool?[i].isSelected == 1{
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
                     tableView.reloadData()
                 }
@@ -119,7 +119,7 @@ class StepsViewController: UIViewController, StepDelegate {
             choosestepIngridient?.removeAll()
             choosestepTool?.removeAll()
             for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
-                if stepsModel?[page].stepIngridient?[i].isSelected == true{
+                if stepsModel?[page].stepIngridient?[i].isSelected == 1{
                     choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
                     tableView.reloadData()
                 }
@@ -127,7 +127,7 @@ class StepsViewController: UIViewController, StepDelegate {
             }
             
             for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
-                if stepsModel?[page].stepTool?[i].isSelected == true{
+                if stepsModel?[page].stepTool?[i].isSelected == 1{
                     choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
                     tableView.reloadData()
                 }
@@ -154,7 +154,7 @@ class StepsViewController: UIViewController, StepDelegate {
         choosestepIngridient?.removeAll()
         choosestepTool?.removeAll()
         for i in 0..<(stepsModel?[page].stepIngridient?.count ?? 0) {
-            if stepsModel?[page].stepIngridient?[i].isSelected == true{
+            if stepsModel?[page].stepIngridient?[i].isSelected == 1{
                 choosestepIngridient?.append((stepsModel?[page].stepIngridient?[i] ?? UsedIngridientDataModel(with: [:])))
                 tableView.reloadData()
             }
@@ -162,7 +162,7 @@ class StepsViewController: UIViewController, StepDelegate {
         }
         
         for i in 0..<(stepsModel?[page].stepTool?.count ?? 0) {
-            if stepsModel?[page].stepTool?[i].isSelected == true{
+            if stepsModel?[page].stepTool?[i].isSelected == 1{
                 
                 choosestepTool?.append((stepsModel?[page].stepTool?[i] ?? UsedToolsDataModel(with: [:])))
                 tableView.reloadData()

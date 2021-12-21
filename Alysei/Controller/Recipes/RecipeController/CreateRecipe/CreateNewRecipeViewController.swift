@@ -719,43 +719,42 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     
     private func validateFields() -> Void{
         
-//        if self.recipeImgVw.image == nil{
-//          showAlert(withMessage: AlertMessage.kUploadImage)
-//        }
-//     else if String.getString(nameTextField.text).isEmpty == true{
-//        showAlert(withMessage: AlertMessage.kEnterName)
-//      }
-//      else if nameTextField.text!.count < 3 {
-//            showAlert(withMessage: AlertMessage.kEnterValidName)
-//        }
-//      else if String.getString(cookingSkillLabel.text) == LabelandTextFieldTitle.selectCookingSkill{
-//        showAlert(withMessage: AlertMessage.kSelectCookingSkill)
-//      }
-//      else if String.getString(cuisineLabel.text) == LabelandTextFieldTitle.selectCuisine{
-//        showAlert(withMessage: AlertMessage.kSelectCousin)
-//      }
-//      else if String.getString(mealNameLabel.text) == LabelandTextFieldTitle.selectMeal{
-//        showAlert(withMessage: AlertMessage.kSelectMeal)
-//      }
-//      else if String.getString(courseNameLabel.text) == LabelandTextFieldTitle.selectCourse{
-//        showAlert(withMessage: AlertMessage.kSelectCourse)
-//      }
-//      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
-//        showAlert(withMessage: AlertMessage.kSelectDiet)
-//      }
-//      else if String.getString(hoursLable.text) == "0" && (String.getString(minutesLable.text) == "0"){
-//        showAlert(withMessage: AlertMessage.kSelectHour)
-//      }
-//      else if String.getString(howMuchPeopleLable.text) == "0"{
-//        showAlert(withMessage: AlertMessage.kSelecForPeople)
-//      }
-//      else if String.getString(regionLabel.text) == LabelandTextFieldTitle.selectRegion {
-//        showAlert(withMessage: AlertMessage.kSelectRegion)
-//      }
-//      else{
+        if self.recipeImgVw.image == nil{
+          showAlert(withMessage: AlertMessage.kUploadImage)
+        }
+     else if String.getString(nameTextField.text).isEmpty == true{
+        showAlert(withMessage: AlertMessage.kEnterName)
+      }
+      else if nameTextField.text!.count < 3 {
+            showAlert(withMessage: AlertMessage.kEnterValidName)
+        }
+      else if String.getString(cookingSkillLabel.text) == LabelandTextFieldTitle.selectCookingSkill{
+        showAlert(withMessage: AlertMessage.kSelectCookingSkill)
+      }
+      else if String.getString(cuisineLabel.text) == LabelandTextFieldTitle.selectCuisine{
+        showAlert(withMessage: AlertMessage.kSelectCousin)
+      }
+      else if String.getString(mealNameLabel.text) == LabelandTextFieldTitle.selectMeal{
+        showAlert(withMessage: AlertMessage.kSelectMeal)
+      }
+      else if String.getString(courseNameLabel.text) == LabelandTextFieldTitle.selectCourse{
+        showAlert(withMessage: AlertMessage.kSelectCourse)
+      }
+      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
+        showAlert(withMessage: AlertMessage.kSelectDiet)
+      }
+      else if String.getString(hoursLable.text) == "0" && (String.getString(minutesLable.text) == "0"){
+        showAlert(withMessage: AlertMessage.kSelectHour)
+      }
+      else if String.getString(howMuchPeopleLable.text) == "0"{
+        showAlert(withMessage: AlertMessage.kSelecForPeople)
+      }
+      else if String.getString(regionLabel.text) == LabelandTextFieldTitle.selectRegion {
+        showAlert(withMessage: AlertMessage.kSelectRegion)
+      }
+      else{
         let selectRecipeCategaryVC = self.storyboard?.instantiateViewController(withIdentifier: "AddIngredientsViewController") as! AddIngredientsViewController
-        self.navigationController?.pushViewController(selectRecipeCategaryVC, animated: true)
-//     }
+        self.navigationController?.pushViewController(selectRecipeCategaryVC, animated: true)    }
       
     }
 }

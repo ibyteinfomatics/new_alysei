@@ -322,7 +322,7 @@ class EditScreen2ViewController: UIViewController  {
     func tapForDeleteIngridient(indexPath: IndexPath) {
         let data = editusedIngridientModel[indexPath.row]
         removeEditDatainStep(data: data)
-        editusedIngridientModel[indexPath.row].isSelected = false
+        editusedIngridientModel[indexPath.row].isSelected = 0
         
         editusedIngridientModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
@@ -341,7 +341,7 @@ class EditScreen2ViewController: UIViewController  {
     func tapForDeleteIngridient1(indexPath: IndexPath) {
         let data = editusedToolModel[indexPath.row]
         removeEditDatainStep1(data: data)
-        editusedToolModel[indexPath.row].isSelected = false
+        editusedToolModel[indexPath.row].isSelected = 0
         
         editusedToolModel.remove(at: indexPath.row)
         editscreenTableView.beginUpdates()
@@ -703,7 +703,7 @@ extension EditScreen2ViewController{
 
             selectedIngridient.removeAll()
             for i in 0..<(item.stepIngridient?.count ?? 0){
-                if item.stepIngridient?[i].isSelected == true{
+                if item.stepIngridient?[i].isSelected == 1{
                    
                     selectedIngridient.append(item.stepIngridient?[i].ingridientId ?? 0)
                 }
@@ -712,7 +712,7 @@ extension EditScreen2ViewController{
             stepDictionary["ingredients"] = selectedIngridient
             selectedTool.removeAll()
         for i in 0..<(item.stepTool?.count ?? 0){
-            if item.stepTool?[i].isSelected == true{
+            if item.stepTool?[i].isSelected == 1{
                
                 selectedTool.append(item.stepTool?[i].toolId ?? 0)
             }

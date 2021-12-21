@@ -405,6 +405,7 @@
 		6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */; };
 		6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */; };
 		6BC4C0DF260088C500791DCD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0DE260088C500791DCD /* ImageLoader.swift */; };
+		6BD23A032771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */; };
 		6BD28D062770A49400AA0105 /* SearchByRegionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */; };
 		6BD28D082770A4C700AA0105 /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D072770A4C700AA0105 /* Recipe.storyboard */; };
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
@@ -1075,6 +1076,7 @@
 		6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayForgetVC.swift; sourceTree = "<group>"; };
 		6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayForgetVC.xib; sourceTree = "<group>"; };
 		6BC4C0DE260088C500791DCD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPreferenceCollectionReusableView.swift; sourceTree = "<group>"; };
 		6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByRegionCollectionViewCell.xib; sourceTree = "<group>"; };
 		6BD28D072770A4C700AA0105 /* Recipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recipe.storyboard; sourceTree = "<group>"; };
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
@@ -2313,6 +2315,7 @@
 				6B90663D26F89DFF00D24521 /* DietViewController.swift */,
 				6B90663F26F89E1600D24521 /* IngridientViewController.swift */,
 				6B90664126F89E3300D24521 /* CookingViewController.swift */,
+				6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */,
 			);
 			name = MyPreferences;
 			path = ..;
@@ -3841,6 +3844,7 @@
 				C5957A38265CF7E5004952D8 /* UserRoleCount.swift in Sources */,
 				C5D6F7EA26B1829D006FFCDF /* InactiveCollectionViewCell.swift in Sources */,
 				C5EB3CDD26E9CB8600CCAC9E /* AddStepsInRecipeViewController.swift in Sources */,
+				6BD23A032771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift in Sources */,
 				27CC2D3325BEC44B00F4C005 /* NetworkTableCell.swift in Sources */,
 				2716627425BC84EB000C0189 /* NotificationViewC.swift in Sources */,
 				27A4439425AE03720002BAAC /* TAAESCrypt.m in Sources */,

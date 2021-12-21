@@ -48,6 +48,7 @@ class PreferencesTableViewCell: UITableViewCell {
         self.PrefrenceImageCollectionView.register(cellNib, forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
         PrefrenceImageCollectionView.collectionViewLayout.invalidateLayout()
         self.PrefrenceImageCollectionView.register(PreferencesSectionCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesSectionCollectionReusableView")
+        self.PrefrenceImageCollectionView.register(MyPreferenceCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "MyPreferenceCollectionReusableView")
 
     }
    
@@ -269,11 +270,10 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
        return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
        
-        return CGSize(width: (self.frame.size.width)/3 - 10, height: 130)
+        return CGSize(width: (self.frame.size.width)/3 - 10, height: 140)
         
     }
     
@@ -282,13 +282,26 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
              let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PreferencesSectionCollectionReusableView", for: indexPath) as! PreferencesSectionCollectionReusableView
             sectionHeader.label.text = titleArray[indexPath.section]
              return sectionHeader
-        } else { //No footer in this case but can add option for that
-             return UICollectionReusableView()
         }
+        
+        if kind == UICollectionView.elementKindSectionFooter {
+            let sectionFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MyPreferenceCollectionReusableView", for: indexPath) as! MyPreferenceCollectionReusableView
+
+            sectionFooter.label1.backgroundColor = .black
+                return sectionFooter
+
+            }
+          
+              return  UICollectionReusableView()
+        
     }
   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 40)
+        return CGSize(width: collectionView.frame.width, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 15)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

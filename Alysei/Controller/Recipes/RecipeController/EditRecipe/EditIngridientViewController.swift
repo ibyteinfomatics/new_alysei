@@ -218,7 +218,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             data.unit = unit
             data.createdAt = singleIngridientData?.createdAt
             data.updatedAt = singleIngridientData?.updatedAt
-            data.isSelected = true
+            data.isSelected = 1
         
             if (((newSearchModel?.contains(where: { $0.ingridientId == data.ingridientId }))) == true)  {
                 print("contain yes")
@@ -252,7 +252,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     }
     
     func addDatainStep(data: UsedIngridientDataModel){
-        data.isSelected = false
+        data.isSelected = 0
         for item in editstepsModel{
             item.stepIngridient?.append(data)
         }

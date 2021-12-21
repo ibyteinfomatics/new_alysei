@@ -63,11 +63,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XNG-b5-5Jk" firstAttribute="top" secondItem="k2G-n2-R6w" secondAttribute="top" id="82s-bj-p0e"/>
+                            <constraint firstItem="Tr0-LT-jlt" firstAttribute="top" secondItem="XNG-b5-5Jk" secondAttribute="bottom" constant="4.5" id="LM0-LJ-MsD"/>
                             <constraint firstAttribute="trailing" secondItem="Tr0-LT-jlt" secondAttribute="trailing" constant="1" id="O0J-N5-Wy1"/>
                             <constraint firstItem="Tr0-LT-jlt" firstAttribute="leading" secondItem="k2G-n2-R6w" secondAttribute="leading" constant="1" id="Peg-Ev-QaX"/>
                             <constraint firstItem="wIj-yW-eBW" firstAttribute="centerX" secondItem="k2G-n2-R6w" secondAttribute="centerX" id="RNq-ok-zph"/>
                             <constraint firstItem="wIj-yW-eBW" firstAttribute="top" secondItem="k2G-n2-R6w" secondAttribute="top" id="aWe-4x-L3Q"/>
-                            <constraint firstAttribute="bottom" secondItem="Tr0-LT-jlt" secondAttribute="bottom" constant="12.5" id="i5w-dp-Qbq"/>
                             <constraint firstItem="XNG-b5-5Jk" firstAttribute="centerX" secondItem="k2G-n2-R6w" secondAttribute="centerX" id="nZL-8P-0dH"/>
                         </constraints>
                     </view>

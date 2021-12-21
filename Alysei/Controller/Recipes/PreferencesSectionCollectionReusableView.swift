@@ -11,12 +11,13 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
     
     var label: UILabel = {
         let label: UILabel = UILabel()
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont(name: "Helvetica Neue Bold", size: 16)
         
         label.sizeToFit()
         return label
     }()
+    
     
     var gradientVw: UIView = {
         let view: UIView = UIView()
@@ -31,8 +32,10 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
         
 //        let colorTop =  UIColor(red: 94.0/255.0, green: 199.0/255.0, blue: 167.0/255.0, alpha: 1.0).cgColor
 //        let colorBottom = UIColor(red: 70.0/255.0, green: 172.0/255.0, blue: 213.0/255.0, alpha: 1.0).cgColor
-        let colorTop =  UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
+//        let colorTop =  UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
+//        let colorBottom = UIColor(red: 21.0/255.0, green: 68.0/255.0, blue: 120.0/255.0, alpha: 1.0).cgColor
+        let colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
@@ -42,17 +45,20 @@ class PreferencesSectionCollectionReusableView: UICollectionReusableView {
         gradientVw.layer.addSublayer(gradientLayer)
         addSubview(gradientVw)
         addSubview(label)
+       
         
         NSLayoutConstraint.activate([
             gradientVw.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             gradientVw.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            gradientVw.topAnchor.constraint(equalTo: topAnchor),
-            gradientVw.bottomAnchor.constraint(equalTo: bottomAnchor)
+            gradientVw.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            gradientVw.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        label.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
         label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        
+       
         
         
     }

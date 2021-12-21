@@ -163,7 +163,7 @@ class UsedIngridientDataModel{
     var unit: String?
     var createdAt: String?
     var updatedAt: String?
-    var isSelected: Bool?
+    var isSelected: Int?
     var ingridient: IngridentArray?
     
     
@@ -175,7 +175,7 @@ class UsedIngridientDataModel{
         self.unit = String.getString(dictResponse["unit"])
         self.createdAt = String.getString(dictResponse["created_at"])
         self.updatedAt = String.getString(dictResponse["updated_at"])
-        self.isSelected = Bool.getBool(dictResponse["is_selected"])
+        self.isSelected = Int.getInt(dictResponse["is_selected"])
         
         if let data = dictResponse["ingredient"] as? [String:Any]{
             self.ingridient = IngridentArray.init(with: data)
@@ -191,7 +191,7 @@ class UsedToolsDataModel{
     var unitTool: String?
     var createdAt: String?
     var updatedAt: String?
-    var isSelected: Bool?
+    var isSelected: Int?
     var tool: ToolsArray?
     
     init(with dictResponse: [String:Any]){
@@ -202,7 +202,7 @@ class UsedToolsDataModel{
         self.unitTool = String.getString(dictResponse["unit"])
         self.createdAt = String.getString(dictResponse["created_at"])
         self.updatedAt = String.getString(dictResponse["updated_at"])
-        self.isSelected = Bool.getBool(dictResponse["is_selected"])
+        self.isSelected = Int.getInt(dictResponse["is_selected"])
         
         if let data = dictResponse["tool"] as? [String:Any]{
             self.tool = ToolsArray.init(with: data)

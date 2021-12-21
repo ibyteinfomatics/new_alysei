@@ -41,12 +41,15 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidAppear(_ animated: Bool) {
         if isFromStep == "Add Step"{
             page = (editstepsModel.count) + 1
-            
+//            let cellIng = self.ingridientUsedCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepIngridientCollectionViewCell
+//            let cellTool = self.toolsUsedCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! EditStepToolsCollectionViewCell
             for i in 0..<(editusedIngridientModel.count){
-                editusedIngridientModel[i].isSelected = false
+                editusedIngridientModel[i].isSelected = 0
+//                cellIng.addStepIngeidientSelectedImageView.isHidden = true
             }
             for i in 0..<(editusedToolModel.count){
-                editusedToolModel[i].isSelected = false
+                editusedToolModel[i].isSelected = 0
+//                cellTool.addStepToolSelectedImageView.isHidden = true
             }
             ingridientUsedCollectionView.reloadData()
             toolsUsedCollectionView.reloadData()
@@ -218,7 +221,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             if isFromStep == "Edit Step"{
                 
 
-                if editusedIngridientModel[indexPath.row].isSelected == true {
+                if editusedIngridientModel[indexPath.row].isSelected == 1 {
                     cell1.addStepIngeidientSelectedImageView.isHidden = false
                 }
                 else {
@@ -245,7 +248,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
            
             if isFromStep == "Edit Step"{
-                if editusedToolModel[indexPath.row].isSelected == true {
+                if editusedToolModel[indexPath.row].isSelected == 1 {
                     cell2.addStepToolSelectedImageView.isHidden = false
                    
                 } else {
@@ -254,7 +257,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
                 }
             }
             else{
-                editusedToolModel[indexPath.item].isSelected = false
+                editusedToolModel[indexPath.item].isSelected = 0
                 cell2.addStepToolSelectedImageView.isHidden = true
             }
             
@@ -276,13 +279,13 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
         
         if collectionView == ingridientUsedCollectionView {
             
-            if  editusedIngridientModel[indexPath.row].isSelected == true {
-                editusedIngridientModel[indexPath.row].isSelected = false
+            if  editusedIngridientModel[indexPath.row].isSelected == 1 {
+                editusedIngridientModel[indexPath.row].isSelected = 0
                 
                 cell?.addStepIngeidientSelectedImageView.isHidden = true
 //                selectedIngridientArray.remove(at: indexPath.row)
             } else {
-                editusedIngridientModel[indexPath.row].isSelected = true
+                editusedIngridientModel[indexPath.row].isSelected = 1
                 
                 cell?.addStepIngeidientSelectedImageView.isHidden = false
 //                let selectIngridientId = editusedIngridientModel[indexPath.row].ingridientId ?? 0
@@ -292,11 +295,11 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
         }
         else if collectionView == toolsUsedCollectionView {
             
-            if  editusedToolModel[indexPath.row].isSelected == true {
-                editusedToolModel[indexPath.row].isSelected = false
+            if  editusedToolModel[indexPath.row].isSelected == 1 {
+                editusedToolModel[indexPath.row].isSelected = 0
                 cell1?.addStepToolSelectedImageView.isHidden = true
             } else {
-                editusedToolModel[indexPath.row].isSelected = true
+                editusedToolModel[indexPath.row].isSelected = 1
                 cell1?.addStepToolSelectedImageView.isHidden = false
 //                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
             }
