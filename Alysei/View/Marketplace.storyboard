@@ -292,7 +292,7 @@
                                                     <rect key="frame" x="0.0" y="105" width="414" height="300"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u05-2w-lQT">
-                                                            <rect key="frame" x="10" y="0.0" width="394" height="300"/>
+                                                            <rect key="frame" x="10" y="3" width="394" height="297"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="IoJ-Nr-nGd">
                                                                 <size key="itemSize" width="156" height="148"/>
@@ -361,7 +361,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="u05-2w-lQT" secondAttribute="bottom" id="378-vv-EET"/>
                                                         <constraint firstAttribute="trailing" secondItem="u05-2w-lQT" secondAttribute="trailing" constant="10" id="CHI-D3-bQN"/>
-                                                        <constraint firstItem="u05-2w-lQT" firstAttribute="top" secondItem="Y9x-mB-mxr" secondAttribute="top" id="UKA-V0-et2"/>
+                                                        <constraint firstItem="u05-2w-lQT" firstAttribute="top" secondItem="Y9x-mB-mxr" secondAttribute="top" constant="3" id="UKA-V0-et2"/>
                                                         <constraint firstItem="u05-2w-lQT" firstAttribute="leading" secondItem="Y9x-mB-mxr" secondAttribute="leading" constant="10" id="aGF-Z8-oOz"/>
                                                         <constraint firstAttribute="height" constant="300" id="lBx-yO-cwM"/>
                                                     </constraints>

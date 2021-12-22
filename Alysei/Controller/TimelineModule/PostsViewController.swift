@@ -124,13 +124,13 @@ class PostsViewController: AlysieBaseViewC {
     @objc func openNotificationPlace(){
         guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
         self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = true
+       
         
     }
     
     @objc func openMarketPlace(){
-       // let vc = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
-        guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
+        let vc = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        //guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
         //self.tabBarController?.tabBar.bounds.height = 0

@@ -12,10 +12,16 @@ class NetworkConnectionTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var btnAccept: UIButton!
+    @IBOutlet weak var btnDecline: UIButton!
+    @IBOutlet weak var btnViewRequest: UIButton!
    // @IBOutlet weak var remove: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnAccept.layer.cornerRadius =  15
+        btnDecline.layer.cornerRadius = 15
+        btnViewRequest.layer.cornerRadius = 15
     }
     
     var btnRemoveCallback:((Int) -> Void)? = nil

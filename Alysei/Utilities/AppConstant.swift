@@ -179,6 +179,7 @@ struct StoryBoardConstants {
     static let kRecipesSelection = "Recipe"
     static let kChat = "Chat"
     static let kUpdateProfile = "UpdateProfile"
+    static let kTimeline = "Timeline"
 }
 
 struct Notifications {

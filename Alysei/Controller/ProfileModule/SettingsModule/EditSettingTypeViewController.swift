@@ -34,6 +34,13 @@ class EditSetingTypeViewController: AlysieBaseViewC {
         settingsTableCell.configure(indexPath)
       return settingsTableCell
     }
+    private func getNotificationTableCell(_ indexPath: IndexPath) -> UITableViewCell{
+        
+        guard let notificationTableCell = settingTableView.dequeueReusableCell(withIdentifier: EditSettingTypeNotificationTableVC.identifier(), for: indexPath) as? EditSettingTypeNotificationTableVC else {return UITableViewCell()}
+        notificationTableCell.selectionStyle = .none
+        
+      return notificationTableCell
+    }
     @IBAction func tapBack(_ sender: UIButton) {
       
       self.navigationController?.popViewController(animated: true)
@@ -90,14 +97,28 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let roleID = UserRoles(rawValue: Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? 0)) ?? .voyagers
         if roleID == .voyagers {
-        return StaticArrayData.kEditSettingVoyColScreenDict.count
+        return (StaticArrayData.kEditSettingVoyColScreenDict.count +  1)
         }else {
-            return StaticArrayData.kEditSettingUserColScreenDict.count
+            return (StaticArrayData.kEditSettingUserColScreenDict.count +  1)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.getSettingTableCell(indexPath)
+        let roleID = UserRoles(rawValue: Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? 0)) ?? .voyagers
+        if roleID == .voyagers {
+            if indexPath.row == StaticArrayData.kEditSettingVoyColScreenDict.count{
+                return self.getNotificationTableCell(indexPath)
+            }else{
+                return self.getSettingTableCell(indexPath)
+            }
+        }else{
+        if indexPath.row == StaticArrayData.kEditSettingUserColScreenDict.count{
+            return self.getNotificationTableCell(indexPath)
+       
+        }else{
+            return self.getSettingTableCell(indexPath)
+        }
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
@@ -121,7 +142,9 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
     }
     
 }
-
+class EditSettingTypeNotificationTableVC: UITableViewCell{
+    @IBOutlet weak var btnSwitch: UISwitch!
+}
 class EditSettingTypeTableViewCell: UITableViewCell{
   
     @IBOutlet weak var txtLabel: UILabel!

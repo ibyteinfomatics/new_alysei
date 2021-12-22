@@ -1016,10 +1016,11 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 kSharedUserDefaults.loggedInUserModal.firstName = responseModel.data?.userData?.firstName
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
-                
+                kSharedUserDefaults.loggedInUserModal.avatar?.imageURL = responseModel.data?.userData?.avatar?.imageURL
                 kSharedUserDefaults.synchronize()
-                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
-                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+//                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
+//                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                let urlP = URL(string: kSharedUserDefaults.loggedInUserModal.avatar?.imageURL ?? "")
                 self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 
                 self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "",baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))

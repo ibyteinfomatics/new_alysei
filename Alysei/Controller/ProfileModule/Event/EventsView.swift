@@ -61,6 +61,14 @@ class EventsView: AlysieBaseViewC {
         }else{
             eventTableCell.btnInterested.isHidden = false
         }
+        if eventModel?.data?[indexPath].is_event_liked?.count == 0{
+            eventTableCell.btnInterestedWidth.constant = 180
+            eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
+            eventTableCell.btnInterested.setTitle("Are you Interested?", for: .normal)
+        }else{
+            eventTableCell.btnInterested.backgroundColor = UIColor.red
+            eventTableCell.btnInterested.setTitle("Uninterested", for: .normal)
+        }
         eventTableCell.eventTitle.text = eventModel?.data?[indexPath].eventName
         eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
         eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
@@ -81,25 +89,26 @@ class EventsView: AlysieBaseViewC {
         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
         let datep = dateFormatterPrint.string(from: date ?? Date())
         eventTableCell.dateTitle.text = datep
-        
-//        if ((eventModel?.data?[indexPath].time?.contains(":")) == true) {
-//            eventTableCell.timeTitle.text = eventModel?.data?[indexPath].time
-//        } else {
-//            eventTableCell.timeTitle.text = getcurrentdateWithTime(timeStamp: eventModel?.data?[indexPath].time)
-//        }
+        eventTableCell.data = eventModel?.data?[indexPath]
         
         eventTableCell.moreButton.layer.cornerRadius =  eventTableCell.moreButton.frame.height / 2
         
         eventTableCell.editButton.tag = indexPath
         eventTableCell.deleteButton.tag = indexPath
         eventTableCell.moreButton.tag = indexPath
-        
+        eventTableCell.callInterestedCallback = { index in
+            let reloadIndexPath = IndexPath(row: index, section: 0)
+            self.postRequest()
+            self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+        }
         if userId != ""{
             eventTableCell.deleteButton.isHidden = true
             eventTableCell.editButton.isHidden = true
+            eventTableCell.btnInterested.isHidden = false
         } else {
             eventTableCell.deleteButton.isHidden = false
             eventTableCell.editButton.isHidden = false
+            eventTableCell.btnInterested.isHidden = true
         }
         
         eventTableCell.btnDeleteCallback = { tag in
