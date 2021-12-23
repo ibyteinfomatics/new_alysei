@@ -382,8 +382,13 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 70 //CGFloat(70 * (arrlbl1.count))
+        switch indexPath.section {
+        case 0, 1:
+            return 80
+        default:
+            return 50
+        }
+        //CGFloat(70 * (arrlbl1.count))
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
