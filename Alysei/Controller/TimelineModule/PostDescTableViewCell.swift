@@ -238,8 +238,15 @@ class PostDescTableViewCell: UITableViewCell {
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
                         height2 = 200
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
-                        height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0
-                                                * 72 / 96)-200) //500
+                        
+                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
+                            height3 = 350
+                        } else {
+                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+                            height3 = 500
+                        }
+                        
+                        
                     }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
                         height = 500
                     }
@@ -263,7 +270,16 @@ class PostDescTableViewCell: UITableViewCell {
                     imageHeightCVConstant.constant = 200
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
                 //imageHeightCVConstant.constant = 350
-                    imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
+                    
+                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
+                        imageHeightCVConstant.constant = 350
+                    } else {
+                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+                        imageHeightCVConstant.constant = 500
+                    }
+                    
+                    
+                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
                 }
             }
             
@@ -482,6 +498,8 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
             //data = self.data?.attachments?[1]
         }
         
+        
+        
         if data?.attachmentLink?.height == data?.attachmentLink?.width {
             //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
             //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
@@ -489,7 +507,19 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
-        } else {
+        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
+            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            
+            if  Int.getInt(data?.attachmentLink?.height) < 350 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
+            } else {
+                
+                
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+            }
+            
+             
+         } else {
             //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
         }
