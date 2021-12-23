@@ -92,7 +92,8 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         self.facebookTextField.placeholder = "https://www.facebook.com"
         self.websiteTextField.placeholder = "https://www.yourwebsite.com"
         phoneTextField.delegate = self
-
+        self.websiteTextField.delegate = self
+        self.facebookTextField.delegate = self
 
         if viewModel != nil {
             self.emailTextField.text = "\(viewModel.email ?? "")"
@@ -281,7 +282,20 @@ extension ContactDetailViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField ==  websiteTextField {
+            if textField.text == "https://" {
+                textField.text = ""
+                textField.placeholder = "https://www.yourwebsite.com"
+            }
+        }
+        if  textField == facebookTextField  {
+            if textField.text == "https://" {
+                textField.text = ""
+                textField.placeholder = "https://www.facebook.com"
+            }
+        }
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == phoneTextField {
             if let char = string.cString(using: String.Encoding.utf8) {
@@ -297,6 +311,39 @@ extension ContactDetailViewController: UITextFieldDelegate {
                 return false
             }
 
+        }
+        if textField == websiteTextField{
+            if textField.text == "" {
+            websiteTextField.text = "https://"
+            }
+//            if let char = string.cString(using: String.Encoding.utf8) {
+//                let isBackSpace = strcmp(char, "\\b")
+//                if textField.text == "https://"{
+//                if (isBackSpace == -92) {
+//                    print("Backspace was pressed")
+//                    return false
+//                }else{
+//                    return true
+//                }
+//                }
+//            }
+        }
+        
+        if textField == facebookTextField{
+            if textField.text == "" {
+                facebookTextField.text = "https://"
+            }
+//            if let char = string.cString(using: String.Encoding.utf8) {
+//                let isBackSpace = strcmp(char, "\\b")
+//                if textField.text == "https://"{
+//                if (isBackSpace == -92) {
+//                    print("Backspace was pressed")
+//                    return false
+//                }else{
+//                    return true
+//                }
+//                }
+//            }
         }
 
         return true
