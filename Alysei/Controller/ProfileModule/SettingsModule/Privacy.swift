@@ -44,6 +44,15 @@ class Privacy: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view1.layer.cornerRadius = 5
+        view1.layer.borderWidth = 1
+        view1.layer.borderColor = UIColor.darkGray.cgColor
+        
+        view3.layer.cornerRadius = 5
+        view3.layer.borderWidth = 1
+        view3.layer.borderColor = UIColor.darkGray.cgColor
+        
         vwHeader.drawBottomShadow()
         tableView.dataSource = self
         tableView.delegate = self
