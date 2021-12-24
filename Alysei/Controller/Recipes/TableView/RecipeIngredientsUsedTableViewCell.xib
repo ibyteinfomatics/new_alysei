@@ -8,68 +8,60 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue-Light.ttf">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeIngredientsUsedTableViewCell" rowHeight="68" id="KGk-i7-Jjw" customClass="RecipeIngredientsUsedTableViewCell" customModule="Alysei" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeIngredientsUsedTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="RecipeIngredientsUsedTableViewCell" customModule="Alysei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-hr-zTS" customClass="RecipeIngredientsUsedTableViewCell" customModule="Alysei" customModuleProvider="target">
-                        <rect key="frame" x="15" y="0.0" width="290" height="70"/>
+                        <rect key="frame" x="15" y="0.0" width="290" height="80"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eTV-ZJ-XvQ">
-                                <rect key="frame" x="0.0" y="12.5" width="45" height="45"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eTV-ZJ-XvQ">
+                                <rect key="frame" x="0.0" y="5" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="Nzn-L9-cNR"/>
-                                    <constraint firstAttribute="height" constant="45" id="z83-TN-t1X"/>
+                                    <constraint firstAttribute="width" constant="70" id="Nzn-L9-cNR"/>
+                                    <constraint firstAttribute="height" constant="70" id="z83-TN-t1X"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U10-tF-lgy">
-                                <rect key="frame" x="55" y="12.5" width="150" height="45"/>
+                                <rect key="frame" x="80" y="17.5" width="143" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et7-Yq-fkY">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="19"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Piece" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jg6-Li-IWV">
-                                        <rect key="frame" x="0.0" y="22" width="150" height="16.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="22" width="48" height="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="et7-Yq-fkY" firstAttribute="top" secondItem="U10-tF-lgy" secondAttribute="top" id="8q7-Is-LvF"/>
                                     <constraint firstItem="Jg6-Li-IWV" firstAttribute="top" secondItem="et7-Yq-fkY" secondAttribute="bottom" constant="3" id="GZE-au-OWk"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jg6-Li-IWV" secondAttribute="trailing" id="K8Q-D8-Kgc"/>
-                                    <constraint firstItem="et7-Yq-fkY" firstAttribute="top" secondItem="U10-tF-lgy" secondAttribute="top" id="NUn-hf-aTp"/>
                                     <constraint firstItem="Jg6-Li-IWV" firstAttribute="leading" secondItem="U10-tF-lgy" secondAttribute="leading" id="UDu-m5-oDT"/>
                                     <constraint firstAttribute="height" constant="45" id="aPQ-kD-Azu"/>
                                     <constraint firstItem="et7-Yq-fkY" firstAttribute="leading" secondItem="U10-tF-lgy" secondAttribute="leading" id="h3e-SP-bc1"/>
-                                    <constraint firstAttribute="width" constant="150" id="iJN-Xr-mcW"/>
-                                    <constraint firstAttribute="trailing" secondItem="et7-Yq-fkY" secondAttribute="trailing" id="xCw-Pa-Shi"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-bB-970">
-                                <rect key="frame" x="269" y="24" width="16" height="22"/>
+                                <rect key="frame" x="269" y="29" width="16" height="22"/>
                                 <state key="normal" image="icons8_delete_bin_2"/>
                                 <connections>
                                     <action selector="deleteItem:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OWB-z9-XWe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-77-23H">
-                                <rect key="frame" x="229" y="24" width="20" height="22"/>
+                                <rect key="frame" x="229" y="29" width="20" height="22"/>
                                 <state key="normal" image="icons8_edit_2"/>
                                 <connections>
                                     <action selector="editItem:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PVg-oQ-jVc"/>
@@ -82,10 +74,11 @@
                             <constraint firstItem="eTV-ZJ-XvQ" firstAttribute="leading" secondItem="b4G-hr-zTS" secondAttribute="leading" id="Ex4-fx-klc"/>
                             <constraint firstItem="bhS-77-23H" firstAttribute="centerY" secondItem="b4G-hr-zTS" secondAttribute="centerY" id="QiZ-9H-CkC"/>
                             <constraint firstItem="U10-tF-lgy" firstAttribute="leading" secondItem="eTV-ZJ-XvQ" secondAttribute="trailing" constant="10" id="cm0-Zx-eKQ"/>
-                            <constraint firstAttribute="height" constant="70" id="ctb-b4-Cp1"/>
+                            <constraint firstAttribute="height" constant="80" id="ctb-b4-Cp1"/>
                             <constraint firstItem="eTV-ZJ-XvQ" firstAttribute="centerY" secondItem="b4G-hr-zTS" secondAttribute="centerY" id="dTo-kb-bbj"/>
                             <constraint firstAttribute="trailing" secondItem="qOz-bB-970" secondAttribute="trailing" constant="5" id="i0f-YS-xK6"/>
                             <constraint firstItem="U10-tF-lgy" firstAttribute="centerY" secondItem="b4G-hr-zTS" secondAttribute="centerY" id="uBE-Vk-fif"/>
+                            <constraint firstItem="bhS-77-23H" firstAttribute="leading" secondItem="U10-tF-lgy" secondAttribute="trailing" constant="6" id="yVw-Yt-Efq"/>
                             <constraint firstItem="qOz-bB-970" firstAttribute="leading" secondItem="bhS-77-23H" secondAttribute="trailing" constant="20" id="zY3-qn-bIp"/>
                         </constraints>
                     </view>

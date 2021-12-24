@@ -391,8 +391,15 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 50 //CGFloat(70 * (arrlbl1.count))
+        switch indexPath.section{
+        case 0:
+            return 80
+        case 1:
+            return 80
+        default:
+            return 50 //CGFloat(70 * (arrlbl1.count))
+        }
+       
     }
     
     func tableView(_ tableView: UITableView,

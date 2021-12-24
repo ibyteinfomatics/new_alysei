@@ -42,7 +42,7 @@ class EditStepCollectionViewCell: UICollectionViewCell {
         
         if isFromStep == "Add Step"{
             desciptionTextView.text = "Your recipe direction text here..."
-            desciptionTextView.textColor = UIColor.lightGray
+            desciptionTextView.textColor = UIColor.darkGray
         }
         else{
             desciptionTextView.textColor = UIColor.black
@@ -72,13 +72,13 @@ extension EditStepCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
         if updatedText.isEmpty {
            
             textView.text = "Your recipe direction text here..."
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
 
         
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
            textView.textColor = UIColor.black
             textView.text = text
           

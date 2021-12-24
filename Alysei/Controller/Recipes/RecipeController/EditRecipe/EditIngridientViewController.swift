@@ -490,7 +490,7 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if tableView == addIngridientsTableView{
-            return 80
+            return 100
         }
         else{
             return 40

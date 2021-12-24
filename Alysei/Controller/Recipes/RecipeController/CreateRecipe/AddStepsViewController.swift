@@ -355,7 +355,9 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             
             
             stepNumber = "Step \(page)"
-            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
+//            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
+            let str = NSAttributedString(string: "Enter Title for Step \(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            cell.titleTextField.attributedPlaceholder = str
             //            cell.desciptionTextView.text = "Your recipe direction text here..."
             cell.step1Label.text = stepNumber
             return cell

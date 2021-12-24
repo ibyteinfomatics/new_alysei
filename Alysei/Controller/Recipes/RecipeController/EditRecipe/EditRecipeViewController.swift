@@ -83,7 +83,8 @@ class EditRecipeViewController: UIViewController {
         picker1.delegate = self
         picker1.dataSource = self
         nameTextfield.delegate = self
-        
+        let str = NSAttributedString(string: "Recipe Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        nameTextfield.attributedPlaceholder = str
         addPlusHourLongPressGesture()
         addMinusHourLongPressGesture()
         addPlusMinuteLongPressGesture()

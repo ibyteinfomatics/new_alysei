@@ -25,6 +25,7 @@ class AddFeatureTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setTextViewUI()
+        txtFieldAddFeature.delegate = self
         self.txtFieldAddFeature.makeCornerRadius(radius: 5.0)
         self.txtFieldAddFeature.addTarget(self, action: #selector(AddFeatureTableCell.textFieldEditingChanged(_:)),for: UIControl.Event.editingChanged)
         self.txtViewAddFeature.makeCornerRadius(radius: 5.0)
@@ -99,7 +100,7 @@ class AddFeatureTableCell: UITableViewCell {
     }
     
 }
-extension AddFeatureTableCell: UITextViewDelegate{
+extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
@@ -131,5 +132,25 @@ extension AddFeatureTableCell: UITextViewDelegate{
             }
             
         }
+        
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (productFieldsDataModel.productTitle == AppConstants.URL) || (productFieldsDataModel.productTitle == AppConstants.kUrl){
+            if textField.text == "" {
+                textField.text = "https://"
+            }
+        }
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if (productFieldsDataModel.productTitle == AppConstants.URL) || (productFieldsDataModel.productTitle == AppConstants.kUrl){
+            if textField.text == "https://" {
+                textField.text = ""
+                textField.placeholder = productFieldsDataModel.productTitle
+            }
+        }
+    }
+    
 }

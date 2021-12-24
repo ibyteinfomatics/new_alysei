@@ -419,7 +419,7 @@ extension AddToolsViewController: UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == addToolsTableView{
-            return 70
+            return 100
         }
         else{
             return 40
