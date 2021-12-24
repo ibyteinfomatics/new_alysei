@@ -57,8 +57,25 @@ class PhotosPost: AlysieBaseViewC {
                 }
             }
         }
+
+        if segue.identifier == "seguePostsToSharePost" {
+            if let dataModel = sender as? SharePost.PostData.post {
+                if let viewCon = segue.destination as? SharePostViewController {
+                    viewCon.postDataModel = dataModel
+                }
+            }
+        }
         
+        if segue.identifier == "seguePostsToEditPost" {
+            if let dataModel = sender as? EditPost.EditData.edit {
+                if let viewCon = segue.destination as? EditPostViewController {
+                    viewCon.postDataModel = dataModel
+                }
+            }
+        }
     }
+    
+    
     
     //MARK: Actions
     @IBAction func tap_BackButton(_ sender: UIButton) {
@@ -186,6 +203,8 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             }
             
            // cell.menuDelegate = self
+            
+            cell.menuDelegate = self
 
             cell.commentCallback = { postCommentsUserData in
                 let vc = self.pushViewController(withName: PostCommentsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? PostCommentsViewController
@@ -305,4 +324,108 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+}
+
+extension PhotosPost: ShareEditMenuProtocol {
+    func menuBttonTapped(_ postID: Int?, userID: Int) {
+        
+        guard let postID = postID else {
+            return
+        }
+        let actionSheet = UIAlertController(style: .actionSheet)
+
+        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+            self.sharePost(postID)
+        }
+
+        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+            self.editPost(postID)
+        }
+
+        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+            self.deletePost(postID)
+        }
+
+       // let f = UIAlertAction(title: "Change Privacy", style: .default) { action in
+         //   self.editPost(postID)
+        //}
+
+        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+        }
+
+
+
+        if let loggedInUserID = kSharedUserDefaults.loggedInUserModal.userId {
+            if Int(loggedInUserID) == userID {
+                actionSheet.addAction(shareAction)
+                actionSheet.addAction(editPostAction)
+               // actionSheet.addAction(changePrivacyAction)
+                actionSheet.addAction(deletePost)
+            } else {
+                actionSheet.addAction(shareAction)
+                actionSheet.addAction(reportAction)
+            }
+        }
+
+        actionSheet.addAction(cancelAction)
+
+
+        self.present(actionSheet, animated: true, completion: nil)
+
+    }
+
+
+    func deletePost(_ postID: Int) {
+
+        let url = APIUrl.Posts.deletePost
+        guard var urlRequest = WebServices.shared.buildURLRequest(url, method: .POST) else {
+            return
+        }
+
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let model = Post.delete(postID: postID)
+            let body = try JSONEncoder().encode(model)
+
+            urlRequest.httpBody = body
+            WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
+                if (statusCode ?? 0) >= 400 {
+                    self.showAlert(withMessage: "Some error occured")
+                } else {
+                    //self.callNewFeedApi(1)
+                    self.fetchPostWithPhotsFromServer(1, visitorId: self.visitorId)
+                }
+            }
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func editPost(_ postID: Int) {
+        let data = postData.filter({ $0.postID == postID })
+        if let editData = data.first {
+            let editPostDataModel = EditPost.EditData.edit(attachments: editData.attachments,
+                                                             postOwnerDetail: editData.subjectId,
+                                                             postDescription: "\(editData.body ?? "")",
+                                                             postID: postID)
+            self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
+        }
+    }
+
+    func sharePost(_ postID: Int) {
+        let data = postData.filter({ $0.postID == postID })
+        if let searchDataModel = data.first {
+            let sharePostDataModel = SharePost.PostData.post(attachments: searchDataModel.attachments,
+                                                             postOwnerDetail: searchDataModel.subjectId,
+                                                             postDescription: "\(searchDataModel.body ?? "")",
+                                                             postID: postID)
+            self.performSegue(withIdentifier: "seguePostsToSharePost", sender: sharePostDataModel)
+        }
+    }
+
 }
