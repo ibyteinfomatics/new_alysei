@@ -122,7 +122,7 @@ class PostDescTableViewCell: UITableViewCell {
     }
     func pageControlUI(){
         let startIndex = IndexPath(item: 0, section: 0)
-        imagePostCollectionView.scrollToItem(at: startIndex, at: .centeredHorizontally, animated: false)
+        //imagePostCollectionView.scrollToItem(at: startIndex, at: .centeredHorizontally, animated: false)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillEqually
