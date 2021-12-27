@@ -153,7 +153,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
             modelTitle.first?.selectedValue = self.createStringForProducts((modelTitle.first)!)
 
             let modelRes =  self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "restaurant_type")})
-            modelRes.first?.selectedValue = self.createStringForProducts((modelRes.first)!)
+         //   modelRes.first?.selectedValue = self.createStringForProducts((modelRes.first)!) // comment by rinku
             
             let modelSpec =  self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "speciality")})
             modelSpec.first?.selectedValue = self.createStringForProducts((modelSpec.first)!)

@@ -229,7 +229,8 @@ class AddFeatureViewC: AlysieBaseViewC {
       self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.currentNavigationTitle)
     }
     else{
-      self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.productCategoriesDataModel.title)
+    //  self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.productCategoriesDataModel.title)
+        self.lblNavigationHeading.text = AppConstants.Add + "Featured Product"
     }
     }
 

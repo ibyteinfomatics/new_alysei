@@ -142,7 +142,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-e5-TUC">
-                                <rect key="frame" x="0.0" y="60" width="414" height="606"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="596"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="h0i-h2-u5D" id="5v4-8I-eeo"/>
@@ -162,7 +162,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="YOO-YJ-oL9"/>
                                                 </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type here..."/>
@@ -246,7 +246,7 @@
                             <constraint firstItem="2CN-F9-eCC" firstAttribute="top" secondItem="WmY-e5-TUC" secondAttribute="bottom" id="GML-oM-TlC"/>
                             <constraint firstItem="c0r-Ko-od7" firstAttribute="trailing" secondItem="WmY-e5-TUC" secondAttribute="trailing" id="NwG-ui-x50"/>
                             <constraint firstItem="2CN-F9-eCC" firstAttribute="leading" secondItem="bru-xY-cnV" secondAttribute="leading" id="RgQ-O2-D9k"/>
-                            <constraint firstItem="WmY-e5-TUC" firstAttribute="top" secondItem="MIv-h7-gUx" secondAttribute="bottom" id="cAu-mO-mMI"/>
+                            <constraint firstItem="WmY-e5-TUC" firstAttribute="top" secondItem="MIv-h7-gUx" secondAttribute="bottom" constant="10" id="cAu-mO-mMI"/>
                             <constraint firstItem="c0r-Ko-od7" firstAttribute="bottom" secondItem="2CN-F9-eCC" secondAttribute="bottom" id="dVF-aA-hy1"/>
                             <constraint firstItem="Tt1-2k-i23" firstAttribute="top" secondItem="c0r-Ko-od7" secondAttribute="top" constant="8" id="feC-qw-aIr"/>
                             <constraint firstItem="MIv-h7-gUx" firstAttribute="leading" secondItem="bru-xY-cnV" secondAttribute="leading" id="g0D-2X-509"/>

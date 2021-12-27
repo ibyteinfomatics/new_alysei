@@ -15,6 +15,7 @@ protocol CommnentReplyProtocol {
 class SelfPostCommentsCell: UITableViewCell {
 
     @IBOutlet var userImageView: UIImageView!
+    @IBOutlet var view: UIView!
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
@@ -36,6 +37,7 @@ class SelfPostCommentsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        view.layer.cornerRadius = 5
         tableView.isHidden = false
         self.tableView.register(UINib(nibName: "PostCommentsCell", bundle: nil), forCellReuseIdentifier: "cell")
         self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2.0

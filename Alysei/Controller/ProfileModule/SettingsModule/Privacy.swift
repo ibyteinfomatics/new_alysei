@@ -45,6 +45,16 @@ class Privacy: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let openTap = UITapGestureRecognizer.init(target: self, action: #selector(openMessageLabel))
+        self.messagelabel.addGestureRecognizer(openTap)
+        
+        let follow = UITapGestureRecognizer.init(target: self, action: #selector(openEmailLabel))
+        self.followlabel.addGestureRecognizer(follow)
+        
+        let weekTap = UITapGestureRecognizer.init(target: self, action: #selector(openWeeklylabel))
+        self.weeklylabel.addGestureRecognizer(weekTap)
+        
         view1.layer.cornerRadius = 5
         view1.layer.borderWidth = 1
         view1.layer.borderColor = UIColor.darkGray.cgColor
@@ -58,6 +68,30 @@ class Privacy: AlysieBaseViewC {
         tableView.delegate = self
         postRequestToPrivacy()
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func openMessageLabel(){
+        self.privateMessage.setImage((msgpre == "1") ? UIImage(named: "icon_uncheckedBox") : UIImage(named: "icon_blueSelected"), for: .normal)
+        
+        self.messagelabel.textColor = msgpre == "1" ? UIColor.black : UIColor(red: 75/256, green: 179/256, blue: 253/256, alpha: 1)
+        
+        msgpre = msgpre == "1" ? "0" : "1"
+    }
+    
+    @objc func openEmailLabel(){
+        self.follow.setImage((followpre == "1") ? UIImage(named: "icon_uncheckedBox") : UIImage(named: "icon_blueSelected"), for: .normal)
+        
+        self.followlabel.textColor = followpre == "1" ? UIColor.black : UIColor(red: 75/256, green: 179/256, blue: 253/256, alpha: 1)
+        
+        followpre = followpre == "1" ? "0" : "1"
+    }
+    
+    @objc func openWeeklylabel(){
+        self.weekly.setImage((weeklypre == "1") ? UIImage(named: "icon_uncheckedBox") : UIImage(named: "icon_blueSelected"), for: .normal)
+        
+        self.weeklylabel.textColor = weeklypre == "1" ? UIColor.black : UIColor(red: 75/256, green: 179/256, blue: 253/256, alpha: 1)
+        
+        weeklypre = weeklypre == "1" ? "0" : "1"
     }
     
     @IBAction func btnmessage(_ sender: UIButton){
