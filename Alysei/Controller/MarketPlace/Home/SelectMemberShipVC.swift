@@ -12,15 +12,19 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var vwContainer: UIView!
+    @IBOutlet weak var vwTriangle: UIView!
     var selectedPassId: Int?
 
     var memberShipData : [Membership]?
     override func viewDidLoad() {
         super.viewDidLoad()
        // headerView.addShadow()
+        vwContainer.addBorder()
+        vwContainer.addShadow()
         headerView.drawBottomShadow()
         callMemberShipApi()
-        
+        setDownTriangle()
         //btnNext.isUserInteractionEnabled = false
         //btnFreeMemberShip.setImage(UIImage(named: "Ellipse 22"), for: .normal)
         //btnNext.layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
@@ -31,7 +35,21 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    func setDownTriangle(){
+            let heightWidth = vwTriangle.frame.size.width
+            let path = CGMutablePath()
 
+            path.move(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x:heightWidth/2, y: heightWidth/2))
+            path.addLine(to: CGPoint(x:heightWidth, y:0))
+            path.addLine(to: CGPoint(x:0, y:0))
+
+            let shape = CAShapeLayer()
+            shape.path = path
+        shape.fillColor = UIColor.init(hexString: "4BB3FD").cgColor
+
+        vwTriangle.layer.insertSublayer(shape, at: 0)
+        }
 //    @IBAction func btnFreeMemberShipAction(_ sender: UIButton){
 //        sender.isSelected = !sender.isSelected
 //        self.btnFreeMemberShip.setImage((sender.isSelected == true) ? UIImage(named: "icons8_checkmark_2") : UIImage(named: "Ellipse 22"), for: .normal)
@@ -50,21 +68,22 @@ class SelectMemberShipVC: AlysieBaseViewC {
 }
 extension SelectMemberShipVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memberShipData?.count ?? 0
+       // return memberShipData?.count ?? 0
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMemberShipTableCell", for: indexPath) as? SelectMemberShipTableCell else {return UITableViewCell()}
-        cell.selectionStyle = .none
-        let data = memberShipData?[indexPath.row]
-        cell.lblMemberShip.text = memberShipData?[indexPath.row].name
-        cell.btnCheck.setImage( data?.isSelected == true ? UIImage(named: "icons8_checkmark_2") : UIImage(named: "Ellipse 22"), for: .normal)
-        self.selectedPassId = memberShipData?[indexPath.row].marketplacePackageId
+      //  cell.selectionStyle = .none
+       // let data = memberShipData?[indexPath.row]
+       // cell.lblMemberShip.text = memberShipData?[indexPath.row].name
+        //cell.btnCheck.setImage( data?.isSelected == true ? UIImage(named: "icons8_checkmark_2") : UIImage(named: "Ellipse 22"), for: .normal)
+        self.selectedPassId = memberShipData?[0].marketplacePackageId
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,6 +92,7 @@ extension SelectMemberShipVC: UITableViewDelegate, UITableViewDataSource{
             memberShipData?[i].isSelected = false
         }
         memberShipData?[indexPath.row].isSelected = true
+       // self.selectedPassId = memberShipData?[indexPath.row].marketplacePackageId
         self.tableView.reloadData()
         print("Select")
     }
@@ -100,7 +120,7 @@ class SelectMemberShipTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        btnCheck.setImage(UIImage(named: "Ellipse 22"), for: .normal)
+      //  btnCheck.setImage(UIImage(named: "Ellipse 22"), for: .normal)
     }
 }
 
