@@ -34,7 +34,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var stepTitle : String?
     var stepNumber : String?
     var stepDescription: String?
-    
+    var isbackdata : Bool?
     var arrayIngridients = [IngridentArray()]
     var arraytools = [ToolsArray()]
     
@@ -133,13 +133,8 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     @IBAction func backButton(_ sender: UIButton) {
         var isBack = false
-        if selectedIndex > 0 && selectedIndex == 1000{
-            let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-            addSteps.page = (page - 1)
-            addSteps.selectedIndex = (page - 2)
-            self.navigationController?.pushViewController(addSteps, animated: true)
-        }
-       else if selectedIndex > 0 && selectedIndex != 1000{
+       
+       if selectedIndex > 0 && selectedIndex != 1000{
             let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
             addSteps.page = (page - 1)
             addSteps.selectedIndex = (page - 2)
@@ -169,8 +164,16 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             }
             else
             {
+                if isbackdata == true{
+                    let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
+                    addSteps.page = (page - 1)
+                    addSteps.selectedIndex = (page - 2)
+                    self.navigationController?.pushViewController(addSteps, animated: true)
+                }
+                else{
                 self.navigationController?.popViewController(animated: true)
-
+                }
+                
             }
         }
     }
@@ -213,8 +216,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
         }
         
         else{
-            
-            
+          
             
             if (page + 1) > arrayStepFinalData.count {
                 
@@ -295,21 +297,23 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 
                 
                 if selectedIndex == 1000 {
-                    
+                   
                     arrayStepFinalData.append(stepdata)
-                    
+                    addSteps.isbackdata = true
+
                 } else {
-                    
+                    addSteps.isbackdata = true
                     arrayStepFinalData[selectedIndex] = stepdata
-                    
+
                 }
                 
-            } else {
-                
+            }
+            else {
+
                 addSteps.page = page + 1
-                
+
                 addSteps.selectedIndex = page
-                
+
             }
             
             self.navigationController?.pushViewController(addSteps, animated: true)
@@ -443,7 +447,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: self.addStepsCollectionView.frame.width, height: 292.0)
         }
         if collectionView == ingridientUsedCollectionView{
-            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 240)
+            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 260)
         }
         if collectionView == toolsUsedCollectionView{
             return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 200)

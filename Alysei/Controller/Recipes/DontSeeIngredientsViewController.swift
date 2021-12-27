@@ -55,6 +55,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTextField.delegate = self
+        searchTextField.autocorrectionType = .no
         
         
     }
@@ -240,16 +241,24 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
-        searchTextPreferences = string
-        if searchTextPreferences.count > 0 {
-            callSearchIngridients()
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updateText = text.replacingCharacters(in: textRange,
+                                                      with: string)
+            if updateText.count > 0 {
+                searching = true
+                
+                searchTextPreferences = updateText
+                
+                callSearchIngridients()
+            }
+            else{
+                self.searching = false
+                ingridientSearchModel?.removeAll()
+                self.searchTableView.reloadData()
+            }
+            
         }
-        else{
-            self.searching = false
-            ingridientSearchModel?.removeAll()
-            self.searchTableView.reloadData()
-        }
-        
         return true
     }
     

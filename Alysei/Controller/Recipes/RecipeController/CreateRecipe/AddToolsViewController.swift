@@ -260,6 +260,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
                addSteps.page = 1
                addSteps.selectedIndex = 0
             }
+            addSteps.isbackdata = false
             fromVC = "AddToolsViewController"
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
