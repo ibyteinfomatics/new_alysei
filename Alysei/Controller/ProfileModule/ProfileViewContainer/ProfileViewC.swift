@@ -106,7 +106,7 @@ class ProfileViewC: AlysieBaseViewC{
     private var editProfileViewCon: EditProfileViewC!
     
     private var currentChild: UIViewController {
-        return self.children.last!
+         return self.children.last!
     }
     
     private lazy var postsViewC: UserPostsViewController = {

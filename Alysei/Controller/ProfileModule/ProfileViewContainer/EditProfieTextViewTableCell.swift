@@ -13,8 +13,8 @@ class EditProfileTextViewTableCell: UITableViewCell {
   
   @IBOutlet weak var lblHeading: UILabel!
   @IBOutlet weak var txtView: UITextView!
-    @IBOutlet weak var lblHeadingTopConst: NSLayoutConstraint!
-    @IBOutlet weak var lblTextCount: UILabel!
+  @IBOutlet weak var lblHeadingTopConst: NSLayoutConstraint!
+  @IBOutlet weak var lblTextCount: UILabel!
     
   //MARK: - Properties -
   
@@ -33,8 +33,8 @@ class EditProfileTextViewTableCell: UITableViewCell {
     self.model = model
     self.lblHeading.text = model.title
     self.txtView.text = (model.selectedValue == "0") ? "" : model.selectedValue
-    let finalText = txtView.text.removeWhitespace()
-    self.lblTextCount.text = "\(finalText.count)"
+    //let finalText = txtView.text//.removeWhitespace()
+      self.lblTextCount.text = "\(txtView.text.count)"
   }
 }
 
@@ -52,7 +52,7 @@ extension EditProfileTextViewTableCell: UITextViewDelegate{
         
         let currentText:String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        let finalText = updatedText.removeWhitespace()
+        let finalText = updatedText//.removeWhitespace()
         if finalText.count <= 200{
          //   let finalText = updatedText.removeWhitespace()
             self.lblTextCount.text = "\(finalText.count)"
