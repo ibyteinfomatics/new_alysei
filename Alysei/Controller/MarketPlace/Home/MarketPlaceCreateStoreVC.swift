@@ -309,14 +309,12 @@ extension MarketPlaceCreateStoreVC: TLPhotosPickerLogDelegate {
 extension MarketPlaceCreateStoreVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if fromVC == .myStoreDashboard {
-            print("StoreData Count------------------------------\(self.imagesFromSource.count )")
             return (self.imagesFromSource.count ) + 1
             //return (self.uploadImageArray.count ) + 1
         }else{
             if self.imagesFromSource.count == 0 {
                 return 1
             }else{
-                print("count-------------\(self.imagesFromSource.count)")
                 return imagesFromSource.count + 1
                 //return uploadImageArray.count + 1
             }
@@ -383,7 +381,7 @@ extension MarketPlaceCreateStoreVC: UICollectionViewDelegate,UICollectionViewDat
 //            }else{
                 self.imagesFromSource.remove(at: tag)
             if self.fromVC == .myStoreDashboard{
-                print("marketplace_product_gallery_id----------------------------\(self.storeData?.product_gallery?[tag].marketplace_product_gallery_id ?? 0)")
+                
                 self.removeStorePic(self.storeData?.store_gallery?[tag].marketplace_product_gallery_id)
             }
                // self.uploadImageArray.remove(at: tag)
@@ -488,7 +486,6 @@ extension MarketPlaceCreateStoreVC {
         storeImageParams.append(imageParam)
         storeImageParams.append(coverPic)
         storeImageParams.append(profilePic)
-        print("StoreImageParams----------------------------------------\(storeImageParams)")
         
         CommonUtil.sharedInstance.postToServerRequestMultiPart(APIUrl.kCreateStore, params: params, imageParams: storeImageParams, controller: self) { (dictResponse) in
             
@@ -589,8 +586,7 @@ extension MarketPlaceCreateStoreVC {
         storeImageParams.append(imageParam)
         storeImageParams.append(coverPic)
         storeImageParams.append(profilePic)
-        print("StoreImageParams----------------------------------------\(storeImageParams)")
-        
+                
         //CommonUtil.sharedInstance.postRequestToImageUpload(withParameter: params, url: APIUrl.kUpdateStore, image: imageParam, controller: self, type: 0)
         
         CommonUtil.sharedInstance.postToServerRequestMultiPart(APIUrl.kUpdateStore, params: params, imageParams: storeImageParams, controller: self) { (dictResponse) in

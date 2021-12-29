@@ -137,7 +137,7 @@ class CountryHubs {
         self.isSelected = Int.getInt(data?["is_selected"]) == 0 ? false: true
         if let image = data?["image"] as? [String:Any] {
             self.imageHub = String.getString(image["attachment_url"])
-            print("HubImage-----------------------------------------\(self.imageHub ?? "")")
+          //  print("HubImage-----------------------------------------\(self.imageHub ?? "")")
         }
         self.radius = Int.getInt(data?["radius"])
     }

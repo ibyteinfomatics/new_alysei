@@ -45,7 +45,6 @@ class Privacy: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let openTap = UITapGestureRecognizer.init(target: self, action: #selector(openMessageLabel))
         self.messagelabel.addGestureRecognizer(openTap)
         
@@ -196,7 +195,7 @@ class Privacy: AlysieBaseViewC {
             
         }
        
-       
+//        self.tableViewHeight.constant = CGFloat(43 * (self.privacyModel?.roles?.count ?? 0))
        
         self.message.text = self.privacyModel?.privacyData?.allow_message_from
         self.profile.text = self.privacyModel?.privacyData?.who_can_view_profile
@@ -219,7 +218,7 @@ class Privacy: AlysieBaseViewC {
         
         self.weeklylabel.textColor = self.privacyModel?.emailPreference?.weekly_updates == "1" ? UIColor(red: 75/256, green: 179/256, blue: 253/256, alpha: 1) : UIColor.black
         
-        self.tableViewHeight.constant = CGFloat(43 * (self.privacyModel?.roles?.count ?? 0))
+      
           self.tableView.reloadData()
       }
       
@@ -260,7 +259,7 @@ class Privacy: AlysieBaseViewC {
 extension Privacy: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        self.tableViewHeight.constant = CGFloat(43 * (self.privacyModel?.roles?.count ?? 0))
         return privacyModel?.roles?.count ?? 0
     }
     
@@ -305,7 +304,7 @@ extension Privacy: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 43
     }
     
     

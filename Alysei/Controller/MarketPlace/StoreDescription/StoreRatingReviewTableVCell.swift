@@ -56,8 +56,7 @@ class StoreRatingReviewTableVCell: UITableViewCell {
 
     func configCell(_ data: RatingReviewModel){
         self.data = data
-        print("Data -----------------------------------\(String(describing: data.user?.company_name))")
-        print("Data----------------------------\(data.review ?? "")")
+       
         if data.user?.role_id == UserRoles.restaurant.rawValue{
             lblClientName.text = data.user?.restaurant_name
         }else if data.user?.role_id == UserRoles.voyagers.rawValue || data.user?.role_id == UserRoles.voiceExperts.rawValue{

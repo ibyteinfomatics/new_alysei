@@ -227,8 +227,15 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         }
         flagView = flag
         flagView.button.addTarget(self, action: #selector(presentCountryList(_:)), for: .touchUpInside)
-        flagView.flag.image = UIImage(named: "india")
-        flagView.countrtyCode.text = "+91"
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+            flagView.flag.image = UIImage(named: "italy")
+            flagView.countrtyCode.text = "+39"
+        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer1.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer2.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer3.rawValue)"){
+            flagView.flag.image = UIImage(named: "us")
+            flagView.countrtyCode.text = "+1"
+        }
+//        flagView.flag.image = UIImage(named: "india")
+//        flagView.countrtyCode.text = "+91"
         flag.flag.centerVertically()
         flag.countrtyCode.centerVertically()
 

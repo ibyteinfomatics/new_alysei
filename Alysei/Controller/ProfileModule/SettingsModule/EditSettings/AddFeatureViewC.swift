@@ -225,7 +225,7 @@ class AddFeatureViewC: AlysieBaseViewC {
     if arrSelectedFields.count != 0{
       
       let filter = self.arrSelectedFields.map({$0}).filter({$0.type == AppConstants.File})
-      self.imgViewProduct.setImage(withString: kImageBaseUrl + String.getString(filter.first?.selectedValue))
+      self.imgViewProduct.setImage(withString: String.getString(filter.first?.base_url) + String.getString(filter.first?.selectedValue))
       self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.currentNavigationTitle)
     }
     else{

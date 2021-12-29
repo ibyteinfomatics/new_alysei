@@ -143,7 +143,7 @@ class SimilarProductCollectionVCell: UICollectionViewCell{
                 simProductAvgStar3.image = UIImage(named: "icons8_star")
                 simProductAvgStar5.image = UIImage(named: "icons8_star")
                 simProductAvgStar5.image = UIImage(named: "icons8_star")
-                print("Invalid Rating")
+               
             }
         }
     }

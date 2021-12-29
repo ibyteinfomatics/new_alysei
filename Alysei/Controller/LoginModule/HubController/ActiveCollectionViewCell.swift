@@ -21,7 +21,7 @@ class ActiveCollectionViewCell: UICollectionViewCell {
         lblCountryName.text = data.name
         if let strUrl = "\(kImageBaseUrl)\(data.flagId?.attachmentUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
            let imgUrl = URL(string: strUrl) {
-            print("\("FlagImageUrl---------------------------\(imgUrl)")")
+            
             imgFlag.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
     }

@@ -110,7 +110,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
             let response = dictRespnose as? [String:Any]
             if let data = response?["data"] as? [String:Any]{
                 
-                print("profile_percentage--- ",data["profile_percentage"]!)
+                
                 
                 if String.getString(data["profile_percentage"])  != "100" {
                   self.blankdataView.isHidden = false

@@ -118,7 +118,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         callMarketPlaceHomeApi()
         setBottomUI()
         walknextBtn.setTitle("Next", for: .normal)
-        print("kSharedUserDefaults.loggedInUserModal.isStoreCreated----------------\(kSharedUserDefaults.loggedInUserModal.isStoreCreated ?? "")")
+       
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             self.btnCreateStore.isHidden = false
             self.lblDiscover.isHidden = true
@@ -641,7 +641,6 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeImageCVC", for: indexPath) as? MarketplaceHomeImageCVC else {return UICollectionViewCell()}
             let baseUrl = self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.baseUrl ?? ""
             let imgUrl = (baseUrl + (self.maketPlaceHomeScreenData?.top_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
-            print("imgUrl---------------------------------------",imgUrl)
             cell.image.setImage(withString: imgUrl)
             return cell
         }else if collectionView == recentlyAddedCollectionView{
@@ -925,7 +924,6 @@ class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
     func configCell(_ data: MyStoreProductDetail){
       //  let baseUrl = data.
         let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
-        print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
         imgProduct.layer.cornerRadius = 15
         imgProduct.layer.masksToBounds = true
@@ -1024,7 +1022,6 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
     }
     func configCell(_ data: MyStoreProductDetail){
         let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
-        print("imgUrl---------------------------------------",imgUrl)
         imgProduct.setImage(withString: imgUrl)
         imgProduct.layer.cornerRadius = 20
         imgProduct.layer.masksToBounds = true

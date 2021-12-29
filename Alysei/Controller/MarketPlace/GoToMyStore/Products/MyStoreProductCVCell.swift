@@ -35,7 +35,7 @@ class MyStoreProductCVCell: UICollectionViewCell {
         self.data = data
         lblProductName.text = data.title
         self.lblRating.text = data.avg_rating
-        print("Test Image------------------------------\(data )")
+        
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
         self.imgProduct.setImage(withString: baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
         setUserRatngStarUI()
@@ -106,7 +106,7 @@ class MyStoreProductCVCell: UICollectionViewCell {
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-            print("Invalid Rating")
+           
         }
     }
     @IBAction func editProduct(_ sender: UIButton){

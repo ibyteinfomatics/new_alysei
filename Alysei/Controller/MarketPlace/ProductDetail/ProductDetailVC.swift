@@ -148,10 +148,10 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
             cell.totalFourStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_four_star))))%"
             cell.totalFiveStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_five_star))))%"
             
-            print("productDetail?.product_detail?.total_reviews------------------->",productDetail?.product_detail?.total_reviews ?? 0)
+          //  print("productDetail?.product_detail?.total_reviews------------------->",productDetail?.product_detail?.total_reviews ?? 0)
             
-           
-            print("Double productDetail?.product_detail?.total_reviews------------------->",doubleTotalReview )
+          
+           // print("Double productDetail?.product_detail?.total_reviews------------------->",doubleTotalReview )
             
             cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(productDetail?.product_detail?.total_one_star)))/100, animated: false)
             

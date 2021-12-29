@@ -34,8 +34,7 @@ extension MarketplaceHomeAdTableVC: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = adCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCollectionVC", for: indexPath) as? AdCollectionVC  else {return UICollectionViewCell()}
-        let imgUrl = (kImageBaseUrl + (self.maketPlaceHomeScreenData?.bottom_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
-        print("imgUrl---------------------------------------",imgUrl)
+        let imgUrl = ((self.maketPlaceHomeScreenData?.bottom_banners?[indexPath.row].attachment?.baseUrl ?? "") + (self.maketPlaceHomeScreenData?.bottom_banners?[indexPath.row].attachment?.attachmentURL ?? ""))
         cell.imgBanner.setImage(withString: imgUrl)
         return cell
         

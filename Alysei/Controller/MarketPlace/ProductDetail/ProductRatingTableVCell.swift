@@ -62,8 +62,7 @@ class ProductRatingTableVCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configCell(_ data: RatingReviewModel){
-        print("Data -----------------------------------\(String(describing: data.user?.company_name))")
-        print("Data----------------------------\(data.review ?? "")")
+       
         self.data = data
         if data.user?.role_id == UserRoles.restaurant.rawValue{
             lblClientName.text = data.user?.restaurant_name
@@ -157,7 +156,7 @@ class ProductRatingTableVCell: UITableViewCell {
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-            print("Invalid Rating")
+           
         }
     }
     func setStarUI(){
@@ -227,7 +226,7 @@ class ProductRatingTableVCell: UITableViewCell {
             productAvgStar3.image = UIImage(named: "icons8_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-            print("Invalid Rating")
+           
         }
     }
     

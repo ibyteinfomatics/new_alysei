@@ -89,7 +89,6 @@ class BlogDiscover: AlysieBaseViewC {
          dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
          let date: Date? = dateFormatterGet.date(from: blogData[indexPath].createdAt ?? "")
-         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
          let datep = dateFormatterPrint.string(from: date ?? Date())
         blogTableCell.dateTimeLabel.text = datep
         if String.getString(blogData[indexPath].status) == "0"{

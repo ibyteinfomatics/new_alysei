@@ -139,7 +139,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         self.productId = self.passEditProductDetail?.product_category_id
         self.subProductId = self.passEditProductDetail?.product_subcategory_id
         for img in 0..<(self.passEditProductDetail?.product_gallery?.count ?? 0) {
-            let urlString = kImageBaseUrl + "\(String.getString(self.passEditProductDetail?.product_gallery?[img].attachment_url))"
+            let urlString = (String.getString(self.passEditProductDetail?.product_gallery?[img].baseUrl)) + "\(String.getString(self.passEditProductDetail?.product_gallery?[img].attachment_url))"
             do {
                 let imageData = try Data(contentsOf: URL(string: urlString)!)
                 if let image = UIImage(data: imageData) {
@@ -149,7 +149,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                 print("\(error.localizedDescription)")
             }
         }
-        print("ImageFromSourceData------------------------\(self.imagesFromSource)")
+        
         collectionViewImage.reloadData()
     }
     
@@ -315,16 +315,16 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         switch sender.tag {
         case 0:
             showInfo("Helps user to find product")
-            print("0")
+           
         case 1:
             showInfo("Handling Instruction can contains max 50 words")
-            print("1")
+            
         case 2:
             showInfo("Dispatch Instruction can contains max 200 words")
-            print("2")
+            
         case 3:
             showInfo("Lorem Ipsum is simply dummy text of the printing")
-            print("3")
+           
             
         default:
             break

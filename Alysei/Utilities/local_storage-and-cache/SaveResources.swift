@@ -22,7 +22,7 @@ class LocalStorage {
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
 
         if FileManager.default.fileExists(atPath: fileURL.relativePath) {
-            print("file exists")
+         //   print("file exists")
             return
         }
 
@@ -46,11 +46,11 @@ class LocalStorage {
 
         do {
             if FileManager.default.fileExists(atPath: fileURL.relativePath) {
-                print("file exists")
+                //print("file exists")
                 try FileManager.default.removeItem(atPath: fileURL.relativePath)
             }
             try data.write(to: fileURL)
-            print("file saved")
+           // print("file saved")
         } catch {
             print("error saving file:", error)
         }

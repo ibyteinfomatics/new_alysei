@@ -67,7 +67,7 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
             cell.lblName.text = arrRatingReviewData?[indexPath.row].user?.company_name
         }
         cell.lblUserReview.text = arrRatingReviewData?[indexPath.row].review
-        print("ImageUrl Image--------------------------\(kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))")
+        
         cell.imgUser.setImage(withString: kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))
         
         if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "0" {
