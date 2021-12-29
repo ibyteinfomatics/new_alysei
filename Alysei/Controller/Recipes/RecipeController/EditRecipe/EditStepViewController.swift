@@ -218,7 +218,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = editusedIngridientModel[indexPath.row].ingridient?.ingridientTitle
             cell1.addStepIngridientQuantityLabel.text = (editusedIngridientModel[indexPath.row].quantity ?? "") + " " + (editusedIngridientModel[indexPath.row].unit ?? "")
-            cell1.addStepIngridientNameLabel.font = UIFont(name: "Helvetica Neue Bold", size: 14)
+            
             
             if isFromStep == "Edit Step"{
                 
@@ -247,7 +247,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             let imgUrl = ((editusedToolModel[indexPath.row].tool?.imageId?.baseUrl ?? "") + (editusedToolModel[indexPath.row].tool?.imageId?.imgUrl ?? ""))
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = editusedToolModel[indexPath.row].tool?.toolTitle
-            cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+            
            
             if isFromStep == "Edit Step"{
                 if editusedToolModel[indexPath.row].isSelected == 1 {
@@ -317,10 +317,10 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: self.addStepsCollectionView.frame.width, height: 270.0)
         }
         if collectionView == ingridientUsedCollectionView{
-            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 240)
+            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 180)
         }
         if collectionView == toolsUsedCollectionView{
-            return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 200)
+            return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 150)
         }
         else{
             return CGSize.zero

@@ -43,12 +43,12 @@ class FilterRecipeViewController: UIViewController {
                           "<45 min",
                           "<1 hr",
                           "<2 hr"]
-    var titleNoOfIngridientArray = ["<2",
-                                    "<5",
+    var titleNoOfIngridientArray = ["<5",
                                     "<10",
                                     "<20",
                                     "<30",
-                                    "<50"]
+                                    "<40",
+                                    "<60"]
     
     private var selected = [String]()
     private var titlesCount = [[String]()]
@@ -71,7 +71,7 @@ class FilterRecipeViewController: UIViewController {
         collectionView.dataSource = self
         
         let layout = TagFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 10, height: 40)
+        layout.estimatedItemSize = CGSize(width: 100, height: 40)
         collectionView.collectionViewLayout = layout
         
         if isFrom == "Ingridients"{
@@ -222,19 +222,29 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                     cell.isSelected = true
                    titlesCount[indexPath.section] = ["1"]
                 }
+              
+                
                
             case 1:
+                collectionView.allowsMultipleSelection = false
                 cell.tagLabel.text = titleNoOfIngridientArray[indexPath.row]
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 16
                 
                 if selectedIndexPath1 == indexPath {
-                    for title in titleNoOfIngridientArray{
-                        if title == str2{
-                            cell.isSelected = true
-                            titlesCount[indexPath.section] = ["1"]
-                        }
-                     }
+                    cell.isSelected = true
+//                    for title in titleNoOfIngridientArray{
+//                        if title == str2{
+//                            cell.isSelected = true
+//                            titlesCount[indexPath.section] = ["1"]
+//                        }
+//                     }
                 }
+                
+                
+                else if str2.contains(comparsionString: titleNoOfIngridientArray[indexPath.row]) {
+                     cell.isSelected = true
+                    titlesCount[indexPath.section] = ["1"]
+                 }
             
             case 2:
                 cell.tagLabel.text = arrayMeal?[indexPath.row].mealName
@@ -300,13 +310,18 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 16
                 
                 if selectedIndexPath1 == indexPath {
-                    for title in titleNoOfIngridientArray{
-                        if title == str2{
-                            cell.isSelected = true
-                            titlesCount[indexPath.section] = ["1"]
-                        }
-                     }
+                    cell.isSelected = true
+//                    for title in titleNoOfIngridientArray{
+//                        if title == str2{
+//                            cell.isSelected = true
+//                            titlesCount[indexPath.section] = ["1"]
+//                        }
+//                     }
                 }
+                else if str2.contains(comparsionString: titleNoOfIngridientArray[indexPath.row]) {
+                     cell.isSelected = true
+                    titlesCount[indexPath.section] = ["1"]
+                 }
                 
             case 2:
                 cell.tagLabel.text = arrayCuisine?[indexPath.row].cuisineName
@@ -345,13 +360,18 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 16
                 
                 if selectedIndexPath1 == indexPath {
-                    for title in titleNoOfIngridientArray{
-                        if title == str2{
-                            cell.isSelected = true
-                            titlesCount[indexPath.section] = ["1"]
-                        }
-                     }
+                    cell.isSelected = true
+//                    for title in titleNoOfIngridientArray{
+//                        if title == str2{
+//                            cell.isSelected = true
+//                            titlesCount[indexPath.section] = ["1"]
+//                        }
+//                     }
                 }
+                else if str2.contains(comparsionString: titleNoOfIngridientArray[indexPath.row]) {
+                     cell.isSelected = true
+                    titlesCount[indexPath.section] = ["1"]
+                 }
                 
             case 2:
                 cell.tagLabel.text = arrayMeal?[indexPath.row].mealName
@@ -396,19 +416,20 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                 
                 guard selectedIndexPath != indexPath else { return }
                 if let index = selectedIndexPath {
-                    let cell = collectionView.cellForItem(at: index) as! TagCollectionViewCell
-                    cell.isSelected = false
+                    let cell1 = collectionView.cellForItem(at: index) as! TagCollectionViewCell
+                    cell1.isSelected = false
                     
                 }
-                
-                
-                let cell = collectionView.cellForItem(at: indexPath) as! TagCollectionViewCell
-                cell.isSelected = true
+               
+                let cellcook = collectionView.cellForItem(at: indexPath) as! TagCollectionViewCell
+                cellcook.isSelected = true
                 selectedIndexPath = indexPath
                 titlesCount[indexPath.section] = ["1"]
                  str1 = titleTimeArray[selectedIndexPath!.item]
                 strTime = str1.westernArabicNumeralsOnly
-              
+                
+               
+                
             case 1:
                 
                 guard selectedIndexPath1 != indexPath else { return }
@@ -432,6 +453,7 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                     let cell = collectionView.cellForItem(at: index) as! TagCollectionViewCell
                     cell.isSelected = false
                 }
+                
                 
                 
                 let cell = collectionView.cellForItem(at: indexPath) as! TagCollectionViewCell
@@ -600,7 +622,10 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                 break
             }
         }
-        collectionView.reloadData()
+        let section = IndexSet(integer: indexPath.section)
+        collectionView.reloadSections(section)
+//        collectionView.reloadData()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -618,7 +643,7 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 300, height: 50)
+        return CGSize(width: 300, height: 60)
         
     }
 }
@@ -679,4 +704,11 @@ extension String {
         return String(unicodeScalars
                         .compactMap { pattern ~= $0 ? Character($0) : nil })
     }
+}
+extension UICollectionView {
+   func reloadItems(inSection section:Int) {
+      reloadItems(at: (0..<numberOfItems(inSection: section)).map {
+         IndexPath(item: $0, section: section)
+      })
+   }
 }

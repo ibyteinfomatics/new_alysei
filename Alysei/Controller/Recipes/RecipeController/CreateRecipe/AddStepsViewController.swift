@@ -374,7 +374,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell1.addStepIngridientImageView.setImage(withString: imgUrl)
             cell1.addStepIngridientNameLabel.text = arrayIngridients[indexPath.row].ingridientTitle
             cell1.addStepIngridientQuantityLabel.text = arrayIngridients[indexPath.row].pickerData ?? ""
-            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 14)
+//            cell1.addStepIngridientNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             if  arrayIngridients[indexPath.row].isSelected == true {
                 cell1.addStepIngeidientSelectedImageView.isHidden = false
             } else {
@@ -391,7 +391,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell2.addStepToolImageView.setImage(withString: imgUrl)
             cell2.addStepToolNameLabel.text = arraytools[indexPath.row].toolTitle
             
-            cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
+//            cell2.addStepToolNameLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
             
             if  arraytools[indexPath.row].isSelected == true {
                 cell2.addStepToolSelectedImageView.isHidden = false
@@ -447,10 +447,10 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: self.addStepsCollectionView.frame.width, height: 292.0)
         }
         if collectionView == ingridientUsedCollectionView{
-            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 260)
+            return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 180)
         }
         if collectionView == toolsUsedCollectionView{
-            return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 200)
+            return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 150)
         }
         else{
             return CGSize.zero
