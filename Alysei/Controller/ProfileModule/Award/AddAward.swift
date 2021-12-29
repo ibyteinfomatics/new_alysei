@@ -419,12 +419,23 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         // Pass the selected object to the new view controller.
     }
     */
-
+ 
 }
 extension AddAward{
     
     override func didUserGetData(from result: Any, type: Int) {
         
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension UITextField{
+   @IBInspectable var placeHolderColors: UIColor? {
+        get {
+            return self.placeHolderColors
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
+        }
     }
 }
