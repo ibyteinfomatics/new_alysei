@@ -313,12 +313,14 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         
-        if collectionView == addStepsCollectionView{
+        if collectionView == addStepsCollectionView {
             return CGSize(width: self.addStepsCollectionView.frame.width, height: 270.0)
         }
+        
         if collectionView == ingridientUsedCollectionView{
             return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 180)
         }
+        
         if collectionView == toolsUsedCollectionView{
             return CGSize(width: self.toolsUsedCollectionView.frame.width/5, height: 150)
         }

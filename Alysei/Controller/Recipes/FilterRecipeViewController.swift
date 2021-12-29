@@ -694,9 +694,7 @@ extension FilterRecipeViewController{
             self.view.isUserInteractionEnabled = true
         }
     }
-    
-    
-    
+  
 }
 extension String {
     var westernArabicNumeralsOnly: String {

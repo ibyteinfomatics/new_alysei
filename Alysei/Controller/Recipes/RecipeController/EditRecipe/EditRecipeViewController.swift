@@ -94,16 +94,16 @@ class EditRecipeViewController: UIViewController {
         
         if arrayMyRecipe!.count > 0{
             
-//            let imageurl = (kImageBaseUrl + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
-//
-//            let url = URL(string: imageurl)!
+            let imageurl = ((arrayMyRecipe?[index].image?.baseUrl ?? "") + (arrayMyRecipe?[index].image?.imgUrl ?? ""))
+
+            let url = URL(string: imageurl)!
            
             
-            if let strUrl = "\((arrayMyRecipe?[index].image?.baseUrl ?? "") + (arrayMyRecipe?[index].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-                  let imgUrl = URL(string: strUrl) {
-                self.recipeImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
-                downloadImage(from: imgUrl)
-            }
+//            if let strUrl = "\((arrayMyRecipe?[index].image?.baseUrl ?? "") + (arrayMyRecipe?[index].image?.imgUrl ?? ""))".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+//                  let imgUrl = URL(string: strUrl) {
+//                self.recipeImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+                downloadImage(from: url)
+//        }
 
             nameTextfield.text = arrayMyRecipe?[index].name
             

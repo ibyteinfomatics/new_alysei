@@ -43,7 +43,7 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         if String.getString(data?[indexPath.row].image?.attachmentUrl) == ""{
             cell.imgStory.image = UIImage(named: "profile_icon")
         }else{
-            cell.imgStory.setImage(withString: kImageBaseUrl + String.getString(data?[indexPath.row].image?.attachmentUrl))
+            cell.imgStory.setImage(withString: String.getString(data?[indexPath.row].image?.baseUrl) + String.getString(data?[indexPath.row].image?.attachmentUrl))
         }
         
         cell.imgStory.layer.cornerRadius = (cell.imgStory.frame.width / 2.0)

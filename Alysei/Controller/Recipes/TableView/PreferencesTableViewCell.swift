@@ -131,7 +131,12 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             if indexPath.row < showCuisine!.count {
                 let imgUrl = ((showCuisine?[indexPath.item].imageId?.baseUrl ?? "") + (showCuisine?[indexPath.item].imageId?.imgUrl ?? ""))
                 
-                cell.imageView.setImage(withString: imgUrl)
+                if imgUrl == ""{
+                    cell.imageView.image = UIImage(named: "image_placeholder")
+                }
+                else{
+                    cell.imageView.setImage(withString: imgUrl)
+                }
                 
                 cell.imageView.contentMode = .scaleAspectFill
                 cell.imageNameLabel.text = showCuisine?[indexPath.item].name
@@ -161,7 +166,13 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 let imgUrl = ((showFood?[indexPath.item].imageId?.baseUrl ?? "") + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
-                cell.imageView.image = mySVGImage.uiImage
+                if imgUrl == ""{
+                    cell.imageView.image = UIImage(named: "image_placeholder")
+                }
+                else{
+                    cell.imageView.image = mySVGImage.uiImage
+                }
+                
                 cell.imageNameLabel.text = showFood?[indexPath.row].name
               
             cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
@@ -181,14 +192,19 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 cell.imageView1.image = UIImage(named: "")
                 cell.imageView1.clipsToBounds = true
             }
-            
-
+        
         case 2:
             if indexPath.row < showDiet!.count {
                 let imgUrl = ((showDiet?[indexPath.item].imageId?.baseUrl ?? "") + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
-                cell.imageView.image = mySVGImage.uiImage
+               
+                if imgUrl == ""{
+                    cell.imageView.image = UIImage(named: "image_placeholder")
+                }
+                else{
+                    cell.imageView.image = mySVGImage.uiImage
+                }
                 cell.imageNameLabel.text = showDiet?[indexPath.row].name
                
             cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
@@ -214,7 +230,13 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             if indexPath.row < showIngridient!.count {
                 let imgUrl = ((showIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (showIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
                 
-                cell.imageView.setImage(withString: imgUrl)
+                if imgUrl == ""{
+                    cell.imageView.image = UIImage(named: "image_placeholder")
+                }
+                else{
+                    cell.imageView.setImage(withString: imgUrl)
+                }
+             
                 cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = showIngridient?[indexPath.row].title
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
@@ -241,7 +263,12 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 let imgUrl = ((showCookingSkill?[indexPath.item].imageId?.baseUrl ?? "") + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                 cell.imageView.contentMode = .center
-                cell.imageView.image = mySVGImage.uiImage
+                if imgUrl == ""{
+                    cell.imageView.image = UIImage(named: "image_placeholder")
+                }
+                else{
+                    cell.imageView.image = mySVGImage.uiImage
+                }
                 cell.imageNameLabel.text = showCookingSkill?[indexPath.row].name
              
             cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
