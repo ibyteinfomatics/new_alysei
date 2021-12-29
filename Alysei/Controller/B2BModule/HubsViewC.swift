@@ -23,6 +23,7 @@ class HubsViewC: AlysieBaseViewC {
     var passHubName: String?
     var passHubLocation: String?
     var passHubImageUrl: String?
+    var passBaseUrl: String?
     var getRoleViewModel: GetRoleViewModel!
     var isHubSubscribed: Int?
     
@@ -32,7 +33,7 @@ class HubsViewC: AlysieBaseViewC {
         vwHeader.drawBottomShadow()
         hubName.text = passHubName
         hubLocation.text = passHubLocation
-        self.imgHub.setImage(withString: kImageBaseUrl + String.getString(passHubImageUrl))
+        self.imgHub.setImage(withString: (passBaseUrl ?? "") + String.getString(passHubImageUrl))
         lblSubHeading.text = "Join the \(passHubName ?? "") to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community."
         callUserCountApi()
         // Do any additional setup after loading the view.
@@ -73,7 +74,7 @@ extension HubsViewC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
       let width = (kScreenWidth - 70.0)/3
-      return CGSize(width: width, height: width + 62.0)
+      return CGSize(width: width, height: width + 48.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

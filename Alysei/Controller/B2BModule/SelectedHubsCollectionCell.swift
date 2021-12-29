@@ -31,6 +31,6 @@ class SelectedHubsCollectionCell: UICollectionViewCell {
      func configData(_ data: NewFeedSearchDataModel){
         lblHubHeading.text = data.title
         lblHubSubHeading.text = (data.state?.name ?? "") + ","  + (data.country?.name ?? "")
-        self.imgViewHubs.setImage(withString: kImageBaseUrl + String.getString(data.image?.attachmentUrl))
+        self.imgViewHubs.setImage(withString: String.getString(data.image?.baseUrl) + String.getString(data.image?.attachmentUrl))
     }
 }

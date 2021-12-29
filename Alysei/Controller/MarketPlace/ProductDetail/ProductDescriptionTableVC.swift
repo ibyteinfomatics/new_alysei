@@ -49,7 +49,7 @@ class ProductDescriptionTableVC: UITableViewCell {
             btnDropDown.isHidden = true
             break
         case 5 :
-            print("Handling Instruction------------------------\(data.product_detail?.handling_instruction ?? "")")
+            
             if handlingInstrSelected == false{
                  self.lblDesc.numberOfLines = 0
             }else{
@@ -61,7 +61,7 @@ class ProductDescriptionTableVC: UITableViewCell {
             btnDropDown.isHidden = false
             break
         default:
-            print("Dispatch Instruction------------------------\(data.product_detail?.dispatch_instruction ?? "")")
+            
             self.lblDesc.text = data.product_detail?.dispatch_instruction
             if handlingInstrSelected == false{
                  self.lblDesc.numberOfLines = 0

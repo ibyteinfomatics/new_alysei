@@ -38,7 +38,8 @@ class AlysieBaseViewC: UIViewController {
         Alamofire.Session.default.request(url).validate().responseJSON { response in
             switch response.result {
             case .success:
-                print(response)
+                
+                
                 let responseJson = response.value as! NSDictionary
                 
                 var sublocality1: String = ""

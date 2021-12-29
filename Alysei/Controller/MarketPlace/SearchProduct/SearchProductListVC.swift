@@ -29,7 +29,7 @@ class SearchProductListVC: UIViewController {
         self.sortFilterView.addShadow()
         lblTitle.text = selectProductName
         //trimmedProductName = selectProductName?.replacingOccurrences(of: " ", with: "")
-        print("selectProductName-------------------\(selectProductName ?? "")")
+       
         callSearchListApi(selectProductName ?? "")
         self.firstLoading = true
         // Do any additional setup after loading the view.

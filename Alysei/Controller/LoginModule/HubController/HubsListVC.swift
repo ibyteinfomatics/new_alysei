@@ -87,7 +87,7 @@ class HubsListVC: UIViewController {
             else{
                 self.isChckHubfirstEditSlcted = false
                 // self.isEditHub = false
-                print("Check Remaining")
+               
             }
             
             self.tableView.hubsViaCity = self.hubsViaCity
@@ -118,7 +118,7 @@ class HubsListVC: UIViewController {
             }
             else{
                 self.isChckCityfirstEditSlcted = false
-                print("Check Remaining")
+                
             }
             self.tableView.hubsViaCity = self.hubsViaCity
             //self.collectionView.hubsViaCity = self.hubsViaCity

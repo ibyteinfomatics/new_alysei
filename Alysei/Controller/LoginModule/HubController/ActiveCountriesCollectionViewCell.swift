@@ -25,7 +25,7 @@ class ActiveCountriesCollectionViewCell: UICollectionViewCell {
         lblCountryName.text = data.name
         if let strUrl = "\(kImageBaseUrl)\(data.flagId?.attachmentUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
            let imgUrl = URL(string: strUrl) {
-            print("\("FlagImageUrl---------------------------\(imgUrl)")")
+           
             imgFlag.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
         self.btnCheckBox.setImage((data.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)

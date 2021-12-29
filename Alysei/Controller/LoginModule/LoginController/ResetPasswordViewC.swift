@@ -95,7 +95,7 @@ extension ResetPasswordViewC{
     showAlert(withMessage: AlertMessage.kPasswordChanged){
       
       for controller in self.navigationController!.viewControllers as Array {
-          if controller.isKind(of: LoginViewC.self) {
+          if controller.isKind(of: LoginAccountViewC.self) {
               self.navigationController!.popToViewController(controller, animated: true)
               break
         }

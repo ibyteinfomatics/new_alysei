@@ -220,7 +220,7 @@ extension SharePostViewController: UICollectionViewDelegate, UICollectionViewDat
         if let url = URL(string: imageString) {
             cell.image.contentMode = .scaleAspectFill
             cell.image.loadImageWithUrl(url)
-            print("size:  \(cell.image.getSize())")
+           // print("size:  \(cell.image.getSize())")
 //            cell.image.frame.size = CGSize(width: cell.frame.width, height: cell.frame.height)
 //            cell.layoutSubviews()
         }

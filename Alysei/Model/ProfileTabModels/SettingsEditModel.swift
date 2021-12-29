@@ -167,6 +167,7 @@ class ProductFieldsDataModel: NSObject{
   var required: String?
   var selectedValue: String?
   var selectedOptionName: String?
+    var base_url: String?
   
   var arrOptions: [AllProductsOptionsModel] = []
 
@@ -183,6 +184,7 @@ class ProductFieldsDataModel: NSObject{
     self.required = String.getString(dictAddFeatured[APIConstants.kRequired])
     self.type = String.getString(dictAddFeatured[APIConstants.kType])
     self.selectedValue = String.getString(dictAddFeatured["value"])
+    self.base_url = String.getString(dictAddFeatured["base_url"])
 
     //self.selectedOptionName = String.getString(dictAddFeatured["option"])
     

@@ -145,7 +145,7 @@ extension ConfirmSelectionVC {
                 let state = state_ids.map{CountryHubs(stateID:$0)}
                 self.selectedHubs.first?.state = state
             }
-            print("wertyuihgfdszxcvbnm,nbcvxvbnm,---------\(self.reviewSelectedHubs ?? [ReviewSelectedHub]())")
+          
             self.tableView.reviewSelectedHubs = self.reviewSelectedHubs
             self.tableView.reloadData()
         }

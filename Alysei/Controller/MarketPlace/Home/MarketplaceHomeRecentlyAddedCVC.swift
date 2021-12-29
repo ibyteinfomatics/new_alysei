@@ -26,7 +26,7 @@ class MarketplaceHomeRecentlyAddedCVC: UICollectionViewCell {
     }
     func configCell(_ data: MyStoreProductDetail){
         let imgUrl = ((data.base_url ?? "") + (data.logo_id ?? ""))
-        print("imgUrl---------------------------------------",imgUrl)
+        
         imgProduct.setImage(withString: imgUrl)
         
         lblProductName.text = data.title

@@ -85,7 +85,7 @@ class StoreDescTopTableViewCell: UITableViewCell {
          labelAvgRating.text = storeDetails.avg_rating
         labelTotalReview.text = (storeDetails.total_reviews ?? "0") + " Reviews"
         self.imgProfile.setImage(withString: (storeDetails.base_url ?? "") + String.getString(storeDetails.logo_id))
-        self.imgCover.setImage(withString: kImageBaseUrl + String.getString(storeDetails.banner_id))
+        self.imgCover.setImage(withString: String.getString(storeDetails.banner_base_url) + String.getString(storeDetails.banner_id))
         self.imgProducer.setImage(withString: kImageBaseUrl + String.getString(storeDetails.prefilled?.avatarId?.attachmentUrl))
         
         if storeDetails.is_favourite == 0{
@@ -180,7 +180,7 @@ class StoreDescTopTableViewCell: UITableViewCell {
             storeAvgStar3.image = UIImage(named: "icons8_star")
             storeAvgStar4.image = UIImage(named: "icons8_star")
             storeAvgStar5.image = UIImage(named: "icons8_star")
-            print("Invalid Rating")
+            
         }
     }
     @objc func callLikeDisLikeApi(){

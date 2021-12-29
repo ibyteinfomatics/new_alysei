@@ -83,8 +83,7 @@ class SelectCityTableViewCell: UITableViewCell {
 
         nextVC.fromVC = .locateHub
         
-        print("hubLatitude--------------------------\(self.hubLatitude ?? "")")
-        print("hubLongCordinate--------------------------\(self.hubLongitude ?? "")")
+        
         nextVC.hubLatCordinate = Double.getDouble(self.hubLatitude)
         nextVC.hubLongCordinate = Double.getDouble(self.hubLongitude)
         nextVC.hubRadius = self.hubRadius

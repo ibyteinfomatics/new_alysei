@@ -248,13 +248,13 @@ extension EditPostViewController: UICollectionViewDelegate,UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditCollectionViewCell", for: indexPath) as? EditCollectionViewCell else {return UICollectionViewCell()}
         
         cell.btnDelete.isHidden = true
-        let imageString = kImageBaseUrl + "\(self.postDataModel.attachments?[indexPath.row].attachmentLink?.attachmentUrl ?? "")"
+        let imageString = (self.postDataModel.attachments?[indexPath.row].attachmentLink?.baseUrl ?? "") + "\(self.postDataModel.attachments?[indexPath.row].attachmentLink?.attachmentUrl ?? "")"
         
         if let url = URL(string: imageString) {
             
             cell.image.contentMode = .scaleAspectFill
             cell.image.loadImageWithUrl(url)
-            print("size:  \(cell.image.getSize())")
+           // print("size:  \(cell.image.getSize())")
             //            cell.image.frame.size = CGSize(width: cell.frame.width, height: cell.frame.height)
             //            cell.layoutSubviews()
         }

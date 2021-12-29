@@ -74,7 +74,7 @@ class EventsView: AlysieBaseViewC {
         eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
       //  eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
         
-        let imageUrl = (kImageBaseUrl + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        let imageUrl = (eventModel?.data?[indexPath].user?.avatarid?.baseUrl ?? "") + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? "")
         eventTableCell.userImage.setImage(withString: imageUrl)
         
         eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2

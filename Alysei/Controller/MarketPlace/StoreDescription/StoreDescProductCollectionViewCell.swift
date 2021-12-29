@@ -98,7 +98,7 @@ class StoreDescProductCollectionViewCell: UICollectionViewCell {
             productAvgStar3.image = UIImage(named: "icons8_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-            print("Invalid Rating")
+            
         }
     
 }

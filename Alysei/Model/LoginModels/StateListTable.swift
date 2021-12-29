@@ -72,7 +72,7 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
             for i in 0..<(self.arrhubsViaCity?.count ?? 0){
                 for j in 0..<(self.arrhubsViaCity?[i].hubs_array?.count ?? 0){
                 _ = self.arrhubsViaCity?[i].hubs_array?[j].isSelected = false
-                    print("False or true ---------------------\(self.arrhubsViaCity?[i].hubs_array?[j].name ?? "") is \(self.arrhubsViaCity?[i].hubs_array?[j].isSelected ?? true)")
+                  //  print("False or true ---------------------\(self.arrhubsViaCity?[i].hubs_array?[j].name ?? "") is \(self.arrhubsViaCity?[i].hubs_array?[j].isSelected ?? true)")
         }
             }
             for i in 0..<(self.states?.count ?? 0){
@@ -87,7 +87,7 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
           self.reloadData()
         }
         hubCountCallBack?()
-        print("Call HubCout")
+       // print("Call HubCout")
         
     }
 }

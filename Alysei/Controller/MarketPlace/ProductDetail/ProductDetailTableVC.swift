@@ -38,7 +38,7 @@ class ProductDetailTableVC: UITableViewCell {
         lblProductName.text = data.product_detail?.title
         lblProductCategory.text = data.product_detail?.product_category_name
         lblProductPrice.text = "$" + (data.product_detail?.product_price ?? "")
-        print("Product count----------------------\(data.product_detail?.product_gallery?.count ?? 0)")
+       
         self.pageControl.numberOfPages = data.product_detail?.product_gallery?.count ?? 0
         btnLikeUnlike.setImage(UIImage(named: "like_icon"), for: .normal)
         if self.data?.product_detail?.is_favourite == 1{
@@ -51,7 +51,7 @@ class ProductDetailTableVC: UITableViewCell {
         self.collectonView.reloadData()
     }
     @IBAction func likeUnlikeAction(_ sender: UIButton){
-        print("is Fav---------------------------\(data?.product_detail?.is_favourite ?? 0)")
+        
         if data?.product_detail?.is_favourite == 0{
         self.callLikeUnikeCallback?(1)
         }else{
@@ -68,7 +68,7 @@ extension ProductDetailTableVC: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductImageColectionViewCell", for: indexPath) as? ProductImageColectionViewCell else {return UICollectionViewCell()}
-        print("Current Page ---------------------\(indexPath.row )")
+       
       //  self.pageControl.currentPage = indexPath.row
         let baseUrl = data?.product_detail?.product_gallery?[indexPath.row].baseUrl ?? ""
         cell.imgProduct.setImage(withString: baseUrl + String.getString(data?.product_detail?.product_gallery?[indexPath.row].attachment_url))

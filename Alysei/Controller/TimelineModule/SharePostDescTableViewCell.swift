@@ -238,7 +238,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     }
     self.userImage.layer.borderWidth = 0.5
     self.userImage.layer.borderColor = UIColor.lightGray.cgColor
-    print("ImageUrl--------------------------------\(String.getString(modelData.subjectId?.avatarId?.attachmentUrl) )")
+   
     if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) == ""{
         self.imgSharedUserImage.image = UIImage(named: "profile_icon")
     }
@@ -283,7 +283,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
                     self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
                 }
             }
-    print("ImageArrayCount---------------------------\(imageArray.count)")
+   
 
     if imageArray.count <= 0 || imageArray.count == 1{
         self.pageControl.alpha = 0
@@ -377,7 +377,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
             return UICollectionViewCell()
         }
 
-        print("ImageArray---------------------------------\(self.imageArray)")
+      
 //        for i in 0..<imageArray.count {
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow

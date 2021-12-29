@@ -34,7 +34,7 @@ extension MarketPlaceRegionViewController: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceRegionCViewCell", for: indexPath) as? MarketPlaceRegionCViewCell else {return UICollectionViewCell()}
         cell.lblRegionName.text = arrRegion?[indexPath.row].name
-        let imgUrl = (kImageBaseUrl + (self.arrRegion?[indexPath.row].flagId?.attachmentUrl ?? ""))
+        let imgUrl = ((self.arrRegion?[indexPath.row].flagId?.baseUrl ?? "") + (self.arrRegion?[indexPath.row].flagId?.attachmentUrl ?? ""))
         cell.imgRegion.setImage(withString: imgUrl)
         return cell
     }

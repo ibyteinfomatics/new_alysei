@@ -517,12 +517,13 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
 }
 extension HubUserListVC: TappedHubs{
     
-    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?, _ hubImageUrl: String?){
+    func tapOnHub(_ hubId: String?, _ hubName: String?, _ hubLocation: String?, _ hubImageUrl: String?, _ hubBaseUrl: String?){
         let controller = pushViewController(withName: HubsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? HubsViewC
         controller?.passHubId = hubId
         controller?.passHubName = hubName
         controller?.passHubLocation = hubLocation
-    controller?.passHubImageUrl = hubImageUrl
+        controller?.passHubImageUrl = hubImageUrl
+        controller?.passBaseUrl = hubBaseUrl
     }
 }
 

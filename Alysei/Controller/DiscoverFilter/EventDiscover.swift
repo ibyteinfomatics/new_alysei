@@ -126,7 +126,6 @@ class EventDiscover: AlysieBaseViewC {
             vc.bookingUrl = self.eventData[indexPath].url
             vc.typeofpage = "read"
         }
-        print("CheckDate-------------------------\(eventData[indexPath].createdAt ?? "")")
        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -135,7 +134,6 @@ class EventDiscover: AlysieBaseViewC {
         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
         let date: Date? = dateFormatterGet.date(from: eventData[indexPath].createdAt ?? "")
-        print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
         let datep = dateFormatterPrint.string(from: date ?? Date())
         eventTableCell.dateTitle.text = datep
        // }
@@ -221,7 +219,6 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("index--- ",indexPath.row)
 
         let indexPath = indexPath.row
 
