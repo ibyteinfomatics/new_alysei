@@ -49,7 +49,11 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         return self.dequeueReusableCell(indexPath: indexPath)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        if hasCome == .hubs{
+        return 190
+        }else{
+            return 70
+        }
     }
  
     
@@ -61,6 +65,11 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         cell.hubLongitude = self.hubLongitude
         cell.hubRadius = self.hubRadius
         cell.buttonRightCheckBox.isHidden = self.hasCome == .hubs ? false : true
+        if self.hasCome == .hubs {
+            cell.imgViewHght.constant = 135
+        }else{
+            cell.imgViewHght.constant = 0
+        }
         cell.configCell(states, indexPath.row, .city)
         return cell
     }

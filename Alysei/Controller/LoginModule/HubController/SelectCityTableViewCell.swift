@@ -20,6 +20,7 @@ class SelectCityTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonLeftLeading: NSLayoutConstraint!
     @IBOutlet weak var buttonLeftCentreVertical: NSLayoutConstraint!
     @IBOutlet weak var imgHub: UIImageView!
+    @IBOutlet weak var imgViewHght: NSLayoutConstraint!
     
    // @IBOutlet weak var checkMarkView: Checkmark!
     
@@ -66,11 +67,11 @@ class SelectCityTableViewCell: UITableViewCell {
         self.imgHub.setImage(withString: String.getString(data?.image?.baseUrl) + String.getString(data?.image?.attachmentUrl))
         self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
         self.buttonRightCheckBox.isHidden = hideEyeIcon == true ? true : false
-        self.buttonLeftCheckWidth.constant = hideEyeIcon == true ? 25 : 12
-        self.buttonLeftHeight.constant = hideEyeIcon == true ? 25 : 12
+        self.buttonLeftCheckWidth.constant = hideEyeIcon == true ? 25 : 20
+        self.buttonLeftHeight.constant = hideEyeIcon == true ? 25 : 20
         
-        self.buttonLeftLeading.constant = hideEyeIcon == true ? 15 : 28
-        self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
+        self.buttonLeftLeading.constant = hideEyeIcon == true ? 15 : 15
+      //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
         self.imgHub.isHidden = hideEyeIcon == true ? true : false
     }
     
