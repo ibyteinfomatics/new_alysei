@@ -342,6 +342,11 @@ struct APIUrl{
     static let kSaveProfileCover = "update/avatar/cover/image"
     static let kSaveUpdateProfileField = "update/user/field"
     static let kLogout = "logout"
+    static let kIsStoreReview = "check/store/status"
+    static let kGetNotificationStatusApi = "get/notification/status"
+    static let kPostNotifictionEnableDisableApi = "update/notification/status"
+    
+    
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
         

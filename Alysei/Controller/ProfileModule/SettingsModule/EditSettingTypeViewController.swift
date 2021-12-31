@@ -14,10 +14,13 @@ class EditSetingTypeViewController: AlysieBaseViewC {
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var viewShadow: UIView!
     var reviewSelectedHubs : [ReviewSelectedHub]?
+    var notificationStatus: Int?
+    var updateNotification: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
+       
+        getNotificationStatusApi()
         self.viewShadow.drawBottomShadow()
     }
   
@@ -38,7 +41,14 @@ class EditSetingTypeViewController: AlysieBaseViewC {
         
         guard let notificationTableCell = settingTableView.dequeueReusableCell(withIdentifier: EditSettingTypeNotificationTableVC.identifier(), for: indexPath) as? EditSettingTypeNotificationTableVC else {return UITableViewCell()}
         notificationTableCell.selectionStyle = .none
-        
+        if notificationStatus == 0 {
+            notificationTableCell.btnSwitch.isOn = false
+        }else{
+            notificationTableCell.btnSwitch.isOn = true
+        }
+        notificationTableCell.notificationCallback = {
+            self.UpdateNotificationApi()
+        }
       return notificationTableCell
     }
     @IBAction func tapBack(_ sender: UIButton) {
@@ -124,7 +134,7 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
         switch indexPath.row {
         case 0:
             _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
-        default:
+        case 1:
             print("HubSelection")
 //            let nextVC = CountryListVC()
 //            nextVC.hasCome = .showCountry
@@ -134,7 +144,8 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
 //
 //            self.navigationController?.pushViewController(nextVC, animated: true)
             self.callReviewHubApi()
-            
+        default:
+            print("Nothing")
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -144,6 +155,11 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
 }
 class EditSettingTypeNotificationTableVC: UITableViewCell{
     @IBOutlet weak var btnSwitch: UISwitch!
+    var notificationCallback: (() -> Void)? = nil
+    
+    @IBAction func btnSwitchAction(_ sender: UISwitch){
+        notificationCallback?()
+    }
 }
 class EditSettingTypeTableViewCell: UITableViewCell{
   
@@ -196,6 +212,38 @@ extension EditSetingTypeViewController {
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }
             
+        }
+    }
+    
+    func getNotificationStatusApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationStatusApi, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+            if let response = dictResponse as? [String:Any]{
+                if let data = response["data"] as? Int{
+                    if data == 0 {
+                        print("Notification off")
+                    }else if data == 1 {
+                        print("Notification ON")
+                    }
+                    self.notificationStatus = data
+                }
+                let indexpath = IndexPath(row: 2, section: 0)
+                self.settingTableView.reloadRows(at: [indexpath], with: .automatic)
+            }
+            
+        }
+    }
+    
+    func UpdateNotificationApi(){
+        if notificationStatus == 0  {
+             updateNotification = 1
+        }else{
+            updateNotification = 0
+        }
+        let params:[String:Any] = [ "notification_status": updateNotification ?? 0]
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPostNotifictionEnableDisableApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+            if let response = dictResponse as? [String:Any]{
+                self.getNotificationStatusApi()
+            }
         }
     }
 }
