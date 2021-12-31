@@ -53,7 +53,7 @@ extension HubsListTable : UITableViewDelegate   , UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         //print("self.hubsViaCity?.count-------------\(self.hubsViaCity?.count ?? 0)")
-        return CGFloat( 95 + 70 * (self.hubsViaCity?[indexPath.row].hubs_array?.count ?? 0))
+        return CGFloat( 95 + 190 * (self.hubsViaCity?[indexPath.row].hubs_array?.count ?? 0))
         //return UITableView.automaticDimension
     }
     
