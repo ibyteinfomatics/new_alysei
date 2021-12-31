@@ -88,7 +88,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     
     var newunread: Int = 0
     var openedunread: Int = 0
-    
+    var isStoreReviewed: Int?
     var NewResentUser:[InquiryRecentUser]?
     var OpenedResentUser:[InquiryRecentUser]?
     
@@ -115,6 +115,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
         callCheckIfStoredCreated()
+        callIsStoreReviewApi()
         callMarketPlaceHomeApi()
         setBottomUI()
         walknextBtn.setTitle("Next", for: .normal)
@@ -510,6 +511,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBAction func btnGotoStores(_ sender: UIButton){
         //self.callCheckIfStoredCreated()
         //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
+        if isStoreReviewed == 0 || isStoreReviewed == 2 {
+            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
+        }else{
         if self.storeCreated == 0{
 //            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
 //
@@ -524,6 +528,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
         }else{
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        }
         }
         //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
     }
@@ -859,6 +864,26 @@ extension MarketPlaceHomeVC{
         }
         
 }
+    
+    func callIsStoreReviewApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kIsStoreReview, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+            
+            if let response = dictResponse as? [String:Any]{
+                if let data = response["data"] as? Int{
+                    if data == 0 {
+                        print("Store Pending")
+                    }else if data == 1 {
+                        print("Store Reviewed")
+                    }else{
+                        print("Store Decline")
+                    }
+                    self.isStoreReviewed = data
+                }
+                
+            }
+            
+        }
+    }
     
 }
 

@@ -13,11 +13,12 @@ class NotificationList: AlysieBaseViewC {
     @IBOutlet weak var viewNavigation: UIView!
     
     var notimodel:NotificationListModel?
+    var indexOfPageToRequest = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postRequestToGetNotification()
+        postRequestToGetNotification(indexOfPageToRequest)
         
         // Do any additional setup after loading the view.
     }
@@ -32,7 +33,25 @@ class NotificationList: AlysieBaseViewC {
       self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > notimodel?.data?.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                postRequestToGetNotification(indexOfPageToRequest)
+
+            // tell the table view to reload with the new data
+            self.tblViewNotification.reloadData()
+            }
+        }
+    }
     private func getTableCell(index: Int) -> UITableViewCell{
     
         let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as! NotificationTableCell
@@ -99,11 +118,12 @@ class NotificationList: AlysieBaseViewC {
         
     }
     
-    private func postRequestToGetNotification() -> Void{
+    private func postRequestToGetNotification(_ pageNo: Int) -> Void{
       
       disableWindowInteraction()
     
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        //TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "&page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
           let dictResponse = dictResponse as? [String:Any]
           
