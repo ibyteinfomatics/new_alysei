@@ -24,6 +24,7 @@ class ViewAllMealViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchIngridientTextField.delegate = self
+        searchIngridientTextField.autocorrectionType = .no
         getSearchByMeal()
     }
     

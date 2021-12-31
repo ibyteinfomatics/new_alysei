@@ -85,6 +85,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         picker1.delegate = self
         picker1.dataSource = self
         nameTextField.delegate = self
+        nameTextField.autocorrectionType = .no
         let str = NSAttributedString(string: "Recipe Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         nameTextField.attributedPlaceholder = str
         addPlusHourLongPressGesture()

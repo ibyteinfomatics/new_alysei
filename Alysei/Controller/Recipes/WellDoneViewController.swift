@@ -84,7 +84,6 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
             commentTextView.textColor = UIColor.darkGray
             reviewStarCount = 0
             setStar()
-           
         }
         
     }
@@ -99,6 +98,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func tapDone(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -113,6 +113,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tap2star(_ sender: Any) {
         reviewStarCount = 2
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -121,6 +122,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tap3star(_ sender: Any) {
         reviewStarCount = 3
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -129,6 +131,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tap4star(_ sender: Any) {
         reviewStarCount = 4
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -137,6 +140,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         btnStar4.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
         btnStar5.setImage(UIImage(named: "icons8_star"), for: .normal)
     }
+    
     @IBAction func tap5star(_ sender: Any) {
         reviewStarCount = 5
         btnStar1.setImage(UIImage(named: "icons8_christmas_star"), for: .normal)
@@ -179,6 +183,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 
         // Combine the textView text and the replacement text to

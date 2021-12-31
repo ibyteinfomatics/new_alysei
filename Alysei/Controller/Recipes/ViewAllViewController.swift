@@ -26,6 +26,7 @@ class ViewAllViewController: UIViewController {
         searchIngridientTextField.delegate = self
         searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true
         searchIngridientTextField.keyboardType = .default
+        searchIngridientTextField.autocorrectionType = .no
         getSearchByIngridients()
     }
     

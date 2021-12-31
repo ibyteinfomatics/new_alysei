@@ -84,6 +84,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         picker1.delegate = self
         picker1.dataSource = self
         searchToolTextField.delegate = self
+        searchToolTextField.autocorrectionType = .no
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
         arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter"]
         self.addNewMissingToolBtn.isHidden = true

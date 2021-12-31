@@ -79,6 +79,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter", "spoon", "drops"]
         setupUI()
         searchIngridientTextField.delegate = self
+        searchIngridientTextField.autocorrectionType = .no
         callAddIngridients()
         addIndridentPopupView.translatesAutoresizingMaskIntoConstraints = false
         

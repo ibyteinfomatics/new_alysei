@@ -59,6 +59,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     override func viewDidLoad() {
         super.viewDidLoad()
         searchToolTextField.delegate = self
+        searchToolTextField.autocorrectionType = .no
         self.addNewMissingToolBtn.isHidden = true
         setUI()
        
@@ -461,7 +462,7 @@ extension EditToolViewController: UITextFieldDelegate{
           }
         else{
             self.searching = false
-           callAddTools()
+            callAddTools()
             self.addMissingToolButton.isHidden = false
         }
       }

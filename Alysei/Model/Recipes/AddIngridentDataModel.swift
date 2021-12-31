@@ -35,8 +35,6 @@ class AddIngridientDataModel {
           
         }
     
-    
-    
 }
 
 }

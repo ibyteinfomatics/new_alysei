@@ -94,6 +94,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         setupUI()
         searchIngridientTextField.delegate = self
         searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true
+        searchIngridientTextField.autocorrectionType = .no
         callAddIngridients()
 //        addIndridentPopupView.translatesAutoresizingMaskIntoConstraints = false
         

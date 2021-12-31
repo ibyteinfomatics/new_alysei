@@ -27,6 +27,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         txtReview.delegate = self
+        txtReview.autocorrectionType = .no
         headerView.drawBottomShadow()
         
         if isEditReview == true
