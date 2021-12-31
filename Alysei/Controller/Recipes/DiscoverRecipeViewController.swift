@@ -1170,6 +1170,7 @@ extension DiscoverRecipeViewController{
             fifth = 1
             
             finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+210)
+           
             self.containerTableVw.reloadData()
             
             self.view.isUserInteractionEnabled = true

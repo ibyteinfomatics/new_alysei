@@ -52,7 +52,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         reviewView.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
         
         commentTextView.text = AppConstants.leaveComment
-        commentTextView.textColor = UIColor.lightGray
+        commentTextView.textColor = UIColor.darkGray
         reviewStarCount = 0
         setStar()
         // Do any additional setup after loading the view.
@@ -81,7 +81,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
             
            postDoReview()
             commentTextView.text = AppConstants.leaveComment
-            commentTextView.textColor = UIColor.lightGray
+            commentTextView.textColor = UIColor.darkGray
             reviewStarCount = 0
             setStar()
            
@@ -92,7 +92,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     @IBAction func cancelReview(_ sender: Any) {
         
         commentTextView.text = AppConstants.leaveComment
-        commentTextView.textColor = UIColor.lightGray
+        commentTextView.textColor = UIColor.darkGray
         self.popupView.isHidden = true
     }
     
@@ -191,7 +191,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         if updatedText.isEmpty {
 
             textView.text = AppConstants.leaveComment
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
@@ -200,7 +200,7 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         // length of the replacement string is greater than 0, set
         // the text color to black then set its text to the
         // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
            textView.textColor = UIColor.black
            textView.text = text
        }

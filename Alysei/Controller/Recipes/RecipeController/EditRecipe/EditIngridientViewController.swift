@@ -610,8 +610,6 @@ extension EditIngridientViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.ingridientSearchModel = data.map({IngridentArray.init(with: $0)})
-                self.searching = true
-
             }
             
             case 409:
@@ -629,11 +627,11 @@ extension EditIngridientViewController{
 }
 
 extension EditIngridientViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchIngridientTextField.becomeFirstResponder()
-        return true
-    }
-    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        searchIngridientTextField.becomeFirstResponder()
+//        return true
+//    }
+//    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
@@ -650,7 +648,7 @@ extension EditIngridientViewController: UITextFieldDelegate{
          }
         else{
             self.searching = false
-            addIngridientsTableView.reloadData()
+           callAddIngridients()
             self.addMissingIngridientsButton.isHidden = false
         }
       }

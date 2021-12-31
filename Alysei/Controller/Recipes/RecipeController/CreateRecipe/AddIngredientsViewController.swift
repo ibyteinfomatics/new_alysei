@@ -277,7 +277,8 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     @IBAction func saveAndProceedButton(_ sender: UIButton) {
         if quantityLabel.text != "0 Items"{
             let addtools =  self.storyboard?.instantiateViewController(withIdentifier: "AddToolsViewController") as! AddToolsViewController
-            
+            self.searchIngridientTextField.text = ""
+            searching = false
             self.navigationController?.pushViewController(addtools, animated: true)
         }
         
@@ -601,7 +602,7 @@ extension AddIngredientsViewController: UIPickerViewDelegate, UIPickerViewDataSo
 extension AddIngredientsViewController{
     
     func callAddIngridients(){
-        self.view.isUserInteractionEnabled = false
+//        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -636,7 +637,7 @@ extension AddIngredientsViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.ingridientSearchModel = data.map({IngridentArray.init(with: $0)})
-                self.searching = true
+//                self.searching = true
 
             }
             
@@ -656,11 +657,11 @@ extension AddIngredientsViewController{
 }
 
 extension AddIngredientsViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchIngridientTextField.becomeFirstResponder()
-        return true
-    }
     
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        searchIngridientTextField.becomeFirstResponder()
+//        return true
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
@@ -676,8 +677,8 @@ extension AddIngredientsViewController: UITextFieldDelegate{
          }
         else{
             self.searching = false
-            
-            addIngridientsTableView.reloadData()
+            callAddIngridients()
+//            addIngridientsTableView.reloadData()
             self.addMissingIngridientsButton.isHidden = false
         }
       }

@@ -37,12 +37,12 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
             txtReview.text = editReviewData?.review
         }else {
             btnAddReview.setTitle("Add Review", for: .normal)
-            txtReview.textColor = UIColor.lightGray
+            txtReview.textColor = UIColor.darkGray
             setStar()
             txtReview.text = "Leave a comment"
         }
         
-        txtReview.layer.borderColor = UIColor.lightGray.cgColor
+        txtReview.layer.borderColor = UIColor.darkGray.cgColor
         txtReview.layer.borderWidth = 0.5
         setImage()
         
@@ -135,7 +135,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
             self.showAlert(withMessage: "Please add ratings.")
             return
         }
-        else if (txtReview.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray) || txtReview.text == ""{
+        else if (txtReview.text == AppConstants.leaveComment && txtReview.textColor == UIColor.darkGray) || txtReview.text == ""{
             self.showAlert(withMessage: "Please enter some review.")
             return
             //txtReview.text = ""
@@ -201,7 +201,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
-        if textView.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray{
+        if textView.text == AppConstants.leaveComment && txtReview.textColor == UIColor.darkGray{
             textView.text = ""
         }
         return true
@@ -219,7 +219,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         if updatedText.isEmpty {
             
             textView.text = AppConstants.leaveComment
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
@@ -228,7 +228,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         // length of the replacement string is greater than 0, set
         // the text color to black then set its text to the
         // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
             textView.textColor = UIColor.black
             textView.text = text
         }

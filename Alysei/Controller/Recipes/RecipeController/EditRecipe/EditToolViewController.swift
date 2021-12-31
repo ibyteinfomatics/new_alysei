@@ -412,7 +412,6 @@ extension EditToolViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.toolSearchModel = data.map({ToolsArray.init(with: $0)})
-                self.searching = true
             }
                 
             case 409:
@@ -441,10 +440,10 @@ extension EditToolViewController{
     }
 }
 extension EditToolViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchToolTextField.becomeFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        searchToolTextField.becomeFirstResponder()
+//        return true
+//    }
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
@@ -462,7 +461,7 @@ extension EditToolViewController: UITextFieldDelegate{
           }
         else{
             self.searching = false
-            addToolsTableView.reloadData()
+           callAddTools()
             self.addMissingToolButton.isHidden = false
         }
       }

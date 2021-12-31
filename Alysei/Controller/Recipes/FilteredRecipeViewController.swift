@@ -45,7 +45,7 @@ class FilteredRecipeViewController: UIViewController {
             else if isFrom == "Region"{
                 self.viewHeader.isHidden = true
                 self.labelRecipe.text = searchTitle
-                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, "", "", "", "", "", "")
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
                 
             }
             
@@ -75,7 +75,7 @@ class FilteredRecipeViewController: UIViewController {
             else if isFrom == "Region" {
                 self.viewHeader.isHidden = true
                 let formattedArray = (selectedIngridientId.map{String($0)}).joined(separator: ",")
-                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
             }
             else{
                 self.viewHeader.isHidden = true
@@ -101,7 +101,7 @@ class FilteredRecipeViewController: UIViewController {
         if searching == true{
             self.searchRecipeTextField.resignFirstResponder()
             if isFrom == "Region"{
-                callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, "", "", "", "", "", "")
+                callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
             }
             else{
                 callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
@@ -359,7 +359,8 @@ extension FilteredRecipeViewController{
                 
                 if let data = dictResponse?["data"] as? [String:Any]{
                     self.searchRecipeModel = SearchRecipeDataModel.init(with: data)
-                    if self.indexOfPageToRequest == 1 { self.arrSearchRecipeDataModel?.removeAll() }
+                    if self.indexOfPageToRequest == 1 { self.arrSearchRecipeDataModel?.removeAll()
+                    }
                     self.arrSearchRecipeDataModel?.append(contentsOf: self.searchRecipeModel?.dataRecipe ?? [DataRecipe(with: [:])])
                     searching = true
                     self.viewFilter.isHidden = false
@@ -369,7 +370,7 @@ extension FilteredRecipeViewController{
                 }
             case 409:
                
-                if self.indexOfPageToRequest == 1{
+                if  self.indexOfPageToRequest == 1{
                     self.BlankView.isHidden = false
                     self.arrSearchRecipeDataModel?.removeAll()
                     self.filteredCollectionView.reloadData()
@@ -420,7 +421,7 @@ extension FilteredRecipeViewController{
                     }
                     else if isFrom == "Region"{
                         
-                        callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, "", "", "", "", "", "")
+                        callSearchRecipe(searchTitle, "", indexOfPageToRequest, "", "", "", "", "", "")
                         
                     }
                     
@@ -451,7 +452,7 @@ extension FilteredRecipeViewController{
                         callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
                     }
                     else if isFrom == "Region" {
-                        callSearchRecipe(searchTitle, searchId, indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
+                        callSearchRecipe(searchTitle, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)
                     }
                     else{
                         callSearchRecipe(updatedText, "", indexOfPageToRequest, strTime, strNoOfIngridient, strMeal, strCuisin, formattedArray, parentRecipeId)

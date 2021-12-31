@@ -60,7 +60,7 @@ class AddReviewRecipeViewController: AlysieBaseViewC{
         allReviewTableView.dataSource = self
         reviewTextView.delegate = self
         reviewTextView.text = AppConstants.leaveComment
-        reviewTextView.textColor = UIColor.lightGray
+        reviewTextView.textColor = UIColor.darkGray
         reviewTextView.autocorrectionType = .no
         btnAddReview.layer.cornerRadius = 5
         reviewView.layer.cornerRadius = 5
@@ -338,7 +338,7 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
         if updatedText.isEmpty {
             
             textView.text = AppConstants.leaveComment
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
@@ -347,7 +347,7 @@ extension AddReviewRecipeViewController: UITextViewDelegate{
         // length of the replacement string is greater than 0, set
         // the text color to black then set its text to the
         // replacement string
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.darkGray && !text.isEmpty {
             textView.textColor = UIColor.black
             textView.text = text
         }

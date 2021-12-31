@@ -261,6 +261,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
                addSteps.selectedIndex = 0
             }
             addSteps.isbackdata = false
+            self.searchToolTextField.text = ""
+            searching = false
             fromVC = "AddToolsViewController"
             self.navigationController?.pushViewController(addSteps, animated: true)
         }
@@ -640,7 +642,7 @@ extension AddToolsViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 extension AddToolsViewController{
     
     func callAddTools(){
-        self.view.isUserInteractionEnabled = false
+//        self.view.isUserInteractionEnabled = false
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeTools, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
@@ -670,7 +672,7 @@ extension AddToolsViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.toolSearchModel = data.map({ToolsArray.init(with: $0)})
-                self.searching = true
+               
             }
                 
             case 409:
@@ -701,10 +703,10 @@ extension AddToolsViewController{
 }
 
 extension AddToolsViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchToolTextField.becomeFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        searchToolTextField.becomeFirstResponder()
+//        return true
+//    }
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
@@ -722,7 +724,8 @@ extension AddToolsViewController: UITextFieldDelegate{
          }
         else{
             self.searching = false
-            addToolsTableView.reloadData()
+            callAddTools()
+//            addToolsTableView.reloadData()
             self.addMissingToolButton.isHidden = false
         }
       }

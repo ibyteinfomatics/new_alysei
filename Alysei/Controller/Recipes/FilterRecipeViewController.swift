@@ -622,8 +622,12 @@ extension FilterRecipeViewController:  UICollectionViewDataSource, UICollectionV
                 break
             }
         }
-        let section = IndexSet(integer: indexPath.section)
-        collectionView.reloadSections(section)
+        
+        UIView.performWithoutAnimation{
+            let section = IndexSet(integer: indexPath.section)
+            collectionView.reloadSections(section)
+        }
+//
 //        collectionView.reloadData()
         
     }
