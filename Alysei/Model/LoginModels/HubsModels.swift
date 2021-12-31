@@ -89,6 +89,7 @@ class CountryHubs {
     var type:HasCome? = .hubs
     var isSelected = false
     var imageHub: String?
+    var image: FlagId?
     var radius:Int?
     
     init(data:[String:Any]?) {
@@ -101,6 +102,9 @@ class CountryHubs {
         self.state_id = String.getString(data?["state_id"])
         self.radius = Int.getInt(data?["radius"])
         self.type = .city
+        if let image = data?["image"] as? [String:Any]{
+            self.image = FlagId.init(data: image)
+        }
     }
     
     init(cityFromServer data: [String:Any]?) {
@@ -112,6 +116,9 @@ class CountryHubs {
         }
         self.type = .city
         self.isSelected = true
+        if let image = data?["image"] as? [String:Any]{
+            self.image = FlagId.init(data: image)
+        }
     }
     
     init(HubsFromServer data: [String:Any]?) {
@@ -123,6 +130,9 @@ class CountryHubs {
         self.type = .hubs
         self.attachment_url = String.getString(data?["attachment_url"])
         self.isSelected =  true
+        if let image = data?["image"] as? [String:Any]{
+            self.image = FlagId.init(data: image)
+        }
     }
 
     // MARK:_ init for hUB Via city
@@ -140,6 +150,9 @@ class CountryHubs {
           //  print("HubImage-----------------------------------------\(self.imageHub ?? "")")
         }
         self.radius = Int.getInt(data?["radius"])
+        if let image = data?["image"] as? [String:Any]{
+            self.image = FlagId.init(data: image)
+        }
     }
     init() { }
     

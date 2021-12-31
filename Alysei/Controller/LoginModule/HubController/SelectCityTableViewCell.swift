@@ -63,7 +63,7 @@ class SelectCityTableViewCell: UITableViewCell {
        // buttonLeftCheckWidth.constant = 20
        labelCityName.text = data?.name
         self.imgHub.layer.cornerRadius = 15
-        self.imgHub.setImage(withString: kImageBaseUrl + String.getString(data?.imageHub))
+        self.imgHub.setImage(withString: String.getString(data?.image?.baseUrl) + String.getString(data?.image?.attachmentUrl))
         self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
         self.buttonRightCheckBox.isHidden = hideEyeIcon == true ? true : false
         self.buttonLeftCheckWidth.constant = hideEyeIcon == true ? 25 : 12

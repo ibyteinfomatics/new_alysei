@@ -92,6 +92,7 @@ enum UserProfile {
             case address
             case email
             case phone
+            case country_code
             case roleID = "role_id"
             case userID = "user_id"
             case fbLink = "fb_link"

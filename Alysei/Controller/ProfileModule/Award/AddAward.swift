@@ -40,6 +40,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var uploadImage: UIImageView!
     @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var vwHeader: UIView!
     
     var eventName,productName,url,placeName,imgurl: String?
     var award_id: Int?
@@ -58,7 +59,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        vwHeader.drawBottomShadow()
         property()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddAward.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -78,22 +79,23 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             eventLabel.isHidden = false
             eventNameTxf.placeholder = ""
             eventView1.isHidden = false
-            eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+           // eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            eventLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
             productLabel.isHidden = false
             productNameTxf.placeholder = ""
             productView1.isHidden = false
-            productLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            productLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
             urlLabel.isHidden = false
             urlNameTxf.placeholder = ""
             urlView1.isHidden = false
-            urlLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
             placeLabel.isHidden = false
             placeNameTxf.placeholder = ""
             placeView1.isHidden = false
-            placeLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            placeLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
         }
         
@@ -317,7 +319,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         if textField == self.eventNameTxf {
             
             self.eventLabel.isHidden = false
-            self.eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.eventLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             self.eventNameTxf.placeholder = "Name of Competition / Event"
             self.eventView.isHidden = false
             eventView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
@@ -327,7 +329,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         if textField == self.productNameTxf {
             
             self.productLabel.isHidden = false
-            self.productLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.productLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             self.productNameTxf.placeholder = "Name of Winning Product"
             self.productView.isHidden = false
             productView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
@@ -337,7 +339,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         if textField == self.urlNameTxf {
             
             self.urlLabel.isHidden = false
-            self.urlLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             self.urlNameTxf.placeholder = "Competition URL"
             self.urlView.isHidden = false
             urlView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor

@@ -1020,6 +1020,7 @@ class ProfileViewC: AlysieBaseViewC{
                 kSharedUserDefaults.synchronize()
 //                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
 //                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                print("CountryCode-----------------------\(responseModel.data?.contactTab?.country_code ?? "")")
                 let urlP = URL(string: kSharedUserDefaults.loggedInUserModal.avatar?.imageURL ?? "")
                 self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 

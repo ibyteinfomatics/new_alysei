@@ -67,11 +67,12 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             blogLabel.isHidden = false
             blogTxf.placeholder = ""
             blogView1.isHidden = false
-            blogLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+          //  blogLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            blogLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
             descriptionLabel.isHidden = false
             descriptionView1.isHidden = false
-            descriptionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            descriptionLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
         }
         
         if typeofpage == "read" {
@@ -182,7 +183,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             self.blogTxf.placeholder = "Blog "
                 self.blogView1.isHidden = false
                 blogView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-            self.blogLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.blogLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
        
         }
 
@@ -199,7 +200,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
                 self.descriptionView1.isHidden = false
                 self.descriptionTextView.textColor = .black
                 descriptionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-            self.descriptionLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            self.descriptionLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
         //}
 
         }

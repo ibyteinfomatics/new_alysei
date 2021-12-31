@@ -207,7 +207,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2232"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="xaj-6w-biD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1730"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1703"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdH-SW-Dcp">
@@ -1022,7 +1022,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeTopFavTableVC" rowHeight="265" id="KWd-5Z-vRM" customClass="MarketplaceHomeTopFavTableVC" customModule="Alysei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1754.3333339691162" width="414" height="265"/>
+                                                <rect key="frame" x="0.0" y="1727.3333339691162" width="414" height="265"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KWd-5Z-vRM" id="SX0-ie-1jY">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
@@ -1200,7 +1200,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeAdTableVC" rowHeight="262" id="g9N-bi-QQR" customClass="MarketplaceHomeAdTableVC" customModule="Alysei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="2019.3333339691162" width="414" height="262"/>
+                                                <rect key="frame" x="0.0" y="1992.3333339691162" width="414" height="262"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9N-bi-QQR" id="lgb-tW-Zd2">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>

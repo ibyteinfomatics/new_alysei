@@ -28,7 +28,9 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var userType: UserRoles = .voyagers
     var flagView: FlagView!
     var countryCode = ""
-
+    
+    var countryList = [Country]()
+    var Countryname : String?
     // MARK:- Object lifecycle
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -94,6 +96,17 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         phoneTextField.delegate = self
         self.websiteTextField.delegate = self
         self.facebookTextField.delegate = self
+        
+        countryList = parseJSONtoCountry("Countries", fileExtension: "json")
+        countryList = countryList.sorted(by: { $0.name < $1.name })
+        
+        for i in 0..<countryList.count {
+            
+            if viewModel.country_code == countryList[i].callingCode{
+                Countryname = countryList[i].name
+            }
+            
+        }
 
         if viewModel != nil {
             self.emailTextField.text = "\(viewModel.email ?? "")"
@@ -227,13 +240,21 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         }
         flagView = flag
         flagView.button.addTarget(self, action: #selector(presentCountryList(_:)), for: .touchUpInside)
+        if viewModel == nil {
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             flagView.flag.image = UIImage(named: "italy")
             flagView.countrtyCode.text = "+39"
-        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer1.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer2.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer3.rawValue)"){
-            flagView.flag.image = UIImage(named: "us")
+        }else {
+            flagView.flag.image = UIImage(named: "united states")
             flagView.countrtyCode.text = "+1"
         }
+        }else{
+//            let flagImage = countryName(from: viewModel.country_code ?? "")
+//            print("flagImage---------------------\(flagImage)")
+            flagView.flag.image = UIImage(named: Countryname?.lowercased() ?? "" )
+            flagView.countrtyCode.text = "+" + (viewModel.country_code ?? "")
+        }
+        
 //        flagView.flag.image = UIImage(named: "india")
 //        flagView.countrtyCode.text = "+91"
         flag.flag.centerVertically()
@@ -243,7 +264,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         textField.leftView = flagView
         textField.rightView = UIView()
     }
-
+   
     @objc func presentCountryList(_ sender: UIButton) {
         performSegue(withIdentifier: "segueContactDetailsToFlagCountry", sender: self)
     }
@@ -277,6 +298,22 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         showAlert(withMessage: "URL format should be like \n https://www.facebook.com/username")
     }
     
+    func countryName(from countryCode: String) -> String{
+        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: countryCode) {
+            // Country name was found
+            return name
+        } else {
+            // Country name cannot be found
+            return countryCode
+        }
+       
+    }
+   // func countryName(countryCode: String) -> String? {
+   //     let current = Locale.current.localizedString(forIdentifier: "en_US")
+      //  return current.localizedString(forRegionCode: countryCode)
+  //  }
+    
+  
 }
 
 

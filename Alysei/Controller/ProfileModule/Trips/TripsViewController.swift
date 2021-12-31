@@ -69,7 +69,7 @@ class TripsViewController: AlysieBaseViewC {
             tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
         }
         
-        let imageUrl = kImageBaseUrl + (tripModel?.data?[indexPath].user?.avatarID?.attachmentURL ?? "")
+        let imageUrl = (tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "") + (tripModel?.data?[indexPath].user?.avatarID?.attachmentURL ?? "")
         tripTableCell.userImage.setImage(withString: imageUrl)
         tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
         tripTableCell.editButton.tag = indexPath
@@ -276,7 +276,7 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.tripImage.clipsToBounds = true
         tripTableCell.tripImage.layer.cornerRadius = 5
         
-        tripTableCell.tripImage.setImage(withString: String.getString(kImageBaseUrl+(tripModel?.data?[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        tripTableCell.tripImage.setImage(withString: String.getString((tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+(tripModel?.data?[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         
         return tripTableCell
         

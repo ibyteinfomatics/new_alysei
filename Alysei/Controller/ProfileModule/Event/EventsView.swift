@@ -174,7 +174,7 @@ class EventsView: AlysieBaseViewC {
 //        eventTableCell.eventImage.clipsToBounds = true
 //        eventTableCell.eventImage.layer.cornerRadius = 5
         
-        eventTableCell.eventImage.setImage(withString: String.getString(kImageBaseUrl+(eventModel?.data?[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString((eventModel?.data?[indexPath].attachment?.baseUrl ?? "")+(eventModel?.data?[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return eventTableCell
         

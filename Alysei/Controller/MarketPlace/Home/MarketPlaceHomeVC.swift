@@ -594,15 +594,15 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
              if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
                 return 0
             }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) % 2 == 0{
-                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
+                return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
             } else {
-                return CGFloat(290 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 290)
+                return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 320)
             }
 //            else{
 //            return CGFloat(200 * (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) + 200)
 //        }
         }else{
-            return 400
+            return 410
         }
        
 

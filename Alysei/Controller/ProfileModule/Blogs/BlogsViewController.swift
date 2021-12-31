@@ -68,7 +68,7 @@ class BlogsViewController: AlysieBaseViewC {
         blogTableCell.blogTitle.text = blogModel?.data?[indexPath].title
         blogTableCell.blogDescription.text = blogModel?.data?[indexPath].datumDescription
         let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
-        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))
+        blogTableCell.imgUser.setImage(withString: (blogModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "") + "\(imageurl ?? "")")
         blogTableCell.lblAuthorName.text = "\(blogModel?.data?[indexPath].user?.firstName ?? "")" + "\(blogModel?.data?[indexPath].user?.lastName ?? "")"
         //let date = getcurrentdateWithTime(timeStamp: blogModel?.data?[indexPath].time)
         //blogTableCell.dateTimeLabel.text = String.getString(blogModel?.data?[indexPath].createdAt)
@@ -154,7 +154,7 @@ class BlogsViewController: AlysieBaseViewC {
             blogTableCell.editButton.isHidden = false
         }
         
-        blogTableCell.blogImage.setImage(withString: String.getString(kImageBaseUrl+(blogModel?.data?[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        blogTableCell.blogImage.setImage(withString: String.getString((blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+(blogModel?.data?[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         
