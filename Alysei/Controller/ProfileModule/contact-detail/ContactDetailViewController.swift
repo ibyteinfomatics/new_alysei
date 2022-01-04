@@ -240,8 +240,9 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         }
         flagView = flag
         flagView.button.addTarget(self, action: #selector(presentCountryList(_:)), for: .touchUpInside)
-        if viewModel == nil {
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+        if viewModel.phone == nil {
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" ||
+            kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
             flagView.flag.image = UIImage(named: "italy")
             flagView.countrtyCode.text = "+39"
         }else {
