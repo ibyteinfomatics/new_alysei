@@ -4,7 +4,7 @@
 //
 //  Created by mac on 25/08/21.
 //
-
+import Foundation
 import UIKit
 import SVGKit
 
@@ -85,7 +85,20 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
         let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
        
         cell.image1.contentMode = .scaleAspectFit
-        cell.image1.image = mySVGImage.uiImage
+        let imageExtensions = ["png", "jpg", "gif","jpeg"]
+                
+                // Iterate & match the URL objects from your checking results
+                let url: URL? = NSURL(fileURLWithPath: imgUrl) as URL
+                let pathExtention = url?.pathExtension
+                    if imageExtensions.contains(pathExtention!)
+                    {
+                        cell.image1.setImage(withString: imgUrl)
+                       
+                    }else
+                    {
+                        cell.image1.image = mySVGImage.uiImage
+                    }
+       
         cell.imageNameLabel.text = arrDiet?[indexPath.row].dietName
         cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
         cell.viewOfImage.layer.borderWidth = 4

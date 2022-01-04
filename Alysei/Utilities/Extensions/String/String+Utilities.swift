@@ -99,7 +99,7 @@ extension String
   {
     if self.isURL()
     {
-      if self.range(of: ".png") != nil || self.range(of: ".jpg") != nil || self.range(of: ".jpeg") != nil
+      if self.range(of: ".png") != nil || self.range(of: ".jpg") != nil || self.range(of: ".jpeg") != nil 
       {
         return true
       }
