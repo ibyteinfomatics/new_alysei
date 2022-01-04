@@ -552,7 +552,7 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
                     let firstIndex = parentIdArray.firstIndex(where: {$0 == kSharedInstance.signUpStepTwoOptionsModel[i].userFieldOptionId})
                     selectedIndex.append(firstIndex)
                 }
-                print("indexs",selectedIndex)
+               // print("indexs",selectedIndex)
 
                 if selectedIndex.contains(indexPath.row) || model.parentId?.isEmpty == true{
                     model.isHidden = false
@@ -564,7 +564,7 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         case AppConstants.Multiselect,AppConstants.Checkbox:
-            return 80.0
+            return 100.0
         case AppConstants.Text:
             return 230.0
         case AppConstants.Radio:

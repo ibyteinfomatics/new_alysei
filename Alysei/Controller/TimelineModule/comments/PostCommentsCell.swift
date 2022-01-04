@@ -21,6 +21,7 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var viewReplyButton: UIButton!
     @IBOutlet var replyBtn: UIButton!
+    @IBOutlet var threedotBtn: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewconstraint: NSLayoutConstraint!
     @IBOutlet var viewReplyButtonconstraint: NSLayoutConstraint!
@@ -34,6 +35,7 @@ class SelfPostCommentsCell: UITableViewCell {
     
     var btnViewReplyCallback:((Int) -> Void)? = nil
     var btnReplyCallback:((Int) -> Void)? = nil
+    var btnThreeDotCallback:((Int) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +64,11 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBAction func replyButtonTapped(_ sender: UIButton) {
         //self.commentReplyDelegate.addReplyToComment(self.viewReplyButton.tag)
         btnReplyCallback?(sender.tag)
+    }
+    
+    @IBAction func threedotButtonTapped(_ sender: UIButton) {
+       
+        btnThreeDotCallback?(sender.tag)
     }
 
     @IBAction func viewreplyButtonTapped(_ sender: UIButton) {

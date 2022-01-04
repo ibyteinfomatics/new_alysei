@@ -173,14 +173,15 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             kSharedAppDelegate.moveToPost(postid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid))
             
         case 3:
-            kSharedAppDelegate.moveToNetwork(index: 0)
+            //kSharedAppDelegate.moveToNetwork(index: 0)
             
+            tabBarController!.selectedIndex = 3
         case 4:
-            kSharedAppDelegate.moveToNetwork(index: 1)
             
+            tabBarController!.selectedIndex = 3
         case 5:
-            kSharedAppDelegate.moveToNetwork(index: 3)
-            
+            // kSharedAppDelegate.moveToNetwork(index: 3)
+            tabBarController!.selectedIndex = 3
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:

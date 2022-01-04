@@ -43,7 +43,7 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
                 if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
                     cell.lblUserName.text = kSharedUserDefaults.loggedInUserModal.restaurantName
                 }else if kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(UserRoles.voiceExperts.rawValue)"{
-                    cell.lblUserName.text = "\(kSharedUserDefaults.loggedInUserModal.firstName ?? "")" + "\(kSharedUserDefaults.loggedInUserModal.lastName ?? "")"
+                    cell.lblUserName.text = "\(kSharedUserDefaults.loggedInUserModal.firstName ?? "")" + " " + "\(kSharedUserDefaults.loggedInUserModal.lastName ?? "")"
                 }else{
                     cell.lblUserName.text = kSharedUserDefaults.loggedInUserModal.companyName
                 }
