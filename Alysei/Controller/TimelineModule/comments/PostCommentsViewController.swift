@@ -499,6 +499,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             self.commentTextfield.becomeFirstResponder()
             self.commentTextfield.placeholder = "Leave a Reply"
         }
+        
         cell.btnViewReplyCallback = {tag in
             
             if data?.isSelected == true {
@@ -511,7 +512,26 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.setReply(self.commentmessages?[indexPath.row].reply ?? [])
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             }
-
+        }
+        
+        cell.btnThreeDotCallback = {tag in
+            
+            let refreshAlert = UIAlertController(title: "Alysei", message: "What do you want?", preferredStyle: UIAlertController.Style.alert)
+           
+            refreshAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+                
+              
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction!) in
+                  
+                //self.parent?.dismiss(animated: true, completion: nil)
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            
+            //let parent = self.parentViewController?.presentedViewController as? HubsListVC
+            self.parent?.present(refreshAlert, animated: true, completion: nil)
             
         }
         

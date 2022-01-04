@@ -43,6 +43,7 @@ class NetworkViewC: AlysieBaseViewC {
   }
   
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
