@@ -511,9 +511,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBAction func btnGotoStores(_ sender: UIButton){
         //self.callCheckIfStoredCreated()
         //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
-        if isStoreReviewed == 0 || isStoreReviewed == 2 {
-            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
-        }else{
+       
         if self.storeCreated == 0{
 //            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
 //
@@ -526,9 +524,10 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
             animate1View()
         }else if self.storeCreated == 1 && self.productCount == 0{
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
-        }else{
+        }else if (self.storeCreated == 1 && isStoreReviewed == 0) || (self.storeCreated == 1 && isStoreReviewed == 2){
+            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
+        }  else{
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
-        }
         }
         //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
     }
