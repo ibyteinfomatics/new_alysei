@@ -40,7 +40,8 @@ class FoodAllergyViewController: AlysieBaseViewC {
     }
     @IBAction func tapNextToDiets(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{
-            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FollowDietsViewController") as! FollowDietsViewController
+//            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "FollowDietsViewController") as! FollowDietsViewController
+            let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "DontSeeIngredientsViewController") as! DontSeeIngredientsViewController
             
             arrayPreference = PreferencesDataModel.init(id: arraySelectedFood ?? [], preference: preferenceNumber)
             arrayPreferencesModelData.append(arrayPreference ?? PreferencesDataModel(id: [], preference: 0))

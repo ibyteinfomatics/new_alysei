@@ -15,6 +15,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var searchViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -22,6 +23,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     var selectedIndexPath : IndexPath?
     var newSearchModel: [AddIngridientDataModel]? = []
     var ingdntArray: [IngridentArray] = []
+    var ingdntArray1: [IngridentArray] = []
     var firstSixingdntArray: [IngridentArray] = []
     var searching = false
     var ingridientId : Int?
@@ -32,14 +34,21 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     var ingridientSet = Set<Int>()
     
     
-    override func viewDidLayoutSubviews() {
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
-        
-    }
-    
+//    override func viewDidLayoutSubviews() {
+//        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
+//
+//    }
+//
     override func viewDidLoad() {
         preferenceNumber = 4
         super.viewDidLoad()
+        scrollView.isScrollEnabled = false
+        if MobileDeviceType.IS_IPHONE_6 == true {
+        searchViewHeight.constant = 100
+        }
+        else{
+        searchViewHeight.constant = 130
+        }
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
@@ -166,7 +175,7 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
             nextButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             
         }
-        
+        searchTableView.reloadData()
     }
     
     
@@ -200,17 +209,38 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
             cell.searchNameLabel.text = self.ingridientSearchModel?[indexPath.row].ingridienttitle
             
             self.searchTableView.isScrollEnabled = true
+           
+//            if ingdntArray[indexPath.row].isSelected == true{
+//
+//                                cell.searchAddButton.setImage(UIImage(named: "Group 382"), for: .normal)
+//                }
+//               else{
+//                cell.searchAddButton.setImage(UIImage(named: "Group 1127"), for: .normal)
+//               }
+            
+            let selectedIngridient1 = ingridientSearchModel![indexPath.row].recipeIngridientId
+            self.searchingridientId = selectedIngridient1
+            print("\(String(describing: selectedIngridient1))")
+            
+            if arraySelectedIngridient?.contains(searchingridientId!) == true{
+                print("hiiii")
+                cell.searchAddButton.setImage(UIImage(named: "Group 382"), for: .normal)
+            }
+            else{
+                cell.searchAddButton.setImage(UIImage(named: "Group 1127"), for: .normal)
+            }
+            
         }
         else{
             cell.searchNameLabel.text = self.firstSixingdntArray[indexPath.row].ingridientTitle
-            self.searchTableView.isScrollEnabled = true
+            self.searchTableView.isScrollEnabled = false
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let cell = self.searchTableView.cellForRow(at: indexPath) as! DontSeeIngredientsTableViewCell
         let selectedIngridient1 = ingridientSearchModel![indexPath.row].recipeIngridientId
         self.searchingridientId = selectedIngridient1
         print("\(String(describing: selectedIngridient1))")
@@ -223,9 +253,16 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
         for (index,item) in self.ingdntArray.enumerated(){
             if self.ingdntArray[index].recipeIngredientIds == searchingridientId {
                 ingdntArray[index].isSelected = true
+                
+                cell.searchAddButton.setImage(UIImage(named: "Group 382"), for: .normal)
             }
+          
         }
-        ingredientsCollectionView.reloadData()
+        
+        UIView.performWithoutAnimation{
+            ingredientsCollectionView.reloadData()
+            
+        }
     }
     
     
@@ -247,14 +284,29 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
                                                       with: string)
             if updateText.count > 0 {
                 searching = true
-                
+                scrollView.isScrollEnabled = true
+                if MobileDeviceType.IS_IPHONE_6 == true {
+                searchViewHeight.constant = 250
+                }
+                else{
+                    searchViewHeight.constant = 300
+                }
                 searchTextPreferences = updateText
                 
                 callSearchIngridients()
             }
             else{
                 self.searching = false
+                scrollView.isScrollEnabled = false
+                if MobileDeviceType.IS_IPHONE_6 == true {
+                searchViewHeight.constant = 100
+                }
+                else{
+                    searchViewHeight.constant = 130
+                }
+//                searchTextPreferences = ""
                 ingridientSearchModel?.removeAll()
+//                callSearchIngridients()
                 self.searchTableView.reloadData()
             }
             
@@ -280,21 +332,27 @@ extension DontSeeIngredientsViewController{
             for i in (0..<(self.newSearchModel?.count ?? 0)){
                 for j in (0..<(self.newSearchModel?[i].ingridents?.count ?? 0))
                 {
-                    self.ingdntArray.append(self.newSearchModel?[i].ingridents?[j] ?? IngridentArray())
+                    self.ingdntArray1.append(self.newSearchModel?[i].ingridents?[j] ?? IngridentArray())
+                    
+                    self.ingdntArray = self.ingdntArray1.sorted(by: { ($0.ingridientTitle ?? "") < ($1.ingridientTitle ?? "")})
+                    
+                    }
                 }
-            }
-            
+         
             //            for i in 0..<6{
             //                self.firstSixingdntArray.append(self.ingdntArray[i])
             //            }
             
             print("IngrdntArray-------",self.ingdntArray)
+            UIView.performWithoutAnimation{
             self.ingredientsCollectionView.reloadData()
+            }
             self.searchTableView.reloadData()
             self.view.isUserInteractionEnabled = true
         }
     }
     
+   
     func callSearchIngridients(){
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: "\(APIUrl.Recipes.searchIngridient)\(searchTextPreferences)&type=2", requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
@@ -303,7 +361,7 @@ extension DontSeeIngredientsViewController{
             
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.ingridientSearchModel = data.map({SearchIngridientDataModel.init(with: $0)})
-                self.searching = true
+                
                 self.searchTableView.reloadData()
             }
             

@@ -22,6 +22,7 @@ class IngridientViewController: UIViewController {
     
     var getSavedIngridientPreferencesModel : [GetSavedPreferencesDataModel]? = []
     var showAllIngridient: [MapDataModel]? = []
+    var showAllIngridient1: [MapDataModel]? = []
   
     var callbackResult: (() -> Void)?
     
@@ -180,8 +181,9 @@ extension IngridientViewController{
             
             for i in (0..<(self.getSavedIngridientPreferencesModel?[3].maps?.count ?? 0))
             {
-                self.showAllIngridient?.append(self.getSavedIngridientPreferencesModel?[3].maps?[i] ?? MapDataModel(with: [:]) )
+                self.showAllIngridient1?.append(self.getSavedIngridientPreferencesModel?[3].maps?[i] ?? MapDataModel(with: [:]) )
                 
+                self.showAllIngridient = self.showAllIngridient1?.sorted(by: { ($0.title ?? "") < ($1.title ?? "")})
                 self.ingredientsCollectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }

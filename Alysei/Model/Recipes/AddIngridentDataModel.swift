@@ -65,6 +65,7 @@ class IngridentArray{
     var createdAt: String?
     var updatedAt: String?
     var isSelected: Bool?
+    var sortedArray: IngridentArray?
     
     init(with dictResponse: [String:Any]){
         self.recipeIngredientIds = Int.getInt(dictResponse["recipe_ingredient_id"])
