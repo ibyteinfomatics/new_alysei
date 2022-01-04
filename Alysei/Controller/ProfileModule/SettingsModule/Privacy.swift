@@ -259,7 +259,7 @@ class Privacy: AlysieBaseViewC {
 extension Privacy: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.tableViewHeight.constant = CGFloat(43 * (self.privacyModel?.roles?.count ?? 0))
+        self.tableViewHeight.constant = CGFloat(35 * (self.privacyModel?.roles?.count ?? 0))
         return privacyModel?.roles?.count ?? 0
     }
     
@@ -304,7 +304,7 @@ extension Privacy: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 43
+        return 35
     }
     
     
