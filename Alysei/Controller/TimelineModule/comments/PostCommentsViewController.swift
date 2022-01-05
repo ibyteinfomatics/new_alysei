@@ -516,22 +516,24 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.btnThreeDotCallback = {tag in
             
-            let refreshAlert = UIAlertController(title: "Alysei", message: "What do you want?", preferredStyle: UIAlertController.Style.alert)
-           
-            refreshAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-                
-              
-            }))
+            let actionSheet = UIAlertController(style: .actionSheet)
             
-            refreshAlert.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction!) in
-                  
-                //self.parent?.dismiss(animated: true, completion: nil)
-            }))
+            let edit = UIAlertAction(title: "Edit", style: .default) { action in
+            }
             
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+            }
             
-            //let parent = self.parentViewController?.presentedViewController as? HubsListVC
-            self.parent?.present(refreshAlert, animated: true, completion: nil)
+            actionSheet.addAction(edit)
+            actionSheet.addAction(delete)
+            actionSheet.addAction(cancelAction)
+            
+            self.present(actionSheet, animated: true, completion: nil)
+
             
         }
         
