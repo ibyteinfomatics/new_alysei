@@ -1164,9 +1164,18 @@ extension DiscoverRecipeViewController{
                 
             }
             first = 1
-            second = ((((showFood?.count ?? 0) + 1) % 3) == 0) ? ((showFood?.count ?? 0) + 1) / 3 : (((showFood?.count ?? 0) + 1) / 3) + 1
-            third = ((((showDiet?.count ?? 0) + 1) % 3) == 0) ? ((showDiet?.count ?? 0) + 1) / 3 : (((showDiet?.count ?? 0) + 1) / 3) + 1
-            fourth = ((((showIngridient?.count ?? 0) + 1) % 3) == 0) ? ((showIngridient?.count ?? 0) + 1) / 3 : (((showIngridient?.count ?? 0) + 1) / 3) + 1
+            let sec = ((((showFood?.count ?? 0) + 1) % 3) == 0)
+            let sec1 = ((showFood?.count ?? 0) + 1) / 3
+            let sec2 = (((showFood?.count ?? 0) + 1) / 3) + 1
+            second = sec ? sec1 : sec2
+            let thr = ((((showDiet?.count ?? 0) + 1) % 3) == 0)
+                let thr1 = ((showDiet?.count ?? 0) + 1) / 3
+                    let thr2 = (((showDiet?.count ?? 0) + 1) / 3) + 1
+            third =  thr ? thr1 : thr2
+            let four = ((((showIngridient?.count ?? 0) + 1) % 3) == 0)
+                let four1 = ((showIngridient?.count ?? 0) + 1) / 3
+                    let four2 = (((showIngridient?.count ?? 0) + 1) / 3) + 1
+            fourth =  four ? four1 : four2
             fifth = 1
             
             finalHeight = CGFloat((140 * (first+second+third+fourth+fifth))+210)

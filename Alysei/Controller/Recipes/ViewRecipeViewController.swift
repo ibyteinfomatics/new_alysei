@@ -116,12 +116,16 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func share(){
-        let message = ("Checkout" + " " + (recipeModel?.recipeName ?? "") +  " " + "from Alysei app.")
+        let checkout = "Checkout"
+        let fromAlysei = "from Alysei app."
+        let message = (checkout + " " + (recipeModel?.recipeName ?? "") +  " " + fromAlysei)
+        let slug = recipeModel?.slug ?? ""
         
         //                let appName = "Alysei"
         //                let appScheme = "\(appName)://app"
         //                let appUrl = URL(string: appScheme)
-        let url = URL(string:"https://alyseiweb.ibyteworkshop.com/")
+        let url = URL(string: ( ("https://alyseiweb.ibyteworkshop.com/singlerecipeview/")
+        + slug))
         
         //            if UIApplication.shared.canOpenURL(appUrl! as URL) {
         //                UIApplication.shared.open(appUrl!)

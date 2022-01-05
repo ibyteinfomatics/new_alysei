@@ -39,6 +39,7 @@ class ViewRecipeDetailDataModel{
     var meal: SelectMealDataModel?
     var region: SelectRegionDataModel?
     var userMain: UserDataModel?
+    var slug: String?
     
     init(with dictResponse: [String:Any]){
         self.recipeId = Int.getInt(dictResponse["recipe_id"])
@@ -68,6 +69,7 @@ class ViewRecipeDetailDataModel{
         self.total_three_star = Int.getInt(dictResponse["total_three_star"])
         self.total_four_star = Int.getInt(dictResponse["total_four_star"])
         self.total_five_star = Int.getInt(dictResponse["total_five_star"])
+        self.slug = String.getString(dictResponse["slug"])
         
         if let data = dictResponse["latest_review"] as? [String:Any]{
             self.latestReview = LatestReviewDataModel.init(with: data)
