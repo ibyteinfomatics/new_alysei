@@ -1170,7 +1170,7 @@ extension DiscoverRecipeViewController{
             second = sec ? sec1 : sec2
             let thr = ((((showDiet?.count ?? 0) + 1) % 3) == 0)
                 let thr1 = ((showDiet?.count ?? 0) + 1) / 3
-                    let thr2 = (((showDiet?.count ?? 0) + 1) / /Users/namrataupadhyay/Desktop/new_alysei3) + 1
+                    let thr2 = (((showDiet?.count ?? 0) + 1) / 3) + 1
             third =  thr ? thr1 : thr2
             let four = ((((showIngridient?.count ?? 0) + 1) % 3) == 0)
                 let four1 = ((showIngridient?.count ?? 0) + 1) / 3
