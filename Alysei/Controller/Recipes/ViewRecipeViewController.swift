@@ -116,7 +116,9 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func share(){
-        let message = ("Checkout" + " " + (recipeModel?.recipeName ?? "") +  " " + "from Alysei app.")
+        let checkout = "Checkout"
+        let fromAlysei = "from Alysei app."
+        let message = (checkout + " " + (recipeModel?.recipeName ?? "") +  " " + fromAlysei)
         let slug = recipeModel?.slug ?? ""
         
         //                let appName = "Alysei"
