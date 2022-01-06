@@ -350,8 +350,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.totalFourStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_four_star))))%"
             cell.totalFiveStar.text = "\(Int(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_five_star))))%"
             
-            
-            
             cell.totalOneStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double.getDouble(recipeModel?.total_one_star)))/100, animated: false)
             
             cell.totalTwoStarProgress.setProgress(Float(calculateRatingPercentage(doubleTotalReview, Double(recipeModel?.total_two_star ?? 0)))/100, animated: false)
@@ -394,9 +392,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func setUserRatngStarUI(){
-        
-    }
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.section{
