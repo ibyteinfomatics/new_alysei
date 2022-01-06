@@ -1,0 +1,49 @@
+//
+//  MarketplaceNewlyAddedTableVCell.swift
+//  Alysei
+//
+//  Created by Gitesh Dang on 1/6/22.
+//
+
+import UIKit
+
+class MarketplaceNewlyAddedTableVCell: UITableViewCell {
+    
+    @IBOutlet weak var newlyyAddedStoreCollectionView: UICollectionView!
+    var newlyAddedStore: [MyStoreProductDetail]?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    func configData(_ data: [MyStoreProductDetail]){
+        newlyAddedStore = data
+        self.newlyyAddedStoreCollectionView.reloadData()
+        
+    }
+}
+extension MarketplaceNewlyAddedTableVCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return newlyAddedStore?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = newlyyAddedStoreCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceNewlyAddedStoreHomeImageCVC", for: indexPath) as? MarketplaceNewlyAddedStoreHomeImageCVC else {return UICollectionViewCell()}
+        let baseUrl = self.newlyAddedStore?[indexPath.row].logoId?.baseUrl ?? ""
+        let imgUrl = (baseUrl + (self.newlyAddedStore?[indexPath.row].logoId?.attachmentURL ?? ""))
+        cell.image.setImage(withString: imgUrl)
+        cell.lblStoreName.text = self.newlyAddedStore?[indexPath.row].name
+        cell.lblStoreLoaction.text = self.newlyAddedStore?[indexPath.row].location
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 225)
+    }
+
+}

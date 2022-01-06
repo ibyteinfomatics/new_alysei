@@ -10,7 +10,7 @@ import UIKit
 class MarketplaceHomeTopFavTableVC: UITableViewCell {
     @IBOutlet weak var maximumSearchedCollectionView: UICollectionView!
     var maketPlaceHomeScreenData: MaketPlaceHomeScreenModel?
-    var callback:(() -> Void)? = nil
+    var callback:(( Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,7 +41,7 @@ extension MarketplaceHomeTopFavTableVC: UICollectionViewDelegate, UICollectionVi
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.callback?()
+        self.callback?(self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row].marketplace_product_id ?? 0)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2 , height: 270)

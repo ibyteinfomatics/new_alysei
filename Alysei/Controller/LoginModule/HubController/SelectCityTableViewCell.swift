@@ -83,8 +83,6 @@ class SelectCityTableViewCell: UITableViewCell {
         guard let nextVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "MapViewC") as? MapViewC else{return}
 
         nextVC.fromVC = .locateHub
-        
-        
         nextVC.hubLatCordinate = Double.getDouble(self.hubLatitude)
         nextVC.hubLongCordinate = Double.getDouble(self.hubLongitude)
         nextVC.hubRadius = self.hubRadius
