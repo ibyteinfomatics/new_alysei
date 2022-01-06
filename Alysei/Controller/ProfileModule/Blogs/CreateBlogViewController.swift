@@ -98,7 +98,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
-
+            config.showsCrop = .rectangle(ratio: 1.5)
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)
 
