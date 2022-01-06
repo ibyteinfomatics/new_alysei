@@ -576,7 +576,7 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketplaceHomeTopFavTableVC", for: indexPath) as? MarketplaceHomeTopFavTableVC else {return UITableViewCell()}
-        cell.callback = {
+        cell.callback = { id in
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
             nextVC.marketplaceProductId = "\( self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row].marketplace_product_id ?? 0)"
                      self.navigationController?.pushViewController(nextVC, animated: true)
@@ -719,7 +719,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == imageCollectionView{
             return CGSize(width: imageCollectionView.frame.width / 1.2 , height: 190)
         }else if collectionView == recentlyAddedCollectionView{
-            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 270)
+            return CGSize(width: recentlyAddedCollectionView.frame.width / 2 , height: 300)
         }
 //        else if collectionView == adCollectionView{
 //            return CGSize(width: adCollectionView.frame.width / 2 , height: 200)
@@ -735,7 +735,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
         }
         else if (collectionView == self.collectionView){
             
-            view1.constant = collectionView.frame.width
+          //  view1.constant = collectionView.frame.width
             return CGSize(width: collectionView.frame.width / 3 , height: collectionView.frame.width / 3)
         }
         else{

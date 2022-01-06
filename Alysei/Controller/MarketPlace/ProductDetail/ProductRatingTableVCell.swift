@@ -90,9 +90,16 @@ class ProductRatingTableVCell: UITableViewCell {
         setStarUI()
         setUserRatngStarUI()
     }
+
     func setUserRatngStarUI(){
         if data?.rating == "0.0" || data?.rating == "0" {
             userRatingStar1.image = UIImage(named: "icons8_star")
+            userRatingStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
+        } else if (data?.rating  ?? "0") >= ("0.1") && (data?.rating  ?? "0") <= ("0.9") {
+            userRatingStar1.image = UIImage(named: "HalfStar")
             userRatingStar2.image = UIImage(named: "icons8_star")
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
@@ -103,7 +110,7 @@ class ProductRatingTableVCell: UITableViewCell {
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-        }else if data?.rating == "1.5" {
+        }else if ((data?.rating ?? "0") >= ("1.1") && (data?.rating ?? "0") <= ("1.9")){
             userRatingStar1.image = UIImage(named: "icons8_christmas_star")
             userRatingStar2.image = UIImage(named: "HalfStar")
             userRatingStar3.image = UIImage(named: "icons8_star")
@@ -115,7 +122,7 @@ class ProductRatingTableVCell: UITableViewCell {
             userRatingStar3.image = UIImage(named: "icons8_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-        }else if data?.rating == "2.5" {
+        }else if(data?.rating ?? "0") >= ("2.1") && (data?.rating  ?? "0") <= ("2.9") {
             userRatingStar1.image = UIImage(named: "icons8_christmas_star")
             userRatingStar2.image = UIImage(named: "icons8_christmas_star")
             userRatingStar3.image = UIImage(named: "HalfStar")
@@ -127,7 +134,7 @@ class ProductRatingTableVCell: UITableViewCell {
             userRatingStar3.image = UIImage(named: "icons8_christmas_star")
             userRatingStar4.image = UIImage(named: "icons8_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-        }else if data?.rating == "3.5" {
+        }else if (data?.rating ?? "0") >= ("3.1") && (data?.rating  ?? "0") <= ("3.9") {
             userRatingStar1.image = UIImage(named: "icons8_christmas_star")
             userRatingStar2.image = UIImage(named: "icons8_christmas_star")
             userRatingStar3.image = UIImage(named: "icons8_christmas_star")
@@ -139,7 +146,7 @@ class ProductRatingTableVCell: UITableViewCell {
             userRatingStar3.image = UIImage(named: "icons8_christmas_star")
             userRatingStar4.image = UIImage(named: "icons8_christmas_star")
             userRatingStar5.image = UIImage(named: "icons8_star")
-        }else if data?.rating == "4.5" {
+        }else if (data?.rating ?? "0") >= ("4.1") && (data?.rating  ?? "0") <= ("4.9") {
             userRatingStar1.image = UIImage(named: "icons8_christmas_star")
             userRatingStar2.image = UIImage(named: "icons8_christmas_star")
             userRatingStar3.image = UIImage(named: "icons8_christmas_star")
@@ -166,13 +173,19 @@ class ProductRatingTableVCell: UITableViewCell {
             productAvgStar3.image = UIImage(named: "icons8_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
+        }else if (data?.rating  ?? "0") >= ("0.1") && (data?.rating  ?? "0") <= ("0.9") {
+            productAvgStar1.image = UIImage(named: "HalfStar")
+            productAvgStar2.image = UIImage(named: "icons8_star")
+            userRatingStar3.image = UIImage(named: "icons8_star")
+            userRatingStar4.image = UIImage(named: "icons8_star")
+            userRatingStar5.image = UIImage(named: "icons8_star")
         }else if avgRating == "1.0"{
             productAvgStar1.image = UIImage(named: "icons8_christmas_star")
             productAvgStar2.image = UIImage(named: "icons8_star")
             productAvgStar3.image = UIImage(named: "icons8_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "1.5"{
+        }else if ((avgRating ?? "0") >= ("1.1") && (avgRating ?? "0") <= ("1.9")){
             productAvgStar1.image = UIImage(named: "icons8_christmas_star")
             productAvgStar2.image = UIImage(named: "HalfStar")
             productAvgStar3.image = UIImage(named: "icons8_star")
@@ -184,7 +197,7 @@ class ProductRatingTableVCell: UITableViewCell {
             productAvgStar3.image = UIImage(named: "icons8_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "2.5"{
+        }else if ((avgRating ?? "0") >= ("2.1") && (avgRating ?? "0") <= ("2.9")){
             productAvgStar1.image = UIImage(named: "icons8_christmas_star")
             productAvgStar2.image = UIImage(named: "icons8_christmas_star")
             productAvgStar3.image = UIImage(named: "HalfStar")
@@ -196,7 +209,7 @@ class ProductRatingTableVCell: UITableViewCell {
             productAvgStar3.image = UIImage(named: "icons8_christmas_star")
             productAvgStar4.image = UIImage(named: "icons8_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "3.5"{
+        }else if ((avgRating ?? "0") >= ("3.1") && (avgRating ?? "0") <= ("3.9")){
             productAvgStar1.image = UIImage(named: "icons8_christmas_star")
             productAvgStar2.image = UIImage(named: "icons8_christmas_star")
             productAvgStar3.image = UIImage(named: "icons8_christmas_star")
@@ -208,7 +221,7 @@ class ProductRatingTableVCell: UITableViewCell {
             productAvgStar3.image = UIImage(named: "icons8_christmas_star")
             productAvgStar4.image = UIImage(named: "icons8_christmas_star")
             productAvgStar5.image = UIImage(named: "icons8_star")
-        }else if avgRating == "4.5"{
+        }else if ((avgRating ?? "0") >= ("4.1") && (avgRating ?? "0") <= ("4.9")){
             productAvgStar1.image = UIImage(named: "icons8_christmas_star")
             productAvgStar2.image = UIImage(named: "icons8_christmas_star")
             productAvgStar3.image = UIImage(named: "icons8_christmas_star")

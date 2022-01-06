@@ -289,6 +289,12 @@
 		6B67AD52270437A200B4A4F1 /* EditPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */; };
 		6B6F084C261EC41400BA2D2B /* EditSettingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */; };
 		6B6F084F261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */; };
+		6B71C1F02786BD73009560B0 /* MarketplaceHomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1EF2786BD73009560B0 /* MarketplaceHomePageVC.swift */; };
+		6B71C1F22786CC8C009560B0 /* MarketPlaceHomeHeaderTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F12786CC8C009560B0 /* MarketPlaceHomeHeaderTableVC.swift */; };
+		6B71C1F42786EEB1009560B0 /* MarketplaceAdTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F32786EEB1009560B0 /* MarketplaceAdTableVCell.swift */; };
+		6B71C1F62786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F52786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift */; };
+		6B71C1F82786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F72786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift */; };
+		6B71C1FA27870E43009560B0 /* MarketplaceRegionTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F927870E43009560B0 /* MarketplaceRegionTableVCell.swift */; };
 		6B74268B2750E95A000B0900 /* StoreDescrptnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */; };
 		6B74268D2750E963000B0900 /* StoreDescTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */; };
 		6B74FFDE273E40FA0063EAEC /* apple-app-site-association.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */; };
@@ -397,6 +403,7 @@
 		6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */; };
 		6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */; };
 		6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */; };
+		6BADE2E52787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADE2E42787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift */; };
 		6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */; };
 		6BBA9952260AF55900AA7A81 /* InactiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */; };
 		6BC4C0CE26006AA600791DCD /* OverLayLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */; };
@@ -957,6 +964,12 @@
 		6B67AD4C270437A200B4A4F1 /* EditPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostInteractor.swift; sourceTree = "<group>"; };
 		6B6F084B261EC41400BA2D2B /* EditSettingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeViewController.swift; sourceTree = "<group>"; };
 		6B6F084E261EC46200BA2D2B /* EditSettingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B71C1EF2786BD73009560B0 /* MarketplaceHomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceHomePageVC.swift; sourceTree = "<group>"; };
+		6B71C1F12786CC8C009560B0 /* MarketPlaceHomeHeaderTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceHomeHeaderTableVC.swift; sourceTree = "<group>"; };
+		6B71C1F32786EEB1009560B0 /* MarketplaceAdTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceAdTableVCell.swift; sourceTree = "<group>"; };
+		6B71C1F52786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceRecentlyTableVCell.swift; sourceTree = "<group>"; };
+		6B71C1F72786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceNewlyAddedTableVCell.swift; sourceTree = "<group>"; };
+		6B71C1F927870E43009560B0 /* MarketplaceRegionTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceRegionTableVCell.swift; sourceTree = "<group>"; };
 		6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescrptnViewController.swift; sourceTree = "<group>"; };
 		6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescTopTableViewCell.swift; sourceTree = "<group>"; };
 		6B74FFDD273E40FA0063EAEC /* apple-app-site-association.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "apple-app-site-association.rtf"; sourceTree = "<group>"; };
@@ -1068,6 +1081,7 @@
 		6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardTableViewCell.xib; sourceTree = "<group>"; };
 		6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCollectionViewCell.xib; sourceTree = "<group>"; };
+		6BADE2E42787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceTopRatedTableVCell.swift; sourceTree = "<group>"; };
 		6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCollectionView.swift; sourceTree = "<group>"; };
 		6BBA9951260AF55900AA7A81 /* InactiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCollectionView.swift; sourceTree = "<group>"; };
 		6BC4C0CC26006AA600791DCD /* OverLayLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayLoginViewController.swift; sourceTree = "<group>"; };
@@ -2873,6 +2887,13 @@
 				C5E2476A272D6C84003C1B0B /* MarketPlaceFirstTiimeVC.swift */,
 				C5B7B46A272FFABC00FE7897 /* MarketplaceHomeTopFavTableVC.swift */,
 				C5B7B46D273000E500FE7897 /* MarketplaceHomeAdTableVC.swift */,
+				6B71C1EF2786BD73009560B0 /* MarketplaceHomePageVC.swift */,
+				6B71C1F12786CC8C009560B0 /* MarketPlaceHomeHeaderTableVC.swift */,
+				6B71C1F32786EEB1009560B0 /* MarketplaceAdTableVCell.swift */,
+				6B71C1F52786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift */,
+				6B71C1F72786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift */,
+				6B71C1F927870E43009560B0 /* MarketplaceRegionTableVCell.swift */,
+				6BADE2E42787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3392,6 +3413,7 @@
 				61A8CB49261D98CA00B99233 /* ContactDetailRouter.swift in Sources */,
 				6B90662026F83F8B00D24521 /* PreferencesTableViewCell.swift in Sources */,
 				27D0FAB125CEE9FF00463FE0 /* LoginAccountViewC.swift in Sources */,
+				6B71C1F42786EEB1009560B0 /* MarketplaceAdTableVCell.swift in Sources */,
 				277803BC25D1AD91008CC701 /* SignUpMultiCheckboxTableCell.swift in Sources */,
 				27BC68A425AC56C000A01B6A /* SceneDelegate.swift in Sources */,
 				27A443A325AE03720002BAAC /* UILabelBorderWidthAndColor.swift in Sources */,
@@ -3407,6 +3429,7 @@
 				610D71902628B24E000FA104 /* EventsViewController.swift in Sources */,
 				61EAB561269A23B900793F18 /* PostCommentsInteractor.swift in Sources */,
 				2742855B25B82EEC003F3DE5 /* EditUserSettingsTableCell.swift in Sources */,
+				6B71C1FA27870E43009560B0 /* MarketplaceRegionTableVCell.swift in Sources */,
 				C57979D526D7AE620040D716 /* SelectB2BProductViewController.swift in Sources */,
 				C56C286A268465A90042A0A3 /* MyStoreProductWorker.swift in Sources */,
 				6B97B08F2713EE5A003B9E68 /* EditScreen2ViewController.swift in Sources */,
@@ -3468,6 +3491,7 @@
 				C507B8532668E5F60014344A /* MarketPlaceCreateStoreVC.swift in Sources */,
 				C56C286D268465A90042A0A3 /* MyStoreProductViewController.swift in Sources */,
 				61EAB55F269A23B900793F18 /* PostCommentsModels.swift in Sources */,
+				6B71C1F02786BD73009560B0 /* MarketplaceHomePageVC.swift in Sources */,
 				C5B87764264A6A20009048E6 /* CustomPhotoPickerViewController.swift in Sources */,
 				C56C2888268465F30042A0A3 /* MyStoreInquiriesInteractor.swift in Sources */,
 				279AB34725FF436C0061FCB3 /* ConfirmSelectionTable.swift in Sources */,
@@ -3761,6 +3785,7 @@
 				C5EB3CF126E9CB8700CCAC9E /* SelectRecipeCategaryViewController.swift in Sources */,
 				6B97B0A42713EF3F003B9E68 /* EditMissingIngridientTableViewCell.swift in Sources */,
 				27B4E8FE25EF957D00623E45 /* WalkThroughModel.swift in Sources */,
+				6BADE2E52787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift in Sources */,
 				27A4439725AE03720002BAAC /* NSData+Base64.m in Sources */,
 				6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */,
 				6B97B0AD2713EF8A003B9E68 /* EditStepToolsCollectionViewCell.swift in Sources */,
@@ -3780,11 +3805,13 @@
 				C5EB3CE126E9CB8600CCAC9E /* CreateNewRecipeViewController.swift in Sources */,
 				C5D6F7F126B1829D006FFCDF /* HubCitiesListViewController.swift in Sources */,
 				C51D47852636C72500CD3863 /* PostDescTableViewCell.swift in Sources */,
+				6B71C1F82786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift in Sources */,
 				C5E9A3A426B7EAC50005AE89 /* ProductDescriptionTableVC.swift in Sources */,
 				27A443C725AE03720002BAAC /* UITextFieldBorderWidthAndColor.swift in Sources */,
 				C5D6F7E526B1829D006FFCDF /* Checkmark.swift in Sources */,
 				C51D477D2636B67900CD3863 /* DiscoverCollectionViewCell.swift in Sources */,
 				A84EECFF25B19FC900429B1D /* EditProfieTextViewTableCell.swift in Sources */,
+				6B71C1F22786CC8C009560B0 /* MarketPlaceHomeHeaderTableVC.swift in Sources */,
 				276E16AF25DD8C5E00B17ACF /* MemberWalkthroughCollectionCell.swift in Sources */,
 				6B8992572702EA5C00591A2E /* GetHomePageModelData.swift in Sources */,
 				C5957A35265CEFF2004952D8 /* HubCollectionViewCell.swift in Sources */,
@@ -3793,6 +3820,7 @@
 				27A443B625AE03720002BAAC /* UICollectionViewCellExtended.swift in Sources */,
 				27A443CB25AE03720002BAAC /* CommonUtil.swift in Sources */,
 				27E5694E25BDDE070028DEBF /* SelectedHubsCollectionCell.swift in Sources */,
+				6B71C1F62786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift in Sources */,
 				C5EB3CEC26E9CB8600CCAC9E /* StepsViewController.swift in Sources */,
 				27A443A125AE03720002BAAC /* UIImage+ImageEffects.m in Sources */,
 				277803BF25D1ADCB008CC701 /* SignUpMultiSelectCollectionCell.swift in Sources */,

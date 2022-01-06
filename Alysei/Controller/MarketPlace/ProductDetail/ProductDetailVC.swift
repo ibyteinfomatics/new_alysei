@@ -233,7 +233,7 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
                // return 250
                 return UITableView.automaticDimension + 290
             }else{
-               // return UITableView.automaticDimension
+                //return UITableView.automaticDimension
                 return UITableView.automaticDimension + 350
             }
         }else {
