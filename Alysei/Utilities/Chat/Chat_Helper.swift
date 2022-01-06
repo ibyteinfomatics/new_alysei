@@ -283,6 +283,18 @@ class Chat_hepler {
        
     }
     
+    func deleteCommentMessage(commentId: String,user_id: String) {
+        
+        self.messageReferense.child(user_id).child(commentId).removeValue()
+       
+    }
+    
+    func deleteReplyCommentMessage(replyId: String,commentId: String,user_id: String) {
+        
+        self.messageReferense.child(user_id).child(commentId).child("ReplyDetails").child(replyId).removeValue()
+       
+    }
+    
     func deleteEnquiryPerticularMessage(msgId: [String],user_id: String) {
         
         for i in 0..<msgId.count {
