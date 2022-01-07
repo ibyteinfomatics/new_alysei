@@ -742,9 +742,9 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
       else if String.getString(courseNameLabel.text) == LabelandTextFieldTitle.selectCourse{
         showAlert(withMessage: AlertMessage.kSelectCourse)
       }
-      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
-        showAlert(withMessage: AlertMessage.kSelectDiet)
-      }
+//      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
+//        showAlert(withMessage: AlertMessage.kSelectDiet)
+//      }
       else if String.getString(hoursLable.text) == "0" && (String.getString(minutesLable.text) == "0"){
         showAlert(withMessage: AlertMessage.kSelectHour)
       }
