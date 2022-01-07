@@ -83,6 +83,10 @@
     for i in 0...arrSignUpStepOne.count - 1{
      dicSignUp.append([self.arrSignUpStepOne[i].userFieldId: String.getString(self.arrSignUpStepOne[i].selectedValue)])
     }
+      
+      dicSignUp.append(["device_type": "2"])
+      dicSignUp.append(["device_token": kSharedUserDefaults.getDeviceToken()])
+      
     print(dicSignUp)
     return dicSignUp
   }
