@@ -684,7 +684,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.eventImage.setImage(withString: imgUrl)
                         cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                         cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
-                        cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
+                        cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].datumDescription
                         //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                        // cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
                         let imgUrlUser = ((self.arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
@@ -1023,7 +1023,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.eventImage.setImage(withString: imgUrl)
                     cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                     cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
-                    cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].location
+                    cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].datumDescription
                     //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
                     let dateFormatterGet = DateFormatter()
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -1062,7 +1062,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
                         vc.hostname = self.arraySearchByEvents?[indexPath.row].hostName
                         vc.eventname = self.arraySearchByEvents?[indexPath.row].eventName
-                        vc.location = self.arraySearchByEvents?[indexPath.row].location
+                        vc.location = self.arraySearchByEvents?[indexPath.row].datumDescription
                         vc.date = self.arraySearchByEvents?[indexPath.row].date
                         vc.time = self.arraySearchByEvents?[indexPath.row].time
                         vc.fulldescription = self.arraySearchByEvents?[indexPath.row].datumDescription
@@ -1436,7 +1436,7 @@ extension UniversalSearchViewController{
         let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
         vc.hostname = self.arraySearchByEvents?[indexPath.row].hostName
         vc.eventname = self.arraySearchByEvents?[indexPath.row].eventName
-        vc.location = self.arraySearchByEvents?[indexPath.row].location
+        vc.location = self.arraySearchByEvents?[indexPath.row].datumDescription
         vc.date = self.arraySearchByEvents?[indexPath.row].date
         vc.time = self.arraySearchByEvents?[indexPath.row].time
         vc.fulldescription = self.arraySearchByEvents?[indexPath.row].datumDescription

@@ -11,7 +11,8 @@ class MarketPlaceTopRatedTableVCell: UITableViewCell {
 
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
     var top_rated_products: [MyStoreProductDetail]?
-    
+    var callback:((Int) -> Void)? = nil
+    var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +27,10 @@ class MarketPlaceTopRatedTableVCell: UITableViewCell {
         top_rated_products = data
         self.topRatedCollectionView.reloadData()
         
+    }
+    
+    @IBAction func viewAll(_ sender: UIButton){
+        viewAllcallback?(sender.tag)
     }
 }
 extension MarketPlaceTopRatedTableVCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -42,5 +47,7 @@ extension MarketPlaceTopRatedTableVCell : UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2 , height: 280)
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.callback?(self.top_rated_products?[indexPath.row].marketplace_product_id ?? 0)
+    }
 }

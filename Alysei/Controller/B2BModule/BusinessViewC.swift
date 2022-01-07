@@ -829,8 +829,19 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         case .searchCell:
             return 100.0
         case .collectionHubs:
-            // let cellSize = CGFloat(model.cellCount) / 3.0
-            return 220.0  //* cellSize
+            let CellSizeCount = arrSearchDataModel.count
+                
+            if CellSizeCount <= 3 {
+                return 220
+            }else{
+                if CellSizeCount == 0 {
+                   return 0
+                }  else if (CellSizeCount ) % 3 == 0{
+                   return CGFloat(220 * ((CellSizeCount) / 3))
+               } else {
+                   return CGFloat(220 * ((CellSizeCount) / 3) + 220)
+               }
+            }
         case .tableListCell:
             return  120.0 //66.0
         default:

@@ -12,7 +12,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
 //    @IBOutlet weak var collectnMainViewHeight: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var postView: UIView!
-    @IBOutlet weak var view1: NSLayoutConstraint!
+   // @IBOutlet weak var view1: NSLayoutConstraint!
     @IBOutlet weak var btnCreateStore: UIButton!
     @IBOutlet weak var marketplaceView: UIView!
     @IBOutlet weak var headerView: UIView!

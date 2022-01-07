@@ -11,6 +11,9 @@ class MarketplaceNewlyAddedTableVCell: UITableViewCell {
     
     @IBOutlet weak var newlyyAddedStoreCollectionView: UICollectionView!
     var newlyAddedStore: [MyStoreProductDetail]?
+    var callback:((Int) -> Void)? = nil
+    
+    var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +28,10 @@ class MarketplaceNewlyAddedTableVCell: UITableViewCell {
         newlyAddedStore = data
         self.newlyyAddedStoreCollectionView.reloadData()
         
+    }
+    
+    @IBAction func viewAll(_ sender: UIButton){
+        viewAllcallback?(sender.tag)
     }
 }
 extension MarketplaceNewlyAddedTableVCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -44,6 +51,10 @@ extension MarketplaceNewlyAddedTableVCell : UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 225)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.callback?(self.newlyAddedStore?[indexPath.row].marketplace_store_id ?? 0)
     }
 
 }

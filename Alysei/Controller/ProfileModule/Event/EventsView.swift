@@ -71,7 +71,7 @@ class EventsView: AlysieBaseViewC {
         }
         eventTableCell.eventTitle.text = eventModel?.data?[indexPath].eventName
         eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
-        eventTableCell.locationTitle.text = eventModel?.data?[indexPath].location
+        eventTableCell.locationTitle.text = eventModel?.data?[indexPath].datumDescription
       //  eventTableCell.dateTitle.text = eventModel?.data?[indexPath].date
         
         let imageUrl = (eventModel?.data?[indexPath].user?.avatarid?.baseUrl ?? "") + (eventModel?.data?[indexPath].user?.avatarid?.attachmenturl ?? "")
@@ -139,7 +139,7 @@ class EventsView: AlysieBaseViewC {
             let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
             vc.hostname = self.eventModel?.data?[indexPath].hostName
             vc.eventname = self.eventModel?.data?[indexPath].eventName
-            vc.location = self.eventModel?.data?[indexPath].location
+            vc.location = self.eventModel?.data?[indexPath].datumDescription
             vc.date = self.eventModel?.data?[indexPath].date
             vc.time = self.eventModel?.data?[indexPath].time
             vc.fulldescription = self.eventModel?.data?[indexPath].datumDescription

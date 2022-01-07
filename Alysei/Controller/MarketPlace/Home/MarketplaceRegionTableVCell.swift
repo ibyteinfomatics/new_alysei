@@ -11,7 +11,8 @@ class MarketplaceRegionTableVCell: UITableViewCell {
 
     @IBOutlet weak var regionCollectionView: UICollectionView!
     var regions: [MyStoreProductDetail]?
-    
+    var callback:((Int,String) -> Void)? = nil
+    var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +27,9 @@ class MarketplaceRegionTableVCell: UITableViewCell {
         regions = data
         self.regionCollectionView.reloadData()
         
+    }
+    @IBAction func viewAll(_ sender: UIButton){
+        viewAllcallback?(sender.tag)
     }
 }
 extension MarketplaceRegionTableVCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -45,5 +49,7 @@ extension MarketplaceRegionTableVCell : UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: regionCollectionView.frame.width / 4 , height: 147)
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.callback?(self.regions?[indexPath.row].id ?? 0,self.regions?[indexPath.row].name ?? "" )
+    }
 }

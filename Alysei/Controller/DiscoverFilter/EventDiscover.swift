@@ -89,7 +89,7 @@ class EventDiscover: AlysieBaseViewC {
         
         eventTableCell.eventTitle.text = eventData[indexPath].eventName
         eventTableCell.hostTitle.text = eventData[indexPath].hostName
-        eventTableCell.locationTitle.text = eventData[indexPath].location
+        eventTableCell.locationTitle.text = eventData[indexPath].datumDescription
        // eventTableCell.dateTitle.text = eventData[indexPath].date
         eventTableCell.lblLikeCount.text = "\(eventData[indexPath].like_counts ?? 0)"
         eventTableCell.configCell(eventData[indexPath])
