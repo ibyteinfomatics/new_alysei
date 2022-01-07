@@ -60,7 +60,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 //            self.imgViewCoverPhoto.image = coverPhoto
 //        }
         
-        let imgUrl = (kImageBaseUrl + (self.signUpViewModel.profileData?.coverID?.attachmentURL ?? ""))
+        let imgUrl = ((self.signUpViewModel.profileData?.coverID?.baseUrl ?? "") + (self.signUpViewModel.profileData?.coverID?.attachmentURL ?? ""))
         self.imgViewCoverPhoto.setImage(withString: imgUrl)
         
 //        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().profilePhoto) {
@@ -68,7 +68,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 //            self.profilePhotoAlreadyExists = true
 //            self.imgViewProfile.image = profilePhoto
 //        }
-        let imgPUrl = (kImageBaseUrl + (self.signUpViewModel.profileData?.avatarID?.attachmentURL ?? ""))
+        let imgPUrl = ((self.signUpViewModel.profileData?.coverID?.baseUrl ?? "") + (self.signUpViewModel.profileData?.avatarID?.attachmentURL ?? ""))
         self.imgViewProfile.setImage(withString: imgPUrl)
 
         self.imgViewProfile.roundCorners(.allCorners, radius: (self.imgViewProfile.frame.width / 2.0))

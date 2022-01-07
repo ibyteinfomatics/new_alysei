@@ -201,7 +201,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     }
     
     @objc func openMarketPlace(){
-        guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
+        guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketplaceHomePageVC") as? MarketplaceHomePageVC else {return}
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
     }

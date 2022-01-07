@@ -12,6 +12,9 @@ class MarketPlaceHomeHeaderTableVC: UITableViewCell {
     
     var marketPlaceOptions = ["pStore", "cnsrvationMtd" , "ItlanRgn" ,"4", "prdctPrprties", "fda", "myFav", "mostPoplr", "promotion"]
     var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
+    
+    var callback:((Int) -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,6 +49,10 @@ extension MarketPlaceHomeHeaderTableVC : UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3 , height: collectionView.frame.width / 3)
          
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.callback?(indexPath.row)
     }
   
 }

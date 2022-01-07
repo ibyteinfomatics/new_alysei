@@ -22,7 +22,7 @@ class MarketPlaceConfirmationVC: AlysieBaseViewC {
 //                break
 //            }
 //        }
-        let controller = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceHomeVC
+        let controller = pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketplaceHomePageVC
         controller?.isCreateStore = true
     }
 

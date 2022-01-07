@@ -107,6 +107,14 @@ class MarketPlaceProductListViewController: UIViewController {
         self.lblHeading.isHidden = false
         self.searchtextField.resignFirstResponder()
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        //self.walkView1Trailing.constant = self.view.frame.width
+       
+    }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        if isSearch == false{
@@ -136,7 +144,7 @@ class MarketPlaceProductListViewController: UIViewController {
     //}
     @IBAction func btnBackAction(_ sender: UIButton){
         for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: MarketPlaceHomeVC.self) {
+            if controller.isKind(of: MarketplaceHomePageVC.self) {
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
             }

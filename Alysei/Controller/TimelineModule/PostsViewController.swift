@@ -129,7 +129,7 @@ class PostsViewController: AlysieBaseViewC {
     }
     
     @objc func openMarketPlace(){
-        let vc = pushViewController(withName: MarketPlaceHomeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        let vc = pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         //guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
         //self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = true
