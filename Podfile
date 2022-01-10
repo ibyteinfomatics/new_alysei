@@ -7,7 +7,6 @@ target 'Alysei' do
   
   # Pods for Alysei
 #
-
 pod 'IQKeyboardManagerSwift'
 pod 'SVProgressHUD'
 pod 'Alamofire'
@@ -27,4 +26,5 @@ pod 'SVGKit'
 pod 'Firebase/Messaging'
 pod 'ScrollingPageControl'
   
+
 end
