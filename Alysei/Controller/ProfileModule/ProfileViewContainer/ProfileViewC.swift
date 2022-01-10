@@ -100,6 +100,8 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: GetFeature Listing Data
     var featureListingId: String?
     var currentProductTitle: String?
+    var loadAnimation: Bool?
+    var loadingIndex:Int?
     
     //MARK: - Properties -
     
@@ -178,6 +180,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadAnimation = true
         self.btnEditProfile.layer.cornerRadius = 5
         self.btnEditProfile.layer.masksToBounds = true
         self.btnEditProfile.layer.borderWidth = 1
@@ -1215,13 +1218,21 @@ class ProfileViewC: AlysieBaseViewC{
         
         let cell = tblViewProfileCompletion.dequeueReusableCell(withIdentifier: ProfileCompletionTableViewCell.identifier()) as! ProfileCompletionTableViewCell
         //cell.delegate = self
-        cell.configure(indexPath, currentIndex: self.currentIndex)
+       
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
         cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
+        self.loadingIndex = indexPath.row
         cell.configCell(profileCompletionModel?[indexPath.row] ?? ProfileCompletionModel(with: [:]),cell)
+        cell.configure(indexPath, currentIndex: self.currentIndex)
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
+        cell.tag = indexPath.row
         cell.animationCallback = { currentIndex, cell in
+            if self.loadAnimation == true{
         self.animateViews(indexPath.row , cell: cell)
+               
+            }else{
+                print("No animation")
+            }
         }
         return cell
     }
@@ -1285,7 +1296,7 @@ class ProfileViewC: AlysieBaseViewC{
                     self.progressUserData = UserData.init(with: progUserData)
                 }
             }
-           
+            self.loadAnimation = true
            
             self.tblViewProfileCompletion.reloadData()
         }
@@ -1466,7 +1477,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 1:
             self.currentIndex = 2
             if  profileCompletionModel?[indexPath].status == true {
@@ -1480,7 +1491,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 2:
             self.currentIndex = 3
             if  profileCompletionModel?[indexPath].status == true {
@@ -1494,7 +1505,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 3:
             self.currentIndex = 4
             if  profileCompletionModel?[indexPath].status == true {
@@ -1508,7 +1519,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 4:
             self.currentIndex = 5
             if  profileCompletionModel?[indexPath].status == true {
@@ -1522,7 +1533,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 5:
             self.currentIndex = 6
             if  profileCompletionModel?[indexPath].status == true {
@@ -1533,7 +1544,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         case 6:
             self.currentIndex = 7
             if  profileCompletionModel?[indexPath].status == true {
@@ -1544,9 +1555,13 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-            self.tblViewProfileCompletion.reloadData()
+           // self.tblViewProfileCompletion.reloadData()
         default:
             print("Invalid Cell")
+        }
+        self.tblViewProfileCompletion.reloadData()
+        if (loadingIndex ?? 0) >= (profileCompletionModel?.count ?? 0){
+        self.loadAnimation = false
         }
     }
     

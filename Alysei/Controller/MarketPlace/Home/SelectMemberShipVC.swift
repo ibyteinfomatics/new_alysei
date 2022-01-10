@@ -14,6 +14,8 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var vwTriangle: UIView!
+    @IBOutlet weak var membershipCollectionView: UICollectionView!
+    
     var selectedPassId: Int?
 
     var memberShipData : [Membership]?
@@ -123,5 +125,6 @@ class SelectMemberShipTableCell: UITableViewCell {
       //  btnCheck.setImage(UIImage(named: "Ellipse 22"), for: .normal)
     }
 }
+
 
 

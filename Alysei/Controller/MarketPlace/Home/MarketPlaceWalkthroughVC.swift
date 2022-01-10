@@ -108,6 +108,7 @@ class MarketPlaceWalkthroughVC: AlysieBaseViewC {
     }
     
     @IBAction func btnGetStartedAction(_ sender: UIButton){
-        _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+       // _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+        _ = pushViewController(withName: SelectMultiMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
     }
 }

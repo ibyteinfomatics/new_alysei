@@ -448,7 +448,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
                 self.tableView.isUserInteractionEnabled = true
                 self.tableView.alpha = 1
                 self.tableView.alpha = 1
-                _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+               // _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+                _ = pushViewController(withName: SelectMultiMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         }
     }
     
@@ -665,9 +666,9 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
                     return 0
                 }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) % 2 == 0{
-                    return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
+                    return CGFloat(328 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
                 } else {
-                    return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 320)
+                    return CGFloat(328 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 328)
                 }
                 
             }else{
