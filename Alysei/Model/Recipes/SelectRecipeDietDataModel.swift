@@ -22,7 +22,15 @@ class SelectRecipeDietDataModel{
             self.imageId = ImageURL.init(with: image)
             
         }
+      
+
         self.isSelected = false
         self.imageOnlyId = Int.getInt(dictResponse["image_id"])
         }
+    
+    init(dietId: Int?,dietName: String?){
+        self.dietId = dietId
+        self.dietName = dietName
+    }
+    
 }

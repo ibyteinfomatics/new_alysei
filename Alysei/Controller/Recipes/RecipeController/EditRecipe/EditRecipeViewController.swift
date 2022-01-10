@@ -69,8 +69,10 @@ class EditRecipeViewController: UIViewController {
     var arrCuisine = [SelectCuisineDataModel]()
     var arrCookingSkill = [SelectCookingSkillsDataModel]()
     var arrDiet = [SelectRecipeDietDataModel]()
+    var noneArray = SelectRecipeDietDataModel(with: [:])
     var arrRegion = [SelectRegionDataModel]()
     var arrFoodIntolerance = [SelectFoodIntoleranceDataModel]()
+    var noArray = SelectFoodIntoleranceDataModel(with: [:])
     var isEditImage = false
     var imageSeleceted : UIImage?
     
@@ -123,12 +125,23 @@ class EditRecipeViewController: UIViewController {
             self.courseLabel.textColor = .black
             strSelectedIdCourse = arrayMyRecipe?[index].course?.recipeCourseId
             
-            dietLabel.text = arrayMyRecipe?[index].diet?.dietName
+            dietLabel.text = arrayMyRecipe?[index].diet?.dietName ?? "Select Diet"
+            if dietLabel.text ==  "Select Diet"{
+                self.dietLabel.textColor = .darkGray
+            }
+            else{
             self.dietLabel.textColor = .black
+            }
             strSelecetdIdDiet = arrayMyRecipe?[index].course?.recipeCourseId
             
-            foodIntoleranceLabel.text = arrayMyRecipe?[index].intolerance?.foodName
+            foodIntoleranceLabel.text = arrayMyRecipe?[index].intolerance?.foodName ?? "Select Food Intolerance"
+            if foodIntoleranceLabel.text ==  "Select Food Intolerance"{
+                self.foodIntoleranceLabel.textColor = .darkGray
+            }
+            else{
             self.foodIntoleranceLabel.textColor = .black
+            }
+        
             strSelectedIdIntolerance = arrayMyRecipe?[index].intolerance?.foodId
             
             regionLabel.text = arrayMyRecipe?[index].region?.regionName
@@ -303,9 +316,15 @@ class EditRecipeViewController: UIViewController {
             {
                 self.strSelecetdIdDiet = stId
             }
+            if str_return == "None"{
+                self.dietLabel.text = "Select Diet"
+                self.dietLabel.textColor = .darkGray
+            }
+            else{
             self.dietLabel.text = self.str_return
-//            self.dietLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
-            self.dietLabel.textColor = .black
+                self.dietLabel.textColor = .black
+            }
+            
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
         
@@ -314,10 +333,14 @@ class EditRecipeViewController: UIViewController {
             {
                 self.strSelectedIdIntolerance = stId
             }
+            if str_return == "None"{
+                self.foodIntoleranceLabel.text = "Select Food Intolerance"
+                self.foodIntoleranceLabel.textColor = .darkGray
+            }
+            else{
             self.foodIntoleranceLabel.text = self.str_return
-            
-//            self.foodIntoleranceLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
-            self.foodIntoleranceLabel.textColor = .black
+                self.foodIntoleranceLabel.textColor = .black
+            }
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
            
@@ -362,9 +385,6 @@ class EditRecipeViewController: UIViewController {
       else if String.getString(courseLabel.text) == LabelandTextFieldTitle.selectCourse{
         showAlert(withMessage: AlertMessage.kSelectCourse)
       }
-      else if String.getString(dietLabel.text) == LabelandTextFieldTitle.selectDiet{
-        showAlert(withMessage: AlertMessage.kSelectDiet)
-      }
       else if String.getString(hoursLable.text) == "0" && (String.getString(minutesLable.text) == "0"){
         showAlert(withMessage: AlertMessage.kSelectHour)
       }
@@ -395,6 +415,7 @@ class EditRecipeViewController: UIViewController {
     @IBAction func tapChangeImage(_ sender: Any) {
         self.alertToAddImage()
     }
+    
     @IBAction func tapSelectMeal(_ sender: Any) {
         
         picker1.tag = 3
@@ -987,7 +1008,12 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
              }
              if let stName = self.arrDiet[row].dietName
              {
-                self.str_return = stName
+                if stName == "None"{
+                    self.str_return = "Select Diet"
+                }
+                else{
+                    self.str_return = stName
+                }
              }
         case 6:
             if let stId = self.arrFoodIntolerance[row].foodId
@@ -997,6 +1023,9 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
              if let stName = self.arrFoodIntolerance[row].foodName
              {
                 self.str_return = stName
+                if stName == "None"{
+                    self.str_return = "Select Food Intolerance"
+                }
              }
         case 7:
              if let stId = self.arrRegion[row].regionId
@@ -1108,6 +1137,8 @@ extension EditRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
+            self.noneArray = SelectRecipeDietDataModel.init(dietId: 0, dietName: "None")
+            self.arrDiet.insert(self.noneArray, at: 0)
            }
            
            self.picker1.reloadAllComponents()
@@ -1123,6 +1154,8 @@ extension EditRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrFoodIntolerance = data.map({SelectFoodIntoleranceDataModel.init(with: $0)})
+            self.noArray = SelectFoodIntoleranceDataModel.init(foodId: 0, foodName: "None")
+            self.arrFoodIntolerance.insert(self.noArray, at: 0)
            }
            
            self.picker1.reloadAllComponents()

@@ -67,8 +67,10 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     var arrCuisine = [SelectCuisineDataModel]()
     var arrCookingSkill = [SelectCookingSkillsDataModel]()
     var arrDiet = [SelectRecipeDietDataModel]()
+    var noneArray = SelectRecipeDietDataModel(with: [:])
     var arrRegion = [SelectRegionDataModel]()
     var arrFoodIntolerance = [SelectFoodIntoleranceDataModel]()
+    var noArray = SelectFoodIntoleranceDataModel(with: [:])
     var str_return : String = String ()
    
     var timer: Timer?
@@ -238,10 +240,19 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             if let stId = self.arrDiet[0].dietId
             {
                 self.strSelecetdIdDiet = stId
+
             }
+            if str_return == "None"{
+                self.dietLabel.text = "Select Diet"
+                self.dietLabel.textColor = .darkGray
+            }
+            else{
             self.dietLabel.text = self.str_return
+                self.dietLabel.textColor = .black
+            }
+            
 //            self.dietLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
-            self.dietLabel.textColor = .black
+            
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
         
@@ -249,11 +260,19 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
             if let stId = self.arrFoodIntolerance[0].foodId
             {
                 self.strSelectedIdIntolerance = stId
+                
             }
+            if str_return == "None"{
+                self.foodIntoleranceLabel.text = "Select Food Intolerance"
+                self.foodIntoleranceLabel.textColor = .darkGray
+            }
+            else{
             self.foodIntoleranceLabel.text = self.str_return
+                self.foodIntoleranceLabel.textColor = .black
+            }
             
 //            self.foodIntoleranceLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
-            self.foodIntoleranceLabel.textColor = .black
+           
             toolBar.removeFromSuperview()
             picker1.removeFromSuperview()
            
@@ -1007,6 +1026,7 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
              if let stName = self.arrOptions[row].mealName
              {
                 self.str_return = stName
+                
              }
         
         case 4:
@@ -1043,7 +1063,14 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
              }
              if let stName = self.arrDiet[row].dietName
              {
-                self.str_return = stName
+                
+                if stName == "None"{
+                    self.str_return = "Select Diet"
+                }
+                else{
+                    self.str_return = stName
+                }
+                
              }
         case 6:
             if let stId = self.arrFoodIntolerance[row].foodId
@@ -1053,6 +1080,9 @@ extension CreateNewRecipeViewController: UIPickerViewDelegate, UIPickerViewDataS
              if let stName = self.arrFoodIntolerance[row].foodName
              {
                 self.str_return = stName
+                if stName == "None"{
+                    self.str_return = "Select Food Intolerance"
+                }
              }
         case 7:
              if let stId = self.arrRegion[row].regionId
@@ -1165,6 +1195,9 @@ extension CreateNewRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
+            self.noneArray = SelectRecipeDietDataModel.init(dietId: 0, dietName: "None")
+            self.arrDiet.insert(self.noneArray, at: 0)
+            
            }
            
            self.picker1.reloadAllComponents()
@@ -1180,6 +1213,8 @@ extension CreateNewRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrFoodIntolerance = data.map({SelectFoodIntoleranceDataModel.init(with: $0)})
+            self.noArray = SelectFoodIntoleranceDataModel.init(foodId: 0, foodName: "None")
+            self.arrFoodIntolerance.insert(self.noArray, at: 0)
            }
            
            self.picker1.reloadAllComponents()

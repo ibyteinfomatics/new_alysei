@@ -25,4 +25,9 @@ class SelectFoodIntoleranceDataModel{
         self.isSelected = false
         self.imageOnlyId = Int.getInt(dictResponse["image_id"])
         }
+    
+    init(foodId: Int?,foodName: String?){
+        self.foodId = foodId
+        self.foodName = foodName
+    }
 }
