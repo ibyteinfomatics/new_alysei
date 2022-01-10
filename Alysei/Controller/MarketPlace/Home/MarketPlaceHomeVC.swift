@@ -460,7 +460,8 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
                 self.containerView.isUserInteractionEnabled = true
                 self.containerView.alpha = 1
                 self.headerView.alpha = 1
-                _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+//                _ = pushViewController(withName: SelectMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+            _ = pushViewController(withName: SelectMultiMemberShipVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
         }
     }
     //MARK:- Bottom Sheet Animation

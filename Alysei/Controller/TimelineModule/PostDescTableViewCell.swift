@@ -121,7 +121,7 @@ class PostDescTableViewCell: UITableViewCell {
         // Initialization code
     }
     func pageControlUI(){
-        let startIndex = IndexPath(item: 0, section: 0)
+        _ = IndexPath(item: 0, section: 0)
         //imagePostCollectionView.scrollToItem(at: startIndex, at: .centeredHorizontally, animated: false)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,7 +166,7 @@ class PostDescTableViewCell: UITableViewCell {
     
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 
-        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        _ = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
 
      
         self.viewLike.tag = index

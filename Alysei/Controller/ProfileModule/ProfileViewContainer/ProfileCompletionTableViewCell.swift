@@ -21,6 +21,8 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewLine: UIView!
     @IBOutlet weak var btnArrow: UIImageView!
+    var data: ProfileCompletionModel?
+    var reloadtime: Int?
     
     var animationCallback:((_ index: Int?, _ cell: ProfileCompletionTableViewCell) -> Void)? = nil
     //MARK: - Properties -
@@ -36,9 +38,6 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     public func configure(_ indexPath: IndexPath,currentIndex:Int){
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
-
-          print(indexPath.row)
-          print(currentIndex)
            // self.animationCallback?(currentIndex,self)
             self.animationCallback?(indexPath.row,self)
          // self.delegate?.animateViews(currentIndex, cell: self)
@@ -48,6 +47,7 @@ class ProfileCompletionTableViewCell: UITableViewCell {
   }
     
     func configCell(_ data: ProfileCompletionModel, _ cell: ProfileCompletionTableViewCell){
+        self.data = data
         if data.status == true{
             btnArrow.isHidden = true
             cell.isUserInteractionEnabled = false
