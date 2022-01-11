@@ -113,5 +113,13 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
             openUrlCallBack?(url)
            
         }
+        if indexPath.row == 4{
+            let facebookUrl = (self.tableData[indexPath.row].value )
+            print("Website----------------------------",facebookUrl)
+            guard let url = URL(string: facebookUrl) else { return }
+            openUrlCallBack?(url)
+           
+        }
+        
     }
 }

@@ -1589,7 +1589,9 @@ extension ProfileViewC: AnimationProfileCallBack{
             let storyboard1 = UIStoryboard(name: StoryBoardConstants.kUpdateProfile, bundle: nil)
             guard let nextVC = storyboard1.instantiateViewController(identifier:  UpdateProfileCoverImgVC.id()) as?  UpdateProfileCoverImgVC else{return}
             nextVC.passprofilePicUrl = self.progressUserData?.avatarid?.attachmenturl
+            nextVC.passImagebaseUrl = self.progressUserData?.avatarid?.baseUrl
             nextVC.passCoverPicUrl = self.progressUserData?.coverid?.attachmenturl
+            nextVC.passCoverbaseUrl = self.progressUserData?.coverid?.baseUrl
             self.viewWillAppear(true)
             nextVC.imagePickerCallback = {
                 self.postRequestToGetProgress()

@@ -335,7 +335,7 @@ extension ContactDetailViewController: UITextFieldDelegate {
             }
         }
         if  textField == facebookTextField  {
-            if textField.text == "https://" {
+            if textField.text == "https://www.facebook.com/" {
                 textField.text = ""
                 textField.placeholder = "https://www.facebook.com"
             }
@@ -376,7 +376,7 @@ extension ContactDetailViewController: UITextFieldDelegate {
         
         if textField == facebookTextField{
             if textField.text == "" {
-                facebookTextField.text = "https://"
+                facebookTextField.text = "https://www.facebook.com/"
             }
 //            if let char = string.cString(using: String.Encoding.utf8) {
 //                let isBackSpace = strcmp(char, "\\b")

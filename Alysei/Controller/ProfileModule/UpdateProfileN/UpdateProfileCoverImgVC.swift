@@ -12,6 +12,8 @@ class UpdateProfileCoverImgVC: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var imgCoverPic: UIImageView!
 
     var passprofilePicUrl: String?
+    var passImagebaseUrl: String?
+    var passCoverbaseUrl: String?
     var passCoverPicUrl: String?
     var imageParams = [[String:Any]]()
     var picker = UIImagePickerController()
@@ -36,14 +38,14 @@ class UpdateProfileCoverImgVC: UIViewController, UIImagePickerControllerDelegate
         if passprofilePicUrl == "" || passprofilePicUrl == nil {
             imgProfilePic.image = UIImage(named: "profile_icon")
         }else{
-            let imgUrl = (kImageBaseUrl + (passprofilePicUrl ?? ""))
+            let imgUrl = ((passImagebaseUrl ?? "") + (passprofilePicUrl ?? ""))
             imgProfilePic.setImage(withString: imgUrl)
         }
         
         if passCoverPicUrl == "" || passCoverPicUrl == nil {
             imgCoverPic.image = UIImage(named: "image_placeholder")
         }else{
-            let imgUrl = (kImageBaseUrl + (passCoverPicUrl ?? ""))
+            let imgUrl = ((passCoverbaseUrl ?? "") + (passCoverPicUrl ?? ""))
             imgCoverPic.setImage(withString: imgUrl)
         }
         
