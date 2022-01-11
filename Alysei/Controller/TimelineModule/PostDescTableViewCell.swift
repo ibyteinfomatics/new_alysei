@@ -435,7 +435,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
-        cell.imagePost.contentMode = .scaleToFill
+        cell.imagePost.contentMode = .scaleAspectFit
        // cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))

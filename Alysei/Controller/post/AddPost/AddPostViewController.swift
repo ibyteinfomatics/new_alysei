@@ -270,9 +270,10 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
-        config.library.maxNumberOfItems = 1
+        config.library.maxNumberOfItems = 100
         config.showsPhotoFilters = true
-        config.showsCrop = .rectangle(ratio: 1.5)
+        //config.showsCrop = .rectangle(ratio: 1.5)
+        
         //config.library.onlySquare = true
         //config.overlayView = UIView()
         //config.targetImageSize = .original
