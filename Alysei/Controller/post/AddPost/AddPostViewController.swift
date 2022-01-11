@@ -274,7 +274,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         config.showsPhotoFilters = true
         //config.showsCrop = .rectangle(ratio: 1.5)
         
-        //config.library.onlySquare = true
+        config.library.onlySquare = true
         //config.overlayView = UIView()
         //config.targetImageSize = .original
         //config.library.preSelectItemOnMultipleSelection = true
