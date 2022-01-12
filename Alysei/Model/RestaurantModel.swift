@@ -39,6 +39,7 @@ class RestaurantUser {
     var lattitude: String?
     var longitude: String?
     var address: String?
+    var restaurant_type: String?
     var roleid: Int?
     var avatarid: EventAttachment?
 
@@ -46,6 +47,7 @@ class RestaurantUser {
         
         self.name = String.getString(dictResponse?["name"])
         self.email = String.getString(dictResponse?["email"])
+        self.restaurant_type = String.getString(dictResponse?["restaurant_type"])
         self.companyName = String.getString(dictResponse?["company_name"])
         self.restaurantName = String.getString(dictResponse?["restaurant_name"])
         self.address = String.getString(dictResponse?["address"])

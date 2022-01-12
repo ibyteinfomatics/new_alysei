@@ -4640,7 +4640,6 @@ any other devices.</string>
                                         </state>
                                         <connections>
                                             <action selector="postAction:" destination="ZAO-jL-8v5" eventType="touchUpInside" id="iLL-WU-Ha0"/>
-                                            <action selector="saveButtonTapped:" destination="6aQ-aa-Yc1" eventType="touchUpInside" id="HuE-mN-LNx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -4739,6 +4738,7 @@ any other devices.</string>
                     <navigationItem key="navigationItem" id="x0g-hd-bm4"/>
                     <size key="freeformSize" width="375" height="867"/>
                     <connections>
+                        <outlet property="addPost" destination="Kaf-0R-JoU" id="yop-D4-z4m"/>
                         <outlet property="blankdataView" destination="Uwx-TN-lmi" id="hhd-NO-ATs"/>
                         <outlet property="btnPostPrivacy" destination="3h0-tE-ijb" id="5Aw-Ry-zOV"/>
                         <outlet property="collectionViewHeight" destination="Jzv-fX-erQ" id="dtH-kb-WVr"/>
@@ -7409,14 +7409,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="394" height="90.666664123535156"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="394" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="90.666664123535156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35.666666666666664" width="374" height="44.999999999999993"/>
+                                                    <rect key="frame" x="10" y="35" width="374" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7457,7 +7457,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10.000000000000002" width="374" height="20.666666666666671"/>
+                                                    <rect key="frame" x="10" y="10" width="374" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7479,7 +7479,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135.33333015441895" width="394" height="66"/>
+                                        <rect key="frame" x="0.0" y="134.66666603088379" width="394" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="66"/>
@@ -7517,7 +7517,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201.33333015441895" width="394" height="68.333335876464844"/>
+                                        <rect key="frame" x="0.0" y="200.66666603088379" width="394" height="68.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="68.333335876464844"/>
@@ -12037,7 +12037,7 @@ You will be notified for any membership status update.</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="177"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Fvu-uT-zUR">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Fvu-uT-zUR">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="177"/>
                                                                                 <color key="backgroundColor" name="whiteColor"/>
                                                                             </imageView>

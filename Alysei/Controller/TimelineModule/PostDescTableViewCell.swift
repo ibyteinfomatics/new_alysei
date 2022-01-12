@@ -236,7 +236,7 @@ class PostDescTableViewCell: UITableViewCell {
                     if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
                         height1 = 350
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
-                        height2 = 200
+                        height2 = 300
                     } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
                         
                         if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
@@ -267,7 +267,16 @@ class PostDescTableViewCell: UITableViewCell {
                 if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
                     imageHeightCVConstant.constant = 350
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-                    imageHeightCVConstant.constant = 200
+                    
+                    
+                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
+                        imageHeightCVConstant.constant = 500
+                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
+                        imageHeightCVConstant.constant = 400
+                    } else {
+                        imageHeightCVConstant.constant = 300
+                    }
+                    
                 } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
                 //imageHeightCVConstant.constant = 350
                     
@@ -506,7 +515,16 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
         } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
+            
+            if Int.getInt(data?.attachmentLink?.width) > 500 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
+            } else {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
+            }
+            
+            
         } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
             // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
             
