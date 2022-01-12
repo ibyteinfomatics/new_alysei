@@ -11,12 +11,19 @@ class HubCitiesListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblCountryName: UILabel!
     @IBOutlet weak var btnSelected: UIButton!
+    @IBOutlet weak var viewContainer: UIView!
     var city:CountryHubs?{didSet{self.awakeFromNib()}}
     var selectedHubs:((CountryHubs?)->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblCountryName.text = city?.name
         self.btnSelected.isSelected = city?.isSelected ?? false
+        
+        if btnSelected.isSelected == true{
+            self.viewContainer.layer.backgroundColor = UIColor.systemBlue.cgColor
+        }else{
+            self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

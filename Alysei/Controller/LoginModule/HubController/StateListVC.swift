@@ -77,9 +77,10 @@ class StateListVC: AlysieBaseViewC , SelectList {
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
             labelHeading.text = "Where you want to export?"
         }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "6"){
-            labelHeading.text = "Where you import?"
+           labelHeading.text = "Where you import?"
         }else {
             labelHeading.text = "Loreum lore lreum reum um ruse"
+            
         }
         
     }

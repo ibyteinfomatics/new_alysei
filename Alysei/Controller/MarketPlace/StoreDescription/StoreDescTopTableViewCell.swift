@@ -84,9 +84,9 @@ class StoreDescTopTableViewCell: UITableViewCell {
         lblCategories.text = "\(storeDetails.totalCategory ?? 0)"
          labelAvgRating.text = storeDetails.avg_rating
         labelTotalReview.text = (storeDetails.total_reviews ?? "0") + " Reviews"
-        self.imgProfile.setImage(withString: (storeDetails.base_url ?? "") + String.getString(storeDetails.logo_id))
+        self.imgProfile.setImage(withString: (storeDetails.logo_base_url ?? "") + String.getString(storeDetails.logo_id))
         self.imgCover.setImage(withString: String.getString(storeDetails.banner_base_url) + String.getString(storeDetails.banner_id))
-        self.imgProducer.setImage(withString: kImageBaseUrl + String.getString(storeDetails.prefilled?.avatarId?.attachmentUrl))
+        self.imgProducer.setImage(withString: (storeDetails.prefilled?.avatarId?.baseUrl ?? "") + String.getString(storeDetails.prefilled?.avatarId?.attachmentUrl))
         
         if storeDetails.is_favourite == 0{
             self.imgLikeUnlike.image = UIImage(named: "LikesBlue")
@@ -242,7 +242,8 @@ extension StoreDescTopTableViewCell : UICollectionViewDelegate, UICollectionView
         }else{
             cell.vwContainer.isHidden = true
             cell.imgStore.isHidden = false
-            cell.imgStore.setImage(withString: storeDetails?.store_gallery?[indexPath.row].baseUrl ?? "" + String.getString(storeDetails?.store_gallery?[indexPath.row].attachment_url))
+            let imageUrl = (storeDetails?.store_gallery?[indexPath.row].baseUrl ?? "" + String.getString(storeDetails?.store_gallery?[indexPath.row].attachment_url))
+            cell.imgStore.setImage(withString: imageUrl)
         }
         return cell
     }

@@ -73,6 +73,14 @@ class SelectCityTableViewCell: UITableViewCell {
         self.buttonLeftLeading.constant = hideEyeIcon == true ? 15 : 15
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
         self.imgHub.isHidden = hideEyeIcon == true ? true : false
+        
+        if imgHub.isHidden == true{
+            self.viewContainer.layer.backgroundColor = data?.isSelected == true ? UIColor.systemBlue.cgColor : UIColor.white.cgColor
+        self.labelCityName.textColor = data?.isSelected == true ? UIColor.white : UIColor.black
+        }else{
+            self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
+                self.labelCityName.textColor = UIColor.black
+        }
     }
     
     @IBAction func btnLeftCheckBoxAction(_ sender: UIButton){
