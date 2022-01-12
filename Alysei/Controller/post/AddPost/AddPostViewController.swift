@@ -16,6 +16,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
    // @IBOutlet weak var btnCamera: UIButton!
     //@IBOutlet weak var btnGallery: UIButton!
     @IBOutlet weak var btnPostPrivacy: UIButton!
+    @IBOutlet weak var addPost: UIButton!
     @IBOutlet weak var txtPost: UITextView!
    // @IBOutlet weak var btnStackView: UIStackView!
     @IBOutlet weak var viewHeaderShadow: UIView!
@@ -45,7 +46,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     var descriptionPost: String?
     var imgHeight: Int?
     var imgWidth: Int?
-    
+     
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +65,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //    }
     override func viewWillAppear(_ animated: Bool) {
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        
+        addPost.isUserInteractionEnabled = true
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
@@ -616,6 +617,7 @@ extension AddPostViewController : UITableViewDataSource, UITableViewDelegate{
 extension AddPostViewController {
     func addPostApi(){
 
+        addPost.isUserInteractionEnabled = false
         postDesc = txtPost.text
         if txtPost.text == AppConstants.kEnterText {
             postDesc = ""
