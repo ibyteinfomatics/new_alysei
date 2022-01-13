@@ -173,7 +173,8 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
-            
+            config.showsCrop = .rectangle(ratio: 1.5)
+            config.library.onlySquare = true
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)
             
