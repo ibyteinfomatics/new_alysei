@@ -276,14 +276,16 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         //config.showsCrop = .rectangle(ratio: 1.5)
         
         config.library.onlySquare = true
-        //config.overlayView = UIView()
-        //config.targetImageSize = .original
-        //config.library.preSelectItemOnMultipleSelection = true
+        //config.overlayView = UIView()config.library.minWidthForItem = nil
+       // config.targetImageSize = .cappedTo(size: 50)
+        //config.library.preSelectItemOnMultipleSelection = false
          //config.library.defaultMultipleSelection = false
-
+        //config.library.skipSelectionsGallery = true
+        //config.library.preselectedItems = nil
+        
 
         self.descriptionPost = txtPost.text
-        config.library.preselectedItems = ypImages
+       // config.library.preselectedItems = ypImages
         let picker = YPImagePicker(configuration: config)
         
         picker.didFinishPicking { [unowned picker] items, cancelled in
