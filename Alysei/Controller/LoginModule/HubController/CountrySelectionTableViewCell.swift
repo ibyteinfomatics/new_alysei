@@ -51,6 +51,8 @@ class CountrySelectionTableViewCell: UITableViewCell {
     func configCell(_ data: CountryModel){
         self.labelCountryName.text = data.name
         self.buttonCheckbox.setImage((data.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
+//        self.viewContainer.layer.backgroundColor = data.isSelected == true ? UIColor.systemBlue.cgColor : UIColor.white.cgColor
+//        self.labelCountryName.textColor = data.isSelected == true ? UIColor.white : UIColor.black
         self.imageFlag.image = data.emoji?.emojiToImage()
     }
     
