@@ -52,7 +52,7 @@ class HubSelectStatesCollectionViewCell: UICollectionViewCell {
         
         if indexPath.item == currentIndex{
         
-            self.viewHeader.backgroundColor = UIColor.systemBlue
+            self.viewHeader.backgroundColor = UIColor.init(hexString: "#4BB3FD")
             self.lblStateName.textColor = .white
             self.viewHeader.layer.borderColor = UIColor.clear.cgColor
               self.viewHeader.layer.borderWidth = 2

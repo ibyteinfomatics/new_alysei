@@ -12,6 +12,7 @@ class HubCitiesListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var vwHeader: UIView!
     
     
     var currentIndex: Int = 0
@@ -30,6 +31,7 @@ class HubCitiesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwHeader.drawBottomShadow()
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         let state = selectedHub?.state.first
         self.postRequestToGetCity(state?.id ?? "")
@@ -94,7 +96,7 @@ extension HubCitiesListViewController:UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width / 2, height: 45)
+        return CGSize(width: self.collectionView.frame.width / 4, height: 45)
     }
     
     

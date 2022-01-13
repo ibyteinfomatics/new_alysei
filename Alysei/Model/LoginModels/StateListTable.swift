@@ -61,6 +61,7 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         guard let states = self.states?[indexPath.row] else { return UITableViewCell() }
         let cell = self.dequeueReusableCell(withIdentifier: "SelectCityTableViewCell", for: indexPath) as! SelectCityTableViewCell
         cell.selectionStyle = .none
+        cell.tag = indexPath.row
         cell.hubLatitude = self.hubLatitude
         cell.hubLongitude = self.hubLongitude
         cell.hubRadius = self.hubRadius
@@ -92,8 +93,8 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
             self.reloadData()
         }else{
           self.states?[indexPath.row].isSelected = !(self.states?[indexPath.row].isSelected ?? true)
-           
-          self.reloadData()
+            //self.reloadData()
+            self.reloadRows(at: [indexPath], with: .none)
         }
         hubCountCallBack?()
        // print("Call HubCout")

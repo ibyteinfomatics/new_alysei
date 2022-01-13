@@ -74,8 +74,8 @@ class SelectCityTableViewCell: UITableViewCell {
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
         self.imgHub.isHidden = hideEyeIcon == true ? true : false
         
-        if imgHub.isHidden == true{
-            self.viewContainer.layer.backgroundColor = data?.isSelected == true ? UIColor.systemBlue.cgColor : UIColor.white.cgColor
+        if hideEyeIcon == true{
+            self.viewContainer.layer.backgroundColor = data?.isSelected == true ? UIColor.init(hexString: "#4BB3FD").cgColor : UIColor.white.cgColor
         self.labelCityName.textColor = data?.isSelected == true ? UIColor.white : UIColor.black
         }else{
             self.viewContainer.layer.backgroundColor = UIColor.white.cgColor

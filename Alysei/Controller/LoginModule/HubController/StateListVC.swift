@@ -29,7 +29,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewHeader.addShadow()
+        self.viewHeader.drawBottomShadow()
         self.searchSetUI()
         self.tableVIew.selectDelegate = self
         self.tableVIew.roleId = self.roleId
@@ -70,7 +70,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
         }else{
             userType = "loreum"
         }
-        if let attributedString = self.createAttributedString(stringArray: ["Select the states from ","\(country?.name ?? "")", " where you \(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue]) {
+        if let attributedString = self.createAttributedString(stringArray: ["Select the states from ","\(country?.name ?? "")", " where you \(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#4BB3FD")]) {
             // if let attributedString = self.createAttributedString(stringArray: ["\(country?.name ?? "")" + "/" + "\(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]) {
             self.lblHeaderText.attributedText = attributedString
         }

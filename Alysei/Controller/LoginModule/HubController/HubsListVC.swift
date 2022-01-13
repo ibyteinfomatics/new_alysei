@@ -37,7 +37,7 @@ class HubsListVC: UIViewController {
     // MARK:- lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewHeader.addShadow()
+        self.viewHeader.drawBottomShadow()
         self.tableView.hasCome = self.hasCome
         self.tableView.country = self.country
         self.tableView.roleId = self.roleId
