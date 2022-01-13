@@ -63,7 +63,7 @@ extension SelectedHubsTableCell: UICollectionViewDelegate, UICollectionViewDataS
     
     let width = (kScreenWidth - 70.0)/3
     //return CGSize(width: width, height: width + 48.0)
-    return CGSize(width: width, height: 168)
+    return CGSize(width: width, height: 188)
   }
     
 }

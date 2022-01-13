@@ -63,7 +63,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewHeader.drawBottomShadow()
 //        self.imageCollectionView.register
 
         var name = ""
@@ -107,7 +107,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         }else if self.postDataModel.postOwnerDetail?.roleId == UserRoles.restaurant.rawValue{
             postOwner = self.postDataModel.postOwnerDetail?.restaurantName ?? ""
         }else if (self.postDataModel.postOwnerDetail?.roleId == UserRoles.voyagers.rawValue || self.postDataModel.postOwnerDetail?.roleId == UserRoles.voiceExperts.rawValue){
-            postOwner = self.postDataModel.postOwnerDetail?.name ?? ""
+            postOwner = (self.postDataModel.postOwnerDetail?.firstName  ?? "") + (self.postDataModel.postOwnerDetail?.lastName ?? "")
         }else{
             postOwner = self.postDataModel.postOwnerDetail?.companyName ?? ""
         }
@@ -143,6 +143,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
     @IBOutlet var postOwnerUsernameLabel: UILabel!
     @IBOutlet var lblPostDesc: UILabel!
     @IBOutlet var postOwnerImage: UIImageView!
+    @IBOutlet weak var viewHeader: UIView!
 
     // MARK:- IBAction methods
 

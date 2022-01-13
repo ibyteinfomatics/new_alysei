@@ -246,11 +246,11 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         self.userImage.image = UIImage(named: "profile_icon")
     }
     if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) != ""{
-        self.imgSharedUserImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
+        self.imgSharedUserImage.setImage(withString: String.getString(modelData.subjectId?.avatarId?.baseUrl ?? "") + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
     }
     if String.getString(modelData.sharedPostData?.subjectId?.avatarId?.attachmentUrl) != ""{
         
-        self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.sharedPostData?.subjectId?.avatarId?.attachmentUrl))
+        self.userImage.setImage(withString: String.getString(modelData.subjectId?.avatarId?.baseUrl ?? "") + String.getString(modelData.sharedPostData?.subjectId?.avatarId?.attachmentUrl))
     //self.userImage.setImage(withString: kImageBaseUrl + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
     }
     likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
@@ -280,7 +280,8 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 //                        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
 //                    }
                 for i in  0..<(modelData.sharedPostData?.attachments?.count ?? 0) {
-                    self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                    let url = ((modelData.sharedPostData?.attachments?[i].attachmentLink?.baseUrl ?? "") + (modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? ""))
+                    self.imageArray.append(url)
                 }
             }
    
@@ -383,7 +384,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
 //            cell.imagePost.backgroundColor = .yellow
 //        }
 
-        cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
+        cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
        // cell.imagePost.contentMode = .scaleAspectFill
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell

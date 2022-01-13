@@ -77,21 +77,10 @@ class SelectCityTableViewCell: UITableViewCell {
         self.imgHub.layer.cornerRadius = 15
         self.imgHub.setImage(withString: String.getString(data?.image?.baseUrl) + String.getString(data?.image?.attachmentUrl))
         self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
-        self.buttonRightCheckBox.isHidden = hideEyeIcon == true ? true : false
-        self.buttonLeftCheckWidth.constant = hideEyeIcon == true ? 25 : 20
-        self.buttonLeftHeight.constant = hideEyeIcon == true ? 25 : 20
         
-        self.buttonLeftLeading.constant = hideEyeIcon == true ? 15 : 15
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
-        self.imgHub.isHidden = hideEyeIcon == true ? true : false
-        
-        if hideEyeIcon == true{
-            self.viewContainer.layer.backgroundColor = data?.isSelected == true ? UIColor.init(hexString: "#4BB3FD").cgColor : UIColor.white.cgColor
-        self.labelCityName.textColor = data?.isSelected == true ? UIColor.white : UIColor.black
-        }else{
-            self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
-                self.labelCityName.textColor = UIColor.black
-        }
+       
+       
     }
     
     @IBAction func btnLeftCheckBoxAction(_ sender: UIButton){

@@ -34,12 +34,13 @@ class StateListVC: AlysieBaseViewC , SelectList {
         self.tableVIew.selectDelegate = self
         self.tableVIew.roleId = self.roleId
         hideEyeIcon = true
+        
         self.setText()
         if country != nil{
             self.countryId = country?.id
         }
 //        self.isEditHub == true ? self.requestToGetSelectedState(countryId ?? "") :
-        self.postRequestToGetState(countryId ?? "")
+       // self.postRequestToGetState(countryId ?? "")
         self.txtSearch.addTarget(self, action: #selector(self.searchText(_:)), for: .allEvents)
     }
     
@@ -59,7 +60,8 @@ class StateListVC: AlysieBaseViewC , SelectList {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableVIew.reloadData()
+        self.postRequestToGetState(countryId ?? "")
+        //tableVIew.reloadData()
     }
     func setText(){
         

@@ -61,6 +61,8 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         guard let states = self.states?[indexPath.row] else { return UITableViewCell() }
         let cell = self.dequeueReusableCell(withIdentifier: "SelectCityTableViewCell", for: indexPath) as! SelectCityTableViewCell
         cell.selectionStyle = .none
+        cell.viewContainer.backgroundColor = UIColor.white
+        
         cell.tag = indexPath.row
         cell.hubLatitude = self.hubLatitude
         cell.hubLongitude = self.hubLongitude
@@ -72,6 +74,33 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
             cell.imgViewHght.constant = 0
         }
         
+        if self.hasCome == .hubs {
+            cell.viewContainer.layer.backgroundColor = UIColor.white.cgColor
+                cell.labelCityName.textColor = UIColor.black
+            cell.imgHub.isHidden = false
+            cell.buttonRightCheckBox.isHidden = false
+            cell.buttonRightCheckBox.isHidden =  false
+            cell.buttonLeftCheckWidth.constant =  20
+            cell.buttonLeftHeight.constant =  20
+            
+            cell.buttonLeftLeading.constant = 15
+        }else{
+            cell.viewContainer.layer.backgroundColor = states.isSelected == true ? UIColor.init(hexString: "#4BB3FD").cgColor : UIColor.white.cgColor
+            cell.labelCityName.textColor = states.isSelected == true ? UIColor.white : UIColor.black
+            cell.imgHub.isHidden = true
+            cell.buttonRightCheckBox.isHidden = true
+            cell.buttonRightCheckBox.isHidden = true
+            cell.buttonLeftCheckWidth.constant = 25
+            cell.buttonLeftHeight.constant = 25
+            
+            cell.buttonLeftLeading.constant = 15
+//            self.buttonRightCheckBox.isHidden = hideEyeIcon == true ? true : false
+//            self.buttonLeftCheckWidth.constant = hideEyeIcon == true ? 25 : 20
+//            self.buttonLeftHeight.constant = hideEyeIcon == true ? 25 : 20
+//
+//            self.buttonLeftLeading.constant = hideEyeIcon == true ? 15 : 15
+            
+        }
         if self.hasCome == .hubs {
             cell.labelCityName.font = UIFont(name: "HelveticaNeue-Bold", size: 16.0)
         }else{

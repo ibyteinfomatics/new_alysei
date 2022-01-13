@@ -230,7 +230,23 @@ class AddFeatureViewC: AlysieBaseViewC {
     }
     else{
     //  self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.productCategoriesDataModel.title)
-        self.lblNavigationHeading.text = AppConstants.Add + "Featured Product"
+        let roleID = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
+        
+        switch roleID {
+    case .distributer1, .distributer2, .distributer3, .producer:
+        self.lblNavigationHeading.text = "Add Featured Products"
+    case .restaurant:
+        self.lblNavigationHeading.text = "Add Featured Menu"
+    case .travelAgencies:
+        self.lblNavigationHeading.text = "Add Featured Packages"
+    case .voiceExperts:
+        self.lblNavigationHeading.text = "Add Featured"
+        default:
+            self.lblNavigationHeading.text = "Add Featured"
+        }
+        
+        
+        
     }
     }
 
