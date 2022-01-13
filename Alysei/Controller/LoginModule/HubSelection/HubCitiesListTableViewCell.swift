@@ -20,7 +20,7 @@ class HubCitiesListTableViewCell: UITableViewCell {
         self.btnSelected.isSelected = city?.isSelected ?? false
         
         if btnSelected.isSelected == true{
-            self.viewContainer.layer.backgroundColor = UIColor.systemBlue.cgColor
+            self.viewContainer.layer.backgroundColor = UIColor.init(hexString: "#4BB3FD").cgColor
         }else{
             self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
         }

@@ -92,6 +92,7 @@ class HubSelectionTableViewCell: UITableViewCell {
         
         let selectCityTableCell = tableView.dequeueReusableCell(withIdentifier: SelectCityTableViewCell.identifier(), for: indexPath) as! SelectCityTableViewCell
         selectCityTableCell.selectionStyle = .none
+        selectCityTableCell.tag = indexPath.row
         selectCityTableCell.buttonRightCheckBox.isHidden = false
         selectCityTableCell.buttonLeftCheckbox.isHidden = true
         selectCityTableCell.buttonLeftCheckWidth.constant = 0

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="206" height="171"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODR-gA-ZOA">
-                                <rect key="frame" x="10" y="76" width="186" height="93"/>
+                                <rect key="frame" x="10" y="103" width="186" height="66"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -36,17 +36,17 @@
                                 <rect key="frame" x="73" y="8" width="60" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmd-fW-q9M">
-                                        <rect key="frame" x="-10" y="5" width="80" height="80"/>
+                                        <rect key="frame" x="-20" y="5" width="100" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role4" translatesAutoresizingMaskIntoConstraints="NO" id="hS3-yk-81n" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="hS3-yk-81n" firstAttribute="leading" secondItem="Qmd-fW-q9M" secondAttribute="leading" id="CUT-aa-ZuO"/>
                                             <constraint firstAttribute="trailing" secondItem="hS3-yk-81n" secondAttribute="trailing" id="CcJ-dj-voj"/>
-                                            <constraint firstAttribute="height" constant="80" id="HVr-iz-Crs"/>
+                                            <constraint firstAttribute="height" constant="100" id="HVr-iz-Crs"/>
                                             <constraint firstAttribute="width" secondItem="Qmd-fW-q9M" secondAttribute="height" multiplier="1:1" id="WHF-xT-dM6"/>
                                             <constraint firstItem="hS3-yk-81n" firstAttribute="top" secondItem="Qmd-fW-q9M" secondAttribute="top" id="bBg-Ph-wEV"/>
                                             <constraint firstAttribute="bottom" secondItem="hS3-yk-81n" secondAttribute="bottom" id="hrE-hH-V1E"/>
@@ -65,15 +65,14 @@
                                 <rect key="frame" x="124.5" y="13" width="15" height="15"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="NZ8-77-w2y"/>
                                     <constraint firstAttribute="width" secondItem="gip-JW-Db9" secondAttribute="height" multiplier="1:1" id="joh-oX-3aA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djG-8T-eKq">
-                                <rect key="frame" x="119.5" y="13" width="15" height="15"/>
+                                <rect key="frame" x="116.5" y="8" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="djG-8T-eKq" secondAttribute="height" multiplier="1:1" id="Gch-9y-XKQ"/>
-                                    <constraint firstAttribute="height" constant="15" id="zKj-ox-m0k"/>
+                                    <constraint firstAttribute="height" constant="20" id="zKj-ox-m0k"/>
                                 </constraints>
                                 <state key="normal" image="icon_uncheckedBox"/>
                             </button>
@@ -83,11 +82,11 @@
                             <constraint firstItem="gip-JW-Db9" firstAttribute="top" secondItem="1xA-f4-E0f" secondAttribute="top" constant="5" id="b5c-RH-ZpJ"/>
                             <constraint firstItem="djG-8T-eKq" firstAttribute="bottom" secondItem="gip-JW-Db9" secondAttribute="bottom" id="bYl-cb-gou"/>
                             <constraint firstAttribute="bottom" secondItem="ODR-gA-ZOA" secondAttribute="bottom" constant="2" id="ctx-Nc-eXI"/>
-                            <constraint firstItem="ODR-gA-ZOA" firstAttribute="top" secondItem="1xA-f4-E0f" secondAttribute="bottom" constant="8" id="e3h-y4-grc"/>
+                            <constraint firstItem="ODR-gA-ZOA" firstAttribute="top" secondItem="1xA-f4-E0f" secondAttribute="bottom" constant="35" id="e3h-y4-grc"/>
                             <constraint firstAttribute="trailing" secondItem="ODR-gA-ZOA" secondAttribute="trailing" constant="10" id="iwg-eE-VuC"/>
-                            <constraint firstItem="djG-8T-eKq" firstAttribute="top" secondItem="gip-JW-Db9" secondAttribute="top" id="mef-Jj-Ggz"/>
+                            <constraint firstItem="djG-8T-eKq" firstAttribute="top" secondItem="gip-JW-Db9" secondAttribute="top" constant="-5" id="mef-Jj-Ggz"/>
                             <constraint firstItem="1xA-f4-E0f" firstAttribute="top" secondItem="Bc7-Co-Iyx" secondAttribute="top" constant="8" id="oof-CF-ihy"/>
-                            <constraint firstItem="djG-8T-eKq" firstAttribute="trailing" secondItem="gip-JW-Db9" secondAttribute="trailing" constant="-5" id="sAG-WL-A5D"/>
+                            <constraint firstItem="djG-8T-eKq" firstAttribute="trailing" secondItem="gip-JW-Db9" secondAttribute="trailing" constant="-3" id="sAG-WL-A5D"/>
                             <constraint firstItem="1xA-f4-E0f" firstAttribute="centerX" secondItem="Bc7-Co-Iyx" secondAttribute="centerX" id="uoZ-yP-Kat"/>
                             <constraint firstItem="ODR-gA-ZOA" firstAttribute="leading" secondItem="Bc7-Co-Iyx" secondAttribute="leading" constant="10" id="vee-Q9-A3B"/>
                             <constraint firstItem="gip-JW-Db9" firstAttribute="trailing" secondItem="1xA-f4-E0f" secondAttribute="trailing" constant="6.5" id="wfd-cA-mub"/>
