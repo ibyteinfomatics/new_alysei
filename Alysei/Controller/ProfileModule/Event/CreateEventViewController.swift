@@ -344,7 +344,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
             config.showsCrop = .rectangle(ratio: 1.5)
-            
+            config.library.onlySquare = true
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)
             

@@ -392,7 +392,7 @@ class ProfileViewC: AlysieBaseViewC{
         
         
         if line == 5 {
-            shownumber = 50
+            shownumber = 60
         } else if line == 4 {
             shownumber = 90
         } else if line == 3 {
