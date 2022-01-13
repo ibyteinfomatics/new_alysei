@@ -31,7 +31,7 @@ class HubCitiesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vwHeader.drawBottomShadow()
+        vwHeader.drawBottomShadowGreen()
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         let state = selectedHub?.state.first
         self.postRequestToGetCity(state?.id ?? "")
@@ -86,8 +86,9 @@ extension HubCitiesListViewController:UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HubSelectStatesCollectionViewCell", for: indexPath) as? HubSelectStatesCollectionViewCell else {return UICollectionViewCell()}
-        cell.layer.cornerRadius = cell.layer.frame.height / 2
-        cell.layer.masksToBounds = true
+       // cell.layer.cornerRadius = cell.layer.frame.height / 2
+       // cell.layer.masksToBounds = true
+        cell.viewHeader.layer.cornerRadius = cell.viewHeader.layer.frame.height / 2
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         let state = selectedHub?.state[indexPath.row]
         cell.lblStateName.text = state?.name
@@ -96,7 +97,7 @@ extension HubCitiesListViewController:UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width / 4, height: 45)
+        return CGSize(width: self.collectionView.frame.width / 3, height: 45)
     }
     
     

@@ -22,7 +22,7 @@ class ConfirmSelectionVC: UIViewController , SelectList{
     var isEditHubServerApi = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewHeader.addShadow()
+        self.viewHeader.drawBottomShadowGreen()
         self.tableView.dataDelegate = self
         self.tableView.selectedHubs = selectedHubs
         self.tableView.roleId = self.roleId

@@ -56,9 +56,13 @@ class CountryModel {
 class FlagId{
     var attachmentUrl: String?
     var baseUrl: String?
+    
+    var fimageUrl: String?
     init(data: [String:Any]?) {
         self.attachmentUrl = String.getString(data?["attachment_url"])
         self.baseUrl = String.getString(data?["base_url"])
+        
+        self.fimageUrl = (self.baseUrl ?? "") + (self.attachmentUrl ?? "")
     }
     init() { }
 }
@@ -105,6 +109,7 @@ class CountryHubs {
         if let image = data?["image"] as? [String:Any]{
             self.image = FlagId.init(data: image)
         }
+    
     }
     
     init(cityFromServer data: [String:Any]?) {
@@ -169,6 +174,8 @@ class HubsViaCity {
     var longitude: String?
     var latitude: String?
     var radius: Int?
+    var image: String?
+    var baseUrl: String?
     
     init(data:[String:Any]?) {
         self.state_id = String.getString(data?["state_id"])
@@ -178,6 +185,12 @@ class HubsViaCity {
         self.longitude = String.getString(data?["longitude"])
         self.latitude = String.getString(data?["lattitude"])
         self.radius = Int.getInt(data?["radius"])
+        
+        if let image = data?["image"] as? [String:Any]{
+            self.image = image["attachment_url"] as? String
+            self.baseUrl = image["base_url"] as? String
+        }
+        
     }
     
     init(city data:[String:Any]?) {
@@ -186,6 +199,10 @@ class HubsViaCity {
         let hubsArray = kSharedInstance.getArray(withDictionary: data?["city_array"])
         self.hubs_array = hubsArray.map{CountryHubs(data: $0)}
         self.radius = Int.getInt(data?["radius"])
+        if let image = data?["image"] as? [String:Any]{
+            self.image = image["attachment_url"] as? String
+            self.baseUrl = image["base_url"] as? String
+        }
     }
     init() {}
 }

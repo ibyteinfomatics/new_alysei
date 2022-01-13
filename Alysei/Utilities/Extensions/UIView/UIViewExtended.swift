@@ -174,6 +174,27 @@ extension UIView
 //
     
   }
+    
+    func drawBottomShadowGreen(_ color: CGColor = UIColor.lightGray.cgColor) -> Void{
+      
+      layer.cornerRadius = 0.0
+      layer.shadowColor = color
+      layer.shadowOffset = CGSize(width: 0,height: 3)
+      layer.shadowOpacity = 0.4
+      layer.shadowRadius = 1
+      layer.masksToBounds = false
+      
+      
+  //    let shadowView = UIView(frame: self.navigationController!.navigationBar.frame)
+  //      shadowView.backgroundColor = UIColor.whiteColor()
+  //      shadowView.layer.masksToBounds = false
+  //      shadowView.layer.shadowOpacity = 0.4 // your opacity
+  //      shadowView.layer.shadowOffset = CGSize(width: 0, height: 2) // your offset
+  //      shadowView.layer.shadowRadius =  4 //your radius
+  //      self.view.addSubview(shadowView)
+  //
+      
+    }
   
   func drawShadow(cornerRadius radius:CGFloat = 8.0, shadowRadius:CGFloat = 4,shadowColor color:UIColor = AppColors.liteGray.color, shadowOffset offset: CGSize = .zero){
     

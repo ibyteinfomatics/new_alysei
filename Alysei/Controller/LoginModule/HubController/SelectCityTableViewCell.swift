@@ -44,11 +44,22 @@ class SelectCityTableViewCell: UITableViewCell {
     }
     
 
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        // still visible on screen (window's view hierarchy)
+        if self.window != nil { return }
+
+        imgHub.image = nil
+    }
+    
     //MARK: Initial Functions
     func initialSetup(){
         viewContainer.layer.shadowColor = UIColor.lightGray.cgColor

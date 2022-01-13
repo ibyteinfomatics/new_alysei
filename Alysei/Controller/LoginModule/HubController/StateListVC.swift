@@ -29,7 +29,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewHeader.drawBottomShadow()
+        self.viewHeader.drawBottomShadowGreen()
         self.searchSetUI()
         self.tableVIew.selectDelegate = self
         self.tableVIew.roleId = self.roleId
@@ -74,14 +74,14 @@ class StateListVC: AlysieBaseViewC , SelectList {
             // if let attributedString = self.createAttributedString(stringArray: ["\(country?.name ?? "")" + "/" + "\(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]) {
             self.lblHeaderText.attributedText = attributedString
         }
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
-            labelHeading.text = "Where you want to export?"
-        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "6"){
-           labelHeading.text = "Where you import?"
-        }else {
-            labelHeading.text = "Loreum lore lreum reum um ruse"
-            
-        }
+//        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
+//            labelHeading.text = "Where you want to export?"
+//        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "6"){
+//           labelHeading.text = "Where you import?"
+//        }else {
+//            labelHeading.text = "Loreum lore lreum reum um ruse"
+//
+//        }
         
     }
     

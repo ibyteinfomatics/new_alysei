@@ -38,7 +38,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         if #available(iOS 10.0, *) {
             columnLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         } else {
-            columnLayout.estimatedItemSize = CGSize(width: 41, height: 41)
+            columnLayout.estimatedItemSize = CGSize(width: 41, height: 51)
         }
         
        collectionView.collectionViewLayout = columnLayout
@@ -63,6 +63,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
     
     private func getHubNameCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
         let hubNameTableCell = collectionView.dequeueReusableCell(withReuseIdentifier: HubNameCollectionViewCell.identifier(), for: indexPath) as! HubNameCollectionViewCell
+        hubNameTableCell.lblHubImage.layer.cornerRadius = 12.5
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
             hubNameTableCell.lblNAme.text = reviewSelectedHubCityArray[indexPath.row]
@@ -70,6 +71,19 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         }else{
         let hub = self.selectedHub?.hubs[indexPath.row]
         self.labeCountryName.text = self.selectedHub?.country.name
+            if (hub?.image?.fimageUrl == "" || hub?.image?.fimageUrl == nil){
+                hubNameTableCell.lblHubImage.isHidden = true
+                hubNameTableCell.imgLeading.constant = 7
+                hubNameTableCell.imgTrailing.constant = 0
+                hubNameTableCell.imageWidth.constant = 0
+                
+            }else{
+                hubNameTableCell.lblHubImage.isHidden = false
+                hubNameTableCell.imgLeading.constant = 10
+                hubNameTableCell.imgTrailing.constant = 10
+                hubNameTableCell.imageWidth.constant = 25
+            hubNameTableCell.lblHubImage.setImage(withString: hub?.image?.fimageUrl ?? "")
+            }
         hubNameTableCell.lblNAme.text = hub?.name
         hubNameTableCell.lblNAme.sizeToFit()
         }

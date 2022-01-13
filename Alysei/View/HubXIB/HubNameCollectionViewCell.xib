@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Regular.ttf">
-            <string>Montserrat-Regular</string>
+        <array key="HelveticaNeue-Light.ttf">
+            <string>HelveticaNeue</string>
         </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HubNameCollectionViewCell" id="gTV-IL-0wX" customClass="HubNameCollectionViewCell" customModule="Alysie" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HubNameCollectionViewCell" id="gTV-IL-0wX" customClass="HubNameCollectionViewCell" customModule="Alysei" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -27,8 +27,8 @@
                         <rect key="frame" x="5" y="0.0" width="325" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jh-Pb-xbE">
-                                <rect key="frame" x="5" y="5" width="288" height="50"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <rect key="frame" x="45" y="5" width="248" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -40,15 +40,24 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="icons8_delete_4"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Dt2-9x-tgF">
+                                <rect key="frame" x="10" y="17.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="jGB-Vg-Hvx"/>
+                                    <constraint firstAttribute="height" constant="25" id="uSR-Zs-g6z"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
+                            <constraint firstItem="Dt2-9x-tgF" firstAttribute="centerY" secondItem="NJb-YJ-M5w" secondAttribute="centerY" id="3ZD-wq-5Oj"/>
                             <constraint firstItem="4jh-Pb-xbE" firstAttribute="top" secondItem="NJb-YJ-M5w" secondAttribute="top" constant="5" id="IVj-Cb-tbH"/>
-                            <constraint firstItem="4jh-Pb-xbE" firstAttribute="leading" secondItem="NJb-YJ-M5w" secondAttribute="leading" constant="5" id="JuV-JJ-Hao"/>
                             <constraint firstAttribute="trailing" secondItem="lyL-jG-VJz" secondAttribute="trailing" constant="10" id="S7f-oT-WGu"/>
                             <constraint firstItem="lyL-jG-VJz" firstAttribute="leading" secondItem="4jh-Pb-xbE" secondAttribute="trailing" constant="10" id="ZVH-wO-oqH"/>
                             <constraint firstItem="lyL-jG-VJz" firstAttribute="centerY" secondItem="4jh-Pb-xbE" secondAttribute="centerY" id="b5G-LT-WY0"/>
                             <constraint firstAttribute="bottom" secondItem="4jh-Pb-xbE" secondAttribute="bottom" constant="5" id="fAJ-Sh-7bi"/>
+                            <constraint firstItem="4jh-Pb-xbE" firstAttribute="leading" secondItem="Dt2-9x-tgF" secondAttribute="trailing" constant="10" id="iYJ-G6-mMs"/>
+                            <constraint firstItem="Dt2-9x-tgF" firstAttribute="leading" secondItem="NJb-YJ-M5w" secondAttribute="leading" constant="10" id="qcH-50-Pnu"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -67,6 +76,10 @@
             </constraints>
             <size key="customSize" width="335" height="60"/>
             <connections>
+                <outlet property="imageWidth" destination="jGB-Vg-Hvx" id="8nL-p1-tEZ"/>
+                <outlet property="imgLeading" destination="qcH-50-Pnu" id="Kdr-Uw-RPL"/>
+                <outlet property="imgTrailing" destination="iYJ-G6-mMs" id="Wob-zd-n4V"/>
+                <outlet property="lblHubImage" destination="Dt2-9x-tgF" id="NoA-dr-oJ5"/>
                 <outlet property="lblNAme" destination="4jh-Pb-xbE" id="xCZ-nW-s80"/>
             </connections>
             <point key="canvasLocation" x="274.63768115942031" y="78.348214285714278"/>
@@ -74,6 +87,7 @@
     </objects>
     <resources>
         <image name="icons8_delete_4" width="25" height="25"/>
+        <image name="image_placeholder" width="41" height="33"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

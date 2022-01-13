@@ -16,7 +16,7 @@ class HubSelectStatesCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.viewHeader.layer.cornerRadius = self.viewBottom.layer.frame.height / 2
+        
        // self.viewHeader.layer.masksToBounds = true
         self.viewBottom.isHidden = true
     }

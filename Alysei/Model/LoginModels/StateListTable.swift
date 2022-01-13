@@ -71,6 +71,12 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         }else{
             cell.imgViewHght.constant = 0
         }
+        
+        if self.hasCome == .hubs {
+            cell.labelCityName.font = UIFont(name: "HelveticaNeue-Bold", size: 16.0)
+        }else{
+            cell.labelCityName.font = UIFont(name: "HelveticaNeue-Regular", size: 16.0)
+        }
         cell.configCell(states, indexPath.row, .city)
         return cell
     }

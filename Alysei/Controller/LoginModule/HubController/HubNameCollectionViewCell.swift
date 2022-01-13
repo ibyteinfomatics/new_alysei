@@ -10,6 +10,11 @@ import UIKit
 class HubNameCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var lblNAme: UILabel!
+    @IBOutlet weak var lblHubImage: UIImageView!
+    @IBOutlet weak var imageWidth: NSLayoutConstraint!
+    @IBOutlet weak var imgLeading: NSLayoutConstraint!
+    @IBOutlet weak var imgTrailing: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

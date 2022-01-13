@@ -4,16 +4,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Bold.ttf">
-            <string>Montserrat-Bold</string>
+        <array key="HelveticaNeue-Light.ttf">
+            <string>HelveticaNeue</string>
         </array>
-        <array key="Montserrat-Medium.ttf">
-            <string>Montserrat-Medium</string>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
@@ -47,15 +48,15 @@
                                 <constraint firstAttribute="height" constant="40" id="HlY-qb-oqL"/>
                                 <constraint firstAttribute="width" secondItem="Hmx-dX-HSX" secondAttribute="height" multiplier="1:1" id="znL-hV-ih3"/>
                             </constraints>
-                            <state key="normal" title="Button" image="back_black"/>
+                            <state key="normal" image="back_white"/>
                             <connections>
                                 <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="c0N-Bc-OAd"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Hubs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tof-SA-F88">
-                            <rect key="frame" x="75" y="24" width="100" height="20"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="75" y="24.5" width="92" height="19.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOx-zz-rFq">
@@ -64,16 +65,16 @@
                                 <constraint firstAttribute="width" constant="100" id="Ob0-Du-Sl4"/>
                                 <constraint firstAttribute="height" constant="40" id="lr3-jp-X1z"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <state key="normal" title="Done">
-                                <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="nextButtonAction:" destination="-1" eventType="touchUpInside" id="B5g-Vc-2hj"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="keppelColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="qOx-zz-rFq" secondAttribute="trailing" constant="20" id="8oc-XK-iDa"/>
                         <constraint firstItem="Hmx-dX-HSX" firstAttribute="leading" secondItem="ro2-Db-Eba" secondAttribute="leading" constant="20" id="Art-nQ-wQQ"/>
@@ -123,8 +124,8 @@
                     <rect key="frame" x="0.0" y="133" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 of 0 hubs selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmH-rx-6Fp">
-                            <rect key="frame" x="10" y="16" width="394" height="18.5"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                            <rect key="frame" x="10" y="16.5" width="394" height="17.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -166,7 +167,10 @@
         </view>
     </objects>
     <resources>
-        <image name="back_black" width="24" height="18.5"/>
+        <image name="back_white" width="24" height="18.5"/>
+        <namedColor name="keppelColor">
+            <color red="0.20000000000000001" green="0.63921568627450975" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
