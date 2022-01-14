@@ -35,6 +35,7 @@ class SelectCityTableViewCell: UITableViewCell {
     var hubRadius: Int?
     
     var checkCase: CountryCityHubSelection?
+    var hasCome: HasCome?
 
 
     override func awakeFromNib() {
@@ -62,7 +63,7 @@ class SelectCityTableViewCell: UITableViewCell {
     
     //MARK: Initial Functions
     func initialSetup(){
-        viewContainer.layer.shadowColor = UIColor.lightGray.cgColor
+        viewContainer.layer.shadowColor = UIColor.darkGray.cgColor
         viewContainer.layer.shadowOpacity = 0.5
         viewContainer.layer.shadowOffset = .zero
         viewContainer.layer.shadowRadius = 1
@@ -74,9 +75,13 @@ class SelectCityTableViewCell: UITableViewCell {
         buttonLeftCheckbox.isHidden = false
        // buttonLeftCheckWidth.constant = 20
        labelCityName.text = data?.name
-        self.imgHub.layer.cornerRadius = 15
+       // self.imgHub.layer.cornerRadius = 15
         self.imgHub.setImage(withString: String.getString(data?.image?.baseUrl) + String.getString(data?.image?.attachmentUrl))
+        if self.hasCome == .hubs{
         self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "icon_blueSelected") : UIImage(named: "icon_uncheckedBox"), for: .normal)
+        }else{
+            self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "checkbox_white") : UIImage(named: "icon_uncheckedBox"), for: .normal)
+        }
         
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
        

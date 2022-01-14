@@ -79,7 +79,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
           self.lblUserEmail.isHidden = false
         self.lblUserEmail.text = "@" + "\(kSharedUserDefaults.loggedInUserModal.userName ?? "")"
       }
-      if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().profilePhoto) {
+      if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
           self.imgViewUser.image = profilePhoto
           self.imgViewUser.layer.cornerRadius = (self.imgViewUser.frame.width / 2.0)
           self.imgViewUser.layer.borderWidth = 5.0

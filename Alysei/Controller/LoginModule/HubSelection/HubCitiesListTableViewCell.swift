@@ -21,8 +21,10 @@ class HubCitiesListTableViewCell: UITableViewCell {
         
         if btnSelected.isSelected == true{
             self.viewContainer.layer.backgroundColor = UIColor.init(hexString: "#4BB3FD").cgColor
+            self.btnSelected.setImage(UIImage(named: "checkbox_white"), for: .normal)
         }else{
             self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
+            self.btnSelected.setImage(UIImage(named: "icon_uncheckedBox"), for: .normal)
         }
     }
 

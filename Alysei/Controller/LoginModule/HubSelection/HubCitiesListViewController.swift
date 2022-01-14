@@ -116,6 +116,9 @@ extension HubCitiesListViewController:UICollectionViewDataSource, UICollectionVi
             let response = kSharedInstance.getDictionary(dictResponse)
             guard let data = response["data"] as? [[String:Any]] else {return}
             self.cityList = data.map{CountryHubs(data: $0)}
+            if self.cityList != nil  {
+            self.cityList?.remove(at: 0)
+            }
             for hub in self.cityList ?? [] {
                 for selectedHubs in self.selectedHubs {
                     hub.isSelected = selectedHubs.hubs.first{$0.id == hub.id && $0.name == hub.name } != nil

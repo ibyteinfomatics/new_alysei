@@ -36,18 +36,27 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     //MARK: - Public Methods -
     
     public func configure(_ indexPath: IndexPath,currentIndex:Int){
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+     // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
            // self.animationCallback?(currentIndex,self)
-            self.animationCallback?(indexPath.row,self)
-         // self.delegate?.animateViews(currentIndex, cell: self)
+           // self.animationCallback?(indexPath.row,self)
+//          if indexPath.row == currentIndex {
+//              self.animationCallback?(currentIndex,self)
+//          }
+         print("Current Index------------\(currentIndex)")
+          print("indexPath.row ------------\(indexPath.row)")
+          if currentIndex == indexPath.row {
+              self.delegate?.animateViews(currentIndex, cell: self)
+          }
+          
         //   }
-      }
+     // }
     
   }
     
     func configCell(_ data: ProfileCompletionModel, _ cell: ProfileCompletionTableViewCell){
         self.data = data
+        
         if data.status == true{
             btnArrow.isHidden = true
             cell.isUserInteractionEnabled = false

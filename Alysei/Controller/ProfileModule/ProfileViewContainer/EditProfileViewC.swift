@@ -45,6 +45,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
     override func viewDidLoad() {
       
         super.viewDidLoad()
+       
 //        print("Profile Pic----------------------------------------------\(signUpViewModel.profileData?.avatarID?.attachmentURL ?? "")")
 //        print("Cover Pic----------------------------------------------\(signUpViewModel.profileData?.coverID?.attachmentURL ?? "")")
         vwheader.drawBottomShadow()
@@ -76,11 +77,18 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
         fetchProductsFromProfile()
     }
 
+    func disableInteraction(){
+        self.disableWindowInteraction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            self.enableWindowInteraction()
+        }
+    }
     func fetchProductsFromProfile() {
         if let nav = self.parent as? UINavigationController, let profileCon = nav.viewControllers.first as? ProfileViewC {
             profileCon.reloadFields()
 
         }
+        
 
 //        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
 
@@ -96,6 +104,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.disableInteraction()
         scrollToTop()
         
        self.tableViewEditProfile.reloadData()
