@@ -84,7 +84,7 @@ class ConversationViewController: AlysieBaseViewC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //self.navigationController?.navigationBar.isHidden = false
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enable = true
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -197,7 +197,7 @@ class ConversationViewController: AlysieBaseViewC {
     }
     
     @IBAction func btnBackTapped(_ sender: UIButton) {
-        
+        IQKeyboardManager.shared.enable = false
         if fromvc == .Notification {
             kSharedAppDelegate.pushToTabBarViewC()
         } else {

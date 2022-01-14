@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8897,7 +8897,7 @@ any other devices.</string>
                                             <state key="normal" image="cross_icon_black"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GN-Mp-zPS">
-                                            <rect key="frame" x="20" y="158" width="124" height="21"/>
+                                            <rect key="frame" x="19.999999999999993" y="158" width="106.33333333333331" height="20"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                             <color key="textColor" red="0.1137254902" green="0.28235294119999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -9329,13 +9329,13 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="796" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Sent Successfully." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K73-EL-DFH">
-                                        <rect key="frame" x="15" y="30" width="199" height="17.666666666666671"/>
+                                        <rect key="frame" x="15" y="30" width="182.33333333333334" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAK-Db-jPb">
-                                        <rect key="frame" x="355" y="23" width="44" height="32"/>
+                                        <rect key="frame" x="358" y="23.333333333333371" width="41" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -10784,7 +10784,7 @@ any other devices.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kig-oh-R08">
-                                <rect key="frame" x="30" y="437.66666666666669" width="354" height="21"/>
+                                <rect key="frame" x="30" y="438" width="354" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -10995,7 +10995,7 @@ any other devices.</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZI7-5g-Tbo">
-                                                            <rect key="frame" x="80.333333333333343" y="0.0" width="62" height="10"/>
+                                                            <rect key="frame" x="80.333333333333343" y="4" width="62" height="10"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8p-W9-Tvf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -11028,8 +11028,8 @@ any other devices.</string>
                                                     <constraints>
                                                         <constraint firstItem="ZI7-5g-Tbo" firstAttribute="leading" secondItem="EDC-e7-Vo8" secondAttribute="trailing" constant="15" id="5zO-QM-Csj"/>
                                                         <constraint firstItem="EDC-e7-Vo8" firstAttribute="leading" secondItem="8tU-Ra-TKJ" secondAttribute="leading" id="Hfi-ix-U1y"/>
-                                                        <constraint firstItem="ZI7-5g-Tbo" firstAttribute="top" secondItem="8tU-Ra-TKJ" secondAttribute="top" id="Xbe-Q2-mar"/>
                                                         <constraint firstAttribute="bottom" secondItem="EDC-e7-Vo8" secondAttribute="bottom" id="d7Q-ca-VLL"/>
+                                                        <constraint firstItem="ZI7-5g-Tbo" firstAttribute="centerY" secondItem="8tU-Ra-TKJ" secondAttribute="centerY" id="pCD-jF-q4C"/>
                                                         <constraint firstItem="EDC-e7-Vo8" firstAttribute="top" secondItem="8tU-Ra-TKJ" secondAttribute="top" id="rAu-Sr-W8Q"/>
                                                     </constraints>
                                                 </view>
@@ -18647,7 +18647,7 @@ You will be notified for any membership status update.</string>
                                                 </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type here..."/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
@@ -18838,7 +18838,7 @@ You will be notified for any membership status update.</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dK5-Ay-y9c">
-                                                                    <rect key="frame" x="80.333333333333343" y="0.0" width="62" height="10"/>
+                                                                    <rect key="frame" x="80.333333333333343" y="4.0000000000000284" width="62" height="10"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plb-Ht-Pou">
                                                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -18871,9 +18871,9 @@ You will be notified for any membership status update.</string>
                                                             <constraints>
                                                                 <constraint firstItem="dK5-Ay-y9c" firstAttribute="leading" secondItem="c2h-I2-1hW" secondAttribute="trailing" constant="15" id="EIL-WL-Q5E"/>
                                                                 <constraint firstItem="c2h-I2-1hW" firstAttribute="top" secondItem="Qwc-qb-41X" secondAttribute="top" id="Kc9-4D-bVd"/>
-                                                                <constraint firstItem="dK5-Ay-y9c" firstAttribute="top" secondItem="Qwc-qb-41X" secondAttribute="top" id="QG4-xc-Rv5"/>
                                                                 <constraint firstItem="c2h-I2-1hW" firstAttribute="leading" secondItem="Qwc-qb-41X" secondAttribute="leading" id="ThL-Am-Mje"/>
                                                                 <constraint firstAttribute="bottom" secondItem="c2h-I2-1hW" secondAttribute="bottom" id="YF1-KJ-TR8"/>
+                                                                <constraint firstItem="dK5-Ay-y9c" firstAttribute="centerY" secondItem="Qwc-qb-41X" secondAttribute="centerY" id="dwr-VW-FQP"/>
                                                             </constraints>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-wG-Xgk">
@@ -23276,7 +23276,7 @@ AAAAAAABG/w
         <image name="icon_uncheckedBox" width="26" height="26"/>
         <image name="icons8_comments" width="20.666666030883789" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.333333969116211" height="19.333333969116211"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.333333969116211" height="10.666666984558105"/>
