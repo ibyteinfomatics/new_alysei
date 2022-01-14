@@ -36,7 +36,7 @@ class ProfileCompletionTableViewCell: UITableViewCell {
     //MARK: - Public Methods -
     
     public func configure(_ indexPath: IndexPath,currentIndex:Int){
-     // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
            // self.animationCallback?(currentIndex,self)
            // self.animationCallback?(indexPath.row,self)
@@ -45,16 +45,16 @@ class ProfileCompletionTableViewCell: UITableViewCell {
 //          }
          print("Current Index------------\(currentIndex)")
           print("indexPath.row ------------\(indexPath.row)")
-          if currentIndex == indexPath.row {
-              self.delegate?.animateViews(currentIndex, cell: self)
-          }
+         // if currentIndex == indexPath.row {
+              self.delegate?.animateViews(indexPath.row, cell: self)
+         // }
           
         //   }
-     // }
+      }
     
   }
     
-    func configCell(_ data: ProfileCompletionModel, _ cell: ProfileCompletionTableViewCell){
+    func configCell(_ data: ProfileCompletionModel, _ cell: ProfileCompletionTableViewCell, _ index: Int?){
         self.data = data
         
         if data.status == true{

@@ -14,6 +14,9 @@ class AddFeatureTableCell: UITableViewCell {
     @IBOutlet weak var txtFieldAddFeature: UITextField!
     @IBOutlet weak var lblAddFeature: UILabel!
     @IBOutlet weak var txtViewAddFeature: UITextView!
+    @IBOutlet weak var lblCountTxt: UILabel!
+    @IBOutlet weak var lblMaxCount: UILabel!
+    
     var callback: ((String) -> Void)? = nil
     var userLevel: UserLevel?
     
@@ -64,9 +67,19 @@ class AddFeatureTableCell: UITableViewCell {
         if model.productTitle == AppConstants.kDescription{
             txtFieldAddFeature.isHidden = true
             txtViewAddFeature.isHidden = false
+            lblCountTxt.isHidden = false
+            lblMaxCount.isHidden = false
+            
+            if txtViewAddFeature.text == AppConstants.kDescription {
+                self.lblCountTxt.text = "0"
+            }else{
+                self.lblCountTxt.text = "\(txtViewAddFeature.text.count)"
+            }
         }else{
             txtFieldAddFeature.isHidden = false
             txtViewAddFeature.isHidden = true
+            lblCountTxt.isHidden = true
+            lblMaxCount.isHidden = true
         }
         if (model.productTitle == AppConstants.URL) || (model.productTitle == AppConstants.URL){
             self.urlFeatureProduct = model.selectedValue
@@ -100,6 +113,7 @@ class AddFeatureTableCell: UITableViewCell {
     }
     
 }
+
 extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
@@ -116,7 +130,16 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let spaceCount = textView.text.count
-        if spaceCount <= 199{
+        
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let finalText = updatedText//.removeWhitespace()
+        if finalText.count <= 200 {
+            if txtViewAddFeature.text == AppConstants.kDescription {
+                self.lblCountTxt.text = "0"
+            }else{
+            self.lblCountTxt.text = "\(finalText.count)"
+            }
             self.productFieldsDataModel.selectedValue = String.getString(self.txtViewAddFeature.text)
             callback?(textView.text)
             return true

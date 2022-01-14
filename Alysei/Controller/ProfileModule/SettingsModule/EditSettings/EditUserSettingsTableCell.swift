@@ -46,5 +46,12 @@ class EditUserSettingsTableCell: UITableViewCell {
     self.txtFieldSettings.isUserInteractionEnabled = ((model.settingsHeading == AppConstants.Email.capitalized) || (model.settingsHeading == AppConstants.CompanyName.capitalized)) ? false : true
     self.txtFieldSettings.attributedPlaceholder = NSAttributedString(string: String.getString(model.settingsPlaceholder),
                                                                    attributes: [NSAttributedString.Key.foregroundColor: AppColors.liteGray.color])
+      
+      if ((model.settingsHeading == AppConstants.Username) && (model.settingsSelectedValue != nil)) {
+          txtFieldSettings.isUserInteractionEnabled = false
+          
+      }else{
+          txtFieldSettings.isUserInteractionEnabled = true
+      }
   }
 }

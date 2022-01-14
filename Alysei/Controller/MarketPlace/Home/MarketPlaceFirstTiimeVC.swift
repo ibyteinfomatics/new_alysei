@@ -25,7 +25,17 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
 
         // Do any additional setup after loading the view.
     }
-    
+ override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        edgesForExtendedLayout = UIRectEdge.bottom
+        extendedLayoutIncludesOpaqueBars = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.hidesBottomBarWhenPushed = true
+    }
     private func getTutorialCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
       
       let cell = collectionViewTutorial.dequeueReusableCell(withReuseIdentifier: WalkthroughCVC.identifier(), for: indexPath) as! WalkthroughCVC

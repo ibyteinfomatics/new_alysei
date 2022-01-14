@@ -49,6 +49,7 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
        
         
     }
+    
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        labelHeading1Leading.constant -= view.bounds.width
@@ -57,10 +58,23 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
 //        labelHeading4Leading.constant -= view.bounds.width
 //        labelHeadingLeading.constant -= view.bounds.width
 //    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        edgesForExtendedLayout = UIRectEdge.bottom
+        extendedLayoutIncludesOpaqueBars = true
+    }
+
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        tabBarController?.tabBar.isHidden = true
+//        self.tabBarController.tabBar.isTranslucent = true
+//    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.tabBarController?.tabBar.isHidden = true
+        self.hidesBottomBarWhenPushed = true
        
         UIView.animate(withDuration: 1.0) {
             self.labelHeading1.transform = CGAffineTransform(translationX: 120, y: 0)
@@ -89,6 +103,12 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
         
        
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        self.hidesBottomBarWhenPushed = true
+    }
+    
     private func postRequestToGetCountries() {
         self.disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetUpcomingCountries, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errortype, statusCode) in

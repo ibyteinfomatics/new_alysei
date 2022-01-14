@@ -23,6 +23,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var btnUpload: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
   @IBOutlet weak var btnCamera: UIButton!
+
     
     var addDesc = false
     var addUrl = false

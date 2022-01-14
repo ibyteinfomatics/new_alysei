@@ -175,13 +175,17 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     override func viewDidDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-    override func viewDidAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-        //self.walkView1Trailing.constant = self.view.frame.width
-        self.walkView1Top.constant = self.view.frame.height
-    }
+    
+       override func viewDidAppear(_ animated: Bool) {
+           super.viewDidAppear(animated)
+           self.tabBarController?.tabBar.isHidden = true
+           self.hidesBottomBarWhenPushed = true
+       }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        edgesForExtendedLayout = UIRectEdge.bottom
+        extendedLayoutIncludesOpaqueBars = true
         self.nextWalkCount = 0
         self.walkView1.isHidden = true
         self.vwwWalkContainer1.isHidden = true

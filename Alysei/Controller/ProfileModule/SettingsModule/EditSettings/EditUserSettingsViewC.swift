@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class EditUserSettingsViewC: AlysieBaseViewC {
 
@@ -19,9 +20,11 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   @IBOutlet weak var btnSave: UIButton!
   //MARK: - Properties -
   
+    var languageArray = ["English", "Italian"]
   var settingEditViewModel: SettingsEditViewModel!
   var featureListingId: String?
   var currentProductTitle: String?
+    var dataDropDown = DropDown()
   
   //MARK: - ViewLifeCycle Methods -
   
@@ -115,6 +118,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   private func getEditUserSettingsTableCell(_ indexPath: IndexPath) -> UITableViewCell{
       
     let editUserSettingsTableCell = tblViewEditUserSettings.dequeueReusableCell(withIdentifier: EditUserSettingsTableCell.identifier(), for: indexPath) as! EditUserSettingsTableCell
+     // if
     editUserSettingsTableCell.configure(withSettingsEditDataModel: self.settingEditViewModel.arrSections[indexPath.section].arrSettingsData[indexPath.row])
     return editUserSettingsTableCell
   }
@@ -161,6 +165,19 @@ class EditUserSettingsViewC: AlysieBaseViewC {
     disableWindowInteraction()
     CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetFeatureListing + featureListingId, method: .GET, controller: self, type: 2, param: [:], btnTapped: UIButton())
   }
+    func opendropDown(_ bound: EditLanguageTableCell){
+        dataDropDown.dataSource = languageArray
+        dataDropDown.show()
+        dataDropDown.anchorView = bound.viewContainer
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            bound.lblLanguage.text = item
+        }
+        dataDropDown.cellHeight = 50
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .bottom
+    }
     
 }
 
@@ -177,6 +194,8 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       return 0
     }
   }
+     
+    
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
     
@@ -214,6 +233,23 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       return UITableViewCell()
     }
   }
+     
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         guard let cell = tableView.cellForRow(at: indexPath) as? EditLanguageTableCell else {return}
+         let model = self.settingEditViewModel.arrSections[indexPath.section]
+         let settingsModel = model.arrSettingsData[indexPath.row]
+         switch settingsModel.settingsCellType {
+         case .language:
+             self.opendropDown(cell )
+         default:
+             print("No change")
+             
+         }
+            
+         
+     }
+     
+     
     
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
@@ -236,6 +272,8 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       return 0.0
     }
   }
+     
+     
 }
 
 //APIResponse
