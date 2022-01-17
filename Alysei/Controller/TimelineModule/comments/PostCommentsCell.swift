@@ -41,6 +41,7 @@ class SelfPostCommentsCell: UITableViewCell {
         super.awakeFromNib()
         view.layer.cornerRadius = 5
         tableView.isHidden = false
+        threedotBtn.isHidden = true
         self.tableView.register(UINib(nibName: "PostCommentsCell", bundle: nil), forCellReuseIdentifier: "cell")
         self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2.0
         loadReplytable()

@@ -552,7 +552,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"
-        cell.userImageView.setImage(withString: imageDomain+"/"+String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
+        cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
         
     }

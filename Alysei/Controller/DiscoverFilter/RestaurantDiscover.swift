@@ -100,7 +100,7 @@ class RestaurantDiscover: AlysieBaseViewC {
         let restTableCell = tripsTableView.dequeueReusableCell(withIdentifier: BlogsTableViewCell.identifier()) as! BlogsTableViewCell
         
         restTableCell.blogTitle.text = restauUser[indexPath].restaurantName
-        restTableCell.blogDescription.text = restauUser[indexPath].restaurant_type
+        restTableCell.blogDescription.text = "Restaurant Type : \(restauUser[indexPath].restaurant_type ?? "")"
         
         restTableCell.imgUser.layer.cornerRadius =  restTableCell.imgUser.frame.height / 2
         
