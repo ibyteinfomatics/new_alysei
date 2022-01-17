@@ -128,7 +128,7 @@ class BlogsViewController: AlysieBaseViewC {
             vc.blogtitle = self.blogModel?.data?[indexPath].title
             vc.fulldescription = self.blogModel?.data?[indexPath].datumDescription
             vc.draft = self.blogModel?.data?[indexPath].status
-            vc.imgurl = self.blogModel?.data?[indexPath].attachment?.attachmentURL
+            vc.imgurl = String.getString((self.blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+(self.blogModel?.data?[indexPath].attachment?.attachmentURL)! )
             vc.blo_id = self.blogModel?.data?[indexPath].blogID
             vc.typeofpage = "edit"
                     
@@ -141,7 +141,7 @@ class BlogsViewController: AlysieBaseViewC {
             vc.blogtitle = self.blogModel?.data?[indexPath].title
             vc.fulldescription = self.blogModel?.data?[indexPath].datumDescription
             vc.draft = self.blogModel?.data?[indexPath].status
-            vc.imgurl = self.blogModel?.data?[indexPath].attachment?.attachmentURL
+            vc.imgurl = String.getString((self.blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+(self.blogModel?.data?[indexPath].attachment?.attachmentURL)! )
             vc.typeofpage = "read"
                     
         }

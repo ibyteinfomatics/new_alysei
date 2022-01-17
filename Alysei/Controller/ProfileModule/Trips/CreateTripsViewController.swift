@@ -141,7 +141,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             intensityTxf.text = intensity
             priceTxf.text = price
             descriptionTextView.text = fulldescription
-            uploadImage.setImage(withString: String.getString((baseURL ?? "") + imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString(imgurl!), placeholder: UIImage(named: "image_placeholder"))
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
             
@@ -324,7 +324,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
-            config.showsCrop = .rectangle(ratio: 1.5)
+            //config.showsCrop = .rectangle(ratio: 1.5)
             config.library.onlySquare = true
 
             config.library.preselectedItems = ypImages

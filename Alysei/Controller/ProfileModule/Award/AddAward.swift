@@ -64,9 +64,15 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddAward.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        urlLabel.isHidden = false
+        urlNameTxf.placeholder = ""
+        urlView1.isHidden = false
+        urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
+        urlNameTxf.text = "https://"
+        
         if eventName != nil {
             
-            uploadImage.setImage(withString: String.getString(kImageBaseUrl+imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString(imgurl!), placeholder: UIImage(named: "image_placeholder"))
             
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
@@ -87,10 +93,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             productView1.isHidden = false
             productLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
-            urlLabel.isHidden = false
-            urlNameTxf.placeholder = ""
-            urlView1.isHidden = false
-            urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
+            
             
             placeLabel.isHidden = false
             placeNameTxf.placeholder = ""
@@ -173,7 +176,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
-            config.showsCrop = .rectangle(ratio: 1.5)
+            //config.showsCrop = .rectangle(ratio: 1.5)
             config.library.onlySquare = true
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)

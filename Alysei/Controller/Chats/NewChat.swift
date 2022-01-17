@@ -36,6 +36,7 @@ class NewChat: AlysieBaseViewC {
     
         let notificationTableCell = tblView.dequeueReusableCell(withIdentifier: "NotificationTableCell") as! NotificationTableCell
         
+        let baseUrlImg = self.connection?.data?[index].user?.avatarID?.baseUrl ?? ""
         
         if connection?.data?[index].user?.companyName != "" {
             notificationTableCell.name.text = connection?.data?[index].user?.companyName
@@ -53,7 +54,7 @@ class NewChat: AlysieBaseViewC {
         notificationTableCell.imgViewNotification.layer.cornerRadius = notificationTableCell.imgViewNotification.frame.width/2
         
         if self.connection?.data?[index].user?.avatarID?.attachmentURL != nil {
-            notificationTableCell.imgViewNotification.setImage(withString: String.getString(kImageBaseUrl+(self.connection?.data?[index].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+            notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrlImg+(self.connection?.data?[index].user?.avatarID?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
         }
         
         
@@ -102,6 +103,9 @@ extension NewChat: UITableViewDataSource, UITableViewDelegate{
         //vc.receiverDetails = self.ResentUser?[indexPath.row]
         vc.userId  = String.getString(self.connection?.data?[indexPath.row].user?.userID)
         
+        
+        let baseUrlImg = self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? ""
+        
         if connection?.data?[indexPath.row].user?.companyName != "" {
             vc.name = connection?.data?[indexPath.row].user?.companyName
         } else if connection?.data?[indexPath.row].user?.firstname != ""{
@@ -110,7 +114,7 @@ extension NewChat: UITableViewDataSource, UITableViewDelegate{
             vc.name = connection?.data?[indexPath.row].user?.restaurantName
         }
         if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-            vc.profileImageUrl = kImageBaseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""
+            vc.profileImageUrl = baseUrlImg+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL)! ?? ""
         }
         
    

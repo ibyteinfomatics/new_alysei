@@ -142,7 +142,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             websiteTxf.text = website
             eventTxf.text = eventYype
             registrationTxf.text = registrationType
-            uploadImage.setImage(withString: String.getString((baseUrl ?? "") + imgurl!), placeholder: UIImage(named: "image_placeholder"))
+            uploadImage.setImage(withString: String.getString(imgurl!), placeholder: UIImage(named: "image_placeholder"))
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
             
@@ -343,7 +343,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             config.screens = [.library, .photo]
             config.library.maxNumberOfItems = 1
             config.showsPhotoFilters = true
-            config.showsCrop = .rectangle(ratio: 1.5)
+            //config.showsCrop = .rectangle(ratio: 1.5)
             config.library.onlySquare = true
             config.library.preselectedItems = ypImages
             let picker = YPImagePicker(configuration: config)

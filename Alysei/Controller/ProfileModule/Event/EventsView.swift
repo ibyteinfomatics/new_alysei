@@ -146,7 +146,7 @@ class EventsView: AlysieBaseViewC {
             vc.website = self.eventModel?.data?[indexPath].website
             vc.eventYype = self.eventModel?.data?[indexPath].eventType
             vc.registrationType = self.eventModel?.data?[indexPath].registrationType
-            vc.imgurl = self.eventModel?.data?[indexPath].attachment?.attachmenturl
+            vc.imgurl = String.getString((self.eventModel?.data?[indexPath].attachment?.baseUrl ?? "")+(self.eventModel?.data?[indexPath].attachment?.attachmenturl ?? ""))
             vc.bookingUrl = self.eventModel?.data?[indexPath].url
             vc.typeofpage = "read"
             
@@ -164,7 +164,7 @@ class EventsView: AlysieBaseViewC {
             vc.website = self.eventModel?.data?[indexPath].website
             vc.eventYype = self.eventModel?.data?[indexPath].eventType
             vc.registrationType = self.eventModel?.data?[indexPath].registrationType
-            vc.imgurl = self.eventModel?.data?[indexPath].attachment?.attachmenturl
+            vc.imgurl = String.getString((self.eventModel?.data?[indexPath].attachment?.baseUrl ?? "")+(self.eventModel?.data?[indexPath].attachment?.attachmenturl ?? ""))
             vc.event_id = self.eventModel?.data?[indexPath].eventid
             vc.typeofpage = "edit"
             

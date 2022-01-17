@@ -71,6 +71,8 @@ class TripsViewController: AlysieBaseViewC {
         
         let imageUrl = (tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "") + (tripModel?.data?[indexPath].user?.avatarID?.attachmentURL ?? "")
         tripTableCell.userImage.setImage(withString: imageUrl)
+        tripTableCell.userImage.layer.cornerRadius = tripTableCell.userImage.frame.height / 2
+        tripTableCell.userImage.layer.masksToBounds = true
         tripTableCell.configCell(tripModel?.data?[indexPath] ?? TripDatum(with: [:]))
         tripTableCell.editButton.tag = indexPath
         tripTableCell.deleteButton.tag = indexPath
@@ -240,7 +242,7 @@ class TripsViewController: AlysieBaseViewC {
             vc.website = self.tripModel?.data?[indexPath].website
             vc.price = self.tripModel?.data?[indexPath].price
             vc.fulldescription = self.tripModel?.data?[indexPath].datumDescription
-            vc.imgurl = self.tripModel?.data?[indexPath].attachment?.attachmentURL
+            vc.imgurl = String.getString((self.tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+(self.tripModel?.data?[indexPath].attachment?.attachmentURL)! ?? "")
             vc.trip_id = self.tripModel?.data?[indexPath].tripID
             
             vc.countryId = self.tripModel?.data?[indexPath].country?.id
@@ -266,7 +268,7 @@ class TripsViewController: AlysieBaseViewC {
             vc.website = self.tripModel?.data?[indexPath].website
             vc.price = self.tripModel?.data?[indexPath].price
             vc.fulldescription = self.tripModel?.data?[indexPath].datumDescription
-            vc.imgurl = self.tripModel?.data?[indexPath].attachment?.attachmentURL
+            vc.imgurl = String.getString((self.tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+(self.tripModel?.data?[indexPath].attachment?.attachmentURL)! ?? "")
             vc.currency = self.tripModel?.data?[indexPath].currency
             vc.typeofpage = "read"
             

@@ -85,6 +85,7 @@ class ConversationViewController: AlysieBaseViewC {
         super.viewWillAppear(animated)
         //self.navigationController?.navigationBar.isHidden = false
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -129,6 +130,7 @@ class ConversationViewController: AlysieBaseViewC {
         }
     }*/
     
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         chatTextView.resignFirstResponder()
         return true
@@ -198,6 +200,7 @@ class ConversationViewController: AlysieBaseViewC {
     
     @IBAction func btnBackTapped(_ sender: UIButton) {
         IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
         if fromvc == .Notification {
             kSharedAppDelegate.pushToTabBarViewC()
         } else {

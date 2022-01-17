@@ -299,6 +299,7 @@ extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let indexPath = indexPath.row
+        let baseUrlImg = self.tripData[indexPath].attachment?.baseUrl ?? ""
         let vc = self.pushViewController(withName: CreateTripsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateTripsViewController
         vc.tripname = self.tripData[indexPath].tripName
         vc.agency = self.tripData[indexPath].travelAgency
@@ -311,7 +312,7 @@ extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
         vc.website = self.tripData[indexPath].website
         vc.price = self.tripData[indexPath].price
         vc.fulldescription = self.tripData[indexPath].datumDescription
-        vc.imgurl = self.tripData[indexPath].attachment?.attachmentURL
+        vc.imgurl = String.getString(baseUrlImg + (self.tripData[indexPath].attachment?.attachmentURL)! )
         vc.currency = self.tripData[indexPath].currency
         vc.typeofpage = "read"
     }

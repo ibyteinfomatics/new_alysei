@@ -104,7 +104,7 @@ class NotificationViewC: AlysieBaseViewC{
         if String.getString(self.ResentUser?[index].otherImage ?? "").contains(imageDomain) {
             notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? ""), placeholder: UIImage(named: "image_placeholder"))
         } else {
-            let img = (imageDomain+"/"+String.getString(self.ResentUser?[index].otherImage ?? ""))
+            let img = (String.getString(self.ResentUser?[index].otherImage ?? ""))
             notificationTableCell.imgViewNotification.setImage(withString: img.replacingOccurrences(of: "//", with: "/"), placeholder: UIImage(named: "image_placeholder"))
         }
         

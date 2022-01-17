@@ -56,7 +56,7 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: discoverCollectionView.width / 4.5 , height: 150)
+        return CGSize(width: discoverCollectionView.width / 4 , height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

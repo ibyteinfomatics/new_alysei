@@ -119,7 +119,7 @@ class BlogDiscover: AlysieBaseViewC {
             vc.blogtitle = self.blogData[indexPath].title
             vc.fulldescription = self.blogData[indexPath].datumDescription
             vc.draft = self.blogData[indexPath].status
-            vc.imgurl = self.blogData[indexPath].attachment?.attachmentURL
+            vc.imgurl = String.getString((self.blogData[indexPath].attachment?.baseUrl ?? "") + (self.blogData[indexPath].attachment?.attachmentURL ?? ""))
             vc.typeofpage = "read"
                     
         }
