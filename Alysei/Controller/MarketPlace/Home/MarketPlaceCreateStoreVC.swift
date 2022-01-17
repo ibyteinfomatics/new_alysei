@@ -48,6 +48,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var imagesFromSource = [UIImage]()
     var picker = UIImagePickerController()
     var uploadProfilePic = false
+    var uploadCoverPic = false
     var latitude: String?
     var longitude:String?
     var storeImageParams = [[String:Any]]()
@@ -66,6 +67,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var fromVC: PushedFrom?
     var storeData: MyStoreProductDetail?
     var uploadStoreImage = [String]()
+    var profilePicUpload = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,6 +172,21 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             if fromVC == .myStoreDashboard{
                 callUpdateStoreApi()
             }else{
+                guard profilePicUpload == true else{
+                    showAlert(withMessage: "Please upload profile picture.")
+                    return
+                    
+                }
+                guard uploadCoverPic == true else{
+                    showAlert(withMessage: "Please upload cover picture.")
+                    return
+                    
+                }
+                guard uploadImageArray.count != 0 else{
+                    showAlert(withMessage: "Please upload store images.")
+                    return 
+                    
+                }
                 callCreateStoreApi()
             }
         }
@@ -182,6 +199,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             showAlert(withMessage: "Please enter a valid website url.")
             return false
         }
+       
+        
         return true
     }
     @IBAction func btnBackAction(_ sender: UIButton){
@@ -251,7 +270,9 @@ extension MarketPlaceCreateStoreVC: UIImagePickerControllerDelegate, UINavigatio
         self.dismiss(animated: true) {
             if self.uploadProfilePic == true{
                 self.imgProfile.image = selectedImage
+                self.profilePicUpload = true
             }else{
+                self.uploadCoverPic = true
                 self.imgCover.image = selectedImage
             }
         }
@@ -382,7 +403,7 @@ extension MarketPlaceCreateStoreVC: UICollectionViewDelegate,UICollectionViewDat
                 self.imagesFromSource.remove(at: tag)
             if self.fromVC == .myStoreDashboard{
                 
-                self.removeStorePic(self.storeData?.store_gallery?[tag].marketplace_product_gallery_id)
+                self.removeStorePic(self.storeData?.store_gallery?[tag].marketplace_store_gallery_id)
             }
                // self.uploadImageArray.remove(at: tag)
                 self.collectionViewImage.reloadData()
@@ -514,6 +535,9 @@ extension MarketPlaceCreateStoreVC {
                 self.userRegion = region?["name"] as? String
                 self.latitude = data["lattitude"] as? String
                 self.longitude = data["longitude"] as? String
+//                let storeGallery = data["store_gallery"] as? [String:Any]{
+//                    self.uploadImageArray =
+//                }
                 self.setDataUI()
             }
             
@@ -542,7 +566,7 @@ extension MarketPlaceCreateStoreVC {
                     for img in 0..<(self.storeData?.store_gallery?.count ?? 0){
                         //let image = String.getString(self.storeData?.store_gallery?[img].attachment_url)
                         //self.uploadStoreImage.append(image ?? "")
-                        let urlString = kImageBaseUrl + "\(String.getString(self.storeData?.store_gallery?[img].attachment_url))"
+                        let urlString = String.getString((self.storeData?.store_gallery?[img].baseUrl ?? "")) + "\(String.getString(self.storeData?.store_gallery?[img].attachment_url))"
                         do {
                             let imageData = try Data(contentsOf: URL(string: urlString)!)
                             if let image = UIImage(data: imageData) {
@@ -605,7 +629,7 @@ extension MarketPlaceCreateStoreVC {
             
             let params: [String:Any] = [
                 "gallery_type": "1",
-                "marketplace_product_gallery_id": storePicId ?? 0
+                "marketplace_store_gallery_id": storePicId ?? 0
             ]
             TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteGalleryPic, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errortype, statuscode) in
                 

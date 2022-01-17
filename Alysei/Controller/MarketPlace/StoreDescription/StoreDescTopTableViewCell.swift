@@ -242,7 +242,7 @@ extension StoreDescTopTableViewCell : UICollectionViewDelegate, UICollectionView
         }else{
             cell.vwContainer.isHidden = true
             cell.imgStore.isHidden = false
-            let imageUrl = (storeDetails?.store_gallery?[indexPath.row].baseUrl ?? "" + String.getString(storeDetails?.store_gallery?[indexPath.row].attachment_url))
+            let imageUrl = ((storeDetails?.store_gallery?[indexPath.row].baseUrl ?? "") + String.getString(storeDetails?.store_gallery?[indexPath.row].attachment_url))
             cell.imgStore.setImage(withString: imageUrl)
         }
         return cell

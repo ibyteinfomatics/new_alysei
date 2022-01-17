@@ -200,7 +200,7 @@ class ProductGallery{
     var marketplace_product_gallery_id: Int?
     var marketplace_product_id: Int?
     var attachment_url: String?
-    var marketplace_store_gallery_id: String?
+    var marketplace_store_gallery_id: Int?
     var marketplace_store_id: String?
     var baseUrl: String?
     
@@ -208,7 +208,7 @@ class ProductGallery{
         self.marketplace_product_gallery_id = Int.getInt(data?["marketplace_product_gallery_id"])
         self.marketplace_product_id = Int.getInt(data?["marketplace_product_id"])
         self.attachment_url = String.getString(data?["attachment_url"])
-        self.marketplace_store_gallery_id = String.getString(data?["marketplace_store_gallery_id"])
+        self.marketplace_store_gallery_id = Int.getInt(data?["marketplace_store_gallery_id"])
         self.marketplace_store_id = String.getString(data?["marketplace_store_id"])
         self.baseUrl = String.getString(data?["base_url"])
     }
