@@ -50,7 +50,7 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if hasCome == .hubs{
-        return 190
+        return 200
         }else{
             return 70
         }
@@ -67,9 +67,10 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         cell.hubLatitude = self.hubLatitude
         cell.hubLongitude = self.hubLongitude
         cell.hubRadius = self.hubRadius
+        cell.hasCome = self.hasCome
         cell.buttonRightCheckBox.isHidden = self.hasCome == .hubs ? false : true
         if self.hasCome == .hubs {
-            cell.imgViewHght.constant = 135
+            cell.imgViewHght.constant = 147
         }else{
             cell.imgViewHght.constant = 0
         }

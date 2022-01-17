@@ -12,6 +12,7 @@ class ConfirmSelectionVC: UIViewController , SelectList{
     var selectedHubs = [SelectdHubs]()
     //var reviewSelectedHubs : ReviewHubModel.reviewHubModel?
     var reviewSelectedHubs : [ReviewSelectedHub]?
+    //var checkNoHubCallBack:(()  ->Void?) = nil
     // var reviewSelectedHubs :
     
     @IBOutlet weak var tableView: ConfirmSelectionTable!
@@ -27,6 +28,11 @@ class ConfirmSelectionVC: UIViewController , SelectList{
         self.tableView.selectedHubs = selectedHubs
         self.tableView.roleId = self.roleId
         self.tableView.isEditHub = self.isEditHub
+        self.tableView.callback = {
+            let nextVC = CountryListVC(nibName: "CountryListVC", bundle: nil)
+            nextVC.isEditHub = self.isEditHub
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
         if isEditHub == true{
             self.isEditHubServerApi = true
             self.callReviewHubApi()

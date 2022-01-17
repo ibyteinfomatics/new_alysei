@@ -66,6 +66,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var backButton: UIButtonExtended!
     @IBOutlet weak var lblPercentage: UILabel!
     @IBOutlet weak var followerstext: UILabel!
+    @IBOutlet weak var iconAddProduct: UIImageView!
     
    // @IBOutlet weak var featureCollectionView: UICollectionView!
     
@@ -100,8 +101,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: GetFeature Listing Data
     var featureListingId: String?
     var currentProductTitle: String?
-    var loadAnimation: Bool?
-    var loadingIndex:Int?
+    var isLoadingAnimation = true
     
     //MARK: - Properties -
     
@@ -180,7 +180,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadAnimation = true
+       
         self.btnEditProfile.layer.cornerRadius = 5
         self.btnEditProfile.layer.masksToBounds = true
         self.btnEditProfile.layer.borderWidth = 1
@@ -233,8 +233,10 @@ class ProfileViewC: AlysieBaseViewC{
             self.postRequestToGetProgress()
             if self.userType == .voyagers {
                 self.featureUIview.constant = 0
+                self.iconAddProduct.isHidden = true
             } else {
                 self.featureUIview.constant = 140
+                self.iconAddProduct.isHidden = false
             }
             
         case .other:
@@ -320,14 +322,12 @@ class ProfileViewC: AlysieBaseViewC{
         
         super.viewWillAppear(animated)
         
-       
+        isLoadingAnimation = true
         setNeedsStatusBarAppearanceUpdate()
         if fromRecipe == ""{
         self.tabBarController?.tabBar.isHidden = false
         }
         let data = kSharedUserDefaults.getLoggedInUserDetails()
-        
-        
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
@@ -1217,23 +1217,18 @@ class ProfileViewC: AlysieBaseViewC{
     private func getProfileCompletionTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tblViewProfileCompletion.dequeueReusableCell(withIdentifier: ProfileCompletionTableViewCell.identifier()) as! ProfileCompletionTableViewCell
-        //cell.delegate = self
+       // cell.delegate = self
        
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
         cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
-        self.loadingIndex = indexPath.row
-        cell.configCell(profileCompletionModel?[indexPath.row] ?? ProfileCompletionModel(with: [:]),cell)
         cell.configure(indexPath, currentIndex: self.currentIndex)
+        cell.configCell(profileCompletionModel?[indexPath.row] ?? ProfileCompletionModel(with: [:]),cell, indexPath.row)
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
         cell.tag = indexPath.row
-        cell.animationCallback = { currentIndex, cell in
-            if self.loadAnimation == true{
-        self.animateViews(indexPath.row , cell: cell)
-               
-            }else{
-                print("No animation")
-            }
-        }
+        self.animateViews(indexPath.row, cell: cell)
+//        cell.animationCallback = { currentIndex, cell in
+//        self.animateViews(indexPath.row , cell: cell)
+//        }
         return cell
     }
 
@@ -1296,7 +1291,6 @@ class ProfileViewC: AlysieBaseViewC{
                     self.progressUserData = UserData.init(with: progUserData)
                 }
             }
-            self.loadAnimation = true
            
             self.tblViewProfileCompletion.reloadData()
         }
@@ -1463,6 +1457,7 @@ extension ProfileViewC: UITableViewDataSource, UITableViewDelegate{
 extension ProfileViewC: AnimationProfileCallBack{
     
     func animateViews(_ indexPath: Int, cell: ProfileCompletionTableViewCell) {
+        
         switch indexPath {
         case 0:
             self.currentIndex = 1
@@ -1491,7 +1486,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-           // self.tblViewProfileCompletion.reloadData()
+          //  self.tblViewProfileCompletion.reloadData()
         case 2:
             self.currentIndex = 3
             if  profileCompletionModel?[indexPath].status == true {
@@ -1519,7 +1514,7 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-           // self.tblViewProfileCompletion.reloadData()
+          //  self.tblViewProfileCompletion.reloadData()
         case 4:
             self.currentIndex = 5
             if  profileCompletionModel?[indexPath].status == true {
@@ -1533,37 +1528,46 @@ extension ProfileViewC: AnimationProfileCallBack{
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-           // self.tblViewProfileCompletion.reloadData()
+          //  self.tblViewProfileCompletion.reloadData()
         case 5:
             self.currentIndex = 6
             if  profileCompletionModel?[indexPath].status == true {
                     cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
+                }
             }else {
                     cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-           // self.tblViewProfileCompletion.reloadData()
+          //  self.tblViewProfileCompletion.reloadData()
         case 6:
             self.currentIndex = 7
             if  profileCompletionModel?[indexPath].status == true {
                     cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
+                }
             }else {
                     cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                         cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
                     }
             }
-           // self.tblViewProfileCompletion.reloadData()
+          //  self.tblViewProfileCompletion.reloadData()
+            
         default:
-            print("Invalid Cell")
+            cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+            }
         }
-        self.tblViewProfileCompletion.reloadData()
-        if (loadingIndex ?? 0) >= (profileCompletionModel?.count ?? 0){
-        self.loadAnimation = false
+        
+       
         }
-    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch profileCompletionModel?[indexPath.row].title{

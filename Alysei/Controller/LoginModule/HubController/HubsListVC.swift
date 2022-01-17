@@ -17,6 +17,7 @@ class HubsListVC: UIViewController {
     @IBOutlet weak var viewBottomStack: UIView!
     @IBOutlet weak var heightOfCollectionView: NSLayoutConstraint!
     @IBOutlet weak var lblShowSelectedHub: UILabel!
+    @IBOutlet weak var btnClickHere: UIButton!
     
     
     var city = [CountryHubs]()
@@ -38,6 +39,8 @@ class HubsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewHeader.drawBottomShadowGreen()
+        self.viewBottomStack.addShadow()
+       // self.btnClickHere.underlined(borderColor: UIColor.init(hexString: "#4BB3FD"))
         self.tableView.hasCome = self.hasCome
         self.tableView.country = self.country
         self.tableView.roleId = self.roleId
@@ -56,8 +59,8 @@ class HubsListVC: UIViewController {
             hideEyeIcon = self.hasCome != .initialCountry
             self.bottomStack.isHidden =  false
             self.viewBottomStack.isHidden = false
-            self.bottomStackHeight.constant = 30
-            self.bottomStack.backgroundColor = UIColor.init(hexString: "#1D4873")
+            self.bottomStackHeight.constant = 40
+           // self.bottomStack.backgroundColor = UIColor.init(hexString: "#1D4873")
             self.heightOfCollectionView.constant = 0
             self.callStateWiseHubListApi()
         }

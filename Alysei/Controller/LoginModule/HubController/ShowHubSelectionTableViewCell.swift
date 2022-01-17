@@ -67,6 +67,12 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
             hubNameTableCell.lblNAme.text = reviewSelectedHubCityArray[indexPath.row]
+            if reviewSelectedHub?.hubs?[indexPath.row].image?.fimageUrl == "" {
+                hubNameTableCell.lblHubImage.isHidden = true
+            }else{
+                hubNameTableCell.lblHubImage.isHidden = false
+            hubNameTableCell.lblHubImage.setImage(withString: reviewSelectedHub?.hubs?[indexPath.row].image?.fimageUrl ?? "")
+            }
             hubNameTableCell.lblNAme.sizeToFit()
         }else{
         let hub = self.selectedHub?.hubs[indexPath.row]
@@ -82,8 +88,9 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
                 hubNameTableCell.imgLeading.constant = 10
                 hubNameTableCell.imgTrailing.constant = 10
                 hubNameTableCell.imageWidth.constant = 25
-            hubNameTableCell.lblHubImage.setImage(withString: hub?.image?.fimageUrl ?? "")
+                hubNameTableCell.lblHubImage.setImage(withString: hub?.image?.fimageUrl ?? "")
             }
+            
         hubNameTableCell.lblNAme.text = hub?.name
         hubNameTableCell.lblNAme.sizeToFit()
         }

@@ -301,6 +301,11 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
             if fromVC == .myStoreDashboard{
                 self.UpdateProductApi()
             }else{
+                guard uploadImageArray.count != 0 else{
+                    showAlert(withMessage: "Please upload product images.")
+                    return 
+                    
+                }
                 self.addProductApi()
             }
         }
@@ -633,7 +638,8 @@ extension AddProductMarketplaceVC{
                 // self.storeImage = data["logo_id"] as? String
                 self.detailStoreImage = data["logo_id"] as? String
                 self.detailStoreName = data["name"] as? String
-                self.imgStore.setImage(withString: kImageBaseUrl + String.getString(self.detailStoreImage))
+                let logoBaseUrl = data["logo_base_url"] as? String
+                self.imgStore.setImage(withString: (logoBaseUrl ?? "") + String.getString(self.detailStoreImage))
                 self.showStoreName.text = self.detailStoreName
                 self.marketPlaceStoreId = data["marketplace_store_id"] as?Int
                 self.setDataUI()

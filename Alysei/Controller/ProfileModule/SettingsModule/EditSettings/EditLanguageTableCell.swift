@@ -13,6 +13,7 @@ class EditLanguageTableCell: UITableViewCell {
   
   @IBOutlet weak var lblHeading: UILabel!
   @IBOutlet weak var lblLanguage: UILabelExtended!
+    @IBOutlet weak var viewContainer: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()

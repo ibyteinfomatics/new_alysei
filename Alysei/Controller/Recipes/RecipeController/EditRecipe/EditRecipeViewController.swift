@@ -855,7 +855,7 @@ extension EditRecipeViewController: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (nameTextfield.text! as NSString).replacingCharacters(in: range, with: string)
         let numberOfChars = newText.count
-        return numberOfChars < 21
+        return numberOfChars < 17
     }
    
 }

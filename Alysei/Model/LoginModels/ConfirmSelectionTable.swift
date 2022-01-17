@@ -13,7 +13,7 @@ class ConfirmSelectionTable: UITableView {
     var reviewSelectedHubs : [ReviewSelectedHub]?
     var dataDelegate:SelectList?
     var isEditHub: Bool?
-    
+    var callback: (() -> Void)? = nil
      var roleId: String?
     var reviewSelectedHubCityArray = [String]()
     //var hub:SelectdHubs?
@@ -83,6 +83,7 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
                     self.selectedHubs.remove(at: indexPath.row)
                     
                     }
+                    self.callback?()
                     self.reloadData()
                    // self.reloadSections(indexPath.section, with: .automatic)
                 }))

@@ -116,6 +116,14 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
             self.facebookTextField.text = "\(viewModel.fbLink ?? "")"
             self.countryCode = viewModel.country_code ?? self.countryCode
         }
+        if viewModel.country_code == nil{
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" ||
+                kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
+                self.countryCode = "+39"
+            }else {
+                self.countryCode = "+1"
+            }
+        }
         
         self.phoneTextField.keyboardType = .numberPad
         self.addButtonToTextField(self.phoneTextField)
