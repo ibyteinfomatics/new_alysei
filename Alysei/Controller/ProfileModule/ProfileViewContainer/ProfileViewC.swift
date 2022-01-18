@@ -92,7 +92,7 @@ class ProfileViewC: AlysieBaseViewC{
     //var profileCompletion
     var currentIndex: Int = 0
     var tabposition: Int = 1
-    
+    var imgPUrl: String?
     var someHeight: Int = 1
     var shownumber = 50
     
@@ -434,6 +434,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
         let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
+        vc?.imgPUrl = self.imgPUrl
         vc!.userId = String.getString(userID)
     }
     
@@ -804,11 +805,11 @@ class ProfileViewC: AlysieBaseViewC{
         let imgUrl = (baseUrl + coverImage)
         
         self.imgViewCover.setImage(withString: imgUrl)
-        let imgPUrl = (baseUrl + profileImage)
+        self.imgPUrl = (baseUrl + profileImage)
         
     
         if imgPUrl != "" {
-            self.imgViewProfile.setImage(withString: imgPUrl)
+            self.imgViewProfile.setImage(withString: imgPUrl ?? "")
             self.imgViewProfile.layer.cornerRadius = (self.imgViewProfile.frame.width / 2.0)
             self.imgViewProfile.layer.borderWidth = 5.0
             

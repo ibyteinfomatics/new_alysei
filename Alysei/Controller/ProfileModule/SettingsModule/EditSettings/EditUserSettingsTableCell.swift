@@ -47,7 +47,7 @@ class EditUserSettingsTableCell: UITableViewCell {
     self.txtFieldSettings.attributedPlaceholder = NSAttributedString(string: String.getString(model.settingsPlaceholder),
                                                                    attributes: [NSAttributedString.Key.foregroundColor: AppColors.liteGray.color])
       
-      if ((model.settingsHeading == AppConstants.Username) && (model.settingsSelectedValue != nil)) {
+      if ((model.settingsHeading == AppConstants.Username) && ((model.settingsSelectedValue != ""))) {
           txtFieldSettings.isUserInteractionEnabled = false
           
       }else{

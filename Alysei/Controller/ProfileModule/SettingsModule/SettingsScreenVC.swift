@@ -14,7 +14,7 @@ class SettingsScreenVC: AlysieBaseViewC {
     @IBOutlet weak var viewShadow: UIView!
     var userId: String?
     var signUpViewModel: SignUpViewModel!
-    
+    var imgPUrl: String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
            
             case 0:
              // _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
-                _ = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
+                let vc = pushViewController(withName: EditSetingTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditSetingTypeViewController
+                vc.imgPUrl = self.imgPUrl
             case 1:
               _ = pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
             case 2:

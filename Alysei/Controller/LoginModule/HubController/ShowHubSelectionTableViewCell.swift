@@ -26,7 +26,8 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
     let columnLayout = CustomViewFlowLayout()
   var roleId: String?
     var isEditHub:Bool?
-    
+    var hubContainIndex: Bool?
+    var cityIndex = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -67,12 +68,45 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
             hubNameTableCell.lblNAme.text = reviewSelectedHubCityArray[indexPath.row]
-            if reviewSelectedHub?.hubs?[indexPath.row].image?.fimageUrl == "" {
-                hubNameTableCell.lblHubImage.isHidden = true
-            }else{
-                hubNameTableCell.lblHubImage.isHidden = false
-            hubNameTableCell.lblHubImage.setImage(withString: reviewSelectedHub?.hubs?[indexPath.row].image?.fimageUrl ?? "")
-            }
+            let totalcount = ((reviewSelectedHub?.hubs?.count ?? 0) + (reviewSelectedHub?.cities?.count ?? 0))
+            
+//                for j in (0..<(reviewSelectedHub?.hubs?.count ?? 0)){
+//                    if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.hubs?[j].title{
+//                        hubContainIndex = true
+//                    }else{
+//                        hubContainIndex = false
+//                    }
+//                }
+            
+                for j in (0..<(reviewSelectedHub?.hubs?.count ?? 0)){
+                    if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.hubs?[j].title{
+                    hubNameTableCell.lblHubImage.isHidden = false
+                    hubNameTableCell.imgLeading.constant = 10
+                    hubNameTableCell.imgTrailing.constant = 10
+                    hubNameTableCell.imageWidth.constant = 25
+                    hubNameTableCell.lblHubImage.setImage(withString: self.reviewSelectedHub?.hubs?[j].image?.fimageUrl ?? "")
+                }
+                }
+                    for k in (0..<(reviewSelectedHub?.cities?.count ?? 0)){
+                        if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.cities?[k].city?.name{
+                            hubNameTableCell.lblHubImage.isHidden = true
+                            hubNameTableCell.imgLeading.constant = 7
+                            hubNameTableCell.imgTrailing.constant = 0
+                            hubNameTableCell.imageWidth.constant = 0
+                    }
+                }
+            
+//            if self.selectedHub?.hubs[indexPath.row].image?.fimageUrl == "" {
+//                hubNameTableCell.imgLeading.constant = 7
+//                hubNameTableCell.imgTrailing.constant = 0
+//                hubNameTableCell.imageWidth.constant = 0
+//
+//            }else{
+//                hubNameTableCell.imgLeading.constant = 10
+//                hubNameTableCell.imgTrailing.constant = 10
+//                hubNameTableCell.imageWidth.constant = 25
+//            hubNameTableCell.lblHubImage.setImage(withString: self.selectedHub?.hubs[indexPath.row].image?.fimageUrl ?? "")
+//            }
             hubNameTableCell.lblNAme.sizeToFit()
         }else{
         let hub = self.selectedHub?.hubs[indexPath.row]

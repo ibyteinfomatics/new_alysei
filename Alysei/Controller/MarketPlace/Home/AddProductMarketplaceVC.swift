@@ -77,6 +77,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         setDataUI()
+        txtProductTitle.delegate = self
         if fromVC == .myStoreDashboard{
             setEditProductDetail()
         }
@@ -388,7 +389,7 @@ extension AddProductMarketplaceVC: TLPhotosPickerLogDelegate {
         vc.present(alert, animated: true, completion: nil)
     }
 }
-extension AddProductMarketplaceVC: UITextViewDelegate{
+extension AddProductMarketplaceVC: UITextViewDelegate, UITextFieldDelegate{
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
@@ -410,6 +411,23 @@ extension AddProductMarketplaceVC: UITextViewDelegate{
         }
         return true
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtProductTitle{
+            if textField.text?.count ?? 0 >= 16{
+                if let char = string.cString(using: String.Encoding.utf8) {
+                    let isBackSpace = strcmp(char, "\\b")
+                    if (isBackSpace == -92) {
+                        print("Backspace was pressed")
+                        return true
+                    }else{
+                        return false
+                    }
+                }
+            }
+        }
+        return true
     }
     
 }
@@ -516,7 +534,11 @@ extension AddProductMarketplaceVC: UICollectionViewDelegate,UICollectionViewData
         if self.imagesFromSource.count ==  0 {
             // alertToAddImage()
             alertToAddCustomPicker()
-        }else if indexPath.row >= self.imagesFromSource.count{
+        }
+//        else if self.imagesFromSource.count <= 8{
+//            showAlert(withMessage: "Maximum 8 photos allowed", nil)
+//        }
+        else if indexPath.row >= self.imagesFromSource.count{
             //alertToAddImage()
             alertToAddCustomPicker()
         }

@@ -145,9 +145,13 @@ extension HubCitiesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 70
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? HubCitiesListTableViewCell
+        cell?.selectedHubs?(cell?.city)
+        
+    }
     func updateSelectedHubsData(unselectedHub:CountryHubs?) {
         if  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
            _ = self.cityList?.map{$0.isSelected = false}
