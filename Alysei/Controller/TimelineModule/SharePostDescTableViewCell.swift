@@ -432,7 +432,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
         let data = self.data?.sharedPostData?.attachments?[indexPath.row]
         
         
-        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+        /*if data?.attachmentLink?.height == data?.attachmentLink?.width {
             //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
             //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
@@ -443,7 +443,43 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
             //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
             return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
                                                                                                 * 72 / 96)-250)
+        }*/
+        
+        
+        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            
+            if Int.getInt(data?.attachmentLink?.width) > 500 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
+            } else {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
+            }
+            
+            
+        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
+            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            
+            if  Int.getInt(data?.attachmentLink?.height) < 350 {
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
+            } else {
+                
+                
+                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+            }
+            
+             
+         } else {
+            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
         }
+        
+        
         
     }
 //
