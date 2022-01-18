@@ -16,6 +16,7 @@ class EditSetingTypeViewController: AlysieBaseViewC {
     var reviewSelectedHubs : [ReviewSelectedHub]?
     var notificationStatus: Int?
     var updateNotification: Int?
+    var imgPUrl: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +134,8 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            _ = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
+            let vc = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
+            vc.imgPUrl = self.imgPUrl
         case 1:
             print("HubSelection")
 //            let nextVC = CountryListVC()

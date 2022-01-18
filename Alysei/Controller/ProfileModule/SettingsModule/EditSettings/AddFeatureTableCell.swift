@@ -103,9 +103,11 @@ class AddFeatureTableCell: UITableViewCell {
             if model.selectedValue != "" {
                 txtViewAddFeature.textColor = .black
                 txtViewAddFeature.text = String.getString(model.selectedValue)
+                lblCountTxt.text = "\(model.selectedValue?.count ?? 0)"
             }else{
                 txtViewAddFeature.textColor = .lightGray
                 txtViewAddFeature.text = AppConstants.kDescription
+                lblCountTxt.text = "0"
             }
             
             
@@ -129,6 +131,7 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         let spaceCount = textView.text.count
         
         let currentText:String = textView.text
@@ -163,8 +166,24 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
             if textField.text == "" {
                 textField.text = "https://"
             }
+            return true
         }
+        
+            if productFieldsDataModel.productTitle == AppConstants.Title{
+                if txtFieldAddFeature.text?.count ?? 0 >= 12{
+                    if let char = string.cString(using: String.Encoding.utf8) {
+                        let isBackSpace = strcmp(char, "\\b")
+                        if (isBackSpace == -92) {
+                            print("Backspace was pressed")
+                            return true
+                        }else{
+                            return false
+                        }
+                    }
+                }
+            }
         return true
+        
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         

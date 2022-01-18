@@ -16,22 +16,30 @@ class HubCitiesListTableViewCell: UITableViewCell {
     var selectedHubs:((CountryHubs?)->())?
     override func awakeFromNib() {
         super.awakeFromNib()
+        initialSetup()
         self.lblCountryName.text = city?.name
         self.btnSelected.isSelected = city?.isSelected ?? false
         
         if btnSelected.isSelected == true{
             self.viewContainer.layer.backgroundColor = UIColor.init(hexString: "#4BB3FD").cgColor
             self.btnSelected.setImage(UIImage(named: "checkbox_white"), for: .normal)
+            self.lblCountryName.textColor = UIColor.white
         }else{
             self.viewContainer.layer.backgroundColor = UIColor.white.cgColor
             self.btnSelected.setImage(UIImage(named: "icon_uncheckedBox"), for: .normal)
+            self.lblCountryName.textColor = UIColor.black
         }
     }
+    func initialSetup(){
+        viewContainer.layer.shadowColor = UIColor.darkGray.cgColor
+        viewContainer.layer.shadowOpacity = 0.5
+        viewContainer.layer.shadowOffset = .zero
+        viewContainer.layer.shadowRadius = 1
 
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     @IBAction func selectedCity(_ sender: UIButton) {

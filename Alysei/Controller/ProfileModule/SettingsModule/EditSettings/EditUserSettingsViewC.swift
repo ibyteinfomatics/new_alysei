@@ -18,6 +18,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   @IBOutlet weak var lblUserName: UILabel!
   @IBOutlet weak var lblUserEmail: UILabel!
   @IBOutlet weak var btnSave: UIButton!
+    var imgPUrl: String?
   //MARK: - Properties -
   
     var languageArray = ["English", "Italian"]
@@ -82,8 +83,9 @@ class EditUserSettingsViewC: AlysieBaseViewC {
           self.lblUserEmail.isHidden = false
         self.lblUserEmail.text = "@" + "\(kSharedUserDefaults.loggedInUserModal.userName ?? "")"
       }
-      if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
-          self.imgViewUser.image = profilePhoto
+     // if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
+        if imgPUrl != ""{
+            self.imgViewUser.setImage(withString: imgPUrl ?? "")
           self.imgViewUser.layer.cornerRadius = (self.imgViewUser.frame.width / 2.0)
           self.imgViewUser.layer.borderWidth = 5.0
           
