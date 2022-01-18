@@ -82,4 +82,5 @@ let kResponse                   = "response"
 let kDetail                     = "detail"
 let kMessage                    = "message"
 let kDeviceToken                = "deviceToken"
+let profilepic                  = "profilepic"
 

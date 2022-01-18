@@ -30,6 +30,15 @@ extension UserDefaults{
       }
       return DefaultDeviceToken
    }
+    
+    func setProfilePic(profile: String) {
+        self.set(profile, forKey: profilepic)
+        self.synchronize()
+    }
+    
+    func getProfilePic() -> String {
+        return String.getString(self.string(forKey: profilepic))
+    }
   
 //  var accessToken: String{
 //
