@@ -62,7 +62,7 @@ class User {
     var name: String
     var email, companyName,firstname,lastname: String
     var restaurantName: String
-    var roleID: Int
+    var roleID,followers_count: Int
     var avatarID: AvatarID?
 
     init(with dictResponse:  [String:Any]?) {
@@ -74,6 +74,7 @@ class User {
         self.companyName = String.getString(dictResponse?["company_name"])
         self.restaurantName = String.getString(dictResponse?["restaurant_name"])
         self.roleID = Int.getInt(dictResponse?["role_id"])
+        self.followers_count = Int.getInt(dictResponse?["followers_count"])
         
         if let userData = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarID = AvatarID.init(with: userData)

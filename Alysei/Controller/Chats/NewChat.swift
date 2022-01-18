@@ -47,7 +47,7 @@ class NewChat: AlysieBaseViewC {
         }
         
         
-        notificationTableCell.message.text = connection?.data?[index].user?.email
+        notificationTableCell.message.text = String.getString(connection?.data?[index].user?.followers_count)+" Followers"
         
         notificationTableCell.imgViewNotification.layer.masksToBounds = false
         notificationTableCell.imgViewNotification.clipsToBounds = true

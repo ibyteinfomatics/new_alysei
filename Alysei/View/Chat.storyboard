@@ -526,7 +526,7 @@
         <image name="back_white" width="24" height="18.666666030883789"/>
         <image name="camera_icon_colored" width="22" height="18.333333969116211"/>
         <image name="close_icon" width="18" height="18"/>
-        <image name="icons8_menu_vertical" width="5" height="17.666666030883789"/>
+        <image name="icons8_menu_vertical" width="4" height="14"/>
         <image name="icons8_send_letter1" width="43.840999603271484" height="43.840999603271484"/>
         <image name="image_placeholder" width="41" height="33"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
