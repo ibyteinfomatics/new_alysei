@@ -275,11 +275,13 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         config.showsPhotoFilters = true
         //config.showsCrop = .rectangle(ratio: 1.5)
         
-        config.library.onlySquare = true
+        //config.library.onlySquare = true
+        
+        config.library.isSquareByDefault = false
         //config.overlayView = UIView()config.library.minWidthForItem = nil
-       // config.targetImageSize = .cappedTo(size: 50)
+        //config.targetImageSize = .cappedTo(size: 50)
         //config.library.preSelectItemOnMultipleSelection = false
-         //config.library.defaultMultipleSelection = false
+        // config.library.defaultMultipleSelection = true
         //config.library.skipSelectionsGallery = true
         //config.library.preselectedItems = nil
         
@@ -509,6 +511,19 @@ extension AddPostViewController: TLPhotosPickerLogDelegate {
 //}
 
 //MARK: UICollectionViewDataSource,UICollectionViewDelegate
+
+extension AddPostViewController: YPImagePickerDelegate {
+    
+    func imagePickerHasNoItemsInLibrary(_ picker: YPImagePicker) {
+            // PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+            print("hello")
+        }
+
+        func shouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool {
+            return true // indexPath.row != 2
+        }
+    
+}
 
 extension AddPostViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
