@@ -289,7 +289,7 @@ extension EditUserSettingsViewC{
     switch type {
     case 0:
       self.settingEditViewModel = SettingsEditViewModel(dicResult)
-      //kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
+     // kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
       self.tblViewEditUserSettings.reloadData()
     case 1:
         self.btnSave.setImage(UIImage(named: "blue_checkmarked"), for: .normal)
