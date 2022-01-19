@@ -50,7 +50,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         self.containerView.layer.borderColor = UIColor.lightGray.cgColor
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.cornerRadius = 10
-        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || "roleId" == "6" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "9") {
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "6" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "9") {
             self.btnRemoveHub.isHidden = true
             self.btnRemoveHubIcon.isHidden = true
         }else{

@@ -49,7 +49,7 @@ class SettingsEditViewModel: NSObject {
     let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.Language }
     return modal.first?.settingsSelectedValue ?? ""
   }
- 
+   
   init(_ dictResult: [String:Any]) {
     
     super.init()
@@ -76,10 +76,14 @@ class SettingsEditSectionModel: NSObject {
     if sectionType == 0 {
 
         let userID = kSharedUserDefaults.loggedInUserModal.role ?? .voyagers
+       
+        let dicSData = kSharedInstance.getDictionary(dictResult[APIConstants.kData])
+        let userSetting =  dicSData["user_settings"] as? [String:Any]
+        //self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.URL, settingsPlaceholder: AppConstants.EnterURL, settingsSelectedValue: String.getString(kSharedUserDefaults.loggedInUserModal.website), settingsCellType: .info))
+        self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.URL, settingsPlaceholder: AppConstants.EnterURL, settingsSelectedValue: String.getString(userSetting?["website"]), settingsCellType: .info))
 
-        self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.URL, settingsPlaceholder: AppConstants.EnterURL, settingsSelectedValue: String.getString(kSharedUserDefaults.loggedInUserModal.website), settingsCellType: .info))
-
-        self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.Username, settingsPlaceholder: AppConstants.EnterUsername, settingsSelectedValue: String.getString(kSharedUserDefaults.loggedInUserModal.userName)))
+        //self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.Username, settingsPlaceholder: AppConstants.EnterUsername, settingsSelectedValue: String.getString(kSharedUserDefaults.loggedInUserModal.userName)))
+        self.arrSettingsData.append(SettingsEditDataModel(settingsHeading: AppConstants.Username, settingsPlaceholder: AppConstants.EnterUsername, settingsSelectedValue: String.getString(userSetting?["name"])))
 
         switch userID {
         case .restaurant:

@@ -226,12 +226,16 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         }
 
 
-        if (self.userType == .voyagers || self.userType == .voiceExperts) && (self.websiteTextField.text?.count ?? 0 > 0)  {
-            guard self.websiteTextField.text?.isValid(.url) == true else {
-                showAlert(withMessage: "Please enter a valid URL.")
-                return false
-            }
-        } else {
+//        if (self.userType == .voyagers || self.userType == .voiceExperts) && (self.websiteTextField.text?.count ?? 0 > 0)  {
+//            guard self.websiteTextField.text?.isValid(.url) == true else {
+//                showAlert(withMessage: "Please enter a valid URL.")
+//                return false
+//            }
+//        } else {
+            if (self.userType == .voyagers || self.userType == .voiceExperts) && (self.websiteTextField.text?.count ?? 0 >= 0)  {
+               return true
+            } else {
+
             guard self.websiteTextField.text?.isValid(.url) == true else {
                 showAlert(withMessage: "Please enter a valid URL.")
                 return false
@@ -248,7 +252,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         }
         flagView = flag
         flagView.button.addTarget(self, action: #selector(presentCountryList(_:)), for: .touchUpInside)
-        if viewModel.phone == nil {
+        if viewModel.phone == nil || viewModel.country_code == nil{
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" ||
             kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
             flagView.flag.image = UIImage(named: "italy")
