@@ -186,7 +186,10 @@ class ProfileViewC: AlysieBaseViewC{
         self.btnEditProfile.layer.borderWidth = 1
         self.btnEditProfile.layer.borderColor = UIColor.gray.cgColor
         self.viewSeparator.alpha = 0.0
-        
+        //Mark: Check Condition(Shalini)
+        self.featureUIview.constant = 0
+        self.iconAddProduct.isHidden = true
+        //Mark: End
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
             followerstext.text = "Following"
         } else {
@@ -1103,11 +1106,15 @@ class ProfileViewC: AlysieBaseViewC{
                 //self.postcount.text = String.getString(responseModel.data?.postCount)
                 //self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
-                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-                    self.featureUIview.constant = 0
+                
+               // if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+              //  let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
+                
+                if (self.userProfileModel.data?.userData?.roleID == 10){
+                    //self.featureUIview.constant = 0
                     self.followercount.text = String.getString(responseModel.data?.followingcount)
                 } else {
-                    self.featureUIview.constant = 140
+                   // self.featureUIview.constant = 140
                     self.followercount.text = String.getString(responseModel.data?.followerCount)
                 }
                 
@@ -1698,6 +1705,11 @@ extension ProfileViewC{
             let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
             self.signUpViewModel = SignUpViewModel(dicData, roleId: nil)
             editProfileViewCon?.signUpViewModel = self.signUpViewModel
+            if ((self.signUpViewModel.arrProductCategories.first?.arrAllProducts.count == 0) && (userLevel == .other)) || (self.userProfileModel.data?.userData?.roleID) == 10 {
+                self.featureUIview.constant = 0
+            } else {
+                self.featureUIview.constant = 140
+            }
             self.collectionViewAddProduct.reloadData()
             editProfileViewCon?.userType = self.userType ?? .voyagers
             editProfileViewCon?.tableViewEditProfile?.reloadData()
@@ -1706,6 +1718,7 @@ extension ProfileViewC{
         }
         
     }
+    
     
 }
 extension ProfileViewC: ContactViewEditProtocol {

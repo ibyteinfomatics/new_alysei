@@ -36,11 +36,11 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         self.initialSetup()
         //MARK:- Register XIB
         collectionView.register(UINib(nibName: HubNameCollectionViewCell.identifier(), bundle: nil), forCellWithReuseIdentifier: "HubNameCollectionViewCell")
-        if #available(iOS 10.0, *) {
-            columnLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        } else {
-            columnLayout.estimatedItemSize = CGSize(width: 41, height: 51)
-        }
+//        if #available(iOS 10.0, *) {
+//            columnLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        } else {
+//            columnLayout.estimatedItemSize = CGSize(width: 41, height: 51)
+//        }
         
        collectionView.collectionViewLayout = columnLayout
     }
@@ -64,7 +64,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
     
     private func getHubNameCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
         let hubNameTableCell = collectionView.dequeueReusableCell(withReuseIdentifier: HubNameCollectionViewCell.identifier(), for: indexPath) as! HubNameCollectionViewCell
-        hubNameTableCell.lblHubImage.layer.cornerRadius = 12.5
+       // hubNameTableCell.lblHubImage.layer.cornerRadius = 12.5
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
             hubNameTableCell.lblNAme.text = reviewSelectedHubCityArray[indexPath.row]
@@ -80,19 +80,20 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
             
                 for j in (0..<(reviewSelectedHub?.hubs?.count ?? 0)){
                     if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.hubs?[j].title{
-                    hubNameTableCell.lblHubImage.isHidden = false
-                    hubNameTableCell.imgLeading.constant = 10
-                    hubNameTableCell.imgTrailing.constant = 10
-                    hubNameTableCell.imageWidth.constant = 25
+                    //hubNameTableCell.lblHubImage.isHidden = false
+//                    hubNameTableCell.imgLeading.constant = 10
+//                    hubNameTableCell.imgTrailing.constant = 10
+//                    hubNameTableCell.imageWidth.constant = 25
                     hubNameTableCell.lblHubImage.setImage(withString: self.reviewSelectedHub?.hubs?[j].image?.fimageUrl ?? "")
                 }
                 }
                     for k in (0..<(reviewSelectedHub?.cities?.count ?? 0)){
                         if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.cities?[k].city?.name{
-                            hubNameTableCell.lblHubImage.isHidden = true
-                            hubNameTableCell.imgLeading.constant = 7
-                            hubNameTableCell.imgTrailing.constant = 0
-                            hubNameTableCell.imageWidth.constant = 0
+                            //hubNameTableCell.lblHubImage.isHidden = false
+                            hubNameTableCell.lblHubImage.image = UIImage(named: "city")
+//                            hubNameTableCell.imgLeading.constant = 7
+//                            hubNameTableCell.imgTrailing.constant = 0
+//                            hubNameTableCell.imageWidth.constant = 0
                     }
                 }
             
@@ -107,26 +108,27 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
 //                hubNameTableCell.imageWidth.constant = 25
 //            hubNameTableCell.lblHubImage.setImage(withString: self.selectedHub?.hubs[indexPath.row].image?.fimageUrl ?? "")
 //            }
-            hubNameTableCell.lblNAme.sizeToFit()
+           // hubNameTableCell.lblNAme.sizeToFit()
         }else{
         let hub = self.selectedHub?.hubs[indexPath.row]
         self.labeCountryName.text = self.selectedHub?.country.name
             if (hub?.image?.fimageUrl == "" || hub?.image?.fimageUrl == nil){
-                hubNameTableCell.lblHubImage.isHidden = true
-                hubNameTableCell.imgLeading.constant = 7
-                hubNameTableCell.imgTrailing.constant = 0
-                hubNameTableCell.imageWidth.constant = 0
+              //  hubNameTableCell.lblHubImage.isHidden = true
+                hubNameTableCell.lblHubImage.image = UIImage(named: "city")
+//                hubNameTableCell.imgLeading.constant = 7
+//                hubNameTableCell.imgTrailing.constant = 0
+//                hubNameTableCell.imageWidth.constant = 0
                 
             }else{
                 hubNameTableCell.lblHubImage.isHidden = false
-                hubNameTableCell.imgLeading.constant = 10
-                hubNameTableCell.imgTrailing.constant = 10
-                hubNameTableCell.imageWidth.constant = 25
+//                hubNameTableCell.imgLeading.constant = 10
+//                hubNameTableCell.imgTrailing.constant = 10
+//                hubNameTableCell.imageWidth.constant = 25
                 hubNameTableCell.lblHubImage.setImage(withString: hub?.image?.fimageUrl ?? "")
             }
             
         hubNameTableCell.lblNAme.text = hub?.name
-        hubNameTableCell.lblNAme.sizeToFit()
+      //  hubNameTableCell.lblNAme.sizeToFit()
         }
        return hubNameTableCell
     }
@@ -180,13 +182,15 @@ extension ShowHubSelectionTableViewCell: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          // dataArary is the managing array for your UICollectionView.
-        let item = self.selectedHub?.hubs[indexPath.row].name
+//        let item = self.selectedHub?.hubs[indexPath.row].name
+//
+//        guard let itemSize = item?.size(withAttributes: [
+//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
+//        ]) else { return CGSize(width: 0, height: 0) }
+//
+//         return itemSize
         
-        guard let itemSize = item?.size(withAttributes: [
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
-        ]) else { return CGSize(width: 0, height: 0) }
-    
-         return itemSize
+        return CGSize(width: (collectionView.frame.width / 2 - 25), height: 170)
      }
    
 }
