@@ -130,8 +130,14 @@ extension UserPhotosGridViewController {
                 }
 
                 if photosURLList.count > 0 {
-                    self.pageNumber += 1
+                    //self.pageNumber += 1
+                    self.photos.removeAll()
                     self.photos.append(contentsOf: photosURLList)
+                    
+                    if photosURLList.count > 20 {
+                        self.pageNumber += 1
+                        
+                    }
                     
                     self.updatePhotosList()
                 }

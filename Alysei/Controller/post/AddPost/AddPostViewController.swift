@@ -513,6 +513,10 @@ extension AddPostViewController: TLPhotosPickerLogDelegate {
 //MARK: UICollectionViewDataSource,UICollectionViewDelegate
 
 extension AddPostViewController: YPImagePickerDelegate {
+    func noPhotos() {
+        
+    }
+    
     
     func imagePickerHasNoItemsInLibrary(_ picker: YPImagePicker) {
             // PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)

@@ -12,6 +12,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import AlamofireImage
+
 
 protocol PostCommentsDisplayLogic: class {
     func loadComments(_ response: PostComments.Comment.Response)
@@ -127,15 +129,23 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         
         self.profilePhotoButton.layer.cornerRadius = self.profilePhotoButton.frame.width / 2.0
         self.profilePhotoButton.layer.masksToBounds = true
-
-        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
+        
+        let profilePhoto = kSharedUserDefaults.getProfilePic()
+        
+        
+       
+        let url = URL(string: kSharedUserDefaults.getProfilePic())!
+        //self.profilePhotoButton.sd_setImage(with:URL(string: "Your_url"), forState:.normal)
+        self.profilePhotoButton.af_setImage(for: .normal, url: url)
+        
+        /*if let profilePhoto = LocalStorage.shared.fetchImage(kSharedUserDefaults.getProfilePic()) {
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
 //
         } else {
             let profilePhoto = UIImage(named: "profile_icon")
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
             
-        }
+        }*/
         
         for i in 0..<(self.commentmessages?.count ?? 0){
             self.commentmessages?[i].isSelected = false
@@ -284,10 +294,9 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 poster.role_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
                 poster.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 
-                
                 let avatar = CommentAvatarId()
                 avatar.attachment_type = "jpg"
-                avatar.attachment_url = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+                avatar.attachment_url = kSharedUserDefaults.getProfilePic() //kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
                 avatar.poster_created_at = dateString
                 avatar.id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 avatar.updated_at = dateString
@@ -606,4 +615,12 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
     }
     return true
 }
+}
+extension String {
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+            return UIImage(data: data)
+        }
+        return nil
+    }
 }
