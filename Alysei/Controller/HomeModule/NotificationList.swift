@@ -59,7 +59,7 @@ class NotificationList: AlysieBaseViewC {
         //notificationTableCell.configure()
         
         let dfmatter = DateFormatter()
-        dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+        dfmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = dfmatter.date(from: String.getString(notimodel?.data?.data?[index].createdAt))
         let dateStamp:TimeInterval = date!.timeIntervalSince1970
         let dateSt:Int = Int(dateStamp)
@@ -69,7 +69,7 @@ class NotificationList: AlysieBaseViewC {
         notificationTableCell.layer.masksToBounds = true
         
         let baseUrl = notimodel?.data?.data?[index].user?.base_url ?? ""
-        notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notimodel?.data?.data?[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notimodel?.data?.data?[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "NotiLogo"))
         
         let dateString = getcurrentdateWithTime(timeStamp: String.getString(dateSt))
         print("formatted date is =  \(dateString)")
@@ -87,7 +87,7 @@ class NotificationList: AlysieBaseViewC {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = "dd MMM YYYY"
+        dateFormatter.dateFormat = "dd MMM YYYY HH mm ss"
         dateFormatter.locale =  Locale(identifier:  "en")
         let localDate = dateFormatter.string(from: date)
         

@@ -133,11 +133,14 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         
         let profilePhoto = kSharedUserDefaults.getProfilePic()
         
-        
+        if profilePhoto == "" || profilePhoto == nil{
+           print("No Image")
+        }else{
        
         let url = URL(string: kSharedUserDefaults.getProfilePic())!
         //self.profilePhotoButton.sd_setImage(with:URL(string: "Your_url"), forState:.normal)
         self.profilePhotoButton.af_setImage(for: .normal, url: url)
+        }
         
         /*if let profilePhoto = LocalStorage.shared.fetchImage(kSharedUserDefaults.getProfilePic()) {
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
