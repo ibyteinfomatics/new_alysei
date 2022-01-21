@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,12 +43,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="postmenu_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eoI-cR-dSZ">
+                                <rect key="frame" x="379" y="24" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="N2C-TH-SBS"/>
+                                    <constraint firstAttribute="width" constant="20" id="n5Z-yf-bvh"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfL-Z4-z1u">
                                 <rect key="frame" x="379" y="9.5" width="20" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="srP-dD-etx"/>
                                 </constraints>
-                                <state key="normal" image="postmenu_icon"/>
                                 <connections>
                                     <action selector="menuButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eGP-zh-Bk6"/>
                                 </connections>
@@ -67,7 +73,7 @@
                                 <color key="backgroundColor" name="grey5"/>
                             </imageView>
                             <pageControl hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="R97-ls-Irq" customClass="Scroll">
-                                <rect key="frame" x="272.5" y="343" width="121.5" height="20"/>
+                                <rect key="frame" x="238.5" y="343" width="155.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="RVt-4i-8fs"/>
                                 </constraints>
@@ -199,6 +205,7 @@
                             <constraint firstItem="bSm-7E-zH8" firstAttribute="leading" secondItem="1z4-wd-XsS" secondAttribute="leading" constant="20" id="M3y-Sr-Bng"/>
                             <constraint firstAttribute="trailing" secondItem="AXO-vo-hEM" secondAttribute="trailing" id="MZO-Tn-rcn"/>
                             <constraint firstItem="mpy-o3-7f0" firstAttribute="top" secondItem="wLw-Oa-Owe" secondAttribute="bottom" constant="5.5" id="Ph3-Hi-gVh"/>
+                            <constraint firstItem="eoI-cR-dSZ" firstAttribute="top" secondItem="1z4-wd-XsS" secondAttribute="top" constant="24" id="SDV-nP-MaW"/>
                             <constraint firstItem="6tl-rs-IuG" firstAttribute="centerY" secondItem="3gz-0A-txZ" secondAttribute="centerY" id="XYu-3U-zZo"/>
                             <constraint firstAttribute="trailing" secondItem="R97-ls-Irq" secondAttribute="trailing" constant="20" id="aXF-de-EF4"/>
                             <constraint firstItem="6tl-rs-IuG" firstAttribute="leading" secondItem="1z4-wd-XsS" secondAttribute="leading" constant="28" id="cCs-OJ-BvN"/>
@@ -208,6 +215,7 @@
                             <constraint firstAttribute="trailing" secondItem="wLw-Oa-Owe" secondAttribute="trailing" constant="20" id="oEa-jY-kEZ"/>
                             <constraint firstItem="bSm-7E-zH8" firstAttribute="leading" secondItem="Cma-Ea-HQ9" secondAttribute="leading" id="qMH-US-JDd"/>
                             <constraint firstItem="Cma-Ea-HQ9" firstAttribute="top" secondItem="bSm-7E-zH8" secondAttribute="bottom" constant="12" id="qhb-jV-eAI"/>
+                            <constraint firstAttribute="trailing" secondItem="eoI-cR-dSZ" secondAttribute="trailing" constant="15" id="uqe-Ev-TGK"/>
                             <constraint firstItem="cfL-Z4-z1u" firstAttribute="trailing" secondItem="mpy-o3-7f0" secondAttribute="trailing" id="vo2-mL-3mP"/>
                             <constraint firstItem="bSm-7E-zH8" firstAttribute="top" secondItem="1z4-wd-XsS" secondAttribute="top" constant="5" id="whH-Dd-3cF"/>
                             <constraint firstItem="Qk3-TL-AHG" firstAttribute="leading" secondItem="bSm-7E-zH8" secondAttribute="trailing" constant="10" id="zgA-RC-1Pt"/>
