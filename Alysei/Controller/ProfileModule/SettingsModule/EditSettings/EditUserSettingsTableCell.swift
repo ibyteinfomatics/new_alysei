@@ -21,6 +21,7 @@ class EditUserSettingsTableCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+      self.txtFieldSettings.delegate = self
     self.txtFieldSettings.addTarget(self, action: #selector(EditUserSettingsTableCell.textFieldEditingChanged(_:)),for: UIControl.Event.editingChanged)
   }
   
@@ -54,4 +55,17 @@ class EditUserSettingsTableCell: UITableViewCell {
           txtFieldSettings.isUserInteractionEnabled = true
       }
   }
+}
+extension EditUserSettingsTableCell:  UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        if self.settingsEditDataModel.settingsHeading == AppConstants.kUrl ||  self.settingsEditDataModel.settingsHeading == AppConstants.kURL  {
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+            textField.spellCheckingType = .no
+            return true
+
+        }
+        return true
+    }
 }

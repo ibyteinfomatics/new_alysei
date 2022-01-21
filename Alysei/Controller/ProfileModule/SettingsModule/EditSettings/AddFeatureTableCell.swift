@@ -122,7 +122,20 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
             textView.text = nil
             textView.textColor = UIColor.black
         }
+        
     }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        if productFieldsDataModel.productTitle == AppConstants.URL || productFieldsDataModel.productTitle == AppConstants.kUrl  {
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+            textField.spellCheckingType = .no
+            return true
+
+        }
+        return true
+    }
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = AppConstants.kDescription

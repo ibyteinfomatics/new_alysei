@@ -262,7 +262,11 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                 self.subProductId = productType?[index].marketplaceProductSubcategoryId
             }else if openDropDown == .brandLabel{
                 self.txtProductBrandLabel.text = item
+                if index == 0{
+                    self.brandLabelId = 0
+                }else{
                 self.brandLabelId = productType?[index].marketplaceBrandLabelId
+                }
             }else if openDropDown == .availableForSample{
                 self.txtProductSample.text = item
             }
@@ -595,6 +599,7 @@ extension AddProductMarketplaceVC{
                 for product in 0..<(self.productType?.count ?? 0) {
                     self.arrProductType.append(self.productType?[product].name ?? "")
                 }
+                self.arrProductType.insert("None", at: 0)
                 self.dataDropDown.dataSource = self.arrProductType
                 self.opendropDown()
                 

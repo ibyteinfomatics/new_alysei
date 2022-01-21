@@ -87,7 +87,8 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         vwHeader.drawBottomShadow()
         self.emailTextField.placeholder = "email@example.com"
         self.phoneTextField.placeholder = "9999999999"
@@ -127,6 +128,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         
         self.phoneTextField.keyboardType = .numberPad
         self.addButtonToTextField(self.phoneTextField)
+       
 
     }
 
@@ -331,11 +333,18 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
 
 extension ContactDetailViewController: UITextFieldDelegate {
-
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.addressTextField {
             self.addressTextFieldSelected(textField)
             return false
+        }
+        if textField == self.websiteTextField {
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+            textField.spellCheckingType = .no
+            return true
+
         }
         return true
     }
