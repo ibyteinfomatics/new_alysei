@@ -236,6 +236,11 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                         controller?.userLevel = .other
                         controller?.userID = data.subjectId?.userId ?? 0
                     }
+                    cell.sharedProfileCallback = {
+                        let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                        controller?.userLevel = .other
+                        controller?.userID = data.sharedPostData?.subjectId?.userId ?? 0
+                    }
                     
                     cell.shareCallback = {
                         

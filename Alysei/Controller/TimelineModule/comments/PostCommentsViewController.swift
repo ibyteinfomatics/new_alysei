@@ -12,6 +12,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import AlamofireImage
+
 
 protocol PostCommentsDisplayLogic: class {
     func loadComments(_ response: PostComments.Comment.Response)
@@ -52,6 +54,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             
             self.commentmessages?.removeAll()
             self.commentmessages = message
+            self.commentTextfield.returnKeyType = .next
             self.tableView.reloadData()
             //self.scrollToLTopRow()
             
@@ -127,15 +130,23 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         
         self.profilePhotoButton.layer.cornerRadius = self.profilePhotoButton.frame.width / 2.0
         self.profilePhotoButton.layer.masksToBounds = true
-
-        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
+        
+        let profilePhoto = kSharedUserDefaults.getProfilePic()
+        
+        
+       
+        let url = URL(string: kSharedUserDefaults.getProfilePic())!
+        //self.profilePhotoButton.sd_setImage(with:URL(string: "Your_url"), forState:.normal)
+        self.profilePhotoButton.af_setImage(for: .normal, url: url)
+        
+        /*if let profilePhoto = LocalStorage.shared.fetchImage(kSharedUserDefaults.getProfilePic()) {
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
 //
         } else {
             let profilePhoto = UIImage(named: "profile_icon")
             self.profilePhotoButton.setImage(profilePhoto, for: .normal)
             
-        }
+        }*/
         
         for i in 0..<(self.commentmessages?.count ?? 0){
             self.commentmessages?[i].isSelected = false
@@ -284,10 +295,9 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 poster.role_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
                 poster.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 
-                
                 let avatar = CommentAvatarId()
                 avatar.attachment_type = "jpg"
-                avatar.attachment_url = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+                avatar.attachment_url = kSharedUserDefaults.getProfilePic() //kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
                 avatar.poster_created_at = dateString
                 avatar.id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
                 avatar.updated_at = dateString
@@ -297,6 +307,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 self.commentTextfield.text = ""
                 self.commentId = 0
                 self.receiveComment()
+                self.commentTextfield.resignFirstResponder()
                 self.tableView.reloadData()
                 
             }
@@ -593,7 +604,8 @@ extension PostCommentsViewController: UITextFieldDelegate ,UITextViewDelegate{
 // hides text views
 func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     if (text == "\n") {
-        textView.resignFirstResponder()
+        textView.text = textView.text + "\n"
+//        textView.resignFirstResponder()
         return false
     }
     return true
@@ -601,9 +613,18 @@ func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replace
 // hides text fields
 func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if (string == "\n") {
-        textField.resignFirstResponder()
+        textField.text = textField.text ?? "" + "\n"
+//        textField.resignFirstResponder()
         return false
     }
     return true
 }
+}
+extension String {
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+            return UIImage(data: data)
+        }
+        return nil
+    }
 }

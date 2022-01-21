@@ -62,6 +62,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     var islike: Int?
     var shareCallback:(()->())?
     var profileCallback:(() -> ())?
+    var sharedProfileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
     override func awakeFromNib() {
@@ -92,8 +93,14 @@ class SharePostDescTableViewCell: UITableViewCell {
         
         let userimg = UITapGestureRecognizer(target: self, action: #selector(self.profileScreen(_:)))
         userimg.numberOfTouchesRequired = 1
+        self.imgSharedUserImage.isUserInteractionEnabled = true
+        self.imgSharedUserImage.addGestureRecognizer(userimg)
+        
+        let shareduserimg = UITapGestureRecognizer(target: self, action: #selector(self.profileShareScreen(_:)))
+        shareduserimg.numberOfTouchesRequired = 1
         self.userImage.isUserInteractionEnabled = true
-        self.userImage.addGestureRecognizer(userimg)
+        self.userImage.addGestureRecognizer(shareduserimg)
+        
         
         // Initialization code
     }
@@ -360,6 +367,9 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         self.profileCallback?()
     }
     
+    @objc func profileShareScreen(_ tap: UITapGestureRecognizer) {
+        self.sharedProfileCallback?()
+    }
 
     @objc func showCommentsScreen() {
         let model = PostCommentsUserData(userID: self.data?.subjectId?.userId ?? -1,
