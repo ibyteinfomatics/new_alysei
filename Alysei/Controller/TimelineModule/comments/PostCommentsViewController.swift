@@ -54,6 +54,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             
             self.commentmessages?.removeAll()
             self.commentmessages = message
+            self.commentTextfield.returnKeyType = .next
             self.tableView.reloadData()
             //self.scrollToLTopRow()
             
@@ -306,6 +307,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 self.commentTextfield.text = ""
                 self.commentId = 0
                 self.receiveComment()
+                self.commentTextfield.resignFirstResponder()
                 self.tableView.reloadData()
                 
             }
@@ -602,7 +604,8 @@ extension PostCommentsViewController: UITextFieldDelegate ,UITextViewDelegate{
 // hides text views
 func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     if (text == "\n") {
-        textView.resignFirstResponder()
+        textView.text = textView.text + "\n"
+//        textView.resignFirstResponder()
         return false
     }
     return true
@@ -610,7 +613,8 @@ func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replace
 // hides text fields
 func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if (string == "\n") {
-        textField.resignFirstResponder()
+        textField.text = textField.text ?? "" + "\n"
+//        textField.resignFirstResponder()
         return false
     }
     return true
