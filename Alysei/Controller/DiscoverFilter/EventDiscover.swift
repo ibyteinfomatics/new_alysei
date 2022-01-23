@@ -137,6 +137,30 @@ class EventDiscover: AlysieBaseViewC {
         
         let baseUrlImg = eventData[indexPath].attachment?.baseUrl ?? ""
         eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        
+        
+        eventTableCell.moreButton.tag = indexPath
+        
+        
+        eventTableCell.btnMoreCallback = { tag in
+                
+            let baseUrlImg = self.eventData[indexPath].attachment?.baseUrl ?? ""
+
+            let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+            vc.hostname = self.eventData[indexPath].hostName
+            vc.eventname = self.eventData[indexPath].eventName
+            vc.location = self.eventData[indexPath].location
+            vc.date = self.eventData[indexPath].date
+            vc.time = self.eventData[indexPath].time
+            vc.fulldescription = self.eventData[indexPath].datumDescription
+            vc.website = self.eventData[indexPath].website
+            vc.eventYype = self.eventData[indexPath].eventType
+            vc.registrationType = self.eventData[indexPath].registrationType
+            vc.imgurl = String.getString(baseUrlImg + (self.self.eventData[indexPath].attachment?.attachmenturl ?? ""))
+            vc.bookingUrl = self.eventData[indexPath].url
+            vc.typeofpage = "read"
+                    
+        }
     
     eventTableCell.callVisitCallback = { index in
         
@@ -226,21 +250,7 @@ extension EventDiscover: UITableViewDelegate, UITableViewDataSource{
 
         let indexPath = indexPath.row
         
-        let baseUrlImg = eventData[indexPath].attachment?.baseUrl ?? ""
-
-        let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
-        vc.hostname = eventData[indexPath].hostName
-        vc.eventname = eventData[indexPath].eventName
-        vc.location = eventData[indexPath].location
-        vc.date = eventData[indexPath].date
-        vc.time = eventData[indexPath].time
-        vc.fulldescription = eventData[indexPath].datumDescription
-        vc.website = eventData[indexPath].website
-        vc.eventYype = eventData[indexPath].eventType
-        vc.registrationType = eventData[indexPath].registrationType
-        vc.imgurl = String.getString(baseUrlImg + (self.eventData[indexPath].attachment?.attachmenturl ?? ""))
-        vc.bookingUrl = eventData[indexPath].url
-        vc.typeofpage = "read"
+        
 
     }
     
