@@ -321,7 +321,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
         guard let nextvc = storyboard.instantiateViewController(withIdentifier: "PhotosPost") as? PhotosPost else { return }
-        nextvc.postId = postid
+        postId = postid
         nextvc.fromvc = .Notification
         let navigationController = UINavigationController(rootViewController: nextvc)
         navigationController.setNavigationBarHidden(true, animated: true)

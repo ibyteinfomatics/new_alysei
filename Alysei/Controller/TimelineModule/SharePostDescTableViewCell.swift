@@ -343,7 +343,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     
     @IBAction func menuButtonTapped(_ sender: UIButton) {
        // self.menuDelegate.menuBttonTapped(4, userID: 5)
-        self.menuDelegate.menuBttonTapped(self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
+        self.menuDelegate.menuBttonTapped(postID: self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
         
     }
     
