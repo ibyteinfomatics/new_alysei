@@ -148,11 +148,13 @@ class SinglePostAttachments: Codable{
 
 class SinglePostAttachmentLink: Codable {
     var attachmentUrl: String?
+    var baseUrl: String?
     var height: Int?
     var width: Int?
     
     init(with dictResponse: [String:Any]){
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
+        self.attachmentUrl = String.getString(dictResponse["base_url"])
         self.height = Int.getInt(dictResponse["height"])
         self.width = Int.getInt(dictResponse["width"])
     }

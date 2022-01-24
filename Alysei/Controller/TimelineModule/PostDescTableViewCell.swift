@@ -13,8 +13,8 @@ import ScrollingPageControl
     struct PostLikeUnlikeRequestModel: Codable {
 
     let postOwnerID: Int
-    let userID: Int
-    let postID: Int
+    let userID: Int?
+    let postID: Int?
     let likeStatus: Int
 
     private enum CodingKeys: String, CodingKey {
@@ -29,7 +29,7 @@ import ScrollingPageControl
 
 
 protocol ShareEditMenuProtocol {
-    func menuBttonTapped(_ postID: Int?, userID: Int)
+    func menuBttonTapped(postID: Int?, userID: Int?)
 }
 
 class PostDescTableViewCell: UITableViewCell {
@@ -57,6 +57,7 @@ class PostDescTableViewCell: UITableViewCell {
     
     
     var data: NewFeedSearchDataModel?
+    var data1 : SinglePostDataModel?
     var likeCallback:((Int) -> Void)? = nil
     var shareCallback:(()->())?
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
@@ -145,9 +146,17 @@ class PostDescTableViewCell: UITableViewCell {
     }
 
     @IBAction func menuButtonTapped(_ sender: UIButton) {
-        self.menuDelegate.menuBttonTapped(self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
+
+        if fromMenuTab == "PhotosPost"{
+            
+            self.menuDelegate.menuBttonTapped(postID: Int(postId), userID: Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""))
+        }
+        else{
+            self.menuDelegate.menuBttonTapped(postID: self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
+        }
         
     }
+    
     @IBAction func btnMoreLessAction(_ sender: UIButton){
         reloadCallBack?(sender.tag, relaodSection)
     }
@@ -174,8 +183,9 @@ class PostDescTableViewCell: UITableViewCell {
         self.viewLike.addGestureRecognizer(tap)
 
         self.data = modelData
-//        self.index = index
+    
         self.index = self.data?.postID ?? 0
+       
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
@@ -361,6 +371,7 @@ class PostDescTableViewCell: UITableViewCell {
        
         self.imagePostCollectionView.reloadData()
     }
+    
 
     @objc func likeAction(_ tap: UITapGestureRecognizer){
         if self.data?.likeFlag == 0 {
