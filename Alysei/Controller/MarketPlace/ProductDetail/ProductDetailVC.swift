@@ -91,7 +91,7 @@ class ProductDetailVC: AlysieBaseViewC {
 
 extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.productDetail?.product_detail?.brand_label_id == "0" {
+        if self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == "" {
             return 9
         }else{
         return 10
@@ -128,13 +128,13 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDescOptionTableVC", for: indexPath) as? ProductDescOptionTableVC else {return UITableViewCell()}
             cell.selectionStyle = .none
-            if indexPath.row == 3 &&  self.productDetail?.product_detail?.brand_label_id == "0"{
-                cell.lblOptionTitle.isHidden = true
-                cell.lblOptionValue.isHidden = true
-            }else{
-                cell.lblOptionTitle.isHidden = false
-                cell.lblOptionValue.isHidden = false
-            }
+//            if indexPath.row == 3 &&  (self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == ""){
+//                cell.lblOptionTitle.isHidden = true
+//                cell.lblOptionValue.isHidden = true
+//            }else{
+//                cell.lblOptionTitle.isHidden = false
+//                cell.lblOptionValue.isHidden = false
+//            }
             cell.configCell(productDetail ?? ProductDetailModel(with: [:]), indexPath.row)
             return cell
         }else if indexPath.row == 8{

@@ -37,6 +37,7 @@ class PostsViewController: AlysieBaseViewC {
     var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.selectedIndex = 0
 //        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
@@ -63,6 +64,8 @@ class PostsViewController: AlysieBaseViewC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
+        self.tabBarController?.selectedIndex = 0
+
         if self.role == "10" {
         if let viewController2 = self.tabBarController?.viewControllers?[1] {
 

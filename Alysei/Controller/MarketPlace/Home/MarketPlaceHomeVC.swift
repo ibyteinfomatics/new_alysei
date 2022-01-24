@@ -108,6 +108,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
 
     var originalPosition: CGPoint?
       var currentPositionTouched: CGPoint?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // headerView.addShadow()
@@ -115,7 +116,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
         callCheckIfStoredCreated()
-        callIsStoreReviewApi()
+       
         callMarketPlaceHomeApi()
         setBottomUI()
         walknextBtn.setTitle("Next", for: .normal)
@@ -148,7 +149,8 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
       // let  panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         //view.addGestureRecognizer(panGestureRecognizer)
     }
-    
+
+   
     func setBottomUI() {
         walkView1.layer.maskedCorners = [.layerMaxXMinYCorner]
         walkView1.clipsToBounds = true
@@ -181,6 +183,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
            self.tabBarController?.tabBar.isHidden = true
            self.hidesBottomBarWhenPushed = true
        }
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -194,6 +197,10 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         openednewCount.isHidden = true
         newInquiryCount(child: "New")
         openedInquiryCount(child: "Opened")
+        callCheckIfStoredCreated()
+       
+        callMarketPlaceHomeApi()
+        setBottomUI()
         
         DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
             if self.newunread == 0 &&  self.openedunread == 0 {
@@ -214,7 +221,9 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.hidesBottomBarWhenPushed = true
     }
     func setUI(){
-        if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
+        if (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            self.btnCreateStore.setTitle("Go to my store", for: .normal)
+        }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else{
             self.btnCreateStore.setTitle("Create your store", for: .normal)
@@ -828,7 +837,8 @@ extension MarketPlaceHomeVC{
             
             self.storeCreated = response?["is_store_created"] as? Int
             self.productCount = response?["product_count"] as? Int
-            self.setUI()
+           // self.setUI()
+            self.callIsStoreReviewApi()
         }
     }
 }
@@ -883,8 +893,9 @@ extension MarketPlaceHomeVC{
                     }
                     self.isStoreReviewed = data
                 }
-                
+                self.setUI()
             }
+           
             
         }
     }
