@@ -26,7 +26,7 @@ class UserPostsViewController: AlysieBaseViewC {
 
         // Do any additional setup after loading the view.
 
-        
+        fromMenuTab = "UserPostsViewController"
 
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
@@ -182,7 +182,7 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
 
         }
         
-       // cell.menuDelegate = self
+        cell.menuDelegate = self
 
         cell.commentCallback = { postCommentsUserData in
             //self.showCommentScreen(postCommentsUserData)
@@ -247,4 +247,110 @@ enum PostList {
     struct attachment_link: Codable {
         var attachment_url: String
     }
+}
+
+extension UserPostsViewController: ShareEditMenuProtocol {
+   
+    
+    func menuBttonTapped(postID: Int?, userID: Int?) {
+        
+        guard let postID = postID else {
+            return
+        }
+        let actionSheet = UIAlertController(style: .actionSheet)
+
+        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+            self.sharePost(postID)
+        }
+
+        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+            self.editPost(postID)
+        }
+
+        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+            self.deletePost(postID)
+        }
+
+       // let f = UIAlertAction(title: "Change Privacy", style: .default) { action in
+         //   self.editPost(postID)
+        //}
+
+        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+        }
+
+
+
+        if let loggedInUserID = kSharedUserDefaults.loggedInUserModal.userId {
+            if Int(loggedInUserID) == userID {
+                actionSheet.addAction(shareAction)
+                actionSheet.addAction(editPostAction)
+               // actionSheet.addAction(changePrivacyAction)
+                actionSheet.addAction(deletePost)
+            } else {
+                actionSheet.addAction(shareAction)
+                actionSheet.addAction(reportAction)
+            }
+        }
+
+        actionSheet.addAction(cancelAction)
+
+
+        self.present(actionSheet, animated: true, completion: nil)
+
+    }
+
+
+    func deletePost(_ postID: Int) {
+
+        let url = APIUrl.Posts.deletePost
+        guard var urlRequest = WebServices.shared.buildURLRequest(url, method: .POST) else {
+            return
+        }
+
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let model = Post.delete(postID: postID)
+            let body = try JSONEncoder().encode(model)
+
+            urlRequest.httpBody = body
+            WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
+                if (statusCode ?? 0) >= 400 {
+                    self.showAlert(withMessage: "Some error occured")
+                } else {
+                    //self.callNewFeedApi(1)
+                    self.fetchPostWithPhotsFromServer(1, visitorId: self.visitorId ?? "")
+                }
+            }
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func editPost(_ postID: Int) {
+        let data = postData.filter({ $0.postID == postID })
+        if let editData = data.first {
+            let editPostDataModel = EditPost.EditData.edit(attachments: editData.attachments,
+                                                             postOwnerDetail: editData.subjectId,
+                                                             postDescription: "\(editData.body ?? "")",
+                                                             postID: postID)
+            self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
+        }
+    }
+
+    func sharePost(_ postID: Int) {
+        let data = postData.filter({ $0.postID == postID })
+        if let searchDataModel = data.first {
+            let sharePostDataModel = SharePost.PostData.post(attachments: searchDataModel.attachments,
+                                                             postOwnerDetail: searchDataModel.subjectId,
+                                                             postDescription: "\(searchDataModel.body ?? "")",
+                                                             postID: postID)
+            self.performSegue(withIdentifier: "seguePostsToSharePost", sender: sharePostDataModel)
+        }
+    }
+
 }

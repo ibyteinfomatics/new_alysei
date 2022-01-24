@@ -40,6 +40,7 @@ class PostsViewController: AlysieBaseViewC {
 //        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
+        fromMenuTab = "PostViewController"
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
             
         let tap = UITapGestureRecognizer(target: self, action: #selector(openMarketPlace))
@@ -358,7 +359,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension PostsViewController: ShareEditMenuProtocol {
-    func menuBttonTapped(_ postID: Int?, userID: Int) {
+    func menuBttonTapped(postID: Int?, userID: Int?) {
         
         guard let postID = postID else {
             return
