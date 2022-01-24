@@ -340,11 +340,12 @@ class ProfileViewC: AlysieBaseViewC{
             } else if Int.getInt(data["alysei_review"]) == 1{
                 
                 blankdataView.isHidden = true
-                self.postRequestToGetFields()
+               // self.postRequestToGetFields()
                // self.fetchContactDetail()
                // self.fetchProfileDetails()
                 self.currentIndex = 0
                 self.postRequestToGetProgress()
+         //       self.postRequestToGetFields()
                 if check == "" {
                     if self.userLevel == .own {
                         self.menuButton.isHidden = false
@@ -360,7 +361,7 @@ class ProfileViewC: AlysieBaseViewC{
             
         } else {
             blankdataView.isHidden = true
-            self.postRequestToGetFields()
+           // self.postRequestToGetFields()
            // self.fetchContactDetail()
            // self.fetchProfileDetails()
             self.currentIndex = 0
@@ -373,6 +374,7 @@ class ProfileViewC: AlysieBaseViewC{
                     if self.userID != nil {
                         self.menuButton.isHidden = true
                         self.fetchVisiterProfileDetails(self.userID)
+                        
                     }
                 }
             }
@@ -956,6 +958,7 @@ class ProfileViewC: AlysieBaseViewC{
                 print(responseModel)
                 
                 self.userProfileModel = responseModel
+                self.postRequestToGetFields()
                 self.postcount.text = String.getString(responseModel.data?.postCount)
                 self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
                 
@@ -1092,7 +1095,7 @@ class ProfileViewC: AlysieBaseViewC{
                 print(responseModel)
                 self.userProfileModel = responseModel
                
-                
+                self.postRequestToGetFields()
                 self.postcount.text = String.getString(responseModel.data?.postCount)
                                 self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
                                 

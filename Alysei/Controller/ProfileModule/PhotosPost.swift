@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+var postId = ""
+var fromMenuTab = String()
 class PhotosPost: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
@@ -17,7 +18,7 @@ class PhotosPost: AlysieBaseViewC {
     var position = 0
     //TODO: pagination is pending
     var count = 100
-    var postId = ""
+    
     var fromvc: FromVC?
    // var postData = [PostList.innerData]()
     var postData = [NewFeedSearchDataModel]()
@@ -25,7 +26,7 @@ class PhotosPost: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fromMenuTab = "PhotosPost"
         uiview.drawBottomShadow()
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
@@ -36,7 +37,7 @@ class PhotosPost: AlysieBaseViewC {
         super.viewWillAppear(animated)
         
         userPost.isHidden = true
-        if postId == "" {
+        if postId == ""{
             self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
         } else {
             self.fetchPostParticularFromServer()
@@ -214,8 +215,9 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             
         } else {
             
-            
             let data = self.singlePostData
+//            cell.configCell1(data ?? <#default value#>, indexPath.row)
+           
             //cell.sizeToFit()
             
             if data?.subjectId?.roleId == UserRoles.producer.rawValue{
@@ -294,7 +296,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             }else{
                // btnMoreLess.isHidden = false
             }
-           
+            cell.menuDelegate = self
             cell.imagePostCollectionView.reloadData()
             
             cell.commentCallback = { postCommentsUserData in
@@ -327,7 +329,9 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
 }
 
 extension PhotosPost: ShareEditMenuProtocol {
-    func menuBttonTapped(_ postID: Int?, userID: Int) {
+   
+    
+    func menuBttonTapped(postID: Int?, userID: Int?) {
         
         guard let postID = postID else {
             return
@@ -346,9 +350,6 @@ extension PhotosPost: ShareEditMenuProtocol {
             self.deletePost(postID)
         }
 
-       // let f = UIAlertAction(title: "Change Privacy", style: .default) { action in
-         //   self.editPost(postID)
-        //}
 
         let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
         }
