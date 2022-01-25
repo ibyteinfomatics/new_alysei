@@ -588,9 +588,9 @@ extension InquiryConversation : UITableViewDataSource , UITableViewDelegate {
                 }
                 
                 if String.getString(objects?.senderImage).contains(imageDomain) {
-                    textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
+                    textCell.profile_image.setImage(withString: String.getString(objects?.senderImage).replacingOccurrences(of: "https://alyseiapi.ibyteworkshop.com/", with: "https://alysei.s3.us-west-1.amazonaws.com/"), placeholder: UIImage(named: "image_placeholder"))
                 } else {
-                    textCell.profile_image.setImage(withString: imageDomain+"/"+String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
+                    textCell.profile_image.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com//"+String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
                 }
                 
                 //textCell.profile_image.setImage(withString: String.getString(objects?.receiverImage), placeholder: UIImage(named: "image_placeholder"))
