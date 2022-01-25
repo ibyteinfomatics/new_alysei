@@ -37,6 +37,7 @@ class PostsViewController: AlysieBaseViewC {
     var isExpand = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.selectedIndex = 0
 //        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
@@ -63,6 +64,8 @@ class PostsViewController: AlysieBaseViewC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
+        self.tabBarController?.selectedIndex = 0
+
         if self.role == "10" {
         if let viewController2 = self.tabBarController?.viewControllers?[1] {
 
@@ -234,13 +237,26 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.profileCallback = {
                         //print("ids  ",data.subjectId?.userId)
                         let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                        controller?.userLevel = .other
-                        controller?.userID = data.subjectId?.userId ?? 0
+                        if data.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                            controller?.userLevel = .own
+                            controller?.userID = data.subjectId?.userId ?? 0
+                        }
+                        else{
+                            controller?.userLevel = .other
+                            controller?.userID = data.subjectId?.userId ?? 0
+                        }
+                        
                     }
                     cell.sharedProfileCallback = {
                         let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                        if data.sharedPostData?.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                            controller?.userLevel = .own
+                            controller?.userID = data.sharedPostData?.subjectId?.userId ?? 0
+                        }
+                        else{
                         controller?.userLevel = .other
                         controller?.userID = data.sharedPostData?.subjectId?.userId ?? 0
+                        }
                     }
                     
                     cell.shareCallback = {
@@ -285,8 +301,15 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.profileCallback = {
                     //print("ids  ",data.subjectId?.userId)
                     let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                    controller?.userLevel = .other
-                    controller?.userID = data.subjectId?.userId ?? 0
+                    if data.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                        controller?.userLevel = .own
+                        controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    else{
+                        controller?.userLevel = .other
+                        controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    
                 }
                 
                 cell.shareCallback = {

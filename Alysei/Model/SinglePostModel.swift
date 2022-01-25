@@ -31,6 +31,7 @@ class SinglePostDataModel{
     var postID: Int?
     var attachmentCount: Int?
     var commentCount: Int?
+    var follower_count: Int?
     var likeCount: Int?
     var privacy: String?
     var likeFlag: Int?
@@ -57,7 +58,7 @@ class SinglePostDataModel{
         self.likeFlag = Int.getInt(dictResponse["like_flag"])
         self.posted_at = String.getString(dictResponse["posted_at"])
         self.postID = Int.getInt(dictResponse["activity_action_id"])
-        
+        self.follower_count = Int.getInt(dictResponse["follower_count"])
         if let attachments = dictResponse["attachments"] as? [[String:Any]]{
             self.attachments = attachments.map({SinglePostAttachments.init(with: $0)})
         }
@@ -154,7 +155,7 @@ class SinglePostAttachmentLink: Codable {
     
     init(with dictResponse: [String:Any]){
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
-        self.attachmentUrl = String.getString(dictResponse["base_url"])
+        self.baseUrl = String.getString(dictResponse["base_url"])
         self.height = Int.getInt(dictResponse["height"])
         self.width = Int.getInt(dictResponse["width"])
     }

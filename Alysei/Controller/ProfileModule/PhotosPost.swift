@@ -220,20 +220,52 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
            
             //cell.sizeToFit()
             
+//            if data?.subjectId?.roleId == UserRoles.producer.rawValue{
+//                cell.userName.text = data?.subjectId?.companyName?.capitalized
+//               // cell.userNickName.text = data?.subjectId?.email?.lowercased()
+//            }else if data?.subjectId?.roleId == UserRoles.restaurant.rawValue{
+//                cell.userName.text = data?.subjectId?.restaurantName?.capitalized
+//                //cell.userNickName.text = data?.subjectId?.email?.lowercased()
+//            }else if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue) || (data?.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
+//                cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
+//               // cell.userNickName.text = data?.subjectId?.email?.lowercased()
+//            }else{
+//                cell.userName.text = data?.subjectId?.companyName?.capitalized
+//               // cell.userNickName.text = data?.subjectId?.email?.lowercased()
+//            }
             if data?.subjectId?.roleId == UserRoles.producer.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = data?.subjectId?.email?.lowercased()
+                cell.userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.restaurant.rawValue{
                 cell.userName.text = data?.subjectId?.restaurantName?.capitalized
-                cell.userNickName.text = data?.subjectId?.email?.lowercased()
-            }else if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue) || (data?.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
+                cell.userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+            }else if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue){
                 cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
-                cell.userNickName.text = data?.subjectId?.email?.lowercased()
-            }else{
+                cell.userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+                cell.follower.isHidden = true
+            }else if data?.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
+                cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
+                cell.userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+            }else if data?.subjectId?.roleId == UserRoles.distributer1.rawValue {
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = data?.subjectId?.email?.lowercased()
+                cell.userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+            }else if data?.subjectId?.roleId == UserRoles.distributer2.rawValue{
+                cell.userName.text = data?.subjectId?.companyName?.capitalized
+                cell.userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+            }else if data?.subjectId?.roleId == UserRoles.distributer3.rawValue{
+                cell.userName.text = data?.subjectId?.companyName?.capitalized
+                cell.userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+            }else if data?.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
+                cell.userName.text = data?.subjectId?.companyName?.capitalized
+                cell.userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
             }
-            
+            if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue){
+                
+                cell.follower.isHidden = true
+            } else {
+                cell.follower.isHidden = false
+                cell.follower.text = "\(data?.follower_count ?? 0) Followers"
+            }
             cell.lblPostDesc.text = data?.body
             cell.lblPostLikeCount.text = "\(data?.likeCount ?? 0)"
             cell.lblPostCommentCount.text = "\(data?.commentCount ?? 0)"
@@ -256,7 +288,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             if String.getString(data?.subjectId?.avatarId?.attachmentUrl) == ""{
                 cell.userImage.image = UIImage(named: "profile_icon")
             }else{
-                cell.userImage.setImage(withString: kImageBaseUrl + String.getString(data?.subjectId?.avatarId?.attachmentUrl))
+                cell.userImage.setImage(withString: String.getString(data?.subjectId?.avatarId?.baseUrl) + String.getString(data?.subjectId?.avatarId?.attachmentUrl))
             }
             cell.likeImage.image = data?.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
             
@@ -278,7 +310,9 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 print("No Data")
             }else{
                 for i in  0..<(data?.attachmentCount ?? 0) {
-                    cell.imageArray.append(data?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                    let baseUrl = data?.attachments?[i].attachmentLink?.baseUrl ?? ""
+                    let imageUrl = baseUrl + (data?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                    cell.imageArray.append(imageUrl)
                 }
             }
 
@@ -288,6 +322,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 cell.pageControl.alpha = 1
                 cell.pageControl.numberOfPages = cell.imageArray.count
             }
+          
             let  wordContains = data?.body?.count ?? 0
             //let lblSize = lblPostDesc.numberOfLines
             //print("lableSize?>>>>>>>>>>>>>>>>>>>>>>>>>>>>",lblSize)

@@ -91,7 +91,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
         callCheckIfStoredCreated()
-        callIsStoreReviewApi()
+        
         callMarketPlaceHomeApi()
         setBottomUI()
        walknextBtn.setTitle("Next", for: .normal)
@@ -185,7 +185,9 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.hidesBottomBarWhenPushed = true
     }
     func setUI(){
-        if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
+        if (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            self.btnCreateStore.setTitle("Go to my store", for: .normal)
+        }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else{
             self.btnCreateStore.setTitle("Create your store", for: .normal)
@@ -456,8 +458,9 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBAction func btnGotoStores(_ sender: UIButton){
         //self.callCheckIfStoredCreated()
         //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
-       
-        if self.storeCreated == 0{
+        if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
+            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        }else if self.storeCreated == 0{
 //            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
 //
 //           vc.view.frame = self.containerView.bounds
@@ -608,7 +611,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 }
                 cell.viewAllcallback = { tag in
                     guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
-                    
+                    nextVC.listIndex = 3
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 return cell
@@ -683,7 +686,8 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 
                 self.storeCreated = response?["is_store_created"] as? Int
                 self.productCount = response?["product_count"] as? Int
-                self.setUI()
+                self.callIsStoreReviewApi()
+                
             }
         }
     }
@@ -724,6 +728,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                             print("Store Decline")
                         }
                         self.isStoreReviewed = data
+                        self.setUI()
                     }
                     
                 }
