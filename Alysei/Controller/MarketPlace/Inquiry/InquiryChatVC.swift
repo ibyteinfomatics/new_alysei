@@ -267,10 +267,10 @@ class InquiryChatVC: AlysieBaseViewC {
         
         
         if String.getString(self.ResentUser?[index].otherImage ?? "").contains(imageDomain) {
-            notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? ""), placeholder: UIImage(named: "image_placeholder"))
+            notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? "").replacingOccurrences(of: "https://alyseiapi.ibyteworkshop.com/", with: "https://alysei.s3.us-west-1.amazonaws.com/"), placeholder: UIImage(named: "image_placeholder"))
         } else {
-            let img = (imageDomain+"/"+String.getString(self.ResentUser?[index].otherImage ?? ""))
-            notificationTableCell.imgViewNotification.setImage(withString: img.replacingOccurrences(of: "//", with: "/"), placeholder: UIImage(named: "image_placeholder"))
+            let img = ("https://alysei.s3.us-west-1.amazonaws.com/"+String.getString(self.ResentUser?[index].otherImage ?? ""))
+            notificationTableCell.imgViewNotification.setImage(withString: img, placeholder: UIImage(named: "image_placeholder"))
         }
         
        // notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? ""), placeholder: UIImage(named: "image_placeholder"))

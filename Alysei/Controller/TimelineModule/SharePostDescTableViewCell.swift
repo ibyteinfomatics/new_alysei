@@ -213,15 +213,27 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         follower.text = "\(modelData.follower_count ?? 0) Followers"
     }
     
+    
+    
     if modelData.sharedPostData?.subjectId?.roleId == UserRoles.producer.rawValue{
         userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.restaurant.rawValue{
         userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
-    }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue){
-        userName.text = "\(modelData.sharedPostData?.subjectId?.name?.capitalized ?? "")"
-    }else{
-        userName.text = "\(modelData.sharedPostData?.subjectId?.companyName?.capitalized ?? "")"
+    }else if(modelData.sharedPostData?.subjectId?.roleId == UserRoles.voyagers.rawValue){
+        userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
+        userName.text = "\(modelData.sharedPostData?.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.distributer1.rawValue {
+        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.distributer2.rawValue{
+        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.distributer3.rawValue{
+        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
+    }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
+        userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
     }
+    
+    
     lblPostDesc.text = modelData.sharedPostData?.body
     lblSharePostDesc.text = modelData.body
     lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"

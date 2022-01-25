@@ -114,6 +114,7 @@ class InquiryConversation: AlysieBaseViewC {
         self.btnDelete.isHidden = true
         
         print("profileImageUrl ",String.getString(profileImageUrl))
+        self.chatTextView.returnKeyType = .next
         chatTblView.reloadData()
        
     }
@@ -183,7 +184,7 @@ class InquiryConversation: AlysieBaseViewC {
         if productImage.contains(imageDomain) {
             itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
         } else {
-            itemImg.setImage(withString: imageDomain+"/"+productImage, placeholder: UIImage(named: "image_placeholder"))
+            itemImg.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com/"+productImage, placeholder: UIImage(named: "image_placeholder"))
         }
         
     }
@@ -401,9 +402,28 @@ extension InquiryConversation: UITextViewDelegate {
         
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    /*func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             chatTextView.resignFirstResponder()
+        }
+        return true
+    }*/
+    
+    // hides text views
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.text = textView.text + "\n"
+    //        textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    // hides text fields
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == "\n") {
+            textField.text = textField.text ?? "" + "\n"
+    //        textField.resignFirstResponder()
+            return false
         }
         return true
     }

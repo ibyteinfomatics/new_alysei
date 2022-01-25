@@ -92,7 +92,7 @@ class ConversationViewController: AlysieBaseViewC {
         self.btnDelete.isHidden = true
         
         chatTblView.reloadData()
-       
+        self.chatTextView.returnKeyType = .next
     }
     
     
@@ -325,12 +325,31 @@ extension ConversationViewController: UITextViewDelegate {
         
     }
     
+    // hides text views
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.text = textView.text + "\n"
+    //        textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    // hides text fields
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == "\n") {
+            textField.text = textField.text ?? "" + "\n"
+    //        textField.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    /*func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             chatTextView.resignFirstResponder()
         }
         return true
-    }
+    }*/
     
 }
 
