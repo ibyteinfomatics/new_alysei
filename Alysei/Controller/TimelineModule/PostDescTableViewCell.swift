@@ -151,6 +151,10 @@ class PostDescTableViewCell: UITableViewCell {
             
             self.menuDelegate.menuBttonTapped(postID: Int(postId), userID: Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""))
         }
+//        if fromMenuTab == "UserPostsViewController"{
+//
+//            self.menuDelegate.menuBttonTapped(postID: Int(postId), userID: Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""))
+//        }
         else{
             self.menuDelegate.menuBttonTapped(postID: self.data?.postID, userID: self.data?.subjectId?.userId ?? 0)
         }

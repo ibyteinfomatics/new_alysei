@@ -237,13 +237,26 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.profileCallback = {
                         //print("ids  ",data.subjectId?.userId)
                         let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                        controller?.userLevel = .other
-                        controller?.userID = data.subjectId?.userId ?? 0
+                        if data.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                            controller?.userLevel = .own
+                            controller?.userID = data.subjectId?.userId ?? 0
+                        }
+                        else{
+                            controller?.userLevel = .other
+                            controller?.userID = data.subjectId?.userId ?? 0
+                        }
+                        
                     }
                     cell.sharedProfileCallback = {
                         let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+                        if data.sharedPostData?.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                            controller?.userLevel = .own
+                            controller?.userID = data.sharedPostData?.subjectId?.userId ?? 0
+                        }
+                        else{
                         controller?.userLevel = .other
                         controller?.userID = data.sharedPostData?.subjectId?.userId ?? 0
+                        }
                     }
                     
                     cell.shareCallback = {
@@ -288,8 +301,15 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.profileCallback = {
                     //print("ids  ",data.subjectId?.userId)
                     let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                    controller?.userLevel = .other
-                    controller?.userID = data.subjectId?.userId ?? 0
+                    if data.subjectId?.userId == Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""){
+                        controller?.userLevel = .own
+                        controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    else{
+                        controller?.userLevel = .other
+                        controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    
                 }
                 
                 cell.shareCallback = {
