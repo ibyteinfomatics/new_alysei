@@ -611,7 +611,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 }
                 cell.viewAllcallback = { tag in
                     guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}
-                    
+                    nextVC.listIndex = 3
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 return cell
