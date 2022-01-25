@@ -44,6 +44,7 @@ class NetworkViewC: AlysieBaseViewC {
   
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
@@ -77,14 +78,16 @@ class NetworkViewC: AlysieBaseViewC {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+       override func viewDidAppear(_ animated: Bool) {
+           super.viewDidAppear(animated)
+           self.tabBarController?.tabBar.isHidden = false
+           self.hidesBottomBarWhenPushed = false
+       }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
     
     func inviteApi(id: Int, type: Int){
         
