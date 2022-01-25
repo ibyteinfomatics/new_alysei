@@ -61,6 +61,7 @@ class ProductSearchListModel {
     var total_one_star: Int?
     var total_three_star: Int?
     var total_two_star: Int?
+    var logo_base_url: String?
     //var avg_rating: String?
     
     init(with data: [String:Any]){
@@ -69,6 +70,7 @@ class ProductSearchListModel {
         self.searchKeyword = String.getString(data["search_keyword"])
         self.marketplaceProductId = Int.getInt(data["marketplace_product_id"])
         self.title = String.getString(data["title"])
+        self.logo_base_url = String.getString(data["logo_base_url"])
         self.product_category_name = String.getString(data["product_category_name"])
         self.product_price = String.getString(data["product_price"])
         self.store_name = String.getString(data["store_name"])

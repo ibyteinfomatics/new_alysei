@@ -372,7 +372,7 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
 //    }
    // else{
     if model.productTitle == AppConstants.kDescription {
-        return UITableView.automaticDimension
+        return 210 //UITableView.automaticDimension
     }else{
     return (model.type != AppConstants.File) ? 100.0 : 0.0
     }
@@ -383,7 +383,7 @@ extension AddFeatureViewC: UITableViewDataSource, UITableViewDelegate{
     
     let model = (self.arrSelectedFields.count == 0) ? self.productCategoriesDataModel.arrProductFields[indexPath.row] : self.arrSelectedFields[indexPath.row]
     if model.productTitle == AppConstants.kDescription {
-        return UITableView.automaticDimension
+        return 210 //UITableView.automaticDimension
     }else{
     return (model.type != AppConstants.File) ? 140.0 : 0.0
     }

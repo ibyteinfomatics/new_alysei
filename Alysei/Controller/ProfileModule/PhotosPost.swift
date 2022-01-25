@@ -316,11 +316,31 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 }
             }
 
-            if cell.imageArray.count <= 0 {
+//            if cell.imageArray.count <= 0 {
+//                cell.pageControl.alpha = 0
+//            } else {
+//                cell.pageControl.alpha = 1
+//                cell.pageControl.numberOfPages = cell.imageArray.count
+//            }
+            cell.pages = cell.imageArray.count
+            cell.vwpageControl.pages = cell.pages
+            if cell.imageArray.count <= 0 || cell.imageArray.count == 1{
                 cell.pageControl.alpha = 0
+                cell.vwpageControl.alpha = 0
             } else {
                 cell.pageControl.alpha = 1
                 cell.pageControl.numberOfPages = cell.imageArray.count
+                cell.vwpageControl.alpha = 1
+                cell.pages = cell.imageArray.count
+                cell.vwpageControl.pages = cell.pages
+                
+                (0..<(cell.pages )).map { $0 % 2 == 0 ? UIColor.clear : UIColor.clear }.forEach { color in
+                    let item = UIView()
+                    item.translatesAutoresizingMaskIntoConstraints = false
+                    item.backgroundColor = color
+                    cell.stackView.addArrangedSubview(item)
+                    item.widthAnchor.constraint(equalTo: cell.contentView.widthAnchor).isActive = true
+                }
             }
           
             let  wordContains = data?.body?.count ?? 0

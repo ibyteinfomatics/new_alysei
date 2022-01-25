@@ -169,7 +169,7 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
             cell.totalFourStarProgress.setProgress(Float((productDetail?.product_detail?.total_four_star ?? 0)  / 4), animated: true)
             cell.totalFiveStarProgress.setProgress(Float((productDetail?.product_detail?.total_five_star ?? 0) / 5), animated: true)*/
             cell.lblProducerName.text = self.productDetail?.product_detail?.store_detail?.name
-            cell.imgProducer.setImage(withString: kImageBaseUrl + String.getString(productDetail?.product_detail?.store_detail?.store_logo))
+            cell.imgProducer.setImage(withString: String.getString(productDetail?.product_detail?.store_detail?.logo_base_url) + String.getString(productDetail?.product_detail?.store_detail?.store_logo))
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0{
                 cell.viewComment.isHidden = true
             }else{
