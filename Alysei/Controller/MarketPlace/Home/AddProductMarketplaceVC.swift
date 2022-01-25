@@ -311,6 +311,10 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                     return 
                     
                 }
+                if (txtProductPrice.text == "" || txtProductPrice.text == "0"){
+                    showAlert(withMessage: "Please enter valid product price.")
+                    return
+                }
                 self.addProductApi()
             }
         }

@@ -28,30 +28,21 @@ class SKDeepHalper {
         
         let json = convertToDictionary(text: response["gcm.notification.data"] as! String)
         print("type---- ",type ?? "")
-        
-        
-        
         switch Int.getInt(type) {
         case 1:
             kSharedAppDelegate.moveChat(receiverid: String.getString(json?["redirect_to_id"]), username: String.getString(json?["sender_name"]))
-            
         case 2,6,7,8:
             kSharedAppDelegate.moveToPost(postid: String.getString(json?["redirect_to_id"]))
-            
         case 3:
             kSharedAppDelegate.moveToNetwork(index: 0)
-            
         case 4:
             kSharedAppDelegate.moveToNetwork(index: 1)
-            
         case 5:
             kSharedAppDelegate.moveToNetwork(index: 3)
-            
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:
             kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(json?["redirect_to_id"]), username: String.getString(json?["sender_name"]))
-       
         default:
             kSharedAppDelegate.pushToTabBarViewC()
     
