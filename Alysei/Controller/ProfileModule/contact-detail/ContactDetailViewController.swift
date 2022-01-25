@@ -28,7 +28,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var userType: UserRoles = .voyagers
     var flagView: FlagView!
     var countryCode = ""
-    
+    var countryId : String?
     var countryList = [Country]()
     var Countryname : String?
     // MARK:- Object lifecycle
@@ -118,10 +118,19 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
             self.countryCode = viewModel.country_code ?? self.countryCode
         }
         if viewModel.country_code == nil{
-            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" ||
-                kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
                 self.countryCode = "+39"
-            }else {
+        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") {
+            self.countryCode = "+39"
+//            for i in 0..<countryList.count {
+//                if self.countryId == countryList[i].code{
+//                   // Countryname = countryList[i].name
+//                    self.countryCode = countryList[i].callingCode
+//                }
+//
+//            }
+            }
+                else {
                 self.countryCode = "+1"
             }
         }
@@ -162,7 +171,10 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
     }
 
-
+//    func countryName(countryCode: String) -> String? {
+//        let current = Locale(identifier: "en_US")
+//        return current.localizedString(forRegionCode: countryCode)
+//    }
 
     func addressTextFieldSelected(_ sender: UITextField) -> Void{
 
@@ -255,11 +267,26 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         flagView = flag
         flagView.button.addTarget(self, action: #selector(presentCountryList(_:)), for: .touchUpInside)
         if viewModel.phone == nil || viewModel.country_code == nil{
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" ||
-            kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
             flagView.flag.image = UIImage(named: "italy")
             flagView.countrtyCode.text = "+39"
-        }else {
+        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") {
+//            for i in 0..<countryList.count {
+//                let callingCode = getCountryCode(self.countryId ?? "")
+//                if callingCode == countryList[i].callingCode{
+//                   // Countryname = countryList[i].name
+//                    self.countryCode = countryList[i].callingCode
+//                    if self.countryCode == "+1"{
+//                        flagView.flag.image = UIImage(named: "united states")
+//                        flagView.countrtyCode.text = "+1"
+//                    }else{
+                        flagView.flag.image = UIImage(named: "italy")
+                        flagView.countrtyCode.text = "+39"
+                   // }
+               // }
+                
+           // }
+            }else {
             flagView.flag.image = UIImage(named: "united states")
             flagView.countrtyCode.text = "+1"
         }

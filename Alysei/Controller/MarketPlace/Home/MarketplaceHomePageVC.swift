@@ -728,10 +728,10 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                             print("Store Decline")
                         }
                         self.isStoreReviewed = data
-                        self.setUI()
                     }
                     
                 }
+                self.setUI()
                 
             }
         }

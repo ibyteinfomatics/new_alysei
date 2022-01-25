@@ -140,6 +140,7 @@ class UserData {
     var avatarid: Avatarid?
     var reasonToConnect: String?
     var coverid: Avatarid?
+    var country_id: String?
     
     init(with dictResponse: [String:Any]?) {
         
@@ -150,7 +151,7 @@ class UserData {
         if let coverid = dictResponse?["cover_id"] as? [String:Any]{
             self.coverid =  Avatarid.init(with: coverid)
         }
-        
+        self.country_id = String.getString(dictResponse?["country_id"])
         self.companyName = String.getString(dictResponse?["company_name"])
         self.firstName = String.getString(dictResponse?["first_name"])
         self.lastName = String.getString(dictResponse?["last_name"])

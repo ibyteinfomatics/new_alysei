@@ -311,6 +311,43 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                     return 
                     
                 }
+                if (txtProductTitle.text == ""){
+                    showAlert(withMessage: "Please enter product title.")
+                    return
+                }
+                if (txtProductDesc.text == ""){
+                    showAlert(withMessage: "Please enter product description.")
+                    return
+                }
+                if (txtProductKeyWord.text == ""){
+                    showAlert(withMessage: "Please enter keyword.")
+                    return
+                }
+                if (txtProductCategory.text == ""){
+                    showAlert(withMessage: "Please enter category.")
+                    return
+                }
+                if (txtProductQuantityAvaliable.text == ""){
+                    showAlert(withMessage: "Please enter quantity available.")
+                    return
+                }
+                if (txtProductMinOrderQuantity.text == ""){
+                    showAlert(withMessage: "Please enter minimum order quantity.")
+                    return
+                }
+                if (txtProductHandleIns.text == ""){
+                    showAlert(withMessage: "Please enter handling instructions.")
+                    return
+                }
+                if (txtProductDispatchIns.text == ""){
+                    showAlert(withMessage: "Please enter dispatch instructions.")
+                    return
+                }
+                
+                if (txtProductSample.text == ""){
+                    showAlert(withMessage: "Please enter available for sample.")
+                    return
+                }
                 if (txtProductPrice.text == "" || txtProductPrice.text == "0"){
                     showAlert(withMessage: "Please enter valid product price.")
                     return

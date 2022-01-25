@@ -884,6 +884,7 @@ extension BusinessViewC {
             
             
             if let data = dictResponse?["data"] as? [String:Any]{
+                self.arrSearchDataModel.removeAll()
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
                 if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
                 self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])

@@ -87,7 +87,7 @@ class NotificationList: AlysieBaseViewC {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = "dd MMM YYYY HH mm ss"
+        dateFormatter.dateFormat = "dd MMM YYYY"
         dateFormatter.locale =  Locale(identifier:  "en")
         let localDate = dateFormatter.string(from: date)
         
@@ -122,8 +122,8 @@ class NotificationList: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-        //TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "&page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "&page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+//            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
           let dictResponse = dictResponse as? [String:Any]
           

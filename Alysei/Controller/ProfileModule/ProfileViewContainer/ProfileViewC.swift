@@ -190,11 +190,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.featureUIview.constant = 0
         self.iconAddProduct.isHidden = true
         //Mark: End
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-            followerstext.text = "Following"
-        } else {
-            followerstext.text = "Followers"
-        }
+        
       
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
             if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
@@ -240,6 +236,11 @@ class ProfileViewC: AlysieBaseViewC{
             } else {
                 self.featureUIview.constant = 140
                 self.iconAddProduct.isHidden = false
+            }
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                followerstext.text = "Following"
+            } else {
+                followerstext.text = "Followers"
             }
             
         case .other:
@@ -1136,7 +1137,11 @@ class ProfileViewC: AlysieBaseViewC{
                 self.updateListingTitle()
                 
                 //self.collectionViewAddProduct.reloadData()
-                
+                if self.userProfileModel.data?.userData?.roleID == 10 {
+                    self.followerstext.text = "Following"
+                } else {
+                    self.followerstext.text = "Followers"
+                }
                 if self.userProfileModel.data?.userData?.connectionFlag == 1 || self.userProfileModel.data?.userData?.followFlag == 1 ||  self.userProfileModel.data?.userData?.whoCanViewProfile == "anyone"{
                                     self.tabsCollectionView.reloadData()
                                     self.tabsCollectionView.isHidden = false
@@ -1649,7 +1654,7 @@ extension ProfileViewC{
         if segue.identifier == "segueProfileTabToContactDetail" {
             if let viewCon = segue.destination as? ContactDetailViewController {
                 viewCon.userType = self.userType
-                
+                viewCon.countryId = progressUserData?.country_id
                 viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, country_code: self.contactDetilViewModel.country_code, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink)
              //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
             }
