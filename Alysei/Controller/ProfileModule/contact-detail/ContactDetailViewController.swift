@@ -28,7 +28,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var userType: UserRoles = .voyagers
     var flagView: FlagView!
     var countryCode = ""
-    var countryId : String?
+    var phoneCode : String?
     var countryList = [Country]()
     var Countryname : String?
     // MARK:- Object lifecycle
@@ -121,7 +121,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
                 self.countryCode = "+39"
         }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") {
-            self.countryCode = "+39"
+            self.countryCode =  self.phoneCode ?? "+00"//"+39"
 //            for i in 0..<countryList.count {
 //                if self.countryId == countryList[i].code{
 //                   // Countryname = countryList[i].name
@@ -280,8 +280,10 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 //                        flagView.flag.image = UIImage(named: "united states")
 //                        flagView.countrtyCode.text = "+1"
 //                    }else{
-                        flagView.flag.image = UIImage(named: "italy")
-                        flagView.countrtyCode.text = "+39"
+                       // flagView.flag.image = UIImage(named: "italy")
+            flagView.flag.image = UIImage(named: Countryname?.lowercased() ?? "" )
+            flagView.countrtyCode.text = "+" + (self.phoneCode ?? "+00")
+            
                    // }
                // }
                 

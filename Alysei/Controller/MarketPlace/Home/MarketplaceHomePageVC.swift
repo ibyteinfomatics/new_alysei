@@ -91,7 +91,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
         callCheckIfStoredCreated()
-        
+        //self.callIsStoreReviewApi()
         callMarketPlaceHomeApi()
         setBottomUI()
        walknextBtn.setTitle("Next", for: .normal)
@@ -700,11 +700,11 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 if let data = response?["data"] as? [String:Any]{
                     self.maketPlaceHomeScreenData = MaketPlaceHomeScreenModel.init(with: data)
                 }
-                if self.isVisitedMarketplace == 0 {
-                    self.movetoWalkthrough()
-                }else{
-                    print("Nothing")
-                }
+//                if self.isVisitedMarketplace == 0 {
+//                    self.movetoWalkthrough()
+//                }else{
+//                    print("Nothing")
+//                }
                 self.tableView.reloadData()
                 //            self.imageCollectionView.reloadData()
                 //            self.recentlyAddedCollectionView.reloadData()

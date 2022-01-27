@@ -133,10 +133,8 @@ class PostsViewController: AlysieBaseViewC {
     }
     
     @objc func openMarketPlace(){
-        _ = pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
-        //guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
-        //self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = true
+        callMarketPlaceHomeApi()
+      
         //self.tabBarController?.tabBar.bounds.height = 0
     }
     
@@ -483,7 +481,31 @@ extension PostsViewController: ShareEditMenuProtocol {
     }
 
 }
-
+extension PostsViewController{
+    
+        func callMarketPlaceHomeApi(){
+            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceHome, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                let response = dictResponse as? [String:Any]
+                let isVisitedMarketplace = response?["is_visited_marketplace"] as? Int
+                if isVisitedMarketplace == 0 {
+                    
+                    _ = self.pushViewController(withName: MarketPlaceFirstTiimeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+                }else{
+                    _ = self.pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+                    //guard let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(identifier: "MarketPlaceHomeVC") as? MarketPlaceHomeVC else {return}
+                    //self.navigationController?.pushViewController(vc, animated: true)
+                    self.hidesBottomBarWhenPushed = true
+                }
+               
+                //            self.imageCollectionView.reloadData()
+                //            self.recentlyAddedCollectionView.reloadData()
+                //            self.regionCollectionView.reloadData()
+                //            self.newlyyAddedStoreCollectionView.reloadData()
+                //            self.topSellingCollectionView.reloadData()
+            }
+            
+        }
+}
 
 extension PostsViewController {
     func callNewFeedApi(_ pageNo: Int?){

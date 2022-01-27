@@ -29,11 +29,13 @@ class CountryModel {
     var isSelected = false
    // var isSelected:Bool?
     var emoji: String?
+    var countryPhonecode: String?
     var phonecode: String?
     var flagId: FlagId?
     
     init(data:[String:Any]?) {
         self.id = String.getString(data?["id"])
+        self.countryPhonecode = String.getString(data?["phonecode"])
         self.name = String.getString(data?["name"])
         self.capital = String.getString(data?["capital"])
         self.currency = String.getString(data?["currency"])

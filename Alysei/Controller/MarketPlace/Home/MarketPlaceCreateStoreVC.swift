@@ -68,7 +68,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var storeData: MyStoreProductDetail?
     var uploadStoreImage = [String]()
     var profilePicUpload = false
-    
+    var sendUpdateImageArray = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,7 +134,10 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    self.imagesFromSource.append(photo.originalImage ?? photo.image)
+                    self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
+                    if self.fromVC == .myStoreDashboard {
+                        self.sendUpdateImageArray.append(photo.modifiedImage ?? photo.image)
+                    }
                     print(photo)
                 case .video(let video):
                     print(video)
@@ -599,7 +602,7 @@ extension MarketPlaceCreateStoreVC {
                                      
         ]
         
-        let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray,
+        let imageParam : [String:Any] = [APIConstants.kImage: self.sendUpdateImageArray,
                                          APIConstants.kImageName: "gallery_images[]"]
         
         let coverPic: [String:Any] = [APIConstants.kImage : self.imgCover.image ?? UIImage(),

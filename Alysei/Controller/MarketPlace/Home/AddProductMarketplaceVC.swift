@@ -73,6 +73,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     var passEditProductDetail : MyStoreProductDetail?
     // var uploadStoreImage = [String]()
     var marketPlaceProductId: String?
+    var sendUpdateImageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,7 +186,10 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    self.imagesFromSource.append(photo.originalImage ?? photo.image)
+                    self.imagesFromSource.append(photo.modifiedImage ?? photo.image )
+                    if self.fromVC == .myStoreDashboard {
+                        self.sendUpdateImageArray.append(photo.modifiedImage ?? photo.image )
+                    }
                     print(photo)
                 case .video(let video):
                     print(video)
@@ -319,10 +323,10 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                     showAlert(withMessage: "Please enter product description.")
                     return
                 }
-                if (txtProductKeyWord.text == ""){
-                    showAlert(withMessage: "Please enter keyword.")
-                    return
-                }
+//                if (txtProductKeyWord.text == ""){
+//                    showAlert(withMessage: "Please enter keyword.")
+//                    return
+//                }
                 if (txtProductCategory.text == ""){
                     showAlert(withMessage: "Please enter category.")
                     return
@@ -690,7 +694,8 @@ extension AddProductMarketplaceVC{
             APIConstants.kProductPrice: self.txtProductPrice.text ?? ""
         ]
         
-        let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray,
+        let imageParam : [String:Any] = [//APIConstants.kImage: self.uploadImageArray,
+                                        APIConstants.kImage: self.sendUpdateImageArray,
                                          APIConstants.kImageName: "gallery_images[]"]
         
         

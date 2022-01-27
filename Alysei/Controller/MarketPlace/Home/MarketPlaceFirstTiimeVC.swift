@@ -156,7 +156,7 @@ extension MarketPlaceFirstTiimeVC: GetStartedDelegateWalk{
         self.collectionViewTutorial.reloadItems(at: [indexPath])
       }
       else{
-        self.navigationController?.popViewController(animated: true)
+          _ = self.pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
       }
     }
       }

@@ -141,11 +141,15 @@ class UserData {
     var reasonToConnect: String?
     var coverid: Avatarid?
     var country_id: String?
+    var country: CountryModel?
     
     init(with dictResponse: [String:Any]?) {
         
         if let data = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarid =  Avatarid.init(with: data)
+        }
+        if let data = dictResponse?["country"] as? [String:Any]{
+            self.country =  CountryModel.init(data: data)
         }
         
         if let coverid = dictResponse?["cover_id"] as? [String:Any]{

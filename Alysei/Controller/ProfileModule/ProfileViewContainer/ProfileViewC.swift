@@ -67,6 +67,9 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var lblPercentage: UILabel!
     @IBOutlet weak var followerstext: UILabel!
     @IBOutlet weak var iconAddProduct: UIImageView!
+    @IBOutlet weak var btnConnectHght: NSLayoutConstraint!
+   
+    @IBOutlet weak var viewFeature: UIView!
     
    // @IBOutlet weak var featureCollectionView: UICollectionView!
     
@@ -188,6 +191,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.viewSeparator.alpha = 0.0
         //Mark: Check Condition(Shalini)
         self.featureUIview.constant = 0
+        self.viewFeature.isHidden = true
         self.iconAddProduct.isHidden = true
         //Mark: End
         
@@ -233,9 +237,11 @@ class ProfileViewC: AlysieBaseViewC{
             if self.userType == .voyagers {
                 self.featureUIview.constant = 0
                 self.iconAddProduct.isHidden = true
+                self.viewFeature.isHidden = true
             } else {
                 self.featureUIview.constant = 140
                 self.iconAddProduct.isHidden = false
+                self.viewFeature.isHidden = false
             }
             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
                 followerstext.text = "Following"
@@ -911,24 +917,27 @@ class ProfileViewC: AlysieBaseViewC{
         if userLevel == .other {
             switch self.visitorUserType {
             case .distributer1, .distributer2, .distributer3, .producer:
-                self.featuredListingTitleLabel.text = "Featured Products"
+                self.featuredListingTitleLabel.text = "Featured Product"
             case .restaurant:
                 self.featuredListingTitleLabel.text = "Featured Menu"
             case .travelAgencies:
-                self.featuredListingTitleLabel.text = "Featured Packages"
+                self.featuredListingTitleLabel.text = "Featured Package"
+        
             case .voiceExperts:
                 self.featuredListingTitleLabel.text = "Featured"
+                
             default:
+        
                 print("no user role found")
             }
         }else{
         switch self.userType {
         case .distributer1, .distributer2, .distributer3, .producer:
-            self.featuredListingTitleLabel.text = "Featured Products"
+            self.featuredListingTitleLabel.text = "Featured Product"
         case .restaurant:
             self.featuredListingTitleLabel.text = "Featured Menu"
         case .travelAgencies:
-            self.featuredListingTitleLabel.text = "Featured Packages"
+            self.featuredListingTitleLabel.text = "Featured Package"
         case .voiceExperts:
             self.featuredListingTitleLabel.text = "Featured"
         default:
@@ -1155,10 +1164,24 @@ class ProfileViewC: AlysieBaseViewC{
                 switch roleID {
                 case .distributer1, .distributer2, .distributer3, .producer, .travelAgencies :
                     name = "\(responseModel.data?.userData?.companyName ?? "")"
+                    self.btnConnectHght.constant = 44
+
                 case .restaurant :
                     name = "\(responseModel.data?.userData?.restaurantName ?? "")"
+                    self.btnConnectHght.constant = 44
+
+                case .voiceExperts:
+                    name = "\(responseModel.data?.userData?.firstName ?? "") \(responseModel.data?.userData?.lastName ?? "")"
+                    self.btnConnectHght.constant = 44
+
                 default:
                     name = "\(responseModel.data?.userData?.firstName ?? "") \(responseModel.data?.userData?.lastName ?? "")"
+                    if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
+                    self.btnConnectHght.constant = 44
+                    }else{
+                        self.btnConnectHght.constant = 0
+                    }
+                
                 }
                 
                 self.userType = roleID
@@ -1654,7 +1677,9 @@ extension ProfileViewC{
         if segue.identifier == "segueProfileTabToContactDetail" {
             if let viewCon = segue.destination as? ContactDetailViewController {
                 viewCon.userType = self.userType
-                viewCon.countryId = progressUserData?.country_id
+              //  viewCon.countryId = progressUserData?.country?.id
+                viewCon.phoneCode = progressUserData?.country?.countryPhonecode
+                viewCon.Countryname = progressUserData?.country?.name
                 viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, country_code: self.contactDetilViewModel.country_code, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink)
              //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
             }
@@ -1715,8 +1740,10 @@ extension ProfileViewC{
             editProfileViewCon?.signUpViewModel = self.signUpViewModel
             if ((self.signUpViewModel.arrProductCategories.first?.arrAllProducts.count == 0) && (userLevel == .other)) || (self.userProfileModel.data?.userData?.roleID) == 10 {
                 self.featureUIview.constant = 0
+                self.viewFeature.isHidden = true
             } else {
                 self.featureUIview.constant = 140
+                self.viewFeature.isHidden = false
             }
             self.collectionViewAddProduct.reloadData()
             editProfileViewCon?.userType = self.userType ?? .voyagers
