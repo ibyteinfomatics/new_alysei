@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -7076,7 +7076,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-dR-075">
-                                                    <rect key="frame" x="150.66666666666666" y="308.66666666666669" width="112.66666666666666" height="25"/>
+                                                    <rect key="frame" x="129.66666666666669" y="308.66666666666669" width="154.66666666666669" height="25"/>
                                                     <color key="pageIndicatorTintColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="currentPageIndicatorTintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </pageControl>
@@ -7356,12 +7356,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKA-65-PcS">
-                                                    <rect key="frame" x="310" y="50" width="94" height="30"/>
+                                                    <rect key="frame" x="318" y="50" width="86" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Ld5-nE-TeD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="View Profile"/>
+                                                    <state key="normal" title="View Store"/>
                                                     <connections>
                                                         <action selector="btnViewProfile:" destination="t2C-CW-7JQ" eventType="touchUpInside" id="mZh-y5-kRZ"/>
                                                     </connections>
@@ -8663,7 +8663,7 @@
                                                                 <constraint firstAttribute="height" constant="60" id="4Qn-Mm-Yj7"/>
                                                                 <constraint firstAttribute="width" secondItem="yb0-Q8-k6i" secondAttribute="height" multiplier="1:1" id="P4f-lx-Fce"/>
                                                             </constraints>
-                                                            <state key="normal" image="icon_rightArrow"/>
+                                                            <state key="normal" image="icons8_forward-2"/>
                                                             <connections>
                                                                 <action selector="moveToProfile:" destination="FOk-kx-DPh" eventType="touchUpInside" id="rk3-Xa-evo"/>
                                                             </connections>
@@ -11774,12 +11774,12 @@
         <image name="default_marker.png" width="26" height="41"/>
         <image name="demo" width="400" height="400"/>
         <image name="dropdown_selector" width="13" height="8.6666669845581055"/>
-        <image name="icon_rightArrow" width="7.3333334922790527" height="13.666666984558105"/>
         <image name="icons8_approval_1" width="16.333333969116211" height="16.333333969116211"/>
         <image name="icons8_christmas_star" width="13.333333015441895" height="12.666666984558105"/>
         <image name="icons8_christmas_star_2" width="8" height="7.3333334922790527"/>
         <image name="icons8_christmas_star_2-1" width="8" height="7.3333334922790527"/>
         <image name="icons8_forward" width="19.333333969116211" height="10.666666984558105"/>
+        <image name="icons8_forward-2" width="12" height="21"/>
         <image name="icons8_happy" width="75.666664123535156" height="75.666664123535156"/>
         <image name="icons8_italy_map" width="32.666667938232422" height="37.333332061767578"/>
         <image name="icons8_right" width="29" height="27"/>

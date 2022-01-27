@@ -2629,6 +2629,7 @@
                         <outlet property="backButton" destination="xQ5-Sy-fEI" id="Tw8-bj-c1d"/>
                         <outlet property="blankdataView" destination="rPD-eL-M9i" id="cKE-QQ-Eee"/>
                         <outlet property="btnAbout" destination="iy5-FO-A9G" id="Lg4-Of-Xli"/>
+                        <outlet property="btnConnectHght" destination="DjE-eb-phi" id="KtS-eH-Ad7"/>
                         <outlet property="btnContact" destination="zKl-Im-NgQ" id="Vqw-wE-Ang"/>
                         <outlet property="btnEditProfile" destination="uUz-OT-5d2" id="wOa-w4-wnY"/>
                         <outlet property="btnPosts" destination="Gb2-jI-5aH" id="tOp-Id-Z25"/>
@@ -2663,6 +2664,7 @@
                         <outlet property="text" destination="8Se-Ge-Wec" id="0Ct-AX-wKQ"/>
                         <outlet property="usernameLabel" destination="ofC-tX-B2O" id="DJo-id-kgj"/>
                         <outlet property="viewBlankHeading" destination="eNN-v7-2cs" id="2Z9-3Z-95A"/>
+                        <outlet property="viewFeature" destination="abZ-xo-HVg" id="dTq-cp-AAa"/>
                         <outlet property="viewSeparator" destination="pRC-Oq-FgN" id="XDR-t0-cs5"/>
                         <segue destination="6aQ-aa-Yc1" kind="show" identifier="segueProfileTabToContactDetail" id="qB9-K1-6MK"/>
                         <segue destination="s5E-fw-LXM" kind="show" identifier="segueProfileTabToBasicConnection" id="BKe-bm-hp7"/>

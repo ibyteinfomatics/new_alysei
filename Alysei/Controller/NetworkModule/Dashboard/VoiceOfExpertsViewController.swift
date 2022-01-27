@@ -81,7 +81,7 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
             self.userimg.layer.cornerRadius = self.userimg.frame.width/2
             
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
-                self.userimg.setImage(withString: String.getString(kImageBaseUrl+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+                self.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "")+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
             }
             
             self.specialization.text = self.dashboardModel?.data?.aboutMember?[1].value
