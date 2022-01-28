@@ -163,7 +163,7 @@ class HomeViewC: AlysieBaseViewC {
     }
     
     @IBAction func tapProfile(_ sender: UIButton) {
-        
+        self.tabBarController?.selectedIndex = 4
     }
    
     
