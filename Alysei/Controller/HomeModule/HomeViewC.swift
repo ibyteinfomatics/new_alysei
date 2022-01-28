@@ -24,6 +24,7 @@ class HomeViewC: AlysieBaseViewC {
     @IBOutlet weak var viewBlueHeading: UIView!
    // @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var membershipView: UIView!
+    @IBOutlet weak var gotoprofile: UIButtonExtended!
     var currentIndex: Int = 0
     
     var unread: Int = 0
@@ -73,6 +74,11 @@ class HomeViewC: AlysieBaseViewC {
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 //        _ = self.postViewC
 //    }
+      
+      self.gotoprofile.layer.cornerRadius = 5
+      self.gotoprofile.layer.masksToBounds = true
+      self.gotoprofile.layer.borderWidth = 2
+      self.gotoprofile.layer.borderColor = UIColor.init(red: 17/255, green: 76/255, blue: 119/255, alpha: 1).cgColor
     
   }
     
@@ -156,6 +162,9 @@ class HomeViewC: AlysieBaseViewC {
      // kSharedUserDefaults.clearAllData()
     }
     
+    @IBAction func tapProfile(_ sender: UIButton) {
+        
+    }
    
     
     private func getMembershipTableCell(_ indexPath: Int) -> UITableViewCell{
