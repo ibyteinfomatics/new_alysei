@@ -13,6 +13,7 @@ class NotificationList: AlysieBaseViewC {
     @IBOutlet weak var viewNavigation: UIView!
     
     var notimodel:NotificationListModel?
+    var notifiacationArray = [NotiDatum]()
     var indexOfPageToRequest = 1
 
     override func viewDidLoad() {
@@ -60,7 +61,7 @@ class NotificationList: AlysieBaseViewC {
         
         let dfmatter = DateFormatter()
         dfmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dfmatter.date(from: String.getString(notimodel?.data?.data?[index].createdAt))
+        let date = dfmatter.date(from: String.getString(notifiacationArray[index].createdAt))
         let dateStamp:TimeInterval = date!.timeIntervalSince1970
         let dateSt:Int = Int(dateStamp)
         
@@ -68,14 +69,14 @@ class NotificationList: AlysieBaseViewC {
         notificationTableCell.imgViewNotification.layer.cornerRadius = notificationTableCell.imgViewNotification.layer.frame.height / 2
         notificationTableCell.layer.masksToBounds = true
         
-        let baseUrl = notimodel?.data?.data?[index].user?.base_url ?? ""
-        notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notimodel?.data?.data?[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "NotiLogo"))
+        let baseUrl = notifiacationArray[index].user?.base_url ?? ""
+        notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notifiacationArray[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "NotiLogo"))
         
         let dateString = getcurrentdateWithTime(timeStamp: String.getString(dateSt))
         print("formatted date is =  \(dateString)")
         
         notificationTableCell.message.text = dateString
-        notificationTableCell.name.text = notimodel?.data?.data?[index].title
+        notificationTableCell.name.text = notifiacationArray[index].title
        
         return notificationTableCell
         
@@ -122,13 +123,17 @@ class NotificationList: AlysieBaseViewC {
       
       disableWindowInteraction()
     
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "&page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "?page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
 //            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
+            if self.indexOfPageToRequest == 1{
+                self.notifiacationArray.removeAll()
+            }
           let dictResponse = dictResponse as? [String:Any]
           
           self.notimodel = NotificationListModel.init(with: dictResponse)
-          
+            for i in (0..<(self.notimodel?.data?.data?.count ?? 0)){
+                self.notifiacationArray.append(self.notimodel?.data?.data?[i] ?? NotiDatum(with: [:]))
+            }
           self.tblViewNotification.isHidden = false
           self.tblViewNotification.reloadData()
       }
@@ -150,7 +155,7 @@ class NotificationList: AlysieBaseViewC {
 extension NotificationList: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notimodel?.data?.data?.count ?? 0
+        return notifiacationArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
