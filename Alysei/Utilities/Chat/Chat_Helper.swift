@@ -52,6 +52,7 @@ class Chat_hepler {
     
     var commentmessageclass        = [CommentClass]()
     var postmessageclass        = [PostClass]()
+    var postlikeclass        = [PostClass]()
     var commentBackupOnetoOne  = [LikeCommentClass]()
     
     var userState :UsersState?
@@ -506,6 +507,10 @@ class Chat_hepler {
         
     }
     
+    func update_post(likecount :Int, postId :Int){
+        postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
+    }
+    
     func send_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String) {
         
         //countDic.data = commentDisc
@@ -814,6 +819,39 @@ class Chat_hepler {
             }
             message(self?.commentmessageclass)
         }
+    }
+    
+    
+    func receivce_Post_like(postId :String , message:@escaping (_ result: [PostClass]?) -> ()) -> Void {
+        
+        postReference.observe(.value) { [weak self] (snapshot) in
+            
+            self?.postlikeclass.removeAll()
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+
+                           let position = child as! DataSnapshot
+
+                           let positionsInfo = position.value as! [String: Any]
+                
+                if positionsInfo[Parameters.postId] != nil  && positionsInfo[Parameters.likeCount] != nil {
+                   // let jobTitle = positionsInfo[Parameters.postId] as! Int
+                    
+                    let resentusersDetails = PostClass()
+                    resentusersDetails.postId     =  Int.getInt(positionsInfo[Parameters.postId])
+                    resentusersDetails.likeCount    =  Int.getInt(positionsInfo[Parameters.likeCount])
+                    resentusersDetails.commentCount       =  Int.getInt(positionsInfo[Parameters.commentCount])
+                    
+                    
+                    self?.postlikeclass.append(resentusersDetails)
+                    
+                }
+            
+            }
+            message(self?.postlikeclass)
+            
+        }
+        
+       
     }
     
     

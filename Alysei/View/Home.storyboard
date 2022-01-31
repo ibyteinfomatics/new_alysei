@@ -4054,6 +4054,7 @@ any other devices.</string>
                                             <constraint firstAttribute="height" constant="40" id="Rc4-X2-4YV"/>
                                         </constraints>
                                         <state key="normal" image="messages"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="messages"/>
                                         <connections>
                                             <action selector="tapNotification:" destination="I2M-E1-LUd" eventType="touchUpInside" id="bxL-g0-Qwg"/>
                                         </connections>
@@ -4166,6 +4167,10 @@ any other devices.</string>
                                         <state key="normal" title="Go To Profile">
                                             <color key="titleColor" name="blackColor"/>
                                         </state>
+                                        <buttonConfiguration key="configuration" style="plain" title="Go To Profile">
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                            <color key="baseForegroundColor" name="blackColor"/>
+                                        </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="makeCircle" value="NO"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
