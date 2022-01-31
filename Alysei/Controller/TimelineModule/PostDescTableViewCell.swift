@@ -75,6 +75,9 @@ class PostDescTableViewCell: UITableViewCell {
     var profileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
+    
+    
+    var postLike:[PostClass]?
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -87,6 +90,7 @@ class PostDescTableViewCell: UITableViewCell {
         imagePostCollectionView.delegate = self
         imagePostCollectionView.dataSource = self
         imagePostCollectionView.isHidden = false
+        
         btnMoreLess.isHidden = true
        // lblPostDesc.numberOfLines = 2
         userImage.layer.cornerRadius = userImage.frame.height / 2
@@ -177,10 +181,11 @@ class PostDescTableViewCell: UITableViewCell {
         self.profileCallback?()
     }
     
-    func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
-
+    
+    func configCell(_ modelData: NewFeedSearchDataModel,postlike: [PostClass], _ index: Int) {
+        
         _ = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
-
+        postLike = postlike
      
         self.viewLike.tag = index
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
@@ -231,6 +236,217 @@ class PostDescTableViewCell: UITableViewCell {
         }
         
         lblPostDesc.text = modelData.body
+        
+        for i in  0..<(postLike?.count ?? 0) {
+            
+            if self.postLike?[i].postId == self.data?.postID ?? 0 {
+                lblPostLikeCount.text = "\(self.postLike?[i].likeCount ?? 0)"
+            }
+            
+        }
+        
+        //lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
+        lblPostCommentCount.text = "\(modelData.commentCount ?? 0)"
+        lblPostTime.text = modelData.posted_at
+        //islike = data.likeFlag
+        if modelData.attachmentCount == 0 {
+            imageHeightCVConstant.constant = 0
+//            imagePostCollectionView.alpha = 0.0
+        }else{
+            
+            if modelData.attachments?.count ?? 0 > 1 {
+                
+                //var numbers = [Int]()
+                var height1 = 0,height2 = 0,height3 = 0,height = 0
+                for i in  0..<(modelData.attachments?.count ?? 0) {
+                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
+                        height1 = 350
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
+                        height2 = 300
+                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
+                        
+                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
+                            height3 = 350
+                        } else {
+                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+                            height3 = 500
+                        }
+                        
+                        
+                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
+                        height = 500
+                    }
+                }
+            
+                if height3 > height1 && height3 > height2{
+                    height = height3
+                } else if height1 > height3 && height1 > height2{
+                    height = height1
+                } else if height2 > height3 && height2 > height1{
+                    height = height2
+                }
+                
+                
+                imageHeightCVConstant.constant = CGFloat(height)//500
+               
+            } else {
+                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+                    imageHeightCVConstant.constant = 350
+                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
+                    
+                    
+                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
+                        imageHeightCVConstant.constant = 500
+                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
+                        imageHeightCVConstant.constant = 400
+                    } else {
+                        imageHeightCVConstant.constant = 300
+                    }
+                    
+                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
+                //imageHeightCVConstant.constant = 350
+                    
+                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
+                        imageHeightCVConstant.constant = 350
+                    } else {
+                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+                        imageHeightCVConstant.constant = 500
+                    }
+                    
+                    
+                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
+                }
+            }
+            
+            
+//            imagePostCollectionView.alpha = 1.0
+        }
+        self.userImage.layer.borderWidth = 0.5
+        self.userImage.layer.borderColor = UIColor.lightGray.cgColor
+        
+       // let baseUrl =
+      //  print("ImageUrl--------------------------------\(String.getString(modelData.subjectId?.avatarId?.attachmentUrl) )")
+        if String.getString(modelData.subjectId?.avatarId?.attachmentUrl) == ""{
+            self.userImage.image = UIImage(named: "profile_icon")
+        }else{
+        self.userImage.setImage(withString: (String.getString(modelData.subjectId?.avatarId?.baseUrl)) + String.getString(modelData.subjectId?.avatarId?.attachmentUrl))
+        }
+        likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
+        
+        likeCallback = { index in
+            //self.postTableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+            self.lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
+            self.likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
+            
+        }
+        
+        
+        self.imagePostCollectionView.isPagingEnabled = true
+
+        self.imagePostCollectionView.showsHorizontalScrollIndicator = false
+
+        self.imageArray.removeAll()
+        if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
+            print("No Data")
+        }else{
+            for i in  0..<(modelData.attachments?.count ?? 0) {
+                let baseUrl = modelData.attachments?[i].attachmentLink?.baseUrl ?? ""
+                self.imageArray.append(baseUrl + "\(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")")
+                
+            }
+            
+            print("LoadImageArray------------------------------\(imageArray)")
+        }
+
+        if imageArray.count <= 0 || imageArray.count == 1{
+            self.pageControl.alpha = 0
+            self.vwpageControl.alpha = 0
+        } else {
+            self.pageControl.alpha = 1
+            self.pageControl.numberOfPages = imageArray.count
+            self.vwpageControl.alpha = 1
+            self.pages = imageArray.count
+            self.vwpageControl.pages = pages
+            
+            (0..<(pages )).map { $0 % 2 == 0 ? UIColor.clear : UIColor.clear }.forEach { color in
+                let item = UIView()
+                item.translatesAutoresizingMaskIntoConstraints = false
+                item.backgroundColor = color
+                stackView.addArrangedSubview(item)
+                item.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+            }
+        }
+        let  wordContains = modelData.body?.count ?? 0
+        //let lblSize = lblPostDesc.numberOfLines
+        //print("lableSize?>>>>>>>>>>>>>>>>>>>>>>>>>>>>",lblSize)
+        if wordContains <= 60 {
+//            btnMoreLess.isHidden = true
+        }else{
+           // btnMoreLess.isHidden = false
+        }
+       
+        self.imagePostCollectionView.reloadData()
+    }
+    
+    func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
+        
+        _ = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+      
+     
+        self.viewLike.tag = index
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
+        self.viewLike.addGestureRecognizer(tap)
+
+        self.data = modelData
+    
+        self.index = self.data?.postID ?? 0
+       
+        if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+        }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
+            userName.text = modelData.subjectId?.restaurantName?.capitalized
+            userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+        }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+            userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            follower.isHidden = true
+        }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+            userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+        }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+        }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+        }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+        }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+        }
+        /*else{
+  
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = modelData.subjectId?.email?.lowercased()
+        }*/
+        
+        if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
+            
+            follower.isHidden = true
+        } else {
+            follower.isHidden = false
+            follower.text = "\(modelData.follower_count ?? 0) Followers"
+        }
+        
+        lblPostDesc.text = modelData.body
+        
+       
+        
         lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
         lblPostCommentCount.text = "\(modelData.commentCount ?? 0)"
         lblPostTime.text = modelData.posted_at
@@ -376,6 +592,7 @@ class PostDescTableViewCell: UITableViewCell {
         self.imagePostCollectionView.reloadData()
     }
     
+   
 
     @objc func likeAction(_ tap: UITapGestureRecognizer){
         if self.data?.likeFlag == 0 {
@@ -580,12 +797,17 @@ extension PostDescTableViewCell {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLikeApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             self.data?.likeFlag = isLike
             if isLike == 0{
-            self.data?.likeCount = ((self.data?.likeCount ?? 1) - 1)
+                self.data?.likeCount = ((self.data?.likeCount ?? 0) - 1)
+                
+                kChatharedInstance.update_post(likecount: self.data?.likeCount ?? 0, postId: postId ?? 0)
             }else{
-                self.data?.likeCount = ((self.data?.likeCount ?? 1) + 1)
+                self.data?.likeCount = ((self.data?.likeCount ?? 0) + 1)
+                 
+                kChatharedInstance.update_post(likecount: self.data?.likeCount ?? 0, postId: postId ?? 0)
             }
              self.likeCallback?(indexPath ?? 0)
-            
+            //self.receivePostLike()
+            //print("likeid  ",self.postLike![359].likeCount)
         }
     }
    

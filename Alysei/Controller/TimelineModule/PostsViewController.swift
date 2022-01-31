@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
+import FirebaseDatabase
 
 struct PostCommentsUserData {
     var userID: Int
@@ -25,6 +28,7 @@ class PostsViewController: AlysieBaseViewC {
    
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
+    var postLike:[PostClass]?
     
     var scrollCallBack: (() -> Void)? = nil
     var newFeedModel: NewFeedSearchModel?
@@ -35,6 +39,10 @@ class PostsViewController: AlysieBaseViewC {
     var indexOfPageToRequest = 1
     var role: String?
     var isExpand = false
+    
+    let refreshControl = UIRefreshControl()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.selectedIndex = 0
@@ -53,6 +61,11 @@ class PostsViewController: AlysieBaseViewC {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(openNotificationPlace))
         self.notificationView.addGestureRecognizer(tap1)
         
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+                   refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+                postTableView.addSubview(refreshControl)
+        
+        receivePostLike()
 //        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
 //        self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
 //
@@ -60,12 +73,19 @@ class PostsViewController: AlysieBaseViewC {
         // Do any additional setup after loading the view.
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+           // Code to refresh table view
+            callNewFeedApi(1)
+            
+    }
+
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         self.tabBarController?.selectedIndex = 0
-
         if self.role == "10" {
         if let viewController2 = self.tabBarController?.viewControllers?[1] {
 
@@ -182,6 +202,21 @@ class PostsViewController: AlysieBaseViewC {
 
 extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     
+    func receivePostLike() {
+        
+        kChatharedInstance.receivce_Post_like(postId: "98") { (message) in
+            
+            self.postLike?.removeAll()
+            self.postLike = message
+           // self.tableView.reloadData()
+            //self.scrollToLTopRow()
+            //print(self.postLike?[0].likeCount)
+            print("checking")
+            self.postTableView.reloadData()
+        }
+        
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -283,7 +318,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             cell.selectionStyle = .none
             //TODO: this needs to be discussed with Shalini.
             if arrNewFeedDataModel.count > indexPath.row {
-                cell.configCell(arrNewFeedDataModel[indexPath.row] , indexPath.row)
+                cell.configCell(arrNewFeedDataModel[indexPath.row], postlike: postLike ?? [] , indexPath.row)
                 let data = arrNewFeedDataModel[indexPath.row]
                 cell.btnMoreLess.tag = indexPath.row
                 cell.relaodSection = indexPath.section
@@ -351,6 +386,8 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
         }
         return UITableViewCell()
     }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
