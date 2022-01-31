@@ -807,7 +807,7 @@ struct StaticArrayData {
                                             (image: "icons8_security_lock", name: "Privacy"),
                                             (image: "icons8_privacy", name: "Password"),
                                             (image: "icons8_unavailable", name: "Blocking"),
-                                            (image: "icons8_debit_card_1", name: "Membership"),
+                                           // (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
                                             (image: "icons8_exit", name: "Logout"),
                                             (image: "icons8_secure_cloud", name: "Your Data")

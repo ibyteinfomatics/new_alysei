@@ -135,7 +135,7 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
 //                cell.lblOptionTitle.isHidden = false
 //                cell.lblOptionValue.isHidden = false
 //            }
-            cell.configCell(productDetail ?? ProductDetailModel(with: [:]), indexPath.row)
+            cell.configCell(productDetail ?? ProductDetailModel(with: [:]), indexPath.row, ProductDescOptionTableVC())
             return cell
         }else if indexPath.row == 8{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductRatingTableVCell", for: indexPath) as? ProductRatingTableVCell else {return UITableViewCell()}
@@ -222,6 +222,8 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 6{
             return UITableView.automaticDimension
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
+            print("Check")
+          //  return 60
             if indexPath.row == 3 &&  self.productDetail?.product_detail?.brand_label_id == "0"{
                 return 0
             }else{
