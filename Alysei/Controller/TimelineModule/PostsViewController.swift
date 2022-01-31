@@ -569,6 +569,7 @@ extension PostsViewController {
             print("CountDiscover -------------------\(self.arrDiscoverDataModel.count)")
             print("Count -------------------\(self.arrNewFeedDataModel.count)")
             self.postTableView.reloadData()
+            self.refreshControl.endRefreshing()
             //DispatchQueue.main.async { self.postTableView.reloadData()}
             
         }
