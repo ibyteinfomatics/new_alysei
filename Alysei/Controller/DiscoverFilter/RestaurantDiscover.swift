@@ -114,7 +114,7 @@ class RestaurantDiscover: AlysieBaseViewC {
        
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
             let baseurlImg = restauUser[indexPath].avatarid?.baseUrl ?? ""
-            restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].avatarid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+            restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].coverid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
         } else {
             restTableCell.blogImage.image = UIImage(named: "image_placeholder")
         }

@@ -128,6 +128,9 @@ extension PhotosPost {
         let urlString = APIUrl.Profile.onePost + "\(postId)"
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, erroType, statusCode in
+            
+            switch statusCode{
+            case 200:
             let response = dictResponse as? [String:Any]
             
             if let data = response?["data"]  as? [String:Any]{
@@ -136,6 +139,17 @@ extension PhotosPost {
                 self.userPost.isHidden = false
                 self.updatePostList()
                 
+            }
+            case 409:
+                self.showAlert(withMessage: "Post Unavailable") {
+                    if self.fromvc == .Notification {
+                        kSharedAppDelegate.pushToTabBarViewC()
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            default:
+                print("invalid")
             }
         }
 

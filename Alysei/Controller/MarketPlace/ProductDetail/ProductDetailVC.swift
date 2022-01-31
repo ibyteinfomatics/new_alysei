@@ -92,7 +92,7 @@ class ProductDetailVC: AlysieBaseViewC {
 extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == "" {
-            return 9
+            return 10
         }else{
         return 10
         }

@@ -100,6 +100,7 @@ class HubCityArray {
     var isSelected = false
     var image: FlagId?
     var city: ReviewCityData?
+    var state:CountryHubs?
    
     init(with data: [String:Any]?) {
         self.id = Int.getInt(data?["id"])
@@ -112,6 +113,9 @@ class HubCityArray {
         if let image = data?["image"] as? [String:Any] {
             self.image = FlagId.init(data: image)
         }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
         //self.isSelected = Bool.getBool(data?["isSelected"])
     }
 
@@ -120,9 +124,13 @@ class HubCityArray {
 class ReviewCityData{
     var id: Int?
     var name: String?
+    var state:CountryHubs?
     init(with data: [String:Any]?) {
         self.id = Int.getInt(data?["id"])
         self.name = String.getString(data?["name"])
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
     }
     
 }

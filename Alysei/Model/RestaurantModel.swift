@@ -42,6 +42,7 @@ class RestaurantUser {
     var restaurant_type: String?
     var roleid: Int?
     var avatarid: EventAttachment?
+    var coverid: EventAttachment?
 
     init(with dictResponse: [String:Any]?) {
         
@@ -59,6 +60,9 @@ class RestaurantUser {
         
         if let avatar_id = dictResponse?["avatar_id"] as? [String:Any]{
             self.avatarid =  EventAttachment.init(with: avatar_id)
+        }
+        if let coverid = dictResponse?["cover_id"] as? [String:Any]{
+            self.coverid =  EventAttachment.init(with: coverid)
         }
         
     }

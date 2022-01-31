@@ -345,6 +345,7 @@ struct APIUrl{
     static let kIsStoreReview = "check/store/status"
     static let kGetNotificationStatusApi = "get/notification/status"
     static let kPostNotifictionEnableDisableApi = "update/notification/status"
+    static let clearAllNotification = "delete/notifications"
     
     
     enum FeaturedProduct {

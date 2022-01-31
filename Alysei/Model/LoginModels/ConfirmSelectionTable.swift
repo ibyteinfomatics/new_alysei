@@ -16,6 +16,8 @@ class ConfirmSelectionTable: UITableView {
     var callback: (() -> Void)? = nil
      var roleId: String?
     var reviewSelectedHubCityArray = [String]()
+     var editIndex: Int?
+    var editIndexPath: IndexPath?
     //var hub:SelectdHubs?
     // MARK:- life Cycle
     override func awakeFromNib() {
@@ -29,6 +31,17 @@ class ConfirmSelectionTable: UITableView {
         self.dataSource = self
         
     }
+    
+//    @IBAction func btnEditHub(_ sender: UIButton){
+//        var hub: SelectdHubs?
+//        hub = selectedHubs[editIndex ?? 0]
+//        if self.isEditHub == true{
+//            let hub = self.reviewSelectedHubs?[editIndex ?? 0]
+//            self.dataDelegate?.didSelectReviewList?(data: hub, index: editIndexPath ?? IndexPath(), isEdithub: self.isEditHub ?? false)
+//        }else{
+//        self.dataDelegate?.didSelectList?(data: hub, index: editIndexPath ?? IndexPath())
+//        }
+//    }
     
 }
 // MARK:- cextension of main class for CollectionView
@@ -98,6 +111,8 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
 //                self.reloadData()
             }
             if tag == 1 {
+                self.editIndex = tag
+                self.editIndexPath = indexPath
                 if self.isEditHub == true{
                     let hub = self.reviewSelectedHubs?[indexPath.row]
                     self.dataDelegate?.didSelectReviewList?(data: hub, index: indexPath, isEdithub: self.isEditHub ?? false)
@@ -111,11 +126,36 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 380
+//        if isEditHub == true{
+//            return CGFloat((90 * (reviewSelectedHubs?.count ?? 0) + 45))
+//        }else{
+//            return CGFloat((90 * (selectedHubs.count )) + 45)
+//        }
+       return 700
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UIView.init(frame: CGRect.init(x: -10, y: 0, width: tableView.frame.width, height: 40))
+        headerView.backgroundColor = UIColor.init(hexString: "C7E7FF")
+        
+            let label = UILabel()
+            label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
+        label.backgroundColor = UIColor.init(hexString: "C7E7FF")
+        if isEditHub == true {
+            label.text = "   " + (self.reviewSelectedHubs?.first?.country_name ?? "")
+        }else{
+            label.text = "   " + (self.selectedHubs.first?.country.name ?? "")
+        }
+            label.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
+            label.textColor = .black
+            
+            headerView.addSubview(label)
+            
+            return headerView
+        }
 }
 

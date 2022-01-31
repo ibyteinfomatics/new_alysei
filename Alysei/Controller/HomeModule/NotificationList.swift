@@ -34,6 +34,10 @@ class NotificationList: AlysieBaseViewC {
       self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func btnClearAllNotification(_ sender: UIButton){
+        postRequestClearNotification()
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // calculates where the user is in the y-axis
         let offsetY = scrollView.contentOffset.y
@@ -118,6 +122,17 @@ class NotificationList: AlysieBaseViewC {
             }
         
     }
+    private func postRequestClearNotification(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.clearAllNotification, requestMethod: .POST, requestParameters: [:], withProgressHUD: true) { result, error, errorType, statusCode in
+            switch statusCode {
+            case 200:
+                self.notifiacationArray.removeAll()
+                self.tblViewNotification.reloadData()
+            default:
+                print("Invalid")
+            }
+        }
+    }
     
     private func postRequestToGetNotification(_ pageNo: Int) -> Void{
       
@@ -168,14 +183,15 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let type = notimodel?.data?.data?[indexPath.row].notificationType
+       // let type = notimodel?.data?.data?[indexPath.row].notificationType
+        let type = notifiacationArray[indexPath.row].notificationType
         
         switch Int.getInt(type) {
         case 1:
-            kSharedAppDelegate.moveChat(receiverid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid), username: String.getString(notimodel?.data?.data?[indexPath.row].sender_name))
+            kSharedAppDelegate.moveChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
             
         case 2,6,7,8:
-            kSharedAppDelegate.moveToPost(postid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid))
+            kSharedAppDelegate.moveToPost(postid: String.getString(notifiacationArray[indexPath.row].redirectToid))
             
         case 3:
             //kSharedAppDelegate.moveToNetwork(index: 0)
@@ -190,7 +206,7 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:
-            kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notimodel?.data?.data?[indexPath.row].redirectToid), username: String.getString(notimodel?.data?.data?[indexPath.row].sender_name))
+            kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
        
         default:
             kSharedAppDelegate.pushToTabBarViewC()

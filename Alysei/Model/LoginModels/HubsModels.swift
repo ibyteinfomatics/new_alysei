@@ -96,10 +96,12 @@ class CountryHubs {
     var isSelected = false
     var imageHub: String?
     var image: FlagId?
+    var state: CountryHubs?
     var radius:Int?
     
     init(data:[String:Any]?) {
         self.id = String.getString(data?["id"])
+        //self.state_name = String.getString(data?["state_name"])
         self.name = String.getString(data?["name"])
         self.country_code = String.getString(data?["country_code"])
         self.country_id = String.getString(data?["country_id"])
@@ -111,12 +113,16 @@ class CountryHubs {
         if let image = data?["image"] as? [String:Any]{
             self.image = FlagId.init(data: image)
         }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
     
     }
     
     init(cityFromServer data: [String:Any]?) {
         self.id = String.getString(data?["city_id"])
         self.country_id = String.getString(data?["country_id"])
+      //  self.state_name = String.getString(data?["state_name"])
         self.state_id = String.getString(data?["state_id"])
         if let city = data?["city"] as? [String:Any] {
             self.name = String.getString(city["name"])
@@ -126,6 +132,9 @@ class CountryHubs {
         if let image = data?["image"] as? [String:Any]{
             self.image = FlagId.init(data: image)
         }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
     }
     
     init(HubsFromServer data: [String:Any]?) {
@@ -133,12 +142,16 @@ class CountryHubs {
         self.name = String.getString(data?["title"])
         self.country_code = String.getString(data?["country_code"])
         self.country_id = String.getString(data?["country_id"])
+       // self.state_name = String.getString(data?["state_name"])
         self.iso2 = String.getString(data?["subregion"])
         self.type = .hubs
         self.attachment_url = String.getString(data?["attachment_url"])
         self.isSelected =  true
         if let image = data?["image"] as? [String:Any]{
             self.image = FlagId.init(data: image)
+        }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
         }
     }
 
@@ -160,6 +173,9 @@ class CountryHubs {
         if let image = data?["image"] as? [String:Any]{
             self.image = FlagId.init(data: image)
         }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
     }
     init() { }
     
@@ -178,7 +194,7 @@ class HubsViaCity {
     var radius: Int?
     var image: String?
     var baseUrl: String?
-    
+    var state:CountryHubs?
     init(data:[String:Any]?) {
         self.state_id = String.getString(data?["state_id"])
         self.state_name = String.getString(data?["state_name"])
@@ -192,6 +208,9 @@ class HubsViaCity {
             self.image = image["attachment_url"] as? String
             self.baseUrl = image["base_url"] as? String
         }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
+        }
         
     }
     
@@ -204,6 +223,9 @@ class HubsViaCity {
         if let image = data?["image"] as? [String:Any]{
             self.image = image["attachment_url"] as? String
             self.baseUrl = image["base_url"] as? String
+        }
+        if let state = data?["state"] as? [String:Any]{
+            self.state = CountryHubs.init(data: state)
         }
     }
     init() {}

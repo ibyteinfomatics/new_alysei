@@ -21,6 +21,8 @@ class ConfirmSelectionVC: UIViewController , SelectList{
     var roleId: String?
     var isEditHub:Bool?
     var isEditHubServerApi = false
+    var dataDelegate:SelectList?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewHeader.drawBottomShadowGreen()
@@ -98,22 +100,34 @@ class ConfirmSelectionVC: UIViewController , SelectList{
         }
     }
     
-    @IBAction func nextVC(_ sender: UIButton) {
-        if isEditHub == true{
-            
+//    @IBAction func nextVC(_ sender: UIButton) {
+//        if isEditHub == true{
+//
+//        }else{
+//            if self.selectedHubs.isEmpty {
+//                showAlert(withMessage: "Please select at least 1 hub to continue"){
+//                    self.updatedHubs?(self.selectedHubs)
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//                return
+//            }
+//            self.updatedHubs?(self.selectedHubs)
+//        }
+//        self.navigationController?.popViewController(animated: true)
+//    }
+    @IBAction func btnEditHub(_ sender: UIButton){
+        var hub: SelectdHubs?
+        hub = selectedHubs[0]
+        if self.isEditHub == true{
+            let hub = self.reviewSelectedHubs?[0]
+            let indexpath = IndexPath(row: 0, section: 1)
+            self.didSelectReviewList(data: hub, index: indexpath, isEdithub: self.isEditHub ?? false)
         }else{
-            if self.selectedHubs.isEmpty {
-                showAlert(withMessage: "Please select at least 1 hub to continue"){
-                    self.updatedHubs?(self.selectedHubs)
-                    self.navigationController?.popViewController(animated: true)
-                }
-                return
-            }
-            self.updatedHubs?(self.selectedHubs)
+            let indexpath = IndexPath(row: 0, section: 1)
+            self.didSelectList(data: hub, index: indexpath)
         }
-        self.navigationController?.popViewController(animated: true)
     }
-    
+
     func createCityJson(hubs:[CountryHubs]?)->[[String:Any]] {
         var params = [[String:Any]]()
         for hub in hubs ?? [] {
