@@ -17,7 +17,7 @@ class RestaurantDiscover: AlysieBaseViewC {
     var restModel:RestaurantModel?
     var restauUser = [RestaurantUser]()
     var restId: String?
-
+    
     var passHubs: String?
     var passRestType: String?
     
@@ -107,11 +107,11 @@ class RestaurantDiscover: AlysieBaseViewC {
         let baseurl = restauUser[indexPath].avatarid?.baseUrl ?? ""
         let imageUrl = baseurl + (restauUser[indexPath].avatarid?.attachmenturl ?? "")
         restTableCell.imgUser.setImage(withString: imageUrl)
-       
-        restTableCell.blogImage.layer.masksToBounds = false
-        restTableCell.blogImage.clipsToBounds = true
-        restTableCell.blogImage.layer.cornerRadius = 5
-       
+        
+        //        restTableCell.blogImage.layer.masksToBounds = false
+        //        restTableCell.blogImage.clipsToBounds = true
+        //        restTableCell.blogImage.layer.cornerRadius = 5
+        
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
             let baseurlImg = restauUser[indexPath].avatarid?.baseUrl ?? ""
             restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].coverid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
@@ -133,14 +133,14 @@ class RestaurantDiscover: AlysieBaseViewC {
             if indexOfPageToRequest > restModel?.lastPage ?? 0{
                 print("No Data")
             }else{
-            // increments the number of the page to request
-            indexOfPageToRequest += 1
-
-            // call your API for more data
+                // increments the number of the page to request
+                indexOfPageToRequest += 1
+                
+                // call your API for more data
                 postRequestToGetRestaurant(indexOfPageToRequest)
-
-            // tell the table view to reload with the new data
-            self.tripsTableView.reloadData()
+                
+                // tell the table view to reload with the new data
+                self.tripsTableView.reloadData()
             }
         }
     }
@@ -160,7 +160,7 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         return UITableView.automaticDimension
     }
     
@@ -174,43 +174,43 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
 extension RestaurantDiscover {
     
     private func postRequestToGetRestaurant(_ pageNo: Int?) -> Void{
-      
-      disableWindowInteraction()
-    
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(restId!)"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-        let dictResponse = dictResponse as? [String:Any]
-        if let data = dictResponse?["data"] as? [String:Any]{
-          self.restModel = RestaurantModel.init(with: data)
-          
-          if self.indexOfPageToRequest == 1 { self.restauUser.removeAll() }
-          
-          self.restauUser.append(contentsOf: self.restModel?.data ?? [RestaurantUser(with: [:])])
-          
+        
+        disableWindowInteraction()
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(restId!)"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            let dictResponse = dictResponse as? [String:Any]
+            if let data = dictResponse?["data"] as? [String:Any]{
+                self.restModel = RestaurantModel.init(with: data)
+                
+                if self.indexOfPageToRequest == 1 { self.restauUser.removeAll() }
+                
+                self.restauUser.append(contentsOf: self.restModel?.data ?? [RestaurantUser(with: [:])])
+                
+            }
+            
+            self.tripsTableView.reloadData()
         }
-      
-        self.tripsTableView.reloadData()
-      }
-      
+        
     }
     
     func callFilterApi (_ pageNo: Int?) {
-       // self.restModel = RestaurantModel(with: [:])
+        // self.restModel = RestaurantModel(with: [:])
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverRestaurantSearch + "&hubs=" + String.getString(self.passHubs)+"&restaurant_type="+String.getString(self.passRestType)+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
-          if let data = dictResponse?["data"] as? [String:Any]{
-            self.restModel = RestaurantModel.init(with: data)
+            if let data = dictResponse?["data"] as? [String:Any]{
+                self.restModel = RestaurantModel.init(with: data)
+                
+                if self.indexOfPageToRequest == 1 { self.restauUser.removeAll() }
+                
+                self.restauUser.append(contentsOf: self.restModel?.data ?? [RestaurantUser(with: [:])])
+                
+            }
             
-            if self.indexOfPageToRequest == 1 { self.restauUser.removeAll() }
-            
-            self.restauUser.append(contentsOf: self.restModel?.data ?? [RestaurantUser(with: [:])])
-            
-          }
-          
             self.tripsTableView.reloadData()
-              
+            
         }
         
     }

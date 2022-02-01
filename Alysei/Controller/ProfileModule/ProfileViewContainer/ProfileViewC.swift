@@ -408,7 +408,7 @@ class ProfileViewC: AlysieBaseViewC{
         } else if line == 4 {
             shownumber = 90
         } else if line == 3 {
-            shownumber = 110
+            shownumber = 150
         } else if line == 2 {
             shownumber = 130
         } else if line == 1 {
