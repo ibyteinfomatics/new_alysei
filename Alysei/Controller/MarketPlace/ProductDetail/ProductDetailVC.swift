@@ -284,6 +284,9 @@ extension ProductDetailVC {
             if "\(self.productDetail?.product_detail?.userId ?? 0)" == kSharedUserDefaults.loggedInUserModal.userId {
                 self.btnSendEnquiry.isHidden = true
                 self.btnenquiryHght.constant = 0
+            }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)")  {
+                self.btnSendEnquiry.isHidden = true
+                self.btnenquiryHght.constant = 0
             }else{
                 self.btnSendEnquiry.isHidden = false
                 self.btnenquiryHght.constant = 60

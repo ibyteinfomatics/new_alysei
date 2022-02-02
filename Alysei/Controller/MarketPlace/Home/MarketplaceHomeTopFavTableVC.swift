@@ -44,7 +44,7 @@ extension MarketplaceHomeTopFavTableVC: UICollectionViewDelegate, UICollectionVi
         self.callback?(self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row].marketplace_product_id ?? 0)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2 , height: 320)
+        return CGSize(width: collectionView.frame.width / 2 , height: 290)
     }
     
 }

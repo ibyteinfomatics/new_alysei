@@ -729,6 +729,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     @IBOutlet weak var lblProductType: UILabel!
     @IBOutlet weak var imgSample: UIImageView!
     @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var lblPriceHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -738,6 +739,13 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     func configCell(_ data: ProductSearchListModel){
         
         lblProductName.text = data.title
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"){
+            lblCost.isHidden = true
+            lblPriceHeight.constant = 0
+        }else{
+            lblCost.isHidden = false
+            lblPriceHeight.constant = 26.33
+        }
         lblCost.text = "$" + (data.product_price ?? "")
         lblStoreName.text = data.store_name
         lblProductType.text = data.product_category_name

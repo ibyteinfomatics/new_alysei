@@ -235,9 +235,9 @@ class TripDiscover: AlysieBaseViewC {
 //
 //        }
         
-        tripTableCell.tripImage.layer.masksToBounds = false
-        tripTableCell.tripImage.clipsToBounds = true
-        tripTableCell.tripImage.layer.cornerRadius = 5
+//        tripTableCell.tripImage.layer.masksToBounds = false
+//        tripTableCell.tripImage.clipsToBounds = true
+//        tripTableCell.tripImage.layer.cornerRadius = 5
         
         let baseUrlImg = tripData[indexPath].attachment?.baseUrl ?? ""
         tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))

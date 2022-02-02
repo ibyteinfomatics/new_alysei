@@ -68,7 +68,7 @@ extension ReviewScreenViewController: UITableViewDataSource, UITableViewDelegate
         }
         cell.lblUserReview.text = arrRatingReviewData?[indexPath.row].review
         
-        cell.imgUser.setImage(withString: kImageBaseUrl + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))
+        cell.imgUser.setImage(withString: (String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.baseUrl)) + String.getString(arrRatingReviewData?[indexPath.row].user?.avatarId?.attachment_url))
         
         if "\(arrRatingReviewData?[indexPath.row].rating ?? "")" == "0" {
             cell.imgStar1.image = UIImage(named: "icons8_star")

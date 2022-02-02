@@ -17,6 +17,7 @@ class ProductDetailTableVC: UITableViewCell {
     @IBOutlet weak var lblProductPrice: UILabel!
     @IBOutlet weak var btnLikeUnlike: UIButton!
     @IBOutlet weak var lblTotalRatings: UILabel!
+    @IBOutlet weak var lblCostHght: NSLayoutConstraint!
    
     var callLikeUnikeCallback: ((Int) -> Void)? = nil
 
@@ -35,6 +36,14 @@ class ProductDetailTableVC: UITableViewCell {
     
     func configCell(_ data: ProductDetailModel){
         self.data = data
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"){
+            lblCostHght.constant = 0
+            lblProductPrice.isHidden = true
+            
+        }else{
+            lblCostHght.constant = 24.5
+            lblProductPrice.isHidden = false
+        }
         lblProductName.text = data.product_detail?.title
         lblProductCategory.text = data.product_detail?.product_category_name
         lblProductPrice.text = "$" + (data.product_detail?.product_price ?? "")

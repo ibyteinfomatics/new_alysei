@@ -131,9 +131,9 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2
         eventTableCell.userImage.layer.masksToBounds = true
         
-        eventTableCell.eventImage.layer.masksToBounds = false
-        eventTableCell.eventImage.clipsToBounds = true
-        eventTableCell.eventImage.layer.cornerRadius = 5
+//        eventTableCell.eventImage.layer.masksToBounds = false
+//        eventTableCell.eventImage.clipsToBounds = true
+//        eventTableCell.eventImage.layer.cornerRadius = 5
         
         let baseUrlImg = eventData[indexPath].attachment?.baseUrl ?? ""
         eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))

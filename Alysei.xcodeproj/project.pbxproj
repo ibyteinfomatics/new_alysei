@@ -333,7 +333,6 @@
 		6B7CACD026FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */; };
 		6B7CACD126FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */; };
 		6B7CACD226FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */; };
-		6B7DCDB3275F313A0066536F /* AlyseiBGV3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */; };
 		6B7FB478273D458E008A87BB /* UpdateProfileDescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */; };
 		6B7FB479273D458E008A87BB /* UpdateProfileCoverImgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */; };
 		6B805B1C270576EE002FC4BF /* ExploreByMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */; };
@@ -669,6 +668,7 @@
 		C5EB3CF126E9CB8700CCAC9E /* SelectRecipeCategaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CDB26E9CB8600CCAC9E /* SelectRecipeCategaryViewController.swift */; };
 		C5EB3D1426E9E57500CCAC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */; };
 		C5F1F623267882C7005A25A8 /* ProductListTViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1F622267882C7005A25A8 /* ProductListTViewCell.swift */; };
+		C5F8C4FD27AAA24500813910 /* AlyseiBGV3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1013,7 +1013,6 @@
 		6B7CACBB26FDD3CA00096E79 /* SanFranciscoDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		6B7CACBC26FDD3CA00096E79 /* SanFranciscoText-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-HeavyItalic.otf"; sourceTree = "<group>"; };
 		6B7CACBD26FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Black.otf"; sourceTree = "<group>"; };
-		6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiBGV3.mp4; sourceTree = "<group>"; };
 		6B7FB476273D458E008A87BB /* UpdateProfileDescVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDescVC.swift; sourceTree = "<group>"; };
 		6B7FB477273D458E008A87BB /* UpdateProfileCoverImgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileCoverImgVC.swift; sourceTree = "<group>"; };
 		6B805B1A270576EE002FC4BF /* ExploreByMealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreByMealTableViewCell.swift; sourceTree = "<group>"; };
@@ -1351,6 +1350,7 @@
 		C5EB3CDB26E9CB8600CCAC9E /* SelectRecipeCategaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRecipeCategaryViewController.swift; sourceTree = "<group>"; };
 		C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5F1F622267882C7005A25A8 /* ProductListTViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTViewCell.swift; sourceTree = "<group>"; };
+		C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiBGV3.mp4; sourceTree = "<group>"; };
 		D636814607C16FDC212EC4D0 /* Pods-Alysei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysei.release.xcconfig"; path = "Target Support Files/Pods-Alysei/Pods-Alysei.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1993,8 +1993,8 @@
 				6B4AA63026FC7DE300CD9A02 /* Alysei.entitlements */,
 				61C7BE42267CAFA6006DB3BB /* Countries.json */,
 				6B79E67B26E7663100B2D434 /* Info.plist */,
-				6B7DCDB2275F31390066536F /* AlyseiBGV3.mp4 */,
 				6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */,
+				C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */,
 				2770AA5525AE1BBC00A2F10B /* AlysieBaseViewC.swift */,
 				C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */,
 				C5197AD226E72A4F00C0894F /* Chat Cell */,
@@ -3249,7 +3249,6 @@
 				6B7CACC426FDD3CA00096E79 /* SanFranciscoDisplay-Ultralight.otf in Resources */,
 				6113776D263212B600EEBFDA /* Colors.xcassets in Resources */,
 				27B2FDE625C8782000CFEDA0 /* ProductSection.xib in Resources */,
-				6B7DCDB3275F313A0066536F /* AlyseiBGV3.mp4 in Resources */,
 				6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */,
 				6B7CACC126FDD3CA00096E79 /* SanFranciscoDisplay-Semibold.otf in Resources */,
 				27A443D425AE03720002BAAC /* Montserrat-MediumItalic.ttf in Resources */,
@@ -3266,6 +3265,7 @@
 				6B7CACCE26FDD3CA00096E79 /* SanFranciscoText-RegularItalic.otf in Resources */,
 				6B8992452702E85400591A2E /* TrendingTableViewCell.xib in Resources */,
 				6B7CACCF26FDD3CA00096E79 /* SanFranciscoDisplay-Medium.otf in Resources */,
+				C5F8C4FD27AAA24500813910 /* AlyseiBGV3.mp4 in Resources */,
 				6B8992412702E7CC00591A2E /* ExploreByRecipeTableViewCell.xib in Resources */,
 				C5197AE126E72A4F00C0894F /* SenderImageCell.xib in Resources */,
 				27BC68A125AC56C000A01B6A /* LaunchScreen.storyboard in Resources */,

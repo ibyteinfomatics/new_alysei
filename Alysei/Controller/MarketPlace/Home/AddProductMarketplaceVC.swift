@@ -644,7 +644,7 @@ extension AddProductMarketplaceVC{
                 for product in 0..<(self.productType?.count ?? 0) {
                     self.arrProductType.append(self.productType?[product].name ?? "")
                 }
-                self.arrProductType.insert("Your own label", at: 0)
+                self.arrProductType.insert("Your own brand label", at: 0)
                 self.dataDropDown.dataSource = self.arrProductType
                 self.opendropDown()
                 

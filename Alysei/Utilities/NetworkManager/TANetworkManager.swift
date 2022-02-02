@@ -84,7 +84,12 @@ func requestApi(withServiceName serviceName: String,requestMethod method: kHTTPM
           if NetworkReachabilityManager()?.isReachable == true{
             
               if showProgress{
+                  if isRefreshing == true{
+                      SVProgressHUD.dismiss()
+                      isRefreshing = false
+                  }else{
                 SVProgressHUD.show()
+                  }
               }
             
               let headers = getHeaderWithAPIName(serviceName: serviceName,username: userName,password: passsword)

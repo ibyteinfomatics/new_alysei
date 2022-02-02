@@ -209,8 +209,8 @@ class ProfileViewC: AlysieBaseViewC{
         self.currentIndex = 0
         
         
-        self.tblViewPosts.contentInsetAdjustmentBehavior = .never
-        
+       self.tblViewPosts.contentInsetAdjustmentBehavior = .never
+        //tblViewPosts.style = .grouped
         self.tabsCollectionView.dataSource = self
         self.tabsCollectionView.delegate = self
         self.tabsCollectionView.allowsSelection = true
@@ -401,8 +401,8 @@ class ProfileViewC: AlysieBaseViewC{
         
         // Scroll update show
         let line = self.aboutLabel.calculateMaxLines()
-        
-        
+
+
         if line == 5 {
             shownumber = 80
         } else if line == 4 {
@@ -414,8 +414,8 @@ class ProfileViewC: AlysieBaseViewC{
         } else if line == 1 {
             shownumber = 150
         }
-        
-        
+
+
         self.tblViewPosts.tableHeaderView?.setHeight(CGFloat(someHeight) - CGFloat(shownumber))
         
         self.tblViewPosts.contentInsetAdjustmentBehavior = .always
@@ -423,6 +423,16 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        let offset = scrollView.contentOffset.y
+//        if(offset > 50){
+//            self.viewFeature.frame = CGRect(x: 0, y: offset - 2350, width: self.view.bounds.size.width, height: 100)
+//        }else{
+//            self.viewFeature.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
+//        }
+//    }
+   
     //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -1485,8 +1495,9 @@ extension ProfileViewC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == self.tblViewPosts {
-            let height = (500.0 + (self.view.frame.height * 0.75) + ((UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0) * 4.0))
-            return height
+//            let height = (500.0 + (self.view.frame.height * 0.75) + ((UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0) * 4.0))
+//            return height
+            return 150
         }
         return UITableView.automaticDimension
     }

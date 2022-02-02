@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseDatabase
+import SVProgressHUD
 
 struct PostCommentsUserData {
     var userID: Int
@@ -16,6 +17,7 @@ struct PostCommentsUserData {
 }
 
 var checkHavingPreferences : Int? = 0
+var isRefreshing = false
 
 class PostsViewController: AlysieBaseViewC {
     
@@ -75,6 +77,7 @@ class PostsViewController: AlysieBaseViewC {
     
     @objc func refresh(_ sender: AnyObject) {
            // Code to refresh table view
+        isRefreshing = true
             callNewFeedApi(1)
             
     }
@@ -533,20 +536,16 @@ extension PostsViewController{
                     //self.navigationController?.pushViewController(vc, animated: true)
                     self.hidesBottomBarWhenPushed = true
                 }
-               
-                //            self.imageCollectionView.reloadData()
-                //            self.recentlyAddedCollectionView.reloadData()
-                //            self.regionCollectionView.reloadData()
-                //            self.newlyyAddedStoreCollectionView.reloadData()
-                //            self.topSellingCollectionView.reloadData()
             }
             
         }
 }
 
 extension PostsViewController {
+   
     func callNewFeedApi(_ pageNo: Int?){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetFeed + "\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+           
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{

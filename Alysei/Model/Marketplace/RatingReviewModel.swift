@@ -57,9 +57,11 @@ class ReviewUserData {
 class AvatarId{
     var attachment_url: String?
     var id: Int?
+    var baseUrl : String?
     
     init(with data: [String:Any]){
         self.attachment_url = String.getString(data["attachment_url"])
         self.id = Int.getInt(data["id"])
+        self.baseUrl = String.getString(data["base_url"])
     }
 }

@@ -82,7 +82,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         hubNameTableCell.vwOverlayContainer.layer.cornerRadius = 12
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
-            hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.country_name ?? "") + "/"
+            
             hubNameTableCell.lblNAme.text = reviewSelectedHubCityArray[indexPath.row]
             let totalcount = ((reviewSelectedHub?.hubs?.count ?? 0) + (reviewSelectedHub?.cities?.count ?? 0))
             
@@ -101,15 +101,17 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
                     //                    hubNameTableCell.imgTrailing.constant = 10
                     //                    hubNameTableCell.imageWidth.constant = 25
                     hubNameTableCell.lblHubImage.setImage(withString: self.reviewSelectedHub?.hubs?[j].image?.fimageUrl ?? "")
-                    hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.country_name ?? "") + "/" + (self.reviewSelectedHub?.hubs?[j].state?.name ?? "")
+                   // hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.country_name ?? "") + "/" + (self.reviewSelectedHub?.hubs?[j].state?.name ?? "")
+                    hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.hubs?[j].state?.name ?? "")
                     hubNameTableCell.vwContainer.backgroundColor = UIColor.clear
                 }
             }
             for k in (0..<(reviewSelectedHub?.cities?.count ?? 0)){
                 if reviewSelectedHubCityArray[indexPath.row] == reviewSelectedHub?.cities?[k].city?.name{
                     hubNameTableCell.lblHubImage.isHidden = true
-                    hubNameTableCell.vwContainer.backgroundColor = UIColor.init(hexString: "134577").withAlphaComponent(0.7)
-                    hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.country_name ?? "") + "/" + (self.reviewSelectedHub?.cities?[k].state?.name ?? "")
+                    hubNameTableCell.vwContainer.backgroundColor = UIColor.init(hexString: "#004577")
+                   // hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.country_name ?? "") + "/" + (self.reviewSelectedHub?.cities?[k].state?.name ?? "")
+                    hubNameTableCell.lblCountryState.text = (self.reviewSelectedHub?.cities?[k].state?.name ?? "")
                     //  hubNameTableCell.lblHubImage.image = UIImage(named: "city")
                     //                            hubNameTableCell.imgLeading.constant = 7
                     //                            hubNameTableCell.imgTrailing.constant = 0
@@ -132,10 +134,11 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         }else{
             let hub = self.selectedHub?.hubs[indexPath.row]
             self.labeCountryName.text = self.selectedHub?.country.name
-            hubNameTableCell.lblCountryState.text = (self.selectedHub?.country.name ?? "") + "/" + (hub?.state?.name ?? "")
+           // hubNameTableCell.lblCountryState.text = (self.selectedHub?.country.name ?? "") + "/" + (hub?.state?.name ?? "")
+            hubNameTableCell.lblCountryState.text = (hub?.state?.name ?? "")
             if (hub?.image?.fimageUrl == "" || hub?.image?.fimageUrl == nil){
                 hubNameTableCell.lblHubImage.isHidden = true
-                hubNameTableCell.vwContainer.backgroundColor = UIColor.init(hexString: "134577").withAlphaComponent(0.7)
+                hubNameTableCell.vwContainer.backgroundColor = UIColor.init(hexString: "#004577")
                 //  hubNameTableCell.lblHubImage.image = UIImage(named: "city")
                 // hubNameTableCell.imgLeading.constant = 7
                 //                hubNameTableCell.imgTrailing.constant = 0
