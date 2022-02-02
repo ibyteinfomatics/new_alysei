@@ -452,16 +452,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-oo-0y2">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUL-wc-eVX">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-Ak-1US">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -751,16 +751,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="an8-j4-2Zh">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNN-Nh-Pgk">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-sM-Z4M">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -7374,15 +7374,15 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 5297" translatesAutoresizingMaskIntoConstraints="NO" id="a1T-JJ-Iwl">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_Hamburger_8ge6" translatesAutoresizingMaskIntoConstraints="NO" id="bly-gG-IU1">
-                                                <rect key="frame" x="107" y="211" width="200" height="130"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 21767" translatesAutoresizingMaskIntoConstraints="NO" id="bly-gG-IU1">
+                                                <rect key="frame" x="107" y="231" width="200" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="H4C-ic-JdZ"/>
+                                                    <constraint firstAttribute="height" constant="120" id="H4C-ic-JdZ"/>
                                                     <constraint firstAttribute="width" constant="200" id="vAJ-w0-7CQ"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Connect with buyers." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qij-l4-pWc">
-                                                <rect key="frame" x="10" y="356" width="394" height="21.5"/>
+                                                <rect key="frame" x="10" y="361" width="394" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -7438,7 +7438,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="WLO-f4-miQ"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gll-Yu-PA0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gll-Yu-PA0">
                                                         <rect key="frame" x="70" y="5" width="334" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -7557,7 +7557,7 @@
                                             <constraint firstItem="PfX-Co-ij3" firstAttribute="top" secondItem="KUn-op-d8n" secondAttribute="bottom" constant="40" id="OUY-2g-0hO"/>
                                             <constraint firstAttribute="trailing" secondItem="a1T-JJ-Iwl" secondAttribute="trailing" id="Ozu-fb-7gw"/>
                                             <constraint firstItem="a1T-JJ-Iwl" firstAttribute="leading" secondItem="PJF-QJ-SPn" secondAttribute="leading" id="P0i-pL-DO4"/>
-                                            <constraint firstItem="qij-l4-pWc" firstAttribute="top" secondItem="bly-gG-IU1" secondAttribute="bottom" constant="15" id="Pp2-Rz-i0C"/>
+                                            <constraint firstItem="qij-l4-pWc" firstAttribute="top" secondItem="bly-gG-IU1" secondAttribute="bottom" constant="10" id="Pp2-Rz-i0C"/>
                                             <constraint firstAttribute="trailing" secondItem="jkl-0z-f6n" secondAttribute="trailing" id="Rlh-fV-nlw"/>
                                             <constraint firstItem="jkl-0z-f6n" firstAttribute="leading" secondItem="PJF-QJ-SPn" secondAttribute="leading" id="U63-eL-WpK"/>
                                             <constraint firstItem="PfX-Co-ij3" firstAttribute="centerX" secondItem="PJF-QJ-SPn" secondAttribute="centerX" id="VOS-wm-cHc"/>
@@ -7568,7 +7568,7 @@
                                             <constraint firstItem="0b9-31-ExO" firstAttribute="top" secondItem="jkl-0z-f6n" secondAttribute="bottom" constant="5" id="jPO-ff-mij"/>
                                             <constraint firstItem="KUn-op-d8n" firstAttribute="top" secondItem="0b9-31-ExO" secondAttribute="bottom" constant="5" id="mgb-KN-iUR"/>
                                             <constraint firstAttribute="bottom" secondItem="a1T-JJ-Iwl" secondAttribute="bottom" id="ocV-i5-fkS"/>
-                                            <constraint firstItem="sJY-7r-9fh" firstAttribute="top" secondItem="qij-l4-pWc" secondAttribute="bottom" constant="15" id="qRx-8p-mAd"/>
+                                            <constraint firstItem="sJY-7r-9fh" firstAttribute="top" secondItem="qij-l4-pWc" secondAttribute="bottom" constant="10" id="qRx-8p-mAd"/>
                                             <constraint firstAttribute="trailing" secondItem="0b9-31-ExO" secondAttribute="trailing" id="uGJ-yQ-OJc"/>
                                             <constraint firstAttribute="trailing" secondItem="qij-l4-pWc" secondAttribute="trailing" constant="10" id="xSt-PB-vZR"/>
                                         </constraints>
@@ -7756,16 +7756,16 @@
                                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-1S-PLg">
-                                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbS-J5-Lb1">
-                                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-WD-Z23">
-                                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -12286,6 +12286,7 @@
         <image name="Group 1144" width="18" height="18"/>
         <image name="Group 1155" width="98" height="98"/>
         <image name="Group 1171" width="16" height="17.5"/>
+        <image name="Group 21767" width="238.5" height="184.5"/>
         <image name="Group 380" width="21" height="21"/>
         <image name="Group 504" width="81" height="40"/>
         <image name="Group 5295" width="39" height="39"/>
@@ -12313,16 +12314,16 @@
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_dining_room_1" width="12" height="13"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
-        <image name="icons8_image_1" width="38" height="30.5"/>
+        <image name="icons8_image_1" width="34.5" height="27.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
-        <image name="icons8_left" width="19" height="15"/>
+        <image name="icons8_left" width="24" height="18.5"/>
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="19.5" height="19.5"/>
+        <image name="icons8_search" width="18" height="18"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
@@ -12339,7 +12340,6 @@
         <image name="recipe_filled" width="31" height="25"/>
         <image name="search_icon_grey" width="18" height="18"/>
         <image name="share_icon" width="128" height="104.5"/>
-        <image name="undraw_Hamburger_8ge6" width="291.5" height="165"/>
         <image name="undraw_cooking_lyxy" width="227" height="191.5"/>
         <namedColor name="blackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
