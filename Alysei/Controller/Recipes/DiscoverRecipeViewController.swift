@@ -1200,7 +1200,7 @@ extension DiscoverRecipeViewController{
         walkVwContainer1Img.image = UIImage(named: "Group 5296")
         walkVw1Img.image = UIImage(named: "undraw_cooking_lyxy")
         walkVw1Title.text = "Create your Recipes"
-        walkVw1SubTitle.text = "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software"
+        walkVw1SubTitle.text = "Create your own recipes exploring and sharing the endless world of the Italian cuisine"
         
         pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
@@ -1234,7 +1234,7 @@ extension DiscoverRecipeViewController{
         walkVwContainer1Img.image = UIImage(named: "Group 5298")
         walkVw1Img.image = UIImage(named: "Group 5299")
         walkVw1Title.text = "Share your Recipe with others"
-        walkVw1SubTitle.text = "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software"
+        walkVw1SubTitle.text = "Once your recipe is created, you can share it so viewers can cook it, like it and rate it"
         
         pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
@@ -1271,17 +1271,17 @@ extension DiscoverRecipeViewController{
         self.walkSubView3.isHidden = false
         vwwWalkContainer2BgImg.image = UIImage(named: "Group 5297")
         self.walkSubView3Height.constant = 55
-        walkView2Img.image = UIImage(named: "undraw_Hamburger_8ge6")
-        walkView2Tilte.text = "Instructions to create"
+        walkView2Img.image = UIImage(named: "Group 21767")
+        walkView2Tilte.text = "Instructions to create a Recipe"
         walkView2SubTitle.text = "Add Ingredients and Tools Used"
         
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
         walkSubView1Title.text = "Add clear photos"
-        walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you're listing"
+        walkSubView1SubTitle.text = "Photos should have good resolution and lightning"
         
         walkSubView2Img.image = UIImage(named: "icons8_industrial_scales_connected")
-        walkSubView2Title.text = "Add Ingredients and Tools Used"
-        walkSubView2SubTitle.text = "Use accurate amount and unit for ingredients"
+        walkSubView2Title.text = "Add Ingredients and Kitchen Tools Used"
+        walkSubView2SubTitle.text = "Use accurate amount and unit for ingredients, select the right Kitchen Tools"
         
         walkSubView3Img.image = UIImage(named: "icons8_stairs")
         walkSubView3Title.text = "Divide your recipe in steps"
