@@ -147,19 +147,19 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
         self.activeInactiveView.isHidden = false
         self.activeCountryCV.hascome = .showCountry
         self.activeCountryCV.selectDelegate = self
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
-           // labelHeading.text = "Where you want to export?"
-            
-            labelHeading.text = "export?"
-        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer1.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer2.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer3.rawValue)"){
-           // labelHeading.text = "Where you import?"
-            
-            labelHeading.text = "import?"
-        }else {
-            //labelHeading.text = "Loreum lore lreum reum um ruse"
-            
-            labelHeading.text = "Loreum"
-        }
+//        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+//           // labelHeading.text = "Where you want to export?"
+//            
+//            labelHeading.text = "export?"
+//        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer1.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer2.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer3.rawValue)"){
+//           // labelHeading.text = "Where you import?"
+//            
+//            labelHeading.text = "import?"
+//        }else {
+//            //labelHeading.text = "Loreum lore lreum reum um ruse"
+//            
+//            labelHeading.text = "Loreum"
+//        }
         
 //        if  kSharedUserDefaults.loggedInUserModal.memberRoleId  == "6" || kSharedUserDefaults.loggedInUserModal.memberRoleId  == "9" {
 //            self.activeCountryCV.isUserInteractionEnabled = false

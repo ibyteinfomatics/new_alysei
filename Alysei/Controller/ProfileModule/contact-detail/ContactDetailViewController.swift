@@ -194,9 +194,11 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
                 controller?.dismiss = { [weak self] (mapAddressModel , latitude, longitude) in
                     if mapAddressModel.address2 == "" {
                         self?.addressTextField.text = "\(mapAddressModel.address1), \(mapAddressModel.mapAddress)".capitalized
+                    }else if (mapAddressModel.mapAddress == "" && mapAddressModel.address1 == "") {
+                        self?.addressTextField.text = "\(mapAddressModel.address2)"
                     }else if mapAddressModel.address1 == "" {
                         self?.addressTextField.text = "\(mapAddressModel.address2), \(mapAddressModel.mapAddress)".capitalized
-                    }else{
+                    } else{
                     self?.addressTextField.text = "\(mapAddressModel.address1), \(mapAddressModel.address2)"
                         //, \(mapAddressModel.mapAddress)".capitalized
                     }
@@ -323,7 +325,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
         if self.validateAllfields() {
             SVProgressHUD.show()
-
+            
             let requestModel = ContactDetail.Contact.Request(phone: self.phoneTextField.text,
                                                              address: self.addressTextField.text,
                                                              website: self.websiteTextField.text,
