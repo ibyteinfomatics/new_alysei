@@ -282,7 +282,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         //config.targetImageSize = .cappedTo(size: 50)
         //config.library.preSelectItemOnMultipleSelection = false
         // config.library.defaultMultipleSelection = true
-        //config.library.skipSelectionsGallery = true
+        config.library.skipSelectionsGallery = true
         //config.library.preselectedItems = nil
         
 

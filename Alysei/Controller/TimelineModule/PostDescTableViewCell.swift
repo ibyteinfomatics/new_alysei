@@ -64,6 +64,8 @@ class PostDescTableViewCell: UITableViewCell {
     var islike: Int?
     var index: Int?
     var imageArray = [String]()
+    var imageheight = [Int]()
+    var imagewidth = [Int]()
     var menuDelegate: ShareEditMenuProtocol!
     var isExpand = false
     var previousIndex: Int?
@@ -348,13 +350,16 @@ class PostDescTableViewCell: UITableViewCell {
         self.imagePostCollectionView.showsHorizontalScrollIndicator = false
 
         self.imageArray.removeAll()
+        self.imagewidth.removeAll()
+        self.imageheight.removeAll()
         if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
             print("No Data")
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
                 let baseUrl = modelData.attachments?[i].attachmentLink?.baseUrl ?? ""
                 self.imageArray.append(baseUrl + "\(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")")
-                
+                self.imagewidth.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+                self.imageheight.append(modelData.attachments?[i].attachmentLink?.height ?? 0)
             }
             
             print("LoadImageArray------------------------------\(imageArray)")
@@ -550,12 +555,16 @@ class PostDescTableViewCell: UITableViewCell {
         self.imagePostCollectionView.showsHorizontalScrollIndicator = false
 
         self.imageArray.removeAll()
+        self.imagewidth.removeAll()
+        self.imageheight.removeAll()
         if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
             print("No Data")
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
                 let baseUrl = modelData.attachments?[i].attachmentLink?.baseUrl ?? ""
                 self.imageArray.append(baseUrl + "\(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")")
+                self.imagewidth.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+                self.imageheight.append(modelData.attachments?[i].attachmentLink?.height ?? 0)
                 
             }
             
@@ -676,7 +685,21 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
-        cell.imagePost.contentMode = .scaleAspectFill
+        
+        if self.imageArray.count > 1 {
+            
+            if imagewidth[indexPath.row] > imageheight[indexPath.row] {
+                cell.imagePost.contentMode = .scaleAspectFit
+            } else {
+                cell.imagePost.contentMode = .scaleToFill
+            }
+        } else {
+            cell.imagePost.contentMode = .scaleToFill
+        }
+        
+        
+        
+        
        // cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
@@ -822,6 +845,7 @@ extension PostDescTableViewCell {
 
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
     @IBOutlet weak var imagePost: UIImageView!
+    @IBOutlet weak var imageConstant: NSLayoutConstraint!
 
     var originalFrame = CGRect()
 
