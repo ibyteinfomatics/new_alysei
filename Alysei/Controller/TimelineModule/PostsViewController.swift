@@ -382,6 +382,25 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.commentCallback = { postCommentsUserData in
                     self.showCommentScreen(postCommentsUserData)
                 }
+                if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
+                    print("error")
+                    cell.newHeightCllctn = 350
+                    cell.imageHeightCVConstant.constant = 350
+                }else{
+                let ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
+                if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
+                    let newHeight = 320 / ratio
+                               // cell.imageConstant.constant = newHeight
+                    cell.newHeightCllctn = Int(newHeight)
+                    cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
+                            }
+                            else{
+                                let newWidth = 500 * ratio
+                                //cell.imageConstant.constant = newWidth
+                                cell.newHeightCllctn = Int(newWidth)
+                                cell.imageHeightCVConstant.constant = CGFloat(newWidth) - 100
+                            }
+            }
             }
                 return cell
             }

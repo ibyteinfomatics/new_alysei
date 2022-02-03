@@ -286,16 +286,19 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             cell.lblPostTime.text = data?.posted_at
             //islike = data.likeFlag
             if data?.attachmentCount == 0 {
-                cell.imageHeightCVConstant.constant = 0
+               // cell.imageHeightCVConstant.constant = 0
+                cell.imagePostCollectionView.isHidden = true
     //            imagePostCollectionView.alpha = 0.0
             }else{
-                if data?.attachments?.first?.attachmentLink?.height == data?.attachments?.first?.attachmentLink?.width {
-                    cell.imageHeightCVConstant.constant = 250
-                }else{
-                    cell.imageHeightCVConstant.constant = 400
-                }
-    //            imagePostCollectionView.alpha = 1.0
+                cell.imagePostCollectionView.isHidden = true
             }
+//                if data?.attachments?.first?.attachmentLink?.height == data?.attachments?.first?.attachmentLink?.width {
+//                    cell.imageHeightCVConstant.constant = 250
+//                }else{
+//                    cell.imageHeightCVConstant.constant = 400
+//                }
+//    //            imagePostCollectionView.alpha = 1.0
+//            }
             cell.userImage.layer.borderWidth = 0.5
             cell.userImage.layer.borderColor = UIColor.lightGray.cgColor
             print("ImageUrl--------------------------------\(String.getString(data?.subjectId?.avatarId?.attachmentUrl) )")

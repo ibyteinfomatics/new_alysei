@@ -53,7 +53,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btnMoreLess: UIButton!
     @IBOutlet var vwpageControl: ScrollingPageControl!
-    @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
+   // @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
     
     
     var data: NewFeedSearchDataModel?
@@ -77,7 +77,7 @@ class PostDescTableViewCell: UITableViewCell {
     var profileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
-    
+    var newHeightCllctn: Int?
     
     var postLike:[PostClass]?
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
@@ -252,79 +252,83 @@ class PostDescTableViewCell: UITableViewCell {
         lblPostTime.text = modelData.posted_at
         //islike = data.likeFlag
         if modelData.attachmentCount == 0 {
-            imageHeightCVConstant.constant = 0
+            imagePostCollectionView.isHidden = true
+           
+            
+            //imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
         }else{
-            
-            if modelData.attachments?.count ?? 0 > 1 {
-                
-                //var numbers = [Int]()
-                var height1 = 0,height2 = 0,height3 = 0,height = 0
-                for i in  0..<(modelData.attachments?.count ?? 0) {
-                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
-                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
-                        height1 = 350
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
-                        height2 = 300
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
-                        
-                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
-                            height3 = 350
-                        } else {
-                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-                            height3 = 500
-                        }
-                        
-                        
-                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
-                        height = 500
-                    }
-                }
-            
-                if height3 > height1 && height3 > height2{
-                    height = height3
-                } else if height1 > height3 && height1 > height2{
-                    height = height1
-                } else if height2 > height3 && height2 > height1{
-                    height = height2
-                }
-                
-                
-                imageHeightCVConstant.constant = CGFloat(height)//500
-               
-            } else {
-                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-                    imageHeightCVConstant.constant = 350
-                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-                    
-                    
-                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-                        imageHeightCVConstant.constant = 500
-                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-                        imageHeightCVConstant.constant = 400
-                    } else {
-                        imageHeightCVConstant.constant = 300
-                    }
-                    
-                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-                //imageHeightCVConstant.constant = 350
-                    
-                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-                        imageHeightCVConstant.constant = 350
-                    } else {
-                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-                        imageHeightCVConstant.constant = 500
-                    }
-                    
-                    
-                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
-                }
-            }
-            
-            
-//            imagePostCollectionView.alpha = 1.0
+            imagePostCollectionView.isHidden = false
         }
+//            if modelData.attachments?.count ?? 0 > 1 {
+//
+//                //var numbers = [Int]()
+//                var height1 = 0,height2 = 0,height3 = 0,height = 0
+//                for i in  0..<(modelData.attachments?.count ?? 0) {
+//                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+//                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+//                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
+//                        height1 = 350
+//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
+//                        height2 = 300
+//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
+//
+//                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
+//                            height3 = 350
+//                        } else {
+//                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+//                            height3 = 500
+//                        }
+//
+//
+//                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
+//                        height = 500
+//                    }
+//                }
+//
+//                if height3 > height1 && height3 > height2{
+//                    height = height3
+//                } else if height1 > height3 && height1 > height2{
+//                    height = height1
+//                } else if height2 > height3 && height2 > height1{
+//                    height = height2
+//                }
+//
+//
+//                imageHeightCVConstant.constant = CGFloat(height)//500
+//
+//            } else {
+//                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+//                    imageHeightCVConstant.constant = 350
+//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
+//
+//
+//                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
+//                        imageHeightCVConstant.constant = 500
+//                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
+//                        imageHeightCVConstant.constant = 400
+//                    } else {
+//                        imageHeightCVConstant.constant = 300
+//                    }
+//
+//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
+//                //imageHeightCVConstant.constant = 350
+//
+//                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
+//                        imageHeightCVConstant.constant = 350
+//                    } else {
+//                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+//                        imageHeightCVConstant.constant = 500
+//                    }
+//
+//
+//                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
+//                }
+//            }
+//
+//
+////            imagePostCollectionView.alpha = 1.0
+//        }
         self.userImage.layer.borderWidth = 0.5
         self.userImage.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -457,79 +461,81 @@ class PostDescTableViewCell: UITableViewCell {
         lblPostTime.text = modelData.posted_at
         //islike = data.likeFlag
         if modelData.attachmentCount == 0 {
-            imageHeightCVConstant.constant = 0
+            imagePostCollectionView.isHidden = true
+           // imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
         }else{
-            
-            if modelData.attachments?.count ?? 0 > 1 {
-                
-                //var numbers = [Int]()
-                var height1 = 0,height2 = 0,height3 = 0,height = 0
-                for i in  0..<(modelData.attachments?.count ?? 0) {
-                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
-                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
-                        height1 = 350
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
-                        height2 = 300
-                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
-                        
-                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
-                            height3 = 350
-                        } else {
-                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-                            height3 = 500
-                        }
-                        
-                        
-                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
-                        height = 500
-                    }
-                }
-            
-                if height3 > height1 && height3 > height2{
-                    height = height3
-                } else if height1 > height3 && height1 > height2{
-                    height = height1
-                } else if height2 > height3 && height2 > height1{
-                    height = height2
-                }
-                
-                
-                imageHeightCVConstant.constant = CGFloat(height)//500
-               
-            } else {
-                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-                    imageHeightCVConstant.constant = 350
-                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-                    
-                    
-                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-                        imageHeightCVConstant.constant = 500
-                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-                        imageHeightCVConstant.constant = 400
-                    } else {
-                        imageHeightCVConstant.constant = 300
-                    }
-                    
-                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-                //imageHeightCVConstant.constant = 350
-                    
-                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-                        imageHeightCVConstant.constant = 350
-                    } else {
-                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-                        imageHeightCVConstant.constant = 500
-                    }
-                    
-                    
-                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
-                }
-            }
-            
-            
-//            imagePostCollectionView.alpha = 1.0
+            imagePostCollectionView.isHidden = false
         }
+//            if modelData.attachments?.count ?? 0 > 1 {
+//
+//                //var numbers = [Int]()
+//                var height1 = 0,height2 = 0,height3 = 0,height = 0
+//                for i in  0..<(modelData.attachments?.count ?? 0) {
+//                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
+//                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
+//                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
+//                        height1 = 350
+//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
+//                        height2 = 300
+//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
+//
+//                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
+//                            height3 = 350
+//                        } else {
+//                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+//                            height3 = 500
+//                        }
+//
+//
+//                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
+//                        height = 500
+//                    }
+//                }
+//
+//                if height3 > height1 && height3 > height2{
+//                    height = height3
+//                } else if height1 > height3 && height1 > height2{
+//                    height = height1
+//                } else if height2 > height3 && height2 > height1{
+//                    height = height2
+//                }
+//
+//
+//                imageHeightCVConstant.constant = CGFloat(height)//500
+//
+//            } else {
+//                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+//                    imageHeightCVConstant.constant = 350
+//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
+//
+//
+//                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
+//                        imageHeightCVConstant.constant = 500
+//                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
+//                        imageHeightCVConstant.constant = 400
+//                    } else {
+//                        imageHeightCVConstant.constant = 300
+//                    }
+//
+//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
+//                //imageHeightCVConstant.constant = 350
+//
+//                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
+//                        imageHeightCVConstant.constant = 350
+//                    } else {
+//                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+//                        imageHeightCVConstant.constant = 500
+//                    }
+//
+//
+//                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
+//                }
+//            }
+//
+//
+////            imagePostCollectionView.alpha = 1.0
+//        }
         self.userImage.layer.borderWidth = 0.5
         self.userImage.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -677,8 +683,11 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
-            return UICollectionViewCell()
-        }
+            return UICollectionViewCell()}
+      //  cell.tag = indexPath.row
+          
+        
+        
 
         //print("ImageArray---------------------------------\(self.imageArray)")
 //        for i in 0..<imageArray.count {
@@ -686,16 +695,16 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //            cell.imagePost.backgroundColor = .yellow
 //        }
         
-        if self.imageArray.count > 1 {
-            
-            if imagewidth[indexPath.row] > imageheight[indexPath.row] {
-                cell.imagePost.contentMode = .scaleAspectFit
-            } else {
-                cell.imagePost.contentMode = .scaleToFill
-            }
-        } else {
-            cell.imagePost.contentMode = .scaleToFill
-        }
+//        if self.imageArray.count > 1 {
+//
+//            if imagewidth[indexPath.row] > imageheight[indexPath.row] {
+//                cell.imagePost.contentMode = .scaleAspectFit
+//            } else {
+//                cell.imagePost.contentMode = .scaleToFill
+//            }
+//        } else {
+//            cell.imagePost.contentMode = .scaleToFill
+//        }
         
         
         
@@ -755,50 +764,50 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
-        let data = self.data?.attachments?[indexPath.row]
-        
-        if self.data?.attachments?.count ?? 0 > 1 {
-            //data = self.data?.attachments?[1]
-        }
-        
-        
-        
-        if data?.attachmentLink?.height == data?.attachmentLink?.width {
-            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
-            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
-           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            
-            if Int.getInt(data?.attachmentLink?.width) > 500 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
-            } else {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
-            }
-            
-            
-        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
-            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            
-            if  Int.getInt(data?.attachmentLink?.height) < 350 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
-            } else {
-                
-                
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-            }
-            
-             
-         } else {
-            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
-        }
-        
-        
-        
+        return CGSize(width: self.imagePostCollectionView.frame.width, height: CGFloat(newHeightCllctn ?? 0))
+//        let data = self.data?.attachments?[indexPath.row]
+//
+//        if self.data?.attachments?.count ?? 0 > 1 {
+//            //data = self.data?.attachments?[1]
+//        }
+//
+//
+//
+//        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+//            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+//           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//
+//            if Int.getInt(data?.attachmentLink?.width) > 500 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+//            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
+//            } else {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
+//            }
+//
+//
+//        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
+//            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//
+//            if  Int.getInt(data?.attachmentLink?.height) < 350 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
+//            } else {
+//
+//
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+//            }
+//
+//
+//         } else {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
+//        }
+
+
+
     }
 //
 //     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

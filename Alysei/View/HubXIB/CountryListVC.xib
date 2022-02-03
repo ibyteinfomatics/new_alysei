@@ -57,7 +57,7 @@
                             <state key="normal" title="Button" image="back_black"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where you want to export?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7f-Ym-bdE">
-                            <rect key="frame" x="20" y="61.5" width="201" height="17.5"/>
+                            <rect key="frame" x="20" y="62" width="169.5" height="16.5"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
