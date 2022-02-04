@@ -387,19 +387,26 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     cell.newHeightCllctn = 350
                     cell.imageHeightCVConstant.constant = 350
                 }else{
-                let ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
+                var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
                 if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
-                    let newHeight = 320 / ratio
-                               // cell.imageConstant.constant = newHeight
-                    cell.newHeightCllctn = Int(newHeight)
-                    cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
-                            }
-                            else{
-                                let newWidth = 500 * ratio
-                                //cell.imageConstant.constant = newWidth
-                                cell.newHeightCllctn = Int(newWidth)
-                                cell.imageHeightCVConstant.constant = CGFloat(newWidth) - 100
-                            }
+                            let newHeight = 320 / ratio
+                                       // cell.imageConstant.constant = newHeight
+                            cell.newHeightCllctn = Int(newHeight - 50)
+                            cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
+                    } else{
+                        
+                        var newWidth = 400
+                        if ratio == 0.0 {
+                            ratio = 1
+                            newWidth = 350
+                        }
+                        newWidth = newWidth * Int(ratio)
+                        
+                            
+                            //cell.imageConstant.constant = newWidth
+                            cell.newHeightCllctn = Int(newWidth)
+                            cell.imageHeightCVConstant.constant = CGFloat(newWidth)
+                    }
             }
             }
                 return cell
