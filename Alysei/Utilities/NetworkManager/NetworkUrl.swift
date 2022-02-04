@@ -35,11 +35,11 @@ let kDeviceModel                = UIDevice.current.model
 //let domain                      = "http://alysei.ibyteinfomatics.com"
 
 
-let domain                      = "https://https-alyseiapi-ibyteworkshop-com-3.moesif.net/eyJhcHAiOiIxOTg6MTE5MCIsInZlciI6IjIuMCIsIm9yZyI6Ijg4OjE2OTkiLCJpYXQiOjE2MjI1MDU2MDB9._oA92M6D_41n-jjhUT2cI5ciiqQ6oYkanoaBKSrZYho"
+//let domain                      = "https://https-alyseiapi-ibyteworkshop-com-3.moesif.net/eyJhcHAiOiIxOTg6MTE5MCIsInZlciI6IjIuMCIsIm9yZyI6Ijg4OjE2OTkiLCJpYXQiOjE2MjI1MDU2MDB9._oA92M6D_41n-jjhUT2cI5ciiqQ6oYkanoaBKSrZYho"
 //let imageDomain                 = domain
 
 
-//let domain                      = "https://alyseiapi.ibyteworkshop.com"
+let domain                      = "https://alyseiapi.ibyteworkshop.com"
 let imageDomain                 = "https://alyseiapi.ibyteworkshop.com"
 let kBASEURL                    = "\(domain)/public/api/"
 let kImageBaseUrl               = "\(imageDomain)/"

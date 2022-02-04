@@ -14,12 +14,15 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
     var imgArray = ["icons8_shop-1","Group 1156", "Group 1157"]
     
     var bgImage = ["Walkthrough Screen – 20","Walkthrough Screen – 21","Walkthrough Screen – 22"]
-    var titleArray = ["Welcome to Marketplace", "MarketPlace Rules", "Features you can explore"]
-    var subTitleArray = ["Here you can search,explore products from Italian Producers and can send Inquiry as well.", "hen an unknown printer took a gallery of type and scrambled it to make a type","hen an unknown printer took a gallery of type and scrambled it to make a type"]
+    var titleProdArray = ["Welcome to Marketplace","Features you can explore","MarketPlace Rules"]
+    var subTitleProdArray = ["Here you can create your unique Store, upload your product portfolio, explore, search and reply to inquiries", "The most powerful markeplace engine for the Made in Italy","To ensure a positive experience follow these simple rules"]
     
     var walkSub2ViewImg = ["icons8_user_groups-1","icons8_sell_stock","icons8_handshake_heart"]
     
-    
+    var titleWalk2ProdTitle = ["Create your Store","Reply to inquiry"]
+    var subTitleWalk2ProdTitle = ["Showcase you Products Store in a simple, clean and professional way","Being responsive will help you to build trust with Buyers"]
+    var titleWalk3ProdTitle = ["Information and details","Photo Quality","Report suspicious behaviour"]
+    var subTitleWalk3ProdTitle = ["Make sure all the information you provide are accurate and completed","Make sure that all photos that you upload are in high quality","Let us know if something does not feel right"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,8 +45,10 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
         cell.delegate = self
         cell.bgImage.image = UIImage(named: bgImage[indexPath.row])
                 cell.img.image =  UIImage(named: imgArray[indexPath.row])
-                cell.lblTitle.text = titleArray[indexPath.row]
-                cell.lblSubTitle.text = subTitleArray[indexPath.row]
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+                cell.lblTitle.text = titleProdArray[indexPath.row]
+                cell.lblSubTitle.text = subTitleProdArray[indexPath.row]
+        }
                 if indexPath.row == 0 || indexPath.row == 1{
                     cell.btnNext.setTitle("Next", for: .normal)
                 }else{
@@ -65,38 +70,38 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
             cell.walkSubView3Height.constant = 0
             cell.walkSubView1Height.constant = 0
             cell.walkSubView2Height.constant = 0
-            
-            
+    
         } else if indexPath.row == 1 {
-            cell.walkSubView1.isHidden = false
-            cell.walkSubView2.isHidden = false
-            cell.walkSubView3.isHidden = false
-            cell.walkSubView3Height.constant = 55
-            cell.walkSubView1Height.constant = 55
-            cell.walkSubView2Height.constant = 55
-            cell.walkSubView1Img.image = UIImage(named: walkSub2ViewImg[0])
-        cell.walkSubView1Title.text = "Dummy Text"
-        cell.walkSubView1SubTitle.text = "Lorem Ipsum is simply dummy text of the printing and"
-        cell.walkSubView2Img.image = UIImage(named: walkSub2ViewImg[1])
-        cell.walkSubView2Title.text = "Dummy Text"
-        cell.walkSubView2SubTitle.text =  "Lorem Ipsum is simply dummy text of the printing and"
-            cell.walkSubView3Img.image = UIImage(named: walkSub2ViewImg[2])
-            cell.walkSubView3Title.text = "Dummy Text"
-            cell.walkSubView3SubTitle.text =  "Lorem Ipsum is simply dummy text of the printing and"
-            cell.walkSubView3Height.constant = 55
-        }else if indexPath.row == 2{
             cell.walkSubView1.isHidden = false
             cell.walkSubView2.isHidden = false
             cell.walkSubView3.isHidden = true
             cell.walkSubView3Height.constant = 55
             cell.walkSubView1Height.constant = 55
             cell.walkSubView2Height.constant = 0
+            cell.walkSubView1Img.image = UIImage(named: walkSub2ViewImg[0])
+        cell.walkSubView1Title.text = titleWalk2ProdTitle[0]
+        cell.walkSubView1SubTitle.text = subTitleWalk2ProdTitle[0]
+        cell.walkSubView2Img.image = UIImage(named: walkSub2ViewImg[1])
+        cell.walkSubView2Title.text = titleWalk2ProdTitle[1]
+        cell.walkSubView2SubTitle.text = subTitleWalk2ProdTitle[1]
+            
+        }else if indexPath.row == 2{
+            cell.walkSubView1.isHidden = false
+            cell.walkSubView2.isHidden = false
+            cell.walkSubView3.isHidden = false
+            cell.walkSubView3Height.constant = 55
+            cell.walkSubView1Height.constant = 55
+            cell.walkSubView2Height.constant = 55
             cell.walkSubView1Img.image = UIImage(named: "icons8_reply")
-            cell.walkSubView1Title.text = "Reply to inquiry"
-            cell.walkSubView1SubTitle.text = "Being responsive can help you build trust with buyers"
+            cell.walkSubView1Title.text = titleWalk3ProdTitle[0]
+            cell.walkSubView1SubTitle.text = subTitleWalk3ProdTitle[0]
             cell.walkSubView2Img.image = UIImage(named: "icons8_sell")
-            cell.walkSubView2Title.text = "Report Suspicious behaviour"
-            cell.walkSubView2SubTitle.text = "If something doesn't feel right, you can report the conversation to us."
+            cell.walkSubView2Title.text = titleWalk3ProdTitle[1]
+            cell.walkSubView2SubTitle.text = subTitleWalk3ProdTitle[1]
+            cell.walkSubView3Img.image = UIImage(named: walkSub2ViewImg[2])
+            cell.walkSubView3Title.text = titleWalk3ProdTitle[2]
+            cell.walkSubView3SubTitle.text =  subTitleWalk3ProdTitle[3]
+            cell.walkSubView3Height.constant = 55
         }
         if indexPath.row == 0 {
                     cell.view1W.constant = 25
@@ -149,7 +154,7 @@ extension MarketPlaceFirstTiimeVC: GetStartedDelegateWalk{
       
       //let walkthroughArray = self.getWalkThroughViewModel.arrWalkThroughs.count
       let currentIndexPath = collectionViewTutorial.indexPath(for: cell)!
-      if currentIndexPath.item < titleArray.count - 1{
+      if currentIndexPath.item < titleProdArray.count - 1{
         
         let indexPath = IndexPath(item: currentIndexPath.item+1, section: 0)
         self.collectionViewTutorial.scrollToItem(at: indexPath, at: .right, animated: true)
