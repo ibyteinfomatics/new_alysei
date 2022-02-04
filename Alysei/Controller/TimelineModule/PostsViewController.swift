@@ -78,6 +78,7 @@ class PostsViewController: AlysieBaseViewC {
     @objc func refresh(_ sender: AnyObject) {
            // Code to refresh table view
         isRefreshing = true
+        indexOfPageToRequest = 1
             callNewFeedApi(1)
             
     }
