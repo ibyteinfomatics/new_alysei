@@ -576,7 +576,7 @@ extension PostsViewController {
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newFeedModel = NewFeedSearchModel.init(with: data)
-                if page == 1 { self.arrNewFeedDataModel.removeAll() }
+                if pageNo == 1 { self.arrNewFeedDataModel.removeAll() }
                 self.arrNewFeedDataModel.append(contentsOf: self.newFeedModel?.data ?? [NewFeedSearchDataModel(with: [:])])
                 
             }
