@@ -503,6 +503,7 @@
 		C55E2AAA26B288C60083F831 /* SearchProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55E2AA926B288C60083F831 /* SearchProductListVC.swift */; };
 		C562C4B22626CACD009F9E3B /* ProfileCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C562C4B12626CACD009F9E3B /* ProfileCompletionViewController.swift */; };
 		C562C4C12626D582009F9E3B /* ProfileCompletionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C562C4C02626D582009F9E3B /* ProfileCompletionTableViewCell.swift */; };
+		C56863B427B1435E00D88F81 /* AlyseiBGV4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56863B327B1435E00D88F81 /* AlyseiBGV4.mp4 */; };
 		C56C285B268465770042A0A3 /* MyStoreDashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C2855268465760042A0A3 /* MyStoreDashboardPresenter.swift */; };
 		C56C285C268465770042A0A3 /* MyStoreDashboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C2856268465760042A0A3 /* MyStoreDashboardWorker.swift */; };
 		C56C285D268465770042A0A3 /* MyStoreDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C2857268465760042A0A3 /* MyStoreDashboardRouter.swift */; };
@@ -536,6 +537,7 @@
 		C5753EB32653B6B90024E5C7 /* StateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5753EB22653B6B80024E5C7 /* StateModel.swift */; };
 		C57979D526D7AE620040D716 /* SelectB2BProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57979D426D7AE620040D716 /* SelectB2BProductViewController.swift */; };
 		C57B97B92679EF0C00B158D8 /* ConnectionConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57B97B82679EF0C00B158D8 /* ConnectionConfirmVC.swift */; };
+		C583632827B05CEF00CFB063 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583632727B05CEF00CFB063 /* CustomImageView.swift */; };
 		C5861B4426C6306A00AB35C1 /* MarketPlaceHomeCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5861B4326C6306A00AB35C1 /* MarketPlaceHomeCollectionVCell.swift */; };
 		C587D14D26413BE6002D72DF /* NewFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587D14C26413BE6002D72DF /* NewFeedModel.swift */; };
 		C5923F7A265FAE7B003A3465 /* HubUserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5923F79265FAE7B003A3465 /* HubUserListVC.swift */; };
@@ -668,7 +670,6 @@
 		C5EB3CF126E9CB8700CCAC9E /* SelectRecipeCategaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB3CDB26E9CB8600CCAC9E /* SelectRecipeCategaryViewController.swift */; };
 		C5EB3D1426E9E57500CCAC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */; };
 		C5F1F623267882C7005A25A8 /* ProductListTViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1F622267882C7005A25A8 /* ProductListTViewCell.swift */; };
-		C5F8C4FD27AAA24500813910 /* AlyseiBGV3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1185,6 +1186,7 @@
 		C55E2AA926B288C60083F831 /* SearchProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductListVC.swift; sourceTree = "<group>"; };
 		C562C4B12626CACD009F9E3B /* ProfileCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompletionViewController.swift; sourceTree = "<group>"; };
 		C562C4C02626D582009F9E3B /* ProfileCompletionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompletionTableViewCell.swift; sourceTree = "<group>"; };
+		C56863B327B1435E00D88F81 /* AlyseiBGV4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiBGV4.mp4; sourceTree = "<group>"; };
 		C56C2855268465760042A0A3 /* MyStoreDashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreDashboardPresenter.swift; sourceTree = "<group>"; };
 		C56C2856268465760042A0A3 /* MyStoreDashboardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreDashboardWorker.swift; sourceTree = "<group>"; };
 		C56C2857268465760042A0A3 /* MyStoreDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreDashboardRouter.swift; sourceTree = "<group>"; };
@@ -1218,6 +1220,7 @@
 		C5753EB22653B6B80024E5C7 /* StateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
 		C57979D426D7AE620040D716 /* SelectB2BProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectB2BProductViewController.swift; sourceTree = "<group>"; };
 		C57B97B82679EF0C00B158D8 /* ConnectionConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionConfirmVC.swift; sourceTree = "<group>"; };
+		C583632727B05CEF00CFB063 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		C5861B4326C6306A00AB35C1 /* MarketPlaceHomeCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceHomeCollectionVCell.swift; sourceTree = "<group>"; };
 		C587D14C26413BE6002D72DF /* NewFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedModel.swift; sourceTree = "<group>"; };
 		C5923F79265FAE7B003A3465 /* HubUserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubUserListVC.swift; sourceTree = "<group>"; };
@@ -1350,7 +1353,6 @@
 		C5EB3CDB26E9CB8600CCAC9E /* SelectRecipeCategaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRecipeCategaryViewController.swift; sourceTree = "<group>"; };
 		C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5F1F622267882C7005A25A8 /* ProductListTViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTViewCell.swift; sourceTree = "<group>"; };
-		C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiBGV3.mp4; sourceTree = "<group>"; };
 		D636814607C16FDC212EC4D0 /* Pods-Alysei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysei.release.xcconfig"; path = "Target Support Files/Pods-Alysei/Pods-Alysei.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1994,7 +1996,7 @@
 				61C7BE42267CAFA6006DB3BB /* Countries.json */,
 				6B79E67B26E7663100B2D434 /* Info.plist */,
 				6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */,
-				C5F8C4FC27AAA24400813910 /* AlyseiBGV3.mp4 */,
+				C56863B327B1435E00D88F81 /* AlyseiBGV4.mp4 */,
 				2770AA5525AE1BBC00A2F10B /* AlysieBaseViewC.swift */,
 				C5EB3D1326E9E56D00CCAC9E /* Assets.xcassets */,
 				C5197AD226E72A4F00C0894F /* Chat Cell */,
@@ -2660,6 +2662,7 @@
 				6B06B13A272D126B009B741E /* SinglePostModel.swift */,
 				6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */,
 				6B5F1011273E2ACE0016561A /* SpecializationModel.swift */,
+				C583632727B05CEF00CFB063 /* CustomImageView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3242,6 +3245,7 @@
 				6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */,
 				C5D6F7B026B18264006FFCDF /* FooterCityHubTableViewCell.xib in Resources */,
 				C5197AB626E72A2400C0894F /* Chat.storyboard in Resources */,
+				C56863B427B1435E00D88F81 /* AlyseiBGV4.mp4 in Resources */,
 				6B89923F2702E55200591A2E /* TrendingCollectionViewCell.xib in Resources */,
 				C5D6F7B826B18264006FFCDF /* HubSelectionTableViewCell.xib in Resources */,
 				61C7BE43267CB209006DB3BB /* Countries.json in Resources */,
@@ -3265,7 +3269,6 @@
 				6B7CACCE26FDD3CA00096E79 /* SanFranciscoText-RegularItalic.otf in Resources */,
 				6B8992452702E85400591A2E /* TrendingTableViewCell.xib in Resources */,
 				6B7CACCF26FDD3CA00096E79 /* SanFranciscoDisplay-Medium.otf in Resources */,
-				C5F8C4FD27AAA24500813910 /* AlyseiBGV3.mp4 in Resources */,
 				6B8992412702E7CC00591A2E /* ExploreByRecipeTableViewCell.xib in Resources */,
 				C5197AE126E72A4F00C0894F /* SenderImageCell.xib in Resources */,
 				27BC68A125AC56C000A01B6A /* LaunchScreen.storyboard in Resources */,
@@ -3426,6 +3429,7 @@
 				C5CA9A9026C1523900BDAE25 /* ReviewScreenViewController.swift in Sources */,
 				C5197B0E26E72E3C00C0894F /* CreateEventViewController.swift in Sources */,
 				61C7BE41267C8FDA006DB3BB /* FlagCountryListCell.swift in Sources */,
+				C583632827B05CEF00CFB063 /* CustomImageView.swift in Sources */,
 				6B90663C26F89DE100D24521 /* FoodViewController.swift in Sources */,
 				C52920452677575D000C044B /* ConnectionProductTypeModels.swift in Sources */,
 				6B360D02270AEA27006A48E4 /* VoiceOfExpertsViewController.swift in Sources */,

@@ -16,13 +16,23 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
     var bgImage = ["Walkthrough Screen – 20","Walkthrough Screen – 21","Walkthrough Screen – 22"]
     var titleProdArray = ["Welcome to Marketplace","Features you can explore","MarketPlace Rules"]
     var subTitleProdArray = ["Here you can create your unique Store, upload your product portfolio, explore, search and reply to inquiries", "The most powerful markeplace engine for the Made in Italy","To ensure a positive experience follow these simple rules"]
+    var subTitleTravelArray = ["Here you can explore and search for products from Italian Producers"]
+    var subTitleImpArray = ["Here you can explore and search for products and send inquiry to Italian Producers","The most powerful markeplace engine for the Made in Italy","To ensure a positive experience follow these simple rules"]
+    
+    var titleWalk1TravlTitle = ["Explore the Markeplace","Report suspicious behaviour"]
+    var subTitleWalk1TravlTitle = ["Search by Region, Product, Category and much more", "Let us know if something does not feel right"]
     
     var walkSub2ViewImg = ["icons8_user_groups-1","icons8_sell_stock","icons8_handshake_heart"]
     
     var titleWalk2ProdTitle = ["Create your Store","Reply to inquiry"]
+    var titleWalk2ImpTitle = ["Explore the Markeplace","Send an inquiry"]
+    
     var subTitleWalk2ProdTitle = ["Showcase you Products Store in a simple, clean and professional way","Being responsive will help you to build trust with Buyers"]
+    var subTitleWalk2ImpTitle = ["Search by Region, Product, Category and much more", "Ask for product information, samples request, prices, quantity etc."]
     var titleWalk3ProdTitle = ["Information and details","Photo Quality","Report suspicious behaviour"]
+    var titleWalk3ImpTitle = ["Information and details","Report suspicious behaviour"]
     var subTitleWalk3ProdTitle = ["Make sure all the information you provide are accurate and completed","Make sure that all photos that you upload are in high quality","Let us know if something does not feel right"]
+    var subTitleWalk3ImpTitle = ["Make sure all the information you provide are accurate and completed","Let us know if something does not feel right"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,15 +55,37 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
         cell.delegate = self
         cell.bgImage.image = UIImage(named: bgImage[indexPath.row])
                 cell.img.image =  UIImage(named: imgArray[indexPath.row])
+              cell.lblTitle.text = titleProdArray[indexPath.row]
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
-                cell.lblTitle.text = titleProdArray[indexPath.row]
                 cell.lblSubTitle.text = subTitleProdArray[indexPath.row]
+            cell.view1.isHidden = false
+            cell.view2.isHidden = false
+            cell.view3.isHidden = false
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
+            cell.lblSubTitle.text = subTitleTravelArray[0]
+            cell.view1.isHidden = true
+            cell.view2.isHidden = true
+            cell.view3.isHidden = true
+
+            
+        }else{
+            cell.view1.isHidden = false
+            cell.view2.isHidden = false
+            cell.view3.isHidden = false
+            cell.lblSubTitle.text = subTitleImpArray[indexPath.row]
         }
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
+                cell.btnNext.setTitle("Done", for: .normal)
+                
+            }else{
                 if indexPath.row == 0 || indexPath.row == 1{
                     cell.btnNext.setTitle("Next", for: .normal)
                 }else{
                     cell.btnNext.setTitle("Done", for: .normal)
                 }
+            }
+        
+                
         
                 if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
                     cell.lblUserName.text = kSharedUserDefaults.loggedInUserModal.restaurantName
@@ -64,12 +96,24 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
                 }
         
         if indexPath.row == 0{
+             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
+                 cell.walkSubView1.isHidden = false
+                 cell.walkSubView3Height.constant = 55
+                 cell.walkSubView1Title.text = titleWalk1TravlTitle[0]
+                 cell.walkSubView1SubTitle.text = subTitleWalk1TravlTitle[0]
+                 cell.walkSubView2Title.text = titleWalk1TravlTitle[1]
+                 cell.walkSubView2SubTitle.text = subTitleWalk1TravlTitle[1]
+                 cell.walkSubView1Img.image = UIImage(named: "icons8_sell")
+                 cell.walkSubView2Img.image = UIImage(named: "icons8_reply")
+                
+             }else{
             cell.walkSubView1.isHidden = true
             cell.walkSubView2.isHidden = true
             cell.walkSubView3.isHidden = true
             cell.walkSubView3Height.constant = 0
             cell.walkSubView1Height.constant = 0
             cell.walkSubView2Height.constant = 0
+             }
     
         } else if indexPath.row == 1 {
             cell.walkSubView1.isHidden = false
@@ -79,19 +123,29 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
             cell.walkSubView1Height.constant = 55
             cell.walkSubView2Height.constant = 0
             cell.walkSubView1Img.image = UIImage(named: walkSub2ViewImg[0])
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
         cell.walkSubView1Title.text = titleWalk2ProdTitle[0]
         cell.walkSubView1SubTitle.text = subTitleWalk2ProdTitle[0]
         cell.walkSubView2Img.image = UIImage(named: walkSub2ViewImg[1])
         cell.walkSubView2Title.text = titleWalk2ProdTitle[1]
         cell.walkSubView2SubTitle.text = subTitleWalk2ProdTitle[1]
+            }else{
+                cell.walkSubView1Title.text = titleWalk2ImpTitle[0]
+                cell.walkSubView1SubTitle.text = subTitleWalk2ImpTitle[0]
+                cell.walkSubView2Img.image = UIImage(named: walkSub2ViewImg[1])
+                cell.walkSubView2Title.text = titleWalk2ImpTitle[1]
+                cell.walkSubView2SubTitle.text = subTitleWalk2ImpTitle[1]
+            }
             
         }else if indexPath.row == 2{
-            cell.walkSubView1.isHidden = false
-            cell.walkSubView2.isHidden = false
-            cell.walkSubView3.isHidden = false
-            cell.walkSubView3Height.constant = 55
-            cell.walkSubView1Height.constant = 55
-            cell.walkSubView2Height.constant = 55
+            
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+                cell.walkSubView1.isHidden = false
+                cell.walkSubView2.isHidden = false
+                cell.walkSubView3.isHidden = false
+                cell.walkSubView3Height.constant = 55
+                cell.walkSubView1Height.constant = 55
+                cell.walkSubView2Height.constant = 55
             cell.walkSubView1Img.image = UIImage(named: "icons8_reply")
             cell.walkSubView1Title.text = titleWalk3ProdTitle[0]
             cell.walkSubView1SubTitle.text = subTitleWalk3ProdTitle[0]
@@ -100,8 +154,25 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
             cell.walkSubView2SubTitle.text = subTitleWalk3ProdTitle[1]
             cell.walkSubView3Img.image = UIImage(named: walkSub2ViewImg[2])
             cell.walkSubView3Title.text = titleWalk3ProdTitle[2]
-            cell.walkSubView3SubTitle.text =  subTitleWalk3ProdTitle[3]
-            cell.walkSubView3Height.constant = 55
+            cell.walkSubView3SubTitle.text =  subTitleWalk3ProdTitle[2]
+            
+            }else{
+                cell.walkSubView1.isHidden = false
+                cell.walkSubView2.isHidden = false
+                cell.walkSubView3.isHidden = true
+                cell.walkSubView3Height.constant = 55
+                cell.walkSubView1Height.constant = 55
+                cell.walkSubView2Height.constant = 0
+                cell.walkSubView1Img.image = UIImage(named: "icons8_reply")
+                cell.walkSubView1Title.text = titleWalk3ImpTitle[0]
+                cell.walkSubView1SubTitle.text = subTitleWalk3ImpTitle[0]
+                cell.walkSubView2Img.image = UIImage(named: "icons8_sell")
+                cell.walkSubView2Title.text = titleWalk3ImpTitle[1]
+                cell.walkSubView2SubTitle.text = subTitleWalk3ImpTitle[1]
+                cell.walkSubView3Img.image = UIImage(named: walkSub2ViewImg[2])
+                
+                
+            }
         }
         if indexPath.row == 0 {
                     cell.view1W.constant = 25
@@ -131,6 +202,9 @@ extension MarketPlaceFirstTiimeVC: UICollectionViewDelegate,UICollectionViewData
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     //return StaticArrayData.kTutorialDict.count
+      if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
+          return 1
+      }
     return 3
   }
     
@@ -151,11 +225,15 @@ extension MarketPlaceFirstTiimeVC: GetStartedDelegateWalk{
   func tapGetStarted(_ btn: UIButton, cell: WalkthroughCVC) {
     
     if btn == cell.btnNext{
-      
+        let arrCheck : Int?
       //let walkthroughArray = self.getWalkThroughViewModel.arrWalkThroughs.count
       let currentIndexPath = collectionViewTutorial.indexPath(for: cell)!
-      if currentIndexPath.item < titleProdArray.count - 1{
-        
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
+            arrCheck = 0
+        }else{
+            arrCheck = titleProdArray.count - 1
+        }
+        if currentIndexPath.item < (arrCheck ?? 0){
         let indexPath = IndexPath(item: currentIndexPath.item+1, section: 0)
         self.collectionViewTutorial.scrollToItem(at: indexPath, at: .right, animated: true)
         self.collectionViewTutorial.reloadItems(at: [indexPath])

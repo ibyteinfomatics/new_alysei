@@ -81,6 +81,7 @@ extension SelectMemberShipVC: UITableViewDelegate, UITableViewDataSource{
        // cell.lblMemberShip.text = memberShipData?[indexPath.row].name
         //cell.btnCheck.setImage( data?.isSelected == true ? UIImage(named: "icons8_checkmark_2") : UIImage(named: "Ellipse 22"), for: .normal)
         self.selectedPassId = memberShipData?[0].marketplacePackageId
+        
         return cell
     }
     
@@ -119,7 +120,8 @@ extension SelectMemberShipVC {
 class SelectMemberShipTableCell: UITableViewCell {
     @IBOutlet weak var btnCheck: UIButton!
     @IBOutlet weak var lblMemberShip: UILabel!
-    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
       //  btnCheck.setImage(UIImage(named: "Ellipse 22"), for: .normal)
