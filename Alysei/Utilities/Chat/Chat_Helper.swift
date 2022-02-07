@@ -682,6 +682,9 @@ class Chat_hepler {
                                Parameters.userTyping : false] as [String : Any]
         
         
+        print("recent receiverDetails ",receiverDetails)
+        print("recent senderDetails ",senderDetails)
+        
         if child == "New" {
             inquiryresentReference.child("Opened").child("user_\(senderId)").child("user_\(receiverId)_\(String.getString(messageDetails.productId))").updateChildValues(receiverDetails)
             inquiryresentReference.child(child).child("user_\(receiverId)").child("user_\(senderId)_\(String.getString(messageDetails.productId))").updateChildValues(senderDetails)
