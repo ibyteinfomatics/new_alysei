@@ -1284,7 +1284,12 @@ class ProfileViewC: AlysieBaseViewC{
     private func postRequestToGetFields() -> Void{
         
         disableWindowInteraction()
-     CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+    //
+        if userLevel == .own{
+        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+        }else{
+            CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+        }
     }
     //MARK:- HandleViewTap
     

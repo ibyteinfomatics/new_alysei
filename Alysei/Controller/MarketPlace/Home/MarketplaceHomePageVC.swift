@@ -158,6 +158,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.nextWalkCount = 0
+        self.tableView.alpha = 1
+        self.headerView.alpha = 1
         self.walkView1.isHidden = true
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = true

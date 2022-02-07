@@ -14,7 +14,7 @@ class SelectMultiMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     var memberShipData : [Membership]?
     var selectedPassId: Int?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        // headerView.addShadow()
@@ -41,14 +41,15 @@ extension SelectMultiMemberShipVC : UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = memberShipCollectionview.dequeueReusableCell(withReuseIdentifier: "SelectMembershipCollectionViewCell", for: indexPath) as? SelectMembershipCollectionViewCell else{return UICollectionViewCell()}
-        cell.configCell(memberShipData ?? [Membership]())
+        cell.configCell(memberShipData ?? [Membership](), indexPath.row )
+        
         if indexPath.row < (memberShipData?.count ?? 0) {
-            cell.tableView.isHidden = false
             cell.lblMemberShip.text = memberShipData?[indexPath.row].name
         }else{
-            cell.tableView.isHidden = true
             cell.lblMemberShip.text = "Coming Soon....."
         }
+        //demo
+        self.selectedPassId = memberShipData?[0].marketplacePackageId
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,6 +82,7 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vwTriangle: UIView!
     @IBOutlet weak var lblMemberShip: UILabel!
+    var indexV: Int?
     var memberShipData: [Membership]?
 
     override func awakeFromNib() {
@@ -90,8 +92,9 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
         setDownTriangle()
     }
     
-    func configCell(_ data: [Membership]){
+    func configCell(_ data: [Membership], _ indexValue : Int?){
        self.memberShipData = data
+        indexV = indexValue
         self.tableView.reloadData()
         
     }
@@ -116,18 +119,29 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
 extension SelectMembershipCollectionViewCell : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        // return memberShipData?.count ?? 0
-        return 4
+        if self.indexV == 0 {
+        return StaticArrayData.kMemberShipArray.count
+        }else{
+            return StaticArrayData.kMemberShipCmngSoonArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMemberShipTableCell", for: indexPath) as? SelectMemberShipTableCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        if self.indexV == 0 {
+        cell.lblTitle.text = StaticArrayData.kMemberShipArray[indexPath.row].name
+        cell.lblSubTitle.text = StaticArrayData.kMemberShipArray[indexPath.row].desc
+        }else{
+            cell.lblTitle.text = StaticArrayData.kMemberShipCmngSoonArray[indexPath.row].name
+            cell.lblSubTitle.text = StaticArrayData.kMemberShipCmngSoonArray[indexPath.row].desc
+        }
       //self.selectedPassId = memberShipData?[0].marketplacePackageId
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 72
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

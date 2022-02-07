@@ -43,8 +43,8 @@ class ProfileCompletionTableViewCell: UITableViewCell {
 //          if indexPath.row == currentIndex {
 //              self.animationCallback?(currentIndex,self)
 //          }
-         print("Current Index------------\(currentIndex)")
-          print("indexPath.row ------------\(indexPath.row)")
+//         print("Current Index------------\(currentIndex)")
+//          print("indexPath.row ------------\(indexPath.row)")
          // if currentIndex == indexPath.row {
               self.delegate?.animateViews(indexPath.row, cell: self)
          // }
