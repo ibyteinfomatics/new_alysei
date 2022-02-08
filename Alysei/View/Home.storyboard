@@ -12104,7 +12104,7 @@ You will be notified for any membership status update.</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="177"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Fvu-uT-zUR">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Fvu-uT-zUR">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="177"/>
                                                                                 <color key="backgroundColor" name="whiteColor"/>
                                                                             </imageView>
