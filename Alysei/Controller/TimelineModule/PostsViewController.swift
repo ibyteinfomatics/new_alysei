@@ -396,7 +396,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                             cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
                     } else{
                         
-                        var newWidth = 420
+                        var newWidth = 400
                         if ratio == 0.0 {
                             ratio = 1
                             newWidth = 350

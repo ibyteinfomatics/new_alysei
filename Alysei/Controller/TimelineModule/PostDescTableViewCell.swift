@@ -260,75 +260,7 @@ class PostDescTableViewCell: UITableViewCell {
         }else{
             imagePostCollectionView.isHidden = false
         }
-//            if modelData.attachments?.count ?? 0 > 1 {
-//
-//                //var numbers = [Int]()
-//                var height1 = 0,height2 = 0,height3 = 0,height = 0
-//                for i in  0..<(modelData.attachments?.count ?? 0) {
-//                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-//                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
-//                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
-//                        height1 = 350
-//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
-//                        height2 = 300
-//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
-//
-//                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
-//                            height3 = 350
-//                        } else {
-//                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-//                            height3 = 500
-//                        }
-//
-//
-//                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
-//                        height = 500
-//                    }
-//                }
-//
-//                if height3 > height1 && height3 > height2{
-//                    height = height3
-//                } else if height1 > height3 && height1 > height2{
-//                    height = height1
-//                } else if height2 > height3 && height2 > height1{
-//                    height = height2
-//                }
-//
-//
-//                imageHeightCVConstant.constant = CGFloat(height)//500
-//
-//            } else {
-//                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-//                    imageHeightCVConstant.constant = 350
-//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-//
-//
-//                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-//                        imageHeightCVConstant.constant = 500
-//                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-//                        imageHeightCVConstant.constant = 400
-//                    } else {
-//                        imageHeightCVConstant.constant = 300
-//                    }
-//
-//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-//                //imageHeightCVConstant.constant = 350
-//
-//                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-//                        imageHeightCVConstant.constant = 350
-//                    } else {
-//                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-//                        imageHeightCVConstant.constant = 500
-//                    }
-//
-//
-//                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
-//                }
-//            }
-//
-//
-////            imagePostCollectionView.alpha = 1.0
-//        }
+
         self.userImage.layer.borderWidth = 0.5
         self.userImage.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -467,75 +399,7 @@ class PostDescTableViewCell: UITableViewCell {
         }else{
             imagePostCollectionView.isHidden = false
         }
-//            if modelData.attachments?.count ?? 0 > 1 {
-//
-//                //var numbers = [Int]()
-//                var height1 = 0,height2 = 0,height3 = 0,height = 0
-//                for i in  0..<(modelData.attachments?.count ?? 0) {
-//                   // self.imageArray.append(modelData.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-//                    //numbers.append(modelData.attachments?[i].attachmentLink?.width ?? 0)
-//                    if modelData.attachments?[i].attachmentLink?.height == modelData.attachments?[i].attachmentLink?.width {
-//                        height1 = 350
-//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.width) > Int.getInt(modelData.attachments?[i].attachmentLink?.height) {
-//                        height2 = 300
-//                    } else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > Int.getInt(modelData.attachments?[i].attachmentLink?.width) && Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 500{
-//
-//                        if Int.getInt(modelData.attachments?[i].attachmentLink?.height) < 350 {
-//                            height3 = 350
-//                        } else {
-//                            //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-//                            height3 = 500
-//                        }
-//
-//
-//                    }else if Int.getInt(modelData.attachments?[i].attachmentLink?.height) > 500{
-//                        height = 500
-//                    }
-//                }
-//
-//                if height3 > height1 && height3 > height2{
-//                    height = height3
-//                } else if height1 > height3 && height1 > height2{
-//                    height = height1
-//                } else if height2 > height3 && height2 > height1{
-//                    height = height2
-//                }
-//
-//
-//                imageHeightCVConstant.constant = CGFloat(height)//500
-//
-//            } else {
-//                if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-//                    imageHeightCVConstant.constant = 350
-//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-//
-//
-//                    if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-//                        imageHeightCVConstant.constant = 500
-//                    } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-//                        imageHeightCVConstant.constant = 400
-//                    } else {
-//                        imageHeightCVConstant.constant = 300
-//                    }
-//
-//                } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-//                //imageHeightCVConstant.constant = 350
-//
-//                    if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-//                        imageHeightCVConstant.constant = 350
-//                    } else {
-//                        //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-//                        imageHeightCVConstant.constant = 500
-//                    }
-//
-//
-//                    //imageHeightCVConstant.constant = CGFloat(modelData.attachments?.first?.attachmentLink?.height ?? 0 * 72 / 96)-150//500
-//                }
-//            }
-//
-//
-////            imagePostCollectionView.alpha = 1.0
-//        }
+
         self.userImage.layer.borderWidth = 0.5
         self.userImage.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -621,49 +485,7 @@ class PostDescTableViewCell: UITableViewCell {
           //  return
        // }
 
-        //let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
-        //let params = ["post_owner_id": self.data?.subjectId?.userId ?? -1,
-                     // "user_id": selfID,
-                      //"post_id": self.data?.postID ?? -1,
-                      //"like_status": islike ?? 1]
-
-//        let sd = params.socketRepresentation()
-//
-//        socket.emit("doLike", with: [sd]) {
-//            print("doLike - inside ")
-//        }
-//
-//        socket.on("showLike") { showLikeData, showLikeAck in
-//            print("inside show like - start")
-//            print(showLikeData)
-//            print("inside show like - end")
-//
-////            socket.disconnect()
-//
-//            if let data = showLikeData[0] as? [String: Any] {
-//
-//                if let postID = data["post_id"] as? Int {
-//                    if postID != (self.data?.postID ?? -1) {
-//                        return
-//                    }
-//                }
-//
-//                let totalLikes = data["total_likes"] as? Int
-//                self.data?.likeCount = totalLikes ?? 0
-//
-//                let likeStatus = data["like_status"] as? Int
-//                self.data?.likeFlag = likeStatus ?? 0
-//
-//                self.likeCallback?(self.index ?? 0)
-//            }
-//
-//
-//        }
-//
-//
-//        socket.on(clientEvent: .error) { data, ack in
-//            print(data)
-//        }
+    
 
     }
 
@@ -684,32 +506,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()}
-      //  cell.tag = indexPath.row
-          
-        
-        
-
-        //print("ImageArray---------------------------------\(self.imageArray)")
-//        for i in 0..<imageArray.count {
-//            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
-//            cell.imagePost.backgroundColor = .yellow
-//        }
-        
-//        if self.imageArray.count > 1 {
-//
-//            if imagewidth[indexPath.row] > imageheight[indexPath.row] {
-//                cell.imagePost.contentMode = .scaleAspectFit
-//            } else {
-//                cell.imagePost.contentMode = .scaleToFill
-//            }
-//        } else {
-//            cell.imagePost.contentMode = .scaleToFill
-//        }
-        
-        
-        
-        
-       // cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[indexPath.row]))
+      
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
         
@@ -726,38 +523,6 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
        
         vwpageControl.selectedPage = indexPath.row
         
-       // self.collectionView(self.imagePostCollectionView, cellForItemAt: IndexPath(item: 1, section: 0))
-        //self.collectionView(self.imagePostCollectionView, layout: UICollectionViewLayout, sizeForItemAt: indexPath)
-        
-        /*if self.data?.attachments?.count ?? 0 > 1 {
-            var height = 0
-            if self.data?.attachments?[indexPath.row].attachmentLink?.height == self.data?.attachments?[indexPath.row].attachmentLink?.width {
-                 height = 350
-             } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) {
-                height = 200
-             } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) {
-                height = Int(CGFloat(self.data?.attachments?[indexPath.row].attachmentLink?.height ?? 0
-                                        * 72 / 96)-150)//500
-             }
-            
-            let cellSize = CGSize(width:self.imagePostCollectionView.frame.width , height:CGFloat(height))
-
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            layout.itemSize = cellSize
-            imagePostCollectionView.setCollectionViewLayout(layout, animated: true)
-        }*/
-        
-        
-        
-       /* if self.data?.attachments?[indexPath.row].attachmentLink?.height == self.data?.attachments?[indexPath.row].attachmentLink?.width {
-            imageHeightCVConstant.constant = 350
-        } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) {
-            imageHeightCVConstant.constant = 200
-        } else if Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.height) > Int.getInt(self.data?.attachments?[indexPath.row].attachmentLink?.width) {
-            imageHeightCVConstant.constant = CGFloat(self.data?.attachments?[indexPath.row].attachmentLink?.height ?? 0
-                                                        * 72 / 96)-150//500
-        }*/
        
     }
     
@@ -765,46 +530,6 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.imagePostCollectionView.frame.width, height: CGFloat(newHeightCllctn ?? 0))
-//        let data = self.data?.attachments?[indexPath.row]
-//
-//        if self.data?.attachments?.count ?? 0 > 1 {
-//            //data = self.data?.attachments?[1]
-//        }
-//
-//
-//
-//        if data?.attachmentLink?.height == data?.attachmentLink?.width {
-//            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
-//            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-//        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
-//           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-//
-//            if Int.getInt(data?.attachmentLink?.width) > 500 {
-//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-//            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
-//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
-//            } else {
-//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
-//            }
-//
-//
-//        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
-//            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-//
-//            if  Int.getInt(data?.attachmentLink?.height) < 350 {
-//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
-//            } else {
-//
-//
-//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-//            }
-//
-//
-//         } else {
-//            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
-//        }
 
 
 

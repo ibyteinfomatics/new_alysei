@@ -19,7 +19,7 @@ class TutorialViewC: AlysieBaseViewC{
   private func getTutorialCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
     
     let tutorialCollectionCell = collectionViewTutorial.dequeueReusableCell(withReuseIdentifier: TutorialCollectionCell.identifier(), for: indexPath) as! TutorialCollectionCell
-    tutorialCollectionCell.configure(indexPath,self.walkthroughModel[indexPath.row])
+      tutorialCollectionCell.configure(indexPath,self.walkthroughModel[indexPath.row], modelData: walkthroughModel)
     tutorialCollectionCell.delegate = self
     return tutorialCollectionCell
   }

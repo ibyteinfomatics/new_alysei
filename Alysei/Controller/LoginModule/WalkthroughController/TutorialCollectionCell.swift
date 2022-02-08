@@ -15,6 +15,8 @@ class TutorialCollectionCell: UICollectionViewCell {
   @IBOutlet weak var btnGetStarted: UIButton!
   @IBOutlet weak var btnSkip: UIButton!
   
+    var indexpath = IndexPath()
+    var walkthroughModel = [GetWalkThroughDataModel]()
   //MARK: - Properties -
   
   var delegate: GetStartedDelegate?
@@ -45,13 +47,15 @@ class TutorialCollectionCell: UICollectionViewCell {
     
     @objc private func pageControlHandle(sender: UIPageControl){
         print(sender.currentPage)
-
+       // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
     }
   
   //MARK: - Public Methods -
   
-    public func configure(_ indexPath: IndexPath, _ data: GetWalkThroughDataModel ){
+    public func configure(_ indexPath: IndexPath, _ data: GetWalkThroughDataModel, modelData: [GetWalkThroughDataModel] ){
     
+        walkthroughModel = modelData
+        indexpath = indexPath
     switch indexPath.item {
     case 0:
       self.btnSkip.isHidden = false
