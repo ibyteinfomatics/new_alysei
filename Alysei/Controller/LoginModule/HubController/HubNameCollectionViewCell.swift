@@ -14,6 +14,8 @@ class HubNameCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblCountryState: UILabel!
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var vwOverlayContainer: UIView!
+    @IBOutlet weak var btnDelete: UIButton!
+    var callback:((Int) -> Void)? = nil
 //    @IBOutlet weak var imageWidth: NSLayoutConstraint!
 //    @IBOutlet weak var imgLeading: NSLayoutConstraint!
 //    @IBOutlet weak var imgTrailing: NSLayoutConstraint!
@@ -21,6 +23,10 @@ class HubNameCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    @IBAction func btnDeleteAction(_ sender: UIButton){
+        callback?(sender.tag)
+        
     }
 
 }
