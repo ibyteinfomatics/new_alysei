@@ -67,6 +67,12 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var walknextBtn: UIButton!
     @IBOutlet weak var openednewCount: UILabel!
     
+    @IBOutlet weak var walk1ViewTitle: UILabel!
+    @IBOutlet weak var walk1ViewDesc: UILabel!
+    @IBOutlet weak var walk1SubTitle: UILabel!
+    @IBOutlet weak var walk1SubDesc: UILabel!
+    @IBOutlet weak var walk1DescImage: UIImageView!
+    
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
     var newunread: Int = 0
@@ -288,6 +294,11 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkView1.isHidden = false
         self.vwwWalkContainer1.isHidden = false
         self.vwwWalkContainer2.isHidden = true
+        walk1ViewTitle.text = "Start promoting your products"
+        walk1ViewDesc.text = "Here is some tips to help you promote with confidence"
+        walk1SubTitle.text = "Post in english"
+        walk1SubDesc.text = "Write in English language to create your store and list your products"
+        walk1DescImage.image = UIImage(named: "edit_icon_white")
         UIView.animate(withDuration: 0.5) {
             self.walkView1height.constant = 485
             self.walkView1Top.constant = 0
@@ -310,16 +321,16 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkSubView3Height.constant = 0
         vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
         walkView2Tilte.text = "Connect with buyers"
-        walkView2SubTitle.text = "When you create a listing,buyers will be able to contact you on social alysei."
+        walkView2SubTitle.text = "When you create a listing, buyers will interact with you"
         walkView2Img.image = UIImage(named: "Group 1096")
         
        
         walkSubView1Img.image = UIImage(named: "icons8_reply")
         walkSubView1Title.text = "Reply to inquiry"
-        walkSubView1SubTitle.text = "Being responsive can help you build trust with buyers"
+        walkSubView1SubTitle.text = "Being responsive will help you to build trust with Buyers"
         walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Report Suspicious behaviour"
-        walkSubView2SubTitle.text = "If something doesn't feel right, you can report the conversation to us."
+        walkSubView2Title.text = "Report suspicious behaviour"
+        walkSubView2SubTitle.text = "Let us know if something does not feel right"
         
       
         
@@ -360,19 +371,19 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkSubView3Height.constant = 55
         walkView2Img.image = UIImage(named: "Group 1091")
         walkView2Tilte.text = "Create your store"
-        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers learn more about what you're selling."
+        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers to learn more about what you are selling."
        
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
         walkSubView1Title.text = "Add clear photos"
-        walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you're listing"
+        walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you are listing"
         
         walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Offer a fire price"
-        walkSubView2SubTitle.text = "Use similiar listings as a guide for choosing your price"
+        walkSubView2Title.text = "Offer a fare price"
+        walkSubView2SubTitle.text = "Make sure you are offering prices appropriate to a competitive market like the US"
         
         walkSubView3Img.image = UIImage(named: "icons8_rocket")
         walkSubView3Title.text = "Boost your listing"
-        walkSubView3SubTitle.text = "You can boost your listing so that it reaches more people on Alysei"
+        walkSubView3SubTitle.text = "You can boost your listing to expand you reach and increase buyers engagement"
         
 //        walkSubView3Img.image = UIImage(named: "icons8_rocket")
 //        walkSubView2Title.text = "Boost your listing"

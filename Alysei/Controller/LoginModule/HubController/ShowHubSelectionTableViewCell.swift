@@ -80,6 +80,22 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         hubNameTableCell.lblHubImage.layer.cornerRadius = 12
         hubNameTableCell.vwContainer.layer.cornerRadius = 12
         hubNameTableCell.vwOverlayContainer.layer.cornerRadius = 12
+        hubNameTableCell.btnDelete.tag = indexPath.row
+        
+        hubNameTableCell.callback = { index in
+            if self.isEditHub == true{
+                //let hub = self.reviewSelectedHub.
+                let hub = self.reviewSelectedHubCityArray[index]
+                
+                let parentVC = self.parentViewController as? ConfirmSelectionVC
+                parentVC?.removeHubInCaseOfEdit(hub)
+                self.reviewSelectedHubCityArray.remove(at: index)
+            }else{
+                self.selectedHub?.hubs.remove(at: index)
+            }
+            self.collectionView.reloadData()
+            
+        }
         if isEditHub == true{
             self.labeCountryName.text = self.reviewSelectedHub?.country_name
             
@@ -192,19 +208,19 @@ extension ShowHubSelectionTableViewCell: UICollectionViewDataSource, UICollectio
         return getHubNameCollectionCell(indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isEditHub == true{
-            //let hub = self.reviewSelectedHub.
-            let hub = self.reviewSelectedHubCityArray[indexPath.row]
-            
-            let parentVC = self.parentViewController as? ConfirmSelectionVC
-            parentVC?.removeHubInCaseOfEdit(hub)
-            self.reviewSelectedHubCityArray.remove(at: indexPath.row)
-        }else{
-            self.selectedHub?.hubs.remove(at: indexPath.row)
-        }
-        self.collectionView.reloadData()
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if isEditHub == true{
+//            //let hub = self.reviewSelectedHub.
+//            let hub = self.reviewSelectedHubCityArray[indexPath.row]
+//
+//            let parentVC = self.parentViewController as? ConfirmSelectionVC
+//            parentVC?.removeHubInCaseOfEdit(hub)
+//            self.reviewSelectedHubCityArray.remove(at: indexPath.row)
+//        }else{
+//            self.selectedHub?.hubs.remove(at: indexPath.row)
+//        }
+//        self.collectionView.reloadData()
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // dataArary is the managing array for your UICollectionView.
