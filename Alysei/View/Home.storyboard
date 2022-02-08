@@ -6454,32 +6454,6 @@ any other devices.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lij-Da-waJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Posts" translatesAutoresizingMaskIntoConstraints="NO" id="oIJ-fg-ucZ">
-                                        <rect key="frame" x="127.5" y="150" width="120" height="120"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="oIJ-fg-ucZ" secondAttribute="height" multiplier="1:1" id="is6-vH-PSc"/>
-                                            <constraint firstAttribute="height" constant="120" id="zwb-Vo-VLe"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you post something it will appear here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd2-Nb-dP0">
-                                        <rect key="frame" x="10" y="280" width="355" height="47"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vd2-Nb-dP0" secondAttribute="trailing" constant="10" id="Itf-Dd-Jij"/>
-                                    <constraint firstItem="vd2-Nb-dP0" firstAttribute="leading" secondItem="lij-Da-waJ" secondAttribute="leading" constant="10" id="Qr8-XI-huH"/>
-                                    <constraint firstItem="oIJ-fg-ucZ" firstAttribute="top" secondItem="lij-Da-waJ" secondAttribute="top" constant="150" id="ayo-aP-rW9"/>
-                                    <constraint firstItem="oIJ-fg-ucZ" firstAttribute="centerX" secondItem="lij-Da-waJ" secondAttribute="centerX" id="kZl-ww-r4J"/>
-                                    <constraint firstItem="vd2-Nb-dP0" firstAttribute="top" secondItem="oIJ-fg-ucZ" secondAttribute="bottom" constant="10" id="xjb-uz-2EZ"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-9n-VRV">
                                 <rect key="frame" x="0.0" y="10" width="375" height="657"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -6769,6 +6743,32 @@ any other devices.</string>
                                     <outlet property="delegate" destination="dKf-00-s8n" id="isA-ni-IYB"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lij-Da-waJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Posts" translatesAutoresizingMaskIntoConstraints="NO" id="oIJ-fg-ucZ">
+                                        <rect key="frame" x="127.5" y="150" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oIJ-fg-ucZ" secondAttribute="height" multiplier="1:1" id="is6-vH-PSc"/>
+                                            <constraint firstAttribute="height" constant="120" id="zwb-Vo-VLe"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you post something it will appear here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd2-Nb-dP0">
+                                        <rect key="frame" x="10" y="280" width="355" height="47"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vd2-Nb-dP0" secondAttribute="trailing" constant="10" id="Itf-Dd-Jij"/>
+                                    <constraint firstItem="vd2-Nb-dP0" firstAttribute="leading" secondItem="lij-Da-waJ" secondAttribute="leading" constant="10" id="Qr8-XI-huH"/>
+                                    <constraint firstItem="oIJ-fg-ucZ" firstAttribute="top" secondItem="lij-Da-waJ" secondAttribute="top" constant="150" id="ayo-aP-rW9"/>
+                                    <constraint firstItem="oIJ-fg-ucZ" firstAttribute="centerX" secondItem="lij-Da-waJ" secondAttribute="centerX" id="kZl-ww-r4J"/>
+                                    <constraint firstItem="vd2-Nb-dP0" firstAttribute="top" secondItem="oIJ-fg-ucZ" secondAttribute="bottom" constant="10" id="xjb-uz-2EZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a44-N0-9cZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -7465,14 +7465,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7513,7 +7513,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7535,7 +7535,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7573,7 +7573,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -10841,7 +10841,7 @@ any other devices.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kig-oh-R08">
-                                <rect key="frame" x="26" y="313" width="323" height="41.5"/>
+                                <rect key="frame" x="26" y="323.5" width="323" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

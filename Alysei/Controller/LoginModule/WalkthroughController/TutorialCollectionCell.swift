@@ -23,6 +23,8 @@ class TutorialCollectionCell: UICollectionViewCell {
     
     super.layoutIfNeeded()
     self.btnGetStarted.makeCornerRadius(radius: 5.0)
+      pageControl.addTarget(self, action: #selector(pageControlHandle), for: .valueChanged)
+
   }
   
   override func layoutSubviews() {
@@ -40,6 +42,11 @@ class TutorialCollectionCell: UICollectionViewCell {
     
     self.delegate?.tapGetStarted(self.btnSkip, cell: self)
   }
+    
+    @objc private func pageControlHandle(sender: UIPageControl){
+        print(sender.currentPage)
+
+    }
   
   //MARK: - Public Methods -
   
