@@ -307,6 +307,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.contentView.backgroundColor = .white
+            headerView.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
             
         }
     }
@@ -681,6 +682,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
                         let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
+                        cell4.morebutton.tag = indexPath.row
+                        cell4.lblLikeCount.text = "\(self.arraySearchByEvents?[indexPath.row].like_counts ?? 0)"
                         cell4.eventImage.setImage(withString: imgUrl)
                         cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                         cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
@@ -715,6 +718,25 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             let reloadIndexPath = IndexPath(row: index, section: 0)
                             self.getUniversalSearchData(1, self.updatedText)
                             self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+                        }
+                        cell4.btnMoreCallback = { tag in
+                                
+                            let baseUrlImg = self.arraySearchByEvents?[tag].user?.avatarid?.baseUrl ?? ""
+
+                            let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+                            vc.hostname = self.arraySearchByEvents?[tag].hostName
+                            vc.eventname = self.arraySearchByEvents?[tag].eventName
+                            vc.location = self.arraySearchByEvents?[tag].location
+                            vc.date = self.arraySearchByEvents?[tag].date
+                            vc.time = self.arraySearchByEvents?[tag].time
+                            vc.fulldescription = self.arraySearchByEvents?[tag].datumDescription
+                            vc.website = self.arraySearchByEvents?[tag].website
+                            vc.eventYype = self.arraySearchByEvents?[tag].eventType
+                            vc.registrationType = self.arraySearchByEvents?[tag].registrationType
+                            vc.imgurl = String.getString(baseUrlImg + (self.arraySearchByEvents?[tag].attachment?.attachmenturl ?? ""))
+                            vc.bookingUrl = self.arraySearchByEvents?[tag].url
+                            vc.typeofpage = "read"
+                                    
                         }
                         cell4.callVisitCallback = { index in
                             
@@ -1019,12 +1041,14 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 else{
                     cell4.noItemLabel.isHidden = true
                     cell4.mainVw.isHidden = false
+                    cell4.morebutton.tag = indexPath.row
                     let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
                     cell4.eventImage.setImage(withString: imgUrl)
                     cell4.eventTitle.text = arraySearchByEvents?[indexPath.row].eventName
                     cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                     cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].datumDescription
                     //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
+                    cell4.lblLikeCount.text = "\(self.arraySearchByEvents?[indexPath.row].like_counts ?? 0)"
                     let dateFormatterGet = DateFormatter()
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
@@ -1056,6 +1080,25 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         let reloadIndexPath = IndexPath(row: index, section: 0)
                         self.getUniversalSearchData(1, self.updatedText)
                         self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+                    }
+                    cell4.btnMoreCallback = { tag in
+                            
+                        let baseUrlImg = self.arraySearchByEvents?[tag].user?.avatarid?.baseUrl ?? ""
+
+                        let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+                        vc.hostname = self.arraySearchByEvents?[tag].hostName
+                        vc.eventname = self.arraySearchByEvents?[tag].eventName
+                        vc.location = self.arraySearchByEvents?[tag].location
+                        vc.date = self.arraySearchByEvents?[tag].date
+                        vc.time = self.arraySearchByEvents?[tag].time
+                        vc.fulldescription = self.arraySearchByEvents?[tag].datumDescription
+                        vc.website = self.arraySearchByEvents?[tag].website
+                        vc.eventYype = self.arraySearchByEvents?[tag].eventType
+                        vc.registrationType = self.arraySearchByEvents?[tag].registrationType
+                        vc.imgurl = String.getString(baseUrlImg + (self.arraySearchByEvents?[tag].attachment?.attachmenturl ?? ""))
+                        vc.bookingUrl = self.arraySearchByEvents?[tag].url
+                        vc.typeofpage = "read"
+                                
                     }
                     cell4.callVisitCallback = { index in
                         
@@ -1231,7 +1274,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 
             case 3:
                 print("Event tab")
-                eventTab(indexPath: indexPath)
+               // eventTab(indexPath: indexPath)
                 
                 
             case 4:

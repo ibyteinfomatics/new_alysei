@@ -224,11 +224,16 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
             print("Check")
           //  return 60
-            if indexPath.row == 3 &&  self.productDetail?.product_detail?.brand_label_id == "0"{
+            if indexPath.row == 3 && (self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == nil || self.productDetail?.product_detail?.brand_label_id == ""){
                 return 0
-            }else{
-            return 60
             }
+            if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)")){
+                if indexPath.row == 7 {
+                    return 0
+                }
+                
+            }
+            return 60
         }else if indexPath.row == 8 {
            
             if arrRatingReview?.count == nil || arrRatingReview?.count == 0 {

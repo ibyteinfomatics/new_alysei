@@ -18,6 +18,7 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var blankScreen: UIView!
     @IBOutlet weak var vwSearchUnderLine: UIView!
+    
     var listType:Int?
     var keywordSearch: String?
     var filterTitle: String?
@@ -728,8 +729,10 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     @IBOutlet weak var lblCost: UILabel!
     @IBOutlet weak var lblProductType: UILabel!
     @IBOutlet weak var imgSample: UIImageView!
-    @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var imgProduct: CustomImageView!
     @IBOutlet weak var lblPriceHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblSampleHeight: NSLayoutConstraint!
+    @IBOutlet weak var vwbottomTop: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -739,7 +742,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     func configCell(_ data: ProductSearchListModel){
         
         lblProductName.text = data.title
-        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"){
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)"){
             lblCost.isHidden = true
             lblPriceHeight.constant = 0
         }else{
@@ -751,13 +754,27 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
         lblProductType.text = data.product_category_name
         lblTotalRating.text = "\(data.total_reviews ?? 0) ratings"
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
-        self.imgProduct.setImage(withString: baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
+        
+        if let imgUrl = URL(string: baseUrl + String.getString(data.product_gallery?.first?.attachment_url)){
+        self.imgProduct.loadImageUrl(imgUrl)
+        }
+        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)") {
+            lblAvalblForSample.isHidden = true
+            imgSample.isHidden = true
+            lblSampleHeight.constant = 0
+            vwbottomTop.constant = 44
+        }else{
         if data.available_for_sample == "Yes" {
             lblAvalblForSample.isHidden = false
             imgSample.isHidden = false
+            lblSampleHeight.constant = 18.67
+            vwbottomTop.constant = 15
         }else {
             lblAvalblForSample.isHidden = true
             imgSample.isHidden = true
+            lblSampleHeight.constant = 0
+            vwbottomTop.constant = 20
+        }
         }
         lblAvg_Rating.text = "\(data.avg_rating ?? "0")"
     }

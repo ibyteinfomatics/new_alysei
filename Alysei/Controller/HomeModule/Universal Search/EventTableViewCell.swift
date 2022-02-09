@@ -17,16 +17,18 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var noItemLabel: UILabel!
     @IBOutlet weak var btnVisit: UIButton!
-    
+    @IBOutlet weak var morebutton: UIButton!
     @IBOutlet weak var mainVw: UIView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var btnInterested: UIButton!
     @IBOutlet weak var btnInterestedWidth: NSLayoutConstraint!
+    @IBOutlet weak var lblLikeCount: UILabel!
     
     var isInterested: Int?
     var callInterestedCallback: ((Int) -> Void)? = nil
     var callVisitCallback: ((Int) -> Void)? = nil
     var data : EventDatum?
+    var btnMoreCallback:((Int) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +56,9 @@ class EventTableViewCell: UITableViewCell {
             isInterested = 0
         }
         callInterestesApi(sender.tag, isInterested)
+    }
+    @IBAction func btnMoreAction(_ sender: UIButton){
+        btnMoreCallback?(sender.tag)
     }
     
     @IBAction func btnVisit(_ sender: UIButton){
