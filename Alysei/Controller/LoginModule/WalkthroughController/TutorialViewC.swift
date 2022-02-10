@@ -17,10 +17,10 @@ class TutorialViewC: AlysieBaseViewC{
   //MARK: - Private Methods -
     
     @objc private func pageControlHandle(sender: UIPageControl){
-        print(sender.currentPage)
+        //print(sender.currentPage)
         
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
-        
+        sender.currentPage = indexPath.item
         collectionViewTutorial.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
        // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
     }

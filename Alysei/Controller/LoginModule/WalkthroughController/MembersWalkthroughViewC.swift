@@ -31,7 +31,7 @@ class MembersWalkthroughViewC: AlysieBaseViewC {
         print(sender.currentPage)
         
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
-        
+        sender.currentPage = indexPath.item
         collectionViewWalkthrough.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
        // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
     }
