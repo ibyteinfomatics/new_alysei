@@ -900,13 +900,13 @@ struct StaticArrayData {
                                                      (name: "About", status: "You will receive an official quality mark on your profile."),
                                                      (name: "Our Products", status: "You will receive an official quality mark on your profile."),
                                                      (name: "Featured Products", status: "You will receive an official quality mark on your profile.")]
-    static let kMemberShipArray = [(name: "Create your Store", desc: "Create your own modern, professional online Store"),
-                                   (name: "Create your Product listing", desc: "Display your unique products listings"),
-                                   (name: "Respond to buyers inquiry", desc: "Interact with your future buyers"),
-                                   (name: "Favorite and Ratings", desc: "Being able to be reviewed and rated by buyers")]
-    static let kMemberShipCmngSoonArray = [(name: "Boost your listing", desc: "Boost your listing to expand you reach and increase buyers engagement"),
-                                   (name: "Sell online", desc: "Sell your product online to your buyers"),
-                                   (name: "B2C Grand Opening", desc: "Alysei full opening to Market, Buyers and Consumers"),
+    static let kMemberShipArray = [(name: "Create your Store", desc: "Create your own modern, professional online Store", image: "membership_store"),
+                                   (name: "Create your Product listing", desc: "Display your unique products listings", image: "membership_productListing"),
+                                   (name: "Respond to buyers inquiry", desc: "Interact with your future buyers", image: "membership_respond"),
+                                   (name: "Favorite and Ratings", desc: "Being able to be reviewed and rated by buyers", image: "membership_heart")]
+    static let kMemberShipCmngSoonArray = [(name: "Boost your listing", desc: "Boost your listing to expand you reach and increase buyers engagement",  image: "membership_boost"),
+                                   (name: "Sell online", desc: "Sell your product online to your buyers",  image: "membership_sell"),
+                                   (name: "B2C Grand Opening", desc: "Alysei full opening to Market, Buyers and Consumers",  image: "membership_b2b"),
                                    ]
 
 }

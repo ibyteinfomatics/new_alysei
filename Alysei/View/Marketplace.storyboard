@@ -227,7 +227,6 @@
                                                     <state key="normal" image="inquiry"/>
                                                     <connections>
                                                         <action selector="messageAction:" destination="d1p-oq-SfI" eventType="touchUpInside" id="nHO-58-mbz"/>
-                                                        <action selector="messageAction:" destination="l2c-aC-gf5" eventType="touchUpInside" id="oan-Eq-Syd"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-4j-ABs">
@@ -1553,20 +1552,20 @@
                                                 <rect key="frame" x="0.0" y="288.66666666666652" width="414" height="55"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_icon_white-1" translatesAutoresizingMaskIntoConstraints="NO" id="51r-rb-YMi">
-                                                        <rect key="frame" x="20" y="5" width="30" height="30"/>
+                                                        <rect key="frame" x="15" y="0.0" width="22" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="51r-rb-YMi" secondAttribute="height" multiplier="1:1" id="kR3-b7-Mg5"/>
-                                                            <constraint firstAttribute="width" constant="30" id="qSb-7p-5XS"/>
+                                                            <constraint firstAttribute="width" constant="22" id="qSb-7p-5XS"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wv2-OP-8oG">
-                                                        <rect key="frame" x="70" y="5" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="57" y="-5" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7a-dv-Xb8">
-                                                        <rect key="frame" x="70" y="5" width="324" height="0.0"/>
+                                                        <rect key="frame" x="57" y="-5" width="337" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1574,11 +1573,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="51r-rb-YMi" firstAttribute="leading" secondItem="Bgh-eA-Wbf" secondAttribute="leading" constant="20" id="0Hf-jy-9ef"/>
+                                                    <constraint firstItem="51r-rb-YMi" firstAttribute="leading" secondItem="Bgh-eA-Wbf" secondAttribute="leading" constant="15" id="0Hf-jy-9ef"/>
                                                     <constraint firstItem="S7a-dv-Xb8" firstAttribute="leading" secondItem="wv2-OP-8oG" secondAttribute="leading" id="DqP-Zw-MzY"/>
-                                                    <constraint firstItem="51r-rb-YMi" firstAttribute="top" secondItem="Bgh-eA-Wbf" secondAttribute="top" constant="5" id="Hiu-uV-8Py"/>
+                                                    <constraint firstItem="51r-rb-YMi" firstAttribute="top" secondItem="Bgh-eA-Wbf" secondAttribute="top" id="Hiu-uV-8Py"/>
                                                     <constraint firstAttribute="height" constant="55" id="Qs2-hn-vPF"/>
-                                                    <constraint firstItem="wv2-OP-8oG" firstAttribute="top" secondItem="51r-rb-YMi" secondAttribute="top" id="aQm-QV-FT2"/>
+                                                    <constraint firstItem="wv2-OP-8oG" firstAttribute="top" secondItem="51r-rb-YMi" secondAttribute="top" constant="-5" id="aQm-QV-FT2"/>
                                                     <constraint firstItem="wv2-OP-8oG" firstAttribute="leading" secondItem="51r-rb-YMi" secondAttribute="trailing" constant="20" id="eWt-nr-iZd"/>
                                                     <constraint firstAttribute="trailing" secondItem="S7a-dv-Xb8" secondAttribute="trailing" constant="20" id="kfv-oC-akV"/>
                                                     <constraint firstItem="S7a-dv-Xb8" firstAttribute="top" secondItem="wv2-OP-8oG" secondAttribute="bottom" id="u2E-oC-KuN"/>
@@ -1700,6 +1699,7 @@
                     <size key="freeformSize" width="414" height="2496"/>
                     <connections>
                         <outlet property="btnCreateStore" destination="bPp-7C-leG" id="vPc-M2-aFy"/>
+                        <outlet property="btnEnquiry" destination="1dd-jB-5Xb" id="rSa-qm-AcK"/>
                         <outlet property="headerView" destination="ZI2-Xb-80n" id="Ct3-dt-U5r"/>
                         <outlet property="lblDiscover" destination="tr9-WM-ybb" id="L7l-kX-r5h"/>
                         <outlet property="marketplaceView" destination="I6B-bj-uKy" id="rxH-pm-tbz"/>
@@ -10417,21 +10417,21 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="344" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_icon_black" translatesAutoresizingMaskIntoConstraints="NO" id="yDs-NO-AJl">
-                                                            <rect key="frame" x="25" y="32.666666666666664" width="15" height="15"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_icon_black" translatesAutoresizingMaskIntoConstraints="NO" id="yDs-NO-AJl">
+                                                            <rect key="frame" x="25" y="27.666666666666671" width="25" height="25"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="15" id="fbq-lX-hHe"/>
+                                                                <constraint firstAttribute="height" constant="25" id="fbq-lX-hHe"/>
                                                                 <constraint firstAttribute="width" secondItem="yDs-NO-AJl" secondAttribute="height" multiplier="1:1" id="zuz-XO-zZL"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Name comes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-Qy-oPI">
-                                                            <rect key="frame" x="60" y="27.666666666666664" width="254" height="21.666666666666664"/>
+                                                            <rect key="frame" x="70" y="22.666666666666664" width="244" height="21.666666666666664"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Name comes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z74-9s-1t2">
-                                                            <rect key="frame" x="60" y="50.333333333333336" width="254" height="18.666666666666664"/>
+                                                            <rect key="frame" x="70" y="45.333333333333336" width="244" height="18.666666666666664"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -11648,21 +11648,21 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_icon_black" translatesAutoresizingMaskIntoConstraints="NO" id="nYF-wI-SEr">
-                                                                                <rect key="frame" x="25" y="25.666666666666671" width="15" height="15"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_icon_black" translatesAutoresizingMaskIntoConstraints="NO" id="nYF-wI-SEr">
+                                                                                <rect key="frame" x="25" y="20.666666666666671" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="nYF-wI-SEr" secondAttribute="height" multiplier="1:1" id="nxf-IG-YjQ"/>
-                                                                                    <constraint firstAttribute="height" constant="15" id="x0P-tA-h3z"/>
+                                                                                    <constraint firstAttribute="height" constant="25" id="x0P-tA-h3z"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Name comes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHq-Bn-GK8">
-                                                                                <rect key="frame" x="60" y="20.666666666666664" width="310" height="21.666666666666664"/>
+                                                                                <rect key="frame" x="70" y="15.666666666666666" width="300" height="21.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Name comes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXh-Pp-9O0">
-                                                                                <rect key="frame" x="60" y="43.333333333333336" width="310" height="16.333333333333336"/>
+                                                                                <rect key="frame" x="70" y="38.333333333333336" width="300" height="16.333333333333336"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -11680,6 +11680,7 @@
                                                                         </constraints>
                                                                     </tableViewCellContentView>
                                                                     <connections>
+                                                                        <outlet property="imgMemberShip" destination="nYF-wI-SEr" id="9Iu-Pr-wYm"/>
                                                                         <outlet property="lblMemberShip" destination="QNz-AG-7dM" id="HuK-9V-w9d"/>
                                                                         <outlet property="lblSubTitle" destination="YXh-Pp-9O0" id="acM-IQ-tZR"/>
                                                                         <outlet property="lblTitle" destination="vHq-Bn-GK8" id="Zfe-ql-eNn"/>

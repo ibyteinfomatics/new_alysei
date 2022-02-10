@@ -82,6 +82,8 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vwTriangle: UIView!
     @IBOutlet weak var lblMemberShip: UILabel!
+    
+    
     var indexV: Int?
     var memberShipData: [Membership]?
 
@@ -132,9 +134,11 @@ extension SelectMembershipCollectionViewCell : UITableViewDelegate, UITableViewD
         if self.indexV == 0 {
         cell.lblTitle.text = StaticArrayData.kMemberShipArray[indexPath.row].name
         cell.lblSubTitle.text = StaticArrayData.kMemberShipArray[indexPath.row].desc
+            cell.imgMemberShip.image = UIImage(named: StaticArrayData.kMemberShipArray[indexPath.row].image)
         }else{
             cell.lblTitle.text = StaticArrayData.kMemberShipCmngSoonArray[indexPath.row].name
             cell.lblSubTitle.text = StaticArrayData.kMemberShipCmngSoonArray[indexPath.row].desc
+            cell.imgMemberShip.image = UIImage(named: StaticArrayData.kMemberShipCmngSoonArray[indexPath.row].image)
         }
       //self.selectedPassId = memberShipData?[0].marketplacePackageId
         return cell

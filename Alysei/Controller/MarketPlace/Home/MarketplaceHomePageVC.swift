@@ -72,6 +72,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var walk1SubTitle: UILabel!
     @IBOutlet weak var walk1SubDesc: UILabel!
     @IBOutlet weak var walk1DescImage: UIImageView!
+    @IBOutlet weak var btnEnquiry: UIButton!
     
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
@@ -173,17 +174,21 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         openednewCount.isHidden = true
         newInquiryCount(child: "New")
         openedInquiryCount(child: "Opened")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
-            if self.newunread == 0 &&  self.openedunread == 0 {
+  
+            if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"){
+                self.btnEnquiry.isHidden = true
                 self.openednewCount.isHidden = true
-            } else {
-                self.openednewCount.isHidden = false
-            }
-            
+            }else{
+                DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
+                    if self.newunread == 0 &&  self.openedunread == 0 {
+                        self.openednewCount.isHidden = true
+                    } else {
+                        self.openednewCount.isHidden = false
+                    }
             self.openednewCount.text = String.getString(self.openedunread+self.newunread)
             
         })
+            }
         
         
     }
@@ -298,7 +303,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         walk1ViewDesc.text = "Here is some tips to help you promote with confidence"
         walk1SubTitle.text = "Post in english"
         walk1SubDesc.text = "Write in English language to create your store and list your products"
-        walk1DescImage.image = UIImage(named: "edit_icon_white")
+        walk1DescImage.image = UIImage(named: "icons8_pencil_white")
         UIView.animate(withDuration: 0.5) {
             self.walkView1height.constant = 485
             self.walkView1Top.constant = 0
@@ -469,19 +474,11 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     
     @IBAction func btnGotoStores(_ sender: UIButton){
-        //self.callCheckIfStoredCreated()
-        //if kSharedUserDefaults.loggedInUserModal.isStoreCreated == "0"{
+        
         if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
         }else if self.storeCreated == 0{
-//            let vc = UIStoryboard(name: StoryBoardConstants.kMarketplace, bundle: nil).instantiateViewController(withIdentifier: "MarketPlaceWalkthroughVC") as! MarketPlaceWalkthroughVC
-//
-//           vc.view.frame = self.containerView.bounds
-//            self.addChild(vc)
-//            self.containerView.addSubview(vc.view)
-//           vc.didMove(toParent: self)
-            //showWalkthroughView()
-           
+      
             animate1View()
         }else if self.storeCreated == 1 && self.productCount == 0{
             _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
@@ -490,7 +487,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         }  else{
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
         }
-        //  _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        
     }
 //    @IBAction func viewAllRegion(_ sender: UIButton){
 //        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceRegionViewController") as? MarketPlaceRegionViewController else {return}

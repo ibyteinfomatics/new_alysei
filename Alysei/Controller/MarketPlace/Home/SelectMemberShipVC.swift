@@ -15,7 +15,7 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var vwTriangle: UIView!
     @IBOutlet weak var membershipCollectionView: UICollectionView!
-    
+   
     var selectedPassId: Int?
 
     var memberShipData : [Membership]?
@@ -122,6 +122,8 @@ class SelectMemberShipTableCell: UITableViewCell {
     @IBOutlet weak var lblMemberShip: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var imgMemberShip: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
       //  btnCheck.setImage(UIImage(named: "Ellipse 22"), for: .normal)
