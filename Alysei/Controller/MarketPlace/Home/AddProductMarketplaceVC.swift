@@ -370,15 +370,22 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         switch sender.tag {
         case 0:
             showInfo("Helps user to find product")
-           
         case 1:
-            showInfo("Handling Instruction can contains max 50 words")
-            
+            showInfo("How many products are you currently available to deliver?")
         case 2:
-            showInfo("Dispatch Instruction can contains max 200 words")
-            
+            showInfo("Choose how you plan to sell your products")
         case 3:
-            showInfo("Lorem Ipsum is simply dummy text of the printing")
+            showInfo("Which is the minimum order quantity you are able to accept?")
+        case 4:
+            showInfo("Provide details about your safe handling instructions")
+            
+        case 5:
+            showInfo("Provide details about your specific disptach instructions")
+            
+        case 6:
+            showInfo("Are you able to provide samples of your products upon request?")
+        case 7:
+            showInfo("Indicate your product selling price to possible buyers")
            
             
         default:
