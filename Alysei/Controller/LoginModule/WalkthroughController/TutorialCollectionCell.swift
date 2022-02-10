@@ -25,7 +25,7 @@ class TutorialCollectionCell: UICollectionViewCell {
     
     super.layoutIfNeeded()
     self.btnGetStarted.makeCornerRadius(radius: 5.0)
-      pageControl.addTarget(self, action: #selector(pageControlHandle), for: .valueChanged)
+      
 
   }
   
@@ -45,10 +45,11 @@ class TutorialCollectionCell: UICollectionViewCell {
     self.delegate?.tapGetStarted(self.btnSkip, cell: self)
   }
     
-    @objc private func pageControlHandle(sender: UIPageControl){
-        print(sender.currentPage)
-       // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
-    }
+//    @objc private func pageControlHandle(sender: UIPageControl){
+//        print(sender.currentPage)
+//
+//       // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
+//    }
   
   //MARK: - Public Methods -
   
