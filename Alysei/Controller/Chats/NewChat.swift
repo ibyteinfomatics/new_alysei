@@ -46,6 +46,33 @@ class NewChat: AlysieBaseViewC {
             notificationTableCell.name.text = connection?.data?[index].user?.restaurantName
         }
         
+        if connection?.data?[index].user?.roleID == UserRoles.producer.rawValue{
+            notificationTableCell.userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.message.isHidden = false
+        }else if connection?.data?[index].user?.roleID == UserRoles.restaurant.rawValue{
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+        }else if connection?.data?[index].user?.roleID == UserRoles.voyagers.rawValue {
+            
+            notificationTableCell.userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.message.isHidden = true
+        }else if connection?.data?[index].user?.roleID == UserRoles.voiceExperts.rawValue{
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+        }else if connection?.data?[index].user?.roleID == UserRoles.distributer1.rawValue {
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+        }else if connection?.data?[index].user?.roleID == UserRoles.distributer2.rawValue{
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+        }else if connection?.data?[index].user?.roleID == UserRoles.distributer3.rawValue{
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+        }else if connection?.data?[index].user?.roleID == UserRoles.travelAgencies.rawValue{
+            notificationTableCell.message.isHidden = false
+            notificationTableCell.userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+        }
+        
         
         notificationTableCell.message.text = String.getString(connection?.data?[index].user?.followers_count)+" Followers"
         

@@ -15,6 +15,7 @@ class NotificationTableCell: UITableViewCell {
     @IBOutlet weak var imgViewNotification: UIImageView!
     @IBOutlet weak var photo: NSLayoutConstraint!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var userNickName: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var count: UIButton!
     
