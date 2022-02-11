@@ -423,8 +423,12 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        let spaceCount = textView.text.filter{$0 == " "}.count
-        if spaceCount <= 199{
+//        let spaceCount = textView.text.filter{$0 == " "}.count
+//        if spaceCount <= 199{
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let finalText = updatedText.removeWhitespace()
+        if finalText.count <= 200{
             return true
         }else{
             return false

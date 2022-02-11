@@ -451,15 +451,19 @@ extension AddProductMarketplaceVC: UITextViewDelegate, UITextFieldDelegate{
         
         if textView == txtProductDispatchIns{
             
-            let spaceCount = textView.text.filter{$0 == " "}.count
-            if spaceCount <= 200{
+            let currentText:String = textView.text
+            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+            let finalText = updatedText.removeWhitespace()
+            if finalText.count <= 200{
                 return true
             }else{
                 return false
             }
         }else if textView == txtProductHandleIns{
-            let spaceCount = textView.text.filter{$0 == " "}.count
-            if spaceCount <= 50{
+            let currentText:String = textView.text
+            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+            let finalText = updatedText.removeWhitespace()
+            if finalText.count <= 50{
                 return true
             }else{
                 return false

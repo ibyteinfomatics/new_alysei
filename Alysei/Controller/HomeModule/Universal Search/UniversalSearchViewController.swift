@@ -497,10 +497,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         //cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                         let dateFormatterGet = DateFormatter()
                         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+                        
                         let dateFormatterPrint = DateFormatter()
                         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-
+                        
                         let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
                         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
                         let datep = dateFormatterPrint.string(from: date ?? Date())
@@ -510,7 +510,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
                         cell2.userImage.setImage(withString: imageUrl)
                         cell2.btnReadMoreCallback = { tag in
-                           
+                            
                             check = "show"
                             let vc = self.pushViewController(withName: CreateBlogViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateBlogViewController
                             vc.blogtitle = self.arraySearchByBolg?[indexPath.row].title
@@ -537,7 +537,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell3.tripImage.setImage(withString: imgUrl)
                         cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                         cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
-                       // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
+                        // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
                         cell3.locationTitle.text = arraySearchByTrips?[indexPath.row].region?.name
                         
                         if arraySearchByTrips?[indexPath.row].currency == "USD" {
@@ -596,78 +596,78 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         }
                         
                         
-//                        if arraySearchByTrips?[indexPath.row].duration == "1 Day" {
-//
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "2 Days" {
-//
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "3 Days" {
-//
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "4 Days" {
-//
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "5 Days" {
-//
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "6 Days" {
-//
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        } else if arraySearchByTrips?[indexPath.row].duration == "7 Days" {
-//
-//                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//
-//                        }
+                        //                        if arraySearchByTrips?[indexPath.row].duration == "1 Day" {
+                        //
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "2 Days" {
+                        //
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "3 Days" {
+                        //
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "4 Days" {
+                        //
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "5 Days" {
+                        //
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "6 Days" {
+                        //
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                        //
+                        //                        } else if arraySearchByTrips?[indexPath.row].duration == "7 Days" {
+                        //
+                        //                            cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //                            cell3.duview7.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                        //
+                        //                        }
                         
                     }
                     return cell3
@@ -689,15 +689,15 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.hostTitle.text = arraySearchByEvents?[indexPath.row].hostName
                         cell4.locationTitle.text = arraySearchByEvents?[indexPath.row].datumDescription
                         //cell4.dateTitle.text = arraySearchByEvents?[indexPath.row].date
-                       // cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
+                        // cell4.timeTitle.text = arraySearchByEvents?[indexPath.row].time
                         let imgUrlUser = ((self.arraySearchByEvents?[indexPath.row].user?.avatarid?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].user?.avatarid?.attachmenturl ?? ""))
                         cell4.userImage.setImage(withString: imgUrlUser)
                         let dateFormatterGet = DateFormatter()
                         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+                        
                         let dateFormatterPrint = DateFormatter()
                         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-
+                        
                         let date: Date? = dateFormatterGet.date(from: self.arraySearchByEvents?[indexPath.row].user?.avatarid?.createdAt ?? "")
                         print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
                         let datep = dateFormatterPrint.string(from: date ?? Date())
@@ -714,15 +714,15 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell4.btnInterested.setTitle("Uninterested", for: .normal)
                         }
                         cell4.callInterestedCallback = { index in
-                           
+                            
                             let reloadIndexPath = IndexPath(row: index, section: 0)
                             self.getUniversalSearchData(1, self.updatedText)
                             self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                         }
                         cell4.btnMoreCallback = { tag in
-                                
+                            
                             let baseUrlImg = self.arraySearchByEvents?[tag].user?.avatarid?.baseUrl ?? ""
-
+                            
                             let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
                             vc.hostname = self.arraySearchByEvents?[tag].hostName
                             vc.eventname = self.arraySearchByEvents?[tag].eventName
@@ -736,7 +736,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             vc.imgurl = String.getString(baseUrlImg + (self.arraySearchByEvents?[tag].attachment?.attachmenturl ?? ""))
                             vc.bookingUrl = self.arraySearchByEvents?[tag].url
                             vc.typeofpage = "read"
-                                    
+                            
                         }
                         cell4.callVisitCallback = { index in
                             
@@ -813,9 +813,27 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     
                     if arraySearchByAward?.count == 0{
                         cell6.noItemLabel.isHidden = false
+                        
                     }
                     else{
                         cell6.noItemLabel.isHidden = true
+                        cell6.openUrlCallBack = { url in
+                            let compUrl = URL(string: url )
+                            let compt = compUrl ?? URL(string: "")
+                            if #available(iOS 10.0, *) {
+                                if compt == URL(string: ""){
+                                    return
+                                }
+                                UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
+                            } else {
+                                if compt == URL(string: ""){
+                                    return
+                                }
+                                UIApplication.shared.openURL(compt!)
+                            }
+                        }
+
+                        
                     }
                     return cell6
                 }
@@ -857,10 +875,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     //cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                     let dateFormatterGet = DateFormatter()
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+                    
                     let dateFormatterPrint = DateFormatter()
                     dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-
+                    
                     let date: Date? = dateFormatterGet.date(from: arraySearchByBolg?[indexPath.row].createdAt ?? "")
                     print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
                     let datep = dateFormatterPrint.string(from: date ?? Date())
@@ -898,7 +916,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell3.tripImage.setImage(withString: imgUrl)
                     cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                     cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
-                   // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
+                    // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription
                     cell3.locationTitle.text = arraySearchByTrips?[indexPath.row].region?.name
                     
                     if arraySearchByTrips?[indexPath.row].currency == "USD" {
@@ -956,77 +974,77 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     
                     
-//                    if arraySearchByTrips?[indexPath.row].duration == "1 Day" {
-//
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "2 Days" {
-//
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "3 Days" {
-//
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "4 Days" {
-//
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "5 Days" {
-//
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "6 Days" {
-//
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-//
-//                    } else if arraySearchByTrips?[indexPath.row].duration == "7 Days" {
-//
-//                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
-//                    }
+                    //                    if arraySearchByTrips?[indexPath.row].duration == "1 Day" {
+                    //
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "2 Days" {
+                    //
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "3 Days" {
+                    //
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "4 Days" {
+                    //
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "5 Days" {
+                    //
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "6 Days" {
+                    //
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+                    //
+                    //                    } else if arraySearchByTrips?[indexPath.row].duration == "7 Days" {
+                    //
+                    //                        cell3.duview5.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview1.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview2.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview3.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview4.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview6.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                        cell3.duview7.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
+                    //                    }
                 }
                 
                 return cell3
@@ -1051,10 +1069,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.lblLikeCount.text = "\(self.arraySearchByEvents?[indexPath.row].like_counts ?? 0)"
                     let dateFormatterGet = DateFormatter()
                     dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+                    
                     let dateFormatterPrint = DateFormatter()
                     dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-
+                    
                     let date: Date? = dateFormatterGet.date(from: arraySearchByEvents?[indexPath.row].createdAt ?? "")
                     print("Date",dateFormatterPrint.string(from: date ?? Date())) // Feb 01,2018
                     let datep = dateFormatterPrint.string(from: date ?? Date())
@@ -1065,7 +1083,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.userImage.layer.cornerRadius =  cell4.userImage.frame.height / 2
                     cell4.userImage.layer.masksToBounds = true
                     cell4.btnInterested.tag = indexPath.row
-                   
+                    
                     cell4.configCell(arraySearchByEvents?[indexPath.row] ?? EventDatum(with: [:]))
                     if arraySearchByEvents?[indexPath.row].is_event_liked?.count == 0{
                         cell4.btnInterestedWidth.constant = 180
@@ -1076,15 +1094,15 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.btnInterested.setTitle("Uninterested", for: .normal)
                     }
                     cell4.callInterestedCallback = { index in
-                       
+                        
                         let reloadIndexPath = IndexPath(row: index, section: 0)
                         self.getUniversalSearchData(1, self.updatedText)
                         self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                     }
                     cell4.btnMoreCallback = { tag in
-                            
+                        
                         let baseUrlImg = self.arraySearchByEvents?[tag].user?.avatarid?.baseUrl ?? ""
-
+                        
                         let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
                         vc.hostname = self.arraySearchByEvents?[tag].hostName
                         vc.eventname = self.arraySearchByEvents?[tag].eventName
@@ -1098,7 +1116,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         vc.imgurl = String.getString(baseUrlImg + (self.arraySearchByEvents?[tag].attachment?.attachmenturl ?? ""))
                         vc.bookingUrl = self.arraySearchByEvents?[tag].url
                         vc.typeofpage = "read"
-                                
+                        
                     }
                     cell4.callVisitCallback = { index in
                         
@@ -1177,6 +1195,21 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 }
                 else{
                     cell6.noItemLabel.isHidden = true
+                    cell6.openUrlCallBack = { url in
+                        let compUrl = URL(string: url )
+                        let compt = compUrl ?? URL(string: "")
+                        if #available(iOS 10.0, *) {
+                            if compt == URL(string: ""){
+                                return
+                            }
+                            UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
+                        } else {
+                            if compt == URL(string: ""){
+                                return
+                            }
+                            UIApplication.shared.openURL(compt!)
+                        }
+                    }
                 }
                 return cell6
             }
@@ -1274,7 +1307,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 
             case 3:
                 print("Event tab")
-               // eventTab(indexPath: indexPath)
+                // eventTab(indexPath: indexPath)
                 
                 
             case 4:
@@ -1298,7 +1331,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             tripTab(indexPath: indexPath)
         }
         else if searchType == 4{
-         //  eventTab(indexPath: indexPath)
+            //  eventTab(indexPath: indexPath)
         }
         else if searchType == 5{
             return
@@ -1427,7 +1460,7 @@ extension UniversalSearchViewController: UITextFieldDelegate{
            let textRange = Range(range, in: text) {
             let updateText = text.replacingCharacters(in: textRange,
                                                       with: string)
-           
+            
             if updateText.count > 0 {
                 searchUniversal = true
                 searchTap = true

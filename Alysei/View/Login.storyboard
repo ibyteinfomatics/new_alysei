@@ -2400,16 +2400,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to social platform Alysei and follow your interests in restaurants" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-Oa-YOK">
-                                                            <rect key="frame" x="10" y="65" width="355" height="110"/>
+                                                            <rect key="frame" x="10" y="65" width="355" height="100"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="ahj-aP-el6">
-                                                            <rect key="frame" x="87.5" y="190" width="200" height="15"/>
+                                                            <rect key="frame" x="87.5" y="180" width="200" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="200" id="n70-Qr-3Z8"/>
-                                                                <constraint firstAttribute="height" constant="15" id="xgx-q8-tQB"/>
+                                                                <constraint firstAttribute="height" constant="25" id="xgx-q8-tQB"/>
                                                             </constraints>
                                                         </pageControl>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ace-vn-rOo" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">

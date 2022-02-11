@@ -12,6 +12,7 @@ class AwardTableViewCell: UITableViewCell {
     @IBOutlet weak var awardCollectionView: UICollectionView!
     
     @IBOutlet weak var noItemLabel: UILabel!
+    var openUrlCallBack: ((String) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,9 +73,16 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
 
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let url = arraySearchByAward?[indexPath.item].competitionurl ?? ""
+        print("Awardid----------------\(arraySearchByAward?[indexPath.item].competitionurl ?? "")")
+        openUrlCallBack?(url)
+        
+
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 250)
     }
+    
     
 }

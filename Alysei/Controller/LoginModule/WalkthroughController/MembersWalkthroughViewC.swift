@@ -28,11 +28,15 @@ class MembersWalkthroughViewC: AlysieBaseViewC {
   //MARK: - Private Methods -
     
     @objc private func pageControlHandle(sender: UIPageControl){
+        let lindexPath = IndexPath(row: sender.currentPage, section: 0)
+        let cell = collectionViewWalkthrough.cellForItem(at: lindexPath) as? MemberWalkthroughCollectionCell
         print(sender.currentPage)
-        
+       
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
         sender.currentPage = indexPath.item
+        cell?.paging.currentPage = sender.currentPage
         collectionViewWalkthrough.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+        
        // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
     }
   
@@ -45,6 +49,7 @@ class MembersWalkthroughViewC: AlysieBaseViewC {
     }else{
         walkthroughCollectionCell.btnSkip.isHidden = false
     }
+      walkthroughCollectionCell.paging.currentPage = indexPath.item
     walkthroughCollectionCell.configureData(withGetWalkThroughDataModel: self.getWalkThroughViewModel.arrWalkThroughs[indexPath.item], indexPath: indexPath, viewModel: self.getWalkThroughViewModel)
     
       walkthroughCollectionCell.paging.addTarget(self, action: #selector(pageControlHandle), for: .valueChanged)
