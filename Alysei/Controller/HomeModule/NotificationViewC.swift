@@ -16,6 +16,7 @@ class NotificationViewC: AlysieBaseViewC{
     
   @IBOutlet weak var tblViewNotification: UITableView!
   @IBOutlet weak var viewNavigation: UIView!
+    @IBOutlet weak var blankview: UIView!
   var ResentUser:[RecentUser]?
     
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
@@ -25,6 +26,7 @@ class NotificationViewC: AlysieBaseViewC{
   override func viewDidLoad() {
     super.viewDidLoad()
     //self.tblViewNotification.tableFooterView = UIView()
+      self.blankview.isHidden = true
     receiveUsers()
     
   }
@@ -34,6 +36,9 @@ class NotificationViewC: AlysieBaseViewC{
         kChatharedInstance.receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
             self.ResentUser?.removeAll()
             self.ResentUser = users
+            if self.ResentUser?.count ?? 0 <= 0 {
+                self.blankview.isHidden = false
+            }
             self.tblViewNotification.reloadData()
         }
     }

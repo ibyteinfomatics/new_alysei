@@ -8,6 +8,7 @@
 import UIKit
 import ScrollingPageControl
 //import SocketIO
+import Zoomy
 
 //struct PostLikeUnlikeRequestModel: Codable, SocketData {
     struct PostLikeUnlikeRequestModel: Codable {
@@ -510,6 +511,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
         
+        //self.addZoombehavior(for: cell.imagePost)
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }

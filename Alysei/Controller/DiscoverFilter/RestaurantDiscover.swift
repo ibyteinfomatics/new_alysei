@@ -106,7 +106,7 @@ class RestaurantDiscover: AlysieBaseViewC {
         
         let baseurl = restauUser[indexPath].avatarid?.baseUrl ?? ""
         let imageUrl = baseurl + (restauUser[indexPath].avatarid?.attachmenturl ?? "")
-        restTableCell.imgUser.setImage(withString: imageUrl)
+        restTableCell.imgUser.setImage(withString: imageUrl, placeholder: UIImage(named: "profile_icon"))
         
         //        restTableCell.blogImage.layer.masksToBounds = false
         //        restTableCell.blogImage.clipsToBounds = true

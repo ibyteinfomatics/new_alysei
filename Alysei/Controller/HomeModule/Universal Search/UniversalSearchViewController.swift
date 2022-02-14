@@ -468,7 +468,34 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         
                         cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
                         
+                        if arraySearchByPeople?[indexPath.row].roleId == UserRoles.producer.rawValue{
+                            cell1.labelPeopleDetail.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+                            //notificationTableCell.message.isHidden = false
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.restaurant.rawValue{
+                            //cell1.labelPeopleDetail.isHidden = false
+                            cell1.labelPeopleDetail.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voyagers.rawValue {
+                            
+                            cell1.labelPeopleDetail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+                            //notificationTableCell.message.isHidden = true
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voiceExperts.rawValue{
+                            //notificationTableCell.message.isHidden = false
+                            cell1.labelPeopleDetail.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer1.rawValue {
+                            //notificationTableCell.message.isHidden = false
+                            cell1.labelPeopleDetail.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer2.rawValue{
+                            //notificationTableCell.message.isHidden = false
+                            cell1.labelPeopleDetail.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer3.rawValue{
+                            //notificationTableCell.message.isHidden = false
+                            cell1.labelPeopleDetail.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+                        }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.travelAgencies.rawValue{
+                            //notificationTableCell.message.isHidden = false
+                            cell1.labelPeopleDetail.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+                        }
                         
+                        cell1.followercount.text = ""
                         
                         if self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl != nil {
                             cell1.peopleImgView.setImage(withString: String.getString((self.arraySearchByPeople?[indexPath.row].avatarId?.baseUrl ?? "")+(self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))

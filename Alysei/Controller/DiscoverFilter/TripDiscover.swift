@@ -114,7 +114,7 @@ class TripDiscover: AlysieBaseViewC {
         }
         let baseUrl = tripData[indexPath].user?.avatarID?.baseUrl ?? ""
         let imageUrl = baseUrl + (tripData[indexPath].user?.avatarID?.attachmentURL ?? "")
-        tripTableCell.userImage.setImage(withString: imageUrl)
+        tripTableCell.userImage.setImage(withString: imageUrl, placeholder: UIImage(named: "profile_icon"))
         tripTableCell.userImage.layer.cornerRadius =  tripTableCell.userImage.frame.height / 2
         
         tripTableCell.configCell(tripData[indexPath])

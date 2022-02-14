@@ -11,7 +11,7 @@ class NotificationList: AlysieBaseViewC {
     
     @IBOutlet weak var tblViewNotification: UITableView!
     @IBOutlet weak var viewNavigation: UIView!
-    
+    @IBOutlet weak var blankview: UIView!
     var notimodel:NotificationListModel?
     var notifiacationArray = [NotiDatum]()
     var indexOfPageToRequest = 1
@@ -19,6 +19,7 @@ class NotificationList: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        blankview.isHidden = true
         postRequestToGetNotification(indexOfPageToRequest)
         
         // Do any additional setup after loading the view.
@@ -150,6 +151,11 @@ class NotificationList: AlysieBaseViewC {
                 self.notifiacationArray.append(self.notimodel?.data?.data?[i] ?? NotiDatum(with: [:]))
             }
           self.tblViewNotification.isHidden = false
+            
+            if self.notifiacationArray.count <= 0 {
+                self.blankview.isHidden = false
+            }
+            
           self.tblViewNotification.reloadData()
       }
       

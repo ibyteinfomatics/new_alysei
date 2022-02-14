@@ -125,7 +125,7 @@ class EventDiscover: AlysieBaseViewC {
        // }
         let baseUrl = eventData[indexPath].user?.avatarid?.baseUrl ?? ""
         let imageUrl = (baseUrl + (eventData[indexPath].user?.avatarid?.attachmenturl ?? ""))
-        eventTableCell.userImage.setImage(withString: imageUrl)
+        eventTableCell.userImage.setImage(withString: imageUrl, placeholder: UIImage(named: "profile_icon"))
         
         
         eventTableCell.userImage.layer.cornerRadius =  eventTableCell.userImage.frame.height / 2

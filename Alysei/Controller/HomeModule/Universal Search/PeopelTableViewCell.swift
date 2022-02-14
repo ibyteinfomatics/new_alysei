@@ -12,6 +12,7 @@ class PeopelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelPeopleName: UILabel!
     @IBOutlet weak var labelPeopleDetail: UILabel!
     @IBOutlet weak var noItemLabel: UILabel!
+    @IBOutlet weak var followercount: UILabel!
     @IBOutlet weak var peopleImgView: UIImageView!
     @IBOutlet weak var mainVw: UIView!
     override func awakeFromNib() {

@@ -11,11 +11,12 @@ class NewChat: AlysieBaseViewC {
     
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewNavigation: UIView!
+    @IBOutlet weak var blankview: UIView!
     var connection:ConnectionTabModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.blankview.isHidden = true
         callConnectionApi()
         // Do any additional setup after loading the view.
     }
@@ -99,6 +100,10 @@ class NewChat: AlysieBaseViewC {
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.connection = ConnectionTabModel.init(with: dictResponse)
                 
+            }
+            
+            if self.connection?.data?.count ?? 0 <= 0 {
+                self.blankview.isHidden = false
             }
             
             self.tblView.reloadData()
