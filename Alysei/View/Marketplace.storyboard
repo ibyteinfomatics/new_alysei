@@ -510,13 +510,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10b-d9-jSO">
-                                                                                <rect key="frame" x="10.000000000000002" y="209.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="209.66666666666666" width="21" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-XI-mcM">
-                                                                                <rect key="frame" x="44.666666666666657" y="214" width="58" height="10"/>
+                                                                                <rect key="frame" x="41" y="213.66666666666666" width="58" height="10"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="m8d-Wh-06j">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -533,21 +533,21 @@
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="MFo-W7-NYE">
-                                                                                        <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="MFo-W7-NYE" secondAttribute="height" multiplier="1:1" id="2dQ-fZ-qee"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="d5q-NX-TrW"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="FgA-Vw-chw">
-                                                                                        <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="FgA-Vw-chw" secondAttribute="height" multiplier="1:1" id="QGZ-6U-jPR"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="mOQ-kl-acQ"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="Gci-MX-uFe">
-                                                                                        <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="Gci-MX-uFe" secondAttribute="height" multiplier="1:1" id="FvQ-uc-d1F"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="YO2-4j-ZqJ"/>
@@ -556,7 +556,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjl-Cc-NjS">
-                                                                                <rect key="frame" x="10" y="233" width="89" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="232.33333333333334" width="89" height="18.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -963,13 +963,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuR-Km-yTV">
-                                                                                <rect key="frame" x="10.000000000000002" y="209.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="209.66666666666666" width="21" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Y1g-Is-mRI">
-                                                                                <rect key="frame" x="44.666666666666657" y="214" width="58" height="10"/>
+                                                                                <rect key="frame" x="41" y="213.66666666666666" width="58" height="10"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="GRH-WK-6Ao">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -986,21 +986,21 @@
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="hw0-T4-TRh">
-                                                                                        <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="hw0-T4-TRh" secondAttribute="height" multiplier="1:1" id="bpr-9f-4LB"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="rfG-4r-xgZ"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Pr-Xyf">
-                                                                                        <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="10" id="NlA-BT-2Oc"/>
                                                                                             <constraint firstAttribute="width" secondItem="I3r-Pr-Xyf" secondAttribute="height" multiplier="1:1" id="iFp-RA-qVh"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="o1F-FV-Lfr">
-                                                                                        <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="10" id="NVa-iW-BHy"/>
                                                                                             <constraint firstAttribute="width" secondItem="o1F-FV-Lfr" secondAttribute="height" multiplier="1:1" id="wG9-BP-uuI"/>
@@ -1009,7 +1009,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCF-jT-fkv">
-                                                                                <rect key="frame" x="10" y="233" width="89" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="232.33333333333334" width="89" height="18.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1134,13 +1134,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na2-eN-a6h">
-                                                                                <rect key="frame" x="10.000000000000002" y="202.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="202.66666666666666" width="21" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fiG-VX-yaN">
-                                                                                <rect key="frame" x="44.666666666666657" y="207" width="58" height="10"/>
+                                                                                <rect key="frame" x="41" y="206.66666666666666" width="58" height="10"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="ysw-2P-nZ7">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -1157,21 +1157,21 @@
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-RB-FHu">
-                                                                                        <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="10" id="MrB-f0-QvB"/>
                                                                                             <constraint firstAttribute="width" secondItem="cQG-RB-FHu" secondAttribute="height" multiplier="1:1" id="XHw-Ex-4XK"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="Kfg-HW-yGV">
-                                                                                        <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="Kfg-HW-yGV" secondAttribute="height" multiplier="1:1" id="Wig-3l-zUT"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="v8f-i9-2N2"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-zK-gbw">
-                                                                                        <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="dVc-zK-gbw" secondAttribute="height" multiplier="1:1" id="R2x-qT-TGw"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="aE7-UR-0yD"/>
@@ -1180,7 +1180,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO8-fY-WuC">
-                                                                                <rect key="frame" x="10" y="226" width="89" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="225.33333333333334" width="89" height="18.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -2211,13 +2211,13 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BB9-IT-GZS">
-                                                                                        <rect key="frame" x="10.000000000000002" y="209.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                        <rect key="frame" x="10" y="209.66666666666666" width="21" height="17.666666666666657"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-Mb-eG7">
-                                                                                        <rect key="frame" x="44.666666666666657" y="214" width="58" height="10"/>
+                                                                                        <rect key="frame" x="41" y="213.66666666666666" width="58" height="10"/>
                                                                                         <subviews>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="8C9-AE-iiz">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -2234,21 +2234,21 @@
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="4Qd-dn-fRe">
-                                                                                                <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="10" id="5FR-10-NNU"/>
                                                                                                     <constraint firstAttribute="width" secondItem="4Qd-dn-fRe" secondAttribute="height" multiplier="1:1" id="8Nk-lz-SqH"/>
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="MRd-0o-wjs">
-                                                                                                <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="10" id="iw1-j2-KGm"/>
                                                                                                     <constraint firstAttribute="width" secondItem="MRd-0o-wjs" secondAttribute="height" multiplier="1:1" id="vKa-Ae-77x"/>
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="MrA-ax-rtc">
-                                                                                                <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" secondItem="MrA-ax-rtc" secondAttribute="height" multiplier="1:1" id="fZ9-kd-tLE"/>
                                                                                                     <constraint firstAttribute="height" constant="10" id="qPo-hi-hcr"/>
@@ -2257,7 +2257,7 @@
                                                                                         </subviews>
                                                                                     </stackView>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-k2-5Eh">
-                                                                                        <rect key="frame" x="10" y="233" width="89" height="18.333333333333343"/>
+                                                                                        <rect key="frame" x="10" y="232.33333333333334" width="89" height="18.333333333333343"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -2591,13 +2591,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-l8-X1v">
-                                                                                <rect key="frame" x="10.000000000000002" y="209.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="209.66666666666666" width="21" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YoN-ey-B24">
-                                                                                <rect key="frame" x="44.666666666666657" y="214" width="58" height="10"/>
+                                                                                <rect key="frame" x="41" y="213.66666666666666" width="58" height="10"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="87J-vB-LIo">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -2614,21 +2614,21 @@
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="1UL-MU-osU">
-                                                                                        <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="1UL-MU-osU" secondAttribute="height" multiplier="1:1" id="bOy-82-TPD"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="mSv-Rq-cy9"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="uF4-3A-La1">
-                                                                                        <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="uF4-3A-La1" secondAttribute="height" multiplier="1:1" id="Gcs-ah-tnK"/>
                                                                                             <constraint firstAttribute="height" constant="10" id="T7s-M9-IhN"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="mQN-2D-Xiu">
-                                                                                        <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="10" id="UUt-hT-DdY"/>
                                                                                             <constraint firstAttribute="width" secondItem="mQN-2D-Xiu" secondAttribute="height" multiplier="1:1" id="i1a-lR-LbV"/>
@@ -2637,7 +2637,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-0F-8qR">
-                                                                                <rect key="frame" x="10" y="233" width="89" height="18.333333333333343"/>
+                                                                                <rect key="frame" x="10" y="232.33333333333334" width="89" height="18.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -2816,13 +2816,13 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqx-1l-hh8">
-                                                                                        <rect key="frame" x="10.000000000000002" y="202.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                        <rect key="frame" x="10" y="202.66666666666666" width="21" height="17.666666666666657"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="C4v-Tf-zoG">
-                                                                                        <rect key="frame" x="44.666666666666657" y="207" width="58" height="10"/>
+                                                                                        <rect key="frame" x="41" y="206.66666666666666" width="58" height="10"/>
                                                                                         <subviews>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="gCM-dV-6fx">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -2839,21 +2839,21 @@
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="vjd-im-KX0">
-                                                                                                <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="24" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="10" id="3ME-cB-tKd"/>
                                                                                                     <constraint firstAttribute="width" secondItem="vjd-im-KX0" secondAttribute="height" multiplier="1:1" id="Ym5-ND-TYJ"/>
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-WR-TuC">
-                                                                                                <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="36" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="10" id="H9g-4l-GRd"/>
                                                                                                     <constraint firstAttribute="width" secondItem="rTr-WR-TuC" secondAttribute="height" multiplier="1:1" id="Vhf-iJ-Ttt"/>
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="sY4-3a-0Pe">
-                                                                                                <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                                <rect key="frame" x="48" y="0.0" width="10" height="10"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" secondItem="sY4-3a-0Pe" secondAttribute="height" multiplier="1:1" id="4Fa-jx-Old"/>
                                                                                                     <constraint firstAttribute="height" constant="10" id="8cG-vT-Dhy"/>
@@ -2862,7 +2862,7 @@
                                                                                         </subviews>
                                                                                     </stackView>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnh-8Q-NgU">
-                                                                                        <rect key="frame" x="10" y="226" width="89" height="18.333333333333343"/>
+                                                                                        <rect key="frame" x="10" y="225.33333333333334" width="89" height="18.333333333333343"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -6240,7 +6240,7 @@
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <color key="textColor" systemColor="labelColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                                 </textView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum 50 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPG-PS-4gI">
                                                                     <rect key="frame" x="10" y="73.666666666666629" width="151.33333333333334" height="16.333333333333329"/>
@@ -6315,7 +6315,7 @@
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <color key="textColor" systemColor="labelColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                                 </textView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum 200 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVo-fZ-RPU">
                                                                     <rect key="frame" x="10" y="348.66666666666674" width="159" height="16.333333333333314"/>

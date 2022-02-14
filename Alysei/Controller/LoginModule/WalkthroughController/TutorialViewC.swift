@@ -19,8 +19,17 @@ class TutorialViewC: AlysieBaseViewC{
     @objc private func pageControlHandle(sender: UIPageControl){
         //print(sender.currentPage)
         
+//        let indexPath = IndexPath(item: sender.currentPage, section: 0)
+//        sender.currentPage = indexPath.item
+//        collectionViewTutorial.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+        
+        let lindexPath = IndexPath(row: sender.currentPage, section: 0)
+        let cell = collectionViewTutorial.cellForItem(at: lindexPath) as? TutorialCollectionCell
+        print(sender.currentPage)
+       
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
         sender.currentPage = indexPath.item
+        cell?.pageControl.currentPage = sender.currentPage
         collectionViewTutorial.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
        // configure(indexpath,self.walkthroughModel[sender.currentPage], modelData: walkthroughModel)
     }
@@ -28,6 +37,7 @@ class TutorialViewC: AlysieBaseViewC{
   private func getTutorialCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
     
     let tutorialCollectionCell = collectionViewTutorial.dequeueReusableCell(withReuseIdentifier: TutorialCollectionCell.identifier(), for: indexPath) as! TutorialCollectionCell
+      tutorialCollectionCell.pageControl.currentPage = indexPath.item
       tutorialCollectionCell.configure(indexPath,self.walkthroughModel[indexPath.row], modelData: walkthroughModel)
       tutorialCollectionCell.pageControl.addTarget(self, action: #selector(pageControlHandle), for: .valueChanged)
     tutorialCollectionCell.delegate = self

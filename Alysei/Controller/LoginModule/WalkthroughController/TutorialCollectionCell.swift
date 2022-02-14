@@ -84,7 +84,7 @@ class TutorialCollectionCell: UICollectionViewCell {
         lblWelcome.text = data.title
         lblDescription.text = data.walkthroughDescription
 
-    pageControl.currentPage = indexPath.item
+    
   }
   
 }

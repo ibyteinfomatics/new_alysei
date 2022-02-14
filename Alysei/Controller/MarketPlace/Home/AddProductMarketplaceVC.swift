@@ -77,11 +77,19 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtProductDispatchIns.autocorrectionType = .no
+        txtProductHandleIns.autocorrectionType = .no
         setDataUI()
         txtProductTitle.delegate = self
         if fromVC == .myStoreDashboard{
             setEditProductDetail()
         }
+        txtProductHandleIns.autocorrectionType = .no
+        txtProductDispatchIns.autocorrectionType = .no
+        txtProductHandleIns.spellCheckingType = .no
+        txtProductDispatchIns.spellCheckingType = .no
+        
+        
         if fromVC == .myStoreDashboard{
             self.lblHeadingLeading.constant = 25
             btnback.isHidden = true
@@ -153,6 +161,14 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         }
         
         collectionViewImage.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        txtProductDispatchIns.autocorrectionType = .no
+        txtProductHandleIns.autocorrectionType = .no
+        txtProductHandleIns.spellCheckingType = .no
+        txtProductDispatchIns.spellCheckingType = .no
+        
     }
     
     private func alertToAddCustomPicker() -> Void {
@@ -451,19 +467,21 @@ extension AddProductMarketplaceVC: UITextViewDelegate, UITextFieldDelegate{
         
         if textView == txtProductDispatchIns{
             
+            
             let currentText:String = textView.text
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-            let finalText = updatedText.removeWhitespace()
-            if finalText.count <= 200{
+            //let finalText = updatedText.removeWhitespace()
+            if updatedText.count <= 200{
                 return true
             }else{
                 return false
             }
         }else if textView == txtProductHandleIns{
+          
             let currentText:String = textView.text
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-            let finalText = updatedText.removeWhitespace()
-            if finalText.count <= 50{
+            //let finalText = updatedText.removeWhitespace()
+            if updatedText.count <= 50{
                 return true
             }else{
                 return false
