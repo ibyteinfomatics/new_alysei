@@ -42,11 +42,15 @@ extension SelectMultiMemberShipVC : UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = memberShipCollectionview.dequeueReusableCell(withReuseIdentifier: "SelectMembershipCollectionViewCell", for: indexPath) as? SelectMembershipCollectionViewCell else{return UICollectionViewCell()}
         cell.configCell(memberShipData ?? [Membership](), indexPath.row )
-        
+        cell.dataCount =  memberShipData?.count
         if indexPath.row < (memberShipData?.count ?? 0) {
             cell.lblMemberShip.text = memberShipData?[indexPath.row].name
+            cell.vwHeader.layer.backgroundColor = UIColor.init(hexString: "4BB3FD").cgColor
+           
         }else{
             cell.lblMemberShip.text = "Coming Soon....."
+            cell.vwHeader.layer.backgroundColor = UIColor.init(hexString: "33A386").cgColor
+           
         }
         //demo
         self.selectedPassId = memberShipData?[0].marketplacePackageId
@@ -82,21 +86,24 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vwTriangle: UIView!
     @IBOutlet weak var lblMemberShip: UILabel!
+    @IBOutlet weak var vwHeader: UIView!
     
     
     var indexV: Int?
+    var dataCount: Int?
     var memberShipData: [Membership]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         vwContainer.addBorder()
         vwContainer.addShadow()
-        setDownTriangle()
+        
     }
     
     func configCell(_ data: [Membership], _ indexValue : Int?){
        self.memberShipData = data
         indexV = indexValue
+        setDownTriangle()
         self.tableView.reloadData()
         
     }
@@ -112,8 +119,11 @@ class SelectMembershipCollectionViewCell : UICollectionViewCell{
 
             let shape = CAShapeLayer()
             shape.path = path
+        if (indexV ?? 0) <= (dataCount ?? 0) {
         shape.fillColor = UIColor.init(hexString: "4BB3FD").cgColor
-
+        }else{
+            shape.fillColor = UIColor.init(hexString: "33A386").cgColor
+        }
         vwTriangle.layer.insertSublayer(shape, at: 0)
         }
 }
