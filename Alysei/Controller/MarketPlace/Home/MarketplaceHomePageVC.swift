@@ -19,7 +19,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var subheaderView: UIView!
     @IBOutlet weak var lblDiscover: UILabel!
     @IBOutlet weak var headerView: UIView!
-    
+    @IBOutlet weak var vwpageControlStack: NSLayoutConstraint!
     @IBOutlet weak var walkView1: UIView!
     @IBOutlet weak var vwwWalkContainer1: UIView!
     @IBOutlet weak var vwwWalkContainer2: UIView!
@@ -66,14 +66,14 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var walkSubView3Height: NSLayoutConstraint!
     @IBOutlet weak var walknextBtn: UIButton!
     @IBOutlet weak var openednewCount: UILabel!
-    
+    @IBOutlet weak var vwWalkSubView2Top:NSLayoutConstraint!
     @IBOutlet weak var walk1ViewTitle: UILabel!
     @IBOutlet weak var walk1ViewDesc: UILabel!
     @IBOutlet weak var walk1SubTitle: UILabel!
     @IBOutlet weak var walk1SubDesc: UILabel!
     @IBOutlet weak var walk1DescImage: UIImageView!
     @IBOutlet weak var btnEnquiry: UIButton!
-    
+   
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
     var newunread: Int = 0
@@ -305,13 +305,13 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         walk1SubDesc.text = "Write in English language to create your store and list your products"
         walk1DescImage.image = UIImage(named: "icons8_pencil_white")
         UIView.animate(withDuration: 0.5) {
-            self.walkView1height.constant = 485
+            self.walkView1height.constant = 495
             self.walkView1Top.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                self.walkView1height.constant = 470
+                self.walkView1height.constant = 480
                 self.view.layoutIfNeeded()
             } completion: { _ in
                // print("Completion")
@@ -323,7 +323,10 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = false
         self.walkSubView3.isHidden = true
+        self.vwWalkSubView2Top.constant = 20
         self.walkSubView3Height.constant = 0
+        self.vwpageControlStack.constant = 15
+        
         vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
         walkView2Tilte.text = "Connect with buyers"
         walkView2SubTitle.text = "When you create a listing, buyers will interact with you"
@@ -359,7 +362,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         } completion: { _ in
             self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 240
+                    self.walkView1height.constant = self.view.frame.height / 2 + 220
                     self.view.layoutIfNeeded()
             } completion: { _ in
                // print("Completion")
@@ -371,6 +374,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         //self.view.isUserInteractionEnabled = false
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = false
+        self.vwWalkSubView2Top.constant = 33
+        self.vwpageControlStack.constant = 40
         self.walkSubView3.isHidden = false
        vwwWalkContainer2BgImg.image = UIImage(named: "Layer 2")
         self.walkSubView3Height.constant = 55
@@ -409,13 +414,13 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         pageControl6.layer.backgroundColor = UIColor.clear.cgColor
         UIView.animate(withDuration: 0.5) {
             self.vwwWalkContainer2.isHidden = false
-            self.walkView1height.constant = self.view.frame.height / 2 + 320
+            self.walkView1height.constant = self.view.frame.height / 2 + 330
             self.walkView1Trailing.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                    self.walkView1height.constant = self.view.frame.height / 2 + 300
+                    self.walkView1height.constant = self.view.frame.height / 2 + 310
                     self.view.layoutIfNeeded()
             } completion: { _ in
                // print("Completion")
@@ -474,7 +479,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     
     @IBAction func btnGotoStores(_ sender: UIButton){
-        
+
         if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
             _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
         }else if self.storeCreated == 0{
