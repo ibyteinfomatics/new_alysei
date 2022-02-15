@@ -295,7 +295,7 @@ extension CompanyViewC: UIImagePickerControllerDelegate, UINavigationControllerD
         self.dismiss(animated: true) {
             // self.imgViewProfile.image = selectedImage
             // self.postImage = selectedImage
-            let imageData = selectedImage.compressTo(1)
+            let imageData = selectedImage//.compressTo(1)
             if self.getUploadImageIndex == 0 {
                 self.photoOfLabelImage = imageData
             }else if self.getUploadImageIndex == 1{

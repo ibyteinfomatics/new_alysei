@@ -386,8 +386,8 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 }
                 if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
                     print("error")
-                    cell.newHeightCllctn = 350
-                    cell.imageHeightCVConstant.constant = 350
+                    cell.newHeightCllctn = 0
+                    cell.imageHeightCVConstant.constant = 0
                 }else{
                 var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
                 if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
