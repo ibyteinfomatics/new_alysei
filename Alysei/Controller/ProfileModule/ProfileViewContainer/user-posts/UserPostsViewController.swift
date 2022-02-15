@@ -189,7 +189,34 @@ extension UserPostsViewController : UITableViewDelegate,UITableViewDataSource{
             let vc = self.pushViewController(withName: PostCommentsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? PostCommentsViewController
             vc?.postid = data.postID ?? 0
         }
-        
+        if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
+            print("error")
+//                    cell.newHeightCllctn = 350
+//                    cell.imageHeightCVConstant.constant = 350
+            cell.newHeightCllctn = 0
+            cell.imageHeightCVConstant.constant = 0
+        }else{
+        var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
+        if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
+                    let newHeight = 320 / ratio
+                               // cell.imageConstant.constant = newHeight
+                    cell.newHeightCllctn = Int(newHeight - 50)
+                    cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
+            } else{
+                
+                var newWidth = 430
+                if ratio == 0.0 {
+                    ratio = 1
+                    newWidth = 350
+                }
+                newWidth = newWidth * Int(ratio)
+                
+                    
+                    //cell.imageConstant.constant = newWidth
+                    cell.newHeightCllctn = Int(newWidth)
+                    cell.imageHeightCVConstant.constant = CGFloat(newWidth)
+            }
+    }
         return cell
     }
 

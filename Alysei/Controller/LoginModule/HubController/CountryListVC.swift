@@ -44,10 +44,7 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
         }else{
         self.postRequestToGetCountries()
         }
-        
-      
-       
-        
+     
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +60,9 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
         tabBarController?.tabBar.isHidden = true
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {

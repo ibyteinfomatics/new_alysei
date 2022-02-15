@@ -33,8 +33,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var imgReview: UIImageView!
-    var privacyArray = ["Public","Followers","Just Me"]
-    var privacyImageArray = ["Public","Friends","OnlyMe"]
+    var privacyArray = ["Public","Followers","Just Me","My Connections"]
+    var privacyImageArray = ["Public","Friends","OnlyMe","Friends"]
     var progressUserData: UserData?
     var postDesc: String?
 //    var picker = UIImagePickerController()
@@ -365,7 +365,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //            showAlert(withMessage: "Post can't be empty")
 //
 //        }
-        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) && (txtPost.text == "") {
+        if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
 //            showAlert(withMessage: "Please enter some post")
             showAlert(withMessage: "Post can't be empty")
 
@@ -606,7 +606,7 @@ extension AddPostViewController: UICollectionViewDelegate,UICollectionViewDataSo
 //MARK: UITableView
 extension AddPostViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return privacyArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

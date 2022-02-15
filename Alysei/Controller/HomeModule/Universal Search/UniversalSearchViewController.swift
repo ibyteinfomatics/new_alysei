@@ -30,11 +30,19 @@ class UniversalSearchViewController: AlysieBaseViewC {
     var arraySearchByTrips : [TripDatum]? = []
     var arraySearchByEvents : [EventDatum]? = []
     var arraySearchByPost = [NewFeedSearchDataModel]()
+    var indexOfPageToRequest = 1
+    var notimodel:NotificationListModel?
+    var lastpage: Int?
+    var blogLastpage: Int?
+    var tripsLastpage: Int?
+    var eventsLastpage:Int?
+    var postsLastpage: Int?
+    var awardsLastPage:Int?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if searchTap == true{
-            getUniversalSearchData(1, updatedText)
+            getUniversalSearchData(1, updatedText,1)
         }
     }
     override func viewDidLoad() {
@@ -121,6 +129,33 @@ class UniversalSearchViewController: AlysieBaseViewC {
         bubbleCollectionView.reloadData()
         
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        if scrollView == universalSearchTableView{
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if searchType == 0 {
+                print("No pagination")
+            }else{
+            if indexOfPageToRequest >= lastpage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                getUniversalSearchData(1, updatedText, indexOfPageToRequest)
+            }
+                
+
+            // tell the table view to reload with the new data
+            self.universalSearchTableView.reloadData()
+            }
+        }
+        }
+    }
+   
 }
 
 extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -153,7 +188,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
             if self.searchTextField.text != ""{
                 searchTap = true
                 dividerView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                
+                getUniversalSearchData(1, updatedText,1)
                 universalSearchTableView.isHidden = false
             }
             else{
@@ -165,7 +201,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByEvents?.removeAll()
                 arraySearchByBolg?.removeAll()
                 arraySearchByTrips?.removeAll()
@@ -181,7 +218,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByEvents?.removeAll()
                 arraySearchByPeople?.removeAll()
                 arraySearchByTrips?.removeAll()
@@ -198,7 +236,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByEvents?.removeAll()
                 arraySearchByPeople?.removeAll()
                 arraySearchByBolg?.removeAll()
@@ -215,7 +254,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByTrips?.removeAll()
                 arraySearchByPeople?.removeAll()
                 arraySearchByBolg?.removeAll()
@@ -232,7 +272,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByTrips?.removeAll()
                 arraySearchByPeople?.removeAll()
                 arraySearchByBolg?.removeAll()
@@ -248,7 +289,8 @@ extension UniversalSearchViewController: UICollectionViewDelegate, UICollectionV
                 searchTap = true
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
-                getUniversalSearchData(1, updatedText)
+                indexOfPageToRequest = 1
+                getUniversalSearchData(1, updatedText,1)
                 arraySearchByTrips?.removeAll()
                 arraySearchByPeople?.removeAll()
                 arraySearchByBolg?.removeAll()
@@ -743,7 +785,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.callInterestedCallback = { index in
                             
                             let reloadIndexPath = IndexPath(row: index, section: 0)
-                            self.getUniversalSearchData(1, self.updatedText)
+                            self.getUniversalSearchData(1, self.updatedText,self.indexOfPageToRequest)
                             self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                         }
                         cell4.btnMoreCallback = { tag in
@@ -858,6 +900,20 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                                 }
                                 UIApplication.shared.openURL(compt!)
                             }
+                        }
+                        cell6.apiCallback = {
+                            if self.indexOfPageToRequest >= self.lastpage ?? 0{
+                                print("No Data")
+                            }else{
+                            // increments the number of the page to request
+                                self.indexOfPageToRequest += 1
+
+                            // call your API for more data
+                                self.getUniversalSearchData(1, self.updatedText, self.indexOfPageToRequest)
+                            }
+                            self.universalSearchTableView.reloadData()
+                            cell6.awardCollectionView.reloadData()
+
                         }
 
                         
@@ -1123,7 +1179,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell4.callInterestedCallback = { index in
                         
                         let reloadIndexPath = IndexPath(row: index, section: 0)
-                        self.getUniversalSearchData(1, self.updatedText)
+                        self.getUniversalSearchData(1, self.updatedText,self.indexOfPageToRequest)
                         self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                     }
                     cell4.btnMoreCallback = { tag in
@@ -1236,6 +1292,20 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             }
                             UIApplication.shared.openURL(compt!)
                         }
+                    }
+                    cell6.apiCallback = {
+                        if self.indexOfPageToRequest >= self.lastpage ?? 0{
+                            print("No Data")
+                        }else{
+                        // increments the number of the page to request
+                            self.indexOfPageToRequest += 1
+
+                        // call your API for more data
+                            self.getUniversalSearchData(1, self.updatedText, self.indexOfPageToRequest)
+                        }
+                        self.universalSearchTableView.reloadData()
+                        cell6.awardCollectionView.reloadData()
+
                     }
                 }
                 return cell6
@@ -1496,7 +1566,7 @@ extension UniversalSearchViewController: UITextFieldDelegate{
                 dividerView.isHidden = false
                 universalSearchTableView.isHidden = false
                 
-                getUniversalSearchData(1, updateText)
+                getUniversalSearchData(1, updateText,1)
                 bubbleCollectionView.reloadData()
             }
             else{
@@ -1553,62 +1623,93 @@ extension UniversalSearchViewController{
         vc.typeofpage = "read"
     }
     
-    func getUniversalSearchData(_ searchType: Int?, _ keyword: String?){
+    func getUniversalSearchData(_ searchType: Int?, _ keyword: String?,_ pageNo: Int?){
         
-        let originalUrl = APIUrl.Posts.searchUniversal + "\(searchType ?? 0)" + "&keyword=" + "\(keyword ?? "")"
+        let originalUrl = APIUrl.Posts.searchUniversal + "\(searchType ?? 0)" + "&keyword=" + "\(keyword ?? "")" + "&page=\(pageNo ?? 1)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: originalUrl
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
             
             let dictResponse = dictResponse as? [String:Any]
             
+            
             if let data = dictResponse?["data"] as? [String:Any]{
-                
+                self.notimodel = NotificationListModel.init(with: dictResponse)
                 if let people = data["peoples"] as? [String:Any]{
+                    if self.searchType == 1{
+                    self.lastpage = people["last_page"] as? Int
+                    }
                     if let people2 = people["data"] as? [[String:Any]]{
                         let people1 = people2.map({UserDataModel.init(with: $0)})
-                        arraySearchByPeople = people1
+                        //arraySearchByPeople = people1
+                        if indexOfPageToRequest == 1 {self.arraySearchByPeople?.removeAll()}
+                        arraySearchByPeople?.append(contentsOf: people1)
                         print("\(String(describing: arraySearchByPeople?.count))")
                     }
                 }
                 
                 if let posts = data["posts"] as? [String:Any]{
+                    if self.searchType == 5{
+                    self.lastpage = posts["last_page"] as? Int
+                    }
                     if let post1 = posts["data"] as? [[String:Any]]{
                         let post = post1.map({NewFeedSearchDataModel.init(with: $0)})
-                        arraySearchByPost = post
+                        //arraySearchByPost = post
+                        if indexOfPageToRequest == 1 {self.arraySearchByPost.removeAll()}
+                        arraySearchByPost.append(contentsOf: post)
                         print("\(String(describing: arraySearchByPost.count))")
                     }
                 }
                 
                 if let events = data["events"] as? [String:Any]{
+                    if self.searchType == 4{
+                    self.lastpage = events["last_page"] as? Int
+                    }
                     if let events1 = events["data"] as? [[String:Any]]{
                         let event = events1.map({EventDatum.init(with: $0)})
-                        arraySearchByEvents = event
+                      //  arraySearchByEvents = event
+                        if indexOfPageToRequest == 1 {self.arraySearchByEvents?.removeAll()}
+                        arraySearchByEvents?.append(contentsOf: event)
                         print("\(String(describing: arraySearchByEvents?.count))")
                     }
                 }
                 
                 if let blogs = data["blogs"] as? [String:Any]{
+                    if self.searchType == 2{
+                    self.lastpage = blogs["last_page"] as? Int
+                    }
                     if let blogs1 = blogs["data"] as? [[String:Any]]{
                         let blog = blogs1.map({BlogDatum.init(with: $0)})
-                        arraySearchByBolg = blog
+                        //arraySearchByBolg = blog
+                        if indexOfPageToRequest == 1 {self.arraySearchByBolg?.removeAll()}
+                        arraySearchByBolg?.append(contentsOf: blog)
                         print("\(String(describing: arraySearchByBolg?.count))")
                         
                     }
                 }
                 
                 if let trips = data["trips"] as? [String:Any]{
+                    if self.searchType == 3{
+                    self.lastpage = trips["last_page"] as? Int
+                    }
                     if let trips1 = trips["data"] as? [[String:Any]]{
                         let trip = trips1.map({TripDatum.init(with: $0)})
-                        arraySearchByTrips = trip
+                       // arraySearchByTrips = trip
+                        if indexOfPageToRequest == 1 {self.arraySearchByTrips?.removeAll()}
+                        arraySearchByTrips?.append(contentsOf: trip)
                         print("\(String(describing: arraySearchByTrips?.count))")
                     }
                 }
                 
                 if let awards = data["awards"] as? [String:Any]{
+                    if self.searchType == 6{
+                    self.lastpage = awards["last_page"] as? Int
+                    }
                     if let award1 = awards["data"] as? [[String:Any]]{
                         let award = award1.map({AwardDatum.init(with: $0)})
-                        arraySearchByAward = award
+                       // arraySearchByAward = award
+                        if indexOfPageToRequest == 1 {arraySearchByAward?.removeAll()}
+                        arraySearchByAward?.append(contentsOf: award)
                         print("\(String(describing: arraySearchByAward?.count))")
                     }
                 }

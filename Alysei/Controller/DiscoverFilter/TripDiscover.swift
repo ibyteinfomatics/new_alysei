@@ -344,7 +344,7 @@ extension TripDiscover {
     func callFilterApi (_ pageNo: Int?) {
         //self.tripModel = TripModel(with: [:])
         let str = passDuration
-        let trimmedDurationStr = str?.trimmingCharacters(in: .whitespaces)
+        let trimmedDurationStr = str?.replacingOccurrences(of: "\\s", with: "", options: .regularExpression)
        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverTripsSearch + "&region=" + "\(regionId ?? "" )" + "&adventure_type=" + "\(adventureId ?? "" )" + "&duration=" + "\(trimmedDurationStr ?? "")" + "&intensity=" + "\(intensityId ?? "")"  + "&price=" + "\(passprice ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             

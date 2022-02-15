@@ -13,6 +13,7 @@ class AwardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var noItemLabel: UILabel!
     var openUrlCallBack: ((String) -> Void)? = nil
+    var apiCallback: (() -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,13 @@ class AwardTableViewCell: UITableViewCell {
         self.awardCollectionView.register(cellNib, forCellWithReuseIdentifier: "AwardCollectionViewCell")
        
     }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == awardCollectionView{
+        if(self.awardCollectionView.contentOffset.y >= (self.awardCollectionView.contentSize.height - self.awardCollectionView.bounds.size.height)) {
+            apiCallback?()
+        }
+        }
+    }
     
 }
 extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
