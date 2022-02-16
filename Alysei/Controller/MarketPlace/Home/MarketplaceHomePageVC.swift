@@ -305,13 +305,13 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         walk1SubDesc.text = "Write in English language to create your store and list your products"
         walk1DescImage.image = UIImage(named: "icons8_pencil_white")
         UIView.animate(withDuration: 0.5) {
-            self.walkView1height.constant = 495
+            self.walkView1height.constant = 510
             self.walkView1Top.constant = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.isBottomSheetShown = true
             UIView.animate(withDuration: 0.5) {
-                self.walkView1height.constant = 480
+                self.walkView1height.constant = 495
                 self.view.layoutIfNeeded()
             } completion: { _ in
                // print("Completion")
@@ -325,8 +325,14 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkSubView3.isHidden = true
         self.vwWalkSubView2Top.constant = 20
         self.walkSubView3Height.constant = 0
-        self.vwpageControlStack.constant = 15
-        
+        if MobileDeviceType.IS_IPHONE_6 == true {
+            self.vwpageControlStack.constant = 8
+        }
+        else{
+            self.vwpageControlStack.constant = -14
+        }
+       
+    
         vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
         walkView2Tilte.text = "Connect with buyers"
         walkView2SubTitle.text = "When you create a listing, buyers will interact with you"
@@ -374,7 +380,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         //self.view.isUserInteractionEnabled = false
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = false
-        self.vwWalkSubView2Top.constant = 33
+        self.vwWalkSubView2Top.constant = 35
+        
         self.vwpageControlStack.constant = 40
         self.walkSubView3.isHidden = false
        vwwWalkContainer2BgImg.image = UIImage(named: "Layer 2")
@@ -480,18 +487,18 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     
     @IBAction func btnGotoStores(_ sender: UIButton){
 
-        if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
-            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
-        }else if self.storeCreated == 0{
+//        if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
+//            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+//        }else if self.storeCreated == 0{
       
             animate1View()
-        }else if self.storeCreated == 1 && self.productCount == 0{
-            _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
-        }else if (self.storeCreated == 1 && isStoreReviewed == 0) || (self.storeCreated == 1 && isStoreReviewed == 2){
-            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
-        }  else{
-            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
-        }
+//        }else if self.storeCreated == 1 && self.productCount == 0{
+//            _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
+//        }else if (self.storeCreated == 1 && isStoreReviewed == 0) || (self.storeCreated == 1 && isStoreReviewed == 2){
+//            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
+//        }  else{
+//            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+//        }
         
     }
 //    @IBAction func viewAllRegion(_ sender: UIButton){

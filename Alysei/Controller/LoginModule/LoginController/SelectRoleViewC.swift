@@ -107,15 +107,15 @@ extension SelectRoleViewC{
     let dicResponse = kSharedInstance.getDictionary(result)
     switch type {
     case 0:
-//     let model = self.getRoleViewModel.arrRoles.filter({$0.isSelected == true})
-//     let controller = pushViewController(withName: MembersWalkthroughViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? MembersWalkthroughViewC
-//      controller?.getRoleDataModel = model
-//      controller?.getWalkThroughViewModel = GetWalkThroughViewModel(dicResponse)
+     let model = self.getRoleViewModel.arrRoles.filter({$0.isSelected == true})
+     let controller = pushViewController(withName: MembersWalkthroughViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? MembersWalkthroughViewC
+      controller?.getRoleDataModel = model
+      controller?.getWalkThroughViewModel = GetWalkThroughViewModel(dicResponse)
 
         //MARK:- TESTING Change
-
-       let nextVC = CountryListVC()
-       self.navigationController?.pushViewController(nextVC, animated: true)
+//
+//       let nextVC = CountryListVC()
+//       self.navigationController?.pushViewController(nextVC, animated: true)
 
     default:
       break

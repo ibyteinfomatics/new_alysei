@@ -612,13 +612,13 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
 //        pinch.minimumNumberOfTouches = 2
 //        pinch.maximumNumberOfTouches = 2
-        self.imagePost.addGestureRecognizer(pinch)
+        //self.imagePost.addGestureRecognizer(pinch)
 
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
         pan.minimumNumberOfTouches = 2
         pan.maximumNumberOfTouches = 2
         pan.delegate = self
-        self.imagePost.addGestureRecognizer(pan)
+       // self.imagePost.addGestureRecognizer(pan)
     }
 
     @objc func pinch(sender:UIPinchGestureRecognizer) {

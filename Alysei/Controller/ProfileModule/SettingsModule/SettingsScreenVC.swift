@@ -80,9 +80,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
               _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 6:
               _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-            case 9:
+            case 11:
               _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-            case 8:
+            case (StaticArrayData.kSettingPrducrColScreenDict.count - 1):
               
                 let token = kSharedUserDefaults.getDeviceToken()
                 let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
@@ -107,9 +107,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         //case 4:
          // _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 5:
+        case 9:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 6:
+        case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             //kSharedUserDefaults.clearAllData()
@@ -139,9 +139,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 9:
+        case 11:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
+        case StaticArrayData.kSettingRestColScreenDict.count - 1:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
             //kSharedUserDefaults.clearAllData()
@@ -170,9 +170,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 9:
+        case StaticArrayData.kSettingExpertColScreenDict.count - 2:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
+        case StaticArrayData.kSettingExpertColScreenDict.count - 1:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
           //  kSharedUserDefaults.clearAllData()
@@ -198,9 +198,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 7:
+        case StaticArrayData.kSettingTravlColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
+        case StaticArrayData.kSettingTravlColScreenDict.count - 2:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
            // kSharedUserDefaults.clearAllData()
@@ -226,9 +226,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 7:
+        case StaticArrayData.kSettingImprtrColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-        case 8:
+        case StaticArrayData.kSettingImprtrColScreenDict.count - 2:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
            // kSharedUserDefaults.clearAllData()
@@ -262,9 +262,9 @@ extension SettingsScreenVC: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         if indexPath.item == 1 {
-            return CGSize(width: Int((view.bounds.width - 40)/3), height: 75)
+            return CGSize(width: Int((view.bounds.width - 40)/3), height: 85)
         }else{
-            return CGSize(width: Int((view.bounds.width - 40)/3), height: 76)
+            return CGSize(width: Int((view.bounds.width - 40)/3), height: 86)
         }
 
     }

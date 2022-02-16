@@ -772,8 +772,11 @@ struct StaticArrayData {
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
+                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                              (image: "icons8_data_protection", name: "Privacy Policy"),
+                                              (image: "icons8_question_mark-1", name: "FAQ"),
+                                              (image: "icons8_secure_cloud", name: "Your Data"),
                                               (image: "icons8_exit", name: "Logout"),
-                                              (image: "icons8_secure_cloud", name: "Your Data")
     ]
     
     static let kSettingImprtrColScreenDict = [(image: "icons8_settings", name: "Settings"),
@@ -783,8 +786,12 @@ struct StaticArrayData {
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_secure_cloud", name: "Your Data"),
-                                              (image: "icons8_exit", name: "Logout")
+                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                              (image: "icons8_data_protection", name: "Privacy Policy"),
+                                              (image: "icons8_question_mark-1", name: "FAQ"),
+                                              (image: "icons8_exit", name: "Logout"),
+                                              (image: "icons8_secure_cloud", name: "Your Data")
+                                             
                                               
     ]
     
@@ -796,8 +803,11 @@ struct StaticArrayData {
                                             (image: "icons8_unavailable", name: "Blocking"),
                                             (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
-                                            (image: "icons8_exit", name: "Logout"),
+                                            (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                            (image: "icons8_data_protection", name: "Privacy Policy"),
+                                            (image: "icons8_question_mark-1", name: "FAQ"),
                                             (image: "icons8_secure_cloud", name: "Your Data"),
+                                            (image: "icons8_exit", name: "Logout")
                                             
                                             
     ]
@@ -809,8 +819,12 @@ struct StaticArrayData {
                                             (image: "icons8_unavailable", name: "Blocking"),
                                            // (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
-                                            (image: "icons8_secure_cloud", name: "Your Data"),
-                                            (image: "icons8_exit", name: "Logout")
+                                            (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                            (image: "icons8_data_protection", name: "Privacy Policy"),
+                                            (image: "icons8_question_mark-1", name: "FAQ"),
+                                            
+                                            (image: "icons8_exit", name: "Logout"),
+                                            (image: "icons8_secure_cloud", name: "Your Data")
                                             
                                             
                                             
@@ -823,9 +837,12 @@ struct StaticArrayData {
                                              (image: "icons8_unavailable", name: "Blocking"),
                                              (image: "icons8_debit_card_1", name: "Membership"),
                                              (image: "icons8_purchase_order", name: "Billing"),
-                                             
-                                             (image: "icons8_secure_cloud", name: "Your Data"),
+                                             (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                             (image: "icons8_data_protection", name: "Privacy Policy"),
+                                             (image: "icons8_question_mark-1", name: "FAQ"),
+                                            
                                              (image: "icons8_exit", name: "Logout"),
+                                             (image: "icons8_secure_cloud", name: "Your Data")
                                              
                                              
     ]
@@ -838,8 +855,12 @@ struct StaticArrayData {
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_exit", name: "Logout"),
-                                              (image: "icons8_secure_cloud", name: "Your Data")
+                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
+                                              (image: "icons8_data_protection", name: "Privacy Policy"),
+                                              (image: "icons8_question_mark-1", name: "FAQ"),
+                                             
+                                              (image: "icons8_secure_cloud", name: "Your Data"),
+                                              (image: "icons8_exit", name: "Logout")
                                               
     ]
     

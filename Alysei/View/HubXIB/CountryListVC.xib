@@ -75,32 +75,32 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Lff-Eg-DeZ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the HUB" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdN-mZ-blu">
-                    <rect key="frame" x="-100" y="241.5" width="275.5" height="45.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the HUB in" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdN-mZ-blu">
+                    <rect key="frame" x="-100" y="110" width="318.5" height="45.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in USA where" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-bV-hho">
-                    <rect key="frame" x="-100" y="292" width="244" height="45.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA where you" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-bV-hho">
+                    <rect key="frame" x="-100" y="155.5" width="277" height="45.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXf-5F-mo4">
-                    <rect key="frame" x="-100" y="342.5" width="153.5" height="45.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plan to develop" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXf-5F-mo4">
+                    <rect key="frame" x="-100" y="201" width="278" height="45.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to develop" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-yM-g4r">
-                    <rect key="frame" x="-100" y="393" width="190" height="45.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your business" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-yM-g4r">
+                    <rect key="frame" x="-100" y="246.5" width="252" height="45.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your business" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFs-g8-sHV">
-                    <rect key="frame" x="-100" y="443.5" width="252" height="45.5"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFs-g8-sHV">
+                    <rect key="frame" x="-100" y="297" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -154,14 +154,14 @@
             <constraints>
                 <constraint firstItem="SXz-gN-WyO" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" id="65u-Gt-8xf"/>
                 <constraint firstItem="Rtp-fS-CWu" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" id="724-53-d1z"/>
-                <constraint firstItem="bZJ-2t-30y" firstAttribute="top" secondItem="iFs-g8-sHV" secondAttribute="bottom" constant="20" id="CgE-Co-gGU"/>
                 <constraint firstItem="SXz-gN-WyO" firstAttribute="trailing" secondItem="iq8-xr-hS2" secondAttribute="trailing" id="DAU-XT-gm0"/>
                 <constraint firstItem="Lff-Eg-DeZ" firstAttribute="top" secondItem="5w2-bG-zO8" secondAttribute="top" id="ER4-0L-tRB"/>
                 <constraint firstAttribute="bottom" secondItem="Rtp-fS-CWu" secondAttribute="bottom" id="FJd-fL-QNp"/>
+                <constraint firstItem="bZJ-2t-30y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lap-yM-g4r" secondAttribute="bottom" constant="40" id="GTs-vl-tL1"/>
                 <constraint firstItem="AXf-5F-mo4" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" constant="-100" id="OdM-aB-Odf"/>
                 <constraint firstItem="Rtp-fS-CWu" firstAttribute="top" secondItem="bZJ-2t-30y" secondAttribute="bottom" constant="20" id="OeC-1r-IOJ"/>
                 <constraint firstItem="wdN-mZ-blu" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" constant="-100" id="TgN-uh-XGi"/>
-                <constraint firstItem="Lap-yM-g4r" firstAttribute="top" secondItem="AXf-5F-mo4" secondAttribute="bottom" constant="5" id="V9R-w1-awe"/>
+                <constraint firstItem="Lap-yM-g4r" firstAttribute="top" secondItem="AXf-5F-mo4" secondAttribute="bottom" id="V9R-w1-awe"/>
                 <constraint firstItem="IsW-bV-hho" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" constant="-100" id="Vzo-0H-ukR"/>
                 <constraint firstItem="iq8-xr-hS2" firstAttribute="trailing" secondItem="bZJ-2t-30y" secondAttribute="trailing" constant="20" id="acg-Ca-U8t"/>
                 <constraint firstItem="Rtp-fS-CWu" firstAttribute="trailing" secondItem="iq8-xr-hS2" secondAttribute="trailing" id="blL-La-Ly2"/>
@@ -171,9 +171,10 @@
                 <constraint firstItem="SXz-gN-WyO" firstAttribute="top" secondItem="5w2-bG-zO8" secondAttribute="top" id="f71-Im-T21"/>
                 <constraint firstItem="bZJ-2t-30y" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" constant="20" id="gUb-yz-o3W"/>
                 <constraint firstItem="iq8-xr-hS2" firstAttribute="trailing" secondItem="Lff-Eg-DeZ" secondAttribute="trailing" id="pEA-m8-67D"/>
-                <constraint firstItem="AXf-5F-mo4" firstAttribute="top" secondItem="IsW-bV-hho" secondAttribute="bottom" constant="5" id="pQs-1E-pa5"/>
+                <constraint firstItem="AXf-5F-mo4" firstAttribute="top" secondItem="IsW-bV-hho" secondAttribute="bottom" id="pQs-1E-pa5"/>
                 <constraint firstItem="iFs-g8-sHV" firstAttribute="top" secondItem="Lap-yM-g4r" secondAttribute="bottom" constant="5" id="rNj-B0-6Ja"/>
-                <constraint firstItem="IsW-bV-hho" firstAttribute="top" secondItem="wdN-mZ-blu" secondAttribute="bottom" constant="5" id="xav-NS-0uc"/>
+                <constraint firstItem="wdN-mZ-blu" firstAttribute="top" secondItem="SXz-gN-WyO" secondAttribute="bottom" constant="10" id="uMM-Ui-eLf"/>
+                <constraint firstItem="IsW-bV-hho" firstAttribute="top" secondItem="wdN-mZ-blu" secondAttribute="bottom" id="xav-NS-0uc"/>
                 <constraint firstItem="Lff-Eg-DeZ" firstAttribute="leading" secondItem="iq8-xr-hS2" secondAttribute="leading" id="zC5-r0-faS"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>

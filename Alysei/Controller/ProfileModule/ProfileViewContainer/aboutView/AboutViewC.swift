@@ -143,6 +143,13 @@ extension AboutViewC: UITableViewDelegate, UITableViewDataSource {
             }
         case .cellWithText:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cellWithText") as? AboutViewTableCellWithText {
+//                if indexPath.row == 2 && (cellDetail.value == "0%"){
+//                    cell.titleLabel.isHidden = true
+//                    cell.descriptionLabel.isHidden = true
+//                }else{
+//                    cell.titleLabel.isHidden = false
+//                    cell.descriptionLabel.isHidden = false
+//                }
                 cell.titleLabel.text = cellDetail.title.capitalized
                 cell.descriptionLabel.text = cellDetail.value.capitalized
                 return cell
@@ -161,6 +168,16 @@ extension AboutViewC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellDetail = self.aboutTabModel[indexPath.row]
+            if cellDetail.value == "0%"{
+                return 0
+            }else{
+               return UITableView.automaticDimension
+            }
+        
     }
 }
 
