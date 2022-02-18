@@ -22,9 +22,6 @@ protocol MyStoreDashboardDisplayLogic: class
 
 class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayLogic
 {
-   
-    
-    
     
   var interactor: MyStoreDashboardBusinessLogic?
   var router: (NSObjectProtocol & MyStoreDashboardRoutingLogic & MyStoreDashboardDataPassing)?

@@ -172,7 +172,7 @@ class BusinessViewC: AlysieBaseViewC {
                 paginationData = true
                 // call your API for more data
                 switch  self.currentIndex {
-                case 1:
+                case B2BSearch.Producer.rawValue:
                     callSearchProducerApi()
                 case B2BSearch.Importer.rawValue:
                     callSearchImporterApi()
@@ -617,6 +617,7 @@ class BusinessViewC: AlysieBaseViewC {
         let businessSearchTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessSearchTableCell.identifier()) as! BusinessSearchTableCell
         businessSearchTableCell.searchTappedCallback = {
             self.searchImpDone = true
+            self.indexOfPageToRequest = 1
             if self.currentIndex == B2BSearch.Hub.rawValue{
                 self.callSearchHubApi()
             }else if self.currentIndex == B2BSearch.Importer.rawValue{
@@ -711,6 +712,7 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) -> Void {
         self.view.isUserInteractionEnabled = false
         self.currentIndex = indexPath.item
+        self.indexOfPageToRequest = 1
         switch indexPath.item {
         case 0:
             self.searchType = 3
@@ -854,8 +856,13 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         
         if tableView.cellForRow(at: indexPath) == cell{
             let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-            controller?.userLevel = .other
             let index = indexPath.row - (self.extraCell ?? 0)
+            if kSharedUserDefaults.loggedInUserModal.userId == "\(arrSearchimpotrDataModel[index].userId ?? 0)"{
+                controller?.userLevel = .own
+            }else{
+                controller?.userLevel = .other
+            }
+           
             controller?.userID = arrSearchimpotrDataModel[index].userId
         }
       
@@ -914,7 +921,7 @@ extension BusinessViewC {
         }
         
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.distributer3.rawValue)" + "&hub_id=" + "\(self.selectImpHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.distributer3.rawValue)" + "&hub_id=" + "\(self.selectImpHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -951,7 +958,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.selectProducerHubId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.selectProducerHubId ?? "")" + "&product_type=" + "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -985,7 +992,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.resHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.resHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let dictResponse = dicResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -1016,7 +1023,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.selectExpertHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.selectExpertHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -1049,7 +1056,7 @@ extension BusinessViewC {
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.selectTravelHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.selectTravelHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{

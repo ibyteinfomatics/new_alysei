@@ -1393,7 +1393,12 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             switch indexPath.section {
             case 0:
                 let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                controller?.userLevel = .other
+                //controller?.userLevel = .other
+                if kSharedUserDefaults.loggedInUserModal.userId == "\(self.arraySearchByPeople?[indexPath.row].userId ?? 0)" {
+                    controller?.userLevel = .own
+                }else{
+                    controller?.userLevel = .other
+                }
                 controller?.userID = self.arraySearchByPeople?[indexPath.row].userId
             case 1:
                 return
@@ -1418,7 +1423,12 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
         }
         else if searchType == 1{
             let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-            controller?.userLevel = .other
+           // controller?.userLevel = .other
+            if kSharedUserDefaults.loggedInUserModal.userId == "\(self.arraySearchByPeople?[indexPath.row].userId ?? 0)" {
+                controller?.userLevel = .own
+            }else{
+                controller?.userLevel = .other
+            }
             controller?.userID = self.arraySearchByPeople?[indexPath.row].userId
         }
         else if searchType == 2{

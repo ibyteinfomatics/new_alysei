@@ -166,7 +166,12 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-        controller?.userLevel = .other
+        
+        if kSharedUserDefaults.loggedInUserModal.userId == "\(self.restauUser[indexPath.row].userid)" {
+            controller?.userLevel = .own
+        }else{
+            controller?.userLevel = .other
+        }
         controller?.userID = self.restauUser[indexPath.row].userid
     }
     

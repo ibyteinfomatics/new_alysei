@@ -20,7 +20,7 @@ class HubUserListVC: AlysieBaseViewC {
     
     //var arrImpSearchList:  NewFeedSearchModel?
     var indexOfPageToRequest = 1
-    
+    var lastPageofScreen: Int?
     var selectStateId:String?
     var selectImpHubId: String?
     var selectImpProductId: String?
@@ -361,7 +361,25 @@ class HubUserListVC: AlysieBaseViewC {
             }
         return businessButtonTableCell
     }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > lastPageofScreen ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+            indexOfPageToRequest += 1
+
+            // call your API for more data
+                getUserListFromHubSelctionApi()
+
+            // tell the table view to reload with the new data
+          //  self.tblViewSearchOptions.reloadData()
+            }
+        }
+    }
     private func getBusinessFiltersTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessFiltersTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessFiltersTableCell.identifier()) as! BusinessFiltersTableCell
@@ -413,6 +431,7 @@ class HubUserListVC: AlysieBaseViewC {
 //            if self.currentIndex == B2BSearch.Hub.rawValue{
 //                self.callSearchHubApi()
 //            }else
+            self.indexOfPageToRequest = 1
             self.searchImpDone = true
             if self.currentIndex == B2BSearch.Importer.rawValue{
                 self.callSearchImporterApi()
@@ -443,7 +462,7 @@ class HubUserListVC: AlysieBaseViewC {
     private func getBusinessListTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessListTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessListTableCell.identifier()) as! BusinessListTableCell
-        businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
+            businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
         return businessListTableCell
     }
 
@@ -503,8 +522,15 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-        controller?.userLevel = .other
-        let index = (indexPath.row - (self.extraCell ?? 0))
+//        controller?.userLevel = .other
+//        let index = (indexPath.row - (self.extraCell ?? 0)
+        let index = indexPath.row - (self.extraCell ?? 0)
+        if kSharedUserDefaults.loggedInUserModal.userId == "\(arrSearchimpotrDataModel[index].userId ?? 0)"{
+            controller?.userLevel = .own
+        }else{
+            controller?.userLevel = .other
+        }
+       
         if arrSearchimpotrDataModel[index].userId == nil{
             print("Invalid Cell")
         }else{
@@ -529,14 +555,17 @@ extension HubUserListVC: TappedHubs{
 
 extension HubUserListVC {
     func callSearchImporterApi(){
-        arrSearchimpotrDataModel.removeAll()
+        //arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(self.selectImpProductId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(self.selectImpProductId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                }
                 //self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
                
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
@@ -558,14 +587,18 @@ extension HubUserListVC {
         }
     }
     func callSearchProducerApi(){
-        arrSearchimpotrDataModel.removeAll()
+      //  arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(selectProducerProductType ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(selectProducerProductType ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
+                
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchimpotrDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchimpotrDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                }
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
             }
             //self.collectionViewBusinessCategory.reloadData()
@@ -586,14 +619,17 @@ extension HubUserListVC {
         }
     }
     func callSearchResturntApi(){
-        arrSearchimpotrDataModel.removeAll()
+      //  arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let dictResponse = dicResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 {self.arrSearchDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                }
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
             }
             //self.collectionViewBusinessCategory.reloadData()
@@ -611,14 +647,17 @@ extension HubUserListVC {
     }
     
     func callSearchExpertApi(){
-        arrSearchimpotrDataModel.removeAll()
+       // arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 {self.arrSearchimpotrDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchimpotrDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                }
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
             }
             //self.collectionViewBusinessCategory.reloadData()
@@ -637,14 +676,17 @@ extension HubUserListVC {
     }
     
     func callSearchTravelApi(){
-        arrSearchimpotrDataModel.removeAll()
+      //  arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchimpotrDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchimpotrDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                }
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
             }
             //self.collectionViewBusinessCategory.reloadData()
@@ -661,14 +703,18 @@ extension HubUserListVC {
         }
     }
     func callSearchVoyagerApi(){
-        arrSearchimpotrDataModel.removeAll()
+        //arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&state=" + "\(self.selectStateId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&state=" + "\(self.selectStateId ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                    
+                }
                 //self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
                
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
@@ -685,16 +731,21 @@ extension HubUserListVC {
     }
     //"&role_id="
         func getUserListFromHubSelctionApi(){
-            arrSearchimpotrDataModel.removeAll()
+           // arrSearchimpotrDataModel.removeAll()
             cellCount = 0
-            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetRoleListFromHubSlctn + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(passHubId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errtype, statusCode) in
+            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetRoleListFromHubSlctn + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(passHubId ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errtype, statusCode) in
                 let response = dictResponse as? [String:Any]
     
-                if let data = response?["data"] as? [[String:Any]]{
+                if let outerdata = response?["data"] as? [String:Any]{
+                    self.lastPageofScreen = outerdata["last_page"] as? Int
                    // self.newSearchModel = NewFeedSearchModel.init(with: data)
+                    if let data = outerdata["data"] as? [[String:Any]]{
                     if self.indexOfPageToRequest == 1 { self.arrSearchimpotrDataModel.removeAll() }
                    // self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
-                    self.arrSearchimpotrDataModel = data.map({SubjectData.init(with: $0)})
+                        let arraydata =  data.map({SubjectData.init(with: $0)})
+                   // self.arrSearchimpotrDataModel = data.map({SubjectData.init(with: $0)})
+                        self.arrSearchimpotrDataModel.append(contentsOf: arraydata)
+                }
                 }
                 //self.collectionViewBusinessCategory.reloadData()
                 print("CountImpSearch------------------------\(self.arrSearchimpotrDataModel.count)")

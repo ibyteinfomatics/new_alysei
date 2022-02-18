@@ -55,8 +55,14 @@ extension StoreDescrptnViewController: UITableViewDelegate, UITableViewDataSourc
             cell.selectionStyle = .none
             cell.callBackMoveToProfile = {
                 let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
-                controller?.userLevel = .other
+               // controller?.userLevel = .other
                 controller?.userID = self.storeDetails?.user_id
+                if kSharedUserDefaults.loggedInUserModal.userId == "\(self.storeDetails?.user_id ?? 0)"{
+                    controller?.userLevel = .own
+                }else{
+                    controller?.userLevel = .other
+                }
+               
             }
             cell.callApiCallBack = {
                 self.callStoreDetailApi()

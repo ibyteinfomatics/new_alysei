@@ -362,6 +362,7 @@ class ProfileViewC: AlysieBaseViewC{
                 if check == "" {
                     if self.userLevel == .own {
                         self.menuButton.isHidden = false
+                        self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
                     } else {
                         if self.userID != nil {
@@ -1240,6 +1241,7 @@ class ProfileViewC: AlysieBaseViewC{
                     print("own")
                     self.btnEditProfile.isHidden = false
                     self.btnEditProfile.isUserInteractionEnabled = true
+                   
                 case .other:
                     if self.connectionFlagValue == 3{
                         self.messageButton.isHidden = false
@@ -1840,7 +1842,34 @@ extension ProfileViewC {
                 
                 self.present(alertController, animated: true, completion: nil)
             }else if connectionStatus == 1 {
-                print("Check")
+               // print("Check")
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                                
+                                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                                    self.cancelConnectionRequest()
+                                }
+                                cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                                
+                                var title = "Block"
+                                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                                    title = "Block"
+                                } else {
+                                    title = "UnBlock"
+                                }
+                                
+                                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                                    self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+                                }
+                                blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                                
+                                
+                                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                                cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                                
+                                alertController.addAction(cancelConnectionRequestAction)
+                                alertController.addAction(blockUserAction)
+                                alertController.addAction(cancelAction)
+                                self.present(alertController, animated: true, completion: nil)
             }
             return
         } else if  self.userType == .voyagers && self.visitorUserType == .voyagers{

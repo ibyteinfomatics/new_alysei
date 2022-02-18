@@ -202,8 +202,10 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
+        }else if (self.storeCreated == 1) && (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else{
-            self.btnCreateStore.setTitle("Create your store", for: .normal)
+               self.btnCreateStore.setTitle("Create your store", for: .normal)
             
         }
     }
@@ -487,18 +489,20 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     
     @IBAction func btnGotoStores(_ sender: UIButton){
 
-//        if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
-//            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
-//        }else if self.storeCreated == 0{
-      
+        if (self.isStoreReviewed == 1 || isStoreReviewed == 2) {
+            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        }else if (self.storeCreated == 1) && (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+         } else if self.storeCreated == 1 && self.productCount == 0{
+            _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
+        }else if self.storeCreated == 0{
+            
             animate1View()
-//        }else if self.storeCreated == 1 && self.productCount == 0{
-//            _ = pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
-//        }else if (self.storeCreated == 1 && isStoreReviewed == 0) || (self.storeCreated == 1 && isStoreReviewed == 2){
-//            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
-//        }  else{
-//            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
-//        }
+        }else if (self.storeCreated == 1 && isStoreReviewed == 0) || (self.storeCreated == 1 && isStoreReviewed == 2){
+            _ = pushViewController(withName: MarketPlaceConfirmationVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MarketPlaceConfirmationVC
+        }  else{
+            _ = pushViewController(withName: MyStoreVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? MyStoreVC
+        }
         
     }
 //    @IBAction func viewAllRegion(_ sender: UIButton){
