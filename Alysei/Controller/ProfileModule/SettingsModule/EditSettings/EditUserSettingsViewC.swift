@@ -290,12 +290,17 @@ extension EditUserSettingsViewC{
     case 0:
       self.settingEditViewModel = SettingsEditViewModel(dicResult)
      // kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
+       
+        kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
+        print("kSharedUserDefaults.alyseiReview --------------\(kSharedUserDefaults.alyseiReview )")
       self.tblViewEditUserSettings.reloadData()
     case 1:
         self.btnSave.setImage(UIImage(named: "blue_checkmarked"), for: .normal)
         //showAlert(withMessage: AlertMessage.kProfileUpdated){
         kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
         //self.lblUserName.text = kSharedUserDefaults.loggedInUserModal.displayName
+        kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
+        print("kSharedUserDefaults.alyseiReview --------------\(kSharedUserDefaults.alyseiReview )")
             let roleID = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
             var name = ""
             switch roleID {
@@ -309,6 +314,7 @@ extension EditUserSettingsViewC{
            // }
         self.lblUserName.text = name
         self.lblUserEmail.text = "@" + "\(kSharedUserDefaults.loggedInUserModal.userName ?? "")"
+               
       }
     case 2:
       var arrSelectedFields: [ProductFieldsDataModel] = []

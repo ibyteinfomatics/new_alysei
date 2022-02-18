@@ -21,6 +21,12 @@ class SettingsScreenVC: AlysieBaseViewC {
         print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
         self.viewShadow.drawBottomShadow()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
+        settingCollectionView.reloadData()
+        
+    }
   
     private func getSettingCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
         
@@ -80,6 +86,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
               _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 6:
               _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+            case 8,9:
+                let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+               
+                controller?.strngTitle = StaticArrayData.kSettingPrducrColScreenDict[indexPath.row].name
             case 11:
               _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case (StaticArrayData.kSettingPrducrColScreenDict.count - 1):
@@ -109,6 +119,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
          // _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 9:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 5,6:
+            let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+            controller?.strngTitle = StaticArrayData.kSettingVoyaColScreenDict[indexPath.row].name
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
@@ -139,6 +152,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 8,9:
+            let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+            controller?.strngTitle = StaticArrayData.kSettingRestColScreenDict[indexPath.row].name
         case 11:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingRestColScreenDict.count - 1:
@@ -170,6 +186,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 6:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 8,9:
+            let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+            controller?.strngTitle = StaticArrayData.kSettingRestColScreenDict[indexPath.row].name
         case StaticArrayData.kSettingExpertColScreenDict.count - 2:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingExpertColScreenDict.count - 1:
@@ -198,6 +217,10 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 7,8:
+            let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+            controller?.strngTitle = StaticArrayData.kSettingTravlColScreenDict[indexPath.row].name
+            
         case StaticArrayData.kSettingTravlColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingTravlColScreenDict.count - 2:
@@ -226,6 +249,9 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
           _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 5:
           _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+        case 7,8:
+            let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
+            controller?.strngTitle = StaticArrayData.kSettingImprtrColScreenDict[indexPath.row].name
         case StaticArrayData.kSettingImprtrColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingImprtrColScreenDict.count - 2:
@@ -272,9 +298,7 @@ extension SettingsScreenVC: CHTCollectionViewDelegateWaterfallLayout {
 
 extension SettingsScreenVC{
 override func didUserGetData(from result: Any, type: Int) {
-        
-        
-        
+ 
         let dicResult = kSharedInstance.getDictionary(result)
         let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
         self.signUpViewModel = SignUpViewModel(dicData, roleId: nil)

@@ -28,6 +28,9 @@ class NotificationViewC: AlysieBaseViewC{
     //self.tblViewNotification.tableFooterView = UIView()
       self.blankview.isHidden = true
     receiveUsers()
+      if self.ResentUser?.count ?? 0 <= 0 {
+          self.blankview.isHidden = false
+      }
     
   }
     
@@ -36,9 +39,7 @@ class NotificationViewC: AlysieBaseViewC{
         kChatharedInstance.receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
             self.ResentUser?.removeAll()
             self.ResentUser = users
-            if self.ResentUser?.count ?? 0 <= 0 {
-                self.blankview.isHidden = false
-            }
+           
             self.tblViewNotification.reloadData()
         }
     }

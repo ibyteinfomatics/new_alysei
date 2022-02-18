@@ -21,7 +21,7 @@ class NotificationList: AlysieBaseViewC {
         
         blankview.isHidden = true
         postRequestToGetNotification(indexOfPageToRequest)
-        
+       
         // Do any additional setup after loading the view.
     }
     
@@ -38,6 +38,7 @@ class NotificationList: AlysieBaseViewC {
     
     @IBAction func btnClearAllNotification(_ sender: UIButton){
         postRequestClearNotification()
+        
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // calculates where the user is in the y-axis
@@ -129,6 +130,7 @@ class NotificationList: AlysieBaseViewC {
             case 200:
                 self.notifiacationArray.removeAll()
                 self.tblViewNotification.reloadData()
+                    self.blankview.isHidden = false
             default:
                 print("Invalid")
             }
@@ -150,10 +152,11 @@ class NotificationList: AlysieBaseViewC {
             for i in (0..<(self.notimodel?.data?.data?.count ?? 0)){
                 self.notifiacationArray.append(self.notimodel?.data?.data?[i] ?? NotiDatum(with: [:]))
             }
-          self.tblViewNotification.isHidden = false
-            
+        
             if self.notifiacationArray.count <= 0 {
                 self.blankview.isHidden = false
+            }else{
+                self.tblViewNotification.isHidden = false
             }
             
           self.tblViewNotification.reloadData()

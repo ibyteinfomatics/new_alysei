@@ -24,6 +24,7 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
     @IBOutlet weak var labelHeading4Leading: NSLayoutConstraint!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var btnBackWidth: NSLayoutConstraint!
+    @IBOutlet weak var lblDesc: UILabel!
     @IBOutlet weak var activeInactiveView: UIView!
     
     
@@ -144,6 +145,21 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
     /// func for configure UI
     func configureUI() {
         self.viewHeader.addShadow()
+        if MobileDeviceType.IS_IPHONE_6{
+            labelHeading.font = UIFont(name: "Helvetica Neue Bold", size: 40)
+            labelHeading1.font = UIFont(name: "Helvetica Neue Bold", size: 40)
+            labelHeading2.font = UIFont(name: "Helvetica Neue Bold", size: 40)
+            labelHeading3.font = UIFont(name: "Helvetica Neue Bold", size: 40)
+            labelHeading4.font = UIFont(name: "Helvetica Neue Bold", size: 40)
+            lblDesc.font = UIFont(name: "Helvetica Neue", size: 15)
+        }else{
+            labelHeading.font = UIFont(name: "Helvetica Neue Bold", size: 45)
+            labelHeading1.font = UIFont(name: "Helvetica Neue Bold", size: 45)
+            labelHeading2.font = UIFont(name: "Helvetica Neue Bold", size: 45)
+            labelHeading3.font = UIFont(name: "Helvetica Neue Bold", size: 45)
+            labelHeading4.font = UIFont(name: "Helvetica Neue Bold", size: 45)
+            lblDesc.font = UIFont(name: "Helvetica Neue", size: 24)
+        }
         self.activeInactiveView.isHidden = false
         self.activeCountryCV.hascome = .showCountry
         self.activeCountryCV.selectDelegate = self

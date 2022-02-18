@@ -578,6 +578,7 @@ extension PostDescTableViewCell {
         }
     
 }
+import Zoomy
 
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
     @IBOutlet weak var imagePost: UIImageView!
@@ -599,11 +600,9 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
     var fullScreenImage: UIImageView!
 
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
-
+       
         self.originalImageCenter = imagePost.center
         self.originalFrame = imagePost.frame
 
@@ -715,5 +714,6 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         }
     }
 }
+
 
 

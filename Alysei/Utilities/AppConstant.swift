@@ -758,39 +758,39 @@ struct StaticArrayData {
     static let kSettingScreenDict = [(image: "icons8_settings", name: "Settings"),
                                      (image: "icons8_business", name: "Company"),
                                      (image: "icons8_security_lock", name: "Privacy"),
-                                     (image: "icons8_privacy", name: "Password"),
+                                     (image: "passwordSetting", name: "Password"),
                                      (image: "icons8_unavailable", name: "Blocking"),
                                      (image: "membership_icon", name: "Membership"),
                                      (image: "billing_icon", name: "Billing"),
-                                     (image: "icons8_secure_cloud", name: "Your Data")]
+                                     (image: "yourData", name: "Your Data")]
     
     static let kSettingPrducrColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                               (image: "icons8_shop", name: "Marketplace"),
                                               (image: "icons8_business", name: "Company"),
                                               (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "icons8_privacy", name: "Password"),
+                                              (image: "passwordSetting", name: "Password"),
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
                                               (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                               (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "icons8_question_mark-1", name: "FAQ"),
-                                              (image: "icons8_secure_cloud", name: "Your Data"),
+                                              (image: "Faq", name: "FAQ"),
+                                              (image: "yourData", name: "Your Data"),
                                               (image: "icons8_exit", name: "Logout"),
     ]
     
     static let kSettingImprtrColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                               (image: "icons8_shop", name: "Marketplace"),
                                               (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "icons8_privacy", name: "Password"),
+                                              (image: "passwordSetting", name: "Password"),
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
                                               (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                               (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "icons8_question_mark-1", name: "FAQ"),
+                                              (image: "Faq", name: "FAQ"),
                                               (image: "icons8_exit", name: "Logout"),
-                                              (image: "icons8_secure_cloud", name: "Your Data")
+                                              (image: "yourData", name: "Your Data")
                                              
                                               
     ]
@@ -799,14 +799,14 @@ struct StaticArrayData {
                                             (image: "icons8_shop", name: "Marketplace"),
                                             (image: "calendar (2)", name: "Events"),
                                             (image: "icons8_security_lock", name: "Privacy"),
-                                            (image: "icons8_privacy", name: "Password"),
+                                            (image: "passwordSetting", name: "Password"),
                                             (image: "icons8_unavailable", name: "Blocking"),
                                             (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
                                             (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                             (image: "icons8_data_protection", name: "Privacy Policy"),
-                                            (image: "icons8_question_mark-1", name: "FAQ"),
-                                            (image: "icons8_secure_cloud", name: "Your Data"),
+                                            (image: "Faq", name: "FAQ"),
+                                            (image: "yourData", name: "Your Data"),
                                             (image: "icons8_exit", name: "Logout")
                                             
                                             
@@ -815,16 +815,16 @@ struct StaticArrayData {
     static let kSettingVoyaColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                             
                                             (image: "icons8_security_lock", name: "Privacy"),
-                                            (image: "icons8_privacy", name: "Password"),
+                                            (image: "passwordSetting", name: "Password"),
                                             (image: "icons8_unavailable", name: "Blocking"),
                                            // (image: "icons8_debit_card_1", name: "Membership"),
                                             (image: "icons8_purchase_order", name: "Billing"),
                                             (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                             (image: "icons8_data_protection", name: "Privacy Policy"),
-                                            (image: "icons8_question_mark-1", name: "FAQ"),
+                                            (image: "Faq", name: "FAQ"),
                                             
                                             (image: "icons8_exit", name: "Logout"),
-                                            (image: "icons8_secure_cloud", name: "Your Data")
+                                            (image: "yourData", name: "Your Data")
                                             
                                             
                                             
@@ -833,16 +833,16 @@ struct StaticArrayData {
     static let kSettingTravlColScreenDict = [(image: "icons8_settings", name: "Settings"),
                                              (image: "icons8_shop", name: "Marketplace"),
                                              (image: "icons8_security_lock", name: "Privacy"),
-                                             (image: "icons8_privacy", name: "Password"),
+                                             (image: "passwordSetting", name: "Password"),
                                              (image: "icons8_unavailable", name: "Blocking"),
                                              (image: "icons8_debit_card_1", name: "Membership"),
                                              (image: "icons8_purchase_order", name: "Billing"),
                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                              (image: "icons8_data_protection", name: "Privacy Policy"),
-                                             (image: "icons8_question_mark-1", name: "FAQ"),
+                                             (image: "Faq", name: "FAQ"),
                                             
                                              (image: "icons8_exit", name: "Logout"),
-                                             (image: "icons8_secure_cloud", name: "Your Data")
+                                             (image: "yourData", name: "Your Data")
                                              
                                              
     ]
@@ -851,15 +851,14 @@ struct StaticArrayData {
                                               (image: "icons8_shop", name: "Marketplace"),
                                               (image: "Featured", name: "Featured"),
                                               (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "icons8_privacy", name: "Password"),
+                                              (image: "passwordSetting", name: "Password"),
                                               (image: "icons8_unavailable", name: "Blocking"),
                                               (image: "icons8_debit_card_1", name: "Membership"),
                                               (image: "icons8_purchase_order", name: "Billing"),
                                               (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
                                               (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "icons8_question_mark-1", name: "FAQ"),
-                                             
-                                              (image: "icons8_secure_cloud", name: "Your Data"),
+                                              (image: "Faq", name: "FAQ"),
+                                              (image: "yourData", name: "Your Data"),
                                               (image: "icons8_exit", name: "Logout")
                                               
     ]

@@ -108,11 +108,12 @@ class HomeViewC: AlysieBaseViewC {
         if role == 10 {
             postRequestToGetProgressPrfile()
         } else {
-            if Int.getInt(data["alysei_review"]) == 0 {
+           // if Int.getInt(data["alysei_review"]) == 0 {
+            if Int.getInt(data["alysei_review"]) == 0  {
                 postRequestToGetProgress()
                 
                
-            } else if Int.getInt(data["alysei_review"]) == 1{
+            } else if  Int.getInt(data["alysei_review"]) == 1 {
                 postRequestToGetProgressPrfile()
                 
             }
@@ -276,16 +277,12 @@ class HomeViewC: AlysieBaseViewC {
   
   @IBAction func tapNotification(_ sender: UIButton) {
     
-   // _ = pushViewController(withName: NotificationViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-    if Int.getInt(kSharedUserDefaults.loggedInUserModal.alysei_review) == 0 {
+    //if Int.getInt(kSharedUserDefaults.loggedInUserModal.alysei_review) == 0 {
         
         
-    } else {
+    //} else {
         _ = pushViewController(withName: NotificationViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-    }
-    
-   // _ = pushViewController(withName: ConversationViewController.id(), fromStoryboard: StoryBoardConstants.kChat)
-    
+  //  }
     
   
   }

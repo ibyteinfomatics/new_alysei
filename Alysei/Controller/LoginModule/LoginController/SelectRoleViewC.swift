@@ -72,6 +72,7 @@ extension SelectRoleViewC : UITableViewDelegate, UITableViewDataSource{
             roleCollectionCell.containerBottomConstraint.constant = 0
            
         }
+        
         return roleCollectionCell
     }
     
@@ -139,6 +140,11 @@ class RoleTableVieCell: UITableViewCell{
         super.awakeFromNib()
         imgRole.layer.cornerRadius = self.imgRole.layer.frame.height / 2
         containerView.layer.cornerRadius = 10
+        if MobileDeviceType.IS_IPHONE_6{
+            lblRoleDesc.font = UIFont(name: "Arial", size: 14)
+        }else{
+            lblRoleDesc.font = UIFont(name: "Arial", size: 13.6)
+        }
     }
     
     public func configureData(withGetRoleDataModel model: GetRoleDataModel,_ indexPath: Int) -> Void {

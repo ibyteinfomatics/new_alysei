@@ -48,6 +48,7 @@ class PostsViewController: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tabBarController?.selectedIndex = 0
 //        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false

@@ -13,7 +13,7 @@ import GooglePlaces
 import IQKeyboardManagerSwift
 import FirebaseMessaging
 import Firebase
-
+import Zoomy
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
 

@@ -337,14 +337,20 @@ class ProfileViewC: AlysieBaseViewC{
         if fromRecipe == ""{
         self.tabBarController?.tabBar.isHidden = false
         }
+       // if userLevel == .own {
+            self.postRequestToGetProgress()
+       // }
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
             
+//            if Int.getInt(data["alysei_review"]) == 0 {
+//                blankdataView.isHidden = false
+//            } else if Int.getInt(data["alysei_review"]) == 1{
             if Int.getInt(data["alysei_review"]) == 0 {
                 blankdataView.isHidden = false
-            } else if Int.getInt(data["alysei_review"]) == 1{
+            } else if Int.getInt(data["alysei_review"]) == 1 {
                 
                 blankdataView.isHidden = true
                // self.postRequestToGetFields()
