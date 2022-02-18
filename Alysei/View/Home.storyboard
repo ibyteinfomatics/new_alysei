@@ -5369,7 +5369,7 @@ any other devices.</string>
             <objects>
                 <viewController id="qf7-tb-JA1" customClass="SharePostViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rfc-2V-LSS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sic-er-c9K">
@@ -5422,7 +5422,7 @@ any other devices.</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1J-41-bI0">
-                                <rect key="frame" x="0.0" y="69" width="375" height="578"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="465"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkQ-bx-GMO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
@@ -7464,14 +7464,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7512,7 +7512,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7534,7 +7534,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7572,7 +7572,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -18675,7 +18675,7 @@ You will be notified for any membership status update.</string>
                                     <constraint firstItem="HZH-sq-rbG" firstAttribute="centerX" secondItem="zOo-ZI-mMn" secondAttribute="centerX" id="loX-lr-QDv"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M4J-Mr-XHG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M4J-Mr-XHG">
                                 <rect key="frame" x="0.0" y="60" width="375" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -22075,9 +22075,9 @@ You will be notified for any membership status update.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SKS-32-Kwo"/>
+        <segue reference="cuV-3K-C7q"/>
         <segue reference="pzj-Bp-ciG"/>
-        <segue reference="Dk5-gh-y0o"/>
+        <segue reference="z87-Y7-L4C"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ellipse 22" width="128" height="128"/>
@@ -23359,7 +23359,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>

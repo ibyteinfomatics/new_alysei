@@ -113,6 +113,7 @@ struct Parameters {
     static let body = "body"
     static let core_comment_id = "core_comment_id"
     static let created_at = "created_at"
+    static let comment_like_count = "comment_like_count"
     static let poster = "poster"
     
     static let attachment_type = "attachment_type"

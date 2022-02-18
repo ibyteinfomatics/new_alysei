@@ -694,6 +694,7 @@ class CommentClass {
     
     var body:String?
     var core_comment_id :Int?
+    var comment_like_count :Int?
     var created_at : String?
     var data : PosterClass?
     var reply = [ReplyDetailsClass]()
@@ -705,6 +706,7 @@ class CommentClass {
         self.body           = String.getString(messageData?[Parameters.body])
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
+        self.comment_like_count = Int.getInt(messageData?[Parameters.comment_like_count])
             
         if let poster = messageData?["poster"]  as? [String:Any]{
             self.data =  PosterClass.init(with: poster)
@@ -733,6 +735,7 @@ class CommentClass {
             Parameters.body                : objects?.body  ?? "",
             Parameters.core_comment_id              : objects?.core_comment_id ?? 0,
             Parameters.created_at                   : objects?.created_at ?? "",
+            Parameters.comment_like_count                   : objects?.comment_like_count ?? 0,
            
         ]
         return params
@@ -744,6 +747,7 @@ class ReplyDetailsClass {
     
     var body:String?
     var core_comment_id :Int?
+    var comment_like_count :Int?
     var created_at : String?
     var data : PosterClass?
     
@@ -753,6 +757,7 @@ class ReplyDetailsClass {
         self.body           = String.getString(messageData?[Parameters.body])
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
+        self.comment_like_count = Int.getInt(messageData?[Parameters.comment_like_count])
             
         if let poster = messageData?["poster"]  as? [String:Any]{
             self.data =  PosterClass.init(with: poster)

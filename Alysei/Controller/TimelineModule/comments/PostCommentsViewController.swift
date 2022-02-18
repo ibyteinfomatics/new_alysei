@@ -281,6 +281,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.body = self.commentTextfield.text
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
+                comment.comment_like_count = 0
                 
                 let poster = PosterClass()
                 
@@ -355,6 +356,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.body = self.commentTextfield.text
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
+                comment.comment_like_count = 0
                 
                 let poster = PosterClass()
                 
@@ -552,17 +554,18 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         if self.commentmessages?[indexPath.row].reply.count ?? 0 > 0 {
-            //cell.viewReplyButtonconstraint.constant = 20
+            cell.viewReplyButtonconstraint.constant = 20
             cell.viewReplyButton.isHidden = false
             cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0) Reply", for: .normal)
         } else {
             
-            //cell.viewReplyButtonconstraint.constant = 0
+            cell.viewReplyButtonconstraint.constant = 0
             cell.viewReplyButton.isHidden = true
         }
         
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
         
+        cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"

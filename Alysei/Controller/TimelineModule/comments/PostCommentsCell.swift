@@ -18,6 +18,8 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBOutlet var view: UIView!
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var likecount: UILabel!
+    @IBOutlet var likeimage: UIImageView!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var viewReplyButton: UIButton!
     @IBOutlet var replyBtn: UIButton!
@@ -158,15 +160,16 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.tableViewconstraint.constant = 0
-        //cell.viewReplyButtonconstraint.constant = 0
+        cell.viewReplyButtonconstraint.constant = 0
         cell.viewReplyButton.isHidden = true
         
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
         
+        cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"
-        cell.userImageView.setImage(withString: imageDomain+"/"+String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
+        cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
     }
     
