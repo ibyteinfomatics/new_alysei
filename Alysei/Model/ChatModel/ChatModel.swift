@@ -747,6 +747,7 @@ class ReplyDetailsClass {
     
     var body:String?
     var core_comment_id :Int?
+    var parent_core_comment_id :String?
     var comment_like_count :Int?
     var created_at : String?
     var data : PosterClass?
@@ -764,6 +765,12 @@ class ReplyDetailsClass {
         }
         
         print("body--",body ?? "")
+        
+    }
+    
+    init(commentId: String) {
+        
+        self.parent_core_comment_id = commentId
         
     }
     

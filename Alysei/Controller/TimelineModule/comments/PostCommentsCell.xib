@@ -175,6 +175,7 @@ Label</string>
                 <outlet property="likecount" destination="Hrf-s5-Rcr" id="gUu-0c-ckQ"/>
                 <outlet property="likeimage" destination="TyS-m2-9yq" id="z1N-2J-tZi"/>
                 <outlet property="replyBtn" destination="CXb-0K-UIE" id="X2S-VP-YJR"/>
+                <outlet property="replyButtonconstraint" destination="fg4-Xw-IAB" id="jOq-OQ-aJR"/>
                 <outlet property="tableView" destination="jom-BF-UP6" id="MrW-7n-W1q"/>
                 <outlet property="tableViewconstraint" destination="2nV-nF-bri" id="Rx1-VQ-FE8"/>
                 <outlet property="threedotBtn" destination="76t-lF-kmx" id="C21-bD-3Lf"/>

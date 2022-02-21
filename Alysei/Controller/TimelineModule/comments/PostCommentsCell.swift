@@ -27,6 +27,7 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewconstraint: NSLayoutConstraint!
     @IBOutlet var viewReplyButtonconstraint: NSLayoutConstraint!
+    @IBOutlet var replyButtonconstraint: NSLayoutConstraint!
    
 
     var commentReplyDelegate: CommnentReplyProtocol!
@@ -43,14 +44,19 @@ class SelfPostCommentsCell: UITableViewCell {
         super.awakeFromNib()
         view.layer.cornerRadius = 5
         tableView.isHidden = false
-        threedotBtn.isHidden = true
+        //threedotBtn.isHidden = true
         self.tableView.register(UINib(nibName: "PostCommentsCell", bundle: nil), forCellReuseIdentifier: "cell")
         self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2.0
         loadReplytable()
     }
     
-    func setReply(_ commentmessages: [ReplyDetailsClass]) {
+    func setReply(_ commentmessages: [ReplyDetailsClass], commentId : String) {
+        ReplyDetailsClass.init(commentId: commentId)
+        
+        print("test ",ReplyDetailsClass.init(commentId: commentId))
         self.commentmessages = commentmessages
+       
+        
         self.tableViewconstraint.constant = CGFloat((140 * (self.commentmessages?.count ?? 0)))
         tableView.reloadData()
     }
@@ -77,6 +83,32 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBAction func viewreplyButtonTapped(_ sender: UIButton) {
         //self.commentReplyDelegate.addReplyToComment(self.viewReplyButton.tag)
         btnViewReplyCallback?(sender.tag)
+    }
+    
+    func showAlert(){
+        
+        
+        let actionSheet = UIAlertController(style: .actionSheet)
+        
+        let edit = UIAlertAction(title: "Edit", style: .default) { action in
+        }
+        
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+            
+            
+            
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+        }
+        
+        //actionSheet.addAction(edit)
+        actionSheet.addAction(delete)
+        actionSheet.addAction(cancelAction)
+        
+        self.parentViewController?.parent?.present(actionSheet, animated: true, completion: nil)
+        
     }
     
     func getcurrentdateWithTime(datetime :String?) -> String {
@@ -154,7 +186,7 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
         
         return commentmessages?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SelfPostCommentsCell else {
             return UITableViewCell()
@@ -162,7 +194,8 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
         cell.tableViewconstraint.constant = 0
         cell.viewReplyButtonconstraint.constant = 0
         cell.viewReplyButton.isHidden = true
-        
+        cell.replyButtonconstraint.constant = 0
+        cell.replyBtn.isHidden = true
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
         
         cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
@@ -170,6 +203,19 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"
         cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
+        
+        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        if self.commentmessages?[indexPath.row].data?.user_id == selfID {
+            cell.threedotBtn.isHidden = false
+        } else {
+            cell.threedotBtn.isHidden = true
+        }
+        
+        cell.btnThreeDotCallback = {tag in
+            print("kjsdfh ",self.commentmessages?[indexPath.row].parent_core_comment_id)
+            self.showAlert()
+        }
+        
         return cell
     }
     

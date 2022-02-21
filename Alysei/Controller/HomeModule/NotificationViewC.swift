@@ -28,9 +28,7 @@ class NotificationViewC: AlysieBaseViewC{
     //self.tblViewNotification.tableFooterView = UIView()
       self.blankview.isHidden = true
     receiveUsers()
-      if self.ResentUser?.count ?? 0 <= 0 {
-          self.blankview.isHidden = false
-      }
+      
     
   }
     
@@ -41,6 +39,9 @@ class NotificationViewC: AlysieBaseViewC{
             self.ResentUser = users
            
             self.tblViewNotification.reloadData()
+            if self.ResentUser?.count ?? 0 <= 0 {
+                self.blankview.isHidden = false
+            }
         }
     }
     
