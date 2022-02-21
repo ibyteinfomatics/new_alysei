@@ -284,6 +284,9 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                             controller?.userLevel = .other
                             controller?.userID = data.subjectId?.userId ?? 0
                         }
+                        if controller?.userLevel == .own{
+                        self.navigationController?.popViewController(animated: true)
+                        }
                         
                     }
                     cell.sharedProfileCallback = {
@@ -347,6 +350,9 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     else{
                         controller?.userLevel = .other
                         controller?.userID = data.subjectId?.userId ?? 0
+                    }
+                    if controller?.userLevel == .own{
+                    self.navigationController?.popViewController(animated: true)
                     }
                     
                 }

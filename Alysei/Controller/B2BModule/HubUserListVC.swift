@@ -536,7 +536,9 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
         }else{
         controller?.userID = arrSearchimpotrDataModel[index].userId
         }
-        
+        if controller?.userLevel == .own{
+        self.navigationController?.popViewController(animated: true)
+        }
         
     }
     

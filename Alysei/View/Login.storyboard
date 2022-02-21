@@ -39,9 +39,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="activity_language_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-cM-x6y">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Lang_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-cM-x6y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4as-3P-E2d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.32525510204081631" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-qg-fjg">
                                 <rect key="frame" x="120" y="156" width="135" height="65"/>
                                 <constraints>
@@ -99,6 +103,7 @@
                             <constraint firstItem="f0s-GW-RvH" firstAttribute="leading" secondItem="skB-63-XIs" secondAttribute="leading" constant="95" id="7I6-9c-1NC"/>
                             <constraint firstItem="skB-63-XIs" firstAttribute="trailing" secondItem="Lc3-iD-11N" secondAttribute="trailing" constant="10" id="8S5-lY-PON"/>
                             <constraint firstItem="bRu-Ha-HD2" firstAttribute="top" secondItem="f0s-GW-RvH" secondAttribute="bottom" constant="30" id="9B8-uS-K4C"/>
+                            <constraint firstItem="4as-3P-E2d" firstAttribute="trailing" secondItem="VBb-cM-x6y" secondAttribute="trailing" id="A5J-pA-go2"/>
                             <constraint firstItem="Lc3-iD-11N" firstAttribute="centerX" secondItem="VBb-cM-x6y" secondAttribute="centerX" id="B0I-TW-h21"/>
                             <constraint firstItem="VBb-cM-x6y" firstAttribute="leading" secondItem="skB-63-XIs" secondAttribute="leading" id="Ckg-CR-Pkr"/>
                             <constraint firstItem="bRu-Ha-HD2" firstAttribute="width" secondItem="f0s-GW-RvH" secondAttribute="width" id="ObX-T5-zRc"/>
@@ -107,9 +112,12 @@
                             <constraint firstItem="bRu-Ha-HD2" firstAttribute="height" secondItem="f0s-GW-RvH" secondAttribute="height" id="YRf-1x-WSw"/>
                             <constraint firstItem="Lc3-iD-11N" firstAttribute="leading" secondItem="skB-63-XIs" secondAttribute="leading" constant="10" id="cht-he-CaX"/>
                             <constraint firstAttribute="bottom" secondItem="VBb-cM-x6y" secondAttribute="bottom" id="i7K-jU-WCV"/>
+                            <constraint firstItem="4as-3P-E2d" firstAttribute="top" secondItem="VBb-cM-x6y" secondAttribute="top" id="lHK-fu-tZR"/>
+                            <constraint firstItem="4as-3P-E2d" firstAttribute="leading" secondItem="VBb-cM-x6y" secondAttribute="leading" id="p7j-pX-ret"/>
                             <constraint firstItem="Xek-qg-fjg" firstAttribute="centerX" secondItem="2hQ-5k-tn3" secondAttribute="centerX" id="paT-Sw-SZ8"/>
                             <constraint firstItem="VBb-cM-x6y" firstAttribute="top" secondItem="2hQ-5k-tn3" secondAttribute="top" id="r48-Fi-IJn"/>
                             <constraint firstItem="bRu-Ha-HD2" firstAttribute="centerX" secondItem="f0s-GW-RvH" secondAttribute="centerX" id="v0w-8O-zCP"/>
+                            <constraint firstItem="4as-3P-E2d" firstAttribute="bottom" secondItem="VBb-cM-x6y" secondAttribute="bottom" id="wy9-5v-vu0"/>
                             <constraint firstItem="skB-63-XIs" firstAttribute="trailing" secondItem="VBb-cM-x6y" secondAttribute="trailing" id="xSm-FA-L8G"/>
                         </constraints>
                     </view>
@@ -3623,6 +3631,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Lang_bg" width="256" height="576"/>
         <image name="MapCircle" width="376" height="812"/>
         <image name="Walkthrough1x" width="376" height="812"/>
         <image name="activity_language_bg" width="376" height="812"/>

@@ -185,7 +185,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
                     return
                     
                 }
-                guard uploadImageArray.count != 0 else{
+                if uploadImageArray.count == 0 || imagesFromSource.count == 0 {
                     showAlert(withMessage: "Please upload store images.")
                     return 
                     

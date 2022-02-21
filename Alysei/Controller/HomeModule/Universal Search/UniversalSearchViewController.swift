@@ -1400,6 +1400,9 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     controller?.userLevel = .other
                 }
                 controller?.userID = self.arraySearchByPeople?[indexPath.row].userId
+                if controller?.userLevel == .own{
+                self.navigationController?.popViewController(animated: true)
+                }
             case 1:
                 return
             case 2:
@@ -1430,6 +1433,9 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 controller?.userLevel = .other
             }
             controller?.userID = self.arraySearchByPeople?[indexPath.row].userId
+            if controller?.userLevel == .own{
+            self.navigationController?.popViewController(animated: true)
+            }
         }
         else if searchType == 2{
             return

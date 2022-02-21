@@ -173,6 +173,9 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
             controller?.userLevel = .other
         }
         controller?.userID = self.restauUser[indexPath.row].userid
+        if controller?.userLevel == .own{
+        self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }

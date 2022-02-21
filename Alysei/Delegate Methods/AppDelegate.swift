@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     //MARK: - Properties -
     
     var window: UIWindow?
-    var frequencyArr = [2,2,4,3,4,1,1,6,1,4,2]
+   
     var checkDict: [String:Any]?
     
     //var locationManager: CLLocationManager!
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       // getFrequency(frequencyArr)
+       
         IQKeyboardManager.shared.enable = true
         self.setInitialViewController()
         self.setDefaultProgressHud()
@@ -58,13 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
     
-//    func getFrequency(_ array: [Int]){
-//        for i in 0..<array.count{
-//            checkDict?. = array[i]
-//            checkDict?.values = 0
-//
-//        }
-//    }
     //    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]) -> Bool {
     //        print(url)
     //        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)

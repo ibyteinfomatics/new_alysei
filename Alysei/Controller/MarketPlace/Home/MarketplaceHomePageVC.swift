@@ -303,7 +303,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.vwwWalkContainer2.isHidden = true
         walk1ViewTitle.text = "Start promoting your products"
         walk1ViewDesc.text = "Here is some tips to help you promote with confidence"
-        walk1SubTitle.text = "Post in english"
+        walk1SubTitle.text = "Post in English"
         walk1SubDesc.text = "Write in English language to create your store and list your products"
         walk1DescImage.image = UIImage(named: "icons8_pencil_white")
         UIView.animate(withDuration: 0.5) {
@@ -397,7 +397,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you are listing"
         
         walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Offer a fare price"
+        walkSubView2Title.text = "Offer a fair price"
         walkSubView2SubTitle.text = "Make sure you are offering prices appropriate to a competitive market like the US"
         
         walkSubView3Img.image = UIImage(named: "icons8_rocket")
@@ -478,6 +478,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             }else{
                 self.walkView1.isHidden = true
                 nextWalkCount = 0
+                //self.walknextBtn.setTitle("Next", for: .normal)
                 self.headerView.isUserInteractionEnabled = true
                 self.tableView.isUserInteractionEnabled = true
                 self.tableView.alpha = 1

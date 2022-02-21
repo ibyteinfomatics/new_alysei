@@ -77,7 +77,7 @@ class LoginAccountViewC: AlysieBaseViewC{
 
     //TODO:- confirmation pending
     // check if internal webview can be embeded instead of Safari.
-    guard let url = URL(string: "https://social.alysei.com/terms") else {return}
+    guard let url = URL(string: "https://alyseiapi.ibyteworkshop.com/public/terms") else {return}
     UIApplication.shared.open(url)
   }
   

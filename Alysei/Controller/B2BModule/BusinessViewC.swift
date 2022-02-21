@@ -855,15 +855,20 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.cellForRow(at: indexPath) as? BusinessListTableCell
         
         if tableView.cellForRow(at: indexPath) == cell{
-            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+//            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+            guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewC") as? ProfileViewC else{return}
             let index = indexPath.row - (self.extraCell ?? 0)
             if kSharedUserDefaults.loggedInUserModal.userId == "\(arrSearchimpotrDataModel[index].userId ?? 0)"{
-                controller?.userLevel = .own
+                controller.userLevel = .own
             }else{
-                controller?.userLevel = .other
+                controller.userLevel = .other
             }
            
-            controller?.userID = arrSearchimpotrDataModel[index].userId
+            controller.userID = arrSearchimpotrDataModel[index].userId
+            self.navigationController?.pushViewController(controller, animated: true)
+            if controller.userLevel == .own{
+            self.navigationController?.popViewController(animated: true)
+            }
         }
       
     }

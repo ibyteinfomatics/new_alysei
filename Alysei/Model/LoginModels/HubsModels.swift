@@ -98,11 +98,13 @@ class CountryHubs {
     var image: FlagId?
     var state: CountryHubs?
     var radius:Int?
+    var is_checked: Bool?
     
     init(data:[String:Any]?) {
         self.id = String.getString(data?["id"])
         //self.state_name = String.getString(data?["state_name"])
         self.name = String.getString(data?["name"])
+        self.is_checked = Bool.getBool(data?["is_checked"])
         self.country_code = String.getString(data?["country_code"])
         self.country_id = String.getString(data?["country_id"])
         self.iso2 = String.getString(data?["subregion"])
@@ -144,6 +146,7 @@ class CountryHubs {
         self.country_id = String.getString(data?["country_id"])
        // self.state_name = String.getString(data?["state_name"])
         self.iso2 = String.getString(data?["subregion"])
+        self.is_checked = Bool.getBool(data?["is_checked"])
         self.type = .hubs
         self.attachment_url = String.getString(data?["attachment_url"])
         self.isSelected =  true
@@ -162,6 +165,7 @@ class CountryHubs {
         self.country_code = String.getString(data?["country_code"])
         self.country_id = String.getString(data?["country_id"])
         self.iso2 = String.getString(data?["subregion"])
+        self.is_checked = Bool.getBool(data?["is_checked"])
         self.type = .hubs
         self.attachment_url = String.getString(data?["attachment_url"])
         self.isSelected = Int.getInt(data?["is_selected"]) == 0 ? false: true
