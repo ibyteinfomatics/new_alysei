@@ -801,6 +801,12 @@ class Chat_hepler {
         
     }
     
+    func deleteParticularComment(post_id: String,comment_id: String) {
+        
+        postReference.child(post_id).child("comment").child(comment_id).removeValue()
+       
+    }
+    
     
     //MARK:- Func For Receive Message for One To One Chat
     func receivce_Comment(postId :String , message:@escaping (_ result: [CommentClass]?) -> ()) -> Void {

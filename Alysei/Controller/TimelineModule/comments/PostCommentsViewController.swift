@@ -504,9 +504,9 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         
         let data = self.commentmessages?[indexPath.row]
         if data?.isSelected == true {
-            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [])
+            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], commentId: String.getString(self.commentmessages?[indexPath.row].core_comment_id))
         } else {
-            cell.setReply([])
+            cell.setReply([], commentId: "")
         }
         //cell.replyBtn.tag = indexPath.row
         cell.btnReplyCallback = {tag in
@@ -520,14 +520,22 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             
             if data?.isSelected == true {
                 data?.isSelected = false
-                cell.setReply([])
+                cell.setReply([], commentId: "")
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             } else {
                 
                 data?.isSelected = true
-                cell.setReply(self.commentmessages?[indexPath.row].reply ?? [])
+                cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], commentId: String.getString(self.commentmessages?[indexPath.row].core_comment_id))
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             }
+        }
+        
+        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        
+        if self.commentmessages?[indexPath.row].data?.user_id == selfID {
+            cell.threedotBtn.isHidden = false
+        } else {
+            cell.threedotBtn.isHidden = true
         }
         
         cell.btnThreeDotCallback = {tag in
@@ -538,13 +546,19 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             }
             
             let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+                
+                let postId = String.getString(self.postid)
+                let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
+                
+                kChatharedInstance.deleteParticularComment(post_id: postId, comment_id: commentId)
+                
             }
 
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
 
             }
             
-            actionSheet.addAction(edit)
+            //actionSheet.addAction(edit)
             actionSheet.addAction(delete)
             actionSheet.addAction(cancelAction)
             
