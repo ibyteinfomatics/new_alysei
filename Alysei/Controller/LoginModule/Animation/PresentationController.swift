@@ -13,8 +13,10 @@ class PresentationController: UIPresentationController {
 
   let blurEffectView: UIVisualEffectView!
   var tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer()
+    var checkFromVC: FromVC?
   
-  override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+     init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?,fromVC: FromVC?) {
+        self.checkFromVC = fromVC
     let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
       blurEffectView = UIVisualEffectView(effect: blurEffect)
       super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -28,7 +30,11 @@ class PresentationController: UIPresentationController {
 //      CGRect(origin: CGPoint(x: 0, y: self.containerView!.frame.height * 0.59),
 //             size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height *
 //              0.42))
-    CGRect(x: 0, y: self.containerView!.bounds.maxY - 380, width: self.containerView!.frame.width, height: 380)
+      if checkFromVC == .Language{
+       return   CGRect(x: 0, y: self.containerView!.bounds.maxY - 250, width: self.containerView!.frame.width, height: 250)
+      }else{
+    return CGRect(x: 0, y: self.containerView!.bounds.maxY - 380, width: self.containerView!.frame.width, height: 380)
+      }
   }
 
   override func presentationTransitionWillBegin() {

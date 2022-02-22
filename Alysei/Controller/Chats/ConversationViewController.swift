@@ -13,6 +13,9 @@ import IQKeyboardManagerSwift
 enum FromVC {
     case UserTab
     case Notification
+    case Login
+    case Forget
+    case Language
 }
 
 class ConversationViewController: AlysieBaseViewC {

@@ -28,13 +28,17 @@ class NetworkViewC: AlysieBaseViewC {
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var blankdata: UIView!
     @IBOutlet weak var blanktext: UILabel!
+    var lastPage: Int?
     
     var connection:ConnectionTabModel?
+    var arrConnection =  [Datum]()
+    var indexOfPageToRequest = 1
   //MARK: - ViewLifeCycle Methods -
   
   override func viewDidLoad() {
    super.viewDidLoad()
     self.tblViewNetwork.tableFooterView = UIView()
+      indexOfPageToRequest = 1
    // self.tblViewInviteNetwork.tableFooterView = UIView()
     
    // tblViewInviteNetwork.isHidden = false
@@ -43,6 +47,7 @@ class NetworkViewC: AlysieBaseViewC {
   }
   
     override func viewWillAppear(_ animated: Bool) {
+        indexOfPageToRequest = 1
         self.tabBarController?.tabBar.isHidden = false
         
         let data = kSharedUserDefaults.getLoggedInUserDetails()
@@ -65,13 +70,13 @@ class NetworkViewC: AlysieBaseViewC {
         
         
         if currentIndex == 0 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi1)
+            callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
         } else if currentIndex == 1 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi)
+            callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
         } else if currentIndex == 2 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi3)
+            callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
         } else if currentIndex == 3 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi4)
+            callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
         }
         
         //callConnectionApi(api: APIUrl.kConnectionTabApi1)
@@ -88,7 +93,33 @@ class NetworkViewC: AlysieBaseViewC {
            self.hidesBottomBarWhenPushed = false
        }
     
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+                self.indexOfPageToRequest += 1
+
+            // call your API for more data
+                if currentIndex == 0 {
+                    callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
+                } else if currentIndex == 1 {
+                    callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
+                } else if currentIndex == 2 {
+                    callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
+                } else if currentIndex == 3 {
+                    callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
+                }
+
+            // tell the table view to reload with the new data
+            self.tblViewNetwork.reloadData()
+            }
+        }
+    }
     func inviteApi(id: Int, type: Int){
         
         let params: [String:Any] = [
@@ -98,11 +129,11 @@ class NetworkViewC: AlysieBaseViewC {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             if self.currentIndex == 0 {
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\(1)")
             } else if self.currentIndex == 1{
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi)
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(1)")
             } else if self.currentIndex == 2{
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi3)
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(1)")
             }
             
         }
@@ -133,20 +164,23 @@ class NetworkViewC: AlysieBaseViewC {
             blanktext.text = "You have no followers right now!"
         }
         
-        self.connection?.data?.removeAll()
+        self.arrConnection.removeAll()
         self.tblViewNetwork.reloadData()
         //self.tblViewInviteNetwork.reloadData()
         TANetworkManager.sharedInstance.requestApi(withServiceName: api, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
            
             let dictResponse = dictResponse as? [String:Any]
-            
-            if let data = dictResponse?["data"] as? [[String:Any]]{
-                self.connection = ConnectionTabModel.init(with: dictResponse)
-                
+           // let response = dictResponse["data"] as? [String:Any]
+           
+            if let data = dictResponse?["data"] as? [String:Any]{
+                self.lastPage = data["last_page"] as? Int
+                self.connection = ConnectionTabModel.init(with: data)
+                if self.indexOfPageToRequest == 1 {self.arrConnection.removeAll()}
+                self.arrConnection.append(contentsOf: self.connection?.data ?? [Datum(with: [:])])
             }
-            
-            if self.connection?.data?.count ?? 0 > 0 {
+           
+            if self.arrConnection.count > 0 {
                 self.blankdata.isHidden = true
             } else {
                 self.blankdata.isHidden = false
@@ -195,40 +229,53 @@ class NetworkViewC: AlysieBaseViewC {
             networkCTableCell.img.layer.borderWidth = 2
             networkCTableCell.img.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
             networkCTableCell.img.layer.cornerRadius = networkCTableCell.img.frame.width/2
-            networkCTableCell.email.text = self.connection?.data?[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
+            networkCTableCell.email.text = //self.arrConnection[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
+            self.arrConnection[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
             
-            if connection?.data?[indexPath.row].user?.companyName != "" {
-                networkCTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
-            } else if connection?.data?[indexPath.row].user?.firstname != ""{
-                networkCTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+           // if arrConnection[indexPath.row].user?.companyName != "" {
+            if arrConnection[indexPath.row].user?.companyName != "" {
+                //networkCTableCell.name.text = arrConnection[indexPath.row].user?.companyName
+                    networkCTableCell.name.text = arrConnection[indexPath.row].user?.companyName
+            //} else if arrConnection[indexPath.row].user?.firstname != ""{
+            } else if arrConnection[indexPath.row].user?.firstname != ""{
+               // networkCTableCell.name.text = (arrConnection[indexPath.row].user!.firstname)!+" "+(arrConnection[indexPath.row].user!.lastname)!
+                networkCTableCell.name.text = (arrConnection[indexPath.row].user!.firstname)+" "+(arrConnection[indexPath.row].user!.lastname)
             } else {
-                networkCTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+               // networkCTableCell.name.text = arrConnection[indexPath.row].user?.restaurantName
+                networkCTableCell.name.text = arrConnection[indexPath.row].user?.restaurantName
             }
             
-            if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                let baseUrl = self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? ""
-                networkCTableCell.img.setImage(withString: String.getString(baseUrl+(self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+           // if self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL != nil {
+                if self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL != nil {
+                //let baseUrl = self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? ""
+                    let baseUrl = self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? ""
+               // networkCTableCell.img.setImage(withString: String.getString(baseUrl+(self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+                    networkCTableCell.img.setImage(withString: String.getString(baseUrl+(self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
             }
             networkCTableCell.btnAcceptCallback = { tag in
                 
-                self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 1)
+               // self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 1)
+                self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 1)
                 
             }
             
             networkCTableCell.btnDeclineCallback = { tag in
-                self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
+               // self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
+                self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
                 
             }
             
             networkCTableCell.btnViewCallback = { tag in
                 
-                let type = self.connection?.data?[indexPath.row].user?.roleID
+              //  let type = self.arrConnection[indexPath.row].user?.roleID
+                let type = self.arrConnection[indexPath.row].user?.roleID
                 
                 switch type {
                 case 4,5,6:
                     let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                     vc.role = type!
-                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                   // vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                    vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 3:
                     
                     let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
@@ -237,26 +284,32 @@ class NetworkViewC: AlysieBaseViewC {
                     case 9,7,8,3:
                         let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                         vc.role = type!
-                        vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                        //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                        vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                     default:
                         let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
-                        vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                       //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                        vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                     }
                     
                     
                 case 8:
                     let vc = self.pushViewController(withName: TravelAgencyViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! TravelAgencyViewController
-                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                    //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                    vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 9:
                     let vc = self.pushViewController(withName: RestaurantViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! RestaurantViewController
-                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                    //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                    vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 7:
                     let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
-                    vc.connectionId = String.getString(self.connection?.data?[indexPath.row].connectionID)
+                    //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
+                    vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 10:
                     let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
                     controller?.userLevel = .other
-                    controller?.userID = self.connection?.data?[indexPath.row].user?.userID
+                    //controller?.userID = self.arrConnection[indexPath.row].user?.userID
+                    controller?.userID = self.arrConnection[indexPath.row].user?.userID
                 default:
                     print("Not valid user")
                     break
@@ -284,17 +337,20 @@ class NetworkViewC: AlysieBaseViewC {
             networkTableCell.img.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
             networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
             
-            if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                networkTableCell.img.setImage(withString: String.getString((self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? "") + (self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
-            //}else{
-                networkTableCell.email.text = self.connection?.data?[indexPath.row].user?.email
+            //if self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL != nil {
+                if self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL != nil {
+               // networkTableCell.img.setImage(withString: String.getString((self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? "") + (self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+                    networkTableCell.img.setImage(withString: String.getString((self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? "") + (self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+    
+                //networkTableCell.email.text = self.arrConnection[indexPath.row].user?.email
+                    networkTableCell.email.text = self.arrConnection[indexPath.row].user?.email
 
-                if connection?.data?[indexPath.row].user?.companyName != "" {
-                    networkTableCell.name.text = connection?.data?[indexPath.row].user?.companyName
-                } else if connection?.data?[indexPath.row].user?.firstname != ""{
-                    networkTableCell.name.text = (connection?.data?[indexPath.row].user!.firstname)!+" "+(connection?.data?[indexPath.row].user!.lastname)!
+                if arrConnection[indexPath.row].user?.companyName != "" {
+                    networkTableCell.name.text = arrConnection[indexPath.row].user?.companyName
+                } else if arrConnection[indexPath.row].user?.firstname != ""{
+                    networkTableCell.name.text = ((arrConnection[indexPath.row].user!.firstname) + " " + (arrConnection[indexPath.row].user!.lastname))
                 } else {
-                    networkTableCell.name.text = connection?.data?[indexPath.row].user?.restaurantName
+                    networkTableCell.name.text = arrConnection[indexPath.row].user?.restaurantName
                 }
 
                 if currentIndex == 3 {
@@ -307,7 +363,7 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.remove.setTitle("Remove", for: .normal)
 
                     networkTableCell.btnRemoveCallback = { tag in
-                        self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
+                        self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
 
                     }
 
@@ -319,8 +375,8 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.remove.setTitle("Cancel", for: .normal)
 
                     networkTableCell.btnRemoveCallback = { tag in
-                        //self.pendingRemoveApi(id: (self.connection?.data?[indexPath.row].userID)!)
-                        self.inviteApi(id: (self.connection?.data?[indexPath.row].connectionID)!, type: 2)
+                        //self.pendingRemoveApi(id: (self.arrConnection[indexPath.row].userID)!)
+                        self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
 
                     }
 
@@ -330,8 +386,8 @@ class NetworkViewC: AlysieBaseViewC {
                 networkTableCell.img.clipsToBounds = true
                 networkTableCell.img.layer.cornerRadius = networkTableCell.img.frame.width/2
 
-                if self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL != nil {
-                    networkTableCell.img.setImage(withString: String.getString((self.connection?.data?[indexPath.row].user?.avatarID?.baseUrl ?? "") +  (self.connection?.data?[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+                if self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL != nil {
+                    networkTableCell.img.setImage(withString: String.getString((self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? "") +  (self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
                 }
             }
             return networkTableCell
@@ -361,13 +417,13 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
     self.collectionViewNetworkCategory.reloadData()
     collectionViewNetworkCategory.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     if indexPath.row == 0 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi1)
+        callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=1")
     } else if indexPath.row == 1 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi)
+        callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=1")
     } else if indexPath.row == 2 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi3)
+        callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=1")
     } else if indexPath.row == 3 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi4)
+        callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=1")
     }
     
   }
@@ -399,12 +455,12 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
         controller?.userLevel = .other
-        controller?.userID = self.connection?.data?[indexPath.row].user?.userID
+        controller?.userID = self.arrConnection[indexPath.row].user?.userID
     }
         
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-    return self.connection?.data?.count ?? 0
+    return self.arrConnection.count ?? 0
     
   }
         
@@ -419,17 +475,17 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
     if currentIndex == 0 {
         var height = 200
 
-        if self.connection?.data?[indexPath.row].reasonToConnect == "" {
+        if self.arrConnection[indexPath.row].reasonToConnect == "" {
             height = 140
-        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 50 {
+        } else if String.getString(self.arrConnection[indexPath.row].reasonToConnect).count < 50 {
 
-            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+            let tok =  String.getString(self.arrConnection[indexPath.row].reasonToConnect).components(separatedBy:"\n")
 
 
             height = 160 + ((tok.count-1)*20)
-        } else if String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.connection?.data?[indexPath.row].reasonToConnect).count < 100{
+        } else if String.getString(self.arrConnection[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.arrConnection[indexPath.row].reasonToConnect).count < 100{
 
-            let tok =  String.getString(self.connection?.data?[indexPath.row].reasonToConnect).components(separatedBy:"\n")
+            let tok =  String.getString(self.arrConnection[indexPath.row].reasonToConnect).components(separatedBy:"\n")
 
 
             height = 170 + ((tok.count-1)*20)

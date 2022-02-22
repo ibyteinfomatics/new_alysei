@@ -73,7 +73,11 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var walk1SubDesc: UILabel!
     @IBOutlet weak var walk1DescImage: UIImageView!
     @IBOutlet weak var btnEnquiry: UIButton!
-   
+    @IBOutlet weak var vwBtnContainer: UIView!
+    @IBOutlet weak var imgCreate: UIImageView!
+    @IBOutlet weak var imgCreateWidgh:NSLayoutConstraint!
+    @IBOutlet weak var imgCreateleading:NSLayoutConstraint!
+    
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
     var newunread: Int = 0
@@ -97,6 +101,13 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
+        vwBtnContainer.layer.borderWidth = 0.5
+        vwBtnContainer.layer.borderColor = UIColor.black.cgColor
+        imgCreate.isHidden = true
+        vwBtnContainer.isHidden = true
+        vwBtnContainer.layer.cornerRadius = 5
+        imgCreateWidgh.constant = 0
+        imgCreateleading.constant = 0
         callCheckIfStoredCreated()
         //self.callIsStoreReviewApi()
         callMarketPlaceHomeApi()
@@ -110,7 +121,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             self.btnCreateStore.isHidden = true
             self.lblDiscover.isHidden = false
         }
-        self.btnCreateStore.setTitleColor(UIColor.init(hexString: "#4BB3FD"), for: .normal)
+        self.btnCreateStore.setTitleColor(UIColor.black, for: .normal)
         marketplaceView.backgroundColor = UIColor.init(hexString: "#4BB3FD")
         // Do any additional setup after loading the view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(openPost))
@@ -170,7 +181,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkView1.isHidden = true
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = true
-        
+        self.walknextBtn.setTitle("Next", for: .normal)
         openednewCount.isHidden = true
         newInquiryCount(child: "New")
         openedInquiryCount(child: "Opened")
@@ -199,13 +210,30 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     func setUI(){
         if (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            imgCreate.isHidden = true
+            vwBtnContainer.isHidden = false
+            imgCreateWidgh.constant = 0
+            imgCreateleading.constant = 0
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
+            imgCreate.isHidden = true
+            vwBtnContainer.isHidden = false
+            imgCreateWidgh.constant = 0
+            imgCreateleading.constant = 0
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else if (self.storeCreated == 1) && (isStoreReviewed == 1 || isStoreReviewed == 2) {
+            imgCreate.isHidden = true
+            vwBtnContainer.isHidden = false
+            imgCreateWidgh.constant = 0
+            imgCreateleading.constant = 0
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else{
+            imgCreate.isHidden = false
+            vwBtnContainer.isHidden = false
+            imgCreateWidgh.constant = 30
+            imgCreateleading.constant = 8
                self.btnCreateStore.setTitle("Create your store", for: .normal)
+            
             
         }
     }
@@ -362,6 +390,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         pageControl5.layer.borderColor = UIColor.white.cgColor
         pageControl5.layer.backgroundColor = UIColor.clear.cgColor
         pageControl6.layer.backgroundColor = UIColor.white.cgColor
+        self.walknextBtn.setTitle("Done", for: .normal)
         UIView.animate(withDuration: 0.5) {
             self.vwwWalkContainer2.isHidden = false
             self.walkView1height.constant = self.view.frame.height / 2 + 260
@@ -453,6 +482,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             nextWalkCount = 0
             vwwWalkContainer1.isHidden = false
             vwwWalkContainer1.isHidden = true
+            //self.walknextBtn.setTitle("Done", for: .normal)
             animate1View()
         }else{
             self.headerView.isUserInteractionEnabled = true
@@ -758,7 +788,9 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                     }
                     
                 }
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
                 self.setUI()
+                }
                 
             }
         }

@@ -165,6 +165,6 @@ extension LoginAccountViewC{
 
 extension LoginAccountViewC: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        PresentationController(presentedViewController: presented, presenting: presenting)
+        PresentationController(presentedViewController: presented, presenting: presenting,fromVC: .Login)
     }
 }

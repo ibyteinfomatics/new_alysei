@@ -250,6 +250,8 @@
 		6B360D07270AEA51006A48E4 /* ProducerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */; };
 		6B3756EC2728012D0011F78E /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756EB2728012D0011F78E /* AwardCell.swift */; };
 		6B3756EE27281C1E0011F78E /* AwardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3756ED27281C1E0011F78E /* AwardModel.swift */; };
+		6B37703E27C4B92600FAABBE /* OverLayLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37703C27C4B92600FAABBE /* OverLayLanguageVC.swift */; };
+		6B37703F27C4B92600FAABBE /* OverLayLanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B37703D27C4B92600FAABBE /* OverLayLanguageVC.xib */; };
 		6B3B071726EF31DA001FB29A /* SearchIngridientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */; };
 		6B3CB127274BC10D00D5E683 /* TripTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3CB113274BC10A00D5E683 /* TripTableViewCell.xib */; };
 		6B3CB128274BC10D00D5E683 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB114274BC10A00D5E683 /* EventTableViewCell.swift */; };
@@ -928,6 +930,8 @@
 		6B360D05270AEA51006A48E4 /* ProducerDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerDetailTableViewCell.swift; sourceTree = "<group>"; };
 		6B3756EB2728012D0011F78E /* AwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
 		6B3756ED27281C1E0011F78E /* AwardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardModel.swift; sourceTree = "<group>"; };
+		6B37703C27C4B92600FAABBE /* OverLayLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayLanguageVC.swift; sourceTree = "<group>"; };
+		6B37703D27C4B92600FAABBE /* OverLayLanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayLanguageVC.xib; sourceTree = "<group>"; };
 		6B3B071626EF31DA001FB29A /* SearchIngridientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngridientModel.swift; sourceTree = "<group>"; };
 		6B3CB113274BC10A00D5E683 /* TripTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTableViewCell.xib; sourceTree = "<group>"; };
 		6B3CB114274BC10A00D5E683 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -2617,6 +2621,8 @@
 				6BC4C0D226006AED00791DCD /* PresentationController.swift */,
 				6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */,
 				6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */,
+				6B37703C27C4B92600FAABBE /* OverLayLanguageVC.swift */,
+				6B37703D27C4B92600FAABBE /* OverLayLanguageVC.xib */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -3278,6 +3284,7 @@
 				6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */,
 				6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */,
 				C5D6F7B126B18264006FFCDF /* CountrySelectionTableViewCell.xib in Resources */,
+				6B37703F27C4B92600FAABBE /* OverLayLanguageVC.xib in Resources */,
 				27A4439525AE03720002BAAC /* README.md in Resources */,
 				6B3CB12C274BC10D00D5E683 /* FeaturedTableViewCell.xib in Resources */,
 				27A443DA25AE03720002BAAC /* Montserrat-Regular.ttf in Resources */,
@@ -3744,6 +3751,7 @@
 				C5A2F35A26C13D5B0072DA8D /* StoreRatingReviewTableVCell.swift in Sources */,
 				6B90661C26F83D8600D24521 /* FilterRecipeViewController.swift in Sources */,
 				6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */,
+				6B37703E27C4B92600FAABBE /* OverLayLanguageVC.swift in Sources */,
 				C56C286B268465A90042A0A3 /* MyStoreProductRouter.swift in Sources */,
 				6B79E66A26E74C2400B2D434 /* ProgressModel.swift in Sources */,
 				C5197B1A26E7308600C0894F /* ChatConstants.swift in Sources */,
