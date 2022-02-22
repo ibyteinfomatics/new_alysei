@@ -41,6 +41,7 @@ class Chat_hepler {
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
     var messageReference    = Database.database().reference().child(Parameters.message)
     var postReference    = Database.database().reference().child(Parameters.post)
+    var commentLikeReference    = Database.database().reference().child(Parameters.commentLike)
     var resentUser = [RecentUser]()
     var inquiry_resentUser = [InquiryRecentUser]()
     
@@ -511,6 +512,10 @@ class Chat_hepler {
         postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
     }
     
+    func update_comment_Like_count(likecount :Int, postId :Int){
+        postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
+    }
+    
     func send_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String) {
         
         //countDic.data = commentDisc
@@ -530,6 +535,25 @@ class Chat_hepler {
         sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).setValue(message1)
         sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).child("poster").setValue(message2)
         sendReference.child("comment").child(String.getString(commentDisc.core_comment_id)).child("poster").child("avatar_id").setValue(message3)
+        
+        
+        //sendReference.setValue(countDic)
+        
+        
+    }
+    
+    
+    func send_comment_like(commentlike:Comment_Like_Class,postid:String) {
+        
+        //countDic.data = commentDisc
+        //countDic.data?.data = poster
+        //countDic.data?.data?.data = avtar
+        
+        
+        let sendReference = commentLikeReference.child(postId)
+        let message1 = commentlike.createDictonary(objects: commentlike)
+        //sendReference.setValue(message)
+        sendReference.child(postid).child(String.getString(commentlike.comment_id)).setValue(message1)
         
         
         //sendReference.setValue(countDic)

@@ -699,6 +699,7 @@ class CommentClass {
     var data : PosterClass?
     var reply = [ReplyDetailsClass]()
     var isSelected = false
+    var postId : Int?
    
     init() { }
     init(with messageData: [String:Any]?) {
@@ -707,6 +708,7 @@ class CommentClass {
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
         self.comment_like_count = Int.getInt(messageData?[Parameters.comment_like_count])
+        self.postId          = Int.getInt(messageData?[Parameters.postId])
             
         if let poster = messageData?["poster"]  as? [String:Any]{
             self.data =  PosterClass.init(with: poster)
@@ -736,6 +738,35 @@ class CommentClass {
             Parameters.core_comment_id              : objects?.core_comment_id ?? 0,
             Parameters.created_at                   : objects?.created_at ?? "",
             Parameters.comment_like_count                   : objects?.comment_like_count ?? 0,
+            Parameters.postId                       : objects?.postId ?? 0,
+           
+        ]
+        return params
+    }
+    
+}
+
+
+class Comment_Like_Class {
+    
+    var user_id:Int?
+    var comment_id :Int?
+    var like_id :Int?
+   
+    init() { }
+    init(with messageData: [String:Any]?) {
+        
+        self.user_id           = Int.getInt(messageData?[Parameters.userid])
+        self.comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
+        self.like_id = Int.getInt(messageData?[Parameters.id])
+             
+    }
+    
+    func createDictonary (objects:Comment_Like_Class?) -> Dictionary<String , Any> {
+        let params : [String:Any] = [
+            Parameters.userid              : objects?.user_id ?? 0,
+            Parameters.core_comment_id                   : objects?.comment_id ?? 0,
+            Parameters.id                   : objects?.like_id ?? 0,
            
         ]
         return params

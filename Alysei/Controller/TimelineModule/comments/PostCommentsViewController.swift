@@ -282,6 +282,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
                 comment.comment_like_count = 0
+                comment.postId = self.postid
                 
                 let poster = PosterClass()
                 
@@ -357,6 +358,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
                 comment.comment_like_count = 0
+                comment.postId = self.postid
                 
                 let poster = PosterClass()
                 
@@ -514,6 +516,18 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
             self.commentTextfield.becomeFirstResponder()
             self.commentTextfield.placeholder = "Leave a Reply"
+        }
+        
+        cell.btnLikeCallback = {tag in
+            
+            let commentid = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+            
+            let likecomment = Comment_Like_Class()
+            likecomment.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+            likecomment.comment_id = commentid
+            likecomment.like_id = self.postid
+            
+            kChatharedInstance.send_comment_like(commentlike: likecomment, postid: postId)
         }
         
         cell.btnViewReplyCallback = {tag in
