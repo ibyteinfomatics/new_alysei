@@ -33,6 +33,7 @@ class SelfPostCommentsCell: UITableViewCell {
     var commentReplyDelegate: CommnentReplyProtocol!
     var model: PostComments.Comment.Response!
     
+    var postId = ""
     var position = 0
     var commentmessages:[ReplyDetailsClass]?
     
@@ -51,10 +52,10 @@ class SelfPostCommentsCell: UITableViewCell {
         loadReplytable()
     }
     
-    func setReply(_ commentmessages: [ReplyDetailsClass], commentId : String) {
-        ReplyDetailsClass.init(commentId: commentId)
-        
-        print("test ",ReplyDetailsClass.init(commentId: commentId))
+    func setReply(_ commentmessages: [ReplyDetailsClass], postid : String) {
+        //ReplyDetailsClass.init(commentId: commentId)
+        postId = postid
+        print("test ",postid)
         self.commentmessages = commentmessages
        
         
@@ -91,30 +92,48 @@ class SelfPostCommentsCell: UITableViewCell {
         btnViewReplyCallback?(sender.tag)
     }
     
-    func showAlert(){
+    func callLikeUnlikeApi(_ isLike: Int?, _ postId: Int?, _ commentId: Int? , _ previouscommentId: Int? ,_ indexPath: Int?){
+        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
         
-        
-        let actionSheet = UIAlertController(style: .actionSheet)
-        
-        let edit = UIAlertAction(title: "Edit", style: .default) { action in
-        }
-        
-        let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+        let params: [String:Any] = [
+            "post_id": postId ?? 0,
+            "like_or_unlike": isLike ?? 0,
+            "user_id": selfID,
+            "comment_id": commentId ?? 0
+        ]
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kCommentLikeApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            if statusCode == 200 {
+                
+                let response = dictResponse as? [String:Any]
+                let total_like = response?["total_likes"] as? Int
+                let like_id = response?["like_id"] as? Int
+                
+                self.commentmessages?[indexPath ?? 0].comment_like_count = ((self.commentmessages?[indexPath ?? 0].comment_like_count ?? 0) + 1)
+                
+                if response?["message"] as! String == "You like this comment" {
+                    
+                    let likecomment = Comment_Like_Class()
+                    likecomment.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                    likecomment.comment_id = commentId ?? 0
+                    likecomment.like_id = like_id
+                    
+                    kChatharedInstance.send_comment_like(commentlike: likecomment, postid:  String.getString(postId))
+                    
+                } else {
+                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), comment_id: String.getString(commentId))
+                }
+                
+                
+                
+               // kChatharedInstance.update_comment_Like_count(likecount: total_like ?? 0, postId: postId ?? 0, commentId: commentId ?? 0)
+                
+                kChatharedInstance.update_replycomment_Like_count(likecount: total_like ?? 0, postId: postId ?? 0, commentId: previouscommentId ?? 0, replycommentId: commentId ?? 0)
+                
+            }
             
             
-            
         }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-
-        }
-        
-        //actionSheet.addAction(edit)
-        actionSheet.addAction(delete)
-        actionSheet.addAction(cancelAction)
-        
-        self.parentViewController?.parent?.present(actionSheet, animated: true, completion: nil)
-        
     }
     
     func getcurrentdateWithTime(datetime :String?) -> String {
@@ -217,9 +236,48 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
             cell.threedotBtn.isHidden = true
         }
         
+        cell.btnLikeCallback = {tag in
+            
+            let commentid = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+            let prevuioscommentid = self.commentmessages?[indexPath.row].previous_comment_id ?? 0
+            let like = self.commentmessages?[indexPath.row].isLike == false ? 1 : 0
+            
+            self.callLikeUnlikeApi(like, Int.getInt(self.postId), commentid, prevuioscommentid, indexPath.row)
+            
+        }
+        
         cell.btnThreeDotCallback = {tag in
-            print("kjsdfh ",self.commentmessages?[indexPath.row].parent_core_comment_id)
-            self.showAlert()
+            print("kjsdfh ",self.commentmessages?[indexPath.row].previous_comment_id ?? 0)
+            let actionSheet = UIAlertController(style: .actionSheet)
+            
+            let edit = UIAlertAction(title: "Edit", style: .default) { action in
+            }
+            
+            let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+                
+               // let postId = String.getString(self.postid)
+                let previoscommentId = String.getString(self.commentmessages?[indexPath.row].previous_comment_id)
+                let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
+                
+               // kChatharedInstance.deleteParticularComment(post_id: self.postId, comment_id: commentId)
+                
+                //kChatharedInstance.deleteParticularCommentLike(comment_id: previoscommentId, post_id: "", replycomment_id: commentId)
+                
+                kChatharedInstance.deleteParticularCommentLike(comment_id: previoscommentId, post_id: self.postId, replycomment_id: commentId)
+                
+                
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+            }
+            
+            //actionSheet.addAction(edit)
+            actionSheet.addAction(delete)
+            actionSheet.addAction(cancelAction)
+            
+            self.parentViewController?.parent?.present(actionSheet, animated: true, completion: nil)
+            //self.showAlert()
         }
         
         return cell

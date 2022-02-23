@@ -694,12 +694,13 @@ class CommentClass {
     
     var body:String?
     var core_comment_id :Int?
+    var previous_comment_id :Int?
     var comment_like_count :Int?
     var created_at : String?
     var data : PosterClass?
     var reply = [ReplyDetailsClass]()
     var isSelected = false
-    var postId : Int?
+    var isLike = false
    
     init() { }
     init(with messageData: [String:Any]?) {
@@ -708,7 +709,7 @@ class CommentClass {
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
         self.comment_like_count = Int.getInt(messageData?[Parameters.comment_like_count])
-        self.postId          = Int.getInt(messageData?[Parameters.postId])
+        self.previous_comment_id          = Int.getInt(messageData?[Parameters.previous_comment_id])
             
         if let poster = messageData?["poster"]  as? [String:Any]{
             self.data =  PosterClass.init(with: poster)
@@ -738,7 +739,8 @@ class CommentClass {
             Parameters.core_comment_id              : objects?.core_comment_id ?? 0,
             Parameters.created_at                   : objects?.created_at ?? "",
             Parameters.comment_like_count                   : objects?.comment_like_count ?? 0,
-            Parameters.postId                       : objects?.postId ?? 0,
+            Parameters.previous_comment_id                       : objects?.previous_comment_id ?? 0,
+            Parameters.isLike : objects?.isLike ?? false
            
         ]
         return params
@@ -758,7 +760,7 @@ class Comment_Like_Class {
         
         self.user_id           = Int.getInt(messageData?[Parameters.userid])
         self.comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
-        self.like_id = Int.getInt(messageData?[Parameters.id])
+        self.like_id = Int.getInt(messageData?[Parameters.like_id])
              
     }
     
@@ -766,7 +768,7 @@ class Comment_Like_Class {
         let params : [String:Any] = [
             Parameters.userid              : objects?.user_id ?? 0,
             Parameters.core_comment_id                   : objects?.comment_id ?? 0,
-            Parameters.id                   : objects?.like_id ?? 0,
+            Parameters.like_id                   : objects?.like_id ?? 0,
            
         ]
         return params
@@ -778,16 +780,19 @@ class ReplyDetailsClass {
     
     var body:String?
     var core_comment_id :Int?
+    var previous_comment_id :Int?
     var parent_core_comment_id :String?
     var comment_like_count :Int?
     var created_at : String?
     var data : PosterClass?
+    var isLike = false
     
     init() { }
     init(with messageData: [String:Any]?) {
         
         self.body           = String.getString(messageData?[Parameters.body])
         self.core_comment_id          = Int.getInt(messageData?[Parameters.core_comment_id])
+        self.previous_comment_id          = Int.getInt(messageData?[Parameters.previous_comment_id])
         self.created_at             = String.getString(messageData?[Parameters.created_at])
         self.comment_like_count = Int.getInt(messageData?[Parameters.comment_like_count])
             

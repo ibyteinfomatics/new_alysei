@@ -32,6 +32,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     
     var commentmessages:[CommentClass]?
     var countLikeComment:[PostClass]?
+    var commentLike:[Comment_Like_Class]?
 
     var postCommentsUserDataModel: PostCommentsUserData!
     var model: PostComments.Comment.Response!
@@ -55,7 +56,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             self.commentmessages?.removeAll()
             self.commentmessages = message
             self.commentTextfield.returnKeyType = .next
-            self.tableView.reloadData()
+            self.receiveCommentLike()
             //self.scrollToLTopRow()
             
             if self.commentmessages?.count ?? 0 == 0{
@@ -64,6 +65,38 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             }else{
                 self.vwBlank.isHidden = true
             }
+            
+        }
+        
+            
+    }
+    
+    func receiveCommentLike() {
+        
+        kChatharedInstance.receivce_Comment_Like(postId: String.getString(self.postid)) { (message) in
+            
+            self.commentLike?.removeAll()
+            self.commentLike = message
+            print("sdsdd",self.commentLike?.count)
+            
+            for i in 0..<(self.commentmessages?.count ?? 0){
+                
+                for j in 0..<(self.commentLike?.count ?? 0){
+                    
+                    if self.commentmessages?[i].core_comment_id == self.commentLike?[j].comment_id {
+                        
+                        if Int.getInt(kSharedUserDefaults.loggedInUserModal.userId) == self.commentLike?[j].user_id {
+                            
+                            self.commentmessages?[i].isLike = true
+                            
+                        }
+                        
+                    }
+                    
+                }
+                self.tableView.reloadData()
+            }
+            
             
         }
         
@@ -282,7 +315,6 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
                 comment.comment_like_count = 0
-                comment.postId = self.postid
                 
                 let poster = PosterClass()
                 
@@ -358,7 +390,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 comment.core_comment_id = core_comment_id//self.postCommentsUserDataModel.postID
                 comment.created_at = dateString
                 comment.comment_like_count = 0
-                comment.postId = self.postid
+                comment.previous_comment_id = Int.getInt(comment_id)
                 
                 let poster = PosterClass()
                 
@@ -490,6 +522,47 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             //self.commentTextfield.text = ""
         }
     }
+    
+    func callLikeUnlikeApi(_ isLike: Int?, _ postId: Int?, _ commentId: Int? ,_ indexPath: Int?){
+        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        
+        let params: [String:Any] = [
+            "post_id": postId ?? 0,
+            "like_or_unlike": isLike ?? 0,
+            "user_id": selfID,
+            "comment_id": commentId ?? 0
+        ]
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kCommentLikeApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            if statusCode == 200 {
+                
+                let response = dictResponse as? [String:Any]
+                let total_like = response?["total_likes"] as? Int
+                let like_id = response?["like_id"] as? Int
+                
+                self.commentmessages?[indexPath ?? 0].comment_like_count = ((self.commentmessages?[indexPath ?? 0].comment_like_count ?? 0) + 1)
+                
+                if response?["message"] as! String == "You like this comment" {
+                    
+                    let likecomment = Comment_Like_Class()
+                    likecomment.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                    likecomment.comment_id = commentId ?? 0
+                    likecomment.like_id = like_id
+                    
+                    kChatharedInstance.send_comment_like(commentlike: likecomment, postid:  String.getString(postId))
+                    
+                } else {
+                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), comment_id: String.getString(commentId))
+                }
+                
+                
+                
+                kChatharedInstance.update_comment_Like_count(likecount: total_like ?? 0, postId: postId ?? 0, commentId: commentId ?? 0)
+            }
+            
+            
+        }
+    }
 
 }
 
@@ -506,9 +579,9 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         
         let data = self.commentmessages?[indexPath.row]
         if data?.isSelected == true {
-            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], commentId: String.getString(self.commentmessages?[indexPath.row].core_comment_id))
+            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], postid: String.getString(self.postid))
         } else {
-            cell.setReply([], commentId: "")
+            cell.setReply([], postid: "")
         }
         //cell.replyBtn.tag = indexPath.row
         cell.btnReplyCallback = {tag in
@@ -522,24 +595,22 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             
             let commentid = self.commentmessages?[indexPath.row].core_comment_id ?? 0
             
-            let likecomment = Comment_Like_Class()
-            likecomment.user_id = Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
-            likecomment.comment_id = commentid
-            likecomment.like_id = self.postid
+            let like = self.commentmessages?[indexPath.row].isLike == false ? 1 : 0
             
-            kChatharedInstance.send_comment_like(commentlike: likecomment, postid: postId)
+            self.callLikeUnlikeApi(like, self.postid, commentid, indexPath.row)
+            
         }
         
         cell.btnViewReplyCallback = {tag in
             
             if data?.isSelected == true {
                 data?.isSelected = false
-                cell.setReply([], commentId: "")
+                cell.setReply([], postid: "")
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             } else {
                 
                 data?.isSelected = true
-                cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], commentId: String.getString(self.commentmessages?[indexPath.row].core_comment_id))
+                cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], postid: String.getString(self.postid))
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
@@ -592,6 +663,8 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
+        
+        cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == false ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
         
         cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body

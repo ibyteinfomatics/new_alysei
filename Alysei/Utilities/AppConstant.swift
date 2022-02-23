@@ -244,11 +244,11 @@ struct APIUrl{
     static let kWalkthroughScreenStart = "get/walkthroughscreens"
     static let kGetFeed = "get/activity/feed?page="
     static let kLikeApi = "post/like"
+    static let kCommentLikeApi = "comment/like"
     static let kGetCountryStates = "get/mycountry/states"
     static let kGetAllHubs = "get/all/hubs"
     static let kGetFieldValue = "get/field/value/"
     static let kGetRolesUserCount = "get/roles/by/hubid/"
-    
     static let kGetRoleListFromHubSlctn = "get/usersin/role?"
     static let kGetMarketPlaceWalkthrough = "get/marketplace/walkthrough"
     static let kGetMemberShip = "get/marketplace/packages"

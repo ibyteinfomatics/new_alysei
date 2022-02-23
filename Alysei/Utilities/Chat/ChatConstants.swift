@@ -113,7 +113,9 @@ struct Parameters {
     
     static let body = "body"
     static let core_comment_id = "core_comment_id"
+    static let previous_comment_id = "previous_comment_id"
     static let created_at = "created_at"
+    static let isLike = "isLike"
     static let comment_like_count = "comment_like_count"
     static let poster = "poster"
     
@@ -121,6 +123,7 @@ struct Parameters {
     static let attachment_url = "attachment_url"
     //var created_at : String?
     static let id = "id"
+    static let like_id = "like_id"
     static let updated_at = "updated_at"
     
     static let avatar_id = "avatar_id"

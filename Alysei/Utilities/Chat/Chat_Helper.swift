@@ -55,6 +55,7 @@ class Chat_hepler {
     var postmessageclass        = [PostClass]()
     var postlikeclass        = [PostClass]()
     var commentBackupOnetoOne  = [LikeCommentClass]()
+    var commentlikeclass        = [Comment_Like_Class]()
     
     var userState :UsersState?
     var receiverprofile_image:String?
@@ -512,8 +513,12 @@ class Chat_hepler {
         postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
     }
     
-    func update_comment_Like_count(likecount :Int, postId :Int){
-        postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
+    func update_comment_Like_count(likecount :Int, postId :Int, commentId :Int){
+        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).updateChildValues(["comment_like_count":likecount])
+    }
+    
+    func update_replycomment_Like_count(likecount :Int, postId :Int, commentId :Int, replycommentId :Int){
+        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).child("ReplyDetails").child(String.getString(replycommentId)).updateChildValues(["comment_like_count":likecount])
     }
     
     func send_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String) {
@@ -550,10 +555,10 @@ class Chat_hepler {
         //countDic.data?.data?.data = avtar
         
         
-        let sendReference = commentLikeReference.child(postId)
+        let sendReference = commentLikeReference.child(postid)
         let message1 = commentlike.createDictonary(objects: commentlike)
         //sendReference.setValue(message)
-        sendReference.child(postid).child(String.getString(commentlike.comment_id)).setValue(message1)
+        sendReference.child(String.getString(commentlike.like_id)).setValue(message1)
         
         
         //sendReference.setValue(countDic)
@@ -831,6 +836,18 @@ class Chat_hepler {
        
     }
     
+    func deleteParticularCommentLike(like_id: String,comment_id: String) {
+        
+        commentLikeReference.child(comment_id).child(like_id).removeValue()
+       
+    }
+    
+    func deleteParticularCommentLike(comment_id: String,post_id: String,replycomment_id: String) {
+        
+        postReference.child(post_id).child("comment").child(comment_id).child("ReplyDetails").child(replycomment_id).removeValue()
+       
+    }
+    
     
     //MARK:- Func For Receive Message for One To One Chat
     func receivce_Comment(postId :String , message:@escaping (_ result: [CommentClass]?) -> ()) -> Void {
@@ -851,6 +868,33 @@ class Chat_hepler {
                 }
             }
             message(self?.commentmessageclass)
+        }
+    }
+    
+    func receivce_Comment_Like(postId :String, message:@escaping (_ result: [Comment_Like_Class]?) -> ()) -> Void {
+        
+        commentLikeReference.child(postId).observe(.value) { [weak self] (snapshot) in
+            //self?.commentlikeclass.removeAll()
+            
+            if snapshot.exists() {
+                let usersDetails = kSharedInstance.getDictionary(snapshot.value)
+                self?.commentlikeclass.removeAll()
+                usersDetails.forEach {(key, value) in
+                    
+                    let positionsInfo = kSharedInstance.getDictionary(value)
+                    
+                    let likeDetails = Comment_Like_Class()
+                    likeDetails.user_id = Int.getInt(positionsInfo[Parameters.userid])
+                    likeDetails.like_id = Int.getInt(positionsInfo[Parameters.like_id])
+                    likeDetails.comment_id = Int.getInt(positionsInfo[Parameters.core_comment_id])
+                    
+                    self?.commentlikeclass.append(likeDetails)
+                }
+                
+            }
+            
+
+            message(self?.commentlikeclass)
         }
     }
     
