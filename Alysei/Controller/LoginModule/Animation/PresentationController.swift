@@ -31,7 +31,7 @@ class PresentationController: UIPresentationController {
 //             size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height *
 //              0.42))
       if checkFromVC == .Language{
-       return   CGRect(x: 0, y: self.containerView!.bounds.maxY - 250, width: self.containerView!.frame.width, height: 250)
+       return   CGRect(x: 0, y: self.containerView!.bounds.maxY - 200, width: self.containerView!.frame.width, height: 200)
       }else{
     return CGRect(x: 0, y: self.containerView!.bounds.maxY - 380, width: self.containerView!.frame.width, height: 380)
       }
@@ -65,7 +65,8 @@ class PresentationController: UIPresentationController {
   }
 
   @objc func dismissController(){
-      self.presentedViewController.dismiss(animated: true, completion: nil)
+      //if checkFromVC == .Language{
+      //self.presentedViewController.dismiss(animated: true, completion: nil)
   }
 }
 

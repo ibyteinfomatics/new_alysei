@@ -30,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjf-7Q-TOW">
-                            <rect key="frame" x="30" y="663" width="40" height="40"/>
+                            <rect key="frame" x="30" y="710" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="4Sl-PH-Mfe"/>
                                 <constraint firstAttribute="width" constant="40" id="dsZ-cK-nXK"/>
@@ -40,7 +40,7 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68f-0e-1Bh">
-                            <rect key="frame" x="115" y="669.5" width="184" height="26.5"/>
+                            <rect key="frame" x="115" y="716.5" width="184" height="26.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="184" id="GpN-0y-FAC"/>
                             </constraints>
@@ -49,10 +49,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMV-Fo-pOx">
-                            <rect key="frame" x="30" y="736" width="354" height="50"/>
+                            <rect key="frame" x="30" y="768" width="354" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="8AX-wM-r9J"/>
+                                <constraint firstAttribute="height" constant="40" id="8AX-wM-r9J"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="English">
@@ -63,10 +63,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htz-8r-z7b">
-                            <rect key="frame" x="30" y="806" width="354" height="50"/>
+                            <rect key="frame" x="30" y="816" width="354" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="7vu-jn-ieZ"/>
+                                <constraint firstAttribute="height" constant="40" id="7vu-jn-ieZ"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Italian"/>
@@ -78,7 +78,7 @@
                     <color key="backgroundColor" red="0.10346784439999999" green="0.2660149336" blue="0.45098030569999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Htz-8r-z7b" secondAttribute="bottom" constant="40" id="AHW-6c-7IY"/>
-                        <constraint firstItem="Htz-8r-z7b" firstAttribute="top" secondItem="MMV-Fo-pOx" secondAttribute="bottom" constant="20" id="AqQ-Zr-N7x"/>
+                        <constraint firstItem="Htz-8r-z7b" firstAttribute="top" secondItem="MMV-Fo-pOx" secondAttribute="bottom" constant="8" id="AqQ-Zr-N7x"/>
                         <constraint firstAttribute="trailing" secondItem="Htz-8r-z7b" secondAttribute="trailing" constant="30" id="D7f-94-03Q"/>
                         <constraint firstItem="68f-0e-1Bh" firstAttribute="centerY" secondItem="wjf-7Q-TOW" secondAttribute="centerY" id="Tqs-Kc-yws"/>
                         <constraint firstItem="Htz-8r-z7b" firstAttribute="leading" secondItem="9iL-By-7WZ" secondAttribute="leading" constant="30" id="fG6-WF-cF2"/>
@@ -86,7 +86,7 @@
                         <constraint firstItem="68f-0e-1Bh" firstAttribute="centerX" secondItem="MMV-Fo-pOx" secondAttribute="centerX" id="kgB-bZ-d6T"/>
                         <constraint firstItem="MMV-Fo-pOx" firstAttribute="leading" secondItem="9iL-By-7WZ" secondAttribute="leading" constant="30" id="oUl-DU-dzv"/>
                         <constraint firstAttribute="trailing" secondItem="MMV-Fo-pOx" secondAttribute="trailing" constant="30" id="rpy-79-qbo"/>
-                        <constraint firstItem="MMV-Fo-pOx" firstAttribute="top" secondItem="68f-0e-1Bh" secondAttribute="bottom" constant="40" id="via-oG-ygs"/>
+                        <constraint firstItem="MMV-Fo-pOx" firstAttribute="top" secondItem="68f-0e-1Bh" secondAttribute="bottom" constant="25" id="via-oG-ygs"/>
                         <constraint firstItem="wjf-7Q-TOW" firstAttribute="leading" secondItem="9iL-By-7WZ" secondAttribute="leading" constant="30" id="zD8-EX-aEK"/>
                     </constraints>
                 </view>

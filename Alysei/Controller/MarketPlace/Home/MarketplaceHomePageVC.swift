@@ -77,6 +77,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var imgCreate: UIImageView!
     @IBOutlet weak var imgCreateWidgh:NSLayoutConstraint!
     @IBOutlet weak var imgCreateleading:NSLayoutConstraint!
+    @IBOutlet weak var btnCreateTrailing: NSLayoutConstraint!
     
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
@@ -101,8 +102,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
-        vwBtnContainer.layer.borderWidth = 0.5
-        vwBtnContainer.layer.borderColor = UIColor.black.cgColor
+        //vwBtnContainer.layer.borderWidth = 0.5
+       // vwBtnContainer.layer.borderColor = UIColor.black.cgColor
         imgCreate.isHidden = true
         vwBtnContainer.isHidden = true
         vwBtnContainer.layer.cornerRadius = 5
@@ -121,7 +122,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             self.btnCreateStore.isHidden = true
             self.lblDiscover.isHidden = false
         }
-        self.btnCreateStore.setTitleColor(UIColor.black, for: .normal)
+        self.btnCreateStore.setTitleColor(UIColor.white, for: .normal)
         marketplaceView.backgroundColor = UIColor.init(hexString: "#4BB3FD")
         // Do any additional setup after loading the view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(openPost))
@@ -213,25 +214,25 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             imgCreate.isHidden = true
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
-            imgCreateleading.constant = 0
+            imgCreateleading.constant = 6
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             imgCreate.isHidden = true
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
-            imgCreateleading.constant = 0
+            imgCreateleading.constant = 6
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else if (self.storeCreated == 1) && (isStoreReviewed == 1 || isStoreReviewed == 2) {
             imgCreate.isHidden = true
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
-            imgCreateleading.constant = 0
+            imgCreateleading.constant = 6
             self.btnCreateStore.setTitle("Go to my store", for: .normal)
         }else{
             imgCreate.isHidden = false
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 30
-            imgCreateleading.constant = 8
+            imgCreateleading.constant = 5
                self.btnCreateStore.setTitle("Create your store", for: .normal)
             
             

@@ -5,3 +5,287 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
+
+
+//MARK: MARKETPLACE
+
+//MARK: Marketplace Home Screen
+"MarketPlace" = "";
+"Recipe" = "";
+"Posts" = "";
+"Notifications" = "";
+"Go to my store" = "";
+"Create your store" = "";
+"Discover Marketplace" = "";
+"Producer Store" = "";
+"Conservation Method" = "";
+"Italian Regions" = "";
+"Categories" = "";
+"Product Properties" = "";
+"FDA Certified" = "";
+"My Favourite" = "";
+"Most Popular" = "";
+"Promotions" = "";
+"Recently Added Products" = "";
+"View all" = "";
+"Newly Added Stores" = "";
+"Search by Italian Regions" = "";
+"Top Rated Products" = "";
+"Top Favourite Products" = "";
+"What are you looking for?" = "";
+
+//MARK: Marketplace Search Screen
+"Search for product brands & more" = "";
+
+//MARK: Marketplace Listing Screen
+"Sort" = "";
+"Filter" = "";
+
+//MARK: Marketplace Filter Screen
+"No Product found" = "";
+"Categories" = "";
+"Properties" = "";
+"FDA Certfied" = "";
+"Italian Region" = "";
+"Distance" = "";
+"Ratings" = "";
+"Producers" = "";
+"Product Name" = "";
+"Clear Filters" = "";
+"Filters" = "";
+
+//MARK: Marketplace Membership Screen
+"Select your package" = "";
+"Coming Soon....." = "";
+"Boost your listing" = "";
+"Boost your listing to expand you reach and increase buyers engagement" = "";
+"Sell online" = "";
+"Sell your product online to your buyers" = "";
+"B2C Grand Opening" = "";
+"Alysei full opening to Market, Buyers and Consumers" = "";
+"Create your Store" = "";
+"Create your own modern, professional online Store" = "";
+"Create your Product listing" = "";
+"Display your unique products listings" = "";
+"Respond to buyers inquiry" = "";
+"Interact with your future buyers" = "";
+"Favorite and Ratings" = "";
+"Being able to be reviewed and rated by buyers" = "";
+"Alysei Marketplace Membership" = "";
+"Choose a plan that is right for you" = "";
+
+//MARK: Marketplace CreateStore Screen
+"Update Store" = "";
+"Store Name" = "";
+"Description" = "";
+"Website" = "";
+"Store Region" = "";
+"Location" = "";
+"Next" = "";
+"Exceed Maximum Number Of Selection" = "";
+"Ok" = "";
+"Please upload profile picture." = "";
+"Please upload cover picture." = "";
+"Please upload store images." = "";
+"Please enter a valid website url." = "";
+"Please enter valid website url, For example: www.website.com" = "";
+"Please choose a source type" = "";
+"Take Photo" = "";
+"Choose From Library" = "";
+"Delete photo" = "";
+"Remove photo" = "";
+"Cancel" = "";
+"Okay" = "";
+"Denied albums permissions granted" = "";
+"Denied camera permissions granted" = "";
+
+//MARK: Marketplace Add Product Screen
+"Yes" = "";
+"No" = "";
+"No. of pieces" = "";
+"No. of bottles" = "";
+"liters" = "";
+"kilograms" = "";
+"USD" = "";
+"Maximum 200 characters" = "";
+"Maximum 50 characters" = "";
+"Product Price" = "";
+"Product Title" = "";
+"Select Product Category" = "";
+"Quantity Available" = "";
+"Brand Label" = "";
+"Keywords" = "";
+"grams" = "";
+"Add Product" = "";
+"milligrams" = "";
+"Exceed Maximum Number Of Selection" = "";
+"Minimum Order quantity should be less or equal to quantity Available" = "";
+"Please upload product images." = "";
+"Please enter product title." = "";
+"Please enter product description." = "";
+"Please enter category." = "";
+"Please enter quantity available." = "";
+"Please enter minimum order quantity." = "";
+"Please enter handling instructions." = "";
+"Please enter dispatch instructions." = "";
+"Please enter available for sample." = "";
+"Please enter valid product price." = "";
+"Helps user to find product" = "";
+"How many products are you currently available to deliver?" = "";
+"Choose how you plan to sell your products" = "";
+"Which is the minimum order quantity you are able to accept?" = "";
+"Provide details about your safe handling instructions" = "";
+"Provide details about your specific disptach instructions" = "";
+"Are you able to provide samples of your products upon request?" = "";
+"Indicate your product selling price to possible buyers" = "";
+"Your own brand label" = "";
+
+//MARK: Marketplace Rating Review Screen
+"ratings" = "";
+"Yes" = "";
+"reviews" = "";
+"Reviews" = "";
+"Edit Review" = "";
+"Add Review" = "";
+"Leave a comment" = "";
+"Please add ratings." = "";
+"Please enter some review." = "";
+"Review added Successfully!" = "";
+"You have already done a review on this product" = "";
+"Review updated Successfully!" = "";
+"Tap to rate:" = "";
+
+//MARK: Marketplace First Time Walthrough
+"Welcome to Marketplace" = "";
+"Features you can explore" = "";
+"MarketPlace Rules" = "";
+"Here you can create your unique Store" = "";
+"upload your product portfolio, explore, search and reply to inquiries" = "";
+"The most powerful markeplace engine for the Made in Italy" = "";
+"To ensure a positive experience follow these simple rules" = "";
+"Here you can explore and search for products from Italian Producers" = "";
+"Here you can explore and search for products and send inquiry to Italian Producers" = "";
+"The most powerful markeplace engine for the Made in Italy" = "";
+"To ensure a positive experience follow these simple rules" = "";
+"Explore the Markeplace" = "";
+"Report suspicious behaviour" = "";
+"Search by Region, Product, Category and much more" = "";
+"Let us know if something does not feel right" = "";
+"Create your Store" = "";
+"Reply to inquiry" = "";
+"Explore the Markeplace" = "";
+"Send an inquiry" = "";
+"Showcase you Products Store in a simple, clean and professional way" = "";
+"Being responsive will help you to build trust with Buyers" = "";
+
+"Ask for product information, samples request, prices, quantity etc." = "";
+"Information and details" = "";
+"Photo Quality" = "";
+"Report suspicious behaviour" = "";
+"Make sure all the information you provide are accurate and completed" = "";
+"Make sure that all photos that you upload are in high quality" = "";
+"Let us know if something does not feel right" = "";
+"Make sure all the information you provide are accurate and completed" = "";
+"Let us know if something does not feel right" = "";
+"Done" = "";
+
+//MARK: Marketplace Create Store Walthrough
+"Start promoting your products" = "";
+"Configure Your Store" = "";
+"Here is some tips to help you promote with confidence" = "";
+"Post in English" = "";
+"Write in English language to create your store and list your products" = "";
+"Connect with buyers" = "";
+"When you create a listing, buyers will interact with you" = "";
+"Reply to inquiry" = "";
+"Being responsive will help you to build trust with Buyers" = "";
+"Report suspicious behaviour" = "";
+"Let us know if something does not feel right" = "";
+"Adding relevant and accurate info helps buyers to learn more about what you are selling." = "";
+"Add clear photos" = "";
+"Photos should have a good resolution and lighting,and should only show what you are listing" = "";
+"Offer a fair price" = "";
+"Make sure you are offering prices appropriate to a competitive market like the US" = "";
+"Boost your listing" = "";
+"You can boost your listing to expand you reach and increase buyers engagement" = "";
+
+//MARK: Marketplace Inquiry Screen
+"Hi is this product is available?" = "";
+"Message" = "";
+"Please enter some message" = "";
+"New" = "";
+"You already submitted a query on this product" = "";
+"Network Error" = "";
+"Inquiry" = "";
+"Opened" = "";
+"Closed" = "";
+"years ago" = "";
+"months ago" = "";
+"weeks ago" = "";
+"Yesterday" = "";
+"hours ago" = "";
+"minutes ago" = "";
+"seconds ago" = "";
+"years ago" = "";
+"month ago" = "";
+"week ago" = "";
+"hour ago" = "";
+"minute ago" = "";
+"second ago" = "";
+"Send Inquiry" = "";
+"Blocked" = "";
+"Full Name" = "";
+"Email" = "";
+"Phone Number" = "";
+"Message" = "";
+
+////MARK: Marketplace ProductInfo Screen
+"Product Info" = "";
+"Handling Instructions" = "";
+"Dispatch Instructions" = "";
+"Quantity Available:" = "";
+"Brand Label" = "";
+"Min Order Quantity" = "";
+"Sample Available" = "";
+"Available for Sample" = "";
+"Category" = "";
+"Price Range" = "";
+"Method" = "";
+"My Products" = "";
+
+
+//MARK: Marketplace Dashboard Screen
+"Total Product" = "";
+"Total Enquiry" = "";
+"Total Categories" = "";
+"Total Review" = "";
+"Yearly" = "";
+"Monthly" = "";
+"Weekly" = "";
+"Yesterday" = "";
+"Inquiries" = "";
+"Dashboard" = "";
+"Analytics" = "";
+"Today" = "";
+
+//MARK: Marketplace Confirm Screen
+"Thank you for submitting your information for admin review. We will respond you at earliest." = "";
+"Back to MarketPlace" = "";
+
+//MARK: Marketplace Sort Screen
+"Popularity" = "";
+"Ratings" = "";
+"Price -- Low to High" = "";
+"Price -- High to Low" = "";
+"Newest First" = "";
+
+//MARK: Marketplace Store Screen
+"Italian F&B Producer" = "";
+"Our Gallery" = "";
+"Call" = "";
+"Website" = "";
+"Add to Fav" = "";
+"No Image" = "";
+"Rating & Reviews" = "";
+"See All" = "";
+"All Products" = "";
