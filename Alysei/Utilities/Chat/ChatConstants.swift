@@ -65,6 +65,7 @@ struct Parameters {
     static let receiverid                 = "otherId"
     static let message                    = "Messages"
     static let post                    = "post"
+    static let commentLike                    = "comment_like"
     static let mediatype                  = "type"
     static let status                     = "status"
     static let img_type                   = "img_type"

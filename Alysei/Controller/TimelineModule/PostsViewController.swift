@@ -210,7 +210,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     
     func receivePostLike() {
         
-        kChatharedInstance.receivce_Post_like(postId: "98") { (message) in
+        kChatharedInstance.receivce_Post_like(postId: "") { (message) in
             
             self.postLike?.removeAll()
             self.postLike = message

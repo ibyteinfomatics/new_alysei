@@ -39,6 +39,7 @@ class SelfPostCommentsCell: UITableViewCell {
     var btnViewReplyCallback:((Int) -> Void)? = nil
     var btnReplyCallback:((Int) -> Void)? = nil
     var btnThreeDotCallback:((Int) -> Void)? = nil
+    var btnLikeCallback:((Int) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,6 +79,11 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBAction func threedotButtonTapped(_ sender: UIButton) {
        
         btnThreeDotCallback?(sender.tag)
+    }
+    
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+       
+        btnLikeCallback?(sender.tag)
     }
 
     @IBAction func viewreplyButtonTapped(_ sender: UIButton) {
