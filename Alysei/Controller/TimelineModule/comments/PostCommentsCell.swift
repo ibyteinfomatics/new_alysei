@@ -41,6 +41,8 @@ class SelfPostCommentsCell: UITableViewCell {
     var btnReplyCallback:((Int) -> Void)? = nil
     var btnThreeDotCallback:((Int) -> Void)? = nil
     var btnLikeCallback:((Int) -> Void)? = nil
+    
+    var replyEditCallback:((_ editmessage : String, _ precommentId : Int, _ commentid : Int) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -121,7 +123,7 @@ class SelfPostCommentsCell: UITableViewCell {
                     kChatharedInstance.send_comment_like(commentlike: likecomment, postid:  String.getString(postId))
                     
                 } else {
-                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), comment_id: String.getString(commentId))
+                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), post_id: String.getString(postId))
                 }
                 
                 
@@ -228,6 +230,7 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
         cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
         cell.timeLabel.text = "\(time)"
         cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
+        cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == false ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
         
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
         if self.commentmessages?[indexPath.row].data?.user_id == selfID {
@@ -251,6 +254,9 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
             let actionSheet = UIAlertController(style: .actionSheet)
             
             let edit = UIAlertAction(title: "Edit", style: .default) { action in
+                
+                self.replyEditCallback?(self.commentmessages?[indexPath.row].body ?? "", self.commentmessages?[indexPath.row].previous_comment_id ?? 0, self.commentmessages?[indexPath.row].core_comment_id ?? 0)
+                
             }
             
             let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
@@ -259,11 +265,23 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
                 let previoscommentId = String.getString(self.commentmessages?[indexPath.row].previous_comment_id)
                 let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
                 
-               // kChatharedInstance.deleteParticularComment(post_id: self.postId, comment_id: commentId)
+               // let postId = String.getString(self.postid)
+               // let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
                 
-                //kChatharedInstance.deleteParticularCommentLike(comment_id: previoscommentId, post_id: "", replycomment_id: commentId)
+                let params: [String:Any] = [
+                    
+                    "comment_id": self.self.commentmessages?[indexPath.row].core_comment_id ?? 0,
+                    "user_id" : Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                    
+                ]
                 
-                kChatharedInstance.deleteParticularCommentLike(comment_id: previoscommentId, post_id: self.postId, replycomment_id: commentId)
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteComment, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                    
+                    if statusCode == 200 {
+                        kChatharedInstance.deleteParticularCommentLike(comment_id: previoscommentId, post_id: self.postId, replycomment_id: commentId)
+                    }
+                    
+                }
                 
                 
             }
@@ -272,7 +290,7 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
 
             }
             
-            //actionSheet.addAction(edit)
+            actionSheet.addAction(edit)
             actionSheet.addAction(delete)
             actionSheet.addAction(cancelAction)
             

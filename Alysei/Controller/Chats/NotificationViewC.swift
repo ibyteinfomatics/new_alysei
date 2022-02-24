@@ -201,9 +201,9 @@ extension NotificationViewC: UITableViewDataSource, UITableViewDelegate{
         //vc.receiverDetails = self.ResentUser?[indexPath.row]
         vc.userId = self.ResentUser?[indexPath.row].otherId
         vc.name = self.ResentUser?[indexPath.row].otherName
-        vc.profileImageUrl = imageDomain+"/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
+        vc.profileImageUrl = String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
         
-        if String.getString(self.ResentUser?[indexPath.row].otherImage ?? "").contains(imageDomain) {
+        /*if String.getString(self.ResentUser?[indexPath.row].otherImage ?? "").contains(imageDomain) {
             vc.profileImageUrl = String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
             
         } else {
@@ -211,7 +211,7 @@ extension NotificationViewC: UITableViewDataSource, UITableViewDelegate{
             img = img.replacingOccurrences(of: "//", with: "/")
             
             vc.profileImageUrl = imageDomain+img
-        }
+        }*/
    
         //self.present(vc , animated: true)
     }

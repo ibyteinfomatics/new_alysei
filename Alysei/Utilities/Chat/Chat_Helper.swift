@@ -513,12 +513,22 @@ class Chat_hepler {
         postReference.child(String.getString(postId)).updateChildValues(["likeCount":likecount])
     }
     
-    func update_comment_Like_count(likecount :Int, postId :Int, commentId :Int){
-        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).updateChildValues(["comment_like_count":likecount])
+    
+    
+    func update_comment_message(msg :String, postId :Int, commentId :Int){
+        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).updateChildValues(["body":msg])
+    }
+    
+    func update_replycomment_message(msg :String, postId :Int, commentId :Int, replycommentId :Int){
+        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).child("ReplyDetails").child(String.getString(replycommentId)).updateChildValues(["body":msg])
     }
     
     func update_replycomment_Like_count(likecount :Int, postId :Int, commentId :Int, replycommentId :Int){
         postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).child("ReplyDetails").child(String.getString(replycommentId)).updateChildValues(["comment_like_count":likecount])
+    }
+    
+    func update_comment_Like_count(likecount :Int, postId :Int, commentId :Int){
+        postReference.child(String.getString(postId)).child("comment").child(String.getString(commentId)).updateChildValues(["comment_like_count":likecount])
     }
     
     func send_comment(countDic:LikeCommentClass, commentDisc:CommentClass, poster: PosterClass,avtar: CommentAvatarId, postId :String) {
@@ -836,9 +846,9 @@ class Chat_hepler {
        
     }
     
-    func deleteParticularCommentLike(like_id: String,comment_id: String) {
+    func deleteParticularCommentLike(like_id: String,post_id: String) {
         
-        commentLikeReference.child(comment_id).child(like_id).removeValue()
+        commentLikeReference.child(post_id).child(like_id).removeValue()
        
     }
     

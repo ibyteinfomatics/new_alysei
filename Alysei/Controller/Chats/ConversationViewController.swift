@@ -234,7 +234,7 @@ class ConversationViewController: AlysieBaseViewC {
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
         config.library.maxNumberOfItems = 1
-        config.showsPhotoFilters = true
+        config.showsPhotoFilters = false
 
         config.library.preselectedItems = ypImages
         let picker = YPImagePicker(configuration: config)
@@ -247,6 +247,13 @@ class ConversationViewController: AlysieBaseViewC {
                     self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
                     sendImage(image: photo.modifiedImage)
                     print(photo)
+                    
+                    /*let vc = pushViewController(withName: ImageWithText.id(), fromStoryboard: StoryBoardConstants.kChat) as! ImageWithText
+                    vc.modalPresentationStyle = .overFullScreen
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.image = photo.originalImage*/
+                    
+                    
                 case .video(v: let v):
                     print("not used")
                 }

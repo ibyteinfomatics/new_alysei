@@ -417,6 +417,7 @@
 		6BC4C0D726006C5D00791DCD /* OverLayForgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */; };
 		6BC4C0D826006C5D00791DCD /* OverLayForgetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */; };
 		6BC4C0DF260088C500791DCD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C0DE260088C500791DCD /* ImageLoader.swift */; };
+		6BCC7C4B27C79AE600486952 /* ImageWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC7C4A27C79AE500486952 /* ImageWithText.swift */; };
 		6BD23A032771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */; };
 		6BD28D062770A49400AA0105 /* SearchByRegionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */; };
 		6BD28D082770A4C700AA0105 /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D072770A4C700AA0105 /* Recipe.storyboard */; };
@@ -1103,6 +1104,7 @@
 		6BC4C0D526006C5D00791DCD /* OverLayForgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayForgetVC.swift; sourceTree = "<group>"; };
 		6BC4C0D626006C5D00791DCD /* OverLayForgetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayForgetVC.xib; sourceTree = "<group>"; };
 		6BC4C0DE260088C500791DCD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6BCC7C4A27C79AE500486952 /* ImageWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithText.swift; sourceTree = "<group>"; };
 		6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPreferenceCollectionReusableView.swift; sourceTree = "<group>"; };
 		6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByRegionCollectionViewCell.xib; sourceTree = "<group>"; };
 		6BD28D072770A4C700AA0105 /* Recipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recipe.storyboard; sourceTree = "<group>"; };
@@ -2704,7 +2706,6 @@
 				6B3CB112274BC0F800D5E683 /* Universal Search */,
 				27B24AC425B46C7D00694F27 /* TabBarViewC.swift */,
 				2749AA2A25BC7AE400DC55B2 /* HomeViewC.swift */,
-				2716627225BC84EB000C0189 /* NotificationViewC.swift */,
 				2716627125BC84EB000C0189 /* NotificationTableCell.swift */,
 				C5197AF626E72CB600C0894F /* NotificationList.swift */,
 			);
@@ -2788,6 +2789,8 @@
 				C5197AED26E72BBF00C0894F /* SeemImageVC.swift */,
 				C5197AEE26E72BBF00C0894F /* ConversationViewController.swift */,
 				C5197AEF26E72BBF00C0894F /* NewChat.swift */,
+				6BCC7C4A27C79AE500486952 /* ImageWithText.swift */,
+				2716627225BC84EB000C0189 /* NotificationViewC.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -3518,6 +3521,7 @@
 				C56C286D268465A90042A0A3 /* MyStoreProductViewController.swift in Sources */,
 				61EAB55F269A23B900793F18 /* PostCommentsModels.swift in Sources */,
 				6B71C1F02786BD73009560B0 /* MarketplaceHomePageVC.swift in Sources */,
+				6BCC7C4B27C79AE600486952 /* ImageWithText.swift in Sources */,
 				C5B87764264A6A20009048E6 /* CustomPhotoPickerViewController.swift in Sources */,
 				C56C2888268465F30042A0A3 /* MyStoreInquiriesInteractor.swift in Sources */,
 				279AB34725FF436C0061FCB3 /* ConfirmSelectionTable.swift in Sources */,

@@ -41,6 +41,8 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     
     var like = 0,comment = 0 , postid = 0
     var commentId = 0
+    var precommentId = 0
+    var selectedcommentId = 0
     var replyTap = false
 
     required init?(coder aDecoder: NSCoder) {
@@ -93,7 +95,23 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                         
                     }
                     
+                    
+                    for k in 0..<(self.commentmessages?[i].reply.count ?? 0){
+                        
+                        if self.commentmessages?[i].reply[k].core_comment_id == self.commentLike?[j].comment_id {
+                            
+                            if Int.getInt(kSharedUserDefaults.loggedInUserModal.userId) == self.commentLike?[j].user_id {
+                                
+                                self.commentmessages?[i].reply[k].isLike = true
+                                
+                            }
+                            
+                        }
+                    }
+                    
+                    
                 }
+                
                 self.tableView.reloadData()
             }
             
@@ -421,7 +439,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 self.commentTextfield.text = ""
                 self.commentId = 0
                 self.receiveComment()
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
                 
             }
             
@@ -515,6 +533,49 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
             
             if self.commentId != 0 {
                 self.sendReplyComment(comment_id: String.getString(self.commentId))
+            } else if self.selectedcommentId != 0 && self.precommentId == 0{
+                
+                let params: [String:Any] = [
+                    
+                    "comment": self.commentTextfield.text ?? ""
+                    
+                ]
+                
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kUpdateComment+"/"+String.getString(selectedcommentId), requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                    
+                    if statusCode == 200 {
+                        kChatharedInstance.update_comment_message(msg: self.commentTextfield.text, postId: self.postid, commentId: self.selectedcommentId)
+                        self.commentTextfield.text = ""
+                        self.selectedcommentId = 0
+                        self.view.endEditing(true)
+                    }
+                    
+                }
+                
+                
+            } else if self.precommentId != 0 {
+                
+                
+                let params: [String:Any] = [
+                    
+                    "comment": self.commentTextfield.text ?? ""
+                    
+                ]
+                
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kUpdateComment+"/"+String.getString(selectedcommentId), requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                    
+                    if statusCode == 200 {
+                       
+                        kChatharedInstance.update_replycomment_message(msg: self.commentTextfield.text, postId: self.postid, commentId: self.precommentId, replycommentId: self.selectedcommentId)
+                        
+                        self.commentTextfield.text = ""
+                        self.selectedcommentId = 0
+                        self.precommentId = 0
+                        self.view.endEditing(true)
+                    }
+                    
+                }
+                
             } else {
                 self.sendComment()
             }
@@ -552,7 +613,8 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                     kChatharedInstance.send_comment_like(commentlike: likecomment, postid:  String.getString(postId))
                     
                 } else {
-                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), comment_id: String.getString(commentId))
+                    //self.commentmessages?[indexPath ?? 0].isLike = false
+                    kChatharedInstance.deleteParticularCommentLike(like_id: String.getString(like_id), post_id: String.getString(postId))
                 }
                 
                 
@@ -623,11 +685,25 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             cell.threedotBtn.isHidden = true
         }
         
+        cell.replyEditCallback = {msg,previd,cmtid in
+            
+            self.commentTextfield.text = msg
+            self.commentTextfield.becomeFirstResponder()
+            self.selectedcommentId = cmtid
+            self.precommentId = previd
+        }
+        
         cell.btnThreeDotCallback = {tag in
             
             let actionSheet = UIAlertController(style: .actionSheet)
             
             let edit = UIAlertAction(title: "Edit", style: .default) { action in
+                
+                self.commentTextfield.text = self.commentmessages?[indexPath.row].body
+                self.commentTextfield.becomeFirstResponder()
+                self.selectedcommentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+                //
+                
             }
             
             let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
@@ -635,7 +711,20 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                 let postId = String.getString(self.postid)
                 let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
                 
-                kChatharedInstance.deleteParticularComment(post_id: postId, comment_id: commentId)
+                let params: [String:Any] = [
+                    
+                    "comment_id": self.commentmessages?[indexPath.row].core_comment_id ?? 0,
+                    "post_id" : self.postid
+                    
+                ]
+                
+                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteComment, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                    
+                    if statusCode == 200 {
+                        kChatharedInstance.deleteParticularComment(post_id: postId, comment_id: commentId)
+                    }
+                    
+                }
                 
             }
 
@@ -643,7 +732,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
 
             }
             
-            //actionSheet.addAction(edit)
+            actionSheet.addAction(edit)
             actionSheet.addAction(delete)
             actionSheet.addAction(cancelAction)
             
@@ -664,7 +753,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
         
         let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
         
-        cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == false ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
+        cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == true ? UIImage(named: "liked_icon") : UIImage(named: "icons8_heart")
         
         cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
         cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
