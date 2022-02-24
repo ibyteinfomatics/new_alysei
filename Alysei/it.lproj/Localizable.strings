@@ -5,3 +5,452 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
+/*
+  Localizable.strings
+  Alysei
+
+  Created by Gitesh Dang on 23/02/22.
+  
+*/
+
+
+//MARK: MARKETPLACE
+
+//MARK: Marketplace Home Screen
+"MarketPlace" = "";
+"Recipe" = "";
+"Posts" = "";
+"Notifications" = "";
+"Go to my store" = "";
+"Create your store" = "Crea in tuo negozio online";
+"Discover Marketplace" = "";
+"Producer Store" = "";
+"Conservation Method" = "";
+"Italian Regions" = "";
+"Categories" = "";
+"Product Properties" = "";
+"FDA Certified" = "";
+"My Favourite" = "";
+"Most Popular" = "";
+"Promotions" = "";
+"Recently Added Products" = "";
+"View all" = "";
+"Newly Added Stores" = "";
+"Search by Italian Regions" = "";
+"Top Rated Products" = "";
+"Top Favourite Products" = "";
+"What are you looking for?" = "";
+
+//MARK: Marketplace Search Screen
+"Search for product brands & more" = "";
+
+//MARK: Marketplace Listing Screen
+"Sort" = "";
+"Filter" = "";
+
+//MARK: Marketplace Filter Screen
+"No Product found" = "";
+"Categories" = "";
+"Properties" = "";
+"FDA Certfied" = "";
+"Italian Region" = "";
+"Distance" = "";
+"Ratings" = "";
+"Producers" = "";
+"Product Name" = "";
+"Clear Filters" = "";
+"Filters" = "";
+
+//MARK: Marketplace Membership Screen
+"Select your package" = "";
+"Coming Soon....." = "";
+"Boost your listing" = "Potenzia le tue iserzioni";
+"Boost your listing to expand you reach and increase buyers engagement" = "Accelera la promozione delle tue inserzioni per un maggior coinvolgimeto della tua clientela";
+"Sell online" = "Vendi online";
+"Sell your product online to your buyers" = "Vendi i tuoi prodotti online ai tuoi acquirenti";
+"B2C Grand Opening" = "Apertura del Marketplace ai Consumatori";
+"Alysei full opening to Market, Buyers and Consumers" = "Apertura completa al Mercato, agli Acquirenti ed a Consumatori";
+"Create your own modern, professional online Store" = "Crea il tuo negozio online moderno e professionale";
+"Create your Product listing" = "Crea il tuo portfolio prodotti";
+"Display your unique products listings" = "Mostra i tuoi prodotti in vetrina";
+"Respond to buyers inquiry" = "Rispondi alle richieste di connessione";
+"Interact with your future buyers" = "Interagisci con i tuoi possibili acquirenti";
+"Favorite and Ratings" = "Recensioni";
+"Being able to be reviewed and rated by buyers" = "Controlla le tue recensioni";
+"Alysei Marketplace Membership" = "";
+"Choose a plan that is right for you" = "";
+
+//MARK: Marketplace CreateStore Screen
+"Update Store" = "";
+"Store Name" = "";
+"Description" = "";
+"Website" = "";
+"Store Region" = "";
+"Location" = "";
+"Next" = "";
+"Exceed Maximum Number Of Selection" = "";
+"Ok" = "";
+"Please upload profile picture." = "";
+"Please upload cover picture." = "";
+"Please upload store images." = "";
+"Please enter a valid website url." = "";
+"Please enter valid website url, For example: www.website.com" = "";
+"Please choose a source type" = "";
+"Take Photo" = "";
+"Choose From Library" = "";
+"Delete photo" = "";
+"Remove photo" = "";
+"Cancel" = "";
+"Okay" = "";
+"Denied albums permissions granted" = "";
+"Denied camera permissions granted" = "";
+
+//MARK: Marketplace Add Product Screen
+"Yes" = "";
+"No" = "";
+"No. of pieces" = "";
+"No. of bottles" = "";
+"liters" = "";
+"kilograms" = "";
+"USD" = "";
+"Maximum 200 characters" = "";
+"Maximum 50 characters" = "";
+"Product Price" = "";
+"Product Title" = "";
+"Select Product Category" = "";
+"Quantity Available" = "";
+"Brand Label" = "";
+"Keywords" = "";
+"grams" = "";
+"Add Product" = "";
+"milligrams" = "";
+"Exceed Maximum Number Of Selection" = "";
+"Minimum Order quantity should be less or equal to quantity Available" = "";
+"Please upload product images." = "";
+"Please enter product title." = "";
+"Please enter product description." = "";
+"Please enter category." = "";
+"Please enter quantity available." = "";
+"Please enter minimum order quantity." = "";
+"Please enter handling instructions." = "";
+"Please enter dispatch instructions." = "";
+"Please enter available for sample." = "";
+"Please enter valid product price." = "";
+"Helps user to find product" = "";
+"How many products are you currently available to deliver?" = "";
+"Choose how you plan to sell your products" = "";
+"Which is the minimum order quantity you are able to accept?" = "";
+"Provide details about your safe handling instructions" = "";
+"Provide details about your specific disptach instructions" = "";
+"Are you able to provide samples of your products upon request?" = "";
+"Indicate your product selling price to possible buyers" = "";
+"Your own brand label" = "";
+
+//MARK: Marketplace Rating Review Screen
+"ratings" = "";
+"Yes" = "";
+"reviews" = "";
+"Reviews" = "";
+"Edit Review" = "";
+"Add Review" = "";
+"Leave a comment" = "";
+"Please add ratings." = "";
+"Please enter some review." = "";
+"Review added Successfully!" = "";
+"You have already done a review on this product" = "";
+"Review updated Successfully!" = "";
+"Tap to rate:" = "";
+
+//MARK: Marketplace First Time Walthrough
+"Welcome to Marketplace" = "Benvenuto nel Marketplace";
+"Features you can explore" = "";
+"MarketPlace Rules" = "Regole del Marketplace";
+"Here you can create your unique Store" = "";
+"upload your product portfolio, explore, search and reply to inquiries" = "";
+"The most powerful markeplace engine for the Made in Italy" = "";
+"To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
+"Here you can explore and search for products from Italian Producers" = "Qui puoi scorprire, ricercare prodotti di Produttori Italiani";
+"Here you can explore and search for products and send inquiry to Italian Producers" = "";
+"The most powerful markeplace engine for the Made in Italy" = "";
+"To ensure a positive experience follow these simple rules" = "";
+"Explore the Markeplace" = "Esplora il marketplace";
+"Report suspicious behaviour" = "";
+"Search by Region, Product, Category and much more" = "Ricerca per Regione, Prodotto, Categoria e molto altro";
+"Let us know if something does not feel right" = "";
+"Reply to inquiry" = "";
+"Send an inquiry" = "";
+"Showcase you Products Store in a simple, clean and professional way" = "";
+"Being responsive will help you to build trust with Buyers" = "";
+
+"Ask for product information, samples request, prices, quantity etc." = "";
+"Information and details" = "Informazioni e dettagli";
+"Photo Quality" = "";
+"Report suspicious behaviour" = "Segnala un comportamento sospetto";
+"Make sure all the information you provide are accurate and completed" = "Assicurati che tutte le informazioni che hai fornito siano accurate e complete";
+"Make sure that all photos that you upload are in high quality" = "";
+"Let us know if something does not feel right" = "Tienici informati per qualsiasi situazione poco chiara";
+"Make sure all the information you provide are accurate and completed" = "";
+"Done" = "";
+
+//MARK: Marketplace Create Store Walthrough
+"Start promoting your products" = "";
+"Configure Your Store" = "";
+"Here is some tips to help you promote with confidence" = "";
+"Post in English" = "Promuovi in lingua inglese";
+"Write in English language to create your store and list your products" = "Scrivi in lingua inglese per creare il tuo negozio online e presentare i tuoi prodotti";
+"Connect with buyers" = "Entra in contatto con gli acquirenti";
+"When you create a listing, buyers will interact with you" = "Quando crei un'inserzione, gli acquirenti interagiranno con te";
+"Reply to inquiry" = "Rispondi alle richieste";
+"Being responsive will help you to build trust with Buyers" = "Essere reattivi ti aiuterà a costruire fiducia con gli acquirenti";
+"Report suspicious behaviour" = "Segnala un comportamento sospetto";
+"Let us know if something does not feel right" = "Tienici informato per qualsiasi situazione poco chiara";
+"Adding relevant and accurate info helps buyers to learn more about what you are selling." = "";
+"Add clear photos" = "Aggiungi fuoto di qualità";
+"Photos should have a good resolution and lighting,and should only show what you are listing" = "Assicurati che le foto siano in una buona risoluzione e luminosità, mostrando solo ciò che stai elencando";
+"Offer a fair price" = "Offri il giusto prezzo ";
+"Make sure you are offering prices appropriate to a competitive market like the US" = "Assicurati di offrire prezzi adeguati a un mercato competitivo come quello statunitense";
+"Boost your listing" = "Potenzia le tue iserzioni";
+"You can boost your listing to expand you reach and increase buyers engagement" = "Puoi accelerare la promozione delle tue inserzioni per un maggior coinvolgimeto della tua clientela";
+
+//MARK: Marketplace Inquiry Screen
+"Hi is this product is available?" = "";
+"Message" = "";
+"Please enter some message" = "";
+"New" = "";
+"You already submitted a query on this product" = "";
+"Network Error" = "";
+"Inquiry" = "";
+"Opened" = "";
+"Closed" = "";
+"years ago" = "";
+"months ago" = "";
+"weeks ago" = "";
+"Yesterday" = "";
+"hours ago" = "";
+"minutes ago" = "";
+"seconds ago" = "";
+"years ago" = "";
+"month ago" = "";
+"week ago" = "";
+"hour ago" = "";
+"minute ago" = "";
+"second ago" = "";
+"Send Inquiry" = "";
+"Blocked" = "";
+"Full Name" = "";
+"Email" = "";
+"Phone Number" = "";
+"Message" = "";
+
+////MARK: Marketplace ProductInfo Screen
+"Product Info" = "";
+"Handling Instructions" = "";
+"Dispatch Instructions" = "";
+"Quantity Available:" = "";
+"Brand Label" = "";
+"Min Order Quantity" = "";
+"Sample Available" = "";
+"Available for Sample" = "";
+"Category" = "";
+"Price Range" = "";
+"Method" = "";
+"My Products" = "";
+
+
+//MARK: Marketplace Dashboard Screen
+"Total Product" = "";
+"Total Enquiry" = "";
+"Total Categories" = "";
+"Total Review" = "";
+"Yearly" = "";
+"Monthly" = "";
+"Weekly" = "";
+"Yesterday" = "";
+"Inquiries" = "";
+"Dashboard" = "";
+"Analytics" = "";
+"Today" = "";
+
+//MARK: Marketplace Confirm Screen
+"Thank you for submitting your information for admin review. We will respond you at earliest." = "";
+"Back to MarketPlace" = "";
+
+//MARK: Marketplace Sort Screen
+"Popularity" = "";
+"Ratings" = "";
+"Price -- Low to High" = "";
+"Price -- High to Low" = "";
+"Newest First" = "";
+
+//MARK: Marketplace Store Screen
+"Italian F&B Producer" = "";
+"Our Gallery" = "";
+"Call" = "";
+"Website" = "";
+"Add to Fav" = "";
+"No Image" = "";
+"Rating & Reviews" = "";
+"See All" = "";
+"All Products" = "";
+
+//MARK: Membership Screen
+"Review" = "Verifica";
+"Your account has been reviewed and approved by our staff" = "Il tuo account è stato verificato e approvato dal team Alysei";
+"Alysei Certification" = "Certificazione Alysei";
+"Congratulation! You are now a certified Alysei Member." = "Comlipeniti! ora sei un Membro Certificato Alysei";
+"Recognition" = "Riconoscimento";
+"You are within the top 10 most searched Alysei Members" = "Sei tra i primi 10 Membri Alysei più ricercati";
+"Quality Mark" = "Marchio di qualità";
+"You are within the top 5 highest rated Alysei Members" = "Sei tra i primi 5 Membri Alysei più votati";
+"Become a Certified Alysei Member to expan your market access" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
+"Complete your profile in order to fully access Alysei" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
+
+//MARK: LOGIN SCREEN
+"Login to your Account" = "Accedi al tuo Account";
+"LOGIN WITH EMAIL" = "Accedi con email";
+"SIGN UP" = "Crea un nuovo account";
+"By signig up, you agree to our Terms of Services & Privacy Policy." = "Iscrivendoti, accetti i nostri Termini di servizio e Informativa sulla privacy.";
+"Email" = "Email";
+"Password" = "Password";
+"LOGIN" = "Accedi";
+"Forget Password?" = "Hai dimenticato la password?";
+"Don't have an account yet? Sign up" = "Non hai ancora un account? Registrati";
+"Enter your registered email to recover your password" = "Inserisci la tua email per recuperare la password";
+"Reset Password" = "Reset password";
+"Select your role" = "Seleziona chi sei";
+"Italian F&B Producers" = "Produttori enogastronomici Italiani";
+"Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Scopri, trova e connettiti con Importatori e Distributori certificati negli Stati Uniti, crea e consolida il tuo brand, promuovi i tuoi prodotti, raggiungi i tuoi consumatori.";
+"US Importers & Distributors" = "Importatori e Distributori negli USA";
+"Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Esplora, trova e connettiti con i Produttori Locali Italiani per rafforzare il tuo portafoglio prodotti, accrescere la tua competitività, espandere il tuo brand.";
+"Italian Restaurants in US" = "Accedi al tuo Account";
+
+"Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach." = "Rafforza la collaborazione con Produttori e Importatori, promuovi la tua cucina ed I tuoi eventi speciali, espandi la tua presenza sul mercato.";
+"Voice of Expert" = "Esperti di Settore";
+"Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs." = "Cuochi, Scuole di Cucina e tutti gli specialisti italiani di enogastronomia potranno attraverso la piattaforma Alysei  promuovere il proprio nome, brand, eventi e blogs.";
+"Travel Agencies" = "Agenzie di Viaggio";
+"Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers." = "Rafforza la connessione con Produttori Italiani, Importatori e Distributori negli Stati Uniti, con Esperti di Settore, aumenta la tua visibilità, raggiungi i tuoi clienti target.";
+"Voyagers" = "Voyagers";
+"Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
+
+
+//MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
+
+"Select your Language" = "Seleziona la tua lingua";
+"Skip" = "Salta";
+"Get Started" = "Inizia";
+"Bridge the gap between tradition and modernity, offering endless opportunities to Italian high quality product manufactures to grow and expand their business in USA while maintaining their centennial tradition and identity." = "Unisci tradizione e modernità, offrendo infinite opportunità ai produttori italiani di alta qualità di crescere ed espandere la propria attività negli Stati Uniti, pur mantenendo la loro tradizione e identità centenaria.";
+"Alysei is the first B2B and B2C Portal for Italian high-quality products in the Food & Beverage sector, designed and developed on a Collaborative Social Platform entirely directed to a public enthusiastic for the Made in Italy eno-gastronomy." = "Alysei è il primo Portale B2B e B2C di prodotti italiani di alta qualità nel settore enogastronomico, pensato e sviluppato su un ambiente Social interamente rivolto ad un pubblico appassionato dell'enogastronomia Italiana.";
+"Alysei certified Producers will be able to search and connect with certified Importers and Distributors in the US, build up and consolidate their brand, promote their products and reach their target customers faster to gain visibility and traction in the USA market." = "I produttori certificati Alysei potranno cercare e connettersi con Importatori e Distributori certificati negli Stati Uniti, costruire e consolidare il proprio brand, promuovere i propri prodotti e raggiungere i clienti target sul mercato statunitense.";
+"Alysei targets the entire population with a strong passion to the culture, history and tradition of the Italian cuisine." = "Alysei si rivolge a tutta la popolazione con una forte passione per la cultura, storia e tradizione della cucina italiana.";
+"Users will join Alysei to enjoy the magic world of our endless cuisine searching for products, restaurants, trips to Italy, events and tasting tours, cooking classes, recipes, blogs and many more activities helping to strengthen our great Made in Italy brand in US." = "I Voyagers potranno esplorare il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, viaggi in Italia, eventi e tour di degustazione, corsi di cucina, ricette, blogs e molte altre attività che aiuteranno a rafforzare il nostro grande marchio Made in Italy negli Stati Uniti.";
+"Next" = "Avanti";
+"Finish" = "Fine";
+
+//MARK: PRODUCER WALKTHROUGH
+"Alysei Certification" = "Certificazioni Alysei";
+"Sign up, create, and complete your Company profile, showcase your feature products, select your Hub in US, promote your Brand." = "Iscriviti, crea e completa il tuo profilo aziendale, mostra i tuoi prodotti in vetrina, seleziona il tuo Hub negli Stati Uniti, promuovi il tuo brand.";
+"Access to the B2B Platform" = "Accesso alla piattaforma B2B";
+"Access to the B2B Engine to search and connect with Importers, Distributors, Italian Restaurants in US Voice of Experts, Travel Agencies." = "Accesdi al motore B2B per cercare e connetterti con Importatori, Distributori, Ristoranti Italiani negli USA, Esperti di settore, Agenzie di Viaggio.";
+"Your own Marketplace" = "Il tuo Marketplace";
+"Access to the Market Place, create your unique Store, upload your product portfolio, enhance your visibility, expand your reach." = "Accedi al Marketplace, crea il tuo negozio virtuale, carica il tuo portfolio prodotti, espandi la tua visibilità ed il tuo brand.";
+"From Farm to Fork" = "Dal Campo alla Tavola";
+"Full access to Alysei Social Platform to reach your target customers in US within your Hub, launch target product and event promotion campaigns, strengthen your Brand." = "Accedi alla Piattaforma Social Alysei per raggiungere i tuoi clienti target negli USA all'interno del tuo Hub, lancia campagne ed eventi promozionali, rafforzare il tuo Brand.";
+
+//MARK: IMPORTER AND DISTRIBUTER WALKTHROUGH
+
+
+"Alysei Certification" = "";
+"Sign up, create and complete your Company profile, showcase your feature products, select your Hub in US, promote your Brand." = "Iscriviti, crea e completa il tuo profilo aziendale, mostra i tuoi prodotti in vetrina, seleziona il tuo Hub negli USA, promuovi il tuo Brand.";
+"Access to the B2B Platform" = "Accesso alla piattaforma B2B";
+"Access to the B2B Engine to search and connect with Italian Producers, Italian Restaurants in US, Voice of Experts, Travel Agencies." = "Accesso al motore B2B per cercare e connetterti con Produttori Italiani, Ristoranti Italiani in USA, Esperti di Settore, Agenzie di Viaggio.";
+"Your own Market Place" = "Il tuo Marketplace";
+"Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect and develop business realtionship." = "Accedi al Market Place, esplora, ricerca produttori italiani di alta qualità per Regione, Prodotto, Categoria e molto altro, crea connesione per rafforzare il tuo business.";
+"Gain Market Visibility" = "Accresci la tua visibilità sul mercato";
+"Full access to Alysei Social Platform to reach your target customers within your Hub, launch target product and event promotion campaigns, strengthen your Brand." = "Accedi alla Piattaforma Social Alysei per raggiungere i tuoi clienti target all'interno del tuo Hub, lancia campagne ed eventi promozionali, rafforzare il tuo Brand.";
+
+//MARK: RESTAURANT WALKTHROUGH
+"Alysei Certification" = "Certificazioni Alysei";
+"Sign up, create and complete your Restaurant profile, showcase your menu and feature recipes, select your Hub in US, promote your Restaurant." = "Iscriviti, crea e completa il profilo del tuo Ristorante, mostra il tuo menu, presenta le tue ricette, seleziona il tuo Hub negli Stati Uniti, promuovi il tuo Business.";
+"Access to the B2B Platform" = "Accesso alla piattaforma B2B";
+"Access to the B2B Engine to search and connect with Italian Producers, Importers and Distributors in US, Voice of Experts, Travel Agencies." = "Accedi al motore B2B per cercare e connetterti con Produttori, Importatori e Distributori italiani negli USA, Esperti di Settore, Agenzie di Viaggio.";
+"Your own Market Place" = "Il tuo Marketplace";
+"Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more,  develop business collaboration opportunities through your local Importers and Distributors." = "Accedi al Market Place, esplora, ricerca produttori italiani di alta qualità per Regione, Prodotto, Categoria e molto altro, sviluppa opportunità di collaborazione commerciale attraverso il tuoi Importatori e Distributori locali.";
+"Expand your reach" = "Aumenta il tuo successo/opportunità";
+"Full access to Alysei Social Platform to promote your restaurant and cuisine, organize and promote events bringing more clients to the table by exponentially expand your reach." = "Accedi alla piattaforma Alysei per promuovere il tuo ristorante e la tua cucina, organizzare e promuovere eventi, accrescere la tua presenza sul mercato.";
+
+
+//MARK: VOICE OF EXPERT WALKTHROUGH
+"Alysei Certification" = "Certificazioni Alysei";
+"Sign up, create and complete your Profile, showcase your feature blogs, books, events, projects, select your Hub in US, promote your Brand and offering." = "Iscriviti, crea e completa il tuo profilo, mostra i tuoi blogs, libri, eventi, progetti, seleziona il tuo Hub negli Stati Uniti, promuovi il tuo brand ed I tuoi servizi.";
+"Access to the B2B Platform" = "Accesso alla piattaforma B2B";
+"Enhance your collaboration opportunity by leveraging on the B2B Engine to search and connect with Italian Producers, Importers, Distributors and Italian Restaurants in US, Travel Agencies." = "Sfrutta il motore B2B per cercare e connetterti con Produttori Italiani, Importatori, Distributori e Ristoranti Italiani negli USA, Agenzie di Viaggio.";
+"Your own Market Place" = "Il tuo Marketplace";
+"Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities." = "Accedi al Market Place, esplora, cerca produttori italiani di alta qualità per Regione, Prodotto, Categoria e molto altro, sviluppa opportunità di collaborazione commerciale.";
+"Expand your reach" = "Aumenta le tue opportunità";
+"Full access to Alysei Social Platform to promote and strengthen your Brand, blogs, books, events, projects." = "Accedi alla Piattaforma Social Alysei per promuovere e rafforzare il tuo brand, i tuoi blogs, libri, eventi e progetti.";
+
+//MARK: TRAVEL AGENCIES WALKTHROUGH
+
+"Alysei Certification" = "Certificazione Alysei";
+"Sign up, create and complete your Company profile, showcase your feature trips, select your Hub in US, promote your offering." = "Iscriviti, crea e completa il tuo profilo aziendale, presenta i tuoi itinerari di viaggio, seleziona il tuo Hub negli Stati Uniti, promuovi la tua offerta.";
+"Access to the B2B Platform" = "Accesso alla piattaforma B2B";
+"Access to the B2B Engine to search and connect with Italian Producers, Importers, Distributors and Italian Restaurants in US, Voice of Expert." = "Accedi al Motore B2B per cercare e connetterti con Produttori Italiani, Importatori e Distributori Italiani negli USA, Ristoranti Italiani negli USA, Esperti di Settore.";
+"Your own Market Place" = "Il tuo Marketplace";
+"Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities." = "Accedi al Market Place, esplora, cerca i produttori italiani di alta qualità per Regione, Prodotto, Categoria e molto altro, sviluppa opportunità di collaborazione commerciale.";
+"Expand your reach" = "Aumenta le tue opportunità";
+"Full access to Alysei Social Platform to define, promote and reach your target market and customer." = "Accedi alla piattaforma Alysei per raggiungere e promuovere il tuo mercato ed i tuoi clienti target.";
+
+//MARK: VOYAGERS WALKTHROUGH
+"Choose your HUB in US" = "Scegli il tuo Hub negli USA";
+"Sign up, create and complete your profile, access to the Alysei world." = "Iscriviti, crea e completa il tuo profilo, accedi al mondo Alysei.";
+"Access to Alysei Social" = "Accesso ad Alysei Social";
+"Access to Alysei to search for products, restaurants, events, cooking classes, Recipes, trips to Italy, post, share, comments and much more." = "Accedi ad Alysei per cercare prodotti, ristoranti, eventi, corsi di cucina, ricette, viaggi in Italia, pubblicare, condividere, commentare e molto altro.";
+"Recipe Tool" = "Mondo Ricette";
+"Access to the Alysei Recipe Tool, search, create, post, share, rate recipes with a click of a mouse." = "Accedi al portale delle ricette Alysei, cerca, crea, pubblica, condividi, valuta le ricette con un clic del mouse.";
+"Rewards and Benefits" = "Premi e Vantaggi";
+"Bring more friends an expand your membership and Benefits." = "Porta più amici dentro la piattafroma, accresi il tuo status e benefici.";
+
+//MARK: HUB SELECTION SCREEN
+"Select the HUB in USA where you plan to develop your business" = "Seleziona l'HUB in US dove vuoi sviluppare il tuo business";
+"The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities" = "L'Hub identifca una zona geografica sviluppata intorno a un area metropoliatana, centro nevralgico di attività di business, network e sviluppo";
+"If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city" = "Se non trovi l'Hub tra quelli attualmente disponibili, indica quello o quelli di tuo interesse selezionando stato e città";
+
+//MARK: SIGN UP SCREEN
+
+"Hotel/Restaurant/Café" = "Hotel/Restaurant/Café";
+"Horeca" = "Horeca";
+"  Private Label" = "Private Label";
+"Sell your products under the retailer name" = "Vendi i tuoi prodotti sotto il marchio del tuo acquirente";
+"Alysei Brand Label" = "Etichetta/Marchio Alysei";
+"Provide Pick Up and And/Or Delivery" = "Provide Pick Up and And/Or Delivery";
+"Select if you can provide Pick Up and Delivery" = "Seleziona se puoi fare asporto e consegna";
+"Pick up Discount for Alysei Voyager" = "Pick up Discount for Alysei Voyager";
+"Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
+"Delivery Discount for Alysei Voyager" = "Delivery Discount for Alysei Voyager";
+"Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

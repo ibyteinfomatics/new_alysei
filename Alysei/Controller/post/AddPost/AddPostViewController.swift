@@ -26,7 +26,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var postPrivacyTableView: UITableView!
     @IBOutlet weak var imgPrivacy: UIImageView!
-    
+    @IBOutlet weak var vwPrivacy: UIView!
     // blank data view
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var logout: UIButton!
@@ -52,7 +52,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         super.viewDidLoad()
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
-        
+        vwPrivacy.layer.borderColor = UIColor.darkGray.cgColor
+        vwPrivacy.layer.borderWidth = 0.5
         postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
@@ -390,8 +391,31 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
     @IBAction func changePrivacyAction(_ sender: UIButton){
-        postPrivacyTableView.isHidden = false
-        postPrivacyTableView.reloadData()
+       // postPrivacyTableView.isHidden = false
+        //postPrivacyTableView.reloadData()
+        txtPost.resignFirstResponder()
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+            alertController.addAction(UIAlertAction(title: "Public", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Public", for: .normal)
+            }))
+            alertController.addAction(UIAlertAction(title: "Followers", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Followers", for: .normal)
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Just Me", for: .normal)
+            }))
+            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+                
+                self.btnPostPrivacy.setTitle("My Connections", for: .normal)
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+
+
+            self.present(alertController, animated: true, completion: nil)
+
     }
 //    private func showImagePicker(withSourceType type: UIImagePickerController.SourceType,mediaType: MediaType) -> Void {
         

@@ -116,6 +116,13 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         self.lblPostDesc.text = self.postDataModel.postDescription
         
         self.postOwnerUsernameLabel.text = "\(postOwner)"
+        if self.postDataModel.attachments?.count == 0 {
+            self.imageCollectionView.isHidden = true
+            imageCollectionHght.constant = 0
+        }else{
+            self.imageCollectionView.isHidden = false
+            imageCollectionHght.constant = 323
+        }
 
         self.imageCollectionView.dataSource = self
         self.imageCollectionView.delegate = self
@@ -141,6 +148,7 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
     @IBOutlet var shareableTextLabel: UITextField!
     @IBOutlet var imageCollectionView: UICollectionView!
     @IBOutlet var postOwnerUsernameLabel: UILabel!
+    @IBOutlet weak var imageCollectionHght: NSLayoutConstraint!
     @IBOutlet var lblPostDesc: UILabel!
     @IBOutlet var postOwnerImage: UIImageView!
     @IBOutlet weak var viewHeader: UIView!
@@ -188,6 +196,9 @@ extension SharePostViewController: UITextFieldDelegate {
 
             alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
                 self.privacyTextfield.text = "Just Me"
+            }))
+            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text = "My Connections"
             }))
 
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

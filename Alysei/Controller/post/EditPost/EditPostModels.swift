@@ -22,6 +22,7 @@ enum EditPost
                 var actionType: String
                 var postID: Int
                 var body: String?
+                
 
                 private enum CodingKeys: String, CodingKey {
                     case privacyLabel = "privacy"
@@ -43,6 +44,7 @@ enum EditPost
                 var postOwnerDetail: SubjectData?
                 var postDescription: String?
                 var postID: Int
+                var privacy: String?
             }
         }
     }
