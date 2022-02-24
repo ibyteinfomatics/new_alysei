@@ -539,7 +539,8 @@ extension PostsViewController: ShareEditMenuProtocol {
             let editPostDataModel = EditPost.EditData.edit(attachments: editData.attachments,
                                                              postOwnerDetail: editData.subjectId,
                                                              postDescription: "\(editData.body ?? "")",
-                                                             postID: postID)
+                                                             postID: postID,
+                                                           privacy: editData.privacy)
             self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
         }
     }

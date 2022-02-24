@@ -33,10 +33,11 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var postPrivacyTableView: UITableView!
-    @IBOutlet weak var imgPrivacy: UIImageView!
     
-    var privacyArray = ["Public","Followers","Just Me"]
+    @IBOutlet weak var imgPrivacy: UIImageView!
+    @IBOutlet weak var vwPrivacy: UIView!
+    
+    var privacy:String?
     var privacyImageArray = ["Public","Friends","OnlyMe"]
     
     var postDesc: String?
@@ -114,7 +115,9 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
         // interactor?.doSomething(request: request)
         txtPost.textContainer.heightTracksTextView = true
         txtPost.isScrollEnabled = false
-        postPrivacyTableView.isHidden = true
+      
+        vwPrivacy.layer.borderColor = UIColor.darkGray.cgColor
+        vwPrivacy.layer.borderWidth = 0.5
         setUserData()
     }
     func setUserData(){
@@ -159,6 +162,7 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
         }
         txtPost.text = self.postDataModel.postDescription
         txtPost.textColor = .black
+        btnPostPrivacy.setTitle(self.postDataModel?.privacy?.capitalized, for: .normal)
         for i in 0..<(self.postDataModel.attachments?.count  ?? 0){
             self.imagesFromSource.append(self.postDataModel.attachments?[i].attachmentLink?.attachmentUrl ?? "")
         }
@@ -227,7 +231,29 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
         
     }
     @IBAction func changePrivacyAction(_ sender: UIButton){
-        postPrivacyTableView.isHidden = false
+       // postPrivacyTableView.isHidden = false
+        txtPost.resignFirstResponder()
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+            alertController.addAction(UIAlertAction(title: "Public", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Public", for: .normal)
+            }))
+            alertController.addAction(UIAlertAction(title: "Followers", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Followers", for: .normal)
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Just Me", for: .normal)
+            }))
+            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+                
+                self.btnPostPrivacy.setTitle("My Connections", for: .normal)
+            }))
+
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+
+
+            self.present(alertController, animated: true, completion: nil)
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
@@ -285,30 +311,30 @@ extension EditPostViewController: UICollectionViewDelegate,UICollectionViewDataS
     }
 }
 //MARK: UITableView
-extension EditPostViewController : UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = postPrivacyTableView.dequeueReusableCell(withIdentifier: "PostPrivacyTableViewCell", for: indexPath) as? PostPrivacyTableViewCell else {return UITableViewCell()}
-        cell.selectionStyle = .none
-        cell.labelPrivacy.text = privacyArray[indexPath.row]
-        cell.imgPrivacy.image = UIImage(named: privacyImageArray[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        postPrivacyTableView.isHidden = true
-        btnPostPrivacy.setTitle(privacyArray[indexPath.row], for: .normal)
-        imgPrivacy.image = UIImage(named: privacyImageArray[indexPath.row])
-    }
-    
-    
-}
+//extension EditPostViewController : UITableViewDataSource, UITableViewDelegate{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = postPrivacyTableView.dequeueReusableCell(withIdentifier: "PostPrivacyTableViewCell", for: indexPath) as? PostPrivacyTableViewCell else {return UITableViewCell()}
+//        cell.selectionStyle = .none
+//        cell.labelPrivacy.text = privacyArray[indexPath.row]
+//        cell.imgPrivacy.image = UIImage(named: privacyImageArray[indexPath.row])
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 30
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        postPrivacyTableView.isHidden = true
+//        btnPostPrivacy.setTitle(privacyArray[indexPath.row], for: .normal)
+//        imgPrivacy.image = UIImage(named: privacyImageArray[indexPath.row])
+//    }
+//
+//
+//}
 extension EditPostViewController {
     func editPostApi(){
 

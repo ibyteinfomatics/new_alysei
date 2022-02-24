@@ -472,9 +472,9 @@ extension PhotosPost: ShareEditMenuProtocol {
                 actionSheet.addAction(reportAction)
             }
         }
-
+       
         actionSheet.addAction(cancelAction)
-
+      
 
         self.present(actionSheet, animated: true, completion: nil)
 
@@ -514,7 +514,8 @@ extension PhotosPost: ShareEditMenuProtocol {
             let editPostDataModel = EditPost.EditData.edit(attachments: editData.attachments,
                                                              postOwnerDetail: editData.subjectId,
                                                              postDescription: "\(editData.body ?? "")",
-                                                             postID: postID)
+                                                             postID: postID,
+                                                           privacy: editData.privacy)
             self.performSegue(withIdentifier: "seguePostsToEditPost", sender: editPostDataModel)
         }
     }

@@ -73,7 +73,7 @@ class PostDescTableViewCell: UITableViewCell {
     var currentIndex: Int?
     var reloadCallBack: ((Int?,Int?) -> Void)? = nil
     var relaodSection : Int?
-    
+   
     var btnLikeCallback:((Int) -> Void)? = nil
     var profileCallback:(() -> ())?
     var pages = 0
@@ -156,7 +156,7 @@ class PostDescTableViewCell: UITableViewCell {
 
         if fromMenuTab == "PhotosPost"{
             
-            self.menuDelegate.menuBttonTapped(postID: Int(postId), userID: Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""))
+            self.menuDelegate.menuBttonTapped(postID: self.data?.postID, userID: Int(kSharedUserDefaults.loggedInUserModal.userId ?? ""))
         }
 //        if fromMenuTab == "UserPostsViewController"{
 //

@@ -82,6 +82,7 @@ class NewFeedSearchDataModel{
     var shared_post_id: Int?
     var sharedPostData: SharedPostData?
     var isExpand = false
+  
     
     init(with dictResponse: [String:Any]){
         self.activityActionId = Int.getInt(dictResponse["activity_action_id"])
@@ -151,6 +152,7 @@ class SubjectData: Codable {
     var firstName: String?
     var lastName: String?
     var follower_count : Int?
+   
 
     init(with dictResponse: [String:Any]){
         self.userId = Int.getInt(dictResponse["user_id"])
@@ -162,6 +164,7 @@ class SubjectData: Codable {
         if let avatar = dictResponse["avatar_id"] as? [String:Any]{
             self.avatarId = Avatar.init(with: avatar)
         }
+        
         self.follower_count = Int.getInt(dictResponse["follower_count"])
         self.firstName = String.getString(dictResponse[APIConstants.kFirstName])
         self.lastName = String.getString(dictResponse[APIConstants.kLastName])
