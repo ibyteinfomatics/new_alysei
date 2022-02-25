@@ -506,6 +506,7 @@ class ReceivedMessageClass {
     var deleted :String?
     var like : Bool?
     var mediaType :messageType?
+    var mediaImage :String?
     var message :String?
     var receiverImage:String?
     var receiverName:String?
@@ -523,6 +524,7 @@ class ReceivedMessageClass {
         self.like          = Bool.getBool(messageData[Parameters.like])
         //self.mediaType        = String.getString(messageData[Parameters.mediaType])
         self.message           = String.getString(messageData[Parameters.messages])
+        self.mediaImage         = String.getString(messageData[Parameters.mediaImage])
         self.receiverImage             = String.getString(messageData[Parameters.receiverImage])
         self.receiverName           = String.getString(messageData[Parameters.receiverName])
         self.receiverid           = String.getString(messageData[Parameters.receiverids])
@@ -539,6 +541,8 @@ class ReceivedMessageClass {
             self.mediaType = .text
         case "photos":
             self.mediaType = .photos
+        case "textphotos":
+            self.mediaType = .textphotos
         case "video":
             self.mediaType = .video
         case "document":
@@ -555,6 +559,7 @@ class ReceivedMessageClass {
             Parameters.deleted                  : objects?.deleted ?? "" ,
             Parameters.like                : objects?.like ?? "",
             Parameters.messages                : objects?.message  ?? "",
+            Parameters.mediaImage               : objects?.mediaImage ?? "",
             Parameters.receiverImage              : objects?.receiverImage ?? "",
             Parameters.receiverName                   : objects?.receiverName ?? "",
             Parameters.receiverids                 : objects?.receiverid ?? "",
@@ -1258,7 +1263,7 @@ class GroupModel {
     }
 }
 enum messageType:String {
-    case text , photos , video , document , location , audio
+    case text , photos , textphotos , video , document , location , audio
 }
 
 enum MessageFrom:String {

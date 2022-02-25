@@ -177,6 +177,8 @@ class ConversationViewController: AlysieBaseViewC {
         self.chatTblView.register(UINib(nibName: cellidentifiers.Receivertextcell, bundle: nil),  forCellReuseIdentifier: cellidentifiers.Receivertextcell)
         self.chatTblView.register(UINib(nibName: cellidentifiers.SenderImageCell, bundle: nil), forCellReuseIdentifier: cellidentifiers.SenderImageCell)
         self.chatTblView.register(UINib(nibName: cellidentifiers.ReceiverImageCell, bundle: nil),forCellReuseIdentifier: cellidentifiers.ReceiverImageCell)
+        self.chatTblView.register(UINib(nibName: cellidentifiers.SenderTextImageCell, bundle: nil), forCellReuseIdentifier: cellidentifiers.SenderTextImageCell)
+        self.chatTblView.register(UINib(nibName: cellidentifiers.ReceiverTextImageCell, bundle: nil), forCellReuseIdentifier: cellidentifiers.ReceiverTextImageCell)
     }
   
     
@@ -244,15 +246,17 @@ class ConversationViewController: AlysieBaseViewC {
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
-                    sendImage(image: photo.modifiedImage)
+                    //self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
+                    //sendImage(image: photo.modifiedImage)
                     print(photo)
                     
-                    /*let vc = pushViewController(withName: ImageWithText.id(), fromStoryboard: StoryBoardConstants.kChat) as! ImageWithText
+                    let vc = pushViewController(withName: ImageWithText.id(), fromStoryboard: StoryBoardConstants.kChat) as! ImageWithText
                     vc.modalPresentationStyle = .overFullScreen
                     vc.modalTransitionStyle = .crossDissolve
-                    vc.image = photo.originalImage*/
-                    
+                    vc.image = photo.originalImage
+                    vc.userId = userId
+                    vc.name = name
+                    vc.profileImageUrl = profileImageUrl
                     
                 case .video(v: let v):
                     print("not used")
@@ -418,7 +422,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
             case .photos? :
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
-                photoCell.sendimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
                 photoCell.btnLike.isHidden = true
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -445,6 +449,55 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                         
                     } else {
                         //textCell.bgView.backgroundColor = UIColor.darkGray
+                        self.selectedChat.append(String.getString(objects?.uid))
+                    }
+                    
+                    if self.selectedChat.count > 0 {
+                        self.btnDelete.isHidden = false
+                    } else {
+                        self.btnDelete.isHidden = true
+                    }
+                    
+                }
+                
+                return photoCell
+                
+            case .textphotos? :
+                
+                guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderTextImageCell") as? SenderTextImageCell else {return UITableViewCell()}
+                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.btnLike.isHidden = true
+                
+                let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
+                photoCell.time.text = time
+                photoCell.lblMessage.text = String.getString(objects?.message)
+                
+                photoCell.bgView.layer.cornerRadius = 15
+                photoCell.bgView.layer.masksToBounds = true
+                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
+                
+                
+                
+                //OPEN IMAGE
+                photoCell.openImageCallBack = {
+                    
+                    let story = UIStoryboard(name:"Chat", bundle: nil)
+                    let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                    controller.url = String.getString(objects?.mediaImage)
+                    
+                    self.present(controller, animated: true)
+                }
+                
+                photoCell.LongDeleteCallBack = {
+                    //textCell.bgView.backgroundColor = UIColor.darkGray
+                    
+                    if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
+                        photoCell.bgView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+                        let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
+                        self.selectedChat.remove(at: index!)
+                        
+                    } else {
+                        photoCell.bgView.backgroundColor = UIColor.darkGray
                         self.selectedChat.append(String.getString(objects?.uid))
                     }
                     
@@ -501,9 +554,9 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 }
                 
                 if String.getString(objects?.senderImage).contains(imageDomain) {
-                    textCell.profile_image.setImage(withString: String.getString(objects?.senderImage).replacingOccurrences(of: "https://alyseiapi.ibyteworkshop.com/", with: "https://alysei.s3.us-west-1.amazonaws.com/"), placeholder: UIImage(named: "image_placeholder"))
+                    textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
                 } else {
-                    textCell.profile_image.setImage(withString:"https://alysei.s3.us-west-1.amazonaws.com/"+String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
+                    textCell.profile_image.setImage(withString:String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
                 }
                 
                 //textCell.profile_image.setImage(withString: String.getString(objects?.receiverImage), placeholder: UIImage(named: "image_placeholder"))
@@ -514,7 +567,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
                 
-                photoCell.receiveimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
                 photoCell.btnLike.isHidden = true
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -549,6 +602,56 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                     let story = UIStoryboard(name:"Chat", bundle: nil)
                     let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
                     controller.url = String.getString(objects?.message)
+                    
+                    self.present(controller, animated: true)
+                }
+                
+                return photoCell
+                
+            case .textphotos? :
+                
+                guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverTextImageCell") as? ReceiverTextImageCell else {return UITableViewCell()}
+                
+                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.btnLike.isHidden = true
+                photoCell.lblMessage.text = String.getString(objects?.message)
+                
+                photoCell.bgView.layer.cornerRadius = 15
+                photoCell.bgView.layer.masksToBounds = true
+                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
+                
+                let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
+                
+                photoCell.time.text = time
+                
+                photoCell.LongDeleteCallBack = {
+                    //textCell.bgView.backgroundColor = UIColor.darkGray
+                    
+                    if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
+                        photoCell.bgView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+                        let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
+                        self.selectedChat.remove(at: index!)
+                        
+                    } else {
+                        photoCell.bgView.backgroundColor = UIColor.darkGray
+                        self.selectedChat.append(String.getString(objects?.uid))
+                    }
+                    
+                   
+                    if self.selectedChat.count > 0 {
+                        self.btnDelete.isHidden = false
+                    } else {
+                        self.btnDelete.isHidden = true
+                    }
+                    
+                }
+                
+                //OPEN IMAGE
+                photoCell.openImageCallBack = {
+                    
+                    let story = UIStoryboard(name:"Chat", bundle: nil)
+                    let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+                    controller.url = String.getString(objects?.mediaImage)
                     
                     self.present(controller, animated: true)
                 }
@@ -624,72 +727,7 @@ extension ConversationViewController {
     
     
     //MARK:- Func for Send Image To server and save Data on Firebase
-    func sendImage(image :UIImage?){
-        
-        let imageParam : [String:Any] = [APIConstants.kImage: self.imagesFromSource,
-                                         APIConstants.kImageName: "media"]
-        
-        CommonUtil.showHudWithNoInteraction(show: true)
-        
-        TANetworkManager.sharedInstance.requestMultiPart(withServiceName:APIUrl.kUploadMediaApi, requestMethod: .post, requestImages: [imageParam], requestVideos: [:], requestData: [:]) {[weak self] (result: Any?, error: Error?, errorType: ErrorType, statusCode: Int?) in
-            CommonUtil.showHudWithNoInteraction(show: false)
-            guard self != nil else { return }
-            if errorType == ErrorType.requestSuccess {
-                let dicResponse     = kSharedInstance.getDictionary(result)
-                switch Int.getInt(statusCode) {
-                case 200:
-                 
-                    //let data = kSharedInstance.getDictionary(dicResponse[kData])
-                   
-                    let mediaUrl = String.getString(dicResponse["media_url"])
-                    print("media   "+mediaUrl)
-                    
-                    let sendMessageDetails = ReceivedMessageClass()
-                    sendMessageDetails.receiverid = String.getString(self?.userId)
-                    sendMessageDetails.senderid = String.getString(kSharedUserDefaults.loggedInUserModal.userId)
-                    sendMessageDetails.mediaType = .photos
-                    sendMessageDetails.message = mediaUrl
-                    
-                    sendMessageDetails.deleted = ""
-                    sendMessageDetails.like = false
-                    sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( self?.userId)
-                    
-                    if kSharedUserDefaults.loggedInUserModal.companyName != ""{
-                        sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
-                    } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
-                        sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
-                    } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-                        sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
-                    }
-                    
-                    sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "") 
-                    
-                    sendMessageDetails.receiverImage = self?.profileImageUrl
-                    sendMessageDetails.receiverName = self?.name
-                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
-                    //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
-                    
-                    kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId))
-                    
-                    self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
-
-                case 400:
-                    self?.showAlert(withMessage: String.getString(dicResponse["message"]))
-                    
-                default:
-                    CommonUtil.showHudWithNoInteraction(show: false)
-                    self?.showAlert(withMessage: String.getString(dicResponse["message"]))
-                    
-                }
-            } else if errorType == ErrorType.noNetwork {
-                CommonUtil.showHudWithNoInteraction(show: false)
-                self?.showAlert(withMessage: String.getString("no network"))
-            } else {
-                CommonUtil.showHudWithNoInteraction(show: false)
-                self?.showAlert(withMessage: String.getString("no network"))
-            }
-        }
-    }
+    
     
     
     

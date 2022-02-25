@@ -13,12 +13,20 @@ class ImageWithText: AlysieBaseViewC {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var chatTextView: IQTextView!
     @IBOutlet weak var sendView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var textViewHeightConstraint : NSLayoutConstraint!
     @IBOutlet weak var viewBottomConstraint     : NSLayoutConstraint!
 
     var image : UIImage?
     var shouldUpdateFocus = true
+    var imagesFromSource = [UIImage]()
+    
+    var name : String?
+    var userId : String?
+    //var sendImage : UIImage?
+    //var userName : String?
+    var profileImageUrl : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +68,9 @@ class ImageWithText: AlysieBaseViewC {
     
     @IBAction func sendTextMessage(_ sender: Any) {
         
+        self.imagesFromSource.append(image!)
+        sendImage(image: image)
+        
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -93,4 +104,105 @@ class ImageWithText: AlysieBaseViewC {
     }
     */
 
+}
+
+extension ImageWithText {
+    
+    
+    
+    func sendImage(image :UIImage?){
+        self.sendButton.isUserInteractionEnabled = false
+        let imageParam : [String:Any] = [APIConstants.kImage: self.imagesFromSource,
+                                         APIConstants.kImageName: "media"]
+        
+        CommonUtil.showHudWithNoInteraction(show: true)
+        
+        TANetworkManager.sharedInstance.requestMultiPart(withServiceName:APIUrl.kUploadMediaApi, requestMethod: .post, requestImages: [imageParam], requestVideos: [:], requestData: [:]) {[weak self] (result: Any?, error: Error?, errorType: ErrorType, statusCode: Int?) in
+            CommonUtil.showHudWithNoInteraction(show: false)
+            guard self != nil else { return }
+            if errorType == ErrorType.requestSuccess {
+                let dicResponse     = kSharedInstance.getDictionary(result)
+                switch Int.getInt(statusCode) {
+                case 200:
+                 
+                    //let data = kSharedInstance.getDictionary(dicResponse[kData])
+                   
+                    let mediaUrl = String.getString(dicResponse["media_url"])
+                    print("media   "+mediaUrl)
+                    
+                    let sendMessageDetails = ReceivedMessageClass()
+                    sendMessageDetails.receiverid = String.getString(self?.userId)
+                    sendMessageDetails.senderid = String.getString(kSharedUserDefaults.loggedInUserModal.userId)
+                    
+                    if self?.chatTextView.text != "" {
+                        sendMessageDetails.mediaType = .textphotos
+                    } else {
+                        sendMessageDetails.mediaType = .photos
+                    }
+                    
+                    
+                    sendMessageDetails.mediaImage = mediaUrl
+                    sendMessageDetails.message = String.getString(self?.chatTextView.text)
+                    
+                    sendMessageDetails.deleted = ""
+                    sendMessageDetails.like = false
+                    sendMessageDetails.chat_id = String.getString(kSharedUserDefaults.loggedInUserModal.userId)+"_"+String.getString( self?.userId)
+                    
+                    if kSharedUserDefaults.loggedInUserModal.companyName != ""{
+                        sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.companyName
+                    } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
+                        sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
+                    } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
+                        sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                    }
+                    
+                    sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
+                    
+                    sendMessageDetails.receiverImage = self?.profileImageUrl
+                    sendMessageDetails.receiverName = self?.name
+                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+                    //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
+                    
+                    kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId))
+                    
+                    self?.notificationApi(fromid: String.getString(kSharedUserDefaults.loggedInUserModal.userId), toid: String.getString(self?.userId))
+
+                case 400:
+                    self?.sendButton.isUserInteractionEnabled = true
+                    self?.showAlert(withMessage: String.getString(dicResponse["message"]))
+                    
+                default:
+                    self?.sendButton.isUserInteractionEnabled = true
+                    CommonUtil.showHudWithNoInteraction(show: false)
+                    self?.showAlert(withMessage: String.getString(dicResponse["message"]))
+                    
+                }
+            } else if errorType == ErrorType.noNetwork {
+                CommonUtil.showHudWithNoInteraction(show: false)
+                self?.showAlert(withMessage: String.getString("no network"))
+            } else {
+                CommonUtil.showHudWithNoInteraction(show: false)
+                self?.showAlert(withMessage: String.getString("no network"))
+            }
+        }
+    }
+    
+    func notificationApi(fromid: String, toid: String){
+        
+       let parameters: [String:Any] = [
+            "from_id": fromid,
+            "to_id": toid,
+            "type": "chat"]
+        
+        /*let parameters: [String:Any] = [
+            "from_id": toid,
+            "to_id": fromid]*/
+      
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kSendNotification, requestMethod: .POST, requestParameters: parameters, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
 }

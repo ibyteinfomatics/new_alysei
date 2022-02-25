@@ -628,6 +628,7 @@
                     <connections>
                         <outlet property="chatTextView" destination="g64-i0-AIs" id="nAH-0T-wsH"/>
                         <outlet property="img" destination="tjT-yl-hcA" id="JvP-qs-HUW"/>
+                        <outlet property="sendButton" destination="AKY-fl-BmN" id="JoJ-13-ctb"/>
                         <outlet property="sendView" destination="Nmf-Nr-2rJ" id="sZ2-R4-Ged"/>
                         <outlet property="viewBottomConstraint" destination="sdm-es-die" id="yBA-5d-Q7Q"/>
                     </connections>

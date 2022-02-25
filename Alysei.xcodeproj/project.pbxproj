@@ -425,6 +425,10 @@
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
+		6BF0F5F427C8A83400ABC341 /* SenderTextImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0F5F227C8A83400ABC341 /* SenderTextImageCell.swift */; };
+		6BF0F5F527C8A83400ABC341 /* SenderTextImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0F5F327C8A83400ABC341 /* SenderTextImageCell.xib */; };
+		6BF0F5F827C8A84C00ABC341 /* ReceiverTextImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0F5F627C8A84C00ABC341 /* ReceiverTextImageCell.swift */; };
+		6BF0F5F927C8A84C00ABC341 /* ReceiverTextImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0F5F727C8A84C00ABC341 /* ReceiverTextImageCell.xib */; };
 		6BFF3DF5273CD830006AC16B /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */; };
 		7C335E7EC45F29BF5A0AC467 /* Pods_Alysei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6E820CA6F6DF6E8AA5D5 /* Pods_Alysei.framework */; };
 		A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A808778625ADB4F400AA4A69 /* Login.storyboard */; };
@@ -1112,6 +1116,10 @@
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
+		6BF0F5F227C8A83400ABC341 /* SenderTextImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextImageCell.swift; sourceTree = "<group>"; };
+		6BF0F5F327C8A83400ABC341 /* SenderTextImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTextImageCell.xib; sourceTree = "<group>"; };
+		6BF0F5F627C8A84C00ABC341 /* ReceiverTextImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTextImageCell.swift; sourceTree = "<group>"; };
+		6BF0F5F727C8A84C00ABC341 /* ReceiverTextImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTextImageCell.xib; sourceTree = "<group>"; };
 		6BFF3DF4273CD830006AC16B /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		9F55910EFF060A6AD8E81F18 /* Pods-Alysie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.debug.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.debug.xcconfig"; sourceTree = "<group>"; };
 		A808778625ADB4F400AA4A69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -2770,6 +2778,10 @@
 				C5197AD926E72A4F00C0894F /* Receivertextcell.swift */,
 				C5197ADA26E72A4F00C0894F /* ChatConversationCell.swift */,
 				C5197ADB26E72A4F00C0894F /* ReceiverImageCell.xib */,
+				6BF0F5F227C8A83400ABC341 /* SenderTextImageCell.swift */,
+				6BF0F5F327C8A83400ABC341 /* SenderTextImageCell.xib */,
+				6BF0F5F627C8A84C00ABC341 /* ReceiverTextImageCell.swift */,
+				6BF0F5F727C8A84C00ABC341 /* ReceiverTextImageCell.xib */,
 			);
 			path = "Chat Cell";
 			sourceTree = "<group>";
@@ -3333,7 +3345,9 @@
 				C5D6F7B626B18264006FFCDF /* ActiveCountriesCollectionViewCell.xib in Resources */,
 				6B89923B2702E4FB00591A2E /* PreferencesImageCollectionViewCell.xib in Resources */,
 				6B8992392702E46700591A2E /* FoodAllergyCollectionViewCell.xib in Resources */,
+				6BF0F5F927C8A84C00ABC341 /* ReceiverTextImageCell.xib in Resources */,
 				C5D6F7B226B18264006FFCDF /* SelectHubStateCViewCell.xib in Resources */,
+				6BF0F5F527C8A83400ABC341 /* SenderTextImageCell.xib in Resources */,
 				C5EB3CC026E9CB5700CCAC9E /* ViewRecipeTableViewCell.xib in Resources */,
 				27A443D625AE03720002BAAC /* Montserrat-SemiBold.ttf in Resources */,
 				27A443D225AE03720002BAAC /* Montserrat-Thin.ttf in Resources */,
@@ -3528,6 +3542,7 @@
 				27D0FAB625CEE9FF00463FE0 /* SelectProductTableCell.swift in Sources */,
 				6B3756EE27281C1E0011F78E /* AwardModel.swift in Sources */,
 				C5EB3CE426E9CB8600CCAC9E /* AddIngredientsViewController.swift in Sources */,
+				6BF0F5F827C8A84C00ABC341 /* ReceiverTextImageCell.swift in Sources */,
 				27A443C625AE03720002BAAC /* textEdit.swift in Sources */,
 				C5D6F7EB26B1829D006FFCDF /* ActiveCountriesCollectionViewCell.swift in Sources */,
 				C5753EB32653B6B90024E5C7 /* StateModel.swift in Sources */,
@@ -3694,6 +3709,7 @@
 				27B4E8EB25EE9FA300623E45 /* SaveAddressViewC.swift in Sources */,
 				6B90662626F83FB500D24521 /* PreferencesImageCollectionViewCell.swift in Sources */,
 				6B8992532702EA5000591A2E /* PreferencesDataModel.swift in Sources */,
+				6BF0F5F427C8A83400ABC341 /* SenderTextImageCell.swift in Sources */,
 				27A443BC25AE03720002BAAC /* RSPickerView.swift in Sources */,
 				27B87CEC25F6310400E38E85 /* FeaturedProductTableCell.swift in Sources */,
 				6B67AD51270437A200B4A4F1 /* EditPostViewController.swift in Sources */,

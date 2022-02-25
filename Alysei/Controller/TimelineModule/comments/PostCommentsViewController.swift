@@ -52,16 +52,17 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     }
     
     func receiveComment() {
-        
+        self.commentmessages?.removeAll()
         kChatharedInstance.receivce_Comment(postId: String.getString(self.postid)) { (message) in
             
-            self.commentmessages?.removeAll()
+            
             self.commentmessages = message
             self.commentTextfield.returnKeyType = .next
             self.receiveCommentLike()
             //self.scrollToLTopRow()
             
             if self.commentmessages?.count ?? 0 == 0{
+                self.tableView.reloadData()
                 self.vwBlank.isHidden = false
                 self.commentTextfield.becomeFirstResponder()
             }else{
@@ -634,134 +635,141 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SelfPostCommentsCell else {
+            
             return UITableViewCell()
         }
-        cell.commentReplyDelegate = self
-        
-        let data = self.commentmessages?[indexPath.row]
-        if data?.isSelected == true {
-            cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], postid: String.getString(self.postid))
-        } else {
-            cell.setReply([], postid: "")
-        }
-        //cell.replyBtn.tag = indexPath.row
-        cell.btnReplyCallback = {tag in
-           // self.replyTap = true
-            self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
-            self.commentTextfield.becomeFirstResponder()
-            self.commentTextfield.placeholder = "Leave a Reply"
-        }
-        
-        cell.btnLikeCallback = {tag in
+        if self.commentmessages?.count ?? 0 > 0 {
             
-            let commentid = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+            cell.commentReplyDelegate = self
             
-            let like = self.commentmessages?[indexPath.row].isLike == false ? 1 : 0
-            
-            self.callLikeUnlikeApi(like, self.postid, commentid, indexPath.row)
-            
-        }
-        
-        cell.btnViewReplyCallback = {tag in
-            
+            let data = self.commentmessages?[indexPath.row]
             if data?.isSelected == true {
-                data?.isSelected = false
-                cell.setReply([], postid: "")
-                self.tableView.reloadRows(at: [indexPath], with: .none)
-            } else {
-                
-                data?.isSelected = true
                 cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], postid: String.getString(self.postid))
-                self.tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                cell.setReply([], postid: "")
             }
-        }
-        
-        let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
-        
-        if self.commentmessages?[indexPath.row].data?.user_id == selfID {
-            cell.threedotBtn.isHidden = false
-        } else {
-            cell.threedotBtn.isHidden = true
-        }
-        
-        cell.replyEditCallback = {msg,previd,cmtid in
-            
-            self.commentTextfield.text = msg
-            self.commentTextfield.becomeFirstResponder()
-            self.selectedcommentId = cmtid
-            self.precommentId = previd
-        }
-        
-        cell.btnThreeDotCallback = {tag in
-            
-            let actionSheet = UIAlertController(style: .actionSheet)
-            
-            let edit = UIAlertAction(title: "Edit", style: .default) { action in
-                
-                self.commentTextfield.text = self.commentmessages?[indexPath.row].body
+            //cell.replyBtn.tag = indexPath.row
+            cell.btnReplyCallback = {tag in
+               // self.replyTap = true
+                self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
                 self.commentTextfield.becomeFirstResponder()
-                self.selectedcommentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
-                //
+                self.commentTextfield.placeholder = "Leave a Reply"
+            }
+            
+            cell.btnLikeCallback = {tag in
+                
+                let commentid = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+                
+                let like = self.commentmessages?[indexPath.row].isLike == false ? 1 : 0
+                
+                self.callLikeUnlikeApi(like, self.postid, commentid, indexPath.row)
                 
             }
             
-            let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+            cell.btnViewReplyCallback = {tag in
                 
-                let postId = String.getString(self.postid)
-                let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
+                if data?.isSelected == true {
+                    data?.isSelected = false
+                    cell.setReply([], postid: "")
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                } else {
+                    
+                    data?.isSelected = true
+                    cell.setReply(self.commentmessages?[indexPath.row].reply ?? [], postid: String.getString(self.postid))
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                }
+            }
+            
+            let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+            
+            if self.commentmessages?[indexPath.row].data?.user_id == selfID {
+                cell.threedotBtn.isHidden = false
+            } else {
+                cell.threedotBtn.isHidden = true
+            }
+            
+            cell.replyEditCallback = {msg,previd,cmtid in
                 
-                let params: [String:Any] = [
-                    
-                    "comment_id": self.commentmessages?[indexPath.row].core_comment_id ?? 0,
-                    "post_id" : self.postid
-                    
-                ]
+                self.commentTextfield.text = msg
+                self.commentTextfield.becomeFirstResponder()
+                self.selectedcommentId = cmtid
+                self.precommentId = previd
+            }
+            
+            cell.btnThreeDotCallback = {tag in
                 
-                TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteComment, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                let actionSheet = UIAlertController(style: .actionSheet)
+                
+                let edit = UIAlertAction(title: "Edit", style: .default) { action in
                     
-                    if statusCode == 200 {
-                        kChatharedInstance.deleteParticularComment(post_id: postId, comment_id: commentId)
-                    }
+                    self.commentTextfield.text = self.commentmessages?[indexPath.row].body
+                    self.commentTextfield.becomeFirstResponder()
+                    self.selectedcommentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
+                    //
                     
                 }
                 
+                let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+                    
+                    let postId = String.getString(self.postid)
+                    let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
+                    
+                    let params: [String:Any] = [
+                        
+                        "comment_id": self.commentmessages?[indexPath.row].core_comment_id ?? 0,
+                        "post_id" : self.postid
+                        
+                    ]
+                    
+                    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kDeleteComment, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                        
+                        if statusCode == 200 {
+                            kChatharedInstance.deleteParticularComment(post_id: postId, comment_id: commentId)
+                        }
+                        
+                    }
+                    
+                }
+
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+                }
+                
+                actionSheet.addAction(edit)
+                actionSheet.addAction(delete)
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+
+                
             }
-
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-
+            
+            if self.commentmessages?[indexPath.row].reply.count ?? 0 > 0 {
+                cell.viewReplyButtonconstraint.constant = 20
+                cell.viewReplyButton.isHidden = false
+                cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0) Reply", for: .normal)
+            } else {
+                
+                cell.viewReplyButtonconstraint.constant = 0
+                cell.viewReplyButton.isHidden = true
             }
             
-            actionSheet.addAction(edit)
-            actionSheet.addAction(delete)
-            actionSheet.addAction(cancelAction)
+            let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
             
-            self.present(actionSheet, animated: true, completion: nil)
-
+            cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == true ? UIImage(named: "liked_icon") : UIImage(named: "icons8_heart")
             
-        }
-        
-        if self.commentmessages?[indexPath.row].reply.count ?? 0 > 0 {
-            cell.viewReplyButtonconstraint.constant = 20
-            cell.viewReplyButton.isHidden = false
-            cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0) Reply", for: .normal)
+            cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
+            cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
+            cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
+            cell.timeLabel.text = "\(time)"
+            cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
+            
         } else {
-            
-            cell.viewReplyButtonconstraint.constant = 0
-            cell.viewReplyButton.isHidden = true
+           // self.vwBlank.isHidden = false
         }
-        
-        let time = getcurrentdateWithTime(datetime: self.commentmessages?[indexPath.row].created_at)
-        
-        cell.likeimage.image = self.commentmessages?[indexPath.row].isLike == true ? UIImage(named: "liked_icon") : UIImage(named: "icons8_heart")
-        
-        cell.likecount.text = String.getString(self.commentmessages?[indexPath.row].comment_like_count)
-        cell.descriptionLabel.text = self.commentmessages?[indexPath.row].body
-        cell.userNameLabel.text = self.commentmessages?[indexPath.row].data?.restaurant_name//"\(name)"
-        cell.timeLabel.text = "\(time)"
-        cell.userImageView.setImage(withString:String.getString(self.commentmessages?[indexPath.row].data?.data?.attachment_url), placeholder: UIImage(named: "image_placeholder"))
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
