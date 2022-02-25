@@ -352,27 +352,27 @@ class InquiryConversation: AlysieBaseViewC {
         let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
             let components = Calendar.current.dateComponents(units, from: date, to: Date())
 
-            if components.year! > 0 {
-                return "\(components.year!) " + (components.year! > 1 ? "years ago" : "year ago")
+        if components.year! > 0 {
+            return "\(components.year!) " + (components.year! > 1 ? MarketPlaceConstant.kYearsAgo : MarketPlaceConstant.kYearAgo )
 
-            } else if components.month! > 0 {
-                return "\(components.month!) " + (components.month! > 1 ? "months ago" : "month ago")
+        } else if components.month! > 0 {
+            return "\(components.month!) " + (components.month! > 1 ? MarketPlaceConstant.kMonthsAgo : MarketPlaceConstant.kMonthAgo)
 
-            } else if components.weekOfYear! > 0 {
-                return "\(components.weekOfYear!) " + (components.weekOfYear! > 1 ? "weeks ago" : "week ago")
+        } else if components.weekOfYear! > 0 {
+            return "\(components.weekOfYear!) " + (components.weekOfYear! > 1 ? MarketPlaceConstant.kWeeksAgo : MarketPlaceConstant.kWeekAgo)
 
-            } else if (components.day! > 0) {
-                return (components.day! > 1 ? "\(String.getString(localDate))" : "Yesterday")
+        } else if (components.day! > 0) {
+            return (components.day! > 1 ? "\(String.getString(localDate))" : MarketPlaceConstant.kYesterday)
 
-            } else if components.hour! > 0 {
-                return "\(components.hour!) " + (components.hour! > 1 ? "hours ago" : "hour ago")
+        } else if components.hour! > 0 {
+            return "\(components.hour!) " + (components.hour! > 1 ? MarketPlaceConstant.kHoursAgo : MarketPlaceConstant.kHourAgo)
 
-            } else if components.minute! > 0 {
-                return "\(components.minute!) " + (components.minute! > 1 ? "minutes ago" : "minute ago")
+        } else if components.minute! > 0 {
+            return "\(components.minute!) " + (components.minute! > 1 ? MarketPlaceConstant.kMinutesAgo : MarketPlaceConstant.kMinuteAgo)
 
-            } else {
-                return "\(components.second!) " + (components.second! > 1 ? "seconds ago" : "second ago")
-            }
+        } else {
+            return "\(components.second!) " + (components.second! > 1 ? MarketPlaceConstant.kSecondsAgo : MarketPlaceConstant.kSecondAgo)
+        }
         
     }
 
@@ -789,10 +789,10 @@ extension InquiryConversation {
                 }
             } else if errorType == ErrorType.noNetwork {
                 CommonUtil.showHudWithNoInteraction(show: false)
-                self?.showAlert(withMessage: String.getString("no network"))
+                self?.showAlert(withMessage: String.getString(MarketPlaceConstant.kNoNetwork))
             } else {
                 CommonUtil.showHudWithNoInteraction(show: false)
-                self?.showAlert(withMessage: String.getString("no network"))
+                self?.showAlert(withMessage: String.getString(MarketPlaceConstant.kNoNetwork))
             }
         }
     }

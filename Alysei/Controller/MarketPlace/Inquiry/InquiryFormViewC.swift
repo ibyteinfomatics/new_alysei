@@ -41,7 +41,7 @@ class InquiryFormViewC: AlysieBaseViewC {
     func setData(){
         lblProductDesc.text = passproductName?.capitalized
         lblProductPrice.text = "$" + "\(passProductPrice ?? "")"
-        txtMessage.text = "Hi is this product is available?"
+        txtMessage.text = MarketPlaceConstant.kIsProductAvailable
         txtMessage.textColor = UIColor.lightGray
         txtMessage.layer.borderWidth = 0.5
         txtMessage.layer.borderColor = UIColor.lightGray.cgColor
@@ -65,8 +65,8 @@ class InquiryFormViewC: AlysieBaseViewC {
     }
     
     @IBAction func btnSendEnquiryAction(_ sender: UIButton){
-        if txtMessage.text == "Message"{
-            self.showAlert(withMessage: "Please enter some message")
+        if txtMessage.text == MarketPlaceConstant.kMarkMessage{
+            self.showAlert(withMessage: MarketPlaceConstant.KEnterSomeMessage)
         }else{
         self.callSaveInquiryApi()
             
@@ -208,9 +208,9 @@ extension InquiryFormViewC{
                 vc?.productName = self.passproductName ?? ""
                 vc?.productImage = self.productImage ?? ""
             case 409:
-                self.showAlert(withMessage: "You already submitted a query on this product")
+                self.showAlert(withMessage: MarketPlaceConstant.kSubmitQuery)
             default:
-                self.showAlert(withMessage: "Network Error")
+                self.showAlert(withMessage: MarketPlaceConstant.kNetworkError)
             }
         }
     }

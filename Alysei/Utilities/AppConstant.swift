@@ -585,7 +585,382 @@ struct PlaceholderImages {
     static let ProfileAddress = "icon_address"
     
 }
+struct MarketPlaceConstant{
+    static let kSubmitQuery = "You already submitted a query on this product"
+    static let kNetworkError = "Network Error"
+    static let KEnterSomeMessage = "Please enter some message"
+    static let kIsProductAvailable = "Hi is this product is available?"
+    static let kMarkMessage = "Message"
+    static let kNew = "New"
+    static let kOpened = "Opened"
+    static let kClosed = "Closed"
+    static let kYearsAgo = "years ago"
+    static let kMonthsAgo = "months ago"
+    static let kWeeksAgo = "weeks ago"
+    static let kYesterday = "Yesterday"
+    static let kHoursAgo = "hours ago"
+    static let kMinutesAgo = "minutes ago"
+    static let kSecondsAgo = "seconds ago"
+    static let kYearAgo = "year ago"
+    static let kMonthAgo = "month ago"
+    static let kWeekAgo = "week ago"
+    static let kHourAgo = "hour ago"
+    static let kMinuteAgo = "minute ago"
+    static let kSecondAgo = "second ago"
+    static let kNoNetwork = "no network"
+    static let kNoProducer = "No producer found"
+    static let kSpaceReview = " Reviews"
+    static let kSendInquiry = "Send Inquiry"
+    static let kBlocked = "Blocked"
+    static let kFullName = "Full Name"
+    static let kEmail = "Email"
+    static let kPhoneNumber = "Phone Number"
+    static let kMessage = "Message"
+    
+    //MARK: Marketplace Home Screen
+    static let kMarketPlace = "MarketPlace"
+    static let kRecipe = "Recipe"
+    static let kPosts = "Posts"
+    static let kNotifications = "Notifications"
+    static let kGotoMyStore = "Go to my store"
+    static let kCreateMyStore = "Create your store"
+    static let kDiscoverMarketplace = "Discover Marketplace"
+    static let kProducerStore = "Producer Store"
+    static let kConservationMethod = "Conservation Method"
+    static let kItalianRegion = "Italian Regions"
+    static let kCategories = "Categories"
+    static let kProductProperties = "Product Properties"
+    static let kFDACertified = "FDA Certified"
+    static let kMyFavourite = "My Favourite"
+    static let kMostPospular = "Most Popular"
+    static let kPromotions = "Promotions"
+    static let kRecentlyAddedProject = "Recently Added Products"
+    static let kViewAll = "View all"
+    static let kNewlyAddedStore =  "Newly Added Stores"
+    static let kSearchItalianRegion =  "Search by Italian Regions"
+    static let kTopRatedProduct = "Top Rated Products"
+    static let kTopFavproduct = "Top Favourite Products"
+    static let kWhatYouLookingFor = "What are you looking for?"
+    
+    //MARK: Marketplace Search Screen
+    static let kSearchForProductBrands =  "Search for product brands & more"
 
+    //MARK: Marketplace Listing Screen
+    static let kSort = "Sort"
+    static let kFilter = "Filter"
+    //MARK: Marketplace Filter Screen
+    static let kNoProductFound = "No Product found"
+   // static let kCategories = "Categories"
+    static let kProperties = "Properties"
+   // static let kFDACertified = "FDA Certfied"
+    static let kITalianRegion = "Italian Region"
+    static let kDistance = "Distance"
+    static let kRatings = "Ratings"
+    static let kProducers = "Producers"
+    static let kProductName = "Product Name"
+    static let kClearFilters = "Clear Filters"
+   // static let kFilter = "Filters"
+    
+    //MARK: Marketplace Membership Screen
+    static let kSelectYourPackage = "Select your package"
+    static let kComingSoon = "Coming Soon....."
+    static let kBoostYourListing = "Boost your listing"
+    static let kBoostListingExpandReach = "Boost your listing to expand you reach and increase buyers engagement"
+    static let kSellOnline = "Sell online"
+    static let kSellProducttoBuyers = "Sell your product online to your buyers"
+    static let kB2CGrandOpening = "B2C Grand Opening"
+    static let kAlyseiFullOpeneingToMarket = "Alysei full opening to Market, Buyers and Consumers"
+    static let kCreateYourOwnModern = "Create your own modern, professional online Store"
+    static let kCreateProductListing = "Create your Product listing"
+    static let kDisplayProductListing = "Display your unique products listings"
+    static let kRespondToBuyers = "Respond to buyers inquiry"
+    static let kInteractWithFutureBuyers = "Interact with your future buyers"
+    static let kFavRatings = "Favorite and Ratings"
+    static let kBeingAbleToReviewedAndRated = "Being able to be reviewed and rated by buyers"
+    static let kAlyseiMarketplaceMemebership = "Alysei Marketplace Membership"
+    static let kChoosePlanRight = "Choose a plan that is right for you"
+    
+    
+    //MARK: Marketplace CreateStore Screen
+    static let kUpdateStore =  "Update Store"
+    static let kStoreName = "Store Name"
+    static let kDescription = "Description"
+    static let kCWebsite = "Website"
+    static let kStoreRegion =  "Store Region"
+    static let kLocation = "Location"
+
+    static let kExceedMaximumLimit = "Exceed Maximum Number Of Selection"
+    static let kOk = "Ok"
+    static let kUploadProfilePicture = "Please upload profile picture."
+    static let kUploadCoverPicture = "Please upload cover picture."
+    static let kUploadStorePicture = "Please upload store images."
+    static let kEnterValidWebsiteUrl = "Please enter a valid website url."
+    static let kEnterValidWebsiteUrlExample = "Please enter valid website url, For example: www.website.com"
+    static let kChooseSource = "Please choose a source type"
+    static let kTakePhoto = "Take Photo"
+    static let kChooseLibrary = "Choose From Library"
+    static let kDeletePhoto = "Delete photo"
+    static let kRemovePhoto = "Remove photo"
+    static let kCancel = "Cancel"
+    static let kOkay = "Okay"
+    static let kDeniedAlbumPermissioins = "Denied albums permissions granted"
+    static let kDeniedCameraPermissioins = "Denied camera permissions granted"
+    
+    //MARK: Marketplace Add Product Screen
+    static let kYes = "Yes"
+    static let kNo = "No"
+    static let kNumberOfPieces = "No. of pieces"
+    static let kNumberOfbottles = "No. of bottles"
+    static let kLiters = "liters"
+    static let kKiloGrams = "kilograms"
+    static let kUSD = "USD"
+    static let kMaximum200Characters = "Maximum 200 characters"
+    static let kMaximum50Characters = "Maximum 50 characters"
+    static let kProductPrice = "Product Price"
+    static let kProductTitle = "Product Title"
+    static let kSelectProductCategory = "Select Product Category"
+    static let kQuantityAvailable = "Quantity Available"
+    static let kBrandLabel = "Brand Label"
+    static let kKeyword = "Keywords"
+    static let kGrams = "grams"
+    static let kAddProduct = "Add Product"
+    static let kMilligram = "milligrams"
+    static let kMinimumOrderProductQuantity = "Minimum Order quantity should be less or equal to quantity Available"
+    static let kUploadProductImages = "Please upload product images."
+    static let kEnterProductTitle = "Please enter product title."
+    static let kEnterProductDesc = "Please enter product description."
+    static let kEnterProductCategory = "Please enter category."
+    static let kEnterProduvtQunatity = "Please enter quantity available."
+    static let kProductMinimumQuantity = "Please enter minimum order quantity."
+    static let kProductHandlingInstr = "Please enter handling instructions."
+    static let kProductDispatchInstr = "Please enter dispatch instructions."
+    static let kEnterAvailableSample = "Please enter available for sample."
+    static let kEnterProductPrice = "Please enter valid product price."
+    static let kHelpUserToFindProduct = "Helps user to find product"
+    static let kProductCureentlyAvalbleToDelivr = "How many products are you currently available to deliver?"
+    static let kPlanToSellYourProduct = "Choose how you plan to sell your products"
+    static let kMinimumOrderQunatityToSellProduct = "Which is the minimum order quantity you are able to accept?"
+    static let kSafehandlingInstructions = "Provide details about your safe handling instructions"
+    static let kSpecifinDispatchInstruction = "Provide details about your specific disptach instructions"
+    static let kProvideSampleOfProduct = "Are you able to provide samples of your products upon request?"
+    static let kProductSellingPrice = "Indicate your product selling price to possible buyers"
+    static let kYourOwnBrandLabel = "Your own brand label"
+    
+    //MARK: Marketplace Rating Review Screen
+    static let kSRatings = "ratings"
+    static let kReviews = "reviews"
+    static let kCapReviews = "Reviews"
+    static let kEditReview = "Edit Review"
+    static let kAddReview = "Add Review"
+    static let kLeaveAComment = "Leave a comment"
+    static let kPleaseAddRatings = "Please add ratings."
+    static let kEnterSomeReview = "Please enter some review."
+    static let kReviewAddedSuccessfully = "Review added Successfully!"
+    static let kAlreadytDoneReview = "You have already done a review on this product"
+    static let kReviewUpdatedSuccessfully = "Review updated Successfully!"
+    static let kTapToRate = "Tap to rate:"
+    
+    //MARK: Marketplace First Time Walthrough
+    static let kWelcomeToMarketplace = "Welcome to Marketplace"
+    static let kFeatureYouExplore = "Features you can explore"
+    static let kMarketPlaceRules = "MarketPlace Rules"
+    static let kCreateYourUniqueStore = "Here you can create your unique Store"
+    static let kuploadProductPortFolioExplore = "upload your product portfolio, explore, search and reply to inquiries"
+    static let kPowerfulMarketplaceEngine = "The most powerful markeplace engine for the Made in Italy"
+    static let kPostiveExperience = "To ensure a positive experience follow these simple rules"
+    static let kExploreSearchProductsFormItalian = "Here you can explore and search for products from Italian Producers"
+    static let kExploreSendInquiry =  "Here you can explore and search for products and send inquiry to Italian Producers"
+  
+    static let kExploreMarketPlace = "Explore the Markeplace"
+    static let kReportSuspiciousBehaviour = "Report suspicious behaviour"
+    static let kSearchByRegionProductCategory = "Search by Region, Product, Category and much more"
+    static let kLetUSKnowSomethingDoesNotFeelright = "Let us know if something does not feel right"
+    static let kReplytoInquiry = "Reply to inquiry"
+    static let kSendAnInquiry = "Send an inquiry"
+    static let kShowcaseProductSimpleClean = "Showcase you Products Store in a simple, clean and professional way"
+    static let kBeingResponsiveBuildTrust = "Being responsive will help you to build trust with Buyers"
+
+    static let kAskFoeProductSampleRequest = "Ask for product information, samples request, prices, quantity etc."
+    static let kInformationAndDetails = "Information and details"
+    static let kPhotoQuality = "Photo Quality"
+    static let kAllInformationProvideAccurate =  "Make sure all the information you provide are accurate and completed"
+    static let kPhotosUploadhighQuality = "Make sure that all photos that you upload are in high quality"
+
+    static let kInformationAccurateAndcomplete =  "Make sure all the information you provide are accurate and completed"
+    static let kDone =  "Done"
+    
+    //MARK: Marketplace Create Store Walthrough
+    static let kStartPromotingProducts =  "Start promoting your products"
+    static let kConfigureStore =  "Configure Your Store"
+    static let kTipsToHelpPromoteConfidence =  "Here is some tips to help you promote with confidence"
+    static let kPostInEnglish =  "Post in English"
+    static let kWriteEnglishCreateYourStore =  "Write in English language to create your store and list your products"
+    static let kConnectWithBuyers =   "Connect with buyers"
+    static let kCreateListingBuyers =  "When you create a listing, buyers will interact with you"
+    
+    static let kAddingAccurateHelpBuyers =  "Adding relevant and accurate info helps buyers to learn more about what you are selling."
+    static let kAddClearPhotos =  "Add clear photos"
+    static let kPhotosGoodResolutionAndLightning =  "Photos should have a good resolution and lighting,and should only show what you are listing"
+    static let kOfferFairPrice =  "Offer a fair price"
+    static let kOfferingFarePriceToCompMarket =  "Make sure you are offering prices appropriate to a competitive market like the US"
+    ////MARK: Marketplace ProductInfo Screen
+    static let kProductInfo = "Product Info"
+    static let kHandlingInstructions = "Handling Instructions"
+    static let kDispatchInstruction = "Dispatch Instructions"
+    static let kDotQuantityAvailable = "Quantity Available:"
+    static let kBrandLable = "Brand Label"
+    static let kMinOrderQuantity = "Min Order Quantity"
+    static let kSampleAvailable = "Sample Available"
+    static let kAvailableForSample = "Available for Sample"
+    static let kCategory = "Category"
+    static let kPriceRange = "Price Range"
+    static let kMethod = "Method"
+    static let kMyProducts = "My Products"
+    
+    //MARK: Marketplace Dashboard Screen
+    static let kTotalProduct = "Total Product"
+    static let kTotalEnquiry = "Total Enquiry"
+    static let kTotalCategories = "Total Categories"
+    static let kTotalReviews = "Total Review"
+    static let kYearly = "Yearly"
+    static let kMonthly = "Monthly"
+    static let kWeekly = "Weekly"
+    static let kyesterday = "Yesterday"
+    static let kInquiries = "Inquiries"
+    static let kDashboard = "Dashboard"
+    static let kAnalytics = "Analytics"
+    static let kToday = "Today"
+    
+    //MARK: Marketplace Confirm Screen
+    static let kThanksForsubmittingInformation = "Thank you for submitting your information for admin review. We will respond you at earliest."
+    static let kBackToMarketplace = "Back to MarketPlace"
+
+    //MARK: Marketplace Sort Screen
+    static let kPopularity = "Popularity"
+    static let kPriceLowToHigh = "Price -- Low to High"
+    static let kPriceHighToLow = "Price -- High to Low"
+    static let kNewestFirst =  "Newest First"
+    
+    //MARK: Marketplace Store Screen
+    static let kItalianFBProducer = "Italian F&B Producer"
+    static let kOurGallery = "Our Gallery"
+    static let kCall = "Call"
+    static let kAddToFav = "Add to Fav"
+    static let kNoImage = "No Image"
+    static let kRatingAndReviews = "Rating & Reviews"
+    static let kSeeAll = "See All"
+    static let kAllProducts = "All Products"
+}
+struct LogInSignUp{
+  
+    //MARK: Membership Screen
+    static let kReview = "Review"
+    static let kAccountReviewesApprovOurStaff = "Your account has been reviewed and approved by our staff"
+    static let kAlyseiCertification = "Alysei Certification"
+    static let kYouAreeCertifiedAlysei = "Congratulation! You are now a certified Alysei Member."
+    static let kRecognition = "Recognition"
+    static let kTop10MostSearched = "You are within the top 10 most searched Alysei Members"
+    static let kQualityMark = "Quality Mark"
+    static let kTop5HighestRatedAlysei = "You are within the top 5 highest rated Alysei Members"
+    static let kBecomeACertifiedAlyei = "Become a Certified Alysei Member to expan your market access"
+    static let kCompleteProfileFullyAccess = "Complete your profile in order to fully access Alysei"
+    
+    //MARK: LOGIN SCREEN
+    static let kLoginToyourAccount = "Login to your Account"
+    static let kLoginWithEmail = "LOGIN WITH EMAIL"
+    static let kSignUp = "SIGN UP"
+    static let kSigningUpAgreeTerms = "By signig up, you agree to our Terms of Services & Privacy Policy."
+    
+    static let kPassword = "Password"
+    static let kLOGIN = "LOGIN"
+    static let kForgetPassword = "Forget Password?"
+    static let kDontHaveAccount = "Don't have an account yet? Sign up"
+    static let kEnterYourRegisteredEmail = "Enter your registered email to recover your password"
+    static let kResetPassword = "Reset Password"
+    static let kSelectRole = "Select your role"
+    static let kExploreConnectCertifiedImp = "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers."
+    static let kUSImporterDistributer = "US Importers & Distributors"
+    static let kExploreFindConnectLocalItalian = "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access."
+    static let kIatalianRestaurants = "Italian Restaurants in US"
+
+    static let kStrengthCollaborationWithProducer = "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach."
+    static let kChefCookingSchools = "Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs."
+    static let kTavelAgencies = "Travel Agencies"
+    static let kStreghthConnectionWithProducer = "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers."
+    static let kVoyager =  "Voyagers"
+    static let kEnjopyMagicWorldOfEndless = "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more."
+    
+    //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
+
+    static let kSelectYourLanguage = "Select your Language"
+    static let kskip = "Skip"
+    static let kgetStarted = "Get Started"
+    static let kBridgeGapBtwmTradition = "Bridge the gap between tradition and modernity, offering endless opportunities to Italian high quality product maanufactures to grow and expand their business in USA while maintaining their centennial tradition and identity."
+    static let kEnjoyMagicWorldOfEndless = "Alysei is the first B2B and B2C Portal for Italian high-quality products in the Food & Beverage sector, designed and developed on a Collaborative Social Platform entirely directed to a public enthusiastic for the Made in Italy eno-gastronomy."
+    static let kCertifiedProducerWillBeAble = "Alysei certified Producers will be able to search and connect with certified Importers and Distributors in the US, build up and consolidate their brand, promote their products and reach their target customers faster to gain visibility and traction in the USA market."
+    static let kAlyseiTargetTheEntirePopulation = "Alysei targets the entire population with a strong passion to the culture, history and tradition of the Italian cuisine."
+    static let kUSerWillJoinAlyseiToEnjoyMagic =  "Users will join Alysei to enjoy the magic world of our endless cuisine searching for products, restaurants, trips to Italy, events and tasting tours, cooking classes, recipes, blogs and many more activities helping to strengthen our great Made in Italy brand in US."
+    
+    //MARK: PRODUCER WALKTHROUGH
+  
+    static let kSignUpCreateCompleteCompnyPrfl =  "Sign up, create, and complete your Company profile, showcase your feature products, select your Hub in US, promote your Brand."
+    static let kAccessB2BPlatform =  "Access to the B2B Platform"
+    static let kAcessB2B =  "Access to the B2B Engine to search and connect with Importers, Distributors, Italian Restaurants in US Voice of Experts, Travel Agencies."
+    static let kYourOwnMarketplace =  "Your own Marketplace"
+    static let kAccessToMarketPlaceCreate =  "Access to the Market Place, create your unique Store, upload your product portfolio, enhance your visibility, expand your reach."
+    static let kFromFarmToFork =  "From Farm to Fork"
+    static let kFullAccessToAlyseiSocialPlatform =   "Full access to Alysei Social Platform to reach your target customers in US within your Hub, launch target product and event promotion campaigns, strengthen your Brand."
+    
+    //MARK: IMPORTER AND DISTRIBUTER WALKTHROUGH
+    static let kAccessToMarketPlaceEXPLORE =  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect and develop business realtionship."
+   
+    //MARK: RESTAURANT WALKTHROUGH
+    static let kSignUpCreateRestProfile = "Sign up, create and complete your Restaurant profile, showcase your menu and feature recipes, select your Hub in US, promote your Restaurant."
+    
+    static let KGainMarketVisibility = "Gain Market Visibility"
+    
+    static let kAcessToMarketPlaceCollaboratinOpportunities =  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more,  develop business collaboration opportunities through your local Importers and Distributors."
+    static let kExpandReach = "Expand your reach"
+    
+    //MARK: VOICE OF EXPERT WALKTHROUGH
+   static let kSignUpVoiceOfExpert = "Sign up, create and complete your Profile, showcase your feature blogs, books, events, projects, select your Hub in US, promote your Brand and offering."
+    static let kEnhanceCollabOpprByLeveraging = "Enhance your collaboration opportunity by leveraging on the B2B Engine to search and connect with Italian Producers, Importers, Distributors and Italian Restaurants in US, Travel Agencies."
+    static let kAccesMarketVoiceOfExpert = "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities."
+    static let kAccessSocialAlyseiVoiceOfExpert = "Full access to Alysei Social Platform to promote and strengthen your Brand, blogs, books, events, projects."
+    
+    //MARK: TRAVEL AGENCIES WALKTHROUGH
+
+    static let kSigupTravelAgencies = "Sign up, create and complete your Company profile, showcase your feature trips, select your Hub in US, promote your offering."
+    static let kAccesMarketTravelAgencies = "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities."
+    static let kAccessSocialAlyseiTRAVELAGENCIES = "Full access to Alysei Social Platform to define, promote and reach your target market and customer."
+    
+    //MARK: VOYAGERS WALKTHROUGH
+    static let kChooseYourHub = "Choose your HUB in US"
+    static let kSigupvoyager = "Sign up, create and complete your profile, access to the Alysei world."
+    static let kAccessToAlysei =  "Access to Alysei Social"
+    static let kAccessVoyager = "Access to Alysei to search for products, restaurants, events, cooking classes, Recipes, trips to Italy, post, share, comments and much more."
+    static let kReceipeTool = "Recipe Tool"
+    static let kAccessToReceipeTool = "Access to the Alysei Recipe Tool, search, create, post, share, rate recipes with a click of a mouse."
+    static let kBringMoreFriendsAndExpand = "Bring more friends an expand your membership and Benefits."
+    
+    //MARK: HUB SELECTION SCREEN
+    static let kSelectHubinUSA = "Select the HUB in USA where you plan to develop your business"
+    static let kHubIdentifiesAGeographical = "The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities"
+    static let kIfyouDontWantHubAmongThose = "If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city"
+
+    //MARK: SIGN UP SCREEN
+
+    static let kHotelCafeRest = "Hotel/Restaurant/Café"
+   
+    //static let kSellProductOnlineUnderRetailer = "Sell your products under the retailer name"
+
+    static let kProvidePickUpDelivery = "Provide Pick Up and And/Or Delivery"
+    static let kSelectIfYouCanProvidePickupDeleivery = "Select if you can provide Pick Up and Delivery"
+    static let kPickUpDiscountForAlyseiVoyager = "Pick up Discount for Alysei Voyager"
+    static let kSelectDiscountOfferToVoyager = "Select the discount you want to offer to Voyagers"
+    static let kDeliveryDiscountToVoyager = "Delivery Discount for Alysei Voyager"
+    static let kSelectTheDiscountOfferTovoyager = "Select the discount you want to offer to Voyagers"
+}
 
 struct APIConstants {
     

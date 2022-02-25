@@ -229,7 +229,7 @@
 "hours ago" = "";
 "minutes ago" = "";
 "seconds ago" = "";
-"years ago" = "";
+"year ago" = "";
 "month ago" = "";
 "week ago" = "";
 "hour ago" = "";
@@ -255,6 +255,7 @@
 "Price Range" = "";
 "Method" = "";
 "My Products" = "";
+"No producer found" = "";
 
 
 //MARK: Marketplace Dashboard Screen

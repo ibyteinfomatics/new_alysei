@@ -231,7 +231,7 @@ extension ProductStoreVC: UITableViewDelegate, UITableViewDataSource{
             cell.lblAddress.text = data?.region?.name
         cell.lblTotalRating.text = data?.avg_rating
             cell.lblProductType.text = data?.product_category_name
-        cell.lblTotalReview.text = (data?.total_reviews ?? "0") + " Reviews"
+            cell.lblTotalReview.text = (data?.total_reviews ?? "0") + MarketPlaceConstant.kSpaceReview
         }
         return cell
         
@@ -281,7 +281,7 @@ extension ProductStoreVC {
                 }
             default:
                 if self.arrListData.count == 0{
-                    self.showAlert(withMessage: "No producer found") {
+                    self.showAlert(withMessage:MarketPlaceConstant.kNoProducer) {
                         self.navigationController?.popViewController(animated: true)
                     }
                     if self.arrListData.count == 0 {
