@@ -10,12 +10,17 @@ import UIKit
 class MarketplaceNewlyAddedTableVCell: UITableViewCell {
     
     @IBOutlet weak var newlyyAddedStoreCollectionView: UICollectionView!
+    @IBOutlet weak var lblNewlyAdddStore: UILabel!
+    @IBOutlet weak var btnViewAll: UIButton!
+  
     var newlyAddedStore: [MyStoreProductDetail]?
     var callback:((Int) -> Void)? = nil
     
     var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnViewAll.setTitle(MarketPlaceConstant.kViewAll, for: .normal)
+        lblNewlyAdddStore.text = MarketPlaceConstant.kNewlyAddedStore
         // Initialization code
     }
 

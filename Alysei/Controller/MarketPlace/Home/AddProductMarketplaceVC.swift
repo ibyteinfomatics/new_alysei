@@ -48,6 +48,24 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     @IBOutlet weak var lblHeadingLeading: NSLayoutConstraint!
     @IBOutlet weak var btnback: UIButton!
     
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblProductTitle: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblKeywords: UILabel!
+    @IBOutlet weak var lblSelectProductCategory: UILabel!
+    @IBOutlet weak var lblQuantityAvailble: UILabel!
+    @IBOutlet weak var lblSubNoOfQuantity: UILabel!
+    @IBOutlet weak var lblBrandLabel: UILabel!
+    @IBOutlet weak var lblMinOrderQuantity: UILabel!
+    @IBOutlet weak var lblSubMinNoOfQuantity: UILabel!
+    @IBOutlet weak var lblHandlingInstruction: UILabel!
+    @IBOutlet weak var lblDispatchInstruction: UILabel!
+    @IBOutlet weak var lblMax50Char: UILabel!
+    @IBOutlet weak var lblMax200Char: UILabel!
+    @IBOutlet weak var lblAvalbleForSample: UILabel!
+    @IBOutlet weak var llProductPrice: UILabel!
+    @IBOutlet weak var btnNext: UIButton!
+  
     
     var uploadImageArray = [UIImage]()
     //var selectedAssets = [TLPHAsset]()
@@ -113,6 +131,24 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     }
     
     func setDataUI(){
+        lblHeading.text = MarketPlaceConstant.kAddProduct
+        lblProductTitle.text = MarketPlaceConstant.kProductTitle
+        lblDescription.text = MarketPlaceConstant.kDescription
+
+        lblKeywords.text = MarketPlaceConstant.kKeyword
+        lblSelectProductCategory.text = MarketPlaceConstant.kSelectProductCategory
+        lblQuantityAvailble.text = MarketPlaceConstant.kQuantityAvailable
+        lblSubNoOfQuantity.text = MarketPlaceConstant.kNumberOfPieces
+        lblBrandLabel.text = MarketPlaceConstant.kBrandLabel
+        lblMinOrderQuantity.text = MarketPlaceConstant.kMinOrderQuantity
+        lblSubMinNoOfQuantity.text = MarketPlaceConstant.kNumberOfPieces
+        lblHandlingInstruction.text = MarketPlaceConstant.kHandlingInstructions
+        lblDispatchInstruction.text = MarketPlaceConstant.kDispatchInstruction
+        lblMax50Char.text = MarketPlaceConstant.kMaximum50Characters
+        lblMax200Char.text = MarketPlaceConstant.kMaximum200Characters
+        lblAvalbleForSample.text = MarketPlaceConstant.kAvailableForSample
+        llProductPrice.text = MarketPlaceConstant.kProductPrice
+        btnNext.setTitle(AppConstants.Next, for: .normal)
         
         view1.addBorder()
         view2.addBorder()

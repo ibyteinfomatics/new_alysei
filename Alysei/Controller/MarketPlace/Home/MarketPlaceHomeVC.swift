@@ -957,9 +957,12 @@ class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
     @IBOutlet weak var imgStar3: UIImageView!
     @IBOutlet weak var imgStar4: UIImageView!
     @IBOutlet weak var imgStar5: UIImageView!
+   
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
     func configCell(_ data: MyStoreProductDetail){
       //  let baseUrl = data.
@@ -1056,7 +1059,7 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
     @IBOutlet weak var imgStar3: UIImageView!
     @IBOutlet weak var imgStar4: UIImageView!
     @IBOutlet weak var imgStar5: UIImageView!
-    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
     }

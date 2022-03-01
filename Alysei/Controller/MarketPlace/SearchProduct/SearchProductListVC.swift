@@ -15,6 +15,10 @@ class SearchProductListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var blankView: UIView!
+    @IBOutlet weak var btnSort: UIButton!
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var lblNoMoreProduct: UILabel!
+    @IBOutlet weak var lbltryAgain: UILabel!
     
     var selectedSampleIndex: Int?
     var selectedCategoryId: [String]?
@@ -26,6 +30,10 @@ class SearchProductListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         blankView.isHidden = true
+        btnSort.setTitle(MarketPlaceConstant.kSort, for: .normal)
+        btnFilter.setTitle(MarketPlaceConstant.kFilter, for: .normal)
+        lblNoMoreProduct.text = MarketPlaceConstant.kNoProductFound
+        lbltryAgain.text = "Try Again"
         self.sortFilterView.addShadow()
         lblTitle.text = selectProductName
         //trimmedProductName = selectProductName?.replacingOccurrences(of: " ", with: "")

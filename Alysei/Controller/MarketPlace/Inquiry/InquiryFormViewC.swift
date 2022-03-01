@@ -16,6 +16,13 @@ class InquiryFormViewC: AlysieBaseViewC {
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtMessage: UITextView!
     @IBOutlet weak var vwInquiry: UIView!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblFullName: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var btnSendInquiry: UIButton!
+    @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var lblStoreContact: UILabel!
 
     var passproductId: String?
     var passproductName: String?
@@ -33,6 +40,13 @@ class InquiryFormViewC: AlysieBaseViewC {
         super.viewDidLoad()
         txtMessage.delegate = self
         vwInquiry.drawBottomShadow()
+        lblHeading.text = MarketPlaceConstant.kSendInquiry
+        lblFullName.text = MarketPlaceConstant.kFullName + "*"
+        lblEmail.text = MarketPlaceConstant.kEmail + "*"
+        lblMessage.text = MarketPlaceConstant.kMessage + "*"
+        lblPhoneNumber.text = MarketPlaceConstant.kPhoneNumber + "*"
+        //lblStoreContact.text = MarketPlaceConstant.
+        btnSendInquiry.setTitle(MarketPlaceConstant.kSendInquiry, for: .normal)
         setData()
        
         // Do any additional setup after loading the view.

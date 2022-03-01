@@ -31,6 +31,7 @@ class ProductDetailVC: AlysieBaseViewC {
     var sellerName: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnSendEnquiry.setTitle(MarketPlaceConstant.kSendInquiry, for: .normal)
         self.btnSendEnquiry.isHidden = true
         btnenquiryHght.constant = 0
         headerView.drawBottomShadow()

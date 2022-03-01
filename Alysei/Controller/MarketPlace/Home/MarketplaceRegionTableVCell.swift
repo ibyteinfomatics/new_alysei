@@ -10,11 +10,16 @@ import UIKit
 class MarketplaceRegionTableVCell: UITableViewCell {
 
     @IBOutlet weak var regionCollectionView: UICollectionView!
+    @IBOutlet weak var lblSearchItalianRegion: UILabel!
+    @IBOutlet weak var btnViewAll: UIButton!
+    
     var regions: [MyStoreProductDetail]?
     var callback:((Int,String) -> Void)? = nil
     var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblSearchItalianRegion.text = MarketPlaceConstant.kItalianRegion
+        btnViewAll.setTitle(MarketPlaceConstant.kViewAll, for: .normal)
         // Initialization code
     }
 
