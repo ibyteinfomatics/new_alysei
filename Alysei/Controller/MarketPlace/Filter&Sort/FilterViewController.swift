@@ -12,6 +12,8 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var subOptionTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
     
     var arrOption = [MarketPlaceConstant.kAvailableForSample,MarketPlaceConstant.kCategory,MarketPlaceConstant.kPriceRange]
     var arrAlyseiBrandOption = [MarketPlaceConstant.kYes,MarketPlaceConstant.kNo]
@@ -39,6 +41,7 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomView.addShadow()
+        lblHeading.text = MarketPlaceConstant.kFilter
         for option in arrOption {
             self.arrFilterOptions.append(FilterModel(name: option, isSelected: false))
         }

@@ -19,6 +19,12 @@ class SortProductViewController: UIViewController {
     @IBOutlet weak var imgPriceLowToHigh: UIImageView!
     @IBOutlet weak var imgPriceHighToLow: UIImageView!
     @IBOutlet weak var imgNewestFirst: UIImageView!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblPopularity: UILabel!
+    @IBOutlet weak var lblRating: UILabel!
+    @IBOutlet weak var lblpriceLowToHigh: UILabel!
+    @IBOutlet weak var lblPriceHighToLow: UILabel!
+    @IBOutlet weak var lblNewestFirst: UILabel!
     
     var arrSortProductList: [ProductSearchListModel]?
     var callBackPassData: (([ProductSearchListModel]) -> Void)? = nil
@@ -26,6 +32,12 @@ class SortProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblPopularity.text = MarketPlaceConstant.kPopularity
+        lblNewestFirst.text = MarketPlaceConstant.kNewestFirst
+        lblpriceLowToHigh.text = MarketPlaceConstant.kPriceLowToHigh
+        lblPriceHighToLow.text = MarketPlaceConstant.kPriceHighToLow
+        lblRating.text = MarketPlaceConstant.kRatings
+        //lblHeading.text = MarketPlaceConstant.kSort
         
         let popularityTap = UITapGestureRecognizer(target: self, action: #selector(showPopularData(_ :)))
         self.viewPopularity.addGestureRecognizer(popularityTap)
