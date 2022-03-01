@@ -433,7 +433,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                     
                     let story = UIStoryboard(name:"Chat", bundle: nil)
                     let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                    controller.url = String.getString(objects?.message)
+                    controller.url = String.getString(objects?.mediaImage)
                     
                     self.present(controller, animated: true)
                 }
@@ -472,9 +472,9 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 photoCell.time.text = time
                 photoCell.lblMessage.text = String.getString(objects?.message)
                 
-                photoCell.bgView.layer.cornerRadius = 15
+                photoCell.bgView.layer.cornerRadius = 10
                 photoCell.bgView.layer.masksToBounds = true
-                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
+                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMinYCorner]
                 
                 
                 
@@ -601,7 +601,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                     
                     let story = UIStoryboard(name:"Chat", bundle: nil)
                     let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                    controller.url = String.getString(objects?.message)
+                    controller.url = String.getString(objects?.mediaImage)
                     
                     self.present(controller, animated: true)
                 }
@@ -615,10 +615,11 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
                 photoCell.btnLike.isHidden = true
                 photoCell.lblMessage.text = String.getString(objects?.message)
-                
-                photoCell.bgView.layer.cornerRadius = 15
+
+                photoCell.bgView.layer.cornerRadius = 10
                 photoCell.bgView.layer.masksToBounds = true
-                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
+                photoCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMinYCorner]
+                
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
                 

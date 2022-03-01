@@ -332,6 +332,12 @@ class ProfileViewC: AlysieBaseViewC{
         
         super.viewWillAppear(animated)
         
+        if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
+            if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
+                self.userType = selfUserType
+            }
+        }
+        
         isLoadingAnimation = true
         setNeedsStatusBarAppearanceUpdate()
         if fromRecipe == ""{

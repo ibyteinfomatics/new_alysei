@@ -570,7 +570,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="6Fu-GK-VWc"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="6Fu-GK-VWc"/>
                                             <constraint firstAttribute="trailing" secondItem="g64-i0-AIs" secondAttribute="trailing" constant="10" id="7zc-vL-9wl"/>
                                             <constraint firstItem="g64-i0-AIs" firstAttribute="leading" secondItem="Nmf-Nr-2rJ" secondAttribute="leading" constant="10" id="OjD-dM-afO"/>
                                             <constraint firstItem="g64-i0-AIs" firstAttribute="centerY" secondItem="Nmf-Nr-2rJ" secondAttribute="centerY" id="aG3-0R-Yx9"/>
@@ -606,8 +606,9 @@
                                     <constraint firstAttribute="bottom" secondItem="Nmf-Nr-2rJ" secondAttribute="bottom" constant="15" id="GQb-Vw-CwB"/>
                                     <constraint firstAttribute="trailing" secondItem="AKY-fl-BmN" secondAttribute="trailing" constant="12" id="a55-bN-2XZ"/>
                                     <constraint firstItem="AKY-fl-BmN" firstAttribute="leading" secondItem="Nmf-Nr-2rJ" secondAttribute="trailing" constant="11" id="dqb-XJ-TfE"/>
+                                    <constraint firstItem="AKY-fl-BmN" firstAttribute="top" secondItem="R70-Zz-GCZ" secondAttribute="top" constant="17" id="jVq-qB-qMJ"/>
                                     <constraint firstItem="Nmf-Nr-2rJ" firstAttribute="top" secondItem="R70-Zz-GCZ" secondAttribute="top" constant="15" id="kX8-vN-fBC"/>
-                                    <constraint firstAttribute="height" constant="70" id="vaK-ld-LCD"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="vaK-ld-LCD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -644,7 +645,7 @@
         <image name="camera_icon_colored" width="22" height="18.333333969116211"/>
         <image name="close_icon" width="18" height="18"/>
         <image name="cross_icon_black" width="22" height="22"/>
-        <image name="icons8_menu_vertical" width="5" height="17.666666030883789"/>
+        <image name="icons8_menu_vertical" width="4" height="14"/>
         <image name="icons8_send_letter1" width="43.840999603271484" height="43.840999603271484"/>
         <image name="image_placeholder" width="41" height="33"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>

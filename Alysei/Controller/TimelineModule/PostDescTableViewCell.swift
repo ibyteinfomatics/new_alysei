@@ -611,7 +611,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
 //        pinch.minimumNumberOfTouches = 2
 //        pinch.maximumNumberOfTouches = 2
-        //self.imagePost.addGestureRecognizer(pinch)
+        self.imagePost.addGestureRecognizer(pinch)
 
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
         pan.minimumNumberOfTouches = 2
@@ -621,6 +621,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     }
 
     @objc func pinch(sender:UIPinchGestureRecognizer) {
+        //self.imagePost.image = nil
         var touchBaseView = sender.view
         if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
             if let navCon = tab.viewControllers?.first as? UINavigationController {
@@ -644,7 +645,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 //        let touch2 = sender.location(ofTouch: 1, in: sender.view)
 
         if sender.state == .began {
-            self.imagePost.frame = UIScreen.main.bounds
+            //self.imagePost.frame = UIScreen.main.bounds
             let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
             let newScale = currentScale*sender.scale
             if newScale > 1 {
@@ -675,10 +676,10 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
             self.showAlertOnTab(0.0, frame: self.imagePost.frame, center: CGPoint())
             guard let center = self.originalImageCenter else {return}
 
-            self.imagePost.frame = self.bounds
+           // self.imagePost.frame = self.bounds
             UIView.animate(withDuration: 0.3, animations: {
                 self.imagePost.transform = CGAffineTransform.identity
-                self.imagePost.center = center
+                //self.imagePost.center = center
                 sender.scale = 1
             }, completion: { _ in
                 self.isZooming = false
@@ -708,7 +709,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
                     viewCon.fullScreenImageView.alpha = alpha
                     viewCon.fullScreenImageView.contentMode = .scaleAspectFill
                     viewCon.fullScreenImageView.image = self.imagePost.image
-                    print(viewCon.description)
+                   // print(viewCon.description)
                 }
             }
         }

@@ -40,6 +40,7 @@ class Privacy: AlysieBaseViewC {
     var privacyModel:PrivacyModel?
     
     var dataDropDown = DropDown()
+    var arrData1 = ["Anyone","Followers","Connections","Nobody"]
     var arrData = ["Anyone","Followers","Connections","Just Me"]
 
     override func viewDidLoad() {
@@ -137,10 +138,26 @@ class Privacy: AlysieBaseViewC {
     }
     
     @IBAction func btnprofileDropDown(_ sender: UIButton){
-        openDropDown(button: btnProfile, text: profile)
+        openDropDownProfile(button: btnProfile, text: profile)
     }
     
     @objc func openDropDown(button: UIButton, text : UILabel){
+        dataDropDown.dataSource = self.arrData1
+        dataDropDown.show()
+        dataDropDown.anchorView = button
+        dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+        dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            //self.btnReport.setTitle(item, for: .normal)
+            text.text = item
+            
+        }
+        dataDropDown.cellHeight = 40
+        dataDropDown.backgroundColor = UIColor.white
+        dataDropDown.selectionBackgroundColor = UIColor.clear
+        dataDropDown.direction = .bottom
+    }
+    
+    @objc func openDropDownProfile(button: UIButton, text : UILabel){
         dataDropDown.dataSource = self.arrData
         dataDropDown.show()
         dataDropDown.anchorView = button
@@ -197,8 +214,8 @@ class Privacy: AlysieBaseViewC {
        
 //        self.tableViewHeight.constant = CGFloat(43 * (self.privacyModel?.roles?.count ?? 0))
        
-        self.message.text = self.privacyModel?.privacyData?.allow_message_from
-        self.profile.text = self.privacyModel?.privacyData?.who_can_view_profile
+          self.message.text = self.privacyModel?.privacyData?.allow_message_from?.capitalized
+          self.profile.text = self.privacyModel?.privacyData?.who_can_view_profile?.capitalized
         self.age.text = self.privacyModel?.privacyData?.who_can_view_age
         
         self.msgpre = self.privacyModel?.emailPreference?.private_messages
