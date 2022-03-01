@@ -22,6 +22,8 @@ class InquiryChatVC: AlysieBaseViewC {
     @IBOutlet weak var newCount: UILabel!
     @IBOutlet weak var openedCount: UILabel!
     @IBOutlet weak var tblViewNotification: UITableView!
+    @IBOutlet weak var lblHeading: UILabel!
+    
     var type = "New"
     
     var usercount = 0
@@ -38,7 +40,11 @@ class InquiryChatVC: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lblHeading.text  = "Inbox"
+        lblOpened.text = MarketPlaceConstant.kOpened
+        lblClosed.text = MarketPlaceConstant.kClosed
+        lblNew.text = MarketPlaceConstant.kNew
+        
         let newTap = UITapGestureRecognizer.init(target: self, action: #selector(openNewChatList))
         self.vwNew.addGestureRecognizer(newTap)
         

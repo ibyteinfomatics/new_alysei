@@ -24,6 +24,7 @@ class SearchProductVC: UIViewController {
         vwHeader.drawBottomShadow()
         txtSearch.delegate = self
         callRecentListApi()
+        txtSearch.placeholder = MarketPlaceConstant.kSearchForProductBrands
         
         // Do any additional setup after loading the view.
     }

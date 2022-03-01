@@ -11,12 +11,13 @@ class SimilarProductTableVCell: UITableViewCell {
     
 
     @IBOutlet weak var collectonView: UICollectionView!
+    @IBOutlet weak var lblRealtedProduct: UILabel!
     var data: ProductDetailModel?
     var showProductDetailCallBack:((Int) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        lblRealtedProduct.text = "Related Products"
         // Initialization code
     }
 

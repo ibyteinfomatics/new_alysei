@@ -78,6 +78,14 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var imgCreateWidgh:NSLayoutConstraint!
     @IBOutlet weak var imgCreateleading:NSLayoutConstraint!
     @IBOutlet weak var btnCreateTrailing: NSLayoutConstraint!
+    @IBOutlet weak var lblHeadPost: UILabel!
+    @IBOutlet weak var lblheadMarkePtlace: UILabel!
+    @IBOutlet weak var lblHeadRecipe: UILabel!
+    @IBOutlet weak var lblHeadNotification: UILabel!
+    @IBOutlet weak var lblWhatyourlooking: UILabel!
+   
+    
+     
     
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
@@ -176,6 +184,11 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        lblHeadPost.text = MarketPlaceConstant.kPosts
+        lblheadMarkePtlace.text = MarketPlaceConstant.kMarketPlace
+        lblHeadRecipe.text = MarketPlaceConstant.kRecipe
+        lblHeadNotification.text = MarketPlaceConstant.kNotifications
+        lblWhatyourlooking.text = MarketPlaceConstant.kWhatYouLookingFor
         self.nextWalkCount = 0
         self.tableView.alpha = 1
         self.headerView.alpha = 1

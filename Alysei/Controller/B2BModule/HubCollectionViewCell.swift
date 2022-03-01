@@ -22,7 +22,7 @@ class HubCollectionViewCell: UICollectionViewCell {
     func configData(_ index: Int, _ data: UserRoleCount){
         title.text = data.name
         lblUserCount.text = "\(data.userCount ?? 0)"
-        if let strUrl = "\(kImageBaseUrl)\(data.image ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+        if let strUrl = "\(data.attachment?.fimageUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
             self.coverImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

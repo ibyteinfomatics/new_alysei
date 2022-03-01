@@ -24,6 +24,7 @@ class SelfPostCommentsCell: UITableViewCell {
     @IBOutlet var viewReplyButton: UIButton!
     @IBOutlet var replyBtn: UIButton!
     @IBOutlet var threedotBtn: UIButton!
+    @IBOutlet var threedotImg: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewconstraint: NSLayoutConstraint!
     @IBOutlet var viewReplyButtonconstraint: NSLayoutConstraint!
@@ -235,7 +236,9 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
         let selfID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
         if self.commentmessages?[indexPath.row].data?.user_id == selfID {
             cell.threedotBtn.isHidden = false
+            cell.threedotImg.isHidden = false
         } else {
+            cell.threedotImg.isHidden = true
             cell.threedotBtn.isHidden = true
         }
         

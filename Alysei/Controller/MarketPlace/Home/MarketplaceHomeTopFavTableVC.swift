@@ -9,10 +9,14 @@ import UIKit
 
 class MarketplaceHomeTopFavTableVC: UITableViewCell {
     @IBOutlet weak var maximumSearchedCollectionView: UICollectionView!
+    @IBOutlet weak var lblTopFavProduct: UILabel!
+    
     var maketPlaceHomeScreenData: MaketPlaceHomeScreenModel?
     var callback:(( Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+       
+        lblTopFavProduct.text = MarketPlaceConstant.kTopFavproduct
         // Initialization code
     }
 

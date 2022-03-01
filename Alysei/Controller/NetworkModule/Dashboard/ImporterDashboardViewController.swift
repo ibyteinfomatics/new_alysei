@@ -74,7 +74,11 @@ class ImporterDashboardViewController: AlysieBaseViewC {
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-            self.navigationController?.popViewController(animated: true)
+            //self.navigationController?.popViewController(animated: true)
+            if statusCode == 200 {
+                let controller = self.pushViewController(withName: NetworkViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? NetworkViewC
+                controller?.currentIndex = 1
+            }
 
         }
         

@@ -8,10 +8,13 @@
 import UIKit
 
 class MarketPlaceConfirmationVC: AlysieBaseViewC {
-
+    
+    @IBOutlet weak var lblDesc: UILabel!
+    @IBOutlet weak var btnBackToMarketPlace: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lblDesc.text = MarketPlaceConstant.kThanksForsubmittingInformation
+        btnBackToMarketPlace.setTitle(MarketPlaceConstant.kBackToMarketplace, for: .normal)
         // Do any additional setup after loading the view.
     }
     

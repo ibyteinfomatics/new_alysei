@@ -45,6 +45,9 @@ class ProductRatingTableVCell: UITableViewCell {
     @IBOutlet weak var totalThreeeStarProgress: UIProgressView!
     @IBOutlet weak var totalFourStarProgress: UIProgressView!
     @IBOutlet weak var totalFiveStarProgress: UIProgressView!
+    @IBOutlet weak var lblStoreInfo: UILabel!
+    @IBOutlet weak var lblRating: UILabel!
+    @IBOutlet weak var btnViewStore: UIButton!
     
     var avgRating:String?
     var data: RatingReviewModel?
@@ -52,6 +55,9 @@ class ProductRatingTableVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imgProducer.layer.cornerRadius = 25
+        lblStoreInfo.text = "Store Info"
+        lblRating.text = MarketPlaceConstant.kRatingAndReviews
+        btnViewStore.setTitle("View Store", for: .normal)
         self.setStarUI()
         // Initialization code
     }
