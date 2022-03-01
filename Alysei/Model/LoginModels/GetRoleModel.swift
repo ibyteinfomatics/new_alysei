@@ -44,6 +44,7 @@ class GetRoleDataModel: NSObject {
   var kdescription: String?
   var slug: String?
   var isSelected: Bool?
+    var attachment: Attachment?
   
   init(withDictionary dictRoles: [String:Any]) {
     
@@ -54,6 +55,9 @@ class GetRoleDataModel: NSObject {
     self.roleId = String.getString(dictRoles[APIConstants.kRoleId])
     self.slug = String.getString(dictRoles[APIConstants.kSlug])
     self.isSelected = Bool.getBool(dictRoles[APIConstants.kIsSelected])
+      if let attachment = dictRoles["attachment"] as? [String:Any]{
+          self.attachment =  Attachment.init(with: attachment)
+      }
     
   }
 }

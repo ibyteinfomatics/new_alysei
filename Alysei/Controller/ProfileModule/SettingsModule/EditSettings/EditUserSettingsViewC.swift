@@ -129,6 +129,12 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       
     let editLanguageTableCell = tblViewEditUserSettings.dequeueReusableCell(withIdentifier: EditLanguageTableCell.identifier(), for: indexPath) as! EditLanguageTableCell
     editLanguageTableCell.configure(withSettingsEditDataModel: self.settingEditViewModel.arrSections[indexPath.section].arrSettingsData[indexPath.row])
+      
+        if kSharedUserDefaults.loggedInUserModal.locale == "en"{
+            editLanguageTableCell.lblLanguage.text = "English"
+        }else{
+            editLanguageTableCell.lblLanguage.text = "Italian"
+        }
     return editLanguageTableCell
   }
   
