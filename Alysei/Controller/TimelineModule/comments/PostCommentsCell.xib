@@ -54,6 +54,13 @@ Label</string>
                                 <color key="textColor" name="blackColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="postmenu_icon" translatesAutoresizingMaskIntoConstraints="NO" id="KE3-sh-c4G">
+                                <rect key="frame" x="250" y="13" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="5Fc-kl-ogd"/>
+                                    <constraint firstAttribute="height" constant="15" id="V4V-9t-gQe"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76t-lF-kmx">
                                 <rect key="frame" x="250" y="10.5" width="20" height="21"/>
                                 <constraints>
@@ -62,7 +69,6 @@ Label</string>
                                 </constraints>
                                 <color key="tintColor" name="blackColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="vertical_menu_icon"/>
                                 <connections>
                                     <action selector="threedotButtonTapped:" destination="cfk-7C-ZKB" eventType="touchUpInside" id="fOH-4u-9qX"/>
                                 </connections>
@@ -73,6 +79,8 @@ Label</string>
                             <constraint firstAttribute="trailing" secondItem="THZ-L1-kt0" secondAttribute="trailing" constant="10" id="1pM-cL-F3y"/>
                             <constraint firstItem="THZ-L1-kt0" firstAttribute="top" secondItem="SSP-Dm-3jQ" secondAttribute="bottom" constant="2" id="80w-d2-qSd"/>
                             <constraint firstItem="THZ-L1-kt0" firstAttribute="leading" secondItem="a0W-sM-EMP" secondAttribute="leading" constant="10" id="BbQ-XZ-jdI"/>
+                            <constraint firstItem="KE3-sh-c4G" firstAttribute="top" secondItem="a0W-sM-EMP" secondAttribute="top" constant="13" id="TZm-7d-1D3"/>
+                            <constraint firstAttribute="trailing" secondItem="KE3-sh-c4G" secondAttribute="trailing" constant="5" id="UUb-2k-FJH"/>
                             <constraint firstItem="SSP-Dm-3jQ" firstAttribute="top" secondItem="a0W-sM-EMP" secondAttribute="top" constant="10" id="izP-UC-1OD"/>
                             <constraint firstItem="76t-lF-kmx" firstAttribute="leading" secondItem="SSP-Dm-3jQ" secondAttribute="trailing" constant="10" id="nMj-xQ-uz3"/>
                             <constraint firstAttribute="trailing" secondItem="76t-lF-kmx" secondAttribute="trailing" constant="5" id="oYn-tq-Hf4"/>
@@ -193,6 +201,7 @@ Label</string>
                 <outlet property="tableView" destination="jom-BF-UP6" id="MrW-7n-W1q"/>
                 <outlet property="tableViewconstraint" destination="2nV-nF-bri" id="Rx1-VQ-FE8"/>
                 <outlet property="threedotBtn" destination="76t-lF-kmx" id="C21-bD-3Lf"/>
+                <outlet property="threedotImg" destination="KE3-sh-c4G" id="met-7g-sWo"/>
                 <outlet property="timeLabel" destination="xI5-aq-Zir" id="F7z-Sp-imB"/>
                 <outlet property="userImageView" destination="a6O-3W-3c8" id="blg-hM-40j"/>
                 <outlet property="userNameLabel" destination="SSP-Dm-3jQ" id="sW4-64-FGI"/>
@@ -205,7 +214,7 @@ Label</string>
     </objects>
     <resources>
         <image name="icons8_heart" width="21" height="18.5"/>
-        <image name="vertical_menu_icon" width="6" height="21.5"/>
+        <image name="postmenu_icon" width="35" height="128"/>
         <namedColor name="blackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

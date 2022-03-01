@@ -686,7 +686,9 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             
             if self.commentmessages?[indexPath.row].data?.user_id == selfID {
                 cell.threedotBtn.isHidden = false
+                cell.threedotImg.isHidden = false
             } else {
+                cell.threedotImg.isHidden = true
                 cell.threedotBtn.isHidden = true
             }
             

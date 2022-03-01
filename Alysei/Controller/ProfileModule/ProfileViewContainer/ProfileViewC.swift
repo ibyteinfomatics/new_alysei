@@ -285,7 +285,13 @@ class ProfileViewC: AlysieBaseViewC{
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(userID)+"&accept_or_reject="+String.getString(type), requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-            self.fetchVisiterProfileDetails(self.userID)
+            //self.fetchVisiterProfileDetails(self.userID)
+            
+            if statusCode == 200 {
+                let controller = self.pushViewController(withName: NetworkViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? NetworkViewC
+                controller?.currentIndex = 1
+            }
+            
         }
         
     }
@@ -801,7 +807,8 @@ class ProfileViewC: AlysieBaseViewC{
         }
     }
     @IBAction func btnback(_ sender: UIButton){
-        self.navigationController?.popViewController(animated: true)
+       self.navigationController?.popViewController(animated: true)
+       
     }
     
     @IBAction func messageButtonTapped(_ sender: UIButton) {
@@ -1964,8 +1971,8 @@ extension ProfileViewC {
         acceptAction.setValue(checkMarkImage, forKey: "image")
         acceptAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
-        // deleteAction
-        let deleteAction = UIAlertAction(title: "Delete Request",
+        // declineAction
+        let deleteAction = UIAlertAction(title: "Decline Request",
                                          style: UIAlertAction.Style.default) { (action) in
             self.inviteApi(id: self.userID, type: 2)
         }
