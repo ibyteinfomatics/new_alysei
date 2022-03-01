@@ -213,6 +213,7 @@
 "You can boost your listing to expand you reach and increase buyers engagement" = "Puoi accelerare la promozione delle tue inserzioni per un maggior coinvolgimeto della tua clientela";
 
 //MARK: Marketplace Inquiry Screen
+"Fill the form just once to get faster responses. Store will contact you shortly." = "Fill the form just once to get faster responses. Store will contact you shortly.";
 "Hi is this product is available?" = "Hi is this product is available?";
 "Message" = "Message";
 "Please enter some message" = "Please enter some message";
@@ -428,6 +429,171 @@
 "Delivery Discount for Alysei Voyager" = "Delivery Discount for Alysei Voyager";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 
+
+//MARK: RECIPE HOME SCREEN
+
+"Recipe" = "Recipe";
+"Create Recipe" = "Create Recipe";
+"What are you craving" = "What are you craving";
+"Search Recipe" = "Search Recipe";
+"Explore" = "Explore";
+"Favourite" = "Favourite";
+"My Recipe" = "My Recipe";
+"My Preferences" = "My Preferences";
+"View All" = "View All";
+"Quick Search By Ingredients" = "Quick Search By Ingredients";
+"Quick Search By Meal" = "Quick Search By Meal";
+"Search By Italian Region" = "Search By Italian Region";
+"Trending Now" = "Trending Now";
+"Quick Easy" = "Quick Easy";
+"Favourite Cuisine" = "Favourite Cuisine";
+"Food Alergies" = "Food Alergies";
+"Diets" = "Diets";
+"Ingredients" = "Ingredients";
+"Cooking Skill" = "Cooking Skill";
+"Likes" = "Likes";
+"NA" = "NA";
+"Draft" = "Draft";
+"Published" = "Published";
+"No recipe found" = "No recipe found";
+"You have not liked any recipe" = "You have not liked any recipe";
+"No Ingridient Found" = "No Ingridient Found";
+"No Meal Found" = "No Meal Found";
+"Internal Server Error" = "Internal Server Error";
+"Cook Time" = "Cook Time";
+"No. of Ingredients" = "No. of Ingredients";
+"Meal Type" =  "Meal Type";
+"Cuisines" = "Cuisines";
+"Meal" = "Meal";
+"Ingridients" = "Ingridients";
+"Filter" = "Filter";
+"Clear All" = "Clear All";
+"View Results" = "View Results";
+
+//MARK:  CREATE RECIPE WALKTHROUGH
+
+"Next"  "Next";
+"Done" = "Done";
+"Create your Recipe" = "Create your Recipe";
+"Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Create your own recipes exploring and sharing the endless world of the Italian cuisine";
+"Instruction to create a Recipe" = "Instruction to create a Recipe";
+"Add Ingredients and Tools Used" = "Add Ingredients and Tools Used";
+"Add clear photos" = "Add clear photos";
+"Photos should have good resolution and lightning" = "Photos should have good resolution and lightning";
+"Add Ingredients and Kitchen Tools Used" = "Add Ingredients and Kitchen Tools Used";
+"Use accurate amount and unit for ingredients, select the right Kitchen Tools" = "Use accurate amount and unit for ingredients, select the right Kitchen Tools";
+"Divide your recipe in steps" = "Divide your recipe in steps";
+"You can divide our recipe in steps so that viewers can easily understand the procedure" = "You can divide our recipe in steps so that viewers can easily understand the procedure";
+"Share your Recipe with others" = "Share your Recipe with others";
+"Once your recipe is created, you can share it so viewers can cook it, like it and rate it" = "Once your recipe is created, you can share it so viewers can cook it, like it and rate it";
+
+//MARK:  CREATE NEW RECIPE
+
+"Create New Recipe" =  "Create New Recipe";
+"Upload Recipe Image" =  "Upload Recipe Image";
+"Click here to upload recipe photo" = "Click here to upload recipe photo";
+"Images" = "Images";
+"PNG, JPG" = "PNG, JPG";
+"Resolution" = "Resolution";
+"Upto 1600x1600" =  "Upto 1600x1600";
+"Name" = "Name";
+"Recipe Name" = "Recipe Name";
+"Select Cooking Skill" = "Select Cooking Skill";
+"Select Cuisine" = "Select Cuisine";
+"Select Meal" =  "Select Meal";
+"Select Course" =  "Select Course";
+"Select Diet" = "Select Diet";
+"Select Food Intolerance" = "Select Food Intolerance";
+"Preparation Time" = "Preparation Time";
+"Hours" = "Hours";
+"Minutes" =  "Minutes";
+"Serving" = "Serving";
+"For how much people you are cooking" = "For how much people you are cooking";
+"Select Region" = "Select Region";
+"Cancel" = "Cancel";
+"None" = "None";
+"Add Ingredients in Recipe" = "Add Ingredients in Recipe";
+"Search Ingredients" = "Search Ingredients";
+"Add" = "Add";
+"Items" = "Items";
+"Save & Proceed" = "Save & Proceed";
+"Quantity" = "Quantity";
+"Unit" = "Unit";
+"Enter Quantity" =  "Enter Quantity";
+"Add to List" = "Add to List";
+"kg" = "kg";
+"litre" = "litre";
+"pieces" = "pieces";
+"dozen" = "dozen";
+"gm" = "gm";
+"ml" =  "ml";
+"spoon" = "spoon";
+"drops" = "drops";
+"Add Tools in Recipe" =  "Add Tools in Recipe";
+"Search Appliance, Utensils & Tools" = "Search Appliance, Utensils & Tools";
+"Add Steps in Recipe" = "Add Steps in Recipe";
+"Step" = "Step";
+"Enter Title for Step" = "Enter Title for Step";
+"Your recipe direction text here..." = "Your recipe direction text here...";
+"Ingridients Used in Step" = "Ingridients Used in Step";
+"Tools Used in Step" = "Tools Used in Step";
+"Add Step" = "Add Step";
+"Recipe Ingredients and Tools used" = "Recipe Ingredients and Tools used";
+"Utensils, Appliances & Tools" = "Utensils, Appliances & Tools";
+"Recipe Steps" = "Recipe Steps";
+"No Ingridients Added yet!" = "No Ingridients Added yet!";
+"No Tools Added yet!" = "No Tools Added yet!";
+"No Step Added yet!" = "No Step Added yet!";
+"Save Recipe" = "Save Recipe";
+"Edit Recipe" = "Edit Recipe";
+"No Tools found" = "No Tools found";
+"No Ingredients found" = "No Ingredients found";
+"Are you sure you want to discard your recipe ?" = "Are you sure you want to discard your recipe ?";
+"Save in Draft" = "Save in Draft";
+"Discard" = "Discard";
+
+//MARK: RECIPE PREFERENCE
+
+"What is your favourite Cuisines?" = "What is your favourite Cuisines?";
+"Do you have any food allergies?" = "Do you have any food allergies?";
+"Do you have follow these diets?" = "Do you have follow these diets?";
+"Don't  want to see ingredients?" = "Don't  want to see ingredients?";
+"Back" = "Back";
+"Skip" = "Skip";
+
+//MARK: VIEW RECIPE
+
+"Delete Recipe" = "Delete Recipe";
+"Share Recipe" = "Share Recipe"'
+"Checkout" = "Checkout";
+"from Alysei app" =  "from Alysei app";
+"Reviews" = "Reviews";
+"Finish Cooking" = "Finish Cooking";
+"Please add ratings" = "Please add ratings";
+"Please leave a comment" = "Please leave a comment";
+"You have already done a review on this product" = "You have already done a review on this product";
+"Edit Review" = "Edit Review";
+"Add Review" = "Add Review";
+"Leave a comment" = "Leave a comment";
+"Please enter some review" =  "Please enter some review";
+"Review added Successfully!" = "Review added Successfully!";
+"Review updated Successfully!" = "Review updated Successfully!";
+"Write a Review" = "Write a Review";
+"Well Done !" = "Well Done !";
+"Now its time to enjoy the recipe" = "Now its time to enjoy the recipe";
+"Tap to rate" =  "Tap to rate";
+"Start Cooking" = "Start Cooking";
+
+//MARK: EDIT RECIPE
+
+"Save Edit Recipe" = "Save Edit Recipe";
+"Edit Steps in Recipe" = "Edit Steps in Recipe";
+"Title" = "Title";
+"Enter title" = "Enter title";
+"Description" = "Description";
+"Change Photo" =  "Change Photo";
+"Edit Ingredients in Recipe" = "Edit Ingredients in Recipe";
+"Edit Tools in Recipe" = "Edit Tools in Recipe";
 
 
 
