@@ -73,6 +73,7 @@ class Attachment {
     var id: Int?
     var attachmentURL, attachmentType, createdAt, updatedAt: String?
     var baseUrl : String?
+    var fimageUrl : String
     
     init(with dictResponse: [String:Any]?) {
         self.attachmentURL = String.getString(dictResponse?["attachment_url"])
@@ -81,6 +82,7 @@ class Attachment {
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])
         self.id = Int.getInt(dictResponse?["id"])
+        self.fimageUrl = (self.baseUrl ?? "") + (self.attachmentURL ?? "")
         
     }
     

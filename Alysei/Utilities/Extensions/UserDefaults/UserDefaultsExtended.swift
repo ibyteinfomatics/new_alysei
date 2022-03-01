@@ -117,7 +117,7 @@ extension UserDefaults{
         self.synchronize()
     }
     func setAppLanguage(language: String) {
-        self.set(deviceToken, forKey: appLocale)
+        self.set(language, forKey: appLocale)
         self.synchronize()
     }
     

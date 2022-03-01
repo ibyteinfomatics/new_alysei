@@ -152,7 +152,7 @@ class RoleTableVieCell: UITableViewCell{
         lblRoleName.text = model.name
         lblRoleDesc.text = model.kdescription
         
-        if let strUrl = "\(kImageBaseUrl)\(model.image ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+        if let strUrl = "\(model.attachment?.fimageUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
             self.imgRole.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

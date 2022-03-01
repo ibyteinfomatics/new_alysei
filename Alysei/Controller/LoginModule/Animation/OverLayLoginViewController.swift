@@ -162,6 +162,7 @@ extension OverLayLoginViewController{
                 
                 kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
                 kSharedUserDefaults.alyseiReview =  Int.getInt(dictData["alysei_review"])
+                kSharedUserDefaults.setAppLanguage(language: (dictData["locale"] as? String ?? ""))
                 kSharedAppDelegate.pushToTabBarViewC()
             }
         case 3:
