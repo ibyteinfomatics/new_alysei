@@ -76,7 +76,7 @@ class SimilarProductCollectionVCell: UICollectionViewCell{
     }
     
     func configCell(_ data: ProductSearchListModel){
-        lblTotalRating.text = "\(data.total_reviews ?? 0)" + " Reviews"
+        lblTotalRating.text = "\(data.total_reviews ?? 0)" + MarketPlaceConstant.kSpaceReview
         if data.avg_rating == "0.0" || data.avg_rating == "0"{
             simProductAvgStar1.image = UIImage(named: "icons8_star")
             simProductAvgStar2.image = UIImage(named: "icons8_star")

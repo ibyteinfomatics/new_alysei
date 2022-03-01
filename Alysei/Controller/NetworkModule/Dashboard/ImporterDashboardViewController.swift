@@ -111,10 +111,18 @@ class ImporterDashboardViewController: AlysieBaseViewC {
             self.region.text = self.dashboardModel?.data?.aboutMember?[1].value
             self.horeca.text = self.dashboardModel?.data?.aboutMember?[4].value
             self.privatelabel.text = self.dashboardModel?.data?.aboutMember?[5].value
-            self.brandlabel.text = self.dashboardModel?.data?.aboutMember?[6].value
+            
             self.ourproduct.text = self.dashboardModel?.data?.aboutMember?[3].value
-                       
-        }
+            if (self.dashboardModel?.data?.aboutMember?.count ?? 0) > 6{
+                if self.dashboardModel?.data?.aboutMember?[6].value == "" ||  self.dashboardModel?.data?.aboutMember?[6].value == nil{
+                    self.brandlabel.isHidden = true
+                }else{
+                    self.brandlabel.isHidden = false
+                self.brandlabel.text = self.dashboardModel?.data?.aboutMember?[6].value
+                }
+            }
+            }
+        
     }
     
     @IBAction func backAccept(_ sender: UIButton) {

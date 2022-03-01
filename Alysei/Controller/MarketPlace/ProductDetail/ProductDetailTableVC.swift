@@ -56,7 +56,7 @@ class ProductDetailTableVC: UITableViewCell {
             btnLikeUnlike.setImage(UIImage(named: "UnlikeCircle_icon"), for: .normal)
         }
         lblRating.text = "\(data.product_detail?.avg_rating ?? "0")"
-        lblTotalRatings.text = "\(data.product_detail?.total_reviews ?? 0) ratings"
+        lblTotalRatings.text = "\(data.product_detail?.total_reviews ?? 0)" +  MarketPlaceConstant.kSRatings
         self.collectonView.reloadData()
     }
     @IBAction func likeUnlikeAction(_ sender: UIButton){

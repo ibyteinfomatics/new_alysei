@@ -137,7 +137,7 @@ extension SearchProductVC {
                 }else{
                 self.arrLoadRecentSearch = [ProductSearchListModel]()
                 self.searchTableView.reloadData()
-                self.showAlert(withMessage: "No Product found")
+                    self.showAlert(withMessage: MarketPlaceConstant.kNoProductFound)
                 }
                 
             default:

@@ -38,19 +38,19 @@ class ProducerStoreFilterVC: UIViewController {
     var selectedIndex = 0
     
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
-    var arrOption = ["Categories","Properties","Italian Region","Ratings"]
-    var arrConservationOption = ["Categories","Properties","Italian Region","FDA Certfied"]
-    var arrRegionOption = ["Product","Method","Categories","Properties","FDA Certfied"]
-    var arrCategoriesOption = ["Method","Properties","FDA Certfied"]
-    var arrPropertiesOption = ["Method","FDA Certfied","Categories"]
+    var arrOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings]
+    var arrConservationOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kFDACertified]
+    var arrRegionOption = [MarketPlaceConstant.kProduct,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
+    var arrCategoriesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
+    var arrPropertiesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kCategories]
     //var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
-    var arrFdaCertifiedOption = ["Product","Italian Region","Categories"]
-    var arrMyFavOption = ["Producers","Method","Categories","Properties","FDA Certfied","Distance","Ratings"]
+    var arrFdaCertifiedOption = [MarketPlaceConstant.kProduct,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories]
+    var arrMyFavOption = [MarketPlaceConstant.kProducers,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kDistance,MarketPlaceConstant.kRatings]
     
-    var arrDistance = ["Within 5 Miles","Within 10 Miles","Within 20 Miles","Within 40 Miles","Within 100 Miles"]
-    var arrRating = ["Most rated stores","5 star stores"]
-    var arrFdaCertified = ["Yes","No"]
-    var arrSortProducer = ["Sort by A to Z","Sort by Z to A"]
+    var arrDistance = [MarketPlaceConstant.kWithIn5Miles,MarketPlaceConstant.kWithIn10Miles,MarketPlaceConstant.kWithIn20Miles,MarketPlaceConstant.kWithIn40Miles,MarketPlaceConstant.kWithIn100Miles]
+    var arrRating = [MarketPlaceConstant.kMostratedstores,MarketPlaceConstant.k5StarStores]
+    var arrFdaCertified = [MarketPlaceConstant.kYes,MarketPlaceConstant.kNo]
+    var arrSortProducer = [MarketPlaceConstant.kSortByAtoZ,MarketPlaceConstant.kSortByZtoA]
     var arrFilterOptions = [FilterModel]()
     var arrDistanceOption = [FilterModel]()
     var arrRatingOptions = [FilterModel]()

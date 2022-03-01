@@ -83,7 +83,7 @@ class StoreDescTopTableViewCell: UITableViewCell {
         lblProducerName.text = storeDetails.prefilled?.companyName
         lblCategories.text = "\(storeDetails.totalCategory ?? 0)"
          labelAvgRating.text = storeDetails.avg_rating
-        labelTotalReview.text = (storeDetails.total_reviews ?? "0") + " Reviews"
+        labelTotalReview.text = (storeDetails.total_reviews ?? "0") + MarketPlaceConstant.kSpaceReview
         self.imgProfile.setImage(withString: (storeDetails.logo_base_url ?? "") + String.getString(storeDetails.logo_id))
         self.imgCover.setImage(withString: String.getString(storeDetails.banner_base_url) + String.getString(storeDetails.banner_id))
         self.imgProducer.setImage(withString: (storeDetails.prefilled?.avatarId?.baseUrl ?? "") + String.getString(storeDetails.prefilled?.avatarId?.attachmentUrl))

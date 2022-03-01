@@ -77,7 +77,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             callGetDashboardStoreDetail()
             self.btnBack.isHidden = true
             self.headerTitle.isHidden = true
-            self.btnNext.setTitle("Update Store", for: .normal)
+            self.btnNext.setTitle(MarketPlaceConstant.kUpdateStore, for: .normal)
             //self.headerView.isHidden = true
             self.heightHeaderView.constant = 40
         }else{
@@ -85,7 +85,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             // self.headerView.isHidden = false
             self.btnBack.isHidden = false
             self.headerTitle.isHidden = false
-            self.btnNext.setTitle("Next", for: .normal)
+            self.btnNext.setTitle(AppConstants.Next, for: .normal)
             self.heightHeaderView.constant = 64
         }
     }
@@ -162,8 +162,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         print("cancel")
     }
     func showExceededMaximumAlert(vc: UIViewController) {
-        let alert = UIAlertController(title: "", message: "Exceed Maximum Number Of Selection", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kExceedMaximumLimit, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
     
@@ -176,17 +176,17 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
                 callUpdateStoreApi()
             }else{
                 guard profilePicUpload == true else{
-                    showAlert(withMessage: "Please upload profile picture.")
+                    showAlert(withMessage: MarketPlaceConstant.kUploadProfilePicture)
                     return
                     
                 }
                 guard uploadCoverPic == true else{
-                    showAlert(withMessage: "Please upload cover picture.")
+                    showAlert(withMessage: MarketPlaceConstant.kUploadCoverPicture)
                     return
                     
                 }
                 if uploadImageArray.count == 0 || imagesFromSource.count == 0 {
-                    showAlert(withMessage: "Please upload store images.")
+                    showAlert(withMessage: MarketPlaceConstant.kUploadStorePicture)
                     return 
                     
                 }
@@ -199,7 +199,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     
     private func validateAllfields() -> Bool {
         guard self.txtWebsite.text?.isValid(.url) == true else {
-            showAlert(withMessage: "Please enter a valid website url.")
+            showAlert(withMessage: MarketPlaceConstant.kEnterValidWebsiteUrl)
             return false
         }
        
@@ -221,7 +221,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     }
     
     @IBAction func btnWebsiteInfo(_ sender: UIButton){
-        showAlert(withMessage: "Please enter valid website url, For example: www.website.com")
+        showAlert(withMessage: MarketPlaceConstant.kEnterValidWebsiteUrlExample)
     }
     private func alertToAddImage() -> Void {
         
@@ -260,7 +260,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             })
             self.picker.delegate = self }
         else{
-            self.showAlert(withMessage: "This feature is not available.")
+            self.showAlert(withMessage: "Not Available")
         }
     }
 }
@@ -311,21 +311,21 @@ extension MarketPlaceCreateStoreVC: TLPhotosPickerLogDelegate {
     
     func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
         picker.dismiss(animated: true) {
-            let alert = UIAlertController(title: "", message: "Denied albums permissions granted", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedAlbumPermissioins, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func handleNoCameraPermissions(picker: TLPhotosPickerViewController) {
-        let alert = UIAlertController(title: "", message: "Denied camera permissions granted", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedCameraPermissioins, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         picker.present(alert, animated: true, completion: nil)
     }
     
     func showUnsatisifiedSizeAlert(vc: UIViewController) {
         let alert = UIAlertController(title: "Oups!", message: "The required size is: 300 x 300", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
 }

@@ -13,8 +13,8 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var subOptionTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
     
-    var arrOption = ["Available for Sample","Category","Price Range"]
-    var arrAlyseiBrandOption = ["Yes","No"]
+    var arrOption = [MarketPlaceConstant.kAvailableForSample,MarketPlaceConstant.kCategory,MarketPlaceConstant.kPriceRange]
+    var arrAlyseiBrandOption = [MarketPlaceConstant.kYes,MarketPlaceConstant.kNo]
     var arrPriceOption = ["0$-10$","10$-50$","50$-200$","200$-500$", "above <$500"]
     var arrProductCategory: [MyStoreProductDetail]?
     var arrFilterOptions = [FilterModel]()
@@ -296,7 +296,7 @@ extension FilterViewController{
                     self.navigationController?.popViewController(animated: true)
                 }
             default:
-                self.showAlert(withMessage: "No products found")
+                self.showAlert(withMessage: MarketPlaceConstant.kNoProductFound)
             }
         }
     }

@@ -116,11 +116,17 @@ extension UserDefaults{
         self.set(deviceToken, forKey: kDeviceToken)
         self.synchronize()
     }
+    func setAppLanguage(language: String) {
+        self.set(deviceToken, forKey: appLocale)
+        self.synchronize()
+    }
     
     func getDeviceToken() -> String {
         return String.getString(self.string(forKey: kDeviceToken))
     }
-    
+    func getAppLanguage() -> String {
+        return String.getString(self.string(forKey: appLocale))
+    }
   //MARK: - Methods -
     
   func setLoggedInUserDetails(loggedInUserDetails dictUser: Dictionary<String, Any>){

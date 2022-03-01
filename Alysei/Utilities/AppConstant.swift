@@ -457,120 +457,120 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
-    static let Select = "select"
-    static let Checkbox = "checkbox"
-    static let Radio = "radio"
-    static let Text = "text"
-    static let Password = "password"
-    static let Multiselect = "multiselect"
-    static let Map = "map"
-    static let Terms = "terms"
-    static let EnterYourCity = "enter_your_city"
-    static let Email = "email"
-    static let Enter = "Enter "
-    static let Other = "Other"
-    static let File = "file"
-    static let kImageName = "imageName"
+    static var Select  : String { return "select".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Checkbox  : String { return "checkbox".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Radio  : String { return "radio".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Text  : String { return "text".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Password  : String { return "password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Multiselect  : String { return "multiselect".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Map  : String { return "map".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Terms  : String { return "terms".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterYourCity  : String { return "enter_your_city".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Email  : String { return "email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Enter  : String { return "Enter ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Other  : String { return "Other".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var File  : String { return "file".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImageName  : String { return "imageName".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let Settings = "Settings"
-    static let Hi = "Hi "
-    static let No = "No"
-    static let Yes = "yes"
-    static let EnterEmail = "Enter Email"
-    static let EnterPassword = "Enter Password"
-    static let CompanyName = "Company Name"
-    static let EnterCompanyName = "Enter Company Name"
-    static let ProductType = "Product Type*"
-    static let SelectProductType = "Select Product Type"
-    static let ItalianRegion = "Italian Region*"
-    static let PlaceholderItalianRegion = "Select a answer"
-    static let URL = "URL"
-    static let Username = "Username"
-    static let FirstName = "First Name"
-    static let LastName = "Last Name"
-    static let DisplayName = "Display Name"
-    //static let DisplayName = "Company Name"
+    static var Settings  : String { return "Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Hi  : String { return "Hi ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var No  : String { return "No".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var CYes  : String { return "Yes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Yes  : String { return "yes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterEmail  : String { return "Enter Email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterPassword  : String { return "Enter Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var CompanyName  : String { return "Company Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterCompanyName  : String { return "Enter Company Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ProductType  : String { return "Product Type*".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SelectProductType  : String { return "Select Product Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ItalianRegion  : String { return "Italian Region*".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PlaceholderItalianRegion  : String { return "Select a answer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var URL  : String { return "URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Username  : String { return "Username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FirstName  : String { return "First Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var LastName  : String { return "Last Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var DisplayName  : String { return "Display Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let Language = "Language"
-    static let EnterFirstName = "Enter First Name"
-    static let EnterLastName = "Enter Last Name"
+    static var Language  : String { return "Language".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterFirstName  : String { return "Enter First Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterLastName  : String { return "Enter Last Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let RestaurantName = "Restaurant Name"
-    static let EnterRestaurantName = "Enter Restaurant Name"
-    static let kDescription = "Description"
+    static var RestaurantName  : String { return "Restaurant Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterRestaurantName  : String { return "Enter Restaurant Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDescription  : String { return "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
-    static let EnterURL = "Enter URL"
-    static let EnterUsername = "Enter Username"
-    static let EnterDisplayName = "Enter Display Name"
-    static let SelectLanguage = "Select Language"
-    static let Title = "Title"
-    static let Description = "Description"
-    static let Tags = "Tags"
-    static let AddTitle = "Add a title"
-    static let Add = "Add "
-    static let ProceedNext = "Proceed Next"
-    static let Submit = "Submit"
-    static let Incomplete = "incomplete"
-    static let AddDescription = "Add some description"
-    static let Calander = "calander"
-    static let SeparateTags = "Separate tags with commas..."
-    static let Horeca = "Horeca"
-    static let PrivateLabel = "Private Label"
-    static let AlyseiBrand = "Alysei Brand Label"
-    static let HorecaValue = "horeca"
-    static let PrivateLabelValue = "privateLabel"
-    static let AlyseiBrandValue = "alyseiBrandLabel"
-    static let KeywordSearch = "Keyword Search"
+    static var EnterURL  : String { return "Enter URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterUsername  : String { return "Enter Username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EnterDisplayName  : String { return "Enter Display Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SelectLanguage  : String { return "Select Language".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Title  : String { return "Title".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Description  : String { return "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Tags  : String { return "Tags".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AddTitle  : String { return "Add a title".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Add  : String { return "Add ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ProceedNext  : String { return "Proceed Next".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Submit  : String { return "Submit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Incomplete  : String { return "incomplete".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AddDescription  : String { return "Add some description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Calander  : String { return "calander".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SeparateTags  : String { return "Separate tags with commas...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Horeca  : String { return "Horeca".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PrivateLabel  : String { return "Private Label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AlyseiBrand  : String { return "Alysei Brand Label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var HorecaValue  : String { return "horeca".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PrivateLabelValue  : String { return "privateLabel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AlyseiBrandValue  : String { return "alyseiBrandLabel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KeywordSearch  : String { return "Keyword Search".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //static let TopHubs = "Top 10 City Hubs"
-    static let SelectState = "Select State"
-    static let Hubs = "Hubs"
-    static let SelectRegion = "Select Region"
-    static let RestaurantType = "Restaurant Type"
-    static let PickUp = "Pick up"
-    static let Delivery = "Delivery"
-    static let Expertise = "Expertise"
-    static let SelectCountry = "Select Country"
-    static let Speciality = "Speciality"
-    static let ProductTypeBusiness = "Product Type"
-    static let Producttype = "Product type"
-    static let SelectUserType = "Select User Type"
-    static let GetStarted = "Get Started"
-    static let Next = "Next"
-    static let Finish = "Finish"
-    static let OTPHeading = "We have sent you a 6 digit verification code(OTP) to "
+    static var  SelectState  : String { return "Select State".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Hubs  : String { return "Hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SelectRegion  : String { return "Select Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var RestaurantType  : String { return "Restaurant Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PickUp  : String { return"Pick up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Delivery  : String { return "Delivery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Expertise  : String { return "Expertise".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SelectCountry  : String { return "Select Country".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Speciality  : String { return "Speciality".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ProductTypeBusiness  : String { return "Product Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Producttype  : String { return "Product type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var SelectUserType  : String { return "Select User Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var GetStarted  : String { return "Get Started".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Next  : String { return "Next".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Finish  : String { return "Finish".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var OTPHeading  : String { return "We have sent you a 6 digit verification code(OTP) to ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let KeyLatitude = "lattitude"
-    static let KeyLongitude = "longitude"
-    static let kEmpty = ""
-    static let kEnterText = "Enter your text here......"
-    static let kVATNo = "VAT No."
-    static let kZipCode = "Zip/Postal Code"
-    static let is_subscribed_with_hub = "is_subscribed_with_hub"
-    static let marketplace_product_id = "marketplace_product_id"
-    static let profileData = "profile_data"
-    static let kURL = "URL"
-    static let kUrl = "Url"
-    static let leaveComment = "Leave a comment"
-    static let kSelectRestType = "Select Restaurant"
-    static let kAddFeature = "Add Featured"
+    static var KeyLatitude  : String { return "lattitude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KeyLongitude  : String { return"longitude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmpty  : String { return "".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterText  : String { return "Enter your text here......".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVATNo  : String { return "VAT No.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kZipCode  : String { return "Zip/Postal Code".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var is_subscribed_with_hub  : String { return "is_subscribed_with_hub".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var marketplace_product_id  : String { return "marketplace_product_id".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var profileData  : String { return "profile_data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kURL  : String { return "URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUrl  : String { return "Url".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var leaveComment  : String { return "Leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectRestType  : String { return "Select Restaurant".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeature  : String { return "Add Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 }
 
 struct ProfileCompletion {
-    static let HubSelection = "Hub Selection"
-    static let ProfilePicture = "Profile Picture"
-    static let CoverImage = "Cover Image"
-    static let About = "About"
-    static let Featuredlisting = "Featured listing"
-    static let FeaturedProducts = "Featured Products"
-    static let FeaturedPackages = "Featured Packages"
-    static let OurProducts = "Our Products"
-    static let FeaturedRecipe = "Featured Menu"
-    static let FeaturedBlog = "Featured"
-    static let Ourtrips  = "Our trips"
-    static let Ourtours  = "Our Tours"
-    static let ContactInfo = "Contact Info"
-    static let OurMenu = "Our Menu"
+    static var HubSelection : String { "Hub Selection".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ProfilePicture  : String { "Profile Picture".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var CoverImage  : String { "Cover Image".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var About  : String { "About".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Featuredlisting  : String { "Featured listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FeaturedProducts  : String { "Featured Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FeaturedPackages  : String { "Featured Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var OurProducts  : String { "Our Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FeaturedRecipe  : String { "Featured Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FeaturedBlog  : String { "Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Ourtrips   : String { "Our trips".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Ourtours   : String { "Our Tours".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ContactInfo  : String { "Contact Info".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var OurMenu  : String { "Our Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 }
 
 struct PlaceholderImages {
@@ -586,380 +586,403 @@ struct PlaceholderImages {
     
 }
 struct MarketPlaceConstant{
-    static let kSubmitQuery = "You already submitted a query on this product"
-    static let kNetworkError = "Network Error"
-    static let KEnterSomeMessage = "Please enter some message"
-    static let kIsProductAvailable = "Hi is this product is available?"
-    static let kMarkMessage = "Message"
-    static let kNew = "New"
-    static let kOpened = "Opened"
-    static let kClosed = "Closed"
-    static let kYearsAgo = "years ago"
-    static let kMonthsAgo = "months ago"
-    static let kWeeksAgo = "weeks ago"
-    static let kYesterday = "Yesterday"
-    static let kHoursAgo = "hours ago"
-    static let kMinutesAgo = "minutes ago"
-    static let kSecondsAgo = "seconds ago"
-    static let kYearAgo = "year ago"
-    static let kMonthAgo = "month ago"
-    static let kWeekAgo = "week ago"
-    static let kHourAgo = "hour ago"
-    static let kMinuteAgo = "minute ago"
-    static let kSecondAgo = "second ago"
-    static let kNoNetwork = "no network"
-    static let kNoProducer = "No producer found"
-    static let kSpaceReview = " Reviews"
-    static let kSendInquiry = "Send Inquiry"
-    static let kBlocked = "Blocked"
-    static let kFullName = "Full Name"
-    static let kEmail = "Email"
-    static let kPhoneNumber = "Phone Number"
-    static let kMessage = "Message"
+    static var kSubmitQuery : String { return  "You already submitted a query on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNetworkError : String { "Network Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KEnterSomeMessage : String { "Please enter some message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kIsProductAvailable : String { "Hi is this product is available?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMarkMessage : String { "Message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNew : String { "New".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOpened : String { "Opened".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClosed : String {"Closed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYearsAgo : String { "years ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMonthsAgo : String { "months ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWeeksAgo : String { "weeks ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYesterday : String { "Yesterday".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHoursAgo : String { "hours ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinutesAgo : String { "minutes ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSecondsAgo : String { "seconds ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYearAgo : String { "year ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMonthAgo : String { "month ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWeekAgo : String { "week ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHourAgo : String { "hour ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinuteAgo : String { "minute ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSecondAgo : String { "second ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoNetwork : String { "no network".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoProducer : String { "No producer found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpaceReview : String { " Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpacereview : String { " reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSendInquiry : String { "Send Inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBlocked : String { "Blocked".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFullName : String { "Full Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmail : String { "Email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPhoneNumber : String { "Phone Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMessage : String { "Message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Home Screen
-    static let kMarketPlace = "MarketPlace"
-    static let kRecipe = "Recipe"
-    static let kPosts = "Posts"
-    static let kNotifications = "Notifications"
-    static let kGotoMyStore = "Go to my store"
-    static let kCreateMyStore = "Create your store"
-    static let kDiscoverMarketplace = "Discover Marketplace"
-    static let kProducerStore = "Producer Store"
-    static let kConservationMethod = "Conservation Method"
-    static let kItalianRegion = "Italian Regions"
-    static let kCategories = "Categories"
-    static let kProductProperties = "Product Properties"
-    static let kFDACertified = "FDA Certified"
-    static let kMyFavourite = "My Favourite"
-    static let kMostPospular = "Most Popular"
-    static let kPromotions = "Promotions"
-    static let kRecentlyAddedProject = "Recently Added Products"
-    static let kViewAll = "View all"
-    static let kNewlyAddedStore =  "Newly Added Stores"
-    static let kSearchItalianRegion =  "Search by Italian Regions"
-    static let kTopRatedProduct = "Top Rated Products"
-    static let kTopFavproduct = "Top Favourite Products"
-    static let kWhatYouLookingFor = "What are you looking for?"
-    
+    static var kMarketPlace : String {  "MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kRecipe : String {  "Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kPosts : String {  "Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var  kNotifications : String {  "Notifications".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kGotoMyStore : String { return  "Go to my store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kCreateMyStore : String {  "Create your store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDiscoverMarketplace : String { return "Discover Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kProducerStore  : String {  "Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kConservationMethod : String { "Conservation Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kItalianRegion : String {  "Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kCategories : String { "Categories".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kProductProperties : String {  "Product Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kFDACertified : String {  "FDA Certified".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kMyFavourite : String {  "My Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kMostPospular : String {  "Most Popular".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kPromotions : String { "Promotions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kRecentlyAddedProject : String {  "Recently Added Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+static var kViewAll : String {  "View all".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kNewlyAddedStore : String {   "Newly Added Stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSearchItalianRegion : String {   "Search by Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kTopRatedProduct : String {  "Top Rated Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kTopFavproduct : String {  "Top Favourite Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWhatYouLookingFor : String {  "What are you looking for?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+static var kProduct : String {  "Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //MARK: Marketplace Search Screen
-    static let kSearchForProductBrands =  "Search for product brands & more"
+static var kSearchForProductBrands : String { return "Search for product brands & more".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     //MARK: Marketplace Listing Screen
-    static let kSort = "Sort"
-    static let kFilter = "Filter"
+static var kSort  : String {  "Sort".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kFilter  : String {  "Filter".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
     //MARK: Marketplace Filter Screen
-    static let kNoProductFound = "No Product found"
+static var kNoProductFound  : String {  "No Product found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kCategories = "Categories"
-    static let kProperties = "Properties"
+static var kProperties  : String {  "Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kFDACertified = "FDA Certfied"
-    static let kITalianRegion = "Italian Region"
-    static let kDistance = "Distance"
-    static let kRatings = "Ratings"
-    static let kProducers = "Producers"
-    static let kProductName = "Product Name"
-    static let kClearFilters = "Clear Filters"
+static var kITalianRegion  : String {  "Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kDistance  : String {  "Distance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kRatings  : String {  "Ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kProducers  : String {  "Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kProductName  : String {  "Product Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kClearFilters  : String {  "Clear Filters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWithIn5Miles  : String {  "Within 5 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWithIn10Miles  : String {  "Within 10 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWithIn20Miles  : String {  "Within 20 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWithIn40Miles  : String { "Within 40 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kWithIn100Miles  : String {  "Within 100 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kMostratedstores  : String { "Most rated stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var k5StarStores  : String {  "5 star stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSortByAtoZ  : String {  "Sort by A to Z".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSortByZtoA  : String {  "Sort by Z to A".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kFilter = "Filters"
     
     //MARK: Marketplace Membership Screen
-    static let kSelectYourPackage = "Select your package"
-    static let kComingSoon = "Coming Soon....."
-    static let kBoostYourListing = "Boost your listing"
-    static let kBoostListingExpandReach = "Boost your listing to expand you reach and increase buyers engagement"
-    static let kSellOnline = "Sell online"
-    static let kSellProducttoBuyers = "Sell your product online to your buyers"
-    static let kB2CGrandOpening = "B2C Grand Opening"
-    static let kAlyseiFullOpeneingToMarket = "Alysei full opening to Market, Buyers and Consumers"
-    static let kCreateYourOwnModern = "Create your own modern, professional online Store"
-    static let kCreateProductListing = "Create your Product listing"
-    static let kDisplayProductListing = "Display your unique products listings"
-    static let kRespondToBuyers = "Respond to buyers inquiry"
-    static let kInteractWithFutureBuyers = "Interact with your future buyers"
-    static let kFavRatings = "Favorite and Ratings"
-    static let kBeingAbleToReviewedAndRated = "Being able to be reviewed and rated by buyers"
-    static let kAlyseiMarketplaceMemebership = "Alysei Marketplace Membership"
-    static let kChoosePlanRight = "Choose a plan that is right for you"
+static var kSelectYourPackage  : String {  "Select your package".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kComingSoon  : String {  "Coming Soon.....".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kBoostYourListing  : String {  "Boost your listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kBoostListingExpandReach  : String {  "Boost your listing to expand you reach and increase buyers engagement".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSellOnline  : String {  "Sell online".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSellProducttoBuyers  : String {  "Sell your product online to your buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kB2CGrandOpening  : String {  "B2C Grand Opening".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kAlyseiFullOpeneingToMarket  : String {  "Alysei full opening to Market, Buyers and Consumers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kCreateYourOwnModern  : String { "Create your own modern, professional online Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kCreateProductListing  : String { "Create your Product listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kDisplayProductListing  : String { "Display your unique products listings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kRespondToBuyers  : String {  "Respond to buyers inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kInteractWithFutureBuyers  : String { "Interact with your future buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kFavRatings  : String { "Favorite and Ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kBeingAbleToReviewedAndRated  : String { "Being able to be reviewed and rated by buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kAlyseiMarketplaceMemebership  : String { "Alysei Marketplace Membership".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kChoosePlanRight  : String { "Choose a plan that is right for you".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
     //MARK: Marketplace CreateStore Screen
-    static let kUpdateStore =  "Update Store"
-    static let kStoreName = "Store Name"
-    static let kDescription = "Description"
-    static let kCWebsite = "Website"
-    static let kStoreRegion =  "Store Region"
-    static let kLocation = "Location"
+    static var kUpdateStore  : String {   "Update Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kStoreName  : String {  "Store Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDescription  : String {  "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCWebsite  : String {  "Website".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kStoreRegion  : String {   "Store Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLocation  : String {  "Location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-    static let kExceedMaximumLimit = "Exceed Maximum Number Of Selection"
-    static let kOk = "Ok"
-    static let kUploadProfilePicture = "Please upload profile picture."
-    static let kUploadCoverPicture = "Please upload cover picture."
-    static let kUploadStorePicture = "Please upload store images."
-    static let kEnterValidWebsiteUrl = "Please enter a valid website url."
-    static let kEnterValidWebsiteUrlExample = "Please enter valid website url, For example: www.website.com"
-    static let kChooseSource = "Please choose a source type"
-    static let kTakePhoto = "Take Photo"
-    static let kChooseLibrary = "Choose From Library"
-    static let kDeletePhoto = "Delete photo"
-    static let kRemovePhoto = "Remove photo"
-    static let kCancel = "Cancel"
-    static let kOkay = "Okay"
-    static let kDeniedAlbumPermissioins = "Denied albums permissions granted"
-    static let kDeniedCameraPermissioins = "Denied camera permissions granted"
+    static var kExceedMaximumLimit  : String {  "Exceed Maximum Number Of Selection".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOk  : String {  "Ok".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadProfilePicture  : String {  "Please upload profile picture.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadCoverPicture  : String {  "Please upload cover picture.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadStorePicture  : String {  "Please upload store images.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterValidWebsiteUrl  : String {  "Please enter a valid website url.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterValidWebsiteUrlExample  : String {  "Please enter valid website url, For example: www.website.com".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kChooseSource  : String {  "Please choose a source type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTakePhoto  : String {  "Take Photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kChooseLibrary  : String {  "Choose From Library".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeletePhoto  : String {  "Delete photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRemovePhoto  : String {  "Remove photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCancel  : String {  "Cancel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOkay  : String {  "Okay".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeniedAlbumPermissioins : String {  "Denied albums permissions granted".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeniedCameraPermissioins  : String {  "Denied camera permissions granted".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Add Product Screen
-    static let kYes = "Yes"
-    static let kNo = "No"
-    static let kNumberOfPieces = "No. of pieces"
-    static let kNumberOfbottles = "No. of bottles"
-    static let kLiters = "liters"
-    static let kKiloGrams = "kilograms"
-    static let kUSD = "USD"
-    static let kMaximum200Characters = "Maximum 200 characters"
-    static let kMaximum50Characters = "Maximum 50 characters"
-    static let kProductPrice = "Product Price"
-    static let kProductTitle = "Product Title"
-    static let kSelectProductCategory = "Select Product Category"
-    static let kQuantityAvailable = "Quantity Available"
-    static let kBrandLabel = "Brand Label"
-    static let kKeyword = "Keywords"
-    static let kGrams = "grams"
-    static let kAddProduct = "Add Product"
-    static let kMilligram = "milligrams"
-    static let kMinimumOrderProductQuantity = "Minimum Order quantity should be less or equal to quantity Available"
-    static let kUploadProductImages = "Please upload product images."
-    static let kEnterProductTitle = "Please enter product title."
-    static let kEnterProductDesc = "Please enter product description."
-    static let kEnterProductCategory = "Please enter category."
-    static let kEnterProduvtQunatity = "Please enter quantity available."
-    static let kProductMinimumQuantity = "Please enter minimum order quantity."
-    static let kProductHandlingInstr = "Please enter handling instructions."
-    static let kProductDispatchInstr = "Please enter dispatch instructions."
-    static let kEnterAvailableSample = "Please enter available for sample."
-    static let kEnterProductPrice = "Please enter valid product price."
-    static let kHelpUserToFindProduct = "Helps user to find product"
-    static let kProductCureentlyAvalbleToDelivr = "How many products are you currently available to deliver?"
-    static let kPlanToSellYourProduct = "Choose how you plan to sell your products"
-    static let kMinimumOrderQunatityToSellProduct = "Which is the minimum order quantity you are able to accept?"
-    static let kSafehandlingInstructions = "Provide details about your safe handling instructions"
-    static let kSpecifinDispatchInstruction = "Provide details about your specific disptach instructions"
-    static let kProvideSampleOfProduct = "Are you able to provide samples of your products upon request?"
-    static let kProductSellingPrice = "Indicate your product selling price to possible buyers"
-    static let kYourOwnBrandLabel = "Your own brand label"
+    static var kYes  : String {  "Yes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNo  : String {  "No".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNumberOfPieces  : String {  "No. of pieces".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNumberOfbottles  : String { "No. of bottles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLiters  : String {  "liters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kKiloGrams  : String {  "kilograms".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUSD  : String {  "USD".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMaximum200Characters  : String {  "Maximum 200 characters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMaximum50Characters  : String {  "Maximum 50 characters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductPrice  : String {  "Product Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductTitle  : String {  "Product Title".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectProductCategory  : String {  "Select Product Category".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kQuantityAvailable  : String {  "Quantity Available".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBrandLabel  : String {  "Brand Label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kKeyword  : String {  "Keywords".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kGrams  : String {  "grams".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddProduct  : String {  "Add Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMilligram  : String {  "milligrams".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinimumOrderProductQuantity  : String {  "Minimum Order quantity should be less or equal to quantity Available".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadProductImages  : String {  "Please upload product images.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterProductTitle  : String {  "Please enter product title.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterProductDesc  : String {  "Please enter product description.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterProductCategory  : String {  "Please enter category.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterProduvtQunatity  : String {  "Please enter quantity available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductMinimumQuantity  : String {  "Please enter minimum order quantity.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductHandlingInstr  : String {  "Please enter handling instructions.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductDispatchInstr  : String {  "Please enter dispatch instructions.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterAvailableSample  : String {  "Please enter available for sample.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterProductPrice  : String {  "Please enter valid product price.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHelpUserToFindProduct  : String {  "Helps user to find product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductCureentlyAvalbleToDelivr  : String {  "How many products are you currently available to deliver?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPlanToSellYourProduct  : String {  "Choose how you plan to sell your products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinimumOrderQunatityToSellProduct  : String {  "Which is the minimum order quantity you are able to accept?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSafehandlingInstructions  : String {  "Provide details about your safe handling instructions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpecifinDispatchInstruction  : String {  "Provide details about your specific disptach instructions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProvideSampleOfProduct  : String {  "Are you able to provide samples of your products upon request?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProductSellingPrice  : String {  "Indicate your product selling price to possible buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYourOwnBrandLabel  : String { "Your own brand label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Rating Review Screen
-    static let kSRatings = "ratings"
-    static let kReviews = "reviews"
-    static let kCapReviews = "Reviews"
-    static let kEditReview = "Edit Review"
-    static let kAddReview = "Add Review"
-    static let kLeaveAComment = "Leave a comment"
-    static let kPleaseAddRatings = "Please add ratings."
-    static let kEnterSomeReview = "Please enter some review."
-    static let kReviewAddedSuccessfully = "Review added Successfully!"
-    static let kAlreadytDoneReview = "You have already done a review on this product"
-    static let kReviewUpdatedSuccessfully = "Review updated Successfully!"
-    static let kTapToRate = "Tap to rate:"
+    static var kSRatings  : String {  "ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReviews  : String {  "reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCapReviews  : String {  "Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEditReview  : String {  "Edit Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddReview  : String {  "Add Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLeaveAComment  : String {  "Leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseAddRatings  : String {  "Please add ratings.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterSomeReview  : String {  "Please enter some review.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReviewAddedSuccessfully  : String {  "Review added Successfully!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAlreadytDoneReview  : String {  "You have already done a review on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReviewUpdatedSuccessfully  : String {  "Review updated Successfully!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTapToRate  : String {  "Tap to rate:".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace First Time Walthrough
-    static let kWelcomeToMarketplace = "Welcome to Marketplace"
-    static let kFeatureYouExplore = "Features you can explore"
-    static let kMarketPlaceRules = "MarketPlace Rules"
-    static let kCreateYourUniqueStore = "Here you can create your unique Store"
-    static let kuploadProductPortFolioExplore = "upload your product portfolio, explore, search and reply to inquiries"
-    static let kPowerfulMarketplaceEngine = "The most powerful markeplace engine for the Made in Italy"
-    static let kPostiveExperience = "To ensure a positive experience follow these simple rules"
-    static let kExploreSearchProductsFormItalian = "Here you can explore and search for products from Italian Producers"
-    static let kExploreSendInquiry =  "Here you can explore and search for products and send inquiry to Italian Producers"
+    static var kWelcomeToMarketplace  : String{ "Welcome to Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFeatureYouExplore  : String { "Features you can explore".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMarketPlaceRules  : String {  "MarketPlace Rules".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateYourUniqueStore : String { "Here you can create your unique Store, upload your product portfolio, explore, search and reply to inquiries".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPowerfulMarketplaceEngine  : String {  "The most powerful markeplace engine for the Made in Italy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kPostiveExperience  : String {  "To ensure a positive experience follow these simple rules".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kExploreSearchProductsFormItalian  : String {  "Here you can explore and search for products from Italian Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kExploreSendInquiry  : String {   "Here you can explore and search for products and send inquiry to Italian Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
   
-    static let kExploreMarketPlace = "Explore the Markeplace"
-    static let kReportSuspiciousBehaviour = "Report suspicious behaviour"
-    static let kSearchByRegionProductCategory = "Search by Region, Product, Category and much more"
-    static let kLetUSKnowSomethingDoesNotFeelright = "Let us know if something does not feel right"
-    static let kReplytoInquiry = "Reply to inquiry"
-    static let kSendAnInquiry = "Send an inquiry"
-    static let kShowcaseProductSimpleClean = "Showcase you Products Store in a simple, clean and professional way"
-    static let kBeingResponsiveBuildTrust = "Being responsive will help you to build trust with Buyers"
+        static var kExploreMarketPlace  : String {  "Explore the Markeplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kReportSuspiciousBehaviour  : String {  "Report suspicious behaviour".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSearchByRegionProductCategory  : String {  "Search by Region, Product, Category and much more".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kLetUSKnowSomethingDoesNotFeelright  : String {  "Let us know if something does not feel right".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kReplytoInquiry  : String {  "Reply to inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSendAnInquiry  : String {  "Send an inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kShowcaseProductSimpleClean  : String {  "Showcase you Products Store in a simple, clean and professional way".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kBeingResponsiveBuildTrust  : String {  "Being responsive will help you to build trust with Buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-    static let kAskFoeProductSampleRequest = "Ask for product information, samples request, prices, quantity etc."
-    static let kInformationAndDetails = "Information and details"
-    static let kPhotoQuality = "Photo Quality"
-    static let kAllInformationProvideAccurate =  "Make sure all the information you provide are accurate and completed"
-    static let kPhotosUploadhighQuality = "Make sure that all photos that you upload are in high quality"
-
-    static let kInformationAccurateAndcomplete =  "Make sure all the information you provide are accurate and completed"
-    static let kDone =  "Done"
+        static var kAskFoeProductSampleRequest  : String {  "Ask for product information, samples request, prices, quantity etc.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kInformationAndDetails  : String { "Information and details".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kPhotoQuality  : String {  "Photo Quality".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   // static let kAllInformationProvideAccurate =  "Make sure all the information you provide are accurate and completed"
+        static var kPhotosUploadhighQuality  : String {  "Make sure that all photos that you upload are in high quality".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kBoostListigToExpandReachIncsebuyer  : String {  "You can boost your listing to expand you reach and increase buyers engagement".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kInformationAccurateAndcomplete  : String {   "Make sure all the information you provide are accurate and completed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kDone  : String {"Done".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Create Store Walthrough
-    static let kStartPromotingProducts =  "Start promoting your products"
-    static let kConfigureStore =  "Configure Your Store"
-    static let kTipsToHelpPromoteConfidence =  "Here is some tips to help you promote with confidence"
-    static let kPostInEnglish =  "Post in English"
-    static let kWriteEnglishCreateYourStore =  "Write in English language to create your store and list your products"
-    static let kConnectWithBuyers =   "Connect with buyers"
-    static let kCreateListingBuyers =  "When you create a listing, buyers will interact with you"
+    static var kStartPromotingProducts  : String {"Start promoting your products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kConfigureStore  : String { "Configure Your Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTipsToHelpPromoteConfidence  : String { "Here is some tips to help you promote with confidence".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kPostInEnglish  : String { "Post in English".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWriteEnglishCreateYourStore  : String {"Write in English language to create your store and list your products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kConnectWithBuyers  : String {"Connect with buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateListingBuyers  : String {"When you create a listing, buyers will interact with you".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let kAddingAccurateHelpBuyers =  "Adding relevant and accurate info helps buyers to learn more about what you are selling."
-    static let kAddClearPhotos =  "Add clear photos"
-    static let kPhotosGoodResolutionAndLightning =  "Photos should have a good resolution and lighting,and should only show what you are listing"
-    static let kOfferFairPrice =  "Offer a fair price"
-    static let kOfferingFarePriceToCompMarket =  "Make sure you are offering prices appropriate to a competitive market like the US"
+    static var kAddingAccurateHelpBuyers  : String { "Adding relevant and accurate info helps buyers to learn more about what you are selling.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddClearPhotos  : String { "Add clear photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPhotosGoodResolutionAndLightning : String {"Photos should have a good resolution and lighting,and should only show what you are listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOfferFairPrice  : String {"Offer a fair price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOfferingFarePriceToCompMarket  : String {"Make sure you are offering prices appropriate to a competitive market like the US".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     ////MARK: Marketplace ProductInfo Screen
-    static let kProductInfo = "Product Info"
-    static let kHandlingInstructions = "Handling Instructions"
-    static let kDispatchInstruction = "Dispatch Instructions"
-    static let kDotQuantityAvailable = "Quantity Available:"
-    static let kBrandLable = "Brand Label"
-    static let kMinOrderQuantity = "Min Order Quantity"
-    static let kSampleAvailable = "Sample Available"
-    static let kAvailableForSample = "Available for Sample"
-    static let kCategory = "Category"
-    static let kPriceRange = "Price Range"
-    static let kMethod = "Method"
-    static let kMyProducts = "My Products"
+    static var kProductInfo  : String {  "Product Info".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHandlingInstructions  : String {"Handling Instructions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDispatchInstruction  : String {"Dispatch Instructions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDotQuantityAvailable  : String {"Quantity Available:".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBrandLable  : String {  "Brand Label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinOrderQuantity  : String {"Min Order Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSampleAvailable  : String {"Sample Available".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAvailableForSample  : String {"Available for Sample".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCategory  : String {"Category".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPriceRange  : String {"Price Range".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMethod  : String {"Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMyProducts  : String {"My Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Dashboard Screen
-    static let kTotalProduct = "Total Product"
-    static let kTotalEnquiry = "Total Enquiry"
-    static let kTotalCategories = "Total Categories"
-    static let kTotalReviews = "Total Review"
-    static let kYearly = "Yearly"
-    static let kMonthly = "Monthly"
-    static let kWeekly = "Weekly"
-    static let kyesterday = "Yesterday"
-    static let kInquiries = "Inquiries"
-    static let kDashboard = "Dashboard"
-    static let kAnalytics = "Analytics"
-    static let kToday = "Today"
+    static var kTotalProduct  : String {"Total Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTotalEnquiry  : String {"Total Enquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTotalCategories  : String {"Total Categories".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTotalReviews  : String {  "Total Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYearly  : String {"Yearly".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMonthly  : String {"Monthly".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWeekly  : String {"Weekly".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kyesterday : String {"Yesterday".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kInquiries  : String {"Inquiries".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDashboard  : String {"Dashboard".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAnalytics  : String {"Analytics".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kToday  : String {"Today".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeleteProduct  : String {"Are you sure you want to delete this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Confirm Screen
-    static let kThanksForsubmittingInformation = "Thank you for submitting your information for admin review. We will respond you at earliest."
-    static let kBackToMarketplace = "Back to MarketPlace"
+    static var kThanksForsubmittingInformation  : String {  "Thank you for submitting your information for admin review. We will respond you at earliest.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBackToMarketplace  : String {"Back to MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     //MARK: Marketplace Sort Screen
-    static let kPopularity = "Popularity"
-    static let kPriceLowToHigh = "Price -- Low to High"
-    static let kPriceHighToLow = "Price -- High to Low"
-    static let kNewestFirst =  "Newest First"
+    static var kPopularity  : String {"Popularity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPriceLowToHigh  : String {"Price -- Low to High".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPriceHighToLow  : String {"Price -- High to Low".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNewestFirst  : String {"Newest First".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Store Screen
-    static let kItalianFBProducer = "Italian F&B Producer"
-    static let kOurGallery = "Our Gallery"
-    static let kCall = "Call"
-    static let kAddToFav = "Add to Fav"
-    static let kNoImage = "No Image"
-    static let kRatingAndReviews = "Rating & Reviews"
-    static let kSeeAll = "See All"
-    static let kAllProducts = "All Products"
+    static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOurGallery  : String { "Our Gallery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCall  : String {"Call".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddToFav  : String {"Add to Fav".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoImage  : String {"No Image".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRatingAndReviews  : String {"Rating & Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSeeAll  : String {"See All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAllProducts  : String {"All Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 }
 struct LogInSignUp{
   
     //MARK: Membership Screen
-    static let kReview = "Review"
-    static let kAccountReviewesApprovOurStaff = "Your account has been reviewed and approved by our staff"
-    static let kAlyseiCertification = "Alysei Certification"
-    static let kYouAreeCertifiedAlysei = "Congratulation! You are now a certified Alysei Member."
-    static let kRecognition = "Recognition"
-    static let kTop10MostSearched = "You are within the top 10 most searched Alysei Members"
-    static let kQualityMark = "Quality Mark"
-    static let kTop5HighestRatedAlysei = "You are within the top 5 highest rated Alysei Members"
-    static let kBecomeACertifiedAlyei = "Become a Certified Alysei Member to expan your market access"
-    static let kCompleteProfileFullyAccess = "Complete your profile in order to fully access Alysei"
+    static var kReview  : String {  "Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAccountReviewesApprovOurStaff  : String {  "Your account has been reviewed and approved by our staff".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAlyseiCertification  : String {  "Alysei Certification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYouAreeCertifiedAlysei  : String {"Congratulation! You are now a certified Alysei Member.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kRecognition  : String {  "Recognition".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kTop10MostSearched  : String {  "You are within the top 10 most searched Alysei Members".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kQualityMark  : String {  "Quality Mark".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kTop5HighestRatedAlysei  : String { "You are within the top 5 highest rated Alysei Members".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kBecomeACertifiedAlyei  : String {  "Become a Certified Alysei Member to expan your market access".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kCompleteProfileFullyAccess  : String {  "Complete your profile in order to fully access Alysei".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: LOGIN SCREEN
-    static let kLoginToyourAccount = "Login to your Account"
-    static let kLoginWithEmail = "LOGIN WITH EMAIL"
-    static let kSignUp = "SIGN UP"
-    static let kSigningUpAgreeTerms = "By signig up, you agree to our Terms of Services & Privacy Policy."
+        static var kLoginToyourAccount  : String {  "Login to your Account".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kLoginWithEmail  : String {  "LOGIN WITH EMAIL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSignUp  : String {  "SIGN UP".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSigningUpAgreeTerms  : String { "By signig up, you agree to our Terms of Services & Privacy Policy.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let kPassword = "Password"
-    static let kLOGIN = "LOGIN"
-    static let kForgetPassword = "Forget Password?"
-    static let kDontHaveAccount = "Don't have an account yet? Sign up"
-    static let kEnterYourRegisteredEmail = "Enter your registered email to recover your password"
-    static let kResetPassword = "Reset Password"
-    static let kSelectRole = "Select your role"
-    static let kExploreConnectCertifiedImp = "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers."
-    static let kUSImporterDistributer = "US Importers & Distributors"
-    static let kExploreFindConnectLocalItalian = "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access."
-    static let kIatalianRestaurants = "Italian Restaurants in US"
+        static var kPassword  : String {  "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kLOGIN  : String {  "LOGIN".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kForgetPassword  : String {  "Forget Password?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kDontHaveAccount  : String {  "Don't have an account yet? Sign up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kEnterYourRegisteredEmail  : String {  "Enter your registered email to recover your password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kResetPassword  : String {  "Reset Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSelectRole  : String {  "Select your role".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kExploreConnectCertifiedImp : String { "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kUSImporterDistributer  : String {  "US Importers & Distributors".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kExploreFindConnectLocalItalian  : String {  "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kIatalianRestaurants  : String {  "Italian Restaurants in US".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-    static let kStrengthCollaborationWithProducer = "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach."
-    static let kChefCookingSchools = "Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs."
-    static let kTavelAgencies = "Travel Agencies"
-    static let kStreghthConnectionWithProducer = "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers."
-    static let kVoyager =  "Voyagers"
-    static let kEnjopyMagicWorldOfEndless = "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more."
+        static var kStrengthCollaborationWithProducer  : String {  "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kChefCookingSchools  : String {  "Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kTavelAgencies  : String {  "Travel Agencies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kStreghthConnectionWithProducer  : String {  "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kVoyager  : String {   "Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kEnjopyMagicWorldOfEndless  : String {  "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
 
-    static let kSelectYourLanguage = "Select your Language"
-    static let kskip = "Skip"
-    static let kgetStarted = "Get Started"
-    static let kBridgeGapBtwmTradition = "Bridge the gap between tradition and modernity, offering endless opportunities to Italian high quality product maanufactures to grow and expand their business in USA while maintaining their centennial tradition and identity."
-    static let kEnjoyMagicWorldOfEndless = "Alysei is the first B2B and B2C Portal for Italian high-quality products in the Food & Beverage sector, designed and developed on a Collaborative Social Platform entirely directed to a public enthusiastic for the Made in Italy eno-gastronomy."
-    static let kCertifiedProducerWillBeAble = "Alysei certified Producers will be able to search and connect with certified Importers and Distributors in the US, build up and consolidate their brand, promote their products and reach their target customers faster to gain visibility and traction in the USA market."
-    static let kAlyseiTargetTheEntirePopulation = "Alysei targets the entire population with a strong passion to the culture, history and tradition of the Italian cuisine."
-    static let kUSerWillJoinAlyseiToEnjoyMagic =  "Users will join Alysei to enjoy the magic world of our endless cuisine searching for products, restaurants, trips to Italy, events and tasting tours, cooking classes, recipes, blogs and many more activities helping to strengthen our great Made in Italy brand in US."
+        static var kSelectYourLanguage  : String {  "Select your Language".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kskip  : String {  "Skip".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kgetStarted  : String {  "Get Started".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kBridgeGapBtwmTradition  : String {  "Bridge the gap between tradition and modernity, offering endless opportunities to Italian high quality product maanufactures to grow and expand their business in USA while maintaining their centennial tradition and identity.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kEnjoyMagicWorldOfEndless  : String {  "Alysei is the first B2B and B2C Portal for Italian high-quality products in the Food & Beverage sector, designed and developed on a Collaborative Social Platform entirely directed to a public enthusiastic for the Made in Italy eno-gastronomy.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kCertifiedProducerWillBeAble  : String {  "Alysei certified Producers will be able to search and connect with certified Importers and Distributors in the US, build up and consolidate their brand, promote their products and reach their target customers faster to gain visibility and traction in the USA market.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAlyseiTargetTheEntirePopulation  : String {  "Alysei targets the entire population with a strong passion to the culture, history and tradition of the Italian cuisine.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kUSerWillJoinAlyseiToEnjoyMagic  : String {   "Users will join Alysei to enjoy the magic world of our endless cuisine searching for products, restaurants, trips to Italy, events and tasting tours, cooking classes, recipes, blogs and many more activities helping to strengthen our great Made in Italy brand in US.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: PRODUCER WALKTHROUGH
   
-    static let kSignUpCreateCompleteCompnyPrfl =  "Sign up, create, and complete your Company profile, showcase your feature products, select your Hub in US, promote your Brand."
-    static let kAccessB2BPlatform =  "Access to the B2B Platform"
-    static let kAcessB2B =  "Access to the B2B Engine to search and connect with Importers, Distributors, Italian Restaurants in US Voice of Experts, Travel Agencies."
-    static let kYourOwnMarketplace =  "Your own Marketplace"
-    static let kAccessToMarketPlaceCreate =  "Access to the Market Place, create your unique Store, upload your product portfolio, enhance your visibility, expand your reach."
-    static let kFromFarmToFork =  "From Farm to Fork"
-    static let kFullAccessToAlyseiSocialPlatform =   "Full access to Alysei Social Platform to reach your target customers in US within your Hub, launch target product and event promotion campaigns, strengthen your Brand."
+        static var kSignUpCreateCompleteCompnyPrfl  : String {   "Sign up, create, and complete your Company profile, showcase your feature products, select your Hub in US, promote your Brand.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccessB2BPlatform  : String {   "Access to the B2B Platform".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAcessB2B  : String {   "Access to the B2B Engine to search and connect with Importers, Distributors, Italian Restaurants in US Voice of Experts, Travel Agencies.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kYourOwnMarketplace  : String {   "Your own Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccessToMarketPlaceCreate  : String {   "Access to the Market Place, create your unique Store, upload your product portfolio, enhance your visibility, expand your reach.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kFromFarmToFork  : String {   "From Farm to Fork".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kFullAccessToAlyseiSocialPlatform  : String {    "Full access to Alysei Social Platform to reach your target customers in US within your Hub, launch target product and event promotion campaigns, strengthen your Brand.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: IMPORTER AND DISTRIBUTER WALKTHROUGH
-    static let kAccessToMarketPlaceEXPLORE =  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect and develop business realtionship."
+        static var kAccessToMarketPlaceEXPLORE  : String {   "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect and develop business realtionship.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     //MARK: RESTAURANT WALKTHROUGH
-    static let kSignUpCreateRestProfile = "Sign up, create and complete your Restaurant profile, showcase your menu and feature recipes, select your Hub in US, promote your Restaurant."
+        static var kSignUpCreateRestProfile : String { "Sign up, create and complete your Restaurant profile, showcase your menu and feature recipes, select your Hub in US, promote your Restaurant.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let KGainMarketVisibility = "Gain Market Visibility"
+        static var KGainMarketVisibility  : String {  "Gain Market Visibility".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let kAcessToMarketPlaceCollaboratinOpportunities =  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more,  develop business collaboration opportunities through your local Importers and Distributors."
-    static let kExpandReach = "Expand your reach"
+        static var kAcessToMarketPlaceCollaboratinOpportunities  : String {   "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more,  develop business collaboration opportunities through your local Importers and Distributors.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kExpandReach  : String {  "Expand your reach".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: VOICE OF EXPERT WALKTHROUGH
-   static let kSignUpVoiceOfExpert = "Sign up, create and complete your Profile, showcase your feature blogs, books, events, projects, select your Hub in US, promote your Brand and offering."
-    static let kEnhanceCollabOpprByLeveraging = "Enhance your collaboration opportunity by leveraging on the B2B Engine to search and connect with Italian Producers, Importers, Distributors and Italian Restaurants in US, Travel Agencies."
-    static let kAccesMarketVoiceOfExpert = "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities."
-    static let kAccessSocialAlyseiVoiceOfExpert = "Full access to Alysei Social Platform to promote and strengthen your Brand, blogs, books, events, projects."
+        static var kSignUpVoiceOfExpert  : String {  "Sign up, create and complete your Profile, showcase your feature blogs, books, events, projects, select your Hub in US, promote your Brand and offering.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kEnhanceCollabOpprByLeveraging  : String {  "Enhance your collaboration opportunity by leveraging on the B2B Engine to search and connect with Italian Producers, Importers, Distributors and Italian Restaurants in US, Travel Agencies.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccesMarketVoiceOfExpert  : String {  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccessSocialAlyseiVoiceOfExpert  : String {  "Full access to Alysei Social Platform to promote and strengthen your Brand, blogs, books, events, projects.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: TRAVEL AGENCIES WALKTHROUGH
 
-    static let kSigupTravelAgencies = "Sign up, create and complete your Company profile, showcase your feature trips, select your Hub in US, promote your offering."
-    static let kAccesMarketTravelAgencies = "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities."
-    static let kAccessSocialAlyseiTRAVELAGENCIES = "Full access to Alysei Social Platform to define, promote and reach your target market and customer."
+        static var kSigupTravelAgencies  : String {  "Sign up, create and complete your Company profile, showcase your feature trips, select your Hub in US, promote your offering.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccesMarketTravelAgencies  : String {  "Access to the Market Place, explore, search for high quality Italian producers by Region, Product, Category and much more, connect develop business collaboration opportunities.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAccessSocialAlyseiTRAVELAGENCIES  : String {  "Full access to Alysei Social Platform to define, promote and reach your target market and customer.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: VOYAGERS WALKTHROUGH
-    static let kChooseYourHub = "Choose your HUB in US"
-    static let kSigupvoyager = "Sign up, create and complete your profile, access to the Alysei world."
-    static let kAccessToAlysei =  "Access to Alysei Social"
-    static let kAccessVoyager = "Access to Alysei to search for products, restaurants, events, cooking classes, Recipes, trips to Italy, post, share, comments and much more."
-    static let kReceipeTool = "Recipe Tool"
-    static let kAccessToReceipeTool = "Access to the Alysei Recipe Tool, search, create, post, share, rate recipes with a click of a mouse."
-    static let kBringMoreFriendsAndExpand = "Bring more friends an expand your membership and Benefits."
+        static var kChooseYourHub  : String {  "Choose your HUB in US".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSigupvoyager  : String {  "Sign up, create and complete your profile, access to the Alysei world.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAccessToAlysei  : String {   "Access to Alysei Social".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAccessVoyager  : String {  "Access to Alysei to search for products, restaurants, events, cooking classes, Recipes, trips to Italy, post, share, comments and much more.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReceipeTool  : String {  "Recipe Tool".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAccessToReceipeTool  : String {  "Access to the Alysei Recipe Tool, search, create, post, share, rate recipes with a click of a mouse.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBringMoreFriendsAndExpand : String {"Bring more friends an expand your membership and Benefits.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: HUB SELECTION SCREEN
-    static let kSelectHubinUSA = "Select the HUB in USA where you plan to develop your business"
-    static let kHubIdentifiesAGeographical = "The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities"
-    static let kIfyouDontWantHubAmongThose = "If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city"
+    static var kSelectHubinUSA  : String {  "Select the HUB in USA where you plan to develop your business".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kHubIdentifiesAGeographical  : String {  "The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kIfyouDontWantHubAmongThose  : String {  "If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     //MARK: SIGN UP SCREEN
 
-    static let kHotelCafeRest = "Hotel/Restaurant/Café"
+        static var kHotelCafeRest  : String {  "Hotel/Restaurant/Café".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     //static let kSellProductOnlineUnderRetailer = "Sell your products under the retailer name"
 
-    static let kProvidePickUpDelivery = "Provide Pick Up and And/Or Delivery"
-    static let kSelectIfYouCanProvidePickupDeleivery = "Select if you can provide Pick Up and Delivery"
-    static let kPickUpDiscountForAlyseiVoyager = "Pick up Discount for Alysei Voyager"
-    static let kSelectDiscountOfferToVoyager = "Select the discount you want to offer to Voyagers"
-    static let kDeliveryDiscountToVoyager = "Delivery Discount for Alysei Voyager"
-    static let kSelectTheDiscountOfferTovoyager = "Select the discount you want to offer to Voyagers"
+        static var kProvidePickUpDelivery  : String {  "Provide Pick Up and And/Or Delivery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSelectIfYouCanProvidePickupDeleivery  : String {  "Select if you can provide Pick Up and Delivery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kPickUpDiscountForAlyseiVoyager  : String {  "Pick up Discount for Alysei Voyager".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kSelectDiscountOfferToVoyager  : String {  "Select the discount you want to offer to Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kDeliveryDiscountToVoyager  : String {  "Delivery Discount for Alysei Voyager".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectTheDiscountOfferTovoyager : String { return "Select the discount you want to offer to Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
 }
 
 struct APIConstants {
