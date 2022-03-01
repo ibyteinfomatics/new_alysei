@@ -148,7 +148,7 @@
 "Edit Review" = "Edit Review";
 "Add Review" = "Add Review";
 "Leave a comment" = "Leave a comment";
-"Please add ratings." = "Please add ratings."
+"Please add ratings." = "Please add ratings.";
 "Please enter some review." = "Please enter some review.";
 "Review added Successfully!" = "Review added Successfully!";
 "You have already done a review on this product" = "You have already done a review on this product";
@@ -156,7 +156,7 @@
 "Tap to rate:" = "Tap to rate:";
 
 //MARK: Marketplace First Time Walthrough
-"Welcome to Marketplace" = "";
+"Welcome to Marketplace" = "Welcome to Marketplace";
 "Features you can explore" = "";
 "MarketPlace Rules" = "";
 "Here you can create your unique Store" = "";
