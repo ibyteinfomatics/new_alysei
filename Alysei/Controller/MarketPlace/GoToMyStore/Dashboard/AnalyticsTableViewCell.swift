@@ -16,10 +16,10 @@ class AnalyticsTableViewCell: UITableViewCell {
     @IBOutlet weak var btnReport: UIButton!
     var dataDropDown = DropDown()
     
-    var analyticsArr = ["Total Product","Total Enquiry","Total Categories","Total Review"]
+    var analyticsArr = [MarketPlaceConstant.kTotalProduct,MarketPlaceConstant.kTotalEnquiry,MarketPlaceConstant.kTotalCategories,MarketPlaceConstant.kTotalReviews]
    // var analyticsValue = ["112","42","12","100"]
     var analyticsColor = ["#2594FF","#4AAE4E","#FF9025","#FF3B25"]
-    var arrData = ["Yearly","Monthly","Weekly","Yesterday","Today"]
+    var arrData = [MarketPlaceConstant.kYearly,MarketPlaceConstant.kMonthly,MarketPlaceConstant.kWeekly,MarketPlaceConstant.kYesterday,MarketPlaceConstant.kToday]
     var totalProduct: Int?
     var totalCategory: Int?
     var totalEnquiry: Int?

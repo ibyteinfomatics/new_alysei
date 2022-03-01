@@ -126,7 +126,7 @@ extension MyStoreProductViewController: UICollectionViewDataSource, UICollection
         cell.editButton.tag = indexPath.row
         cell.totalRating.text = "\(productList?[indexPath.row].total_reviews ?? "0") Reviews"
         cell.deleteCallBack = { deleteProductId in
-            let refreshAlert = UIAlertController(title: "", message: "Are you sure ypu want to delete this project", preferredStyle: UIAlertController.Style.alert)
+            let refreshAlert = UIAlertController(title: "", message: MarketPlaceConstant.kDeleteProduct, preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                   // Handle Ok logic here
                 self.interactor?.callDeleteProductApi(deleteProductId)

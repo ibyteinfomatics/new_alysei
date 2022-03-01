@@ -28,7 +28,7 @@ class StoreDescProductCollectionViewCell: UICollectionViewCell {
     
     func configCell(_ data: ProductSearchListModel){
         lblavgRating.text = data.avg_rating
-        lblTotalRating.text = "\(data.total_reviews ?? 0) Reviews"
+        lblTotalRating.text = "\(data.total_reviews ?? 0) " + MarketPlaceConstant.kReviews
         setStarUI()
     }
     func setStarUI(){

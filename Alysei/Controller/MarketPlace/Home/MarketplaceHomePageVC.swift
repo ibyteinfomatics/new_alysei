@@ -95,7 +95,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     var isVisitedMarketplace: Int?
     
     
-    var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
+    var arrMarketPlace = [MarketPlaceConstant.kProducerStore,MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProductProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kMyFavourite,MarketPlaceConstant.kMostPospular,MarketPlaceConstant.kPromotions]
     private var isBottomSheetShown = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,7 +182,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkView1.isHidden = true
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = true
-        self.walknextBtn.setTitle("Next", for: .normal)
+        self.walknextBtn.setTitle(AppConstants.Next, for: .normal)
         openednewCount.isHidden = true
         newInquiryCount(child: "New")
         openedInquiryCount(child: "Opened")
@@ -215,25 +215,25 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
             imgCreateleading.constant = 6
-            self.btnCreateStore.setTitle("Go to my store", for: .normal)
+            self.btnCreateStore.setTitle(MarketPlaceConstant.kGotoMyStore, for: .normal)
         }else if  (self.storeCreated == 1) && (self.productCount ?? 0 >= 1){
             imgCreate.isHidden = true
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
             imgCreateleading.constant = 6
-            self.btnCreateStore.setTitle("Go to my store", for: .normal)
+            self.btnCreateStore.setTitle(MarketPlaceConstant.kGotoMyStore, for: .normal)
         }else if (self.storeCreated == 1) && (isStoreReviewed == 1 || isStoreReviewed == 2) {
             imgCreate.isHidden = true
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 0
             imgCreateleading.constant = 6
-            self.btnCreateStore.setTitle("Go to my store", for: .normal)
+            self.btnCreateStore.setTitle(MarketPlaceConstant.kGotoMyStore, for: .normal)
         }else{
             imgCreate.isHidden = false
             vwBtnContainer.isHidden = false
             imgCreateWidgh.constant = 30
             imgCreateleading.constant = 5
-               self.btnCreateStore.setTitle("Create your store", for: .normal)
+               self.btnCreateStore.setTitle(MarketPlaceConstant.kCreateMyStore, for: .normal)
             
             
         }
@@ -330,10 +330,10 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.walkView1.isHidden = false
         self.vwwWalkContainer1.isHidden = false
         self.vwwWalkContainer2.isHidden = true
-        walk1ViewTitle.text = "Start promoting your products"
-        walk1ViewDesc.text = "Here is some tips to help you promote with confidence"
-        walk1SubTitle.text = "Post in English"
-        walk1SubDesc.text = "Write in English language to create your store and list your products"
+        walk1ViewTitle.text = MarketPlaceConstant.kStartPromotingProducts
+        walk1ViewDesc.text = MarketPlaceConstant.kTipsToHelpPromoteConfidence
+        walk1SubTitle.text = MarketPlaceConstant.kPostInEnglish
+        walk1SubDesc.text = MarketPlaceConstant.kWriteEnglishCreateYourStore
         walk1DescImage.image = UIImage(named: "icons8_pencil_white")
         UIView.animate(withDuration: 0.5) {
             self.walkView1height.constant = 510
@@ -365,17 +365,17 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
        
     
         vwwWalkContainer2BgImg.image = UIImage(named: "Layer 3")
-        walkView2Tilte.text = "Connect with buyers"
-        walkView2SubTitle.text = "When you create a listing, buyers will interact with you"
+        walkView2Tilte.text = MarketPlaceConstant.kConnectWithBuyers
+        walkView2SubTitle.text = MarketPlaceConstant.kCreateListingBuyers
         walkView2Img.image = UIImage(named: "Group 1096")
         
        
         walkSubView1Img.image = UIImage(named: "icons8_reply")
-        walkSubView1Title.text = "Reply to inquiry"
-        walkSubView1SubTitle.text = "Being responsive will help you to build trust with Buyers"
+        walkSubView1Title.text = MarketPlaceConstant.kReplytoInquiry
+        walkSubView1SubTitle.text = MarketPlaceConstant.kBeingResponsiveBuildTrust
         walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Report suspicious behaviour"
-        walkSubView2SubTitle.text = "Let us know if something does not feel right"
+        walkSubView2Title.text = MarketPlaceConstant.kReportSuspiciousBehaviour
+        walkSubView2SubTitle.text = MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright
         
       
         
@@ -419,20 +419,20 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
        vwwWalkContainer2BgImg.image = UIImage(named: "Layer 2")
         self.walkSubView3Height.constant = 55
         walkView2Img.image = UIImage(named: "Group 1091")
-        walkView2Tilte.text = "Create your store"
-        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers to learn more about what you are selling."
+        walkView2Tilte.text = MarketPlaceConstant.kCreateMyStore
+        walkView2SubTitle.text = MarketPlaceConstant.kAddingAccurateHelpBuyers
        
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
-        walkSubView1Title.text = "Add clear photos"
-        walkSubView1SubTitle.text = "Photos should have a good resolution and lighting,and should only show what you are listing"
+        walkSubView1Title.text = MarketPlaceConstant.kAddClearPhotos
+        walkSubView1SubTitle.text = MarketPlaceConstant.kPhotosGoodResolutionAndLightning
         
         walkSubView2Img.image = UIImage(named: "icons8_sell")
-        walkSubView2Title.text = "Offer a fair price"
-        walkSubView2SubTitle.text = "Make sure you are offering prices appropriate to a competitive market like the US"
+        walkSubView2Title.text = MarketPlaceConstant.kOfferFairPrice
+        walkSubView2SubTitle.text = MarketPlaceConstant.kOfferingFarePriceToCompMarket
         
         walkSubView3Img.image = UIImage(named: "icons8_rocket")
-        walkSubView3Title.text = "Boost your listing"
-        walkSubView3SubTitle.text = "You can boost your listing to expand you reach and increase buyers engagement"
+        walkSubView3Title.text = MarketPlaceConstant.kBoostYourListing
+        walkSubView3SubTitle.text = MarketPlaceConstant.kBoostListigToExpandReachIncsebuyer
         
 //        walkSubView3Img.image = UIImage(named: "icons8_rocket")
 //        walkSubView2Title.text = "Boost your listing"
@@ -497,12 +497,12 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBAction func nextAction(_ sender: UIButton){
         
         if nextWalkCount == 0 {
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(AppConstants.Next, for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
           animate2View()
         }else if nextWalkCount == 1 {
-            self.walknextBtn.setTitle("Done", for: .normal)
+            self.walknextBtn.setTitle(MarketPlaceConstant.kDone, for: .normal)
             animateView3()
             nextWalkCount = 2
            
@@ -552,19 +552,19 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             nextVC.pushedFromVC = .viewAllEntities
             nextVC.optionId = 0
             nextVC.entityIndex = sender.tag
-            nextVC.keywordSearch = "Recently Added Products"
+            nextVC.keywordSearch = MarketPlaceConstant.kRecentlyAddedProject
             self.navigationController?.pushViewController(nextVC, animated: true)
         case 2:
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
             nextVC.pushedFromVC = .viewAllEntities
-            nextVC.keywordSearch = "Newly Added Stores"
+            nextVC.keywordSearch = MarketPlaceConstant.kNewlyAddedStore
             self.navigationController?.pushViewController(nextVC, animated: true)
         default:
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceProductListViewController") as? MarketPlaceProductListViewController else {return}
             nextVC.pushedFromVC = .viewAllEntities
             nextVC.optionId = 0
             nextVC.entityIndex = sender.tag
-            nextVC.keywordSearch = "Top Rated Products"
+            nextVC.keywordSearch = MarketPlaceConstant.kTopRatedProduct
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
         
@@ -605,7 +605,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                     nextVC.keywordSearch = self.arrMarketPlace[index]
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 case 8:
-                    self.showAlert(withMessage: "Coming Soon....")
+                    self.showAlert(withMessage: MarketPlaceConstant.kComingSoon)
                     
                 default:
                     guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
@@ -635,7 +635,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                     nextVC.pushedFromVC = .viewAllEntities
                     nextVC.optionId = 0
                     nextVC.entityIndex = tag
-                    nextVC.keywordSearch = "Recently Added Products"
+                    nextVC.keywordSearch = MarketPlaceConstant.kRecentlyAddedProject
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 return cell
@@ -651,7 +651,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 cell.viewAllcallback = { tag in
                     guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductStoreVC") as? ProductStoreVC else {return}
                     nextVC.pushedFromVC = .viewAllEntities
-                    nextVC.keywordSearch = "Newly Added Stores"
+                    nextVC.keywordSearch = MarketPlaceConstant.kNewlyAddedStore
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 return cell
@@ -687,7 +687,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                     nextVC.pushedFromVC = .viewAllEntities
                     nextVC.optionId = 0
                     nextVC.entityIndex = tag
-                    nextVC.keywordSearch = "Top Rated Products"
+                    nextVC.keywordSearch = MarketPlaceConstant.kTopRatedProduct
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 return cell

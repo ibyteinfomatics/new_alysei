@@ -104,7 +104,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     //var marketPlaceOptions = ["marketplace_Store","icons8_wooden_beer_keg_1", "icons8_geography","icons8_sorting","icons8_property_script","icons8_certificate_1","Group 649","hot","icons8_popular"]
     
     var marketPlaceOptions = ["pStore", "cnsrvationMtd" , "ItlanRgn" ,"4", "prdctPrprties", "fda", "myFav", "mostPoplr", "promotion"]
-    var arrMarketPlace = ["Producer Store","Conservation Method","Italian Regions","Categories","Product Properties","FDA Certified","My Favourite","Most Popular","Promotions"]
+    var arrMarketPlace = [MarketPlaceConstant.kProducerStore,MarketPlaceConstant.kConservationMethod, MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProductProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kMyFavourite,MarketPlaceConstant.kMostPospular,MarketPlaceConstant.kPromotions]
 
     var originalPosition: CGPoint?
       var currentPositionTouched: CGPoint?
@@ -435,7 +435,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(AppConstants.Next, for: .normal)
             vwwWalkContainer1.isHidden = true
             vwwWalkContainer1.isHidden = false
             animate2View()
@@ -457,12 +457,12 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
     @IBAction func nextAction(_ sender: UIButton){
         
         if nextWalkCount == 0 {
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(AppConstants.Next, for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
           animate2View()
         }else if nextWalkCount == 1 {
-            self.walknextBtn.setTitle("Done", for: .normal)
+            self.walknextBtn.setTitle(MarketPlaceConstant.kDone, for: .normal)
             animateView3()
             nextWalkCount = 2
            
@@ -819,7 +819,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
                 nextVC.keywordSearch = arrMarketPlace[indexPath.row]
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }else if indexPath.row == 8{
-                self.showAlert(withMessage: "Coming Soon....")
+                self.showAlert(withMessage: MarketPlaceConstant.kComingSoon)
             }
             else{
                 guard let nextVC = self.storyboard?.instantiateViewController(identifier: "MarketPlaceOptionViewController") as? MarketPlaceOptionViewController else {return}
@@ -970,7 +970,7 @@ class MarketPlaceHomeMaximumSearchedCVC: UICollectionViewCell{
         
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
-        lblTotalReview.text = (data.total_reviews ?? "0") + " reviews"
+        lblTotalReview.text = (data.total_reviews ?? "0") + MarketPlaceConstant.kSpacereview
         lblAvgRating.text = data.avg_rating
         
         if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{
@@ -1067,7 +1067,7 @@ class MarketPlaceHomeTopSearchedCVC: UICollectionViewCell{
         imgProduct.layer.masksToBounds = true
         lblProductName.text = data.title
         lblStoreName.text = data.storeName
-        lblTotalReview.text = (data.total_reviews ?? "0") + " reviews"
+        lblTotalReview.text = (data.total_reviews ?? "0") + MarketPlaceConstant.kSpaceReview
         lblAvgRating.text = data.avg_rating
         
         if "\(data.avg_rating ?? "")" == "0" || data.avg_rating == "0.0"{

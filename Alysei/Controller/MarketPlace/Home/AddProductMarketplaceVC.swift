@@ -64,9 +64,9 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
     var brandLabelId: Int?
     var marketPlaceStoreId: Int?
     var availableForSample: String?
-    var sampleArr = ["Yes","No"]
+    var sampleArr = [AppConstants.CYes,AppConstants.No]
     var spaceCount = 0
-    var quantityArr = ["No. of pieces", "No. of bottles","liters","kilograms","grams","milligrams"]
+    var quantityArr = [MarketPlaceConstant.kNumberOfPieces, MarketPlaceConstant.kNumberOfbottles,MarketPlaceConstant.kLiters,MarketPlaceConstant.kKiloGrams,MarketPlaceConstant.kGrams,MarketPlaceConstant.kMilligram]
     var detailStoreImage: String?
     var detailStoreName: String?
     var fromVC: PushedFrom?
@@ -237,8 +237,8 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         print("cancel")
     }
     func showExceededMaximumAlert(vc: UIViewController) {
-        let alert = UIAlertController(title: "", message: "Exceed Maximum Number Of Selection", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kExceedMaximumLimit, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
     
@@ -321,22 +321,22 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         let minOrderQuantity = Int(self.txtProductMinOrderQuantity.text ?? "0") ?? 0
         
         if minOrderQuantity > quantityAvailable{
-            self.showAlert(withMessage: "Minimum Order quantity should be less or equal to quantity Available")
+            self.showAlert(withMessage: MarketPlaceConstant.kMinimumOrderProductQuantity)
         }else{
             if fromVC == .myStoreDashboard{
                 self.UpdateProductApi()
             }else{
                 guard uploadImageArray.count != 0 else{
-                    showAlert(withMessage: "Please upload product images.")
+                    showAlert(withMessage: MarketPlaceConstant.kUploadProductImages)
                     return 
                     
                 }
                 if (txtProductTitle.text == ""){
-                    showAlert(withMessage: "Please enter product title.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterProductTitle)
                     return
                 }
                 if (txtProductDesc.text == ""){
-                    showAlert(withMessage: "Please enter product description.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterProductDesc)
                     return
                 }
 //                if (txtProductKeyWord.text == ""){
@@ -344,32 +344,32 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
 //                    return
 //                }
                 if (txtProductCategory.text == ""){
-                    showAlert(withMessage: "Please enter category.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterProductCategory)
                     return
                 }
                 if (txtProductQuantityAvaliable.text == ""){
-                    showAlert(withMessage: "Please enter quantity available.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterProduvtQunatity)
                     return
                 }
                 if (txtProductMinOrderQuantity.text == ""){
-                    showAlert(withMessage: "Please enter minimum order quantity.")
+                    showAlert(withMessage: MarketPlaceConstant.kProductMinimumQuantity)
                     return
                 }
                 if (txtProductHandleIns.text == ""){
-                    showAlert(withMessage: "Please enter handling instructions.")
+                    showAlert(withMessage: MarketPlaceConstant.kProductHandlingInstr)
                     return
                 }
                 if (txtProductDispatchIns.text == ""){
-                    showAlert(withMessage: "Please enter dispatch instructions.")
+                    showAlert(withMessage: MarketPlaceConstant.kProductDispatchInstr)
                     return
                 }
                 
                 if (txtProductSample.text == ""){
-                    showAlert(withMessage: "Please enter available for sample.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterAvailableSample)
                     return
                 }
                 if (txtProductPrice.text == "" || txtProductPrice.text == "0"){
-                    showAlert(withMessage: "Please enter valid product price.")
+                    showAlert(withMessage: MarketPlaceConstant.kEnterProductPrice)
                     return
                 }
                 self.addProductApi()
@@ -385,23 +385,23 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         
         switch sender.tag {
         case 0:
-            showInfo("Helps user to find product")
+            showInfo(MarketPlaceConstant.kHelpUserToFindProduct)
         case 1:
-            showInfo("How many products are you currently available to deliver?")
+            showInfo(MarketPlaceConstant.kProductCureentlyAvalbleToDelivr)
         case 2:
-            showInfo("Choose how you plan to sell your products")
+            showInfo(MarketPlaceConstant.kPlanToSellYourProduct)
         case 3:
-            showInfo("Which is the minimum order quantity you are able to accept?")
+            showInfo(MarketPlaceConstant.kMinimumOrderQunatityToSellProduct)
         case 4:
-            showInfo("Provide details about your safe handling instructions")
+            showInfo(MarketPlaceConstant.kSafehandlingInstructions)
             
         case 5:
-            showInfo("Provide details about your specific disptach instructions")
+            showInfo(MarketPlaceConstant.kSpecifinDispatchInstruction)
             
         case 6:
-            showInfo("Are you able to provide samples of your products upon request?")
+            showInfo(MarketPlaceConstant.kProvideSampleOfProduct)
         case 7:
-            showInfo("Indicate your product selling price to possible buyers")
+            showInfo(MarketPlaceConstant.kProductSellingPrice)
            
             
         default:
@@ -443,21 +443,21 @@ extension AddProductMarketplaceVC: TLPhotosPickerLogDelegate {
     
     func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
         picker.dismiss(animated: true) {
-            let alert = UIAlertController(title: "", message: "Denied albums permissions granted", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedAlbumPermissioins, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func handleNoCameraPermissions(picker: TLPhotosPickerViewController) {
-        let alert = UIAlertController(title: "", message: "Denied camera permissions granted", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedCameraPermissioins, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         picker.present(alert, animated: true, completion: nil)
     }
     
     func showUnsatisifiedSizeAlert(vc: UIViewController) {
         let alert = UIAlertController(title: "Oups!", message: "The required size is: 300 x 300", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
 }
@@ -673,7 +673,7 @@ extension AddProductMarketplaceVC{
                 for product in 0..<(self.productType?.count ?? 0) {
                     self.arrProductType.append(self.productType?[product].name ?? "")
                 }
-                self.arrProductType.insert("Your own brand label", at: 0)
+                self.arrProductType.insert(MarketPlaceConstant.kYourOwnBrandLabel, at: 0)
                 self.dataDropDown.dataSource = self.arrProductType
                 self.opendropDown()
                 

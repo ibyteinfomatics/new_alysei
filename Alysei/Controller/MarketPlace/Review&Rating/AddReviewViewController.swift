@@ -32,15 +32,15 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
         
         if isEditReview == true
         {
-            btnAddReview.setTitle("Edit Review", for: .normal)
+            btnAddReview.setTitle(MarketPlaceConstant.kEditReview, for: .normal)
             setReviewStarUI()
             txtReview.textColor = UIColor.black
             txtReview.text = editReviewData?.review
         }else {
-            btnAddReview.setTitle("Add Review", for: .normal)
+            btnAddReview.setTitle(MarketPlaceConstant.kAddReview, for: .normal)
             txtReview.textColor = UIColor.lightGray
             setStar()
-        txtReview.text = "Leave a comment"
+            txtReview.text = MarketPlaceConstant.kLeaveAComment
         }
         
         txtReview.layer.borderColor = UIColor.lightGray.cgColor
@@ -124,11 +124,11 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     }
     @IBAction func btnAddReview(_ sender: UIButton){
         if (reviewStarCount == 0){
-            self.showAlert(withMessage: "Please add ratings.")
+            self.showAlert(withMessage: MarketPlaceConstant.kPleaseAddRatings)
             return
         }
         else if (txtReview.text == AppConstants.leaveComment && txtReview.textColor == UIColor.lightGray) || txtReview.text == ""{
-            self.showAlert(withMessage: "Please enter some review.")
+            self.showAlert(withMessage: MarketPlaceConstant.kEnterSomeReview)
             return
             //txtReview.text = ""
         }else{
@@ -246,11 +246,11 @@ extension AddReviewViewController {
             switch statusCode{
             case 200:
                 
-                self.showAlert(withMessage: "Review added Successfully!") {
+                self.showAlert(withMessage: MarketPlaceConstant.kReviewAddedSuccessfully) {
                     self.navigationController?.popViewController(animated: true)
                 }
             case 409:
-                self.showAlert(withMessage: "You have already done a review on this product") {
+                self.showAlert(withMessage: MarketPlaceConstant.kAlreadytDoneReview) {
                     self.navigationController?.popViewController(animated: true)
                 }
             default:
@@ -260,7 +260,7 @@ extension AddReviewViewController {
     }
     
     func callEditReviewApi(){
-        print("Edit Review")
+      
         let params: [String:Any] = [
             APIConstants.kmarketplaceReviewRatingId: editReviewData?.marketplace_review_rating_id ?? "",
             APIConstants.kType : productStoreType ?? "",
@@ -273,7 +273,7 @@ extension AddReviewViewController {
             switch statusCode{
             case 200:
                 
-                self.showAlert(withMessage: "Review updated Successfully!") {
+                self.showAlert(withMessage: MarketPlaceConstant.kReviewUpdatedSuccessfully) {
                     self.navigationController?.popViewController(animated: true)
                 }
             case 409:

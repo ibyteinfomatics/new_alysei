@@ -14,25 +14,25 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
     var imgArray = ["icons8_shop-1","Group 1156", "Group 1157"]
     
     var bgImage = ["Walkthrough Screen – 20","Walkthrough Screen – 21","Walkthrough Screen – 22"]
-    var titleProdArray = ["Welcome to Marketplace","Features you can explore","MarketPlace Rules"]
-    var subTitleProdArray = ["Here you can create your unique Store, upload your product portfolio, explore, search and reply to inquiries", "The most powerful markeplace engine for the Made in Italy","To ensure a positive experience follow these simple rules"]
-    var subTitleTravelArray = ["Here you can explore and search for products from Italian Producers"]
-    var subTitleImpArray = ["Here you can explore and search for products and send inquiry to Italian Producers","The most powerful markeplace engine for the Made in Italy","To ensure a positive experience follow these simple rules"]
+    var titleProdArray = [MarketPlaceConstant.kWelcomeToMarketplace,MarketPlaceConstant.kFeatureYouExplore,MarketPlaceConstant.kMarketPlaceRules]
+    var subTitleProdArray = [MarketPlaceConstant.kCreateYourUniqueStore, MarketPlaceConstant.kPowerfulMarketplaceEngine,MarketPlaceConstant.kPostiveExperience]
+    var subTitleTravelArray = [MarketPlaceConstant.kExploreSearchProductsFormItalian]
+    var subTitleImpArray = [MarketPlaceConstant.kExploreSendInquiry,MarketPlaceConstant.kPowerfulMarketplaceEngine,MarketPlaceConstant.kPostiveExperience]
     
-    var titleWalk1TravlTitle = ["Explore the Markeplace","Report suspicious behaviour"]
-    var subTitleWalk1TravlTitle = ["Search by Region, Product, Category and much more", "Let us know if something does not feel right"]
+    var titleWalk1TravlTitle = [MarketPlaceConstant.kExploreMarketPlace,MarketPlaceConstant.kReportSuspiciousBehaviour]
+    var subTitleWalk1TravlTitle = [MarketPlaceConstant.kSearchByRegionProductCategory, MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright]
     
     var walkSub2ViewImg = ["icons8_user_groups-1","icons8_sell_stock","icons8_handshake_heart"]
     
-    var titleWalk2ProdTitle = ["Create your Store","Reply to inquiry"]
-    var titleWalk2ImpTitle = ["Explore the Markeplace","Send an inquiry"]
+    var titleWalk2ProdTitle = [MarketPlaceConstant.kCreateMyStore,MarketPlaceConstant.kReplytoInquiry]
+    var titleWalk2ImpTitle = [MarketPlaceConstant.kExploreMarketPlace,MarketPlaceConstant.kSendAnInquiry]
     
-    var subTitleWalk2ProdTitle = ["Showcase you Products Store in a simple, clean and professional way","Being responsive will help you to build trust with Buyers"]
-    var subTitleWalk2ImpTitle = ["Search by Region, Product, Category and much more", "Ask for product information, samples request, prices, quantity etc."]
-    var titleWalk3ProdTitle = ["Information and details","Photo Quality","Report suspicious behaviour"]
-    var titleWalk3ImpTitle = ["Information and details","Report suspicious behaviour"]
-    var subTitleWalk3ProdTitle = ["Make sure all the information you provide are accurate and completed","Make sure that all photos that you upload are in high quality","Let us know if something does not feel right"]
-    var subTitleWalk3ImpTitle = ["Make sure all the information you provide are accurate and completed","Let us know if something does not feel right"]
+    var subTitleWalk2ProdTitle = [MarketPlaceConstant.kShowcaseProductSimpleClean,MarketPlaceConstant.kBeingResponsiveBuildTrust]
+    var subTitleWalk2ImpTitle = [MarketPlaceConstant.kSearchByRegionProductCategory, MarketPlaceConstant.kAskFoeProductSampleRequest]
+    var titleWalk3ProdTitle = [MarketPlaceConstant.kInformationAndDetails,MarketPlaceConstant.kPhotoQuality,MarketPlaceConstant.kReportSuspiciousBehaviour]
+    var titleWalk3ImpTitle = [MarketPlaceConstant.kInformationAndDetails,MarketPlaceConstant.kReportSuspiciousBehaviour]
+    var subTitleWalk3ProdTitle = [MarketPlaceConstant.kInformationAccurateAndcomplete,MarketPlaceConstant.kPhotosUploadhighQuality,MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright]
+    var subTitleWalk3ImpTitle = [MarketPlaceConstant.kInformationAccurateAndcomplete,MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,13 +75,13 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
             cell.lblSubTitle.text = subTitleImpArray[indexPath.row]
         }
             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
-                cell.btnNext.setTitle("Done", for: .normal)
+                cell.btnNext.setTitle(MarketPlaceConstant.kDone, for: .normal)
                 
             }else{
                 if indexPath.row == 0 || indexPath.row == 1{
-                    cell.btnNext.setTitle("Next", for: .normal)
+                    cell.btnNext.setTitle(AppConstants.Next, for: .normal)
                 }else{
-                    cell.btnNext.setTitle("Done", for: .normal)
+                    cell.btnNext.setTitle(MarketPlaceConstant.kDone, for: .normal)
                 }
             }
         

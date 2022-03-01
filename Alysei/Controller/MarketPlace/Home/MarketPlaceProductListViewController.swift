@@ -752,7 +752,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
         lblCost.text = "$" + (data.product_price ?? "")
         lblStoreName.text = data.store_name
         lblProductType.text = data.product_category_name
-        lblTotalRating.text = "\(data.total_reviews ?? 0) ratings"
+        lblTotalRating.text = "\(data.total_reviews ?? 0)" + MarketPlaceConstant.kSRatings
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
         
         if let imgUrl = URL(string: baseUrl + String.getString(data.product_gallery?.first?.attachment_url)){
@@ -764,7 +764,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
             lblSampleHeight.constant = 0
             vwbottomTop.constant = 44
         }else{
-        if data.available_for_sample == "Yes" {
+        if data.available_for_sample == AppConstants.CYes {
             lblAvalblForSample.isHidden = false
             imgSample.isHidden = false
             lblSampleHeight.constant = 18.67

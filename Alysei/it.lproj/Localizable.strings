@@ -17,16 +17,16 @@
 //MARK: MARKETPLACE
 
 //MARK: Marketplace Home Screen
-"MarketPlace" = "";
-"Recipe" = "";
-"Posts" = "";
-"Notifications" = "";
-"Go to my store" = "";
+"MarketPlace" = "MarketPlace";
+"Recipe" = "Recipe";
+"Posts" = "Posts";
+"Notifications" = "Notifications";
+"Go to my store" = "Go to my store";
 "Create your store" = "Crea in tuo negozio online";
-"Discover Marketplace" = "";
-"Producer Store" = "";
-"Conservation Method" = "";
-"Italian Regions" = "";
+"Discover Marketplace" = "Marketplace";
+"Producer Store" = "Producer Store";
+"Conservation Method" = "Conservation Method";
+"Italian Regions" = "Italian Regions";
 "Categories" = "";
 "Product Properties" = "";
 "FDA Certified" = "";

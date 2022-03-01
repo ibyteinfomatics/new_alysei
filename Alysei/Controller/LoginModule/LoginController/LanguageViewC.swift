@@ -34,8 +34,10 @@ class LanguageViewC: AlysieBaseViewC {
         slideVC.btnCallback =  { tag in
             switch tag {
             case 1:
+                kSharedUserDefaults.setAppLanguage(language: "en")
                 _ = self.pushViewController(withName: TutorialViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
             case 2:
+                kSharedUserDefaults.setAppLanguage(language: "it")
                 _ = self.pushViewController(withName: TutorialViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
             default:
                 print("Handle")

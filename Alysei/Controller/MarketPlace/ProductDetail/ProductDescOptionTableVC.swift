@@ -12,8 +12,8 @@ class ProductDescOptionTableVC: UITableViewCell {
     @IBOutlet weak var lblOptionValue: UILabel!
     
 
-    var arrTitle = ["Quantity Available:","Brand Label","Min Order Quantity","Sample Available"]
-    var NoBrandArrTitle = ["Quantity Available:","Min Order Quantity","Sample Available"]
+    var arrTitle = [MarketPlaceConstant.kDotQuantityAvailable,MarketPlaceConstant.kBrandLabel,MarketPlaceConstant.kMinOrderQuantity,MarketPlaceConstant.kSampleAvailable]
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

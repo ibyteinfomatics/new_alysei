@@ -153,7 +153,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
     
     let param: [String:Any] = [APIConstants.kName: self.settingEditViewModel.selectedUserName,
                                APIConstants.kCompanyName: self.settingEditViewModel.selectedCompanyName,
-                               APIConstants.kLocale: "en",
+                               APIConstants.kLocale: kSharedUserDefaults.getAppLanguage(),
                                APIConstants.kWebsite: self.settingEditViewModel.selectedUrl
                                ]
     disableWindowInteraction()
@@ -174,6 +174,11 @@ class EditUserSettingsViewC: AlysieBaseViewC {
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             bound.lblLanguage.text = item
+            if index == 0 {
+                kSharedUserDefaults.setAppLanguage(language: "en")
+            }else{
+                kSharedUserDefaults.setAppLanguage(language: "it")
+            }
         }
         dataDropDown.cellHeight = 50
         dataDropDown.backgroundColor = UIColor.white

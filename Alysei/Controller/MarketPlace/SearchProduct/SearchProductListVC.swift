@@ -140,11 +140,11 @@ extension SearchProductListVC {
                     print("Product Exist")
                 }else{
                     self.blankView.isHidden = false
-                    self.showAlert(withMessage: "No products found")
+                    self.showAlert(withMessage: MarketPlaceConstant.kNoProductFound)
                 }
             default:
                 self.blankView.isHidden = false
-                self.showAlert(withMessage: "No products found")
+                self.showAlert(withMessage: MarketPlaceConstant.kNoProductFound)
             }
         }
     }
@@ -172,7 +172,7 @@ class ProductListTableVCell: UITableViewCell{
         lblProductPrice.text = "$" + (data.product_price ?? "")
         lblStoreName.text = data.store_name
         lblProductCategoryName.text = data.product_category_name
-        lblReview.text = "\(data.total_reviews ?? 0) ratings"
+        lblReview.text = "\(data.total_reviews ?? 0)" + MarketPlaceConstant.kSRatings
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
         self.imgProduct.setImage(withString: baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
         if data.available_for_sample == "Yes" {

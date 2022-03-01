@@ -16,7 +16,7 @@ class ProductDescriptionTableVC: UITableViewCell {
     var handlingInstrSelected = true
     //var DispatchInstrSelected = true
     var reloadTableView:(() -> Void)? = nil
-    var arrTitle = ["Product Info","Handling Instructions","Dispatch Instructions"]
+    var arrTitle = [MarketPlaceConstant.kProductInfo,MarketPlaceConstant.kHandlingInstructions,MarketPlaceConstant.kDispatchInstruction]
     var currentIndex: Int?
    // var
     override func awakeFromNib() {
