@@ -3530,7 +3530,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDq-RD-v1W">
-                                                                            <rect key="frame" x="15" y="100.5" width="152" height="21"/>
+                                                                            <rect key="frame" x="15" y="100.5" width="152" height="20"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -5873,24 +5873,24 @@ any other devices.</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7hS-3j-bye">
-                                <rect key="frame" x="15" y="370.5" width="345" height="296.5"/>
+                                <rect key="frame" x="15" y="355.5" width="345" height="301.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="17" minimumInteritemSpacing="17" id="3ok-hd-dpL">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="128" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HubCollectionViewCell" id="HL5-Sc-1om" customClass="HubCollectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="132"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dgE-3u-F0k">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="132"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="175"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role3" translatesAutoresizingMaskIntoConstraints="NO" id="Nc9-bw-Kfc" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="5.5" y="0.0" width="89" height="89"/>
+                                                    <rect key="frame" x="19.5" y="20" width="89" height="89"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="89" id="6o4-nS-4CI"/>
@@ -5904,7 +5904,7 @@ any other devices.</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlD-mA-Usc">
-                                                    <rect key="frame" x="5.5" y="0.0" width="89" height="89"/>
+                                                    <rect key="frame" x="19.5" y="20" width="89" height="89"/>
                                                     <color key="backgroundColor" white="0.31934931506849318" alpha="0.39522688356164382" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="makeCircle" value="YES"/>
@@ -5914,13 +5914,13 @@ any other devices.</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foe-Be-dXo">
-                                                    <rect key="frame" x="0.0" y="94" width="100" height="18"/>
+                                                    <rect key="frame" x="0.0" y="114" width="128" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyX-yp-y21">
-                                                    <rect key="frame" x="15.5" y="28" width="69" height="33"/>
+                                                    <rect key="frame" x="29.5" y="48" width="69" height="33"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -5928,6 +5928,7 @@ any other devices.</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="AyX-yp-y21" firstAttribute="leading" secondItem="Nc9-bw-Kfc" secondAttribute="leading" constant="10" id="8On-f8-kOt"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Foe-Be-dXo" secondAttribute="bottom" id="DMV-Gm-LuS"/>
                                                 <constraint firstItem="Foe-Be-dXo" firstAttribute="leading" secondItem="dgE-3u-F0k" secondAttribute="leading" id="HOG-rN-TTe"/>
                                                 <constraint firstItem="AyX-yp-y21" firstAttribute="centerX" secondItem="Nc9-bw-Kfc" secondAttribute="centerX" id="Ltg-19-4be"/>
                                                 <constraint firstAttribute="trailing" secondItem="Foe-Be-dXo" secondAttribute="trailing" id="MZf-cO-lBU"/>
@@ -5936,13 +5937,13 @@ any other devices.</string>
                                                 <constraint firstItem="YlD-mA-Usc" firstAttribute="leading" secondItem="Nc9-bw-Kfc" secondAttribute="leading" id="Zip-zs-TDp"/>
                                                 <constraint firstItem="YlD-mA-Usc" firstAttribute="trailing" secondItem="Nc9-bw-Kfc" secondAttribute="trailing" id="bcQ-B6-lEl"/>
                                                 <constraint firstItem="YlD-mA-Usc" firstAttribute="top" secondItem="Nc9-bw-Kfc" secondAttribute="top" id="cuK-PQ-Ekc"/>
-                                                <constraint firstItem="Nc9-bw-Kfc" firstAttribute="top" secondItem="dgE-3u-F0k" secondAttribute="top" id="czz-ho-3SE"/>
+                                                <constraint firstItem="Nc9-bw-Kfc" firstAttribute="top" secondItem="dgE-3u-F0k" secondAttribute="top" constant="20" id="czz-ho-3SE"/>
                                                 <constraint firstItem="AyX-yp-y21" firstAttribute="trailing" secondItem="Nc9-bw-Kfc" secondAttribute="trailing" constant="-10" id="gtz-Ze-jcY"/>
                                                 <constraint firstItem="AyX-yp-y21" firstAttribute="centerY" secondItem="Nc9-bw-Kfc" secondAttribute="centerY" id="i9L-oi-FWQ"/>
                                                 <constraint firstItem="Nc9-bw-Kfc" firstAttribute="centerX" secondItem="dgE-3u-F0k" secondAttribute="centerX" id="ibG-vx-w8u"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="100" height="132"/>
+                                        <size key="customSize" width="128" height="175"/>
                                         <connections>
                                             <outlet property="coverImage" destination="Nc9-bw-Kfc" id="wFw-c8-HOC"/>
                                             <outlet property="lblUserCount" destination="AyX-yp-y21" id="ofL-El-p2c"/>
@@ -5964,12 +5965,12 @@ any other devices.</string>
                             <constraint firstItem="eog-A1-ws1" firstAttribute="top" secondItem="dEQ-ve-egv" secondAttribute="bottom" id="C1Y-hO-qsU"/>
                             <constraint firstItem="7hS-3j-bye" firstAttribute="leading" secondItem="cRH-BU-fBp" secondAttribute="leading" constant="15" id="C7G-us-lQ8"/>
                             <constraint firstItem="dsc-PJ-8j2" firstAttribute="top" secondItem="eog-A1-ws1" secondAttribute="bottom" id="DF8-Hv-CcZ"/>
-                            <constraint firstItem="7hS-3j-bye" firstAttribute="top" secondItem="HYD-ST-ueR" secondAttribute="bottom" constant="20" id="FSY-JD-Qc2"/>
+                            <constraint firstItem="7hS-3j-bye" firstAttribute="top" secondItem="HYD-ST-ueR" secondAttribute="bottom" constant="5" id="FSY-JD-Qc2"/>
                             <constraint firstItem="cRH-BU-fBp" firstAttribute="trailing" secondItem="7hS-3j-bye" secondAttribute="trailing" constant="15" id="IUg-K0-Bxn"/>
                             <constraint firstItem="HYD-ST-ueR" firstAttribute="top" secondItem="dsc-PJ-8j2" secondAttribute="bottom" id="Jph-Ei-gdt"/>
                             <constraint firstItem="dsc-PJ-8j2" firstAttribute="leading" secondItem="cRH-BU-fBp" secondAttribute="leading" id="NBT-1N-rLD"/>
                             <constraint firstItem="dEQ-ve-egv" firstAttribute="top" secondItem="cRH-BU-fBp" secondAttribute="top" id="NsQ-uK-98g"/>
-                            <constraint firstAttribute="bottom" secondItem="7hS-3j-bye" secondAttribute="bottom" id="OXx-5Z-DjB"/>
+                            <constraint firstAttribute="bottom" secondItem="7hS-3j-bye" secondAttribute="bottom" constant="10" id="OXx-5Z-DjB"/>
                             <constraint firstItem="HYD-ST-ueR" firstAttribute="leading" secondItem="4xe-rf-df7" secondAttribute="leading" id="W3Z-q2-0rP"/>
                             <constraint firstItem="eog-A1-ws1" firstAttribute="leading" secondItem="cRH-BU-fBp" secondAttribute="leading" id="XWc-T3-xvv"/>
                             <constraint firstAttribute="trailing" secondItem="HYD-ST-ueR" secondAttribute="trailing" id="XhR-X6-Hbi"/>
@@ -5992,7 +5993,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jN-2i-gNJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4437.68115942029" y="-461.38392857142856"/>
+            <point key="canvasLocation" x="4437.6000000000004" y="-461.91904047976016"/>
         </scene>
         <!--Hub User ListVC-->
         <scene sceneID="KYp-GM-oq5">
@@ -7466,14 +7467,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7514,7 +7515,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7536,7 +7537,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7574,7 +7575,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -8727,7 +8728,7 @@ any other devices.</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-fO-j2h">
-                                                            <rect key="frame" x="15" y="99.5" width="152" height="21"/>
+                                                            <rect key="frame" x="15" y="99.5" width="152" height="20"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -8777,7 +8778,7 @@ any other devices.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpF-d9-LpX">
-                                                    <rect key="frame" x="58" y="34" width="74.5" height="21"/>
+                                                    <rect key="frame" x="58" y="34.5" width="62.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -8810,7 +8811,7 @@ any other devices.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so1-fj-eBn">
-                                                    <rect key="frame" x="58" y="34" width="106.5" height="21"/>
+                                                    <rect key="frame" x="58" y="34.5" width="87" height="20"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -9030,7 +9031,7 @@ any other devices.</string>
                                             <state key="normal" image="cross_icon_black"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GN-Mp-zPS">
-                                            <rect key="frame" x="20" y="158" width="124" height="21"/>
+                                            <rect key="frame" x="20" y="158" width="106.5" height="20"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                             <color key="textColor" red="0.1137254902" green="0.28235294119999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -9464,7 +9465,7 @@ any other devices.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAK-Db-jPb">
-                                        <rect key="frame" x="316" y="23" width="44" height="32"/>
+                                        <rect key="frame" x="319" y="23.5" width="41" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -18403,10 +18404,10 @@ You will be notified for any membership status update.</string>
                                                 </constraints>
                                             </view>
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KeE-4v-N4J">
-                                                <rect key="frame" x="0.0" y="533" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="533" width="375" height="19.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Provide Pick Up And/Or Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5f-zj-coC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="19"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -18465,13 +18466,13 @@ You will be notified for any membership status update.</string>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-tj-pNx">
-                                                <rect key="frame" x="15" y="553" width="75.5" height="19.5"/>
+                                                <rect key="frame" x="15" y="552.5" width="75.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqi-vL-aCD">
-                                                <rect key="frame" x="15" y="582.5" width="345" height="93.5"/>
+                                                <rect key="frame" x="15" y="582" width="345" height="93.5"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec query</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
