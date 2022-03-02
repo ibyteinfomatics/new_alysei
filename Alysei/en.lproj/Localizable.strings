@@ -440,6 +440,7 @@
 "Quick Search By Meal" = "Quick Search By Meal";
 "Search By Italian Region" = "Search By Italian Region";
 "Trending Now" = "Trending Now";
+"Trending" = "Trending";
 "Quick Easy" = "Quick Easy";
 "Favourite Cuisine" = "Favourite Cuisine";
 "Food Alergies" = "Food Alergies";
@@ -540,21 +541,27 @@
 "No Tools Added yet!" = "No Tools Added yet!";
 "No Step Added yet!" = "No Step Added yet!";
 "Save Recipe" = "Save Recipe";
+"Save" = "Save";
 "Edit Recipe" = "Edit Recipe";
 "No Tools found" = "No Tools found";
 "No Ingredients found" = "No Ingredients found";
 "Are you sure you want to discard your recipe ?" = "Are you sure you want to discard your recipe ?";
 "Save in Draft" = "Save in Draft";
 "Discard" = "Discard";
+"Please Add Step" = "Please Add Step";
+"Add Tools, Appliances & Utensils" = "Add Tools, Appliances & Utensils"
+"Add Recipe Steps" = "Add Recipe Steps";
 
 //MARK: RECIPE PREFERENCE
 
-"What is your favourite Cuisines?" = "What is your favourite Cuisines?";
-"Do you have any food allergies?" = "Do you have any food allergies?";
-"Do you have follow these diets?" = "Do you have follow these diets?";
-"Don't  want to see ingredients?" = "Don't  want to see ingredients?";
+"What is your favourite \n Cuisines?" = "What is your favourite  \n Cuisines?";
+"Do you have any food  \n allergies?" = "Do you have any food  \n allergies?";
+"Do you have follow these  \n diets?" = "Do you have follow these  \n diets?";
+"Don't  want to see \n ingredients?" = "Don't  want to see \n ingredients?";
 "Back" = "Back";
 "Skip" = "Skip";
+"Search Other Ingridients to exclude" = "Search Other Ingridients to exclude";
+"Add other ingredients to exclude" = "Add other ingredients to exclude";
 
 //MARK: VIEW RECIPE
 

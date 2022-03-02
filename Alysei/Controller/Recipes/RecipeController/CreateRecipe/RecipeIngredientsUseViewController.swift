@@ -23,6 +23,8 @@ var fromVC = String()
 
 
 class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UITableViewDataSource, RecipeIngredientsUsedTableViewCellProtocol, NumberOfStepsDelegateProtocol {
+    
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     //    @IBOutlet weak var heightTableView: NSLayoutConstraint!
@@ -38,6 +40,8 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
     @IBOutlet weak var editunitLabel: UILabel!
     @IBOutlet weak var btnEditSave: UIButton!
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var unitLabel: UILabel!
     
     var header = ["Ingredients","Utencils,Appliances & Tools","Recipe Steps"]
 
@@ -62,7 +66,12 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        headerLabel.text = RecipeConstants.kSaveRecipeHeader
+        saveButton.setTitle(RecipeConstants.kSaveRecipe, for: .normal)
+        btnEditSave.setTitle(RecipeConstants.kSave, for: .normal)
+        quantityLabel.text = RecipeConstants.kQuantity
+        unitLabel.text = RecipeConstants.kUnit
+        editquantityTextField.placeholder = RecipeConstants.kEnterQuantity
         self.addEditPopUpView.isHidden = true
         setupUI()
         tableView.dataSource = self

@@ -11,9 +11,11 @@ import SVGKit
 var arraySelectedDiet: [Int]? = []
 class FollowDietsViewController: AlysieBaseViewC {
     
+    @IBOutlet weak var followDietLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var skipBtn: UIButton!
     
     var arrSelectedIndex = [IndexPath]() // This is selected cell Index array
     var selectedIndexPath : IndexPath?
@@ -23,6 +25,12 @@ class FollowDietsViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         preferenceNumber = 3
+        
+        followDietLabel.text = RecipeConstants.kPreference3
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
+        
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         collectionView.delegate = self

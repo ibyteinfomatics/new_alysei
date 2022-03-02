@@ -9,6 +9,7 @@ import UIKit
 
 class ViewAllTrendingViewController: UIViewController {
 
+    @IBOutlet weak var trendingLabel: UILabel!
     @IBOutlet weak var trendingCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     var arrayTrending : [HomeTrending]?
@@ -20,6 +21,7 @@ class ViewAllTrendingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        trendingLabel.text = RecipeConstants.kTrending
         trendingCollectionView.delegate = self
         trendingCollectionView.dataSource = self
         

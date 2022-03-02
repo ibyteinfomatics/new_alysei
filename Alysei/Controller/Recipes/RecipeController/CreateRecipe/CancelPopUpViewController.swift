@@ -8,6 +8,8 @@
 import UIKit
 
 class CancelPopUpViewController: UIViewController {
+    
+    @IBOutlet weak var areYouSureLabel: UILabel!
     @IBOutlet weak var circularImageView: UIView!
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var lineView: UIView!
@@ -19,7 +21,9 @@ class CancelPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.definesPresentationContext = true
-
+        areYouSureLabel.text = RecipeConstants.kDiscardAlert
+        confirmButton.setTitle(RecipeConstants.kDiscard, for: .normal)
+        cancelButton.setTitle(RecipeConstants.kSaveInDraft, for: .normal)
         lineView.roundCorners(corners: [.topLeft,.topRight], radius: 2)
         popUpView1.roundCorners(corners: [.topLeft,.topRight,.bottomRight,.bottomLeft], radius: 3)
         cancelView.roundCorners(corners: [.bottomRight,.bottomLeft], radius: 3)

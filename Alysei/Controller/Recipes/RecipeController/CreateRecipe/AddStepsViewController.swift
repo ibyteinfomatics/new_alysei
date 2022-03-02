@@ -13,6 +13,8 @@ var stepData: [String:Any] = [:]
 var arrayStepFinalData:[stepDataModel] = []
 class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var addStepLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
     @IBOutlet weak var nextView: UIView!
@@ -38,11 +40,13 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var arrayIngridients = [IngridentArray()]
     var arraytools = [ToolsArray()]
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerLabel.text = RecipeConstants.kAddStepsRecipe
+        ingridientUsedLabel.text = RecipeConstants.kIngridientUsed
+        toolsUsedLabel.text = RecipeConstants.kToolUsed
+        addStepLbl.text = RecipeConstants.kAddStep
+        nextButton.setTitle(RecipeConstants.kNext, for: .normal)
         
         addStepsCollectionView.delegate = self
         addStepsCollectionView.dataSource = self

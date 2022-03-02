@@ -11,6 +11,7 @@ import SVGKit
 var arrayPreference2: PreferencesDataModel?
 
 class FoodViewController: UIViewController {
+    @IBOutlet weak var foodAllergyLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -25,6 +26,10 @@ class FoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        foodAllergyLabel.text = RecipeConstants.kPreference2
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: nil ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")

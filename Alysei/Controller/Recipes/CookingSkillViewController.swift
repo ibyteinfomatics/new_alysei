@@ -12,6 +12,8 @@ var preferenceNumber : Int?
 var arraySelectedCookingSkill: [Int]? = []
 
 class CookingSkillViewController: AlysieBaseViewC {
+    
+    @IBOutlet weak var cookingSkillLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -26,6 +28,11 @@ class CookingSkillViewController: AlysieBaseViewC {
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         preferenceNumber = 5
+        
+        cookingSkillLbl.text = RecipeConstants.kCkngSkill
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         nextButton.layer.borderWidth = 1

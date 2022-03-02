@@ -1003,7 +1003,8 @@ struct RecipeConstants{
     static var  kByIngredient : String {  "Quick Search By Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kByMeal : String {  "Quick Search By Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kByRegion : String {  "Search By Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kTrending : String {  "Trending Now".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kTrendingNow : String {  "Trending Now".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kTrending : String {  "Trending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kQuickEasy : String {  "Quick Easy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kFavCuisine : String {  "Favourite Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kFoodAlrgy : String {  "Food Alergies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1105,6 +1106,7 @@ struct RecipeConstants{
     static var  kNoToolAdded : String {  "No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNoStepAdded : String {  "No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kSaveRecipe : String {  "Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kSave : String {  "Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kEditRecipe : String {  "Edit Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNoTools : String {  "No Tools found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNoIngredient : String {  "No Ingredients found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1114,13 +1116,16 @@ struct RecipeConstants{
    
     // MARK: Recipe Preference————
     
-    static var  kPreference1 : String {  "What is your favourite Cuisines?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference2 : String {  "Do you have any food allergies?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference3 : String {  "Do you have follow these diets?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference4 : String {  "Don't  want to see ingredients?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kPreference1 : String {  "What is your favourite \n Cuisines?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kPreference2 : String {  "Do you have any food \n allergies?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kPreference3 : String {  "Do you have follow these \n diets?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kPreference4 : String {  "Don't  want to see \n ingredients?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kBack : String {  "Back".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kSkip : String {  "Skip".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-
+    static var  kSearchOtherIngredient : String {  "Search Other Ingridients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kAddOtherIngredient : String {  "Add other ingredients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+    
     // MARK: View Recipe ————
     
     static var  kDeleteRecipe: String {  "Delete Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1463,10 +1468,10 @@ struct StaticArrayData {
     
     static let kBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
                                         (image: "importers&distributors", name: "Importers & Distributors"),
-                                        (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
+                                        (image: "italianrestaurantsinus", name: "Italian Restaurants"),
                                         (image: "voiceofexperts", name: "Voice of Experts"),
                                         (image: "travelagencies", name: "Travel Agencies"),
-                                        (image: "producers", name: "Producer"),
+                                        (image: "producers", name: "Italian F&B Producer"),
     ]
     
     static let kNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
