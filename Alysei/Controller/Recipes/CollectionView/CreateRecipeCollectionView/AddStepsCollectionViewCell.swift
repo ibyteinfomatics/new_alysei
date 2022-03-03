@@ -14,6 +14,8 @@ class AddStepsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionView: UIView!
     
     @IBOutlet weak var step1Label: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     
     var enteredValueInTxtVw: String?
@@ -21,9 +23,11 @@ class AddStepsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        titleLbl.text = RecipeConstants.kTitle
+        descriptionLbl.text = RecipeConstants.kDescription
         desciptionTextView.delegate = self
         titleTextField.delegate = self
+        titleTextField.placeholder = RecipeConstants.kEnterTitle
         titleTextField.autocorrectionType = .no
         desciptionTextView.autocorrectionType = .no
         descriptionView.layer.borderWidth = 1

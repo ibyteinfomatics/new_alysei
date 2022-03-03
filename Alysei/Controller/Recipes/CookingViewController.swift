@@ -11,6 +11,7 @@ var arrayPreference5: PreferencesDataModel?
 
 class CookingViewController: UIViewController {
     
+    @IBOutlet weak var cookingSkillLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -24,6 +25,10 @@ class CookingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        cookingSkillLabel.text = RecipeConstants.kCkngSkill
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         collectionView.delegate = self

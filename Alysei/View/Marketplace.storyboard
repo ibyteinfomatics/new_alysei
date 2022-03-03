@@ -661,6 +661,8 @@
                                             <constraint firstItem="E70-45-fso" firstAttribute="leading" secondItem="Adf-xF-Wh6" secondAttribute="leading" symbolic="YES" id="uEg-BG-roj"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnViewAll" destination="NE8-3c-1yc" id="inq-n1-bZL"/>
+                                            <outlet property="lblRecentlyAddedroduct" destination="TBH-aP-YHT" id="N9U-mr-YWp"/>
                                             <outlet property="recentlyAddedCollectionView" destination="WGQ-kc-m0e" id="2xt-7T-Xs5"/>
                                         </connections>
                                     </tableViewCell>
@@ -795,6 +797,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnViewAll" destination="Gka-Ly-8Pe" id="SGv-TU-fGQ"/>
+                                            <outlet property="lblNewlyAdddStore" destination="zrh-aY-MRu" id="6G7-Kq-oZx"/>
                                             <outlet property="newlyyAddedStoreCollectionView" destination="4wb-Z1-Age" id="ofN-nD-EeK"/>
                                         </connections>
                                     </tableViewCell>
@@ -917,6 +921,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnViewAll" destination="ZjJ-VY-2hF" id="HMd-cs-ngz"/>
+                                            <outlet property="lblSearchItalianRegion" destination="g4Z-UN-DeS" id="WYN-Nz-0h5"/>
                                             <outlet property="regionCollectionView" destination="1Jo-Rc-dwC" id="TdF-E8-Nru"/>
                                         </connections>
                                     </tableViewCell>
@@ -1102,6 +1108,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnViewAll" destination="UvC-k7-Zls" id="4iC-r6-puC"/>
+                                            <outlet property="lblTopRatedProduct" destination="Ofd-5T-Oc5" id="ejR-RK-A5W"/>
                                             <outlet property="topRatedCollectionView" destination="rqa-YE-7FJ" id="GVW-yz-kNj"/>
                                         </connections>
                                     </tableViewCell>
@@ -1270,6 +1278,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="lblTopFavProduct" destination="MqX-nJ-zbs" id="T6l-Ca-SK5"/>
                                             <outlet property="maximumSearchedCollectionView" destination="gdP-Dr-IIn" id="4Dp-ey-ME2"/>
                                         </connections>
                                     </tableViewCell>
@@ -1730,6 +1739,11 @@
                         <outlet property="imgCreateWidgh" destination="jWu-gv-ND1" id="5Wc-sE-QEr"/>
                         <outlet property="imgCreateleading" destination="HMN-Ax-qBW" id="daY-cK-GEY"/>
                         <outlet property="lblDiscover" destination="tr9-WM-ybb" id="L7l-kX-r5h"/>
+                        <outlet property="lblHeadNotification" destination="b8U-Eg-q5F" id="8Rr-Ng-Oni"/>
+                        <outlet property="lblHeadPost" destination="qBU-ee-JjI" id="x1T-Wh-84r"/>
+                        <outlet property="lblHeadRecipe" destination="FhF-ff-bUe" id="FDo-AZ-1Mr"/>
+                        <outlet property="lblWhatyourlooking" destination="gMJ-aE-TLz" id="tJG-Mb-QBM"/>
+                        <outlet property="lblheadMarkePtlace" destination="kfc-qh-Hjx" id="BBa-rP-Vl9"/>
                         <outlet property="marketplaceView" destination="I6B-bj-uKy" id="rxH-pm-tbz"/>
                         <outlet property="openednewCount" destination="vzH-4j-ABs" id="vgx-8C-yGq"/>
                         <outlet property="pageContrl1Width" destination="XNc-3V-Ud0" id="dD2-wL-8X4"/>
@@ -3854,6 +3868,7 @@
                                                     <connections>
                                                         <outlet property="btnDelete" destination="Lp7-a0-mud" id="uPL-tv-omt"/>
                                                         <outlet property="image" destination="JEu-WJ-MfB" id="gZE-oN-Knc"/>
+                                                        <outlet property="lblAddImage" destination="mkI-Tf-N9e" id="DCj-nS-QhE"/>
                                                         <outlet property="viewAddImage" destination="xxW-Of-aWW" id="Fzy-8a-mtM"/>
                                                     </connections>
                                                 </collectionViewCell>
@@ -3923,6 +3938,13 @@
                         <outlet property="imageLabel" destination="dem-Lf-Nsh" id="yTT-Me-216"/>
                         <outlet property="imgCover" destination="2Qe-93-b91" id="nKM-p7-xg7"/>
                         <outlet property="imgProfile" destination="iQt-VQ-X9S" id="vnx-0Z-rWz"/>
+                        <outlet property="lblDescription" destination="B7I-hw-yF7" id="bz9-Gl-1F4"/>
+                        <outlet property="lblEmail" destination="enf-9h-j7h" id="sKY-ii-SqB"/>
+                        <outlet property="lblLocation" destination="LYX-d2-f9h" id="BS7-6O-Zvb"/>
+                        <outlet property="lblPhoneNumber" destination="WFF-mK-UCd" id="Dfi-m9-urg"/>
+                        <outlet property="lblStoreName" destination="7Ff-L3-bwU" id="2Vm-Km-8xv"/>
+                        <outlet property="lblStoreRegion" destination="88V-0Y-Jl4" id="LkB-qw-kpt"/>
+                        <outlet property="lblWebsite" destination="IJ1-0c-bV1" id="rRd-Bx-fvj"/>
                         <outlet property="tableView" destination="CGe-TB-e4W" id="tgs-iG-II2"/>
                         <outlet property="txtDescription" destination="n4l-Pp-C4S" id="53o-rU-Pvs"/>
                         <outlet property="txtLocation" destination="2x0-rE-rgi" id="F26-WS-C9F"/>
@@ -4562,8 +4584,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-kV-DuF">
-                                                                    <rect key="frame" x="10" y="31" width="374" height="308.66666666666669"/>
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-kV-DuF">
+                                                                    <rect key="frame" x="10" y="30" width="374" height="308.66666666666669"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <color key="textColor" systemColor="labelColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -4799,13 +4821,30 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnNext" destination="ThO-di-tjz" id="hf4-iQ-qAd"/>
                         <outlet property="btnback" destination="aoC-nJ-FUM" id="u9y-cd-kL1"/>
                         <outlet property="collectionViewImage" destination="BiG-Xe-TW1" id="cpd-WI-W2R"/>
                         <outlet property="headerView" destination="YIz-1W-zt0" id="vdD-iL-F3c"/>
                         <outlet property="imgStore" destination="IQ4-qj-8iX" id="TtE-ou-mJx"/>
+                        <outlet property="lblAvalbleForSample" destination="c8Q-D9-Xdg" id="KSc-Br-N4R"/>
+                        <outlet property="lblBrandLabel" destination="ASr-ss-7P0" id="Qk6-dw-SUi"/>
+                        <outlet property="lblDescription" destination="s9M-Yv-A6Q" id="JBi-kv-NQ7"/>
+                        <outlet property="lblDispatchInstruction" destination="mwr-0U-1Ac" id="LNT-kE-ynu"/>
+                        <outlet property="lblHandlingInstruction" destination="9u6-Ea-S1n" id="djq-a8-NfJ"/>
+                        <outlet property="lblHeading" destination="mIo-Xg-5gE" id="FvZ-jM-soe"/>
                         <outlet property="lblHeadingLeading" destination="buN-I9-EG4" id="uFT-4R-SFz"/>
+                        <outlet property="lblKeywords" destination="soY-br-L14" id="80f-wM-iAy"/>
+                        <outlet property="lblMax200Char" destination="sVo-fZ-RPU" id="fwC-1O-GJb"/>
+                        <outlet property="lblMax50Char" destination="NPG-PS-4gI" id="zQ4-86-xnQ"/>
+                        <outlet property="lblMinOrderQuantity" destination="E8x-UG-fga" id="Oik-D3-KwR"/>
                         <outlet property="lblMinimumQuantity" destination="91s-I5-1Li" id="nOT-Cv-dJM"/>
+                        <outlet property="lblProductTitle" destination="6dJ-zd-TTh" id="TbI-tn-iBp"/>
+                        <outlet property="lblQuantityAvailble" destination="35y-6h-K9b" id="8o2-iP-UnX"/>
                         <outlet property="lblQunatityLabel" destination="Jfv-NG-FwT" id="tNR-sV-My9"/>
+                        <outlet property="lblSelectProductCategory" destination="VO6-r4-AiZ" id="6PG-dv-5ZY"/>
+                        <outlet property="lblSubMinNoOfQuantity" destination="91s-I5-1Li" id="SpE-Yi-nqI"/>
+                        <outlet property="lblSubNoOfQuantity" destination="Jfv-NG-FwT" id="zCF-cD-Zb0"/>
+                        <outlet property="llProductPrice" destination="M5e-6t-FT1" id="mYX-a3-hkS"/>
                         <outlet property="quantityView" destination="XrC-Cv-jSn" id="lva-Ab-CdD"/>
                         <outlet property="showStoreImage" destination="IQ4-qj-8iX" id="HOV-t0-hYn"/>
                         <outlet property="showStoreName" destination="hnc-av-82h" id="j5Q-J5-Vxs"/>
@@ -4894,6 +4933,10 @@
                             <constraint firstItem="TAx-EI-2Av" firstAttribute="centerX" secondItem="eWy-pe-m3T" secondAttribute="centerX" id="nwh-PA-z6p"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnBackToMarketPlace" destination="g3A-AH-TTj" id="qJh-RP-avN"/>
+                        <outlet property="lblDesc" destination="TAx-EI-2Av" id="Nfy-gD-ODw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LR-bA-LJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5373,7 +5416,11 @@
                     </view>
                     <connections>
                         <outlet property="blankView" destination="Qvc-qQ-pES" id="JPW-SR-9H3"/>
+                        <outlet property="btnFilter" destination="9k1-9p-WBM" id="qG2-CD-Mti"/>
+                        <outlet property="btnSort" destination="3L1-UU-isC" id="Faf-xX-Kdb"/>
+                        <outlet property="lblNoMoreProduct" destination="VpO-Pg-l4s" id="4In-Bi-Fvq"/>
                         <outlet property="lblTitle" destination="qKd-2h-YwY" id="VCa-Xw-ibw"/>
+                        <outlet property="lbltryAgain" destination="4k9-G7-mhN" id="qyW-Mm-hHb"/>
                         <outlet property="sortFilterView" destination="OJV-8C-Jee" id="hQk-YW-mDM"/>
                         <outlet property="tableView" destination="e4m-pR-iA4" id="exY-o4-Bcd"/>
                     </connections>
@@ -6146,12 +6193,15 @@
                                             <constraint firstAttribute="bottom" secondItem="Ocz-ti-2H2" secondAttribute="bottom" constant="20" id="trV-K4-n0h"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnViewStore" destination="TKA-65-PcS" id="VlS-mu-QNc"/>
                                             <outlet property="imgProducer" destination="ZaD-He-zNG" id="5eL-uk-dX1"/>
                                             <outlet property="lblAvgRating" destination="5Mw-0h-edA" id="tDy-fs-s5E"/>
                                             <outlet property="lblClientName" destination="qED-rn-uXD" id="dgi-E8-DVo"/>
                                             <outlet property="lblClientReview" destination="kUM-eu-IPf" id="e7F-x5-01N"/>
                                             <outlet property="lblProducerName" destination="zYV-Oc-1Qk" id="Mjr-0P-lXD"/>
+                                            <outlet property="lblRating" destination="elV-xw-7YC" id="gf5-sF-MKV"/>
                                             <outlet property="lblReviewData" destination="92K-br-Umh" id="G77-bd-j3T"/>
+                                            <outlet property="lblStoreInfo" destination="sZH-gN-Ivs" id="Djb-kR-5el"/>
                                             <outlet property="lblTotalReview" destination="kdy-PD-77V" id="bnJ-NF-EJO"/>
                                             <outlet property="productAvgStar1" destination="rgT-Fe-ygf" id="Vyy-kw-Z8U"/>
                                             <outlet property="productAvgStar2" destination="FRw-Ab-KxQ" id="uzT-AB-n6m"/>
@@ -6331,6 +6381,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collectonView" destination="dFT-zt-f66" id="kas-ha-IUG"/>
+                                            <outlet property="lblRealtedProduct" destination="abA-JT-0Ox" id="JuC-zd-z2g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -6568,6 +6619,12 @@
                         <outlet property="imgPriceHighToLow" destination="zyb-VQ-Q2p" id="7Z0-ic-6ew"/>
                         <outlet property="imgPriceLowToHigh" destination="6N2-Ub-GA0" id="IAk-3d-PRs"/>
                         <outlet property="imgRatings" destination="gOi-y2-Vpe" id="Bq2-ap-8F7"/>
+                        <outlet property="lblHeading" destination="0CN-JQ-bxo" id="p4g-Ut-R4L"/>
+                        <outlet property="lblNewestFirst" destination="tg1-9A-hDJ" id="lY3-Ir-Rpv"/>
+                        <outlet property="lblPopularity" destination="gsd-UY-m0z" id="oqN-HA-iz5"/>
+                        <outlet property="lblPriceHighToLow" destination="ZOf-Su-g9b" id="RR1-V1-wg5"/>
+                        <outlet property="lblRating" destination="RWC-1c-5DB" id="4c5-h1-po6"/>
+                        <outlet property="lblpriceLowToHigh" destination="mxy-p2-WRs" id="L0E-aw-ydW"/>
                         <outlet property="viewNewestFirst" destination="6g6-er-B7X" id="65S-Zg-vDM"/>
                         <outlet property="viewPopularity" destination="6NZ-pk-fEI" id="Ojn-LL-dbL"/>
                         <outlet property="viewPriceHighToLow" destination="Voy-ex-jMi" id="htA-KU-9B3"/>
@@ -6773,6 +6830,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="DYn-Ap-mxZ" id="uzg-79-6A9"/>
+                        <outlet property="btnClearFilter" destination="YUx-SM-LU8" id="8aO-FG-4ec"/>
+                        <outlet property="lblHeading" destination="WSY-a8-1Fg" id="O8u-id-MAm"/>
                         <outlet property="optionTableView" destination="dNE-09-tkA" id="OxG-Hm-Mlv"/>
                         <outlet property="subOptionTableView" destination="Xk1-yG-gig" id="5Gx-SN-nEr"/>
                     </connections>
@@ -9448,8 +9507,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Full Name * *" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ7-0R-aOG">
-                                            <rect key="frame" x="15" y="87" width="146.33333333333334" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name *" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ7-0R-aOG">
+                                            <rect key="frame" x="14.999999999999993" y="87" width="98.333333333333314" height="22"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -9569,8 +9628,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSendInquiry" destination="Sx5-V1-IC5" id="8OC-Qj-7ZJ"/>
+                        <outlet property="lblEmail" destination="AXA-zL-q3S" id="NB2-k4-OPN"/>
+                        <outlet property="lblFullName" destination="CZ7-0R-aOG" id="nDM-My-MOV"/>
+                        <outlet property="lblHeading" destination="F13-mr-FBT" id="H44-ob-vCM"/>
+                        <outlet property="lblMessage" destination="ROl-BX-kAa" id="veL-eu-Amd"/>
+                        <outlet property="lblPhoneNumber" destination="PHX-jZ-Rae" id="BY2-sw-TGz"/>
                         <outlet property="lblProductDesc" destination="vKd-mB-hW2" id="FTf-yW-SLO"/>
                         <outlet property="lblProductPrice" destination="Vdn-ZT-330" id="p4L-3J-Dpj"/>
+                        <outlet property="lblStoreContact" destination="XuN-et-b4A" id="dg0-nB-OtS"/>
                         <outlet property="txtEmail" destination="bkO-oE-xeR" id="dJV-0W-HI7"/>
                         <outlet property="txtFullName" destination="EZA-ND-zkZ" id="XsG-sH-03g"/>
                         <outlet property="txtMessage" destination="osc-OW-kSd" id="cxC-rh-KIW"/>
@@ -9853,6 +9919,7 @@
                     </view>
                     <connections>
                         <outlet property="lblClosed" destination="1Sc-9o-P5d" id="rDa-8p-llN"/>
+                        <outlet property="lblHeading" destination="MvD-56-s8a" id="Y0t-8t-JKw"/>
                         <outlet property="lblNew" destination="qFu-Hv-Bm7" id="8Fd-R6-d3e"/>
                         <outlet property="lblOpened" destination="7qQ-EQ-4pu" id="4nN-qr-LKN"/>
                         <outlet property="newCount" destination="nbN-Yw-bYW" id="vOO-Dx-XGe"/>

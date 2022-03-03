@@ -386,6 +386,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fEq-XJ-K9A"/>
                     <connections>
+                        <outlet property="areYouSureLabel" destination="wAB-kZ-3kP" id="mgE-x0-ePi"/>
                         <outlet property="cancelButton" destination="o6p-lU-63A" id="ypA-p6-Q0a"/>
                         <outlet property="cancelView" destination="EYz-bW-G4c" id="fZs-0K-iRM"/>
                         <outlet property="circularImageView" destination="HuQ-Ke-dit" id="uBB-1h-TCV"/>
@@ -995,13 +996,13 @@
                                     <constraint firstAttribute="height" constant="40" id="2kv-h0-7O1"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-GQ-0W8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-GQ-0W8">
                                 <rect key="frame" x="15" y="84" width="186.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisines?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfQ-1l-NMN">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisines?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfQ-1l-NMN">
                                 <rect key="frame" x="15" y="109" width="78" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -1090,6 +1091,8 @@
                         <outlet property="SaveButton" destination="0aN-Ex-nUD" id="na4-6o-8dv"/>
                         <outlet property="backButton" destination="0he-yt-Zfh" id="Dq7-pl-h8v"/>
                         <outlet property="collectionView" destination="Cjq-Ut-634" id="jL5-Fi-rDn"/>
+                        <outlet property="cuisineLabel" destination="cfQ-1l-NMN" id="AMh-Fg-ukz"/>
+                        <outlet property="yourFavLabel" destination="g08-GQ-0W8" id="sRP-4V-cB8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rH6-Mo-t0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1374,10 +1377,13 @@
                         <outlet property="btnEditSave" destination="NB5-yR-BFn" id="ckp-DW-GJR"/>
                         <outlet property="editquantityTextField" destination="WN7-Hx-Zdr" id="Tcw-wH-UU3"/>
                         <outlet property="editunitLabel" destination="HBF-Wv-qS5" id="iAF-UQ-xAm"/>
+                        <outlet property="headerLabel" destination="L4S-WX-z0b" id="ICL-t9-mk3"/>
                         <outlet property="headerLabelLeading" destination="Uxq-gP-91I" id="bq6-k2-Nhh"/>
                         <outlet property="headerView" destination="pON-Tx-gop" id="wOd-6W-Q92"/>
+                        <outlet property="quantityLabel" destination="bjB-1z-PcC" id="vid-6U-DZP"/>
                         <outlet property="saveButton" destination="ej6-Pw-AuC" id="h35-5t-myV"/>
                         <outlet property="tableView" destination="6k6-3d-5vd" id="xX7-84-wbL"/>
+                        <outlet property="unitLabel" destination="jR9-Km-09N" id="vme-fC-8in"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hft-lm-C4v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1402,13 +1408,13 @@
                                     <constraint firstAttribute="height" constant="40" id="tfm-5M-FUX"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lko-CJ-UIx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lko-CJ-UIx">
                                 <rect key="frame" x="15" y="84" width="206" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allergies?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nck-BM-aT9">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allergies?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nck-BM-aT9">
                                 <rect key="frame" x="15" y="113" width="91.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -1497,6 +1503,7 @@
                     <connections>
                         <outlet property="backButton" destination="YfI-ok-X5v" id="6jP-x1-g4T"/>
                         <outlet property="collectionView" destination="zG4-zG-4Mj" id="ecT-1T-N7N"/>
+                        <outlet property="foodAllergyLabel" destination="lko-CJ-UIx" id="csv-G1-1qb"/>
                         <outlet property="saveButton" destination="lRI-GN-bjh" id="qIw-1V-8Ot"/>
                     </connections>
                 </viewController>
@@ -1522,13 +1529,13 @@
                                     <constraint firstAttribute="height" constant="40" id="vph-VE-Rpg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="she-7T-JEC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="she-7T-JEC">
                                 <rect key="frame" x="15" y="84" width="239.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diets?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wry-XS-fs3">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diets?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wry-XS-fs3">
                                 <rect key="frame" x="15" y="113" width="58" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -1617,6 +1624,7 @@
                     <connections>
                         <outlet property="backButton" destination="PR5-VI-Fmz" id="1Ki-TP-P3o"/>
                         <outlet property="collectionView" destination="S69-Bd-GuG" id="kuR-QW-4qK"/>
+                        <outlet property="dietLabel" destination="she-7T-JEC" id="fnD-Cz-7sP"/>
                         <outlet property="saveButton" destination="6NC-Me-Pis" id="aag-ox-k9J"/>
                     </connections>
                 </viewController>
@@ -1642,13 +1650,13 @@
                                     <constraint firstAttribute="height" constant="40" id="gkr-gW-HOE"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w2-oA-CnK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w2-oA-CnK">
                                 <rect key="frame" x="15" y="84" width="173.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybc-RU-yDG">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybc-RU-yDG">
                                 <rect key="frame" x="15" y="113" width="118" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -1738,6 +1746,7 @@
                         <outlet property="backButton" destination="TJV-5v-F8p" id="gco-WX-ZcA"/>
                         <outlet property="ingredientsCollectionView" destination="sEy-GP-g72" id="Vwx-TL-YYp"/>
                         <outlet property="saveButton" destination="YLC-5P-Ymg" id="Wgm-zG-2yo"/>
+                        <outlet property="seeIngedientLabel" destination="7w2-oA-CnK" id="pFh-WD-45w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDX-bS-HkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1849,6 +1858,7 @@
                     <connections>
                         <outlet property="backButton" destination="AXB-t6-Vt7" id="cuD-tw-LuF"/>
                         <outlet property="collectionView" destination="AUf-Lt-S6D" id="KhR-TS-YXq"/>
+                        <outlet property="cookingSkillLabel" destination="pyk-Hk-lcq" id="Rpr-uc-3R1"/>
                         <outlet property="saveButton" destination="OEj-WD-yAU" id="eFN-j4-rzU"/>
                     </connections>
                 </viewController>
@@ -1921,6 +1931,7 @@
                     <connections>
                         <outlet property="headerView" destination="Qn8-sz-OJ8" id="uPr-t1-8dY"/>
                         <outlet property="trendingCollectionView" destination="YFA-ON-gSP" id="SQX-fa-fmP"/>
+                        <outlet property="trendingLabel" destination="nPO-AF-t2Y" id="fsr-w8-zPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqm-hC-T4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1992,6 +2003,7 @@
                     <connections>
                         <outlet property="headerView" destination="TOm-VW-0MF" id="ryC-8m-uaW"/>
                         <outlet property="quickEasyCollectionView" destination="BmX-vY-0Lf" id="nok-xt-USE"/>
+                        <outlet property="quickEasyLbl" destination="dtC-ar-rWY" id="g3m-5S-WSX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJg-Nc-u1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2129,8 +2141,10 @@
                                                         <size key="customSize" width="414" height="286"/>
                                                         <connections>
                                                             <outlet property="desciptionTextView" destination="BKu-g1-dKg" id="zzR-rl-301"/>
+                                                            <outlet property="descriptionLbl" destination="TUk-mB-3QT" id="cOK-sk-Jiv"/>
                                                             <outlet property="descriptionView" destination="CZJ-ZN-RJE" id="Dct-Oz-kO0"/>
                                                             <outlet property="step1Label" destination="ag5-gC-ylP" id="mxv-Zq-b9R"/>
+                                                            <outlet property="titleLbl" destination="iLK-yg-1Pm" id="kSQ-iH-nNq"/>
                                                             <outlet property="titleTextField" destination="PgK-7q-Bw4" id="UwZ-ty-0cJ"/>
                                                             <outlet property="titleView" destination="BdN-jh-jTL" id="3oB-18-u3h"/>
                                                         </connections>
@@ -2492,7 +2506,9 @@
                     </view>
                     <size key="freeformSize" width="414" height="965"/>
                     <connections>
+                        <outlet property="addStepLbl" destination="4Ma-18-QXj" id="3VN-ky-QBf"/>
                         <outlet property="addStepsCollectionView" destination="Xza-1l-afj" id="xSs-Mv-gkR"/>
+                        <outlet property="headerLabel" destination="iFW-MV-uly" id="OWA-Yj-oId"/>
                         <outlet property="headerView" destination="fXX-kk-Xqk" id="SCX-OR-Avh"/>
                         <outlet property="ingridientUsedCollectionView" destination="lSR-Sz-pfA" id="bgy-Jl-odv"/>
                         <outlet property="ingridientUsedLabel" destination="HzM-bL-yZm" id="oUs-5f-PVs"/>
@@ -2621,7 +2637,7 @@
                                     <action selector="tapSkip:" destination="FMS-PY-kSL" eventType="touchUpInside" id="Xdg-nQ-fNj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8C-1t-Vv6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8C-1t-Vv6">
                                 <rect key="frame" x="15" y="84" width="208.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4zU-7w-13Y"/>
@@ -2630,7 +2646,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisines?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gi-iX-i6o">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisines?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gi-iX-i6o">
                                 <rect key="frame" x="15" y="109" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="YqQ-RJ-osd"/>
@@ -2668,6 +2684,7 @@
                         <outlet property="btnCusineNext" destination="MbG-yF-mAO" id="DUz-oR-PiP"/>
                         <outlet property="cuisineCollectionView" destination="D8s-aS-rGG" id="NYa-Zz-20Y"/>
                         <outlet property="cuisinePageControl" destination="bVz-QK-aWc" id="BBz-2C-aer"/>
+                        <outlet property="favCuisineLabel" destination="x8C-1t-Vv6" id="dUQ-tp-dfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMu-TB-zrr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2706,13 +2723,13 @@
                                     <constraint firstItem="3c5-ZZ-UdI" firstAttribute="top" secondItem="ze2-IY-lJH" secondAttribute="top" constant="10" id="nEm-65-rDG"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFC-gN-w3r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFC-gN-w3r">
                                 <rect key="frame" x="15" y="84" width="206" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allergies?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chl-C8-RQY">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allergies?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chl-C8-RQY">
                                 <rect key="frame" x="15" y="113" width="91.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -2803,7 +2820,9 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="baD-kP-Wd7" id="aT7-Yr-drb"/>
+                        <outlet property="btnSkip" destination="3c5-ZZ-UdI" id="XDm-w4-Mjn"/>
                         <outlet property="collectionView" destination="Cbw-7F-fGi" id="Yhm-Bo-0H1"/>
+                        <outlet property="foodAllergyLabel" destination="FFC-gN-w3r" id="fWo-Al-9FR"/>
                         <outlet property="nextButton" destination="zXr-PY-TEc" id="4dF-wf-Nmn"/>
                     </connections>
                 </viewController>
@@ -2843,13 +2862,13 @@
                                     <constraint firstItem="tpW-YX-rp2" firstAttribute="top" secondItem="n6C-W8-0bx" secondAttribute="top" constant="10" id="rs9-lz-s35"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGX-jy-evH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGX-jy-evH">
                                 <rect key="frame" x="15" y="84" width="239.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diets?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-sK-RjS">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diets?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-sK-RjS">
                                 <rect key="frame" x="15" y="113" width="58" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -2942,7 +2961,9 @@
                     <connections>
                         <outlet property="backButton" destination="4Ek-xG-cTk" id="kVy-5k-6Xl"/>
                         <outlet property="collectionView" destination="gJH-E7-p8d" id="mSW-lc-PR9"/>
+                        <outlet property="followDietLabel" destination="aGX-jy-evH" id="W6G-gP-kNf"/>
                         <outlet property="nextButton" destination="2sL-bX-nl9" id="1Eu-mK-5Bs"/>
+                        <outlet property="skipBtn" destination="tpW-YX-rp2" id="x3i-jR-U7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAI-vj-CNA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3030,13 +3051,13 @@
                                                     <constraint firstAttribute="height" constant="40" id="rCA-QX-5nI"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk2-SV-P1B">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk2-SV-P1B">
                                                 <rect key="frame" x="15" y="40" width="173.5" height="24"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7y-NG-95J">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7y-NG-95J">
                                                 <rect key="frame" x="15" y="69" width="118" height="24"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -3210,6 +3231,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="935"/>
                     <connections>
+                        <outlet property="addAnotherIngredientLbl" destination="87m-Qa-Jwm" id="59t-zw-vHP"/>
                         <outlet property="backButton" destination="nuk-eu-5CC" id="9Qq-Lk-7iq"/>
                         <outlet property="ingredientsCollectionView" destination="F3f-2x-yHt" id="XWq-03-wqd"/>
                         <outlet property="nextButton" destination="CTp-88-NvE" id="L3O-Ir-b4i"/>
@@ -3217,6 +3239,8 @@
                         <outlet property="searchTableView" destination="iB0-p2-ffC" id="3ko-ug-O4T"/>
                         <outlet property="searchTextField" destination="lRL-6E-Ums" id="WbZ-Cv-ks4"/>
                         <outlet property="searchViewHeight" destination="ifX-bW-k3N" id="KrV-Wx-Edz"/>
+                        <outlet property="seeIngredientLabel" destination="lk2-SV-P1B" id="53a-Io-C5Q"/>
+                        <outlet property="skipBtn" destination="V0y-6P-z0n" id="bGM-hj-1gU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ma4-L1-1Xg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3344,6 +3368,7 @@
                     <connections>
                         <outlet property="backButton" destination="tVL-dL-AyP" id="38c-dg-DWc"/>
                         <outlet property="collectionView" destination="sTr-3d-TTJ" id="1vI-15-PCE"/>
+                        <outlet property="cookingSkillLbl" destination="Ard-EL-iIY" id="h44-q6-AGH"/>
                         <outlet property="nextButton" destination="ZT4-oh-yYO" id="ICK-bQ-Ucx"/>
                     </connections>
                 </viewController>
@@ -12317,13 +12342,13 @@
         <image name="icons8_image_1" width="34.5" height="27.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
-        <image name="icons8_left" width="24" height="18.5"/>
+        <image name="icons8_left" width="19" height="15"/>
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="18" height="18"/>
+        <image name="icons8_search" width="17.5" height="17.5"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>

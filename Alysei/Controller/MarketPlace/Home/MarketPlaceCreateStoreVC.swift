@@ -40,6 +40,16 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var lblStoreName: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
+    @IBOutlet weak var lblStoreRegion: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
+    
+    
+    
     var passpackageId: Int?
     
     var uploadImageArray = [UIImage]()
@@ -71,6 +81,13 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var sendUpdateImageArray = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnNext.setTitle(AppConstants.Next, for: .normal)
+        lblStoreName.text = MarketPlaceConstant.kStoreName
+        lblDescription.text = MarketPlaceConstant.kDescription
+        lblPhoneNumber.text = MarketPlaceConstant.kPhoneNumber
+        lblWebsite.text = MarketPlaceConstant.kCWebsite
+        lblStoreRegion.text = MarketPlaceConstant.kStoreRegion
+        lblLocation.text = MarketPlaceConstant.kLocation
         
         setDataUI()
         if fromVC == .myStoreDashboard{
@@ -85,6 +102,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             // self.headerView.isHidden = false
             self.btnBack.isHidden = false
             self.headerTitle.isHidden = false
+            headerTitle.text = MarketPlaceConstant.kConfigureStore
             self.btnNext.setTitle(AppConstants.Next, for: .normal)
             self.heightHeaderView.constant = 64
         }
@@ -465,11 +483,12 @@ class ImageMaketPlaceCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var viewAddImage: UIView!
-    
+    @IBOutlet weak var lblAddImage: UILabel!
     var btnDeleteCallback:((Int) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //lblAddImage.text = MarketPlaceConstant.AddImage
         viewAddImage.layer.cornerRadius = 20
         viewAddImage.layer.masksToBounds = true
         image.layer.cornerRadius = 20

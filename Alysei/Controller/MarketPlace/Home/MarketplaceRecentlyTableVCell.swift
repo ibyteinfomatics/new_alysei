@@ -10,12 +10,18 @@ import UIKit
 class MarketplaceRecentlyTableVCell: UITableViewCell {
     
     @IBOutlet weak var recentlyAddedCollectionView: UICollectionView!
+    
+    @IBOutlet weak var btnViewAll: UIButton!
+    @IBOutlet weak var lblRecentlyAddedroduct: UILabel!
+  
     var recentlyAddedProduct: [MyStoreProductDetail]?
     var callback:((Int) -> Void)? = nil
     
     var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnViewAll.setTitle(MarketPlaceConstant.kViewAll, for: .normal)
+        lblRecentlyAddedroduct.text = MarketPlaceConstant.kRecentlyAddedProject
         // Initialization code
     }
 

@@ -11,6 +11,7 @@ var arrayPreference3: PreferencesDataModel?
 
 class DietViewController: AlysieBaseViewC  {
     
+    @IBOutlet weak var dietLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -25,6 +26,10 @@ class DietViewController: AlysieBaseViewC  {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        dietLabel.text = RecipeConstants.kPreference3
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         collectionView.delegate = self

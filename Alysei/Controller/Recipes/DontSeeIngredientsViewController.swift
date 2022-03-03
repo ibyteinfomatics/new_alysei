@@ -10,6 +10,7 @@ import UIKit
 var arraySelectedIngridient: [Int]? = []
 class DontSeeIngredientsViewController: AlysieBaseViewC {
     
+    @IBOutlet weak var seeIngredientLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
     @IBOutlet weak var searchTableView: UITableView!
@@ -17,6 +18,8 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var addAnotherIngredientLbl: UILabel!
+    @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     
     
@@ -42,6 +45,13 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         preferenceNumber = 4
         super.viewDidLoad()
+        
+        seeIngredientLabel.text = RecipeConstants.kPreference4
+        addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
+        
         scrollView.isScrollEnabled = false
         if MobileDeviceType.IS_IPHONE_6 == true {
             searchViewHeight.constant = 100
@@ -65,6 +75,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         searchTableView.dataSource = self
         searchTextField.delegate = self
         searchTextField.autocorrectionType = .no
+        searchTextField.placeholder = RecipeConstants.kSearchOtherIngredient
         
         
     }

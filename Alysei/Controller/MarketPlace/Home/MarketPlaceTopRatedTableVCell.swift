@@ -10,11 +10,16 @@ import UIKit
 class MarketPlaceTopRatedTableVCell: UITableViewCell {
 
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    @IBOutlet weak var lblTopRatedProduct: UILabel!
+    @IBOutlet weak var btnViewAll: UIButton!
+    
     var top_rated_products: [MyStoreProductDetail]?
     var callback:((Int) -> Void)? = nil
     var viewAllcallback:((Int) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblTopRatedProduct.text = MarketPlaceConstant.kTopRatedProduct
+        btnViewAll.setTitle(MarketPlaceConstant.kViewAll, for: .normal)
         // Initialization code
     }
 

@@ -13,6 +13,7 @@ class UserRoleCount {
     var slug: String?
     var userCount: Int?
     var image:String?
+    var attachment: Attachment?
     
     init(with data: [String:Any]) {
         self.role_id = Int.getInt(data["role_id"])
@@ -20,5 +21,8 @@ class UserRoleCount {
         self.slug = String.getString(data["slug"])
         self.image = String.getString(data["image"])
         self.userCount = Int.getInt(data["user_count"])
+        if let attachment = data["attachment"] as? [String:Any]{
+            self.attachment =  Attachment.init(with: attachment)
+        }
     }
 }

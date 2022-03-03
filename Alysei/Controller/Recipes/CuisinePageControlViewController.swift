@@ -13,6 +13,7 @@ var arraySelectedCuisine: [Int]? = []
 
 class CuisinePageControlViewController: UIViewController {
     
+    @IBOutlet weak var favCuisineLabel: UILabel!
     @IBOutlet weak var cuisineCollectionView: UICollectionView!
     
     @IBOutlet weak var btnCusineNext: UIButton!
@@ -28,6 +29,8 @@ class CuisinePageControlViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        favCuisineLabel.text = RecipeConstants.kPreference1
+        btnCusineNext.setTitle(RecipeConstants.kNext, for: .normal)
         preferenceNumber = 1
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self

@@ -6,9 +6,13 @@
 //
 
 import UIKit
+
 var arrayPreference1: PreferencesDataModel?
 var arraySelecetdPreferenceCuisin : [Int]? = []
 class CuisinesViewController: UIViewController {
+    
+    @IBOutlet weak var yourFavLabel: UILabel!
+    @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var SaveButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -23,7 +27,10 @@ class CuisinesViewController: UIViewController {
     var callbackResult: (() -> Void)?
     
     override func viewDidLoad() {
-        preferenceNumber = 1
+        
+        yourFavLabel.text = RecipeConstants.kPreference1
+        SaveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self

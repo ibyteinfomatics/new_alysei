@@ -9,6 +9,7 @@ import UIKit
 
 class ViewAllQuickEasyViewController: UIViewController {
 
+    @IBOutlet weak var quickEasyLbl: UILabel!
     @IBOutlet weak var quickEasyCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     var arrayQuickEasy : [HomeQuickEasy]?
@@ -20,6 +21,7 @@ class ViewAllQuickEasyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        quickEasyLbl.text = RecipeConstants.kQuickEasy
         quickEasyCollectionView.delegate = self
         quickEasyCollectionView.dataSource = self
         

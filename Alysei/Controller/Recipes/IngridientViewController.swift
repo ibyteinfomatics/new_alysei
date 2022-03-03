@@ -9,6 +9,7 @@ import UIKit
 var arrayPreference4: PreferencesDataModel?
 
 class IngridientViewController: UIViewController {
+    @IBOutlet weak var seeIngedientLabel: UILabel!
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -29,6 +30,10 @@ class IngridientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        seeIngedientLabel.text = RecipeConstants.kPreference4
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
