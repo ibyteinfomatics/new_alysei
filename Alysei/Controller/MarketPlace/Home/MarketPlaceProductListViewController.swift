@@ -736,6 +736,7 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblAvalblForSample.text = MarketPlaceConstant.kAvailableForSample
     }
     
     

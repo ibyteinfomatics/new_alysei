@@ -11,11 +11,14 @@ class MarketPlaceRegionViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lblTitle: UILabel!
     var arrRegion : [MyStoreProductDetail]?
     var listIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lblTitle.text = MarketPlaceConstant.kItalianRegion
         headerView.addShadow()
         callRegionApi()
         // Do any additional setup after loading the view.

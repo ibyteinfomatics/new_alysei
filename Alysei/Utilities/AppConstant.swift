@@ -672,6 +672,7 @@ static var kRatings  : String {  "Ratings".localizableString(loc: kSharedUserDef
 static var kProducers  : String {  "Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kProductName  : String {  "Product Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kClearFilters  : String {  "Clear Filters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kApplyFilters  : String {  "Apply Filter".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kWithIn5Miles  : String {  "Within 5 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kWithIn10Miles  : String {  "Within 10 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kWithIn20Miles  : String {  "Within 20 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -873,6 +874,8 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kRatingAndReviews  : String {"Rating & Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSeeAll  : String {"See All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAllProducts  : String {"All Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoStoreFound  : String {"No Stores Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTryAgain  : String {"Try Again".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 }
 struct LogInSignUp{
   

@@ -13,6 +13,7 @@ class StoreRatingReviewTableVCell: UITableViewCell {
     @IBOutlet weak var lblClientName: UILabel!
     @IBOutlet weak var lblClientReview: UILabel!
     @IBOutlet weak var lblReviewData: UILabel!
+    @IBOutlet weak var lblTitleRatingReview: UILabel!
     
     @IBOutlet weak var viewComment: UIView!
     
@@ -39,12 +40,14 @@ class StoreRatingReviewTableVCell: UITableViewCell {
     @IBOutlet weak var totalThreeeStarProgress: UIProgressView!
     @IBOutlet weak var totalFourStarProgress: UIProgressView!
     @IBOutlet weak var totalFiveStarProgress: UIProgressView!
-   
+    @IBOutlet weak var btnSeeAll: UIButton!
     
     var data: RatingReviewModel?
     var avgRating:String?
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblTitleRatingReview.text = MarketPlaceConstant.kRatingAndReviews
+        btnSeeAll.setTitle(MarketPlaceConstant.kSeeAll, for: .normal)
         // Initialization code
     }
 

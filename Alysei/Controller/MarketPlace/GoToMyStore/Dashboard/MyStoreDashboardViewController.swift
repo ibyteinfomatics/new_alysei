@@ -77,6 +77,9 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     selectSort = 1
     imgStore.layer.borderWidth = 1.5
     imgStore.layer.borderColor = UIColor.white.cgColor
+      lblTitleProduct.text = MarketPlaceConstant.kProduct
+      lblTitleCategories.text = MarketPlaceConstant.kCategories
+      
     self.interactor?.callDashBoardApi()
     self.interactor?.callCategoryApi()
   }
@@ -89,6 +92,9 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     @IBOutlet weak var imgStore: UIImageView!
     @IBOutlet weak var lblTotalProduct: UILabel!
     @IBOutlet weak var lblTotalCategories: UILabel!
+    @IBOutlet weak var lblTitleProduct: UILabel!
+    @IBOutlet weak var lblTitleCategories: UILabel!
+  
     
     var totalProduct: Int?
     var totalCategory: Int?

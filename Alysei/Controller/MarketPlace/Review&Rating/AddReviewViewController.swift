@@ -18,6 +18,8 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var btnAddReview: UIButton!
    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
     
     var productStoreType: String?
     var productStoreId: String?
@@ -28,6 +30,9 @@ class AddReviewViewController: UIViewController , UITextViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         txtReview.delegate = self
+        lblTitle.text = MarketPlaceConstant.kAddReview
+        lblSubTitle.text = MarketPlaceConstant.kTapToRate
+        btnAddReview.setTitle(MarketPlaceConstant.kAddReview, for: .normal)
         headerView.drawBottomShadow()
         
         if isEditReview == true

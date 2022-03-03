@@ -202,7 +202,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 
                 
             }
-            if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
+            if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil ||  data.attachments == nil{
                 print("error")
     //                    cell.newHeightCllctn = 350
     //                    cell.imageHeightCVConstant.constant = 350
@@ -314,9 +314,10 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             cell.lblPostCommentCount.text = "\(data?.commentCount ?? 0)"
             cell.lblPostTime.text = data?.posted_at
             //islike = data.likeFlag
-            if data?.attachmentCount == 0 {
-               // cell.imageHeightCVConstant.constant = 0
+            if data?.attachments?.first?.attachmentLink?.width == 0 || data?.attachments?.first?.attachmentLink?.height == 0 || data?.attachments?.first?.attachmentLink?.width == nil || data?.attachments?.first?.attachmentLink?.height == nil ||  data?.attachments == nil || data?.attachmentCount == 0 {
+                cell.imageHeightCVConstant.constant = 0
                 cell.imagePostCollectionView.isHidden = true
+                
     //            imagePostCollectionView.alpha = 0.0
             }else{
                 cell.imagePostCollectionView.isHidden = true

@@ -38,6 +38,15 @@ class StoreDescTopTableViewCell: UITableViewCell {
     @IBOutlet weak var storeAvgStar3: UIImageView!
     @IBOutlet weak var storeAvgStar4: UIImageView!
     @IBOutlet weak var storeAvgStar5: UIImageView!
+    @IBOutlet weak var lblTitleProduct: UILabel!
+    @IBOutlet weak var lblTitleCategories: UILabel!
+    @IBOutlet weak var lblTitleLocation: UILabel!
+    @IBOutlet weak var lblTitleCall: UILabel!
+    @IBOutlet weak var lblTitleAddtoFav: UILabel!
+    @IBOutlet weak var lblTitleMapLocation: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
+    @IBOutlet weak var lblOurGallery: UILabel!
+    
     var storeDetails: MyStoreProductDetail?
     var callBackMoveToProfile: (() -> Void)? = nil
     var callApiCallBack: (() -> Void)? = nil
@@ -52,7 +61,16 @@ class StoreDescTopTableViewCell: UITableViewCell {
         imgProducer.layer.cornerRadius = 25
         imgProfile.layer.borderWidth = 2
         imgProfile.layer.borderColor = UIColor.white.cgColor
-        
+        lblTitleProduct.text = MarketPlaceConstant.kProduct
+        lblTitleCategories.text = MarketPlaceConstant.kCategories
+        lblRole.text = MarketPlaceConstant.kItalianFBProducer
+        lblTitleLocation.text = MarketPlaceConstant.kLocation
+        lblTitleCall.text = MarketPlaceConstant.kCall
+        lblTitleAddtoFav.text = MarketPlaceConstant.kAddToFav
+        lblTitleMapLocation.text = MarketPlaceConstant.kLocation
+        lblWebsite.text = MarketPlaceConstant.kCWebsite
+        lblOurGallery.text = MarketPlaceConstant.kOurGallery
+       
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(callLikeDisLikeApi))
         self.vwStoreLike.addGestureRecognizer(tap)

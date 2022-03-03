@@ -12,13 +12,18 @@ class SelectMultiMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var memberShipCollectionview: UICollectionView!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    
+    
     var memberShipData : [Membership]?
     var selectedPassId: Int?
    
     override func viewDidLoad() {
         super.viewDidLoad()
        // headerView.addShadow()
-        
+        lblTitle.text = MarketPlaceConstant.kAlyseiMarketplaceMemebership
+        lblSubTitle.text = MarketPlaceConstant.kChoosePlanRight
         headerView.drawBottomShadow()
         callMemberShipApi()
         btnNext.setTitleColor(UIColor.white, for: .normal)
