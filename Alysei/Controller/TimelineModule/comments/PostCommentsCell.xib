@@ -163,7 +163,7 @@ Label</string>
                             <action selector="viewreplyButtonTapped:" destination="cfk-7C-ZKB" eventType="touchUpInside" id="t7E-nP-40P"/>
                         </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jom-BF-UP6">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jom-BF-UP6">
                         <rect key="frame" x="70" y="249" width="270" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

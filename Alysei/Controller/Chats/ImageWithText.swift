@@ -24,6 +24,7 @@ class ImageWithText: AlysieBaseViewC {
     
     var name : String?
     var userId : String?
+    var msg : String?
     //var sendImage : UIImage?
     //var userName : String?
     var profileImageUrl : String?
@@ -41,6 +42,7 @@ class ImageWithText: AlysieBaseViewC {
         sendView.layer.borderColor = UIColor.lightGray.cgColor
         
         img.image = image
+        chatTextView.text = msg
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

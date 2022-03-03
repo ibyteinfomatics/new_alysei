@@ -274,7 +274,7 @@ extension SelfPostCommentsCell: UITableViewDelegate, UITableViewDataSource {
                 let params: [String:Any] = [
                     
                     "comment_id": self.self.commentmessages?[indexPath.row].core_comment_id ?? 0,
-                    "user_id" : Int.getInt(kSharedUserDefaults.loggedInUserModal.userId)
+                    "post_id" : self.postId
                     
                 ]
                 

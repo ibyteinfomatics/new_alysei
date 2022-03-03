@@ -199,6 +199,7 @@ class ConversationViewController: AlysieBaseViewC {
             self.messages?.removeAll()
             self.messages =  message
             self.chatTblView.reloadData()
+            self.chatTextView.text = ""
             self.scrollToLastRow()
         }
     }
@@ -256,6 +257,7 @@ class ConversationViewController: AlysieBaseViewC {
                     vc.image = photo.originalImage
                     vc.userId = userId
                     vc.name = name
+                    vc.msg = chatTextView.text
                     vc.profileImageUrl = profileImageUrl
                     
                 case .video(v: let v):
