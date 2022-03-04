@@ -11,6 +11,8 @@ class StoreDescrptnViewController: AlysieBaseViewC {
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblStoreName: UILabel!
+   
+    
     var storeDetails: MyStoreProductDetail?
     var storeProducts: [ProductSearchListModel]?
     var passStoreId: String?

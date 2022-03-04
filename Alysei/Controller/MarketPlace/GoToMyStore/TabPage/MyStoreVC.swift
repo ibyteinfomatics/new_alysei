@@ -26,6 +26,11 @@ class MyStoreVC: AlysieBaseViewC {
     @IBOutlet weak var lblStoreName: UILabel!
     @IBOutlet weak var vwheader: UIView!
     
+    @IBOutlet weak var lblDashboard: UILabel!
+    @IBOutlet weak var lblStore: UILabel!
+    @IBOutlet weak var lblProduct: UILabel!
+    @IBOutlet weak var lblInquiry: UILabel!
+    
     var userStoreName: String?
 
     override func viewDidLoad() {
@@ -35,6 +40,10 @@ class MyStoreVC: AlysieBaseViewC {
         //stackView.addSubview
         self.loadDashboard()
         selectDashboardUI()
+        lblDashboard.text = MarketPlaceConstant.kDashboard
+        lblStore.text = MarketPlaceConstant.kProduct
+        lblProduct.text = MarketPlaceConstant.kProduct
+        lblInquiry.text = MarketPlaceConstant.kInquiries
         let dashboardTap = UITapGestureRecognizer(target: self, action: #selector(loadDashboard))
         self.dashboardView.addGestureRecognizer(dashboardTap)
         

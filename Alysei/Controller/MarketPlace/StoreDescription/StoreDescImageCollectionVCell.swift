@@ -16,6 +16,7 @@ class StoreDescImageCollectionVCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imgStore.layer.cornerRadius = 10
+        lblNoImage.text = MarketPlaceConstant.kNoImage
         vwContainer.addShadow()
         vwContainer.addBorder()
     }

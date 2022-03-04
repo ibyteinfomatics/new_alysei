@@ -19,6 +19,8 @@ class ProductStoreVC: UIViewController {
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var blankView: UIView!
     @IBOutlet weak var vwSearchUnderLine: UIView!
+    @IBOutlet weak var lblNoStoreFound: UILabel!
+    @IBOutlet weak var lblTryAgain: UILabel!
         
     var indexOfPageToRequest = 1
     var listType: Int?
@@ -52,6 +54,8 @@ class ProductStoreVC: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblNoStoreFound.text = MarketPlaceConstant.kNoStoreFound
+        lblTryAgain.text = MarketPlaceConstant.kTryAgain
       //  vwSearch.isHidden =  true
         txtSearch.attributedPlaceholder = NSAttributedString(string: "Search",
                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])

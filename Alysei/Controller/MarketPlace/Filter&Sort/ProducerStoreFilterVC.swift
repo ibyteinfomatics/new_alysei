@@ -34,7 +34,10 @@ class ProducerStoreFilterVC: UIViewController {
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var subOptionTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
-  
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var btnApplyFilter: UIButton!
+    
     var selectedIndex = 0
     
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
@@ -88,6 +91,9 @@ class ProducerStoreFilterVC: UIViewController {
     //  var loadRating =
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
+        lblHeading.text = MarketPlaceConstant.kFilter
         setUI()
         // Do any additional setup after loading the view.
     }

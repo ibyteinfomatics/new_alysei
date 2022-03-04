@@ -9,9 +9,12 @@ import UIKit
 
 class StoreDescProductTableVCell: UITableViewCell {
     @IBOutlet weak var storeProductCollectionView: UICollectionView!
+    @IBOutlet weak var lblAllProduct: UILabel!
+    
     var storeProduct: [ProductSearchListModel]?
     var pushCallback: ((Int) -> Void)? = nil
     override func awakeFromNib() {
+        lblAllProduct.text = MarketPlaceConstant.kAllProducts
         super.awakeFromNib()
         // Initialization code
     }

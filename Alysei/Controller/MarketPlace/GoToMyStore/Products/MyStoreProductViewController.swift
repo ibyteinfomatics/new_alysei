@@ -79,6 +79,9 @@ class MyStoreProductViewController: AlysieBaseViewC, MyStoreProductDisplayLogic
   {
     super.viewDidLoad()
     doSomething()
+      lblMyProduct.text = MarketPlaceConstant.kMyProducts
+      lblAddProduct.setTitle(MarketPlaceConstant.kAddProduct, for: .normal)
+      lblAllProduct.text = MarketPlaceConstant.kAllProducts
     self.interactor?.callMyStoreProductApi()
   }
     
@@ -93,6 +96,10 @@ class MyStoreProductViewController: AlysieBaseViewC, MyStoreProductDisplayLogic
   //@IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var myTotalProducts: UILabel!
+    @IBOutlet weak var lblMyProduct:UILabel!
+    @IBOutlet weak var lblAddProduct:UIButton!
+    @IBOutlet weak var lblAllProduct:UILabel!
+    
     var productList: [MyStoreProductDetail]?
   
   func doSomething()

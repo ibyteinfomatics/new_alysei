@@ -395,6 +395,7 @@ class PostDescTableViewCell: UITableViewCell {
         //islike = data.likeFlag
         if modelData.attachmentCount == 0 {
             imagePostCollectionView.isHidden = true
+            
            // imageHeightCVConstant.constant = 0
 //            imagePostCollectionView.alpha = 0.0
         }else{

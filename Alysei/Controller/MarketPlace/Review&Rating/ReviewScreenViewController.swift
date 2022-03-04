@@ -11,7 +11,8 @@ class ReviewScreenViewController: AlysieBaseViewC {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnEditAdd : UIButton!
-    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
     var productStoreType: String?
     var productStoreId: String?
     var arrRatingReviewData: [RatingReviewModel]?
@@ -21,6 +22,8 @@ class ReviewScreenViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.drawBottomShadow()
+        lblTitle.text = MarketPlaceConstant.kAddReview
+        lblSubTitle.text = MarketPlaceConstant.kReviews
         callGetReviewApi()
         // Do any additional setup after loading the view.
     }

@@ -14,6 +14,7 @@ class AnalyticsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnReport: UIButton!
+    @IBOutlet weak var lblAnalytics: UILabel!
     var dataDropDown = DropDown()
     
     var analyticsArr = [MarketPlaceConstant.kTotalProduct,MarketPlaceConstant.kTotalEnquiry,MarketPlaceConstant.kTotalCategories,MarketPlaceConstant.kTotalReviews]
@@ -30,7 +31,8 @@ class AnalyticsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        btnReport.setTitle("Yearly", for: .normal)
+        lblAnalytics.text = MarketPlaceConstant.kAnalytics
+        btnReport.setTitle(MarketPlaceConstant.kYearly, for: .normal)
         // Initialization code
     }
 
