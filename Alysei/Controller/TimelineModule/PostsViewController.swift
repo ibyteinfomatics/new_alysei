@@ -407,7 +407,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                         var newWidth = 430
                         if ratio == 0.0 {
                             ratio = 1
-                            newWidth = 350
+                            newWidth = 550
                         }
                         newWidth = newWidth * Int(ratio)
                         

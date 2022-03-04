@@ -368,7 +368,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //        }
         if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
 //            showAlert(withMessage: "Please enter some post")
-            showAlert(withMessage: "Post can't be empty")
+            showAlert(withMessage: "Say Something...")
 
         }else{
         addPostApi()
