@@ -83,10 +83,10 @@ extension ViewAllTrendingViewController: UICollectionViewDelegate, UICollectionV
             
                 cell.recipeImageView.contentMode = .scaleAspectFill
                 cell.recipeName.text = arrayTrending?[indexPath.item].name
-                cell.likeLabel.text = "\(arrayTrending?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            cell.likeLabel.text = "\(arrayTrending?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kLikes
                 cell.userNameLabel.text = arrayTrending?[indexPath.item].userName
-                cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + "minutes"
-                cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + "Serving"
+            cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
+            cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
                 cell.typeLabel.text = arrayTrending?[indexPath.item].meal?.mealName
             
             if arrayTrending?[indexPath.row].isFavourite == 0{

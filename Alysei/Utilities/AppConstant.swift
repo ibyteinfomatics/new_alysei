@@ -999,7 +999,7 @@ struct RecipeConstants{
     static var kCravingTitle : String {  "What are you craving".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSearchRecipe : String {  "Search Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kExplore : String {  "Explore".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  fAvourite : String {  "Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kFavourite : String {  "Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kMyRecipe : String {  "My Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kMyPreference : String {  "My Preferences".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kViewAll : String {  "View All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1020,7 +1020,6 @@ struct RecipeConstants{
     static var  kPublish : String {  "Published".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNoRecipe : String {  "No recipe found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNotLikeRecipe : String {  "You have not liked any recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoIngridient : String {  "No Ingridient Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kNoMeal : String {  "No Meal Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kInternalServerEr : String {  "Internal Server Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kCookTime : String {  "Cook Time".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1032,7 +1031,7 @@ struct RecipeConstants{
     static var  kFilter : String {  "Filter".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kClearAll : String {  "Clear All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kViewResult : String {  "View Results".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-   
+    static var kSearchItalianRegion : String{ "Search Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     // MARK: Create Recipe Screen————
 

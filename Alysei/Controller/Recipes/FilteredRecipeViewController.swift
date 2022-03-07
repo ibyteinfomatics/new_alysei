@@ -179,23 +179,23 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
             cell.recipeImageView.contentMode = .scaleAspectFill
             
             if arrSearchRecipeDataModel?[indexPath.item].name == ""{
-                cell.recipeName.text = "NA"
+                cell.recipeName.text = RecipeConstants.kNA
             }
             else{
                 cell.recipeName.text = arrSearchRecipeDataModel?[indexPath.item].name
             }
-            cell.likeLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            cell.likeLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kHours
             
             if arrSearchRecipeDataModel?[indexPath.item].username == ""{
-                cell.userNameLabel.text = "NA"
+                cell.userNameLabel.text = RecipeConstants.kNA
             }
             else{
                 cell.userNameLabel.text = arrSearchRecipeDataModel?[indexPath.item].username
             }
             
-            cell.timeLabel.text = "\( arrSearchRecipeDataModel?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrSearchRecipeDataModel?[indexPath.item].minutes ?? 0)" + " " + "minutes"
-            cell.servingLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].serving ?? 0)" + " " + "Serving"
-            cell.typeLabel.text = arrSearchRecipeDataModel?[indexPath.item].meal ?? "NA"
+            cell.timeLabel.text = "\( arrSearchRecipeDataModel?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrSearchRecipeDataModel?[indexPath.item].minutes ?? 0)" + " " + RecipeConstants.kMinutes
+            cell.servingLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.typeLabel.text = arrSearchRecipeDataModel?[indexPath.item].meal ?? RecipeConstants.kNA
             
             if arrSearchRecipeDataModel?[indexPath.item].isFavourite == 0{
                 cell.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)

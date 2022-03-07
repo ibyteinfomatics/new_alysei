@@ -13,6 +13,12 @@ var recipeWalkthroughId = [String]()
 var arrayMyRecipe: [HomeTrending]? = []
 class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
+    @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var marketPlcLabel: UILabel!
+    @IBOutlet weak var recipeLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var createRecipeLbl: UILabel!
+    @IBOutlet weak var cravingLabel: UILabel!
     @IBOutlet weak var discoverRecipeView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchRecipe: UIView!
@@ -96,7 +102,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         discoverRecipeView.layer.shadowColor = UIColor.lightGray.cgColor
         discoverRecipeView.layer.shadowOffset = CGSize(width: 0 , height:2)
         searchRecipe.layer.cornerRadius = 5
-        searchTextField.attributedPlaceholder =  NSAttributedString(string:"Search recipes", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        searchTextField.attributedPlaceholder =  NSAttributedString(string: RecipeConstants.kSearchRecipe, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         let tapPost = UITapGestureRecognizer(target: self, action: #selector(openPost))
         self.tapPostVw.addGestureRecognizer(tapPost)
@@ -116,8 +122,8 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         containerTableVw.register(UINib(nibName: "MyRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "MyRecipeTableViewCell")
         containerTableVw.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesTableViewCell")
         
-        arrayHeader = ["Quick Search by Categories", "Quick Search by Ingridients", "Quick Search by Regions", "Trending Now", "Quick Easy"]
-        arrayCollection = ["Explore", "Favourite", "My Recipes", "My Preferences"]
+        arrayHeader = [RecipeConstants.kByIngredient, RecipeConstants.kByMeal, RecipeConstants.kByRegion, RecipeConstants.kTrendingNow, RecipeConstants.kQuickEasy]
+        arrayCollection = [RecipeConstants.kExplore, RecipeConstants.kFavourite, RecipeConstants.kMyRecipe, RecipeConstants.kMyPreference]
         
         self.containerTableVw.delegate = self
         self.containerTableVw.dataSource = self
@@ -226,7 +232,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
             self.navigationController?.pushViewController(createNewRecipeVC, animated: true)
         }
         else{
-            walknextBtn.setTitle("Next", for: .normal)
+            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             animate1View()
             setBottomUI()
         }
@@ -236,7 +242,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             vwwWalkContainer2.isHidden = false
             animate2View()
@@ -259,12 +265,12 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func nextAction(_ sender: UIButton){
         
         if nextWalkCount == 0 {
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
             animate2View()
         }else if nextWalkCount == 1 {
-            self.walknextBtn.setTitle("Done", for: .normal)
+            self.walknextBtn.setTitle(RecipeConstants.kDone, for: .normal)
             animateView3()
             nextWalkCount = 2
             
@@ -509,7 +515,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             switch indexPath.section{
             case 0:
                 
-                cell1.quickSearchLbl.text = "Quick Search By Ingridients"
+                cell1.quickSearchLbl.text = RecipeConstants.kByIngredient
                 cell1.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell1.delegate = self
                 cell1.post = true
@@ -523,7 +529,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 
             case 1:
                 
-                cell.quickSearchLbl.text = "Quick Search By Meal"
+                cell.quickSearchLbl.text = RecipeConstants.kByMeal
                 cell.quickSearchLbl?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell.delegate = self
                 cell.tapViewAll = { [self] in
@@ -536,7 +542,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 
             case 2:
                 
-                cell2.quickSearchByRegionLabel.text = "Search By Italian Region"
+                cell2.quickSearchByRegionLabel.text = RecipeConstants.kByRegion
                 cell2.quickSearchByRegionLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell2.delegate = self
                 cell2.tapViewAllRecipe = { [self] in
@@ -548,7 +554,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 return cell2
                 
             case 3:
-                cell3.quickSearchTrendingLabel.text = "Trending Now"
+                cell3.quickSearchTrendingLabel.text = RecipeConstants.kTrendingNow
                 cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell3.delegate = self
                 cell3.tapViewAllTrending = { [self] in
@@ -559,7 +565,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 }
                 return cell3
             case 4:
-                cellQuick.quickSearchTrendingLabel.text = "Quick Easy"
+                cellQuick.quickSearchTrendingLabel.text = RecipeConstants.kQuickEasy
                 cellQuick.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cellQuick.delegate = self
                 cellQuick.tapViewAllTrending = { [self] in
@@ -589,18 +595,18 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             
             cell4.recipeImageView.contentMode = .scaleAspectFill
             cell4.recipeName.text = arrayMyFavouriteRecipe?[indexPath.item].name
-            cell4.likeLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            cell4.likeLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kLikes
             
             if arrayMyFavouriteRecipe?[indexPath.item].userName == ""{
-                cell4.userNameLabel.text = "NA"
+                cell4.userNameLabel.text = RecipeConstants.kNA
             }
             else{
                 cell4.userNameLabel.text = arrayMyFavouriteRecipe?[indexPath.item].userName
             }
             
-            cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
-            cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
-            cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? "NA"
+            cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
+            cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
             
             cell4.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
             
@@ -699,25 +705,25 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             }
             cell5.recipeImageView.contentMode = .scaleAspectFill
             cell5.recipeName.text = arrayMyRecipe?[indexPath.item].name
-            cell5.likeLabel.text = "\(arrayMyRecipe?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            cell5.likeLabel.text = "\(arrayMyRecipe?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kLikes
             if arrayMyRecipe?[indexPath.item].status == "0"{
-                cell5.deaftButton.setTitle("Draft", for: .normal)
+                cell5.deaftButton.setTitle(RecipeConstants.kDraft, for: .normal)
                 cell5.deaftButton.layer.backgroundColor = UIColor.init(red: 114/255, green: 114/255, blue: 114/255, alpha: 1).cgColor
             }
             else{
-                cell5.deaftButton.setTitle("Published", for: .normal)
+                cell5.deaftButton.setTitle(RecipeConstants.kPublish, for: .normal)
                 cell5.deaftButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             }
             if arrayMyRecipe?[indexPath.item].userName == ""{
-                cell5.userNameLabel.text = "NA"
+                cell5.userNameLabel.text = RecipeConstants.kNA
             }
             else{
                 cell5.userNameLabel.text = arrayMyRecipe?[indexPath.item].userName
             }
             
-            cell5.timeLabel.text = "\( arrayMyRecipe?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayMyRecipe?[indexPath.item].minute ?? 0)" + " " + "minutes"
-            cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + "Serving"
-            cell5.typeLabel.text = arrayMyRecipe?[indexPath.item].meal?.mealName ?? "NA"
+            cell5.timeLabel.text = "\( arrayMyRecipe?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayMyRecipe?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
+            cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell5.typeLabel.text = arrayMyRecipe?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
             
             if arrayMyRecipe?[indexPath.row].isFavourite == 0{
                 cell5.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)
@@ -1032,7 +1038,7 @@ extension DiscoverRecipeViewController{
                     print("\(String(describing: arrayMyRecipe?.count))")
                 }
             case 409:
-                self.showAlert1(message: "No recipe found")
+                self.showAlert1(message: RecipeConstants.kNoRecipe)
             default:
                 break
                 
@@ -1062,7 +1068,7 @@ extension DiscoverRecipeViewController{
                 }
                 
             case 409:
-                self.showAlert1(message: "You have not liked any recipe")
+                self.showAlert1(message: RecipeConstants.kNotLikeRecipe)
                 
             default:
                 break
@@ -1199,8 +1205,8 @@ extension DiscoverRecipeViewController{
         self.vwwWalkContainer2.isHidden = true
         walkVwContainer1Img.image = UIImage(named: "Group 5296")
         walkVw1Img.image = UIImage(named: "undraw_cooking_lyxy")
-        walkVw1Title.text = "Create your Recipes"
-        walkVw1SubTitle.text = "Create your own recipes exploring and sharing the endless world of the Italian cuisine"
+        walkVw1Title.text = RecipeConstants.kWalk1Title
+        walkVw1SubTitle.text = RecipeConstants.kWalk1Subtitle
         
         pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
@@ -1233,8 +1239,8 @@ extension DiscoverRecipeViewController{
         self.vwwWalkContainer2.isHidden = true
         walkVwContainer1Img.image = UIImage(named: "Group 5298")
         walkVw1Img.image = UIImage(named: "Group 5299")
-        walkVw1Title.text = "Share your Recipe with others"
-        walkVw1SubTitle.text = "Once your recipe is created, you can share it so viewers can cook it, like it and rate it"
+        walkVw1Title.text = RecipeConstants.kWalk3Title
+        walkVw1SubTitle.text = RecipeConstants.kWalk3Subtitle
         
         pageControl1.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl2.layer.cornerRadius = self.pageControl2.frame.height / 2
@@ -1272,20 +1278,20 @@ extension DiscoverRecipeViewController{
         vwwWalkContainer2BgImg.image = UIImage(named: "Group 5297")
         self.walkSubView3Height.constant = 55
         walkView2Img.image = UIImage(named: "Group 21767")
-        walkView2Tilte.text = "Instructions to create a Recipe"
-        walkView2SubTitle.text = "Add Ingredients and Tools Used"
+        walkView2Tilte.text = RecipeConstants.kWalk2Title
+        walkView2SubTitle.text = RecipeConstants.kWalk2Subtitle
         
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
-        walkSubView1Title.text = "Add clear photos"
-        walkSubView1SubTitle.text = "Photos should have good resolution and lightning"
+        walkSubView1Title.text = RecipeConstants.kWalk2title1
+        walkSubView1SubTitle.text = RecipeConstants.kWalk2Subtitle1
         
         walkSubView2Img.image = UIImage(named: "icons8_industrial_scales_connected")
-        walkSubView2Title.text = "Add Ingredients and Kitchen Tools Used"
-        walkSubView2SubTitle.text = "Use accurate amount and unit for ingredients, select the right Kitchen Tools"
+        walkSubView2Title.text = RecipeConstants.kWalk2title2
+        walkSubView2SubTitle.text = RecipeConstants.kWalk2Subtitle2
         
         walkSubView3Img.image = UIImage(named: "icons8_stairs")
-        walkSubView3Title.text = "Divide your recipe in steps"
-        walkSubView3SubTitle.text = "You can divide our recipe in steps so that viewers can easily understand the procedure."
+        walkSubView3Title.text = RecipeConstants.kWalk2title3
+        walkSubView3SubTitle.text = RecipeConstants.kWalk2Subtitle3
         
         pageControl4.layer.cornerRadius = self.pageControl1.frame.height / 2
         pageControl5.layer.cornerRadius = self.pageControl2.frame.height / 2

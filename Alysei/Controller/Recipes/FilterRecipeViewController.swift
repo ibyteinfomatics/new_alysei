@@ -76,15 +76,15 @@ class FilterRecipeViewController: UIViewController {
         
         if isFrom == "Ingridients"{
             titlesCount = [[String](),[String](),[String](),[String](),[String]()]
-            filterNameArray = ["Cook Time","No. of Ingredients","Meal Type","Cuisines", "Ingridients"]
+            filterNameArray = [RecipeConstants.kCookTime,RecipeConstants.kNoOfIngredient,RecipeConstants.kMealType,RecipeConstants.kCuisine, RecipeConstants.kIngredient]
         }
         else if isFrom == "Meal"{
             titlesCount = [[String](),[String](),[String]()]
-            filterNameArray = ["Cook Time","No. of Ingredients","Cuisines"]
+            filterNameArray = [RecipeConstants.kCookTime,RecipeConstants.kNoOfIngredient,RecipeConstants.kCuisine]
         }
         else{
             titlesCount = [[String](),[String](),[String](),[String]()]
-            filterNameArray = ["Cook Time","No. of Ingredients","Meal Type","Cuisines"]
+            filterNameArray = [RecipeConstants.kCookTime,RecipeConstants.kNoOfIngredient,RecipeConstants.kMealType,RecipeConstants.kCuisine]
         }
         
         getMeal()

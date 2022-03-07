@@ -82,10 +82,10 @@ extension ViewAllQuickEasyViewController: UICollectionViewDelegate, UICollection
             
                 cell.recipeImageView.contentMode = .scaleAspectFill
                 cell.recipeName.text = arrayQuickEasy?[indexPath.item].name
-                cell.likeLabel.text = "\(arrayQuickEasy?[indexPath.item].totalLikes ?? 0)" + " " + "Likes"
+            cell.likeLabel.text = "\(arrayQuickEasy?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kLikes
                 cell.userNameLabel.text = arrayQuickEasy?[indexPath.item].userName
-                cell.timeLabel.text = "\( arrayQuickEasy?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( arrayQuickEasy?[indexPath.item].minute ?? 0)" + " " + "minutes"
-                cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + "Serving"
+            cell.timeLabel.text = "\( arrayQuickEasy?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayQuickEasy?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
+            cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
                 cell.typeLabel.text = arrayQuickEasy?[indexPath.item].meal?.mealName
             if arrayQuickEasy?[indexPath.row].isFavourite == 0{
                 cell.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)
