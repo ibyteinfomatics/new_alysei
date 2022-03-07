@@ -9,6 +9,7 @@ import UIKit
 
 class ViewAllRegionViewController: UIViewController {
 
+    @IBOutlet weak var italianRegionLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
@@ -20,7 +21,7 @@ class ViewAllRegionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        italianRegionLbl.text = RecipeConstants.kSearchItalianRegion
         // Register the xib for collection view cell
         let cellNib = UINib(nibName: "SearchByRegionCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "SearchByRegionCollectionViewCell")

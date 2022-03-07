@@ -88,11 +88,11 @@ class ViewAllViewController: UIViewController {
             case 409:
                 self.arraySearchByIngridient?.removeAll()
                 self.collectionView.reloadData()
-                self.showAlert(withMessage: "No Ingridient Found")
+                self.showAlert(withMessage: RecipeConstants.kNoIngredient)
             default:
                 self.arraySearchByIngridient?.removeAll()
                 self.collectionView.reloadData()
-                self.showAlert(withMessage: "Internal Server Error")
+                self.showAlert(withMessage: RecipeConstants.kInternalServerEr)
             }
         }
     }

@@ -88,11 +88,11 @@ class ViewAllMealViewController: UIViewController {
             case 409:
                 self.arraySearchByMeal?.removeAll()
                 self.collectionView.reloadData()
-                self.showAlert(withMessage: "No Meal Found")
+                self.showAlert(withMessage: RecipeConstants.kNoMeal)
             default:
                 self.arraySearchByMeal?.removeAll()
                 self.collectionView.reloadData()
-                self.showAlert(withMessage: "Internal Server Error")
+                self.showAlert(withMessage: RecipeConstants.kInternalServerEr)
             }
         }
     }
