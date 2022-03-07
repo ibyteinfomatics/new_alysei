@@ -113,7 +113,9 @@ class TravelAgencyViewController: AlysieBaseViewC {
     
     @IBAction func tapDecline(_ sender: UIButton) {
         
-        self.inviteApi(id: Int.getInt(self.connectionId), type: 2)
+       // self.inviteApi(id: Int.getInt(self.connectionId), type: 2)
+        let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
+        vc.connectionid = Int.getInt(self.connectionId)
     }
     
 

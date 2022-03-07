@@ -261,7 +261,10 @@ class NetworkViewC: AlysieBaseViewC {
             
             networkCTableCell.btnDeclineCallback = { tag in
                // self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
-                self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
+                //self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
+                
+                let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
+                vc.connectionid = self.arrConnection[indexPath.row].connectionID
                 
             }
             

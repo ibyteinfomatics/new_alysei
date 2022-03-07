@@ -7466,14 +7466,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7514,7 +7514,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7536,7 +7536,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7574,7 +7574,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -22023,6 +22023,118 @@ You will be notified for any membership status update.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raV-bB-1sb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3971" y="-3348"/>
+        </scene>
+        <!--Decline Request-->
+        <scene sceneID="5ff-65-h6d">
+            <objects>
+                <viewController storyboardIdentifier="DeclineRequest" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ers-WE-Rmx" customClass="DeclineRequest" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cyt-3i-HRO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GaU-6T-23i">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aj1-Aa-igH">
+                                        <rect key="frame" x="15" y="12" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="ToH-va-ewm"/>
+                                            <constraint firstAttribute="height" constant="40" id="Ubo-1J-xSk"/>
+                                        </constraints>
+                                        <state key="normal" image="back_black"/>
+                                        <connections>
+                                            <action selector="backbuttonTapped:" destination="ers-WE-Rmx" eventType="touchUpInside" id="P8w-Ag-0dH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decline Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fax-lu-UdC">
+                                        <rect key="frame" x="70" y="21" width="285" height="22"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" name="blackColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="C9n-Xd-5dI"/>
+                                    <constraint firstItem="fax-lu-UdC" firstAttribute="leading" secondItem="aj1-Aa-igH" secondAttribute="trailing" constant="15" id="H3z-9P-Hou"/>
+                                    <constraint firstItem="aj1-Aa-igH" firstAttribute="leading" secondItem="GaU-6T-23i" secondAttribute="leading" constant="15" id="ZNG-jo-PJA"/>
+                                    <constraint firstAttribute="trailing" secondItem="fax-lu-UdC" secondAttribute="trailing" constant="20" id="jy8-1O-S82"/>
+                                    <constraint firstItem="fax-lu-UdC" firstAttribute="centerY" secondItem="aj1-Aa-igH" secondAttribute="centerY" id="lQB-FO-6N6"/>
+                                    <constraint firstItem="aj1-Aa-igH" firstAttribute="centerY" secondItem="GaU-6T-23i" secondAttribute="centerY" id="t1B-uq-Se6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fP-ow-oBB">
+                                <rect key="frame" x="0.0" y="74" width="375" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="BXB-6e-jau"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason to decline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNI-k0-DTl">
+                                <rect key="frame" x="20" y="104" width="335" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k9A-cK-LLm">
+                                <rect key="frame" x="16" y="140" width="343" height="40"/>
+                                <color key="backgroundColor" name="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="36Q-Aa-6jh"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcZ-3W-7O4" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
+                                <rect key="frame" x="16" y="230" width="343" height="44"/>
+                                <color key="backgroundColor" name="keppelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Dou-3J-z4r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Decline">
+                                    <color key="titleColor" name="whiteColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirmButtonTapped:" destination="ers-WE-Rmx" eventType="touchUpInside" id="oLL-Cz-T8C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2MZ-0b-s2A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0fP-ow-oBB" firstAttribute="trailing" secondItem="GaU-6T-23i" secondAttribute="trailing" id="42T-uY-AAG"/>
+                            <constraint firstItem="GaU-6T-23i" firstAttribute="top" secondItem="2MZ-0b-s2A" secondAttribute="top" id="AmE-s5-R1g"/>
+                            <constraint firstItem="0fP-ow-oBB" firstAttribute="leading" secondItem="GaU-6T-23i" secondAttribute="leading" id="ESE-5E-1F7"/>
+                            <constraint firstItem="hcZ-3W-7O4" firstAttribute="leading" secondItem="2MZ-0b-s2A" secondAttribute="leading" constant="16" id="EvY-yP-PdF"/>
+                            <constraint firstItem="2MZ-0b-s2A" firstAttribute="trailing" secondItem="k9A-cK-LLm" secondAttribute="trailing" constant="16" id="Gao-0c-PAy"/>
+                            <constraint firstItem="0fP-ow-oBB" firstAttribute="top" secondItem="GaU-6T-23i" secondAttribute="bottom" constant="10" id="MAb-Ht-ivQ"/>
+                            <constraint firstItem="hcZ-3W-7O4" firstAttribute="top" secondItem="k9A-cK-LLm" secondAttribute="bottom" constant="50" id="NoK-8S-R8j"/>
+                            <constraint firstItem="2MZ-0b-s2A" firstAttribute="trailing" secondItem="MNI-k0-DTl" secondAttribute="trailing" constant="20" id="PY3-hT-nRz"/>
+                            <constraint firstItem="2MZ-0b-s2A" firstAttribute="trailing" secondItem="GaU-6T-23i" secondAttribute="trailing" id="Roc-do-oDi"/>
+                            <constraint firstItem="k9A-cK-LLm" firstAttribute="top" secondItem="MNI-k0-DTl" secondAttribute="bottom" constant="15" id="VKg-fd-MFi"/>
+                            <constraint firstItem="k9A-cK-LLm" firstAttribute="leading" secondItem="2MZ-0b-s2A" secondAttribute="leading" constant="16" id="hNg-PA-c4P"/>
+                            <constraint firstItem="MNI-k0-DTl" firstAttribute="leading" secondItem="2MZ-0b-s2A" secondAttribute="leading" constant="20" id="nJO-tn-z70"/>
+                            <constraint firstItem="MNI-k0-DTl" firstAttribute="top" secondItem="0fP-ow-oBB" secondAttribute="bottom" constant="30" id="op7-AZ-KWd"/>
+                            <constraint firstItem="GaU-6T-23i" firstAttribute="leading" secondItem="2MZ-0b-s2A" secondAttribute="leading" id="pd3-0Z-2FZ"/>
+                            <constraint firstItem="2MZ-0b-s2A" firstAttribute="trailing" secondItem="hcZ-3W-7O4" secondAttribute="trailing" constant="16" id="vrV-K5-w6J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xP3-EX-1LS"/>
+                    <connections>
+                        <outlet property="headerView" destination="GaU-6T-23i" id="JMA-KA-FN2"/>
+                        <outlet property="reasonToDecline" destination="k9A-cK-LLm" id="6Ff-Jz-aNN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7Z-qj-Zyn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3602" y="-774"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
