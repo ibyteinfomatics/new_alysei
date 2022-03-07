@@ -125,6 +125,7 @@ struct  AlertMessage{
     static let kRoleSelection          = "Please choose the role."
     static let kValidPassword          = "Your password should contain atleast 8 characters, 1 special character and 1 number."
     static let kEnterName = "Please Enter Name."
+    static let kDeclineMsg = "Please enter reason to decline"
     static let kSelectCookingSkill = "Please Select Cooking Skill."
     static let kSelectCousin = "Please select Cuisine."
     static let kSelectMeal = "Please select Meal."
