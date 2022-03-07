@@ -22027,7 +22027,7 @@ You will be notified for any membership status update.</string>
         <!--Decline Request-->
         <scene sceneID="5ff-65-h6d">
             <objects>
-                <viewController storyboardIdentifier="DeclineRequest" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ers-WE-Rmx" customClass="DeclineRequest" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeclineRequest" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ers-WE-Rmx" customClass="DeclineRequest" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cyt-3i-HRO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
