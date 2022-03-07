@@ -169,6 +169,7 @@
 		27E5694825BDC5E30028DEBF /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E5694725BDC5E30028DEBF /* BusinessModel.swift */; };
 		27E5694B25BDDDCB0028DEBF /* SelectedHubsViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E5694A25BDDDCB0028DEBF /* SelectedHubsViewC.swift */; };
 		27E5694E25BDDE070028DEBF /* SelectedHubsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E5694D25BDDE070028DEBF /* SelectedHubsCollectionCell.swift */; };
+		298FB13C27D6401D007D4FF5 /* DeclineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB13B27D6401D007D4FF5 /* DeclineRequest.swift */; };
 		610AF2502691BAFB007AD426 /* AboutViewCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF24F2691BAFB007AD426 /* AboutViewCCollectionViewCell.swift */; };
 		610AF2522691BB1D007AD426 /* AboutViewCTextOnlyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF2512691BB1D007AD426 /* AboutViewCTextOnlyCell.swift */; };
 		610AF2542691BB3C007AD426 /* AboutViewCTextSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF2532691BB3C007AD426 /* AboutViewCTextSwitchCell.swift */; };
@@ -854,6 +855,7 @@
 		27E5694725BDC5E30028DEBF /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		27E5694A25BDDDCB0028DEBF /* SelectedHubsViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedHubsViewC.swift; sourceTree = "<group>"; };
 		27E5694D25BDDE070028DEBF /* SelectedHubsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedHubsCollectionCell.swift; sourceTree = "<group>"; };
+		298FB13B27D6401D007D4FF5 /* DeclineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclineRequest.swift; sourceTree = "<group>"; };
 		405FAC16BE45020951752C66 /* Pods-Alysie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alysie.release.xcconfig"; path = "Target Support Files/Pods-Alysie/Pods-Alysie.release.xcconfig"; sourceTree = "<group>"; };
 		610AF24F2691BAFB007AD426 /* AboutViewCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCCollectionViewCell.swift; sourceTree = "<group>"; };
 		610AF2512691BB1D007AD426 /* AboutViewCTextOnlyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCTextOnlyCell.swift; sourceTree = "<group>"; };
@@ -2067,6 +2069,7 @@
 				277D189C25BEC8C3007CA5C7 /* NetworkCategoryCollectionCell.swift */,
 				C543C5E12714000800F14B07 /* NetworkConnectionTableViewCell.swift */,
 				27CC2D3225BEC44B00F4C005 /* NetworkTableCell.swift */,
+				298FB13B27D6401D007D4FF5 /* DeclineRequest.swift */,
 			);
 			path = NetworkModule;
 			sourceTree = "<group>";
@@ -3648,6 +3651,7 @@
 				27E5694825BDC5E30028DEBF /* BusinessModel.swift in Sources */,
 				27A443CA25AE03720002BAAC /* SharedClass.swift in Sources */,
 				C517236026E5E72D00CE7572 /* SelectCourseDataModel.swift in Sources */,
+				298FB13C27D6401D007D4FF5 /* DeclineRequest.swift in Sources */,
 				271662B125BD7A45000C0189 /* BusinessButtonTableCell.swift in Sources */,
 				274D90AD25B85D5D00C82A75 /* CompanyFirstTableCell.swift in Sources */,
 				C5D6F7E926B1829D006FFCDF /* ShowHubSelectionTableViewCell.swift in Sources */,
