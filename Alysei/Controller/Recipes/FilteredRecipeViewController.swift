@@ -19,6 +19,8 @@ class FilteredRecipeViewController: UIViewController {
     
     @IBOutlet weak var viewFilter: UIView!
     @IBOutlet weak var BlankView: UIView!
+    @IBOutlet weak var noRecipeLabel: UILabel!
+    @IBOutlet weak var FilterBtn: UIButton!
     var searchRecipeModel : SearchRecipeDataModel?
     var arrSearchRecipeDataModel: [DataRecipe]? = []
     var indexOfPageToRequest = 1
@@ -27,6 +29,11 @@ class FilteredRecipeViewController: UIViewController {
     var updatedText = String()
  
     override func viewWillAppear(_ animated: Bool) {
+        
+        searchRecipeTextField.placeholder = RecipeConstants.kSearchRecipe
+        noRecipeLabel.text = RecipeConstants.kNoRecipe
+        FilterBtn.setTitle(RecipeConstants.kFilter, for: .normal)
+        
         indexOfPageToRequest = 1
         if searching == true{
             

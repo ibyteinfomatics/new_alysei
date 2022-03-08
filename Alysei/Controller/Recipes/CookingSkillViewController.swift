@@ -31,7 +31,7 @@ class CookingSkillViewController: AlysieBaseViewC {
         
         cookingSkillLbl.text = RecipeConstants.kCkngSkill
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
         
         collectionView.delegate = self
         collectionView.dataSource = self

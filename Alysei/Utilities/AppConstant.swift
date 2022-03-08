@@ -203,7 +203,7 @@ enum CountryCityHubSelection {
 }
 
 struct APIUrl{
-    
+    static let kFaq                     = "get/faq"
     static let kSignUp                 =  "register"
     static let kForgotPassword         =  "forgot/password"
     static let kResetPassword          =  "reset/password"
@@ -1000,133 +1000,133 @@ struct RecipeConstants{
     static var kCravingTitle : String {  "What are you craving".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSearchRecipe : String {  "Search Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kExplore : String {  "Explore".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kFavourite : String {  "Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMyRecipe : String {  "My Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMyPreference : String {  "My Preferences".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kViewAll : String {  "View All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFavourite : String {  "Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMyRecipe : String {  "My Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMyPreference : String {  "My Preferences".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kViewAll : String {  "View All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kByIngredient : String {  "Quick Search By Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kByMeal : String {  "Quick Search By Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kByRegion : String {  "Search By Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kByMeal : String {  "Quick Search By Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kByRegion : String {  "Search By Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kTrendingNow : String {  "Trending Now".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kTrending : String {  "Trending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kQuickEasy : String {  "Quick Easy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kFavCuisine : String {  "Favourite Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kFoodAlrgy : String {  "Food Alergies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDiet : String {  "Diets".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kIngredient : String {   "Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kCkngSkill : String {  "Cooking Skill".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kLikes : String {  "Likes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNA : String {  "NA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDraft : String {  "Draft".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTrending : String {  "Trending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kQuickEasy : String {  "Quick Easy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFavCuisine : String {  "Favourite Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFoodAlrgy : String {  "Food Alergies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDiet : String {  "Diets".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kIngredient : String {   "Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCkngSkill : String {  "Cooking Skill".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLikes : String {  "Likes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNA : String {  "NA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDraft : String {  "Draft".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kPublish : String {  "Published".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoRecipe : String {  "No recipe found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNotLikeRecipe : String {  "You have not liked any recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoMeal : String {  "No Meal Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kInternalServerEr : String {  "Internal Server Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kCookTime : String {  "Cook Time".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoOfIngredient : String {  "No. of Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMealType : String {  "Meal Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kCuisine : String {  "Cuisines".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMeal : String {  "Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kIngridients : String {  "Ingridients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kFilter : String {  "Filter".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kClearAll : String {  "Clear All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kViewResult : String {  "View Results".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoRecipe : String {  "No recipe found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNotLikeRecipe : String {  "You have not liked any recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoMeal : String {  "No Meal Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kInternalServerEr : String {  "Internal Server Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCookTime : String {  "Cook Time".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoOfIngredient : String {  "No. of Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMealType : String {  "Meal Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCuisine : String {  "Cuisines".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMeal : String {  "Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kIngridients : String {  "Ingridients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFilter : String {  "Filter".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClearAll : String {  "Clear All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kViewResult : String {  "View Results".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSearchItalianRegion : String{ "Search Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     // MARK: Create Recipe Screen————
 
     //Walkthrough——
     static var kNext : String {  "Next".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDone : String {  "Done".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk1Title : String {  "Create your Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk1Subtitle : String {  "Create your own recipes exploring and sharing the endless world of the Italian cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2Title : String {  "Instruction to create a Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2Subtitle : String {  "Add Ingredients and Tools Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2title1 : String {  "Add clear photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2Subtitle1 : String {  "Photos should have good resolution and lightning".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2title2 : String {  "Add Ingredients and Kitchen Tools Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2Subtitle2 : String {  "Use accurate amount and unit for ingredients, select the right Kitchen Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2title3 : String {  "Divide your recipe in steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk2Subtitle3 : String {  "You can divide our recipe in steps so that viewers can easily understand the procedure".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk3Title : String {  "Share your Recipe with others".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kWalk3Subtitle : String {  "Once your recipe is created, you can share it so viewers can cook it, like it and rate it".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDone : String {  "Done".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk1Title : String {  "Create your Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk1Subtitle : String {  "Create your own recipes exploring and sharing the endless world of the Italian cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2Title : String {  "Instruction to create a Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2Subtitle : String {  "Add Ingredients and Tools Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2title1 : String {  "Add clear photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2Subtitle1 : String {  "Photos should have good resolution and lightning".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2title2 : String {  "Add Ingredients and Kitchen Tools Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2Subtitle2 : String {  "Use accurate amount and unit for ingredients, select the right Kitchen Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2title3 : String {  "Divide your recipe in steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk2Subtitle3 : String {  "You can divide our recipe in steps so that viewers can easily understand the procedure".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk3Title : String {  "Share your Recipe with others".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWalk3Subtitle : String {  "Once your recipe is created, you can share it so viewers can cook it, like it and rate it".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //CreateNewRecipe——
-    static var  kCreateNwRecipe : String {  "Create New Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kUploadImg : String {  "Upload Recipe Image".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kClickHere : String {  "Click here to upload recipe photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kImages : String {  "Images".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPNG : String {  "PNG, JPG".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kResolution : String {  "Resolution".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kUpto : String {  "Upto 1600x1600".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kName : String {  "Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kRecipeName : String {  "Recipe Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectCookingSkil : String {  "Select Cooking Skill".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectCuisine : String {  "Select Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectMeal : String {  "Select Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectCourse : String {  "Select Course".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectDiet : String {  "Select Diet".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectFoodIntolerance : String {  "Select Food Intolerance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreparationTime : String {  "Preparation Time".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kHours : String {  "Hours".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMinutes : String {  "Minutes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kServing : String {  "Serving".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kForHowMuch : String {  "For how much people you are cooking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSelectRegion : String {  "Select Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kCancel : String {  "Cancel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNone : String {  "None".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddIngridient : String {  "Add Ingredients in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSearchIngredients : String {  "Search Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAdd : String {  "Add".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kItems : String {  "Items".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSaveAndProceed : String {  "Save & Proceed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kQuantity : String {  "Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kUnit : String {  "Unit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kEnterQuantity : String {  "Enter Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddtoList : String {  "Add to List".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kKg : String {  "kg".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kLitre : String {  "litre".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPieces : String {  "pieces".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDozen : String {  "dozen".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  km : String {  "gm".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kMl : String {  "ml".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSpoon : String {  "spoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDrops : String {  "drops".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddTools : String {  "Add Tools in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSearchTools : String {  "Search Appliance, Utensils & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddStepsRecipe : String {  "Add Steps in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kStep : String {  "Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kEnterTitleStep : String {  "Enter Title for Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kRecipeDirection : String {  "Your recipe direction text here...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kIngridientUsed : String {  "Ingridients Used in Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kToolUsed : String {  "Tools Used in Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddStep : String {  "Add Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSaveRecipeHeader : String {  "Recipe Ingredients and Tools used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kUtensils : String {  "Utensils, Appliances & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kRecipeSteps : String {  "Recipe Steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoIngredientAdded : String {  "No Ingridients Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoToolAdded : String {  "No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoStepAdded : String {  "No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSaveRecipe : String {  "Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSave : String {  "Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kEditRecipe : String {  "Edit Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoTools : String {  "No Tools found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kNoIngredient : String {  "No Ingredients found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDiscardAlert : String {  "Are you sure you want to discard your recipe ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSaveInDraft : String {  "Save in Draft".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kDiscard : String {  "Discard".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateNwRecipe : String {  "Create New Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadImg : String {  "Upload Recipe Image".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClickHere : String {  "Click here to upload recipe photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImages : String {  "Images".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPNG : String {  "PNG, JPG".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kResolution : String {  "Resolution".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUpto : String {  "Upto 1600x1600".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kName : String {  "Name *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRecipeName : String {  "Recipe Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCookingSkil : String {  "Select Cooking Skill *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCuisine : String {  "Select Cuisine *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectMeal : String {  "Select Meal *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCourse : String {  "Select Course *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectDiet : String {  "Select Diet".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectFoodIntolerance : String {  "Select Food Intolerance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreparationTime : String {  "Preparation Time *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHours : String {  "Hours".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMinutes : String {  "Minutes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kServing : String {  "Serving *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kForHowMuch : String {  "For how much people you are cooking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectRegion : String {  "Select Region *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCancel : String {  "Cancel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNone : String {  "None".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddIngridient : String {  "Add Ingredients in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchIngredients : String {  "Search Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAdd : String {  "Add".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kItems : String {  "Items".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaveAndProceed : String {  "Save & Proceed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kQuantity : String {  "Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUnit : String {  "Unit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterQuantity : String {  "Enter Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddtoList : String {  "Add to List".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kKg : String {  "kg".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLitre : String {  "litre".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPieces : String {  "pieces".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDozen : String {  "dozen".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kgm : String {  "gm".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMl : String {  "ml".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpoon : String {  "spoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDrops : String {  "drops".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddTools : String {  "Add Tools in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchTools : String {  "Search Appliance, Utensils & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddStepsRecipe : String {  "Add Steps in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kStep : String {  "Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterTitleStep : String {  "Enter Title for Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRecipeDirection : String {  "Your recipe direction text here...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kIngridientUsed : String {  "Ingridients Used in Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kToolUsed : String {  "Tools Used in Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddStep : String {  "Add Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaveRecipeHeader : String {  "Recipe Ingredients and Tools used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUtensils : String {  "Utensils, Appliances & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRecipeSteps : String {  "Recipe Steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoIngredientAdded : String {  "No Ingridients Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoToolAdded : String {  "No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoStepAdded : String {  "No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaveRecipe : String {  "Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSave : String {  "Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEditRecipe : String {  "Edit Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoTools : String {  "No Tools found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoIngredient : String {  "No Ingredients found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDiscardAlert : String {  "Are you sure you want to discard your recipe ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaveInDraft : String {  "Save in Draft".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDiscard : String {  "Discard".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     // MARK: Recipe Preference————
     
-    static var  kPreference1 : String {  "What is your favourite \n Cuisines?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference2 : String {  "Do you have any food \n allergies?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference3 : String {  "Do you have follow these \n diets?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kPreference4 : String {  "Don't  want to see \n ingredients?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kBack : String {  "Back".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSkip : String {  "Skip".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kSearchOtherIngredient : String {  "Search Other Ingridients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var  kAddOtherIngredient : String {  "Add other ingredients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreference1 : String {  "What is your favourite \n Cuisines?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreference2 : String {  "Do you have any food \n allergies?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreference3 : String {  "Do you have follow these \n diets?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreference4 : String {  "Don't  want to see \n ingredients?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBack : String {  "Back".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSkip : String {  "Skip".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchOtherIngredient : String {  "Search Other Ingridients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddOtherIngredient : String {  "Add other ingredients to exclude".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
     
     // MARK: View Recipe ————

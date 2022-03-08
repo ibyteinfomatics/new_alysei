@@ -17,6 +17,8 @@ class ExploreByMealTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var viewAllBtn: UIButton!
     
     var delegate: SearchRecipeDelegate?
     var tapViewAll:(()->())?
@@ -24,6 +26,9 @@ class ExploreByMealTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        viewAllBtn.setTitle(RecipeConstants.kViewAll, for: .normal)
+        headerLabel.text = RecipeConstants.kByMeal
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
         self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
         collectionVw.collectionViewLayout.invalidateLayout()

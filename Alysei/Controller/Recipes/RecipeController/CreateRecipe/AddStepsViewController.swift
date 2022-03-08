@@ -78,7 +78,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             arrayIngridients = dataModel.ingridentsArray ?? []
             arraytools =  dataModel.toolsArray ?? []
             
-            if cell.desciptionTextView.text != "Your recipe direction text here..."{
+            if cell.desciptionTextView.text != RecipeConstants.kRecipeDirection {
                 cell.desciptionTextView.textColor = UIColor.black
             }
             else{
@@ -112,7 +112,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             showAlert(withMessage: AlertMessage.kEnterTitle)
             return
         }
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == RecipeConstants.kRecipeDirection {
             showAlert(withMessage: AlertMessage.kEnterDescription)
             return
         }
@@ -211,7 +211,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             
         }
         
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == RecipeConstants.kRecipeDirection {
             
             showAlert(withMessage: AlertMessage.kEnterDescription)
             
@@ -362,9 +362,9 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell.titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
             
             
-            stepNumber = "Step \(page)"
+            stepNumber = RecipeConstants.kStep + "" + "\(page)"
 //            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
-            let str = NSAttributedString(string: "Enter Title for Step \(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            let str = NSAttributedString(string: RecipeConstants.kEnterTitleStep + "" + "\(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             cell.titleTextField.attributedPlaceholder = str
             //            cell.desciptionTextView.text = "Your recipe direction text here..."
             cell.step1Label.text = stepNumber

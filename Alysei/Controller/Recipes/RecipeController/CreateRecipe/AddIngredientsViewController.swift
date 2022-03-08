@@ -11,6 +11,7 @@ import Foundation
 var selectedIngridentsArray: [IngridentArray] = []
 
 class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCellProtocol {
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var addIngredientsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -69,9 +70,11 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        headerLabel.text = RecipeConstants.kAddIngridient
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
         addIngridientsTableView.reloadData()
-        self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
-        if self.quantityLabel.text == "0 Items"{
+        self.quantityLabel.text = "\(selectedIngridentsArray.count)" + "" + RecipeConstants.kItems
+        if self.quantityLabel.text == "0" + "" + RecipeConstants.kItems {
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
         else{
@@ -90,7 +93,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         picker1.dataSource = self
         self.addNewMissingIngridientBtn.isHidden = true
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops]
         setupUI()
         searchIngridientTextField.delegate = self
         searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true
@@ -136,7 +139,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         itemsButton.layer.borderWidth = 1
         itemsButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         itemsButton.layer.cornerRadius = 5
-        quantityLabel.text = "0 Items"
+        quantityLabel.text = "0" + "" + RecipeConstants.kItems
         
     }
     
@@ -169,11 +172,11 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         
         
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
         self.view.addSubview(toolBar)
@@ -222,7 +225,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
             self.addIndridentPopupView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
-        else if self.unitLabel.text == "Unit"{
+        else if self.unitLabel.text == RecipeConstants.kUnit{
             showAlert(withMessage: AlertMessage.kselectUnit)
             self.addIndridentPopupView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
@@ -257,7 +260,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
                 addDatainStep(data: data)
             }
             
-            self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
+            self.quantityLabel.text = "\(selectedIngridentsArray.count)" + "" + RecipeConstants.kItems
             self.addIngridientsTableView.reloadData()
         }
     }
@@ -276,7 +279,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         
     }
     @IBAction func saveAndProceedButton(_ sender: UIButton) {
-        if quantityLabel.text != "0 Items"{
+        if quantityLabel.text != "0" + "" + RecipeConstants.kItems{
             let addtools =  self.storyboard?.instantiateViewController(withIdentifier: "AddToolsViewController") as! AddToolsViewController
             self.searchIngridientTextField.text = ""
             searching = false
@@ -497,16 +500,16 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
             }
             
 //           arrayPickerData.remove(at: indexPath.row)
-            self.quantityLabel.text = "\(selectedIngridentsArray.count) Items"
+            self.quantityLabel.text = "\(selectedIngridentsArray.count)" + "" + RecipeConstants.kItems
             
-            if  self.quantityLabel.text == "0 Items" {
+            if  self.quantityLabel.text == "0" + "" + RecipeConstants.kItems {
                 self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
             }
             self.addIngridientsTableView.reloadData()
         }
         else {
             quantityTextField.text = ""
-            unitLabel.text = "Unit"
+            unitLabel.text = RecipeConstants.kUnit
             self.addIndridentPopupView.isHidden = false
             self.labelIngridientTitle.text = data.ingridientTitle
             

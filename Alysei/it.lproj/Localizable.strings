@@ -88,7 +88,6 @@
 "Website" = "Website";
 "Store Region" = "Store Region";
 "Location" = "Location";
-"Next" = "Next";
 "Exceed Maximum Number Of Selection" = "Exceed Maximum Number Of Selection";
 "Ok" = "Ok";
 "Please upload profile picture." = "Please upload profile picture.";
@@ -191,7 +190,7 @@
 "Make sure that all photos that you upload are in high quality" = "Make sure that all photos that you upload are in high quality";
 "Let us know if something does not feel right" = "Tienici informati per qualsiasi situazione poco chiara";
 "Make sure all the information you provide are accurate and completed" = "Make sure all the information you provide are accurate and completed";
-"Done" = "Done";
+"Done" = "Fatto";
 
 //MARK: Marketplace Create Store Walthrough
 "Start promoting your products" = "Start promoting your products";
@@ -420,7 +419,7 @@
 
 "Hotel/Restaurant/Café" = "Hotel/Restaurant/Café";
 "Horeca" = "Horeca";
-"  Private Label" = "Private Label";
+"Private Label" = "Private Label";
 "Sell your products under the retailer name" = "Vendi i tuoi prodotti sotto il marchio del tuo acquirente";
 "Alysei Brand Label" = "Etichetta/Marchio Alysei";
 "Provide Pick Up and And/Or Delivery" = "Provide Pick Up and And/Or Delivery";
@@ -433,7 +432,7 @@
 
 //MARK: RECIPE HOME SCREEN
 
-"Recipe" = "Ricette";
+//"Recipe" = "Ricette";
 "Create Recipe" = "Crea la tua Ricetta";
 "What are you craving" = "Cosa brami";
 "Search Recipe" = "Ricerca Ricette";
@@ -471,12 +470,12 @@
 "Filter" = "Filtra";
 "Clear All" = "Elimina Tutto";
 "View Results" = "Vedi i risultati";
-"Search Italian Region" = "Ricerca Regioni Italiane"
+"Search Italian Region" = "Ricerca Regioni Italiane";
 
 //MARK:  CREATE RECIPE WALKTHROUGH
 
-"Next"  "Avanti";
-"Done" = "Fatto";
+//"Next"  "Avanti";
+//"Done" = "Fatto";
 "Create your Recipe" = "Crea la tua Ricetta";
 "Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Crea le tue ricette esplorando e condividendo le ricchezze della nostra cucina italiana";
 "Instruction to create a Recipe" = "Istruzioni per creare una ricetta";
@@ -499,20 +498,20 @@
 "PNG, JPG" = "PNG, JPG";
 "Resolution" = "Risoluzione";
 "Upto 1600x1600" =  "Fino a/Massimo 1600x1600";
-"Name" = "Nome";
+"Name *" = "Nome *";
 "Recipe Name" = "Nome Ricetta";
-"Select Cooking Skill" = "Abilità in Cucina";
-"Select Cuisine" = "Seleziona la Cucina";
-"Select Meal" =  "Seleziona la Pietanza";
-"Select Course" =  "Seleziona la Portata";
+"Select Cooking Skill *" = "Abilità in Cucina *";
+"Select Cuisine *" = "Seleziona la Cucina 8";
+"Select Meal *" =  "Seleziona la Pietanza *";
+"Select Course *" =  "Seleziona la Portata *";
 "Select Diet" = "Seleziona la Dieta";
 "Select Food Intolerance" = "Seleziona Intolleranze Alimentari";
-"Preparation Time" = "Tempo di preparazione";
+"Preparation Time *" = "Tempo di preparazione *";
 "Hours" = "Ore";
 "Minutes" =  "Minuti";
-"Serving" = "Portate/Dosi";
+"Serving *" = "Portate/Dosi *";
 "For how much people you are cooking" = "(Dosi) Per quante persone";
-"Select Region" = "Seleziona la Regione";
+"Select Region *" = "Seleziona la Regione *";
 "Cancel" = "Elimina/Cancella";
 "None" = "Nessuna";
 "Add Ingredients in Recipe" = "Aggiungi Ingredienti alla Ricetta";

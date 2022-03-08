@@ -12,6 +12,7 @@ var selectedToolsArray : [ToolsArray] = []
 var arraySelectedItemTools: [IndexPath] = []
 
 class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
+    @IBOutlet weak var toolHeaderLabel: UILabel!
     @IBOutlet weak var addToolsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -65,8 +66,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         super.viewWillAppear(animated)
         
         addToolsTableView.reloadData()
-        self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
-        if self.addedToolQuantityLabel.text == "0 Items"{
+        self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + "" + RecipeConstants.kItems
+        if self.addedToolQuantityLabel.text == "0" + "" + RecipeConstants.kItems{
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
         else{
@@ -86,7 +87,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         searchToolTextField.delegate = self
         searchToolTextField.autocorrectionType = .no
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter"]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops]
         self.addNewMissingToolBtn.isHidden = true
         setUI()
         setupUI()
@@ -102,6 +103,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         self.addMissingToolTableView.delegate = self
         self.addMissingToolTableView.dataSource = self
         
+        searchToolTextField.placeholder = RecipeConstants.kSearchTools
+        toolHeaderLabel.text = RecipeConstants.kAddTools
     }
     
     override func viewWillLayoutSubviews() {
@@ -137,7 +140,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         addedToolItemButton.layer.borderWidth = 1
         addedToolItemButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         addedToolItemButton.layer.cornerRadius = 5
-        addedToolQuantityLabel.text = "0 Items"
+        addedToolQuantityLabel.text = "0" + "" + RecipeConstants.kItems
         
     }
     
@@ -158,11 +161,11 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         
         
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
         self.view.addSubview(toolBar)
@@ -221,7 +224,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        if addedToolQuantityLabel.text != "0 Items" {
+        if addedToolQuantityLabel.text != "0" + "" + RecipeConstants.kItems {
             let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
             if  arrayStepFinalData.count == 0 {
             var ingridentsArray : [IngridentArray] = []
@@ -539,9 +542,9 @@ extension AddToolsViewController: UITableViewDelegate
                 selectedToolsArray.remove(at: index)
                 removeDatainStep(data: data)
             }
-            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
+            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + RecipeConstants.kItems
             
-            if  self.addedToolQuantityLabel.text == "0 Items"{
+            if  self.addedToolQuantityLabel.text == "0" + "" + RecipeConstants.kItems {
                 self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
                 
             }
@@ -561,7 +564,7 @@ extension AddToolsViewController: UITableViewDelegate
             addDatainStep(data: data)
 
             
-            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count) Items"
+            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + RecipeConstants.kItems
             self.saveButton.layer.backgroundColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha:1).cgColor
             self.addToolsTableView.reloadData()
             
@@ -679,7 +682,7 @@ extension AddToolsViewController{
             case 409:
                 self.newSearchModel = [AddToolsDataModel]()
                 self.toolSearchModel = [ToolsArray]()
-                self.showAlert(withMessage: "No Tools found")
+                self.showAlert(withMessage: RecipeConstants.kNoTools)
             
             default:
               break

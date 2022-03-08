@@ -28,7 +28,7 @@ class FollowDietsViewController: AlysieBaseViewC {
         
         followDietLabel.text = RecipeConstants.kPreference3
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
         skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")

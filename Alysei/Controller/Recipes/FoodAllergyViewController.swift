@@ -28,7 +28,7 @@ class FoodAllergyViewController: AlysieBaseViewC {
         
         foodAllergyLabel.text = RecipeConstants.kPreference2
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
         btnSkip.setTitle(RecipeConstants.kSkip, for: .normal)
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: nil ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")

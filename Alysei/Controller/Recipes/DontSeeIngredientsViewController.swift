@@ -49,7 +49,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         seeIngredientLabel.text = RecipeConstants.kPreference4
         addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
         skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
         
         scrollView.isScrollEnabled = false

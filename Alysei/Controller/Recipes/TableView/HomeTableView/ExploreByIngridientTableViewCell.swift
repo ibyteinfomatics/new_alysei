@@ -24,7 +24,9 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var headerView: UIView!
    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-   
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var viewallBtn: UIButton!
+    
     var delegate: SearchRecipeDelegate?
     var tapViewAll:(()->())?
     let gradientLayer = CAGradientLayer()
@@ -37,6 +39,8 @@ class ExploreByIngridientTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewallBtn.setTitle(RecipeConstants.kViewAll, for: .normal)
+        headerLabel.text = RecipeConstants.kByIngredient
         let cellNib = UINib(nibName: "ExploreCollectionViewCell", bundle: nil)
         self.collectionVw.register(cellNib, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
         collectionVw.collectionViewLayout.invalidateLayout()

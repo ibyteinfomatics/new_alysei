@@ -82,7 +82,6 @@
 "Website" = "Website";
 "Store Region" = "Store Region";
 "Location" = "Location";
-"Next" = "Next";
 "Exceed Maximum Number Of Selection" = "Exceed Maximum Number Of Selection";
 "Ok" = "Ok";
 "Please upload profile picture." = "Please upload profile picture.";
@@ -428,7 +427,7 @@
 
 //MARK: RECIPE HOME SCREEN
 
-"Recipe" = "Recipe";
+//"Recipe" = "Recipe";
 "Create Recipe" = "Create Recipe";
 "What are you craving" = "What are you craving";
 "Search Recipe" = "Search Recipe";
@@ -466,12 +465,12 @@
 "Filter" = "Filter";
 "Clear All" = "Clear All";
 "View Results" = "View Results";
-"Search Italian Region" = "Search Italian Region"
+"Search Italian Region" = "Search Italian Region";
 
 //MARK:  CREATE RECIPE WALKTHROUGH
 
-"Next"  "Next";
-"Done" = "Done";
+//"Next"  "Next";
+//"Done" = "Done";
 "Create your Recipe" = "Create your Recipe";
 "Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Create your own recipes exploring and sharing the endless world of the Italian cuisine";
 "Instruction to create a Recipe" = "Instruction to create a Recipe";
@@ -494,20 +493,20 @@
 "PNG, JPG" = "PNG, JPG";
 "Resolution" = "Resolution";
 "Upto 1600x1600" =  "Upto 1600x1600";
-"Name" = "Name";
+"Name *" = "Name *";
 "Recipe Name" = "Recipe Name";
-"Select Cooking Skill" = "Select Cooking Skill";
-"Select Cuisine" = "Select Cuisine";
-"Select Meal" =  "Select Meal";
-"Select Course" =  "Select Course";
+"Select Cooking Skill *" = "Select Cooking Skill *";
+"Select Cuisine *" = "Select Cuisine *";
+"Select Meal *" =  "Select Meal *";
+"Select Course *" =  "Select Course *";
 "Select Diet" = "Select Diet";
 "Select Food Intolerance" = "Select Food Intolerance";
-"Preparation Time" = "Preparation Time";
+"Preparation Time *" = "Preparation Time *";
 "Hours" = "Hours";
 "Minutes" =  "Minutes";
-"Serving" = "Serving";
+"Serving *" = "Serving *";
 "For how much people you are cooking" = "For how much people you are cooking";
-"Select Region" = "Select Region";
+"Select Region *" = "Select Region *";
 "Cancel" = "Cancel";
 "None" = "None";
 "Add Ingredients in Recipe" = "Add Ingredients in Recipe";

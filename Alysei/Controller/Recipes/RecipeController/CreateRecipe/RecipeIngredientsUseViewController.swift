@@ -43,7 +43,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     
-    var header = ["Ingredients","Utencils,Appliances & Tools","Recipe Steps"]
+    var header = [RecipeConstants.kIngredient, RecipeConstants.kUtensils,RecipeConstants.kRecipeSteps]
 
     var toolBar = UIToolbar()
     var picker1  = UIPickerView()
@@ -81,7 +81,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         picker1.dataSource = self
         
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-         arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kSpoon]
        
         
         if arrayStepFinalData.count == 0 {
@@ -177,11 +177,11 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
         
        
     
-       let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     
-       let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
 
         self.view.addSubview(toolBar)
@@ -287,7 +287,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             self.addEditPopUpView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
-        else if self.editunitLabel.text == "Unit"{
+        else if self.editunitLabel.text == RecipeConstants.kUnit{
             showAlert(withMessage: AlertMessage.kselectUnit)
             self.addEditPopUpView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
@@ -466,8 +466,8 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel)
-            statusLabel.text = "  No Ingridients Added yet!"
-            dunamicButton.setTitle("  Add Ingredients in Recipe", for: UIControl.State.normal)
+            statusLabel.text = RecipeConstants.kNoIngredientAdded
+            dunamicButton.setTitle( RecipeConstants.kAddIngridient, for: UIControl.State.normal)
             dunamicButton.addTarget(self, action: #selector(addExtraIngridients(sender:)), for: .touchUpInside)
             if selectedIngridentsArray.count == 0{
                 statusLabel.isHidden = false
@@ -491,8 +491,8 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel1.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel1.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel1)
-            statusLabel1.text = "  No Tools Added yet!"
-            dunamicButton.setTitle("  Add Tools in Recipe", for: UIControl.State.normal)
+            statusLabel1.text =  RecipeConstants.kNoToolAdded
+            dunamicButton.setTitle( RecipeConstants.kAddTools, for: UIControl.State.normal)
             dunamicButton.addTarget(self, action: #selector(addExtraTools(sender:)), for: .touchUpInside)
             if selectedToolsArray.count == 0{
                 statusLabel1.isHidden = false
@@ -577,7 +577,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             strTitle = arrayStepFinalData[indexPath.row].title ?? ""
             strDescription = arrayStepFinalData[indexPath.row].description
             cell2.titleLabel.text = strTitle
-            cell2.stepTitle.text = "Step \(indexPath.row + 1)"
+            cell2.stepTitle.text = RecipeConstants.kStep + "(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
             cell2.indexPath = indexPath
             return cell2

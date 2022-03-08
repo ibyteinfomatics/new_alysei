@@ -3543,7 +3543,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearAllBtn" destination="Kdj-kr-caO" id="T0R-Dr-ru0"/>
                         <outlet property="collectionView" destination="xpd-qx-eZZ" id="Oh4-JZ-nDi"/>
+                        <outlet property="filterLabel" destination="wbH-YN-tF2" id="N3m-SO-jwj"/>
                         <outlet property="footerView" destination="l4W-xg-0lq" id="nVY-bc-GlE"/>
                         <outlet property="headerView" destination="Zhv-5n-TBX" id="Xvt-xb-dxB"/>
                         <outlet property="nextButton" destination="HgF-VJ-phI" id="UPW-AP-lJ6"/>
@@ -8666,34 +8668,52 @@
                         <outlet property="cookingSkillLabel" destination="pXh-Xp-iJj" id="bCg-oA-UkW"/>
                         <outlet property="courseNameLabel" destination="WSb-sx-xWK" id="6vY-mu-IqD"/>
                         <outlet property="createNewRecipeView" destination="eJG-yH-dl2" id="m1f-zi-ksA"/>
+                        <outlet property="createNwRecipeLbl" destination="KIQ-Wr-MH6" id="Gfj-Dy-WCK"/>
                         <outlet property="cuisineLabel" destination="oNs-0R-xQd" id="VkW-8Q-IbH"/>
                         <outlet property="dietLabel" destination="gXo-Lq-0nv" id="cOz-Z7-zP0"/>
                         <outlet property="foodIntoleranceLabel" destination="dtj-g5-eRE" id="elG-7N-brZ"/>
+                        <outlet property="forHowMuchPeopleLabel" destination="6h4-Ec-y3h" id="5N1-Cf-b05"/>
+                        <outlet property="hoursLabel" destination="9Fz-GJ-0Cd" id="ItW-oZ-Sxn"/>
                         <outlet property="hoursLable" destination="8IC-mR-Rsb" id="WPz-Jt-YBq"/>
                         <outlet property="howMuchPeopleLable" destination="1nX-PY-rQu" id="KYB-RD-5ke"/>
+                        <outlet property="imagesLabel" destination="VbS-J5-Lb1" id="bqc-2Y-SRd"/>
                         <outlet property="imgInfoLbl" destination="wn2-n6-r3L" id="dHh-hz-Tmi"/>
                         <outlet property="mealNameLabel" destination="IQ7-Ex-UCh" id="POS-bs-Y5k"/>
                         <outlet property="minusHourButton" destination="IPh-1o-Ovu" id="Ui2-ww-p4c"/>
                         <outlet property="minusMinBtn" destination="EOO-Pq-ghM" id="cwR-OI-ycA"/>
                         <outlet property="minusServingBtn" destination="kj3-FM-T0j" id="lMU-l5-N1l"/>
+                        <outlet property="minutesLabel" destination="Urh-Rt-mUu" id="HEf-JL-5e4"/>
                         <outlet property="minutesLable" destination="vgM-vO-Ey9" id="PtV-Yh-WMi"/>
+                        <outlet property="nameLabel" destination="xDu-1t-cCe" id="NcA-9L-DMw"/>
                         <outlet property="nameTextField" destination="cWL-Ic-dBP" id="Q02-9r-9I1"/>
                         <outlet property="nextButton" destination="bih-2S-FNa" id="D1N-7q-9Rf"/>
                         <outlet property="photoView" destination="Sy9-L1-6yR" id="AWI-vf-nrC"/>
                         <outlet property="plusHourButton" destination="83k-HE-BD6" id="05U-i9-6SQ"/>
                         <outlet property="plusMinBtn" destination="eie-Ri-bEu" id="gv9-XA-ZFB"/>
                         <outlet property="plusServingBtn" destination="b6h-ty-m0l" id="Kqs-DA-8VL"/>
+                        <outlet property="pngLabel" destination="3nQ-WD-Z23" id="fD7-8K-4yX"/>
+                        <outlet property="preprationTimeLabel" destination="wmD-7F-E5N" id="B4J-Xn-QZ0"/>
                         <outlet property="recipeImgVw" destination="kQp-aS-4I2" id="Yd6-5A-Rag"/>
                         <outlet property="regionLabel" destination="QGW-LE-5hI" id="Nxw-4y-raj"/>
+                        <outlet property="resolutionLabel" destination="wuH-cK-IcT" id="931-lb-4EZ"/>
                         <outlet property="scrollViewCreateRecipe" destination="en7-CB-Vcl" id="SAx-JF-D8V"/>
+                        <outlet property="selectCookingLabel" destination="gI6-jb-5U9" id="nhd-1o-yoE"/>
                         <outlet property="selectCookingSkillsView" destination="e5m-qU-beI" id="Uhq-83-jtg"/>
+                        <outlet property="selectCourseLabel" destination="eJT-ia-CCK" id="cX0-sl-k4h"/>
                         <outlet property="selectCourseView" destination="L9h-qU-Ux1" id="EoX-Z1-Mqv"/>
+                        <outlet property="selectCuisineLabel" destination="Fmj-a1-k18" id="bWG-vx-H0Y"/>
                         <outlet property="selectCuisineView" destination="SOH-ox-YyJ" id="Bg6-1f-Oxw"/>
+                        <outlet property="selectDietLabel" destination="Cm0-sF-ZM7" id="Ake-1k-aqL"/>
                         <outlet property="selectDietView" destination="kSY-m3-dJI" id="55X-QO-XKE"/>
+                        <outlet property="selectFoodIntoleranceLabel" destination="8pV-p7-jGU" id="PsT-70-ulU"/>
                         <outlet property="selectFoodIntoleranceView" destination="ol8-7n-1Gq" id="sTq-xO-WtD"/>
+                        <outlet property="selectMealLabel" destination="fH2-Xu-JO7" id="pz5-8b-wee"/>
                         <outlet property="selectMealView" destination="SQM-17-vjA" id="74m-Mf-Wu9"/>
+                        <outlet property="selectRegionLabel" destination="3AB-iw-br1" id="lOB-a0-1Nt"/>
                         <outlet property="selectRegionView" destination="8gp-T2-QpH" id="vG7-DH-7fj"/>
+                        <outlet property="servingLabel" destination="Ska-6P-0br" id="Zfe-dv-0Qd"/>
                         <outlet property="uploadRecipeLbl" destination="6Lr-93-hl2" id="UB4-aE-X61"/>
+                        <outlet property="uptoLabel" destination="wQR-kc-8an" id="nbF-Mo-DVr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blX-Ph-x2Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -9299,6 +9319,7 @@
                         <outlet property="saveButton" destination="Twl-Xy-3EC" id="i5P-cS-uWc"/>
                         <outlet property="searchToolTextField" destination="GDF-kk-Hrk" id="ZlG-mh-j3w"/>
                         <outlet property="searchView" destination="IwO-p1-gQN" id="rTz-x7-joF"/>
+                        <outlet property="toolHeaderLabel" destination="dW1-EC-eIT" id="oCu-7a-D0t"/>
                         <outlet property="unitLabel" destination="fsr-Zv-TzW" id="bEu-n9-8rb"/>
                     </connections>
                 </viewController>
@@ -9855,6 +9876,7 @@
                         <outlet property="addMissingIngridientsTableView" destination="nEd-UE-bhv" id="z7f-Sd-hit"/>
                         <outlet property="addNewMissingIngridientBtn" destination="Qsp-Bc-FoL" id="7XG-rW-Zc4"/>
                         <outlet property="addsaveButton" destination="NV3-xg-DHV" id="TN3-Pw-4fj"/>
+                        <outlet property="headerLabel" destination="6p5-FL-WWJ" id="uxr-Js-tFe"/>
                         <outlet property="itemsButton" destination="gDS-3R-tVT" id="cmr-Dl-aaZ"/>
                         <outlet property="labelIngridientTitle" destination="vVD-BU-EhN" id="l1U-Px-eRd"/>
                         <outlet property="quantityLabel" destination="lJp-S7-pD9" id="e9D-pn-AJ4"/>
@@ -12173,9 +12195,11 @@
                     </view>
                     <connections>
                         <outlet property="BlankView" destination="726-E2-if7" id="4GO-oi-LtL"/>
+                        <outlet property="FilterBtn" destination="80u-l0-n2X" id="hlC-fp-73c"/>
                         <outlet property="filteredCollectionView" destination="dvv-xF-hCW" id="bcq-lt-c8P"/>
                         <outlet property="headerView" destination="4zm-do-Isz" id="euB-7w-729"/>
                         <outlet property="labelRecipe" destination="TwH-Sj-8e1" id="PQd-lF-FEb"/>
+                        <outlet property="noRecipeLabel" destination="Ziy-Br-IIh" id="aXX-0f-Zao"/>
                         <outlet property="searchRecipeTextField" destination="5Fb-Fi-uwY" id="hXe-OQ-MfJ"/>
                         <outlet property="viewFilter" destination="mkg-72-efm" id="30U-jX-6n0"/>
                         <outlet property="viewHeader" destination="IQd-Sj-1Hg" id="5vI-dU-ggh"/>
@@ -12353,9 +12377,9 @@
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
-        <image name="icons8_plus" width="27" height="27"/>
+        <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="23" height="23"/>
+        <image name="icons8_search" width="19.5" height="19.5"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>

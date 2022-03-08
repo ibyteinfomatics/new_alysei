@@ -13,12 +13,17 @@ class ExploreByRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var quickSearchByRegionLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionVwRegion: UICollectionView!
+    @IBOutlet weak var viewallBtn: UIButton!
+    @IBOutlet weak var headerLabel: UILabel!
     
     var delegate: SearchRecipeDelegate?
     var tapViewAllRecipe:(()->())?
     let gradientLayer = CAGradientLayer()
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        viewallBtn.setTitle(RecipeConstants.kViewAll, for: .normal)
+        headerLabel.text = RecipeConstants.kByRegion
         self.collectionVwRegion.delegate = self
         self.collectionVwRegion.dataSource = self
         

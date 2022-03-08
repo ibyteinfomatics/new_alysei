@@ -95,7 +95,12 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        postLabel.text = MarketPlaceConstant.kPosts
+        marketPlcLabel.text = MarketPlaceConstant.kMarketPlace
+        recipeLabel.text = RecipeConstants.kRecipe
+        notificationLabel.text = MarketPlaceConstant.kNotifications
+        createRecipeLbl.text = RecipeConstants.kCreateRecipe
+        cravingLabel.text = RecipeConstants.kCravingTitle
         discoverRecipeView.layer.masksToBounds = false
         discoverRecipeView.layer.shadowRadius = 2
         discoverRecipeView.layer.shadowOpacity = 0.2

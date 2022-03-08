@@ -24,6 +24,8 @@ class FilterRecipeViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var filterLabel: UILabel!
+    @IBOutlet weak var clearAllBtn: UIButton!
     
     var selectedIndexPath: IndexPath? = nil
     var selectedIndexPath1: IndexPath? = nil
@@ -55,6 +57,9 @@ class FilterRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterLabel.text = RecipeConstants.kFilter
+        clearAllBtn.setTitle(RecipeConstants.kClearAll, for: .normal)
+        nextButton.setTitle(RecipeConstants.kViewResult, for: .normal)
         collectionView.allowsMultipleSelection = false
 
         footerView.layer.masksToBounds = false

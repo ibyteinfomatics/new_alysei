@@ -12,6 +12,8 @@ class QuickEasyTableViewCell: UITableViewCell {
     @IBOutlet weak var quickSearchTrendingLabel: UILabel!
     @IBOutlet weak var collectionVwTrending: UICollectionView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var viewAllBtn: UIButton!
+    @IBOutlet weak var headerLabel: UILabel!
     
     var delegate:CategoryRowDelegate?
     
@@ -19,6 +21,9 @@ class QuickEasyTableViewCell: UITableViewCell {
     let gradientLayer = CAGradientLayer()
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        headerLabel.text = RecipeConstants.kQuickEasy
+        viewAllBtn.setTitle(RecipeConstants.kViewAll, for: .normal)
         self.collectionVwTrending.delegate = self
         self.collectionVwTrending.dataSource = self
         //        headerView.backgroundColor = UIColor.init(red: 236/255, green: 247/255, blue: 255/255, alpha:1)

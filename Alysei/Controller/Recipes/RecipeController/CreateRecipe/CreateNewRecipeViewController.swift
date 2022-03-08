@@ -44,6 +44,24 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     @IBOutlet weak var plusMinBtn: UIButton!
     @IBOutlet weak var minusServingBtn: UIButton!
     @IBOutlet weak var plusServingBtn: UIButton!
+    @IBOutlet weak var createNwRecipeLbl: UILabel!
+    @IBOutlet weak var imagesLabel: UILabel!
+    @IBOutlet weak var pngLabel: UILabel!
+    @IBOutlet weak var resolutionLabel: UILabel!
+    @IBOutlet weak var uptoLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var selectCookingLabel: UILabel!
+    @IBOutlet weak var selectCuisineLabel: UILabel!
+    @IBOutlet weak var selectMealLabel: UILabel!
+    @IBOutlet weak var selectCourseLabel: UILabel!
+    @IBOutlet weak var selectDietLabel: UILabel!
+    @IBOutlet weak var selectFoodIntoleranceLabel: UILabel!
+    @IBOutlet weak var preprationTimeLabel: UILabel!
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var servingLabel: UILabel!
+    @IBOutlet weak var forHowMuchPeopleLabel: UILabel!
+    @IBOutlet weak var selectRegionLabel: UILabel!
     
     var counter = 0
     var counter1 = 0
@@ -88,7 +106,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         picker1.dataSource = self
         nameTextField.delegate = self
         nameTextField.autocorrectionType = .no
-        let str = NSAttributedString(string: "Recipe Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let str = NSAttributedString(string: RecipeConstants.kRecipeName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         nameTextField.attributedPlaceholder = str
         addPlusHourLongPressGesture()
         addMinusHourLongPressGesture()
@@ -96,7 +114,38 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         addMinusMinuteLongPressGesture()
         addPlusServingLongPressGesture()
         addMinusServingLongPressGesture()
-
+        
+        // Mark: Set title--------
+        createNwRecipeLbl.text = RecipeConstants.kCreateNwRecipe
+        uploadRecipeLbl.text = RecipeConstants.kUploadImg
+        clickHereLbl.text = RecipeConstants.kClickHere
+        imagesLabel.text = RecipeConstants.kImages
+        pngLabel.text = RecipeConstants.kPNG
+        resolutionLabel.text = RecipeConstants.kResolution
+        uptoLabel.text = RecipeConstants.kUpto
+        nameLabel.text = RecipeConstants.kName
+        selectCookingLabel.text = RecipeConstants.kSelectCookingSkil
+        cookingSkillLabel.text = RecipeConstants.kSelectCookingSkil
+        selectCuisineLabel.text = RecipeConstants.kSelectCuisine
+        cuisineLabel.text = RecipeConstants.kSelectCuisine
+        selectMealLabel.text = RecipeConstants.kSelectMeal
+        mealNameLabel.text = RecipeConstants.kSelectMeal
+        selectCourseLabel.text = RecipeConstants.kSelectCourse
+        courseNameLabel.text = RecipeConstants.kSelectCourse
+        selectDietLabel.text = RecipeConstants.kSelectDiet
+        dietLabel.text = RecipeConstants.kSelectDiet
+        selectFoodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        preprationTimeLabel.text = RecipeConstants.kPreparationTime
+        hoursLabel.text = RecipeConstants.kHours
+        minutesLabel.text = RecipeConstants.kMinutes
+        servingLabel.text = RecipeConstants.kServing
+        forHowMuchPeopleLabel.text = RecipeConstants.kForHowMuch
+        selectRegionLabel.text = RecipeConstants.kSelectRegion
+        regionLabel.text = RecipeConstants.kSelectRegion
+        nextButton.setTitle(RecipeConstants.kNext, for: .normal)
+        
+      
     }
     
     override func viewWillLayoutSubviews() {
