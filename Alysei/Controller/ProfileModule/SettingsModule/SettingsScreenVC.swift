@@ -90,6 +90,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
                
                 controller?.strngTitle = StaticArrayData.kSettingPrducrColScreenDict[indexPath.row].name
+            case 10:
+                          _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 11:
               _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case (StaticArrayData.kSettingPrducrColScreenDict.count - 1):
@@ -122,6 +124,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 5,6:
             let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
             controller?.strngTitle = StaticArrayData.kSettingVoyaColScreenDict[indexPath.row].name
+        case 7:
+            _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 8:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
@@ -155,8 +159,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8,9:
             let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
             controller?.strngTitle = StaticArrayData.kSettingRestColScreenDict[indexPath.row].name
+        case 10:
+            _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
         case 11:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+            
         case StaticArrayData.kSettingRestColScreenDict.count - 1:
             let token = kSharedUserDefaults.getDeviceToken()
             let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
@@ -189,6 +196,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 8,9:
             let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
             controller?.strngTitle = StaticArrayData.kSettingRestColScreenDict[indexPath.row].name
+        case 10:
+            _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingExpertColScreenDict.count - 2:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingExpertColScreenDict.count - 1:
@@ -220,7 +229,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 7,8:
             let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
             controller?.strngTitle = StaticArrayData.kSettingTravlColScreenDict[indexPath.row].name
-            
+        case 9:
+            _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingTravlColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingTravlColScreenDict.count - 2:
@@ -252,6 +262,8 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
         case 7,8:
             let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
             controller?.strngTitle = StaticArrayData.kSettingImprtrColScreenDict[indexPath.row].name
+        case 9:
+            _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingImprtrColScreenDict.count - 1:
           _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
         case StaticArrayData.kSettingImprtrColScreenDict.count - 2:

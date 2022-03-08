@@ -273,6 +273,8 @@
 		6B3CB138274BC10D00D5E683 /* UniversalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB124274BC10D00D5E683 /* UniversalSearchViewController.swift */; };
 		6B3CB13A274BC10D00D5E683 /* FeaturedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CB126274BC10D00D5E683 /* FeaturedTableViewCell.swift */; };
 		6B3E26092797D479004C9399 /* EEZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E26082797D479004C9399 /* EEZoomableImageView.swift */; };
+		6B409D1F27D7646000EF0723 /* FAQController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B409D1E27D7646000EF0723 /* FAQController.swift */; };
+		6B409D2127D7646B00EF0723 /* FaqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B409D2027D7646B00EF0723 /* FaqModel.swift */; };
 		6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B1272905B7002EBD25 /* AddAward.swift */; };
 		6B4606B527293D2C002EBD25 /* AwardMedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
@@ -960,6 +962,8 @@
 		6B3CB124274BC10D00D5E683 /* UniversalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalSearchViewController.swift; sourceTree = "<group>"; };
 		6B3CB126274BC10D00D5E683 /* FeaturedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewCell.swift; sourceTree = "<group>"; };
 		6B3E26082797D479004C9399 /* EEZoomableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EEZoomableImageView.swift; sourceTree = "<group>"; };
+		6B409D1E27D7646000EF0723 /* FAQController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQController.swift; sourceTree = "<group>"; };
+		6B409D2027D7646B00EF0723 /* FaqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqModel.swift; sourceTree = "<group>"; };
 		6B4606B1272905B7002EBD25 /* AddAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAward.swift; sourceTree = "<group>"; };
 		6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardMedalModel.swift; sourceTree = "<group>"; };
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1435,6 +1439,7 @@
 			children = (
 				C513C1A326146C0E0025CF27 /* Layout */,
 				273737E225B76BCE005984CF /* SettingsViewC.swift */,
+				6B409D1E27D7646000EF0723 /* FAQController.swift */,
 				273737EA25B76BCE005984CF /* SettingsTableCell.swift */,
 				2742855325B82EEC003F3DE5 /* EditSettings */,
 				274D90A025B85D5D00C82A75 /* Company */,
@@ -2677,6 +2682,7 @@
 				6B79E66426E74C2300B2D434 /* EventModel.swift */,
 				6B79E66726E74C2400B2D434 /* NotificationListModel.swift */,
 				6B79E66526E74C2300B2D434 /* ProgressModel.swift */,
+				6B409D2027D7646B00EF0723 /* FaqModel.swift */,
 				6B79E66326E74C2200B2D434 /* TripModel.swift */,
 				6B7B8FFC26EF319E00454F48 /* IntensityModel.swift */,
 				6B7B8FFE26EF327200454F48 /* AdventureModel.swift */,
@@ -3728,6 +3734,7 @@
 				6B74268D2750E963000B0900 /* StoreDescTopTableViewCell.swift in Sources */,
 				6B3CB129274BC10D00D5E683 /* AwardTableViewCell.swift in Sources */,
 				27A443A225AE03720002BAAC /* UserDefaultsExtended.swift in Sources */,
+				6B409D1F27D7646000EF0723 /* FAQController.swift in Sources */,
 				C5F1F623267882C7005A25A8 /* ProductListTViewCell.swift in Sources */,
 				61C7BE3B267C89F0006DB3BB /* Flag.swift in Sources */,
 				27D0FAB825CEE9FF00463FE0 /* SignUpTermsTableCell.swift in Sources */,
@@ -3737,6 +3744,7 @@
 				C5EB38C126E9CAE400CCAC9E /* AddStepIngridientCollectionViewCell.swift in Sources */,
 				27A443AA25AE03720002BAAC /* UIButtonSublayerBorderWidthAndColor.swift in Sources */,
 				27A4439225AE03720002BAAC /* TANetworkManager.swift in Sources */,
+				6B409D2127D7646B00EF0723 /* FaqModel.swift in Sources */,
 				27A443B825AE03720002BAAC /* UIImageViewCornerRadius.swift in Sources */,
 				C56C28C32684A9090042A0A3 /* MyStoreProductCVCell.swift in Sources */,
 				61C7BE3F267C8EB8006DB3BB /* FlagCountryList.swift in Sources */,

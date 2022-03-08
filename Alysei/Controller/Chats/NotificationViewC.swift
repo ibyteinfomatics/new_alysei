@@ -26,7 +26,7 @@ class NotificationViewC: AlysieBaseViewC{
   override func viewDidLoad() {
     super.viewDidLoad()
     //self.tblViewNotification.tableFooterView = UIView()
-      self.blankview.isHidden = true
+      self.blankview.isHidden = false
     receiveUsers()
       
     
@@ -39,8 +39,8 @@ class NotificationViewC: AlysieBaseViewC{
             self.ResentUser = users
            
             self.tblViewNotification.reloadData()
-            if self.ResentUser?.count ?? 0 <= 0 {
-                self.blankview.isHidden = false
+            if self.ResentUser?.count ?? 0 > 0 {
+                self.blankview.isHidden = true
             }
         }
     }
