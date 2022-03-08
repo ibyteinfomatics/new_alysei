@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         GMSPlacesClient.provideAPIKey(googleAPIKey)
         FirebaseApp.configure()
         
-        
         Messaging.messaging().delegate = self
         self.registerForFirebaseNotification(application: application)
         self.pushNotificationSetup(withApplication: application)
@@ -57,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         return true
     }
-    
+
     //    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]) -> Bool {
     //        print(url)
     //        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)

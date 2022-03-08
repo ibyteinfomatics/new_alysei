@@ -238,6 +238,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 0{
         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
             cell.configCell(arrDiscoverDataModel)
+           
             cell.pushCallback = { index in
                 switch self.arrDiscoverDataModel[index].discover_alysei_id {
                 case 1:
@@ -327,6 +328,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             cell.selectionStyle = .none
             //TODO: this needs to be discussed with Shalini.
             if arrNewFeedDataModel.count > indexPath.row {
+                //addZoombehavior(for: cell.imagePostCollectionView)
                 cell.configCell(arrNewFeedDataModel[indexPath.row], postlike: postLike ?? [] , indexPath.row)
                 let data = arrNewFeedDataModel[indexPath.row]
                 cell.btnMoreLess.tag = indexPath.row

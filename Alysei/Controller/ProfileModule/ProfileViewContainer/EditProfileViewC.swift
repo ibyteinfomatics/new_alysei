@@ -781,6 +781,7 @@ extension EditProfileViewC: FeaturedProductCollectionCellProtocol {
             guard let data = data else { return }
             if (error != nil) { print(error.debugDescription) }
             self.fetchProductsFromProfile()
+            self.scrollToTop()
         }
     }
 

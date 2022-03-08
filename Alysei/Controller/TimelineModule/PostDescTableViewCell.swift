@@ -80,6 +80,7 @@ class PostDescTableViewCell: UITableViewCell {
     let stackView = UIStackView()
     var newHeightCllctn: Int?
     
+    
     var postLike:[PostClass]?
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
@@ -508,7 +509,8 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()}
-      
+      //  addZoombehavior(for: cell.imagePost)
+       
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
         
@@ -586,7 +588,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     @IBOutlet weak var imageConstant: NSLayoutConstraint!
 
     var originalFrame = CGRect()
-
+   
     var overlay: UIView = {
         let view = UIView(frame: UIScreen.main.bounds);
 
@@ -646,16 +648,19 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 //        let touch2 = sender.location(ofTouch: 1, in: sender.view)
 
         if sender.state == .began {
-            //self.imagePost.frame = UIScreen.main.bounds
+            self.imagePost.frame = UIScreen.main.bounds
             let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
             let newScale = currentScale*sender.scale
             if newScale > 1 {
                 self.isZooming = true
+                self.imagePost.isHidden = true
             }
             self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
+          
 
         } else if sender.state == .changed {
             guard let view = sender.view else {return}
+            self.imagePost.isHidden = true
             let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
                                       y: sender.location(in: view).y - view.bounds.midY)
             let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
@@ -675,15 +680,20 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
             self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
         } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
             self.showAlertOnTab(0.0, frame: self.imagePost.frame, center: CGPoint())
+         
+           
             guard let center = self.originalImageCenter else {return}
 
            // self.imagePost.frame = self.bounds
+          
             UIView.animate(withDuration: 0.3, animations: {
                 self.imagePost.transform = CGAffineTransform.identity
                 //self.imagePost.center = center
                 sender.scale = 1
             }, completion: { _ in
                 self.isZooming = false
+                self.imagePost.isHidden = false
+               
             })
         }
     }
