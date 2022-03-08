@@ -228,7 +228,6 @@
 		6B06B13B272D126B009B741E /* SinglePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B06B13A272D126B009B741E /* SinglePostModel.swift */; };
 		6B09A87C26245AC800483365 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A87B26245AC800483365 /* AddPostViewController.swift */; };
 		6B0A701F275490FD00AD92BF /* AddEditReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0A701E275490FD00AD92BF /* AddEditReviewRecipeViewController.swift */; };
-		6B0AF4FC26E8CF2500F9B034 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */; };
 		6B1323C627BE4F1700FB7500 /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1323C527BE4F1700FB7500 /* WebKitViewController.swift */; };
 		6B13371E27292696005D79E5 /* MarketplaceWalkScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B13371C27292696005D79E5 /* MarketplaceWalkScreenViewController.swift */; };
 		6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */; };
@@ -275,6 +274,7 @@
 		6B3E26092797D479004C9399 /* EEZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E26082797D479004C9399 /* EEZoomableImageView.swift */; };
 		6B409D1F27D7646000EF0723 /* FAQController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B409D1E27D7646000EF0723 /* FAQController.swift */; };
 		6B409D2127D7646B00EF0723 /* FaqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B409D2027D7646B00EF0723 /* FaqModel.swift */; };
+		6B409D2327D7690400EF0723 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B409D2227D7690400EF0723 /* Home.storyboard */; };
 		6B4606B2272905B7002EBD25 /* AddAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B1272905B7002EBD25 /* AddAward.swift */; };
 		6B4606B527293D2C002EBD25 /* AwardMedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */; };
 		6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */; };
@@ -917,7 +917,6 @@
 		6B06B13A272D126B009B741E /* SinglePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostModel.swift; sourceTree = "<group>"; };
 		6B09A87B26245AC800483365 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		6B0A701E275490FD00AD92BF /* AddEditReviewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewRecipeViewController.swift; sourceTree = "<group>"; };
-		6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6B1323C527BE4F1700FB7500 /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		6B13371C27292696005D79E5 /* MarketplaceWalkScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceWalkScreenViewController.swift; sourceTree = "<group>"; };
 		6B13371D27292696005D79E5 /* MarketplaceWalkScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketplaceWalkScreenViewController.xib; sourceTree = "<group>"; };
@@ -964,6 +963,7 @@
 		6B3E26082797D479004C9399 /* EEZoomableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EEZoomableImageView.swift; sourceTree = "<group>"; };
 		6B409D1E27D7646000EF0723 /* FAQController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQController.swift; sourceTree = "<group>"; };
 		6B409D2027D7646B00EF0723 /* FaqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqModel.swift; sourceTree = "<group>"; };
+		6B409D2227D7690400EF0723 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6B4606B1272905B7002EBD25 /* AddAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAward.swift; sourceTree = "<group>"; };
 		6B4606B427293D2C002EBD25 /* AwardMedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardMedalModel.swift; sourceTree = "<group>"; };
 		6B4AA62E26FC357A00CD9A02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -2043,7 +2043,7 @@
 				27BC689A25AC56C000A01B6A /* LaunchScreen.storyboard */,
 				274635EF25DC35AD0010C1C6 /* Splash.storyboard */,
 				A808778625ADB4F400AA4A69 /* Login.storyboard */,
-				6B0AF4FB26E8CF2500F9B034 /* Home.storyboard */,
+				6B409D2227D7690400EF0723 /* Home.storyboard */,
 				6B2F94F526202F3A0030928E /* Timeline.storyboard */,
 				27B2FDE525C8782000CFEDA0 /* ProductSection.xib */,
 				6B5F100F273E201C0016561A /* UpdateProfile.storyboard */,
@@ -3275,6 +3275,7 @@
 				6B7CACD226FDD3CA00096E79 /* SanFranciscoDisplay-Black.otf in Resources */,
 				C5D6F7B426B18264006FFCDF /* HubsListVC.xib in Resources */,
 				A808778725ADB4F500AA4A69 /* Login.storyboard in Resources */,
+				6B409D2327D7690400EF0723 /* Home.storyboard in Resources */,
 				6BD28D062770A49400AA0105 /* SearchByRegionCollectionViewCell.xib in Resources */,
 				6B7CACC226FDD3CA00096E79 /* SanFranciscoDisplay-Bold.otf in Resources */,
 				C5D6F7AE26B18264006FFCDF /* ConfirmSelectionVC.xib in Resources */,
@@ -3366,7 +3367,6 @@
 				6B7CACBE26FDD3CA00096E79 /* SanFranciscoText-LightItalic.otf in Resources */,
 				61C7BE3D267C8A82006DB3BB /* Flag.xib in Resources */,
 				6B7CACCD26FDD3CA00096E79 /* SanFranciscoDisplay-Thin.otf in Resources */,
-				6B0AF4FC26E8CF2500F9B034 /* Home.storyboard in Resources */,
 				27A443D325AE03720002BAAC /* Montserrat-Bold.ttf in Resources */,
 				6B3CB12D274BC10D00D5E683 /* PeopelTableViewCell.xib in Resources */,
 				6B7CACC526FDD3CA00096E79 /* SanFranciscoText-Medium.otf in Resources */,
