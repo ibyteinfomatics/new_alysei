@@ -557,16 +557,19 @@ extension PostDescTableViewCell {
 
         ]
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLikeApi, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            self.data?.likeFlag = isLike
-            if isLike == 0{
-                self.data?.likeCount = ((self.data?.likeCount ?? 0) - 1)
+            
+            if statusCode == 200 {
                 
-                kChatharedInstance.update_post(likecount: self.data?.likeCount ?? 0, postId: postId ?? 0)
-            }else{
-                self.data?.likeCount = ((self.data?.likeCount ?? 0) + 1)
-                 
-                kChatharedInstance.update_post(likecount: self.data?.likeCount ?? 0, postId: postId ?? 0)
+                let response = dictResponse as? [String:Any]
+                let total_like = response?["total_likes"] as? Int
+                //let like_id = response?["like_id"] as? Int
+                
+                self.data?.likeCount = total_like
+                kChatharedInstance.update_post(likecount: total_like ?? 0, postId: postId ?? 0)
             }
+            
+            self.data?.likeFlag = isLike
+            
              self.likeCallback?(indexPath ?? 0)
             //self.receivePostLike()
             //print("likeid  ",self.postLike![359].likeCount)

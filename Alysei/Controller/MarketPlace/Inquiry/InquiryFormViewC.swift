@@ -138,7 +138,7 @@ class InquiryFormViewC: AlysieBaseViewC {
         //"public/uploads/2021/08/2327781571627986351.jpg"//kImageBaseUrl+UserDetailBasedElements().profilePhoto
         
         sendMessageDetails.receiverImage = profileImageUrl
-        sendMessageDetails.receiverName = name
+        sendMessageDetails.receiverName = self.name
         sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
