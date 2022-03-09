@@ -121,7 +121,7 @@ class HubUserListVC: AlysieBaseViewC {
         let businessButtonTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessButtonTableCell.identifier()) as! BusinessButtonTableCell
         //businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0)
         if self.searchImpDone == false{
-            businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0)
+            businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0,index: indexPath.row)
         }else{
             if identifyUserForProduct == .productImporter{
             if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{

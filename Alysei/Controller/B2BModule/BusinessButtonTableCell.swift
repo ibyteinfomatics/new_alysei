@@ -43,10 +43,11 @@ class BusinessButtonTableCell: UITableViewCell {
     var productoption: SignUpStepOneDataModel?
     var userRoleId: String?
     var pushVCCallback: (([HubCityArray]?,GetRoleViewModel,ProductType, [StateModel],[SignUpOptionsDataModel],String) -> Void)? = nil
+
     
     var pushToProductTypeScreen:((SignUpStepOneDataModel,IdentifyUserForProduct) -> Void)? = nil
     var identifyUserForProduct: IdentifyUserForProduct?
-    
+    var index: Int?
     
   override func awakeFromNib() {
    // self.callStateApi()
@@ -60,19 +61,20 @@ class BusinessButtonTableCell: UITableViewCell {
   //MARK: - IBAction -
   
   @IBAction func tapBusiness(_ sender: UIButton) {
+     
     if (currentIndex ==  B2BSearch.Hub.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.SelectRegion){
         callStateApi()
-    }else if (currentIndex == B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.SelectUserType){
+    }else if (currentIndex == B2BSearch.Importer.rawValue && sender.tag ==  1){
         callImporterRoleApi()
     }
-    else if (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.Hubs){
+      else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 0) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 0){
         self.callUserHubsApi()
-    }else if (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness) {
+    }else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 2) {
         fieldValueId = B2BFieldId.productType.rawValue
         self.identifyUserForProduct = .productImporter
         self.callGetValueOfFieldApi()
         
-    }else if (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.ProductTypeBusiness){
+    }else if (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 1){
         fieldValueId = B2BFieldId.productType.rawValue
         self.identifyUserForProduct = .productProducer
         self.callGetValueOfFieldApi()
@@ -147,11 +149,12 @@ class BusinessButtonTableCell: UITableViewCell {
     }
   //MARK: - Public Methods -
   
-  public func configureData(withBusinessDataModel model: BusinessDataModel, currentIndex: Int) -> Void{
+  public func configureData(withBusinessDataModel model: BusinessDataModel, currentIndex: Int,index: Int) -> Void{
     
     self.btnBusiness.setTitle(model.businessHeading, for: .normal)
     self.businessModel = model
     self.currentIndex = currentIndex
+      self.index  = index
 
     
   }
