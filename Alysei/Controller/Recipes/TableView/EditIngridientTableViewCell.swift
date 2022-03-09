@@ -23,6 +23,7 @@ class EditIngridientTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        addButton.setTitle(RecipeConstants.kAdd, for: .normal)
     }
     
     var data: IngridentArray? {

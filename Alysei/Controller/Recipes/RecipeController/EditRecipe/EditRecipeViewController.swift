@@ -15,8 +15,10 @@ var createEditRecipeJson: [String : Any] = [:]
 class EditRecipeViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var recipeImage: ImageLoader!
     @IBOutlet weak var cameraOpenView: UIView!
+    @IBOutlet weak var changePhotoLabel: UILabel!
     @IBOutlet weak var selectMealView: UIView!
     @IBOutlet weak var selectCourseView: UIView!
     @IBOutlet weak var selectCookingSkillsView: UIView!
@@ -45,6 +47,19 @@ class EditRecipeViewController: UIViewController {
     @IBOutlet weak var plusMinBtn: UIButton!
     @IBOutlet weak var minusServingBtn: UIButton!
     @IBOutlet weak var plusServingBtn: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var selectCkngSkillLabel: UILabel!
+    @IBOutlet weak var selectCuisineLabel: UILabel!
+    @IBOutlet weak var selectMealLabel: UILabel!
+    @IBOutlet weak var selectCourseLabel: UILabel!
+    @IBOutlet weak var selectDietLabel: UILabel!
+    @IBOutlet weak var selectFoodIntoleranceLabel: UILabel!
+    @IBOutlet weak var preprationTimeLabel: UILabel!
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet weak var servingLabel: UILabel!
+    @IBOutlet weak var forHowMuchLabel: UILabel!
+    @IBOutlet weak var selectRegionLabel: UILabel!
     
     var timer: Timer?
     var counter = Int()
@@ -86,7 +101,7 @@ class EditRecipeViewController: UIViewController {
         picker1.delegate = self
         picker1.dataSource = self
         nameTextfield.delegate = self
-        let str = NSAttributedString(string: "Recipe Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let str = NSAttributedString(string: RecipeConstants.kRecipeName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         nameTextfield.attributedPlaceholder = str
         addPlusHourLongPressGesture()
         addMinusHourLongPressGesture()
@@ -94,6 +109,33 @@ class EditRecipeViewController: UIViewController {
         addMinusMinuteLongPressGesture()
         addPlusServingLongPressGesture()
         addMinusServingLongPressGesture()
+        
+        // Mark: Set title--------
+        headerLabel.text = RecipeConstants.kCreateNwRecipe
+        changePhotoLabel.text = RecipeConstants.kChangePhoto
+        
+        nameLabel.text = RecipeConstants.kName
+        selectCkngSkillLabel.text = RecipeConstants.kSelectCookingSkil
+        cookingSkillLabel.text = RecipeConstants.kSelectCookingSkil
+        selectCuisineLabel.text = RecipeConstants.kSelectCuisine
+        cuisineLabel.text = RecipeConstants.kSelectCuisine
+        selectMealLabel.text = RecipeConstants.kSelectMeal
+        selectMealLabel.text = RecipeConstants.kSelectMeal
+        selectCourseLabel.text = RecipeConstants.kSelectCourse
+        selectCourseLabel.text = RecipeConstants.kSelectCourse
+        selectDietLabel.text = RecipeConstants.kSelectDiet
+        dietLabel.text = RecipeConstants.kSelectDiet
+        selectFoodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        preprationTimeLabel.text = RecipeConstants.kPreparationTime
+        hourLabel.text = RecipeConstants.kHours
+        minuteLabel.text = RecipeConstants.kMinutes
+        servingLabel.text = RecipeConstants.kServing
+        howMuchPeopleLable.text = RecipeConstants.kForHowMuch
+        selectRegionLabel.text = RecipeConstants.kSelectRegion
+        regionLabel.text = RecipeConstants.kSelectRegion
+        editIngredients.setTitle(RecipeConstants.kEditRecipeIngredient, for: .normal)
+        
         
         if arrayMyRecipe!.count > 0{
             
@@ -126,8 +168,8 @@ class EditRecipeViewController: UIViewController {
             self.courseLabel.textColor = .black
             strSelectedIdCourse = arrayMyRecipe?[index].course?.recipeCourseId
             
-            dietLabel.text = arrayMyRecipe?[index].diet?.dietName ?? "Select Diet"
-            if dietLabel.text ==  "Select Diet"{
+            dietLabel.text = arrayMyRecipe?[index].diet?.dietName ?? RecipeConstants.kSelectDiet
+            if dietLabel.text ==  RecipeConstants.kSelectDiet{
                 self.dietLabel.textColor = .darkGray
             }
             else{
@@ -135,8 +177,8 @@ class EditRecipeViewController: UIViewController {
             }
             strSelecetdIdDiet = arrayMyRecipe?[index].course?.recipeCourseId
             
-            foodIntoleranceLabel.text = arrayMyRecipe?[index].intolerance?.foodName ?? "Select Food Intolerance"
-            if foodIntoleranceLabel.text ==  "Select Food Intolerance"{
+            foodIntoleranceLabel.text = arrayMyRecipe?[index].intolerance?.foodName ?? RecipeConstants.kSelectFoodIntolerance
+            if foodIntoleranceLabel.text ==  RecipeConstants.kSelectFoodIntolerance{
                 self.foodIntoleranceLabel.textColor = .darkGray
             }
             else{
@@ -246,11 +288,11 @@ class EditRecipeViewController: UIViewController {
         toolBar.tintColor = UIColor.white
         toolBar.sizeToFit()
         
-       let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     
-       let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+       let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
 
         self.view.addSubview(toolBar)
@@ -317,8 +359,8 @@ class EditRecipeViewController: UIViewController {
             {
                 self.strSelecetdIdDiet = stId
             }
-            if str_return == "None"{
-                self.dietLabel.text = "Select Diet"
+            if str_return == RecipeConstants.kNone{
+                self.dietLabel.text = RecipeConstants.kSelectDiet
                 self.dietLabel.textColor = .darkGray
             }
             else{
@@ -334,8 +376,8 @@ class EditRecipeViewController: UIViewController {
             {
                 self.strSelectedIdIntolerance = stId
             }
-            if str_return == "None"{
-                self.foodIntoleranceLabel.text = "Select Food Intolerance"
+            if str_return == RecipeConstants.kNone{
+                self.foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
                 self.foodIntoleranceLabel.textColor = .darkGray
             }
             else{
@@ -474,7 +516,7 @@ class EditRecipeViewController: UIViewController {
     @IBAction func tapSelectRegion(_ sender: Any) {
         toolBar.removeFromSuperview()
         picker1.removeFromSuperview()
-        if self.cuisineLabel.text == "Select Cuisine"{
+        if self.cuisineLabel.text == LabelandTextFieldTitle.selectCuisine{
             showAlert(withMessage: AlertMessage.kSelectCousin)
         }
         else{
@@ -1009,8 +1051,8 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
              }
              if let stName = self.arrDiet[row].dietName
              {
-                if stName == "None"{
-                    self.str_return = "Select Diet"
+                 if stName == RecipeConstants.kNone{
+                    self.str_return = RecipeConstants.kSelectDiet
                 }
                 else{
                     self.str_return = stName
@@ -1024,8 +1066,8 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
              if let stName = self.arrFoodIntolerance[row].foodName
              {
                 self.str_return = stName
-                if stName == "None"{
-                    self.str_return = "Select Food Intolerance"
+                if stName == RecipeConstants.kNone{
+                    self.str_return = RecipeConstants.kSelectFoodIntolerance
                 }
              }
         case 7:
@@ -1138,7 +1180,7 @@ extension EditRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
-            self.noneArray = SelectRecipeDietDataModel.init(dietId: 0, dietName: "None")
+            self.noneArray = SelectRecipeDietDataModel.init(dietId: 0, dietName: RecipeConstants.kNone)
             self.arrDiet.insert(self.noneArray, at: 0)
            }
            
@@ -1155,7 +1197,7 @@ extension EditRecipeViewController{
            
            if let data = res?["data"] as? [[String:Any]]{
                self.arrFoodIntolerance = data.map({SelectFoodIntoleranceDataModel.init(with: $0)})
-            self.noArray = SelectFoodIntoleranceDataModel.init(foodId: 0, foodName: "None")
+            self.noArray = SelectFoodIntoleranceDataModel.init(foodId: 0, foodName: RecipeConstants.kNone)
             self.arrFoodIntolerance.insert(self.noArray, at: 0)
            }
            

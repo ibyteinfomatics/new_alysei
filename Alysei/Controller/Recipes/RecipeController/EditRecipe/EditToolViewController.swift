@@ -23,6 +23,9 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
    
     @IBOutlet weak var addNewMissingToolBtn: UIButton!
     @IBOutlet weak var addMissingToolPopUpHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var headerLabel: UILabel!
+    
     var newSearchModel: [AddToolsDataModel]? = []
     var toolSearchModel: [ToolsArray] = []
     var addMissingToolModel: [ToolTypeDataModel]? = []
@@ -73,6 +76,11 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
         
         self.addMissingToolTableView.delegate = self
         self.addMissingToolTableView.dataSource = self
+        
+        searchToolTextField.placeholder = RecipeConstants.kSearchTools
+        headerLabel.text = RecipeConstants.kEditTool
+        saveButton.setTitle(RecipeConstants.kSaveTool, for: .normal)
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -418,7 +426,7 @@ extension EditToolViewController{
             case 409:
                 self.newSearchModel = [AddToolsDataModel]()
                 self.toolSearchModel = [ToolsArray]()
-                self.showAlert(withMessage: "No Tools found")
+                self.showAlert(withMessage: RecipeConstants.kNoTools)
             
             default:
               break

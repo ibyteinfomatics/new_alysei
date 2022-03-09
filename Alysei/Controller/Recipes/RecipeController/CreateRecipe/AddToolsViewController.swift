@@ -23,6 +23,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     @IBOutlet weak var searchToolTextField: UITextField!
     @IBOutlet weak var addToolPopUpView: UIView!
     
+    @IBOutlet weak var saveListBtn: UIButton!
     @IBOutlet weak var addToolQuantityView: UIView!
     @IBOutlet weak var quantityLabel: UILabel!
     
@@ -105,6 +106,9 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         
         searchToolTextField.placeholder = RecipeConstants.kSearchTools
         toolHeaderLabel.text = RecipeConstants.kAddTools
+        saveListBtn.setTitle(RecipeConstants.kAddtoList, for: .normal)
+        saveButton.setTitle(RecipeConstants.kSaveAndProceed, for: .normal)
+        
     }
     
     override func viewWillLayoutSubviews() {

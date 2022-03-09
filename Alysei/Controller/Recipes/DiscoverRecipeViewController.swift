@@ -101,6 +101,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         notificationLabel.text = MarketPlaceConstant.kNotifications
         createRecipeLbl.text = RecipeConstants.kCreateRecipe
         cravingLabel.text = RecipeConstants.kCravingTitle
+        
         discoverRecipeView.layer.masksToBounds = false
         discoverRecipeView.layer.shadowRadius = 2
         discoverRecipeView.layer.shadowOpacity = 0.2
@@ -247,7 +248,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
-            self.walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
+            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             vwwWalkContainer2.isHidden = false
             animate2View()
@@ -270,7 +271,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func nextAction(_ sender: UIButton){
         
         if nextWalkCount == 0 {
-            self.walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
+            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
             animate2View()

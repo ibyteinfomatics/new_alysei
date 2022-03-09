@@ -23,7 +23,9 @@ class AddIngridientsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        addButton.setTitle(RecipeConstants.kAdd, for: .normal)
     }
+    
     var data: IngridentArray? {
         didSet {
             updateUI()

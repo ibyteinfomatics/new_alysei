@@ -42,6 +42,9 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     
     @IBOutlet weak var labelIngridientTitle: UILabel!
     
+    @IBOutlet weak var quantityLabelTitle: UILabel!
+    @IBOutlet weak var unitLabelTitle: UILabel!
+    
     var newSearchModel: [AddIngridientDataModel]? = []
     var ingridientSearchModel: [IngridentArray] = []
     var addMissingIngridientModel: [IngridentTypeDataModel]? = []
@@ -70,8 +73,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        headerLabel.text = RecipeConstants.kAddIngridient
-        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
+      
         addIngridientsTableView.reloadData()
         self.quantityLabel.text = "\(selectedIngridentsArray.count)" + "" + RecipeConstants.kItems
         if self.quantityLabel.text == "0" + "" + RecipeConstants.kItems {
@@ -88,6 +90,13 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerLabel.text = RecipeConstants.kAddIngridient
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
+        quantityLabelTitle.text = RecipeConstants.kQuantity
+        unitLabelTitle.text = RecipeConstants.kUnit
+        addsaveButton.setTitle(RecipeConstants.kAddtoList, for: .normal)
+        saveButton.setTitle(RecipeConstants.kSaveAndProceed, for: .normal)
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
         
         picker1.delegate = self
         picker1.dataSource = self

@@ -28,6 +28,8 @@ class EditScreen2ViewController: UIViewController  {
     @IBOutlet weak var editunitLabel: UILabel!
     @IBOutlet weak var btnEditSave: UIButton!
     
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var unitLabel: UILabel!
     var selectedIndexPath : IndexPath?
     var headerView = UIView()
     var dunamicButton  = UIButton()
@@ -51,6 +53,12 @@ class EditScreen2ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        saveButton.setTitle(RecipeConstants.kSaveEditRecipe, for: .normal)
+        btnEditSave.setTitle(RecipeConstants.kSave, for: .normal)
+        quantityLabel.text = RecipeConstants.kQuantity
+        unitLabel.text = RecipeConstants.kUnit
+        editquantityTextField.placeholder = RecipeConstants.kEnterQuantity
+        
         setupUI()
         editscreenTableView.dataSource = self
         editscreenTableView.delegate = self
@@ -59,7 +67,7 @@ class EditScreen2ViewController: UIViewController  {
         picker1.dataSource = self
         
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "ml", "spoon", "drops"]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kSpoon]
         
         editscreenTableView.register(UINib(nibName: "RecipeIngredientsUsedTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeIngredientsUsedTableViewCell")
         editscreenTableView.register(UINib(nibName: "EditRecipeIngridientTableViewCell", bundle: nil), forCellReuseIdentifier: "EditRecipeIngridientTableViewCell")
@@ -124,11 +132,11 @@ class EditScreen2ViewController: UIViewController  {
         
         
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
         self.view.addSubview(toolBar)
@@ -260,7 +268,7 @@ class EditScreen2ViewController: UIViewController  {
             self.addEditPopUpView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
-        else if self.editunitLabel.text == "Unit"{
+        else if self.editunitLabel.text == RecipeConstants.kUnit{
             showAlert(withMessage: AlertMessage.kselectUnit)
             self.addEditPopUpView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
@@ -282,7 +290,7 @@ class EditScreen2ViewController: UIViewController  {
             showAlert(withMessage: AlertMessage.kSelectTool)
         }
         else if editstepsModel.count == 0{
-            showAlert(withMessage: "Please Add Step")
+            showAlert(withMessage: AlertMessage.kSelectStep)
         }
         else{
             postRequestToSaveEditRecipe()
@@ -447,8 +455,8 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             statusLabel.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel.textColor = UIColor.lightGray
             headerView.addSubview(statusLabel)
-            statusLabel.text = "  No Ingridients Added yet!"
-            dunamicButton.setTitle("  Add Ingredients to Recipe", for: UIControl.State.normal)
+            statusLabel.text = RecipeConstants.kNoIngredientAdded
+            dunamicButton.setTitle( "  " + RecipeConstants.kAddIngridient, for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraIngridients(sender:)), for: .touchUpInside)
             if editusedIngridientModel.count == 0{
@@ -473,8 +481,8 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             statusLabel1.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel1.textColor = UIColor.lightGray
             headerView.addSubview(statusLabel1)
-            statusLabel1.text = "  No Tools Added yet!"
-            dunamicButton.setTitle("  Add Tools, Appliances & Utencils", for: UIControl.State.normal)
+            statusLabel1.text = RecipeConstants.kNoToolAdded
+            dunamicButton.setTitle( "  " + RecipeConstants.kAddTools, for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraTools(sender:)), for: .touchUpInside)
             if editusedToolModel.count == 0{
@@ -501,8 +509,8 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             statusLabel2.font = UIFont(name: "Helvetica Neue Regular", size: 14)
             statusLabel2.textColor = UIColor.lightGray
             headerView.addSubview(statusLabel2)
-            statusLabel2.text = "  No Step Added yet!"
-            dunamicButton.setTitle("  Add Recipe Steps", for: UIControl.State.normal)
+            statusLabel2.text = RecipeConstants.kNoStepAdded
+            dunamicButton.setTitle( "  " + RecipeConstants.kAddStepsRecipe, for: UIControl.State.normal)
             dunamicButton.setImage(UIImage(named: "icons8Plus.png"), for: .normal)
             dunamicButton.addTarget(self, action: #selector(addExtraSteps(sender:)), for: .touchUpInside)
             if editstepsModel.count == 0{
@@ -572,7 +580,7 @@ extension EditScreen2ViewController: UITableViewDelegate, UITableViewDataSource,
             strTitle = editstepsModel[indexPath.row].title
             strDescription = editstepsModel[indexPath.row].description
             cell2.titleLabel.text = strTitle
-            cell2.stepTitle.text = "Step \(indexPath.row + 1)"
+            cell2.stepTitle.text = RecipeConstants.kStep + "" + "\(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
             cell2.indexPath = indexPath
             return cell2

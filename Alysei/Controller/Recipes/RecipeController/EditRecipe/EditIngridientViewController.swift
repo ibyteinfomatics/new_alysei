@@ -9,6 +9,7 @@ import UIKit
 var selectedEditIngridentsArray: [IngridentArray] = []
 class EditIngridientViewController: UIViewController, EditIngridientsTableViewCellProtocol, AddIngridientsTableViewCellProtocol {
    
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var addIngredientsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saveButton: UIButton!
@@ -36,6 +37,9 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     @IBOutlet weak var addIngridientPopUpViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var labelIngridientTitle: UILabel!
+    
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var unitLabelTitle: UILabel!
     
     var newSearchModel: [AddIngridientDataModel]? = []
     var ingridientSearchModel: [IngridentArray] = []
@@ -71,12 +75,20 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        headerLabel.text = RecipeConstants.kEditRecipeIngredient
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
+        quantityLabel.text = RecipeConstants.kQuantity
+        unitLabelTitle.text = RecipeConstants.kUnit
+        addsaveButton.setTitle(RecipeConstants.kAddtoList, for: .normal)
+        saveButton.setTitle(RecipeConstants.kSaveIngridients, for: .normal)
+        
+        
         picker1.delegate = self
         picker1.dataSource = self
         self.addNewMissingIngridientBtn.isHidden = true
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = ["kg","litre", "pieces", "dozen", "gm", "meter", "spoon", "drops"]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops]
         setupUI()
         searchIngridientTextField.delegate = self
         searchIngridientTextField.autocorrectionType = .no
@@ -142,11 +154,11 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         
         
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
         self.view.addSubview(toolBar)
@@ -195,7 +207,7 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
             self.addIndridentPopupView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
-        else if self.unitLabel.text == "Unit"{
+        else if self.unitLabel.text == RecipeConstants.kUnit{
             showAlert(withMessage: AlertMessage.kselectUnit)
             self.addIndridentPopupView.isHidden = false
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
@@ -481,7 +493,7 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
         }
         else {
             quantityTextField.text = ""
-            unitLabel.text = "Unit"
+            unitLabel.text = RecipeConstants.kUnit
             self.addIndridentPopupView.isHidden = false
             self.labelIngridientTitle.text = data.ingridientTitle
             
@@ -616,7 +628,7 @@ extension EditIngridientViewController{
             case 409:
                 self.ingridientSearchModel = [IngridentArray]()
                 self.newSearchModel = [AddIngridientDataModel]()
-                self.showAlert(withMessage: "No Ingridients found")
+                self.showAlert(withMessage: RecipeConstants.kNoIngredient)
             
             default:
               break

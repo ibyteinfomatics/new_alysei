@@ -77,88 +77,91 @@ struct UserDetailBasedElements {
 
 struct  AlertMessage{
     
-    static let kEnterFirstName          = "Please enter first name."
-    static let kEnterLastName          = "Please enter last name."
-    static let kMobileNumber            = "Please enter mobile number."
-    static let kEmailAddress            = "Please enter email address."
-    static let kValidEmailAddress       = "Please enter valid email address."
-    static let kDescription             = "Please enter description."
-    static let kAddress                 = "Please enter address."
-    static let kSelectCountry           = "Please select country first."
-    static let kSelectState             = "Please select state first."
-    static let kEmailSent               = "An recovery email has been sent to your registered email address."
-    static let kPassword                = "Please enter password."
-    static let kNewPassword             = "Please enter new password."
-    static let kConfirmPassword         = "Please enter confirm password."
-    static let kPasswordNotEqual        = "New password and confirm password does'nt match."
-    static let kValidMobileNumber       = "Please enter valid number."
-    static let kEnterOTP                = "Please enter OTP."
-    static let kLocationEnabled         = "Location enabled."
-    static let kLocationNotEnabled      = "Location not enabled."
-    static let kDefaultError            = "Something went wrong. Please try again."
-    static let kNoInternet              = "Unable to connect to the Internet. Please try again."
-    static let kSessionExpired          = "Your session has expired. Please login again."
-    static let kTurnOnLocation          = "Location not enabled. Please turn on the location."
-    static let kLocationPopUp      = "We don't have access to location services on your device. Please go to settings and enable location services to use this feature."
-    static let kLogOutMessage           = "Are you sure you want to logout?"
-    static let kRequiredInformation     = "Please fill all the required Information."
-    static let kTermsAndConditions     = "Please agree to Terms&Conditions."
-    static let kNumberAdded             = "Number Added successfully."
-    static let kEmailChanged            = "Email added successfully."
-    static let kOTPSent                 = "OTP sent successfully."
-    static let kOTPSentOnMail           = "OTP sent on your mail."
-    static let kPasswordChanged         = "Password changed successfully."
-    static let kSourceType              = "Please choose a source type"
-    static let kTakePhoto               = "Take Photo"
-    static let kChooseLibrary           = "Choose From Library"
-    static let kDeletePhoto             = "Delete photo"
-    static let kRemovePhoto             = "Remove photo"
-    static let kCancel                  = "Cancel"
-    static let kOkay                    = "Okay"
-    static let kEnter6DigitOTP          = "Enter 6-digit OTP."
-    static let kFeatureNot              = "This feature is not available."
-    static let kSignUpFirst              = "To Start Shopping, you have to SignUp First."
-    static let kLogIn                   = "Logged in successfully."
+    static var kEnterFirstName : String { return "Please enter first name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterLastName  : String { return "Please enter last name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMobileNumber : String { return "Please enter mobile number.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmailAddress  : String { return "Please enter email address.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kValidEmailAddress  : String { return "Please enter valid email address.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDescription   : String { return "Please enter description.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddress  : String { return "Please enter address.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCountry  : String { return "Please select country first.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectState  : String { return "Please select state first.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmailSent : String { return "An recovery email has been sent to your registered email address.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPassword  : String { return "Please enter password.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNewPassword  : String { return "Please enter new password.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kConfirmPassword  : String { return "Please enter confirm password.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPasswordNotEqual : String { return "New password and confirm password does'nt match.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kValidMobileNumber : String { return "Please enter valid number.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterOTP   : String { return "Please enter OTP.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLocationEnabled  : String { return "Location enabled.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLocationNotEnabled : String { return "Location not enabled.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDefaultError : String { return "Something went wrong. Please try again.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoInternet  : String { return "Unable to connect to the Internet. Please try again.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSessionExpired  : String { return "Your session has expired. Please login again.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTurnOnLocation  : String { return "Location not enabled. Please turn on the location.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLocationPopUp  : String { return "We don't have access to location services on your device. Please go to settings and enable location services to use this feature.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLogOutMessage   : String { return "Are you sure you want to logout?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRequiredInformation : String { return "Please fill all the required Information.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTermsAndConditions : String { return "Please agree to Terms&Conditions.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNumberAdded  : String { return "Number Added successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmailChanged  : String { return "Email added successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOTPSent   : String { return "OTP sent successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOTPSentOnMail : String { return "OTP sent on your mail.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPasswordChanged  : String { return "Password changed successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSourceType  : String { return "Please choose a source type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTakePhoto  : String { return "Take Photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kChooseLibrary  : String { return "Choose From Library".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeletePhoto : String { return "Delete photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRemovePhoto : String { return "Remove photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCancel   : String { return "Cancel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kOkay   : String { return "Okay".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnter6DigitOTP : String { return "Enter 6-digit OTP.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFeatureNot  : String { return "This feature is not available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSignUpFirst  : String { return "To Start Shopping, you have to SignUp First.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLogIn  : String { return "Profile updated successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static let kProfileUpdated          = "Profile updated successfully."
-    static let kUploadImage          = "Please upload image."
-    static let kRoleSelection          = "Please choose the role."
-    static let kValidPassword          = "Your password should contain atleast 8 characters, 1 special character and 1 number."
-    static let kEnterName = "Please Enter Name."
-    static let kDeclineMsg = "Please enter reason to decline"
-    static let kSelectCookingSkill = "Please Select Cooking Skill."
-    static let kSelectCousin = "Please select Cuisine."
-    static let kSelectMeal = "Please select Meal."
-    static let kSelectCourse = "Please select Course."
-    static let kSelectDiet = "Please select Diet."
-    static let kSelectHour = "Please select Preparation Time."
-    static let kSelecForPeople = "Please select for how much people you are cooking."
-    static let kSelecForFoodIntolerance = "Please select Food Intolerance."
-    static let kSelectRegion = "Please select Region."
-    static let kImagepicker = "This feature is not available."
-    static let kEnterIngridientName = "Please enter Ingridient Name."
-    static let kEnterToolName = "Please enter Tool Name."
-    static let kSelectCategory = "Please select a Category."
-    static let kEnterDescription = "Please enter Description."
-    static let kEnterTitle = "Please enter Title."
-    static let kSelectIngridient = "Please add Ingridient."
-    static let kSelectTool = "Please add Tool."
-    static let kselectUnit = "Please select Unit"
-    static let kenterQuantity = "Please enter Quantity"
-    static let kEnterValidName = "Please enter more than 3 character."
-    static let kEnterDescriptionUrl = "Please enter Description or Url."
+    static var kProfileUpdated : String { return "Profile updated successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUploadImage  : String { return "Please upload image.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRoleSelection  : String { return "Please choose the role.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kValidPassword : String { return "Your password should contain atleast 8 characters, 1 special character and 1 number.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeclineMsg : String { return "Please enter reason to decline".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kEnterName : String { return "Please Enter Name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCookingSkill : String { return "Please Select Cooking Skill.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCousin : String { return "Please select Cuisine.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectMeal : String { return "Please select Meal.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCourse : String { return "Please select Course.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectDiet : String { return "Please select Diet.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectHour: String { return "Please select Preparation Time.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelecForPeople : String { return "Please select for how much people you are cooking.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelecForFoodIntolerance : String { return "Please select Food Intolerance.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectRegion : String { return "Please select Region.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImagepicker : String { return "This feature is not available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterIngridientName : String { return "Please enter Ingredient Name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterToolName : String { return "Please enter Tool Name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectCategory : String { return "Please select a Category.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterDescription : String { return "Please enter Description.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterTitle : String { return "Please enter Title.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectIngridient : String { return "Please add Ingredient.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectTool : String { return "Please add Tool.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectStep : String { return "Please Add Step".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kselectUnit : String { return "Please select Unit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kenterQuantity : String { return "Please enter Quantity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterValidName : String { return "Please enter more than 3 character.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterDescriptionUrl : String { return "Please enter Description or Url.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
 }
 struct LabelandTextFieldTitle{
-    static let recipeName = "Recipe Name"
-    static let selectCookingSkill = "Select Cooking Skill"
-    static let selectCourse = "Select Course"
-    static let selectCuisine = "Select Cuisine"
-    static let selectMeal = "Select Meal"
-    static let selectDiet = "Select Diet"
-    static let selectRegion = "Select Region"
-    static let selectFoodIntolerance = "Select Food Intolerance"
-    static let selectCategory = "Select a Category"
+   
+    static var selectCookingSkill  : String { return "Select Cooking Skill".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectCourse  : String { return "Select Course".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectCuisine : String { return "Select Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectMeal  : String { return "Select Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectDiet  : String { return "Select Diet".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectRegion  : String { return "Select Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectFoodIntolerance  : String { return "Select Food Intolerance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var selectCategory  : String { return "Select a Category".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
 }
 
@@ -708,6 +711,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     //MARK: Marketplace CreateStore Screen
     static var kUpdateStore  : String {   "Update Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kStoreName  : String {  "Store Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kStore : String {  "Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDescription  : String {  "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCWebsite  : String {  "Website".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kStoreRegion  : String {   "Store Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1105,9 +1109,9 @@ struct RecipeConstants{
     static var kSaveRecipeHeader : String {  "Recipe Ingredients and Tools used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kUtensils : String {  "Utensils, Appliances & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRecipeSteps : String {  "Recipe Steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kNoIngredientAdded : String {  "No Ingridients Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kNoToolAdded : String {  "No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kNoStepAdded : String {  "No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoIngredientAdded : String {  "  No Ingridients Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoToolAdded : String {  "  No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNoStepAdded : String {  "  No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSaveRecipe : String {  "Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSave : String {  "Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEditRecipe : String {  "Edit Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1164,8 +1168,10 @@ struct RecipeConstants{
     static var  kDescription : String {  "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kChangePhoto : String {  "Change Photo".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kEditIngredient : String {  "Edit Ingredients in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kEditRecipeIngredient : String {  "Edit Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kEditTool : String {  "Edit Tools in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var  kSaveTool : String {  "Save Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kSaveIngridients : String {  "Save Ingridients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
 }
 

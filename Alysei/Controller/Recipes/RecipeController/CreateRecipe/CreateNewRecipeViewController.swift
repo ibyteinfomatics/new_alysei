@@ -157,7 +157,6 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     
     func setTitle(){
         
-        self.nameTextField.placeholder = LabelandTextFieldTitle.recipeName
         self.cookingSkillLabel.text = LabelandTextFieldTitle.selectCookingSkill
         self.cuisineLabel.text = LabelandTextFieldTitle.selectCuisine
         self.mealNameLabel.text = LabelandTextFieldTitle.selectMeal

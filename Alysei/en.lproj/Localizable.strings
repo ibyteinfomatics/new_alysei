@@ -5,7 +5,72 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
-
+//MARK: Alert Message
+"Please enter first name." = "Please enter first name.";
+"Please enter last name." = "Please enter last name.";
+"Please enter mobile number." = "Please enter mobile number.";
+"Please enter email address." = "Please enter email address.";
+"Please enter valid email address." = "Please enter valid email address.";
+"Please enter description." = "Please enter description.";
+"Please enter address." = "Please enter address.";
+"Please select country first." = "Please select country first.";
+"Please select state first." = "Please select state first.";
+"An recovery email has been sent to your registered email address." = "An recovery email has been sent to your registered email address.";
+"Please enter password." = "Please enter password.";
+"Please enter new password." = "Please enter new password.";
+"Please enter confirm password." = "Please enter confirm password.";
+"New password and confirm password does'nt match." = "New password and confirm password does'nt match.";
+"Please enter valid number." = "Please enter valid number.";
+"Please enter OTP." = "Please enter OTP.";
+"Location enabled." = "Location enabled.";
+"Location not enabled." = "Location not enabled.";
+"Something went wrong. Please try again." = "Something went wrong. Please try again.";
+"Unable to connect to the Internet. Please try again." = "Unable to connect to the Internet. Please try again.";
+"Your session has expired. Please login again." = "Your session has expired. Please login again.";
+"Location not enabled. Please turn on the location." = "Location not enabled. Please turn on the location.";
+"We don't have access to location services on your device. Please go to settings and enable location services to use this feature." = "We don't have access to location services on your device. Please go to settings and enable location services to use this feature.";
+"Are you sure you want to logout?" = "Are you sure you want to logout?";
+"Please fill all the required Information." = "Please fill all the required Information.";
+"Please agree to Terms&Conditions." = "Please agree to Terms&Conditions.";
+"Number Added successfully." = "Number Added successfully.";
+"Email added successfully." = "Email added successfully.";
+"OTP sent successfully." = "OTP sent successfully.";
+"OTP sent on your mail." = "OTP sent on your mail.";
+"Password changed successfully." = "Password changed successfully.";
+"Please choose a source type" = "Please choose a source type";
+"Take Photo" = "Take Photo";
+"Choose From Library" = "Choose From Library";
+"Delete photo" = "Delete photo";
+"Remove photo" = "Remove photo";
+"Enter 6-digit OTP." = "Enter 6-digit OTP.";
+"This feature is not available." = "This feature is not available.";
+"To Start Shopping, you have to SignUp First." = "To Start Shopping, you have to SignUp First.";
+"Profile updated successfully." = "Profile updated successfully.";
+"Profile updated successfully." = "Profile updated successfully.";
+"Please upload image." = "Please upload image.";
+"Please choose the role." = "Please choose the role.";
+"Your password should contain atleast 8 characters, 1 special character and 1 number." = "Your password should contain atleast 8 characters, 1 special character and 1 number.";
+"Please enter reason to decline" = "Please enter reason to decline";
+"Please Enter Name." = "Please Enter Name.";
+"Please Select Cooking Skill." = "Please Select Cooking Skill.";
+"Please select Cuisine." = "Please select Cuisine.";
+"Please select Meal." = "Please select Meal.";
+"Please select Course." = "Please select Course.";
+"Please select Diet." = "Please select Diet.";
+"Please select Preparation Time." = "Please select Preparation Time.";
+"Please select for how much people you are cooking." = "Please select for how much people you are cooking.";
+"Please select Food Intolerance." = "Please select Food Intolerance.";
+"Please select Region." = "Please select Region.";
+"Please enter Ingredient Name." = "Please enter Ingredient Name.";
+"Please select a Category." = "Please select a Category.";
+"Please enter Description." = "Please enter Description.";
+"Please enter Title." = "Please enter Title.";
+"Please add Ingredient." = "Please add Ingredient.";
+"Please add Tool." = "Please add Tool.";
+"Please select Unit" = "Please select Unit";
+"Please enter Quantity" = "Please enter Quantity";
+"Please enter more than 3 character." = "Please enter more than 3 character.";
+"Please enter Description or Url." = "Please enter Description or Url.";
 
 //MARK: MARKETPLACE
 
@@ -485,6 +550,12 @@
 
 //MARK:  CREATE NEW RECIPE
 
+"Select Cooking Skill" = "Select Cooking Skill";
+"Select Course" = "Select Course";
+"Select Cuisine" = "Select Cuisine";
+"Select Meal" = "Select Meal";
+"Select Region" = "Select Region";
+"Select a Category" = "Select a Category";
 "Create New Recipe" =  "Create New Recipe";
 "Upload Recipe Image" =  "Upload Recipe Image";
 "Click here to upload recipe photo" = "Click here to upload recipe photo";
@@ -537,9 +608,9 @@
 "Recipe Ingredients and Tools used" = "Recipe Ingredients and Tools used";
 "Utensils, Appliances & Tools" = "Utensils, Appliances & Tools";
 "Recipe Steps" = "Recipe Steps";
-"No Ingridients Added yet!" = "No Ingridients Added yet!";
-"No Tools Added yet!" = "No Tools Added yet!";
-"No Step Added yet!" = "No Step Added yet!";
+"  No Ingridients Added yet!" = "  No Ingridients Added yet!";
+"  No Tools Added yet!" = "  No Tools Added yet!";
+"  No Step Added yet!" = "  No Step Added yet!";
 "Save Recipe" = "Save Recipe";
 "Save" = "Save";
 "Edit Recipe" = "Edit Recipe";
@@ -554,9 +625,9 @@
 
 //MARK: RECIPE PREFERENCE
 
-"What is your favourite \n Cuisines?" = "What is your favourite  \n Cuisines?";
-"Do you have any food  \n allergies?" = "Do you have any food  \n allergies?";
-"Do you have follow these  \n diets?" = "Do you have follow these  \n diets?";
+"What is your favourite \n Cuisines?" = "What is your favourite \n Cuisines?";
+"Do you have any food \n allergies?" = "Do you have any food \n allergies?";
+"Do you have follow these \n diets?" = "Do you have follow these \n diets?";
 "Don't  want to see \n ingredients?" = "Don't  want to see \n ingredients?";
 "Back" = "Back";
 "Skip" = "Skip";
@@ -596,6 +667,9 @@
 "Enter title" = "Enter title";
 "Description" = "Description";
 "Change Photo" =  "Change Photo";
+"Edit Ingredients" = "Edit Ingredients";
 "Edit Ingredients in Recipe" = "Edit Ingredients in Recipe";
 "Edit Tools in Recipe" = "Edit Tools in Recipe";
+"Save Ingridients" = "Save Ingridients";
+"Save Tools" = "Save Tools";
 
