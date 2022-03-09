@@ -5229,7 +5229,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPT-iZ-yrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="1712"/>
+            <point key="canvasLocation" x="-143" y="1720"/>
         </scene>
         <!--Blocking ViewC-->
         <scene sceneID="Yck-5m-RHx">
@@ -7466,14 +7466,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7514,7 +7514,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7536,7 +7536,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7574,7 +7574,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -20808,24 +20808,20 @@ You will be notified for any membership status update.</string>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horvath Alia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgr-pH-eBf">
-                                                            <rect key="frame" x="65" y="10" width="300" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="YoM-TA-8xE"/>
-                                                            </constraints>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Horvath Alia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgr-pH-eBf">
+                                                            <rect key="frame" x="65" y="5" width="300" height="20"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDP-ST-vbu">
-                                                            <rect key="frame" x="65" y="45" width="300" height="26"/>
-                                                            <string key="text">jkrbzjk sdihk sdf sf      jkdflkgjkljfhjfkkglh jf klhjkl jjh jdf fdkjgjgjkjf gdfg jfgj dgjjd fgj dkfjgj kdjfgkdjgkj djkdg  djfkglj d  g  kgjkl jg djgkjk jkgj dfgjk f  dfjg   </string>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jkrbzjk sdihk sdf sf      " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDP-ST-vbu">
+                                                            <rect key="frame" x="65" y="30" width="300" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j8-EV-Uoh" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="65" y="81" width="300" height="30"/>
+                                                            <rect key="frame" x="65" y="51.5" width="300" height="30"/>
                                                             <color key="backgroundColor" red="0.29411764709999999" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Qs5-BO-8yZ"/>
@@ -20848,7 +20844,7 @@ You will be notified for any membership status update.</string>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-Fo-EO8" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="65" y="126" width="147.5" height="30"/>
+                                                            <rect key="frame" x="65" y="96.5" width="147.5" height="30"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="G1e-J4-IYm"/>
@@ -20874,7 +20870,7 @@ You will be notified for any membership status update.</string>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMx-Az-1kF" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="217.5" y="126" width="147.5" height="30"/>
+                                                            <rect key="frame" x="217.5" y="96.5" width="147.5" height="30"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <state key="normal" title="Decline">
@@ -20900,25 +20896,25 @@ You will be notified for any membership status update.</string>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="height" secondItem="Dwn-Fo-EO8" secondAttribute="height" id="0QZ-QK-0zh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tDP-ST-vbu" secondAttribute="trailing" constant="10" id="0tG-i6-via"/>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="leading" secondItem="Dwn-Fo-EO8" secondAttribute="trailing" constant="5" id="0zh-Gn-7ct"/>
-                                                        <constraint firstItem="tDP-ST-vbu" firstAttribute="trailing" secondItem="hgr-pH-eBf" secondAttribute="trailing" id="3UR-AP-7n5"/>
-                                                        <constraint firstItem="4j8-EV-Uoh" firstAttribute="leading" secondItem="tDP-ST-vbu" secondAttribute="leading" id="42U-Lj-Gn4"/>
-                                                        <constraint firstItem="hgr-pH-eBf" firstAttribute="top" secondItem="eNi-jo-udx" secondAttribute="top" id="8L6-pd-znS"/>
-                                                        <constraint firstAttribute="trailing" secondItem="hgr-pH-eBf" secondAttribute="trailing" constant="10" id="AMC-GR-3rT"/>
+                                                        <constraint firstItem="4j8-EV-Uoh" firstAttribute="top" secondItem="tDP-ST-vbu" secondAttribute="bottom" constant="5" id="6mD-Ek-Sde"/>
                                                         <constraint firstItem="eNi-jo-udx" firstAttribute="top" secondItem="VS4-60-LBe" secondAttribute="top" constant="10" id="JL7-yX-Ybd"/>
+                                                        <constraint firstItem="tDP-ST-vbu" firstAttribute="leading" secondItem="eNi-jo-udx" secondAttribute="trailing" constant="10" id="KnC-XX-8Uv"/>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="top" secondItem="4j8-EV-Uoh" secondAttribute="bottom" constant="15" id="MEX-Ft-XOb"/>
-                                                        <constraint firstAttribute="bottom" secondItem="OMx-Az-1kF" secondAttribute="bottom" constant="10" id="VKo-16-aCF"/>
+                                                        <constraint firstItem="hgr-pH-eBf" firstAttribute="leading" secondItem="eNi-jo-udx" secondAttribute="trailing" constant="10" id="PIh-eP-xWb"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OMx-Az-1kF" secondAttribute="bottom" constant="5" id="VKo-16-aCF"/>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="width" secondItem="Dwn-Fo-EO8" secondAttribute="width" id="VsA-4Z-bee"/>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="trailing" secondItem="4j8-EV-Uoh" secondAttribute="trailing" id="Vxo-As-tf2"/>
                                                         <constraint firstItem="eNi-jo-udx" firstAttribute="leading" secondItem="VS4-60-LBe" secondAttribute="leading" constant="10" id="c6K-dI-lRG"/>
                                                         <constraint firstItem="Dwn-Fo-EO8" firstAttribute="top" secondItem="4j8-EV-Uoh" secondAttribute="bottom" constant="15" id="c6U-M9-Xyy"/>
-                                                        <constraint firstItem="4j8-EV-Uoh" firstAttribute="trailing" secondItem="tDP-ST-vbu" secondAttribute="trailing" id="e4r-pT-VW5"/>
-                                                        <constraint firstItem="4j8-EV-Uoh" firstAttribute="top" secondItem="tDP-ST-vbu" secondAttribute="bottom" constant="10" id="hDr-qx-h0B"/>
                                                         <constraint firstItem="OMx-Az-1kF" firstAttribute="centerY" secondItem="Dwn-Fo-EO8" secondAttribute="centerY" id="kc8-K3-KuW"/>
-                                                        <constraint firstItem="tDP-ST-vbu" firstAttribute="leading" secondItem="hgr-pH-eBf" secondAttribute="leading" id="l4W-tF-MGs"/>
-                                                        <constraint firstItem="tDP-ST-vbu" firstAttribute="top" secondItem="hgr-pH-eBf" secondAttribute="bottom" constant="15" id="mvc-ud-lK1"/>
+                                                        <constraint firstItem="hgr-pH-eBf" firstAttribute="top" secondItem="VS4-60-LBe" secondAttribute="top" constant="5" id="oL7-6Y-HB4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="hgr-pH-eBf" secondAttribute="trailing" constant="10" id="oXs-mA-39j"/>
+                                                        <constraint firstItem="4j8-EV-Uoh" firstAttribute="leading" secondItem="VS4-60-LBe" secondAttribute="leading" constant="65" id="oYt-ml-6eT"/>
                                                         <constraint firstItem="Dwn-Fo-EO8" firstAttribute="leading" secondItem="4j8-EV-Uoh" secondAttribute="leading" id="qjj-Rs-Bfx"/>
-                                                        <constraint firstItem="hgr-pH-eBf" firstAttribute="leading" secondItem="eNi-jo-udx" secondAttribute="trailing" constant="10" id="xs3-pt-TY2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4j8-EV-Uoh" secondAttribute="trailing" constant="10" id="ry2-zk-eHo"/>
+                                                        <constraint firstItem="tDP-ST-vbu" firstAttribute="top" secondItem="hgr-pH-eBf" secondAttribute="bottom" constant="5" id="yQ3-69-f9g"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -21079,7 +21075,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjm-4n-LAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.04347826086962" y="1041.9642857142858"/>
+            <point key="canvasLocation" x="-813.60000000000002" y="1041.2293853073463"/>
         </scene>
         <!--Universal Search View Controller-->
         <scene sceneID="jVh-F2-nih">
@@ -23556,7 +23552,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
