@@ -867,7 +867,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kNewestFirst  : String {"Newest First".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Store Screen
-    static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kItalianFBProducer  : String {"Italian F&B Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOurGallery  : String { "Our Gallery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCall  : String {"Call".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddToFav  : String {"Add to Fav".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1137,6 +1137,9 @@ struct RecipeConstants{
     static var  kFromAlysei : String {  "from Alysei app".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kReviews : String {  "Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kFinishCooking : String {  "Finish Cooking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kRecipeBy : String {  "Recipe by".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kRatingReview : String {  "Rating & Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kYouMightLike : String {  "You might also like...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kAddRatingAlert : String {  "Please add ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kLeaveCommentAlert : String {  "Please leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kAlreadyReviewAlert : String {  "You have already done a review on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

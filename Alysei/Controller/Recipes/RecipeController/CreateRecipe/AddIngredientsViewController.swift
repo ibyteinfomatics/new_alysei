@@ -648,7 +648,7 @@ extension AddIngredientsViewController{
             case 409:
                 self.ingridientSearchModel = [IngridentArray]()
                 self.newSearchModel = [AddIngridientDataModel]()
-                self.showAlert(withMessage: "No Ingridients found")
+                self.showAlert(withMessage: RecipeConstants.kNoIngredient)
             
             default:
               break

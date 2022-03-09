@@ -14,6 +14,7 @@ var youMightAlsoLikeModel: [ViewRecipeDetailDataModel]? = []
 class LikeRecipeTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var youMightLikeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var delegate:CategoryRowDelegate?
@@ -28,6 +29,7 @@ class LikeRecipeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        youMightLikeLabel.text = RecipeConstants.kYouMightLike
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.reloadData()
@@ -54,10 +56,10 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         cell.imageView?.setImage(withString: imgUrl)
         cell.recipeNameLabel.text = youMightAlsoLikeModel?[indexPath.row].recipeName
         cell.UsernameLabel.text = youMightAlsoLikeModel?[indexPath.row].userName
-        cell.timeLabel.text = "\( youMightAlsoLikeModel?[indexPath.item].hours ?? 0)" + " " + "hours" + " " + "\( youMightAlsoLikeModel?[indexPath.item].minute ?? 0)" + " " + "minutes"
-        cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + "Serving"
-        cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? "NA"
-        cell.likeLLabel.text = "\(youMightAlsoLikeModel?[indexPath.row].favCount ?? 0 )" + " " + "Likes"
+        cell.timeLabel.text = "\( youMightAlsoLikeModel?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( youMightAlsoLikeModel?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
+        cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+        cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
+        cell.likeLLabel.text = "\(youMightAlsoLikeModel?[indexPath.row].favCount ?? 0 )" + " " + RecipeConstants.kLikes
         
         if youMightAlsoLikeModel?[indexPath.row].avgRating == "0.0" || youMightAlsoLikeModel?[indexPath.row].avgRating  == "0" {
             cell.rateImg1.image = UIImage(named: "icons8_star")

@@ -9,6 +9,9 @@ import UIKit
 
 class WellDoneViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var writeReviewLabel: UILabel!
+    @IBOutlet weak var wellDoneLabel: UILabel!
+    @IBOutlet weak var timeToEnjoyLabel: UILabel!
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var rateImageView: UIImageView!
@@ -26,10 +29,23 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var btnStar3: UIButton!
     @IBOutlet weak var btnStar4: UIButton!
     @IBOutlet weak var btnStar5: UIButton!
+    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var tapToRateLabel: UILabel!
     
     var reviewStarCount: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Mark: set localization string---
+        writeReviewLabel.text = RecipeConstants.kWriteReview
+        wellDoneLabel.text = RecipeConstants.kWellDone
+        timeToEnjoyLabel.text = RecipeConstants.kEnjoyRecipeMsg
+        doneBtn.setTitle(RecipeConstants.kDone, for: .normal)
+        tapToRateLabel.text = RecipeConstants.kTapToRate
+        btnAddReview.setTitle(RecipeConstants.kAddReview, for: .normal)
+        btnCancel.setTitle(RecipeConstants.kCancel, for: .normal)
+        
+        
         self.popupView.isHidden = true
         
         self.commentTextView.delegate = self
@@ -72,10 +88,10 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func addReviewFinal(_ sender: Any) {
         if (reviewStarCount == 0){
-            self.showAlert(withMessage: "Please add ratings.")
+            self.showAlert(withMessage: RecipeConstants.kAddRatingAlert)
         }
         else if ( commentTextView.text == AppConstants.leaveComment){
-            self.showAlert(withMessage: "Please leave a comment.")
+            self.showAlert(withMessage: RecipeConstants.kLeaveCommentAlert)
         }
         else{
             
@@ -157,14 +173,14 @@ class WellDoneViewController: UIViewController, UITextViewDelegate {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.doReview, requestMethod: .POST, requestParameters: params, withProgressHUD:  true){ (dictResponse, error, errorType, statusCode) in
             switch statusCode{
             case 200:
-                self.showAlert(withMessage: "Review added Successfully!")
+                self.showAlert(withMessage: RecipeConstants.kReviewAddedMsg)
                 DispatchQueue.main.asyncAfter(deadline: .now()+1.0) {
                     let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
                 
             case 409:
-                self.showAlert(withMessage: "You have already done a review on this product")
+                self.showAlert(withMessage: RecipeConstants.kAlreadyReviewAlert)
                 DispatchQueue.main.asyncAfter(deadline: .now()+1.0) {
                     let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DiscoverRecipeViewController") as! DiscoverRecipeViewController
                     self.navigationController?.pushViewController(nextVC, animated: true)

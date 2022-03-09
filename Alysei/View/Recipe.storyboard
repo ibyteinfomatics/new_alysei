@@ -453,16 +453,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-oo-0y2">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUL-wc-eVX">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-Ak-1US">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -752,16 +752,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="an8-j4-2Zh">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNN-Nh-Pgk">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-sM-Z4M">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -997,19 +997,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g08-GQ-0W8">
-                                <rect key="frame" x="15" y="84" width="186.5" height="20"/>
+                                <rect key="frame" x="15" y="84" width="384" height="19"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisines?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfQ-1l-NMN">
-                                <rect key="frame" x="15" y="109" width="78" height="20"/>
+                                <rect key="frame" x="15" y="108" width="67" height="19"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cjq-Ut-634">
-                                <rect key="frame" x="15" y="139" width="384" height="667"/>
+                                <rect key="frame" x="15" y="137" width="384" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="1S7-y8-Tep">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1069,6 +1069,7 @@
                         <viewLayoutGuide key="safeArea" id="5W7-SL-4mK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5W7-SL-4mK" firstAttribute="trailing" secondItem="g08-GQ-0W8" secondAttribute="trailing" constant="15" id="5hH-F0-Jrp"/>
                             <constraint firstItem="Cjq-Ut-634" firstAttribute="top" secondItem="cfQ-1l-NMN" secondAttribute="bottom" constant="10" id="HMN-uL-cA6"/>
                             <constraint firstItem="cfQ-1l-NMN" firstAttribute="top" secondItem="g08-GQ-0W8" secondAttribute="bottom" constant="5" id="KZ8-HV-fVR"/>
                             <constraint firstItem="1JM-Sa-w7O" firstAttribute="leading" secondItem="5W7-SL-4mK" secondAttribute="leading" id="OMN-C6-gOY"/>
@@ -1409,7 +1410,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lko-CJ-UIx">
-                                <rect key="frame" x="15" y="84" width="206" height="24"/>
+                                <rect key="frame" x="15" y="84" width="384" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1483,6 +1484,7 @@
                             <constraint firstItem="y7b-2y-uq9" firstAttribute="top" secondItem="zG4-zG-4Mj" secondAttribute="bottom" constant="10" id="7ai-PD-NYz"/>
                             <constraint firstItem="nck-BM-aT9" firstAttribute="leading" secondItem="Rz4-8I-NuN" secondAttribute="leading" constant="15" id="DGR-Wf-WE3"/>
                             <constraint firstItem="GAq-jx-Dhj" firstAttribute="leading" secondItem="Rz4-8I-NuN" secondAttribute="leading" id="M7a-mE-9KJ"/>
+                            <constraint firstItem="Rz4-8I-NuN" firstAttribute="trailing" secondItem="lko-CJ-UIx" secondAttribute="trailing" constant="15" id="Mza-Oc-FvT"/>
                             <constraint firstItem="zG4-zG-4Mj" firstAttribute="leading" secondItem="Rz4-8I-NuN" secondAttribute="leading" constant="15" id="NTh-Wl-eVg"/>
                             <constraint firstItem="lko-CJ-UIx" firstAttribute="top" secondItem="W1y-HE-VcF" secondAttribute="bottom" id="RWw-W7-M1K"/>
                             <constraint firstItem="zG4-zG-4Mj" firstAttribute="centerX" secondItem="oEk-rh-jIA" secondAttribute="centerX" id="TV7-98-QGN"/>
@@ -1530,7 +1532,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="she-7T-JEC">
-                                <rect key="frame" x="15" y="84" width="239.5" height="24"/>
+                                <rect key="frame" x="15" y="84" width="384" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1610,6 +1612,7 @@
                             <constraint firstItem="ZV9-bo-Cid" firstAttribute="top" secondItem="FrX-GQ-1lv" secondAttribute="top" id="Sjg-Yx-fw5"/>
                             <constraint firstItem="ZV9-bo-Cid" firstAttribute="leading" secondItem="FrX-GQ-1lv" secondAttribute="leading" id="YaK-F0-hEh"/>
                             <constraint firstItem="she-7T-JEC" firstAttribute="leading" secondItem="FrX-GQ-1lv" secondAttribute="leading" constant="15" id="jcd-yX-Tm7"/>
+                            <constraint firstItem="FrX-GQ-1lv" firstAttribute="trailing" secondItem="she-7T-JEC" secondAttribute="trailing" constant="15" id="kQu-Ri-t5R"/>
                             <constraint firstAttribute="bottom" secondItem="3yC-Cs-jNY" secondAttribute="bottom" id="lV9-go-fkw"/>
                             <constraint firstItem="FrX-GQ-1lv" firstAttribute="trailing" secondItem="S69-Bd-GuG" secondAttribute="trailing" constant="15" id="ly6-HC-t3w"/>
                             <constraint firstItem="T86-mT-pSd" firstAttribute="leading" secondItem="ZV9-bo-Cid" secondAttribute="leading" id="mQa-L5-ThB"/>
@@ -1651,7 +1654,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w2-oA-CnK">
-                                <rect key="frame" x="15" y="84" width="173.5" height="24"/>
+                                <rect key="frame" x="15" y="84" width="384" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1734,6 +1737,7 @@
                             <constraint firstItem="ybc-RU-yDG" firstAttribute="top" secondItem="7w2-oA-CnK" secondAttribute="bottom" constant="5" id="UpW-ph-fgz"/>
                             <constraint firstItem="OQd-nq-8gX" firstAttribute="leading" secondItem="JAE-Zu-4v2" secondAttribute="leading" id="Xpt-qa-Rfo"/>
                             <constraint firstItem="7w2-oA-CnK" firstAttribute="leading" secondItem="JAE-Zu-4v2" secondAttribute="leading" constant="15" id="aF8-jl-ack"/>
+                            <constraint firstItem="JAE-Zu-4v2" firstAttribute="trailing" secondItem="7w2-oA-CnK" secondAttribute="trailing" constant="15" id="c54-Pj-VHi"/>
                             <constraint firstItem="ybc-RU-yDG" firstAttribute="leading" secondItem="JAE-Zu-4v2" secondAttribute="leading" constant="15" id="lUX-js-vuJ"/>
                             <constraint firstItem="sEy-GP-g72" firstAttribute="leading" secondItem="JAE-Zu-4v2" secondAttribute="leading" constant="15" id="mRY-KO-pC2"/>
                             <constraint firstItem="OQd-nq-8gX" firstAttribute="top" secondItem="JAE-Zu-4v2" secondAttribute="top" id="rkU-JJ-Il5"/>
@@ -2638,7 +2642,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favourite" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8C-1t-Vv6">
-                                <rect key="frame" x="15" y="84" width="208.5" height="20"/>
+                                <rect key="frame" x="15" y="84" width="384" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4zU-7w-13Y"/>
                                 </constraints>
@@ -2677,6 +2681,7 @@
                             <constraint firstItem="5Gi-iX-i6o" firstAttribute="top" secondItem="x8C-1t-Vv6" secondAttribute="bottom" constant="5" id="nq8-yD-McV"/>
                             <constraint firstItem="MbG-yF-mAO" firstAttribute="leading" secondItem="ei1-BB-3NG" secondAttribute="leading" constant="15" id="rNj-aY-KV9"/>
                             <constraint firstItem="x8C-1t-Vv6" firstAttribute="leading" secondItem="ei1-BB-3NG" secondAttribute="leading" constant="15" id="uK8-IW-Y4G"/>
+                            <constraint firstItem="ei1-BB-3NG" firstAttribute="trailing" secondItem="x8C-1t-Vv6" secondAttribute="trailing" constant="15" id="xNg-VW-MYX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xlf-Sw-kTi"/>
@@ -2689,7 +2694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMu-TB-zrr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="1584"/>
+            <point key="canvasLocation" x="742.02898550724649" y="1583.7053571428571"/>
         </scene>
         <!--Food Allergy View Controller-->
         <scene sceneID="5Zk-9C-ZaR">
@@ -2724,7 +2729,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any food" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFC-gN-w3r">
-                                <rect key="frame" x="15" y="84" width="206" height="24"/>
+                                <rect key="frame" x="15" y="84" width="384" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2802,6 +2807,7 @@
                             <constraint firstItem="Rjf-lq-L11" firstAttribute="trailing" secondItem="Cbw-7F-fGi" secondAttribute="trailing" constant="15" id="4Vm-pv-Epa"/>
                             <constraint firstItem="chl-C8-RQY" firstAttribute="top" secondItem="FFC-gN-w3r" secondAttribute="bottom" constant="5" id="80C-fe-qhW"/>
                             <constraint firstItem="ze2-IY-lJH" firstAttribute="trailing" secondItem="Rjf-lq-L11" secondAttribute="trailing" id="87l-eh-2bN"/>
+                            <constraint firstItem="Rjf-lq-L11" firstAttribute="trailing" secondItem="FFC-gN-w3r" secondAttribute="trailing" constant="15" id="9U1-OR-xPz"/>
                             <constraint firstItem="chl-C8-RQY" firstAttribute="top" secondItem="FFC-gN-w3r" secondAttribute="bottom" constant="5" id="9tn-lR-txZ"/>
                             <constraint firstItem="chl-C8-RQY" firstAttribute="leading" secondItem="Rjf-lq-L11" secondAttribute="leading" constant="15" id="D6a-gy-UsZ"/>
                             <constraint firstItem="ze2-IY-lJH" firstAttribute="leading" secondItem="Rjf-lq-L11" secondAttribute="leading" id="EZL-uZ-LMY"/>
@@ -2863,7 +2869,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have follow these" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGX-jy-evH">
-                                <rect key="frame" x="15" y="84" width="239.5" height="24"/>
+                                <rect key="frame" x="15" y="84" width="384" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2940,6 +2946,7 @@
                             <constraint firstItem="6Rl-W8-miU" firstAttribute="trailing" secondItem="uDd-Mw-LPc" secondAttribute="trailing" id="2F2-xu-NBU"/>
                             <constraint firstItem="n6C-W8-0bx" firstAttribute="trailing" secondItem="uDd-Mw-LPc" secondAttribute="trailing" id="FkU-Mv-8kb"/>
                             <constraint firstItem="uDd-Mw-LPc" firstAttribute="trailing" secondItem="gJH-E7-p8d" secondAttribute="trailing" constant="15" id="HnG-EB-6Ef"/>
+                            <constraint firstItem="uDd-Mw-LPc" firstAttribute="trailing" secondItem="aGX-jy-evH" secondAttribute="trailing" constant="15" id="Ptv-IE-TPd"/>
                             <constraint firstItem="aGX-jy-evH" firstAttribute="leading" secondItem="uDd-Mw-LPc" secondAttribute="leading" constant="15" id="TL2-4k-3VT"/>
                             <constraint firstItem="HmC-sK-RjS" firstAttribute="top" secondItem="aGX-jy-evH" secondAttribute="bottom" constant="5" id="TTv-mK-GUZ"/>
                             <constraint firstItem="n6C-W8-0bx" firstAttribute="top" secondItem="uDd-Mw-LPc" secondAttribute="top" id="ULN-DM-SMf"/>
@@ -3052,7 +3059,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't  want to see" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk2-SV-P1B">
-                                                <rect key="frame" x="15" y="40" width="173.5" height="24"/>
+                                                <rect key="frame" x="15" y="40" width="384" height="24"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3190,6 +3197,7 @@
                                             <constraint firstItem="2oH-Xh-bgi" firstAttribute="leading" secondItem="f3j-JQ-7th" secondAttribute="leading" id="EaP-LF-9th"/>
                                             <constraint firstAttribute="bottom" secondItem="2oH-Xh-bgi" secondAttribute="bottom" id="JfF-yW-1Gg"/>
                                             <constraint firstItem="2oH-Xh-bgi" firstAttribute="top" secondItem="F3f-2x-yHt" secondAttribute="bottom" constant="10" id="KfQ-Pb-Koe"/>
+                                            <constraint firstAttribute="trailing" secondItem="lk2-SV-P1B" secondAttribute="trailing" constant="15" id="OGa-fO-guV"/>
                                             <constraint firstItem="55p-LM-yq6" firstAttribute="top" secondItem="f3j-JQ-7th" secondAttribute="top" id="OrP-hu-aXM"/>
                                             <constraint firstItem="55p-LM-yq6" firstAttribute="leading" secondItem="f3j-JQ-7th" secondAttribute="leading" id="Uhz-BT-qbR"/>
                                             <constraint firstItem="lk2-SV-P1B" firstAttribute="leading" secondItem="f3j-JQ-7th" secondAttribute="leading" constant="15" id="cDC-rp-dsB"/>
@@ -3977,9 +3985,11 @@
                         <outlet property="btnStar3" destination="x13-HR-a6V" id="9r3-4B-RT6"/>
                         <outlet property="btnStar4" destination="3ud-Sb-i2u" id="dx5-Ij-VR1"/>
                         <outlet property="btnStar5" destination="AJt-Fd-T73" id="Gcy-cD-qC3"/>
+                        <outlet property="headerLabel" destination="D0N-Cs-5Ni" id="kyE-zk-W3W"/>
                         <outlet property="headerView" destination="F7L-cw-iUu" id="NFv-RH-Wc4"/>
                         <outlet property="reviewTextView" destination="dtH-a9-zaY" id="jYO-nS-aOF"/>
                         <outlet property="reviewView" destination="oMV-oF-d45" id="5ot-a3-zCy"/>
+                        <outlet property="reviewsLabel" destination="rWJ-xl-G1L" id="7bh-id-V3C"/>
                         <outlet property="userImageVw" destination="r8c-1W-iRJ" id="fVf-DX-NJx"/>
                         <outlet property="viewComment" destination="O3M-wK-Zm7" id="ce8-n2-yqz"/>
                     </connections>
@@ -4412,12 +4422,17 @@
                         <outlet property="btnStar4" destination="FLn-KT-FcM" id="Ide-Ze-emp"/>
                         <outlet property="btnStar5" destination="Z3R-Je-NnD" id="fER-K2-bwI"/>
                         <outlet property="commentTextView" destination="13r-XU-QsM" id="EGa-1x-13h"/>
+                        <outlet property="doneBtn" destination="SmR-ze-a85" id="jHs-Kk-UI3"/>
                         <outlet property="popupView" destination="cZV-jx-0XB" id="lg2-4k-A3c"/>
                         <outlet property="profileImageVw" destination="BHJ-Co-byt" id="2Gn-du-AVM"/>
                         <outlet property="rateImageView" destination="k2G-H2-aaV" id="3lt-yu-xod"/>
                         <outlet property="recipeImageView" destination="LCV-cK-z8p" id="Yag-ul-eMn"/>
                         <outlet property="reviewOuterView" destination="1lB-NG-Mmt" id="xAL-fg-WlX"/>
                         <outlet property="reviewView" destination="fTj-qF-de4" id="G1e-JV-h10"/>
+                        <outlet property="tapToRateLabel" destination="zad-Sj-Owu" id="l2y-kd-iDD"/>
+                        <outlet property="timeToEnjoyLabel" destination="kbP-BE-dkl" id="bEX-4P-Tgg"/>
+                        <outlet property="wellDoneLabel" destination="BHN-68-f39" id="sHf-ui-rZN"/>
+                        <outlet property="writeReviewLabel" destination="A6E-dE-qnx" id="uZP-O2-YC6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lL-kr-yUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -5600,6 +5615,7 @@
                                             <outlet property="labelEmail" destination="5nA-Om-jFg" id="L1D-bs-i36"/>
                                             <outlet property="labelUserName" destination="BSp-yF-T3w" id="Fzr-SE-nLm"/>
                                             <outlet property="profileImg" destination="bwe-wa-YaF" id="wXj-jQ-q96"/>
+                                            <outlet property="recipeByLabel" destination="vQq-Qh-SKa" id="rUh-7W-dvE"/>
                                             <outlet property="viewProfileButton" destination="x6V-Hz-sYv" id="iIb-Ja-5xh"/>
                                         </connections>
                                     </tableViewCell>
@@ -6038,6 +6054,7 @@
                                             <outlet property="lblClientReview" destination="Az2-4a-jQo" id="REj-xh-JwJ"/>
                                             <outlet property="lblReviewData" destination="wnL-XY-1YQ" id="VYA-xQ-Q2u"/>
                                             <outlet property="lblTotalReview" destination="Hhc-An-g8P" id="qYz-4h-UUn"/>
+                                            <outlet property="ratingReviewLabel" destination="bFg-EL-qwM" id="Ow9-Js-FHe"/>
                                             <outlet property="storeAvgStar1" destination="pYE-Ie-XZr" id="Fpg-gG-3e8"/>
                                             <outlet property="storeAvgStar2" destination="qE7-QZ-VHi" id="wvW-YG-vCt"/>
                                             <outlet property="storeAvgStar3" destination="z3g-li-0hY" id="UiT-19-Gac"/>
@@ -6268,6 +6285,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collectionView" destination="0Ko-o6-pCD" id="Lu7-Ir-xDF"/>
+                                            <outlet property="youMightLikeLabel" destination="f7A-yp-wXA" id="Z0o-lH-EWP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -6940,7 +6958,9 @@
                         <outlet property="btnStar3" destination="uiH-El-PV2" id="5ES-H0-Ous"/>
                         <outlet property="btnStar4" destination="otU-rF-SBS" id="htX-4R-m0y"/>
                         <outlet property="btnStar5" destination="IVU-TE-pto" id="oRI-CG-0yS"/>
+                        <outlet property="headerLabel" destination="rAP-EX-ywm" id="0r9-4A-qF3"/>
                         <outlet property="headerView" destination="BCV-JR-IO0" id="thG-GB-5v1"/>
+                        <outlet property="tapToRateLabel" destination="85N-ii-UqJ" id="wpT-dw-Kdd"/>
                         <outlet property="txtReview" destination="cc7-tg-fAu" id="8dB-ew-1bQ"/>
                         <outlet property="userImage" destination="eLI-Wm-XiC" id="fiD-Ej-5AX"/>
                     </connections>
@@ -7789,16 +7809,16 @@
                                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-1S-PLg">
-                                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbS-J5-Lb1">
-                                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-WD-Z23">
-                                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -12370,7 +12390,7 @@
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_dining_room_1" width="12" height="13"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
-        <image name="icons8_image_1" width="38" height="30.5"/>
+        <image name="icons8_image_1" width="34.5" height="27.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
         <image name="icons8_left" width="19" height="15"/>
@@ -12379,7 +12399,7 @@
         <image name="icons8_multiply" width="17.5" height="17.5"/>
         <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="19.5" height="19.5"/>
+        <image name="icons8_search" width="18" height="18"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>

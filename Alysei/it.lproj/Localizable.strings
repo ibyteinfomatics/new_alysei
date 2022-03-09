@@ -285,7 +285,6 @@
 "Newest First" = "Newest First";
 
 //MARK: Marketplace Store Screen
-"Italian F&B Producer" = "Italian F&B Producer";
 "Our Gallery" = "Our Gallery";
 "Call" = "Call";
 "Website" = "Website";
@@ -572,6 +571,9 @@
 
 //MARK: VIEW RECIPE
 
+"You might also like..." = "Potrebbe piacerti anche...";
+"Rating & Reviews" = "Valutazione e recensioni";
+"Recipe by" = "Ricetta di";
 "Delete Recipe" = "Elimina Ricetta";
 "Share Recipe" = "Esci da Alysei"'
 "Checkout" = "Guardare";

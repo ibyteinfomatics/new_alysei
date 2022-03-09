@@ -9,6 +9,7 @@ import UIKit
 
 class RatingAndReviewTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var ratingReviewLabel: UILabel!
     @IBOutlet weak var lblTotalReview: UILabel!
     @IBOutlet weak var lblAvgRating: UILabel!
     @IBOutlet weak var lblClientName: UILabel!
@@ -50,6 +51,8 @@ class RatingAndReviewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        ratingReviewLabel.text = RecipeConstants.kRatingReview
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

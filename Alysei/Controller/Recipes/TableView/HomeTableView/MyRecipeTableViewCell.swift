@@ -31,6 +31,7 @@ class MyRecipeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         editRecipeButton.layer.cornerRadius = 18
         deaftButton.layer.cornerRadius = 18
+        editRecipeButton.setTitle(RecipeConstants.kEditRecipe, for: .normal)
         
         outerView.addShadow()
         

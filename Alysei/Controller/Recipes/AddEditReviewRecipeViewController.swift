@@ -9,7 +9,9 @@ import UIKit
 
 class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var tapToRateLabel: UILabel!
     @IBOutlet weak var txtReview: UITextView!
     @IBOutlet weak var btnStar1: UIButton!
     @IBOutlet weak var btnStar2: UIButton!
@@ -29,18 +31,21 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         txtReview.delegate = self
         txtReview.autocorrectionType = .no
         headerView.drawBottomShadow()
+        tapToRateLabel.text = RecipeConstants.kTapToRate
         
         if isEditReview == true
         {
-            btnAddReview.setTitle("Edit Review", for: .normal)
+            headerLabel.text = RecipeConstants.kEditReview
+            btnAddReview.setTitle(RecipeConstants.kEditReview, for: .normal)
             setReviewStarUI()
             txtReview.textColor = UIColor.black
             txtReview.text = editReviewData?.review
         }else {
-            btnAddReview.setTitle("Add Review", for: .normal)
+            headerLabel.text = RecipeConstants.kAddReview
+            btnAddReview.setTitle(RecipeConstants.kAddReview, for: .normal)
             txtReview.textColor = UIColor.darkGray
             setStar()
-            txtReview.text = "Leave a comment"
+            txtReview.text = RecipeConstants.kLeaveComment
         }
         
         txtReview.layer.borderColor = UIColor.darkGray.cgColor
@@ -133,11 +138,11 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
     
     @IBAction func btnAddReview(_ sender: UIButton){
         if (reviewStarCount == 0){
-            self.showAlert(withMessage: "Please add ratings.")
+            self.showAlert(withMessage: MarketPlaceConstant.kPleaseAddRatings)
             return
         }
         else if (txtReview.text == AppConstants.leaveComment && txtReview.textColor == UIColor.darkGray) || txtReview.text == ""{
-            self.showAlert(withMessage: "Please enter some review.")
+            self.showAlert(withMessage:  MarketPlaceConstant.kEnterSomeReview)
             return
             //txtReview.text = ""
         }else{
@@ -219,7 +224,7 @@ class AddEditReviewRecipeViewController: UIViewController , UITextViewDelegate{
         // and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
             
-            textView.text = AppConstants.leaveComment
+            textView.text = RecipeConstants.kLeaveComment
             textView.textColor = UIColor.darkGray
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
@@ -257,11 +262,11 @@ extension AddEditReviewRecipeViewController {
             
             switch statusCode{
             case 200:
-                self.showAlert(withMessage: "Review added Successfully!") {
+                self.showAlert(withMessage: RecipeConstants.kReviewAddedMsg) {
                     self.navigationController?.popViewController(animated: true)
                 }
             case 409:
-                self.showAlert(withMessage: "You have already done a review on this Recipe") {
+                self.showAlert(withMessage: RecipeConstants.kAlreadyReviewAlert) {
                     self.navigationController?.popViewController(animated: true)
                 }
                 
@@ -286,7 +291,7 @@ extension AddEditReviewRecipeViewController {
             switch statusCode{
             case 200:
                 
-                self.showAlert(withMessage: "Review updated Successfully!") {
+                self.showAlert(withMessage: RecipeConstants.kReviewUpdatedMsg) {
                     self.navigationController?.popViewController(animated: true)
                 }
             case 409:

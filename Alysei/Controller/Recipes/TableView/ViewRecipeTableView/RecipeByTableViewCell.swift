@@ -10,7 +10,8 @@ import UIKit
 class RecipeByTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewProfileButton: UIButton!
-//    @IBOutlet weak var leaveACommentButton: UIButton!
+    @IBOutlet weak var recipeByLabel: UILabel!
+    //    @IBOutlet weak var leaveACommentButton: UIButton!
     @IBOutlet weak var profileImg: UIImageView!
     
 //    @IBOutlet weak var profileImgComment: UIImageView!
@@ -32,6 +33,7 @@ class RecipeByTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        recipeByLabel.text = RecipeConstants.kRecipeBy
         
         setUi()
         // Initialization code

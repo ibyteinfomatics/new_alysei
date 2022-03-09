@@ -281,7 +281,7 @@
 "Newest First" = "Newest First";
 
 //MARK: Marketplace Store Screen
-"Italian F&B Producer" = "Italian F&B Producer";
+"Italian F&B Producers" = "Italian F&B Producers";
 "Our Gallery" = "Our Gallery";
 "Call" = "Call";
 "Website" = "Website";
@@ -316,7 +316,6 @@
 "Enter your registered email to recover your password" = "Enter your registered email to recover your password";
 "Reset Password" = "Reset Password";
 "Select your role" = "Select your role";
-"Italian F&B Producers" = "Italian F&B Producers";
 "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers.";
 "US Importers & Distributors" = "US Importers & Distributors";
 "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access.";
@@ -565,7 +564,9 @@
 "Add other ingredients to exclude" = "Add other ingredients to exclude";
 
 //MARK: VIEW RECIPE
-
+"You might also like..." = "You might also like...";
+"Rating & Reviews" = "Rating & Reviews";
+"Recipe by" = "Recipe by";
 "Delete Recipe" = "Delete Recipe";
 "Share Recipe" = "Share Recipe"'
 "Checkout" = "Checkout";

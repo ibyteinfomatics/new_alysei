@@ -36,7 +36,7 @@ class PreferencesTableViewCell: UITableViewCell {
     
     weak var delegate: PreferencesDelegate?
 
-    let titleArray = ["Favourite Cuisine","Food Alergies","Diets","Ingridients","Cooking Skill"]
+    let titleArray = [RecipeConstants.kFavCuisine,RecipeConstants.kFoodAlrgy,RecipeConstants.kDiet,RecipeConstants.kIngredient,RecipeConstants.kCkngSkill]
    
    
     override func awakeFromNib() {

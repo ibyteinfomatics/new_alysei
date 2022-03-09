@@ -36,6 +36,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        btnStartCooking.setTitle(RecipeConstants.kStartCooking, for: .normal)
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
         
         recipeImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
@@ -85,16 +86,16 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         let actionSheet = UIAlertController(style: .actionSheet)
         
         
-        let deleteRecipe = UIAlertAction(title: "Delete Recipe", style: .destructive) { action in
+        let deleteRecipe = UIAlertAction(title: RecipeConstants.kDeleteRecipe, style: .destructive) { action in
             self.deleteRecipe()
         }
         
-        let shareRecipe = UIAlertAction(title: "Share Recipe", style: .default) { action in
+        let shareRecipe = UIAlertAction(title: RecipeConstants.kShareRecipe, style: .default) { action in
             self.share()
         }
         
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: RecipeConstants.kCancel, style: .cancel) { action in
             
         }
         
@@ -116,8 +117,8 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func share(){
-        let checkout = "Checkout"
-        let fromAlysei = "from Alysei app."
+        let checkout = RecipeConstants.kCheckout
+        let fromAlysei = RecipeConstants.kFromAlysei
         let message = (checkout + " " + (recipeModel?.recipeName ?? "") +  " " + fromAlysei)
         let slug = recipeModel?.slug ?? ""
         
@@ -200,7 +201,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.likeCallback = {
                 
-                cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
+                cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + RecipeConstants.kLikes
                 cell.imagLike.image = recipeModel?.isFav == 0 ? UIImage(named: "like_icon") : UIImage(named: "like_icon_active")
                 
             }
@@ -208,12 +209,12 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 self.share()
             }
             cell.imagLike.image = recipeModel?.isFav == 1 ? UIImage(named: "like_icon_active") : UIImage(named: "like_icon")
-            cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + "Likes"
+            cell.labelLike.text = "\(recipeModel?.favCount ?? 0 )" + " " + RecipeConstants.kLikes
             cell.labelUserName.text = recipeModel?.userName
-            cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + "Reviews"
-            cell.labelTime.text = "\( recipeModel?.hours ?? 0)" + " " + "hours" + " " + "\( recipeModel?.minute ?? 0)" + " " + "minutes"
-            cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + "Serving"
-            cell.labelMealType.text = recipeModel?.meal?.mealName ?? "NA"
+            cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + RecipeConstants.kReviews
+            cell.labelTime.text = "\( recipeModel?.hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( recipeModel?.minute ?? 0)" + " " + RecipeConstants.kMinutes
+            cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.labelMealType.text = recipeModel?.meal?.mealName ?? RecipeConstants.kNA
             
             if recipeModel?.avgRating == "0.0" || recipeModel?.avgRating  == "0" {
                 cell.rateImg1.image = UIImage(named: "icons8_star")
@@ -372,7 +373,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
             
-            cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0) reviews"
+            cell.lblTotalReview.text = "\(recipeModel?.totalReview ?? 0)" + "" + RecipeConstants.kReviews
             cell.lblAvgRating.text = "\(recipeModel?.avgRating ?? "0")"
             cell.avgRating = recipeModel?.avgRating
             

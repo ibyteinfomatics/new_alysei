@@ -41,7 +41,7 @@ class EditStepCollectionViewCell: UICollectionViewCell {
         titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
         
         if isFromStep == "Add Step"{
-            desciptionTextView.text = "Your recipe direction text here..."
+            desciptionTextView.text = RecipeConstants.kRecipeDirection
             desciptionTextView.textColor = UIColor.darkGray
         }
         else{
@@ -53,7 +53,7 @@ extension EditStepCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
     
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        if textView.text == "Your recipe direction text here..."{
+        if textView.text == RecipeConstants.kRecipeDirection{
             textView.text = ""
             
         }
@@ -71,7 +71,7 @@ extension EditStepCollectionViewCell : UITextViewDelegate, UITextFieldDelegate {
         
         if updatedText.isEmpty {
            
-            textView.text = "Your recipe direction text here..."
+            textView.text = RecipeConstants.kRecipeDirection
             textView.textColor = UIColor.darkGray
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)

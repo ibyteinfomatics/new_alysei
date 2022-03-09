@@ -12,6 +12,8 @@ var isFromComment = String()
 
 class AddReviewRecipeViewController: AlysieBaseViewC{
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var allReviewTableView: UITableView!
     @IBOutlet weak var userImageVw: UIImageView!
     @IBOutlet weak var reviewView: UIView!
@@ -55,6 +57,9 @@ class AddReviewRecipeViewController: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerLabel.text = RecipeConstants.kAddReview
+        reviewsLabel.text = RecipeConstants.kReviews
         
         allReviewTableView.delegate = self
         allReviewTableView.dataSource = self
@@ -220,7 +225,7 @@ extension AddReviewRecipeViewController: UITableViewDelegate, UITableViewDataSou
         cell.userProfileImg.setImage(withString: imgUrl)
         cell.userProfileImg.layer.cornerRadius = cell.userProfileImg.frame.height/2
         if arrAllReviewModel?[indexPath.row].user?.name == ""{
-            cell.labelUserName.text = "NA"
+            cell.labelUserName.text = RecipeConstants.kNA
         }
         else{
             cell.labelUserName.text = arrAllReviewModel?[indexPath.row].user?.name
