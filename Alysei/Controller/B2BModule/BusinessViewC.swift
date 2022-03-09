@@ -34,6 +34,10 @@ class BusinessViewC: AlysieBaseViewC {
     //var arrImpSearchList:  NewFeedSearchModel?
     var indexOfPageToRequest = 1
     
+    var selectImpHubName: String?
+    var selectImpRolesNames: String?
+    var selectProdHubName: String?
+    
     var selectStateId:String?
     var selectImpHubId: String?
     var selectImpProductId: String?
@@ -69,7 +73,7 @@ class BusinessViewC: AlysieBaseViewC {
             self.tblViewSearchOptions.reloadData()
         }
     }
-
+    
     var signUpStepOneDataModel: SignUpStepOneDataModel!
     var selectPrdctCatgryOptnNme :String?
     var selectFieldType:String?
@@ -107,9 +111,9 @@ class BusinessViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchType = 3
-       // loadFirst = true
+        // loadFirst = true
         if currentIndex == 0 {
-        callSearchHubApi()
+            callSearchHubApi()
         }
         //self.tblViewHeightConstraint.constant = 300.0
     }
@@ -127,14 +131,14 @@ class BusinessViewC: AlysieBaseViewC {
             } else if Int.getInt(data["alysei_review"]) == 1{
                 
                 blankdataView.isHidden = true
-               
+                
             }
         } else {
             blankdataView.isHidden = true
         }
         
         if currentIndex == 0 && loadFirst == true{
-        callSearchHubApi()
+            callSearchHubApi()
         }
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
@@ -142,9 +146,9 @@ class BusinessViewC: AlysieBaseViewC {
     
     @IBAction func tapLogout(_ sender: UIButton) {
         kSharedAppDelegate.callLogoutApi()
-     // kSharedUserDefaults.clearAllData()
+        // kSharedUserDefaults.clearAllData()
     }
-   
+    
     
     //MARK: - IBAction -
     
@@ -244,25 +248,63 @@ class BusinessViewC: AlysieBaseViewC {
     private func getBusinessButtonTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessButtonTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessButtonTableCell.identifier()) as! BusinessButtonTableCell
+        
+        businessButtonTableCell.btnBusiness.tag = indexPath.row
         if self.searchImpDone == false{
-            businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex: self.currentIndex)
+            businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex: self.currentIndex,index: indexPath.row)
         }else{
             if identifyUserForProduct == .productImporter{
-            if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 2{
-                businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 2{
+                    businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+               // }
             }else{
-            print("No update")
+                   print("No Impupdate-----",(indexPath.row))
+
+                if indexPath.row == 0 {
+                        if self.selectImpHubName == nil {
+                        businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
+                        print("Impupdate-----TITLEHUB")
+
+                    }else{
+                        businessButtonTableCell.btnBusiness.setTitle(selectImpHubName ?? "", for: .normal)
+                        print("Impupdate-----TITLESelectHUBNAMe")
+                    }
             }
+
+                if  indexPath.row == 1 {
+                    
+                 if selectImpRolesNames == nil  {
+                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
+                    print("Impupdate-----TITLEUSerType")
+                }else{
+                    businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
+                    print("Impupdate-----TITLESelectUserNAMe")
+               }
+                }
+            }
+                
             }else{
                 if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
                     businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                 }else{
-                print("No update")
+                    print("No Produpdate")
+                  
+                    if indexPath.row == 0 {
+                            if self.selectProdHubName == nil {
+                            businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
+                            print("Produpdate-----TITLEHUB")
+
+                        }else{
+                            businessButtonTableCell.btnBusiness.setTitle(selectProdHubName ?? "", for: .normal)
+                            print("Produpdate-----TITLESelectHUBNAMe")
+                        }
+                    //   businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex:self.currentIndex,index: indexPath.row)
+                }
                 }
             }
         }
         
-      
+        
         businessButtonTableCell.pushVCCallback = { arruserHubs,getRoleViewModel,productType,stateModel,arrStateRegionById,selectFieldType in
             let controller = self.pushViewController(withName: BusinessMultiOptionsVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BusinessMultiOptionsVC
             self.loadFirst = false
@@ -290,7 +332,7 @@ class BusinessViewC: AlysieBaseViewC {
                     controller?.passSelectOptionId = Arr ?? [""]
                 }else if selectFieldType == AppConstants.ProductTypeBusiness{
                     //let Arr =  self.selectedProducWithCategory
-                   // controller?.passSelectOptionId = Arr ?? [""]
+                    // controller?.passSelectOptionId = Arr ?? [""]
                 }else if selectFieldType == AppConstants.SelectState{
                     let Arr =  self.selectImpRegionTypeId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
@@ -358,7 +400,7 @@ class BusinessViewC: AlysieBaseViewC {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle("Select State" , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectStateId = optionId
                     }
@@ -366,47 +408,51 @@ class BusinessViewC: AlysieBaseViewC {
                 if self.currentIndex == B2BSearch.Importer.rawValue{
                     if selectFieldType == AppConstants.Hubs{
                         self.selectImpHubId = optionId
+                        self.selectImpHubName = optionName
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
-                       
+                        
                     }else if selectFieldType == AppConstants.SelectUserType{
+                        self.selectImpRolesNames = optionName
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectImpRoleId = optionId
-                    }else if selectFieldType == AppConstants.ProductTypeBusiness{
-                        if self.selectedProducWithCategory == ""{
-                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
-                        }else{
-                        businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
-                        }
-                        self.selectImpProductId = optionId
-                    }else if selectFieldType == AppConstants.SelectState{
-                        if optionName == ""{
-                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
-                        }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
-                        }
-                        self.selectImpRegionTypeId = optionId
                     }
+//                    else if selectFieldType == AppConstants.ProductTypeBusiness{
+//                        if self.selectedProducWithCategory == ""{
+//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
+//                        }else{
+//                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+//                        }
+//                        self.selectImpProductId = optionId
+//                    }
+//                    else if selectFieldType == AppConstants.SelectState{
+//                        if optionName == ""{
+//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+//                        }else{
+//                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+//                        }
+//                        self.selectImpRegionTypeId = optionId
+//                    }
                 }else if self.currentIndex == B2BSearch.Restaurant.rawValue{
                     if selectFieldType == AppConstants.Hubs{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.resHubId = optionId
                     }else if selectFieldType == AppConstants.RestaurantType{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.RestaurantType , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.resTypeId = optionId
                     }
@@ -415,35 +461,35 @@ class BusinessViewC: AlysieBaseViewC {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectExpertHubId = optionId
                     }else if selectFieldType == AppConstants.Expertise{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Expertise , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectExpertExpertiseId = optionId
                     }else if selectFieldType == AppConstants.Title{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Title , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectExpertTitleId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectExpertRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectExpertRegionId = optionId
                     }
@@ -452,28 +498,28 @@ class BusinessViewC: AlysieBaseViewC {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectTravelHubId = optionId
                     }else if selectFieldType == AppConstants.Speciality{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Speciality , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectTravelSpecialityId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectTravelRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectTravelRegionId = optionId
                     }
@@ -483,21 +529,24 @@ class BusinessViewC: AlysieBaseViewC {
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            self.selectProdHubName =  optionName
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectProducerHubId = optionId
-                    }else if selectFieldType == AppConstants.ProductTypeBusiness{
-                        if self.selectedProducWithCategory == ""{
-                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
-                        }else{
-                        businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
-                        }
-                        self.selectProducerProductType = optionId
-                    }else if selectFieldType == AppConstants.SelectRegion{
+                    }
+//                    else if selectFieldType == AppConstants.ProductTypeBusiness{
+//                        if self.selectedProducWithCategory == ""{
+//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+//                        }else{
+//                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+//                        }
+//                        self.selectProducerProductType = optionId
+//                    }
+                    else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
                         }else{
-                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
                         self.selectProducerRegionId = optionId
                     }
@@ -508,8 +557,8 @@ class BusinessViewC: AlysieBaseViewC {
             }
         }
         businessButtonTableCell.pushToProductTypeScreen = { signUpmodel, IdentifyUserForProduct in
-             //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
-                let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
+            //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
+            let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
             let signupmodel = signUpmodel
             for _ in signupmodel.arrOptions {
                 if self.signUpStepOneDataModel == nil{
@@ -517,31 +566,31 @@ class BusinessViewC: AlysieBaseViewC {
                     controller?.stepOneDelegate = self
                     return
                 }
-//                for selectedOptions in self.signUpStepOneDataModel.arrOptions{
-//                    options.isSelected = selectedOptions.id == options.id
-//                    for suboptions in options.arrSubSections{
-//
-//                        for selectedSuboptions in selectedOptions.arrSubSections {
-//
-//                            for subSuboptions in suboptions.arrSubOptions{
-//                                for selectedSubSuboption in selectedSuboptions.arrSubOptions{
-//                                    subSuboptions.isSelected = subSuboptions.userFieldOptionId == selectedSubSuboption.userFieldOptionId
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
+                //                for selectedOptions in self.signUpStepOneDataModel.arrOptions{
+                //                    options.isSelected = selectedOptions.id == options.id
+                //                    for suboptions in options.arrSubSections{
+                //
+                //                        for selectedSuboptions in selectedOptions.arrSubSections {
+                //
+                //                            for subSuboptions in suboptions.arrSubOptions{
+                //                                for selectedSubSuboption in selectedSuboptions.arrSubOptions{
+                //                                    subSuboptions.isSelected = subSuboptions.userFieldOptionId == selectedSubSuboption.userFieldOptionId
+                //                                }
+                //                            }
+                //                        }
+                //                    }
+                //                }
             }
-           
-                controller?.signUpStepOneDataModel = signupmodel
-                controller?.stepOneDelegate = self
-            }
-//        businessButtonTableCell.pushToProductTypeScreen = { productType in
-//            guard let controller = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: SelectB2BProductViewController.id()) as? SelectB2BProductViewController else {return}
-//            controller.arrProductType = productType
-//
-//            self.navigationController?.pushViewController(controller, animated: true)
-//        }
+            
+            controller?.signUpStepOneDataModel = signupmodel
+            controller?.stepOneDelegate = self
+        }
+        //        businessButtonTableCell.pushToProductTypeScreen = { productType in
+        //            guard let controller = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: SelectB2BProductViewController.id()) as? SelectB2BProductViewController else {return}
+        //            controller.arrProductType = productType
+        //
+        //            self.navigationController?.pushViewController(controller, animated: true)
+        //        }
         businessButtonTableCell.passIdCallBack = {  exprtCuntryId, trvlCuntryId in
             
             self.selectExpertCountryId = exprtCuntryId
@@ -650,8 +699,8 @@ class BusinessViewC: AlysieBaseViewC {
         if arrSearchimpotrDataModel.count == 0{
             print("check")
         }else{
-
-        businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
+            
+            businessListTableCell.configData(arrSearchimpotrDataModel[(indexPath.row - (self.extraCell ?? 0))])
         }
         return businessListTableCell
     }
@@ -726,6 +775,8 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             self.arrSearchimpotrDataModel.removeAll()
             self.selectedProducWithCategory = ""
             self.selectPrdctCatgryOptnNme = ""
+            self.selectImpRolesNames = nil
+            self.selectImpHubName = nil
             self.identifyUserForProduct = .productImporter
             callSearchImporterApi()
         case 2:
@@ -795,11 +846,11 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         switch model.businessCellType {
         case .tableListCell:
             //return model.cellCount
-           // return arrSearchimpotrDataModel.count
+            // return arrSearchimpotrDataModel.count
             if currentIndex == B2BSearch.TravelAgencies.rawValue{
                 return arrSearchimpotrDataModel.count
             }
-           return model.cellCount
+            return model.cellCount
         default:
             return self.businessViewModel.arrBusinessData.count
         }
@@ -832,17 +883,17 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
             return 100.0
         case .collectionHubs:
             let CellSizeCount = arrSearchDataModel.count
-                
+            
             if CellSizeCount <= 3 {
                 return 220
             }else{
                 if CellSizeCount == 0 {
-                   return 0
+                    return 0
                 }  else if (CellSizeCount ) % 3 == 0{
-                   return CGFloat(220 * ((CellSizeCount) / 3))
-               } else {
-                   return CGFloat(220 * ((CellSizeCount) / 3) + 220)
-               }
+                    return CGFloat(220 * ((CellSizeCount) / 3))
+                } else {
+                    return CGFloat(220 * ((CellSizeCount) / 3) + 220)
+                }
             }
         case .tableListCell:
             return  120.0 //66.0
@@ -855,7 +906,7 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.cellForRow(at: indexPath) as? BusinessListTableCell
         
         if tableView.cellForRow(at: indexPath) == cell{
-//            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+            //            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
             guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewC") as? ProfileViewC else{return}
             let index = indexPath.row - (self.extraCell ?? 0)
             if kSharedUserDefaults.loggedInUserModal.userId == "\(arrSearchimpotrDataModel[index].userId ?? 0)"{
@@ -863,14 +914,14 @@ extension BusinessViewC: UITableViewDataSource, UITableViewDelegate{
             }else{
                 controller.userLevel = .other
             }
-           
+            
             controller.userID = arrSearchimpotrDataModel[index].userId
             self.navigationController?.pushViewController(controller, animated: true)
             if controller.userLevel == .own{
-            self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
-      
+        
     }
 }
 
@@ -892,21 +943,21 @@ extension BusinessViewC {
             
             switch statusCode {
             case 200:
-            let dictResponse = dictResponse as? [String:Any]
-            
-            
-            if let data = dictResponse?["data"] as? [String:Any]{
-                self.arrSearchDataModel.removeAll()
-                self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
-                self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
-                // self.selectStateId = ""
-                // self.searchImpDone = false
-                self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
-                self.collectionViewBusinessCategory.reloadData()
-                self.tblViewSearchOptions.reloadData()
-                self.view.isUserInteractionEnabled = true
-            }
+                let dictResponse = dictResponse as? [String:Any]
+                
+                
+                if let data = dictResponse?["data"] as? [String:Any]{
+                    self.arrSearchDataModel.removeAll()
+                    self.newSearchModel = NewFeedSearchModel.init(with: data)
+                    if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
+                    self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
+                    // self.selectStateId = ""
+                    // self.searchImpDone = false
+                    self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
+                    self.collectionViewBusinessCategory.reloadData()
+                    self.tblViewSearchOptions.reloadData()
+                    self.view.isUserInteractionEnabled = true
+                }
                 
             default:
                 if self.indexOfPageToRequest == 1 {
@@ -918,7 +969,7 @@ extension BusinessViewC {
                 self.view.isUserInteractionEnabled = true
             }
         }
-           
+        
     }
     func callSearchImporterApi(){
         if paginationData == false{
@@ -1118,6 +1169,7 @@ extension BusinessViewC: TappedDoneStepOne{
         self.searchImpDone = true
         self.selectFieldType = AppConstants.ProductTypeBusiness
         self.navigationController?.popViewController(animated: true)
+        
         self.tblViewSearchOptions.reloadData()
     }
     private func createStringForProducts() -> String {
@@ -1151,8 +1203,8 @@ extension BusinessViewC: TappedDoneStepOne{
             self.signUpStepOneDataModel.selectedOptionName = ""
         case 1:
             self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0]
-        //     case 2:
-        //      self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0] + ", " + selectedProductNames[1]
+            //     case 2:
+            //      self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0] + ", " + selectedProductNames[1]
         default:
             let remainingProducts = (selectedProductNames.count - 1)
             self.signUpStepOneDataModel.selectedOptionName = selectedProductNames[0] + " & " + String.getString(remainingProducts) + " more"
@@ -1163,6 +1215,6 @@ extension BusinessViewC: TappedDoneStepOne{
         let mergeArray = selectedProductOptionIds + selectedSubProductOptionIds
         return mergeArray.joined(separator: ", ")
     }
-   
-
+    
+    
 }

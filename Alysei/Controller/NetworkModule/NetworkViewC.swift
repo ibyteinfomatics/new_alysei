@@ -485,7 +485,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
             let tok =  String.getString(self.arrConnection[indexPath.row].reasonToConnect).components(separatedBy:"\n")
 
 
-            height = 160 + ((tok.count-1)*20)
+            height = 140 + ((tok.count-1)*20)
         } else if String.getString(self.arrConnection[indexPath.row].reasonToConnect).count >= 50{ //&& //String.getString(self.arrConnection[indexPath.row].reasonToConnect).count < 100{
 
             let tok =  String.getString(self.arrConnection[indexPath.row].reasonToConnect).components(separatedBy:"\n")

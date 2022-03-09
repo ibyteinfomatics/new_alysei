@@ -41,7 +41,7 @@ class MyStoreVC: AlysieBaseViewC {
         self.loadDashboard()
         selectDashboardUI()
         lblDashboard.text = MarketPlaceConstant.kDashboard
-        lblStore.text = MarketPlaceConstant.kProduct
+        lblStore.text = MarketPlaceConstant.kStore
         lblProduct.text = MarketPlaceConstant.kProduct
         lblInquiry.text = MarketPlaceConstant.kInquiries
         let dashboardTap = UITapGestureRecognizer(target: self, action: #selector(loadDashboard))

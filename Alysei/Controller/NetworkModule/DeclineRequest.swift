@@ -16,6 +16,10 @@ class DeclineRequest: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.drawBottomShadow()
+        reasonToDecline.layer.borderWidth = 1
+        reasonToDecline.layer.borderColor = UIColor.lightGray.cgColor
+        reasonToDecline.textContainer.heightTracksTextView = true
+        reasonToDecline.isScrollEnabled = false
         // Do any additional setup after loading the view.
     }
     
