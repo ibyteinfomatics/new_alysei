@@ -12076,7 +12076,7 @@ You will be notified for any membership status update.</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ua-I2-wiv">
-                                <rect key="frame" x="0.0" y="85" width="375" height="469"/>
+                                <rect key="frame" x="0.0" y="85" width="375" height="464"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -12813,7 +12813,7 @@ You will be notified for any membership status update.</string>
                             <constraint firstItem="2Ua-I2-wiv" firstAttribute="leading" secondItem="Hzv-E5-Zhg" secondAttribute="leading" id="d33-jh-eMB"/>
                             <constraint firstItem="2Ua-I2-wiv" firstAttribute="top" secondItem="mkT-ei-zVV" secondAttribute="bottom" constant="5" id="evg-ry-OPx"/>
                             <constraint firstItem="mkT-ei-zVV" firstAttribute="leading" secondItem="Hzv-E5-Zhg" secondAttribute="leading" id="iGp-j6-RBu"/>
-                            <constraint firstItem="Hzv-E5-Zhg" firstAttribute="bottom" secondItem="2Ua-I2-wiv" secondAttribute="bottom" id="ljN-hs-eXF"/>
+                            <constraint firstItem="Hzv-E5-Zhg" firstAttribute="bottom" secondItem="2Ua-I2-wiv" secondAttribute="bottom" constant="5" id="ljN-hs-eXF"/>
                             <constraint firstItem="Hzv-E5-Zhg" firstAttribute="trailing" secondItem="2Ua-I2-wiv" secondAttribute="trailing" id="rcI-kd-8Qr"/>
                         </constraints>
                     </view>
@@ -20547,7 +20547,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDp-Hi-3lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3063.768115942029" y="114.50892857142857"/>
+            <point key="canvasLocation" x="3094" y="230"/>
         </scene>
         <!--Network ViewC-->
         <scene sceneID="3n3-H6-bTs">
@@ -23552,7 +23552,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
