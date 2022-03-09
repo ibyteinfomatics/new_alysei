@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 var UserDetails: String { return "userDetails" }
 var DefaultDeviceToken: String { return "12345678" }
 
@@ -127,6 +128,8 @@ extension UserDefaults{
     func getAppLanguage() -> String {
         return String.getString(self.string(forKey: appLocale))
     }
+    
+   
   //MARK: - Methods -
     
   func setLoggedInUserDetails(loggedInUserDetails dictUser: Dictionary<String, Any>){

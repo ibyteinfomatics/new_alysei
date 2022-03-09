@@ -15,7 +15,8 @@ class EditStepCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var step1Label: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
-    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
 //    var delegate: CollectionViewCellDelegate?
    
     var enteredValueInTxtVw: String?
@@ -27,7 +28,9 @@ class EditStepCollectionViewCell: UICollectionViewCell {
 //        if desciptionTextView.text == "Your recipe direction text here..."{
 //            enteredValueInTxtVw = nil
 //        }
-        
+        titleLbl.text = RecipeConstants.kTitle
+        descriptionLbl.text = RecipeConstants.kDescription
+        titleTextField.placeholder = RecipeConstants.kEnterTitle
         desciptionTextView.delegate = self
         titleTextField.delegate = self
         titleTextField.autocorrectionType = .no

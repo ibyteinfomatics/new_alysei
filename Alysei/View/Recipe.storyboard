@@ -6506,8 +6506,10 @@
                                                         <size key="customSize" width="414" height="286"/>
                                                         <connections>
                                                             <outlet property="desciptionTextView" destination="aJc-Bd-sfF" id="oif-68-JrQ"/>
+                                                            <outlet property="descriptionLbl" destination="rw4-rL-i08" id="bRw-mb-J4p"/>
                                                             <outlet property="descriptionView" destination="P6F-RV-9fB" id="vRI-By-zaZ"/>
                                                             <outlet property="step1Label" destination="A1B-Ni-RR6" id="Jnt-YQ-20s"/>
+                                                            <outlet property="titleLbl" destination="xaw-ZM-x0u" id="L4t-sI-oYF"/>
                                                             <outlet property="titleTextField" destination="gkt-kx-lLP" id="hpB-71-KJR"/>
                                                             <outlet property="titleView" destination="HDC-Un-Ks4" id="hzF-qB-2ER"/>
                                                         </connections>
@@ -6786,6 +6788,7 @@
                     <size key="freeformSize" width="414" height="965"/>
                     <connections>
                         <outlet property="addStepsCollectionView" destination="OLB-Tb-EvC" id="Y7M-vG-UoZ"/>
+                        <outlet property="headerLabel" destination="wqu-MI-i1q" id="Lpb-dk-gaG"/>
                         <outlet property="headerView" destination="jUY-Ry-L05" id="UtK-gu-9tr"/>
                         <outlet property="ingridientUsedCollectionView" destination="Mfc-8q-ebd" id="2VB-SR-SuB"/>
                         <outlet property="ingridientUsedLabel" destination="6az-xH-1Pd" id="Zfk-n1-KgA"/>

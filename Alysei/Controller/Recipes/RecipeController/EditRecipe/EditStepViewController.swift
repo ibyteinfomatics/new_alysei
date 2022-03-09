@@ -20,6 +20,8 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var toolsUsedCollectionView: UICollectionView!
     @IBOutlet weak var step1IngridientLabel: UILabel!
     @IBOutlet weak var step1ToolLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
+    
     
     var newSearchModel: [AddIngridientDataModel]? = []
     var newSearchModel1: [AddToolsDataModel]? = []
@@ -78,6 +80,11 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        headerLabel.text = RecipeConstants.kAddStepsRecipe
+        ingridientUsedLabel.text = RecipeConstants.kIngridientUsed
+        toolsUsedLabel.text = RecipeConstants.kToolUsed
+        nextButton.setTitle(RecipeConstants.kNext, for: .normal)
+        
         addStepsCollectionView.delegate = self
         addStepsCollectionView.dataSource = self
         
@@ -121,15 +128,15 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
             showAlert(withMessage: AlertMessage.kEnterTitle)
             return
         }
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == RecipeConstants.kRecipeDirection {
             showAlert(withMessage: AlertMessage.kEnterDescription)
             return
         }
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == RecipeConstants.kRecipeDirection {
             showAlert(withMessage: AlertMessage.kEnterDescription)
             return
         }
-        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == "Your recipe direction text here..." {
+        else if cell.desciptionTextView.text.trimWhiteSpace() == "" ||  cell.desciptionTextView.text.trimWhiteSpace() == RecipeConstants.kRecipeDirection {
             showAlert(withMessage: AlertMessage.kEnterDescription)
             return
         }
@@ -202,9 +209,9 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             cell.titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
             
            
-            stepNumber = "Step \(page)"
+            stepNumber = RecipeConstants.kStep + "\(page)"
 //            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
-            let str = NSAttributedString(string: "Enter Title for Step \(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            let str = NSAttributedString(string: RecipeConstants.kEnterTitleStep + " " + "\(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             cell.titleTextField.attributedPlaceholder = str
 //            cell.desciptionTextView.text = "Your recipe direction text here..."
             cell.step1Label.text = stepNumber
