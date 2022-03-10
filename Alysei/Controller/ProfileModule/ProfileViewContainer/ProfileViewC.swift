@@ -352,7 +352,7 @@ class ProfileViewC: AlysieBaseViewC{
        // if userLevel == .own {
             self.postRequestToGetProgress()
        // }
-        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
@@ -360,9 +360,9 @@ class ProfileViewC: AlysieBaseViewC{
 //            if Int.getInt(data["alysei_review"]) == 0 {
 //                blankdataView.isHidden = false
 //            } else if Int.getInt(data["alysei_review"]) == 1{
-            if Int.getInt(data["alysei_review"]) == 0 {
+            if alysei_review == 0 {
                 blankdataView.isHidden = false
-            } else if Int.getInt(data["alysei_review"]) == 1 {
+            } else if alysei_review == 1 {
                 
                 blankdataView.isHidden = true
                // self.postRequestToGetFields()
