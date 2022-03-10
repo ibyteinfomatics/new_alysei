@@ -125,17 +125,11 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         uptoLabel.text = RecipeConstants.kUpto
         nameLabel.text = RecipeConstants.kName
         selectCookingLabel.text = RecipeConstants.kSelectCookingSkil
-        cookingSkillLabel.text = RecipeConstants.kSelectCookingSkil
         selectCuisineLabel.text = RecipeConstants.kSelectCuisine
-        cuisineLabel.text = RecipeConstants.kSelectCuisine
         selectMealLabel.text = RecipeConstants.kSelectMeal
-        mealNameLabel.text = RecipeConstants.kSelectMeal
         selectCourseLabel.text = RecipeConstants.kSelectCourse
-        courseNameLabel.text = RecipeConstants.kSelectCourse
         selectDietLabel.text = RecipeConstants.kSelectDiet
-        dietLabel.text = RecipeConstants.kSelectDiet
         selectFoodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
-        foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
         preprationTimeLabel.text = RecipeConstants.kPreparationTime
         hoursLabel.text = RecipeConstants.kHours
         minutesLabel.text = RecipeConstants.kMinutes
@@ -223,11 +217,11 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
         toolBar.tintColor = UIColor.white
         toolBar.sizeToFit()
         
-       let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: RecipeConstants.kDone, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDoneButtonTapped))
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     
-       let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: RecipeConstants.kCancel, style: UIBarButtonItem.Style.plain, target: self, action: #selector(onCancelButtonTapped))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
 
         self.view.addSubview(toolBar)
@@ -290,8 +284,8 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
                 self.strSelecetdIdDiet = stId
 
             }
-            if str_return == "None"{
-                self.dietLabel.text = "Select Diet"
+            if str_return == RecipeConstants.kNone{
+                self.dietLabel.text = RecipeConstants.kSelectDiet
                 self.dietLabel.textColor = .darkGray
             }
             else{
@@ -310,8 +304,8 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
                 self.strSelectedIdIntolerance = stId
                 
             }
-            if str_return == "None"{
-                self.foodIntoleranceLabel.text = "Select Food Intolerance"
+            if str_return == RecipeConstants.kNone{
+                self.foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
                 self.foodIntoleranceLabel.textColor = .darkGray
             }
             else{
@@ -404,7 +398,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     @IBAction func tapSelectRegion(_ sender: Any) {
         toolBar.removeFromSuperview()
         picker1.removeFromSuperview()
-        if self.cuisineLabel.text == "Select Cuisine"{
+        if self.cuisineLabel.text == LabelandTextFieldTitle.selectCuisine{
             showAlert(withMessage: AlertMessage.kSelectCousin)
         }
         else{

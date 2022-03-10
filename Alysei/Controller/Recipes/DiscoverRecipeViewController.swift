@@ -75,6 +75,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBOutlet weak var vwwWalkContainer2BgImg: UIImageView!
     @IBOutlet weak var walkSubView3Height: NSLayoutConstraint!
     @IBOutlet weak var walknextBtn: UIButton!
+    @IBOutlet weak var walknextBtn2: UIButton!
     
     @IBOutlet weak var walkVw1Img: UIImageView!
     @IBOutlet weak var walkVw1Title: UILabel!
@@ -248,13 +249,14 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
-            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
+            walknextBtn2.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             vwwWalkContainer2.isHidden = false
             animate2View()
             
         }else if nextWalkCount == 1 {
             nextWalkCount = 0
+            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = false
             vwwWalkContainer2.isHidden = true
             animate1View()
@@ -271,7 +273,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBAction func nextAction(_ sender: UIButton){
         
         if nextWalkCount == 0 {
-            walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
+            walknextBtn2.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             nextWalkCount = 1
             animate2View()
@@ -928,7 +930,7 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
         
         
         if indexPath.item == 3  {
-            return CGSize(width: 140 , height: 50.0)
+            return CGSize(width: 170 , height: 50.0)
         }
         else if indexPath.item == 2{
             return CGSize(width: 130 , height: 50.0)

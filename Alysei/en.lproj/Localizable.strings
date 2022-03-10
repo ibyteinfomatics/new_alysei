@@ -158,7 +158,6 @@
 "Choose From Library" = "Choose From Library";
 "Delete photo" = "Delete photo";
 "Remove photo" = "Remove photo";
-"Cancel" = "Cancel";
 "Okay" = "Okay";
 "Denied albums permissions granted" = "Denied albums permissions granted";
 "Denied camera permissions granted" = "Denied camera permissions granted";
@@ -529,6 +528,7 @@
 "Clear All" = "Clear All";
 "View Results" = "View Results";
 "Search Italian Region" = "Search Italian Region";
+"Search Meal" = "Search Meal";
 
 //MARK:  CREATE RECIPE WALKTHROUGH
 

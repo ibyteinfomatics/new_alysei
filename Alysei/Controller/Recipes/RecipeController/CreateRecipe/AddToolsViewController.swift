@@ -109,6 +109,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         saveListBtn.setTitle(RecipeConstants.kAddtoList, for: .normal)
         saveButton.setTitle(RecipeConstants.kSaveAndProceed, for: .normal)
         
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -144,7 +145,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         addedToolItemButton.layer.borderWidth = 1
         addedToolItemButton.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
         addedToolItemButton.layer.cornerRadius = 5
-        addedToolQuantityLabel.text = "0" + "" + RecipeConstants.kItems
+        addedToolQuantityLabel.text = "0" + " " + RecipeConstants.kItems
         
     }
     
@@ -228,7 +229,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        if addedToolQuantityLabel.text != "0" + "" + RecipeConstants.kItems {
+        if addedToolQuantityLabel.text != "0" + " " + RecipeConstants.kItems {
             let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
             if  arrayStepFinalData.count == 0 {
             var ingridentsArray : [IngridentArray] = []
@@ -546,9 +547,9 @@ extension AddToolsViewController: UITableViewDelegate
                 selectedToolsArray.remove(at: index)
                 removeDatainStep(data: data)
             }
-            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + RecipeConstants.kItems
+            self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + " " + RecipeConstants.kItems
             
-            if  self.addedToolQuantityLabel.text == "0" + "" + RecipeConstants.kItems {
+            if  self.addedToolQuantityLabel.text == "0" + " " + RecipeConstants.kItems {
                 self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
                 
             }

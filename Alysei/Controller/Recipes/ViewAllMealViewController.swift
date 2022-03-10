@@ -9,6 +9,7 @@ import UIKit
 
 class ViewAllMealViewController: UIViewController {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
@@ -20,6 +21,9 @@ class ViewAllMealViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerLabel.text = RecipeConstants.kByMeal
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchMeal
         
         collectionView.delegate = self
         collectionView.dataSource = self

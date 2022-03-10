@@ -11,6 +11,7 @@ var parentIngridientId = Int()
 
 class ViewAllViewController: UIViewController {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchIngridientTextField: UITextField!
@@ -21,6 +22,10 @@ class ViewAllViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerLabel.text = RecipeConstants.kByIngredient
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         searchIngridientTextField.delegate = self

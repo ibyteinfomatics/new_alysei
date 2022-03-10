@@ -1010,6 +1010,7 @@ struct RecipeConstants{
     static var kViewAll : String { return "View All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kByIngredient : String { return "Quick Search By Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kByMeal : String { return "Quick Search By Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchMeal : String { return "Search Meal".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kByRegion : String { return "Search By Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kTrendingNow : String { return "Trending Now".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTrending : String { return "Trending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
