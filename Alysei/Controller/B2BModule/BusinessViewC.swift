@@ -119,16 +119,16 @@ class BusinessViewC: AlysieBaseViewC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
-            if Int.getInt(data["alysei_review"]) == 0 {
+            if alysei_review == 0 {
                 
                 blankdataView.isHidden = false
                 
-            } else if Int.getInt(data["alysei_review"]) == 1{
+            } else if alysei_review == 1{
                 
                 blankdataView.isHidden = true
                 

@@ -65,19 +65,19 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //        self.setUI()
 //    }
     override func viewWillAppear(_ animated: Bool) {
-        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
         addPost.isUserInteractionEnabled = true
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
             
-            if Int.getInt(data["alysei_review"]) == 0 {
+            if alysei_review == 0 {
                 
                 blankdataView.isHidden = false
                 imgReview.image = UIImage(named: "Review")
                 text.text = "Your profile is not reviewed from admin"
                 txtPost.resignFirstResponder()
-            } else if Int.getInt(data["alysei_review"]) == 1{
+            } else if alysei_review == 1{
                // txtPost.becomeFirstResponder()
                 postRequestToGetProgressPrfile()
                 

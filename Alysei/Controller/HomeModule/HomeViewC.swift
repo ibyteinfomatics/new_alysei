@@ -101,7 +101,7 @@ class HomeViewC: AlysieBaseViewC {
         membershipView.isHidden = true
         blankdataView.isHidden = true
         
-        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
@@ -109,11 +109,11 @@ class HomeViewC: AlysieBaseViewC {
             postRequestToGetProgressPrfile()
         } else {
            // if Int.getInt(data["alysei_review"]) == 0 {
-            if Int.getInt(data["alysei_review"]) == 0  {
+            if alysei_review == 0  {
                 postRequestToGetProgress()
                 
                
-            } else if  Int.getInt(data["alysei_review"]) == 1 {
+            } else if alysei_review == 1 {
                 postRequestToGetProgressPrfile()
                 
             }
