@@ -104,7 +104,6 @@
 
 //MARK: Marketplace Listing Screen
 "Sort" = "Sort";
-"Filter" = "Filter";
 
 //MARK: Marketplace Filter Screen
 "No Product found" = "No Product found";
@@ -533,8 +532,6 @@
 
 //MARK:  CREATE RECIPE WALKTHROUGH
 
-//"Next"  "Next";
-//"Done" = "Done";
 "Create your Recipe" = "Create your Recipe";
 "Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Create your own recipes exploring and sharing the endless world of the Italian cuisine";
 "Instruction to create a Recipe" = "Instruction to create a Recipe";

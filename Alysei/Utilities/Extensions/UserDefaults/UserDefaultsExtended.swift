@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 var UserDetails: String { return "userDetails" }
 var DefaultDeviceToken: String { return "12345678" }
 

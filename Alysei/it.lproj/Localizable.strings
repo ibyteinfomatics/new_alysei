@@ -12,6 +12,187 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
+//MARK: RECIPE HOME SCREEN
+"Create Recipe" = "Crea la tua Ricetta";
+"What are you craving" = "Cosa brami";
+"Search Recipe" = "Ricerca Ricette";
+"Explore" = "Esplora";
+"Favourite" = "Favoriti";
+"My Recipe" = "Le Mie Ricette";
+"My Preferences" = "Le Mie Preferenze";
+"View All" = "Vedi/Mostra tutto";
+"Quick Search By Ingredients" = "Ricerca Rapida per Ingredienti";
+"Quick Search By Meal" = "Ricerca rapida per pasto";
+"Search By Italian Region" = "Ricerca per Regioni Italiane";
+"Trending Now" = "In Voga al momento";
+"Trending" = "In Voga al momento";
+"Quick Easy" = "Facile e Veloce";
+"Favourite Cuisine" = "Cucina Favorita";
+"Food Alergies" = "Allergie Alimentari";
+"Diets" = "Dieta";
+"Ingredients" = "Ingredienti";
+"Cooking Skill" = "Abilità in Cucina";
+"Likes" = "Mi Piace";
+"NA" = "Non applicabile";
+"Draft" = "Bozza";
+"Published" = "Pubblicata";
+"No recipe found" = "Nessuna Ricetta trovata";
+"You have not liked any recipe" = "Non ti è piaciuta nessuna ricetta";
+"No Ingridient Found" = "Nessun ingrediente trovato";
+"No Meal Found" = "Nessuna Pietanza trovata";
+"Internal Server Error" = "Errore Interno del Server";
+"Cook Time" = "Tempo di Cottura";
+"No. of Ingredients" = "No. di Ingredienti";
+"Meal Type" =  "Tipo di Pietanza";
+"Cuisines" = "Cucina";
+"Meal" = "Pasto";
+"Ingridients" = "Ingredienti";
+"Filter" = "Filtra";
+"Clear All" = "Elimina Tutto";
+"View Results" = "Vedi i risultati";
+"Search Italian Region" = "Ricerca Regioni Italiane";
+
+//MARK:  CREATE RECIPE WALKTHROUGH
+"Create your Recipe" = "Crea la tua Ricetta";
+"Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Crea le tue ricette esplorando e condividendo le ricchezze della nostra cucina italiana";
+"Instruction to create a Recipe" = "Istruzioni per creare una ricetta";
+"Add Ingredients and Tools Used" = "Aggiungi gli ingredienti e gli strumenti utilizzati";
+"Add clear photos" = "Aggiungi foto di qualità";
+"Photos should have good resolution and lightning" = "Assicurati che le foto siano in una buona risoluzione e luminosità";
+"Add Ingredients and Kitchen Tools Used" = "Aggiungi ingredienti ed utensili da cucina";
+"Use accurate amount and unit for ingredients, select the right Kitchen Tools" = "Seleziona quantità e unità precise per gli ingredienti, seleziona gli utensili da cucina adeguati";
+"Divide your recipe in steps" = "Dividi la ricetta in fasi";
+"You can divide our recipe in steps so that viewers can easily understand the procedure" = "Puoi dividere la tua ricetta in più passaggi in modo che gli spettatori possano capire facilmente la procedura";
+"Share your Recipe with others" = "Condividi la tua ricetta ";
+"Once your recipe is created, you can share it so viewers can cook it, like it and rate it" = "Una volta creata la tua ricetta, potrai condividerla in modo che gli utenti possano utilizzarla, consigliarla e valutarla";
+
+//MARK:  CREATE NEW RECIPE
+
+"Select Cooking Skill" = "Select Cooking Skill";
+"Select Course" = "Select Course";
+"Select Cuisine" = "Select Cuisine";
+"Select Meal" = "Select Meal";
+"Select Region" = "Select Region";
+"Select a Category" = "Select a Category";
+"Create New Recipe" =  "Crea una nuova Ricetta";
+"Upload Recipe Image" =  "Carica la foto della ricetta";
+"Click here to upload recipe photo" = "Clicca qui per caricare la foto della ricetta";
+"Images" = "Immagini";
+"PNG, JPG" = "PNG, JPG";
+"Resolution" = "Risoluzione";
+"Upto 1600x1600" =  "Fino a/Massimo 1600x1600";
+"Name *" = "Nome *";
+"Recipe Name" = "Nome Ricetta";
+"Select Cooking Skill *" = "Abilità in Cucina *";
+"Select Cuisine *" = "Seleziona la Cucina 8";
+"Select Meal *" =  "Seleziona la Pietanza *";
+"Select Course *" =  "Seleziona la Portata *";
+"Select Diet" = "Seleziona la Dieta";
+"Select Food Intolerance" = "Seleziona Intolleranze Alimentari";
+"Preparation Time *" = "Tempo di preparazione *";
+"Hours" = "Ore";
+"Minutes" =  "Minuti";
+"Serving *" = "Portate/Dosi *";
+"For how much people you are cooking" = "(Dosi) Per quante persone";
+"Select Region *" = "Seleziona la Regione *";
+"Cancel" = "Elimina/Cancella";
+"None" = "Nessuna";
+"Add Ingredients in Recipe" = "Aggiungi Ingredienti alla Ricetta";
+"Search Ingredients" = "Ricerca Ingredienti";
+"Add" = "Aggiungi";
+"Items" = "Elemento";
+"Save & Proceed" = "Salva e Procedi";
+"Quantity" = "Quantità";
+"Unit" = "Unità";
+"Enter Quantity" =  "Inserisci Quantità";
+"Add to List" = "Aggiungi alla lista";
+"kg" = "kg";
+"litre" = "Litro (plurale o singolare?)";
+"pieces" = "Pezzi/Parti";
+"dozen" = "Dozzina";
+"gm" = "gr";
+"ml" =  "ml";
+"spoon" = "Cucchiai";
+"drops" = "Gocce";
+"Add Tools in Recipe" =  "Aggiungi Utensili per la ricetta";
+"Search Appliance, Utensils & Tools" = "Ricerca Elettrodomestici e Utensili ";
+"Add Steps in Recipe" = "Aggiungi i passaggi nella ricetta";
+"Step" = "Fase";
+"Enter Title for Step" = "Inserisci il Titolo della Fase";
+"Your recipe direction text here..." = "Indicazioni della Ricetta qui...";
+"Ingridients Used in Step" = "Ingredienti usati in questa Fase";
+"Tools Used in Step" = "Utensili utilizzati in questa Fase";
+"Add Step" = "Aggiungi passaggio";
+"Recipe Ingredients and Tools used" = "Ingredienti ed Utensili utilizzati";
+"Utensils, Appliances & Tools" = "Utensili, Elettrodomestici e Utensili ";
+"Recipe Steps" = "Fasi della Ricetta";
+"  No Ingridients Added yet!" = "  Nessun Ingrediente aggiunto!";
+"  No Tools Added yet!" = "  Nessun Utensile aggiunto!";
+"  No Step Added yet!" = "  Nessuna Fase aggiunta!";
+"Save Recipe" = "Salva Ricetta";
+"Save" = "Salva";
+"Edit Recipe" = "Modifica Ricetta";
+"No Tools found" = "Nessun Strumento trovato";
+"No Ingredients found" = "Nessun Ingrediente trovato";
+"Are you sure you want to discard your recipe ?" = "Sei sicuro di voler eliminare la ricetta?";
+"Save in Draft" = "Salvata in Bozze";
+"Discard" = "Elimina";
+"Please Add Step" = "Aggiungi una Fase";
+"Add Tools, Appliances & Utensils" = "Aggiungi Utensili ed Elettrodomestici";
+"Add Recipe Steps" = "Aggiungi Fasi alla Ricetta";
+
+//MARK: RECIPE PREFERENCE
+
+
+"What is your favourite \n Cuisines?" = "Qual è la tua cucina \n preferita?";
+"Do you have any food \n allergies?" = "Hai qualche allergia \n alimentare?";
+"Do you have follow these \n diets?" = "Segui una di queste \n diete?";
+"Don't  want to see \n ingredients?" = "Quali ingredienti non \n vuoi vedere?";
+"Back" = "Indietro";
+"Skip" = "Salta";
+"Search Other Ingridients to exclude" = "Search Other Ingridients to exclude";
+"Add other ingredients to exclude" = "Add other ingredients to exclude";
+
+//MARK: VIEW RECIPE
+
+"You might also like..." = "Potrebbe piacerti anche...";
+"Rating & Reviews" = "Valutazione e recensioni";
+"Recipe by" = "Ricetta di";
+"Delete Recipe" = "Elimina Ricetta";
+"Share Recipe" = "Esci da Alysei";
+"Checkout" = "Guardare";
+"from Alysei app" =  "dall'app Alysei";
+"Reviews" = "Recensioni";
+"Finish Cooking" = "Termina la preparazione della Ricetta";
+"Please add ratings" = "Aggiungi Recensione";
+"Please leave a comment" = "Lascia un Commento";
+"You have already done a review on this product" = "Hai già lasciato una recensione su questa ricetta";
+"Edit Review" = "Modifica Recensione";
+"Add Review" = "Aggiungi Recensione";
+"Leave a comment" = "Lascia un Commento";
+"Please enter some review" =  "Si prega di inserire una recensione";
+"Review added Successfully!" = "Recensione aggiunta con successo!";
+"Review updated Successfully!" = "Recensione aggiornata con successo!";
+"Write a Review" = "Scrivi una recensione";
+"Well Done !" = "Ottimo Lavoro!";
+"Now its time to enjoy the recipe" = "Ora è il momento di gustare la ricetta";
+"Tap to rate" =  "Valuta la Ricetta";
+"Start Cooking" = "Inizia la preparazione";
+
+//MARK: EDIT RECIPE
+
+"Save Edit Recipe" = "Salva la modifica";
+"Edit Steps in Recipe" = "Modifica le fasi nella ricetta";
+"Title" = "Titolo";
+"Enter title" = "Inserisci titolo";
+"Description" = "Descrizione";
+"Change Photo" =  "Cambia Foto";
+"Edit Ingredients" = "Modifica ingredienti";
+"Edit Ingredients in Recipe" = "Modifica Ingredienti nella Ricetta";
+"Edit Tools in Recipe" = "Modifica Utensili nella Ricetta";
+"Save Ingridients" = "Salva gli ingredienti";
+"Save Tools" = "Salva strumenti";
+
 //MARK: Alert Message
 "Please enter first name." = "Please enter first name.";
 "Please enter last name." = "Please enter last name.";
@@ -111,7 +292,7 @@
 
 //MARK: Marketplace Listing Screen
 "Sort" = "Sort";
-"Filter" = "Filter";
+
 
 //MARK: Marketplace Filter Screen
 "No Product found" = "No Product found";
@@ -494,191 +675,14 @@
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 
 
-//MARK: RECIPE HOME SCREEN
-
-//"Recipe" = "Ricette";
-"Create Recipe" = "Crea la tua Ricetta";
-"What are you craving" = "Cosa brami";
-"Search Recipe" = "Ricerca Ricette";
-"Explore" = "Esplora";
-"Favourite" = "Favoriti";
-"My Recipe" = "Le Mie Ricette";
-"My Preferences" = "Le Mie Preferenze";
-"View All" = "Vedi/Mostra tutto";
-"Quick Search By Ingredients" = "Ricerca Rapida per Ingredienti";
-"Quick Search By Meal" = "Ricerca rapida per pasto";
-"Search By Italian Region" = "Ricerca per Regioni Italiane";
-"Trending Now" = "In Voga al momento";
-"Trending" = "In Voga al momento";
-"Quick Easy" = "Facile e Veloce";
-"Favourite Cuisine" = "Cucina Favorita";
-"Food Alergies" = "Allergie Alimentari";
-"Diets" = "Dieta";
-"Ingredients" = "Ingredienti";
-"Cooking Skill" = "Abilità in Cucina";
-"Likes" = "Mi Piace";
-"NA" = "Non applicabile";
-"Draft" = "Bozza";
-"Published" = "Pubblicata";
-"No recipe found" = "Nessuna Ricetta trovata";
-"You have not liked any recipe" = "Non ti è piaciuta nessuna ricetta";
-"No Ingridient Found" = "Nessun ingrediente trovato";
-"No Meal Found" = "Nessuna Pietanza trovata";
-"Internal Server Error" = "Errore Interno del Server";
-"Cook Time" = "Tempo di Cottura";
-"No. of Ingredients" = "No. di Ingredienti";
-"Meal Type" =  "Tipo di Pietanza";
-"Cuisines" = "Cucina";
-"Meal" = "Pasto";
-"Ingridients" = "Ingredienti";
-"Filter" = "Filtra";
-"Clear All" = "Elimina Tutto";
-"View Results" = "Vedi i risultati";
-"Search Italian Region" = "Ricerca Regioni Italiane";
-
-//MARK:  CREATE RECIPE WALKTHROUGH
-
-//"Next"  "Avanti";
-//"Done" = "Fatto";
-"Create your Recipe" = "Crea la tua Ricetta";
-"Create your own recipes exploring and sharing the endless world of the Italian cuisine" = "Crea le tue ricette esplorando e condividendo le ricchezze della nostra cucina italiana";
-"Instruction to create a Recipe" = "Istruzioni per creare una ricetta";
-"Add Ingredients and Tools Used" = "Aggiungi gli ingredienti e gli strumenti utilizzati";
-"Add clear photos" = "Aggiungi foto di qualità";
-"Photos should have good resolution and lightning" = "Assicurati che le foto siano in una buona risoluzione e luminosità";
-"Add Ingredients and Kitchen Tools Used" = "Aggiungi ingredienti ed utensili da cucina";
-"Use accurate amount and unit for ingredients, select the right Kitchen Tools" = "Seleziona quantità e unità precise per gli ingredienti, seleziona gli utensili da cucina adeguati";
-"Divide your recipe in steps" = "Dividi la ricetta in fasi";
-"You can divide our recipe in steps so that viewers can easily understand the procedure" = "Puoi dividere la tua ricetta in più passaggi in modo che gli spettatori possano capire facilmente la procedura";
-"Share your Recipe with others" = "Condividi la tua ricetta ";
-"Once your recipe is created, you can share it so viewers can cook it, like it and rate it" = "Una volta creata la tua ricetta, potrai condividerla in modo che gli utenti possano utilizzarla, consigliarla e valutarla";
-
-//MARK:  CREATE NEW RECIPE
-
-"Select Cooking Skill" = "Select Cooking Skill";
-"Select Course" = "Select Course";
-"Select Cuisine" = "Select Cuisine";
-"Select Meal" = "Select Meal";
-"Select Region" = "Select Region";
-"Select a Category" = "Select a Category";
-"Create New Recipe" =  "Crea una nuova Ricetta";
-"Upload Recipe Image" =  "Carica la foto della ricetta";
-"Click here to upload recipe photo" = "Clicca qui per caricare la foto della ricetta";
-"Images" = "Immagini";
-"PNG, JPG" = "PNG, JPG";
-"Resolution" = "Risoluzione";
-"Upto 1600x1600" =  "Fino a/Massimo 1600x1600";
-"Name *" = "Nome *";
-"Recipe Name" = "Nome Ricetta";
-"Select Cooking Skill *" = "Abilità in Cucina *";
-"Select Cuisine *" = "Seleziona la Cucina 8";
-"Select Meal *" =  "Seleziona la Pietanza *";
-"Select Course *" =  "Seleziona la Portata *";
-"Select Diet" = "Seleziona la Dieta";
-"Select Food Intolerance" = "Seleziona Intolleranze Alimentari";
-"Preparation Time *" = "Tempo di preparazione *";
-"Hours" = "Ore";
-"Minutes" =  "Minuti";
-"Serving *" = "Portate/Dosi *";
-"For how much people you are cooking" = "(Dosi) Per quante persone";
-"Select Region *" = "Seleziona la Regione *";
-"Cancel" = "Elimina/Cancella";
-"None" = "Nessuna";
-"Add Ingredients in Recipe" = "Aggiungi Ingredienti alla Ricetta";
-"Search Ingredients" = "Ricerca Ingredienti";
-"Add" = "Aggiungi";
-"Items" = "Elemento";
-"Save & Proceed" = "Salva e Procedi";
-"Quantity" = "Quantità";
-"Unit" = "Unità";
-"Enter Quantity" =  "Inserisci Quantità";
-"Add to List" = "Aggiungi alla lista";
-"kg" = "kg";
-"litre" = "Litro (plurale o singolare?)";
-"pieces" = "Pezzi/Parti";
-"dozen" = "Dozzina";
-"gm" = "gr";
-"ml" =  "ml";
-"spoon" = "Cucchiai";
-"drops" = "Gocce";
-"Add Tools in Recipe" =  "Aggiungi Utensili per la ricetta";
-"Search Appliance, Utensils & Tools" = "Ricerca Elettrodomestici e Utensili ";
-"Add Steps in Recipe" = "Aggiungi i passaggi nella ricetta";
-"Step" = "Fase";
-"Enter Title for Step" = "Inserisci il Titolo della Fase";
-"Your recipe direction text here..." = "Indicazioni della Ricetta qui...";
-"Ingridients Used in Step" = "Ingredienti usati in questa Fase";
-"Tools Used in Step" = "Utensili utilizzati in questa Fase";
-"Add Step" = "Aggiungi passaggio";
-"Recipe Ingredients and Tools used" = "Ingredienti ed Utensili utilizzati";
-"Utensils, Appliances & Tools" = "Utensili, Elettrodomestici e Utensili ";
-"Recipe Steps" = "Fasi della Ricetta";
-"  No Ingridients Added yet!" = "  Nessun Ingrediente aggiunto!";
-"  No Tools Added yet!" = "  Nessun Utensile aggiunto!";
-"  No Step Added yet!" = "  Nessuna Fase aggiunta!";
-"Save Recipe" = "Salva Ricetta";
-"Save" = "Salva";
-"Edit Recipe" = "Modifica Ricetta";
-"No Tools found" = "Nessun Strumento trovato";
-"No Ingredients found" = "Nessun Ingrediente trovato";
-"Are you sure you want to discard your recipe ?" = "Sei sicuro di voler eliminare la ricetta?";
-"Save in Draft" = "Salvata in Bozze";
-"Discard" = "Elimina";
-"Please Add Step" = "Aggiungi una Fase";
-"Add Tools, Appliances & Utensils" = "Aggiungi Utensili ed Elettrodomestici";
-"Add Recipe Steps" = "Aggiungi Fasi alla Ricetta";
-
-//MARK: RECIPE PREFERENCE
 
 
-"What is your favourite \n Cuisines?" = "Qual è la tua cucina \n preferita?";
-"Do you have any food \n allergies?" = "Hai qualche allergia \n alimentare?";
-"Do you have follow these \n diets?" = "Segui una di queste \n diete?";
-"Don't  want to see \n ingredients?" = "Quali ingredienti non \n vuoi vedere?";
-"Back" = "Indietro";
-"Skip" = "Salta";
-"Search Other Ingridients to exclude" = "Search Other Ingridients to exclude";
-"Add other ingredients to exclude" = "Add other ingredients to exclude";
 
-//MARK: VIEW RECIPE
 
-"You might also like..." = "Potrebbe piacerti anche...";
-"Rating & Reviews" = "Valutazione e recensioni";
-"Recipe by" = "Ricetta di";
-"Delete Recipe" = "Elimina Ricetta";
-"Share Recipe" = "Esci da Alysei"'
-"Checkout" = "Guardare";
-"from Alysei app" =  "dall'app Alysei";
-"Reviews" = "Recensioni";
-"Finish Cooking" = "Termina la preparazione della Ricetta";
-"Please add ratings" = "Aggiungi Recensione";
-"Please leave a comment" = "Lascia un Commento";
-"You have already done a review on this product" = "Hai già lasciato una recensione su questa ricetta";
-"Edit Review" = "Modifica Recensione";
-"Add Review" = "Aggiungi Recensione";
-"Leave a comment" = "Lascia un Commento";
-"Please enter some review" =  "Si prega di inserire una recensione";
-"Review added Successfully!" = "Recensione aggiunta con successo!";
-"Review updated Successfully!" = "Recensione aggiornata con successo!";
-"Write a Review" = "Scrivi una recensione";
-"Well Done !" = "Ottimo Lavoro!";
-"Now its time to enjoy the recipe" = "Ora è il momento di gustare la ricetta";
-"Tap to rate" =  "Valuta la Ricetta";
-"Start Cooking" = "Inizia la preparazione";
 
-//MARK: EDIT RECIPE
 
-"Save Edit Recipe" = "Salva la modifica";
-"Edit Steps in Recipe" = "Modifica le fasi nella ricetta";
-"Title" = "Titolo";
-"Enter title" = "Inserisci titolo";
-"Description" = "Descrizione";
-"Change Photo" =  "Cambia Foto";
-"Edit Ingredients" = "Modifica ingredienti";
-"Edit Ingredients in Recipe" = "Modifica Ingredienti nella Ricetta";
-"Edit Tools in Recipe" = "Modifica Utensili nella Ricetta";
-"Save Ingridients" = "Salva gli ingredienti";
-"Save Tools" = "Salva strumenti";
+
+
 
 
 
