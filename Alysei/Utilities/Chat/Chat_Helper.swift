@@ -285,6 +285,11 @@ class Chat_hepler {
         
        
     }
+    func deletePost(postId: String) {
+        
+        self.postReference.child(postId).removeValue()
+       
+    }
     
     func deleteCommentMessage(commentId: String,user_id: String) {
         

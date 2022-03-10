@@ -20,7 +20,7 @@
 "Favourite" = "Favoriti";
 "My Recipe" = "Le Mie Ricette";
 "My Preferences" = "Le Mie Preferenze";
-"View All" = "Vedi/Mostra tutto";
+"View All" = "Vedi";
 "Quick Search By Ingredients" = "Ricerca Rapida per Ingredienti";
 "Quick Search By Meal" = "Ricerca rapida per pasto";
 "Search By Italian Region" = "Ricerca per Regioni Italiane";
@@ -51,6 +51,7 @@
 "Clear All" = "Elimina Tutto";
 "View Results" = "Vedi i risultati";
 "Search Italian Region" = "Ricerca Regioni Italiane";
+"Search Meal" = "Cerca pasto";
 
 //MARK:  CREATE RECIPE WALKTHROUGH
 "Create your Recipe" = "Crea la tua Ricetta";
@@ -68,12 +69,13 @@
 
 //MARK:  CREATE NEW RECIPE
 
-"Select Cooking Skill" = "Select Cooking Skill";
-"Select Course" = "Select Course";
-"Select Cuisine" = "Select Cuisine";
-"Select Meal" = "Select Meal";
-"Select Region" = "Select Region";
-"Select a Category" = "Select a Category";
+"Select Cooking Skill" = "Abilità in Cucina";
+"Select Course" = "Seleziona la Portata";
+"Select Cuisine" = "Seleziona la Cucina";
+"Select Meal" = "Seleziona la Pietanza";
+"Select Region" = "Seleziona la Regione";
+"Select a Category" = "Seleziona una categoria";
+
 "Create New Recipe" =  "Crea una nuova Ricetta";
 "Upload Recipe Image" =  "Carica la foto della ricetta";
 "Click here to upload recipe photo" = "Clicca qui per caricare la foto della ricetta";
@@ -84,7 +86,7 @@
 "Name *" = "Nome *";
 "Recipe Name" = "Nome Ricetta";
 "Select Cooking Skill *" = "Abilità in Cucina *";
-"Select Cuisine *" = "Seleziona la Cucina 8";
+"Select Cuisine *" = "Seleziona la Cucina *";
 "Select Meal *" =  "Seleziona la Pietanza *";
 "Select Course *" =  "Seleziona la Portata *";
 "Select Diet" = "Seleziona la Dieta";
@@ -95,7 +97,7 @@
 "Serving *" = "Portate/Dosi *";
 "For how much people you are cooking" = "(Dosi) Per quante persone";
 "Select Region *" = "Seleziona la Regione *";
-"Cancel" = "Elimina/Cancella";
+"Cancel" = "Cancella";
 "None" = "Nessuna";
 "Add Ingredients in Recipe" = "Aggiungi Ingredienti alla Ricetta";
 "Search Ingredients" = "Ricerca Ingredienti";
@@ -324,124 +326,129 @@
 "Interact with your future buyers" = "Interagisci con i tuoi possibili acquirenti";
 "Favorite and Ratings" = "Recensioni";
 "Being able to be reviewed and rated by buyers" = "Controlla le tue recensioni";
-"Alysei Marketplace Membership" = "";
-"Choose a plan that is right for you" = "";
+"Alysei Marketplace Membership" = "Iscrizione al Marketplace di Alysei";
+"Choose a plan that is right for you" = "Scegli il piano adatto a te";
+
 
 //MARK: Marketplace CreateStore Screen
-"Update Store" = "Update Store";
-"Store Name" = "Store Name";
-"Description" = "Description";
-"Website" = "Website";
-"Store Region" = "Store Region";
-"Location" = "Location";
-"Exceed Maximum Number Of Selection" = "Exceed Maximum Number Of Selection";
+"Update Store" = "Aggiorna il Negozio";
+"Store Name" = "Nome del Negozio";
+"Description" = "Descrizione";
+"Website" = "Sito Web";
+"Store Region" = "Regione del negozio";
+"Location" = "Posizione";
+"Next" = "Avanti";
+"Exceed Maximum Number Of Selection" = "Superato il numero massimo di selezione";
 "Ok" = "Ok";
-"Please upload profile picture." = "Please upload profile picture.";
-"Please upload cover picture." = "Please upload cover picture.";
-"Please upload store images." = "Please upload store images.";
-"Please enter a valid website url." = "Please enter a valid website url." ;
-"Please enter valid website url, For example: www.website.com" = "Please enter valid website url, For example: www.website.com";
-"Please choose a source type" = "Please choose a source type";
-"Take Photo" = "Take Photo";
-"Choose From Library" = "Choose From Library";
-"Delete photo" = "Delete photo";
-"Remove photo" = "Remove photo";
-"Cancel" = "Cancel";
+"Please upload profile picture." = "Carica la foto del profilo.";
+"Please upload cover picture." = "Carica la foto della cover.";
+"Please upload store images." = "Carica immagini del negozio";
+"Please enter a valid website url." = "Inserisci un sito web valido" ;
+"Please enter valid website url, For example: www.website.com" = "Inserisci un sito web valido, ad esempio: www.sitoweb.com";
+"Please choose a source type" = "Scegli la fonte";
+"Take Photo" = "Scatta una foto";
+"Choose From Library" = "Scegli dall galleria";
+"Delete photo" = "Elimina foto";
+"Remove photo" = "Rimuovi foto";
+"Cancel" = "Cancellal";
 "Okay" = "Okay";
-"Denied albums permissions granted" = "Denied albums permissions granted";
-"Denied camera permissions granted" = "Denied camera permissions granted";
+"Denied albums permissions granted" = "Autorizzazioni album negate, concesse";
+"Denied camera permissions granted" = "Autorizzazioni alla fotocamera negate, concesse";
+
 
 //MARK: Marketplace Add Product Screen
 
-"Yes" = "Yes";
+"Yes" = "Sì";
 "No" = "No";
-"No. of pieces" = "No. of pieces";
-"No. of bottles" = "No. of bottles";
-"liters" = "liters";
-"kilograms" = "kilograms";
-"USD" = "USD";
-"Maximum 200 characters" = "Maximum 200 characters";
-"Maximum 50 characters" = "Maximum 50 characters";
-"Product Price" = "Product Price";
-"Product Title" = "Product Title";
-"Select Product Category" = "Select Product Category";
-"Quantity Available" = "Quantity Available";
-"Brand Label" = "Brand Label";
-"Keywords" = "Keywords";
-"grams" = "grams";
-"Add Product" = "Add Product";
-"milligrams" = "milligrams";
-"Exceed Maximum Number Of Selection" = "Exceed Maximum Number Of Selection";
-"Minimum Order quantity should be less or equal to quantity Available" = "Minimum Order quantity should be less or equal to quantity Available";
-"Please upload product images." = "Please upload product images.";
-"Please enter product title." = "Please enter product title.";
-"Please enter product description." = "Please enter product description.";
-"Please enter category." = "Please enter category.";
-"Please enter quantity available." = "Please enter quantity available.";
-"Please enter minimum order quantity." = "Please enter minimum order quantity.";
-"Please enter handling instructions." = "Please enter handling instructions.";
-"Please enter dispatch instructions." = "Please enter dispatch instructions.";
-"Please enter available for sample." = "Please enter available for sample.";
-"Please enter valid product price." = "Please enter valid product price.";
-"Helps user to find product" = "Helps user to find product";
-"How many products are you currently available to deliver?" = "How many products are you currently available to deliver?";
-"Choose how you plan to sell your products" = "Choose how you plan to sell your products";
-"Which is the minimum order quantity you are able to accept?" = "Which is the minimum order quantity you are able to accept?";
-"Provide details about your safe handling instructions" = "Provide details about your safe handling instructions";
-"Provide details about your specific disptach instructions" = "Provide details about your specific disptach instructions";
-"Are you able to provide samples of your products upon request?" = "Are you able to provide samples of your products upon request?";
-"Indicate your product selling price to possible buyers" = "Indicate your product selling price to possible buyers";
-"Your own brand label" = "Your own brand label";
+"No. of pieces" = "No. di pezzi";
+"No. of bottles" = "No. di bottiglie";
+"liters" = "litri";
+"kilograms" = "kilogrammi";
+"USD" = "Dollaro Statunitense";
+"Maximum 200 characters" = "Massimo 200 caratteri";
+"Maximum 50 characters" = "Massimo 50 caratteri";
+"Product Price" = "Prezzo del prodotto";
+"Product Title" = "Titolo del prodotto";
+"Select Product Category" = "Seleziona la categoria del prodotto";
+"Quantity Available" = "Quantità disponibile";
+"Brand Label" = "Etichetta del prodotto";
+"Keywords" = "Parola chiave";
+"grams" = "grammi";
+"Add Product" = "Aggiungi Prodotto";
+"milligrams" = "milligrammi";
+"Exceed Maximum Number Of Selection" = "Superato il numero massimo di selezione";
+"Minimum Order quantity should be less or equal to quantity Available" = "La quantità minima dell'ordine deve essere inferiore o uguale alla quantità disponibile";
+"Please upload product images." = "Carica le immagini del prodotto";
+"Please enter product title." = "Inserisci il titolo del prodotto";
+"Please enter product description." = "Inserisci la descrizione del prodotto";
+"Please enter category." = "Inserisci la categoria";
+"Please enter quantity available." = "Inserisci la quantità disponibile";
+"Please enter minimum order quantity." = "Inserisci la quantità minima d'ordine.";
+"Please enter handling instructions." = "Inserisci le istruzioni di gestione";
+"Please enter dispatch instructions." = "Inserisci le istruzioni di spedizione.";
+"Please enter available for sample." = "Disponibilità per campioni";
+"Please enter valid product price." = "Inserisci un prezzo valido";
+"Helps user to find product" = "Aiuta l'utente a trovare il tuo prodotto";
+"How many products are you currently available to deliver?" = "Quanti prodotti sei attualmente disponibile a consegnare?";
+"Choose how you plan to sell your products" = "Scegli come intendi vendere i tuoi prodotti";
+"Which is the minimum order quantity you are able to accept?" = "Qual è la quantità minima d'ordine che puoi accettare?";
+"Provide details about your safe handling instructions" = "Fornisci istruzioni per la gestione";
+"Provide details about your specific disptach instructions" = "Fornisci specifiche istruzioni per la spedizione ";
+"Are you able to provide samples of your products upon request?" = "Sei in grado di fornire campioni dei tuoi prodotti su richiesta?";
+"Indicate your product selling price to possible buyers" = "Indica il prezzo di vendita del tuo prodotto ai possibili acquirenti";
+"Your own brand label" = "Il tuo marchio";
+
 
 //MARK: Marketplace Rating Review Screen
-"ratings" = "ratings";
-"Yes" = "Yes";
-"reviews" = "reviews";
-"Reviews" = "Reviews";
-"Edit Review" = "Edit Review";
-"Add Review" = "Add Review";
-"Leave a comment" = "Leave a comment";
-"Please add ratings." = "Please add ratings.";
-"Please enter some review." = "Please enter some review.";
-"Review added Successfully!" = "Review added Successfully!";
-"You have already done a review on this product" = "You have already done a review on this product";
-"Review updated Successfully!" = "Review updated Successfully!";
-"Tap to rate:" = "Tap to rate:";
+"ratings" = "Recensioni";
+"Yes" = "Sì";
+"reviews" = "Recensioni";
+"Reviews" = "Recensioni";
+"Edit Review" = "Modifica recensione";
+"Add Review" = "Aggiungi recensione";
+"Leave a comment" = "Lascia un commento";
+"Please add ratings." = "Aggiungi recensioni";
+"Please enter a review." = "Aggiungi una recensione.";
+"Review added Successfully!" = "Recensione aggiunta con successo!";
+"You have already done a review on this product" = "Hai già fatto una recensione su questo prodotto";
+"Review updated Successfully!" = "Recensione aggiornata con successo!!";
+"Tap to rate:" = "Dai la tua valutazione";
+
 
 //MARK: Marketplace First Time Walthrough
 "Welcome to Marketplace" = "Benvenuto nel Marketplace";
-"Features you can explore" = "Features you can explore";
+"Features you can explore" = "Scopri le potenzialita";
 "MarketPlace Rules" = "Regole del Marketplace";
-"Here you can create your unique Store" = "";
-"upload your product portfolio, explore, search and reply to inquiries" = "upload your product portfolio, explore, search and reply to inquiries";
-"The most powerful markeplace engine for the Made in Italy" = "The most powerful markeplace engine for the Made in Italy";
+"Here you can create your unique Store" = "Qui puoi creare il tuo negozio online";
+"upload your product portfolio, explore, search and reply to inquiries" = "caricare il tuo portafoglio di prodotti, scoprire, ricercare e rispondere a richieste";
+"The most powerful markeplace engine for the Made in Italy" = "Il più potente motore Marketplace per il Made in Italy";
 "To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
 "Here you can explore and search for products from Italian Producers" = "Qui puoi scorprire, ricercare prodotti di Produttori Italiani";
-"Here you can explore and search for products and send inquiry to Italian Producers" = "Here you can explore and search for products and send inquiry to Italian Producers";
+"Here you can explore and search for products and send inquiry to Italian Producers" = "Qui puoi scorprire, ricercare prodotti e inviare richieste a Produttori Italiani";
 "The most powerful markeplace engine for the Made in Italy" = "The most powerful markeplace engine for the Made in Italy";
-"To ensure a positive experience follow these simple rules" = "To ensure a positive experience follow these simple rules";
+"To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
 "Explore the Markeplace" = "Esplora il marketplace";
-"Report suspicious behaviour" = "Report suspicious behaviour";
+"Report suspicious behaviour" = "Segnala un comportamento sospetto";
 "Search by Region, Product, Category and much more" = "Ricerca per Regione, Prodotto, Categoria e molto altro";
-"Reply to inquiry" = "Reply to inquiry";
-"Send an inquiry" = "Send an inquiry";
-"Showcase you Products Store in a simple, clean and professional way" = "Showcase you Products Store in a simple, clean and professional way";
+"Reply to inquiry" = "Rispondi alle richieste";
+"Send an inquiry" = "Invia richieste";
+"Showcase you Products Store in a simple, clean and professional way" = "Mostra on line la tua vetrina prodotti in modo semplice, chiaro e professionale";
 "Being responsive will help you to build trust with Buyers" = "Being responsive will help you to build trust with Buyers";
 
-"Ask for product information, samples request, prices, quantity etc." = "Ask for product information, samples request, prices, quantity etc.";
+"Ask for product information, samples request, prices, quantity etc." = "Richiedi informazioni su prodotti, richiesta campioni, prezzi, quantità ecc.";
 "Information and details" = "Informazioni e dettagli";
-"Photo Quality" = "Photo Quality";
+"Photo Quality" = "Qualità delle foto";
 "Report suspicious behaviour" = "Segnala un comportamento sospetto";
 "Make sure all the information you provide are accurate and completed" = "Assicurati che tutte le informazioni che hai fornito siano accurate e complete";
-"Make sure that all photos that you upload are in high quality" = "Make sure that all photos that you upload are in high quality";
+"Make sure that all photos that you upload are in high quality" = "Assicurati che tutte le foto che carichi siano di alta qualità";
 "Let us know if something does not feel right" = "Tienici informati per qualsiasi situazione poco chiara";
-"Make sure all the information you provide are accurate and completed" = "Make sure all the information you provide are accurate and completed";
+"Make sure all the information you provide are accurate and completed" = "Assicurati che tutte le informazioni che hai fornito siano accurate e complete";
 "Done" = "Fatto";
 
 //MARK: Marketplace Create Store Walthrough
-"Start promoting your products" = "Start promoting your products";
+"Start promoting your products" = "Incomina a promuovere i tuoi Prodotti ";
 "Configure Your Store" = "Configure Your Store";
-"Here is some tips to help you promote with confidence" = "Here is some tips to help you promote with confidence";
+"Here is some tips to help you promote with confidence" = "Guarda alcuni suggerimenti per aiutarti a promuovere con efficacia";
 "Post in English" = "Promuovi in lingua inglese";
 "Write in English language to create your store and list your products" = "Scrivi in lingua inglese per creare il tuo negozio online e presentare i tuoi prodotti";
 "Connect with buyers" = "Entra in contatto con gli acquirenti";
@@ -460,85 +467,89 @@
 
 //MARK: Marketplace Inquiry Screen
 "Fill the form just once to get faster responses. Store will contact you shortly." = "Fill the form just once to get faster responses. Store will contact you shortly.";
-"Hi is this product is available?" = "Hi is this product is available?";
-"Message" = "Message";
-"Please enter some message" = "Please enter some message";
-"New" = "New";
-"You already submitted a query on this product" = "You already submitted a query on this product";
-"Network Error" = "Network Error";
-"Inquiry" = "Inquiry";
-"Opened" = "Opened";
-"Closed" = "Closed";
-"years ago" = "years ago";
-"months ago" = "months ago";
-"weeks ago" = "weeks ago";
-"Yesterday" = "Yesterday";
-"hours ago" = "hours ago";
-"minutes ago" = "minutes ago";
-"seconds ago" = "seconds ago";
-"years ago" = "years ago";
-"month ago" = "month ago";
-"week ago" = "week ago";
-"hour ago" = "hour ago";
-"minute ago" = "minute ago";
-"second ago" = "second ago";
-"Send Inquiry" = "Send Inquiry";
-"Blocked" = "Blocked";
-"Full Name" = "Full Name";
+"Hi is this product is available?" = "Salve, questo prodotto è disponibile?";
+"Message" = "Messaggio";
+"Please enter some message" = "Scrivi un messaggio";
+"New" = "Nuovo";
+"You already submitted a query on this product" = "Hai già inviato una richiesta per questo prodotto";
+"Network Error" = "Errore di rete";
+"Inquiry" = "Richiesta";
+"Opened" = "Aperte";
+"Closed" = "Chiuse";
+"years ago" = "anni fa";
+"months ago" = "mesi fa";
+"weeks ago" = "settimane fa";
+"Yesterday" = "Ieri";
+"hours ago" = "un'ora fa";
+"minutes ago" = "il mese scorso";
+"seconds ago" = "un secondo fa";
+"years ago" = "anni fa";
+"month ago" = "il mese scorso";
+"week ago" = "la settimana scorsa";
+"hour ago" = "un'ora fa";
+"minute ago" = "un minuto fa";
+"second ago" = "un secondo fa";
+"Send Inquiry" = "Invia richiesta";
+"Blocked" = "Bloccate";
+"Full Name" = "Nome completo";
 "Email" = "Email";
-"Phone Number" = "Phone Number";
-"Message" = "Message";
+"Phone Number" = "Numero di telefono";
+"Message" = "Messaggio";
 
 ////MARK: Marketplace ProductInfo Screen
-"Product Info" = "Product Info";
-"Handling Instructions" = "Handling Instructions";
-"Dispatch Instructions" = "Dispatch Instructions";
-"Quantity Available:" = "Quantity Available:";
-"Brand Label" = "Brand Label" ;
-"Min Order Quantity" = "Min Order Quantity";
-"Sample Available" = "Sample Available";
-"Available for Sample" = "Available for Sample";
-"Category" = "Category";
-"Price Range" = "Price Range";
-"Method" = "Method";
-"My Products" = "My Products";
+"Product Info" = "Informazioni sul prodotto";
+"Handling Instructions" = "Informazioni sulla gestione";
+"Dispatch Instructions" = "Informazioni sulla spedizione";
+"Quantity Available:" = "Quantità disponibile:";
+"Brand Label" = "Etichetta del prodottol" ;
+"Min Order Quantity" = "Quantità minima d'ordine";
+"Sample Available" = "Campioni disponibili";
+"Available for Sample" = "Disponibile per Campioni";
+"Category" = "Categoria";
+"Price Range" = "Fascia di prezzo";
+"Method" = "Metodo";
+"My Products" = "I miei prodotti";
 "No producer found" = "No producer found";
 
 
 //MARK: Marketplace Dashboard Screen
-"Total Product" = "Total Product";
-"Total Enquiry" = "Total Enquiry";
-"Total Categories" = "Total Categories";
-"Total Review" = "Total Review";
-"Yearly" = "Yearly";
-"Monthly" = "Monthly";
-"Weekly" = "Weekly";
-"Yesterday" = "Yesterday";
-"Inquiries" = "Inquiries";
-"Dashboard" = "Dashboard";
-"Analytics" = "Analytics";
-"Today" = "Today";
+"Total Product" = "Prodotti totali";
+"Total Enquiry" = "Richieste totali";
+"Total Categories" = "Categorie totali";
+"Total Review" = "Recensioni totali";
+"Yearly" = "Annuale";
+"Monthly" = "Mensile";
+"Weekly" = "Settimanale";
+"Yesterday" = "Ieri";
+"Inquiries" = "Richieste";
+"Dashboard" = "Pannello di controllo";
+"Analytics" = "Statistica/Analitica";
+"Today" = "Oggi";
+
 
 //MARK: Marketplace Confirm Screen
-"Thank you for submitting your information for admin review. We will respond you at earliest." = "Thank you for submitting your information for admin review. We will respond you at earliest.";
-"Back to MarketPlace" = "Back to MarketPlace";
+"Thank you for submitting your information for admin review. We will respond you at earliest." = "Grazie per aver inviato le tue informazioni per la revisione da parte dell'amministratore. Ti risponderemo al più presto.";
+"Back to MarketPlace" = "Torna al Marketplace";
+
 
 //MARK: Marketplace Sort Screen
-"Popularity" = "Popularity";
-"Ratings" = "Ratings";
-"Price -- Low to High" = "Price -- Low to High";
-"Price -- High to Low" = "Price -- High to Low";
-"Newest First" = "Newest First";
+"Popularity" = "Popolarità";
+"Ratings" = "Recensioni";
+"Price -- Low to High" = "Prezzo -- dal più basso al più alto";
+"Price -- High to Low" = "Prezzo -- dal più alto al più basso";
+"Newest First" = "Più recenti";
 
 //MARK: Marketplace Store Screen
-"Our Gallery" = "Our Gallery";
-"Call" = "Call";
-"Website" = "Website";
-"Add to Fav" = "Add to Fav";
-"No Image" = "No Image";
-"Rating & Reviews" = "Rating & Reviews";
-"See All" = "See All";
-"All Products" = "All Products";
+"Italian F&B Producer" = "Produttori enogastronomici Italiani";
+"Our Gallery" = "La nostra galleria";
+"Call" = "Chiama";
+"Website" = "Sito Web";
+"Add to Fav" = "Aggiungi ai favoriti";
+"No Image" = "Nessuna immagine";
+"Rating & Reviews" = "Recensioni";
+"See All" = "Vedi tutto";
+"All Products" = "Tutti i prodotti";
+
 
 //MARK: Membership Screen
 "Review" = "Verifica";
@@ -551,6 +562,7 @@
 "You are within the top 5 highest rated Alysei Members" = "Sei tra i primi 5 Membri Alysei più votati";
 "Become a Certified Alysei Member to expan your market access" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
 "Complete your profile in order to fully access Alysei" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
+
 
 //MARK: LOGIN SCREEN
 "Login to your Account" = "Accedi al tuo Account";
@@ -570,7 +582,7 @@
 "US Importers & Distributors" = "Importatori e Distributori negli USA";
 "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Esplora, trova e connettiti con i Produttori Locali Italiani per rafforzare il tuo portafoglio prodotti, accrescere la tua competitività, espandere il tuo brand.";
 "Italian Restaurants in US" = "Accedi al tuo Account";
-
+ 
 "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach." = "Rafforza la collaborazione con Produttori e Importatori, promuovi la tua cucina ed I tuoi eventi speciali, espandi la tua presenza sul mercato.";
 "Voice of Expert" = "Esperti di Settore";
 "Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs." = "Cuochi, Scuole di Cucina e tutti gli specialisti italiani di enogastronomia potranno attraverso la piattaforma Alysei  promuovere il proprio nome, brand, eventi e blogs.";
@@ -578,6 +590,7 @@
 "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers." = "Rafforza la connessione con Produttori Italiani, Importatori e Distributori negli Stati Uniti, con Esperti di Settore, aumenta la tua visibilità, raggiungi i tuoi clienti target.";
 "Voyagers" = "Voyagers";
 "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
+
 
 
 //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN

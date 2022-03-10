@@ -56,7 +56,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet var vwpageControl: ScrollingPageControl!
    // @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
     
-    
+    var passImageTabCallBack: ((UIImageView) -> Void)? = nil
     var data: NewFeedSearchDataModel?
     var data1 : SinglePostDataModel?
     var likeCallback:((Int) -> Void)? = nil
@@ -79,9 +79,11 @@ class PostDescTableViewCell: UITableViewCell {
     var pages = 0
     let stackView = UIStackView()
     var newHeightCllctn: Int?
-    
+    var imageZoomPost: UIImageView!
     
     var postLike:[PostClass]?
+    
+    
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -90,6 +92,7 @@ class PostDescTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+       
         pageControlUI()
         imagePostCollectionView.delegate = self
         imagePostCollectionView.dataSource = self
@@ -513,9 +516,11 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
        
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
+        cell.passImageCallBack = { imageZoomPost in
+            self.imageZoomPost = imageZoomPost
+            self.passImageTabCallBack?(self.imageZoomPost)
+        }
         
-        //self.addZoombehavior(for: cell.imagePost)
-        //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell
     }
 
@@ -605,7 +610,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     var originalImageCenter:CGPoint?
 
     var fullScreenImage: UIImageView!
-
+    var passImageCallBack: ((UIImageView) -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -617,102 +622,113 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
 //        pinch.minimumNumberOfTouches = 2
 //        pinch.maximumNumberOfTouches = 2
-        self.imagePost.addGestureRecognizer(pinch)
+       self.imagePost.addGestureRecognizer(pinch)
 
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
-        pan.minimumNumberOfTouches = 2
-        pan.maximumNumberOfTouches = 2
-        pan.delegate = self
-       // self.imagePost.addGestureRecognizer(pan)
+       // pan.minimumNumberOfTouches = 2
+      //  pan.maximumNumberOfTouches = 2
+       // pan.delegate = self
+        // self.imagePost.addGestureRecognizer(pan)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
+       // self.imagePost.addGestureRecognizer(tap)
     }
-
     @objc func pinch(sender:UIPinchGestureRecognizer) {
-        //self.imagePost.image = nil
-        var touchBaseView = sender.view
-        if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
-            if let navCon = tab.viewControllers?.first as? UINavigationController {
-                if let viewCon = navCon.viewControllers.first as? HomeViewC {
-                    touchBaseView = viewCon.view
-                }
-            }
-        }
+        passImageCallBack?(imagePost)
+    }
+    @objc func pan(sender:UIPanGestureRecognizer) {
+        passImageCallBack?(imagePost)
+    }
+    @objc func tap(sender: UITapGestureRecognizer) {
+        passImageCallBack?(imagePost)
+    }
+//    @objc func pinch(sender:UIPinchGestureRecognizer) {
+//        //self.imagePost.image = nil
+//        var touchBaseView = sender.view
+//        if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
+//            if let navCon = tab.viewControllers?.first as? UINavigationController {
+//                if let viewCon = navCon.viewControllers.first as? HomeViewC {
+//                    touchBaseView = viewCon.view
+//                }
+//            }
+//        }
+////        let touch1 = sender.location(ofTouch: 0, in: touchBaseView)
+//
 //        let touch1 = sender.location(ofTouch: 0, in: touchBaseView)
+//        var midPointX = touch1.x
+//        var midPointY = touch1.y
+//        if sender.numberOfTouches > 1 {
+//            let touch2 = sender.location(ofTouch: 1, in: touchBaseView)
+//            midPointX = (touch1.x + touch2.x)/2
+//            midPointY = (touch1.y + touch2.y)/2
+//        }
+//
+//        let touchedPoint = CGPoint(x: midPointX, y: midPointY)
+////        let touch2 = sender.location(ofTouch: 1, in: sender.view)
+//
+//        if sender.state == .began {
+//            self.imagePost.frame = UIScreen.main.bounds
+//            let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
+//            let newScale = currentScale*sender.scale
+//            if newScale > 1 {
+//                self.isZooming = true
+//                self.imagePost.isHidden = true
+//            }
+//            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
+//
+//
+//        } else if sender.state == .changed {
+//            guard let view = sender.view else {return}
+//            self.imagePost.isHidden = true
+//            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
+//                                      y: sender.location(in: view).y - view.bounds.midY)
+//            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+//                .scaledBy(x: sender.scale, y: sender.scale)
+//                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+//            let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
+//            var newScale = currentScale*sender.scale
+//            if newScale < 1 {
+//                newScale = 1
+//                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+//                self.imagePost.transform = transform
+//                sender.scale = 1
+//            }else {
+//                view.transform = transform
+//                sender.scale = 1
+//            }
+//            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
+//        } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
+//            self.showAlertOnTab(0.0, frame: self.imagePost.frame, center: CGPoint())
+//
+//
+//            guard let center = self.originalImageCenter else {return}
+//
+//           // self.imagePost.frame = self.bounds
+//
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.imagePost.transform = CGAffineTransform.identity
+//                //self.imagePost.center = center
+//                sender.scale = 1
+//            }, completion: { _ in
+//                self.isZooming = false
+//                self.imagePost.isHidden = false
+//
+//            })
+//        }
+//    }
 
-        let touch1 = sender.location(ofTouch: 0, in: touchBaseView)
-        var midPointX = touch1.x
-        var midPointY = touch1.y
-        if sender.numberOfTouches > 1 {
-            let touch2 = sender.location(ofTouch: 1, in: touchBaseView)
-            midPointX = (touch1.x + touch2.x)/2
-            midPointY = (touch1.y + touch2.y)/2
-        }
-
-        let touchedPoint = CGPoint(x: midPointX, y: midPointY)
-//        let touch2 = sender.location(ofTouch: 1, in: sender.view)
-
-        if sender.state == .began {
-            self.imagePost.frame = UIScreen.main.bounds
-            let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
-            let newScale = currentScale*sender.scale
-            if newScale > 1 {
-                self.isZooming = true
-                self.imagePost.isHidden = true
-            }
-            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
-          
-
-        } else if sender.state == .changed {
-            guard let view = sender.view else {return}
-            self.imagePost.isHidden = true
-            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
-                                      y: sender.location(in: view).y - view.bounds.midY)
-            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
-                .scaledBy(x: sender.scale, y: sender.scale)
-                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
-            let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
-            var newScale = currentScale*sender.scale
-            if newScale < 1 {
-                newScale = 1
-                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
-                self.imagePost.transform = transform
-                sender.scale = 1
-            }else {
-                view.transform = transform
-                sender.scale = 1
-            }
-            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
-        } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
-            self.showAlertOnTab(0.0, frame: self.imagePost.frame, center: CGPoint())
-         
-           
-            guard let center = self.originalImageCenter else {return}
-
-           // self.imagePost.frame = self.bounds
-          
-            UIView.animate(withDuration: 0.3, animations: {
-                self.imagePost.transform = CGAffineTransform.identity
-                //self.imagePost.center = center
-                sender.scale = 1
-            }, completion: { _ in
-                self.isZooming = false
-                self.imagePost.isHidden = false
-               
-            })
-        }
-    }
-
-    @objc func pan(sender: UIPanGestureRecognizer) {
-        if self.isZooming && sender.state == .began {
-            self.originalImageCenter = sender.view?.center
-        } else if self.isZooming && sender.state == .changed {
-            let translation = sender.translation(in: self)
-            if let view = sender.view {
-                view.center = CGPoint(x:view.center.x + translation.x,
-                                      y:view.center.y + translation.y)
-            }
-            sender.setTranslation(CGPoint.zero, in: self.imagePost.superview)
-        }
-    }
+//    @objc func pan(sender: UIPanGestureRecognizer) {
+//        if self.isZooming && sender.state == .began {
+//            self.originalImageCenter = sender.view?.center
+//        } else if self.isZooming && sender.state == .changed {
+//            let translation = sender.translation(in: self)
+//            if let view = sender.view {
+//                view.center = CGPoint(x:view.center.x + translation.x,
+//                                      y:view.center.y + translation.y)
+//            }
+//            sender.setTranslation(CGPoint.zero, in: self.imagePost.superview)
+//        }
+//    }
 
     func  showAlertOnTab(_ alpha: CGFloat, frame: CGRect, center: CGPoint) {
         if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {

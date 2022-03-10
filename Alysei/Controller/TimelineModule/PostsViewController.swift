@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 
-
+import Zoomy
 struct PostCommentsUserData {
     var userID: Int
     var postID: Int
@@ -333,7 +333,14 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 let data = arrNewFeedDataModel[indexPath.row]
                 cell.btnMoreLess.tag = indexPath.row
                 cell.relaodSection = indexPath.section
-                
+                guard let parentView = parent?.view else { return UITableViewCell() }
+                cell.passImageTabCallBack = { imageZoom in
+                   
+                    
+                    self.addZoombehavior(for: imageZoom,
+                                    settings: Settings.instaZoomSettings.with(actionOnTapOverlay: Action.dismissOverlay))
+                }
+               
                 /*if data.isExpand == true{
                     cell.lblPostDesc.numberOfLines = 0
                     cell.btnMoreLess.setTitle("....less", for: .normal)
@@ -523,9 +530,10 @@ extension PostsViewController: ShareEditMenuProtocol {
 
             urlRequest.httpBody = body
             WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
-                if (statusCode ?? 0) >= 400 {
+                if (statusCode ?? 0) != 200 {
                     self.showAlert(withMessage: "Some error occured")
                 } else {
+                    kChatharedInstance.deletePost(postId: "\(postID)")
                     self.callNewFeedApi(1)
                 }
             }
