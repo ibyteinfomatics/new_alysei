@@ -1484,7 +1484,7 @@ struct StaticArrayData {
                                         (image: "italianrestaurantsinus", name: "Italian Restaurants"),
                                         (image: "voiceofexperts", name: "Voice of Experts"),
                                         (image: "travelagencies", name: "Travel Agencies"),
-                                        (image: "producers", name: "Italian F&B Producer"),
+                                        (image: "producers", name: "Italian F&B Producers"),
     ]
     
     static let kNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
