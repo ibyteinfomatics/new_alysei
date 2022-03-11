@@ -76,6 +76,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     @IBOutlet weak var drop4: UIButton!
     @IBOutlet weak var drop5: UIButton!
     @IBOutlet weak var drop6: UIImageView!
+    @IBOutlet weak var lblCountTxt: UILabel!
     
     var countryId,regionId,adventureId,intensityId: Int!
     
@@ -113,7 +114,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
         travelAgencyTxf.text = agency
         websiteTxf.text = website
-        
+        descriptionTextView.delegate = self
         travelAgencyTxf.isUserInteractionEnabled = false
         websiteTxf.isUserInteractionEnabled = false
         
@@ -681,6 +682,31 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
        self.view.endEditing(true)
        return false
      }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if textView == descriptionTextView{
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let finalText = updatedText//.removeWhitespace()
+        if finalText.count <= 300 {
+            self.lblCountTxt.text = "\(finalText.count)"
+
+            return true
+        }else{
+            if text == "" && range.length > 0  {
+                print("Backspace was pressed")
+                return true
+            }
+            else{
+                return false
+                
+            }
+            
+        }
+        }else{
+            return true
+        }
+    }
     
     @objc override func dismissKeyboard() {
         view.endEditing(true)

@@ -12996,7 +12996,7 @@ You will be notified for any membership status update.</string>
                                         <rect key="frame" x="15" y="1100" width="384" height="144"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fgc-Lq-9eB">
-                                                <rect key="frame" x="15" y="10" width="354" height="124"/>
+                                                <rect key="frame" x="15" y="10" width="354" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Tz3-ST-Xah"/>
@@ -13008,11 +13008,27 @@ You will be notified for any membership status update.</string>
                                                     <outlet property="delegate" destination="z4G-7m-TVU" id="kl4-dm-zzG"/>
                                                 </connections>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khh-Eb-cXX">
+                                                <rect key="frame" x="325" y="118" width="10.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxu-Zc-9d5">
+                                                <rect key="frame" x="337.5" y="118" width="41.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="fgc-Lq-9eB" secondAttribute="trailing" constant="15" id="74y-jU-r4E"/>
-                                            <constraint firstAttribute="bottom" secondItem="fgc-Lq-9eB" secondAttribute="bottom" constant="10" id="HSe-I5-RDX"/>
+                                            <constraint firstAttribute="bottom" secondItem="Dxu-Zc-9d5" secondAttribute="bottom" constant="5" id="9pD-Es-Zqb"/>
+                                            <constraint firstItem="khh-Eb-cXX" firstAttribute="top" secondItem="fgc-Lq-9eB" secondAttribute="bottom" constant="8" id="BhG-ti-p7T"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dxu-Zc-9d5" secondAttribute="trailing" constant="5" id="CEM-0T-gmf"/>
+                                            <constraint firstItem="Dxu-Zc-9d5" firstAttribute="leading" secondItem="khh-Eb-cXX" secondAttribute="trailing" constant="2" id="Ime-h1-FoQ"/>
+                                            <constraint firstItem="khh-Eb-cXX" firstAttribute="centerY" secondItem="Dxu-Zc-9d5" secondAttribute="centerY" id="LC9-uv-zyX"/>
                                             <constraint firstItem="fgc-Lq-9eB" firstAttribute="leading" secondItem="eJW-5u-2MI" secondAttribute="leading" constant="15" id="RDW-aS-nX4"/>
                                             <constraint firstItem="fgc-Lq-9eB" firstAttribute="top" secondItem="eJW-5u-2MI" secondAttribute="top" constant="10" id="lWx-Qz-tft"/>
                                         </constraints>
@@ -13166,6 +13182,7 @@ You will be notified for any membership status update.</string>
                         <outlet property="intensityTxf" destination="B2a-Ze-1XE" id="m0L-UQ-bsC"/>
                         <outlet property="intensityView" destination="y91-Ap-h37" id="6db-mJ-trB"/>
                         <outlet property="intensityView1" destination="h1I-BE-hrR" id="uQ5-Wt-AUg"/>
+                        <outlet property="lblCountTxt" destination="khh-Eb-cXX" id="AwQ-6n-UAa"/>
                         <outlet property="priceLabel" destination="lWO-LO-9Wz" id="RJs-ad-SnI"/>
                         <outlet property="priceTxf" destination="tI8-Cb-D7v" id="Nvt-jw-BaT"/>
                         <outlet property="priceView" destination="JiI-mP-vmX" id="Kf5-RB-nSN"/>
@@ -20871,7 +20888,7 @@ You will be notified for any membership status update.</string>
                                         <rect key="frame" x="15" y="740" width="384" height="160"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AQf-FD-jOP">
-                                                <rect key="frame" x="15" y="10" width="354" height="120"/>
+                                                <rect key="frame" x="15" y="10" width="354" height="116"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="gmw-jC-u58"/>
@@ -20903,9 +20920,9 @@ You will be notified for any membership status update.</string>
                                             <constraint firstItem="pKY-Du-3AW" firstAttribute="leading" secondItem="B1V-52-1tM" secondAttribute="trailing" constant="2" id="De1-dI-MyG"/>
                                             <constraint firstAttribute="trailing" secondItem="AQf-FD-jOP" secondAttribute="trailing" constant="15" id="JOD-Dw-pYF"/>
                                             <constraint firstAttribute="trailing" secondItem="pKY-Du-3AW" secondAttribute="trailing" constant="5" id="Lm8-8d-HNW"/>
+                                            <constraint firstItem="B1V-52-1tM" firstAttribute="top" secondItem="AQf-FD-jOP" secondAttribute="bottom" constant="8" id="O4S-PN-TNc"/>
                                             <constraint firstItem="B1V-52-1tM" firstAttribute="centerY" secondItem="pKY-Du-3AW" secondAttribute="centerY" id="cgZ-dL-sbp"/>
                                             <constraint firstItem="AQf-FD-jOP" firstAttribute="leading" secondItem="OlG-7M-Jcm" secondAttribute="leading" constant="15" id="l6z-lX-QyK"/>
-                                            <constraint firstAttribute="bottom" secondItem="AQf-FD-jOP" secondAttribute="bottom" constant="30" id="xcc-gz-RCR"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9E-u3-ISC">
