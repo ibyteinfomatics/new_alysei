@@ -67,7 +67,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     @IBOutlet weak var bookingTxf: UITextField!
     @IBOutlet weak var heightbookingUrl: NSLayoutConstraint!
     @IBOutlet weak var vwHeadBooking: UILabel!
-
+    @IBOutlet weak var lblCountTxt: UILabel!
     
     
     var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,baseUrl,bookingUrl: String?
@@ -551,7 +551,31 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             
         }
     }
-    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if textView == descriptionTextView{
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        let finalText = updatedText//.removeWhitespace()
+        if finalText.count <= 300 {
+            self.lblCountTxt.text = "\(finalText.count)"
+
+            return true
+        }else{
+            if text == "" && range.length > 0  {
+                print("Backspace was pressed")
+                return true
+            }
+            else{
+                return false
+                
+            }
+            
+        }
+        }else{
+            return true
+        }
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

@@ -65,19 +65,19 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //        self.setUI()
 //    }
     override func viewWillAppear(_ animated: Bool) {
-        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
+        let data = kSharedUserDefaults.getLoggedInUserDetails()
         addPost.isUserInteractionEnabled = true
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
             
-            if alysei_review == 0 {
+            if Int.getInt(data["alysei_review"]) == 0 {
                 
                 blankdataView.isHidden = false
                 imgReview.image = UIImage(named: "Review")
                 text.text = "Your profile is not reviewed from admin"
                 txtPost.resignFirstResponder()
-            } else if alysei_review == 1{
+            } else if Int.getInt(data["alysei_review"]) == 1{
                // txtPost.becomeFirstResponder()
                 postRequestToGetProgressPrfile()
                 
@@ -272,7 +272,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 
         var config = YPImagePickerConfiguration()
         config.screens = [.library, .photo]
-        config.library.maxNumberOfItems = 100
+        config.library.maxNumberOfItems = 10
         config.showsPhotoFilters = true
         //config.showsCrop = .rectangle(ratio: 1.5)
         

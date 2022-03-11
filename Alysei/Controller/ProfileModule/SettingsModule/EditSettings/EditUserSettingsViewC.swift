@@ -26,6 +26,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   var featureListingId: String?
   var currentProductTitle: String?
     var dataDropDown = DropDown()
+    var selectedLanguage: String?
   
   //MARK: - ViewLifeCycle Methods -
   
@@ -130,7 +131,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
     let editLanguageTableCell = tblViewEditUserSettings.dequeueReusableCell(withIdentifier: EditLanguageTableCell.identifier(), for: indexPath) as! EditLanguageTableCell
     editLanguageTableCell.configure(withSettingsEditDataModel: self.settingEditViewModel.arrSections[indexPath.section].arrSettingsData[indexPath.row])
       
-        if kSharedUserDefaults.loggedInUserModal.locale == "en"{
+        if  self.selectedLanguage == "en"{
             editLanguageTableCell.lblLanguage.text = "English"
         }else{
             editLanguageTableCell.lblLanguage.text = "Italian"
@@ -302,7 +303,9 @@ extension EditUserSettingsViewC{
       self.settingEditViewModel = SettingsEditViewModel(dicResult)
      // kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
        
-        kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
+        let userSetting = dicData["user_settings"] as? [String:Any]
+        self.selectedLanguage = userSetting?["locale"] as? String
+       // kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
         print("kSharedUserDefaults.alyseiReview --------------\(kSharedUserDefaults.alyseiReview )")
       self.tblViewEditUserSettings.reloadData()
     case 1:

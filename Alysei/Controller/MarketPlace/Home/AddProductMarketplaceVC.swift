@@ -228,6 +228,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         config.screens = [.library, .photo]
         config.library.maxNumberOfItems = 100000
         config.showsPhotoFilters = true
+      
         
         
         config.library.preselectedItems = ypImages
@@ -321,7 +322,7 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
                 if index == 0{
                     self.brandLabelId = 0
                 }else{
-                self.brandLabelId = productType?[index].marketplaceBrandLabelId
+                self.brandLabelId = productType?[index - 1].marketplaceBrandLabelId
                 }
             }else if openDropDown == .availableForSample{
                 self.txtProductSample.text = item
