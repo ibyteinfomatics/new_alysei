@@ -33,6 +33,7 @@ class RecipeByTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        viewProfileButton.setTitle(RecipeConstants.kViewProfile, for: .normal)
         recipeByLabel.text = RecipeConstants.kRecipeBy
         
         setUi()

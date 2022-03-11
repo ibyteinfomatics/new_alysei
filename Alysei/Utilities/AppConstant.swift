@@ -1148,6 +1148,8 @@ struct RecipeConstants{
     static var  kAddRatingAlert : String {  "Please add ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kLeaveCommentAlert : String {  "Please leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kAlreadyReviewAlert : String {  "You have already done a review on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSeeAll  : String {"See All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kViewProfile  : String {"View Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kEditReview : String {  "Edit Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kAddReview : String {  "Add Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kLeaveComment : String {  "Leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

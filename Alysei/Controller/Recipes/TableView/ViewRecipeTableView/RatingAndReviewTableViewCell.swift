@@ -36,6 +36,7 @@ class RatingAndReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var totalFourStar: UILabel!
     @IBOutlet weak var totalFiveStar: UILabel!
     
+    @IBOutlet weak var seeAllBtn: UIButton!
     @IBOutlet weak var totalOneStarProgress: UIProgressView!
     @IBOutlet weak var totalTwoStarProgress: UIProgressView!
     @IBOutlet weak var totalThreeeStarProgress: UIProgressView!
@@ -51,7 +52,7 @@ class RatingAndReviewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        seeAllBtn.setTitle(RecipeConstants.kSeeAll, for: .normal)
         ratingReviewLabel.text = RecipeConstants.kRatingReview
     }
 

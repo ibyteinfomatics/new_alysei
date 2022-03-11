@@ -6088,6 +6088,7 @@
                                             <outlet property="lblReviewData" destination="wnL-XY-1YQ" id="VYA-xQ-Q2u"/>
                                             <outlet property="lblTotalReview" destination="Hhc-An-g8P" id="qYz-4h-UUn"/>
                                             <outlet property="ratingReviewLabel" destination="bFg-EL-qwM" id="Ow9-Js-FHe"/>
+                                            <outlet property="seeAllBtn" destination="YER-m2-Wka" id="Qd9-GY-YL7"/>
                                             <outlet property="storeAvgStar1" destination="pYE-Ie-XZr" id="Fpg-gG-3e8"/>
                                             <outlet property="storeAvgStar2" destination="qE7-QZ-VHi" id="wvW-YG-vCt"/>
                                             <outlet property="storeAvgStar3" destination="z3g-li-0hY" id="UiT-19-Gac"/>
