@@ -51,6 +51,8 @@ class ViewDetailsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        utencilButton.setTitle(RecipeConstants.kUtensil, for: .normal)
+        ingredientsButton.setTitle(RecipeConstants.kIngredient, for: .normal)
         setUi()
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
@@ -107,7 +109,7 @@ class ViewDetailsTableViewCell: UITableViewCell {
                         self.utencilButton.setImage(#imageLiteral(resourceName: "icons8_kitchen"), for: .normal)
                         utencilsStatusView.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             self.ingredientsButton.setTitleColor(.lightGray, for: .normal)
-            self.ingredientsButton.setImage(#imageLiteral(resourceName: "icons8_kitchen1"), for: .normal)
+            self.ingredientsButton.setImage(#imageLiteral(resourceName: "icons8_ingredients1"), for: .normal)
             self.ingredientsStatusView.layer.backgroundColor = UIColor.clear.cgColor
         reloadTableViewCallback?(sender.tag)
          
@@ -117,7 +119,7 @@ class ViewDetailsTableViewCell: UITableViewCell {
     @IBAction func ingredientsButton(_ sender: UIButton) {
 //        self.source = .button1
         self.ingredientsButton.setTitleColor(.black, for: .normal)
-                    self.ingredientsButton.setImage(#imageLiteral(resourceName: "icons8_kitchen"), for: .normal)
+                    self.ingredientsButton.setImage(#imageLiteral(resourceName: "icons8_ingredients"), for: .normal)
                     ingredientsStatusView.layer.backgroundColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         self.utencilButton.setTitleColor(.lightGray, for: .normal)
         self.utencilButton.setImage(#imageLiteral(resourceName: "icons8_kitchen1"), for: .normal)

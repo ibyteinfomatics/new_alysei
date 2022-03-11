@@ -10,9 +10,11 @@ import UIKit
 class ToolsTableViewCell: UITableViewCell {
     
 
+    @IBOutlet weak var lblToolUsed: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        lblToolUsed.text = RecipeConstants.kToolsUsed
         // Initialization code
     }
 

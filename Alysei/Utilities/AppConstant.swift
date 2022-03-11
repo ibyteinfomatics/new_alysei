@@ -1019,6 +1019,7 @@ struct RecipeConstants{
     static var kFoodAlrgy : String { return "Food Alergies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiet : String {return  "Diets".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kIngredient : String { return  "Ingredients".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUtensil : String { return  "Utensils".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCkngSkill : String { return "Cooking Skill".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kLikes : String { return "Likes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNA : String {return  "NA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1161,6 +1162,8 @@ struct RecipeConstants{
     static var  kEnjoyRecipeMsg : String {  "Now its time to enjoy the recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kTapToRate : String {  "Tap to rate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var  kStartCooking : String {  "Start Cooking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kIngredientsUsed : String {  "Ingredients Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kToolsUsed : String {  "Tools Used".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     // MARK: Edit Recipe ————
     

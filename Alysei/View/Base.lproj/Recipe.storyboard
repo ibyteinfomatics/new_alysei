@@ -4928,6 +4928,7 @@
                                         <connections>
                                             <outlet property="collectionView" destination="TrO-N8-UpG" id="C4F-00-LtB"/>
                                             <outlet property="lblDescription" destination="NcP-qn-FLP" id="1s8-w6-9h4"/>
+                                            <outlet property="lblIngridientName" destination="Bz4-uU-d9e" id="Ktc-pX-Edl"/>
                                             <outlet property="lblTitle" destination="vFg-GT-Qgr" id="7fM-le-PkN"/>
                                             <outlet property="stepLabel" destination="ozT-gM-UEg" id="AWP-VM-PIK"/>
                                             <outlet property="stepView" destination="WR8-oS-auh" id="Drj-YX-gfF"/>
@@ -4973,6 +4974,9 @@
                                                 <constraint firstItem="Nj5-ZD-8RW" firstAttribute="top" secondItem="zKY-Xt-m7r" secondAttribute="top" constant="5" id="RMA-PQ-VrB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblToolUsed" destination="Nj5-ZD-8RW" id="mkq-Fc-l7f"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xTX-kx-6VN">
                                         <rect key="frame" x="0.0" y="439.5" width="414" height="44"/>
@@ -5415,6 +5419,7 @@
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOB-VE-ad2">
                                                                             <rect key="frame" x="0.0" y="0.0" width="197" height="38"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2" maxY="0.0"/>
                                                                             <state key="normal" title="  Ingredients" image="icons8_ingredients">
                                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </state>
@@ -5447,6 +5452,7 @@
                                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOJ-oV-CaQ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="182" height="38"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2" maxY="0.0"/>
                                                                             <state key="normal" title="  Utencils" image="icons8_kitchen1">
                                                                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </state>

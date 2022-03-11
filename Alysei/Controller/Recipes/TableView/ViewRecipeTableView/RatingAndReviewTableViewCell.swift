@@ -46,9 +46,11 @@ class RatingAndReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var heightuserName: NSLayoutConstraint!
     @IBOutlet weak var heightStackView: NSLayoutConstraint!
     @IBOutlet weak var vwCommentTop: NSLayoutConstraint!
+    
     var btnAddReviewCallback:(() -> Void)? = nil
     var data: LatestReviewDataModel?
     var avgRating:String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

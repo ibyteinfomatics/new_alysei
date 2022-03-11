@@ -20,6 +20,7 @@ class StepTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblIngridientName: UILabel!
     var delegate: StepDelegate?
     var tapViewStep:(()->())?
     var arrStep = String()
@@ -27,6 +28,9 @@ class StepTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        lblIngridientName.text = RecipeConstants.kIngredientsUsed
+        
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView.delegate = self
         collectionView.dataSource = self

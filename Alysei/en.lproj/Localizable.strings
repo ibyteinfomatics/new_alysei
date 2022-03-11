@@ -524,6 +524,7 @@
 "Cuisines" = "Cuisines";
 "Meal" = "Meal";
 "Ingridients" = "Ingridients";
+"Utensils" = "Utensils";
 "Filter" = "Filter";
 "Clear All" = "Clear All";
 "View Results" = "View Results";
@@ -656,6 +657,9 @@
 "Now its time to enjoy the recipe" = "Now its time to enjoy the recipe";
 "Tap to rate" =  "Tap to rate";
 "Start Cooking" = "Start Cooking";
+"Ingredients Used" = "Ingredients Used";
+"Tools Used" = "Tools Used";
+
 
 //MARK: EDIT RECIPE
 
