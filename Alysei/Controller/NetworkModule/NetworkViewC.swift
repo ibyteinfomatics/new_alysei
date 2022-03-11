@@ -50,16 +50,16 @@ class NetworkViewC: AlysieBaseViewC {
         indexOfPageToRequest = 1
         self.tabBarController?.tabBar.isHidden = false
         
-        let alysei_review = kSharedUserDefaults.loggedInUserModal.alysei_review
+        let data = kSharedUserDefaults.getLoggedInUserDetails()
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
-            if alysei_review == 0 {
+            if Int.getInt(data["alysei_review"]) == 0 {
                 
                 blankdataView.isHidden = false
                 
-            } else if alysei_review == 1{
+            } else if Int.getInt(data["alysei_review"]) == 1{
                 
                 blankdataView.isHidden = true
                
