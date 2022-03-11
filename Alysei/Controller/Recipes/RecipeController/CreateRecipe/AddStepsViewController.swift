@@ -362,9 +362,9 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
             cell.titleView.layer.borderColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
             
             
-            stepNumber = RecipeConstants.kStep + "" + "\(page)"
+            stepNumber = RecipeConstants.kStep + " " + "\(page)"
 //            cell.titleTextField.placeholder = "Enter Title for Step \(page)"
-            let str = NSAttributedString(string: RecipeConstants.kEnterTitleStep + "" + "\(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            let str = NSAttributedString(string: RecipeConstants.kEnterTitleStep + " " + "\(page)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             cell.titleTextField.attributedPlaceholder = str
             //            cell.desciptionTextView.text = "Your recipe direction text here..."
             cell.step1Label.text = stepNumber
@@ -448,7 +448,7 @@ extension AddStepsViewController: UICollectionViewDelegate, UICollectionViewData
     {
         
         if collectionView == addStepsCollectionView{
-            return CGSize(width: self.addStepsCollectionView.frame.width, height: 292.0)
+            return CGSize(width: self.addStepsCollectionView.frame.width - 10, height: 292.0)
         }
         if collectionView == ingridientUsedCollectionView{
             return CGSize(width: self.ingridientUsedCollectionView.frame.width/5, height: 180)

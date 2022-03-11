@@ -67,8 +67,8 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         super.viewWillAppear(animated)
         
         addToolsTableView.reloadData()
-        self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + "" + RecipeConstants.kItems
-        if self.addedToolQuantityLabel.text == "0" + "" + RecipeConstants.kItems{
+        self.addedToolQuantityLabel.text = "\(selectedToolsArray.count)" + " " + RecipeConstants.kItems
+        if self.addedToolQuantityLabel.text == "0" + " " + RecipeConstants.kItems{
             self.saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
         else{

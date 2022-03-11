@@ -467,7 +467,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel)
             statusLabel.text = RecipeConstants.kNoIngredientAdded
-            dunamicButton.setTitle( RecipeConstants.kAddIngridient, for: UIControl.State.normal)
+            dunamicButton.setTitle(" " + RecipeConstants.kAddIngridient, for: UIControl.State.normal)
             dunamicButton.addTarget(self, action: #selector(addExtraIngridients(sender:)), for: .touchUpInside)
             if selectedIngridentsArray.count == 0{
                 statusLabel.isHidden = false
@@ -492,7 +492,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             statusLabel1.textColor = UIColor.lightGray
             footerView.addSubview(statusLabel1)
             statusLabel1.text =  RecipeConstants.kNoToolAdded
-            dunamicButton.setTitle( RecipeConstants.kAddTools, for: UIControl.State.normal)
+            dunamicButton.setTitle( " " + RecipeConstants.kAddTools, for: UIControl.State.normal)
             dunamicButton.addTarget(self, action: #selector(addExtraTools(sender:)), for: .touchUpInside)
             if selectedToolsArray.count == 0{
                 statusLabel1.isHidden = false
@@ -577,7 +577,7 @@ class RecipeIngredientsUseViewController: AlysieBaseViewC,UITableViewDelegate,UI
             strTitle = arrayStepFinalData[indexPath.row].title ?? ""
             strDescription = arrayStepFinalData[indexPath.row].description
             cell2.titleLabel.text = strTitle
-            cell2.stepTitle.text = RecipeConstants.kStep + "(indexPath.row + 1)"
+            cell2.stepTitle.text = RecipeConstants.kStep + " " + "\(indexPath.row + 1)"
             cell2.numberOfStepsDelegateProtocol = self
             cell2.indexPath = indexPath
             return cell2

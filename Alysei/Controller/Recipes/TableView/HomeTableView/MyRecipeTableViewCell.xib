@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,24 +36,25 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dk-et-R1S">
-                                <rect key="frame" x="15" y="10" width="120" height="35"/>
+                                <rect key="frame" x="15" y="10" width="140" height="35"/>
                                 <color key="backgroundColor" red="0.29493838550000001" green="0.70049405099999995" blue="0.9914637208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="YOn-8R-hBA"/>
+                                    <constraint firstAttribute="width" constant="140" id="YOn-8R-hBA"/>
                                     <constraint firstAttribute="height" constant="35" id="pBv-Hm-Ifb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title=" Edit Recipe" image="icons8_edit"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title=" Edit Recipe" image="edit_icon_white-1"/>
                                 <connections>
                                     <action selector="tapForEdit:" destination="vCc-Uc-PJg" eventType="touchUpInside" id="dHI-yK-lV5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idR-3h-XJH">
-                                <rect key="frame" x="281" y="10" width="80" height="35"/>
+                                <rect key="frame" x="261" y="10" width="100" height="35"/>
                                 <color key="backgroundColor" red="0.55287873740000004" green="0.55297708509999999" blue="0.55287259820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Gjt-Hx-BEt"/>
-                                    <constraint firstAttribute="width" constant="80" id="wXK-TA-qe0"/>
+                                    <constraint firstAttribute="width" constant="100" id="wXK-TA-qe0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Draft">
@@ -286,8 +287,8 @@
     </objects>
     <resources>
         <image name="Group 666" width="13.5" height="13.5"/>
+        <image name="edit_icon_white-1" width="15" height="15"/>
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
-        <image name="icons8_edit" width="8" height="8"/>
         <image name="icons8_time_1" width="16" height="17.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
         <image name="image_placeholder" width="41" height="33"/>
