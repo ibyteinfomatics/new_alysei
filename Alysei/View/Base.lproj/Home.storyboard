@@ -7466,14 +7466,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7514,7 +7514,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7536,7 +7536,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7574,7 +7574,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -12085,21 +12085,36 @@ You will be notified for any membership status update.</string>
                                     <outlet property="delegate" destination="CDY-8R-Z5o" id="MP1-AA-ilQ"/>
                                 </connections>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAy-NI-egM">
+                                <rect key="frame" x="137.5" y="90" width="100" height="35"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="DSK-rv-F9o"/>
+                                    <constraint firstAttribute="width" constant="100" id="EyQ-je-xqJ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="New Post"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hzv-E5-Zhg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mkT-ei-zVV" firstAttribute="top" secondItem="Hzv-E5-Zhg" secondAttribute="top" id="AKY-tc-kHk"/>
                             <constraint firstItem="mkT-ei-zVV" firstAttribute="trailing" secondItem="Hzv-E5-Zhg" secondAttribute="trailing" id="Bot-f2-uGv"/>
+                            <constraint firstItem="2Ua-I2-wiv" firstAttribute="top" secondItem="mkT-ei-zVV" secondAttribute="bottom" constant="5" id="Hyh-X9-eYd"/>
+                            <constraint firstItem="XAy-NI-egM" firstAttribute="top" secondItem="mkT-ei-zVV" secondAttribute="bottom" constant="10" id="T4m-mV-pfw"/>
                             <constraint firstItem="2Ua-I2-wiv" firstAttribute="leading" secondItem="Hzv-E5-Zhg" secondAttribute="leading" id="d33-jh-eMB"/>
                             <constraint firstItem="2Ua-I2-wiv" firstAttribute="top" secondItem="mkT-ei-zVV" secondAttribute="bottom" constant="5" id="evg-ry-OPx"/>
                             <constraint firstItem="mkT-ei-zVV" firstAttribute="leading" secondItem="Hzv-E5-Zhg" secondAttribute="leading" id="iGp-j6-RBu"/>
                             <constraint firstItem="Hzv-E5-Zhg" firstAttribute="bottom" secondItem="2Ua-I2-wiv" secondAttribute="bottom" constant="5" id="ljN-hs-eXF"/>
                             <constraint firstItem="Hzv-E5-Zhg" firstAttribute="trailing" secondItem="2Ua-I2-wiv" secondAttribute="trailing" id="rcI-kd-8Qr"/>
+                            <constraint firstItem="XAy-NI-egM" firstAttribute="centerX" secondItem="mkT-ei-zVV" secondAttribute="centerX" id="wAC-hL-Nvr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ejt-dB-aFH"/>
                     <connections>
+                        <outlet property="btnNewpost" destination="XAy-NI-egM" id="AKx-bn-fsr"/>
                         <outlet property="headerStack" destination="mkT-ei-zVV" id="ltI-AC-QnK"/>
                         <outlet property="marketplaceView" destination="fla-B7-xl0" id="rBH-d4-Bef"/>
                         <outlet property="notificationView" destination="1gE-Qe-amL" id="ncM-0a-vco"/>

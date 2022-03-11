@@ -28,7 +28,7 @@ class PostsViewController: AlysieBaseViewC {
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var headerStack: UIView!
     @IBOutlet weak var tableviewheight: NSLayoutConstraint!
-   
+    @IBOutlet weak var btnNewpost: UIButton!
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
     var postLike:[PostClass]?
@@ -53,6 +53,7 @@ class PostsViewController: AlysieBaseViewC {
 //        self.tabBarController?.tabBar.isHidden = false
        // hidesBottomBarWhenPushed = false
        // callNewFeedApi(pageNo)
+        btnNewpost.layer.cornerRadius = btnNewpost.frame.height / 2
         fromMenuTab = "PostViewController"
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
             
