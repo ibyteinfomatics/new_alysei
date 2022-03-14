@@ -240,47 +240,37 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     lblPostCommentCount.text = "\(modelData.commentCount ?? 0)"
     lblPostTime.text = modelData.posted_at
     //islike = data.likeFlag
-    if modelData.sharedPostData?.attachmentCount == 0 {
-        imageHeightCVConstant.constant = 0
-//            imagePostCollectionView.alpha = 0.0
-    }else{
-        //imageHeightCVConstant.constant = 220
-          //  imagePostCollectionView.alpha = 1.0
-        /*if modelData.sharedPostData?.attachments?.first?.attachmentLink?.height == modelData.sharedPostData?.attachments?.first?.attachmentLink?.width {
-            imageHeightCVConstant.constant = 350
-        } else if Int.getInt(modelData.sharedPostData?.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.sharedPostData?.attachments?.first?.attachmentLink?.height) {
-            imageHeightCVConstant.constant = 200
-        } else {
-            imageHeightCVConstant.constant = CGFloat(modelData.sharedPostData?.attachments?.first?.attachmentLink?.height ?? 0
-                                                        * 72 / 96)-250//500
-        }*/
-        
-        if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-            imageHeightCVConstant.constant = 350
-        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-            
-            
-            if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-                imageHeightCVConstant.constant = 500
-            } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-                imageHeightCVConstant.constant = 400
-            } else {
-                imageHeightCVConstant.constant = 300
-            }
-            
-        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-        //imageHeightCVConstant.constant = 350
-            
-            if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-                imageHeightCVConstant.constant = 350
-            } else {
-                //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-                imageHeightCVConstant.constant = 500
-            }
-        }
+//    if modelData.sharedPostData?.attachmentCount == 0 {
+//        imageHeightCVConstant.constant = 0
+////            imagePostCollectionView.alpha = 0.0
+//    }else{
+//
+//        if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
+//            imageHeightCVConstant.constant = 350
+//        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
+//
+//
+//            if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
+//                imageHeightCVConstant.constant = 500
+//            } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
+//                imageHeightCVConstant.constant = 400
+//            } else {
+//                imageHeightCVConstant.constant = 300
+//            }
+//
+//        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
+//        //imageHeightCVConstant.constant = 350
+//
+//            if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
+//                imageHeightCVConstant.constant = 350
+//            } else {
+//                //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
+//                imageHeightCVConstant.constant = 500
+//            }
+//        }
         
         
-    }
+   // }
     self.userImage.layer.borderWidth = 0.5
     self.userImage.layer.borderColor = UIColor.lightGray.cgColor
    

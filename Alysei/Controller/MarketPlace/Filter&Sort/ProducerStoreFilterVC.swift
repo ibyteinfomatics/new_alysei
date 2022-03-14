@@ -19,15 +19,29 @@ enum checkHitApi : String{
     case method = "Method"
     case categories = "Categories"
     case properties = "Properties"
-    case fdaCertified = "FDA Certfied"
+    case fdaCertified = "FDA Certified"
     case sortProducer
-    case region = "Italian Region"
+    case region = "Italian Regions"
     case distance = "Distance"
     case rating = "Ratings"
     case producers = "Producers"
-    case productName = "Product Name"
+    case productName = "Product"
+
+}
+enum checkItalianHitApi : String{
+    case method = "Metodo"
+    case categories = "Categorie"
+    case properties = "Proprietà"
+    case fdaCertified = "Certificato FDA"
+    case sortProducer
+    case region =  "Regioni Italiane"
+    case distance =  "Distanza"
+    case rating = "Recensioni"
+    case producers =  "Produttori"
+    case productName =  "Prodotto"
     
 }
+
 
 class ProducerStoreFilterVC: UIViewController {
     
@@ -41,7 +55,7 @@ class ProducerStoreFilterVC: UIViewController {
     var selectedIndex = 0
     
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
-    var arrOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings]
+    var arrOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings,MarketPlaceConstant.kFDACertified]
     var arrConservationOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kFDACertified]
     var arrRegionOption = [MarketPlaceConstant.kProduct,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
     var arrCategoriesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
@@ -281,13 +295,13 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
             self.arrFilterOptions[indexPath.row].isSelected = true
             self.optionTableView.reloadData()
             selectedIndex = indexPath.row
-            if arrFilterOptions[indexPath.row].name == checkHitApi.categories.rawValue{
+            if arrFilterOptions[indexPath.row].name == checkHitApi.categories.rawValue ||  arrFilterOptions[indexPath.row].name == checkItalianHitApi.categories.rawValue{
                 checkApi = .categories
                 //self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedCategories
                 identifyList = 4
                 callOptionApi(1)
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.properties.rawValue{
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.properties.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.properties.rawValue{
                 checkApi = .properties
               //  self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedProperties
@@ -295,33 +309,33 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 
                 identifyList = 5
                 callOptionApi(1)
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.region.rawValue{
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.region.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.region.rawValue{
                 checkApi = .region
               //  self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedItalianRegion
                 identifyList = 3
                 callOptionApi(1)
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.method.rawValue{
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.method.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.method.rawValue{
                 checkApi = .method
                // self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectedOptionsMethod
                 self.arrSelectedName = self.arrSelectedMethodName
                 identifyList = 2
                 callOptionApi(1)
-            }else if  arrFilterOptions[indexPath.row].name == checkHitApi.distance.rawValue{
+            }else if  arrFilterOptions[indexPath.row].name == checkHitApi.distance.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.distance.rawValue{
                 checkApi = .distance
                // self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedDistance
             }
-            else if arrFilterOptions[indexPath.row].name == checkHitApi.rating.rawValue {
+            else if arrFilterOptions[indexPath.row].name == checkHitApi.rating.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.rating.rawValue {
                 checkApi = .rating
                // self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedRating
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.producers.rawValue || arrFilterOptions[indexPath.row].name == checkHitApi.productName.rawValue {
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.producers.rawValue || arrFilterOptions[indexPath.row].name == checkHitApi.productName.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.producers.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.productName.rawValue {
                 checkApi = .producers
                 //self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectedSortProducer
-            }else if arrFilterOptions[indexPath.row].name == checkHitApi.fdaCertified.rawValue{
+            }else if arrFilterOptions[indexPath.row].name == checkHitApi.fdaCertified.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.fdaCertified.rawValue{
                 checkApi = .fdaCertified
                // self.selectedOptionsId = []
                 self.selectedOptionsId = self.selectFdaCertified

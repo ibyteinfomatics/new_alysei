@@ -42,6 +42,14 @@ class PostsViewController: AlysieBaseViewC {
     var indexOfPageToRequest = 1
     var role: String?
     var isExpand = false
+    var overlay: UIView = {
+        let view = UIView(frame: UIScreen.main.bounds);
+
+        view.alpha = 0
+        view.backgroundColor = .black
+
+        return view
+    }()
     
     let refreshControl = UIRefreshControl()
 
@@ -334,13 +342,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 let data = arrNewFeedDataModel[indexPath.row]
                 cell.btnMoreLess.tag = indexPath.row
                 cell.relaodSection = indexPath.section
-                guard let parentView = parent?.view else { return UITableViewCell() }
-                cell.passImageTabCallBack = { imageZoom in
-                   
-                    
-                    self.addZoombehavior(for: imageZoom,
-                                    settings: Settings.instaZoomSettings.with(actionOnTapOverlay: Action.dismissOverlay))
-                }
+              //  guard (parent?.view) != nil else { return UITableViewCell() }
+//                cell.passImageTabCallBack = { imageZoom in
+//
+//
+//                    self.addZoombehavior(for: imageZoom,
+//                                    settings: Settings.instaZoomSettings.with(actionOnTapOverlay: Action.dismissOverlay))
+//                }
                
                 /*if data.isExpand == true{
                     cell.lblPostDesc.numberOfLines = 0
@@ -645,3 +653,76 @@ extension PostsViewController{
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
+
+//extension PostsViewController: UIGestureRecognizerDelegate {
+//  
+//    // That method make it works
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//    
+//    @objc func handleZoom(_ gesture: UIPinchGestureRecognizer) {
+//        switch gesture.state {
+//        case .began, .changed:
+//            
+//            // Only zoom in, not out
+//            if gesture.scale >= 1 {
+//              
+//                // Get the scale from the gesture passed in the function
+//                let scale = gesture.scale
+//              
+//                // use CGAffineTransform to transform the imageView
+//                gesture.view!.transform = CGAffineTransform(scaleX: scale, y: scale)
+//            }
+//          
+//
+//            // Show the overlay
+//            UIView.animate(withDuration: 0.2) {
+//                self.overlay.alpha = 0.8
+//            }
+//            break;
+//        default:
+//            // If the gesture has cancelled/terminated/failed or everything else that's not performing
+//            // Smoothly restore the transform to the "original"
+//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+//              gesture.view!.transform = .identity
+//            }) { _ in
+//              // Hide the overlay
+//              UIView.animate(withDuration: 0.2) {
+//                self.overlay.alpha = 0
+//              }
+//            }
+//        }
+//    }
+//    
+//    @objc func handlePan(_ gesture: UIPanGestureRecognizer,_ imageView: UIImageView) {
+//        switch gesture.state {
+//        case .began, .changed:
+//            // Get the touch position
+//            let translation = gesture.translation(in: imageView)
+//            
+//            // Edit the center of the target by adding the gesture position
+//            gesture.view!.center = CGPoint(x: imageView.center.x + translation.x, y: imageView.center.y + translation.y)
+//            gesture.setTranslation(.zero, in: imageView)
+//
+//            // Show the overlay
+//            UIView.animate(withDuration: 0.2) {
+//                self.overlay.alpha = 0.8
+//            }
+//            break;
+//        default:
+//            // If the gesture has cancelled/terminated/failed or everything else that's not performing
+//            // Smoothly restore the transform to the "original"
+//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+//                gesture.view!.center = self.view.center
+//                gesture.setTranslation(.zero, in: self.background)
+//            }) { _ in
+//              // Hide the overaly
+//              UIView.animate(withDuration: 0.2) {
+//                self.overlay.alpha = 0
+//              }
+//            }
+//            break
+//        }
+//    }
+//}

@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import Network
 
 protocol SharePostDisplayLogic: class {
     func dismissSelf()
@@ -236,6 +237,7 @@ extension SharePostViewController: UICollectionViewDelegate, UICollectionViewDat
 //            cell.image.frame.size = CGSize(width: cell.frame.width, height: cell.frame.height)
 //            cell.layoutSubviews()
         }
+       
 //        cell.image.setImage(withString: "\(imageString)")
 //        cell.image.setImage(withString: "\(imageString)", placeholder: nil) { image in
 //            cell.image.image = image
@@ -267,6 +269,8 @@ extension SharePostViewController: UICollectionViewDelegate, UICollectionViewDat
 //        cell.backgroundColor = .green
 //        cell.contentView.backgroundColor = .yellow
 //        cell.image.backgroundColor = .brown
+        
+    //}
 
         return cell
     }
