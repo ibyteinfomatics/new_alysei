@@ -18,6 +18,7 @@ class CancelPopUpViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelView: UIView!
     var Callback:(()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.definesPresentationContext = true
@@ -35,8 +36,6 @@ class CancelPopUpViewController: UIViewController {
     @IBAction func cancelButton(_ sender: UIButton) {
         self.dismiss(animated: true) {
             self.postRequestToSaveInDraftRecipe()
-           
-           
         }
     }
     
@@ -48,17 +47,15 @@ class CancelPopUpViewController: UIViewController {
             self.Callback?()
         }
         
-        
-           
-        
-    
     }
+    
     @IBAction func tapCross(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
     }
     
 }
+
 extension UIView {
    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -67,6 +64,7 @@ extension UIView {
         layer.mask = mask
     }
 }
+
 extension CancelPopUpViewController{
   
     func postRequestToSaveInDraftRecipe(){

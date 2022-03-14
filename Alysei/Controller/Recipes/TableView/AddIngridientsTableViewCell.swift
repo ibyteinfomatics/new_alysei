@@ -16,6 +16,8 @@ class AddIngridientsTableViewCell: UITableViewCell {
     @IBOutlet weak var ingridientsImageView: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var selectImgView: UIImageView!
+    @IBOutlet weak var addBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var selectedImgWidth: NSLayoutConstraint!
     
     var checkDataStatus: Bool?
     var indexPath: IndexPath?

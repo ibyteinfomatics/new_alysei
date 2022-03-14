@@ -16,7 +16,8 @@ class AddToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var selectToolImgView: UIImageView!
-    
+    @IBOutlet weak var addBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var selectedImgWidth: NSLayoutConstraint!
   
     var checkDataStatus: Bool?
     var indexPath: IndexPath?

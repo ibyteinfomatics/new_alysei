@@ -267,6 +267,15 @@ extension EditToolViewController: UITableViewDelegate
             cell.indexPath = indexPath
             cell.addToolDelegate = self
             
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                cell.addBtnWidth.constant = 120
+                cell.selectedImgWidth.constant = 120
+            }
+            else{
+                cell.addBtnWidth.constant = 80
+                cell.selectedImgWidth.constant = 80
+            }
+            
             if searching == true {
                 cell.data = toolSearchModel[indexPath.row]
             }

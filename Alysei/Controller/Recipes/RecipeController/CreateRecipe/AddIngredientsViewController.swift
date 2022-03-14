@@ -45,6 +45,8 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
     @IBOutlet weak var quantityLabelTitle: UILabel!
     @IBOutlet weak var unitLabelTitle: UILabel!
     
+  
+    
     var newSearchModel: [AddIngridientDataModel]? = []
     var ingridientSearchModel: [IngridentArray] = []
     var addMissingIngridientModel: [IngridentTypeDataModel]? = []
@@ -119,6 +121,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         self.addMissingIngridientsTableView.delegate = self
         self.addMissingIngridientsTableView.dataSource = self
         
+       
         if arrayMyRecipe!.count > 0{
            
             
@@ -469,6 +472,14 @@ extension AddIngredientsViewController: UITableViewDelegate, UITableViewDataSour
             
             cell.indexPath = indexPath
             cell.addIngridientDelegate = self
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                cell.addBtnWidth.constant = 120
+                cell.selectedImgWidth.constant = 120
+            }
+            else{
+                cell.addBtnWidth.constant = 80
+                cell.selectedImgWidth.constant = 80
+            }
             if searching == true {
                 cell.data = ingridientSearchModel[indexPath.row]
             }

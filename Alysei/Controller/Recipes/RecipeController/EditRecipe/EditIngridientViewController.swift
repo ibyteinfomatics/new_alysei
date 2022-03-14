@@ -447,6 +447,16 @@ extension EditIngridientViewController: UITableViewDelegate, UITableViewDataSour
             
             cell.indexPath = indexPath
             cell.addIngridientDelegate = self
+            
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                cell.addBtnWidth.constant = 120
+                cell.selectedImgWidth.constant = 120
+            }
+            else{
+                cell.addBtnWidth.constant = 80
+                cell.selectedImgWidth.constant = 80
+            }
+            
             if searching == true {
                 cell.data = ingridientSearchModel[indexPath.row]
             }

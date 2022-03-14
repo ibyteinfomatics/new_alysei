@@ -96,6 +96,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: Set Localization title------
         postLabel.text = MarketPlaceConstant.kPosts
         marketPlcLabel.text = MarketPlaceConstant.kMarketPlace
         recipeLabel.text = RecipeConstants.kRecipe
@@ -103,6 +104,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         createRecipeLbl.text = RecipeConstants.kCreateRecipe
         cravingLabel.text = RecipeConstants.kCravingTitle
         
+        //MARK: UI Inhancement------
         discoverRecipeView.layer.masksToBounds = false
         discoverRecipeView.layer.shadowRadius = 2
         discoverRecipeView.layer.shadowOpacity = 0.2
@@ -111,15 +113,19 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         searchRecipe.layer.cornerRadius = 5
         searchTextField.attributedPlaceholder =  NSAttributedString(string: RecipeConstants.kSearchRecipe, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
+        //MARK: Tap Post------
         let tapPost = UITapGestureRecognizer(target: self, action: #selector(openPost))
         self.tapPostVw.addGestureRecognizer(tapPost)
         
+        //MARK: Tap MarketPlace------
         let tapMarket = UITapGestureRecognizer(target: self, action: #selector(openMarketPlace))
         self.tapMarketPlaceVw.addGestureRecognizer(tapMarket)
         
+        //MARK: Tap Notification------
         let tapNotification = UITapGestureRecognizer(target: self, action: #selector(openNotification))
         self.tapNotificationVw.addGestureRecognizer(tapNotification)
         
+        //MARK: Set TableViewCell------
         containerTableVw.register(UINib(nibName: "ExploreByIngridientTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByIngridientTableViewCell")
         containerTableVw.register(UINib(nibName: "ExploreByMealTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByMealTableViewCell")
         containerTableVw.register(UINib(nibName: "ExploreByRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ExploreByRecipeTableViewCell")
@@ -129,15 +135,18 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         containerTableVw.register(UINib(nibName: "MyRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "MyRecipeTableViewCell")
         containerTableVw.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesTableViewCell")
         
+        //MARK: Defined Array------
         arrayHeader = [RecipeConstants.kByIngredient, RecipeConstants.kByMeal, RecipeConstants.kByRegion, RecipeConstants.kTrendingNow, RecipeConstants.kQuickEasy]
         arrayCollection = [RecipeConstants.kExplore, RecipeConstants.kFavourite, RecipeConstants.kMyRecipe, RecipeConstants.kMyPreference]
         
+        //MARK: Set Delegates------
         self.containerTableVw.delegate = self
         self.containerTableVw.dataSource = self
         
         self.discoverCollectionView.delegate = self
         self.discoverCollectionView.dataSource = self
         
+        //MARK: Call Home api------
        getExploreData()
         
     }
@@ -930,7 +939,13 @@ extension DiscoverRecipeViewController: UICollectionViewDelegateFlowLayout,UICol
         
         
         if indexPath.item == 3  {
-            return CGSize(width: 170 , height: 50.0)
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                return CGSize(width: 170 , height: 50.0)
+            }
+            else{
+                return CGSize(width: 140 , height: 50.0)
+            }
+            
         }
         else if indexPath.item == 2{
             return CGSize(width: 130 , height: 50.0)
