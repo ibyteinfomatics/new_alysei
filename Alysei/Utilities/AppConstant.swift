@@ -1015,6 +1015,7 @@ struct RecipeConstants{
     static var  kTrendingNow : String { return "Trending Now".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTrending : String { return "Trending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kQuickEasy : String { return "Quick Easy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kServingHome : String { return "Serving".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kFavCuisine : String { return "Favourite Cuisine".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kFoodAlrgy : String { return "Food Alergies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiet : String {return  "Diets".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

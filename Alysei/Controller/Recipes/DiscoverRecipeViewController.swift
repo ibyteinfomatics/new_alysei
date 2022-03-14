@@ -622,7 +622,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             }
             
             cell4.timeLabel.text = "\( arrayMyFavouriteRecipe?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayMyFavouriteRecipe?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-            cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell4.servingLabel.text = "\(arrayMyFavouriteRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
             cell4.typeLabel.text = arrayMyFavouriteRecipe?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
             
             cell4.heartBtn.setImage(UIImage(named: "liked_icon.png"), for: .normal)
@@ -739,7 +739,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
             }
             
             cell5.timeLabel.text = "\( arrayMyRecipe?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayMyRecipe?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-            cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell5.servingLabel.text = "\(arrayMyRecipe?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
             cell5.typeLabel.text = arrayMyRecipe?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
             
             if arrayMyRecipe?[indexPath.row].isFavourite == 0{

@@ -57,7 +57,7 @@ extension LikeRecipeTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         cell.recipeNameLabel.text = youMightAlsoLikeModel?[indexPath.row].recipeName
         cell.UsernameLabel.text = youMightAlsoLikeModel?[indexPath.row].userName
         cell.timeLabel.text = "\( youMightAlsoLikeModel?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( youMightAlsoLikeModel?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-        cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+        cell.servingLabel.text = "\(youMightAlsoLikeModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
         cell.cousineTypeLabel.text = youMightAlsoLikeModel?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
         cell.likeLLabel.text = "\(youMightAlsoLikeModel?[indexPath.row].favCount ?? 0 )" + " " + RecipeConstants.kLikes
         

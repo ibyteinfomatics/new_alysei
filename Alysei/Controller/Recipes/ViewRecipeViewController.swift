@@ -213,7 +213,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.labelUserName.text = recipeModel?.userName
             cell.labelReview.text = "\(recipeModel?.totalReview ?? 0)" + " " + RecipeConstants.kReviews
             cell.labelTime.text = "\( recipeModel?.hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( recipeModel?.minute ?? 0)" + " " + RecipeConstants.kMinutes
-            cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.labelServing.text = "\(recipeModel?.serving ?? 0)" + " " + RecipeConstants.kServingHome
             cell.labelMealType.text = recipeModel?.meal?.mealName ?? RecipeConstants.kNA
             
             if recipeModel?.avgRating == "0.0" || recipeModel?.avgRating  == "0" {
@@ -326,7 +326,14 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
-            
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                cell.viewProfileBtnHeight.constant = 45
+                cell.viewProfileButton.layer.cornerRadius = 22
+            }
+            else{
+                cell.viewProfileBtnHeight.constant = 30
+                cell.viewProfileButton.layer.cornerRadius = 16
+            }
             cell.btnViewProfileCallback = {
                 
                 let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC

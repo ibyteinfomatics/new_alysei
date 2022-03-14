@@ -101,7 +101,7 @@ extension QuickEasyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                 cell.userNameLabel.text = arrayQuickEasy?[indexPath.item].userName
             }
             cell.timeLabel.text = "\( arrayQuickEasy?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayQuickEasy?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-            cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.servingLabel.text = "\(arrayQuickEasy?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
             cell.typeLabel.text = arrayQuickEasy?[indexPath.item].meal?.mealName
             
             if arrayQuickEasy?[indexPath.row].isFavourite == 0{

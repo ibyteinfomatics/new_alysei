@@ -145,7 +145,7 @@ extension TrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             }
                
             cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-                cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+                cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
                 cell.typeLabel.text = arrayTrending?[indexPath.item].meal?.mealName ?? RecipeConstants.kNA
             if arrayTrending?[indexPath.row].isFavourite == 0{
                 cell.heartBtn.setImage(UIImage(named: "like_icon_white.png"), for: .normal)

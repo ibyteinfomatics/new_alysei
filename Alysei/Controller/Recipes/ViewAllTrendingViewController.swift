@@ -86,7 +86,7 @@ extension ViewAllTrendingViewController: UICollectionViewDelegate, UICollectionV
             cell.likeLabel.text = "\(arrayTrending?[indexPath.item].totalLikes ?? 0)" + " " + RecipeConstants.kLikes
                 cell.userNameLabel.text = arrayTrending?[indexPath.item].userName
             cell.timeLabel.text = "\( arrayTrending?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrayTrending?[indexPath.item].minute ?? 0)" + " " + RecipeConstants.kMinutes
-            cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.servingLabel.text = "\(arrayTrending?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
                 cell.typeLabel.text = arrayTrending?[indexPath.item].meal?.mealName
             
             if arrayTrending?[indexPath.row].isFavourite == 0{

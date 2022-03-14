@@ -18,7 +18,8 @@ class RecipeByTableViewCell: UITableViewCell {
     @IBOutlet weak var labelUserName: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     
-//    @IBOutlet weak var latestCommentImg: UIImageView!
+    @IBOutlet weak var viewProfileBtnHeight: NSLayoutConstraint!
+    //    @IBOutlet weak var latestCommentImg: UIImageView!
 //    @IBOutlet weak var latestCommentUserName: UILabel!
 //    @IBOutlet weak var latestCommentDate: UILabel!
 //    @IBOutlet weak var latestCommentTextView: UILabel!
@@ -40,7 +41,7 @@ class RecipeByTableViewCell: UITableViewCell {
         // Initialization code
     }
     func setUi(){ viewProfileButton.layer.borderWidth = 1
-            viewProfileButton.layer.cornerRadius = 16
+            
             viewProfileButton.layer.borderColor = UIColor.init(red: 219/255, green: 219/255, blue: 219/255, alpha: 1).cgColor
 
     }

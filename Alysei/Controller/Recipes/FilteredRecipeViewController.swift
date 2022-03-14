@@ -201,7 +201,7 @@ extension FilteredRecipeViewController: UICollectionViewDelegate, UICollectionVi
             }
             
             cell.timeLabel.text = "\( arrSearchRecipeDataModel?[indexPath.item].hours ?? 0)" + " " + RecipeConstants.kHours + " " + "\( arrSearchRecipeDataModel?[indexPath.item].minutes ?? 0)" + " " + RecipeConstants.kMinutes
-            cell.servingLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServing
+            cell.servingLabel.text = "\(arrSearchRecipeDataModel?[indexPath.item].serving ?? 0)" + " " + RecipeConstants.kServingHome
             cell.typeLabel.text = arrSearchRecipeDataModel?[indexPath.item].meal ?? RecipeConstants.kNA
             
             if arrSearchRecipeDataModel?[indexPath.item].isFavourite == 0{
