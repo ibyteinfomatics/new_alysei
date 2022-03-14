@@ -56,7 +56,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet var vwpageControl: ScrollingPageControl!
    // @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
     
-    var passImageTabCallBack: ((UIImageView) -> Void)? = nil
+    //var passImageTabCallBack: ((UIImageView) -> Void)? = nil
     var data: NewFeedSearchDataModel?
     var data1 : SinglePostDataModel?
     var likeCallback:((Int) -> Void)? = nil
@@ -516,10 +516,10 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
        
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
         cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
-        cell.passImageCallBack = { imageZoomPost in
-            self.imageZoomPost = imageZoomPost
-            self.passImageTabCallBack?(self.imageZoomPost)
-        }
+//        cell.passImageCallBack = { imageZoomPost in
+//            self.imageZoomPost = imageZoomPost
+//            //self.passImageTabCallBack?(self.imageZoomPost)
+//        }
         
         return cell
     }
@@ -610,7 +610,8 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     var originalImageCenter:CGPoint?
 
     var fullScreenImage: UIImageView!
-    var passImageCallBack: ((UIImageView) -> Void)? = nil
+   // var passImageCallBack: ((UIImageView) -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -619,28 +620,32 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
         self.imagePost.isUserInteractionEnabled = true
 
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+       // let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
 //        pinch.minimumNumberOfTouches = 2
 //        pinch.maximumNumberOfTouches = 2
-       self.imagePost.addGestureRecognizer(pinch)
+       //self.imagePost.addGestureRecognizer(pinch)
 
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
+      //  let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
        // pan.minimumNumberOfTouches = 2
       //  pan.maximumNumberOfTouches = 2
        // pan.delegate = self
         // self.imagePost.addGestureRecognizer(pan)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
+      //  let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
        // self.imagePost.addGestureRecognizer(tap)
+        
+      
     }
     @objc func pinch(sender:UIPinchGestureRecognizer) {
-        passImageCallBack?(imagePost)
+       // passImageCallBack?(imagePost)
+        self.imagePost.transform = self.imagePost.transform.scaledBy(x: sender.scale, y: sender.scale)
+                sender.scale = 1
     }
     @objc func pan(sender:UIPanGestureRecognizer) {
-        passImageCallBack?(imagePost)
+       /// passImageCallBack?(imagePost)
     }
     @objc func tap(sender: UITapGestureRecognizer) {
-        passImageCallBack?(imagePost)
+       // passImageCallBack?(imagePost)
     }
 //    @objc func pinch(sender:UIPinchGestureRecognizer) {
 //        //self.imagePost.image = nil

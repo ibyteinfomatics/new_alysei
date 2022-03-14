@@ -272,51 +272,54 @@
 "MarketPlace" = "MarketPlace";
 "Recipe" = "Ricette";
 "Posts" = "Posts";
-"Notifications" = "Notifications";
-"Go to my store" = "Go to my store";
+"Notifications" = "Notifiche";
+"Go to my store" = "Vai al mio negozio online";
 "Create your store" = "Crea in tuo negozio online";
-"Discover Marketplace" = "Marketplace";
-"Producer Store" = "Producer Store";
-"Conservation Method" = "Conservation Method";
-"Italian Regions" = "Italian Regions";
-"Categories" = "Categories";
-"Product Properties" = "Product Properties";
-"FDA Certified" = "FDA Certified";
-"My Favourite" = "My Favourite";
-"Most Popular" = "Most Popular";
-"Promotions" = "Promotions";
-"Recently Added Products" = "Recently Added Products";
-"View all" = "Vedi";
-"Newly Added Stores" = "Newly Added Stores";
-"Search by Italian Regions" = "Search by Italian Regions";
-"Top Rated Products" = "Top Rated Products";
-"Top Favourite Products" = "Top Favourite Products";
-"What are you looking for?" = "What are you looking for?";
+"Discover Marketplace" = "Scopri il Marketplace";
+"Producer Store" = "Negozio del Produttore";
+"Conservation Method" = "Metodo di Conservazione";
+"Italian Regions" = "Regioni Italiane";
+"Categories" = "Categorie";
+"Product Properties" = "Proprietà del Prodotto";
+"FDA Certified" = "Certificato FDA";
+"My Favourite" = "I Miei Favoriti";
+"Most Popular" = "I Più Popolari";
+"Promotions" = "Promozioni";
+"Recently Added Products" = "Prodotti più recenti";
+"View all" = "Vedi tutto";
+"Newly Added Stores" = "Negozi online più recenti";
+"Search by Italian Regions" = "Cerca per Regioni Italiane";
+"Top Rated Products" = "Prodotti più votati";
+"Top Favourite Products" = "I migliori prodotti preferiti";
+"What are you looking for?" = "Che cosa stai cercando?";
+
 
 //MARK: Marketplace Search Screen
-"Search for product brands & more" = "Search for product brands & more";
+"Search for product brands & more" =  "Cerca per marchi di prodotti e altro";
 
 //MARK: Marketplace Listing Screen
-"Sort" = "Sort";
+"Sort" =  "Ordina";
+
 
 
 //MARK: Marketplace Filter Screen
-"No Product found" = "No Product found";
-"Categories" = "Categories";
-"Properties" = "Properties";
-"FDA Certfied" = "FDA Certfied";
-"Italian Region" = "Italian Region";
-"Distance" = "Distance";
-"Ratings" = "Ratings";
-"Producers" = "Producers";
-"Product Name" = "Product Name";
-"Clear Filters" = "Clear Filters";
-"Filters" = "Filters";
+"No Product found" = "Nessun prodotto trovato";
+"Categories" = "Categorie";
+"Properties" = "Proprietà";
+"FDA Certfied" = "Certificato FDA";
+"Italian Region" = "Regione Italiana";
+"Distance" = "Distanza";
+"Ratings" = "Recensioni";
+"Producers" = "Produttori";
+"Product Name" = "Nome del Prodotto";
+"Clear Filters" = "Elimina Filtri";
+"Filters" = "Filtri";
 "Apply Filter" = "Apply Filter";
+"Product" = "Prodotto";
 
 //MARK: Marketplace Membership Screen
-"Select your package" = "Select your package";
-"Coming Soon....." = "Coming Soon.....";
+"Select your package" = "Seleziona il tuo pacchetto";
+"Coming Soon....." = "Prossimamente…";
 "Boost your listing" = "Potenzia le tue iserzioni";
 "Boost your listing to expand you reach and increase buyers engagement" = "Accelera la promozione delle tue inserzioni per un maggior coinvolgimeto della tua clientela";
 "Sell online" = "Vendi online";
@@ -429,7 +432,7 @@
 "To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
 "Here you can explore and search for products from Italian Producers" = "Qui puoi scorprire, ricercare prodotti di Produttori Italiani";
 "Here you can explore and search for products and send inquiry to Italian Producers" = "Qui puoi scorprire, ricercare prodotti e inviare richieste a Produttori Italiani";
-"The most powerful markeplace engine for the Made in Italy" = "The most powerful markeplace engine for the Made in Italy";
+
 "To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
 "Explore the Markeplace" = "Esplora il marketplace";
 "Report suspicious behaviour" = "Segnala un comportamento sospetto";
@@ -437,7 +440,7 @@
 "Reply to inquiry" = "Rispondi alle richieste";
 "Send an inquiry" = "Invia richieste";
 "Showcase you Products Store in a simple, clean and professional way" = "Mostra on line la tua vetrina prodotti in modo semplice, chiaro e professionale";
-"Being responsive will help you to build trust with Buyers" = "Being responsive will help you to build trust with Buyers";
+
 
 "Ask for product information, samples request, prices, quantity etc." = "Richiedi informazioni su prodotti, richiesta campioni, prezzi, quantità ecc.";
 "Information and details" = "Informazioni e dettagli";
@@ -461,7 +464,7 @@
 "Being responsive will help you to build trust with Buyers" = "Essere reattivi ti aiuterà a costruire fiducia con gli acquirenti";
 "Report suspicious behaviour" = "Segnala un comportamento sospetto";
 "Let us know if something does not feel right" = "Tienici informato per qualsiasi situazione poco chiara";
-"Adding relevant and accurate info helps buyers to learn more about what you are selling." = "";
+"Adding relevant and accurate info helps buyers to learn more about what you are selling." = "Adding relevant and accurate info helps buyers to learn more about what you are selling.";
 "Add clear photos" = "Aggiungi fuoto di qualità";
 "Photos should have a good resolution and lighting,and should only show what you are listing" = "Assicurati che le foto siano in una buona risoluzione e luminosità, mostrando solo ciò che stai elencando";
 "Offer a fair price" = "Offri il giusto prezzo ";
@@ -682,13 +685,13 @@
 "Hotel/Restaurant/Café" = "Hotel/Restaurant/Café";
 "Horeca" = "Horeca";
 "Private Label" = "Private Label";
-"Sell your products under the retailer name" = "Vendi i tuoi prodotti sotto il marchio del tuo acquirente";
+"Sell your products under the retailer name" = "Vendi i tuoi prodotti sotto il marchio del tuo acquirente";
 "Alysei Brand Label" = "Etichetta/Marchio Alysei";
-"Provide Pick Up and And/Or Delivery" = "Provide Pick Up and And/Or Delivery";
+"Provide Pick Up and And/Or Delivery" = "Offri da Asporto e/o Consegna";
 "Select if you can provide Pick Up and Delivery" = "Seleziona se puoi fare asporto e consegna";
-"Pick up Discount for Alysei Voyager" = "Pick up Discount for Alysei Voyager";
+"Pick up Discount for Alysei Voyager" = "Sconto asporto per i Voyagers";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
-"Delivery Discount for Alysei Voyager" = "Delivery Discount for Alysei Voyager";
+"Delivery Discount for Alysei Voyager" = "Sconto consegna per i Voyagers";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 
 

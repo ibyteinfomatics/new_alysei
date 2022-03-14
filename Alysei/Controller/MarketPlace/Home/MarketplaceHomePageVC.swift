@@ -184,11 +184,13 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
         lblHeadPost.text = MarketPlaceConstant.kPosts
         lblheadMarkePtlace.text = MarketPlaceConstant.kMarketPlace
         lblHeadRecipe.text = MarketPlaceConstant.kRecipe
         lblHeadNotification.text = MarketPlaceConstant.kNotifications
         lblWhatyourlooking.text = MarketPlaceConstant.kWhatYouLookingFor
+        self.arrMarketPlace = [MarketPlaceConstant.kProducerStore,MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProductProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kMyFavourite,MarketPlaceConstant.kMostPospular,MarketPlaceConstant.kPromotions]
         self.nextWalkCount = 0
         self.tableView.alpha = 1
         self.headerView.alpha = 1

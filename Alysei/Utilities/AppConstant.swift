@@ -630,7 +630,7 @@ static var  kNotifications : String {  "Notifications".localizableString(loc: kS
     static var kGotoMyStore : String { return  "Go to my store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kCreateMyStore : String {  "Create your store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiscoverMarketplace : String { return "Discover Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kProducerStore  : String {  "Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+ static var kProducerStore  : String {  "Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kConservationMethod : String { "Conservation Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
@@ -651,8 +651,8 @@ static var kPromotions : String { "Promotions".localizableString(loc: kSharedUse
 static var kRecentlyAddedProject : String {  "Recently Added Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kViewAll : String {  "View all".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kNewlyAddedStore : String {   "Newly Added Stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kSearchItalianRegion : String {   "Search by Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kNewlyAddedStore : String {"Newly Added Stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kSearchItalianRegion : String {"Search by Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kTopRatedProduct : String {  "Top Rated Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kTopFavproduct : String {  "Top Favourite Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kWhatYouLookingFor : String {  "What are you looking for?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -668,7 +668,7 @@ static var kFilter  : String {  "Filter".localizableString(loc: kSharedUserDefau
     //MARK: Marketplace Filter Screen
 static var kNoProductFound  : String {  "No Product found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kCategories = "Categories"
-static var kProperties  : String {  "Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kProperties  : String {  return "Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kFDACertified = "FDA Certfied"
 static var kITalianRegion  : String {  "Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kDistance  : String {  "Distance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
