@@ -158,7 +158,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 
         let editProfileSelectTableCell = tableViewEditProfile.dequeueReusableCell(withIdentifier: EditProfileSelectTableCell.identifier(), for: indexPath) as! EditProfileSelectTableCell
         if self.signUpStepOneDataModel == nil{
-            let modelFDA = self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "fda_number")})
+            let modelFDA = self.signUpViewModel.arrSignUpStepOne.filter({($0.name == APIConstants.fdaCertified)})
             modelFDA.first?.selectedValue = self.createStringForProducts((modelFDA.first)!)
             
             let model = self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "product_type")})
@@ -554,7 +554,10 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
         case AppConstants.Select:
         
             if kSharedInstance.signUpStepTwoOptionsModel == nil {
-
+                if ((((model.isHidden == false) || (model.parentId?.isEmpty == false)) && model.selectedValue != "") && model.title == "FDA Certified"){
+                    return 75
+                    
+                }
                 if (((model.isHidden == false) || (model.parentId?.isEmpty == false)) && model.selectedValue != "") {
                    // return 0.0
                     return 115.0
