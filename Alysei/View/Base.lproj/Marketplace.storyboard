@@ -3596,7 +3596,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r04-Ey-KXA">
-                                                    <rect key="frame" x="0.0" y="75" width="394" height="200"/>
+                                                    <rect key="frame" x="0.0" y="75" width="394" height="125"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-hw-yF7">
                                                             <rect key="frame" x="10" y="8.0000000000000018" width="99" height="17.666666666666671"/>
@@ -3608,7 +3608,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-Pp-C4S">
-                                                            <rect key="frame" x="10" y="27.666666666666686" width="374" height="170.33333333333334"/>
+                                                            <rect key="frame" x="10" y="27.666666666666679" width="374" height="95.333333333333314"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <color key="textColor" systemColor="labelColor"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -3627,7 +3627,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-dy-Ur9">
-                                                    <rect key="frame" x="0.0" y="290" width="394" height="60"/>
+                                                    <rect key="frame" x="0.0" y="215" width="394" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-mK-UCd">
                                                             <rect key="frame" x="10" y="8.0000000000000018" width="128.66666666666666" height="21.666666666666671"/>
@@ -3636,7 +3636,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nz9-Gd-LmQ">
-                                                            <rect key="frame" x="10" y="31.666666666666629" width="374" height="26.333333333333329"/>
+                                                            <rect key="frame" x="10" y="31.666666666666686" width="374" height="26.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
@@ -3653,7 +3653,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-D0-B3O">
-                                                    <rect key="frame" x="0.0" y="365" width="394" height="60"/>
+                                                    <rect key="frame" x="0.0" y="290" width="394" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enf-9h-j7h">
                                                             <rect key="frame" x="9.9999999999999964" y="8.0000000000000018" width="47.666666666666657" height="21.666666666666671"/>
@@ -3679,7 +3679,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-Ng-sk3">
-                                                    <rect key="frame" x="0.0" y="440" width="394" height="60"/>
+                                                    <rect key="frame" x="0.0" y="365" width="394" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ1-0c-bV1">
                                                             <rect key="frame" x="10" y="8.0000000000000018" width="68.333333333333329" height="21.666666666666671"/>
@@ -3718,7 +3718,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQD-6U-SlU">
-                                                    <rect key="frame" x="0.0" y="515" width="394" height="60"/>
+                                                    <rect key="frame" x="0.0" y="440" width="394" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88V-0Y-Jl4">
                                                             <rect key="frame" x="10" y="8.0000000000000018" width="112" height="21.666666666666671"/>
@@ -3750,6 +3750,41 @@
                                                         <constraint firstItem="88V-0Y-Jl4" firstAttribute="leading" secondItem="fQD-6U-SlU" secondAttribute="leading" constant="10" id="exA-2Z-diL"/>
                                                         <constraint firstAttribute="trailing" secondItem="TOW-UD-AOU" secondAttribute="trailing" constant="10" id="nhp-PH-gYr"/>
                                                         <constraint firstItem="VzJ-of-2vn" firstAttribute="top" secondItem="88V-0Y-Jl4" secondAttribute="bottom" constant="2" id="qdX-Hm-wdK"/>
+                                                    </constraints>
+                                                </view>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL9-3s-d9w">
+                                                    <rect key="frame" x="0.0" y="515" width="394" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FDA Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-Qj-kqM">
+                                                            <rect key="frame" x="10" y="8.0000000000000018" width="110" height="21.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="14B-hk-RFs">
+                                                            <rect key="frame" x="10" y="31.666666666666629" width="374" height="26.333333333333329"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown_selector" translatesAutoresizingMaskIntoConstraints="NO" id="ETo-wG-oJ1">
+                                                            <rect key="frame" x="369" y="25.333333333333371" width="15" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="ETo-wG-oJ1" secondAttribute="height" multiplier="1:1" id="brG-Qt-Vxo"/>
+                                                                <constraint firstAttribute="height" constant="15" id="kuT-ns-53P"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="WGF-Qj-kqM" firstAttribute="top" secondItem="FL9-3s-d9w" secondAttribute="top" constant="8" id="DgK-uQ-ukl"/>
+                                                        <constraint firstAttribute="height" constant="60" id="Egi-za-psL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="14B-hk-RFs" secondAttribute="bottom" constant="2" id="ITF-lK-8ul"/>
+                                                        <constraint firstItem="ETo-wG-oJ1" firstAttribute="centerY" secondItem="14B-hk-RFs" secondAttribute="centerY" constant="-12" id="UmN-eT-3R3"/>
+                                                        <constraint firstItem="14B-hk-RFs" firstAttribute="top" secondItem="WGF-Qj-kqM" secondAttribute="bottom" constant="2" id="ZxM-fv-aMu"/>
+                                                        <constraint firstItem="14B-hk-RFs" firstAttribute="leading" secondItem="WGF-Qj-kqM" secondAttribute="leading" id="egV-d7-RPg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="14B-hk-RFs" secondAttribute="trailing" constant="10" id="g3Z-Q9-76V"/>
+                                                        <constraint firstItem="WGF-Qj-kqM" firstAttribute="leading" secondItem="FL9-3s-d9w" secondAttribute="leading" constant="10" id="imf-Ah-dcm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ETo-wG-oJ1" secondAttribute="trailing" constant="10" id="po7-RB-HHS"/>
                                                     </constraints>
                                                 </view>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-81-cm0">
@@ -3953,6 +3988,7 @@
                         <outlet property="imgProfile" destination="iQt-VQ-X9S" id="vnx-0Z-rWz"/>
                         <outlet property="lblDescription" destination="B7I-hw-yF7" id="bz9-Gl-1F4"/>
                         <outlet property="lblEmail" destination="enf-9h-j7h" id="sKY-ii-SqB"/>
+                        <outlet property="lblFdaNumber" destination="WGF-Qj-kqM" id="Mda-m0-WFN"/>
                         <outlet property="lblLocation" destination="LYX-d2-f9h" id="BS7-6O-Zvb"/>
                         <outlet property="lblPhoneNumber" destination="WFF-mK-UCd" id="Dfi-m9-urg"/>
                         <outlet property="lblStoreName" destination="7Ff-L3-bwU" id="2Vm-Km-8xv"/>
@@ -3960,6 +3996,7 @@
                         <outlet property="lblWebsite" destination="IJ1-0c-bV1" id="rRd-Bx-fvj"/>
                         <outlet property="tableView" destination="CGe-TB-e4W" id="tgs-iG-II2"/>
                         <outlet property="txtDescription" destination="n4l-Pp-C4S" id="53o-rU-Pvs"/>
+                        <outlet property="txtFDANumber" destination="14B-hk-RFs" id="Dyg-bH-dSx"/>
                         <outlet property="txtLocation" destination="2x0-rE-rgi" id="F26-WS-C9F"/>
                         <outlet property="txtProducerEmail" destination="dwD-Eh-kPQ" id="93m-ke-Fxu"/>
                         <outlet property="txtProducerMobileNumber" destination="Nz9-Gd-LmQ" id="cHF-9Y-LHe"/>
@@ -3972,7 +4009,8 @@
                         <outlet property="view5" destination="8jj-D0-B3O" id="INT-JJ-weY"/>
                         <outlet property="view6" destination="LLU-Ng-sk3" id="vfI-pE-omP"/>
                         <outlet property="view7" destination="fQD-6U-SlU" id="dwi-c7-ka7"/>
-                        <outlet property="view8" destination="vFd-81-cm0" id="PU6-Lt-Poz"/>
+                        <outlet property="view8" destination="FL9-3s-d9w" id="jJ3-su-gu0"/>
+                        <outlet property="view9" destination="vFd-81-cm0" id="40g-Hm-zmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlp-vc-5or" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

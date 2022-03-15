@@ -61,8 +61,14 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 //            self.imgViewCoverPhoto.image = coverPhoto
 //        }
         
+        if signUpViewModel ==  nil {
+            return
+        }else{
         let imgUrl = ((self.signUpViewModel.profileData?.coverID?.baseUrl ?? "") + (self.signUpViewModel.profileData?.coverID?.attachmentURL ?? ""))
+        if imgUrl != "" || imgUrl == nil{
         self.imgViewCoverPhoto.setImage(withString: imgUrl)
+        }
+        }
         
 //        if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().profilePhoto) {
 //           //, (kSharedUserDefaults.loggedInUserModal.avatar != nil)
@@ -152,6 +158,9 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 
         let editProfileSelectTableCell = tableViewEditProfile.dequeueReusableCell(withIdentifier: EditProfileSelectTableCell.identifier(), for: indexPath) as! EditProfileSelectTableCell
         if self.signUpStepOneDataModel == nil{
+            let modelFDA = self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "fda_number")})
+            modelFDA.first?.selectedValue = self.createStringForProducts((modelFDA.first)!)
+            
             let model = self.signUpViewModel.arrSignUpStepOne.filter({($0.name == "product_type")})
             model.first?.selectedValue = self.createStringForProducts((model.first)!)
 
@@ -518,6 +527,8 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
         case AppConstants.Checkbox,AppConstants.Multiselect,AppConstants.Select:
 
             if (model.type == AppConstants.Checkbox) && ((model.multipleOption == true)){
+                return self.getSignUpMultiCheckboxTableCell(indexPath)
+            }else if (model.type == AppConstants.Select) && (model.multipleOption == false){
                 return self.getSignUpMultiCheckboxTableCell(indexPath)
             }
             else{

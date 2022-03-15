@@ -114,12 +114,13 @@ class EventDiscover: AlysieBaseViewC {
         
        
         let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
 
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+        dateFormatterPrint.dateFormat = "MMM dd, yyyy"
 
-        let date: Date? = dateFormatterGet.date(from: eventData[indexPath].createdAt ?? "")
+        let date: Date? = dateFormatterGet.date(from: eventData[indexPath].date ?? "")
         let datep = dateFormatterPrint.string(from: date ?? Date())
         eventTableCell.dateTitle.text = datep
        // }
@@ -143,6 +144,26 @@ class EventDiscover: AlysieBaseViewC {
         
         
         eventTableCell.btnMoreCallback = { tag in
+            
+            let dateFormatterGet = DateFormatter()
+            //dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatterGet.dateFormat = "yyyy-MM-dd"
+
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MMM dd, yyyy"
+
+            let date: Date? = dateFormatterGet.date(from: self.eventData[indexPath].date ?? "")
+            let datep = dateFormatterPrint.string(from: date ?? Date())
+            
+            let timeFormatterGet = DateFormatter()
+            //dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            timeFormatterGet.dateFormat = "HH:mm:ss"
+
+            let timeFormatterPrint = DateFormatter()
+            timeFormatterPrint.dateFormat = "h:mm a"
+
+            let time: Date? = timeFormatterGet.date(from: self.eventData[indexPath].time ?? "")
+            let timep = timeFormatterPrint.string(from: time ?? Date())
                 
             let baseUrlImg = self.eventData[indexPath].attachment?.baseUrl ?? ""
 
@@ -150,8 +171,8 @@ class EventDiscover: AlysieBaseViewC {
             vc.hostname = self.eventData[indexPath].hostName
             vc.eventname = self.eventData[indexPath].eventName
             vc.location = self.eventData[indexPath].location
-            vc.date = self.eventData[indexPath].date
-            vc.time = self.eventData[indexPath].time
+            vc.date = datep
+            vc.time = timep
             vc.fulldescription = self.eventData[indexPath].datumDescription
             vc.website = self.eventData[indexPath].website
             vc.eventYype = self.eventData[indexPath].eventType

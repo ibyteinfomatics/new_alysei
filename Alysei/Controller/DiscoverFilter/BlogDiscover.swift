@@ -83,12 +83,12 @@ class BlogDiscover: AlysieBaseViewC {
        // blogTableCell.dateTimeLabel.text = String.getString(blogData[indexPath].createdAt)
         
          let dateFormatterGet = DateFormatter()
-         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+         dateFormatterGet.dateFormat = "yyyy-MM-dd"
 
          let dateFormatterPrint = DateFormatter()
-         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+         dateFormatterPrint.dateFormat = "MMM dd, yyyy"
 
-         let date: Date? = dateFormatterGet.date(from: blogData[indexPath].createdAt ?? "")
+         let date: Date? = dateFormatterGet.date(from: blogData[indexPath].date ?? "")
          let datep = dateFormatterPrint.string(from: date ?? Date())
         blogTableCell.dateTimeLabel.text = datep
         if String.getString(blogData[indexPath].status) == "0"{

@@ -259,9 +259,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: "Please select registration type!")
             } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
                 alert(msg: "Please enter booking url!")
-            }else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
+            } else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
                 alert(msg: "Please enter valid booking url!")
-            }else {
+            } else {
                 updateEventApi()
             }
             
@@ -282,10 +282,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: "Please select event type!")
             } else if registrationTxf.text == "" {
                 alert(msg: "Please select registration type!")
-            }else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
+            } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
                 alert(msg: "Please enter booking url!")
-            }
-            else {
+            } else {
                 createEventApi()
             }
         }
