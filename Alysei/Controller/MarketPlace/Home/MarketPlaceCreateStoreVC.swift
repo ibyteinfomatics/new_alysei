@@ -21,6 +21,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var view6: UIView!
     @IBOutlet weak var view7: UIView!
     @IBOutlet weak var view8: UIView!
+    @IBOutlet weak var view9: UIView!
     @IBOutlet weak var imgCover: UIImageView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var btnCoverCameraImage: UIView!
@@ -34,6 +35,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var txtLocation: UILabel!
     @IBOutlet weak var txtProducerMobileNumber: UITextField!
     @IBOutlet weak var txtProducerEmail: UITextField!
+    @IBOutlet weak var txtFDANumber: UITextField!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var btnInfoIcon: UIButton!
     @IBOutlet weak var heightHeaderView: NSLayoutConstraint!
@@ -47,6 +49,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var lblWebsite: UILabel!
     @IBOutlet weak var lblStoreRegion: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblFdaNumber: UILabel!
     
     
     
@@ -73,6 +76,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var userAbout: String?
     var userLocation: String?
     var userRegion: String?
+    var fdaNumber: String?
     var storeDescription: String?
     var fromVC: PushedFrom?
     var storeData: MyStoreProductDetail?
@@ -88,7 +92,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         lblWebsite.text = MarketPlaceConstant.kCWebsite
         lblStoreRegion.text = MarketPlaceConstant.kStoreRegion
         lblLocation.text = MarketPlaceConstant.kLocation
-        
+        lblFdaNumber.text =   "FDA Number" //MarketPlaceConstant.kFDACertified
         setDataUI()
         if fromVC == .myStoreDashboard{
             callGetDashboardStoreDetail()
@@ -117,6 +121,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         self.txtLocation.text = self.userLocation
         self.txtDescription.text = self.userAbout
         self.txtStoreRegion.text = self.userRegion
+        self.txtFDANumber.text = self.fdaNumber
         if fromVC == .myStoreDashboard {
             self.txtDescription.text = self.storeDescription
             self.imgProfile.setImage(withString: (storeData?.logo_base_url ?? "") + String.getString(storeData?.logo_id))
@@ -129,6 +134,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         view6.addBorder()
         view7.addBorder()
         view8.addBorder()
+        view9.addBorder()
         imgProfile.layer.cornerRadius = self.imgProfile.frame.height / 2
         imgProfile.layer.borderWidth = 1.5
         imgProfile.layer.borderColor = UIColor.white.cgColor
@@ -585,6 +591,7 @@ extension MarketPlaceCreateStoreVC {
                     self.storeDescription = prefilled["about"] as? String
                     self.latitude = prefilled["lattitude"] as? String
                     self.longitude = prefilled["longitude"] as? String
+                    self.fdaNumber = prefilled["fda_number"] as? String
                     for img in 0..<(self.storeData?.store_gallery?.count ?? 0){
                         //let image = String.getString(self.storeData?.store_gallery?[img].attachment_url)
                         //self.uploadStoreImage.append(image ?? "")
