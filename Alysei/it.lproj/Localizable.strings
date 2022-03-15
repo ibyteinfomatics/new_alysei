@@ -82,6 +82,16 @@
 
 //MARK: TOUR GUIDE
 
+// Select Role ————
+"Select the box that identifies you or your company and follow the steps" = "Seleziona la casella che ti identifica e segui i passaggi successivi";
+
+// Hub Selection ————
+"You are assigned by default to the Chicago Hub. You can select more than one if available." = "Il tuo Hub di partenza è Chicago. Puoi selezionarne più di uno se disponibili.";
+"Don't you find your Hub and are you looking to add additional locations? Click here" = "Non trovi il tuo Hub e stai cercando ulteriori aree metropolitane? Clicca qui";
+"Select the Hub among those available where you are physically located or where you operate your business" = "Seleziona l'Hub tra quelli disponibili dove si trova la tua azienda o dove fai business";
+"Select the Hub among those available where your Restaurant is physically located" = "Seleziona l'Hub tra quelli disponibili dove si trova il tuo Ristorante";
+"Don't you find your Hub? Click here" = "Non trovi il tuo Hub? Clicca qui";
+
   // About ————
 "Tell us more about your company and its history." = "Raccontaci della tua azienda e della sua storia.";
 "Tell us more about your restaurant and its history." = "Raccontaci del tuo ristorante e della sua storia.";

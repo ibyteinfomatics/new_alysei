@@ -996,6 +996,18 @@ struct LogInSignUp{
 }
 
 struct TourGuideConstants{
+    
+    //MARK: Select your role ————
+    static var kSelectRole : String { return "Select the box that identifies you or your company and follow the steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+
+    //MARK: Hub Selection ————
+    
+    static var kProducerHub : String { return "You are assigned by default to the Chicago Hub. You can select more than one if available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProducerClickHere : String { return "Don't you find your Hub and are you looking to add additional locations? Click here".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImporterdistributorHub : String { return "Select the Hub among those available where you are physically located or where you operate your business".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurentsHub : String { return "Select the Hub among those available where your Restaurant is physically located".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurentClickHere : String { return "Don't you find your Hub? Click here".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     //MARK: About ————
     static var kProducerImporterDistributor : String { return "Tell us more about your company and its history.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRestaurant : String { return "Tell us more about your restaurant and its history.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1345,6 +1357,7 @@ struct APIConstants {
     static let photoOfLabel = "photo_of_label"
     static let vatNo = "vat_no"
     static let fdaNo = "fda_no"
+    static let fdaCertified = "fda_certified"
     static let koldPassword = "old_password"
     static let knewPassword = "new_password"
     static let kStoreRegion = "store_region"

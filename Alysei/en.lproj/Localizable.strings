@@ -75,6 +75,16 @@
 
 //MARK: TOUR GUIDE
 
+// Select Role ————
+"Select the box that identifies you or your company and follow the steps" = "Select the box that identifies you or your company and follow the steps";
+
+// Hub Selection ————
+"You are assigned by default to the Chicago Hub. You can select more than one if available." = "You are assigned by default to the Chicago Hub. You can select more than one if available.";
+"Don't you find your Hub and are you looking to add additional locations? Click here" = "Don't you find your Hub and are you looking to add additional locations? Click here";
+"Select the Hub among those available where you are physically located or where you operate your business" = "Select the Hub among those available where you are physically located or where you operate your business";
+"Select the Hub among those available where your Restaurant is physically located" = "Select the Hub among those available where your Restaurant is physically located";
+"Don't you find your Hub? Click here" = "Don't you find your Hub? Click here";
+
   // About ————
 "Tell us more about your company and its history." = "Tell us more about your company and its history.";
 "Tell us more about your restaurant and its history." = "Tell us more about your restaurant and its history.";
