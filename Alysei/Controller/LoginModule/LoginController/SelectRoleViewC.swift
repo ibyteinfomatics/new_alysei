@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Instructions
 
 class SelectRoleViewC: AlysieBaseViewC {
     
@@ -15,20 +16,46 @@ class SelectRoleViewC: AlysieBaseViewC {
     @IBOutlet weak var btnGetStarted: UIButtonExtended!
     @IBOutlet weak var btnGetStartedHeight: NSLayoutConstraint!
     @IBOutlet weak var viewNavigation: UIView!
+    @IBOutlet weak var viewMainTour: UIView!
+    @IBOutlet weak var viewTourpopup: UIView!
+    @IBOutlet weak var tourgideLabel: UILabel!
     //MARK:  - Properties -
     
     var getRoleViewModel: GetRoleViewModel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
         btnGetStarted.isHidden = true
         btnGetStartedHeight.constant = 0
+        viewTourpopup.layer.cornerRadius = 10
+        tourgideLabel.text = TourGuideConstants.kSelectRole
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.coachMarksController.stop(immediately: true)
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        self.tabBarController?.tabBar.isHidden = true
+        
+//        if !AppManager.getUserSeenAppInstruction() {
+//        self.coachMarksController.start(in: .viewController(self))
+//           }
+//    }
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
       self.viewNavigation.drawBottomShadow()
     }
 
+    @IBAction func tapCross(_ sender: Any) {
+        viewTourpopup.isHidden = true
+        viewMainTour.isHidden = true
+    }
     @IBAction func tapGetStarted(_ sender: UIButton) {
       
       let model = self.getRoleViewModel.arrRoles.filter({$0.isSelected == true})

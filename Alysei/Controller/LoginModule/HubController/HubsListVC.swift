@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import Instructions
 
 class HubsListVC: UIViewController {
     
@@ -26,8 +27,6 @@ class HubsListVC: UIViewController {
     var hubsViaCity:[HubsViaCity]?
     var hasCome:HasCome? = .hubs
     
-    
-    
     var roleId: String?
     var isEditHub: Bool?
     var isChckHubfirstEditSlcted = true
@@ -35,9 +34,19 @@ class HubsListVC: UIViewController {
     var totalHub: Int?
     var selectedHubCount: Int?
     var reviewhubCount = 0
+    
+    let coachMarksController = CoachMarksController()
     // MARK:- lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+                self.coachMarksController.dataSource = self
+                self.coachMarksController.delegate = self
+        
+                let skipView = CoachMarkSkipDefaultView()
+                skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+                    self.coachMarksController.skipView = skipView
+        
         self.viewHeader.drawBottomShadowGreen()
         self.viewBottomStack.addShadow()
        // self.btnClickHere.underlined(borderColor: UIColor.init(hexString: "#4BB3FD"))
@@ -212,3 +221,67 @@ class HubsListVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 2
+    }
+
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
+
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+
+        switch index {
+        case 0:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
+            case "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterdistributorHub
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentsHub
+            default:
+                break
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
+        case 1:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "8", "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
+           
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentClickHere
+            default:
+                break
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
+        default: break
+        }
+
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+
+
+
+
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                                  coachMarkAt index: Int) -> CoachMark {
+        let indexpath1 = IndexPath(row: 0, section: 0)
+        let cell1 = tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
+        switch index {
+        case 0:return coachMarksController.helper.makeCoachMark(for: cell1?.buttonLeftCheckbox)
+        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+
+        default: return coachMarksController.helper.makeCoachMark()
+        }
+    }
+
+
+    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
+        AppManager.setUserSeenAppInstruction()
+    }
+}
+
