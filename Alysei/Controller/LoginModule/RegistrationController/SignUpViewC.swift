@@ -115,7 +115,16 @@ class SignUpViewC: AlysieBaseViewC {
                                                     model.selectedOptionName = strVal
                                                     filterTextCity.first?.required = AppConstants.No.lowercased()
                                                 }
+                                            }else if model.name == APIConstants.fdaCertified{
+                                                
+                                                let fdaCertified = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.fdaCertified})
+                                
+                                                    let optionId = model.arrOptions[selectedIndex].userFieldOptionId
+                                                    model.selectedValue = optionId
+                                                    model.selectedOptionName = strVal
+                                                fdaCertified.first?.required = AppConstants.Yes
                                             }
+
                                             else{
                                                 let optionId = model.arrOptions[selectedIndex].id
                                                 model.selectedValue = optionId
@@ -264,6 +273,11 @@ extension SignUpViewC: UITableViewDataSource,UITableViewDelegate{
                 
                 let filterState = kSharedInstance.signUpViewModel.arrSignUpStepOne.filter({$0.name == APIConstants.kState})
                 _ = (filterState.first?.selectedValue?.isEmpty == true) ? showAlert(withMessage: AlertMessage.kSelectState) : self.postRequestToGetCity(String.getString(filterState.first?.selectedValue))
+                
+            case APIConstants.fdaCertified:
+            
+                let arrOptions : [String] = kSharedInstance.signUpViewModel.arrSignUpStepOne[indexPath.row].arrOptions.map({String.getString($0.optionName)})
+                self.openPicker(withArray: arrOptions, model: model, keyValue: nil)
                 
             default:
                 break
