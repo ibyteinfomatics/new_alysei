@@ -340,6 +340,14 @@ extension UITableView {
                 self.scrollToRow(at: indexPath, at: .top, animated: true)
             }
     }
+    
+    func scrollToTopWithoutAnimation() {
+        
+            let indexPath = IndexPath(row: 0, section: 0)
+            if self.hasRowAtIndexPath(indexPath: indexPath) {
+                self.scrollToRow(at: indexPath, at: .top, animated: false)
+            }
+    }
   
     
 

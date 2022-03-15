@@ -132,6 +132,10 @@ class PostsViewController: AlysieBaseViewC {
         
     }
   
+    @IBAction func btnNewPOst(_ sender: UIButton){
+        self.btnNewpost.isHidden = true
+        callNewFeedApi(1)
+    }
 
     //MARK:- segue
 
@@ -227,7 +231,18 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             //self.scrollToLTopRow()
             //print(self.postLike?[0].likeCount)
             print("checking")
-            self.postTableView.reloadData()
+            
+            if self.arrNewFeedDataModel.count > 0 {
+                if self.postLike?.last?.postId != self.arrNewFeedDataModel[0].postID {
+                    self.btnNewpost.isHidden = false
+                } else {
+                    self.postTableView.reloadData()
+                }
+            }
+            
+            
+            
+            
         }
         
     }
@@ -621,6 +636,11 @@ extension PostsViewController {
             print("Count -------------------\(self.arrNewFeedDataModel.count)")
             self.postTableView.reloadData()
             self.refreshControl.endRefreshing()
+            
+            if pageNo == 1 {
+                self.postTableView.scrollToTopWithoutAnimation()
+            }
+            
             //DispatchQueue.main.async { self.postTableView.reloadData()}
             
         }
