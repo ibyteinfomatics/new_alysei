@@ -93,7 +93,7 @@
                 <outlet property="collectionVw" destination="gk3-ln-y02" id="5FJ-2v-Ujc"/>
                 <outlet property="headerLabel" destination="KGE-Mi-fqQ" id="0RK-vb-DUf"/>
                 <outlet property="headerView" destination="LbG-u5-H17" id="UEp-Lr-Ze3"/>
-                <outlet property="quickSearchLbl" destination="KGE-Mi-fqQ" id="bcn-Qi-AZJ"/>
+                <outlet property="quickSearchLbl" destination="KGE-Mi-fqQ" id="ynH-Ua-Zzm"/>
                 <outlet property="viewAllBtn" destination="dTY-yk-Wxj" id="y1r-4m-Tam"/>
             </connections>
             <point key="canvasLocation" x="111.59420289855073" y="38.839285714285715"/>

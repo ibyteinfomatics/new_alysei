@@ -326,6 +326,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.profileImg.layer.cornerRadius = cell.profileImg.frame.height/2
             cell.labelUserName.text = recipeModel?.userName
             cell.labelEmail.text = recipeModel?.userMain?.email
+            
             if kSharedUserDefaults.getAppLanguage() == "it"{
                 cell.viewProfileBtnHeight.constant = 45
                 cell.viewProfileButton.layer.cornerRadius = 22

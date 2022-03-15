@@ -8,11 +8,13 @@
 var selectedIndex: Int?
 
 import UIKit
+import Instructions
 
 var recipeWalkthroughId = [String]()
 var arrayMyRecipe: [HomeTrending]? = []
 class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, CategoryRowDelegate, SearchRecipeDelegate{
     
+    @IBOutlet weak var createRecipeBtn: UIButton!
     @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var marketPlcLabel: UILabel!
     @IBOutlet weak var recipeLabel: UILabel!
@@ -92,9 +94,23 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     var currentIndex : Int? = 0
     var isReloadData = true
     var nextWalkCount = 0
+    let coachMarksController = CoachMarksController()
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.coachMarksController.stop(immediately: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.coachMarksController.dataSource = self
+        self.coachMarksController.delegate = self
+        
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+            self.coachMarksController.skipView = skipView
         
         //MARK: Set Localization title------
         postLabel.text = MarketPlaceConstant.kPosts
@@ -172,8 +188,13 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     }
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
+        
         //self.walkView1Trailing.constant = self.view.frame.width
         self.walkView1Top.constant = self.view.frame.height
+        
+//        if !AppManager.getUserSeenAppInstruction() {
+        self.coachMarksController.start(in: .viewController(self))
+//           }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -523,8 +544,8 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell1 = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreByIngridientTableViewCell") as! ExploreByIngridientTableViewCell
         let cell = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreByMealTableViewCell") as! ExploreByMealTableViewCell
-        let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExploreByRecipeTableViewCell") as! ExploreByRecipeTableViewCell
-        let cell3 = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
+        let cell2 = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreByRecipeTableViewCell") as! ExploreByRecipeTableViewCell
+        let cell3 = containerTableVw.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
         let cellQuick = containerTableVw.dequeueReusableCell(withIdentifier: "QuickEasyTableViewCell") as! QuickEasyTableViewCell
         switch checkbutton{
         case 0:
@@ -1343,4 +1364,57 @@ extension DiscoverRecipeViewController{
         }
     }
     
+}
+
+extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 3
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
+        
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+
+        switch index {
+        case 0:
+            coachViews.bodyView.hintLabel.text = TourGuideConstants.kForCreateRecipe
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 1:
+    coachViews.bodyView.hintLabel.text = TourGuideConstants.kForSearchbyIngedients
+    coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 2:
+    coachViews.bodyView.hintLabel.text = TourGuideConstants.kForTrendingNow
+    coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        default: break
+        }
+
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+    
+    
+   
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                                  coachMarkAt index: Int) -> CoachMark {
+        let indexpath1 = IndexPath(row: 0, section: 0)
+        let cell1 = containerTableVw.cellForRow(at: indexpath1) as? ExploreByIngridientTableViewCell
+        let indexpath3 = IndexPath(row: 0, section: 3)
+        let cell3 = containerTableVw.cellForRow(at: indexpath3) as? TrendingTableViewCell
+       
+        switch index {
+        case 0: return coachMarksController.helper.makeCoachMark(for: createRecipeBtn)
+        case 1: return coachMarksController.helper.makeCoachMark(for: cell1?.headerLabel)
+        case 2: containerTableVw.scrollToRow(at: indexpath3, at: .bottom, animated: true)
+           
+                return coachMarksController.helper.makeCoachMark(for: cell3?.headerLabel)
+           
+        default: return coachMarksController.helper.makeCoachMark()
+        }
+    }
+    
+
+    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
+        AppManager.setUserSeenAppInstruction()
+    }
 }

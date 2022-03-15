@@ -5,6 +5,7 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
+
 //MARK: Alert Message
 "Please enter first name." = "Please enter first name.";
 "Please enter last name." = "Please enter last name.";
@@ -71,6 +72,65 @@
 "Please enter Quantity" = "Please enter Quantity";
 "Please enter more than 3 character." = "Please enter more than 3 character.";
 "Please enter Description or Url." = "Please enter Description or Url.";
+
+//MARK: TOUR GUIDE
+
+  // About ————
+"Tell us more about your company and its history." = "Tell us more about your company and its history.";
+"Tell us more about your restaurant and its history." = "Tell us more about your restaurant and its history.";
+"Tell us more about your agency and its history." = "Tell us more about your agency and its history.";
+"Tell us more about yourself and your experience." = "Tell us more about yourself and your experience.";
+"Tell us more about yourself and your interests." = "Tell us more about yourself and your interests.";
+
+//Profile Picture ————
+"Upload the logo of your company as your profile." = "Upload the logo of your company as your profile.";
+"Upload the logo of your restaurant as your profile." = "Upload the logo of your restaurant as your profile.";
+"Upload the logo of your agency as your profile." = "Upload the logo of your agency as your profile.";
+"Upload a photo of you or your logo as your profile." = "Upload a photo of you or your logo as your profile.";
+"Upload a photo of you as your profile." = "Upload a photo of you as your profile.";
+
+//Cover Picture ————
+"Upload a nice landscape photo of your company as your cover." = "Upload a nice landscape photo of your company as your cover.";
+"Upload a nice landscape photo of your restaurant as your cover." = "Upload a nice landscape photo of your restaurant as your cover.";
+"Upload a nice landscape photo of your agency as your cover." = "Upload a nice landscape photo of your agency as your cover.";
+"Upload a nice landscape photo of your business as your cover." = "Upload a nice landscape photo of your business as your cover.";
+"Upload a nice landscape photo as your cover." = "Upload a nice landscape photo as your cover.";
+
+//OUR FIELDS (PRODUCTS/MENU/TRIPS) ————
+"Briefly describe your products with their properties and characteristics." = "Briefly describe your products with their properties and characteristics.";
+"Briefly describe your product portfolio and offerings" = "Briefly describe your product portfolio and offerings";
+"Briefly describe your menu and your specials." = "Briefly describe your menu and your specials.";
+"Briefly describe your trips and your unique proposed adventures." = "Briefly describe your trips and your unique proposed adventures.";
+
+//FEATURED FIELD ————
+"List your flagship products with a short description and if you have it, you can link each product to your corresponding product website page." = "List your flagship products with a short description and if you have it, you can link each product to your corresponding product website page.";
+"List your flagship recipes and your specials with a short description and link your menu website." = "List your flagship recipes and your specials with a short description and link your menu website.";
+"List your flagship trips with a short description and if you have it, you can link each trip to your corresponding website page." = "List your flagship trips with a short description and if you have it, you can link each trip to your corresponding website page.";
+"List your books, articles, recipes and more with a short description, and if you have it, you can link each photo corresponding website page." = "List your books, articles, recipes and more with a short description, and if you have it, you can link each photo corresponding website page.";
+
+// B2B TAB ————
+"Search for Alysei Members through the Hub and create connections." = "Search for Alysei Members through the Hub and create connections.";
+"Explore the Hubs and follow the Alysei Members of your interest." = "Explore the Hubs and follow the Alysei Members of your interest.";
+
+//ADD POST ————
+"Add a post." = "Add a post.";
+
+//MARKETPLACE ————
+"Check Italian Producers stores, their high-quality products and send inquiries." = "Check Italian Producers stores, their high-quality products and send inquiries.";
+"Check Italian Producers stores and their high-quality products." = "Check Italian Producers stores and their high-quality products.";
+
+//Recipe ————
+"Explore, search, create, rate, and share the Recipes from the endless Italian cuisine." = "Explore, search, create, rate, and share the Recipes from the endless Italian cuisine.";
+
+//CREATE RECIPE ————
+"Create your own Italian recipe in a simple and fun way!" = "Create your own Italian recipe in a simple and fun way!";
+
+//QUICK SEARCH BY INGREDIENTS ————
+"Explore recipes by ingredients used." = "Explore recipes by ingredients used.";
+
+//TRENDING NOW ————
+"Discover the trending recipes." = "Discover the trending recipes.";
+
 
 //MARK: MARKETPLACE
 

@@ -191,11 +191,12 @@ struct Notifications {
     static let kChatNotificationReceived = "ChatNotificationReceived"
     
 }
+
 struct ButtonTitle {
     
-    static let  kOk     = "Ok"
-    static let  kCancel = "Cancel"
-    static let  kYes = "Yes"
+    static var  kOk  : String { return "Ok".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kCancel : String { return "Cancel".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kYes :  String { return "Yes".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 }
 
 enum CountryCityHubSelection {
@@ -994,6 +995,70 @@ struct LogInSignUp{
     
 }
 
+struct TourGuideConstants{
+    //MARK: About ————
+    static var kProducerImporterDistributor : String { return "Tell us more about your company and its history.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurant : String { return "Tell us more about your restaurant and its history.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgencies : String { return "Tell us more about your agency and its history.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoiceofExperts : String { return "Tell us more about yourself and your experience.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoyagers : String { return "Tell us more about yourself and your interests.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: Profile Picture ————
+    static var kProducerImpDistPic : String { return "Upload the logo of your company as your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurantPic : String { return "Upload the logo of your restaurant as your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgenciesPic : String { return "Upload the logo of your agency as your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoiceofExpertsPic : String { return "Upload a photo of you or your logo as your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoyagersPic : String { return "Upload a photo of you as your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+    //MARK: Cover Picture ————
+    
+    static var kProducerImpDistCover : String { return "Upload a nice landscape photo of your company as your cover.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurantCover : String { return "Upload a nice landscape photo of your restaurant as your cover.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgenciesCover : String { return "Upload a nice landscape photo of your agency as your cover.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoiceofExpertsCover : String { return "Upload a nice landscape photo of your business as your cover.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoyagersCover : String { return "Upload a nice landscape photo as your cover.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK:  OUR FIELDS (PRODUCTS/MENU/TRIPS) ————
+   
+    static var kProducerField : String { return "Briefly describe your products with their properties and characteristics.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImporterDistField : String { return "Briefly describe your product portfolio and offerings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurantField : String { return "Briefly describe your menu and your specials.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgenciesField : String { return "Briefly describe your trips and your unique proposed adventures.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+    //MARK: FEATURED FIELD ————
+    
+    static var kProducerImpDistFeatured : String { return "List your flagship products with a short description and if you have it, you can link each product to your corresponding product website page.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurantFeatured : String { return "List your flagship recipes and your specials with a short description and link your menu website.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgenciesFeatured : String { return "List your flagship trips with a short description and if you have it, you can link each trip to your corresponding website page.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoiceofExpertsFeatured : String { return "List your books, articles, recipes and more with a short description, and if you have it, you can link each photo corresponding website page.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: B2B TAB ————
+    
+    static var kForEveryMemberB2B : String { return "Search for Alysei Members through the Hub and create connections.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kForVoyagersB2B  : String { return "Explore the Hubs and follow the Alysei Members of your interest.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: ADD POST ————
+    
+    static var kForAllPost  : String { return "Add a post.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: MARKETPLACE ————
+    
+    static var kProdImpDistRestVoiceExprtMarketPlace : String { return "Check Italian Producers stores, their high-quality products and send inquiries.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgenciesVoygersMarketPlace : String { return "Check Italian Producers stores and their high-quality products.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: Recipe ————
+    
+    static var kForAllRecipe  : String { return "Explore, search, create, rate, and share the Recipes from the endless Italian cuisine.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: CREATE RECIPE ————
+    static var kForCreateRecipe  : String { return "Create your own Italian recipe in a simple and fun way!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: QUICK SEARCH BY INGREDIENTS ————
+    static var kForSearchbyIngedients  : String { return "Explore recipes by ingredients used.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: TRENDING NOW ————
+    static var kForTrendingNow  : String { return "Discover the trending recipes.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+}
 
 struct RecipeConstants{
     

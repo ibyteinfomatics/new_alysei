@@ -26,5 +26,6 @@ pod 'SVGKit'
 pod 'Firebase/Messaging'
 pod 'ScrollingPageControl'
 pod 'Zoomy'
+pod 'Instructions'
 
 end
