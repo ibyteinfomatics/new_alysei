@@ -1274,6 +1274,8 @@ struct APIConstants {
     static let kPassword = "password"
     static let kConfirmPassword = "confirm_password"
     static let kDisplayName = "display_name"
+    static let kFDANumber = "fda_number"
+    static let FDANumber = "FDA Number"
     // static let kDisplayName = "company_name"
     static let kCompanyName = "company_name"
     static let kRestaurantName = "restaurant_name"
