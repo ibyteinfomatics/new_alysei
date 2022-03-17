@@ -263,7 +263,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     public func callLogoutApi(){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kLogout, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errotype, statusCode in
             let token = kSharedUserDefaults.getDeviceToken()
+            let retriveArrayData = kSharedUserDefaults.stringArray(forKey:  "SavedWalkthrough") ?? [String]()
+            let postTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCasePost")
+            let hubTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCaseHub")
+            let recipeTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCase")
+            let profileTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCaseProfile")
             kSharedUserDefaults.clearAllData()
+            kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
+            kSharedUserDefaults.setValue(postTourguide, forKey: "userSeenShowCasePost")
+            kSharedUserDefaults.setValue(hubTourguide, forKey: "userSeenShowCaseHub")
+            kSharedUserDefaults.setValue(recipeTourguide, forKey: "userSeenShowCase")
+            kSharedUserDefaults.setValue(profileTourguide, forKey: "userSeenShowCaseProfile")
+            
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
         }
     }
@@ -382,10 +393,10 @@ enum AppManager {
   // MARK: App      Tutorial=============================================================================================================
  
     static func setUserSeenAppInstructionPost() {
-      UserDefaults.standard.set(true, forKey: "userSeenShowCasePost")
+        kSharedUserDefaults.set(true, forKey: "userSeenShowCasePost")
     }
      static func getUserSeenAppInstructionPost() -> Bool {
-       let userSeenShowCaseObject1 = UserDefaults.standard.object(forKey: "userSeenShowCasePost")
+       let userSeenShowCaseObject1 = kSharedUserDefaults.object(forKey: "userSeenShowCasePost")
        if let userSeenShowCasePost = userSeenShowCaseObject1 as? Bool {
          return userSeenShowCasePost
        }
@@ -393,10 +404,10 @@ enum AppManager {
        }
     
     static func setUserSeenAppInstructionHub() {
-      UserDefaults.standard.set(true, forKey: "userSeenShowCaseHub")
+        kSharedUserDefaults.set(true, forKey: "userSeenShowCaseHub")
     }
      static func getUserSeenAppInstructionHub() -> Bool {
-       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCaseHub")
+       let userSeenShowCaseObject = kSharedUserDefaults.object(forKey: "userSeenShowCaseHub")
        if let userSeenShowCase = userSeenShowCaseObject as? Bool {
          return userSeenShowCase
        }
@@ -404,10 +415,10 @@ enum AppManager {
        }
     
     static func setUserSeenAppInstruction() {
-      UserDefaults.standard.set(true, forKey: "userSeenShowCase")
+        kSharedUserDefaults.set(true, forKey: "userSeenShowCase")
     }
      static func getUserSeenAppInstruction() -> Bool {
-       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCase")
+       let userSeenShowCaseObject = kSharedUserDefaults.object(forKey: "userSeenShowCase")
        if let userSeenShowCase = userSeenShowCaseObject as? Bool {
          return userSeenShowCase
        }
@@ -415,10 +426,10 @@ enum AppManager {
        }
     
     static func setUserSeenAppInstructionProfile() {
-      UserDefaults.standard.set(true, forKey: "userSeenShowCaseProfile")
+        kSharedUserDefaults.set(true, forKey: "userSeenShowCaseProfile")
     }
      static func getUserSeenAppInstructionProfile() -> Bool {
-       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCaseProfile")
+       let userSeenShowCaseObject = kSharedUserDefaults.object(forKey: "userSeenShowCaseProfile")
        if let userSeenShowCase = userSeenShowCaseObject as? Bool {
          return userSeenShowCase
        }

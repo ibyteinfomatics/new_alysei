@@ -69,17 +69,18 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var followerstext: UILabel!
     @IBOutlet weak var iconAddProduct: UIImageView!
     @IBOutlet weak var btnConnectHght: NSLayoutConstraint!
-   
+    
     @IBOutlet weak var viewFeature: UIView!
     
-   // @IBOutlet weak var featureCollectionView: UICollectionView!
+    // @IBOutlet weak var featureCollectionView: UICollectionView!
+    
     
     //MARK: - Properties -
     var fromRecipe: String? = ""
     var percentage: String?
     var picker = UIImagePickerController()
     var contactDetail = [ContactDetail.view.tableCellModel]()
-  //  var contactDetilViewModel: ContactDetail.Contact.Response!
+    //  var contactDetilViewModel: ContactDetail.Contact.Response!
     var contactDetilViewModel: UserProfile.contactTab!
     var signUpViewModel: SignUpViewModel!
     var userLevel: UserLevel = .own
@@ -113,7 +114,7 @@ class ProfileViewC: AlysieBaseViewC{
     private var editProfileViewCon: EditProfileViewC!
     
     private var currentChild: UIViewController {
-         return self.children.last!
+        return self.children.last!
     }
     
     private lazy var postsViewC: UserPostsViewController = {
@@ -169,7 +170,7 @@ class ProfileViewC: AlysieBaseViewC{
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
-               UIApplication.shared.openURL(url)
+                UIApplication.shared.openURL(url)
             }
         }
         return contactViewC
@@ -181,6 +182,8 @@ class ProfileViewC: AlysieBaseViewC{
         awardViewC.userId = String.getString(userID)
         return awardViewC
     }()
+    
+    
     //MARK: - ViewLifeCycle Methods -
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -191,32 +194,42 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidAppear(_ animated: Bool) {
         
-//            if  kSharedUserDefaults.alyseiReview == 1{
-//                if !AppManager.getUserSeenAppInstructionProfile() {
-        
-//        self.coachMarksController.start(in: .viewController(self))
-//        self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-        
-              
-//                }
-//                else{
-//                    tabBarController?.tabBar.backgroundColor = .white
-//                    tabBarController?.tabBar.alpha = 1.0
-//                }
-//
-//            }
-//            else{
-//                tabBarController?.tabBar.backgroundColor = .white
-//                tabBarController?.tabBar.alpha = 1.0
-//            }
-        
+        if  kSharedUserDefaults.alyseiReview == 1{
+            if isprofileComplete == false{
+                if !AppManager.getUserSeenAppInstructionProfile() {
+                    
+                    self.coachMarksController.start(in: .viewController(self))
+                    self.tabBarController?.tabBar.backgroundColor = .gray
+                    self.tabBarController?.tabBar.alpha = 0.8
+                    tabBarController?.tabBar.isUserInteractionEnabled = false
+                    
+                }
+                else{
+                    tabBarController?.tabBar.backgroundColor = .white
+                    tabBarController?.tabBar.alpha = 1.0
+                    tabBarController?.tabBar.isUserInteractionEnabled = true
+                   
+                }
+            }
+            else{
+                self.tabBarController?.tabBar.backgroundColor = .white
+                self.tabBarController?.tabBar.alpha = 1.0
+                tabBarController?.tabBar.isUserInteractionEnabled = true
+                
+            }
+        }
+        else{
+            self.tabBarController?.tabBar.backgroundColor = .white
+            self.tabBarController?.tabBar.alpha = 1.0
+            tabBarController?.tabBar.isUserInteractionEnabled = true
+           
+        }
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.coachMarksController.dataSource = self
-//        self.coachMarksController.delegate = self
+        
         
         self.btnEditProfile.layer.cornerRadius = 5
         self.btnEditProfile.layer.masksToBounds = true
@@ -229,13 +242,13 @@ class ProfileViewC: AlysieBaseViewC{
         self.iconAddProduct.isHidden = true
         //Mark: End
         
-      
+        
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
             if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
                 self.userType = selfUserType
             }
         }
-       
+        
         self.btnPosts.isSelected = true
         self.tblViewProfileCompletion.isHidden = true
         self.headerView.isHidden = true
@@ -243,7 +256,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.currentIndex = 0
         
         
-       self.tblViewPosts.contentInsetAdjustmentBehavior = .never
+        self.tblViewPosts.contentInsetAdjustmentBehavior = .never
         //tblViewPosts.style = .grouped
         self.tabsCollectionView.dataSource = self
         self.tabsCollectionView.delegate = self
@@ -254,6 +267,9 @@ class ProfileViewC: AlysieBaseViewC{
         self.messageButton.isHidden = true
         self.respondeButton.isHidden = true
         self.connectButton.isHidden = true
+        
+        self.coachMarksController.dataSource = self
+        self.coachMarksController.delegate = self
         
         let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
         let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
@@ -306,9 +322,9 @@ class ProfileViewC: AlysieBaseViewC{
         self.tabsCollectionView.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .top)
         
         //MARK: SelectTab
-//        self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: currentSelectedIndexPath, section: 0))
-//        self.tabsCollectionView.selectItem(at: IndexPath(item: currentSelectedIndexPath, section: 0), animated: true, scrollPosition: .top)
-       
+        //        self.collectionView(self.tabsCollectionView, didSelectItemAt: IndexPath(item: currentSelectedIndexPath, section: 0))
+        //        self.tabsCollectionView.selectItem(at: IndexPath(item: currentSelectedIndexPath, section: 0), animated: true, scrollPosition: .top)
+        
         
         
     }
@@ -332,14 +348,14 @@ class ProfileViewC: AlysieBaseViewC{
     
     @objc func swipeLeftRightGesturePerformed(_ gesture: UISwipeGestureRecognizer) {
         
-      //  print("\(gesture.direction)")
-       // print("self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ",self.tabsCollectionView.indexPathsForSelectedItems?.last?.row )
+        //  print("\(gesture.direction)")
+        // print("self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ",self.tabsCollectionView.indexPathsForSelectedItems?.last?.row )
         let totalRows = ProfileTabRows().noOfRows(self.userType)
-       
+        
         if gesture.direction == .right {
             if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) >= totalRows{
-                       print("invalid")
-                       return
+                print("invalid")
+                return
             }
             if ((self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) > 0)  {
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
@@ -353,8 +369,8 @@ class ProfileViewC: AlysieBaseViewC{
             
         } else if gesture.direction == .left {
             if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) == totalRows - 1{
-                       print("invalid")
-                       return
+                print("invalid")
+                return
             }
             if (self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0) < totalRows {
                 let row = self.tabsCollectionView.indexPathsForSelectedItems?.last?.row ?? 0
@@ -381,30 +397,30 @@ class ProfileViewC: AlysieBaseViewC{
         isLoadingAnimation = true
         setNeedsStatusBarAppearanceUpdate()
         if fromRecipe == ""{
-        self.tabBarController?.tabBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
         }
-       // if userLevel == .own {
-            self.postRequestToGetProgress()
-       // }
+        // if userLevel == .own {
+        self.postRequestToGetProgress()
+        // }
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
         if role != 10 {
             
-//            if Int.getInt(data["alysei_review"]) == 0 {
-//                blankdataView.isHidden = false
-//            } else if Int.getInt(data["alysei_review"]) == 1{
+            //            if Int.getInt(data["alysei_review"]) == 0 {
+            //                blankdataView.isHidden = false
+            //            } else if Int.getInt(data["alysei_review"]) == 1{
             if Int.getInt(data["alysei_review"]) == 0 {
                 blankdataView.isHidden = false
             } else if Int.getInt(data["alysei_review"]) == 1 {
                 
                 blankdataView.isHidden = true
-               // self.postRequestToGetFields()
-               // self.fetchContactDetail()
-               // self.fetchProfileDetails()
+                // self.postRequestToGetFields()
+                // self.fetchContactDetail()
+                // self.fetchProfileDetails()
                 self.currentIndex = 0
                 self.postRequestToGetProgress()
-         //       self.postRequestToGetFields()
+                //       self.postRequestToGetFields()
                 if check == "" {
                     if self.userLevel == .own {
                         self.menuButton.isHidden = false
@@ -421,9 +437,9 @@ class ProfileViewC: AlysieBaseViewC{
             
         } else {
             blankdataView.isHidden = true
-           // self.postRequestToGetFields()
-           // self.fetchContactDetail()
-           // self.fetchProfileDetails()
+            // self.postRequestToGetFields()
+            // self.fetchContactDetail()
+            // self.fetchProfileDetails()
             self.currentIndex = 0
             self.postRequestToGetProgress()
             if check == "" {
@@ -440,22 +456,22 @@ class ProfileViewC: AlysieBaseViewC{
             }
             
         }
-    
+        
         UIView.animate(withDuration: 0.01) {
             self.tabsCollectionView.reloadData()
             
         } completion: { bool in
             if let cell = self.tabsCollectionView.cellForItem(at: IndexPath(row: 1, section: 0)) as? TabCollectionViewCell {
                 cell.isUnderlineBorderVisible(true)
-               // cell.imageView.tintColor = UIColor(named: "blueberryColor")
+                // cell.imageView.tintColor = UIColor(named: "blueberryColor")
             }
         }
-
+        
         
         // Scroll update show
         let line = self.aboutLabel.calculateMaxLines()
-
-
+        
+        
         if line == 5 {
             shownumber = 80
         } else if line == 4 {
@@ -467,8 +483,8 @@ class ProfileViewC: AlysieBaseViewC{
         } else if line == 1 {
             shownumber = 150
         }
-
-
+        
+        
         self.tblViewPosts.tableHeaderView?.setHeight(CGFloat(someHeight) - CGFloat(shownumber))
         
         self.tblViewPosts.contentInsetAdjustmentBehavior = .always
@@ -476,16 +492,16 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        let offset = scrollView.contentOffset.y
-//        if(offset > 50){
-//            self.viewFeature.frame = CGRect(x: 0, y: offset - 2350, width: self.view.bounds.size.width, height: 100)
-//        }else{
-//            self.viewFeature.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
-//        }
-//    }
-   
+    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //
+    //        let offset = scrollView.contentOffset.y
+    //        if(offset > 50){
+    //            self.viewFeature.frame = CGRect(x: 0, y: offset - 2350, width: self.view.bounds.size.width, height: 100)
+    //        }else{
+    //            self.viewFeature.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
+    //        }
+    //    }
+    
     //MARK: - IBAction -
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -588,7 +604,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     @IBAction func tapEditProfile(_ sender: UIButton) {
         initiateEditProfileViewController()
-
+        
     }
     @IBAction func tapAward(_ sender: UIButton) {
         self.moveToNew(childViewController: awardViewC, fromController: self.currentChild)
@@ -608,78 +624,78 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func connectButtonTapped(_ sender: UIButton) {
-       
+        
         if  percentage != nil {
             self.tabBarController?.selectedIndex = 4
         }
         else{
-        //mark:- Producer to importert
-        if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
-            
-          //  if percentage == "100" || percentage == nil{
+            //mark:- Producer to importert
+            if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
+                
+                //  if percentage == "100" || percentage == nil{
                 self.connectButtonTapped()
-          //  } else {
+                //  } else {
                 
-          //  }
-            
-            return
-            // Mark: - producer to other user
-        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .restaurant || self.visitorUserType == .travelAgencies || self.visitorUserType == .voiceExperts || self.visitorUserType == .producer){
-            
-            self.segueToCompleteConnectionFlow()
-            
-            
-        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.voiceExperts.rawValue)) {
-           
-            self.segueToCompleteConnectionFlow()
-            
-        }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer1.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer2.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer3.rawValue)){
-            
-            self.segueToCompleteConnectionFlow()
-            
-            
-        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.restaurant.rawValue)) {
-            self.segueToCompleteConnectionFlow()
-            
-            
-        } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.travelAgencies.rawValue)) {
-            self.segueToCompleteConnectionFlow()
-            
-            
-        } else {
-            if percentage == "100" || percentage == nil{
-                let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
+                //  }
                 
-                if self.connectButton.titleLabel?.text == "Follow" {
-                    followUnfollow(id: profileID, type: 1)
-                } else if self.connectButton.titleLabel?.text == "Unfollow" {
-                    followUnfollow(id: profileID, type: 0)
-                } else {
-                    self.connectButtonTapped()
-                }
-            } else {
-                self.tabBarController?.selectedIndex = 4
+                return
+                // Mark: - producer to other user
+            } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .restaurant || self.visitorUserType == .travelAgencies || self.visitorUserType == .voiceExperts || self.visitorUserType == .producer){
+                
                 self.segueToCompleteConnectionFlow()
+                
+                
+            } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.voiceExperts.rawValue)) {
+                
+                self.segueToCompleteConnectionFlow()
+                
+            }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer1.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer2.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer3.rawValue)){
+                
+                self.segueToCompleteConnectionFlow()
+                
+                
+            } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.restaurant.rawValue)) {
+                self.segueToCompleteConnectionFlow()
+                
+                
+            } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.travelAgencies.rawValue)) {
+                self.segueToCompleteConnectionFlow()
+                
+                
+            } else {
+                if percentage == "100" || percentage == nil{
+                    let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
+                    
+                    if self.connectButton.titleLabel?.text == "Follow" {
+                        followUnfollow(id: profileID, type: 1)
+                    } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                        followUnfollow(id: profileID, type: 0)
+                    } else {
+                        self.connectButtonTapped()
+                    }
+                } else {
+                    self.tabBarController?.selectedIndex = 4
+                    self.segueToCompleteConnectionFlow()
+                }
             }
-        }
         }
     }
     func sendConnectionRequest(_ model: BasicConnectFlow.Connection.request) {
         do {
             let urlString = APIUrl.Connection.sendRequest
-
+            
             let body = try JSONEncoder().encode(model)
-
+            
             guard var request = WebServices.shared.buildURLRequest(urlString, method: .POST) else {
                 return
             }
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpBody = model.urlEncoded()
-
-//            request.httpBody = body
-
+            
+            //            request.httpBody = body
+            
             WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-               
+                
                 
                 
                 if statusCode == 200 {
@@ -696,94 +712,94 @@ class ProfileViewC: AlysieBaseViewC{
             print(error.localizedDescription)
         }
     }
-
+    
     private func segueToCompleteConnectionFlow() {
-       
+        
         let connectionStatus = self.userProfileModel.data?.userData?.connectionFlag ?? 0
         if self.userType == .voyagers && self.visitorUserType == .voyagers && connectionStatus == 0{
             let requestModel = BasicConnectFlow.Connection.request(userID: self.userID ?? 0,reason: "",selectProductId: "")
             sendConnectionRequest(requestModel)
             
         }else{
-        
-        if connectionStatus == 0 {
-            let controller = pushViewController(withName: BasicConnectFlowViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? BasicConnectFlowViewController
             
-            var username = ""
-            var pusername = ""
-            
-            if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
-                pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
-            }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
-                pusername = self.userProfileModel.data?.userData?.firstName ?? ""
-            }else{
-                pusername = self.userProfileModel.data?.userData?.companyName ?? ""
+            if connectionStatus == 0 {
+                let controller = pushViewController(withName: BasicConnectFlowViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? BasicConnectFlowViewController
+                
+                var username = ""
+                var pusername = ""
+                
+                if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
+                    pusername = self.userProfileModel.data?.userData?.restaurantName ?? ""
+                }else if self.userProfileModel.data?.userData?.roleID == UserRoles.voiceExperts.rawValue || self.userProfileModel.data?.userData?.roleID == UserRoles.voyagers.rawValue{
+                    pusername = self.userProfileModel.data?.userData?.firstName ?? ""
+                }else{
+                    pusername = self.userProfileModel.data?.userData?.companyName ?? ""
+                }
+                
+                controller?.userName = pusername
+                controller?.userID = self.userID
+                
+            } else if connectionStatus == 2 {
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                
+                let cancelConnectionRequestAction = UIAlertAction(title: "Cancel Request", style: .default) { action in
+                    self.cancelConnectionRequest()
+                }
+                cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                var title = "Block"
+                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                    title = "Block"
+                } else {
+                    title = "UnBlock"
+                }
+                
+                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                    self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+                }
+                blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                alertController.addAction(cancelConnectionRequestAction)
+                alertController.addAction(blockUserAction)
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            } else if connectionStatus == 1 {
+                
+                
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                
+                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                    self.cancelConnectionRequest()
+                }
+                cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                var title = "Block"
+                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                    title = "Block"
+                } else {
+                    title = "UnBlock"
+                }
+                
+                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                    self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+                }
+                blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                alertController.addAction(cancelConnectionRequestAction)
+                alertController.addAction(blockUserAction)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                
             }
-            
-            controller?.userName = pusername
-            controller?.userID = self.userID
-        
-        } else if connectionStatus == 2 {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
-            let cancelConnectionRequestAction = UIAlertAction(title: "Cancel Request", style: .default) { action in
-                self.cancelConnectionRequest()
-            }
-            cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            var title = "Block"
-            if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                title = "Block"
-            } else {
-                title = "UnBlock"
-            }
-            
-            let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
-                self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
-            }
-            blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            alertController.addAction(cancelConnectionRequestAction)
-            alertController.addAction(blockUserAction)
-            alertController.addAction(cancelAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        } else if connectionStatus == 1 {
-            
-            
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
-            let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
-                self.cancelConnectionRequest()
-            }
-            cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            var title = "Block"
-            if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                title = "Block"
-            } else {
-                title = "UnBlock"
-            }
-            
-            let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
-                self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
-            }
-            blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            
-            alertController.addAction(cancelConnectionRequestAction)
-            alertController.addAction(blockUserAction)
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
-            
-        }
         }
     }
     
@@ -817,32 +833,32 @@ class ProfileViewC: AlysieBaseViewC{
             } else if self.userType == .voyagers {
                 
                 if self.visitorUserType == .voyagers {
-                                    //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Connected" : "Pending"
-                                    //self.connectButton.setTitle("\(title)", for: .normal)
-                                    var title = "Connect"
-                                    switch connectionFlag {
-                                    case 0:
-                                        title = "Connect"
-                                    case 1:
-                                        title = "Connected"
-                                    case 2:
-                                        title = "Pending"
-                                    default:
-                                        title = "Connect"
-                                    }
-                                    self.connectButton.setTitle("\(title)", for: .normal)
-                                    
-                                } else {
-                                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
-                                    self.connectButton.setTitle("\(title)", for: .normal)
-                                }
+                    //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Connected" : "Pending"
+                    //self.connectButton.setTitle("\(title)", for: .normal)
+                    var title = "Connect"
+                    switch connectionFlag {
+                    case 0:
+                        title = "Connect"
+                    case 1:
+                        title = "Connected"
+                    case 2:
+                        title = "Pending"
+                    default:
+                        title = "Connect"
+                    }
+                    self.connectButton.setTitle("\(title)", for: .normal)
+                    
+                } else {
+                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
+                    self.connectButton.setTitle("\(title)", for: .normal)
+                }
             }
         }  else {
         }
     }
     @IBAction func btnback(_ sender: UIButton){
-       self.navigationController?.popViewController(animated: true)
-       
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @IBAction func messageButtonTapped(_ sender: UIButton) {
@@ -864,7 +880,7 @@ class ProfileViewC: AlysieBaseViewC{
             DispatchQueue.main.async() { [weak self] in
                 
                 profileTabImage = UIImage(data: data)
-              
+                
                 self?.tabBarController?.addSubviewToLastTabItem(profileTabImage ?? UIImage())
             }
         }
@@ -883,7 +899,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.imgViewCover.setImage(withString: imgUrl)
         self.imgPUrl = (baseUrl + profileImage)
         
-    
+        
         if imgPUrl != "" {
             self.imgViewProfile.setImage(withString: imgPUrl ?? "")
             self.imgViewProfile.layer.cornerRadius = (self.imgViewProfile.frame.width / 2.0)
@@ -927,10 +943,10 @@ class ProfileViewC: AlysieBaseViewC{
         let product = productCategoryDataModel?.arrAllProducts[indexPath.row]
         let featuredProductCollectionCell = collectionViewAddProduct.dequeueReusableCell(withReuseIdentifier: FeaturedProductCollectionCell.identifier(), for: indexPath) as! FeaturedProductCollectionCell
         featuredProductCollectionCell.configure(withAllProductsDataModel: product,pushedFrom: 1)
-  //      featuredProductCollectionCell.delegate = self
-//        if self.signUpViewModel != nil {
-//            featuredProductCollectionCell.configureData(withProductCategoriesDataModel: self.signUpViewModel.arrProductCategories[indexPath.section])
-//        }
+        //      featuredProductCollectionCell.delegate = self
+        //        if self.signUpViewModel != nil {
+        //            featuredProductCollectionCell.configureData(withProductCategoriesDataModel: self.signUpViewModel.arrProductCategories[indexPath.section])
+        //        }
         return featuredProductCollectionCell
     }
     
@@ -986,27 +1002,27 @@ class ProfileViewC: AlysieBaseViewC{
                 self.featuredListingTitleLabel.text = "Featured Menu"
             case .travelAgencies:
                 self.featuredListingTitleLabel.text = "Featured Package"
-        
+                
             case .voiceExperts:
                 self.featuredListingTitleLabel.text = "Featured"
                 
             default:
-        
+                
                 print("no user role found")
             }
         }else{
-        switch self.userType {
-        case .distributer1, .distributer2, .distributer3, .producer:
-            self.featuredListingTitleLabel.text = "Featured Product"
-        case .restaurant:
-            self.featuredListingTitleLabel.text = "Featured Menu"
-        case .travelAgencies:
-            self.featuredListingTitleLabel.text = "Featured Package"
-        case .voiceExperts:
-            self.featuredListingTitleLabel.text = "Featured"
-        default:
-            print("no user role found")
-        }
+            switch self.userType {
+            case .distributer1, .distributer2, .distributer3, .producer:
+                self.featuredListingTitleLabel.text = "Featured Product"
+            case .restaurant:
+                self.featuredListingTitleLabel.text = "Featured Menu"
+            case .travelAgencies:
+                self.featuredListingTitleLabel.text = "Featured Package"
+            case .voiceExperts:
+                self.featuredListingTitleLabel.text = "Featured"
+            default:
+                print("no user role found")
+            }
         }
     }
     
@@ -1022,12 +1038,12 @@ class ProfileViewC: AlysieBaseViewC{
             SVProgressHUD.dismiss()
             if statusCode == 401 {
                 let token = kSharedUserDefaults.getDeviceToken()
-             //   kSharedUserDefaults.clearAllData()
+                //   kSharedUserDefaults.clearAllData()
                 kSharedUserDefaults.setDeviceToken(deviceToken: token)
             }
             guard let data = data else { return }
             do {
-               
+                
                 let responseModel = try JSONDecoder().decode(UserProfile.profileTopSectionModel.self, from: data)
                 print(responseModel)
                 
@@ -1095,21 +1111,21 @@ class ProfileViewC: AlysieBaseViewC{
                     self.tblViewProfileCompletion.isHidden = false
                     self.headerView.isHidden = true
                     self.tblViewPosts.isHidden = true
-                
+                    
                 }
                 
                 kSharedUserDefaults.loggedInUserModal.firstName = responseModel.data?.userData?.firstName
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
                 kSharedUserDefaults.loggedInUserModal.avatar?.imageURL = responseModel.data?.userData?.avatar?.imageURL
                 kSharedUserDefaults.synchronize()
-//                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
-//                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
+                //                let baseUrl = (responseModel.data?.userData?.avatar?.base_url ?? "")
+                //                let urlP = URL(string: "\(baseUrl + "\(responseModel.data?.userData?.avatar?.imageURL ?? "")")")
                 print("CountryCode-----------------------\(responseModel.data?.contactTab?.country_code ?? "")")
                 let urlP = URL(string: kSharedUserDefaults.loggedInUserModal.avatar?.imageURL ?? "")
                 self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 
                 self.initialSetUp(responseModel.data?.userData?.avatar?.imageURL ?? "", responseModel.data?.userData?.cover?.imageURL ?? "",baseUrl: (responseModel.data?.userData?.avatar?.base_url ?? ""))
-              
+                
                 //MARK: For self Contact Detail
                 self.contactDetilViewModel = responseModel.data?.contactTab
                 self.contactDetail.removeAll()
@@ -1158,40 +1174,40 @@ class ProfileViewC: AlysieBaseViewC{
         guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.visiterProfile)\(userID)", method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
             SVProgressHUD.dismiss()
-           
+            
             guard let data = data else { return }
             do {
                 
                 let responseModel = try JSONDecoder().decode(UserProfile.profileTopSectionModel.self, from: data)
-               // let dicResult = kSharedInstance.getDictionary(data)
+                // let dicResult = kSharedInstance.getDictionary(data)
                 //let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
-               
+                
                 print(responseModel)
                 self.userProfileModel = responseModel
-               
+                
                 self.postRequestToGetFields()
                 self.postcount.text = String.getString(responseModel.data?.postCount)
-                                self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
-                                
-                                
-                                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-                                    self.followercount.text = String.getString(responseModel.data?.followingcount)
-                                } else {
-                                    self.followercount.text = String.getString(responseModel.data?.followerCount)
-                                }
+                self.connectioncount.text = String.getString(responseModel.data?.connectionCount)
+                
+                
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                    self.followercount.text = String.getString(responseModel.data?.followingcount)
+                } else {
+                    self.followercount.text = String.getString(responseModel.data?.followerCount)
+                }
                 
                 //self.postcount.text = String.getString(responseModel.data?.postCount)
                 //self.followercount.text = String.getString(responseModel.data?.followerCount)
                 
                 
-               // if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-              //  let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
+                // if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+                //  let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
                 
                 if (self.userProfileModel.data?.userData?.roleID == 10){
                     //self.featureUIview.constant = 0
                     self.followercount.text = String.getString(responseModel.data?.followingcount)
                 } else {
-                   // self.featureUIview.constant = 140
+                    // self.featureUIview.constant = 140
                     self.followercount.text = String.getString(responseModel.data?.followerCount)
                 }
                 
@@ -1216,36 +1232,36 @@ class ProfileViewC: AlysieBaseViewC{
                     self.followerstext.text = "Followers"
                 }
                 if self.userProfileModel.data?.userData?.connectionFlag == 1 || self.userProfileModel.data?.userData?.followFlag == 1 ||  self.userProfileModel.data?.userData?.whoCanViewProfile == "anyone"{
-                                    self.tabsCollectionView.reloadData()
-                                    self.tabsCollectionView.isHidden = false
-                                    self.containerView.isHidden = false
-                                } else {
-                                    self.tabsCollectionView.isHidden = true
-                                    self.containerView.isHidden = true
-                                }
+                    self.tabsCollectionView.reloadData()
+                    self.tabsCollectionView.isHidden = false
+                    self.containerView.isHidden = false
+                } else {
+                    self.tabsCollectionView.isHidden = true
+                    self.containerView.isHidden = true
+                }
                 
                 var name = ""
                 switch roleID {
                 case .distributer1, .distributer2, .distributer3, .producer, .travelAgencies :
                     name = "\(responseModel.data?.userData?.companyName ?? "")"
                     self.btnConnectHght.constant = 44
-
+                    
                 case .restaurant :
                     name = "\(responseModel.data?.userData?.restaurantName ?? "")"
                     self.btnConnectHght.constant = 44
-
+                    
                 case .voiceExperts:
                     name = "\(responseModel.data?.userData?.firstName ?? "") \(responseModel.data?.userData?.lastName ?? "")"
                     self.btnConnectHght.constant = 44
-
+                    
                 default:
                     name = "\(responseModel.data?.userData?.firstName ?? "") \(responseModel.data?.userData?.lastName ?? "")"
                     if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
-                    self.btnConnectHght.constant = 44
+                        self.btnConnectHght.constant = 44
                     }else{
                         self.btnConnectHght.constant = 0
                     }
-                
+                    
                 }
                 
                 self.userType = roleID
@@ -1288,7 +1304,7 @@ class ProfileViewC: AlysieBaseViewC{
                     print("own")
                     self.btnEditProfile.isHidden = false
                     self.btnEditProfile.isUserInteractionEnabled = true
-                   
+                    
                 case .other:
                     if self.connectionFlagValue == 3{
                         self.messageButton.isHidden = false
@@ -1300,8 +1316,8 @@ class ProfileViewC: AlysieBaseViewC{
                         self.messageButton.isHidden = true
                         self.respondeButton.isHidden = true
                         self.respondeButton.isUserInteractionEnabled = false
-                    self.connectButton.isHidden = false
-                    self.connectButton.isUserInteractionEnabled = true
+                        self.connectButton.isHidden = false
+                        self.connectButton.isUserInteractionEnabled = true
                     }
                 }
                 
@@ -1313,16 +1329,16 @@ class ProfileViewC: AlysieBaseViewC{
         }
     }
     func fetchContactData(_ data: [String:Any]){
-       
+        
     }
-
+    
     //MARK:  - Private Methods -
     
     private func getProfileCompletionTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tblViewProfileCompletion.dequeueReusableCell(withIdentifier: ProfileCompletionTableViewCell.identifier()) as! ProfileCompletionTableViewCell
-       // cell.delegate = self
-       
+        // cell.delegate = self
+        
         cell.lbleTitle.text = profileCompletionModel?[indexPath.row].title
         cell.lblDescription.text = profileCompletionModel?[indexPath.row].description
         cell.configure(indexPath, currentIndex: self.currentIndex)
@@ -1330,18 +1346,20 @@ class ProfileViewC: AlysieBaseViewC{
         cell.viewLine.isHidden = (indexPath.row == ((profileCompletionModel?.count ?? 0) - 1)) ? true : false
         cell.tag = indexPath.row
         self.animateViews(indexPath.row, cell: cell)
-//        cell.animationCallback = { currentIndex, cell in
-//        self.animateViews(indexPath.row , cell: cell)
-//        }
+        //        cell.animationCallback = { currentIndex, cell in
+        //        self.animateViews(indexPath.row , cell: cell)
+        //        }
+        
+        
         return cell
     }
-
+    
     private func postRequestToGetFields() -> Void{
         
         disableWindowInteraction()
-    //
+        //
         if userLevel == .own{
-        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+            CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
         }else{
             CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
         }
@@ -1390,7 +1408,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.profileCompletionModel = profileArray.map{ProfileCompletionModel(with: $0)}
                 
             }
-        
+            
             if let perData = response?["data"] as? [String:Any]{
                 self.percentage = perData["profile_percentage"] as? String
                 self.setPercentageUI(self.percentage ?? "0")
@@ -1400,7 +1418,8 @@ class ProfileViewC: AlysieBaseViewC{
                     self.progressUserData = UserData.init(with: progUserData)
                 }
             }
-           
+            
+            
             self.tblViewProfileCompletion.reloadData()
         }
     }
@@ -1424,7 +1443,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
         return productCategoryDataModel?.arrAllProducts.count ?? 0
         
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -1452,57 +1471,57 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         
         let totalRows = ProfileTabRows().noOfRows(self.userType)
         
-//        if currentSelectedIndexPath != indexPath.row {
-//            currentSelectedIndexPath = indexPath.row
-//        }
+        //        if currentSelectedIndexPath != indexPath.row {
+        //            currentSelectedIndexPath = indexPath.row
+        //        }
         if totalRows > indexPath.row{
-        if collectionView == self.tabsCollectionView {
-            let totalRows = ProfileTabRows().noOfRows(self.userType)
-            
-            let title = ProfileTabRows().rowsTitle(self.userType)[indexPath.row]
-            if indexPath.row ==  0 {
-                self.tapPosts(UIButton())
-            } else if indexPath.row == 1 {
-                self.tapPhotos(UIButton())
-            } else if indexPath.row == 2 {
-                self.tapAbout(UIButton())
-            } else if indexPath.row == 3 {
-                self.tapContact(UIButton())
+            if collectionView == self.tabsCollectionView {
+                let totalRows = ProfileTabRows().noOfRows(self.userType)
                 
-            }else if indexPath.row == 4{
-                self.tapAward(UIButton())
-            }else if indexPath.row == 5 {
-                
-                if title == "Blogs" {
-                    self.tapBlog(UIButton())
-                } else if title == "Trips" {
-                    self.tapTrip(UIButton())
-                } else if title == "Events" {
-                    self.tapEvent(UIButton())
+                let title = ProfileTabRows().rowsTitle(self.userType)[indexPath.row]
+                if indexPath.row ==  0 {
+                    self.tapPosts(UIButton())
+                } else if indexPath.row == 1 {
+                    self.tapPhotos(UIButton())
+                } else if indexPath.row == 2 {
+                    self.tapAbout(UIButton())
+                } else if indexPath.row == 3 {
+                    self.tapContact(UIButton())
+                    
+                }else if indexPath.row == 4{
+                    self.tapAward(UIButton())
+                }else if indexPath.row == 5 {
+                    
+                    if title == "Blogs" {
+                        self.tapBlog(UIButton())
+                    } else if title == "Trips" {
+                        self.tapTrip(UIButton())
+                    } else if title == "Events" {
+                        self.tapEvent(UIButton())
+                    }
+                    
+                    
                 }
                 
+                if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
+                    cell.isUnderlineBorderVisible(true)
+                    //cell.imageView.tintColor = UIColor(named: "blueberryColor")
+                    
+                    self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                    
+                    
+                }
+                
+                //            let sIndexPath = IndexPath(item: currentSelectedIndexPath, section: 0)
+                //            if let cell = self.tabsCollectionView.cellForItem(at: sIndexPath) as? TabCollectionViewCell {
+                //                cell.isUnderlineBorderVisible(true)
+                //                cell.imageView.tintColor = UIColor(named: "blueberryColor")
+                //
+                //                self.tabsCollectionView.selectItem(at: sIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+                //
+                //            }
                 
             }
-            
-            if let cell = self.tabsCollectionView.cellForItem(at: indexPath) as? TabCollectionViewCell {
-                cell.isUnderlineBorderVisible(true)
-                //cell.imageView.tintColor = UIColor(named: "blueberryColor")
-
-                self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-                
-
-            }
-            
-//            let sIndexPath = IndexPath(item: currentSelectedIndexPath, section: 0)
-//            if let cell = self.tabsCollectionView.cellForItem(at: sIndexPath) as? TabCollectionViewCell {
-//                cell.isUnderlineBorderVisible(true)
-//                cell.imageView.tintColor = UIColor(named: "blueberryColor")
-//
-//                self.tabsCollectionView.selectItem(at: sIndexPath, animated: true, scrollPosition: .centeredHorizontally)
-//
-//            }
-            
-        }
         }
         if collectionView == collectionViewAddProduct {
             let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
@@ -1530,8 +1549,8 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         if collectionView == tabsCollectionView{
             return CGSize(width: self.tabsCollectionView.frame.width / 3, height: 48.0)
         }else{
-        
-        return CGSize(width: 65, height: 100.0)
+            
+            return CGSize(width: 65, height: 100.0)
         }
     }
     
@@ -1546,21 +1565,7 @@ extension ProfileViewC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //            if  kSharedUserDefaults.alyseiReview == 1{
-        //                if !AppManager.getUserSeenAppInstructionProfile() {
-//        self.coachMarksController.start(in: .viewController(self))
-//        self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-        //                }
-        //                else{
-        //                    tabBarController?.tabBar.backgroundColor = .white
-        //                    tabBarController?.tabBar.alpha = 1.0
-        //                }
-        //
-        //            }
-        //            else{
-        //                tabBarController?.tabBar.backgroundColor = .white
-        //                tabBarController?.tabBar.alpha = 1.0
-        //            }
+        
         return self.getProfileCompletionTableCell(indexPath)
     }
     
@@ -1570,8 +1575,8 @@ extension ProfileViewC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == self.tblViewPosts {
-//            let height = (500.0 + (self.view.frame.height * 0.75) + ((UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0) * 4.0))
-//            return height
+            //            let height = (500.0 + (self.view.frame.height * 0.75) + ((UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0) * 4.0))
+            //            return height
             return 150
         }
         return UITableView.automaticDimension
@@ -1587,101 +1592,101 @@ extension ProfileViewC: AnimationProfileCallBack{
         case 0:
             self.currentIndex = 1
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion1")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#ccccff").cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion1")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#ccccff").cgColor
+                }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-           // self.tblViewProfileCompletion.reloadData()
+            // self.tblViewProfileCompletion.reloadData()
         case 1:
             self.currentIndex = 2
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion2")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#9999ff").cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion2")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#9999ff").cgColor
+                }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-          //  self.tblViewProfileCompletion.reloadData()
+            //  self.tblViewProfileCompletion.reloadData()
         case 2:
             self.currentIndex = 3
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion3")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#7f7fff").cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion3")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#7f7fff").cgColor
+                }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-           // self.tblViewProfileCompletion.reloadData()
+            // self.tblViewProfileCompletion.reloadData()
         case 3:
             self.currentIndex = 4
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion4")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00cc00").cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion4")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00cc00").cgColor
+                }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-          //  self.tblViewProfileCompletion.reloadData()
+            //  self.tblViewProfileCompletion.reloadData()
         case 4:
             self.currentIndex = 5
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion5")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion5")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
+                }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-          //  self.tblViewProfileCompletion.reloadData()
+            //  self.tblViewProfileCompletion.reloadData()
         case 5:
             self.currentIndex = 6
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
                 }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-          //  self.tblViewProfileCompletion.reloadData()
+            //  self.tblViewProfileCompletion.reloadData()
         case 6:
             self.currentIndex = 7
             if  profileCompletionModel?[indexPath].status == true {
-                    cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
+                cell.imgViewCircle.image = UIImage.init(named: "ProfileCompletion6")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     cell.viewLine.layer.backgroundColor = UIColor.init(hexString: "#00b300").cgColor
                 }
             }else {
-                    cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
-                    }
+                cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    cell.viewLine.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
             }
-          //  self.tblViewProfileCompletion.reloadData()
+            //  self.tblViewProfileCompletion.reloadData()
             
         default:
             cell.imgViewCircle.image = UIImage.init(named: "grey_checked_icon")
@@ -1690,8 +1695,8 @@ extension ProfileViewC: AnimationProfileCallBack{
             }
         }
         
-       
-        }
+        
+    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -1763,11 +1768,11 @@ extension ProfileViewC{
         if segue.identifier == "segueProfileTabToContactDetail" {
             if let viewCon = segue.destination as? ContactDetailViewController {
                 viewCon.userType = self.userType
-              //  viewCon.countryId = progressUserData?.country?.id
+                //  viewCon.countryId = progressUserData?.country?.id
                 viewCon.phoneCode = progressUserData?.country?.countryPhonecode
                 viewCon.Countryname = progressUserData?.country?.name
                 viewCon.viewModel = UserProfile.contactTab(website: self.contactDetilViewModel.website, address: self.contactDetilViewModel.address, email: self.contactDetilViewModel.email, country_code: self.contactDetilViewModel.country_code, phone: self.contactDetilViewModel.phone, roleID: self.contactDetilViewModel.roleID, userID: self.contactDetilViewModel.roleID, fbLink: self.contactDetilViewModel.fbLink)
-             //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
+                //   viewCon.viewModel = ContactDetail.Contact.ViewModel(response: self.contactDetilViewModel)
             }
         }
         
@@ -1795,7 +1800,7 @@ extension ProfileViewC{
             }
         }
     }
-
+    
     override func didUserGetData(from result: Any, type: Int) {
         
         switch  type {
@@ -1806,14 +1811,14 @@ extension ProfileViewC{
             if let fields = dicData[APIConstants.kFields] as? ArrayOfDictionary{
                 arrSelectedFields = fields.map({ProductFieldsDataModel(withDictionary: $0)})
             }
-           
+            
             //self.postRequestToUpdateUserProfile()
             let controller = self.pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
             controller?.userLevel = self.userLevel
             controller?.arrSelectedFields = arrSelectedFields
             controller?.featureListingId = self.featureListingId
             controller?.currentNavigationTitle = self.currentProductTitle
-           // controller?.delegate = self
+            // controller?.delegate = self
         default:
             
             if editProfileViewCon == nil {
@@ -1861,7 +1866,7 @@ extension ProfileViewC {
         if self.userType != .voyagers {
             let connectionStatus = self.userProfileModel.data?.userData?.connectionFlag ?? 0
             if connectionStatus == 0 {
-               // self.performSegue(withIdentifier: "segueProfileTabToBasicConnection", sender: nil)
+                // self.performSegue(withIdentifier: "segueProfileTabToBasicConnection", sender: nil)
                 let controller = pushViewController(withName: ConnectionProductTypeViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? ConnectionProductTypeViewController
                 var pusername = ""
                 if self.userProfileModel.data?.userData?.roleID == UserRoles.restaurant.rawValue{
@@ -1904,34 +1909,34 @@ extension ProfileViewC {
                 
                 self.present(alertController, animated: true, completion: nil)
             }else if connectionStatus == 1 {
-               // print("Check")
+                // print("Check")
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                                
-                                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
-                                    self.cancelConnectionRequest()
-                                }
-                                cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                                
-                                var title = "Block"
-                                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                                    title = "Block"
-                                } else {
-                                    title = "UnBlock"
-                                }
-                                
-                                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
-                                    self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
-                                }
-                                blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                                
-                                
-                                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                                cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                                
-                                alertController.addAction(cancelConnectionRequestAction)
-                                alertController.addAction(blockUserAction)
-                                alertController.addAction(cancelAction)
-                                self.present(alertController, animated: true, completion: nil)
+                
+                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                    self.cancelConnectionRequest()
+                }
+                cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                var title = "Block"
+                if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
+                    title = "Block"
+                } else {
+                    title = "UnBlock"
+                }
+                
+                let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
+                    self.blockUserFromConnectionRequest(ProfileScreenModels.BlockConnectRequest(userID: self.userID))
+                }
+                blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                
+                alertController.addAction(cancelConnectionRequestAction)
+                alertController.addAction(blockUserAction)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
             }
             return
         } else if  self.userType == .voyagers && self.visitorUserType == .voyagers{
@@ -1961,13 +1966,13 @@ extension ProfileViewC {
                 } else if statusCode == 409 {
                     
                     do {
-                                //create json object from data
+                        //create json object from data
                         if let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any] {
-                                    print(json)
-                                }
-                            } catch let error {
-                                print(error.localizedDescription)
-                            }
+                            print(json)
+                        }
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
                     
                     
                     self.showAlert(withMessage: "Error")
@@ -2004,7 +2009,7 @@ extension ProfileViewC {
             self.fetchVisiterProfileDetails(self.userID)
         }
     }
-
+    
     func respondButtonTapped() {
         
         let alert:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -2037,7 +2042,7 @@ extension ProfileViewC {
         let blockImage = UIImage(named: "block_icon")?.withRenderingMode(.alwaysOriginal)
         blockAction.setValue(blockImage, forKey: "image")
         blockAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-
+        
         // cancelAction
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: UIAlertAction.Style.cancel) { (action) in
@@ -2058,10 +2063,10 @@ extension ProfileViewC {
 }
 extension ProfileViewC {
     private func postRequestToGetFeatureListing(_ featureListingId: String,navigationTitle: String) -> Void{
-
+        
         self.featureListingId = featureListingId
         self.currentProductTitle = navigationTitle
-
+        
         disableWindowInteraction()
         CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetFeatureListing + featureListingId, method: .GET, controller: self, type: 2, param: [:], btnTapped: UIButton())
     }
@@ -2083,7 +2088,7 @@ extension ProfileViewC: AddFeaturedProductCallBack {
             self.postRequestToGetFeatureListing(String.getString(featureListingId), navigationTitle: String.getString(model.title))
         }
     }
-    }
+}
 
 
 extension UITabBarController {
@@ -2107,147 +2112,153 @@ extension UITabBarController {
     }
 }
 
-//extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
-//
-//    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-//        return 5
-//    }
-//
-//    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
-//
-//        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-//
-//        switch index {
-//        case 0:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3", "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistPic
-//            case "7":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsPic
-//            case "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesPic
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantPic
-//
-//            case "10":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersPic
-//            default: break
-//
-//            }
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-//        case 1:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3", "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistCover
-//            case "7":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsCover
-//            case "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesCover
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantCover
-//
-//            case "10":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersCover
-//            default: break
-//
-//            }
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-//        case 2:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3", "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImporterDistributor
-//            case "7":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExperts
-//            case "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgencies
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurant
-//
-//            case "10":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagers
-//            default: break
-//
-//            }
-//
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-//
-//        case 3:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerField
-//            case "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
-//            case "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesField
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
-//
-//            default: break
-//
-//            }
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-//
-//
-//        case 4:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3", "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
-//            case "7":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
-//            case "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantFeatured
-//
-//            default: break
-//
-//            }
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now()+3.5) {
-//
-//                self.tabBarController?.tabBar.backgroundColor = .white
-//                self.tabBarController?.tabBar.alpha = 1.0
-//            }
-//
-//
-//        default: break
-//        }
-//
-//        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
-//    }
-//
-//    func coachMarksController(_ coachMarksController: CoachMarksController,
-//                              coachMarkAt index: Int) -> CoachMark {
-//
-//        let indexpath1 = IndexPath(row: 1, section: 0)
-//        let cell1 = tblViewProfileCompletion.cellForRow(at: indexpath1) as? ProfileCompletionTableViewCell
-//        let indexpath2 = IndexPath(row: 2, section: 0)
-//        let cell2 = tblViewProfileCompletion.cellForRow(at: indexpath2) as? ProfileCompletionTableViewCell
-//        let indexpath3 = IndexPath(row: 3, section: 0)
-//        let cell3 = tblViewProfileCompletion.cellForRow(at: indexpath3) as? ProfileCompletionTableViewCell
-//        let indexpath4 = IndexPath(row: 4, section: 0)
-//        let cell4 = tblViewProfileCompletion.cellForRow(at: indexpath4) as? ProfileCompletionTableViewCell
-//        let indexpath6 = IndexPath(row: 6, section: 0)
-//        let cell6 = tblViewProfileCompletion.cellForRow(at: indexpath6) as? ProfileCompletionTableViewCell
-//
-//        switch index {
-//        case 0: return coachMarksController.helper.makeCoachMark(for: cell1?.lbleTitle)
-//        case 1: return coachMarksController.helper.makeCoachMark(for: cell2?.lbleTitle)
-//        case 2:
-//            return coachMarksController.helper.makeCoachMark(for: cell3?.lbleTitle)
-//        case 3:
-//            return coachMarksController.helper.makeCoachMark(for: cell4?.lbleTitle)
-//        case 4:
-//            return coachMarksController.helper.makeCoachMark(for: cell6?.lbleTitle)
-//        default:
-//            return coachMarksController.helper.makeCoachMark()
-//        }
-//    }
-//
-//
-//    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
-//        AppManager.setUserSeenAppInstructionProfile()
-//    }
-//
-//}
+extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 4
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
+        
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        switch index {
+        case 0:
+            coachViews.bodyView.hintLabel.text = TourGuideConstants.kLogoutProfile
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 1:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistPic
+            case "7":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsPic
+            case "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesPic
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantPic
+                
+            case "10":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersPic
+            default: break
+                
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 2:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistCover
+            case "7":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsCover
+            case "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesCover
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantCover
+                
+            case "10":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersCover
+            default: break
+                
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 3:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImporterDistributor
+            case "7":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExperts
+            case "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgencies
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurant
+                
+            case "10":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagers
+            default: break
+                
+            }
+            
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
+            //        case 3:
+            //            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            //            case "3":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerField
+            //            case "4", "5", "6":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
+            //            case "8":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesField
+            //            case "9":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
+            //
+            //            default: break
+            //
+            //            }
+            //            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            //
+            //
+            //        case 4:
+            //            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            //            case "3", "4", "5", "6":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
+            //            case "7":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
+            //            case "8":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
+            //            case "9":
+            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantFeatured
+            //
+            //            default: break
+            //
+            //            }
+            //            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
+                
+                self.tabBarController?.tabBar.backgroundColor = .white
+                self.tabBarController?.tabBar.alpha = 1.0
+                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+               
+            }
+            
+            
+        default: break
+        }
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        
+        //        let indexpath1 = IndexPath(row: 1, section: 0)
+        //        let cell1 = self.tblViewProfileCompletion.cellForRow(at: indexpath1) as? ProfileCompletionTableViewCell
+        //        let indexpath2 = IndexPath(row: 2, section: 0)
+        //        let cell2 = self.tblViewProfileCompletion.cellForRow(at: indexpath2) as? ProfileCompletionTableViewCell
+        //
+        //        let indexpath3 = IndexPath(row: 3, section: 0)
+        //        let cell3 = self.tblViewProfileCompletion.cellForRow(at: indexpath3) as? ProfileCompletionTableViewCell
+        //        let indexpath4 = IndexPath(row: 4, section: 0)
+        //        let cell4 = self.tblViewProfileCompletion.cellForRow(at: indexpath4) as? ProfileCompletionTableViewCell
+        //        let indexpath6 = IndexPath(row: 6, section: 0)
+        //        let cell6 = self.tblViewProfileCompletion.cellForRow(at: indexpath6) as? ProfileCompletionTableViewCell
+        //       let coachMark1 = coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
+        switch index {
+        case 0: return coachMarksController.helper.makeCoachMark(for: logout)
+        case 1: return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
+        case 2:
+            return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
+        case 3:
+            return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 3, section: 0)))
+            //        case 4:
+            //            return coachMarksController.helper.makeCoachMark(for: cell6?.lbleTitle)
+        default:
+            return coachMarksController.helper.makeCoachMark()
+        }
+    }
+    
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
+        AppManager.setUserSeenAppInstructionProfile()
+    }
+    
+}

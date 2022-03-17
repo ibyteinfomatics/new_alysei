@@ -193,7 +193,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         self.walkView1Top.constant = self.view.frame.height
         if !AppManager.getUserSeenAppInstruction() {
         self.coachMarksController.start(in: .viewController(self))
-            view.isUserInteractionEnabled = false
+
           }
     }
     
@@ -1390,7 +1390,7 @@ extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMa
 //        case 2:
 //    coachViews.bodyView.hintLabel.text = TourGuideConstants.kForTrendingNow
 //    coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-            view.isUserInteractionEnabled = true
+          
         default: break
         }
 

@@ -40,7 +40,9 @@ let kDeviceModel                = UIDevice.current.model
 
 
 let domain                      = "https://alyseiapi.ibyteworkshop.com"
+//let domain                      = "http://134.119.179.231:3000"
 let imageDomain                 = "https://alyseiapi.ibyteworkshop.com"
+//let imageDomain                 = "http://134.119.179.231:3000"
 let kBASEURL                    = "\(domain)/public/api/"
 let kImageBaseUrl               = "\(imageDomain)/"
 let kImageBaseUrl1              = "\(imageDomain)"

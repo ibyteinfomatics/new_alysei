@@ -114,22 +114,29 @@ class PostsViewController: AlysieBaseViewC {
                                     tabBarController?.tabBar.backgroundColor = .gray
                                     tabBarController?.tabBar.alpha = 0.8
                                     tabBarController?.tabBar.isUserInteractionEnabled = false
+                                    
                                     // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
                                     }
                                     else{
                                         tabBarController?.tabBar.backgroundColor = .white
                                         tabBarController?.tabBar.alpha = 1.0
+                                        tabBarController?.tabBar.isUserInteractionEnabled = true
+                                       
                                     }
                 }
                 else{
                     tabBarController?.tabBar.backgroundColor = .white
                     tabBarController?.tabBar.alpha = 1.0
+                    tabBarController?.tabBar.isUserInteractionEnabled = true
+                   
                 }
           
             }
             else{
                 tabBarController?.tabBar.backgroundColor = .white
                 tabBarController?.tabBar.alpha = 1.0
+                tabBarController?.tabBar.isUserInteractionEnabled = true
+               
             }
         
         
@@ -835,6 +842,7 @@ extension PostsViewController : CoachMarksControllerDataSource, CoachMarksContro
                 self.tabBarController?.tabBar.backgroundColor = .white
                 self.tabBarController?.tabBar.alpha = 1.0
                 self.tabBarController?.tabBar.isUserInteractionEnabled = true
+               
             }
             
         default: break

@@ -1001,7 +1001,7 @@ struct TourGuideConstants{
     static var kSelectRole : String { return "Select the box that identifies you or your company and follow the steps".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     //MARK: Hub Selection ————
-    
+    static var kLogoutProfile : String { return "Logout".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kProducerHub : String { return "You are assigned by default to the Chicago Hub. You can select more than one if available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kProducerClickHere : String { return "Don't you find your Hub and are you looking to add additional locations? Click here".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterdistributorHub : String { return "Select the Hub among those available where you are physically located or where you operate your business".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

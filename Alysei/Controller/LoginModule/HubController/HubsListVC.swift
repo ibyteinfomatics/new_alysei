@@ -81,9 +81,9 @@ class HubsListVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         if !AppManager.getUserSeenAppInstructionHub() {
-        self.coachMarksController.start(in: .viewController(self))
-            view.isUserInteractionEnabled = false
-           }
+            self.coachMarksController.start(in: .viewController(self))
+          
+        }
     }
     
     private func callHubViewApi(){
@@ -236,7 +236,7 @@ class HubsListVC: UIViewController {
 extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 1
+        return 2
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
@@ -244,20 +244,9 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         switch index {
-//        case 0:
-//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-//            case "3", "8":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
-//            case "4", "5", "6":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterdistributorHub
-//            case "9":
-//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentsHub
-//            default:
-//                break
-//            }
-//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-        case 0:
+            
+        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
@@ -268,7 +257,19 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
                 break
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-            view.isUserInteractionEnabled = true
+        case 0:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+            case "3", "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
+            case "4", "5", "6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterdistributorHub
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentsHub
+            default:
+                break
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+          
         default: break
         }
         
@@ -280,12 +281,12 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
     
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
-//        let indexpath1 = IndexPath(row: 0, section: 0)
-//        let cell1 = tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
+                let indexpath1 = IndexPath(row: 0, section: 0)
+                let cell1 = tableView.cellForRow(at: indexpath1)
         switch index {
-//        case 0:return coachMarksController.helper.makeCoachMark(for: cell1?.buttonLeftCheckbox)
-        case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-            
+           
+        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+        case 0:return coachMarksController.helper.makeCoachMark(for: cell1)
         default: return coachMarksController.helper.makeCoachMark()
         }
     }
