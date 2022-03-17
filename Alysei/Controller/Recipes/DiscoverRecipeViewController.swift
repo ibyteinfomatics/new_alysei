@@ -108,9 +108,9 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         self.coachMarksController.dataSource = self
         self.coachMarksController.delegate = self
         
-        let skipView = CoachMarkSkipDefaultView()
-        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
-            self.coachMarksController.skipView = skipView
+//        let skipView = CoachMarkSkipDefaultView()
+//        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+//         self.coachMarksController.skipView = skipView
         
         //MARK: Set Localization title------
         postLabel.text = MarketPlaceConstant.kPosts
@@ -191,10 +191,10 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         
         //self.walkView1Trailing.constant = self.view.frame.width
         self.walkView1Top.constant = self.view.frame.height
-        
-//        if !AppManager.getUserSeenAppInstruction() {
+        if !AppManager.getUserSeenAppInstruction() {
         self.coachMarksController.start(in: .viewController(self))
-//           }
+            view.isUserInteractionEnabled = false
+          }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -547,6 +547,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         let cell2 = containerTableVw.dequeueReusableCell(withIdentifier: "ExploreByRecipeTableViewCell") as! ExploreByRecipeTableViewCell
         let cell3 = containerTableVw.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
         let cellQuick = containerTableVw.dequeueReusableCell(withIdentifier: "QuickEasyTableViewCell") as! QuickEasyTableViewCell
+        
+        
+       
         switch checkbutton{
         case 0:
             
@@ -1369,7 +1372,7 @@ extension DiscoverRecipeViewController{
 extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 3
+        return 2
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
@@ -1383,17 +1386,16 @@ extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMa
         case 1:
     coachViews.bodyView.hintLabel.text = TourGuideConstants.kForSearchbyIngedients
     coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 2:
-    coachViews.bodyView.hintLabel.text = TourGuideConstants.kForTrendingNow
-    coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
+//        case 2:
+//    coachViews.bodyView.hintLabel.text = TourGuideConstants.kForTrendingNow
+//    coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            view.isUserInteractionEnabled = true
         default: break
         }
 
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
-    
-    
-   
     
     func coachMarksController(_ coachMarksController: CoachMarksController,
                                   coachMarkAt index: Int) -> CoachMark {
@@ -1405,10 +1407,10 @@ extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMa
         switch index {
         case 0: return coachMarksController.helper.makeCoachMark(for: createRecipeBtn)
         case 1: return coachMarksController.helper.makeCoachMark(for: cell1?.headerLabel)
-        case 2: containerTableVw.scrollToRow(at: indexpath3, at: .bottom, animated: true)
-           
-                return coachMarksController.helper.makeCoachMark(for: cell3?.headerLabel)
-           
+//        case 2: containerTableVw.scrollToRow(at: indexpath3, at: .bottom, animated: true)
+//           
+//                return coachMarksController.helper.makeCoachMark(for: cell3?.headerLabel)
+//           
         default: return coachMarksController.helper.makeCoachMark()
         }
     }

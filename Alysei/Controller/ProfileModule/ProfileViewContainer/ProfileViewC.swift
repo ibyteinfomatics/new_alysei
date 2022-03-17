@@ -7,6 +7,7 @@
 
 import UIKit
 import SVProgressHUD
+import Instructions
 
 var check = "";
 var profileTabImage: UIImage?
@@ -105,6 +106,7 @@ class ProfileViewC: AlysieBaseViewC{
     var featureListingId: String?
     var currentProductTitle: String?
     var isLoadingAnimation = true
+    let coachMarksController = CoachMarksController()
     
     //MARK: - Properties -
     
@@ -181,9 +183,41 @@ class ProfileViewC: AlysieBaseViewC{
     }()
     //MARK: - ViewLifeCycle Methods -
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.coachMarksController.stop(immediately: true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+//            if  kSharedUserDefaults.alyseiReview == 1{
+//                if !AppManager.getUserSeenAppInstructionProfile() {
+        
+//        self.coachMarksController.start(in: .viewController(self))
+//        self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+        
+              
+//                }
+//                else{
+//                    tabBarController?.tabBar.backgroundColor = .white
+//                    tabBarController?.tabBar.alpha = 1.0
+//                }
+//
+//            }
+//            else{
+//                tabBarController?.tabBar.backgroundColor = .white
+//                tabBarController?.tabBar.alpha = 1.0
+//            }
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+//        self.coachMarksController.dataSource = self
+//        self.coachMarksController.delegate = self
+        
         self.btnEditProfile.layer.cornerRadius = 5
         self.btnEditProfile.layer.masksToBounds = true
         self.btnEditProfile.layer.borderWidth = 1
@@ -1512,6 +1546,21 @@ extension ProfileViewC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //            if  kSharedUserDefaults.alyseiReview == 1{
+        //                if !AppManager.getUserSeenAppInstructionProfile() {
+//        self.coachMarksController.start(in: .viewController(self))
+//        self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+        //                }
+        //                else{
+        //                    tabBarController?.tabBar.backgroundColor = .white
+        //                    tabBarController?.tabBar.alpha = 1.0
+        //                }
+        //
+        //            }
+        //            else{
+        //                tabBarController?.tabBar.backgroundColor = .white
+        //                tabBarController?.tabBar.alpha = 1.0
+        //            }
         return self.getProfileCompletionTableCell(indexPath)
     }
     
@@ -2057,3 +2106,148 @@ extension UITabBarController {
         }
     }
 }
+
+//extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+//
+//    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+//        return 5
+//    }
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
+//
+//        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+//
+//        switch index {
+//        case 0:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistPic
+//            case "7":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsPic
+//            case "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesPic
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantPic
+//
+//            case "10":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersPic
+//            default: break
+//
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//        case 1:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistCover
+//            case "7":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsCover
+//            case "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesCover
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantCover
+//
+//            case "10":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagersCover
+//            default: break
+//
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//        case 2:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImporterDistributor
+//            case "7":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExperts
+//            case "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgencies
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurant
+//
+//            case "10":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagers
+//            default: break
+//
+//            }
+//
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//
+//        case 3:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerField
+//            case "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
+//            case "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesField
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
+//
+//            default: break
+//
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//
+//
+//        case 4:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
+//            case "7":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
+//            case "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantFeatured
+//
+//            default: break
+//
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now()+3.5) {
+//
+//                self.tabBarController?.tabBar.backgroundColor = .white
+//                self.tabBarController?.tabBar.alpha = 1.0
+//            }
+//
+//
+//        default: break
+//        }
+//
+//        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+//    }
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController,
+//                              coachMarkAt index: Int) -> CoachMark {
+//
+//        let indexpath1 = IndexPath(row: 1, section: 0)
+//        let cell1 = tblViewProfileCompletion.cellForRow(at: indexpath1) as? ProfileCompletionTableViewCell
+//        let indexpath2 = IndexPath(row: 2, section: 0)
+//        let cell2 = tblViewProfileCompletion.cellForRow(at: indexpath2) as? ProfileCompletionTableViewCell
+//        let indexpath3 = IndexPath(row: 3, section: 0)
+//        let cell3 = tblViewProfileCompletion.cellForRow(at: indexpath3) as? ProfileCompletionTableViewCell
+//        let indexpath4 = IndexPath(row: 4, section: 0)
+//        let cell4 = tblViewProfileCompletion.cellForRow(at: indexpath4) as? ProfileCompletionTableViewCell
+//        let indexpath6 = IndexPath(row: 6, section: 0)
+//        let cell6 = tblViewProfileCompletion.cellForRow(at: indexpath6) as? ProfileCompletionTableViewCell
+//
+//        switch index {
+//        case 0: return coachMarksController.helper.makeCoachMark(for: cell1?.lbleTitle)
+//        case 1: return coachMarksController.helper.makeCoachMark(for: cell2?.lbleTitle)
+//        case 2:
+//            return coachMarksController.helper.makeCoachMark(for: cell3?.lbleTitle)
+//        case 3:
+//            return coachMarksController.helper.makeCoachMark(for: cell4?.lbleTitle)
+//        case 4:
+//            return coachMarksController.helper.makeCoachMark(for: cell6?.lbleTitle)
+//        default:
+//            return coachMarksController.helper.makeCoachMark()
+//        }
+//    }
+//
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
+//        AppManager.setUserSeenAppInstructionProfile()
+//    }
+//
+//}

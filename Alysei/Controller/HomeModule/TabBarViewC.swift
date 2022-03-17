@@ -6,17 +6,19 @@
 //
 
 import UIKit
+//import Instructions
 
 class TabBarViewC: UITabBarController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+      
     if  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
     if let viewController2 = self.tabBarController?.viewControllers?[1] {
 
        // viewController2.tabBarItem.image = UIImage(named: "b2btab1_icon")
         viewController2.tabBarItem.title = "Hubs"
+       
        // viewController2.tabBarItem.isEnabled = false
         //viewController2.tabBarItem.selectedImage = UIImage(named: "turnoff_comments_icon")
     }else{
@@ -29,8 +31,11 @@ class TabBarViewC: UITabBarController {
             
         }
     }
+        
     
   }
 
+     
 }
+
 }

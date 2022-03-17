@@ -62,6 +62,20 @@ class HomeViewC: AlysieBaseViewC {
   
   //MARK: -  ViewLifeCycle Methods -
   
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+//        if !AppManager.getUserSeenAppInstructionPost() {
+     
+//        headerView.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+      
+//           }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        headerView.alpha = 1.0
+        headerView.backgroundColor = .white
+    }
   override func viewDidLoad() {
     super.viewDidLoad()
    // _ = membershipViewC
@@ -82,14 +96,7 @@ class HomeViewC: AlysieBaseViewC {
     
   }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
+   
     
    
     override func viewWillAppear(_ animated: Bool) {

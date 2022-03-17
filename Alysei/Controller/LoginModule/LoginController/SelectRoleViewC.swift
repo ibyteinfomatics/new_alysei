@@ -23,11 +23,8 @@ class SelectRoleViewC: AlysieBaseViewC {
     
     var getRoleViewModel: GetRoleViewModel!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         btnGetStarted.isHidden = true
         btnGetStartedHeight.constant = 0
@@ -35,18 +32,7 @@ class SelectRoleViewC: AlysieBaseViewC {
         tourgideLabel.text = TourGuideConstants.kSelectRole
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.coachMarksController.stop(immediately: true)
-//    }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        self.tabBarController?.tabBar.isHidden = true
-        
-//        if !AppManager.getUserSeenAppInstruction() {
-//        self.coachMarksController.start(in: .viewController(self))
-//           }
-//    }
+
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
       self.viewNavigation.drawBottomShadow()

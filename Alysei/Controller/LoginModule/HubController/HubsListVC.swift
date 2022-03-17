@@ -36,20 +36,17 @@ class HubsListVC: UIViewController {
     var reviewhubCount = 0
     
     let coachMarksController = CoachMarksController()
+    
     // MARK:- lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                self.coachMarksController.dataSource = self
-                self.coachMarksController.delegate = self
-        
-                let skipView = CoachMarkSkipDefaultView()
-                skipView.setTitle(RecipeConstants.kSkip, for: .normal)
-                    self.coachMarksController.skipView = skipView
+        self.coachMarksController.dataSource = self
+        self.coachMarksController.delegate = self
         
         self.viewHeader.drawBottomShadowGreen()
         self.viewBottomStack.addShadow()
-       // self.btnClickHere.underlined(borderColor: UIColor.init(hexString: "#4BB3FD"))
+        // self.btnClickHere.underlined(borderColor: UIColor.init(hexString: "#4BB3FD"))
         self.tableView.hasCome = self.hasCome
         self.tableView.country = self.country
         self.tableView.roleId = self.roleId
@@ -69,10 +66,24 @@ class HubsListVC: UIViewController {
             self.bottomStack.isHidden =  false
             self.viewBottomStack.isHidden = false
             self.bottomStackHeight.constant = 40
-           // self.bottomStack.backgroundColor = UIColor.init(hexString: "#1D4873")
+            // self.bottomStack.backgroundColor = UIColor.init(hexString: "#1D4873")
             self.heightOfCollectionView.constant = 0
             self.callStateWiseHubListApi()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.coachMarksController.stop(immediately: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        
+        if !AppManager.getUserSeenAppInstructionHub() {
+        self.coachMarksController.start(in: .viewController(self))
+            view.isUserInteractionEnabled = false
+           }
     }
     
     private func callHubViewApi(){
@@ -99,7 +110,7 @@ class HubsListVC: UIViewController {
             else{
                 self.isChckHubfirstEditSlcted = false
                 // self.isEditHub = false
-               
+                
             }
             
             self.tableView.hubsViaCity = self.hubsViaCity
@@ -173,7 +184,7 @@ class HubsListVC: UIViewController {
             for subHub in hub.hubs_array ?? [] { if subHub.isSelected {selectedHubs.append(subHub)}}
         }
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
-//        selectedHub?.hubs = (selectedHub?.hubs.filter{$0.type == .hubs} ?? []) + selectedHubs
+        //        selectedHub?.hubs = (selectedHub?.hubs.filter{$0.type == .hubs} ?? []) + selectedHubs
         selectedHub?.hubs = (selectedHub?.hubs.filter{$0.type == .city} ?? []) + selectedHubs
         let oldHubs = selectedHub?.hubs.filter{$0.type != self.hasCome} ?? []
         selectedHub?.hubs = oldHubs +  selectedHubs
@@ -223,65 +234,65 @@ class HubsListVC: UIViewController {
 }
 
 extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
-
+    
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 2
+        return 1
     }
-
+    
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
-
+        
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-
+        
         switch index {
-        case 0:
-            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-            case "3", "8":
-                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
-            case "4", "5", "6":
-                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterdistributorHub
-            case "9":
-                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentsHub
-            default:
-                break
-            }
-            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//        case 0:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "8":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
+//            case "4", "5", "6":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterdistributorHub
+//            case "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentsHub
+//            default:
+//                break
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-        case 1:
+        case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
-           
+                
             case "9":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurentClickHere
             default:
                 break
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-            
+            view.isUserInteractionEnabled = true
         default: break
         }
-
+        
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
-
-
-
-
+    
+    
+    
+    
     func coachMarksController(_ coachMarksController: CoachMarksController,
-                                  coachMarkAt index: Int) -> CoachMark {
-        let indexpath1 = IndexPath(row: 0, section: 0)
-        let cell1 = tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
+                              coachMarkAt index: Int) -> CoachMark {
+//        let indexpath1 = IndexPath(row: 0, section: 0)
+//        let cell1 = tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
         switch index {
-        case 0:return coachMarksController.helper.makeCoachMark(for: cell1?.buttonLeftCheckbox)
-        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-
+//        case 0:return coachMarksController.helper.makeCoachMark(for: cell1?.buttonLeftCheckbox)
+        case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+            
         default: return coachMarksController.helper.makeCoachMark()
         }
     }
-
-
+    
+    
     func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
-        AppManager.setUserSeenAppInstruction()
+        AppManager.setUserSeenAppInstructionHub()
     }
 }
 

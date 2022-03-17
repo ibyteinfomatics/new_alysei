@@ -11206,20 +11206,20 @@ You will be notified for any membership status update.</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="93.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="posts_filled" translatesAutoresizingMaskIntoConstraints="NO" id="0Ah-xy-zEM">
-                                                        <rect key="frame" x="20.5" y="5" width="33" height="33"/>
+                                                        <rect key="frame" x="30.5" y="5" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="0Ah-xy-zEM" secondAttribute="height" multiplier="1:1" id="S3F-rw-Gxk"/>
                                                             <constraint firstAttribute="height" constant="33" id="i4U-Gz-fsA"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgq-16-Mql">
-                                                        <rect key="frame" x="18" y="48" width="38" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgq-16-Mql">
+                                                        <rect key="frame" x="28" y="48" width="38" height="24"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsY-2b-v3c">
-                                                        <rect key="frame" x="0.0" y="90.5" width="94" height="1"/>
+                                                        <rect key="frame" x="0.0" y="90.5" width="89" height="1"/>
                                                         <color key="backgroundColor" systemColor="linkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="POM-S5-uOg"/>
@@ -11230,26 +11230,26 @@ You will be notified for any membership status update.</string>
                                                 <constraints>
                                                     <constraint firstItem="Wgq-16-Mql" firstAttribute="centerX" secondItem="0Ah-xy-zEM" secondAttribute="centerX" id="06n-tl-tZD"/>
                                                     <constraint firstItem="0Ah-xy-zEM" firstAttribute="top" secondItem="r1a-Bh-0Oh" secondAttribute="top" constant="5" id="C1K-ta-9AV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NsY-2b-v3c" secondAttribute="trailing" id="HNm-xf-H78"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NsY-2b-v3c" secondAttribute="trailing" constant="5" id="HNm-xf-H78"/>
                                                     <constraint firstItem="NsY-2b-v3c" firstAttribute="leading" secondItem="r1a-Bh-0Oh" secondAttribute="leading" id="Hy6-cR-HUC"/>
                                                     <constraint firstItem="NsY-2b-v3c" firstAttribute="top" secondItem="Wgq-16-Mql" secondAttribute="bottom" constant="18.5" id="KxE-6w-K1e"/>
                                                     <constraint firstAttribute="bottom" secondItem="NsY-2b-v3c" secondAttribute="bottom" constant="2" id="P2d-Ne-Mft"/>
                                                     <constraint firstItem="Wgq-16-Mql" firstAttribute="top" secondItem="0Ah-xy-zEM" secondAttribute="bottom" constant="10" id="Pvr-gQ-fs4"/>
-                                                    <constraint firstItem="0Ah-xy-zEM" firstAttribute="centerX" secondItem="r1a-Bh-0Oh" secondAttribute="centerX" constant="-10" id="gGV-E6-qEo"/>
+                                                    <constraint firstItem="0Ah-xy-zEM" firstAttribute="centerX" secondItem="r1a-Bh-0Oh" secondAttribute="centerX" id="gGV-E6-qEo"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fla-B7-xl0">
                                                 <rect key="frame" x="94" y="0.0" width="93.5" height="93.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marketplace_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-KA-QlK">
-                                                        <rect key="frame" x="20" y="5" width="33" height="33"/>
+                                                        <rect key="frame" x="30" y="5" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="J0f-KA-QlK" secondAttribute="height" multiplier="1:1" id="oyt-4c-x05"/>
                                                             <constraint firstAttribute="height" constant="33" id="uSy-IO-fzN"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MarketPlace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2W-TI-nQT">
-                                                        <rect key="frame" x="-5.5" y="51.5" width="84.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MarketPlace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2W-TI-nQT">
+                                                        <rect key="frame" x="4.5" y="51.5" width="84.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -11265,7 +11265,7 @@ You will be notified for any membership status update.</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="xgK-di-cJS" secondAttribute="trailing" id="4Kd-93-7C5"/>
-                                                    <constraint firstItem="J0f-KA-QlK" firstAttribute="centerX" secondItem="fla-B7-xl0" secondAttribute="centerX" constant="-10" id="BWG-uE-6zB"/>
+                                                    <constraint firstItem="J0f-KA-QlK" firstAttribute="centerX" secondItem="fla-B7-xl0" secondAttribute="centerX" id="BWG-uE-6zB"/>
                                                     <constraint firstItem="xgK-di-cJS" firstAttribute="leading" secondItem="fla-B7-xl0" secondAttribute="leading" id="Dtr-fi-7oh"/>
                                                     <constraint firstAttribute="bottom" secondItem="xgK-di-cJS" secondAttribute="bottom" constant="2" id="Oiw-d0-62F"/>
                                                     <constraint firstItem="a2W-TI-nQT" firstAttribute="centerX" secondItem="J0f-KA-QlK" secondAttribute="centerX" id="gHv-Cf-9sI"/>
@@ -11275,14 +11275,14 @@ You will be notified for any membership status update.</string>
                                                 <rect key="frame" x="187.5" y="0.0" width="94" height="93.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-K0-jyI">
-                                                        <rect key="frame" x="18" y="2.5" width="38" height="38"/>
+                                                        <rect key="frame" x="28" y="2.5" width="38" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="38" id="Wtb-pa-AIl"/>
                                                             <constraint firstAttribute="width" secondItem="bUD-K0-jyI" secondAttribute="height" multiplier="1:1" id="uRf-lo-XtO"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-aW-iKi">
-                                                        <rect key="frame" x="13.5" y="51.5" width="46.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-aW-iKi">
+                                                        <rect key="frame" x="23.5" y="51.5" width="46.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -11300,7 +11300,7 @@ You will be notified for any membership status update.</string>
                                                     <constraint firstItem="8fO-aW-iKi" firstAttribute="centerX" secondItem="bUD-K0-jyI" secondAttribute="centerX" id="Dle-U1-uDN"/>
                                                     <constraint firstAttribute="bottom" secondItem="2vs-u4-OTN" secondAttribute="bottom" constant="2" id="GFA-cC-mdX"/>
                                                     <constraint firstAttribute="trailing" secondItem="2vs-u4-OTN" secondAttribute="trailing" id="Pbl-57-m7M"/>
-                                                    <constraint firstItem="bUD-K0-jyI" firstAttribute="centerX" secondItem="8zc-OL-tt5" secondAttribute="centerX" constant="-10" id="TlP-g6-pga"/>
+                                                    <constraint firstItem="bUD-K0-jyI" firstAttribute="centerX" secondItem="8zc-OL-tt5" secondAttribute="centerX" id="TlP-g6-pga"/>
                                                     <constraint firstItem="2vs-u4-OTN" firstAttribute="leading" secondItem="8zc-OL-tt5" secondAttribute="leading" id="UgR-Xf-lfB"/>
                                                 </constraints>
                                             </view>
@@ -11308,14 +11308,14 @@ You will be notified for any membership status update.</string>
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="93.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="wVh-Ba-mVH">
-                                                        <rect key="frame" x="20" y="5" width="33" height="33"/>
+                                                        <rect key="frame" x="30" y="5" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="wVh-Ba-mVH" secondAttribute="height" multiplier="1:1" id="igK-Fu-B45"/>
                                                             <constraint firstAttribute="height" constant="33" id="tsq-1J-LgV"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXW-nZ-w43">
-                                                        <rect key="frame" x="-6" y="51.5" width="85.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXW-nZ-w43">
+                                                        <rect key="frame" x="4" y="51.5" width="85.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -11330,18 +11330,18 @@ You will be notified for any membership status update.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="VXW-nZ-w43" firstAttribute="centerX" secondItem="wVh-Ba-mVH" secondAttribute="centerX" id="7DH-mq-auS"/>
                                                     <constraint firstAttribute="trailing" secondItem="RzN-ce-DcX" secondAttribute="trailing" id="HfU-32-pc1"/>
+                                                    <constraint firstItem="VXW-nZ-w43" firstAttribute="centerX" secondItem="1gE-Qe-amL" secondAttribute="centerX" id="Ist-IS-GvV"/>
                                                     <constraint firstItem="RzN-ce-DcX" firstAttribute="leading" secondItem="1gE-Qe-amL" secondAttribute="leading" id="OFi-OI-phU"/>
-                                                    <constraint firstItem="wVh-Ba-mVH" firstAttribute="centerX" secondItem="1gE-Qe-amL" secondAttribute="centerX" constant="-10" id="sjz-an-lUP"/>
+                                                    <constraint firstItem="wVh-Ba-mVH" firstAttribute="centerX" secondItem="1gE-Qe-amL" secondAttribute="centerX" id="sjz-an-lUP"/>
                                                     <constraint firstAttribute="bottom" secondItem="RzN-ce-DcX" secondAttribute="bottom" constant="2" id="vK6-H0-ydE"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="J0f-KA-QlK" firstAttribute="centerY" secondItem="0Ah-xy-zEM" secondAttribute="centerY" id="0OC-oM-qBE"/>
-                                            <constraint firstItem="VXW-nZ-w43" firstAttribute="centerY" secondItem="8fO-aW-iKi" secondAttribute="centerY" id="2T0-FV-B5P"/>
                                             <constraint firstItem="bUD-K0-jyI" firstAttribute="centerY" secondItem="J0f-KA-QlK" secondAttribute="centerY" id="9oj-La-H79"/>
+                                            <constraint firstItem="VXW-nZ-w43" firstAttribute="centerY" secondItem="8fO-aW-iKi" secondAttribute="centerY" id="LeZ-ss-PD3"/>
                                             <constraint firstItem="8fO-aW-iKi" firstAttribute="centerY" secondItem="a2W-TI-nQT" secondAttribute="centerY" id="SqG-2U-jEN"/>
                                             <constraint firstItem="a2W-TI-nQT" firstAttribute="centerY" secondItem="Wgq-16-Mql" secondAttribute="centerY" id="dBQ-tl-9sK"/>
                                             <constraint firstItem="wVh-Ba-mVH" firstAttribute="centerY" secondItem="bUD-K0-jyI" secondAttribute="centerY" id="rO2-1f-d8z"/>
@@ -22882,7 +22882,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>

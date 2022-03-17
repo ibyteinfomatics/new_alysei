@@ -12,6 +12,73 @@
   Created by Gitesh Dang on 23/02/22.
   
 */
+//MARK: TOUR GUIDE
+
+// Select Role ————
+"Select the box that identifies you or your company and follow the steps" = "Seleziona la casella che ti identifica e segui i passaggi successivi";
+
+// Hub Selection ————
+"You are assigned by default to the Chicago Hub. You can select more than one if available." = "Il tuo Hub di partenza è Chicago. Puoi selezionarne più di uno se disponibili.";
+"Don't you find your Hub and are you looking to add additional locations? Click here" = "Non trovi il tuo Hub e stai cercando ulteriori aree metropolitane? Clicca qui";
+"Select the Hub among those available where you are physically located or where you operate your business" = "Seleziona l'Hub tra quelli disponibili dove si trova la tua azienda o dove fai business";
+"Select the Hub among those available where your Restaurant is physically located" = "Seleziona l'Hub tra quelli disponibili dove si trova il tuo Ristorante";
+"Don't you find your Hub? Click here" = "Non trovi il tuo Hub? Clicca qui";
+
+  // About ————
+"Tell us more about your company and its history." = "Raccontaci della tua azienda e della sua storia.";
+"Tell us more about your restaurant and its history." = "Raccontaci del tuo ristorante e della sua storia.";
+"Tell us more about your agency and its history." = "Raccontaci della tua agenzia e della sua storia.";
+"Tell us more about yourself and your experience." = "Raccontaci di te e della tua esperienza.";
+"Tell us more about yourself and your interests." = "Raccontaci di te e dei tuoi interessi.";
+
+//Profile Picture ————
+"Upload the logo of your company as your profile." = "Carica il logo della tua azienda come profilo.";
+"Upload the logo of your restaurant as your profile." = "Carica il logo del tuo ristorante come profilo.";
+"Upload the logo of your agency as your profile." = "Carica il logo della tua agenzia come profilo.";
+"Upload a photo of you or your logo as your profile." = "Carica una tua foto o la foto del tuo logo come profilo.";
+"Upload a photo of you as your profile." = "Carica una tua foto come profilo.";
+
+//Cover Picture ————
+"Upload a nice landscape photo of your company as your cover." = "Carica una bella foto panoramica della tua azienda come cover.";
+"Upload a nice landscape photo of your restaurant as your cover." = "Carica una bella foto panoramica del tuo ristorante come cover.";
+"Upload a nice landscape photo of your agency as your cover." = "Carica una bella foto panoramica della tua agenzia come cover.";
+"Upload a nice landscape photo of your business as your cover." = "Carica una bella foto panoramica del tuo business come cover.";
+"Upload a nice landscape photo as your cover." = "Carica una bella foto panoramica come cover.";
+
+//OUR FIELDS (PRODUCTS/MENU/TRIPS) ————
+"Briefly describe your products with their properties and characteristics." = "Descrivi brevemente i tuoi prodotti con le loro proprietà e caratteristiche.";
+"Briefly describe your product portfolio and offerings" = "Descrivi brevemente il tuo portafoglio di prodotti e le tue offerte.";
+"Briefly describe your menu and your specials." = "Descrivi brevemente il tuo menù e le tue specialità.";
+"Briefly describe your trips and your unique proposed adventures." = "Descrivi brevemente i tuoi viaggi e le tue esclusive avventure.";
+
+//FEATURED FIELD ————
+"List your flagship products with a short description and if you have it, you can link each product to your corresponding product website page." = "Elenca i tuoi prodotti di punta con una breve descrizione e se ce l'hai, puoi collegare ogni prodotto alla corrispondente sezione dedicata del tuo sito web.";
+"List your flagship recipes and your specials with a short description and link your menu website." = "Elenca le tue ricette di punta e le tue specialità con una breve descrizione e collega il menù del tuo sito web.";
+"List your flagship trips with a short description and if you have it, you can link each trip to your corresponding website page." = "Elenca i tuoi viaggi di punta con una breve descrizione e se ce l'hai, puoi collegare ogni viaggio alla corrispondente sezione dedicata del tuo sito web.";
+"List your books, articles, recipes and more with a short description, and if you have it, you can link each photo corresponding website page." = "Elenca i tuoi libri, articoli, ricette e tanto altro con una breve descrizione e, se ce l'hai, puoi collegare ogni foto alla relativa pagina del tuo sito web.";
+
+// B2B TAB ————
+"Search for Alysei Members through the Hub and create connections." = "Cerca Membri Alysei attraverso l’Hub e connettiti con loro.";
+"Explore the Hubs and follow the Alysei Members of your interest." = "Esplora gli Hubs e segui i Membri Alysei di tuo interesse.";
+
+//ADD POST ————
+"Add a post." = "Crea il tuo post.";
+
+//MARKETPLACE ————
+"Check Italian Producers stores, their high-quality products and send inquiries." = "Ricerca Produttori Italiani, i loro prodotti di alta qualità e invia richieste.";
+"Check Italian Producers stores and their high-quality products." = "Ricerca Produttori Italiani e i loro prodotti di alta qualità.";
+
+//Recipe ————
+"Explore, search, create, rate, and share the Recipes from the endless Italian cuisine." = "Esplora, cerca, crea, valuta e condividi le Ricette dell'immensa cucina italiana. ";
+
+//CREATE RECIPE ————
+"Create your own Italian recipe in a simple and fun way!" = "Crea la tua ricetta italiana in modo semplice e divertente!";
+
+//QUICK SEARCH BY INGREDIENTS ————
+"Explore recipes by ingredients used." = "Esplora le ricette in base agli ingredienti utilizzati.";
+
+//TRENDING NOW ————
+"Discover the trending recipes." = "Scopri le ricette di tendenza.";
 
 //MARK: Alert Message
 "Please enter first name." = "Please enter first name.";
@@ -80,73 +147,6 @@
 "Please enter more than 3 character." = "Please enter more than 3 character.";
 "Please enter Description or Url." = "Please enter Description or Url.";
 
-//MARK: TOUR GUIDE
-
-// Select Role ————
-"Select the box that identifies you or your company and follow the steps" = "Seleziona la casella che ti identifica e segui i passaggi successivi";
-
-// Hub Selection ————
-"You are assigned by default to the Chicago Hub. You can select more than one if available." = "Il tuo Hub di partenza è Chicago. Puoi selezionarne più di uno se disponibili.";
-"Don't you find your Hub and are you looking to add additional locations? Click here" = "Non trovi il tuo Hub e stai cercando ulteriori aree metropolitane? Clicca qui";
-"Select the Hub among those available where you are physically located or where you operate your business" = "Seleziona l'Hub tra quelli disponibili dove si trova la tua azienda o dove fai business";
-"Select the Hub among those available where your Restaurant is physically located" = "Seleziona l'Hub tra quelli disponibili dove si trova il tuo Ristorante";
-"Don't you find your Hub? Click here" = "Non trovi il tuo Hub? Clicca qui";
-
-  // About ————
-"Tell us more about your company and its history." = "Raccontaci della tua azienda e della sua storia.";
-"Tell us more about your restaurant and its history." = "Raccontaci del tuo ristorante e della sua storia.";
-"Tell us more about your agency and its history." = "Raccontaci della tua agenzia e della sua storia.";
-"Tell us more about yourself and your experience." = "Raccontaci di te e della tua esperienza.";
-"Tell us more about yourself and your interests." = "Raccontaci di te e dei tuoi interessi.";
-
-//Profile Picture ————
-"Upload the logo of your company as your profile." = "Carica il logo della tua azienda come profilo.";
-"Upload the logo of your restaurant as your profile." = "Carica il logo del tuo ristorante come profilo.";
-"Upload the logo of your agency as your profile." = "Carica il logo della tua agenzia come profilo.";
-"Upload a photo of you or your logo as your profile." = "Carica una tua foto o la foto del tuo logo come profilo.";
-"Upload a photo of you as your profile." = "Carica una tua foto come profilo.";
-
-//Cover Picture ————
-"Upload a nice landscape photo of your company as your cover." = "Carica una bella foto panoramica della tua azienda come cover.";
-"Upload a nice landscape photo of your restaurant as your cover." = "Carica una bella foto panoramica del tuo ristorante come cover.";
-"Upload a nice landscape photo of your agency as your cover." = "Carica una bella foto panoramica della tua agenzia come cover.";
-"Upload a nice landscape photo of your business as your cover." = "Carica una bella foto panoramica del tuo business come cover.";
-"Upload a nice landscape photo as your cover." = "Carica una bella foto panoramica come cover.";
-
-//OUR FIELDS (PRODUCTS/MENU/TRIPS) ————
-"Briefly describe your products with their properties and characteristics." = "Descrivi brevemente i tuoi prodotti con le loro proprietà e caratteristiche.";
-"Briefly describe your product portfolio and offerings" = "Descrivi brevemente il tuo portafoglio di prodotti e le tue offerte.";
-"Briefly describe your menu and your specials." = "Descrivi brevemente il tuo menù e le tue specialità.";
-"Briefly describe your trips and your unique proposed adventures." = "Descrivi brevemente i tuoi viaggi e le tue esclusive avventure.";
-
-//FEATURED FIELD ————
-"List your flagship products with a short description and if you have it, you can link each product to your corresponding product website page." = "Elenca i tuoi prodotti di punta con una breve descrizione e se ce l'hai, puoi collegare ogni prodotto alla corrispondente sezione dedicata del tuo sito web.";
-"List your flagship recipes and your specials with a short description and link your menu website." = "Elenca le tue ricette di punta e le tue specialità con una breve descrizione e collega il menù del tuo sito web.";
-"List your flagship trips with a short description and if you have it, you can link each trip to your corresponding website page." = "Elenca i tuoi viaggi di punta con una breve descrizione e se ce l'hai, puoi collegare ogni viaggio alla corrispondente sezione dedicata del tuo sito web.";
-"List your books, articles, recipes and more with a short description, and if you have it, you can link each photo corresponding website page." = "Elenca i tuoi libri, articoli, ricette e tanto altro con una breve descrizione e, se ce l'hai, puoi collegare ogni foto alla relativa pagina del tuo sito web.";
-
-// B2B TAB ————
-"Search for Alysei Members through the Hub and create connections." = "Cerca Membri Alysei attraverso l’Hub e connettiti con loro.";
-"Explore the Hubs and follow the Alysei Members of your interest." = "Esplora gli Hubs e segui i Membri Alysei di tuo interesse.";
-
-//ADD POST ————
-"Add a post." = "Crea il tuo post.";
-
-//MARKETPLACE ————
-"Check Italian Producers stores, their high-quality products and send inquiries." = "Ricerca Produttori Italiani, i loro prodotti di alta qualità e invia richieste.";
-"Check Italian Producers stores and their high-quality products." = "Ricerca Produttori Italiani e i loro prodotti di alta qualità.";
-
-//Recipe ————
-"Explore, search, create, rate, and share the Recipes from the endless Italian cuisine." = "Esplora, cerca, crea, valuta e condividi le Ricette dell'immensa cucina italiana. ";
-
-//CREATE RECIPE ————
-"Create your own Italian recipe in a simple and fun way!" = "Crea la tua ricetta italiana in modo semplice e divertente!";
-
-//QUICK SEARCH BY INGREDIENTS ————
-"Explore recipes by ingredients used." = "Esplora le ricette in base agli ingredienti utilizzati.";
-
-//TRENDING NOW ————
-"Discover the trending recipes." = "Scopri le ricette di tendenza.";
 
 //MARK: RECIPE HOME SCREEN
 "Create Recipe" = "Crea la tua Ricetta";

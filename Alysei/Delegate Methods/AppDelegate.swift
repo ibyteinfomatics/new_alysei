@@ -374,20 +374,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         window?.rootViewController?.present(navigationC, animated: true, completion: nil)
     }
     
-    
+
 
 }
 
 enum AppManager {
   // MARK: App      Tutorial=============================================================================================================
-  static func setUserSeenAppInstruction() {
-    UserDefaults.standard.set(true, forKey: "userSeenShowCase")
-  }
-   static func getUserSeenAppInstruction() -> Bool {
-     let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCase")
-     if let userSeenShowCase = userSeenShowCaseObject as? Bool {
-       return userSeenShowCase
-     }
-     return false
-     }
+ 
+    static func setUserSeenAppInstructionPost() {
+      UserDefaults.standard.set(true, forKey: "userSeenShowCasePost")
+    }
+     static func getUserSeenAppInstructionPost() -> Bool {
+       let userSeenShowCaseObject1 = UserDefaults.standard.object(forKey: "userSeenShowCasePost")
+       if let userSeenShowCasePost = userSeenShowCaseObject1 as? Bool {
+         return userSeenShowCasePost
+       }
+       return false
+       }
+    
+    static func setUserSeenAppInstructionHub() {
+      UserDefaults.standard.set(true, forKey: "userSeenShowCaseHub")
+    }
+     static func getUserSeenAppInstructionHub() -> Bool {
+       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCaseHub")
+       if let userSeenShowCase = userSeenShowCaseObject as? Bool {
+         return userSeenShowCase
+       }
+       return false
+       }
+    
+    static func setUserSeenAppInstruction() {
+      UserDefaults.standard.set(true, forKey: "userSeenShowCase")
+    }
+     static func getUserSeenAppInstruction() -> Bool {
+       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCase")
+       if let userSeenShowCase = userSeenShowCaseObject as? Bool {
+         return userSeenShowCase
+       }
+       return false
+       }
+    
+    static func setUserSeenAppInstructionProfile() {
+      UserDefaults.standard.set(true, forKey: "userSeenShowCaseProfile")
+    }
+     static func getUserSeenAppInstructionProfile() -> Bool {
+       let userSeenShowCaseObject = UserDefaults.standard.object(forKey: "userSeenShowCaseProfile")
+       if let userSeenShowCase = userSeenShowCaseObject as? Bool {
+         return userSeenShowCase
+       }
+       return false
+       }
+    
+    
+      
 }
+
+
+   
+
