@@ -19,7 +19,7 @@ struct PostCommentsUserData {
 
 var checkHavingPreferences : Int? = 0
 var isRefreshing = false
-
+var isprofileComplete = Bool()
 class PostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var postTableView: UITableView!
@@ -108,17 +108,23 @@ class PostsViewController: AlysieBaseViewC {
     override func viewDidAppear(_ animated: Bool) {
         
             if  kSharedUserDefaults.alyseiReview == 1{
-//                if !AppManager.getUserSeenAppInstructionPost() {
-                self.coachMarksController.start(in: .viewController(self))
-                tabBarController?.tabBar.backgroundColor = .gray
-                tabBarController?.tabBar.alpha = 0.8
-                tabBarController?.tabBar.isUserInteractionEnabled = false
-                // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-//                }
-//                else{
-//                    tabBarController?.tabBar.backgroundColor = .white
-//                    tabBarController?.tabBar.alpha = 1.0
-//                }
+                if isprofileComplete == true{
+                    //                if !AppManager.getUserSeenAppInstructionPost() {
+                                    self.coachMarksController.start(in: .viewController(self))
+                                    tabBarController?.tabBar.backgroundColor = .gray
+                                    tabBarController?.tabBar.alpha = 0.8
+                                    tabBarController?.tabBar.isUserInteractionEnabled = false
+                                    // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                    //                }
+                    //                else{
+                    //                    tabBarController?.tabBar.backgroundColor = .white
+                    //                    tabBarController?.tabBar.alpha = 1.0
+                    //                }
+                }
+                else{
+                    tabBarController?.tabBar.backgroundColor = .white
+                    tabBarController?.tabBar.alpha = 1.0
+                }
           
             }
             else{
@@ -134,6 +140,7 @@ class PostsViewController: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         self.tabBarController?.selectedIndex = 0
+
         if self.role == "10" {
             if let viewController2 = self.tabBarController?.viewControllers?[1] {
                 
