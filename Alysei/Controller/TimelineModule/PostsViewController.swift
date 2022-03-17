@@ -109,17 +109,17 @@ class PostsViewController: AlysieBaseViewC {
         
             if  kSharedUserDefaults.alyseiReview == 1{
                 if isprofileComplete == true{
-                    //                if !AppManager.getUserSeenAppInstructionPost() {
+                                   if !AppManager.getUserSeenAppInstructionPost() {
                                     self.coachMarksController.start(in: .viewController(self))
                                     tabBarController?.tabBar.backgroundColor = .gray
                                     tabBarController?.tabBar.alpha = 0.8
                                     tabBarController?.tabBar.isUserInteractionEnabled = false
                                     // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-                    //                }
-                    //                else{
-                    //                    tabBarController?.tabBar.backgroundColor = .white
-                    //                    tabBarController?.tabBar.alpha = 1.0
-                    //                }
+                                    }
+                                    else{
+                                        tabBarController?.tabBar.backgroundColor = .white
+                                        tabBarController?.tabBar.alpha = 1.0
+                                    }
                 }
                 else{
                     tabBarController?.tabBar.backgroundColor = .white
