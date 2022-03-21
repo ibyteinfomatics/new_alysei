@@ -80,10 +80,10 @@ class HubsListVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         
-        if !AppManager.getUserSeenAppInstructionHub() {
+//        if !AppManager.getUserSeenAppInstructionHub() {
             self.coachMarksController.start(in: .viewController(self))
           
-        }
+//        }
     }
     
     private func callHubViewApi(){
@@ -246,7 +246,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         switch index {
             
             
-        case 1:
+        case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
@@ -257,7 +257,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
                 break
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 0:
+        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
@@ -282,11 +282,11 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
                 let indexpath1 = IndexPath(row: 0, section: 0)
-                let cell1 = tableView.cellForRow(at: indexpath1)
+                let cell1 = tableView.cellForRow(at: indexpath1) //as? SelectCityTableViewCell
         switch index {
            
-        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-        case 0:return coachMarksController.helper.makeCoachMark(for: cell1)
+        case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+        case 1:return coachMarksController.helper.makeCoachMark(for: cell1)
         default: return coachMarksController.helper.makeCoachMark()
         }
     }

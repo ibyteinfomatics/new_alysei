@@ -17,10 +17,17 @@ struct PostCommentsUserData {
     var postID: Int
 }
 
+protocol HomeViewCDelegate{
+    func blurAtLaunch()
+    func removeBlurAtLaunch()
+}
+
 var checkHavingPreferences : Int? = 0
 var isRefreshing = false
 var isprofileComplete = Bool()
-class PostsViewController: AlysieBaseViewC {
+var isTourGuideComplete = Bool()
+class PostsViewController: AlysieBaseViewC  {
+    
     
     @IBOutlet weak var postTableView: UITableView!
     @IBOutlet weak var marketplaceView: UIView!
@@ -43,6 +50,7 @@ class PostsViewController: AlysieBaseViewC {
     var role: String?
     var isExpand = false
     let coachMarksController = CoachMarksController()
+    var delegate : HomeViewCDelegate?
     
     var overlay: UIView = {
         let view = UIView(frame: UIScreen.main.bounds);
@@ -64,6 +72,11 @@ class PostsViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        if Int.getInt(data["alysei_review"]) == 1 {
+            postRequestToGetProgressPrfile()
+            
+        }
         
         self.tabBarController?.selectedIndex = 0
         //        self.tabBarController?.tabBar.isHidden = false
@@ -95,6 +108,8 @@ class PostsViewController: AlysieBaseViewC {
         //
         
         // Do any additional setup after loading the view.
+        
+        
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -105,49 +120,13 @@ class PostsViewController: AlysieBaseViewC {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-            if  kSharedUserDefaults.alyseiReview == 1{
-                if isprofileComplete == true{
-                                   if !AppManager.getUserSeenAppInstructionPost() {
-                                    self.coachMarksController.start(in: .viewController(self))
-                                    tabBarController?.tabBar.backgroundColor = .gray
-                                    tabBarController?.tabBar.alpha = 0.8
-                                    tabBarController?.tabBar.isUserInteractionEnabled = false
-                                    
-                                    // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-                                    }
-                                    else{
-                                        tabBarController?.tabBar.backgroundColor = .white
-                                        tabBarController?.tabBar.alpha = 1.0
-                                        tabBarController?.tabBar.isUserInteractionEnabled = true
-                                       
-                                    }
-                }
-                else{
-                    tabBarController?.tabBar.backgroundColor = .white
-                    tabBarController?.tabBar.alpha = 1.0
-                    tabBarController?.tabBar.isUserInteractionEnabled = true
-                   
-                }
-          
-            }
-            else{
-                tabBarController?.tabBar.backgroundColor = .white
-                tabBarController?.tabBar.alpha = 1.0
-                tabBarController?.tabBar.isUserInteractionEnabled = true
-               
-            }
-        
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         self.tabBarController?.selectedIndex = 0
-
+        
         if self.role == "10" {
             if let viewController2 = self.tabBarController?.viewControllers?[1] {
                 
@@ -693,6 +672,85 @@ extension PostsViewController {
         }
     }
     
+    private func postRequestToGetProgressPrfile() -> Void{
+        
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kProfileProgress, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
+            let response = dictRespnose as? [String:Any]
+            if let data = response?["data"] as? [String:Any]{
+                
+                print("profile_percentage--- ",data["profile_percentage"]!)
+                
+                if String.getString(data["profile_percentage"])  != "100" {
+                    isprofileComplete = false
+                    
+                } else {
+                    isprofileComplete = true
+                    if  kSharedUserDefaults.alyseiReview == 1{
+                        if isprofileComplete == true{
+                            if !AppManager.getUserSeenAppInstructionPost() {
+                                
+                                self.coachMarksController.start(in: .viewController(self))
+                                let parent = self.parent as? HomeViewC
+                                parent?.headerView.isUserInteractionEnabled = false
+                                parent?.headerView.alpha = 0.7
+                                parent?.headerView.backgroundColor = .darkGray//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                                
+                                
+                                self.tabBarController?.tabBar.layer.backgroundColor = UIColor.gray.cgColor
+                                
+                                self.tabBarController?.tabBar.alpha = 0.7
+                                self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                                
+                                // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                            }
+                            else{
+                                self.tabBarController?.tabBar.backgroundColor = .white
+                                self.tabBarController?.tabBar.alpha = 1.0
+                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                                
+                                let parent = self.parent as? HomeViewC
+                                parent?.headerView.isUserInteractionEnabled = true
+                                parent?.headerView.alpha = 1.0
+                                parent?.headerView.backgroundColor = .white
+                                
+                            }
+                        }
+                        else{
+                            self.tabBarController?.tabBar.backgroundColor = .white
+                            self.tabBarController?.tabBar.alpha = 1.0
+                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                            
+                            let parent = self.parent as? HomeViewC
+                            parent?.headerView.isUserInteractionEnabled = true
+                            parent?.headerView.alpha = 1.0
+                            parent?.headerView.backgroundColor = .white
+                            
+                        }
+                        
+                    }
+                    
+                    else{
+                        self.tabBarController?.tabBar.backgroundColor = .white
+                        self.tabBarController?.tabBar.alpha = 1.0
+                        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                        
+                        let parent = self.parent as? HomeViewC
+                        parent?.headerView.isUserInteractionEnabled = true
+                        parent?.headerView.alpha = 1.0
+                        parent?.headerView.backgroundColor = .white
+                        
+                    }
+                    
+                    
+                }
+                
+                
+            }
+            
+        }
+    }
+    
 }
 
 extension PostsViewController{
@@ -837,13 +895,7 @@ extension PostsViewController : CoachMarksControllerDataSource, CoachMarksContro
             coachViews.bodyView.hintLabel.text = TourGuideConstants.kForAllPost
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-            DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
-                
-                self.tabBarController?.tabBar.backgroundColor = .white
-                self.tabBarController?.tabBar.alpha = 1.0
-                self.tabBarController?.tabBar.isUserInteractionEnabled = true
-               
-            }
+            
             
         default: break
         }
@@ -874,22 +926,17 @@ extension PostsViewController : CoachMarksControllerDataSource, CoachMarksContro
     
     func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
         AppManager.setUserSeenAppInstructionPost()
+        
+        self.tabBarController?.tabBar.backgroundColor = .white
+        self.tabBarController?.tabBar.alpha = 1.0
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+        
+        let parent = self.parent as? HomeViewC
+        parent?.headerView.isUserInteractionEnabled = true
+        parent?.headerView.alpha = 1.0
+        parent?.headerView.backgroundColor = .white
+        
     }
     
 }
 
-//public extension UIBarButtonItem {
-//    
-//    var view: UIView? {
-//        guard let view = self.value(forKey: "view") as? UIView else {
-//            return nil
-//        }
-//        return view
-//    }
-//}
-//extension UITabBarController {
-//    func orderedTabBarItemViews() -> [UIView] {
-//        let interactionViews = tabBar.subviews.filter({$0.isUserInteractionEnabled})
-//        return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
-//    }
-//}

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HomeViewC: AlysieBaseViewC {
+
+class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
   
   //MARK: - IBOutlet -
    
@@ -39,7 +40,8 @@ class HomeViewC: AlysieBaseViewC {
   var fullScreenImageView = UIImageView()
     var progressUserData: UserData?
     var ResentUser:[RecentUser]?
-  
+    var Callback:(()-> Void )?
+    var delegate : HomeViewCDelegate?
   //MARK: - Properties -
 
    // var fullScreenImageView = UIImageView()
@@ -55,6 +57,7 @@ class HomeViewC: AlysieBaseViewC {
     private lazy var postViewC: PostsViewController = {
 
       let postViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: PostsViewController.id()) as! PostsViewController
+        postViewC.delegate = self
       return postViewC
         
     }()
@@ -64,25 +67,26 @@ class HomeViewC: AlysieBaseViewC {
   
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-//        if !AppManager.getUserSeenAppInstructionPost() {
-     
-//        headerView.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-      
-//           }
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        headerView.alpha = 1.0
-        headerView.backgroundColor = .white
+       
     }
   override func viewDidLoad() {
     super.viewDidLoad()
    // _ = membershipViewC
+      
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.Callback?()
+      }
+     
     fullScreenImageView.alpha = 0.0
     fullScreenImageView.isUserInteractionEnabled = false
     self.view.addSubview(fullScreenImageView)
-    
+     
+
     countshow.layer.cornerRadius = 10
    
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -132,6 +136,18 @@ class HomeViewC: AlysieBaseViewC {
         receiveUsers()
         
     
+    }
+    
+    func blurAtLaunch(){
+        headerView.isUserInteractionEnabled = false
+        headerView.alpha = 0.7
+        headerView.backgroundColor = .lightGray
+    }
+    
+    func removeBlurAtLaunch(){
+        headerView.isUserInteractionEnabled = true
+        headerView.alpha = 1.0
+        headerView.backgroundColor = .white
     }
     
     
@@ -254,13 +270,13 @@ class HomeViewC: AlysieBaseViewC {
                 print("profile_percentage--- ",data["profile_percentage"]!)
                 
                 if String.getString(data["profile_percentage"])  != "100" {
-                    isprofileComplete = false
+
                     self.membershipView.isHidden = true
                     self.blankdataView.isHidden = false
                     self.imgReview.image = UIImage(named: "ProfileCompletion")
                     self.text.text = "Complete your profile in order to start Posting"
                 } else {
-                    isprofileComplete = true
+
                     self.membershipView.isHidden = true
                     self.blankdataView.isHidden = true
                     self.imgReview.image = UIImage(named: "")

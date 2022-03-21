@@ -1143,7 +1143,7 @@ struct RecipeConstants{
     static var kImages : String {  "Images".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPNG : String {  "PNG, JPG".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kResolution : String {  "Resolution".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kUpto : String {  "Upto 1600x1600".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUpto : String {  "Upto 600x600".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kName : String {  "Name *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRecipeName : String {  "Recipe Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSelectCookingSkil : String {  "Select Cooking Skill *".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
