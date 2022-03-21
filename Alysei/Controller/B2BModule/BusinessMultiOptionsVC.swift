@@ -28,8 +28,10 @@ class BusinessMultiOptionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
-        if currentIndex == B2BSearch.Hub.rawValue || currentIndex == B2BSearch.Voyager.rawValue{
+        if ((currentIndex == B2BSearch.Hub.rawValue || currentIndex == B2BSearch.Voyager.rawValue) && selectFieldType == AppConstants.SelectState){
             headerTitle.text = "Select State"
+        }else if ((currentIndex == B2BSearch.Expert.rawValue || currentIndex == B2BSearch.TravelAgencies.rawValue) && selectFieldType == AppConstants.SelectRegion){
+            headerTitle.text = "Select Region"
         }else{
         headerTitle.text = selectFieldType
         }

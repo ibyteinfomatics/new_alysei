@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
    
     var checkDict: [String:Any]?
+    var isSelectRole = false
     
     //var locationManager: CLLocationManager!
     var googleAPIKey = "AIzaSyDX4HE7708TQYkE0WoOlzTDlq7_9nneUHY"
@@ -392,6 +393,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 enum AppManager {
   // MARK: App      Tutorial=============================================================================================================
  
+    
     static func setUserSeenAppInstructionPost() {
         kSharedUserDefaults.set(true, forKey: "userSeenShowCasePost")
     }

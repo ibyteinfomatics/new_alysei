@@ -28,8 +28,18 @@ class SelectRoleViewC: AlysieBaseViewC {
         
         btnGetStarted.isHidden = true
         btnGetStartedHeight.constant = 0
+        
+        
+        if kSharedAppDelegate.isSelectRole == false{
+        viewMainTour.isHidden = false
+        viewTourpopup.isHidden = false
         viewTourpopup.layer.cornerRadius = 10
         tourgideLabel.text = TourGuideConstants.kSelectRole
+        }
+        else{
+            viewMainTour.isHidden = true
+            viewTourpopup.isHidden = true
+        }
     }
     
 
@@ -41,6 +51,7 @@ class SelectRoleViewC: AlysieBaseViewC {
     @IBAction func tapCross(_ sender: Any) {
         viewTourpopup.isHidden = true
         viewMainTour.isHidden = true
+        kSharedAppDelegate.isSelectRole = true
     }
     @IBAction func tapGetStarted(_ sender: UIButton) {
       

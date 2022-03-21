@@ -100,7 +100,11 @@ class BusinessButtonTableCell: UITableViewCell {
     }else if (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || businessModel?.businessHeading == AppConstants.SelectRegion{
         //fieldValueId = B2BFieldId.region.rawValue
         //self.callGetValueOfFieldApi()
+        if currentIndex == 4 {
+            self.callGetStatesWithCountryIdApi(travelCountryId ?? "")
+        }else{
         self.callGetStatesWithCountryIdApi(expertCountryId ?? "")
+        }
         
     }else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || businessModel?.businessHeading == AppConstants.SelectRegion{
         self.callGetStatesWithCountryIdApi(travelCountryId ?? "")
@@ -173,6 +177,7 @@ func callStateApi() {
         if self.currentIndex == B2BSearch.Importer.rawValue{
         self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectState)
         }else{
+            
             self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectRegion)
         }
     }
@@ -276,7 +281,11 @@ func callStateApi() {
             for i in 0..<self.arrOptions.count {
                 self.arrCountryStateName.append(self.arrOptions[i].name ?? "")
             }
+            if self.businessModel?.businessHeading ==  AppConstants.SelectRegion{
+                self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),[StateModel](),self.arrOptions,AppConstants.SelectRegion)
+            }else{
             self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),[StateModel](),self.arrOptions,AppConstants.SelectState)
+            }
             //self.dataDropDown.dataSource = self.arrCountryStateName
             //self.opendropDown()
         }

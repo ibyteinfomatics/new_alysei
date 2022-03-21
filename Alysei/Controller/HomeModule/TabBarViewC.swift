@@ -10,8 +10,11 @@ import UIKit
 
 class TabBarViewC: UITabBarController {
 
+    let newView = UIView()
+    
   override func viewDidLoad() {
     super.viewDidLoad()
+     
       
     if  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" {
     if let viewController2 = self.tabBarController?.viewControllers?[1] {
@@ -37,5 +40,6 @@ class TabBarViewC: UITabBarController {
 
      
 }
+
 
 }
