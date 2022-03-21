@@ -200,7 +200,7 @@ class ProfileViewC: AlysieBaseViewC{
                     
                     self.coachMarksController.start(in: .viewController(self))
                     self.tabBarController?.tabBar.backgroundColor = .gray
-                    self.tabBarController?.tabBar.alpha = 0.8
+                    self.tabBarController?.tabBar.alpha = 0.7
                     tabBarController?.tabBar.isUserInteractionEnabled = false
                     
                 }
@@ -2028,7 +2028,12 @@ extension ProfileViewC {
         // declineAction
         let deleteAction = UIAlertAction(title: "Decline Request",
                                          style: UIAlertAction.Style.default) { (action) in
-            self.inviteApi(id: self.userID, type: 2)
+           // self.inviteApi(id: self.userID, type: 2)
+            
+            let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
+            vc.visitordId = self.userID
+            
+            
         }
         let deleteImage = UIImage(named: "Group 636")?.withRenderingMode(.alwaysOriginal)
         deleteAction.setValue(deleteImage, forKey: "image")

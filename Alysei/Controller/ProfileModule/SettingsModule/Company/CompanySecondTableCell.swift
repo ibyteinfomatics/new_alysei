@@ -29,16 +29,30 @@ class CompanySecondTableCell: UITableViewCell {
         
         if  index == 0 {
         self.imgCheckMark.image  = data.photoOfLabel?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+            
+            let btnText = data.photoOfLabel?.isEmpty == true ? "Upload" : "Uploaded"
+            self.btnUploadChange.setTitle(btnText, for: .normal)
+            
         }else if index == 1 {
         self.imgCheckMark.image  = data.fceSidCertification?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+            let btnText = data.fceSidCertification?.isEmpty == true ? "Upload" : "Uploaded"
+            self.btnUploadChange.setTitle(btnText, for: .normal)
         }else if index == 2{
             self.imgCheckMark.image  = data.phytosanitaryCertificate?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+            let btnText = data.phytosanitaryCertificate?.isEmpty == true ? "Upload" : "Uploaded"
+            self.btnUploadChange.setTitle(btnText, for: .normal)
         }else if index == 3{
             self.imgCheckMark.image  = data.packaginForUsa?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+            let btnText = data.packaginForUsa?.isEmpty == true ? "Upload" : "Uploaded"
+            self.btnUploadChange.setTitle(btnText, for: .normal)
        }else if index == 4 {
             self.imgCheckMark.image  = data.foodSafetyPlan?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+           let btnText = data.foodSafetyPlan?.isEmpty == true ? "Upload" : "Uploaded"
+           self.btnUploadChange.setTitle(btnText, for: .normal)
         }else{
             self.imgCheckMark.image  = data.animalHelathAslCertificate?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
+            let btnText = data.animalHelathAslCertificate?.isEmpty == true ? "Upload" : "Uploaded"
+            self.btnUploadChange.setTitle(btnText, for: .normal)
         }
     }
     

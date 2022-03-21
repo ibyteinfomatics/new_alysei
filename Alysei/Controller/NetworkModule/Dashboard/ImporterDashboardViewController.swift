@@ -17,15 +17,20 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var about: UILabel!
     @IBOutlet weak var region: UILabel!
     @IBOutlet weak var horeca: UILabel!
+    @IBOutlet weak var fda: UILabel!
     @IBOutlet weak var privatelabel: UILabel!
     @IBOutlet weak var brandlabel: UILabel!
     @IBOutlet weak var ourproduct: UILabel!
     @IBOutlet weak var countryText: UILabel!
     @IBOutlet weak var userimg: UIImageView!
-    
+    @IBOutlet weak var fdaHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollview: UIScrollView!
     
+    @IBOutlet weak var fdaLine: UIView!
+    @IBOutlet weak var fdaLabel: UILabel!
+    
     var connectionId = ""
+    var visitordId = ""
     var dashboardModel:DashboardModel?
     var role = 0
     
@@ -111,21 +116,52 @@ class ImporterDashboardViewController: AlysieBaseViewC {
                 self.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "")+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
             }
             
-            self.about.text = self.dashboardModel?.data?.aboutMember?[2].value
-            self.region.text = self.dashboardModel?.data?.aboutMember?[1].value
-            self.horeca.text = self.dashboardModel?.data?.aboutMember?[4].value
-            self.privatelabel.text = self.dashboardModel?.data?.aboutMember?[5].value
             
-            self.ourproduct.text = self.dashboardModel?.data?.aboutMember?[3].value
+            
             if (self.dashboardModel?.data?.aboutMember?.count ?? 0) > 6{
+                
+                self.fdaHeight.constant = 70
+                self.fda.isHidden = false
+                self.fdaLine.isHidden = false
+                self.fdaLabel.isHidden = false
+                
+                self.about.text = self.dashboardModel?.data?.aboutMember?[2].value
+                self.region.text = self.dashboardModel?.data?.aboutMember?[0].value
+                self.horeca.text = self.dashboardModel?.data?.aboutMember?[4].value
+                self.privatelabel.text = self.dashboardModel?.data?.aboutMember?[5].value
+                
+                self.fda.text = self.dashboardModel?.data?.aboutMember?[1].value
+                
+                self.ourproduct.text = self.dashboardModel?.data?.aboutMember?[3].value
+                
                 if self.dashboardModel?.data?.aboutMember?[6].value == "" ||  self.dashboardModel?.data?.aboutMember?[6].value == nil{
                     self.brandlabel.isHidden = true
                 }else{
                     self.brandlabel.isHidden = false
-                self.brandlabel.text = self.dashboardModel?.data?.aboutMember?[6].value
+                    self.brandlabel.text = self.dashboardModel?.data?.aboutMember?[6].value
+                }
+            } else {
+                self.about.text = self.dashboardModel?.data?.aboutMember?[1].value
+                self.region.text = self.dashboardModel?.data?.aboutMember?[0].value
+                self.horeca.text = self.dashboardModel?.data?.aboutMember?[3].value
+                self.privatelabel.text = self.dashboardModel?.data?.aboutMember?[4].value
+                
+                self.fdaHeight.constant = 0
+                self.fda.isHidden = true
+                self.fdaLine.isHidden = true
+                self.fdaLabel.isHidden = true
+                
+                self.ourproduct.text = self.dashboardModel?.data?.aboutMember?[2].value
+                
+                if self.dashboardModel?.data?.aboutMember?[5].value == "" ||  self.dashboardModel?.data?.aboutMember?[5].value == nil{
+                    self.brandlabel.isHidden = true
+                }else{
+                    self.brandlabel.isHidden = false
+                    self.brandlabel.text = self.dashboardModel?.data?.aboutMember?[5].value
                 }
             }
-            }
+        
+        }
         
     }
     
@@ -143,7 +179,7 @@ class ImporterDashboardViewController: AlysieBaseViewC {
         
         //self.inviteApi(id: Int.getInt(self.connectionId), type: 2)
         let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
-        vc.connectionid = Int.getInt(self.connectionId)
+        vc.visitordId = Int.getInt(self.connectionId)
     }
     
 

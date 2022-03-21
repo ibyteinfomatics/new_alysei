@@ -22,6 +22,7 @@ class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var restType: UILabel!
     
     var connectionId = ""
+    var visitordId = ""
     var dashboardModel:DashboardModel?
     
     override func viewDidLoad() {
@@ -112,7 +113,7 @@ class RestaurantViewController: AlysieBaseViewC {
         //self.inviteApi(id: Int.getInt(self.connectionId), type: 2)
         
         let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
-        vc.connectionid = Int.getInt(self.connectionId)
+        vc.visitordId = Int.getInt(self.visitordId)
     }
 
 }

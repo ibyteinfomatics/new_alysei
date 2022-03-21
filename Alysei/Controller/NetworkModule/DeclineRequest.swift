@@ -11,7 +11,7 @@ class DeclineRequest: AlysieBaseViewC {
     
     @IBOutlet weak var reasonToDecline: UITextView!
     @IBOutlet weak var headerView: UIView!
-    var connectionid : Int?
+    var visitordId : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,13 @@ class DeclineRequest: AlysieBaseViewC {
         if reasonToDecline.text == "" {
             showAlert(withMessage: AlertMessage.kDeclineMsg)
         } else {
-            inviteApi(id: connectionid ?? 0, type: 2, resaon: String.getString(reasonToDecline.text))
+            declineApi(id: visitordId ?? 0, type: 2, resaon: String.getString(reasonToDecline.text))
+            //inviteApi(id: visitordId ?? 0, type: 2, resaon: String.getString(reasonToDecline.text))
         }
         
     }
     
-    func inviteApi(id: Int, type: Int, resaon: String){
+    /*func inviteApi(id: Int, type: Int, resaon: String){
         
         let params: [String:Any] = [
             "connection_id": id,
@@ -54,6 +55,23 @@ class DeclineRequest: AlysieBaseViewC {
             }
            
 
+        }
+        
+    }*/
+    
+    func declineApi(id: Int, type: Int, resaon: String){
+        
+        let params: [String:Any] = [:]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(id)+"&accept_or_reject="+String.getString(type)+"&reason="+resaon, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            //self.fetchVisiterProfileDetails(self.userID)
+            
+            if statusCode == 200 {
+                let controller = self.pushViewController(withName: NetworkViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? NetworkViewC
+                controller?.currentIndex = 1
+            }
+            
         }
         
     }

@@ -12,6 +12,7 @@ class ProducerDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var producerTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     var connectionId = ""
+    var visitordId = ""
     
     var dashboardModel:DashboardModel?
    
@@ -145,7 +146,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                // self.inviteApi(id: Int.getInt(self.connectionId), type: 2)
                 
                 let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
-                vc.connectionid = Int.getInt(self.connectionId)
+                vc.visitordId = Int.getInt(self.visitordId)
             }
             
             return cell
