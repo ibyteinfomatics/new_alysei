@@ -33,7 +33,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var imgReview: UIImageView!
-    var privacyArray = ["Public","Followers","Just Me","My Connections"]
+    var privacyArray = ["Public","Followers","Only Me","Connections"]
     var privacyImageArray = ["Public","Friends","OnlyMe","Friends"]
     var progressUserData: UserData?
     var postDesc: String?
@@ -402,12 +402,12 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 self.btnPostPrivacy.setTitle("Followers", for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Just Me", for: .normal)
+            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Only Me", for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
                 
-                self.btnPostPrivacy.setTitle("My Connections", for: .normal)
+                self.btnPostPrivacy.setTitle("Connections", for: .normal)
             }))
 
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

@@ -494,6 +494,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     if arraySearchByPeople?.count == 0{
                         cell1.noItemLabel.isHidden = false
                         cell1.mainVw.isHidden = true
+                        
                     }
                     else{
                         cell1.noItemLabel.isHidden = true
@@ -745,11 +746,12 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     if arraySearchByEvents?.count == 0{
                         cell4.noItemLabel.isHidden = false
                         cell4.mainVw.isHidden = true
-                        
+                        cell4.btnInterested.isHidden = true
                     }
                     else{
                         cell4.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
+                        cell4.btnInterested.isHidden = false
                         let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
                         cell4.morebutton.tag = indexPath.row
                         cell4.lblLikeCount.text = "\(self.arraySearchByEvents?[indexPath.row].like_counts ?? 0)"
@@ -1137,11 +1139,12 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                 if arraySearchByEvents?.count == 0{
                     cell4.noItemLabel.isHidden = false
                     cell4.mainVw.isHidden = true
-                    
+                    cell4.btnInterested.isHidden = true
                 }
                 else{
                     cell4.noItemLabel.isHidden = true
                     cell4.mainVw.isHidden = false
+                    cell4.btnInterested.isHidden = false
                     cell4.morebutton.tag = indexPath.row
                     let imgUrl = ((self.arraySearchByEvents?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByEvents?[indexPath.row].attachment?.attachmenturl ?? ""))
                     cell4.eventImage.setImage(withString: imgUrl)

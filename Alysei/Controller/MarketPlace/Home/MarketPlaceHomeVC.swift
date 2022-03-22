@@ -679,7 +679,7 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             let imgUrl = (baseUrl + (self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].logoId?.attachmentURL ?? ""))
             cell.image.setImage(withString: imgUrl)
             cell.lblStoreName.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].name
-            cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].location
+            cell.lblStoreLoaction.text = self.maketPlaceHomeScreenData?.newly_added_store?[indexPath.row].region?.name
             return cell
         }else if collectionView == regionCollectionView{
             guard let cell = regionCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeRegionCViewCell", for: indexPath) as? MarketPlaceHomeRegionCViewCell  else {return UICollectionViewCell()}
@@ -914,6 +914,13 @@ class MarketplaceNewlyAddedStoreHomeImageCVC: UICollectionViewCell{
     @IBOutlet weak  var image: UIImageView!
     @IBOutlet weak var lblStoreLoaction: UILabel!
     @IBOutlet weak var lblStoreName: UILabel!
+    @IBOutlet weak var lblAvgRating: UILabel!
+    @IBOutlet weak var lblTotalReview: UILabel!
+    @IBOutlet weak var imgStar1: UIImageView!
+    @IBOutlet weak var imgStar2: UIImageView!
+    @IBOutlet weak var imgStar3: UIImageView!
+    @IBOutlet weak var imgStar4: UIImageView!
+    @IBOutlet weak var imgStar5: UIImageView!
    
     override func awakeFromNib() {
         super.awakeFromNib()

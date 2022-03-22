@@ -43,7 +43,7 @@ class BusinessButtonTableCell: UITableViewCell {
     var productoption: SignUpStepOneDataModel?
     var userRoleId: String?
     var pushVCCallback: (([HubCityArray]?,GetRoleViewModel,ProductType, [StateModel],[SignUpOptionsDataModel],String) -> Void)? = nil
-
+    var pushedFrom: PushedFrom?
     
     var pushToProductTypeScreen:((SignUpStepOneDataModel,IdentifyUserForProduct) -> Void)? = nil
     var identifyUserForProduct: IdentifyUserForProduct?
@@ -64,17 +64,28 @@ class BusinessButtonTableCell: UITableViewCell {
      
     if (currentIndex ==  B2BSearch.Hub.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.SelectRegion){
         callStateApi()
-    }else if (currentIndex == B2BSearch.Importer.rawValue && sender.tag ==  1){
+    }else if (currentIndex == B2BSearch.Importer.rawValue && sender.tag ==  1 && pushedFrom != .hubUserListVC){
         callImporterRoleApi()
+    }else if (currentIndex == B2BSearch.Importer.rawValue && pushedFrom == .hubUserListVC && sender.tag ==  0){
+        callImporterRoleApi()
+    }else if (currentIndex == B2BSearch.Importer.rawValue && pushedFrom == .hubUserListVC && sender.tag ==  1){
+        fieldValueId = B2BFieldId.productType.rawValue
+        self.identifyUserForProduct = .productImporter
+        self.callGetValueOfFieldApi()
+        
     }
-      else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 0) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 0){
+      else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC){
         self.callUserHubsApi()
     }else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 2) {
         fieldValueId = B2BFieldId.productType.rawValue
         self.identifyUserForProduct = .productImporter
         self.callGetValueOfFieldApi()
         
-    }else if (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 1){
+    }else if ((currentIndex ==  B2BSearch.Producer.rawValue) && (businessModel?.businessHeading == AppConstants.ProductTypeBusiness) && (pushedFrom == .hubUserListVC)){
+          fieldValueId = B2BFieldId.productType.rawValue
+          self.identifyUserForProduct = .productProducer
+          self.callGetValueOfFieldApi()
+      }else if (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 1){
         fieldValueId = B2BFieldId.productType.rawValue
         self.identifyUserForProduct = .productProducer
         self.callGetValueOfFieldApi()

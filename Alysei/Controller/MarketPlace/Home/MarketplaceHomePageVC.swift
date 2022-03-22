@@ -732,7 +732,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
             }else if indexPath.row == 2{
                 return 310
             }else if indexPath.row == 3{
-                return 270
+                return 300
             }else if indexPath.row == 4{
                 return 185
             }else if indexPath.row == 5{

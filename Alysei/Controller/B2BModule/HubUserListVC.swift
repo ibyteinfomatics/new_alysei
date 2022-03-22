@@ -17,7 +17,7 @@ class HubUserListVC: AlysieBaseViewC {
     var arrSearchDataModel = [NewFeedSearchDataModel]()
     var arrSearchimpotrDataModel = [SubjectData]()
     var txtkeywordSearch: String?
-    
+    var selectImpRolesNames: String?
     //var arrImpSearchList:  NewFeedSearchModel?
     var indexOfPageToRequest = 1
     var lastPageofScreen: Int?
@@ -50,7 +50,7 @@ class HubUserListVC: AlysieBaseViewC {
     var passHubId:String?
     var passRoleId:String?
     var passUserTitle: String?
-    
+    var pushedFrom: PushedFrom?
     var searchImpDone = false
     var signUpStepOneDataModel: SignUpStepOneDataModel!
     var selectPrdctCatgryOptnNme :String?
@@ -120,6 +120,8 @@ class HubUserListVC: AlysieBaseViewC {
         
         let businessButtonTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessButtonTableCell.identifier()) as! BusinessButtonTableCell
         //businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0)
+        businessButtonTableCell.btnBusiness.tag = indexPath.row
+        businessButtonTableCell.pushedFrom = .hubUserListVC
         if self.searchImpDone == false{
             businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel?.arrBusinessData[indexPath.row] ?? BusinessDataModel(), currentIndex: self.currentIndex ?? 0,index: indexPath.row)
         }else{
@@ -127,14 +129,27 @@ class HubUserListVC: AlysieBaseViewC {
             if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
                 businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
             }else{
-            print("No update")
-            }
+                       print("No Impupdate-----",(indexPath.row))
+
+
+                    if  indexPath.row == 0{
+                        
+                     if selectImpRolesNames == nil  {
+                        businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
+                        print("Impupdate-----TITLEUSerType")
+                    }else{
+                        businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
+                        print("Impupdate-----TITLESelectUserNAMe")
+                   }
+                    }
+                }
             }else{
                 if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 0{
                     businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                 }else{
                 print("No update")
                 }
+                
             }
         }
 
@@ -164,6 +179,7 @@ class HubUserListVC: AlysieBaseViewC {
                     let Arr =  self.selectImpHubId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
                 }else if selectFieldType == AppConstants.SelectUserType{
+                    
                     let Arr =  self.selectImpRoleId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
                 }else if selectFieldType == AppConstants.ProductTypeBusiness{
@@ -246,6 +262,7 @@ class HubUserListVC: AlysieBaseViewC {
                 businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                 self.selectImpHubId = optionId
                 }else if selectFieldType == AppConstants.SelectUserType{
+                    self.selectImpRolesNames = optionName
                     businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                     self.selectImpRoleId = optionId
                 }else if selectFieldType == AppConstants.ProductTypeBusiness{

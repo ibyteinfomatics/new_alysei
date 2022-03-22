@@ -241,10 +241,10 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
                 self.btnPostPrivacy.setTitle("Followers", for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Just Me", for: .normal)
+            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle("Only Me", for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.btnPostPrivacy.setTitle("My Connections", for: .normal)
             }))
