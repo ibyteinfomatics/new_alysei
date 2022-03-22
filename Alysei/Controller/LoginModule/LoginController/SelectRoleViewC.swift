@@ -17,7 +17,7 @@ class SelectRoleViewC: AlysieBaseViewC {
     @IBOutlet weak var btnGetStartedHeight: NSLayoutConstraint!
     @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var viewMainTour: UIView!
-    @IBOutlet weak var viewTourpopup: UIView!
+    @IBOutlet weak var viewTourpopup: OvalView!
     @IBOutlet weak var tourgideLabel: UILabel!
     //MARK:  - Properties -
     
@@ -28,12 +28,10 @@ class SelectRoleViewC: AlysieBaseViewC {
         
         btnGetStarted.isHidden = true
         btnGetStartedHeight.constant = 0
-        
-        
+    
         if kSharedAppDelegate.isSelectRole == false{
         viewMainTour.isHidden = false
         viewTourpopup.isHidden = false
-        viewTourpopup.layer.cornerRadius = 10
         tourgideLabel.text = TourGuideConstants.kSelectRole
         }
         else{
@@ -199,3 +197,30 @@ class RoleTableVieCell: UITableViewCell{
     
 }
 
+class OvalView: UIView {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutOvalMask()
+    }
+
+    private func layoutOvalMask() {
+        let mask = self.shapeMaskLayer()
+        let bounds = self.bounds
+        if mask.frame != bounds {
+            mask.frame = bounds
+            mask.path = CGPath(ellipseIn: bounds, transform: nil)
+        }
+    }
+
+    private func shapeMaskLayer() -> CAShapeLayer {
+        if let layer = self.layer.mask as? CAShapeLayer {
+            return layer
+        }
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.black.cgColor
+        self.layer.mask = layer
+        return layer
+    }
+
+}

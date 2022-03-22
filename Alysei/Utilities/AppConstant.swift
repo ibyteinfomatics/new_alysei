@@ -673,7 +673,7 @@ static var kProperties  : String {  return "Properties".localizableString(loc: k
    // static let kFDACertified = "FDA Certfied"
 static var kITalianRegion  : String {  "Italian Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kDistance  : String {  "Distance".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kRatings  : String {  "Ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kRatings  : String {  " Ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kProducers  : String {  "Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kProductName  : String {  "Product Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kClearFilters  : String {  "Clear Filters".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -776,7 +776,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kYourOwnBrandLabel  : String { "Your own brand label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Rating Review Screen
-    static var kSRatings  : String {  "ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSRatings  : String {  " ratings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kReviews  : String {  "reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCapReviews  : String {  "Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEditReview  : String {  "Edit Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -872,7 +872,8 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kNewestFirst  : String {"Newest First".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Store Screen
-    static var kItalianFBProducer  : String {"Italian F&B Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kItalianFBProducers  : String {"Italian F&B Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOurGallery  : String { "Our Gallery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCall  : String {"Call".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddToFav  : String {"Add to Fav".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1745,6 +1746,7 @@ enum PushedFrom: Int {
     case properties
     case myFav
     case viewAllEntities
+    case hubUserListVC
     
 }
 

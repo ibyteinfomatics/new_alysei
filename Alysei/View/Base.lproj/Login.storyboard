@@ -3576,7 +3576,7 @@
                                     <constraint firstItem="frb-1M-WYZ" firstAttribute="top" secondItem="Xwd-1d-uk4" secondAttribute="top" constant="20" id="s9R-5I-MKo"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkB-X4-Mu5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkB-X4-Mu5" customClass="OvalView" customModule="Alysei" customModuleProvider="target">
                                 <rect key="frame" x="40" y="243.5" width="295" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the box that identifies you or your company and follow the steps " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZ8-PR-9RY">
@@ -3592,6 +3592,7 @@
                                     <constraint firstItem="pZ8-PR-9RY" firstAttribute="centerY" secondItem="nkB-X4-Mu5" secondAttribute="centerY" id="PfC-cD-Qmd"/>
                                     <constraint firstItem="pZ8-PR-9RY" firstAttribute="leading" secondItem="nkB-X4-Mu5" secondAttribute="leading" constant="20" id="glY-dO-nDh"/>
                                     <constraint firstAttribute="trailing" secondItem="pZ8-PR-9RY" secondAttribute="trailing" constant="20" id="tXj-RB-uHY"/>
+                                    <constraint firstItem="pZ8-PR-9RY" firstAttribute="centerX" secondItem="nkB-X4-Mu5" secondAttribute="centerX" id="xka-15-Fxs"/>
                                 </constraints>
                             </view>
                         </subviews>

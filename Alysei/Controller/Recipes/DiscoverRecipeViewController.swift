@@ -95,12 +95,15 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     var isReloadData = true
     var nextWalkCount = 0
     let coachMarksController = CoachMarksController()
-    
+    var trendingTour = UILabel()
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.coachMarksController.stop(immediately: true)
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,9 +111,9 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         self.coachMarksController.dataSource = self
         self.coachMarksController.delegate = self
         
-//        let skipView = CoachMarkSkipDefaultView()
-//        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
-//         self.coachMarksController.skipView = skipView
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+        self.coachMarksController.skipView = skipView
         
         //MARK: Set Localization title------
         postLabel.text = MarketPlaceConstant.kPosts
@@ -550,6 +553,7 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
         
         
        
+       
         switch checkbutton{
         case 0:
             
@@ -598,6 +602,9 @@ extension DiscoverRecipeViewController : UITableViewDataSource, UITableViewDeleg
                 cell3.quickSearchTrendingLabel.text = RecipeConstants.kTrendingNow
                 cell3.quickSearchTrendingLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 18)
                 cell3.delegate = self
+                
+               
+                
                 cell3.tapViewAllTrending = { [self] in
                     
                     let viewAll = self.storyboard?.instantiateViewController(withIdentifier: "ViewAllTrendingViewController") as! ViewAllTrendingViewController
@@ -1402,21 +1409,41 @@ extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMa
         let indexpath1 = IndexPath(row: 0, section: 0)
         let cell1 = containerTableVw.cellForRow(at: indexpath1) as? ExploreByIngridientTableViewCell
         let indexpath3 = IndexPath(row: 0, section: 3)
-        let cell3 = containerTableVw.cellForRow(at: indexpath3) as? TrendingTableViewCell
+        
        
         switch index {
         case 0: return coachMarksController.helper.makeCoachMark(for: createRecipeBtn)
         case 1: return coachMarksController.helper.makeCoachMark(for: cell1?.headerLabel)
-//        case 2: containerTableVw.scrollToRow(at: indexpath3, at: .bottom, animated: true)
-//           
-//                return coachMarksController.helper.makeCoachMark(for: cell3?.headerLabel)
-//           
+//        case 2:
+//            containerTableVw.scrollToRow(at: indexpath3, at: .top, animated: true)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                coachMarksController.flow.resume()
+//
+//            }
+//            let cell3 = containerTableVw.cellForRow(at: .init(row: 0, section: 3)) as? TrendingTableViewCell
+//
+//            return coachMarksController.helper.makeCoachMark(for: trendingTour)
+             
         default: return coachMarksController.helper.makeCoachMark()
         }
     }
     
-
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, willShow coachMark: inout CoachMark, beforeChanging change: ConfigurationChange, at index: Int) {
+       
+        let indexpath3 = IndexPath(row: 0, section: 3)
+        switch index {
+        case 0: coachMarksController.flow.resume()
+        case 1: coachMarksController.flow.resume()
+//        case 2: coachMarksController.flow.pause()
+           
+        default:
+            coachMarksController.flow.resume()
+        }
+    }
+    
+    
     func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
         AppManager.setUserSeenAppInstruction()
-    }
+     }
 }

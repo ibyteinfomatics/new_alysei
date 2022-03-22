@@ -41,7 +41,7 @@ class Privacy: AlysieBaseViewC {
     
     var dataDropDown = DropDown()
     var arrData1 = ["Anyone","Followers","Connections","Nobody"]
-    var arrData = ["Anyone","Followers","Connections","Just Me"]
+    var arrData = ["Anyone","Followers","Connections","Only Me"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

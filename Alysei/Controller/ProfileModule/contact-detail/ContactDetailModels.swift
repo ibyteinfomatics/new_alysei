@@ -22,6 +22,8 @@ enum ContactDetail {
             var website: String?
             var facebookURL: String?
             var countryCode: String?
+            var lattitude: Double?
+            var longitude: Double?
 
             func data() -> Data? {
 
@@ -42,7 +44,12 @@ enum ContactDetail {
                 if let facebookURL = self.facebookURL {
                     postData.append("fb_link=\(facebookURL)&".data(using: .utf8)!)
                 }
-
+                if let lattitude = self.lattitude {
+                    postData.append("lattitude=\(lattitude)&".data(using: .utf8)!)
+                }
+                if let longitude = self.longitude {
+                    postData.append("longitude=\(longitude)&".data(using: .utf8)!)
+                }
                 return postData as Data
 
             }
@@ -59,6 +66,8 @@ enum ContactDetail {
             var websiteURL: String? { response.data.website }
             var facebookURL: String? { response.data.fb_link }
             var countryCode: String? { response.data.country_code }
+            var lattitude: Double{ response.data.lattitude ?? 0.0 }
+            var longitude: Double{ response.data.longitude ?? 0.0 }
         }
 
 
@@ -71,6 +80,8 @@ enum ContactDetail {
             var website: String?
             var fb_link: String?
             var country_code: String?
+            var lattitude: Double?
+            var longitude: Double?
         }
     }
 

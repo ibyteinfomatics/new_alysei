@@ -208,7 +208,7 @@ class ProfileViewC: AlysieBaseViewC{
                     tabBarController?.tabBar.backgroundColor = .white
                     tabBarController?.tabBar.alpha = 1.0
                     tabBarController?.tabBar.isUserInteractionEnabled = true
-                   
+
                 }
             }
             else{
@@ -229,6 +229,9 @@ class ProfileViewC: AlysieBaseViewC{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+        self.coachMarksController.skipView = skipView
         
         
         self.btnEditProfile.layer.cornerRadius = 5
@@ -2217,15 +2220,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
             //            }
             //            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-            DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
-                
-                self.tabBarController?.tabBar.backgroundColor = .white
-                self.tabBarController?.tabBar.alpha = 1.0
-                self.tabBarController?.tabBar.isUserInteractionEnabled = true
-               
-            }
-            
-            
+         
         default: break
         }
         
@@ -2264,6 +2259,9 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
     
     func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
         AppManager.setUserSeenAppInstructionProfile()
+        self.tabBarController?.tabBar.backgroundColor = .white
+        self.tabBarController?.tabBar.alpha = 1.0
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
     }
     
 }

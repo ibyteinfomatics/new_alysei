@@ -17,17 +17,11 @@ struct PostCommentsUserData {
     var postID: Int
 }
 
-protocol HomeViewCDelegate{
-    func blurAtLaunch()
-    func removeBlurAtLaunch()
-}
-
 var checkHavingPreferences : Int? = 0
 var isRefreshing = false
-var isprofileComplete = Bool()
-var isTourGuideComplete = Bool()
+var isprofileComplete : Bool?
+
 class PostsViewController: AlysieBaseViewC  {
-    
     
     @IBOutlet weak var postTableView: UITableView!
     @IBOutlet weak var marketplaceView: UIView!
@@ -50,7 +44,7 @@ class PostsViewController: AlysieBaseViewC  {
     var role: String?
     var isExpand = false
     let coachMarksController = CoachMarksController()
-    var delegate : HomeViewCDelegate?
+    
     
     var overlay: UIView = {
         let view = UIView(frame: UIScreen.main.bounds);
@@ -78,8 +72,12 @@ class PostsViewController: AlysieBaseViewC  {
             
         }
         
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+        self.coachMarksController.skipView = skipView
+        
         self.tabBarController?.selectedIndex = 0
-        //        self.tabBarController?.tabBar.isHidden = false
+        // self.tabBarController?.tabBar.isHidden = false
         // hidesBottomBarWhenPushed = false
         // callNewFeedApi(pageNo)
         self.coachMarksController.dataSource = self
@@ -109,7 +107,6 @@ class PostsViewController: AlysieBaseViewC  {
         
         // Do any additional setup after loading the view.
         
-        
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -119,7 +116,6 @@ class PostsViewController: AlysieBaseViewC  {
         callNewFeedApi(1)
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -256,18 +252,17 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             // self.tableView.reloadData()
             //self.scrollToLTopRow()
             //print(self.postLike?[0].likeCount)
-            print("checking")
+            print("checking",self.postLike?.count)
             
-            if self.arrNewFeedDataModel.count > 0 {
-                if self.postLike?.last?.postId != self.arrNewFeedDataModel[0].postID {
+            let postsize = self.postLike?.count ?? 0
+            
+            if self.arrNewFeedDataModel.count > 5 {
+                if self.postLike?[postsize-1].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-2].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-3].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-4].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-5].postId != self.arrNewFeedDataModel[0].postID{
                     self.btnNewpost.isHidden = false
                 } else {
                     self.postTableView.reloadData()
                 }
             }
-            
-            
-            
             
         }
         
@@ -680,41 +675,38 @@ extension PostsViewController {
             if let data = response?["data"] as? [String:Any]{
                 
                 print("profile_percentage--- ",data["profile_percentage"]!)
-                
-                if String.getString(data["profile_percentage"])  != "100" {
-                    isprofileComplete = false
-                    
-                } else {
-                    isprofileComplete = true
-                    if  kSharedUserDefaults.alyseiReview == 1{
-                        if isprofileComplete == true{
-                            if !AppManager.getUserSeenAppInstructionPost() {
-                                
-                                self.coachMarksController.start(in: .viewController(self))
-                                let parent = self.parent as? HomeViewC
-                                parent?.headerView.isUserInteractionEnabled = false
-                                parent?.headerView.alpha = 0.7
-                                parent?.headerView.backgroundColor = .darkGray//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-                                
-                                
-                                self.tabBarController?.tabBar.layer.backgroundColor = UIColor.gray.cgColor
-                                
-                                self.tabBarController?.tabBar.alpha = 0.7
-                                self.tabBarController?.tabBar.isUserInteractionEnabled = false
-                                
-                                // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
-                            }
-                            else{
-                                self.tabBarController?.tabBar.backgroundColor = .white
-                                self.tabBarController?.tabBar.alpha = 1.0
-                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
-                                
-                                let parent = self.parent as? HomeViewC
-                                parent?.headerView.isUserInteractionEnabled = true
-                                parent?.headerView.alpha = 1.0
-                                parent?.headerView.backgroundColor = .white
-                                
-                            }
+                if  kSharedUserDefaults.alyseiReview == 1{
+                    if String.getString(data["profile_percentage"])  != "100" {
+                        isprofileComplete = false
+                        
+                        self.tabBarController?.tabBar.backgroundColor = .white
+                        self.tabBarController?.tabBar.alpha = 1.0
+                        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                        
+                        let parent = self.parent as? HomeViewC
+                        parent?.headerView.isUserInteractionEnabled = true
+                        parent?.headerView.alpha = 1.0
+                        parent?.headerView.backgroundColor = .white
+                        
+                    }
+                    else {
+                        isprofileComplete = true
+                        
+                        if !AppManager.getUserSeenAppInstructionPost() {
+                            
+                            self.coachMarksController.start(in: .viewController(self))
+                            let parent = self.parent as? HomeViewC
+                            parent?.headerView.isUserInteractionEnabled = false
+                            parent?.headerView.alpha = 0.7
+                            parent?.headerView.backgroundColor = .darkGray//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                            
+                            
+                            self.tabBarController?.tabBar.layer.backgroundColor = UIColor.gray.cgColor
+                            
+                            self.tabBarController?.tabBar.alpha = 0.7
+                            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                            
+                            // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
                         }
                         else{
                             self.tabBarController?.tabBar.backgroundColor = .white
@@ -729,22 +721,18 @@ extension PostsViewController {
                         }
                         
                     }
+                }
+                else{
+                    self.tabBarController?.tabBar.backgroundColor = .white
+                    self.tabBarController?.tabBar.alpha = 1.0
+                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
                     
-                    else{
-                        self.tabBarController?.tabBar.backgroundColor = .white
-                        self.tabBarController?.tabBar.alpha = 1.0
-                        self.tabBarController?.tabBar.isUserInteractionEnabled = true
-                        
-                        let parent = self.parent as? HomeViewC
-                        parent?.headerView.isUserInteractionEnabled = true
-                        parent?.headerView.alpha = 1.0
-                        parent?.headerView.backgroundColor = .white
-                        
-                    }
-                    
+                    let parent = self.parent as? HomeViewC
+                    parent?.headerView.isUserInteractionEnabled = true
+                    parent?.headerView.alpha = 1.0
+                    parent?.headerView.backgroundColor = .white
                     
                 }
-                
                 
             }
             
@@ -907,7 +895,6 @@ extension PostsViewController : CoachMarksControllerDataSource, CoachMarksContro
                               coachMarkAt index: Int) -> CoachMark {
         
         let b2bTab = tabBarController?.tabBar.items?[1].value(forKey: "view") as? UIView
-        
         let addPostTab = tabBarController?.tabBar.items?[2].value(forKey: "view") as? UIView
         
         switch index {
