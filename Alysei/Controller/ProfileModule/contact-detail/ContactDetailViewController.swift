@@ -31,6 +31,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var phoneCode : String?
     var countryList = [Country]()
     var Countryname : String?
+   
     // MARK:- Object lifecycle
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -330,7 +331,9 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
                                                              address: self.addressTextField.text,
                                                              website: self.websiteTextField.text,
                                                              facebookURL: self.facebookTextField.text,
-                                                             countryCode: self.countryCode)
+                                                             countryCode: self.countryCode,
+                                                             lattitude: kSharedUserDefaults.latitude ,
+                                                             longitude: kSharedUserDefaults.longitude )
             self.interactor?.updateContactDetail(requestModel)
 
         }
@@ -460,6 +463,7 @@ extension ContactDetailViewController: SaveAddressCallback {
 //        latModel.first?.selectedValue = String(kSharedUserDefaults.latitude)
 //        let longModel = kSharedInstance.signUpViewModel.arrSignUpStepTwo.filter({$0.name == AppConstants.KeyLongitude})
 //        longModel.first?.selectedValue = String(kSharedUserDefaults.longitude)
+       
            print("AddressLine1 ", addressLineOne)
             print("AddressLine2", addressLineTwo)
 

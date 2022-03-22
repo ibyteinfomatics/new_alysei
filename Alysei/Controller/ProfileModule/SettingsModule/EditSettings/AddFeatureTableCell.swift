@@ -182,19 +182,19 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
             return true
         }
         
-            if productFieldsDataModel.productTitle == AppConstants.Title{
-                if txtFieldAddFeature.text?.count ?? 0 >= 12{
-                    if let char = string.cString(using: String.Encoding.utf8) {
-                        let isBackSpace = strcmp(char, "\\b")
-                        if (isBackSpace == -92) {
-                            print("Backspace was pressed")
-                            return true
-                        }else{
-                            return false
-                        }
-                    }
-                }
-            }
+//            if productFieldsDataModel.productTitle == AppConstants.Title{
+//                if txtFieldAddFeature.text?.count ?? 0 >= 12{
+//                    if let char = string.cString(using: String.Encoding.utf8) {
+//                        let isBackSpace = strcmp(char, "\\b")
+//                        if (isBackSpace == -92) {
+//                            print("Backspace was pressed")
+//                            return true
+//                        }else{
+//                            return false
+//                        }
+//                    }
+//                }
+//            }
         return true
         
     }

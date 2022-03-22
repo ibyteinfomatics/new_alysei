@@ -62,8 +62,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     var picker = UIImagePickerController()
     var uploadProfilePic = false
     var uploadCoverPic = false
-    var latitude: String?
-    var longitude:String?
+  //  var latitude: String?
+ //   var longitude:String?
     var storeImageParams = [[String:Any]]()
     var stateModel: [StateModel]?
     var arrStateName = [String]()
@@ -92,7 +92,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         lblWebsite.text = MarketPlaceConstant.kCWebsite
         lblStoreRegion.text = MarketPlaceConstant.kStoreRegion
         lblLocation.text = MarketPlaceConstant.kLocation
-        lblFdaNumber.text =   "FDA Number" //MarketPlaceConstant.kFDACertified
+        lblFdaNumber.text =  MarketPlaceConstant.kFDACertified //MarketPlaceConstant.kFDACertified
         setDataUI()
         if fromVC == .myStoreDashboard{
             callGetDashboardStoreDetail()
@@ -311,7 +311,7 @@ extension MarketPlaceCreateStoreVC: TLPhotosPickerLogDelegate {
     //For Log User Interaction
     func selectedCameraCell(picker
                                 : TLPhotosPickerViewController) {
-        print("selectedCameraCe ll")
+        print("selectedCameraCell")
     }
     
     func selectedPhoto(picker: TLPhotosPickerViewController, at: Int) {
@@ -516,8 +516,8 @@ extension MarketPlaceCreateStoreVC {
                                      APIConstants.kWebsite: self.txtWebsite.text ?? "",
                                      APIConstants.kStoreRegion: self.txtStoreRegion.text ?? "",
                                      APIConstants.kLocation: self.txtLocation.text ?? "",
-                                     "lattitude": "\(self.latitude ?? "0")",
-                                     APIConstants.kLongitude : "\(self.longitude ?? "0")",
+                                     "lattitude": String(kSharedUserDefaults.latitude),
+                                     APIConstants.kLongitude : String(kSharedUserDefaults.longitude),
                                      APIConstants.kPhone : "\(self.userMobileNumber ?? "")",
                                      "package_id": "\(passpackageId ?? 0)"
         ]
@@ -561,8 +561,9 @@ extension MarketPlaceCreateStoreVC {
                 self.userAbout = data["about"] as? String
                 let region = data["state"] as? [String:Any]
                 self.userRegion = region?["name"] as? String
-                self.latitude = data["lattitude"] as? String
-                self.longitude = data["longitude"] as? String
+             //   self.latitude = data["lattitude"] as? String
+              //  self.longitude = data["longitude"] as? String
+                self.fdaNumber = data["fda_certified"] as? String
 //                let storeGallery = data["store_gallery"] as? [String:Any]{
 //                    self.uploadImageArray =
 //                }
@@ -589,15 +590,17 @@ extension MarketPlaceCreateStoreVC {
                     let region = prefilled["state"] as? [String:Any]
                     self.userRegion = region?["name"] as? String
                     self.storeDescription = prefilled["about"] as? String
-                    self.latitude = prefilled["lattitude"] as? String
-                    self.longitude = prefilled["longitude"] as? String
-                    self.fdaNumber = prefilled["fda_number"] as? String
+               //     self.latitude = kSharedUserDefaults.latitude
+               //     self.longitude = kSharedUserDefaults.latitude
+                    self.fdaNumber = prefilled["fda_certified"] as? String
                     for img in 0..<(self.storeData?.store_gallery?.count ?? 0){
                         //let image = String.getString(self.storeData?.store_gallery?[img].attachment_url)
                         //self.uploadStoreImage.append(image ?? "")
                         let urlString = String.getString((self.storeData?.store_gallery?[img].baseUrl ?? "")) + "\(String.getString(self.storeData?.store_gallery?[img].attachment_url))"
                         do {
-                            let imageData = try Data(contentsOf: URL(string: urlString)!)
+                            let imageUrlString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let imageData = try Data(contentsOf: (URL(string: imageUrlString!)!))
+                            
                             if let image = UIImage(data: imageData) {
                                 self.imagesFromSource.append(image)
                             }
@@ -622,8 +625,8 @@ extension MarketPlaceCreateStoreVC {
                                      APIConstants.kWebsite: self.txtWebsite.text ?? "",
                                      APIConstants.kStoreRegion: self.txtStoreRegion.text ?? "",
                                      APIConstants.kLocation: self.txtLocation.text ?? "",
-                                     "lattitude": "\(self.latitude ?? "0")",
-                                     APIConstants.kLongitude : "\(self.longitude ?? "0")",
+                                     "lattitude": String(kSharedUserDefaults.latitude),
+                                     APIConstants.kLongitude : String(kSharedUserDefaults.longitude),
                                      APIConstants.kPhone : "\(self.userMobileNumber ?? "")"
                                      
         ]

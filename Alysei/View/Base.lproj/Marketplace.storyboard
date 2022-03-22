@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -732,8 +732,60 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlc-lz-WdN">
-                                                                                <rect key="frame" x="10" y="180" width="235" height="39.666666666666657"/>
+                                                                                <rect key="frame" x="10" y="180" width="235" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULU-3K-hiW">
+                                                                                <rect key="frame" x="10.000000000000002" y="202.66666666666666" width="24.666666666666671" height="18.333333333333343"/>
+                                                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-sI-o1a">
+                                                                                <rect key="frame" x="44.666666666666657" y="207" width="58" height="10"/>
+                                                                                <subviews>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="RzE-DF-r1A">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="10" id="TMU-Pi-xi5"/>
+                                                                                            <constraint firstAttribute="width" secondItem="RzE-DF-r1A" secondAttribute="height" multiplier="1:1" id="mM0-k0-vrM"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="QQm-JT-k68">
+                                                                                        <rect key="frame" x="12" y="0.0" width="10" height="10"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="QQm-JT-k68" secondAttribute="height" multiplier="1:1" id="DhF-tN-juZ"/>
+                                                                                            <constraint firstAttribute="height" constant="10" id="WFM-SL-tIW"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="OOT-ci-SKt">
+                                                                                        <rect key="frame" x="24.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="10" id="Rcl-kS-59T"/>
+                                                                                            <constraint firstAttribute="width" secondItem="OOT-ci-SKt" secondAttribute="height" multiplier="1:1" id="uxa-Ol-7qs"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="bft-f8-3xY">
+                                                                                        <rect key="frame" x="36.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="bft-f8-3xY" secondAttribute="height" multiplier="1:1" id="lIR-dS-eEg"/>
+                                                                                            <constraint firstAttribute="height" constant="10" id="wTN-Ro-eqc"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_christmas_star_2" translatesAutoresizingMaskIntoConstraints="NO" id="wf7-wN-9ds">
+                                                                                        <rect key="frame" x="48.000000000000007" y="0.0" width="10" height="10"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="10" id="TTO-nB-Ope"/>
+                                                                                            <constraint firstAttribute="width" secondItem="wf7-wN-9ds" secondAttribute="height" multiplier="1:1" id="lGL-SR-s6p"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                </subviews>
+                                                                            </stackView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmc-Ph-rFn">
+                                                                                <rect key="frame" x="10" y="224" width="89" height="18.333333333333343"/>
+                                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -741,15 +793,20 @@
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="3Z8-5x-vtq" secondAttribute="trailing" id="173-z0-zbq"/>
+                                                                            <constraint firstItem="Vmc-Ph-rFn" firstAttribute="leading" secondItem="ULU-3K-hiW" secondAttribute="leading" id="4yt-yc-abd"/>
                                                                             <constraint firstItem="Wlc-lz-WdN" firstAttribute="trailing" secondItem="o5P-aa-uG5" secondAttribute="trailing" id="589-ab-od6"/>
                                                                             <constraint firstItem="3Z8-5x-vtq" firstAttribute="top" secondItem="eF1-Q8-rqb" secondAttribute="top" constant="5" id="5U7-mE-1Ax"/>
                                                                             <constraint firstItem="o5P-aa-uG5" firstAttribute="leading" secondItem="eF1-Q8-rqb" secondAttribute="leading" constant="10" id="Crn-8B-7eh"/>
                                                                             <constraint firstItem="o5P-aa-uG5" firstAttribute="top" secondItem="3Z8-5x-vtq" secondAttribute="bottom" constant="5" id="EKV-7d-9xE"/>
                                                                             <constraint firstItem="3Z8-5x-vtq" firstAttribute="leading" secondItem="eF1-Q8-rqb" secondAttribute="leading" id="EdD-KZ-aQd"/>
+                                                                            <constraint firstItem="ULU-3K-hiW" firstAttribute="top" secondItem="Wlc-lz-WdN" secondAttribute="bottom" constant="5" id="H1a-ve-Nov"/>
                                                                             <constraint firstItem="Wlc-lz-WdN" firstAttribute="top" secondItem="o5P-aa-uG5" secondAttribute="bottom" constant="2" id="IDG-MG-Gk7"/>
                                                                             <constraint firstAttribute="trailing" secondItem="o5P-aa-uG5" secondAttribute="trailing" constant="25" id="KYU-Yr-naT"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="Wlc-lz-WdN" secondAttribute="bottom" constant="6.5" id="Wb6-Xe-s83"/>
+                                                                            <constraint firstItem="bpH-sI-o1a" firstAttribute="centerY" secondItem="ULU-3K-hiW" secondAttribute="centerY" id="UM6-Z8-OFV"/>
+                                                                            <constraint firstItem="ULU-3K-hiW" firstAttribute="leading" secondItem="Wlc-lz-WdN" secondAttribute="leading" id="XwZ-p0-ZUx"/>
+                                                                            <constraint firstItem="bpH-sI-o1a" firstAttribute="leading" secondItem="ULU-3K-hiW" secondAttribute="trailing" constant="10" id="Y95-3E-lBk"/>
                                                                             <constraint firstItem="Wlc-lz-WdN" firstAttribute="leading" secondItem="o5P-aa-uG5" secondAttribute="leading" id="fmm-Gw-xkD"/>
+                                                                            <constraint firstItem="Vmc-Ph-rFn" firstAttribute="top" secondItem="ULU-3K-hiW" secondAttribute="bottom" constant="3" id="viq-sv-wcg"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -763,8 +820,15 @@
                                                             <size key="customSize" width="280" height="226"/>
                                                             <connections>
                                                                 <outlet property="image" destination="3Z8-5x-vtq" id="Ddp-JS-mnz"/>
+                                                                <outlet property="imgStar1" destination="RzE-DF-r1A" id="ou6-iN-L0V"/>
+                                                                <outlet property="imgStar2" destination="QQm-JT-k68" id="J7E-Qk-9v9"/>
+                                                                <outlet property="imgStar3" destination="OOT-ci-SKt" id="dTQ-EZ-nMw"/>
+                                                                <outlet property="imgStar4" destination="bft-f8-3xY" id="EZt-MF-g80"/>
+                                                                <outlet property="imgStar5" destination="wf7-wN-9ds" id="BNe-1A-f9W"/>
+                                                                <outlet property="lblAvgRating" destination="ULU-3K-hiW" id="ENC-Ge-Egt"/>
                                                                 <outlet property="lblStoreLoaction" destination="Wlc-lz-WdN" id="zz0-2f-IJz"/>
                                                                 <outlet property="lblStoreName" destination="o5P-aa-uG5" id="BNv-4C-49N"/>
+                                                                <outlet property="lblTotalReview" destination="Vmc-Ph-rFn" id="9UM-B7-5eF"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -1802,7 +1866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Waw-FM-m9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="-139"/>
+            <point key="canvasLocation" x="302.89855072463769" y="-139.28571428571428"/>
         </scene>
         <!--My StoreVC-->
         <scene sceneID="uef-E0-Lxt">
@@ -3755,8 +3819,8 @@
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL9-3s-d9w">
                                                     <rect key="frame" x="0.0" y="515" width="394" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FDA Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-Qj-kqM">
-                                                            <rect key="frame" x="10" y="8.0000000000000018" width="110" height="21.666666666666671"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FDA Certified" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-Qj-kqM">
+                                                            <rect key="frame" x="9.9999999999999929" y="8.0000000000000018" width="115.33333333333331" height="21.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>

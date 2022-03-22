@@ -478,6 +478,7 @@
 
 
 //MARK: Marketplace Rating Review Screen
+" ratings" = " Recensioni";
 "ratings" = "Recensioni";
 "Yes" = "Sì";
 "reviews" = "Recensioni";
@@ -612,13 +613,13 @@
 
 //MARK: Marketplace Sort Screen
 "Popularity" = "Popolarità";
-"Ratings" = "Recensioni";
+" Ratings" = " Recensioni";
 "Price -- Low to High" = "Prezzo -- dal più basso al più alto";
 "Price -- High to Low" = "Prezzo -- dal più alto al più basso";
 "Newest First" = "Più recenti";
 
 //MARK: Marketplace Store Screen
-"Italian F&B Producers" = "Produttori enogastronomici Italiani";
+"Italian F&B Producer" = "Produttori enogastronomici Italiani";
 "Our Gallery" = "La nostra galleria";
 "Call" = "Chiama";
 "Website" = "Sito Web";

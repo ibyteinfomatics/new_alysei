@@ -183,7 +183,7 @@
 "FDA Certfied" = "FDA Certfied";
 "Italian Region" = "Italian Region";
 "Distance" = "Distance";
-"Ratings" = "Ratings";
+" Ratings" = " Ratings";
 "Producers" = "Producers";
 "Product Name" = "Product Name";
 "Clear Filters" = "Clear Filters";
@@ -275,7 +275,7 @@
 "Your own brand label" = "Your own brand label";
 
 //MARK: Marketplace Rating Review Screen
-"ratings" = "ratings";
+" ratings" = " ratings";
 "Yes" = "Yes";
 "reviews" = "reviews";
 "Reviews" = "Reviews";

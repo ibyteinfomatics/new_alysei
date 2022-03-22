@@ -195,10 +195,10 @@ extension SharePostViewController: UITextFieldDelegate {
                 self.privacyTextfield.text = "Followers"
             }))
 
-            alertController.addAction(UIAlertAction(title: "Just Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "Just Me"
+            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text = "Only Me"
             }))
-            alertController.addAction(UIAlertAction(title: "My Connections", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
                 self.privacyTextfield.text = "My Connections"
             }))
 
