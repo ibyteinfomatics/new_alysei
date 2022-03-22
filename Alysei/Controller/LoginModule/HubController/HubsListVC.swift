@@ -41,6 +41,10 @@ class HubsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+        self.coachMarksController.skipView = skipView
+        
         self.coachMarksController.dataSource = self
         self.coachMarksController.delegate = self
         
@@ -80,10 +84,10 @@ class HubsListVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         
-//        if !AppManager.getUserSeenAppInstructionHub() {
+      if !AppManager.getUserSeenAppInstructionHub() {
             self.coachMarksController.start(in: .viewController(self))
           
-//        }
+       }
     }
     
     private func callHubViewApi(){
@@ -282,11 +286,12 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
                 let indexpath1 = IndexPath(row: 0, section: 0)
-                let cell1 = tableView.cellForRow(at: indexpath1) //as? SelectCityTableViewCell
+        let cell1 = tableView.cellForRow(at: indexpath1) as? HubsViaCityCell
+        let cell2 = cell1?.tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
         switch index {
            
         case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-        case 1:return coachMarksController.helper.makeCoachMark(for: cell1)
+        case 1: return coachMarksController.helper.makeCoachMark(for: cell2?.buttonLeftCheckbox)
         default: return coachMarksController.helper.makeCoachMark()
         }
     }

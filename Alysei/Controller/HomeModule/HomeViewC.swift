@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import Instructions
 
-
-class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
+class HomeViewC: AlysieBaseViewC  {
   
   //MARK: - IBOutlet -
    
@@ -40,8 +40,9 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
   var fullScreenImageView = UIImageView()
     var progressUserData: UserData?
     var ResentUser:[RecentUser]?
-    var Callback:(()-> Void )?
-    var delegate : HomeViewCDelegate?
+    
+   
+//    let coachMarksController = CoachMarksController()
   //MARK: - Properties -
 
    // var fullScreenImageView = UIImageView()
@@ -57,7 +58,6 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
     private lazy var postViewC: PostsViewController = {
 
       let postViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: PostsViewController.id()) as! PostsViewController
-        postViewC.delegate = self
       return postViewC
         
     }()
@@ -67,7 +67,12 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
   
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-
+//        self.coachMarksController.start(in: .viewController(self))
+       
+//        self.tabBarController?.tabBar.layer.backgroundColor = UIColor.gray.cgColor
+//        
+//        self.tabBarController?.tabBar.alpha = 0.7
+//        self.tabBarController?.tabBar.isUserInteractionEnabled = false
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -77,10 +82,10 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
   override func viewDidLoad() {
     super.viewDidLoad()
    // _ = membershipViewC
+//      self.coachMarksController.dataSource = self
+//      self.coachMarksController.delegate = self
       
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-          self.Callback?()
-      }
+      
      
     fullScreenImageView.alpha = 0.0
     fullScreenImageView.isUserInteractionEnabled = false
@@ -138,17 +143,6 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
     
     }
     
-    func blurAtLaunch(){
-        headerView.isUserInteractionEnabled = false
-        headerView.alpha = 0.7
-        headerView.backgroundColor = .lightGray
-    }
-    
-    func removeBlurAtLaunch(){
-        headerView.isUserInteractionEnabled = true
-        headerView.alpha = 1.0
-        headerView.backgroundColor = .white
-    }
     
     
     func receiveUsers() {
@@ -270,13 +264,13 @@ class HomeViewC: AlysieBaseViewC, HomeViewCDelegate  {
                 print("profile_percentage--- ",data["profile_percentage"]!)
                 
                 if String.getString(data["profile_percentage"])  != "100" {
-
+                    isprofileComplete = false
                     self.membershipView.isHidden = true
                     self.blankdataView.isHidden = false
                     self.imgReview.image = UIImage(named: "ProfileCompletion")
                     self.text.text = "Complete your profile in order to start Posting"
                 } else {
-
+                    isprofileComplete = true
                     self.membershipView.isHidden = true
                     self.blankdataView.isHidden = true
                     self.imgReview.image = UIImage(named: "")
@@ -491,3 +485,86 @@ extension HomeViewC{
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
+
+//extension HomeViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
+//
+//    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+//        return 4
+//    }
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
+//
+//        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+//
+//        switch index {
+//        case 0:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6", "7", "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProdImpDistRestVoiceExprtMarketPlace
+//
+//            case "8", "10":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesVoygersMarketPlace
+//            default: break
+//
+//            }
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//        case 1:
+//            coachViews.bodyView.hintLabel.text = TourGuideConstants.kForAllRecipe
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//        case 2:
+//            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
+//            case "3", "4", "5", "6", "7", "8", "9":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kForEveryMemberB2B
+//
+//            case "10":
+//                coachViews.bodyView.hintLabel.text = TourGuideConstants.kForVoyagersB2B
+//            default: break
+//
+//            }
+//
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//
+//        case 3:
+//            coachViews.bodyView.hintLabel.text = TourGuideConstants.kForAllPost
+//            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+//
+//
+//
+//        default: break
+//        }
+//
+//        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+//    }
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController,
+//                              coachMarkAt index: Int) -> CoachMark {
+//
+//        let b2bTab = tabBarController?.tabBar.items?[1].value(forKey: "view") as? UIView
+//
+//        let addPostTab = tabBarController?.tabBar.items?[2].value(forKey: "view") as? UIView
+//        let child = self.parent as? PostsViewController
+//        switch index {
+//        case 0: return coachMarksController.helper.makeCoachMark(for: child?.marketplaceView)
+//        case 1: return coachMarksController.helper.makeCoachMark(for: child?.recipesView)
+//        case 2:
+//            return coachMarksController.helper.makeCoachMark(for: b2bTab)
+//        case 3:
+//            return coachMarksController.helper.makeCoachMark(for: addPostTab)
+//
+//        default:
+//            return coachMarksController.helper.makeCoachMark()
+//        }
+//    }
+//
+//
+//    func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
+//        AppManager.setUserSeenAppInstructionPost()
+//
+//        self.tabBarController?.tabBar.backgroundColor = .white
+//        self.tabBarController?.tabBar.alpha = 1.0
+//        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+//
+//
+//    }
+//
+//}
