@@ -84,6 +84,11 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
         self.txtVat.text = getCompanyFields?.userData?.vatNo
         self.lblFDATitle.text = titleArray[1]
         self.txtFDA.text = getCompanyFields?.userData?.fdaNo
+        
+        if self.fromVC == .connectionRequest {
+            self.txtVat.isUserInteractionEnabled = false
+        }
+        
     }
     
     //    private func getCompanyFirstTableCell(_ indexPath: IndexPath) -> UITableViewCell{

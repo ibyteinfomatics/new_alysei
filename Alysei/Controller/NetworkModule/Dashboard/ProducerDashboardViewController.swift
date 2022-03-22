@@ -154,6 +154,9 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
         else{
             guard let cell: BabyFoodDetailsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "BabyFoodDetailsTableViewCell", for: indexPath) as? BabyFoodDetailsTableViewCell else{return UITableViewCell()}
             
+            
+            let basUrl = self.dashboardModel?.data?.certificates?[indexPath.row].base_url ?? ""
+            
             cell.lblDocumentUpload.text = dashboardModel?.data?.certificates?[indexPath.row].option
             
             
@@ -217,8 +220,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].photoOfLabel)!)
                 self.present(controller, animated: true)
             }
             
@@ -226,8 +228,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].fceSidCertification)!)
                 self.present(controller, animated: true)
             }
             
@@ -235,8 +236,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].phytosanitaryCertificate)!)
                 self.present(controller, animated: true)
             }
             
@@ -244,8 +244,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].packagingForUsa)!)
                 self.present(controller, animated: true)
             }
             
@@ -253,8 +252,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].foodSafetyPlan)!)
                 self.present(controller, animated: true)
             }
             
@@ -262,8 +260,7 @@ extension ProducerDashboardViewController: UITableViewDelegate, UITableViewDataS
                 
                 let story = UIStoryboard(name:"Chat", bundle: nil)
                 let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                controller.url = String.getString(imageDomain+"/"+(self.dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate)!)
-                
+                controller.url = String.getString(basUrl+(self.dashboardModel?.data?.certificates?[indexPath.row].animalHelathAslCertificate)!)
                 self.present(controller, animated: true)
             }
             

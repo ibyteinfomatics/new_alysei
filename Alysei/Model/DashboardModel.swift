@@ -70,7 +70,7 @@ class Certificate {
     var hint: String?
     var parent, head: Int?
     var createdAt, updatedAt: String?
-    var photoOfLabel, fceSidCertification, phytosanitaryCertificate, packagingForUsa: String?
+    var photoOfLabel, fceSidCertification, phytosanitaryCertificate, packagingForUsa, base_url: String?
     var foodSafetyPlan, animalHelathAslCertificate: String?
     var conservationMethods, productProperties: [ConservationMethod]?
     
@@ -86,6 +86,7 @@ class Certificate {
         
         self.updatedAt = String.getString(dictResponse?["updated_at"])
         self.photoOfLabel = String.getString(dictResponse?["photo_of_label"])
+        self.base_url = String.getString(dictResponse?["base_url"])
         self.fceSidCertification = String.getString(dictResponse?["fce_sid_certification"])
         self.phytosanitaryCertificate = String.getString(dictResponse?["phytosanitary_certificate"])
         self.packagingForUsa = String.getString(dictResponse?["packaging_for_usa"])

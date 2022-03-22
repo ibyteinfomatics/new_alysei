@@ -32,27 +32,32 @@ class CompanySecondTableCell: UITableViewCell {
             
             let btnText = data.photoOfLabel?.isEmpty == true ? "Upload" : "Uploaded"
             self.btnUploadChange.setTitle(btnText, for: .normal)
-            
+            self.btnUploadChange.backgroundColor = data.photoOfLabel?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
         }else if index == 1 {
         self.imgCheckMark.image  = data.fceSidCertification?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
             let btnText = data.fceSidCertification?.isEmpty == true ? "Upload" : "Uploaded"
             self.btnUploadChange.setTitle(btnText, for: .normal)
+            self.btnUploadChange.backgroundColor = data.fceSidCertification?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
         }else if index == 2{
             self.imgCheckMark.image  = data.phytosanitaryCertificate?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
             let btnText = data.phytosanitaryCertificate?.isEmpty == true ? "Upload" : "Uploaded"
             self.btnUploadChange.setTitle(btnText, for: .normal)
+            self.btnUploadChange.backgroundColor = data.phytosanitaryCertificate?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
         }else if index == 3{
             self.imgCheckMark.image  = data.packaginForUsa?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
             let btnText = data.packaginForUsa?.isEmpty == true ? "Upload" : "Uploaded"
             self.btnUploadChange.setTitle(btnText, for: .normal)
+            self.btnUploadChange.backgroundColor = data.packaginForUsa?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
        }else if index == 4 {
             self.imgCheckMark.image  = data.foodSafetyPlan?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
            let btnText = data.foodSafetyPlan?.isEmpty == true ? "Upload" : "Uploaded"
            self.btnUploadChange.setTitle(btnText, for: .normal)
+           self.btnUploadChange.backgroundColor = data.foodSafetyPlan?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
         }else{
             self.imgCheckMark.image  = data.animalHelathAslCertificate?.isEmpty == true ? UIImage(named: "grey_checked_icon") : UIImage(named: "ProfileCompletion5")
             let btnText = data.animalHelathAslCertificate?.isEmpty == true ? "Upload" : "Uploaded"
             self.btnUploadChange.setTitle(btnText, for: .normal)
+            self.btnUploadChange.backgroundColor = data.animalHelathAslCertificate?.isEmpty == true ? UIColor.init(hexString: "#004577") : UIColor.init(hexString: "#33A386")
         }
     }
     
