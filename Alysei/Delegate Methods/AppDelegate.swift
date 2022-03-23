@@ -434,7 +434,7 @@ enum AppManager {
        let userSeenShowCaseObject = kSharedUserDefaults.object(forKey: "userSeenShowCaseProfile")
        if let userSeenShowCase = userSeenShowCaseObject as? Bool {
          return userSeenShowCase
-       }
+       } 
        return false
        }
     

@@ -222,7 +222,7 @@ class HomeViewC: AlysieBaseViewC  {
       
         membershipView.isHidden = true
         blankdataView.isHidden = true
-      disableWindowInteraction()
+        disableWindowInteraction()
     
       TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetProgress, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
           
@@ -234,7 +234,8 @@ class HomeViewC: AlysieBaseViewC  {
               
               UserDefaults.standard.set(1, forKey: "alyseiCertification")
               kSharedUserDefaults.alyseiReview = 1
-              
+              isprofileComplete = false
+
               self.membershipView.isHidden = true
             self.blankdataView.isHidden = false
             self.imgReview.image = UIImage(named: "ProfileCompletion")

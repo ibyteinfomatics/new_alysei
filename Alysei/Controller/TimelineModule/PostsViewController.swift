@@ -69,9 +69,8 @@ class PostsViewController: AlysieBaseViewC  {
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         if Int.getInt(data["alysei_review"]) == 1 {
             postRequestToGetProgressPrfile()
-            
+
         }
-        
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView
@@ -122,7 +121,7 @@ class PostsViewController: AlysieBaseViewC  {
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         self.tabBarController?.selectedIndex = 0
-        
+        postRequestToGetProgressPrfile()
         if self.role == "10" {
             if let viewController2 = self.tabBarController?.viewControllers?[1] {
                 
@@ -151,6 +150,7 @@ class PostsViewController: AlysieBaseViewC  {
         //        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
         //               self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
         //
+        
         
     }
     
@@ -675,7 +675,8 @@ extension PostsViewController {
             if let data = response?["data"] as? [String:Any]{
                 
                 print("profile_percentage--- ",data["profile_percentage"]!)
-                if  kSharedUserDefaults.alyseiReview == 1{
+                let data1 = kSharedUserDefaults.getLoggedInUserDetails()
+                if Int.getInt(data1["alysei_review"]) == 1 {
                     if String.getString(data["profile_percentage"])  != "100" {
                         isprofileComplete = false
                         
@@ -697,13 +698,11 @@ extension PostsViewController {
                             self.coachMarksController.start(in: .viewController(self))
                             let parent = self.parent as? HomeViewC
                             parent?.headerView.isUserInteractionEnabled = false
-                            parent?.headerView.alpha = 0.7
-                            parent?.headerView.backgroundColor = .darkGray//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                            parent?.headerView.alpha = 0.8
+                            parent?.headerView.backgroundColor = .black//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
                             
-                            
-                            self.tabBarController?.tabBar.layer.backgroundColor = UIColor.gray.cgColor
-                            
-                            self.tabBarController?.tabBar.alpha = 0.7
+                            self.tabBarController?.tabBar.backgroundColor = UIColor.darkGray
+                            self.tabBarController?.tabBar.alpha = 0.9
                             self.tabBarController?.tabBar.isUserInteractionEnabled = false
                             
                             // #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)

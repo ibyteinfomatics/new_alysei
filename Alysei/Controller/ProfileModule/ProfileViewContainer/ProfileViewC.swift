@@ -192,40 +192,7 @@ class ProfileViewC: AlysieBaseViewC{
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if  kSharedUserDefaults.alyseiReview == 1{
-            if isprofileComplete == false{
-                if !AppManager.getUserSeenAppInstructionProfile() {
-                    
-                    self.coachMarksController.start(in: .viewController(self))
-                    self.tabBarController?.tabBar.backgroundColor = .gray
-                    self.tabBarController?.tabBar.alpha = 0.7
-                    tabBarController?.tabBar.isUserInteractionEnabled = false
-                    
-                }
-                else{
-                    tabBarController?.tabBar.backgroundColor = .white
-                    tabBarController?.tabBar.alpha = 1.0
-                    tabBarController?.tabBar.isUserInteractionEnabled = true
-
-                }
-            }
-            else{
-                self.tabBarController?.tabBar.backgroundColor = .white
-                self.tabBarController?.tabBar.alpha = 1.0
-                tabBarController?.tabBar.isUserInteractionEnabled = true
-                
-            }
-        }
-        else{
-            self.tabBarController?.tabBar.backgroundColor = .white
-            self.tabBarController?.tabBar.alpha = 1.0
-            tabBarController?.tabBar.isUserInteractionEnabled = true
-           
-        }
-        
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -413,6 +380,7 @@ class ProfileViewC: AlysieBaseViewC{
             //            if Int.getInt(data["alysei_review"]) == 0 {
             //                blankdataView.isHidden = false
             //            } else if Int.getInt(data["alysei_review"]) == 1{
+            
             if Int.getInt(data["alysei_review"]) == 0 {
                 blankdataView.isHidden = false
             } else if Int.getInt(data["alysei_review"]) == 1 {
@@ -429,6 +397,37 @@ class ProfileViewC: AlysieBaseViewC{
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
+                        let data = kSharedUserDefaults.getLoggedInUserDetails()
+                          if Int.getInt(data["alysei_review"]) == 1 {
+                            if isprofileComplete == false{
+                                if !AppManager.getUserSeenAppInstructionProfile() {
+                                    
+                                    self.coachMarksController.start(in: .viewController(self))
+                                    self.tabBarController?.tabBar.backgroundColor = .darkGray
+                                    self.tabBarController?.tabBar.alpha = 0.9
+                                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                                    
+                                }
+                                else{
+                                    self.tabBarController?.tabBar.backgroundColor = .white
+                                    self.tabBarController?.tabBar.alpha = 1.0
+                                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
+
+                                }
+                            }
+                            else{
+                                self.tabBarController?.tabBar.backgroundColor = .white
+                                self.tabBarController?.tabBar.alpha = 1.0
+                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                                
+                            }
+                        }
+                        else{
+                            self.tabBarController?.tabBar.backgroundColor = .white
+                            self.tabBarController?.tabBar.alpha = 1.0
+                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                           
+                        }
                     } else {
                         if self.userID != nil {
                             self.menuButton.isHidden = true
@@ -1109,13 +1108,16 @@ class ProfileViewC: AlysieBaseViewC{
                         self.tblViewProfileCompletion.isHidden = true
                         self.headerView.isHidden = false
                         self.tblViewPosts.isHidden = false
+                        isprofileComplete = true
                     }
                 }else{
+                    isprofileComplete = false
                     self.tblViewProfileCompletion.isHidden = false
                     self.headerView.isHidden = true
                     self.tblViewPosts.isHidden = true
                     
                 }
+                
                 
                 kSharedUserDefaults.loggedInUserModal.firstName = responseModel.data?.userData?.firstName
                 kSharedUserDefaults.loggedInUserModal.lastName = responseModel.data?.userData?.lastName
