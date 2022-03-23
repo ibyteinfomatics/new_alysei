@@ -138,7 +138,6 @@ class PostTableViewCell: UITableViewCell {
         }
         likeImage.image = modelData.likeFlag == 0 ? UIImage(named: "icons8_heart") : UIImage(named: "liked_icon")
     
-        self.imgPost.setImage(withString: String.getString(imageArray.first))
 
         self.imageArray.removeAll()
         if (modelData.attachments?.isEmpty == true) || (modelData.attachments?.count == 0){
@@ -146,6 +145,8 @@ class PostTableViewCell: UITableViewCell {
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
                 self.imageArray.append((modelData.attachments?[i].attachmentLink?.baseUrl ?? "") + (modelData.attachments?[i].attachmentLink?.attachmentUrl ?? ""))
+                
+                    self.imgPost.setImage(withString: String.getString(imageArray.first))
             }
         }
         
