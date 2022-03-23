@@ -30,7 +30,9 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
   
   override func awakeFromNib() {
     
-    
+    super.awakeFromNib()
+      btnSkip.setTitle(LogInSignUp.kskip, for: .normal)
+      btnNext.setTitle(RecipeConstants.kNext, for: .normal)
   }
   
   //MARK: - IBAction -

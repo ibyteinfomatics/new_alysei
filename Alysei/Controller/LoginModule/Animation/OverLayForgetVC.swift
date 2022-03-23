@@ -12,6 +12,9 @@ class OverLayForgetVC: AlysieBaseViewC {
     //MARK: @IBOutlets
     @IBOutlet weak var txtFieldEmail: UITextFieldExtended!
     @IBOutlet weak var btnResetPassword: UIButton!
+    @IBOutlet weak var lblForgetHeading: UILabel!
+    @IBOutlet weak var lblSubHead: UILabel!
+    
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
@@ -19,6 +22,9 @@ class OverLayForgetVC: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblForgetHeading.text = LogInSignUp.kForgetPassword
+        lblSubHead.text = LogInSignUp.kEnterYourRegisteredEmail
+        btnResetPassword.setTitle(LogInSignUp.kResetPassword, for: .normal)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         view.addGestureRecognizer(panGesture)
         

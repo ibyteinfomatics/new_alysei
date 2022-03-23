@@ -17,6 +17,8 @@ class OTPVerificationViewC: AlysieBaseViewC {
   @IBOutlet var txtFieldOTP: [UITextField]!
   @IBOutlet weak var viewNavigation: UIView!
   @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var lblDidntReciveOtp: UILabel!
+   
   
   //MARK: - Properties -
   
@@ -53,6 +55,9 @@ class OTPVerificationViewC: AlysieBaseViewC {
       $0.makeCornerRadius(radius: 4.0)
       $0.addTarget(self, action: #selector(OTPVerificationViewC.textFieldEditingChanged(_:)),for: UIControl.Event.editingChanged)
     }
+      btnVerifyOTP.setTitle(LogInSignUp.kVerifyOTP, for: .normal)
+      lblDidntReciveOtp.text = LogInSignUp.lDidntreceiveOTP
+      btnResendOTP.setTitle(LogInSignUp.kResendOtpTitle, for: .normal)
   }
   
   @objc private func textFieldEditingChanged(_ sender: UITextFieldExtended){

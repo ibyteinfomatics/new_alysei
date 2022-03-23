@@ -897,7 +897,14 @@ struct LogInSignUp{
         static var kTop5HighestRatedAlysei  : String { "You are within the top 5 highest rated Alysei Members".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kBecomeACertifiedAlyei  : String {  "Become a Certified Alysei Member to expan your market access".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kCompleteProfileFullyAccess  : String {  "Complete your profile in order to fully access Alysei".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVerifyOTP : String{"Verify OTP".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kResendOtpTitle: String{"Resend OTP".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRequiredInformation : String { "* Required Information".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchforyourlocation :String {"Search for your location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
+    static var kSelectYourlocation :String {"Select Your location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYourlocation :String {"Your location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var lDidntreceiveOTP : String{"Did'nt receive the OTP ? ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //MARK: LOGIN SCREEN
         static var kLoginToyourAccount  : String {  "Login to your Account".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kLoginWithEmail  : String {  "LOGIN WITH EMAIL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -907,9 +914,12 @@ struct LogInSignUp{
         static var kPassword  : String {  "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kLOGIN  : String {  "LOGIN".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kForgetPassword  : String {  "Forget Password?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-        static var kDontHaveAccount  : String {  "Don't have an account yet? Sign up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kDontHaveAccount  : String {  "Don't have an account yet?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kEnterYourRegisteredEmail  : String {  "Enter your registered email to recover your password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kResetPassword  : String {  "Reset Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNewPassword  : String { "New Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRConfirmPassword  : String { "Confirm Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVerifyPassword  : String {"Password must be at least 8 characters and contain at least one numeric digit and a special character.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kSelectRole  : String {  "Select your role".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kExploreConnectCertifiedImp : String { "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kUSImporterDistributer  : String {  "US Importers & Distributors".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -922,7 +932,7 @@ struct LogInSignUp{
         static var kStreghthConnectionWithProducer  : String {  "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kVoyager  : String {   "Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kEnjopyMagicWorldOfEndless  : String {  "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+
     //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
 
         static var kSelectYourLanguage  : String {  "Select your Language".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

@@ -48,7 +48,12 @@ class SelectProductViewC: AlysieBaseViewC {
         if self.signUpStepOneDataModel.title == AppConstants.Producttype{
             self.lblNavigation.text = String.getString(self.signUpStepOneDataModel.placeholder)
         }else{
-            self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepOneDataModel.placeholder)
+            if kSharedUserDefaults.getAppLanguage() == "it"{
+                self.lblNavigation.text =  String.getString(self.signUpStepOneDataModel.placeholder)
+            }else{
+                self.lblNavigation.text = AppConstants.Select.capitalized + " " + String.getString(self.signUpStepOneDataModel.placeholder)
+            }
+            
         }
       
     }

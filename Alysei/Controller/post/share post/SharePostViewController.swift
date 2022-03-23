@@ -199,7 +199,7 @@ extension SharePostViewController: UITextFieldDelegate {
                 self.privacyTextfield.text = "Only Me"
             }))
             alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "My Connections"
+                self.privacyTextfield.text = "Connections"
             }))
 
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

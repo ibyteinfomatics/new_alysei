@@ -446,10 +446,11 @@
 "Password" = "Password";
 "LOGIN" = "LOGIN";
 "Forget Password?" = "Forget Password?";
-"Don't have an account yet? Sign up" ="Don't have an account yet? Sign up";
+"Don't have an account yet?" ="Don't have an account yet?";
 "Enter your registered email to recover your password" = "Enter your registered email to recover your password";
 "Reset Password" = "Reset Password";
 "Select your role" = "Select your role";
+"Password must be at least 8 characters and contain at least one numeric digit and a special character." = "Password must be at least 8 characters and contain at least one numeric digit and a special character.";
 "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers.";
 "US Importers & Distributors" = "US Importers & Distributors";
 "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access.";

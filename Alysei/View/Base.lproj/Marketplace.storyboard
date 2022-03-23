@@ -700,30 +700,30 @@
                                                         <constraint firstAttribute="height" constant="220" id="cIP-qp-aoe"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7D1-Sb-Gyh">
-                                                        <size key="itemSize" width="280" height="226"/>
+                                                        <size key="itemSize" width="279" height="245.33333333333337"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarketplaceNewlyAddedStoreHomeImageCVC" id="ekM-f5-alD" customClass="MarketplaceNewlyAddedStoreHomeImageCVC" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="19.666666666666668" width="280" height="226"/>
+                                                            <rect key="frame" x="0.0" y="10" width="279" height="245.33333333333337"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NPt-z2-N14">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="226"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="279" height="245.33333333333337"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eF1-Q8-rqb">
-                                                                        <rect key="frame" x="5" y="0.0" width="270" height="226"/>
+                                                                        <rect key="frame" x="5" y="0.0" width="269" height="245.33333333333334"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="3Z8-5x-vtq">
-                                                                                <rect key="frame" x="0.0" y="5" width="270" height="150"/>
+                                                                                <rect key="frame" x="0.0" y="5" width="269" height="150"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="150" id="ZV7-Wc-SdI"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5P-aa-uG5">
-                                                                                <rect key="frame" x="10" y="160" width="235" height="18"/>
+                                                                                <rect key="frame" x="10" y="160" width="234" height="18"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="18" id="5th-tG-kgM"/>
                                                                                 </constraints>
@@ -732,7 +732,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlc-lz-WdN">
-                                                                                <rect key="frame" x="10" y="180" width="235" height="17.666666666666657"/>
+                                                                                <rect key="frame" x="10" y="180" width="234" height="17.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -817,7 +817,7 @@
                                                                     <constraint firstItem="eF1-Q8-rqb" firstAttribute="leading" secondItem="NPt-z2-N14" secondAttribute="leading" constant="5" id="ooL-VQ-9Yg"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="280" height="226"/>
+                                                            <size key="customSize" width="279" height="245.33333333333337"/>
                                                             <connections>
                                                                 <outlet property="image" destination="3Z8-5x-vtq" id="Ddp-JS-mnz"/>
                                                                 <outlet property="imgStar1" destination="RzE-DF-r1A" id="ou6-iN-L0V"/>
@@ -990,11 +990,11 @@
                                             <outlet property="regionCollectionView" destination="1Jo-Rc-dwC" id="TdF-E8-Nru"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketPlaceTopRatedTableVCell" rowHeight="250" id="Bfa-qY-xjb" customClass="MarketPlaceTopRatedTableVCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1444.6666660308838" width="414" height="250"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketPlaceTopRatedTableVCell" rowHeight="287" id="Bfa-qY-xjb" customClass="MarketPlaceTopRatedTableVCell" customModule="Alysei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1444.6666660308838" width="414" height="287"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bfa-qY-xjb" id="5na-eS-W37">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="287"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rated Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofd-5T-Oc5">
@@ -1018,7 +1018,7 @@
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rqa-YE-7FJ">
-                                                    <rect key="frame" x="10" y="46" width="394" height="194"/>
+                                                    <rect key="frame" x="10" y="46" width="394" height="220"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="89E-V4-nLy"/>
@@ -1031,7 +1031,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarketPlaceHomeTopSearchedCVC" id="O0L-6G-4xg" customClass="MarketPlaceHomeTopSearchedCVC" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-2.6666666666666665" width="195" height="199"/>
+                                                            <rect key="frame" x="0.0" y="10.666666666666666" width="195" height="199"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8lX-sg-0Rm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="195" height="199"/>
@@ -1158,17 +1158,27 @@
                                                         <outlet property="delegate" destination="Bfa-qY-xjb" id="d2l-Ax-8Ex"/>
                                                     </connections>
                                                 </collectionView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENc-sg-Xj6">
+                                                    <rect key="frame" x="0.0" y="276" width="414" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="zoY-He-bXs"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="rqa-YE-7FJ" secondAttribute="bottom" constant="10" id="0YA-U0-Ckb"/>
                                                 <constraint firstItem="rqa-YE-7FJ" firstAttribute="top" secondItem="UvC-k7-Zls" secondAttribute="bottom" constant="10" id="568-bL-BkO"/>
+                                                <constraint firstAttribute="trailing" secondItem="ENc-sg-Xj6" secondAttribute="trailing" id="7Fx-pT-rnz"/>
                                                 <constraint firstItem="Ofd-5T-Oc5" firstAttribute="top" secondItem="5na-eS-W37" secondAttribute="topMargin" id="NRB-gJ-OnI"/>
                                                 <constraint firstItem="UvC-k7-Zls" firstAttribute="leading" secondItem="Ofd-5T-Oc5" secondAttribute="trailing" constant="5" id="NqW-TK-9cS"/>
+                                                <constraint firstItem="ENc-sg-Xj6" firstAttribute="leading" secondItem="5na-eS-W37" secondAttribute="leading" id="OLo-DH-KzQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="UvC-k7-Zls" secondAttribute="trailing" constant="10" id="RH6-Nf-EX9"/>
                                                 <constraint firstAttribute="trailing" secondItem="rqa-YE-7FJ" secondAttribute="trailing" constant="10" id="Uun-vC-Ieo"/>
+                                                <constraint firstItem="ENc-sg-Xj6" firstAttribute="top" secondItem="rqa-YE-7FJ" secondAttribute="bottom" constant="10" id="W9K-BI-XoE"/>
                                                 <constraint firstItem="Ofd-5T-Oc5" firstAttribute="leading" secondItem="5na-eS-W37" secondAttribute="leadingMargin" id="Yvc-m8-3pz"/>
                                                 <constraint firstItem="UvC-k7-Zls" firstAttribute="centerY" secondItem="Ofd-5T-Oc5" secondAttribute="centerY" id="ogy-Ky-EWr"/>
                                                 <constraint firstItem="rqa-YE-7FJ" firstAttribute="leading" secondItem="5na-eS-W37" secondAttribute="leading" constant="10" id="qT6-dJ-ib6"/>
+                                                <constraint firstAttribute="bottom" secondItem="ENc-sg-Xj6" secondAttribute="bottom" constant="10" id="w2b-uh-ol0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1178,7 +1188,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeTopFavTableVC" rowHeight="250" id="G8d-sN-BbV" customClass="MarketplaceHomeTopFavTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1694.6666660308838" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="1731.6666660308838" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G8d-sN-BbV" id="6WB-HJ-3WN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -1347,7 +1357,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MarketplaceHomeAdTableVC" rowHeight="250" id="nQF-D0-uvw" customClass="MarketplaceHomeAdTableVC" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1944.6666660308838" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="1981.6666660308838" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQF-D0-uvw" id="PwZ-zq-Yxe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>

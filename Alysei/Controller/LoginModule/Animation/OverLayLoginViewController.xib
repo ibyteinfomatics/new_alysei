@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,8 +20,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverLayLoginViewController" customModule="Alysei" customModuleProvider="target">
             <connections>
                 <outlet property="btnEye" destination="IWL-7f-Emx" id="431-rB-W0p"/>
+                <outlet property="btnForgetPassword" destination="fn7-8V-pwh" id="IIw-6k-ixl"/>
                 <outlet property="btnLogin" destination="3UL-zc-BcZ" id="c77-r5-xXN"/>
                 <outlet property="btnSignUp" destination="qs2-Df-VML" id="pxx-vF-lGA"/>
+                <outlet property="lblDontHaveAccount" destination="EBG-qF-jKM" id="RIE-7j-dnM"/>
+                <outlet property="lblLoginWithAccount" destination="JUq-Fb-bcf" id="WQl-xU-UMb"/>
                 <outlet property="slideView" destination="UvO-fW-H8a" id="xh0-SE-fHi"/>
                 <outlet property="txtFieldEmail" destination="W39-ec-Eev" id="CQg-xo-eU7"/>
                 <outlet property="txtFieldPassword" destination="EZS-HW-R4m" id="aIN-6N-mx0"/>
@@ -124,9 +127,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn7-8V-pwh">
-                            <rect key="frame" x="127" y="786" width="160" height="25"/>
+                            <rect key="frame" x="82" y="786" width="250" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="160" id="Mbo-Q8-XUd"/>
+                                <constraint firstAttribute="width" constant="250" id="Mbo-Q8-XUd"/>
                                 <constraint firstAttribute="height" constant="25" id="RlZ-LK-0Ag"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -138,20 +141,19 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBG-qF-jKM">
-                            <rect key="frame" x="85" y="821" width="180" height="25"/>
+                            <rect key="frame" x="95" y="821" width="160" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="1VN-sM-LjD"/>
-                                <constraint firstAttribute="width" constant="180" id="Zae-Sd-gOn"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" white="0.93722307680000005" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs2-Df-VML">
-                            <rect key="frame" x="267" y="823.5" width="60" height="20"/>
+                            <rect key="frame" x="257" y="823.5" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="V0s-kf-Y7n"/>
-                                <constraint firstAttribute="width" constant="60" id="oNR-vT-fcd"/>
+                                <constraint firstAttribute="width" constant="100" id="oNR-vT-fcd"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Sign Up">

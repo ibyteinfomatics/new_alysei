@@ -19,6 +19,7 @@ class SelectRoleViewC: AlysieBaseViewC {
     @IBOutlet weak var viewMainTour: UIView!
     @IBOutlet weak var viewTourpopup: OvalView!
     @IBOutlet weak var tourgideLabel: UILabel!
+    @IBOutlet weak var lblHeading: UILabel!
     //MARK:  - Properties -
     
     var getRoleViewModel: GetRoleViewModel!
@@ -28,7 +29,8 @@ class SelectRoleViewC: AlysieBaseViewC {
         
         btnGetStarted.isHidden = true
         btnGetStartedHeight.constant = 0
-    
+        lblHeading.text = LogInSignUp.kSelectRole
+        btnGetStarted.setTitle(LogInSignUp.kgetStarted, for: .normal)
         if kSharedAppDelegate.isSelectRole == false{
         viewMainTour.isHidden = false
         viewTourpopup.isHidden = false

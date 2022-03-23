@@ -17,6 +17,7 @@ class LoginAccountViewC: AlysieBaseViewC{
   @IBOutlet weak var btnTermsOfUse: UIButton!
   @IBOutlet weak var viewVideo: UIView!
   @IBOutlet weak var viewBottom: UIView!
+  @IBOutlet weak var lblLoginToYourAccount:UILabel!
   
   //MARK: - Properties -
   
@@ -26,6 +27,9 @@ class LoginAccountViewC: AlysieBaseViewC{
   
   override func viewDidLoad() {
    super.viewDidLoad()
+      lblLoginToYourAccount.text = LogInSignUp.kLoginToyourAccount
+      btnLogin.setTitle(LogInSignUp.kLoginWithEmail, for: .normal)
+      btnSignUp.setTitle(LogInSignUp.kSignUp, for: .normal)
     NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem, queue: .main) { [weak self] _ in
             self?.player?.seek(to: CMTime.zero)
             self?.player?.play()

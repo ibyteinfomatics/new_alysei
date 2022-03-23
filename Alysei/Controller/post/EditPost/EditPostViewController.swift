@@ -246,7 +246,7 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
             }))
             alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
                 
-                self.btnPostPrivacy.setTitle("My Connections", for: .normal)
+                self.btnPostPrivacy.setTitle("Connections", for: .normal)
             }))
 
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

@@ -23,11 +23,23 @@ class OverLayLoginViewController: AlysieBaseViewC {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnEye: UIButton!
-    
+    @IBOutlet weak var lblLoginWithAccount: UILabel!
+    @IBOutlet weak var lblDontHaveAccount: UILabel!
+    @IBOutlet weak var btnForgetPassword: UIButton!
     
     //MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblLoginWithAccount.text = LogInSignUp.kLoginToyourAccount
+        lblDontHaveAccount.text = LogInSignUp.kDontHaveAccount
+        txtFieldEmail.placeholder = AppConstants.Email
+        txtFieldPassword.placeholder = AppConstants.Password
+        btnLogin.setTitle(LogInSignUp.kLOGIN, for: .normal)
+        btnForgetPassword.setTitle(LogInSignUp.kForgetPassword, for: .normal)
+        btnSignUp.setTitle(LogInSignUp.kSignUp, for: .normal)
+        
+        
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         view.addGestureRecognizer(panGesture)
         

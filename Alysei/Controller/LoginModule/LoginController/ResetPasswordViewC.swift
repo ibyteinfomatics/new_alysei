@@ -17,7 +17,8 @@ class ResetPasswordViewC: AlysieBaseViewC {
   @IBOutlet weak var viewNavigation: UIView!
   @IBOutlet weak var btnNewEye: UIButton!
   @IBOutlet weak var btnConfirmEye: UIButton!
-  
+  @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblCheckPassword: UILabel!
   //MARK: - Properties -
 
   var email: String?
@@ -26,6 +27,10 @@ class ResetPasswordViewC: AlysieBaseViewC {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+      lblHeading.text = LogInSignUp.kResetPassword
+      txtFieldNewPassword.placeholder = LogInSignUp.kNewPassword
+      txtFieldConfirmPassword.placeholder = LogInSignUp.kRConfirmPassword
+      lblCheckPassword.text = LogInSignUp.kVerifyPassword
   }
   
   override func viewDidLayoutSubviews() {

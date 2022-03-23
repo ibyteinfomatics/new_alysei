@@ -127,7 +127,7 @@ extension MarketplaceNewlyAddedTableVCell : UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 225)
+        return CGSize(width: newlyyAddedStoreCollectionView.frame.width / 2 , height: 265)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

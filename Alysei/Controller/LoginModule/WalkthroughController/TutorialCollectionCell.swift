@@ -25,8 +25,8 @@ class TutorialCollectionCell: UICollectionViewCell {
     
     super.layoutIfNeeded()
     self.btnGetStarted.makeCornerRadius(radius: 5.0)
-      
-
+      btnSkip.setTitle(RecipeConstants.kSkip, for: .normal)
+    
   }
   
   override func layoutSubviews() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,6 +20,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverLayForgetVC" customModule="Alysei" customModuleProvider="target">
             <connections>
                 <outlet property="btnResetPassword" destination="wlO-h1-OaV" id="4Ra-w1-KgR"/>
+                <outlet property="lblForgetHeading" destination="5sN-3U-ynO" id="TvL-Dz-lTJ"/>
+                <outlet property="lblSubHead" destination="bkG-p3-Ym0" id="9vx-j0-zo5"/>
                 <outlet property="txtFieldEmail" destination="iKz-mV-Cc5" id="34P-KP-q0f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -90,11 +92,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sN-3U-ynO">
-                            <rect key="frame" x="115" y="540.5" width="184" height="19"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="19" id="8cG-wc-VOQ"/>
-                                <constraint firstAttribute="width" constant="184" id="flT-pi-pyd"/>
-                            </constraints>
+                            <rect key="frame" x="133.5" y="539.5" width="147" height="21.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="0.93722307680000005" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -107,6 +105,7 @@
                         <constraint firstItem="iKz-mV-Cc5" firstAttribute="trailing" secondItem="wlO-h1-OaV" secondAttribute="trailing" id="BSG-z7-tCg"/>
                         <constraint firstItem="iKz-mV-Cc5" firstAttribute="top" secondItem="bkG-p3-Ym0" secondAttribute="bottom" constant="35" id="EwF-TL-O7J"/>
                         <constraint firstItem="wlO-h1-OaV" firstAttribute="top" secondItem="iKz-mV-Cc5" secondAttribute="bottom" constant="35" id="PRg-Ry-pba"/>
+                        <constraint firstItem="5sN-3U-ynO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yw9-bh-lIa" secondAttribute="trailing" constant="2" id="SUm-su-hqH"/>
                         <constraint firstItem="bkG-p3-Ym0" firstAttribute="top" secondItem="yw9-bh-lIa" secondAttribute="bottom" constant="30" id="Tej-L3-MiV"/>
                         <constraint firstAttribute="trailing" secondItem="wlO-h1-OaV" secondAttribute="trailing" constant="30" id="U3K-vS-Seb"/>
                         <constraint firstItem="wlO-h1-OaV" firstAttribute="leading" secondItem="nkK-MZ-cTu" secondAttribute="leading" constant="30" id="WNe-GI-e9C"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aXz-36-J14">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aXz-36-J14">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -435,6 +435,7 @@
                         <outlet property="btnLogin" destination="6Jl-Dq-FqY" id="Mz3-fq-Ywc"/>
                         <outlet property="btnSignUp" destination="kXu-uf-bLH" id="Jfy-eU-AI2"/>
                         <outlet property="btnTermsOfUse" destination="tJm-d2-ZK7" id="q8w-Nd-KtY"/>
+                        <outlet property="lblLoginToYourAccount" destination="AJE-Vm-sdc" id="FKX-Wn-2Vr"/>
                         <outlet property="viewBottom" destination="wPj-dX-xwh" id="ayV-UR-Sid"/>
                         <outlet property="viewVideo" destination="H8Y-hq-nn4" id="CzJ-fz-q4u"/>
                     </connections>
@@ -559,9 +560,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78R-pv-8Jp">
-                                        <rect key="frame" x="107.5" y="270" width="160" height="25"/>
+                                        <rect key="frame" x="87.5" y="270" width="200" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="160" id="D2W-Qw-pWd"/>
+                                            <constraint firstAttribute="width" constant="200" id="D2W-Qw-pWd"/>
                                             <constraint firstAttribute="height" constant="25" id="DqO-uX-hB5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -1289,6 +1290,7 @@
                         <outlet property="btnProceedNext" destination="3mm-wQ-LOM" id="cEh-zq-yFt"/>
                         <outlet property="header" destination="QmZ-iS-rbV" id="9Ko-hj-Ayy"/>
                         <outlet property="lblMemberName" destination="lAt-nU-oNk" id="phv-gC-1eq"/>
+                        <outlet property="lblRequiredInfo" destination="BSd-Al-Nkf" id="lGH-pQ-ura"/>
                         <outlet property="tblViewSignUp" destination="cVD-mt-dH9" id="lPi-YL-UDL"/>
                     </connections>
                 </viewController>
@@ -2163,6 +2165,7 @@
                     <connections>
                         <outlet property="btnResendOTP" destination="jDx-XU-MIh" id="dAa-8S-rlr"/>
                         <outlet property="btnVerifyOTP" destination="rrj-bv-Y52" id="z5P-zi-jCF"/>
+                        <outlet property="lblDidntReciveOtp" destination="hVX-FE-hqU" id="zld-GV-dJf"/>
                         <outlet property="lblHeading" destination="Pbz-Lw-Cd1" id="bG5-QK-Y4t"/>
                         <outlet property="lblUsername" destination="fuE-Dp-2oV" id="lf0-e0-szM"/>
                         <outlet property="viewNavigation" destination="OeT-JG-gl4" id="EbI-xQ-HIg"/>
@@ -2399,13 +2402,13 @@
                                                     <rect key="frame" x="0.0" y="363" width="375" height="300"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Alysei" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSR-zG-GZ5">
-                                                            <rect key="frame" x="20" y="35" width="335" height="27"/>
+                                                            <rect key="frame" x="20" y="35" width="335" height="26"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Connect to social platform Alysei and follow your interests in restaurants" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-Oa-YOK">
-                                                            <rect key="frame" x="10" y="67" width="355" height="98"/>
+                                                            <rect key="frame" x="10" y="66" width="355" height="99"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -2719,6 +2722,8 @@
                         <outlet property="btnConfirmEye" destination="Xg3-Uf-b64" id="70g-XT-qkN"/>
                         <outlet property="btnNewEye" destination="CKF-oE-ffT" id="2Ai-15-E8g"/>
                         <outlet property="btnSubmit" destination="G9g-fS-MHg" id="abJ-6K-wDA"/>
+                        <outlet property="lblCheckPassword" destination="MZe-Y8-ys3" id="sUt-bG-qF1"/>
+                        <outlet property="lblHeading" destination="qrM-K6-X0Y" id="DOX-Ql-YtT"/>
                         <outlet property="txtFieldConfirmPassword" destination="sGT-Z0-Z0j" id="ne6-fn-0oS"/>
                         <outlet property="txtFieldNewPassword" destination="UQe-Pa-FEN" id="Ujv-MH-FxM"/>
                         <outlet property="viewNavigation" destination="Adb-50-9Ia" id="S0Z-Ie-7ME"/>
@@ -2939,7 +2944,9 @@
                         <outlet property="btnBack" destination="wPe-nX-L19" id="ChY-OM-KfO"/>
                         <outlet property="btnSearchLocation" destination="6L2-hv-lXk" id="uss-Ns-hN9"/>
                         <outlet property="imgViewMarker" destination="zOo-fK-KiN" id="KS3-22-FP5"/>
+                        <outlet property="lblSelectLocation" destination="7uL-Vs-olD" id="uI8-9S-smg"/>
                         <outlet property="lblUpdateLocation" destination="7e6-9J-6YG" id="g2f-VM-UFL"/>
+                        <outlet property="lblyourLocation" destination="xvj-fw-nWM" id="gKJ-IP-74e"/>
                         <outlet property="mapView" destination="vul-SP-84L" id="kRw-Zm-0hn"/>
                         <outlet property="viewBottom" destination="nVm-UL-m1K" id="vhl-eQ-fny"/>
                         <outlet property="viewBottomHeight" destination="pfK-Z4-a0Q" id="Vex-W4-qDg"/>
@@ -3175,7 +3182,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a country" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyC-mx-77c">
-                                        <rect key="frame" x="75" y="12" width="151" height="40"/>
+                                        <rect key="frame" x="75" y="12" width="135" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3uj-fl-4dN"/>
                                         </constraints>
@@ -3194,7 +3201,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-6x-Vv1">
-                                <rect key="frame" x="15" y="115" width="350" height="120"/>
+                                <rect key="frame" x="15" y="114" width="350" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="MyR-BA-zW2"/>
@@ -3277,13 +3284,13 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are available In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cem-eY-nY7">
-                                <rect key="frame" x="15" y="84" width="345" height="21"/>
+                                <rect key="frame" x="15" y="84" width="345" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G6G-T1-Shz">
-                                <rect key="frame" x="15" y="296" width="350" height="371"/>
+                                <rect key="frame" x="15" y="294" width="350" height="373"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sxy-jM-MXy">
                                     <size key="itemSize" width="118" height="128"/>
@@ -3367,7 +3374,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Countries (soon)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-58-Od0">
-                                <rect key="frame" x="15" y="255" width="345" height="21"/>
+                                <rect key="frame" x="15" y="254" width="345" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3621,6 +3628,7 @@
                     <connections>
                         <outlet property="btnGetStarted" destination="rSA-M3-wmi" id="Hc7-Ec-GeO"/>
                         <outlet property="btnGetStartedHeight" destination="7Bf-px-uYy" id="NXU-C8-hxo"/>
+                        <outlet property="lblHeading" destination="GpC-5v-64q" id="yaX-4Z-dnC"/>
                         <outlet property="tableRoleVC" destination="GMM-Zg-s0x" id="G0k-db-0iD"/>
                         <outlet property="tourgideLabel" destination="pZ8-PR-9RY" id="ztG-jJ-0DP"/>
                         <outlet property="viewMainTour" destination="Xwd-1d-uk4" id="ZWo-2o-DaJ"/>

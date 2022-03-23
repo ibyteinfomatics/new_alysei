@@ -13,6 +13,7 @@ class SignUpViewC: AlysieBaseViewC {
     @IBOutlet weak var lblMemberName: UILabel!
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var btnProceedNext: UIButtonExtended!
+    @IBOutlet weak var lblRequiredInfo: UILabel!
    
     //MARK:  - Properties -
     
@@ -25,6 +26,7 @@ class SignUpViewC: AlysieBaseViewC {
         
         super.viewDidLoad()
         header.drawBottomShadow()
+        lblRequiredInfo.text = LogInSignUp.kRequiredInformation
         self.lblMemberName.text = String.getString(self.getRoleDataModel.first?.name)
         self.btnProceedNext.setTitle((kSharedInstance.signUpViewModel.arrSignUpStepTwo.count != 0) ? AppConstants.ProceedNext : AppConstants.Submit, for: .normal)
     }

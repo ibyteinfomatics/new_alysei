@@ -652,10 +652,12 @@
 "Password" = "Password";
 "LOGIN" = "Accedi";
 "Forget Password?" = "Hai dimenticato la password?";
-"Don't have an account yet? Sign up" = "Non hai ancora un account? Registrati";
+"Don't have an account yet?" = "Non hai ancora un account?";
 "Enter your registered email to recover your password" = "Inserisci la tua email per recuperare la password";
-"Reset Password" = "Reset password";
+"Reset Password" = "Reset Password";
+"Password must be at least 8 characters and contain at least one numeric digit and a special character." = "Password must be at least 8 characters and contain at least one numeric digit and a special character.";
 "Select your role" = "Seleziona chi sei";
+"* Required Information" = "* Required Information";
 "Italian F&B Producers" = "Produttori enogastronomici Italiani";
 "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Scopri, trova e connettiti con Importatori e Distributori certificati negli Stati Uniti, crea e consolida il tuo brand, promuovi i tuoi prodotti, raggiungi i tuoi consumatori.";
 "US Importers & Distributors" = "Importatori e Distributori negli USA";
@@ -669,9 +671,16 @@
 "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers." = "Rafforza la connessione con Produttori Italiani, Importatori e Distributori negli Stati Uniti, con Esperti di Settore, aumenta la tua visibilità, raggiungi i tuoi clienti target.";
 "Voyagers" = "Voyagers";
 "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
-
-
-
+"We have sent you a 6 digit verification code(OTP) to" = "We have sent you a 6 digit verification code(OTP) to";
+"Verify OTP" = "Verify OTP";
+"Did'nt receive the OTP ? " = "Did'nt receive the OTP ? ";
+"Resend OTP" = "Resend OTP";
+"Confirm Password" = "Confirm Password";
+"New Password" = "New Password";
+"Proceed Next" = "Proceed Next";
+"Search for your location" = "Search for your location";
+"Select Your location" = "Select Your location";
+"Your location" = "Your location";
 //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
 
 "Select your Language" = "Seleziona la tua lingua";

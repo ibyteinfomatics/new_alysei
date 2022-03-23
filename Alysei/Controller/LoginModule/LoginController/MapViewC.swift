@@ -30,6 +30,8 @@ class MapViewC: AlysieBaseViewC {
   @IBOutlet weak var btnSearchLocation: UIButton!
   @IBOutlet weak var viewSearchLocation: UIViewExtended!
   @IBOutlet weak var viewBottomHeight: NSLayoutConstraint!
+  @IBOutlet weak var lblSelectLocation: UILabel!
+   @IBOutlet weak var lblyourLocation: UILabel!
   
   //MARK: - Properties -
 
@@ -53,7 +55,9 @@ class MapViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     
     super.viewDidLoad()
-
+      btnSearchLocation.setTitle(LogInSignUp.kSearchforyourlocation, for: .normal)
+      lblSelectLocation.text = LogInSignUp.kSelectYourlocation
+      lblyourLocation.text = LogInSignUp.kYourlocation
 //    let circleLocation = CLLocationCoordinate2DMake(30.889316, 75.8576758)
 //    circle.position = circleLocation
 //    circle.fillColor = UIColor.red.withAlphaComponent(0.3)
@@ -170,7 +174,12 @@ class MapViewC: AlysieBaseViewC {
     
     let autocompleteController = GMSAutocompleteViewController()
     autocompleteController.delegate = self
+      UINavigationBar.appearance().barTintColor =  UIColor.white
+      UINavigationBar.appearance().backgroundColor = UIColor.white
+    UISearchBar.appearance().barStyle = UIBarStyle.default
+     
     self.present(autocompleteController, animated: true, completion: nil)
+     // self.navigationController?.pushViewController(autocompleteController, animated: true)
   }
   
   //MARK: - Private Methods -
