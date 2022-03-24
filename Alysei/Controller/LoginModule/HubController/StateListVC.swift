@@ -20,6 +20,8 @@ class StateListVC: AlysieBaseViewC , SelectList {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeading: UILabel!
     @IBOutlet weak var vwSearch: UIView!
+    @IBOutlet weak var btnNext: UIButton!
+
     var isEditHub: Bool?
     var isChckfirstEditSlcted = true
     var roleId: String?
@@ -64,7 +66,8 @@ class StateListVC: AlysieBaseViewC , SelectList {
         //tableVIew.reloadData()
     }
     func setText(){
-        
+        labelHeading.text = AppConstants.SelectState
+        btnNext.setTitle(RecipeConstants.kNext, for: .normal)
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
             userType = "export"
         }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "4" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "5" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "6") {
@@ -72,7 +75,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
         }else{
             userType = "loreum"
         }
-        if let attributedString = self.createAttributedString(stringArray: ["Select the states from ","\(country?.name ?? "")", " where you \(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#4BB3FD")]) {
+        if let attributedString = self.createAttributedString(stringArray: [LogInSignUp.kSelectthestatesfrom,"\(country?.name ?? "")", LogInSignUp.kwhereyou + "\(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#4BB3FD")]) {
             // if let attributedString = self.createAttributedString(stringArray: ["\(country?.name ?? "")" + "/" + "\(userType ?? "")"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]) {
             self.lblHeaderText.attributedText = attributedString
         }
@@ -91,7 +94,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         selectedHub?.state = self.states?.filter{$0.isSelected} ?? []
         if selectedHub?.state.isEmpty ?? false {
-            showAlert(withMessage: "Please select atleast one state")
+            showAlert(withMessage: AlertMessage.kPleaseSelectAtleastOneState)
         }else{
             let storyBoard = UIStoryboard(name: StoryBoardConstants.kHubSelection, bundle: nil)
             let nextvc = storyBoard.instantiateViewController(identifier: "HubCitiesListViewController") as! HubCitiesListViewController

@@ -145,6 +145,11 @@ class CountryListVC: AlysieBaseViewC ,SelectList {
     /// func for configure UI
     func configureUI() {
         self.viewHeader.addShadow()
+        labelHeading1.text = LogInSignUp.kSelectHub
+        labelHeading2.text = LogInSignUp.kUSAWhere
+        labelHeading3.text = LogInSignUp.kplanToDevelop
+        labelHeading4.text = LogInSignUp.kyourBusiness
+        lblDesc.text = LogInSignUp.kHubIdentifiesAGeographical
         if MobileDeviceType.IS_IPHONE_6{
             labelHeading.font = UIFont(name: "Helvetica Neue Bold", size: 40)
             labelHeading1.font = UIFont(name: "Helvetica Neue Bold", size: 40)

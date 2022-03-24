@@ -15,9 +15,13 @@ class HomeViewC: AlysieBaseViewC  {
     private var coversationView: ConversationViewController!
   
     @IBOutlet weak var containerView: UIView!
-  @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var imgReview: UIImageView!
+    @IBOutlet weak var lblMemberShip: UILabel!
+    @IBOutlet weak var lblHeading: UILabel!
+   
+    
     var progressmodel:ProgressModel?
     
     // memebership view
@@ -81,6 +85,9 @@ class HomeViewC: AlysieBaseViewC  {
     }
   override func viewDidLoad() {
     super.viewDidLoad()
+      lblMemberShip.text = LogInSignUp.kFillTheFormToGetAFasterResponse
+      lblHeading.text = LogInSignUp.kAlyseiMemberShip
+      logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
    // _ = membershipViewC
 //      self.coachMarksController.dataSource = self
 //      self.coachMarksController.delegate = self
@@ -97,7 +104,7 @@ class HomeViewC: AlysieBaseViewC  {
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 //        _ = self.postViewC
 //    }
-      
+      self.gotoprofile.setTitle(LogInSignUp.kGoToProfile, for: .normal)
       self.gotoprofile.layer.cornerRadius = 5
       self.gotoprofile.layer.masksToBounds = true
       self.gotoprofile.layer.borderWidth = 2
@@ -239,7 +246,7 @@ class HomeViewC: AlysieBaseViewC  {
               self.membershipView.isHidden = true
             self.blankdataView.isHidden = false
             self.imgReview.image = UIImage(named: "ProfileCompletion")
-            self.text.text = "Complete your profile in order to start Posting"
+              self.text.text = AppConstants.kCompleteProfileStartPosting
         
             
               //_ = self.postViewC

@@ -17,6 +17,9 @@ class ConfirmSelectionVC: UIViewController , SelectList{
     
     @IBOutlet weak var tableView: ConfirmSelectionTable!
     @IBOutlet weak var viewHeader: UIView!
+    @IBOutlet weak var lblheading: UILabel!
+    @IBOutlet weak var btnEdit: UIButton!
+    
     var updatedHubs:(([SelectdHubs])->())?
     var roleId: String?
     var isEditHub:Bool?
@@ -25,6 +28,8 @@ class ConfirmSelectionVC: UIViewController , SelectList{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblheading.text = LogInSignUp.kSelectedHubs
+        btnEdit.setTitle(LogInSignUp.kEdit, for: .normal)
         self.viewHeader.drawBottomShadowGreen()
         self.tableView.dataDelegate = self
         self.tableView.selectedHubs = selectedHubs

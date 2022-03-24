@@ -151,6 +151,9 @@ struct  AlertMessage{
     static var kEnterValidName : String { return "Please enter more than 3 character.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEnterDescriptionUrl : String { return "Please enter Description or Url.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
+    static var kPleaseSelectAtleastOneState : String {return "Please select atleast one state".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+  
+    
 }
 struct LabelandTextFieldTitle{
    
@@ -550,7 +553,9 @@ struct AppConstants {
     static var kEmpty  : String { return "".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEnterText  : String { return "Enter your text here......".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kVATNo  : String { return "VAT No.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
     static var kZipCode  : String { return "Zip/Postal Code".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
     static var is_subscribed_with_hub  : String { return "is_subscribed_with_hub".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var marketplace_product_id  : String { return "marketplace_product_id".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var profileData  : String { return "profile_data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -559,6 +564,16 @@ struct AppConstants {
     static var leaveComment  : String { return "Leave a comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSelectRestType  : String { return "Select Restaurant".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddFeature  : String { return "Add Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMemberShipProgressPending: String{ return "Your membership progress is pending review. You will be notified once the review of your account has begun.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kYourProfileNotReviewed : String {return "Your profile is not reviewed from admin".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kCompleteProfileStartPosting: String {return "Complete your profile in order to start Posting".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    //MARK: Validation field type(check)
+    static var kzip_postal_code = "zip_postal_code"
+    static var kvatno  = "vat_no"
+    static var kpassword = "password"
 }
 
 struct ProfileCompletion {
@@ -883,10 +898,14 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kAllProducts  : String {"All Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNoStoreFound  : String {"No Stores Found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTryAgain  : String {"Try Again".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
 }
 struct LogInSignUp{
   
     //MARK: Membership Screen
+    static var kSelectCities : String {"Select Cities".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearchCities : String {"Search Cities".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectedHubs : String {"Selected hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kReview  : String {  "Review".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAccountReviewesApprovOurStaff  : String {  "Your account has been reviewed and approved by our staff".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAlyseiCertification  : String {  "Alysei Certification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -904,7 +923,7 @@ struct LogInSignUp{
     
     static var kSelectYourlocation :String {"Select Your location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kYourlocation :String {"Your location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var lDidntreceiveOTP : String{"Did'nt receive the OTP ? ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var lDidntreceiveOTP : String{"Didn't receive the OTP ? ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //MARK: LOGIN SCREEN
         static var kLoginToyourAccount  : String {  "Login to your Account".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kLoginWithEmail  : String {  "LOGIN WITH EMAIL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -990,7 +1009,15 @@ struct LogInSignUp{
     static var kSelectHubinUSA  : String {  "Select the HUB in USA where you plan to develop your business".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kHubIdentifiesAGeographical  : String {  "The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kIfyouDontWantHubAmongThose  : String {  "If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-
+    
+    static var kSelectHub : String{ return "Select the HUB in".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUSAWhere: String {return "USA where you".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kplanToDevelop: String {return "plan to develop".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kyourBusiness : String {return "your business".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectHubs : String {return "Select Hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDidntRecognizeHub: String {return "Didn't recognize your hub?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClickHere: String {return "Click Here".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kwhereyou : String {return " where you ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //MARK: SIGN UP SCREEN
 
         static var kHotelCafeRest  : String {  "Hotel/Restaurant/Café".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1003,8 +1030,18 @@ struct LogInSignUp{
         static var kSelectDiscountOfferToVoyager  : String {  "Select the discount you want to offer to Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kDeliveryDiscountToVoyager  : String {  "Delivery Discount for Alysei Voyager".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSelectTheDiscountOfferTovoyager : String { return "Select the discount you want to offer to Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectthestatesfrom : String {return "Select the states from ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEdit : String {return "Edit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEditSelection : String {return "Edit Selection".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRemove: String {return "Remove".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFillTheFormToGetAFasterResponse : String {"Fill the form to get a faster response. The Italian Producer will contact you shortly.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAlyseiMemberShip : String {return "Alysei Membership Progress".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYourProgress : String{ return "Your Progress".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kGoToProfile: String {return "Go to Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())
+    }
     
 }
+
 
 struct TourGuideConstants{
     

@@ -18,7 +18,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - IBOutlet -
     
     // blank data view
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var blankReviewText: UILabel!
     @IBOutlet weak var logout: UIButton!
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
@@ -199,7 +199,7 @@ class ProfileViewC: AlysieBaseViewC{
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView
-        
+        logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
         
         self.btnEditProfile.layer.cornerRadius = 5
         self.btnEditProfile.layer.masksToBounds = true
@@ -383,6 +383,7 @@ class ProfileViewC: AlysieBaseViewC{
             
             if Int.getInt(data["alysei_review"]) == 0 {
                 blankdataView.isHidden = false
+                blankReviewText.text = AppConstants.kYourProfileNotReviewed
             } else if Int.getInt(data["alysei_review"]) == 1 {
                 
                 blankdataView.isHidden = true
@@ -1990,15 +1991,16 @@ extension ProfileViewC {
     }
     
     func cancelConnectionRequest() {
-        let urlString = "\(APIUrl.Connection.cancelConnectionRequest)\(self.userID ?? -1)&accept_or_reject=2"
-        guard var request = WebServices.shared.buildURLRequest(urlString, method: .POST) else {
-            return
-        }
         
-        WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-            print("Success---------------------------Successssss")
-            self.fetchVisiterProfileDetails(self.userID)
-        }
+               let params: [String:Any] = [:]
+               
+               TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(self.userID ?? -1)+"&accept_or_reject=3", requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                   
+                   if statusCode == 200 {
+                       self.fetchVisiterProfileDetails(self.userID)
+                   }
+                   
+               }
     }
     
     func blockUserFromConnectionRequest(_ model: ProfileScreenModels.BlockConnectRequest) {

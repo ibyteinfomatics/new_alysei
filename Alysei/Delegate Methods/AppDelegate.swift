@@ -269,13 +269,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let hubTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCaseHub")
             let recipeTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCase")
             let profileTourguide = kSharedUserDefaults.object(forKey:  "userSeenShowCaseProfile")
+            let appLanguage = kSharedUserDefaults.object(forKey: "locale")
             kSharedUserDefaults.clearAllData()
             kSharedUserDefaults.setValue(retriveArrayData, forKey: "SavedWalkthrough")
             kSharedUserDefaults.setValue(postTourguide, forKey: "userSeenShowCasePost")
             kSharedUserDefaults.setValue(hubTourguide, forKey: "userSeenShowCaseHub")
             kSharedUserDefaults.setValue(recipeTourguide, forKey: "userSeenShowCase")
             kSharedUserDefaults.setValue(profileTourguide, forKey: "userSeenShowCaseProfile")
-            
+            kSharedUserDefaults.setValue(appLanguage, forKey: "locale")
             kSharedUserDefaults.setDeviceToken(deviceToken: token)
         }
     }

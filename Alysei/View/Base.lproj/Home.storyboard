@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -584,12 +584,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tF4-iO-5zT">
-                                                <rect key="frame" x="297" y="15" width="68" height="33"/>
+                                                <rect key="frame" x="335" y="15" width="30" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="Pda-GH-CBn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Logout">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -2534,12 +2534,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG3-jH-KHN">
-                                                <rect key="frame" x="297" y="15" width="68" height="33"/>
+                                                <rect key="frame" x="335" y="15" width="30" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="uMw-Qa-aXV"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Logout">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -2622,6 +2622,7 @@
                         <outlet property="addimg" destination="eyV-fF-FLA" id="See-t0-3Rj"/>
                         <outlet property="addtext" destination="xn3-YP-1r0" id="PvB-W6-o1v"/>
                         <outlet property="backButton" destination="xQ5-Sy-fEI" id="Tw8-bj-c1d"/>
+                        <outlet property="blankReviewText" destination="8Se-Ge-Wec" id="pgi-se-gRu"/>
                         <outlet property="blankdataView" destination="rPD-eL-M9i" id="cKE-QQ-Eee"/>
                         <outlet property="btnAbout" destination="iy5-FO-A9G" id="Lg4-Of-Xli"/>
                         <outlet property="btnConnectHght" destination="DjE-eb-phi" id="KtS-eH-Ad7"/>
@@ -2656,7 +2657,6 @@
                         <outlet property="tabsCollectionView" destination="ohE-3u-TDX" id="eIN-eJ-N1C"/>
                         <outlet property="tblViewPosts" destination="5sx-rC-XFt" id="vea-Rg-BoC"/>
                         <outlet property="tblViewProfileCompletion" destination="Hjy-cK-8zj" id="g4S-H7-Jb2"/>
-                        <outlet property="text" destination="8Se-Ge-Wec" id="0Ct-AX-wKQ"/>
                         <outlet property="usernameLabel" destination="ofC-tX-B2O" id="DJo-id-kgj"/>
                         <outlet property="viewBlankHeading" destination="eNN-v7-2cs" id="2Z9-3Z-95A"/>
                         <outlet property="viewFeature" destination="abZ-xo-HVg" id="dTq-cp-AAa"/>
@@ -4203,7 +4203,7 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfC-5w-uyc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alysei Membership Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSX-9o-NId">
                                                 <rect key="frame" x="15" y="10" width="345" height="24"/>
@@ -4226,12 +4226,12 @@ any other devices.</string>
                                             <constraint firstItem="zSX-9o-NId" firstAttribute="leading" secondItem="jfC-5w-uyc" secondAttribute="leading" constant="15" id="EZm-IG-85O"/>
                                             <constraint firstAttribute="trailing" secondItem="oEi-wT-YcB" secondAttribute="trailing" constant="15" id="RB1-s1-o21"/>
                                             <constraint firstItem="zSX-9o-NId" firstAttribute="top" secondItem="jfC-5w-uyc" secondAttribute="top" constant="10" id="UW9-FO-V7b"/>
-                                            <constraint firstAttribute="height" constant="125" id="fEA-tu-xIE"/>
+                                            <constraint firstAttribute="height" constant="130" id="fEA-tu-xIE"/>
                                             <constraint firstAttribute="trailing" secondItem="zSX-9o-NId" secondAttribute="trailing" constant="15" id="nQC-HT-8Lw"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t6B-UU-QWJ">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="438"/>
+                                        <rect key="frame" x="0.0" y="185" width="375" height="433"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="MembershipTableCell" rowHeight="150" id="cDF-qx-IDh" customClass="MembershipTableCell" customModule="Alysei" customModuleProvider="target">
@@ -4329,6 +4329,9 @@ any other devices.</string>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="lblBottomText" destination="Pht-er-DDd" id="oBu-a0-ICA"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -4337,7 +4340,7 @@ any other devices.</string>
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpn-rf-A8J">
-                                        <rect key="frame" x="15" y="135" width="134.5" height="35"/>
+                                        <rect key="frame" x="15" y="140" width="134.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="dPQ-TV-KKw"/>
                                         </constraints>
@@ -4398,6 +4401,8 @@ any other devices.</string>
                         <outlet property="headerView" destination="4mQ-v5-Xk4" id="yhb-AH-gVI"/>
                         <outlet property="headerViewHeight" destination="n7d-B5-VrQ" id="eBy-YL-fYj"/>
                         <outlet property="imgReview" destination="1Qt-Hl-NHZ" id="0TC-aE-QhY"/>
+                        <outlet property="lblHeading" destination="zSX-9o-NId" id="hDO-db-Auv"/>
+                        <outlet property="lblMemberShip" destination="oEi-wT-YcB" id="9UM-xE-AgA"/>
                         <outlet property="logout" destination="Lgn-mU-2Y8" id="4Jc-Ex-wQd"/>
                         <outlet property="membershipView" destination="ZH7-VF-u3f" id="lNl-FY-9hM"/>
                         <outlet property="tblViewMembership" destination="t6B-UU-QWJ" id="lo8-kz-G2U"/>
@@ -7463,14 +7468,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7511,7 +7516,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7533,7 +7538,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7571,7 +7576,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -12128,7 +12133,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-nb-G29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.8115942028987" y="-1194.3080357142856"/>
+            <point key="canvasLocation" x="1791" y="-1147"/>
         </scene>
         <!--Notification ViewC-->
         <scene sceneID="1na-eb-btK">
@@ -19799,12 +19804,12 @@ You will be notified for any membership status update.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQ7-dK-95M">
-                                                <rect key="frame" x="297" y="15" width="68" height="33"/>
+                                                <rect key="frame" x="335" y="15" width="30" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="CJp-U3-sBt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Logout">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -19886,6 +19891,7 @@ You will be notified for any membership status update.</string>
                         <outlet property="blankdataView" destination="9ry-Fb-bc5" id="bx8-0T-XKS"/>
                         <outlet property="collectionViewBusinessCategory" destination="HOS-Pd-NDP" id="uKf-1X-bWW"/>
                         <outlet property="imgReview" destination="sGQ-cg-dXb" id="CWl-5I-kOE"/>
+                        <outlet property="lblNotReviewed" destination="jPK-ZT-9Dr" id="hQX-JH-R0v"/>
                         <outlet property="logout" destination="iQ7-dK-95M" id="TMg-XL-gDU"/>
                         <outlet property="tblViewSearchOptions" destination="geu-hF-irT" id="sWD-Ef-HKe"/>
                         <outlet property="text" destination="jPK-ZT-9Dr" id="Ipx-XO-HXO"/>
@@ -20323,12 +20329,12 @@ You will be notified for any membership status update.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-2s-dLi">
-                                                <rect key="frame" x="297" y="15" width="68" height="33"/>
+                                                <rect key="frame" x="335" y="15" width="30" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="seB-1z-CcT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Logout">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>

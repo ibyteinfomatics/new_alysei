@@ -13,7 +13,8 @@ class HubCitiesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var vwHeader: UIView!
-    
+    @IBOutlet weak var lblSelectCities: UILabel!
+    @IBOutlet weak var btnNext: UIButton!
     
     var currentIndex: Int = 0
     
@@ -32,6 +33,9 @@ class HubCitiesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadowGreen()
+        lblSelectCities.text = LogInSignUp.kSelectCities
+        btnNext.setTitle(RecipeConstants.kNext, for: .normal)
+        txtSearch.placeholder = LogInSignUp.kSearchCities
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         let state = selectedHub?.state.first
         self.postRequestToGetCity(state?.id ?? "")
