@@ -271,5 +271,12 @@ extension MembershipViewC{
   
 }
 class BottomViewCell: UITableViewCell{
+   //
+    @IBOutlet weak var lblBottomText: UILabel!
+    
+
+    override func awakeFromNib() {
+        lblBottomText.text = AppConstants.kMemberShipProgressPending
+    }
     
 }

@@ -33,6 +33,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var imgReview: UIImageView!
+   
+    
     var privacyArray = ["Public","Followers","Only Me","Connections"]
     var privacyImageArray = ["Public","Friends","OnlyMe","Friends"]
     var progressUserData: UserData?
@@ -50,6 +52,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
         vwPrivacy.layer.borderColor = UIColor.darkGray.cgColor
@@ -57,6 +60,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         postPrivacyTableView.isHidden = true
         postPrivacyTableView.delegate = self
         postPrivacyTableView.dataSource = self
+        logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
         //setUI()
         // Do any additional setup after loading the view.
     }
@@ -75,7 +79,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 
                 blankdataView.isHidden = false
                 imgReview.image = UIImage(named: "Review")
-                text.text = "Your profile is not reviewed from admin"
+                self.text.text = AppConstants.kYourProfileNotReviewed
                 txtPost.resignFirstResponder()
             } else if Int.getInt(data["alysei_review"]) == 1{
                // txtPost.becomeFirstResponder()
@@ -99,6 +103,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
+        
         kSharedAppDelegate.callLogoutApi()
         
       //kSharedUserDefaults.clearAllData()
@@ -117,7 +122,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
                 if String.getString(data["profile_percentage"])  != "100" {
                   self.blankdataView.isHidden = false
                     self.imgReview.image = UIImage(named: "ProfileCompletion")
-                    self.text.text = "Complete your profile in order to start Posting"
+                    self.text.text = AppConstants.kCompleteProfileStartPosting
                     self.txtPost.resignFirstResponder()
                 } else {
                     self.txtPost.becomeFirstResponder()

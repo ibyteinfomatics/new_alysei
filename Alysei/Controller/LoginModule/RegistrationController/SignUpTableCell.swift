@@ -23,6 +23,7 @@ class SignUpTableCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var btnEye: UIButton!
     @IBOutlet weak var btnInfo: UIButton!
     var title:String?
+    var name: String?
     //  @IBOutlet weak var viewContainer: UIView!
     //  @IBOutlet weak var btnEyeWidth: NSLayoutConstraint!
     //    @IBOutlet weak var viewHint: UIView!
@@ -65,19 +66,20 @@ class SignUpTableCell: UITableViewCell, UITextFieldDelegate {
     //MARK: - Public Methods -
     
     public func configureData(withSignUpStepOneDataModel model: SignUpStepOneDataModel){
-        if model.title == AppConstants.kVATNo || model.title == AppConstants.kZipCode{
+        if model.name == AppConstants.kvatno || model.name == AppConstants.kzip_postal_code{
             self.txtFieldSignUp.keyboardType = .numberPad
         }else{
             self.txtFieldSignUp.keyboardType = .default
         }
         self.title = model.title
+        self.name = model.name
         self.signUpStepOneDataModel = model
         self.lblHint.text = model.hint
         self.lblHeading.text = (model.required == AppConstants.Yes) ? String.getString(model.title) + "*" : model.title
         self.txtFieldSignUp.attributedPlaceholder = NSAttributedString(string: String.getString(model.placeholder),
                                                                        attributes: [NSAttributedString.Key.foregroundColor: AppColors.liteGray.color])
         
-        self.btnInfo.isHidden = ((model.hint?.isEmpty == true) || (model.type == AppConstants.Password)) ? true : false
+        self.btnInfo.isHidden = ((model.hint?.isEmpty == true) || (model.name == AppConstants.kpassword)) ? true : false
         
         
         switch model.type {
@@ -114,7 +116,7 @@ class SignUpTableCell: UITableViewCell, UITextFieldDelegate {
         //    }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if title == AppConstants.kVATNo {
+        if name == AppConstants.kvatno {
             if textField.text?.count ?? 0 >= 11{
                 if let char = string.cString(using: String.Encoding.utf8) {
                     let isBackSpace = strcmp(char, "\\b")
@@ -127,7 +129,7 @@ class SignUpTableCell: UITableViewCell, UITextFieldDelegate {
                 }
             }
         }
-        if title == AppConstants.kZipCode {
+        if name == AppConstants.kzip_postal_code {
             print("textField Count-------------------------\(textField.text?.count ?? 0)")
              if textField.text?.count ?? 0 == 11 {
                 if let char = string.cString(using: String.Encoding.utf8) {

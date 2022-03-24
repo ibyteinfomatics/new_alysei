@@ -184,6 +184,8 @@ class NetworkViewC: AlysieBaseViewC {
                 self.blankdata.isHidden = true
             } else {
                 self.blankdata.isHidden = false
+                self.text.text = AppConstants.kYourProfileNotReviewed
+                self.logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
             }
             
 //            if self.currentIndex == 0 {

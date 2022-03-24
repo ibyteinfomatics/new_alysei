@@ -35,7 +35,8 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         //        //MARK:- Call func
-        
+        btnEditSelection.setTitle(LogInSignUp.kEditSelection, for: .normal)
+        btnRemoveHub.setTitle(LogInSignUp.kRemove, for: .normal)
         self.initialSetup()
         //MARK:- Register XIB
         collectionView.register(UINib(nibName: HubNameCollectionViewCell.identifier(), bundle: nil), forCellWithReuseIdentifier: "HubNameCollectionViewCell")

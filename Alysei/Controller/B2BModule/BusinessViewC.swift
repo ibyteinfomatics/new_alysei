@@ -22,6 +22,7 @@ class BusinessViewC: AlysieBaseViewC {
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var imgReview: UIImageView!
+    @IBOutlet weak var lblNotReviewed: UILabel!
     
     var currentIndex: Int = 0
     var businessViewModel = BusinessViewModel(currentIndex: 0)
@@ -115,6 +116,8 @@ class BusinessViewC: AlysieBaseViewC {
         if currentIndex == 0 {
             callSearchHubApi()
         }
+        logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
+        lblNotReviewed.text = AppConstants.kYourProfileNotReviewed
         //self.tblViewHeightConstraint.constant = 300.0
     }
     

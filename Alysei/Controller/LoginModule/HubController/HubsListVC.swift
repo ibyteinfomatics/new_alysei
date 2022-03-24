@@ -19,6 +19,8 @@ class HubsListVC: UIViewController {
     @IBOutlet weak var heightOfCollectionView: NSLayoutConstraint!
     @IBOutlet weak var lblShowSelectedHub: UILabel!
     @IBOutlet weak var btnClickHere: UIButton!
+    @IBOutlet weak var btnDone: UIButton!
+    @IBOutlet weak var lblDidntRecgnize: UILabel!
     
     
     var city = [CountryHubs]()
@@ -40,7 +42,9 @@ class HubsListVC: UIViewController {
     // MARK:- lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        btnDone.setTitle(RecipeConstants.kDone, for: .normal)
+        lblDidntRecgnize.text = LogInSignUp.kDidntRecognizeHub
+        btnClickHere.setTitle(LogInSignUp.kClickHere, for: .normal)
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView
@@ -65,7 +69,8 @@ class HubsListVC: UIViewController {
         }
         
         if self.hasCome == .initialCountry {
-            self.lblHeading.text =  "Select Hubs"
+            self.lblHeading.text =  LogInSignUp.kSelectHub
+            
             hideEyeIcon = self.hasCome != .initialCountry
             self.bottomStack.isHidden =  false
             self.viewBottomStack.isHidden = false
@@ -250,7 +255,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         switch index {
             
             
-        case 0:
+        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
@@ -261,7 +266,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
                 break
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 1:
+        case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
@@ -290,8 +295,8 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         let cell2 = cell1?.tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
         switch index {
            
-        case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-        case 1: return coachMarksController.helper.makeCoachMark(for: cell2?.buttonLeftCheckbox)
+        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+        case 0: return coachMarksController.helper.makeCoachMark(for: cell2?.buttonLeftCheckbox)
         default: return coachMarksController.helper.makeCoachMark()
         }
     }

@@ -641,8 +641,11 @@
 "You are within the top 5 highest rated Alysei Members" = "Sei tra i primi 5 Membri Alysei più votati";
 "Become a Certified Alysei Member to expan your market access" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
 "Complete your profile in order to fully access Alysei" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
-
-
+"Fill the form to get a faster response. The Italian Producer will contact you shortly."="Compila il modulo per ottenere una risposta più rapida. Il Produttore Italiano ti contatterà a breve.";
+"Alysei Membership Progress" = "Alysei Membership Progress";
+"Your membership progress is pending review. You will be notified once the review of your account has begun." = "Your membership progress is pending review. You will be notified once the review of your account has begun.";
+"Complete your profile in order to start Posting" = "Complete your profile in order to start Posting";
+"Your profile is not reviewed from admin" = "Your profile is not reviewed from admin";
 //MARK: LOGIN SCREEN
 "Login to your Account" = "Accedi al tuo Account";
 "LOGIN WITH EMAIL" = "Accedi con email";
@@ -673,7 +676,7 @@
 "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
 "We have sent you a 6 digit verification code(OTP) to" = "We have sent you a 6 digit verification code(OTP) to";
 "Verify OTP" = "Verify OTP";
-"Did'nt receive the OTP ? " = "Did'nt receive the OTP ? ";
+"Didn't receive the OTP ? " = "Didn't receive the OTP ? ";
 "Resend OTP" = "Resend OTP";
 "Confirm Password" = "Confirm Password";
 "New Password" = "New Password";
@@ -760,6 +763,24 @@
 "Select the HUB in USA where you plan to develop your business" = "Seleziona l'HUB in US dove vuoi sviluppare il tuo business";
 "The Hub identifies a geographical area developed around a metropolitan district, the nerve center of business, network and development activities" = "L'Hub identifca una zona geografica sviluppata intorno a un area metropoliatana, centro nevralgico di attività di business, network e sviluppo";
 "If you do not find the Hub among those currently available, indicate the one or ones of your interest by selecting state and city" = "Se non trovi l'Hub tra quelli attualmente disponibili, indica quello o quelli di tuo interesse selezionando stato e città";
+"Select the HUB in" = "Seleziona l'HUB in";
+"USA where you" = "US dove";
+"plan to develop" = "vuoi sviluppare il";
+"your business" = "tuo business";
+"Select Hubs" = "Select Hubs";
+"Didn't recognize your hub?" = "Didn't recognize your hub?";
+"Click Here" = "Click Here";
+"Select State" = "Select State";
+"Please select atleast one state" = "Please select atleast one state";
+"Select the states from " = "Select the states from ";
+" where you " = " where you ";
+"Select Cities" = "Select Cities";
+"Search Cities" = "Search Cities";
+"Selected hubs" = "Selected hubs";
+"Edit" = "Edit";
+"Edit Selection" = "Edit Selection";
+"Remove" = "Remove";
+"Go to Profile" = "Go to Profile";
 
 //MARK: SIGN UP SCREEN
 
