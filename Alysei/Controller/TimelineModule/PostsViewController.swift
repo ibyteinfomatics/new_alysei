@@ -667,8 +667,8 @@ extension PostsViewController {
         }
     }
     
+    
     private func postRequestToGetProgressPrfile() -> Void{
-        
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kProfileProgress, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             let response = dictRespnose as? [String:Any]
@@ -701,7 +701,7 @@ extension PostsViewController {
                             parent?.headerView.alpha = 0.8
                             parent?.headerView.backgroundColor = .black//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
                             
-                            self.tabBarController?.tabBar.backgroundColor = UIColor.darkGray
+                            self.tabBarController?.tabBar.backgroundColor = UIColor.darkGray 
                             self.tabBarController?.tabBar.alpha = 0.9
                             self.tabBarController?.tabBar.isUserInteractionEnabled = false
                             
@@ -722,6 +722,7 @@ extension PostsViewController {
                     }
                 }
                 else{
+                    
                     self.tabBarController?.tabBar.backgroundColor = .white
                     self.tabBarController?.tabBar.alpha = 1.0
                     self.tabBarController?.tabBar.isUserInteractionEnabled = true
@@ -840,6 +841,7 @@ extension PostsViewController{
 //        }
 //    }
 //}
+
 extension PostsViewController : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {

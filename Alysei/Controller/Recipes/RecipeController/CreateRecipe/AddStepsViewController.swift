@@ -101,9 +101,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
         step1ToolLabel.text = "\(page)"
         
     }
-//    override func viewDidLayoutSubviews() {
-//        self.scrollVw.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
-//    }
+
     
     @IBAction func NextButton(_ sender: Any) {
         
@@ -168,15 +166,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
             }
             else
             {
-                if isbackdata == true{
-                    let addSteps = self.storyboard?.instantiateViewController(withIdentifier: "AddStepsViewController") as! AddStepsViewController
-                    addSteps.page = (page - 1)
-                    addSteps.selectedIndex = (page - 2)
-                    self.navigationController?.pushViewController(addSteps, animated: true)
-                }
-                else{
                 self.navigationController?.popViewController(animated: true)
-                }
                 
             }
         }
@@ -305,11 +295,7 @@ class AddStepsViewController: UIViewController, UITextFieldDelegate, UITextViewD
                     arrayStepFinalData.append(stepdata)
                     addSteps.isbackdata = true
 
-                } else {
-                    addSteps.isbackdata = true
-                    arrayStepFinalData[selectedIndex] = stepdata
-
-                }
+                } 
                 
             }
             else {

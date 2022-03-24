@@ -37,11 +37,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
     var ingridientSet = Set<Int>()
     
     
-    //    override func viewDidLayoutSubviews() {
-    //        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 800)
-    //
-    //    }
-    //
+    
     override func viewDidLoad() {
         preferenceNumber = 4
         super.viewDidLoad()
@@ -53,12 +49,9 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
         
         scrollView.isScrollEnabled = false
-        if MobileDeviceType.IS_IPHONE_6 == true {
-            searchViewHeight.constant = 100
-        }
-        else{
+        
             searchViewHeight.constant = 130
-        }
+        
         ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
@@ -222,13 +215,13 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
             
             self.searchTableView.isScrollEnabled = true
             
-            //            if ingdntArray[indexPath.row].isSelected == true{
-            //
-            //                                cell.searchAddButton.setImage(UIImage(named: "Group 382"), for: .normal)
-            //                }
-            //               else{
-            //                cell.searchAddButton.setImage(UIImage(named: "Group 1127"), for: .normal)
-            //               }
+            if ingdntArray[indexPath.row].isSelected == true{
+            
+                cell.searchAddButton.setImage(UIImage(named: "Group 382"), for: .normal)
+                    }
+                else{
+                    cell.searchAddButton.setImage(UIImage(named: "Group 1127"), for: .normal)
+                }
             
             let selectedIngridient1 = ingridientSearchModel![indexPath.row].recipeIngridientId
             self.searchingridientId = selectedIngridient1
@@ -315,12 +308,9 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
             if updateText.count > 0 {
                 searching = true
                 scrollView.isScrollEnabled = true
-                if MobileDeviceType.IS_IPHONE_6 == true {
-                    searchViewHeight.constant = 250
-                }
-                else{
+                
                     searchViewHeight.constant = 300
-                }
+                
                 searchTextPreferences = updateText
                 
                 callSearchIngridients()
@@ -328,12 +318,10 @@ extension DontSeeIngredientsViewController: UITableViewDelegate, UITableViewData
             else{
                 self.searching = false
                 scrollView.isScrollEnabled = false
-                if MobileDeviceType.IS_IPHONE_6 == true {
-                    searchViewHeight.constant = 100
-                }
-                else{
+                
+                
                     searchViewHeight.constant = 130
-                }
+                
                 //                searchTextPreferences = ""
                 ingridientSearchModel?.removeAll()
                 //                callSearchIngridients()

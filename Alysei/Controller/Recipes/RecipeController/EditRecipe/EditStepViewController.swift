@@ -237,11 +237,10 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
                     cell1.addStepIngeidientSelectedImageView.isHidden = true
                 }
             }
-//            else{
-//
-//                editusedIngridientModel[indexPath.item].isSelected = false
-//                cell1.addStepIngeidientSelectedImageView.isHidden = true
-//            }
+            else{
+
+                cell1.addStepIngeidientSelectedImageView.isHidden = true
+            }
         
             cell1.layoutSubviews()
 
@@ -266,7 +265,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
                 }
             }
             else{
-                editusedToolModel[indexPath.item].isSelected = 0
+               
                 cell2.addStepToolSelectedImageView.isHidden = true
             }
             
@@ -310,7 +309,7 @@ extension EditStepViewController: UICollectionViewDelegate, UICollectionViewData
             } else {
                 editusedToolModel[indexPath.row].isSelected = 1
                 cell1?.addStepToolSelectedImageView.isHidden = false
-//                nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
+//              nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
             }
         }
         
