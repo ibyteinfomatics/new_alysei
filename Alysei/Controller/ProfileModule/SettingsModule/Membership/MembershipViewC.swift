@@ -13,6 +13,7 @@ class MembershipViewC: AlysieBaseViewC {
     
   @IBOutlet weak var tblViewMembership: UITableView!
   @IBOutlet weak var viewBlueHeading: UIView!
+    @IBOutlet weak var lblMemberShip: UILabel!
   //  @IBOutlet weak var viewBottom: UIView!
  // @IBOutlet weak var tableviewheight: NSLayoutConstraint!
   var progressmodel:ProgressModel?
@@ -34,7 +35,7 @@ class MembershipViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     
     super.viewDidLoad()
-      
+      lblMemberShip.text = LogInSignUp.kFillTheFormToGetAFasterResponse
       if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
           tblViewMembership.isScrollEnabled = false
       } else {

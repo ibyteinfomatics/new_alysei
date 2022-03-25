@@ -44,6 +44,7 @@ class HomeViewC: AlysieBaseViewC  {
   var fullScreenImageView = UIImageView()
     var progressUserData: UserData?
     var ResentUser:[RecentUser]?
+    var getUser:[userClass]?
     
    
 //    let coachMarksController = CoachMarksController()
@@ -134,7 +135,7 @@ class HomeViewC: AlysieBaseViewC  {
            // if Int.getInt(data["alysei_review"]) == 0 {
             if Int.getInt(data["alysei_review"]) == 0  {
                 postRequestToGetProgress()
-                
+                getUsersData()
                
             } else if Int.getInt(data["alysei_review"]) == 1 {
                 postRequestToGetProgressPrfile()
@@ -178,6 +179,28 @@ class HomeViewC: AlysieBaseViewC  {
             
             self.countshow.setTitle("\(self.unread)", for: .normal)
             
+        }
+        
+    }
+    
+    func getUsersData() {
+        
+        kChatharedInstance.receivce_user_data(userID: String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
+            self.getUser?.removeAll()
+            self.getUser = users
+            
+            if self.getUser![0].alysei_approval == true {
+                
+                UserDefaults.standard.set(1, forKey: "alyseiCertification")
+                kSharedUserDefaults.alyseiReview = 1
+                isprofileComplete = false
+
+                self.membershipView.isHidden = true
+                self.blankdataView.isHidden = false
+                self.imgReview.image = UIImage(named: "ProfileCompletion")
+                self.text.text = AppConstants.kCompleteProfileStartPosting
+                
+            }
         }
         
     }
