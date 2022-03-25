@@ -12,6 +12,7 @@ import FirebaseDatabase
 import SVProgressHUD
 import Instructions
 import Zoomy
+
 struct PostCommentsUserData {
     var userID: Int
     var postID: Int
@@ -612,6 +613,7 @@ extension PostsViewController: ShareEditMenuProtocol {
     }
     
 }
+
 extension PostsViewController{
     
     func callMarketPlaceHomeApi(){

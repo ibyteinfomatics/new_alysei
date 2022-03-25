@@ -812,7 +812,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
       else if String.getString(howMuchPeopleLable.text) == "0"{
         showAlert(withMessage: AlertMessage.kSelecForPeople)
       }
-      else if String.getString(regionLabel.text) == LabelandTextFieldTitle.selectRegion {
+       else if String.getString(regionLabel.text) == RecipeConstants.kSelectRegion {
         showAlert(withMessage: AlertMessage.kSelectRegion)
       }
       else{
@@ -1172,7 +1172,7 @@ extension CreateNewRecipeViewController{
            }
            
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
        
    }
@@ -1191,7 +1191,7 @@ extension CreateNewRecipeViewController{
            }
 
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
 
    }
@@ -1208,7 +1208,7 @@ extension CreateNewRecipeViewController{
            }
            
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
        
    }
@@ -1224,7 +1224,7 @@ extension CreateNewRecipeViewController{
            }
            
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
        
    }
@@ -1243,10 +1243,11 @@ extension CreateNewRecipeViewController{
            }
            
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
        
    }
+      
     func postRequestToGetFoodIntolerance() -> Void{
         self.view.isUserInteractionEnabled = false
        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFoodIntolerance, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
@@ -1260,7 +1261,7 @@ extension CreateNewRecipeViewController{
            }
            
            self.picker1.reloadAllComponents()
-        self.view.isUserInteractionEnabled = true
+           self.view.isUserInteractionEnabled = true
        }
        
    }

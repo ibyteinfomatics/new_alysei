@@ -255,7 +255,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         switch index {
             
             
-        case 1:
+        case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerClickHere
@@ -266,7 +266,7 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
                 break
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 0:
+        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "8":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerHub
@@ -295,8 +295,8 @@ extension HubsListVC : CoachMarksControllerDataSource, CoachMarksControllerDeleg
         let cell2 = cell1?.tableView.cellForRow(at: indexpath1) as? SelectCityTableViewCell
         switch index {
            
-        case 1: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
-        case 0: return coachMarksController.helper.makeCoachMark(for: cell2?.buttonLeftCheckbox)
+        case 0: return coachMarksController.helper.makeCoachMark(for: btnClickHere)
+        case 1: return coachMarksController.helper.makeCoachMark(for: cell2?.buttonLeftCheckbox)
         default: return coachMarksController.helper.makeCoachMark()
         }
     }
