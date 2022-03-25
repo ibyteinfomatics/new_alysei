@@ -55,10 +55,10 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   
   @IBAction func tapSave(_ sender: UIButton) {
 
-    guard self.settingEditViewModel.selectedUserName.isValid(.username) else {
-        showAlert(withMessage: "Username can consist of alphabets, numeric, a set of special charters ( @ # $ _ ) and must be between 3 to 20 characters.")
-        return
-    }
+//    guard self.settingEditViewModel.selectedUserName.isValid(.username) else {
+//        showAlert(withMessage: "Username can consist of alphabets, numeric, a set of special charters ( @ # $ _ ) and must be between 3 to 20 characters.")
+//        return
+//    }
     self.postRequestToUpdateUserSettings()
   }
   

@@ -56,6 +56,9 @@ class HubUserListVC: AlysieBaseViewC {
     var selectPrdctCatgryOptnNme :String?
     var selectFieldType:String?
     
+    var selectExpertExpertiseName: String?
+    var selectExpertTitleName: String?
+    
     var identifyUserForProduct: IdentifyUserForProduct?
     var selectedProducWithCategory: String? = nil {
         didSet {
@@ -162,7 +165,44 @@ class HubUserListVC: AlysieBaseViewC {
                     businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                     }
                 }else{
-                print("No update")
+                   
+                        if indexPath.row == 0 {
+                            if self.selectExpertExpertiseName == "" || self.selectExpertExpertiseName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Expertise , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertExpertiseName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 1 {
+                            if self.selectExpertTitleName == "" || self.selectExpertTitleName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Title , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertTitleName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 2 {
+                            if selectExpertCountryName == "" || selectExpertCountryName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectCountry , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertCountryName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 3 {
+                            if selectExpertRegionName == "" || selectExpertRegionName == nil{
+                                if selectExpertCountryName == "Italy" || selectExpertCountryName == "italy"{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                                }else{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                                }
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertRegionName ?? "", for: .normal)
+                            }
+                        }
+                    
                 }
                 
             }
@@ -299,16 +339,21 @@ class HubUserListVC: AlysieBaseViewC {
                     if selectFieldType == AppConstants.Hubs{
                     businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                     self.selectExpertHubId = optionId
+                       
                     }else if selectFieldType == AppConstants.Expertise{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectExpertExpertiseId = optionId
+                        self.selectExpertExpertiseName = optionName
                     }else if selectFieldType == AppConstants.Title{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectExpertTitleId = optionId
+                        self.selectExpertTitleName = optionName
                     }else if selectFieldType == AppConstants.SelectState{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectExpertRegionId = optionId
+                        selectExpertRegionName = optionName
                         }
+                    
                 }else if self.currentIndex == B2BSearch.TravelAgencies.rawValue{
                     if selectFieldType == AppConstants.Hubs{
                     businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)

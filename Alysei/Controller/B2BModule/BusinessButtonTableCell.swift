@@ -131,7 +131,18 @@ class BusinessButtonTableCell: UITableViewCell {
     }
       else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 2){
         self.callGetCountryApi("\( UserRoles.travelAgencies.rawValue)")
-    }else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 4) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 4) {
+    }
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 3) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 3 && pushedFrom == .hubUserListVC) {
+        //fieldValueId = B2BFieldId.region.rawValue
+        //self.callGetValueOfFieldApi()
+        if currentIndex == 4 {
+            self.callGetStatesWithCountryIdApi(travelCountryId ?? "")
+        }else{
+        self.callGetStatesWithCountryIdApi(expertCountryId ?? "")
+        }
+        
+    }
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 4) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 4 && pushedFrom != .hubUserListVC) {
         //fieldValueId = B2BFieldId.region.rawValue
         //self.callGetValueOfFieldApi()
         if currentIndex == 4 {
