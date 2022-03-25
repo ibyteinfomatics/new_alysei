@@ -127,25 +127,40 @@ class HubUserListVC: AlysieBaseViewC {
         }else{
             if identifyUserForProduct == .productImporter{
             if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
+                if selectPrdctCatgryOptnNme == nil || selectPrdctCatgryOptnNme == ""  {
+                   businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                }else{
                 businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                }
             }else{
-                       print("No Impupdate-----",(indexPath.row))
-
-
                     if  indexPath.row == 0{
                         
-                     if selectImpRolesNames == nil  {
+                     if selectImpRolesNames == nil  ||  selectImpRolesNames == ""{
                         businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
-                        print("Impupdate-----TITLEUSerType")
+                        
                     }else{
                         businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
-                        print("Impupdate-----TITLESelectUserNAMe")
+                        
                    }
                     }
+                if indexPath.row == 1 {
+                    if selectPrdctCatgryOptnNme == nil || selectPrdctCatgryOptnNme == ""  {
+                       businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                       
+                   }else{
+                       businessButtonTableCell.btnBusiness.setTitle(selectPrdctCatgryOptnNme ?? "", for: .normal)
+                      
+                  }
+
+                }
                 }
             }else{
                 if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 0{
+                    if selectPrdctCatgryOptnNme == nil || selectPrdctCatgryOptnNme == ""  {
+                       businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                    }else{
                     businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                    }
                 }else{
                 print("No update")
                 }
@@ -538,9 +553,13 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath) is BusinessSearchTableCell {
+            return
+        }
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
 //        controller?.userLevel = .other
 //        let index = (indexPath.row - (self.extraCell ?? 0)
+        
         let index = indexPath.row - (self.extraCell ?? 0)
         if kSharedUserDefaults.loggedInUserModal.userId == "\(arrSearchimpotrDataModel[index].userId ?? 0)"{
             controller?.userLevel = .own

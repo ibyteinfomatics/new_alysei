@@ -20,7 +20,7 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
     
     
     var titleArray = ["VAT","FDA Number"]
-    var cetificateTitle = ["Photo of Label","FCE-SID Certification","Phytosanitary Certificate","Packaging od USA","Food Safety Plan","Animal Health or ASL Certificate"]
+    var cetificateTitle = ["Photo of Label","FCE-SID Certification","Phytosanitary Certificate","Packaging of USA","Food Safety Plan","Animal Health or ASL Certificate"]
     var certificatDesc = ["Upload an image your product's label","Upload an image of your FCE-SID certification","Upload an image of your Phytosanitary Certificate","Upload an image or PDF of your packaging for USA","Upload an image or PDF of your food safety plan","Upload an image or PDF of your Animal Health or ASL Certificate"]
     var getCompanyFields: CompanyCertificates?
     var picker = UIImagePickerController()

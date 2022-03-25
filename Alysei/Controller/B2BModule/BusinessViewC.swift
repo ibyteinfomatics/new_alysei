@@ -10,7 +10,11 @@ import DropDown
 
 var cellCount: Int?
 //var B2BLoadFirstTime = true
+var selectExpertCountryName: String?
+var selectExpertRegionName: String?
 
+var selectTravelCountryName: String?
+var selectTravelRegionName: String?
 
 class BusinessViewC: AlysieBaseViewC {
     
@@ -45,14 +49,22 @@ class BusinessViewC: AlysieBaseViewC {
     var selectImpRegionTypeId:String?
     var selectImpRoleId: String?
     var resHubId: String?
+    var restTypeName: String?
     var resTypeId: String?
     var selectExpertHubId: String?
+    var selectExpertHubName: String?
     var selectExpertExpertiseId: String?
+    var selectExpertExpertiseName: String?
     var selectExpertTitleId: String?
+    var selectExpertTitleName: String?
     var selectExpertCountryId: String?
+    
     var selectExpertRegionId: String?
+    
     var selectTravelHubId: String?
+    var selectTravelHubName: String?
     var selectTravelSpecialityId: String?
+    var selectTravelSpecialityName: String?
     var selectTravelCountryId: String?
     var selectTravelRegionId: String?
     var selectProducerHubId: String?
@@ -255,54 +267,184 @@ class BusinessViewC: AlysieBaseViewC {
         businessButtonTableCell.btnBusiness.tag = indexPath.row
         if self.searchImpDone == false{
             businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex: self.currentIndex,index: indexPath.row)
-        }else{
+        }
+        else{
             if identifyUserForProduct == .productImporter{
                 if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 2{
-                    businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
-               // }
-            }else{
-                   print("No Impupdate-----",(indexPath.row))
-
-                if indexPath.row == 0 {
-                        if self.selectImpHubName == nil {
-                        businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
-                        print("Impupdate-----TITLEHUB")
-
+                    if selectPrdctCatgryOptnNme == "" || selectPrdctCatgryOptnNme == nil {
+                        businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
                     }else{
-                        businessButtonTableCell.btnBusiness.setTitle(selectImpHubName ?? "", for: .normal)
-                        print("Impupdate-----TITLESelectHUBNAMe")
+                        businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                     }
-            }
-
-                if  indexPath.row == 1 {
-                    
-                 if selectImpRolesNames == nil  {
-                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
-                    print("Impupdate-----TITLEUSerType")
+                    // }
                 }else{
-                    businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
-                    print("Impupdate-----TITLESelectUserNAMe")
-               }
+                    print("No Impupdate-----",(indexPath.row))
+                    
+                    if indexPath.row == 0 {
+                        if self.selectImpHubName == nil || self.selectImpHubName == "" {
+                            businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
+                            
+                            
+                        }else{
+                            businessButtonTableCell.btnBusiness.setTitle(selectImpHubName ?? "", for: .normal)
+                            
+                        }
+                    }
+                    
+                    if  indexPath.row == 1 {
+                        
+                        if selectImpRolesNames == nil ||   selectImpRolesNames == "" {
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectUserType , for: .normal)
+                            
+                        }else{
+                            businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
+                            
+                        }
+                    }
+                    if indexPath.row == 2 {
+                        if selectPrdctCatgryOptnNme == nil || selectPrdctCatgryOptnNme == ""  {
+                            
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                            
+                        }else{
+                            businessButtonTableCell.btnBusiness.setTitle(selectPrdctCatgryOptnNme ?? "", for: .normal)
+                            
+                        }
+                        
+                    }
                 }
-            }
                 
             }else{
-                if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
-                    businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
-                }else{
-                    print("No Produpdate")
-                  
-                    if indexPath.row == 0 {
-                            if self.selectProdHubName == nil {
-                            businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
-                            print("Produpdate-----TITLEHUB")
-
+                if currentIndex == B2BSearch.Producer.rawValue {
+                    if indexPath.row == 0{
+                        if self.selectProdHubName == nil || self.selectProdHubName == "" {
+                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                            
+                            
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(selectProdHubName ?? "", for: .normal)
-                            print("Produpdate-----TITLESelectHUBNAMe")
+                            
                         }
-                    //   businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex:self.currentIndex,index: indexPath.row)
-                }
+                    }else{
+                        if self.selectFieldType == AppConstants.ProductTypeBusiness && indexPath.row == 1{
+                            if selectPrdctCatgryOptnNme == nil  || selectPrdctCatgryOptnNme == "" {
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
+                            }
+                        }
+                    }
+                }else{
+                    print("No Produpdate")
+                    if currentIndex == B2BSearch.Restaurant.rawValue{
+                        if indexPath.row == 0 {
+                            if self.selectProdHubName == nil || self.selectProdHubName == "" {
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                                
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectProdHubName ?? "", for: .normal)
+                                
+                            }
+                            //   businessButtonTableCell.configureData(withBusinessDataModel: self.businessViewModel.arrBusinessData[indexPath.row], currentIndex:self.currentIndex,index: indexPath.row)
+                        }else if indexPath.row == 1{
+                            if self.restTypeName == nil  || restTypeName == ""{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.RestaurantType , for: .normal)
+                                
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(restTypeName ?? "", for: .normal)
+                                
+                            }
+                        }
+                    }
+                    if currentIndex == B2BSearch.Expert.rawValue{
+                        if indexPath.row == 0{
+                            if self.selectExpertHubName == "" || self.selectExpertHubName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertHubName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 1 {
+                            if self.selectExpertExpertiseName == "" || self.selectExpertExpertiseName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Expertise , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertExpertiseName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 2 {
+                            if self.selectExpertTitleName == "" || self.selectExpertTitleName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Title , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertTitleName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 3 {
+                            if selectExpertCountryName == "" || selectExpertCountryName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectCountry , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertCountryName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 4 {
+                            if selectExpertRegionName == "" || selectExpertRegionName == nil{
+                                if selectExpertCountryName == "Italy" || selectExpertCountryName == "italy"{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                                }else{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                                }
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectExpertRegionName ?? "", for: .normal)
+                            }
+                        }
+                        
+                    }
+                    if currentIndex == B2BSearch.TravelAgencies.rawValue{
+                        if indexPath.row == 0{
+                            if self.selectTravelHubName == "" || self.selectTravelHubName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelHubName ?? "", for: .normal)
+                            }
+                        }
+                        if indexPath.row == 1 {
+                            if self.selectTravelSpecialityName == "" || self.selectTravelSpecialityName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Speciality , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelSpecialityName ?? "", for: .normal)
+                            }
+                            
+                        }
+                        if indexPath.row == 2 {
+                            if selectTravelCountryName == "" || selectTravelCountryName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectCountry , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelCountryName ?? "", for: .normal)
+                            }
+                            
+                        }
+                        if indexPath.row == 3 {
+                            if selectTravelRegionName == "" || selectTravelRegionName == nil{
+                                if selectTravelRegionName == "Italy" || selectTravelRegionName == "italy"{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                                }else{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                                }
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelRegionName ?? "", for: .normal)
+                            }
+                            
+                        }
+                    }
                 }
             }
         }
@@ -427,29 +569,30 @@ class BusinessViewC: AlysieBaseViewC {
                         }
                         self.selectImpRoleId = optionId
                     }
-//                    else if selectFieldType == AppConstants.ProductTypeBusiness{
-//                        if self.selectedProducWithCategory == ""{
-//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
-//                        }else{
-//                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
-//                        }
-//                        self.selectImpProductId = optionId
-//                    }
-//                    else if selectFieldType == AppConstants.SelectState{
-//                        if optionName == ""{
-//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
-//                        }else{
-//                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
-//                        }
-//                        self.selectImpRegionTypeId = optionId
-//                    }
+                    //                    else if selectFieldType == AppConstants.ProductTypeBusiness{
+                    //                        if self.selectedProducWithCategory == ""{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness, for: .normal)
+                    //                        }else{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+                    //                        }
+                    //                        self.selectImpProductId = optionId
+                    //                    }
+                    //                    else if selectFieldType == AppConstants.SelectState{
+                    //                        if optionName == ""{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                    //                        }else{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                    //                        }
+                    //                        self.selectImpRegionTypeId = optionId
+                    //                    }
                 }else if self.currentIndex == B2BSearch.Restaurant.rawValue{
                     if selectFieldType == AppConstants.Hubs{
-                        if optionName == ""{
+                        if optionName == "" {
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectProdHubName = optionName
                         self.resHubId = optionId
                     }else if selectFieldType == AppConstants.RestaurantType{
                         if optionName == ""{
@@ -457,6 +600,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.restTypeName = optionName
                         self.resTypeId = optionId
                     }
                 }else if self.currentIndex == B2BSearch.Expert.rawValue{
@@ -466,6 +610,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectExpertHubName = optionName
                         self.selectExpertHubId = optionId
                     }else if selectFieldType == AppConstants.Expertise{
                         if optionName == ""{
@@ -473,6 +618,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectExpertExpertiseName = optionName
                         self.selectExpertExpertiseId = optionId
                     }else if selectFieldType == AppConstants.Title{
                         if optionName == ""{
@@ -480,6 +626,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectExpertTitleName = optionName
                         self.selectExpertTitleId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
                         if optionName == ""{
@@ -487,6 +634,8 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        
+                        selectExpertRegionName = optionName
                         self.selectExpertRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
@@ -494,6 +643,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        selectExpertRegionName = optionName
                         self.selectExpertRegionId = optionId
                     }
                 }else if self.currentIndex == B2BSearch.TravelAgencies.rawValue{
@@ -503,6 +653,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectTravelHubName = optionName
                         self.selectTravelHubId = optionId
                     }else if selectFieldType == AppConstants.Speciality{
                         if optionName == ""{
@@ -510,6 +661,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectTravelSpecialityName = optionName
                         self.selectTravelSpecialityId = optionId
                     }else if selectFieldType == AppConstants.SelectState {
                         if optionName == ""{
@@ -517,6 +669,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        selectTravelRegionName = optionName
                         self.selectTravelRegionId = optionId
                     }else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
@@ -524,6 +677,7 @@ class BusinessViewC: AlysieBaseViewC {
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        selectTravelRegionName = optionName
                         self.selectTravelRegionId = optionId
                     }
                     
@@ -535,16 +689,17 @@ class BusinessViewC: AlysieBaseViewC {
                             self.selectProdHubName =  optionName
                             businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         }
+                        self.selectProdHubName = optionName
                         self.selectProducerHubId = optionId
                     }
-//                    else if selectFieldType == AppConstants.ProductTypeBusiness{
-//                        if self.selectedProducWithCategory == ""{
-//                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
-//                        }else{
-//                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
-//                        }
-//                        self.selectProducerProductType = optionId
-//                    }
+                    //                    else if selectFieldType == AppConstants.ProductTypeBusiness{
+                    //                        if self.selectedProducWithCategory == ""{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(AppConstants.ProductTypeBusiness , for: .normal)
+                    //                        }else{
+                    //                            businessButtonTableCell.btnBusiness.setTitle(self.selectedProducWithCategory ?? "", for: .normal)
+                    //                        }
+                    //                        self.selectProducerProductType = optionId
+                    //                    }
                     else if selectFieldType == AppConstants.SelectRegion{
                         if optionName == ""{
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
@@ -737,6 +892,11 @@ class BusinessViewC: AlysieBaseViewC {
         self.selectTravelSpecialityId = ""
         self.selectTravelCountryId = ""
         self.selectTravelRegionId = ""
+        self.selectExpertHubName = ""
+        self.selectExpertTitleName = ""
+        self.selectExpertExpertiseName = ""
+        selectExpertRegionName = ""
+        selectExpertCountryName = ""
     }
 }
 
@@ -769,6 +929,8 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
         case 0:
             self.searchType = 3
             self.searchImpDone = false
+            self.identifyUserForProduct = .none
+            self.restTypeName = ""
             callSearchHubApi()
         case 1:
             self.searchType = 2
@@ -780,6 +942,7 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             self.selectPrdctCatgryOptnNme = ""
             self.selectImpRolesNames = nil
             self.selectImpHubName = nil
+            self.restTypeName = ""
             self.identifyUserForProduct = .productImporter
             callSearchImporterApi()
         case 2:
@@ -787,18 +950,24 @@ extension BusinessViewC: UICollectionViewDelegate, UICollectionViewDataSource,UI
             self.extraCell =  B2BSeacrhExtraCell.restaurantProducer.rawValue
             self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
+            self.restTypeName = ""
+            self.identifyUserForProduct = .none
             callSearchResturntApi()
         case 3:
             self.searchType = 2
             self.extraCell = B2BSeacrhExtraCell.voExpert.rawValue
             self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
+            self.restTypeName = ""
+            self.identifyUserForProduct = .none
             callSearchExpertApi()
         case 4:
             self.searchType = 2
             self.extraCell = B2BSeacrhExtraCell.importerTravel.rawValue
             self.arrSearchimpotrDataModel.removeAll()
             self.searchImpDone = false
+            self.restTypeName = ""
+            self.identifyUserForProduct = .none
             callSearchTravelApi()
         case 5:
             self.searchType = 2

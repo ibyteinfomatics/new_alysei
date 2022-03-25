@@ -15,6 +15,7 @@ var travelCountryId:String?
 enum IdentifyUserForProduct {
     case productImporter
     case productProducer
+    
 }
 
 class BusinessButtonTableCell: UITableViewCell {
@@ -61,7 +62,7 @@ class BusinessButtonTableCell: UITableViewCell {
   //MARK: - IBAction -
   
   @IBAction func tapBusiness(_ sender: UIButton) {
-     
+      self.index = sender.tag
     if (currentIndex ==  B2BSearch.Hub.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Importer.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || (currentIndex ==  B2BSearch.Producer.rawValue && businessModel?.businessHeading == AppConstants.SelectRegion){
         callStateApi()
     }else if (currentIndex == B2BSearch.Importer.rawValue && sender.tag ==  1 && pushedFrom != .hubUserListVC){
@@ -74,7 +75,7 @@ class BusinessButtonTableCell: UITableViewCell {
         self.callGetValueOfFieldApi()
         
     }
-      else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Hubs) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Hubs) ||  (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC){
+      else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.Restaurant.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC) ||  (currentIndex ==  B2BSearch.Producer.rawValue && sender.tag == 0 && pushedFrom != .hubUserListVC){
         self.callUserHubsApi()
     }else if (currentIndex ==  B2BSearch.Importer.rawValue && sender.tag == 2) {
         fieldValueId = B2BFieldId.productType.rawValue
@@ -89,26 +90,48 @@ class BusinessButtonTableCell: UITableViewCell {
         fieldValueId = B2BFieldId.productType.rawValue
         self.identifyUserForProduct = .productProducer
         self.callGetValueOfFieldApi()
-    }else if (currentIndex ==  B2BSearch.Restaurant.rawValue && businessModel?.businessHeading == AppConstants.RestaurantType){
+      }else if (currentIndex ==  B2BSearch.Restaurant.rawValue && sender.tag == 0 && pushedFrom == .hubUserListVC ){
         fieldValueId = B2BFieldId.restaurantType.rawValue
         self.callGetValueOfFieldApi()
         
-    }else if (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Expertise){
+    }
+      else if (currentIndex ==  B2BSearch.Restaurant.rawValue && sender.tag == 1 && pushedFrom != .hubUserListVC){
+        fieldValueId = B2BFieldId.restaurantType.rawValue
+        self.callGetValueOfFieldApi()
+        
+    }else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 1 && pushedFrom != .hubUserListVC){
         fieldValueId = B2BFieldId.expertise.rawValue
         self.callGetValueOfFieldApi()
         
-    }else if (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.Title){
+    }
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 0 && pushedFrom == .hubUserListVC){
+          fieldValueId = B2BFieldId.expertise.rawValue
+          self.callGetValueOfFieldApi()
+          
+      }
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 2 && pushedFrom != .hubUserListVC){
         fieldValueId = B2BFieldId.title.rawValue
         self.callGetValueOfFieldApi()
         
-    }else if (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.SelectCountry) {
+    }else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 1 && pushedFrom == .hubUserListVC){
+        fieldValueId = B2BFieldId.title.rawValue
+        self.callGetValueOfFieldApi()
+        
+    }
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 3 && pushedFrom != .hubUserListVC) {
         //fieldValueId = B2BFieldId.country.rawValue
        // self.callGetValueOfFieldApi()
         self.callGetCountryApi("\(UserRoles.voiceExperts.rawValue)")
         
-    }else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.SelectCountry){
+    } else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 2 && pushedFrom == .hubUserListVC) {
+        //fieldValueId = B2BFieldId.country.rawValue
+       // self.callGetValueOfFieldApi()
+        self.callGetCountryApi("\(UserRoles.voiceExperts.rawValue)")
+        
+    }
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 2){
         self.callGetCountryApi("\( UserRoles.travelAgencies.rawValue)")
-    }else if (currentIndex ==  B2BSearch.Expert.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || businessModel?.businessHeading == AppConstants.SelectRegion{
+    }else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 4) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 4) {
         //fieldValueId = B2BFieldId.region.rawValue
         //self.callGetValueOfFieldApi()
         if currentIndex == 4 {
@@ -117,9 +140,11 @@ class BusinessButtonTableCell: UITableViewCell {
         self.callGetStatesWithCountryIdApi(expertCountryId ?? "")
         }
         
-    }else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.SelectState) || businessModel?.businessHeading == AppConstants.SelectRegion{
+    }
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 3){
         self.callGetStatesWithCountryIdApi(travelCountryId ?? "")
-    }else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && businessModel?.businessHeading == AppConstants.Speciality){
+    }
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 1){
         fieldValueId = B2BFieldId.speciality.rawValue
         self.callGetValueOfFieldApi()
         
@@ -139,16 +164,21 @@ class BusinessButtonTableCell: UITableViewCell {
              if self.currentIndex == B2BSearch.Expert.rawValue{
                 switch businessModel?.businessHeading {
                 case AppConstants.SelectCountry:
+                    selectExpertCountryName =  self.arrOptions[index].name
+                    selectExpertRegionName = ""
                     expertCountryId = self.arrOptions[index].id
                 default:
                     print("Invalid")
                 }
             }else if self.currentIndex == B2BSearch.TravelAgencies.rawValue{
-                switch businessModel?.businessHeading {
-                case AppConstants.SelectCountry:
+                switch self.index {
+                case 2:
                     travelCountryId = self.arrOptions[index].id
+                    selectTravelRegionName = ""
+                    selectTravelCountryName = self.arrOptions[index].name
                 default:
                     print("Invalid")
+                    
                 }
             }
             if businessModel?.businessHeading == AppConstants.SelectCountry {
