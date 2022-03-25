@@ -41,6 +41,7 @@ class Chat_hepler {
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
     var messageReference    = Database.database().reference().child(Parameters.message)
     var postReference    = Database.database().reference().child(Parameters.post)
+    var userReference    = Database.database().reference().child(Parameters.users)
     var commentLikeReference    = Database.database().reference().child(Parameters.commentLike)
     var resentUser = [RecentUser]()
     var inquiry_resentUser = [InquiryRecentUser]()
@@ -54,6 +55,7 @@ class Chat_hepler {
     var commentmessageclass        = [CommentClass]()
     var postmessageclass        = [PostClass]()
     var postlikeclass        = [PostClass]()
+    var userclass        = [userClass]()
     var commentBackupOnetoOne  = [LikeCommentClass]()
     var commentlikeclass        = [Comment_Like_Class]()
     
@@ -886,32 +888,7 @@ class Chat_hepler {
         }
     }
     
-    func receivce_Comment_Like(postId :String, message:@escaping (_ result: [Comment_Like_Class]?) -> ()) -> Void {
-        
-        commentLikeReference.child(postId).observe(.value) { [weak self] (snapshot) in
-            //self?.commentlikeclass.removeAll()
-            
-            if snapshot.exists() {
-                let usersDetails = kSharedInstance.getDictionary(snapshot.value)
-                self?.commentlikeclass.removeAll()
-                usersDetails.forEach {(key, value) in
-                    
-                    let positionsInfo = kSharedInstance.getDictionary(value)
-                    
-                    let likeDetails = Comment_Like_Class()
-                    likeDetails.user_id = Int.getInt(positionsInfo[Parameters.userid])
-                    likeDetails.like_id = Int.getInt(positionsInfo[Parameters.like_id])
-                    likeDetails.comment_id = Int.getInt(positionsInfo[Parameters.core_comment_id])
-                    
-                    self?.commentlikeclass.append(likeDetails)
-                }
-                
-            }
-            
-
-            message(self?.commentlikeclass)
-        }
-    }
+    
     
     
     func receivce_Post_like(postId :String , message:@escaping (_ result: [PostClass]?) -> ()) -> Void {
@@ -944,6 +921,61 @@ class Chat_hepler {
         }
         
        
+    }
+    
+    func receivce_Comment_Like(postId :String, message:@escaping (_ result: [Comment_Like_Class]?) -> ()) -> Void {
+        
+        commentLikeReference.child(postId).observe(.value) { [weak self] (snapshot) in
+            //self?.commentlikeclass.removeAll()
+            
+            if snapshot.exists() {
+                let usersDetails = kSharedInstance.getDictionary(snapshot.value)
+                self?.commentlikeclass.removeAll()
+                usersDetails.forEach {(key, value) in
+                    
+                    let positionsInfo = kSharedInstance.getDictionary(value)
+                    
+                    let likeDetails = Comment_Like_Class()
+                    likeDetails.user_id = Int.getInt(positionsInfo[Parameters.userid])
+                    likeDetails.like_id = Int.getInt(positionsInfo[Parameters.like_id])
+                    likeDetails.comment_id = Int.getInt(positionsInfo[Parameters.core_comment_id])
+                    
+                    self?.commentlikeclass.append(likeDetails)
+                }
+                
+            }
+            
+
+            message(self?.commentlikeclass)
+        }
+    }
+    
+    func receivce_user_data(userID :String , message:@escaping (_ result: [userClass]?) -> ()) -> Void {
+        
+        userReference.child(userID).observe(.value) { [weak self] (snapshot) in
+            
+            if snapshot.exists() {
+                
+                let usersDetails = kSharedInstance.getDictionary(snapshot.value)
+                self?.userclass.removeAll()
+                //usersDetails.forEach {(key, value) in
+                    
+                    //let positionsInfo = kSharedInstance.getDictionary(value)
+                    
+                    let resentusersDetails = userClass()
+                    resentusersDetails.user_id     =  Int.getInt(usersDetails[Parameters.userid])
+                    resentusersDetails.alysei_approval    =  Bool.getBool(usersDetails[Parameters.alysei_approval])
+                    resentusersDetails.name       =  String.getString(usersDetails[Parameters.name])
+                    
+                    self?.userclass.append(resentusersDetails)
+                //}
+                
+            }
+            
+            message(self?.userclass)
+            
+        }
+        
     }
     
     

@@ -68,6 +68,7 @@ struct Parameters {
     static let receiverid                 = "otherId"
     static let message                    = "Messages"
     static let post                    = "post"
+    static let users                    = "users"
     static let commentLike                    = "comment_like"
     static let mediatype                  = "type"
     static let status                     = "status"
@@ -113,6 +114,8 @@ struct Parameters {
     static let likeCount = "likeCount"
     static let postId = "postId"
     static let comment = "comment"
+    
+    static let alysei_approval = "alysei_approval"
     
     static let body = "body"
     static let core_comment_id = "core_comment_id"
