@@ -129,10 +129,10 @@ class BusinessButtonTableCell: UITableViewCell {
         self.callGetCountryApi("\(UserRoles.voiceExperts.rawValue)")
         
     }
-      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 2){
+      else if ((currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 2 && pushedFrom != .hubUserListVC) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 1 && pushedFrom == .hubUserListVC)) {
         self.callGetCountryApi("\( UserRoles.travelAgencies.rawValue)")
     }
-      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 3) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 3 && pushedFrom == .hubUserListVC) {
+      else if (currentIndex ==  B2BSearch.Expert.rawValue && sender.tag == 3) || (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 2 && pushedFrom == .hubUserListVC)  {
         //fieldValueId = B2BFieldId.region.rawValue
         //self.callGetValueOfFieldApi()
         if currentIndex == 4 {
@@ -152,14 +152,20 @@ class BusinessButtonTableCell: UITableViewCell {
         }
         
     }
-      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 3){
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 3 && pushedFrom != .hubUserListVC){
         self.callGetStatesWithCountryIdApi(travelCountryId ?? "")
     }
-      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 1){
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 1 && pushedFrom != .hubUserListVC){
         fieldValueId = B2BFieldId.speciality.rawValue
         self.callGetValueOfFieldApi()
         
-    }else if currentIndex == B2BSearch.Voyager.rawValue && businessModel?.businessHeading == AppConstants.SelectState {
+    }
+      
+      else if (currentIndex ==  B2BSearch.TravelAgencies.rawValue && sender.tag == 0 && pushedFrom == .hubUserListVC){
+        fieldValueId = B2BFieldId.speciality.rawValue
+        self.callGetValueOfFieldApi()
+        
+      }else if currentIndex == B2BSearch.Voyager.rawValue && sender.tag == 0 {
         callStateApi()
     }
         
@@ -177,6 +183,7 @@ class BusinessButtonTableCell: UITableViewCell {
                 case AppConstants.SelectCountry:
                     selectExpertCountryName =  self.arrOptions[index].name
                     selectExpertRegionName = ""
+                    
                     expertCountryId = self.arrOptions[index].id
                 default:
                     print("Invalid")
@@ -229,8 +236,11 @@ func callStateApi() {
         if self.currentIndex == B2BSearch.Importer.rawValue{
         self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectState)
         }else{
-            
-            self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectRegion)
+            if self.currentIndex == B2BSearch.Voyager.rawValue {
+            self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectState)
+            }else{
+                self.pushVCCallback?([HubCityArray](),GetRoleViewModel([:]),ProductType(with: [:]),self.stateModel ?? [StateModel](),[SignUpOptionsDataModel](),AppConstants.SelectRegion)
+            }
         }
     }
 }

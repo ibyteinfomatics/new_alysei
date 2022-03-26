@@ -35,6 +35,7 @@ class BusinessMultiOptionsVC: UIViewController {
         }else{
         headerTitle.text = selectFieldType
         }
+        
         if selectFieldType == AppConstants.Hubs{
         for i in 0..<(arrUserHubs?.count ?? 0){
             if passSelectOptionId.contains("\(self.arrUserHubs?[i].id ?? 0)"){
@@ -78,6 +79,20 @@ class BusinessMultiOptionsVC: UIViewController {
             }
         }
         else if (selectFieldType == AppConstants.SelectState || selectFieldType == AppConstants.SelectRegion)  && (currentIndex == B2BSearch.Importer.rawValue || currentIndex == B2BSearch.Producer.rawValue || currentIndex == B2BSearch.Hub.rawValue){
+            for i in 0..<(self.stateModel?.count ?? 0 ){
+                if passSelectOptionId.contains("\(stateModel?[i].id ?? 0)"){
+                    self.stateModel?[i].isSelected = true
+                }else{
+                    print("check")
+                }
+                if self.stateModel?[i].isSelected == true{
+                    arrSelectedOption.append(stateModel?[i].name ?? "")
+                    arrSelectedId.append("\(stateModel?[i].id ?? 0)")
+                    
+                }
+            }
+        }
+        else if (selectFieldType == AppConstants.SelectState || currentIndex == B2BSearch.Voyager.rawValue){
             for i in 0..<(self.stateModel?.count ?? 0 ){
                 if passSelectOptionId.contains("\(stateModel?[i].id ?? 0)"){
                     self.stateModel?[i].isSelected = true

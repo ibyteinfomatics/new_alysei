@@ -533,8 +533,8 @@ class BusinessViewC: AlysieBaseViewC {
                     let Arr =  self.selectProducerRegionId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
                 }
-                
             }
+            
             //controller?.passSelectOptionId = self.selectedOptionId ?? [""]
             controller?.doneCallBack = { arrSelectOptionName , arrSelectOptionId in
                 

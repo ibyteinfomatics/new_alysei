@@ -55,7 +55,7 @@ class HubUserListVC: AlysieBaseViewC {
     var signUpStepOneDataModel: SignUpStepOneDataModel!
     var selectPrdctCatgryOptnNme :String?
     var selectFieldType:String?
-    
+    var selectTravelSpecialityName: String?
     var selectExpertExpertiseName: String?
     var selectExpertTitleName: String?
     
@@ -165,7 +165,7 @@ class HubUserListVC: AlysieBaseViewC {
                     businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                     }
                 }else{
-                   
+                    if currentIndex == B2BSearch.Expert.rawValue {
                         if indexPath.row == 0 {
                             if self.selectExpertExpertiseName == "" || self.selectExpertExpertiseName == nil{
                                 businessButtonTableCell.btnBusiness.setTitle(AppConstants.Expertise , for: .normal)
@@ -202,6 +202,40 @@ class HubUserListVC: AlysieBaseViewC {
                                 businessButtonTableCell.btnBusiness.setTitle(selectExpertRegionName ?? "", for: .normal)
                             }
                         }
+                    }
+                    if currentIndex == B2BSearch.TravelAgencies.rawValue{
+                       
+                        if indexPath.row == 0 {
+                            if self.selectTravelSpecialityName == "" || self.selectTravelSpecialityName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.Speciality , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelSpecialityName ?? "", for: .normal)
+                            }
+                            
+                        }
+                        if indexPath.row == 1 {
+                            if selectTravelCountryName == "" || selectTravelCountryName == nil{
+                                businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectCountry , for: .normal)
+                                
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelCountryName ?? "", for: .normal)
+                            }
+                            
+                        }
+                        if indexPath.row == 2 {
+                            if selectTravelRegionName == "" || selectTravelRegionName == nil{
+                                if selectTravelRegionName == "Italy" || selectTravelRegionName == "italy"{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectRegion , for: .normal)
+                                }else{
+                                    businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                                }
+                            }else{
+                                businessButtonTableCell.btnBusiness.setTitle(selectTravelRegionName ?? "", for: .normal)
+                            }
+                            
+                        }
+                    }
                     
                 }
                 
@@ -276,6 +310,7 @@ class HubUserListVC: AlysieBaseViewC {
                 }else if selectFieldType == AppConstants.Speciality{
                     let Arr =  self.selectTravelSpecialityId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
+                   
                 }else if selectFieldType == AppConstants.SelectState {
                     let Arr =  self.selectTravelRegionId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
@@ -295,6 +330,14 @@ class HubUserListVC: AlysieBaseViewC {
                     let Arr =  self.selectProducerRegionId?.components(separatedBy: ",")
                     controller?.passSelectOptionId = Arr ?? [""]
                 }
+                
+            }
+            else if self.currentIndex == B2BSearch.Voyager.rawValue{
+                if selectFieldType == AppConstants.SelectState {
+                     let Arr =  self.selectStateId?.components(separatedBy: ",")
+                     controller?.passSelectOptionId = Arr ?? [""]
+                 }
+
                 
             }
             controller?.doneCallBack = { arrSelectOptionName , arrSelectOptionId in
@@ -353,6 +396,11 @@ class HubUserListVC: AlysieBaseViewC {
                         self.selectExpertRegionId = optionId
                         selectExpertRegionName = optionName
                         }
+                    else if selectFieldType == AppConstants.SelectRegion{
+                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                        self.selectExpertRegionId = optionId
+                        selectExpertRegionName = optionName
+                        }
                     
                 }else if self.currentIndex == B2BSearch.TravelAgencies.rawValue{
                     if selectFieldType == AppConstants.Hubs{
@@ -361,9 +409,11 @@ class HubUserListVC: AlysieBaseViewC {
                     }else if selectFieldType == AppConstants.Speciality{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectTravelSpecialityId = optionId
+                        self.selectTravelSpecialityName = optionName
                     }else if selectFieldType == AppConstants.SelectState{
                         businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
                         self.selectTravelRegionId = optionId
+                       selectTravelRegionName = optionName
                     }
                 
                 }else if self.currentIndex == B2BSearch.Producer.rawValue{
@@ -378,6 +428,15 @@ class HubUserListVC: AlysieBaseViewC {
                         self.selectProducerRegionId = optionId
                     }
                 
+                }
+                else if self.currentIndex == B2BSearch.Voyager.rawValue{
+                    if optionName == ""{
+                        businessButtonTableCell.btnBusiness.setTitle(AppConstants.SelectState , for: .normal)
+                    }else{
+                        businessButtonTableCell.btnBusiness.setTitle(optionName ?? "", for: .normal)
+                    }
+                    self.selectStateId = optionId
+                    
                 }
                 print("stringRepresentation--------------------------\(optionId ?? "")")
                 
@@ -599,6 +658,9 @@ extension HubUserListVC: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath) is BusinessSearchTableCell {
+            return
+        }
+        if tableView.cellForRow(at: indexPath) is BusinessButtonTableCell{
             return
         }
         let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC

@@ -30,9 +30,11 @@ class SelectCityTableViewCell: UITableViewCell {
     var index: Int?
     var selectState:String?
     var selectStateId: String?
-    var hubLongitude: String?
-    var hubLatitude: String?
-    var hubRadius: Int?
+   // var hubLongitude: String?
+   // var hubLatitude: String?
+    var showhubLat: String?
+    var showLongLat:String?
+    var showhubRadius: Int?
     
     var checkCase: CountryCityHubSelection?
     var hasCome: HasCome?
@@ -86,7 +88,9 @@ class SelectCityTableViewCell: UITableViewCell {
         }else{
             self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "checkbox_white") : UIImage(named: "icon_uncheckedBox"), for: .normal)
         }
-        
+        self.showhubLat = data?.latitude
+        self.showLongLat = data?.longitude
+        showhubRadius = data?.radius
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
        
        
@@ -100,9 +104,9 @@ class SelectCityTableViewCell: UITableViewCell {
         guard let nextVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "MapViewC") as? MapViewC else{return}
 
         nextVC.fromVC = .locateHub
-        nextVC.hubLatCordinate = Double.getDouble(self.hubLatitude)
-        nextVC.hubLongCordinate = Double.getDouble(self.hubLongitude)
-        nextVC.hubRadius = self.hubRadius
+        nextVC.hubLatCordinate = Double.getDouble(self.showhubLat)
+        nextVC.hubLongCordinate = Double.getDouble(self.showLongLat)
+        nextVC.hubRadius = self.showhubRadius
         let parentController = self.parentViewController as? HubsListVC
         parentController?.show(nextVC, sender: nil)
         //self.rightBtnCallBack?(sender)

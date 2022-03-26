@@ -526,14 +526,18 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
         switch model.type {
         case AppConstants.Checkbox,AppConstants.Multiselect,AppConstants.Select:
 
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+                 if (model.type == AppConstants.Select) && (model.multipleOption == false){
+                    return self.getSignUpMultiCheckboxTableCell(indexPath)
+                }
+            }
             if (model.type == AppConstants.Checkbox) && ((model.multipleOption == true)){
-                return self.getSignUpMultiCheckboxTableCell(indexPath)
-            }else if (model.type == AppConstants.Select) && (model.multipleOption == false){
                 return self.getSignUpMultiCheckboxTableCell(indexPath)
             }
             else{
                 return self.getEditProfileSelectTableCell(indexPath)
             }
+            
         case AppConstants.Text:
             return self.getEditProfileTextViewTableCell(indexPath)
         case AppConstants.Radio:
@@ -733,7 +737,12 @@ extension EditProfileViewC: SignUpMultiSelectDelegate{
 
             var selectedOptionId:[String] = []
             for i in 0..<kSharedInstance.signUpStepTwoOptionsModel.count{
+                if signUpStepOneDataModel?.multipleOption == false {
+                    selectedOptionId = [""]
+                    selectedOptionId.append(String.getString(kSharedInstance.signUpStepTwoOptionsModel.first?.userFieldOptionId))
+                }else{
                 selectedOptionId.append(String.getString(signUpStepOneDataModel?.arrRestaurantOptions[i].userFieldOptionId))
+                }
             }
             signUpStepOneDataModel?.selectedValue = selectedOptionId.joined(separator: ", ")
 

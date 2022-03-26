@@ -108,12 +108,14 @@ extension SignUpMultiCheckboxTableCell: UICollectionViewDelegate, UICollectionVi
       self.delegate?.tappedCheckBox(collectionView: collectionView, signUpStepTwoOptionsModel: model , signUpStepTwoDataModel: self.stepTwoCurrentModel, signUpStepOneDataModel: nil,btn: UIButton(), cell: self)
     }
     else{
-      self.delegate?.tappedCheckBox(collectionView: collectionView, signUpStepTwoOptionsModel: model, signUpStepTwoDataModel: nil, signUpStepOneDataModel: self.stepOneCurrentModel,btn: UIButton(), cell: self)
         if self.stepOneCurrentModel.multipleOption == false{
            print("FDACertied condition")
-            self.stepOneCurrentModel.arrRestaurantOptions.map({$0.isSelected = false})
+            _ = self.stepOneCurrentModel.arrRestaurantOptions.map({$0.isSelected = false})
+           // self.stepOneCurrentModel.arrRestaurantOptions[indexPath.row].isSelected = true
             //self.stepOneCurrentModel.arrRestaurantOptions[1].isSelected = false
         }
+      self.delegate?.tappedCheckBox(collectionView: collectionView, signUpStepTwoOptionsModel: model, signUpStepTwoDataModel: nil, signUpStepOneDataModel: self.stepOneCurrentModel,btn: UIButton(), cell: self)
+       
     }
      
 

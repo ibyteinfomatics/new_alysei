@@ -64,9 +64,9 @@ extension StateListTable : UITableViewDelegate   , UITableViewDataSource {
         cell.viewContainer.backgroundColor = UIColor.white
         
         cell.tag = indexPath.row
-        cell.hubLatitude = self.hubLatitude
-        cell.hubLongitude = self.hubLongitude
-        cell.hubRadius = self.hubRadius
+        //cell.hubLatitude = self.hubLatitude
+       // cell.hubLongitude = self.hubLongitude
+       // cell.hubRadius = self.hubRadius
         cell.hasCome = self.hasCome
         cell.buttonRightCheckBox.isHidden = self.hasCome == .hubs ? false : true
         if self.hasCome == .hubs {
