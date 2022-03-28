@@ -225,7 +225,8 @@ class ProfileViewC: AlysieBaseViewC{
         self.tblViewPosts.isHidden = true
         self.currentIndex = 0
         
-        
+        self.coachMarksController.dataSource = self
+        self.coachMarksController.delegate = self
         self.tblViewPosts.contentInsetAdjustmentBehavior = .never
         //tblViewPosts.style = .grouped
         self.tabsCollectionView.dataSource = self
@@ -238,8 +239,7 @@ class ProfileViewC: AlysieBaseViewC{
         self.respondeButton.isHidden = true
         self.connectButton.isHidden = true
         
-        self.coachMarksController.dataSource = self
-        self.coachMarksController.delegate = self
+       
         
         let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
         let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
@@ -299,6 +299,12 @@ class ProfileViewC: AlysieBaseViewC{
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if !AppManager.getUserSeenAppInstructionProfile() {
+        self.coachMarksController.start(in: .viewController(self))
+        }
+        
+    }
     func inviteApi(id: Int, type: Int){
         
         let params: [String:Any] = [:]
@@ -402,8 +408,7 @@ class ProfileViewC: AlysieBaseViewC{
                           if Int.getInt(data["alysei_review"]) == 1 {
                             if isprofileComplete == false{
                                 if !AppManager.getUserSeenAppInstructionProfile() {
-                                    
-                                    self.coachMarksController.start(in: .viewController(self))
+
                                     self.tabBarController?.tabBar.backgroundColor = .darkGray
                                     self.tabBarController?.tabBar.alpha = 0.9
                                     self.tabBarController?.tabBar.isUserInteractionEnabled = false
@@ -2127,7 +2132,7 @@ extension UITabBarController {
 extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 4
+        return 3
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
@@ -2135,10 +2140,8 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         switch index {
+
         case 0:
-            coachViews.bodyView.hintLabel.text = TourGuideConstants.kLogoutProfile
-            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistPic
@@ -2155,7 +2158,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
                 
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 2:
+        case 1:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistCover
@@ -2172,7 +2175,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
                 
             }
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-        case 3:
+        case 2:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "4", "5", "6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImporterDistributor
@@ -2191,39 +2194,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
             
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-            //        case 3:
-            //            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-            //            case "3":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerField
-            //            case "4", "5", "6":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
-            //            case "8":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesField
-            //            case "9":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
-            //
-            //            default: break
-            //
-            //            }
-            //            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-            //
-            //
-            //        case 4:
-            //            switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
-            //            case "3", "4", "5", "6":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
-            //            case "7":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
-            //            case "8":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
-            //            case "9":
-            //                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantFeatured
-            //
-            //            default: break
-            //
-            //            }
-            //            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
-            
+           
          
         default: break
         }
@@ -2234,27 +2205,14 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
         
-        //        let indexpath1 = IndexPath(row: 1, section: 0)
-        //        let cell1 = self.tblViewProfileCompletion.cellForRow(at: indexpath1) as? ProfileCompletionTableViewCell
-        //        let indexpath2 = IndexPath(row: 2, section: 0)
-        //        let cell2 = self.tblViewProfileCompletion.cellForRow(at: indexpath2) as? ProfileCompletionTableViewCell
-        //
-        //        let indexpath3 = IndexPath(row: 3, section: 0)
-        //        let cell3 = self.tblViewProfileCompletion.cellForRow(at: indexpath3) as? ProfileCompletionTableViewCell
-        //        let indexpath4 = IndexPath(row: 4, section: 0)
-        //        let cell4 = self.tblViewProfileCompletion.cellForRow(at: indexpath4) as? ProfileCompletionTableViewCell
-        //        let indexpath6 = IndexPath(row: 6, section: 0)
-        //        let cell6 = self.tblViewProfileCompletion.cellForRow(at: indexpath6) as? ProfileCompletionTableViewCell
-        //       let coachMark1 = coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
         switch index {
-        case 0: return coachMarksController.helper.makeCoachMark(for: logout)
-        case 1: return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
-        case 2:
+
+        case 0: return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
+        case 1:
             return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
-        case 3:
+        case 2:
             return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 3, section: 0)))
-            //        case 4:
-            //            return coachMarksController.helper.makeCoachMark(for: cell6?.lbleTitle)
+        
         default:
             return coachMarksController.helper.makeCoachMark()
         }
