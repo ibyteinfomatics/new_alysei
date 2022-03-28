@@ -92,7 +92,7 @@ class CreateNewRecipeViewController: AlysieBaseViewC{
     var str_return : String = String ()
    
     var timer: Timer?
-    
+ 
     override func viewDidLayoutSubviews() {
            self.scrollViewCreateRecipe.contentSize = CGSize(width: self.view.frame.size.width, height: 1250)
         
