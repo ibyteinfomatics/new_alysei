@@ -141,6 +141,7 @@
 "Please enter more than 3 character." = "Please enter more than 3 character.";
 "Please enter Description or Url." = "Please enter Description or Url.";
 
+//MARK: HOME
 
 
 //MARK: MARKETPLACE
@@ -436,6 +437,7 @@
 "You are within the top 5 highest rated Alysei Members" = "You are within the top 5 highest rated Alysei Members";
 "Become a Certified Alysei Member to expan your market access" = "Become a Certified Alysei Member to expan your market access";
 "Complete your profile in order to fully access Alysei" = "Complete your profile in order to fully access Alysei";
+"Alysei Membership is important to guarantee professionalism, quality and visibility"="La Membership ad Alysei è importante per garantire professionalità, qualità e visibilità";
 
 //MARK: LOGIN SCREEN
 "Login to your Account" = "Login to your Account";

@@ -12,12 +12,20 @@ class YourDataViewC: AlysieBaseViewC {
   //MARK: - IBOutlet -
   
   @IBOutlet weak var viewNavigation: UIView!
-  
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblNothingRequest: UITextField!
+    @IBOutlet weak var btnRequest: UIButton!
     
   //MARK: - ViewLifeCycle Methods -
   
   override func viewDidLoad() {
-    viewNavigation.drawBottomShadow()  
+    viewNavigation.drawBottomShadow()
+      lblTitle.text = AppConstants.YourData
+      lblSubTitle.text = AppConstants.AccountDataDownload
+      lblNothingRequest.text = AppConstants.NothingRequestedYet
+      btnRequest.setTitle(AppConstants.RequestData, for: .normal)
+      
    super.viewDidLoad()
   }
   

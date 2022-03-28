@@ -86,7 +86,7 @@ class HomeViewC: AlysieBaseViewC  {
     }
   override func viewDidLoad() {
     super.viewDidLoad()
-      lblMemberShip.text = LogInSignUp.kFillTheFormToGetAFasterResponse
+      lblMemberShip.text = LogInSignUp.kMembershipTitle
       lblHeading.text = LogInSignUp.kAlyseiMemberShip
       logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
    // _ = membershipViewC

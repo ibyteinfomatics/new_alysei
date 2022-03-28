@@ -33,6 +33,11 @@ class Privacy: AlysieBaseViewC {
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblHeading1: UILabel!
+    @IBOutlet weak var lblHeading2: UILabel!
+    @IBOutlet weak var lblHeading3: UILabel!
+    @IBOutlet weak var lblHeading4: UILabel!
     
     var msgpre,followpre,weeklypre: String!
     var connect : String!
@@ -40,11 +45,20 @@ class Privacy: AlysieBaseViewC {
     var privacyModel:PrivacyModel?
     
     var dataDropDown = DropDown()
-    var arrData1 = ["Anyone","Followers","Connections","Nobody"]
-    var arrData = ["Anyone","Followers","Connections","Only Me"]
+    var arrData1 = [AppConstants.Anyone,AppConstants.Followers,AppConstants.Connections,AppConstants.Nobody]
+    var arrData = [AppConstants.Anyone,AppConstants.Followers,AppConstants.Connections,AppConstants.OnlyMe]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblTitle.text = AppConstants.Privacy
+        lblHeading1.text = AppConstants.WhoCanSendYouPrivateMessge
+        lblHeading2.text = AppConstants.WhoCanViewYourProfile
+        lblHeading3.text = AppConstants.WhoCanConnectWithYou
+        lblHeading4.text = AppConstants.EmailPrefrences
+        messagelabel.text = AppConstants.PrivateMessages
+        followlabel.text = AppConstants.EmailWhenSomeoneRequestsToFollowMe
+        weeklylabel.text = AppConstants.ReceiveWeeklyUpdates
+        
         
         let openTap = UITapGestureRecognizer.init(target: self, action: #selector(openMessageLabel))
         self.messagelabel.addGestureRecognizer(openTap)

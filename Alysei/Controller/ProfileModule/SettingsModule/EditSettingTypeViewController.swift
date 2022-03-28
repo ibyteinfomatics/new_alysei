@@ -13,6 +13,8 @@ class EditSetingTypeViewController: AlysieBaseViewC {
     @IBOutlet weak var settingTypeCollectionView: UICollectionView!
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var viewShadow: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var reviewSelectedHubs : [ReviewSelectedHub]?
     var notificationStatus: Int?
     var updateNotification: Int?
@@ -20,7 +22,7 @@ class EditSetingTypeViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        lblTitle.text = AppConstants.EditSettings
         getNotificationStatusApi()
         self.viewShadow.drawBottomShadow()
     }
@@ -157,7 +159,13 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
 }
 class EditSettingTypeNotificationTableVC: UITableViewCell{
     @IBOutlet weak var btnSwitch: UISwitch!
+    @IBOutlet weak var lblOption: UILabel!
     var notificationCallback: (() -> Void)? = nil
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        lblOption.text = AppConstants.Notification
+    }
     
     @IBAction func btnSwitchAction(_ sender: UISwitch){
         notificationCallback?()

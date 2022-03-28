@@ -15,10 +15,17 @@ class UpdatePasswordViewC: AlysieBaseViewC {
   @IBOutlet weak var txtCurrentPassword: UITextField!
   @IBOutlet weak var txtNewPassword: UITextField!
     
-
+  @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblBottomText: UILabel!
+    @IBOutlet weak var btnUpdatePassword: UIButton!
   //MARK: - ViewLifeCycle Methods -
 
   override func viewDidLoad() {
+      lblTitle.text = AppConstants.CapPassword
+      lblSubTitle.text = AppConstants.ChangingYourPasswordWillLogYouOffAnyOtherDevices
+      lblBottomText.text = LogInSignUp.kVerifyPassword
+      btnUpdatePassword.setTitle(AppConstants.UpdatePassword, for: .normal)
     super.viewDidLoad()
   }
   

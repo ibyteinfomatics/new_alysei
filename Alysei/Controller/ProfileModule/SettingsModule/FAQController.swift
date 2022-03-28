@@ -23,7 +23,7 @@ class FAQController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        headerlabel.text = AppConstants.FAQ
        
         tableview.delegate = self
         tableview.dataSource = self

@@ -465,6 +465,59 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var Company: String {return "Company".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Privacy: String{return "Privacy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var CapPassword: String{return "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Blocking: String {"Blocking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Membership: String{"Membership".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Billing : String{"Billing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var YourData : String {"Your Data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Marketplace : String {"Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var TermsAndConditions : String {"Terms and Conditions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PrivacyPolicy : String {"Privacy Policy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FAQ : String {"FAQ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Logout: String {"Logout".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Events : String {"Events".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Featured: String {"Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UserSettings: String{"User Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EditHub: String{"Edit Hub".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EditProfile: String{"Edit Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Notification: String {"Notification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EditSettings: String{"Edit Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanSendYouPrivateMessge : String{"Who can send you a private message ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanViewYourProfile : String{"Who can view your profile ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanConnectWithYou : String{"Who can connect with you ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EmailPrefrences : String {"Email Prefrences".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Anyone: String {"Anyone".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Followers: String {"Followers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Connections: String {"Connections".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Nobody: String {"Nobody".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var OnlyMe : String{"Only Me".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PrivateMessages : String{"Private Messages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var EmailWhenSomeoneRequestsToFollowMe : String{"Email when someone requests to follow me".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ReceiveWeeklyUpdates : String{"Receive weekly updates".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Save : String {"Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PhotoOfLabel: String{"Photo of Label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FCESIDCertification : String {"FCE-SID Certification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PhytosanitaryCertificate : String {"Phytosanitary Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PackagingOfUSA: String {"Packaging of USA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var FoodSafetyPlan: String { "Food Safety Plan".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AnimalHealthOrASLCertificate: String{"Animal Health or ASL Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageYourProductLabel: String{"Upload an image your product's label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageOfYourFCESIDCertification :String {"Upload an image of your FCE-SID certification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImagOfYourPhytosanitaryCertificate : String {"Upload an image of your Phytosanitary Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageOrPDFOfYourPackagingforUSA: String {"Upload an image or PDF of your packaging for USA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageOrPDFOfYourFoodSafetyPlan : String {"Upload an image or PDF of your food safety plan".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageOrPDFOfYourAnimalHealthOrASLCertificate: String{"Upload an image or PDF of your Animal Health or ASL Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ProvideYourValueAddedTaxID : String{"Provide your value-added tax ID.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  ProvideYourFoodAndDrugAdministrationIdentification : String{"Provide your Food and Drug Administration identification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ChangingYourPasswordWillLogYouOffAnyOtherDevices : String {"Changing your password will log you off any other devices.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UpdatePassword: String{"Update Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var AccountDataDownload : String {"Account Data Download".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var NothingRequestedYet : String {"Nothing requested yet.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var RequestData : String{"Request Data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
     static var Select  : String { return "select".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Checkbox  : String { return "checkbox".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Radio  : String { return "radio".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -570,10 +623,13 @@ struct AppConstants {
     
     static var kCompleteProfileStartPosting: String {return "Complete your profile in order to start Posting".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
+   
+    
     //MARK: Validation field type(check)
     static var kzip_postal_code = "zip_postal_code"
     static var kvatno  = "vat_no"
     static var kpassword = "password"
+   
 }
 
 struct ProfileCompletion {
@@ -951,6 +1007,7 @@ struct LogInSignUp{
         static var kStreghthConnectionWithProducer  : String {  "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kVoyager  : String {   "Voyagers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kEnjopyMagicWorldOfEndless  : String {  "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMembershipTitle: String {"Alysei Membership is important to guarantee professionalism, quality and visibility".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
 
@@ -1480,122 +1537,122 @@ struct StaticArrayData {
                                 (image: "Alysei Splash Screen 5", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster.")]
     
     
-    static let kSettingScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                     (image: "icons8_business", name: "Company"),
-                                     (image: "icons8_security_lock", name: "Privacy"),
-                                     (image: "passwordSetting", name: "Password"),
-                                     (image: "icons8_unavailable", name: "Blocking"),
-                                     (image: "membership_icon", name: "Membership"),
-                                     (image: "billing_icon", name: "Billing"),
-                                     (image: "yourData", name: "Your Data")]
+    static let kSettingScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                     (image: "icons8_business", name: AppConstants.Company),
+                                     (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                     (image: "passwordSetting", name: AppConstants.CapPassword),
+                                     (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                     (image: "membership_icon", name: AppConstants.Membership),
+                                     (image: "billing_icon", name: AppConstants.Billing),
+                                     (image: "yourData", name: AppConstants.YourData)]
     
-    static let kSettingPrducrColScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                              (image: "icons8_shop", name: "Marketplace"),
-                                              (image: "icons8_business", name: "Company"),
-                                              (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "passwordSetting", name: "Password"),
-                                              (image: "icons8_unavailable", name: "Blocking"),
-                                              (image: "icons8_debit_card_1", name: "Membership"),
-                                              (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                              (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "Faq", name: "FAQ"),
-                                              (image: "yourData", name: "Your Data"),
-                                              (image: "icons8_exit", name: "Logout"),
+    static let kSettingPrducrColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                              (image: "icons8_shop", name: AppConstants.Marketplace),
+                                              (image: "icons8_business", name:AppConstants.Company),
+                                              (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                              (image: "passwordSetting", name: AppConstants.CapPassword),
+                                              (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                              (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                              (image: "icons8_purchase_order", name: AppConstants.Billing),
+                                              (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                              (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                              (image: "Faq", name: AppConstants.FAQ),
+                                              (image: "yourData", name: AppConstants.YourData),
+                                               (image: "icons8_exit", name: AppConstants.Logout),
     ]
     
-    static let kSettingImprtrColScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                              (image: "icons8_shop", name: "Marketplace"),
-                                              (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "passwordSetting", name: "Password"),
-                                              (image: "icons8_unavailable", name: "Blocking"),
-                                              (image: "icons8_debit_card_1", name: "Membership"),
-                                              (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                              (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "Faq", name: "FAQ"),
-                                              (image: "icons8_exit", name: "Logout"),
-                                              (image: "yourData", name: "Your Data")
+    static let kSettingImprtrColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                              (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                              (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                              (image: "passwordSetting", name: AppConstants.CapPassword),
+                                              (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                              (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                              (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                              (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                              (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                              (image: "Faq", name: AppConstants.FAQ),
+                                              (image: "icons8_exit", name: AppConstants.Logout),
+                                              (image: "yourData", name: AppConstants.YourData)
                                              
                                               
     ]
     
-    static let kSettingRestColScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                            (image: "icons8_shop", name: "Marketplace"),
-                                            (image: "calendar (2)", name: "Events"),
-                                            (image: "icons8_security_lock", name: "Privacy"),
-                                            (image: "passwordSetting", name: "Password"),
-                                            (image: "icons8_unavailable", name: "Blocking"),
-                                            (image: "icons8_debit_card_1", name: "Membership"),
-                                            (image: "icons8_purchase_order", name: "Billing"),
-                                            (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                            (image: "icons8_data_protection", name: "Privacy Policy"),
-                                            (image: "Faq", name: "FAQ"),
-                                            (image: "yourData", name: "Your Data"),
-                                            (image: "icons8_exit", name: "Logout")
+    static let kSettingRestColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                            (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                            (image: "calendar (2)", name: AppConstants.Events),
+                                            (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                            (image: "passwordSetting", name: AppConstants.CapPassword),
+                                            (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                            (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                            (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                            (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                            (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                            (image: "Faq", name: AppConstants.FAQ),
+                                            (image: "yourData", name: AppConstants.YourData),
+                                            (image: "icons8_exit", name: AppConstants.Logout)
                                             
                                             
     ]
     
-    static let kSettingVoyaColScreenDict = [(image: "icons8_settings", name: "Settings"),
+    static let kSettingVoyaColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
                                             
-                                            (image: "icons8_security_lock", name: "Privacy"),
-                                            (image: "passwordSetting", name: "Password"),
-                                            (image: "icons8_unavailable", name: "Blocking"),
+                                            (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                            (image: "passwordSetting", name: AppConstants.CapPassword),
+                                            (image: "icons8_unavailable", name: AppConstants.Blocking),
                                            // (image: "icons8_debit_card_1", name: "Membership"),
-                                            (image: "icons8_purchase_order", name: "Billing"),
-                                            (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                            (image: "icons8_data_protection", name: "Privacy Policy"),
-                                            (image: "Faq", name: "FAQ"),
+                                            (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                            (image: "icons8_terms_and_conditions", name:AppConstants.TermsAndConditions),
+                                            (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                            (image: "Faq", name: AppConstants.FAQ),
                                             
-                                            (image: "icons8_exit", name: "Logout"),
-                                            (image: "yourData", name: "Your Data")
+                                            (image: "icons8_exit", name: AppConstants.Logout),
+                                            (image: "yourData", name: AppConstants.YourData)
                                             
                                             
                                             
     ]
     
-    static let kSettingTravlColScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                             (image: "icons8_shop", name: "Marketplace"),
-                                             (image: "icons8_security_lock", name: "Privacy"),
-                                             (image: "passwordSetting", name: "Password"),
-                                             (image: "icons8_unavailable", name: "Blocking"),
-                                             (image: "icons8_debit_card_1", name: "Membership"),
-                                             (image: "icons8_purchase_order", name: "Billing"),
-                                             (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                             (image: "icons8_data_protection", name: "Privacy Policy"),
-                                             (image: "Faq", name: "FAQ"),
+    static let kSettingTravlColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                             (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                             (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                             (image: "passwordSetting", name: AppConstants.CapPassword),
+                                             (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                             (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                             (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                             (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                             (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                             (image: "Faq", name: AppConstants.FAQ),
                                             
-                                             (image: "icons8_exit", name: "Logout"),
-                                             (image: "yourData", name: "Your Data")
+                                             (image: "icons8_exit", name:AppConstants.Logout),
+                                             (image: "yourData", name: AppConstants.YourData)
                                              
                                              
     ]
     
-    static let kSettingExpertColScreenDict = [(image: "icons8_settings", name: "Settings"),
-                                              (image: "icons8_shop", name: "Marketplace"),
-                                              (image: "Featured", name: "Featured"),
-                                              (image: "icons8_security_lock", name: "Privacy"),
-                                              (image: "passwordSetting", name: "Password"),
-                                              (image: "icons8_unavailable", name: "Blocking"),
-                                              (image: "icons8_debit_card_1", name: "Membership"),
-                                              (image: "icons8_purchase_order", name: "Billing"),
-                                              (image: "icons8_terms_and_conditions", name: "Terms and Condition"),
-                                              (image: "icons8_data_protection", name: "Privacy Policy"),
-                                              (image: "Faq", name: "FAQ"),
-                                              (image: "yourData", name: "Your Data"),
-                                              (image: "icons8_exit", name: "Logout")
+    static let kSettingExpertColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
+                                              (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                              (image: "Featured", name: AppConstants.Featured),
+                                              (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                              (image: "passwordSetting", name: AppConstants.CapPassword),
+                                              (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                              (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                              (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                              (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                              (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                              (image: "Faq", name: AppConstants.FAQ),
+                                              (image: "yourData", name: AppConstants.YourData),
+                                              (image: "icons8_exit", name: AppConstants.Logout)
                                               
     ]
     
     //MARK: EditSettingCollectionView
     static let kEditSettingUserColScreenDict = [
-        (image: "editSettingprofile", name: "User Settings"),
-        (image: "community", name: "Edit Hub")
+        (image: "editSettingprofile", name: AppConstants.UserSettings),
+        (image: "community", name: AppConstants.EditHub)
     ]
     
     static let kEditSettingVoyColScreenDict = [
-        (image: "editSettingprofile", name: "Edit Profile")
+        (image: "editSettingprofile", name:AppConstants.EditProfile)
     ]
     
     

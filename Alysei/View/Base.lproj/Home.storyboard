@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -3380,7 +3380,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUg-z9-Wsn" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
                                         <rect key="frame" x="30" y="31" width="315" height="48"/>
-                                        <color key="backgroundColor" red="2.7827351800624456e-07" green="0.34651803970336914" blue="0.54133623838424683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.34509803921568627" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="mrb-Bc-TQ0"/>
                                         </constraints>
@@ -3639,6 +3639,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s6t-CS-uVb"/>
                     <connections>
+                        <outlet property="lblTitle" destination="6nT-mT-5mO" id="j6x-dC-AUH"/>
                         <outlet property="settingCollectionView" destination="aSp-6L-21F" id="bhp-Yw-bZU"/>
                         <outlet property="viewShadow" destination="Ak0-9V-3uM" id="cId-Wp-mei"/>
                     </connections>
@@ -3800,6 +3801,10 @@ any other devices.</string>
                     <tabBarItem key="tabBarItem" title="" id="5t6-NW-1cl"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnUpdatePassword" destination="5XQ-ap-XHj" id="Lfo-Gd-ao3"/>
+                        <outlet property="lblBottomText" destination="lTj-yj-BAg" id="lUX-Dq-urK"/>
+                        <outlet property="lblSubTitle" destination="QYO-0o-WjH" id="jHG-VU-qBi"/>
+                        <outlet property="lblTitle" destination="BGa-Yf-ZHC" id="G40-3c-EF4"/>
                         <outlet property="txtCurrentPassword" destination="adY-LB-0Tj" id="7qn-49-xxn"/>
                         <outlet property="txtNewPassword" destination="Bil-Dq-eHx" id="r2c-a4-Zd0"/>
                         <outlet property="viewNavigation" destination="3V1-VZ-Zxb" id="1IB-mZ-eEI"/>
@@ -5201,8 +5206,11 @@ any other devices.</string>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnSave" destination="hZS-1B-DyE" id="TZz-i5-Fdi"/>
                         <outlet property="lblFDATitle" destination="ZkR-8Q-yfl" id="QDs-3y-LJB"/>
+                        <outlet property="lblTitle" destination="tAL-VL-hEH" id="fm8-km-WxZ"/>
                         <outlet property="lblVatTitle" destination="mlA-t3-IYm" id="XnG-4I-9ua"/>
+                        <outlet property="lblfdaNumber" destination="ZkR-8Q-yfl" id="ldL-6w-TN4"/>
                         <outlet property="tblViewCompany" destination="t1z-tK-Jro" id="g49-Ne-AZe"/>
                         <outlet property="txtFDA" destination="AAJ-PM-XF1" id="NvX-fx-LRz"/>
                         <outlet property="txtVat" destination="fbj-j8-lTx" id="PcX-5p-ii5"/>
@@ -5740,6 +5748,10 @@ any other devices.</string>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnRequest" destination="OcU-LI-QXD" id="YL5-6s-bfs"/>
+                        <outlet property="lblNothingRequest" destination="oLU-zF-r7h" id="Hz6-VE-mH5"/>
+                        <outlet property="lblSubTitle" destination="Oih-LH-FC4" id="VQ0-xG-qwa"/>
+                        <outlet property="lblTitle" destination="9Y9-03-IIp" id="iBO-Ea-ng0"/>
                         <outlet property="viewNavigation" destination="FCq-qw-AP6" id="JP9-62-0ba"/>
                     </connections>
                 </viewController>
@@ -7468,14 +7480,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="90.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="35" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="35.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7516,7 +7528,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="20"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7538,7 +7550,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="355" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
@@ -7576,7 +7588,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -8840,6 +8852,7 @@ any other devices.</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnSwitch" destination="HRk-do-gPV" id="taq-xm-EME"/>
+                                            <outlet property="lblOption" destination="so1-fj-eBn" id="Vgh-dL-Gxj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -8900,6 +8913,7 @@ any other devices.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblTitle" destination="K85-M8-PVx" id="Zyu-2I-19a"/>
                         <outlet property="settingTableView" destination="7Uh-kq-H8t" id="8qv-C5-JMx"/>
                         <outlet property="viewShadow" destination="Etq-7c-lM4" id="1Ar-wo-xML"/>
                     </connections>
@@ -15391,7 +15405,6 @@ You will be notified for any membership status update.</string>
                                         </state>
                                         <connections>
                                             <action selector="btnSave:" destination="RF2-BU-vmT" eventType="touchUpInside" id="32o-Xj-tjl"/>
-                                            <action selector="tapAccept:" destination="XgN-pd-OQw" eventType="touchUpInside" id="fsJ-GT-MUb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -15738,6 +15751,11 @@ You will be notified for any membership status update.</string>
                         <outlet property="btnProfile" destination="D2T-NU-0B3" id="chO-hi-1KL"/>
                         <outlet property="follow" destination="WWf-UI-2Jb" id="uDg-kd-tr6"/>
                         <outlet property="followlabel" destination="mw4-Pa-MGP" id="9u2-uJ-ZfM"/>
+                        <outlet property="lblHeading1" destination="Ykb-ng-8Dd" id="JvW-Ik-Zge"/>
+                        <outlet property="lblHeading2" destination="1z4-6l-Jxi" id="PS9-1b-xpl"/>
+                        <outlet property="lblHeading3" destination="ct8-LE-FM8" id="U6h-zp-Fdv"/>
+                        <outlet property="lblHeading4" destination="m2m-wt-Gn9" id="7eq-A5-Mfd"/>
+                        <outlet property="lblTitle" destination="gpg-Y6-KMl" id="eK8-gf-Hsk"/>
                         <outlet property="message" destination="ogO-64-Ct0" id="1Nf-nB-IJe"/>
                         <outlet property="messagelabel" destination="mkL-lp-l6j" id="Y2N-gE-TP2"/>
                         <outlet property="privateMessage" destination="cRj-pp-8oa" id="uVv-ok-d8S"/>

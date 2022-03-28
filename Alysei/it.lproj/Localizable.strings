@@ -336,6 +336,59 @@
 "Save Ingridients" = "Salva gli ingredienti";
 "Save Tools" = "Salva strumenti";
 
+//MARK: Settings
+"Settings" = "Settings";
+"Company" = "Company";
+"Privacy" = "Privacy";
+"Password" = "Password";
+"Blocking" = "Blocking";
+"Membership" = "Membership";
+"Billing" = "Billing";
+"Your Data" = "Your Data";
+"Marketplace" = "Marketplace";
+"Terms and Conditions" = "Terms and Conditions";
+"Privacy Policy" = "Privacy Policy";
+"FAQ" = "FAQ";
+"Events" = "Events";
+"Featured" = "Featured";
+"User Settings" = "User Settings";
+"Edit Profile" = "Edit Profile";
+"Notification" = "Notification";
+"Edit Settings" = "Edit Settings";
+"Photo of Label" = "Photo of Label";
+"FCE-SID Certification" = "FCE-SID Certification";
+"Phytosanitary Certificate" = "Phytosanitary Certificate";
+"Packaging of USA" = "Packaging of USA";
+"Food Safety Plan" = "Food Safety Plan";
+"Animal Health or ASL Certificate" = "Animal Health or ASL Certificate";
+"Upload an image your product's label" = "Upload an image your product's label";
+"Upload an image of your FCE-SID certification" = "Upload an image of your FCE-SID certification";
+"Upload an image of your Phytosanitary Certificate" = "Upload an image of your Phytosanitary Certificate";
+"Upload an image or PDF of your packaging for USA" = "Upload an image or PDF of your packaging for USA";
+"Upload an image or PDF of your food safety plan" = "Upload an image or PDF of your food safety plan";
+"Upload an image or PDF of your Animal Health or ASL Certificate" = "Upload an image or PDF of your Animal Health or ASL Certificate";
+"Provide your value-added tax ID" = "Provide your value-added tax ID";
+"Provide your Food and Drug Administration identification" =  "Provide your Food and Drug Administration identification";
+"Changing your password will log you off any other devices." = "Changing your password will log you off any other devices.";
+"Update Password" = "Update Password";
+"Account Data Download" = "Account Data Download";
+"Nothing requested yet." = "Nothing requested yet.";
+"Request Data" = "Request Data";
+
+
+//MARK: Privacy
+"Who can send you a private message ?" = "Who can send you a private message ?";
+"Who can view your profile ?" = "Who can view your profile ?";
+"Who can connect with you ?" = "Who can connect with you ?";
+"Email Prefrences" = "Email Prefrences";
+"Anyone" = "Anyone";
+"Followers" = "Followers";
+"Connections" = "Connections";
+"Nobody" = "Nobody";
+"Only Me" = "Only Me";
+"Private Messages" = "Private Messages";
+"Email when someone requests to follow me" = "Email when someone requests to follow me";
+"Receive weekly updates" = "Receive weekly updates";
 
 //MARK: MARKETPLACE
 
@@ -646,6 +699,7 @@
 "Your membership progress is pending review. You will be notified once the review of your account has begun." = "Your membership progress is pending review. You will be notified once the review of your account has begun.";
 "Complete your profile in order to start Posting" = "Complete your profile in order to start Posting";
 "Your profile is not reviewed from admin" = "Your profile is not reviewed from admin";
+"Alysei Membership is important to guarantee professionalism, quality and visibility"="La Membership ad Alysei è importante per garantire professionalità, qualità e visibilità";
 //MARK: LOGIN SCREEN
 "Login to your Account" = "Accedi al tuo Account";
 "LOGIN WITH EMAIL" = "Accedi con email";

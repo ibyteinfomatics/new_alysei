@@ -12,6 +12,8 @@ class SettingsScreenVC: AlysieBaseViewC {
 
     @IBOutlet weak var settingCollectionView: UICollectionView!
     @IBOutlet weak var viewShadow: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var userId: String?
     var signUpViewModel: SignUpViewModel!
     var imgPUrl: String?
@@ -19,6 +21,7 @@ class SettingsScreenVC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
+        lblTitle.text = AppConstants.Settings
         self.viewShadow.drawBottomShadow()
     }
     override func viewWillAppear(_ animated: Bool) {

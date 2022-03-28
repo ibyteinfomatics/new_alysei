@@ -17,11 +17,14 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
     @IBOutlet weak var txtVat: UITextField!
     @IBOutlet weak var lblFDATitle: UILabel!
     @IBOutlet weak var txtFDA: UITextField!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var lblfdaNumber: UILabel!
     
     
-    var titleArray = ["VAT","FDA Number"]
-    var cetificateTitle = ["Photo of Label","FCE-SID Certification","Phytosanitary Certificate","Packaging of USA","Food Safety Plan","Animal Health or ASL Certificate"]
-    var certificatDesc = ["Upload an image your product's label","Upload an image of your FCE-SID certification","Upload an image of your Phytosanitary Certificate","Upload an image or PDF of your packaging for USA","Upload an image or PDF of your food safety plan","Upload an image or PDF of your Animal Health or ASL Certificate"]
+    var titleArray = [AppConstants.kVATNo,APIConstants.FDANumber]
+    var cetificateTitle = [AppConstants.PhotoOfLabel,AppConstants.FCESIDCertification,AppConstants.PhytosanitaryCertificate,AppConstants.PackagingOfUSA,AppConstants.FoodSafetyPlan,AppConstants.AnimalHealthOrASLCertificate]
+    var certificatDesc = [AppConstants.UploadAnImageYourProductLabel,AppConstants.UploadAnImageOfYourFCESIDCertification,AppConstants.UploadAnImagOfYourPhytosanitaryCertificate,AppConstants.UploadAnImageOrPDFOfYourPackagingforUSA,AppConstants.UploadAnImageOrPDFOfYourFoodSafetyPlan,AppConstants.UploadAnImageOrPDFOfYourAnimalHealthOrASLCertificate]
     var getCompanyFields: CompanyCertificates?
     var picker = UIImagePickerController()
     var photoOfLabelImage : UIImage?
@@ -48,6 +51,10 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
         txtFDA.delegate = self
         txtVat.delegate = self
         picker.delegate = self
+        lblTitle.text = AppConstants.Company
+        btnSave.setTitle(AppConstants.Save, for: .normal)
+        lblVatTitle.text = AppConstants.kVATNo
+        lblfdaNumber.text = APIConstants.FDANumber
         self.callGetCertificatesApi()
         
     }
@@ -73,10 +80,10 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
         //        }
     }
     @IBAction func btnVatDesc(_ sender: UIButton){
-        self.showAlert(withMessage: "Provide your value-added tax ID")
+        self.showAlert(withMessage: AppConstants.ProvideYourValueAddedTaxID)
     }
     @IBAction func btnFdaDesc(_ sender: UIButton){
-        self.showAlert(withMessage: "Provide your Food and Drug Administration identification")
+        self.showAlert(withMessage: AppConstants.ProvideYourFoodAndDrugAdministrationIdentification)
     }
     //MARK: - Private Methods -
     func initialSetUp(){
