@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBD-au-VOY">
-                        <rect key="frame" x="92.5" y="5" width="272.5" height="222.5"/>
+                        <rect key="frame" x="92.5" y="5" width="272.5" height="217.5"/>
                         <color key="backgroundColor" red="0.29411764705882354" green="0.70196078431372544" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7KF-nH-aqz">
@@ -134,7 +134,7 @@
                     <constraint firstItem="AZW-hv-I2e" firstAttribute="trailing" secondItem="7KF-nH-aqz" secondAttribute="trailing" constant="-10" id="Hxg-SQ-PbU"/>
                     <constraint firstItem="HWh-yS-FHr" firstAttribute="top" secondItem="7KF-nH-aqz" secondAttribute="top" id="Kr1-sU-stD"/>
                     <constraint firstItem="ot4-tO-7FG" firstAttribute="centerY" secondItem="tkI-pD-EVy" secondAttribute="centerY" id="NHR-JQ-0pU"/>
-                    <constraint firstItem="DBD-au-VOY" firstAttribute="bottom" secondItem="tkI-pD-EVy" secondAttribute="bottom" constant="5" id="TaL-nc-8TL"/>
+                    <constraint firstItem="DBD-au-VOY" firstAttribute="bottom" secondItem="tkI-pD-EVy" secondAttribute="bottom" id="TaL-nc-8TL"/>
                     <constraint firstAttribute="trailing" secondItem="7KF-nH-aqz" secondAttribute="trailing" constant="15" id="Tnc-kv-EQu"/>
                     <constraint firstItem="HWh-yS-FHr" firstAttribute="bottom" secondItem="7KF-nH-aqz" secondAttribute="bottom" id="Un5-bl-El1"/>
                     <constraint firstItem="2w1-d0-GqE" firstAttribute="top" secondItem="7KF-nH-aqz" secondAttribute="top" id="VA9-17-QsK"/>

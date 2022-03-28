@@ -257,8 +257,18 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             
             let postsize = self.postLike?.count ?? 0
             
+           /* if self.arrNewFeedDataModel.count > 0 {
+                if self.postLike?.last?.postId != self.arrNewFeedDataModel[0].postID {
+                    self.btnNewpost.isHidden = false
+                } else {
+                    self.postTableView.reloadData()
+                }
+            }*/
+            
+            
             if self.arrNewFeedDataModel.count > 5 {
-                if self.postLike?[postsize-1].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-2].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-3].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-4].postId != self.arrNewFeedDataModel[0].postID && self.postLike?[postsize-5].postId != self.arrNewFeedDataModel[0].postID{
+                if self.postLike?.last?.postId != self.arrNewFeedDataModel[0].postID &&
+                    self.postLike?.last?.postId != self.arrNewFeedDataModel[1].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[2].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[3].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[4].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[5].postID{
                     self.btnNewpost.isHidden = false
                 } else {
                     self.postTableView.reloadData()
