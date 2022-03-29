@@ -604,16 +604,16 @@ class PostClass {
 class userClass {
     
     var alysei_approval:Bool?
+    var notification :Int?
     var user_id :Int?
     var name : String?
-   
     
     init() { }
     init(with messageData: [String:Any]?) {
         self.alysei_approval            = Bool.getBool(messageData?[Parameters.alysei_approval])
         self.user_id          = Int.getInt(messageData?[Parameters.userid])
         self.name          = String.getString(messageData?[Parameters.name])
-       
+        self.notification          = Int.getInt(messageData?[Parameters.notification])
      
     }
     
@@ -622,6 +622,7 @@ class userClass {
             Parameters.alysei_approval                       : objects?.alysei_approval ?? false,
             Parameters.userid                  : objects?.user_id ?? 0 ,
             Parameters.name                : objects?.name ?? "",
+            Parameters.notification         : objects?.notification ?? 0
            
         ]
         return params

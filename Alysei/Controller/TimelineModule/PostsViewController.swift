@@ -34,6 +34,7 @@ class PostsViewController: AlysieBaseViewC  {
     @IBOutlet weak var lblNotificationCount: UILabel!
     @IBOutlet weak var vwNotification: UIView!
     
+    var getUser:[userClass]?
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
     var postLike:[PostClass]?
@@ -108,6 +109,7 @@ class PostsViewController: AlysieBaseViewC  {
         postTableView.addSubview(refreshControl)
         
         receivePostLike()
+        getUsersData()
         //        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
         //        self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
         //
@@ -251,6 +253,23 @@ class PostsViewController: AlysieBaseViewC  {
 
 extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     
+    func getUsersData() {
+        
+        kChatharedInstance.receivce_user_data(userID: String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
+            self.getUser?.removeAll()
+            self.getUser = users
+            
+            if self.getUser![0].notification ?? 0 > 0 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = String.getString(self.getUser![0].notification)
+            } else {
+                self.vwNotification.isHidden = true
+            }
+            
+        }
+        
+    }
+    
     func receivePostLike() {
         
         kChatharedInstance.receivce_Post_like(postId: "") { (message) in
@@ -296,6 +315,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             return arrNewFeedDataModel.count
         }
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{

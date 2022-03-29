@@ -61,7 +61,7 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         pushCallback?(indexPath.row)
-        print("Name ",storyUser[indexPath.item])
+       // print("Name ",storyUser[indexPath.item])
     }
     
 }

@@ -966,7 +966,7 @@ class Chat_hepler {
                     resentusersDetails.user_id     =  Int.getInt(usersDetails[Parameters.userid])
                     resentusersDetails.alysei_approval    =  Bool.getBool(usersDetails[Parameters.alysei_approval])
                     resentusersDetails.name       =  String.getString(usersDetails[Parameters.name])
-                    
+                    resentusersDetails.notification = Int.getInt(usersDetails[Parameters.notification])
                     self?.userclass.append(resentusersDetails)
                 //}
                 
@@ -976,6 +976,10 @@ class Chat_hepler {
             
         }
         
+    }
+    
+    func notificationUpdate(userID :String){
+        userReference.child(userID).updateChildValues(["notification": "0"])
     }
     
     

@@ -143,6 +143,9 @@ class NotificationList: AlysieBaseViewC {
     
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList + "?page=\(pageNo)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
 //            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetNotificationList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            kChatharedInstance.notificationUpdate(userID: String.getString(kSharedUserDefaults.loggedInUserModal.userId))
+            
             if self.indexOfPageToRequest == 1{
                 self.notifiacationArray.removeAll()
             }

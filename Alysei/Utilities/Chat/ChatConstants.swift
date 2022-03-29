@@ -140,5 +140,5 @@ struct Parameters {
     static let company_name = "company_name"
     static let role_id = "role_id"
     static let userid = "user_id"
-    
+    static let notification = "notification"
 }
