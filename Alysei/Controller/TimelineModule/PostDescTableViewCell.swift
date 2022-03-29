@@ -83,7 +83,7 @@ class PostDescTableViewCell: UITableViewCell {
     
     var postLike:[PostClass]?
     
-    
+   
 //    let manager = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress])
 //    let socket = SocketManager(socketURL: URL(string: "https://alyseisocket.ibyteworkshop.com")!, config: [.log(true), .compress]).defaultSocket
 
@@ -596,7 +596,7 @@ import Zoomy
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
     @IBOutlet weak var imagePost: UIImageView!
     @IBOutlet weak var imageConstant: NSLayoutConstraint!
-    var loadCell: LoadCell?
+  
     var originalFrame = CGRect()
    
     var overlay: UIView = {
@@ -622,7 +622,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
         self.imagePost.isUserInteractionEnabled = true
         
-        if loadCell == .sharePost{
+        if loadTypeCell == .sharePost{
              let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
              //pinch.minimumNumberOfTouches = 2
             // pinch.maximumNumberOfTouches = 2
@@ -717,7 +717,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
            // self.imagePost.frame = self.bounds
 
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.0, animations: {
                 self.imagePost.transform = CGAffineTransform.identity
                 //self.imagePost.center = center
                 sender.scale = 1

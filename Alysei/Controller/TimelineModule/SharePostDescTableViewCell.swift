@@ -56,7 +56,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     var index: Int?
     var imageArray = [String]()
     var menuDelegate: ShareEditMenuProtocol!
-    var loadCell: LoadCell?
+    
     var likeCallback:((Int) -> Void)? = nil
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
     var islike: Int?
@@ -144,7 +144,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
 //        self.index = index
     self.index = self.data?.postID ?? 0
     
-    
+   
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
@@ -351,7 +351,8 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()
         }
-        cell.loadCell = .sharePost
+      
+     
 
       
 //        for i in 0..<imageArray.count {

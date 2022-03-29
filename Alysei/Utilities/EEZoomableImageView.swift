@@ -174,7 +174,7 @@ fileprivate class PinchZoomHandler {
         case .changed:
             let isNumberOfTouchChanged = pinchGesture.numberOfTouches != lastNumberOfTouch
             
-            if isNumberOfTouchChanged {
+                 if isNumberOfTouchChanged {
                 let newTouchPoint = pinchGesture.location(in: sourceImageView)
                 lastTouchPoint = newTouchPoint
             }
