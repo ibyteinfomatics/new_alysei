@@ -21,7 +21,7 @@ struct PostCommentsUserData {
 var checkHavingPreferences : Int? = 0
 var isRefreshing = false
 var isprofileComplete : Bool?
-
+var loadTypeCell: LoadCell?
 class PostsViewController: AlysieBaseViewC  {
     
     @IBOutlet weak var postTableView: UITableView!
@@ -352,6 +352,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             }else if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil) {
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "SharePostDescTableViewCell") as? SharePostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
+                loadTypeCell = .sharePost
                 if arrNewFeedDataModel.count > indexPath.row {
                     cell.configCell(arrNewFeedDataModel[indexPath.row] , indexPath.row)
                     let data = arrNewFeedDataModel[indexPath.row]
