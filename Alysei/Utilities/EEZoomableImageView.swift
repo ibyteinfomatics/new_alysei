@@ -96,7 +96,7 @@ public protocol ZoomingDelegate: class {
 private struct PinchZoomHandlerConstants {
     fileprivate static let kMinZoomScaleDefaultValue: CGFloat = 1.0
     fileprivate static let kMaxZoomScaleDefaultValue: CGFloat = 3.0
-    fileprivate static let kResetAnimationDurationDefaultValue = 0.5
+    fileprivate static let kResetAnimationDurationDefaultValue = 0.0
     fileprivate static let kIsZoomingActiveDefaultValue: Bool = false
 }
 

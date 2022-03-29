@@ -56,7 +56,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     var index: Int?
     var imageArray = [String]()
     var menuDelegate: ShareEditMenuProtocol!
-    
+    var loadCell: LoadCell?
     var likeCallback:((Int) -> Void)? = nil
     var commentCallback:((PostCommentsUserData) -> Void)? = nil
     var islike: Int?
@@ -143,33 +143,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     self.data = modelData
 //        self.index = index
     self.index = self.data?.postID ?? 0
-    /*if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
     
-        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = modelData.subjectId?.email
-    //userName.text = modelData.subjectId?.companyName?.capitalized
-    //userNickName.text = modelData.subjectId?.email
-    }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
-        lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
-      //  userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
-        lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
-        lblSharedUserEmail.text = modelData.subjectId?.email
-        //userNickName.text = modelData.subjectId?.email
-    }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
-       
-        lblSharedUserEmail.text = modelData.subjectId?.email?.lowercased()
-        lblSharedUserTitle.text = modelData.subjectId?.name?.capitalized
-        lblSharedUserName.text = modelData.subjectId?.name?.capitalized
-    }
-    else{
-        //userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")" + "\(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-       // userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = modelData.subjectId?.email?.capitalized
-        lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
-       // userNickName.text = modelData.subjectId?.name?.capitalized
-    }*/
     
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
@@ -239,38 +213,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"
     lblPostCommentCount.text = "\(modelData.commentCount ?? 0)"
     lblPostTime.text = modelData.posted_at
-    //islike = data.likeFlag
-//    if modelData.sharedPostData?.attachmentCount == 0 {
-//        imageHeightCVConstant.constant = 0
-////            imagePostCollectionView.alpha = 0.0
-//    }else{
-//
-//        if modelData.attachments?.first?.attachmentLink?.height == modelData.attachments?.first?.attachmentLink?.width {
-//            imageHeightCVConstant.constant = 350
-//        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.width) > Int.getInt(modelData.attachments?.first?.attachmentLink?.height) {
-//
-//
-//            if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 500{
-//                imageHeightCVConstant.constant = 500
-//            } else if (Int.getInt(modelData.attachments?.first?.attachmentLink?.width)) > 300{
-//                imageHeightCVConstant.constant = 400
-//            } else {
-//                imageHeightCVConstant.constant = 300
-//            }
-//
-//        } else if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) > Int.getInt(modelData.attachments?.first?.attachmentLink?.width) {
-//        //imageHeightCVConstant.constant = 350
-//
-//            if Int.getInt(modelData.attachments?.first?.attachmentLink?.height) < 350 {
-//                imageHeightCVConstant.constant = 350
-//            } else {
-//                //height3 = Int(CGFloat(modelData.attachments?[i].attachmentLink?.height ?? 0 * 72 / 96)-200) //500
-//                imageHeightCVConstant.constant = 500
-//            }
-//        }
-        
-        
-   // }
+ 
     self.userImage.layer.borderWidth = 0.5
     self.userImage.layer.borderColor = UIColor.lightGray.cgColor
    
@@ -302,18 +245,11 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     self.imagePostCollectionView.showsHorizontalScrollIndicator = false
 
     self.imageArray.removeAll()
-//    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
-//        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-//
-//
-//
-//    }
+
     if (modelData.sharedPostData?.attachments?.isEmpty == true) || (modelData.sharedPostData?.attachmentCount == 0){
              print("No Data")
             }else{
-//                    for i in  0..<(modelData.sharedPostData?.attachmentCount ?? 0) {
-//                        self.imageArray.append(modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
-//                    }
+
                 for i in  0..<(modelData.sharedPostData?.attachments?.count ?? 0) {
                     let url = ((modelData.sharedPostData?.attachments?[i].attachmentLink?.baseUrl ?? "") + (modelData.sharedPostData?.attachments?[i].attachmentLink?.attachmentUrl ?? ""))
                     self.imageArray.append(url)
@@ -415,6 +351,7 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()
         }
+        cell.loadCell = .sharePost
 
       
 //        for i in 0..<imageArray.count {

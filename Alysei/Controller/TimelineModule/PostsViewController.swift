@@ -31,6 +31,9 @@ class PostsViewController: AlysieBaseViewC  {
     @IBOutlet weak var headerStack: UIView!
     @IBOutlet weak var tableviewheight: NSLayoutConstraint!
     @IBOutlet weak var btnNewpost: UIButton!
+    @IBOutlet weak var lblNotificationCount: UILabel!
+    @IBOutlet weak var vwNotification: UIView!
+    
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
     var postLike:[PostClass]?
@@ -67,11 +70,15 @@ class PostsViewController: AlysieBaseViewC  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vwNotification.layer.cornerRadius = self.vwNotification.frame.height / 2
+        vwNotification.layer.masksToBounds = true
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         if Int.getInt(data["alysei_review"]) == 1 {
             postRequestToGetProgressPrfile()
 
         }
+       
+        
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView

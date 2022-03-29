@@ -1857,6 +1857,7 @@ enum PushedFrom: Int {
 enum LoadCell {
     case stateList
     case hubList
+    case sharePost
 }
 
 //MARK: - UIFont Constants -
