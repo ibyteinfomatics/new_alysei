@@ -28,7 +28,7 @@ class GetWalkThroughDataModel: NSObject {
   var title: String?
   var roleId: String?
   var imageId: String?
-    
+    var base_url: String?
 
   init(withDictionary dictRoles: [String:Any]) {
     
@@ -37,6 +37,7 @@ class GetWalkThroughDataModel: NSObject {
     self.title = String.getString(dictRoles[APIConstants.kTitle])
     self.roleId = String.getString(dictRoles[APIConstants.kRoleId])
     self.imageId = String.getString(dictRoles[APIConstants.kImageId])
+      self.base_url = String.getString(dictRoles["base_url"])
     
   }
 }

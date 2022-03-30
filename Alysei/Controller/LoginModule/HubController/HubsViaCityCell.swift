@@ -29,8 +29,8 @@ class HubsViaCityCell: UITableViewCell , SelectList{
         self.txtSearch.isHidden = hasCome == .hubs
         self.txtSearch.isHidden = self.hasCome == .hubs
         self.filterHubs.hubs_array = hubsViaCity.hubs_array
-        self.tableView.hubLatitude = hubsViaCity.latitude
-        self.tableView.hubLongitude = hubsViaCity.longitude
+        self.tableView.hubLatitude = "\(hubsViaCity.latitude ?? 0.0)"
+        self.tableView.hubLongitude = "\(hubsViaCity.longitude ?? 0.0)"
         self.tableView.hubRadius = hubsViaCity.radius
         self.lblNoHub.isHidden = filterHubs.hubs_array?.isEmpty == false
         //self.noHubImage.isHidden = filterHubs.hubs_array?.isEmpty == true

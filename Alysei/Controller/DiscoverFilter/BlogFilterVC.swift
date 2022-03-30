@@ -46,13 +46,13 @@ class BlogFilterVC: AlysieBaseViewC {
     }
     func setData(){
         if self.passSpecialization == "" || self.passSpecialization == nil{
-            self.lblSpecialization.text = "Specialization"
+            self.lblSpecialization.text = AppConstants.kSpecialization
         }else{
             self.passSpecialization = self.lblSpecialization.text
         }
         
         if self.passBlogTitle == "" || self.passBlogTitle == nil{
-            self.lblBlogTitle.placeholder = "Blog Titles"
+            self.lblBlogTitle.placeholder = AppConstants.kBlogTitles
         }else{
             self.passBlogTitle = self.lblBlogTitle.text
         }

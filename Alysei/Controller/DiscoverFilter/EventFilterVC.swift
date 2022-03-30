@@ -21,8 +21,8 @@ class EventFilterVC: UIViewController {
     var toolBar = UIToolbar()
     let datePicker = UIDatePicker()
     var dataDropDown = DropDown()
-    var arrEventType = ["Public","Private"]
-    var arrRegistrationType = ["Free","Paid"]
+    var arrEventType = [AppConstants.kPublic,AppConstants.kPrivate]
+    var arrRegistrationType = [AppConstants.kFree,AppConstants.kPaid]
     var selectDate: Date?
     
     var productType: ProductType?
@@ -120,9 +120,9 @@ class EventFilterVC: UIViewController {
     @IBAction func btnClearAction(_ sender: UIButton){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        dateTxf.text = "Choose Date"
-        lblEventType.text = "Select Event"
-        lblRegistrationType.text = "Select Registration"
+        dateTxf.text = AppConstants.kChooseDate
+        lblEventType.text = AppConstants.kSelectEvent
+        lblRegistrationType.text = AppConstants.kSelectRegistration
         lblRestType.text = "Select Restaurant"
         passRestId = ""
         dateget = ""
