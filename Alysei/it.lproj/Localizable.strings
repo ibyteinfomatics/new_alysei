@@ -336,6 +336,25 @@
 "Save Ingridients" = "Salva gli ingredienti";
 "Save Tools" = "Salva strumenti";
 
+//MARK: Profile
+"is required" = "is required";
+"Upload" = "Upload";
+"Add Featured Products" = "Add Featured Products";
+"Add Featured Menu" = "Add Featured Menu";
+"Add Featured Packages" = "Add Featured Packages";
+"Add Featured" = "Add Featured";
+"All Information is required" = "All Information is required";
+"Specialization" = "Specialization";
+"Blog Titles" = "Blog Titles";
+"Public" = "Public";
+"Private" = "Private";
+"Free" = "Free";
+"Paid" = "Paid";
+"Choose Date" = "Choose Date";
+"Select Event" = "Select Event";
+"Select Registration"=  "Select Registration";
+"Select Restaurant"= "Select Restaurant";
+
 //MARK: Settings
 "Settings" = "Settings";
 "Company" = "Company";

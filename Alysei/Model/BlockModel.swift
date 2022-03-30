@@ -87,13 +87,14 @@ class BlockAvatarid {
     var attachmenturl, attachmentType: String?
     var height, width: Int?
     var createdAt, updatedAt: String?
-    
+    var baseUrl: String?
     init(with dictResponse: [String:Any]?) {
         self.id = Int.getInt(dictResponse?["id"])
         self.height = Int.getInt(dictResponse?["height"])
         self.width = Int.getInt(dictResponse?["width"])
         
         self.attachmenturl = String.getString(dictResponse?["attachment_url"])
+        self.baseUrl = String.getString(dictResponse?["base_url"])
         self.attachmentType = String.getString(dictResponse?["attachment_type"])
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])

@@ -132,18 +132,19 @@ class MapViewC: AlysieBaseViewC {
         let circleCenter : CLLocationCoordinate2D  = CLLocationCoordinate2DMake(hubLatCordinate ?? 0.0 , hubLongCordinate ?? 0.0)
        // let circ = GMSCircle(position: circleCenter, radius: Double(CGFloat(hubRadius ?? 0).getMiles()))
         
-        let floatRadius = CGFloat(hubRadius ?? 0).getMiles()
-        let doubleRadius = Double(floatRadius) * 1000000
+      //  let floatRadius = CGFloat(hubRadius ?? 0).getMiles()
+      // let doubleRadius = Double(floatRadius) * 1000000
         
-        print("HubRadius,-----------------------------",doubleRadius)
+        print("HubRadius,-----------------------------", self.hubRadius)
        // let circ = GMSCircle(position: circleCenter, radius: 300000)
-         let circ = GMSCircle(position: circleCenter, radius: doubleRadius)
+        let doubleR = Double.getDouble(self.hubRadius) * 1609.34
+        let circ = GMSCircle(position: circleCenter, radius:doubleR)
         print("circ,-----------------------------",circ)
         circ.fillColor = UIColor(red: 0.0, green: 0.7, blue: 0, alpha: 0.1)
         circ.strokeColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 0.5)
         circ.strokeWidth = 2.5;
         circ.map = self.mapView
-        self.mapView.animate(toZoom: 9.0)
+        self.mapView.animate(toZoom: 7.0)
     }
   //MARK: - IBAction -
   
@@ -200,7 +201,7 @@ class MapViewC: AlysieBaseViewC {
             print("hubLongCordinate----------------------------------------\(self.hubLongCordinate ?? 0.0)")
             print("hubLatDegreeCordinate----------------------------------------\(latitudeDegree ?? 0.0)")
             print("hubLongDegreeCordinate----------------------------------------\(longitudeDegree ?? 0.0)")
-            let camera = GMSCameraPosition.camera(withLatitude: latitudeDegree ?? 0.0 , longitude: longitudeDegree ?? 0.0, zoom: 6.0)
+            let camera = GMSCameraPosition.camera(withLatitude: latitudeDegree ?? 0.0 , longitude: longitudeDegree ?? 0.0, zoom: 7.0)
             self.mapView.camera = camera
             self.addCircle()
         }else if self.fromVC == .StoreDetail{
@@ -276,7 +277,6 @@ extension MapViewC: GMSAutocompleteViewControllerDelegate {
     kSharedUserDefaults.longitude = place.coordinate.longitude
     self.intialGoogleSetup(withLatitude: kSharedUserDefaults.latitude, withLongitude: kSharedUserDefaults.longitude)
     dismiss(animated: true, completion: nil)
-
   }
 
   func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
