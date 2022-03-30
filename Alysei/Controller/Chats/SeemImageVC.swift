@@ -9,6 +9,7 @@ class SeemImageVC: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     
     var url : String?
+    var from : String? = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,13 @@ class SeemImageVC: UIViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        
+        if from == "company" {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
 
 }

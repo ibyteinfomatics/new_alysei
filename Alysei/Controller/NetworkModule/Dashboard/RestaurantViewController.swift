@@ -88,9 +88,18 @@ class RestaurantViewController: AlysieBaseViewC {
                 self.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "")+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
             }
             
-            self.about.text = self.dashboardModel?.data?.aboutMember?[3].value
-            self.ourmenu.text = self.dashboardModel?.data?.aboutMember?[4].value
-            self.restType.text = self.dashboardModel?.data?.aboutMember?[2].value
+            
+            
+            if self.dashboardModel?.data?.aboutMember?.count == 5 {
+                self.about.text = self.dashboardModel?.data?.aboutMember?[3].value
+                self.ourmenu.text = self.dashboardModel?.data?.aboutMember?[4].value
+                self.restType.text = self.dashboardModel?.data?.aboutMember?[2].value
+            } else{
+                self.about.text = self.dashboardModel?.data?.aboutMember?[2].value
+                self.ourmenu.text = self.dashboardModel?.data?.aboutMember?[3].value
+                self.restType.text = self.dashboardModel?.data?.aboutMember?[1].value
+            }
+            
             //self.pickup.text = self.dashboardModel?.data?.aboutMember?[2].value
             //self.pickupDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value
             //self.deliveryDiscount.text = self.dashboardModel?.data?.aboutMember?[2].value

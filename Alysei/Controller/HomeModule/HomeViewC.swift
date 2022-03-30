@@ -309,8 +309,8 @@ class HomeViewC: AlysieBaseViewC  {
                 
                 if let progUserData = data["user_details"] as? [String:Any]{
                     self.progressUserData = UserData.init(with: progUserData)
-                    let urlP = URL(string: "\((self.progressUserData?.avatarid?.baseUrl  ?? "") + "\(self.progressUserData?.avatarid?.attachmenturl  ?? "")")")
-                    kSharedUserDefaults.setProfilePic(profile: "\((self.progressUserData?.avatarid?.baseUrl  ?? "") + "\(self.progressUserData?.avatarid?.attachmenturl  ?? "")")")
+                    let urlP = URL(string: "\((self.progressUserData?.avatarid?.baseUrl  ?? "") + "\(self.progressUserData?.avatarid?.attachmenturl?.replacingOccurrences(of: " ", with: "%20")  ?? "")")")
+                    kSharedUserDefaults.setProfilePic(profile: "\((self.progressUserData?.avatarid?.baseUrl  ?? "") + "\(self.progressUserData?.avatarid?.attachmenturl?.replacingOccurrences(of: " ", with: "%20")  ?? "")")")
                     self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
                 }
             }

@@ -8085,18 +8085,20 @@ any other devices.</string>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Network" image="network_active_1" selectedImage="network_active_filled" id="WrS-va-xN5"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GY-0z-p1M">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R0X-NO-Ker">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="3Hh-DX-Mqb" kind="relationship" relationship="rootViewController" id="bpA-ec-m3I"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRV-lG-oHd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="1012"/>
+            <point key="canvasLocation" x="377" y="972"/>
         </scene>
         <!--Edit Profile ViewC-->
         <scene sceneID="Vpu-Fm-9b7">
@@ -11351,7 +11353,7 @@ You will be notified for any membership status update.</string>
                                                             <constraint firstAttribute="height" constant="33" id="tsq-1J-LgV"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrm-ps-aBv">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrm-ps-aBv">
                                                         <rect key="frame" x="48" y="0.0" width="30" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NK-LB-bbZ">

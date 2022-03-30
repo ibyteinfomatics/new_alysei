@@ -150,14 +150,14 @@ extension AboutViewC: UITableViewDelegate, UITableViewDataSource {
 //                    cell.titleLabel.isHidden = false
 //                    cell.descriptionLabel.isHidden = false
 //                }
-                cell.titleLabel.text = cellDetail.title.capitalized
-                cell.descriptionLabel.text = cellDetail.value.capitalized
+                cell.titleLabel.text = cellDetail.title//.capitalized
+                cell.descriptionLabel.text = cellDetail.value//.capitalized
                 return cell
             }
         case .cellWithTextAndSwitch:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cellWithTextAndSwitch") as? AboutViewTableCellWithTextAndSwitch {
-                cell.titleLabel.text = cellDetail.title.capitalized
-                let detail = cellDetail.value.capitalized
+                cell.titleLabel.text = cellDetail.title//.capitalized
+                let detail = cellDetail.value//.capitalized
                 if detail.count > 0 {
                     cell.descriptionLabel.text = detail
                 } else {
