@@ -5137,6 +5137,19 @@ any other devices.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-zN-1IL" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
+                                                    <rect key="frame" x="44" y="43" width="194" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="16.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="btnViewAction:" destination="zwi-N5-fLp" eventType="touchUpInside" id="Huw-Ra-ePT"/>
+                                                    </connections>
+                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4h-gT-1lL" customClass="UIButtonExtended" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="248" y="26" width="112" height="33"/>
                                                     <color key="backgroundColor" red="0.0" green="0.27058823529999998" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5158,10 +5171,14 @@ any other devices.</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="l4h-gT-1lL" firstAttribute="centerY" secondItem="gTE-Pm-6zt" secondAttribute="centerY" id="4s8-A8-RYa"/>
+                                                <constraint firstAttribute="bottom" secondItem="dMD-zN-1IL" secondAttribute="bottom" constant="2" id="5Fj-yJ-n5N"/>
                                                 <constraint firstItem="jHY-UM-AsQ" firstAttribute="leading" secondItem="PAn-Z4-uvU" secondAttribute="trailing" constant="10" id="8V3-Mq-1hz"/>
+                                                <constraint firstItem="dMD-zN-1IL" firstAttribute="top" secondItem="jHY-UM-AsQ" secondAttribute="bottom" constant="5" id="9qX-ra-oeK"/>
+                                                <constraint firstItem="dMD-zN-1IL" firstAttribute="trailing" secondItem="jHY-UM-AsQ" secondAttribute="trailing" id="Dm9-IH-8uG"/>
+                                                <constraint firstItem="wqM-qM-xej" firstAttribute="top" secondItem="jHY-UM-AsQ" secondAttribute="bottom" constant="5" id="E0l-4k-msG"/>
                                                 <constraint firstAttribute="bottom" secondItem="wqM-qM-xej" secondAttribute="bottom" constant="2" id="Iti-tU-6Qu"/>
+                                                <constraint firstItem="dMD-zN-1IL" firstAttribute="leading" secondItem="jHY-UM-AsQ" secondAttribute="leading" id="MgV-a0-OFQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="l4h-gT-1lL" secondAttribute="trailing" constant="15" id="Mmh-gZ-CvE"/>
-                                                <constraint firstItem="wqM-qM-xej" firstAttribute="top" secondItem="jHY-UM-AsQ" secondAttribute="bottom" constant="5" id="j97-rd-7EK"/>
                                                 <constraint firstItem="l4h-gT-1lL" firstAttribute="leading" secondItem="jHY-UM-AsQ" secondAttribute="trailing" constant="10" id="mpx-VP-cy5"/>
                                                 <constraint firstItem="wqM-qM-xej" firstAttribute="leading" secondItem="jHY-UM-AsQ" secondAttribute="leading" id="nQx-bx-42h"/>
                                                 <constraint firstItem="jHY-UM-AsQ" firstAttribute="trailing" secondItem="wqM-qM-xej" secondAttribute="trailing" id="v9A-hA-5IC"/>
@@ -5219,7 +5236,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nw5-v1-Kwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="2934"/>
+            <point key="canvasLocation" x="1380" y="2933.8830584707648"/>
         </scene>
         <!--Profile-->
         <scene sceneID="TMM-cW-DIc">
@@ -7480,14 +7497,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="37.5" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="37" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7528,7 +7545,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="22.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="22"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7550,7 +7567,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="137" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="136.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -7588,7 +7605,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="205" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -9474,13 +9491,13 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Sent Successfully." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K73-EL-DFH">
-                                        <rect key="frame" x="15" y="30" width="182.5" height="17.5"/>
+                                        <rect key="frame" x="15" y="30" width="199" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAK-Db-jPb">
-                                        <rect key="frame" x="319" y="23.5" width="41" height="31"/>
+                                        <rect key="frame" x="316" y="23.5" width="44" height="32"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -11334,11 +11351,11 @@ You will be notified for any membership status update.</string>
                                                             <constraint firstAttribute="height" constant="33" id="tsq-1J-LgV"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrm-ps-aBv">
-                                                        <rect key="frame" x="43" y="0.0" width="25" height="25"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrm-ps-aBv">
+                                                        <rect key="frame" x="48" y="0.0" width="30" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NK-LB-bbZ">
-                                                                <rect key="frame" x="4" y="4" width="17" height="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NK-LB-bbZ">
+                                                                <rect key="frame" x="4" y="4" width="22" height="22"/>
                                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11350,7 +11367,7 @@ You will be notified for any membership status update.</string>
                                                             <constraint firstItem="6NK-LB-bbZ" firstAttribute="leading" secondItem="lrm-ps-aBv" secondAttribute="leading" constant="4" id="2vY-H7-Mr2"/>
                                                             <constraint firstAttribute="bottom" secondItem="6NK-LB-bbZ" secondAttribute="bottom" constant="4" id="DyA-DC-P5U"/>
                                                             <constraint firstAttribute="width" secondItem="lrm-ps-aBv" secondAttribute="height" multiplier="1:1" id="X01-sP-qYH"/>
-                                                            <constraint firstAttribute="height" constant="25" id="c3i-Gg-xpV"/>
+                                                            <constraint firstAttribute="height" constant="30" id="c3i-Gg-xpV"/>
                                                             <constraint firstItem="6NK-LB-bbZ" firstAttribute="top" secondItem="lrm-ps-aBv" secondAttribute="top" constant="4" id="mnZ-DQ-481"/>
                                                             <constraint firstAttribute="trailing" secondItem="6NK-LB-bbZ" secondAttribute="trailing" constant="4" id="zVp-aK-2Jb"/>
                                                         </constraints>
@@ -11375,7 +11392,7 @@ You will be notified for any membership status update.</string>
                                                     <constraint firstItem="VXW-nZ-w43" firstAttribute="centerX" secondItem="1gE-Qe-amL" secondAttribute="centerX" id="Ist-IS-GvV"/>
                                                     <constraint firstItem="RzN-ce-DcX" firstAttribute="leading" secondItem="1gE-Qe-amL" secondAttribute="leading" id="OFi-OI-phU"/>
                                                     <constraint firstItem="lrm-ps-aBv" firstAttribute="top" secondItem="wVh-Ba-mVH" secondAttribute="top" constant="-5" id="e6s-aB-WRJ"/>
-                                                    <constraint firstItem="lrm-ps-aBv" firstAttribute="trailing" secondItem="wVh-Ba-mVH" secondAttribute="trailing" constant="5" id="pOW-f3-a29"/>
+                                                    <constraint firstItem="lrm-ps-aBv" firstAttribute="trailing" secondItem="wVh-Ba-mVH" secondAttribute="trailing" constant="15" id="pOW-f3-a29"/>
                                                     <constraint firstItem="wVh-Ba-mVH" firstAttribute="centerX" secondItem="1gE-Qe-amL" secondAttribute="centerX" id="sjz-an-lUP"/>
                                                     <constraint firstAttribute="bottom" secondItem="RzN-ce-DcX" secondAttribute="bottom" constant="2" id="vK6-H0-ydE"/>
                                                 </constraints>
@@ -12172,7 +12189,6 @@ You will be notified for any membership status update.</string>
                         <segue destination="qf7-tb-JA1" kind="show" identifier="seguePostsToSharePost" id="z87-Y7-L4C"/>
                         <segue destination="n49-X4-Hig" kind="show" identifier="seguePostsToEditPost" id="cuV-3K-C7q"/>
                         <segue destination="vVE-KN-ieD" kind="show" identifier="seguePostsToComment" id="ATL-Y0-eui"/>
-                        <segue destination="DjM-A0-Arv" kind="show" identifier="showStory" id="3c8-Do-6Ny"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-nb-G29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -17812,7 +17828,7 @@ You will be notified for any membership status update.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pick Up  Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmh-l7-UwU">
-                                                        <rect key="frame" x="10" y="0.0" width="0.0" height="16.5"/>
+                                                        <rect key="frame" x="10" y="0.0" width="0.0" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -21685,50 +21701,50 @@ You will be notified for any membership status update.</string>
         <!--Story View Controller-->
         <scene sceneID="c28-Jd-cGK">
             <objects>
-                <viewController storyboardIdentifier="StoryViewController" modalPresentationStyle="overCurrentContext" id="DjM-A0-Arv" customClass="StoryViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoryViewController" modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="DjM-A0-Arv" customClass="StoryViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCl-dM-mNh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ewx-iI-Izn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.63921568630000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aU7-et-PZN">
-                                    <size key="itemSize" width="373" height="568.5"/>
+                                    <size key="itemSize" width="380" height="663"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="Yod-QN-Q4p" customClass="OuterCell" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-7.5" width="373" height="568.5"/>
+                                        <rect key="frame" x="0.0" y="2" width="380" height="663"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="568.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="380" height="663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gop-s8-pCu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="568.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="663"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5YA-cT-NDP">
-                                                        <size key="itemSize" width="375" height="571"/>
+                                                        <size key="itemSize" width="375" height="660"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="storyCell" id="7fD-fg-UKl" customClass="InnerCell" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-1.5" width="375" height="571"/>
+                                                            <rect key="frame" x="0.0" y="1.5" width="375" height="660"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mM-nJ-bYW">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-ck-Zow">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-ck-Zow">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <constraints>
@@ -21748,7 +21764,7 @@ You will be notified for any membership status update.</string>
                                                                 <constraint firstAttribute="bottom" secondItem="8mM-nJ-bYW" secondAttribute="bottom" id="Ywc-cl-bOb"/>
                                                                 <constraint firstItem="8mM-nJ-bYW" firstAttribute="top" secondItem="7fD-fg-UKl" secondAttribute="top" id="nMc-dF-tVN"/>
                                                             </constraints>
-                                                            <size key="customSize" width="375" height="571"/>
+                                                            <size key="customSize" width="375" height="660"/>
                                                             <connections>
                                                                 <outlet property="imgStory" destination="3ya-ck-Zow" id="gAM-vc-llH"/>
                                                                 <outlet property="scrollV" destination="8mM-nJ-bYW" id="Hsq-2g-qV8"/>
@@ -21768,7 +21784,7 @@ You will be notified for any membership status update.</string>
                                             <constraint firstItem="gop-s8-pCu" firstAttribute="leading" secondItem="Yod-QN-Q4p" secondAttribute="leading" id="sEY-Ag-cFZ"/>
                                             <constraint firstItem="gop-s8-pCu" firstAttribute="top" secondItem="Yod-QN-Q4p" secondAttribute="top" id="u53-uS-TSp"/>
                                         </constraints>
-                                        <size key="customSize" width="373" height="568.5"/>
+                                        <size key="customSize" width="380" height="663"/>
                                         <connections>
                                             <outlet property="innerCollection" destination="gop-s8-pCu" id="Oic-J7-ifj"/>
                                         </connections>
@@ -21780,11 +21796,11 @@ You will be notified for any membership status update.</string>
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-Dk-JTq">
-                                <rect key="frame" x="328" y="23" width="31" height="28"/>
+                                <rect key="frame" x="309" y="23" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="31" id="0qJ-zK-Cz4"/>
-                                    <constraint firstAttribute="height" constant="28" id="7ym-35-Kzi"/>
+                                    <constraint firstAttribute="width" constant="50" id="0qJ-zK-Cz4"/>
+                                    <constraint firstAttribute="height" constant="50" id="7ym-35-Kzi"/>
                                 </constraints>
                                 <state key="normal" image="WhiteClose"/>
                                 <connections>
@@ -21811,7 +21827,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7N2-9y-753" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3264.8000000000002" y="-2956.8215892053977"/>
+            <point key="canvasLocation" x="3264.8000000000002" y="-2957.2713643178413"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

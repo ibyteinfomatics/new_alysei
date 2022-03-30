@@ -15,7 +15,7 @@ class StoryViewController: AlysieBaseViewC {
     var rowIndex:Int = 0
     var arrUser = [StoryHandler]()
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
-    var imageCollection: [[UIImage]]!
+    var imageCollection: [[String]] = [[]]
     
     var tapGest: UITapGestureRecognizer!
     var longPressGest: UILongPressGestureRecognizer!
@@ -30,8 +30,7 @@ class StoryViewController: AlysieBaseViewC {
         self.view.layoutIfNeeded()
         cancelBtn.addTarget(self, action: #selector(cancelBtnTouched), for: .touchUpInside)
         //self.tabBarController?.tabBar.isHidden = true
-        setupModel()
-        addGesture()
+        
         newsRequest()
     }
     
@@ -41,8 +40,13 @@ class StoryViewController: AlysieBaseViewC {
             storyBar.startAnimation()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
     @IBAction func cancelBtnTouched() {
+        //self.dismiss(animated: false, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -54,11 +58,21 @@ class StoryViewController: AlysieBaseViewC {
           
           let dictResponse = dictResponse as? [String:Any]
           
-          print("hello dictResponse    ",dictResponse?["data"] as? [[String:Any]])
-          if let data = dictResponse?["data"] as? [String:Any]{
+          if let data = dictResponse?["data"] as? [[String:Any]]{
               
+              for i in 0..<data.count{
+                  
+                  let att = data[i] as? [String:Any]
+                  let attachment = att?["attachment"] as? [String:Any]
+                  
+                  print("hello ",attachment?["attachment_url"] ?? "")
+                   
+                  //self.imageCollection[0].append(contentsOf: attachment?["attachment_url"] as! [String])
+                  self.imageCollection[0].append((attachment?["base_url"] as! String)+""+(attachment?["attachment_url"] as! String))
+              }
               
-              
+              self.setupModel()
+              self.addGesture()
               
           }
           
@@ -73,9 +87,10 @@ class StoryViewController: AlysieBaseViewC {
 extension StoryViewController {
     
     func setupModel() {
-        //for collection in imageCollection {
-            arrUser.append(StoryHandler(imgs: ["https://alysei.s3.us-west-1.amazonaws.com/uploads/2022/03/15231541648535101.jpeg"]))
-        //}
+        for collection in imageCollection {
+            //arrUser.append(StoryHandler(imgs: ["https://alysei.s3.us-west-1.amazonaws.com/uploads/2022/03/15231541648535101.jpeg"]))
+            arrUser.append(StoryHandler(imgs: collection))
+        }
         
         StoryHandler.userIndex = rowIndex
         outerCollection.reloadData()
