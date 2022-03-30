@@ -7480,14 +7480,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="37" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="37.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7528,7 +7528,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="22"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7550,10 +7550,10 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136.5" width="355" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="137" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-rv-7Kh" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
@@ -7566,8 +7566,8 @@ any other devices.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYx-Lz-039" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="37" width="335" height="19.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <rect key="frame" x="10" y="37" width="335" height="21.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -7588,7 +7588,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="203" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="205.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -9474,13 +9474,13 @@ any other devices.</string>
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Sent Successfully." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K73-EL-DFH">
-                                        <rect key="frame" x="15" y="30" width="199" height="18.5"/>
+                                        <rect key="frame" x="15" y="30" width="182.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAK-Db-jPb">
-                                        <rect key="frame" x="316" y="23.5" width="44" height="32"/>
+                                        <rect key="frame" x="319" y="23.5" width="41" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -12172,6 +12172,7 @@ You will be notified for any membership status update.</string>
                         <segue destination="qf7-tb-JA1" kind="show" identifier="seguePostsToSharePost" id="z87-Y7-L4C"/>
                         <segue destination="n49-X4-Hig" kind="show" identifier="seguePostsToEditPost" id="cuV-3K-C7q"/>
                         <segue destination="vVE-KN-ieD" kind="show" identifier="seguePostsToComment" id="ATL-Y0-eui"/>
+                        <segue destination="DjM-A0-Arv" kind="show" identifier="showStory" id="3c8-Do-6Ny"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-nb-G29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -17811,7 +17812,7 @@ You will be notified for any membership status update.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pick Up  Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmh-l7-UwU">
-                                                        <rect key="frame" x="10" y="0.0" width="0.0" height="17.5"/>
+                                                        <rect key="frame" x="10" y="0.0" width="0.0" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -18159,7 +18160,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsK-9E-XVX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2506.4000000000001" y="-1946.6266866566718"/>
+            <point key="canvasLocation" x="2151" y="-2284"/>
         </scene>
         <!--Trip Discover-->
         <scene sceneID="Lsg-Vq-E4O">
@@ -21681,6 +21682,137 @@ You will be notified for any membership status update.</string>
             </objects>
             <point key="canvasLocation" x="4353" y="2882"/>
         </scene>
+        <!--Story View Controller-->
+        <scene sceneID="c28-Jd-cGK">
+            <objects>
+                <viewController storyboardIdentifier="StoryViewController" modalPresentationStyle="overCurrentContext" id="DjM-A0-Arv" customClass="StoryViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OCl-dM-mNh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ewx-iI-Izn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.63921568630000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aU7-et-PZN">
+                                    <size key="itemSize" width="373" height="568.5"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="Yod-QN-Q4p" customClass="OuterCell" customModule="Alysei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-7.5" width="373" height="568.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="568.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gop-s8-pCu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="568.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5YA-cT-NDP">
+                                                        <size key="itemSize" width="375" height="571"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="storyCell" id="7fD-fg-UKl" customClass="InnerCell" customModule="Alysei" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="-1.5" width="375" height="571"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mM-nJ-bYW">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                        <subviews>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-ck-Zow">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="3ya-ck-Zow" firstAttribute="height" secondItem="8mM-nJ-bYW" secondAttribute="height" id="I4p-HA-CdL"/>
+                                                                            <constraint firstItem="3ya-ck-Zow" firstAttribute="top" secondItem="8mM-nJ-bYW" secondAttribute="top" id="c9W-sZ-ZS5"/>
+                                                                            <constraint firstItem="3ya-ck-Zow" firstAttribute="width" secondItem="8mM-nJ-bYW" secondAttribute="width" id="pcw-Jy-Cym"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="3ya-ck-Zow" secondAttribute="trailing" id="qCO-sP-4Lo"/>
+                                                                            <constraint firstItem="3ya-ck-Zow" firstAttribute="leading" secondItem="8mM-nJ-bYW" secondAttribute="leading" id="tui-6c-OPQ"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="3ya-ck-Zow" secondAttribute="bottom" id="z2f-DB-9hv"/>
+                                                                        </constraints>
+                                                                    </scrollView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="8mM-nJ-bYW" firstAttribute="leading" secondItem="7fD-fg-UKl" secondAttribute="leading" id="7pg-wp-OfW"/>
+                                                                <constraint firstAttribute="trailing" secondItem="8mM-nJ-bYW" secondAttribute="trailing" id="Icg-2q-uVH"/>
+                                                                <constraint firstAttribute="bottom" secondItem="8mM-nJ-bYW" secondAttribute="bottom" id="Ywc-cl-bOb"/>
+                                                                <constraint firstItem="8mM-nJ-bYW" firstAttribute="top" secondItem="7fD-fg-UKl" secondAttribute="top" id="nMc-dF-tVN"/>
+                                                            </constraints>
+                                                            <size key="customSize" width="375" height="571"/>
+                                                            <connections>
+                                                                <outlet property="imgStory" destination="3ya-ck-Zow" id="gAM-vc-llH"/>
+                                                                <outlet property="scrollV" destination="8mM-nJ-bYW" id="Hsq-2g-qV8"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="Yod-QN-Q4p" id="fJ7-JM-5vZ"/>
+                                                        <outlet property="delegate" destination="Yod-QN-Q4p" id="twI-t5-W8O"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gop-s8-pCu" secondAttribute="trailing" id="RID-AE-4am"/>
+                                            <constraint firstAttribute="bottom" secondItem="gop-s8-pCu" secondAttribute="bottom" id="jcD-re-8bH"/>
+                                            <constraint firstItem="gop-s8-pCu" firstAttribute="leading" secondItem="Yod-QN-Q4p" secondAttribute="leading" id="sEY-Ag-cFZ"/>
+                                            <constraint firstItem="gop-s8-pCu" firstAttribute="top" secondItem="Yod-QN-Q4p" secondAttribute="top" id="u53-uS-TSp"/>
+                                        </constraints>
+                                        <size key="customSize" width="373" height="568.5"/>
+                                        <connections>
+                                            <outlet property="innerCollection" destination="gop-s8-pCu" id="Oic-J7-ifj"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DjM-A0-Arv" id="lvq-FR-dx5"/>
+                                    <outlet property="delegate" destination="DjM-A0-Arv" id="sCV-8i-LIa"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-Dk-JTq">
+                                <rect key="frame" x="328" y="23" width="31" height="28"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="0qJ-zK-Cz4"/>
+                                    <constraint firstAttribute="height" constant="28" id="7ym-35-Kzi"/>
+                                </constraints>
+                                <state key="normal" image="WhiteClose"/>
+                                <connections>
+                                    <action selector="cancelBtnTouched" destination="DjM-A0-Arv" eventType="touchUpInside" id="Be3-BA-NFU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XI9-zq-fel"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ewx-iI-Izn" firstAttribute="top" secondItem="OCl-dM-mNh" secondAttribute="top" id="LER-Vd-thW"/>
+                            <constraint firstItem="XI9-zq-fel" firstAttribute="trailing" secondItem="G4B-Dk-JTq" secondAttribute="trailing" constant="16" id="Nab-Dm-LK6"/>
+                            <constraint firstAttribute="trailing" secondItem="Ewx-iI-Izn" secondAttribute="trailing" id="Oae-2k-dYk"/>
+                            <constraint firstItem="Ewx-iI-Izn" firstAttribute="bottom" secondItem="OCl-dM-mNh" secondAttribute="bottom" id="gQf-AQ-g7I"/>
+                            <constraint firstItem="G4B-Dk-JTq" firstAttribute="top" secondItem="XI9-zq-fel" secondAttribute="top" constant="23" id="oiy-B7-Kil"/>
+                            <constraint firstItem="Ewx-iI-Izn" firstAttribute="leading" secondItem="OCl-dM-mNh" secondAttribute="leading" id="ymx-vt-n5A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ugw-Fw-R2C"/>
+                    <connections>
+                        <outlet property="cancelBtn" destination="G4B-Dk-JTq" id="RIz-r2-NvB"/>
+                        <outlet property="outerCollection" destination="Ewx-iI-Izn" id="Bb6-Rc-12G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7N2-9y-753" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3264.8000000000002" y="-2956.8215892053977"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="cuV-3K-C7q"/>
@@ -21705,6 +21837,7 @@ You will be notified for any membership status update.</string>
         <image name="Review" width="301.5" height="258.5"/>
         <image name="Vector" width="30" height="25"/>
         <image name="Vector-2" width="15" height="15"/>
+        <image name="WhiteClose" width="24.5" height="24.5"/>
         <image name="about_icon_active" width="15" height="15"/>
         <image name="about_icon_normal" width="15" height="15"/>
         <image name="add_icon" width="42" height="42"/>

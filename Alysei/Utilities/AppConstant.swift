@@ -251,6 +251,7 @@ struct APIUrl{
     static let kPost = "add/post"
     static let kWalkthroughScreenStart = "get/walkthroughscreens"
     static let kGetFeed = "get/activity/feed?page="
+    static let kNewsStatus = "get/news"
     static let kLikeApi = "post/like"
     static let kCommentLikeApi = "comment/like"
     static let kGetCountryStates = "get/mycountry/states"

@@ -195,6 +195,11 @@ class PostsViewController: AlysieBaseViewC  {
                 }
             }
         }
+        
+        if segue.identifier == "showStory" {
+            _ = segue.destination as! StoryViewController
+        }
+        
     }
     @objc func openNotificationPlace(){
         guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
@@ -317,6 +322,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
@@ -340,6 +346,8 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
                     self.tabBarController?.tabBar.isHidden = true
                     controller?.restId = "restaurants"
+                case 5:
+                    self.performSegue(withIdentifier: "showStory", sender: self)
                 default:
                     print("Invalid")
                 }
