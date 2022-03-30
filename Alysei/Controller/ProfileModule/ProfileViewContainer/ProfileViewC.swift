@@ -300,11 +300,39 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !AppManager.getUserSeenAppInstructionProfile() {
-        self.coachMarksController.start(in: .viewController(self))
-        }
-        
-    }
+    
+            let data = kSharedUserDefaults.getLoggedInUserDetails()
+              if Int.getInt(data["alysei_review"]) == 1 {
+                if isprofileComplete == false{
+                    if !AppManager.getUserSeenAppInstructionProfile() {
+                        self.coachMarksController.start(in: .viewController(self))
+                        self.tabBarController?.tabBar.backgroundColor = .darkGray
+                        self.tabBarController?.tabBar.alpha = 0.9
+                        self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                        
+                    }
+                    else{
+                        self.tabBarController?.tabBar.backgroundColor = .white
+                        self.tabBarController?.tabBar.alpha = 1.0
+                        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+
+                    }
+                }
+                else{
+                    self.tabBarController?.tabBar.backgroundColor = .white
+                    self.tabBarController?.tabBar.alpha = 1.0
+                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                    
+                }
+            }
+            else{
+                self.tabBarController?.tabBar.backgroundColor = .white
+                self.tabBarController?.tabBar.alpha = 1.0
+                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+               
+            }
+         }
+    
     func inviteApi(id: Int, type: Int){
         
         let params: [String:Any] = [:]
@@ -404,36 +432,7 @@ class ProfileViewC: AlysieBaseViewC{
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
-                        let data = kSharedUserDefaults.getLoggedInUserDetails()
-                          if Int.getInt(data["alysei_review"]) == 1 {
-                            if isprofileComplete == false{
-                                if !AppManager.getUserSeenAppInstructionProfile() {
 
-                                    self.tabBarController?.tabBar.backgroundColor = .darkGray
-                                    self.tabBarController?.tabBar.alpha = 0.9
-                                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
-                                    
-                                }
-                                else{
-                                    self.tabBarController?.tabBar.backgroundColor = .white
-                                    self.tabBarController?.tabBar.alpha = 1.0
-                                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
-
-                                }
-                            }
-                            else{
-                                self.tabBarController?.tabBar.backgroundColor = .white
-                                self.tabBarController?.tabBar.alpha = 1.0
-                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
-                                
-                            }
-                        }
-                        else{
-                            self.tabBarController?.tabBar.backgroundColor = .white
-                            self.tabBarController?.tabBar.alpha = 1.0
-                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
-                           
-                        }
                     } else {
                         if self.userID != nil {
                             self.menuButton.isHidden = true
