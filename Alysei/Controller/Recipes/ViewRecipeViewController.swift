@@ -340,7 +340,6 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
                 controller?.userLevel = .other
                 controller?.fromRecipe = "Recipe"
-                
                 controller?.userID = recipeModel?.userId
             }
             

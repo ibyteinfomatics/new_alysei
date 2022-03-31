@@ -239,7 +239,6 @@ class ProfileViewC: AlysieBaseViewC{
         self.respondeButton.isHidden = true
         self.connectButton.isHidden = true
         
-       
         
         let topMargin = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
         let tableHeaderViewHeight = (UIApplication.shared.windows.first?.frame.height ?? self.view.frame.height) - (self.tabBarController?.tabBar.frame.height ?? 0.0) - topMargin
@@ -304,32 +303,37 @@ class ProfileViewC: AlysieBaseViewC{
             let data = kSharedUserDefaults.getLoggedInUserDetails()
               if Int.getInt(data["alysei_review"]) == 1 {
                 if isprofileComplete == false{
-                    if !AppManager.getUserSeenAppInstructionProfile() {
-                        self.coachMarksController.start(in: .viewController(self))
-                        self.tabBarController?.tabBar.backgroundColor = .darkGray
-                        self.tabBarController?.tabBar.alpha = 0.9
-                        self.tabBarController?.tabBar.isUserInteractionEnabled = false
-                        
-                    }
-                    else{
-                        self.tabBarController?.tabBar.backgroundColor = .white
-                        self.tabBarController?.tabBar.alpha = 1.0
-                        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                    
+                        if !AppManager.getUserSeenAppInstructionProfile() {
+                            Thread.sleep(forTimeInterval: 1.0)
+                            self.coachMarksController.start(in: .viewController(self))
+                            
+                            self.tabBarController?.tabBar.backgroundColor = .darkGray
+                            self.tabBarController?.tabBar.alpha = 0.9
+                            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                            
+                        }
+                        else{
+                            self.tabBarController?.tabBar.backgroundColor = .white
+                            self.tabBarController?.tabBar.alpha = 1.0
+                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
 
-                    }
+                        }
+                    
+                    
                 }
                 else{
                     self.tabBarController?.tabBar.backgroundColor = .white
                     self.tabBarController?.tabBar.alpha = 1.0
                     self.tabBarController?.tabBar.isUserInteractionEnabled = true
-                    
+
                 }
             }
             else{
                 self.tabBarController?.tabBar.backgroundColor = .white
                 self.tabBarController?.tabBar.alpha = 1.0
                 self.tabBarController?.tabBar.isUserInteractionEnabled = true
-               
+
             }
          }
     
@@ -433,6 +437,36 @@ class ProfileViewC: AlysieBaseViewC{
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
+//                        let data = kSharedUserDefaults.getLoggedInUserDetails()
+//                          if Int.getInt(data["alysei_review"]) == 1 {
+//                            if isprofileComplete == false{
+//                                if !AppManager.getUserSeenAppInstructionProfile() {
+////                                    self.coachMarksController.start(in: .viewController(self))
+//                                    self.tabBarController?.tabBar.backgroundColor = .darkGray
+//                                    self.tabBarController?.tabBar.alpha = 0.9
+//                                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
+//
+//                                }
+//                                else{
+//                                    self.tabBarController?.tabBar.backgroundColor = .white
+//                                    self.tabBarController?.tabBar.alpha = 1.0
+//                                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
+//
+//                                }
+//                            }
+//                            else{
+//                                self.tabBarController?.tabBar.backgroundColor = .white
+//                                self.tabBarController?.tabBar.alpha = 1.0
+//                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+//
+//                            }
+//                        }
+//                        else{
+//                            self.tabBarController?.tabBar.backgroundColor = .white
+//                            self.tabBarController?.tabBar.alpha = 1.0
+//                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+//
+//                        }
 
                     } else {
                         if self.userID != nil {
