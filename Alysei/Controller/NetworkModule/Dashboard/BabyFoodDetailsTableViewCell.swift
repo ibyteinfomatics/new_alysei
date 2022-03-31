@@ -13,6 +13,7 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var btnDropDown: UIButton!
     @IBOutlet weak var dropDownTableView: UITableView!
     @IBOutlet weak var propertyTableView: UITableView!
+    @IBOutlet weak var btnView: UIView!
     
     @IBOutlet weak var btnDocumentUpload2: UIButton!
     @IBOutlet weak var btnDocumentUpload3: UIButton!
@@ -58,6 +59,9 @@ class BabyFoodDetailsTableViewCell: UITableViewCell {
         btnDocumentUpload4.layer.cornerRadius = 15
         btnDocumentUpload5.layer.cornerRadius = 15
         btnDocumentUpload6.layer.cornerRadius = 15
+        
+        btnView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.4)
+        btnView.layer.cornerRadius = 5.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
