@@ -127,6 +127,31 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
             self.alertToAddImage()
         }
         
+        companySecondTableCell.btnViewCallBack = { index in
+            let obj = self.getCompanyFields?.dataCertificates?[indexPath.section] ?? DataCertificates.init(with: [:])
+            
+            let story = UIStoryboard(name:"Chat", bundle: nil)
+           // let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
+            
+            let controller = self.pushViewController(withName: SeemImageVC.id(), fromStoryboard: StoryBoardConstants.kChat) as? SeemImageVC
+            controller?.from = "company"
+            if indexPath.row == 0 {
+                controller?.url = (obj.base_url ?? "")+""+(obj.photoOfLabel ?? "")
+            } else if indexPath.row == 1 {
+                controller?.url = (obj.base_url ?? "")+""+(obj.fceSidCertification ?? "")
+            } else if indexPath.row == 2 {
+                controller?.url = (obj.base_url ?? "")+""+(obj.phytosanitaryCertificate ?? "")
+            } else if indexPath.row == 3 {
+                controller?.url = (obj.base_url ?? "")+""+(obj.packaginForUsa ?? "")
+            } else if indexPath.row == 4 {
+                controller?.url = (obj.base_url ?? "")+""+(obj.foodSafetyPlan ?? "")
+            } else {
+                controller?.url = (obj.base_url ?? "")+""+(obj.animalHelathAslCertificate ?? "")
+            }
+            
+            
+        }
+        
         return companySecondTableCell
     }
     

@@ -95,7 +95,7 @@ class BlockingViewC: AlysieBaseViewC {
     blockingTableCell.imgViewBlocking.layer.cornerRadius = blockingTableCell.imgViewBlocking.frame.width/2
     
     if blockModel?.data?[indexPath.row].blockuser?.avatarid?.attachmenturl != nil {
-        blockingTableCell.imgViewBlocking.setImage(withString: String.getString(kImageBaseUrl+(blockModel?.data?[indexPath.row].blockuser?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        blockingTableCell.imgViewBlocking.setImage(withString: String.getString((blockModel?.data?[indexPath.row].blockuser?.avatarid?.baseUrl ?? "")+(blockModel?.data?[indexPath.row].blockuser?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
     }
     
     return blockingTableCell

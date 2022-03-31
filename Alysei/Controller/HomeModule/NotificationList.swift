@@ -209,12 +209,14 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             //kSharedAppDelegate.moveToNetwork(index: 0)
             
             tabBarController!.selectedIndex = 3
+            networkcurrentIndex = 0
         case 4:
-            
+            networkcurrentIndex = 1
             tabBarController!.selectedIndex = 3
         case 5:
             // kSharedAppDelegate.moveToNetwork(index: 3)
             tabBarController!.selectedIndex = 3
+            networkcurrentIndex = 3
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:

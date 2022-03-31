@@ -47,9 +47,11 @@ class DataCertificates{
     var packaginForUsa: String?
     var foodSafetyPlan: String?
     var animalHelathAslCertificate: String?
+    var base_url: String?
     
     init(with data: [String:Any]?) {
         self.option = String.getString(data?["option"])
+        self.base_url = String.getString(data?["base_url"])
         self.userFieldOptionId = String.getString(data?["user_field_option_id"])
         self.photoOfLabel = String.getString(data?["photo_of_label"])
         self.fceSidCertification = String.getString(data?["fce_sid_certification"])

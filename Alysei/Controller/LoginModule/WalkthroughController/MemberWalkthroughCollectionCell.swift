@@ -52,7 +52,7 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
   public func configureData(withGetWalkThroughDataModel model: GetWalkThroughDataModel?,indexPath: IndexPath, viewModel: GetWalkThroughViewModel?) -> Void{
    
     self.getWalkThroughDataModel = model
-    if let strUrl = "\(kImageBaseUrl)\(model?.imageId ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+      if let strUrl = "\(model?.base_url ?? "")\(model?.imageId ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
           let imgUrl = URL(string: strUrl) {
          print("ImageUrl-----------------------------------------\(imgUrl)")
         self.imgViewBackground.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

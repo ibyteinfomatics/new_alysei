@@ -88,9 +88,10 @@ class SelectCityTableViewCell: UITableViewCell {
         }else{
             self.buttonLeftCheckbox.setImage((data?.isSelected == true) ? UIImage(named: "checkbox_white") : UIImage(named: "icon_uncheckedBox"), for: .normal)
         }
-        self.showhubLat = data?.latitude
-        self.showLongLat = data?.longitude
+        self.showhubLat = "\(data?.latitude ?? 0.0)"
+        self.showLongLat = "\(data?.longitude ?? 0.0)"
         showhubRadius = data?.radius
+       
       //  self.buttonLeftCentreVertical.constant = hideEyeIcon == true ? 0 : 6
        
        

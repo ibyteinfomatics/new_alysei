@@ -99,8 +99,8 @@ class CountryHubs {
     var state: CountryHubs?
     var radius:Int?
     var is_checked: Bool?
-    var latitude: String?
-    var longitude:String?
+    var latitude: Double?
+    var longitude:Double?
    // var radius: String?
     init(data:[String:Any]?) {
         self.id = String.getString(data?["id"])
@@ -120,8 +120,8 @@ class CountryHubs {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
-        self.latitude = data?["latitude"] as? String
-        self.longitude = data?["longitude"] as? String
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
         
     
     }
@@ -142,8 +142,8 @@ class CountryHubs {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
-        self.latitude = data?["latitude"] as? String
-        self.longitude = data?["longitude"] as? String
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
     }
     
     init(HubsFromServer data: [String:Any]?) {
@@ -163,8 +163,8 @@ class CountryHubs {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
-        self.latitude = data?["latitude"] as? String
-        self.longitude = data?["longitude"] as? String
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
     }
 
     // MARK:_ init for hUB Via city
@@ -189,8 +189,8 @@ class CountryHubs {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
-        self.latitude = data?["latitude"] as? String
-        self.longitude = data?["longitude"] as? String
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
     }
     init() { }
     
@@ -204,19 +204,22 @@ class HubsViaCity {
     var hubs_array:[CountryHubs]?
     var state_id:String?
     var state_name:String?
-    var longitude: String?
-    var latitude: String?
+    //var longitude: String?
+   // var latitude: String?
     var radius: Int?
     var image: String?
     var baseUrl: String?
     var state:CountryHubs?
+    
+    var latitude: Double?
+    var longitude:Double?
     init(data:[String:Any]?) {
         self.state_id = String.getString(data?["state_id"])
         self.state_name = String.getString(data?["state_name"])
         let hubsArray = kSharedInstance.getArray(withDictionary: data?["hubs_array"])
         self.hubs_array = hubsArray.map{CountryHubs(hub: $0)}
-        self.longitude = String.getString(data?["longitude"])
-        self.latitude = String.getString(data?["lattitude"])
+     //   self.longitude = String.getString(data?["longitude"])
+     //   self.latitude = String.getString(data?["lattitude"])
         self.radius = Int.getInt(data?["radius"])
         
         if let image = data?["image"] as? [String:Any]{
@@ -226,7 +229,8 @@ class HubsViaCity {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
-        
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
     }
     
     init(city data:[String:Any]?) {
@@ -242,6 +246,8 @@ class HubsViaCity {
         if let state = data?["state"] as? [String:Any]{
             self.state = CountryHubs.init(data: state)
         }
+        self.latitude = data?["latitude"] as? Double
+        self.longitude = data?["longitude"] as? Double
     }
     init() {}
 }

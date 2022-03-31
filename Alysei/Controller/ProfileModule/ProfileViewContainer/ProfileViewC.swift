@@ -346,8 +346,9 @@ class ProfileViewC: AlysieBaseViewC{
             //self.fetchVisiterProfileDetails(self.userID)
             
             if statusCode == 200 {
+                networkcurrentIndex = 1
                 let controller = self.pushViewController(withName: NetworkViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? NetworkViewC
-                controller?.currentIndex = 1
+                
             }
             
         }

@@ -251,6 +251,7 @@ struct APIUrl{
     static let kPost = "add/post"
     static let kWalkthroughScreenStart = "get/walkthroughscreens"
     static let kGetFeed = "get/activity/feed?page="
+    static let kNewsStatus = "get/news"
     static let kLikeApi = "post/like"
     static let kCommentLikeApi = "comment/like"
     static let kGetCountryStates = "get/mycountry/states"
@@ -516,6 +517,25 @@ struct AppConstants {
     static var AccountDataDownload : String {"Account Data Download".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var NothingRequestedYet : String {"Nothing requested yet.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var RequestData : String{"Request Data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUplaod: String{"Upload".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var isRequired: String{"is required".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeaturedProducts: String{"Add Featured Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var KAddFeaturedMenu : String{"Add Featured Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeaturedPackages: String{"Add Featured Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kAddFeatured: String{ "Add Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAllInformationIsRequired : String{"All Information is required".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpecialization : String {"Specialization".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBlogTitles : String { "Blog Titles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPublic: String {"Public".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPrivate: String{"Private".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFree: String{"Free".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPaid: String{"Paid".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kChooseDate: String{"Choose Date".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectEvent : String{"Select Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSelectRegistration : String{"Select Registration".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
     static var Select  : String { return "select".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

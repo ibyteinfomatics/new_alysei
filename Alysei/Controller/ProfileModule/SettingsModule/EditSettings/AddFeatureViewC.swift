@@ -47,6 +47,7 @@ class AddFeatureViewC: AlysieBaseViewC {
         btnUploadImage.isHidden = true
         
     }
+      btnUpload.setTitle(AppConstants.kUplaod, for: .normal)
     super.viewDidLoad()
     btnCamera.isHidden = true
     self.initialImageSetUp()
@@ -87,7 +88,7 @@ class AddFeatureViewC: AlysieBaseViewC {
 //    }
     for i in 1..<(currentArray.count ){
         if (currentArray[i].selectedValue == "" && currentArray[i].required == AppConstants.Yes){
-            showAlert(withMessage: "\(currentArray[i].productTitle ?? "") is required")
+            showAlert(withMessage: "\(currentArray[i].productTitle ?? "")" + AppConstants.isRequired)
             return
         }
         else if imgViewProduct.image == nil{
@@ -235,15 +236,15 @@ class AddFeatureViewC: AlysieBaseViewC {
         
         switch roleID {
     case .distributer1, .distributer2, .distributer3, .producer:
-        self.lblNavigationHeading.text = "Add Featured Products"
+            self.lblNavigationHeading.text = AppConstants.kAddFeaturedProducts
     case .restaurant:
-        self.lblNavigationHeading.text = "Add Featured Menu"
+            self.lblNavigationHeading.text = AppConstants.KAddFeaturedMenu
     case .travelAgencies:
-        self.lblNavigationHeading.text = "Add Featured Packages"
+            self.lblNavigationHeading.text = AppConstants.kAddFeaturedPackages
     case .voiceExperts:
-        self.lblNavigationHeading.text = "Add Featured"
+            self.lblNavigationHeading.text = AppConstants.kAddFeatured
         default:
-            self.lblNavigationHeading.text = "Add Featured"
+            self.lblNavigationHeading.text = AppConstants.kAddFeatured
         }
         
         
@@ -259,7 +260,7 @@ class AddFeatureViewC: AlysieBaseViewC {
       if item.type != AppConstants.File{
 //        if (item.selectedValue?.isEmpty == true){
         if ((item.required ?? "").lowercased() == "yes")  && (item.selectedValue?.isEmpty == true) {
-          return(false,"All Information is required")
+            return(false,AppConstants.kAllInformationIsRequired)
         }
       }
     }

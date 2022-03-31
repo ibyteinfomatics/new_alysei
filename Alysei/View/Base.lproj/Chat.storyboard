@@ -194,13 +194,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="hKk-pO-LEB" secondAttribute="bottom" constant="3" id="3MY-ct-kcc"/>
                                             <constraint firstItem="mXz-88-dTc" firstAttribute="centerY" secondItem="6cJ-HH-RjX" secondAttribute="centerY" id="CGE-w8-sXA"/>
                                             <constraint firstItem="hKk-pO-LEB" firstAttribute="leading" secondItem="6cJ-HH-RjX" secondAttribute="leading" constant="10" id="OyF-WG-Ota"/>
                                             <constraint firstItem="mXz-88-dTc" firstAttribute="leading" secondItem="hKk-pO-LEB" secondAttribute="trailing" constant="5" id="TB1-rt-4nm"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="oLg-KE-mci"/>
                                             <constraint firstAttribute="trailing" secondItem="mXz-88-dTc" secondAttribute="trailing" constant="5" id="p4a-cK-fb5"/>
                                             <constraint firstItem="hKk-pO-LEB" firstAttribute="top" secondItem="6cJ-HH-RjX" secondAttribute="top" constant="3" id="scV-PI-PhG"/>
+                                            <constraint firstItem="hKk-pO-LEB" firstAttribute="centerY" secondItem="6cJ-HH-RjX" secondAttribute="centerY" id="zpJ-e6-Bfa"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
@@ -230,10 +230,10 @@
                                 <constraints>
                                     <constraint firstItem="gXb-Po-3rh" firstAttribute="centerY" secondItem="2CN-F9-eCC" secondAttribute="centerY" id="04F-2V-Bcx"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="BQY-0Z-KAD"/>
+                                    <constraint firstItem="6cJ-HH-RjX" firstAttribute="centerY" secondItem="2CN-F9-eCC" secondAttribute="centerY" id="ItJ-Qb-PCA"/>
                                     <constraint firstAttribute="trailing" secondItem="gXb-Po-3rh" secondAttribute="trailing" constant="12" id="T1F-Ho-C0g"/>
                                     <constraint firstItem="6cJ-HH-RjX" firstAttribute="leading" secondItem="2CN-F9-eCC" secondAttribute="leading" constant="14" id="YpU-Vi-3na"/>
                                     <constraint firstItem="gXb-Po-3rh" firstAttribute="leading" secondItem="6cJ-HH-RjX" secondAttribute="trailing" constant="11" id="qN2-x4-akn"/>
-                                    <constraint firstItem="6cJ-HH-RjX" firstAttribute="top" secondItem="2CN-F9-eCC" secondAttribute="top" constant="15" id="rTD-EK-hod"/>
                                     <constraint firstAttribute="bottom" secondItem="6cJ-HH-RjX" secondAttribute="bottom" constant="15" id="wRp-8X-u7e"/>
                                 </constraints>
                             </view>
@@ -645,7 +645,7 @@
         <image name="camera_icon_colored" width="22" height="18.333333969116211"/>
         <image name="close_icon" width="18" height="18"/>
         <image name="cross_icon_black" width="22" height="22"/>
-        <image name="icons8_menu_vertical" width="4" height="14"/>
+        <image name="icons8_menu_vertical" width="5" height="17.666666030883789"/>
         <image name="icons8_send_letter1" width="43.840999603271484" height="43.840999603271484"/>
         <image name="image_placeholder" width="41" height="33"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>

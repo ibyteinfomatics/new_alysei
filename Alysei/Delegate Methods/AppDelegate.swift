@@ -344,14 +344,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func moveToNetwork(index:Int){
         
-        let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
+        /*let storyboard = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil)
         guard let nextvc = storyboard.instantiateViewController(withIdentifier: "NetworkViewC") as? NetworkViewC else { return }
-        nextvc.currentIndex = index
+        networkcurrentIndex = index
         nextvc.fromvc = .Notification
         let navigationController = UINavigationController(rootViewController: nextvc)
         navigationController.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.windows.first?.rootViewController = navigationController
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        UIApplication.shared.windows.first?.makeKeyAndVisible()*/
+        //self.inputViewController?.tabBarController?.selectedIndex = 3
+        
+        networkcurrentIndex = index
+        let tabBarController = self.window!.rootViewController as? UITabBarController
+        tabBarController?.selectedIndex = 3
+        
+        
         
     }
     

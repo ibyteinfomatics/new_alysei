@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbj-Ud-38e">
-                        <rect key="frame" x="10" y="5" width="295.5" height="222.5"/>
+                        <rect key="frame" x="10" y="5" width="295.5" height="227"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gvN-Ke-03t">
@@ -77,16 +77,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:22 Pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-of-q8C">
-                        <rect key="frame" x="245.5" y="208.5" width="45" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="FHN-aK-At0"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="12"/>
+                        <rect key="frame" x="238" y="208.5" width="52.5" height="16.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" name="darkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_double_tick" translatesAutoresizingMaskIntoConstraints="NO" id="59x-2k-D4G">
-                        <rect key="frame" x="228.5" y="212.5" width="12" height="6"/>
+                        <rect key="frame" x="221" y="214" width="12" height="6"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="12" id="K6D-9w-M1L"/>
                             <constraint firstAttribute="height" constant="6" id="aez-eL-S80"/>
@@ -168,7 +165,7 @@
                     <constraint firstItem="oPz-gL-VBJ" firstAttribute="trailing" secondItem="gvN-Ke-03t" secondAttribute="trailing" constant="-10" id="AaD-Fz-oBC"/>
                     <constraint firstItem="Ver-aF-MLf" firstAttribute="bottom" secondItem="gvN-Ke-03t" secondAttribute="bottom" id="Eu2-dZ-Aut"/>
                     <constraint firstItem="vCN-of-q8C" firstAttribute="top" secondItem="oPz-gL-VBJ" secondAttribute="bottom" constant="5" id="FOf-BV-cEx"/>
-                    <constraint firstItem="Wbj-Ud-38e" firstAttribute="bottom" secondItem="vCN-of-q8C" secondAttribute="bottom" constant="5" id="Kln-w9-hDJ"/>
+                    <constraint firstItem="Wbj-Ud-38e" firstAttribute="bottom" secondItem="vCN-of-q8C" secondAttribute="bottom" constant="7" id="Kln-w9-hDJ"/>
                     <constraint firstItem="gvN-Ke-03t" firstAttribute="leading" secondItem="Ver-aF-MLf" secondAttribute="trailing" id="MkX-p8-KJg"/>
                     <constraint firstItem="Wbj-Ud-38e" firstAttribute="top" secondItem="WX0-52-aHp" secondAttribute="top" constant="5" id="S9U-Kc-hFc"/>
                     <constraint firstItem="QbG-QZ-TAX" firstAttribute="trailing" secondItem="gvN-Ke-03t" secondAttribute="trailing" constant="-10" id="ToC-gI-CIx"/>
@@ -209,7 +206,7 @@
     </objects>
     <resources>
         <image name="chat_like-selected" width="17.5" height="15.5"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_double_tick" width="15.956999778747559" height="9.1840000152587891"/>
         <image name="image_placeholder" width="41" height="33"/>
         <image name="liked_icon" width="128" height="113"/>

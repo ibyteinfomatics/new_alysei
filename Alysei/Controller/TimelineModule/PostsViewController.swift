@@ -195,6 +195,11 @@ class PostsViewController: AlysieBaseViewC  {
                 }
             }
         }
+        
+        if segue.identifier == "showStory" {
+            _ = segue.destination as! StoryViewController
+        }
+        
     }
     @objc func openNotificationPlace(){
         guard let vc = UIStoryboard(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(identifier: "NotificationList") as? NotificationList else {return}
@@ -259,7 +264,10 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
             self.getUser?.removeAll()
             self.getUser = users
             
-            if self.getUser![0].notification ?? 0 > 0 {
+            if self.getUser![0].notification ?? 0 > 10 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = "10+"
+            }else if self.getUser![0].notification ?? 0 > 0 && self.getUser![0].notification ?? 0 <= 10 {
                 self.vwNotification.isHidden = false
                 self.lblNotificationCount.text = String.getString(self.getUser![0].notification)
             } else {
@@ -317,6 +325,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
@@ -340,6 +349,10 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                     let controller = self.pushViewController(withName: RestaurantDiscover.id(), fromStoryboard: StoryBoardConstants.kHome) as? RestaurantDiscover
                     self.tabBarController?.tabBar.isHidden = true
                     controller?.restId = "restaurants"
+                case 5:
+                    //self.performSegue(withIdentifier: "showStory", sender: self)
+                   _ = self.pushViewController(withName: StoryViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? StoryViewController
+                    
                 default:
                     print("Invalid")
                 }

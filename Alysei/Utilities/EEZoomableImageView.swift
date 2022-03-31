@@ -186,10 +186,16 @@ fileprivate class PinchZoomHandler {
                 return
             }
 
-            zoomImageView.frame = CGRect(x: zoomImageView.frame.origin.x,
-                                         y: zoomImageView.frame.origin.y,
-                                         width: min(max(initialRect.size.width * newScale, initialRect.size.width * minZoomScale), initialRect.size.width * maxZoomScale),
-                                         height: min(max(initialRect.size.height * newScale, initialRect.size.height * minZoomScale), initialRect.size.height * maxZoomScale))
+            zoomImageView.frame = CGRect(
+              x: zoomImageView.frame.origin.x,
+              y: zoomImageView.frame.origin.y,
+              width: min(
+                max(initialRect.size.width * newScale, initialRect.size.width * minZoomScale),
+                initialRect.size.width * maxZoomScale),
+              height: min(
+                max(initialRect.size.height * newScale, initialRect.size.height * minZoomScale),
+                initialRect.size.height * maxZoomScale)
+            )
             
             let centerXDif = lastTouchPoint.x - pinchGesture.location(in: sourceImageView).x
             let centerYDif = lastTouchPoint.y - pinchGesture.location(in: sourceImageView).y
@@ -211,6 +217,7 @@ fileprivate class PinchZoomHandler {
     
     private func resetZoom() {
         UIView.animate(withDuration: resetAnimationDuration, animations: {
+            
             self.zoomImageView.frame = self.initialRect
         }) { _ in
             self.zoomImageView.removeFromSuperview()

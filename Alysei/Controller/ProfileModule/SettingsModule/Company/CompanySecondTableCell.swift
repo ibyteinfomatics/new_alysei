@@ -14,6 +14,7 @@ class CompanySecondTableCell: UITableViewCell {
   @IBOutlet weak var btnUploadChange: UIButton!
   @IBOutlet weak var imgCheckMark: UIImageView!
     var btnUploadCallBack: ((Int) -> Void)? = nil
+    var btnViewCallBack: ((Int) -> Void)? = nil
   override func awakeFromNib() {
     super.awakeFromNib()
   }
@@ -63,5 +64,11 @@ class CompanySecondTableCell: UITableViewCell {
     
     @IBAction func btnUploadAction(_ sender: UIButton){
         self.btnUploadCallBack?(sender.tag)
+    }
+    
+    @IBAction func btnViewAction(_ sender: UIButton){
+        
+        self.btnViewCallBack?(sender.tag)
+        
     }
 }

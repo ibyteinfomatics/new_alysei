@@ -321,6 +321,11 @@
 		6B71C1F62786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F52786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift */; };
 		6B71C1F82786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F72786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift */; };
 		6B71C1FA27870E43009560B0 /* MarketplaceRegionTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71C1F927870E43009560B0 /* MarketplaceRegionTableVCell.swift */; };
+		6B72E16227F31D7500A698F9 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72E16127F31D7500A698F9 /* StoryViewController.swift */; };
+		6B72E16527F31F9D00A698F9 /* StoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72E16327F31F9D00A698F9 /* StoryBar.swift */; };
+		6B72E16627F31F9D00A698F9 /* StoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72E16427F31F9D00A698F9 /* StoryHandler.swift */; };
+		6B72E16927F31FFE00A698F9 /* InnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72E16727F31FFE00A698F9 /* InnerCell.swift */; };
+		6B72E16A27F31FFE00A698F9 /* OuterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72E16827F31FFE00A698F9 /* OuterCell.swift */; };
 		6B74268B2750E95A000B0900 /* StoreDescrptnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */; };
 		6B74268D2750E963000B0900 /* StoreDescTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */; };
 		6B76ADEB27105725002855CD /* AddReviewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B76ADEA27105725002855CD /* AddReviewRecipeViewController.swift */; };
@@ -1010,6 +1015,11 @@
 		6B71C1F52786F8E3009560B0 /* MarketplaceRecentlyTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceRecentlyTableVCell.swift; sourceTree = "<group>"; };
 		6B71C1F72786FE78009560B0 /* MarketplaceNewlyAddedTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceNewlyAddedTableVCell.swift; sourceTree = "<group>"; };
 		6B71C1F927870E43009560B0 /* MarketplaceRegionTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceRegionTableVCell.swift; sourceTree = "<group>"; };
+		6B72E16127F31D7500A698F9 /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		6B72E16327F31F9D00A698F9 /* StoryBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryBar.swift; sourceTree = "<group>"; };
+		6B72E16427F31F9D00A698F9 /* StoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryHandler.swift; sourceTree = "<group>"; };
+		6B72E16727F31FFE00A698F9 /* InnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerCell.swift; sourceTree = "<group>"; };
+		6B72E16827F31FFE00A698F9 /* OuterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OuterCell.swift; sourceTree = "<group>"; };
 		6B74268A2750E95A000B0900 /* StoreDescrptnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescrptnViewController.swift; sourceTree = "<group>"; };
 		6B74268C2750E963000B0900 /* StoreDescTopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDescTopTableViewCell.swift; sourceTree = "<group>"; };
 		6B74FFDF273E41C20063EAEC /* AlyseiDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlyseiDebug.entitlements; sourceTree = "<group>"; };
@@ -2581,6 +2591,11 @@
 				6B34E9A0273A35B500D63378 /* BlogDiscover.swift */,
 				6B34E9A2273A35E200D63378 /* RestaurantDiscover.swift */,
 				6B96B3A32743BC2F00D40CC2 /* ShowMapMarker.swift */,
+				6B72E16127F31D7500A698F9 /* StoryViewController.swift */,
+				6B72E16327F31F9D00A698F9 /* StoryBar.swift */,
+				6B72E16427F31F9D00A698F9 /* StoryHandler.swift */,
+				6B72E16727F31FFE00A698F9 /* InnerCell.swift */,
+				6B72E16827F31FFE00A698F9 /* OuterCell.swift */,
 			);
 			path = DiscoverFilter;
 			sourceTree = "<group>";
@@ -3448,6 +3463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B72E16227F31D7500A698F9 /* StoryViewController.swift in Sources */,
 				27A443A725AE03720002BAAC /* UIButtonCornerRadius.swift in Sources */,
 				6B3CB134274BC10D00D5E683 /* BlogTableViewCell.swift in Sources */,
 				C5EB38C426E9CAE400CCAC9E /* SearchByRegionCollectionViewCell.swift in Sources */,
@@ -3623,6 +3639,7 @@
 				C5989065262EAC1400507E84 /* ProfileCompletionModel.swift in Sources */,
 				C5197AF026E72BBF00C0894F /* SeemImageVC.swift in Sources */,
 				6B97B0982713EF13003B9E68 /* EditIngridientTableViewCell.swift in Sources */,
+				6B72E16627F31F9D00A698F9 /* StoryHandler.swift in Sources */,
 				6B06B13B272D126B009B741E /* SinglePostModel.swift in Sources */,
 				C5861B4426C6306A00AB35C1 /* MarketPlaceHomeCollectionVCell.swift in Sources */,
 				C52920442677575D000C044B /* ConnectionProductTypeRouter.swift in Sources */,
@@ -3751,6 +3768,7 @@
 				C5D6F7EC26B1829D006FFCDF /* HubsListVC.swift in Sources */,
 				279AB34925FF436C0061FCB3 /* StateListTable.swift in Sources */,
 				27D0FABB25CEE9FF00463FE0 /* SignUpTableCell.swift in Sources */,
+				6B72E16A27F31FFE00A698F9 /* OuterCell.swift in Sources */,
 				276E16B225DD8C5E00B17ACF /* MembersWalkthroughViewC.swift in Sources */,
 				A84EED0325B1A31300429B1D /* EditProfileSelectTableCell.swift in Sources */,
 				C5EB3CBF26E9CB5700CCAC9E /* ViewRecipeTableViewCell.swift in Sources */,
@@ -3764,6 +3782,7 @@
 				C507B8502668B9EE0014344A /* SelectMemberShipVC.swift in Sources */,
 				27A443AF25AE03720002BAAC /* MKMapViewExtended.swift in Sources */,
 				6B90663E26F89DFF00D24521 /* DietViewController.swift in Sources */,
+				6B72E16527F31F9D00A698F9 /* StoryBar.swift in Sources */,
 				6B3CB12E274BC10D00D5E683 /* PeopelTableViewCell.swift in Sources */,
 				C5B7B46E273000E500FE7897 /* MarketplaceHomeAdTableVC.swift in Sources */,
 				61A40A1B267378BF00D7D078 /* BasicConnectFlowPresenter.swift in Sources */,
@@ -3897,6 +3916,7 @@
 				C51C337F2664F5CA002EC412 /* MarketPlaceHomeVC.swift in Sources */,
 				C56C286C268465A90042A0A3 /* MyStoreProductModels.swift in Sources */,
 				27A443A625AE03720002BAAC /* UITableViewCellExtended.swift in Sources */,
+				6B72E16927F31FFE00A698F9 /* InnerCell.swift in Sources */,
 				2770AA5625AE1BBC00A2F10B /* AlysieBaseViewC.swift in Sources */,
 				6B360D01270AEA27006A48E4 /* ProducerDashboardViewController.swift in Sources */,
 				C56C2885268465F30042A0A3 /* MyStoreInquiriesRouter.swift in Sources */,

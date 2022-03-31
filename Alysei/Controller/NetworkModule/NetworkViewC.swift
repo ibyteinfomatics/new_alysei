@@ -7,11 +7,13 @@
 
 import UIKit
 
+var networkcurrentIndex: Int = 0
+
 class NetworkViewC: AlysieBaseViewC {
   
   //MARK: - Properties -
   
-  var currentIndex: Int = 0
+  
     var fromvc: FromVC?
   
   //MARK: - IBOutlet -
@@ -69,13 +71,13 @@ class NetworkViewC: AlysieBaseViewC {
         }
         
         
-        if currentIndex == 0 {
+        if networkcurrentIndex == 0 {
             callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
-        } else if currentIndex == 1 {
+        } else if networkcurrentIndex == 1 {
             callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
-        } else if currentIndex == 2 {
+        } else if networkcurrentIndex == 2 {
             callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
-        } else if currentIndex == 3 {
+        } else if networkcurrentIndex == 3 {
             callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
         }
         
@@ -105,13 +107,13 @@ class NetworkViewC: AlysieBaseViewC {
                 self.indexOfPageToRequest += 1
 
             // call your API for more data
-                if currentIndex == 0 {
+                if networkcurrentIndex == 0 {
                     callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
-                } else if currentIndex == 1 {
+                } else if networkcurrentIndex == 1 {
                     callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
-                } else if currentIndex == 2 {
+                } else if networkcurrentIndex == 2 {
                     callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
-                } else if currentIndex == 3 {
+                } else if networkcurrentIndex == 3 {
                     callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
                 }
 
@@ -128,11 +130,11 @@ class NetworkViewC: AlysieBaseViewC {
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-            if self.currentIndex == 0 {
+            if networkcurrentIndex == 0 {
                 self.callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\(1)")
-            } else if self.currentIndex == 1{
+            } else if networkcurrentIndex == 1{
                 self.callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(1)")
-            } else if self.currentIndex == 2{
+            } else if networkcurrentIndex == 2{
                 self.callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(1)")
             }
             
@@ -154,13 +156,13 @@ class NetworkViewC: AlysieBaseViewC {
         
         blankdata.isHidden = true
         
-        if currentIndex == 0 {
+        if networkcurrentIndex == 0 {
             blanktext.text = "You have no invitations right now!"
-        } else if currentIndex == 1 {
+        } else if networkcurrentIndex == 1 {
             blanktext.text = "You have no connections right now!"
-        } else if currentIndex == 2 {
+        } else if networkcurrentIndex == 2 {
             blanktext.text = "You have no pending invites right now!"
-        } else if currentIndex == 3 {
+        } else if networkcurrentIndex == 3 {
             blanktext.text = "You have no followers right now!"
         }
         
@@ -188,7 +190,7 @@ class NetworkViewC: AlysieBaseViewC {
                 self.logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
             }
             
-//            if self.currentIndex == 0 {
+//            if self.networkcurrentIndex == 0 {
 //                self.tblViewInviteNetwork.reloadData()
 //            } else {
                 self.tblViewNetwork.reloadData()
@@ -219,12 +221,12 @@ class NetworkViewC: AlysieBaseViewC {
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
     networkCategoryCollectionCell.viewNetwork.layer.cornerRadius = networkCategoryCollectionCell.viewNetwork.frame.height / 2
     networkCategoryCollectionCell.lblNetworkCount.isHidden = true
-    networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
+    networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: networkcurrentIndex)
     return networkCategoryCollectionCell
   }
     
     private func getNetworkTableCell(_ indexPath: IndexPath) -> UITableViewCell{
-        if currentIndex == 0{
+        if networkcurrentIndex == 0{
             guard  let networkCTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkConnectionTableViewCell.identifier()) as? NetworkConnectionTableViewCell else{return UITableViewCell()}
             networkCTableCell.img.layer.masksToBounds = false
             networkCTableCell.img.clipsToBounds = true
@@ -327,13 +329,13 @@ class NetworkViewC: AlysieBaseViewC {
             return networkCTableCell
         }else {
             guard let networkTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkTableCell.identifier()) as? NetworkTableCell else{return UITableViewCell()}
-            if currentIndex == 3 {
+            if networkcurrentIndex == 3 {
                 networkTableCell.remove.isHidden = true
-            }else if currentIndex == 1{
+            }else if networkcurrentIndex == 1{
                 networkTableCell.remove.isHidden = false
                 networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
                 networkTableCell.remove.layer.borderColor =  UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
-            }else if currentIndex == 2{
+            }else if networkcurrentIndex == 2{
                 networkTableCell.remove.isHidden = false
                 networkTableCell.remove.setTitleColor(.red, for: .normal)
                 networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
@@ -360,9 +362,9 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.name.text = arrConnection[indexPath.row].user?.restaurantName
                 }
 
-                if currentIndex == 3 {
+                if networkcurrentIndex == 3 {
                     networkTableCell.remove.isHidden = true
-                } else if currentIndex == 1{
+                } else if networkcurrentIndex == 1{
                     networkTableCell.remove.tag = indexPath.row
                     networkTableCell.remove.isHidden = false
                     networkTableCell.remove.setTitleColor( UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0), for: .normal)
@@ -374,7 +376,7 @@ class NetworkViewC: AlysieBaseViewC {
 
                     }
 
-                } else if currentIndex == 2{
+                } else if networkcurrentIndex == 2{
                     networkTableCell.remove.tag = indexPath.row
                     networkTableCell.remove.isHidden = false
                     networkTableCell.remove.setTitleColor(.red, for: .normal)
@@ -420,7 +422,7 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) -> Void {
         
-    self.currentIndex = indexPath.item
+    networkcurrentIndex = indexPath.item
     self.collectionViewNetworkCategory.reloadData()
     collectionViewNetworkCategory.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     if indexPath.row == 0 {
@@ -479,7 +481,7 @@ extension NetworkViewC: UITableViewDataSource, UITableViewDelegate{
         
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
-    if currentIndex == 0 {
+    if networkcurrentIndex == 0 {
         var height = 200
 
         if self.arrConnection[indexPath.row].reasonToConnect == "" {
