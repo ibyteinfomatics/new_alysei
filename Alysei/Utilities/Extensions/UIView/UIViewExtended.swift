@@ -120,12 +120,12 @@ extension UIView
         border.name = rectEdge.edgeIdentifier
         border.frame = rectEdge.edgeFrame(layerFrame: self.frame, borderWidth: thickness)
         border.backgroundColor = color.cgColor;
-       self.layer.shadowColor = color.cgColor
-       self.layer.shadowOffset = CGSize(width: 0,height: 3)
-       self.layer.shadowOpacity = 1
-       self.layer.shadowRadius = 1
-       self.layer.masksToBounds = false
-       self.layer.addSublayer(border)
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 0,height: 3)
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 1
+        self.layer.masksToBounds = false
+        self.layer.addSublayer(border)
     }
     
     
@@ -164,7 +164,7 @@ extension UIView
     layer.masksToBounds = false
     
     
-//    let shadowView = UIView(frame: self.navigationController!.navigationBar.frame)
+//      let shadowView = UIView(frame: self.navigationController!.navigationBar.frame)
 //      shadowView.backgroundColor = UIColor.whiteColor()
 //      shadowView.layer.masksToBounds = false
 //      shadowView.layer.shadowOpacity = 0.4 // your opacity

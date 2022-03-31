@@ -218,9 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let dicData = kSharedInstance.getDictionary(response.notification.request.content.userInfo)
         SKDeepHalper.shared.handelPushNotification(notiResponse: dicData, isTapped: true)
         print("Push notification received : ",dicData)
-        
-        
-        
+    
     }
     
     //MARK: - Public Methods -

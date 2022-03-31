@@ -79,7 +79,7 @@ class SelectRecipeCategaryViewController: UIViewController,UICollectionViewDeleg
 //            }
 //            else{
 
-                let imgUrl = (kImageBaseUrl + (self.newSearchModel?[indexPath.row].imageId?.imgUrl ?? ""))
+                let imgUrl = ((self.newSearchModel?[indexPath.row].imageId?.baseUrl ?? "") + (self.newSearchModel?[indexPath.row].imageId?.imgUrl ?? ""))
 
                 cell.img.setImage(withString: imgUrl)
                  cell.imgSelected.alpha  = 0
