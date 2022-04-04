@@ -31,6 +31,9 @@ class TripsFilterVC: AlysieBaseViewC {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var currencyLabel: UITextField!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var btnApplyFilter: UIButton!
     
     var intensityModel:IntensityModel?
     var intensityarrData = [String]()
@@ -67,6 +70,9 @@ class TripsFilterVC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
         setData()
         vw1.addBorder()
         vw2.addBorder()
@@ -102,37 +108,37 @@ class TripsFilterVC: AlysieBaseViewC {
     
     func setData(){
         if passSelectedCountry == "" || passSelectedCountry == nil {
-            countryLabel.text = "Country"
+            countryLabel.text = AppConstants.kCapCountry
         }else{
             countryLabel.text = passSelectedCountry
         }
         
         if passRegions == "" || passRegions == nil {
-            regionLabel.text = "Regions"
+            regionLabel.text = AppConstants.kRegions
         }else{
             regionLabel.text = passRegions
         }
         
         if passAdventure == "" || passAdventure == nil {
-            adventuresLabel.text = "Adventures"
+            adventuresLabel.text = AppConstants.kAdventures
         }else{
             adventuresLabel.text = passAdventure
         }
         
         if passDuration == "" || passDuration == nil {
-            durationLabel.text = "Duration"
+            durationLabel.text = AppConstants.kDuration
         }else{
             durationLabel.text = passDuration
         }
         
         if passIntensity == "" || passIntensity == nil {
-            intensityLabel.text = "Intensity"
+            intensityLabel.text = AppConstants.kIntensity
         }else{
             intensityLabel.text = passIntensity
         }
         
         if passprice == "" || passprice == nil {
-            currencyLabel.placeholder = "Price"
+            currencyLabel.placeholder = AppConstants.kPrice
         }else{
             currencyLabel.text = passprice
         }
@@ -147,39 +153,39 @@ class TripsFilterVC: AlysieBaseViewC {
     
     
     @IBAction func btnFilterAction(_ sender: UIButton){
-        if countryLabel.text == "Country" {
+        if countryLabel.text == AppConstants.kCapCountry {
             passSelectedCountry = ""
         }else{
             passSelectedCountry = countryLabel.text
         }
         
-        if regionLabel.text == "Regions"{
+        if regionLabel.text == AppConstants.kRegions{
             passRegions = ""
         }else{
             passRegions =  regionLabel.text
         }
         
         
-        if  adventuresLabel.text == "Adventures"{
+        if  adventuresLabel.text == AppConstants.kAdventures{
             passAdventure = ""
         }else{
             passAdventure = adventuresLabel.text
         }
         
-        if  durationLabel.text == "Duration"{
+        if  durationLabel.text == AppConstants.kDuration{
             passDuration = ""
         }else{
             passDuration = durationLabel.text
         }
         
-        if intensityLabel.text == "Intensity"{
+        if intensityLabel.text == AppConstants.kIntensity{
             passIntensity = ""
         }else{
             passIntensity = intensityLabel.text
         }
         
         if currencyLabel.text == ""{
-            currencyLabel.placeholder = "Price"
+            currencyLabel.placeholder = AppConstants.kPrice
             passprice = ""
         }else{
             passprice = currencyLabel.text
@@ -199,11 +205,11 @@ class TripsFilterVC: AlysieBaseViewC {
         regionId = ""
         adventureId = ""
         intensityId = ""
-        countryLabel.text = "Country"
-        adventuresLabel.text = "Adventures"
-        durationLabel.text = "Duration"
-        intensityLabel.text = "Intensity"
-        currencyLabel.placeholder = "Price"
+        countryLabel.text = AppConstants.kCapCountry
+        adventuresLabel.text = AppConstants.kAdventures
+        durationLabel.text = AppConstants.kDuration
+        intensityLabel.text = AppConstants.kIntensity
+        currencyLabel.placeholder = AppConstants.kPrice
         
         // self.clearfilterCallback?()
         // self.navigationController?.popViewController(animated: true)

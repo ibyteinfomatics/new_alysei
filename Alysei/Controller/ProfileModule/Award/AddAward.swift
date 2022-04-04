@@ -37,6 +37,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
     
     
     @IBOutlet weak var cameraText: UILabel!
+    @IBOutlet weak var lblHeader: UILabel!
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var uploadImage: UIImageView!
     @IBOutlet weak var imageView: UIView!
@@ -61,6 +62,15 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
         property()
+        lblHeader.text = AppConstants.kAddAward
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        eventLabel.text = AppConstants.kNameOfCompetitionEvent
+        productLabel.text = AppConstants.kNameOfWinningProduct
+        placeLabel.text = AppConstants.kNameOfMedalPlaceReceived
+        placeNameTxf.placeholder = AppConstants.kNameOfMedalPlaceReceived
+        urlLabel.text = AppConstants.kCompetitionURL
+        urlNameTxf.placeholder = AppConstants.kCompetitionURL
+       
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddAward.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -133,11 +143,11 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         if eventName != nil {
             
             if eventNameTxf.text == "" {
-                alert(msg: "Please enter competition name!")
+                alert(msg: AlertMessage.kPleaseEnterCompetitionURL)
             } else if productNameTxf.text == "" {
-                alert(msg: "Please enter winning product name!")
+                alert(msg: AlertMessage.kPleaseEnterWinningProductName)
             } else if placeNameTxf.text == "" {
-                alert(msg: "Please enter medal name!")
+                alert(msg: AlertMessage.kPleaseEnterMedalName)
             } /*else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
             } else if String.getString(self.urlNameTxf.text).isURL() == false{
@@ -149,13 +159,13 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         } else {
             
             if self.uploadImageArray.count == 0 {
-                alert(msg: "Please upload competition image!")
+                alert(msg: AlertMessage.kPleasUploadCompImage)
             } else if eventNameTxf.text == "" {
-                alert(msg: "Please enter competition name!")
+                alert(msg: AlertMessage.kPleasUploadCompName)
             } else if productNameTxf.text == "" {
-                alert(msg: "Please enter winning product name!")
+                alert(msg: AlertMessage.kPleaseEnterWinnigProdutName)
             } else if placeNameTxf.text == "" {
-                alert(msg: "Please enter medal name!")
+                alert(msg: AlertMessage.kPleaseEnterMedalName)
             } /*else if urlNameTxf.text == "" {
                 alert(msg: "Please enter competition URL!")
             } else if String.getString(self.urlNameTxf.text).isURL() == false{
@@ -324,7 +334,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             self.eventLabel.isHidden = false
             self.eventLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-            self.eventNameTxf.placeholder = "Name of Competition / Event"
+            self.eventNameTxf.placeholder = AppConstants.kNameOfCompetitionEvent
             self.eventView.isHidden = false
             eventView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            
@@ -334,7 +344,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             self.productLabel.isHidden = false
             self.productLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-            self.productNameTxf.placeholder = "Name of Winning Product"
+            self.productNameTxf.placeholder = AppConstants.kNameOfWinningProduct
             self.productView.isHidden = false
             productView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            
@@ -344,7 +354,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             self.urlLabel.isHidden = false
             self.urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-            self.urlNameTxf.placeholder = "Competition URL"
+            self.urlNameTxf.placeholder = AppConstants.kCompetitionURL
             self.urlView.isHidden = false
             urlView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            

@@ -16,6 +16,9 @@ class BlogFilterVC: AlysieBaseViewC {
     
     @IBOutlet weak var vw1: UIView!
     @IBOutlet weak var vw2: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var btnApplyFilter: UIButton!
     
     var passSpecialization: String?
     var passBlogTitle: String?
@@ -32,6 +35,9 @@ class BlogFilterVC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
         vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()

@@ -18,6 +18,13 @@ class EventFilterVC: UIViewController {
     @IBOutlet weak var lblRegistrationType: UILabel!
     @IBOutlet weak var lblRestType: UILabel!
     @IBOutlet weak var dateTxf: UITextField!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var lblTitle1: UILabel!
+    @IBOutlet weak var lblTitle2: UILabel!
+    @IBOutlet weak var lblTitle3: UILabel!
+    @IBOutlet weak var lblTitle4: UILabel!
+    @IBOutlet weak var btnApplyFilter: UIButton!
     var toolBar = UIToolbar()
     let datePicker = UIDatePicker()
     var dataDropDown = DropDown()
@@ -42,7 +49,13 @@ class EventFilterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDataAndUI()
-        
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
+        lblTitle1.text = AppConstants.kSelectADate
+        lblTitle2.text = AppConstants.kEventType
+        lblTitle3.text = AppConstants.kRegistrationType
+        lblTitle4.text = AppConstants.kRestaurantType
 //        let dateTap = UITapGestureRecognizer(target: self, action: #selector(opendatepicker))
 //        self.vw1.addGestureRecognizer(dateTap)
         
@@ -123,7 +136,7 @@ class EventFilterVC: UIViewController {
         dateTxf.text = AppConstants.kChooseDate
         lblEventType.text = AppConstants.kSelectEvent
         lblRegistrationType.text = AppConstants.kSelectRegistration
-        lblRestType.text = "Select Restaurant"
+        lblRestType.text = AppConstants.kSelectRestType
         passRestId = ""
         dateget = ""
         eventType = ""

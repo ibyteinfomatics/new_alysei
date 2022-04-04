@@ -111,7 +111,19 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         self.property()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
             view.addGestureRecognizer(tap)
-        
+        headerText.text = AppConstants.kCreateTripsPackages
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        tripNameLabel.text = AppConstants.kTripNamePackageName
+        travelAgencyLabel.text = AppConstants.kTravelAgency
+        countryLabel.text = AppConstants.kCapCountry
+        countryTxf.text = AppConstants.kCapCountry
+        regionLabel.text = AppConstants.kRegion
+        adventuresLabel.text = AppConstants.kAdventures
+        durationLabel.text = AppConstants.kDuration
+        intensityLabel.text = AppConstants.kIntensity
+        websiteLabel.text = MarketPlaceConstant.kCWebsite
+        priceLabel.text = AppConstants.kPrice
+        descriptionLabel.text = AppConstants.kDescription
         travelAgencyTxf.text = agency
         websiteTxf.text = website
         descriptionTextView.delegate = self
@@ -193,7 +205,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
         if typeofpage == "read" {
             
-            headerText.text = "Trips/Packages"
+            headerText.text = AppConstants.kTripsPackages
             drop1.isHidden = true
             drop2.isHidden = true
             drop3.isHidden = true
@@ -270,21 +282,21 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         if tripname != nil {
             
             if self.tripNameTxf.text == "" {
-                alert(msg: "Please enter trip name!")
+                alert(msg: AlertMessage.kPleaseEnterTripName)
             } else if self.countryTxf.text == "" {
-                alert(msg: "Please select country!")
+                alert(msg: AlertMessage.kPleaseSelectCountry)
             } else if self.regionTxf.text == "" {
-                alert(msg: "Please select region!")
+                alert(msg: AlertMessage.kPleaseSelectRegion)
             } else if self.adventuresTxf.text == "" {
-                alert(msg: "Please select adventures!")
+                alert(msg: AlertMessage.kPleaseSelectAdventures)
             }else if self.durationTxf.text == "" {
-                alert(msg: "Please select duration!")
+                alert(msg: AlertMessage.kPleaseSelectDuration)
             }else if self.intensityTxf.text == "" {
-                alert(msg: "Please select intensity!")
+                alert(msg: AlertMessage.kPleaseSelectIntensity)
             }else if self.priceTxf.text == "" {
-                alert(msg: "Please enter price!")
+                alert(msg: AlertMessage.kPleaseSelectPrice)
             } else if self.descriptionTextView.text == "" {
-                alert(msg: "Please enter descriotion!")
+                alert(msg: AlertMessage.kPleaseEnterDescription)
             } else {
                 updateTripApi()
             }
@@ -292,23 +304,23 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         } else {
             
             if self.uploadImageArray.count == 0 {
-                alert(msg: "Please upload travel image!")
+                alert(msg: AlertMessage.kPleaseUploadTravelImage)
             } else if self.tripNameTxf.text == "" {
-                alert(msg: "Please enter trip name!")
+                alert(msg: AlertMessage.kPleaseEnterTripName)
             } else if self.countryTxf.text == "" {
-                alert(msg: "Please select country!")
+                alert(msg: AlertMessage.kPleaseSelectCountry)
             } else if self.regionTxf.text == "" {
-                alert(msg: "Please select region!")
+                alert(msg: AlertMessage.kPleaseSelectRegion)
             } else if self.adventuresTxf.text == "" {
-                alert(msg: "Please select adventures!")
+                alert(msg: AlertMessage.kPleaseSelectAdventures)
             }else if self.durationTxf.text == "" {
-                alert(msg: "Please select duration!")
+                alert(msg: AlertMessage.kPleaseSelectDuration)
             }else if self.intensityTxf.text == "" {
-                alert(msg: "Please select intensity!")
+                alert(msg: AlertMessage.kPleaseSelectIntensity)
             }else if self.priceTxf.text == "" {
-                alert(msg: "Please enter price!")
+                alert(msg: AlertMessage.kPleaseSelectPrice)
             } else if self.descriptionTextView.text == "" {
-                alert(msg: "Please enter descriotion!")
+                alert(msg: AlertMessage.kPleaseEnterDescription)
             } else {
                 createTripApi()
             }
@@ -443,7 +455,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             
             regionTxf.text = ""
             self.regionLabel.isHidden = true
-            self.regionTxf.placeholder = "Region"
+            self.regionTxf.placeholder = AppConstants.kRegion
             self.regionView1.isHidden = true
             regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
@@ -819,7 +831,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         self.adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
        if textView == self.descriptionTextView{
         
-        if self.descriptionTextView.text == "Description" {
+           if self.descriptionTextView.text == AppConstants.kDescription {
             self.descriptionTextView.text = nil
         }
         
@@ -844,7 +856,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.tripNameLabel.isHidden = false
             self.tripNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.tripNameTxf.placeholder = "Trip Name/Package Name"
+            self.tripNameTxf.placeholder = AppConstants.kTripNamePackageName
                 self.tripNameView1.isHidden = false
                 tripNameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             self.tripNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
@@ -858,7 +870,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.travelAgencyLabel.isHidden = false
             self.travelAgencyLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.travelAgencyTxf.placeholder = "Travel Agency"
+            self.travelAgencyTxf.placeholder = AppConstants.kTravelAgency
                 self.travelAgencyView1.isHidden = false
                 travelAgencyView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             self.travelAgencyLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
@@ -869,7 +881,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            // if self.countryTxf.text == ""{
                 self.countryLabel.isHidden = false
             self.countryLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-                self.countryTxf.placeholder = "Travel Agency"
+            self.countryTxf.placeholder = AppConstants.kTravelAgency
                 self.countryView1.isHidden = false
                 countryView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //self.countryLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
@@ -883,7 +895,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.regionLabel.isHidden = false
             self.regionLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.regionTxf.placeholder = "region"
+            self.regionTxf.placeholder = AppConstants.kRegion
                 self.regionView1.isHidden = false
                 regionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
          //   self.regionLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
@@ -897,7 +909,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.adventuresLabel.isHidden = false
             self.adventuresLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.adventuresTxf.placeholder = "Adventures"
+            self.adventuresTxf.placeholder = AppConstants.kAdventures
                 self.adventuresView1.isHidden = false
                 adventuresView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            // self.adventuresLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
@@ -911,7 +923,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.durationLabel.isHidden = false
             self.durationLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.durationTxf.placeholder = "Duration"
+            self.durationTxf.placeholder = AppConstants.kDuration
                 self.durationView1.isHidden = false
                 durationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -925,7 +937,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
            // {
             self.intensityLabel.isHidden = false
             self.intensityLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.intensityTxf.placeholder = "Intensity"
+            self.intensityTxf.placeholder = AppConstants.kIntensity
                 self.intensityView1.isHidden = false
                 intensityView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -939,7 +951,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.websiteLabel.isHidden = false
             self.websiteLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.websiteTxf.placeholder = "Website"
+            self.websiteTxf.placeholder = MarketPlaceConstant.kCWebsite
                 self.websiteView1.isHidden = false
                 websiteView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -952,7 +964,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             //{
             self.priceLabel.isHidden = false
             self.priceLabel.textColor = UIColor.darkGray.withAlphaComponent(0.5)
-            self.priceTxf.placeholder = "Price"
+            self.priceTxf.placeholder = AppConstants.kPrice
                 self.priceView1.isHidden = false
                 priceView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -993,7 +1005,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         priceLabel.isHidden = true
 
         
-        descriptionTextView.text = "Description"
+        descriptionTextView.text = AppConstants.kDescription
         descriptionTextView.textColor = .lightGray
         descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
         

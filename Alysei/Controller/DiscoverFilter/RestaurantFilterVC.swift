@@ -17,6 +17,9 @@ class RestaurantFilterVC: AlysieBaseViewC {
     
     @IBOutlet weak var vw1: UIView!
     @IBOutlet weak var vw2: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var btnApplyFilter: UIButton!
     
     var passHubs: String?
     var passRestType:String?
@@ -36,7 +39,9 @@ class RestaurantFilterVC: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
         vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()
@@ -54,13 +59,13 @@ class RestaurantFilterVC: AlysieBaseViewC {
     
     func setData(){
         if self.passHubs == "" || self.passHubs == nil{
-            self.lblhubs.text = "Hubs"
+            self.lblhubs.text = AppConstants.Hubs
         }else{
             self.passHubs = self.lblhubs.text
         }
         
         if self.passRestType == "" || self.passRestType == nil{
-            self.lblreatau.text = "Restaurant Type"
+            self.lblreatau.text = AppConstants.kRegistrationType    
         }else{
             self.passRestType = self.lblreatau.text
         }

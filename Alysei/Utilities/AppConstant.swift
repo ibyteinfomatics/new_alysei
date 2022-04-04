@@ -152,7 +152,35 @@ struct  AlertMessage{
     static var kEnterDescriptionUrl : String { return "Please enter Description or Url.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kPleaseSelectAtleastOneState : String {return "Please select atleast one state".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-  
+    static var kPleaseEnterEvent: String{"Please enter event!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterDate : String {"Please enter date!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterTime : String{"Please enter time!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterDescription : String{"Please enter description!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectEventType : String{"Please select event type!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectRegistrationType : String{"Please select registration type!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterBookingUrl : String{"Please enter booking url!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterValidBookingUrl : String{"Please enter valid booking url!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseUploadEventImage : String{"Please upload event image!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterTitle : String {"Please enter title!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseUploadBlogImage : String {"Please upload blog image!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kPleaseEnterTripName : String {"Please enter trip name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectCountry : String {"Please select country!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectRegion : String {"Please select region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectAdventures : String {"Please select adventures!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectDuration : String {"Please select duration!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectIntensity: String {"Please select intensity!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectPrice: String {"Please enter price!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseUploadTravelImage: String {"Please upload travel image!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kPleaseEnterCompetitionURL : String { "Please enter competition name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterWinningProductName : String {"Please enter winning product name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterMedalName : String {"Please enter medal name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleasUploadCompImage : String {"Please upload competition image!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleasUploadCompName : String {"Please enter competition name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseEnterWinnigProdutName : String {"Please enter winning product name!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
     
 }
 struct LabelandTextFieldTitle{
@@ -466,6 +494,30 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var kPrice: String {"Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kPosts: String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSharePost: String{"Share Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEditPost: String{"Edit Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDeletePost: String{"Delete Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReportAction: String{"Report Action".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
+    static var kPostUnavailable: String {"Post Unavailable".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kAddAward: String {"Add Award".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateTripsPackages : String {"Create Trips/Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTripNamePackageName : String {"Trip Name/Package Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTripsPackages : String {"Trips/Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNameOfCompetitionEvent: String{"Name of Competition / Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTravelAgency: String {"Travel Agency".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNameOfWinningProduct: String{"Name of winning Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNameOfMedalPlaceReceived : String {"Name of Medal / place received".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCompetitionURL : String {"Competition URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+  
+    
+   
+    static var Publish: String {return "Publish".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Company: String {return "Company".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Privacy: String{return "Privacy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var CapPassword: String{return "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -642,8 +694,31 @@ struct AppConstants {
     static var kYourProfileNotReviewed : String {return "Your profile is not reviewed from admin".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kCompleteProfileStartPosting: String {return "Complete your profile in order to start Posting".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    //MARK: Filter Screen
     
-   
+    static var kSelectADate: String{return "Select a date".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEventType: String{return "Event type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRegistrationType: String{return "Registration type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRestaurantType: String{return "Restaurant type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCapCountry: String{"Country".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRegions: String{"Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRegion: String{"Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAdventures: String{"Adventures".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDuration: String{"Duration".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kIntensity : String{"Intensity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    //static var kPrice: String{"Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateEvent: String{"Create Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEventName: String{"Event Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kHostName: String{"Host Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDate: String{"Date".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTime: String{"Time".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEventCapType: String{"Event Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRegistrationCapType : String{"Registration Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBookingUrl: String{"Booking Url".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCreateBlog : String{"Create Blog".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBlogTitle: String{"Blog Title".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBlog: String{"Blog".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     
     //MARK: Validation field type(check)
     static var kzip_postal_code = "zip_postal_code"
@@ -707,41 +782,42 @@ struct MarketPlaceConstant{
     static var kNoProducer : String { "No producer found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSpaceReview : String { " Reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSpacereview : String { " reviews".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSendInquiry : String { "Send Inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kBlocked : String { "Blocked".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kFullName : String { "Full Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kEmail : String { "Email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kPhoneNumber : String { "Phone Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kMessage : String { "Message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSendInquiry : String {"Send Inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kBlocked : String {"Blocked".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFullName : String {"Full Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEmail : String {"Email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPhoneNumber : String {"Phone Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMessage : String {"Message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Home Screen
-    static var kMarketPlace : String {  "MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kRecipe : String {  "Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var kPosts : String {  "Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-static var  kNotifications : String {  "Notifications".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kGotoMyStore : String { return  "Go to my store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMarketPlace : String {"MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kRecipe : String {"Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kPosts : String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var  kNotifications : String {"Notifications".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kGotoMyStore : String { return "Go to my store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kCreateMyStore : String {  "Create your store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiscoverMarketplace : String { return "Discover Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
- static var kProducerStore  : String {  "Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+ static var kProducerStore  : String {"Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kConservationMethod : String { "Conservation Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kConservationMethod : String {"Conservation Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kItalianRegion : String {  "Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kItalianRegion : String {"Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kCategories : String { "Categories".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kProductProperties : String {  "Product Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kFDACertified : String {  "FDA Certified".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kFDACertified : String {"FDA Certified".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kMyFavourite : String {  "My Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kMyFavourite : String {"My Favourite".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kMostPospular : String {  "Most Popular".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kMostPospular : String {"Most Popular".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kPromotions : String { "Promotions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+static var kPromotions : String {"Promotions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-static var kRecentlyAddedProject : String {  "Recently Added Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-
+static var kRecentlyAddedProject : String {"Recently Added Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSomeErrorOccured : String {"Some error occured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
 static var kViewAll : String {  "View all".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kNewlyAddedStore : String {"Newly Added Stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kSearchItalianRegion : String {"Search by Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -807,7 +883,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kDescription  : String {  "Description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCWebsite  : String {  "Website".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kStoreRegion  : String {   "Store Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kLocation  : String {  "Location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLocation  : String {"Location".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
     static var kExceedMaximumLimit  : String {  "Exceed Maximum Number Of Selection".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOk  : String {  "Ok".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1317,8 +1393,8 @@ struct RecipeConstants{
     static var kNoIngredientAdded : String {  "  No Ingridients Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNoToolAdded : String {  "  No Tools Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNoStepAdded : String {  "  No Step Added yet!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSaveRecipe : String {  "Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSave : String {  "Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaveRecipe : String {"Save Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSave : String {"Save".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEditRecipe : String {  "Edit Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNoTools : String {  "No Tools found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNoIngredient : String {  "No Ingredients found".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1460,6 +1536,7 @@ struct APIConstants {
     static let kCountryId = "country_id"
     static let kStateId = "state_id"
     static let kCountry = "country"
+   
     static let kState = "state"
     static let kCity = "city"
     static let kFeaturedTypeTitle = "featured_listing_type_title"

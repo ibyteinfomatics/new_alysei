@@ -147,6 +147,66 @@
 "Please enter more than 3 character." = "Inserisci più di 3 caratteri.";
 "Please enter Description or Url." = "Inserisci una descrizione o il sito web.";
 
+//MARK: Filter Screen
+"Select a date" = "Select a date";
+"Event type" = "Event type";
+"Registration type" = "Registration type";
+"Restaurant type" = "Restaurant type";
+"Country" = "Country";
+"Regions" = "Regions";
+"Adventures" ="Adventures";
+"Duration" = "Duration";
+"Intensity" = "Intensity";
+"Price" = "Price";
+"Create Event" = "Create Event";
+"Event Name" = "Event Name";
+"Host Name" = "Host Name";
+"Date" = "Date";
+"Time" = "Time";
+"Event Type" = "Event Type";
+"Registration Type" = "Registration Type";
+"Booking Url" = "Booking Url";
+"Please enter event!"= "Please enter event!";
+"Please enter date!" = "Please enter date!";
+"Please enter time!" = "Please enter time!";
+"Please enter description!" = "Please enter description!";
+"Please select event type!" = "Please select event type!";
+"Please select registration type!" = "Please select registration type!";
+"Please enter booking url!" = "Please enter booking url!";
+"Please enter valid booking url!" =  "Please enter valid booking url!";
+"Please upload event image!" = "Please upload event image!";
+"Create Blog" = "Create Blog";
+"Blog Title" = "Blog Title";
+"Blog" = "Blog";
+"Please enter title!"=  "Please enter title!";
+"Please upload blog image!" = "Please upload blog image!";
+"Publish" ="Publish";
+"Create Trips/Packages" = "Create Trips/Packages";
+"Trip Name/Package Name" = "Trip Name/Package Name";
+"Travel Agency" = "Travel Agency";
+"Price" = "Price";
+"Trips/Packages" = "Trips/Packages";
+"Please select country!" = "Please select country!";
+"Please select region" = "Please select region";
+"Please select adventures!" = "Please select adventures!";
+"Please select duration!" = "Please select duration!";
+"Please select intensity!" = "Please select intensity!";
+"Please enter price!" = "Please enter price!";
+"Please upload travel image!" = "Please upload travel image!";
+"Please enter trip name!" = "Please enter trip name!";
+"Add Award" = "Add Award";
+"Name of Competition / Event" = "Name of Competition / Event";
+"Name of winning Product" = "Name of winning Product";
+"Name of Medal / place received" = "Name of Medal / place received";
+"Competition URL" = "Competition URL";
+"Please enter winning product name!" = "Please enter winning product name!";
+"Please enter competition name!" = "Please enter competition name!";
+"Please enter medal name!" = "Please enter medal name!";
+"Please upload competition image!" = "Please upload competition image!";
+"Please enter competition name!" = "Please enter competition name!";
+"Please enter winning product name!" = "Please enter winning product name!";
+"Please enter medal name!" ="Please enter medal name!";
+
 
 //MARK: RECIPE HOME SCREEN
 "Create Recipe" = "Crea la tua Ricetta";
@@ -408,6 +468,10 @@
 "Private Messages" = "Private Messages";
 "Email when someone requests to follow me" = "Email when someone requests to follow me";
 "Receive weekly updates" = "Receive weekly updates";
+"Share Post" = "Share Post";
+"Edit Post" = "Edit Post";
+"Delete Post" = "Delete Post";
+"Report Action" = "Report Action";
 
 //MARK: MARKETPLACE
 
@@ -701,7 +765,10 @@
 "See All" = "Vedi tutto";
 "All Products" = "Tutti i prodotti";
 
-
+//MARK: Home
+"Posts" = "Posts";
+"Post Unavailable" "Post Unavailable";
+"Some error occured" = "Some error occured";
 //MARK: Membership Screen
 "Review" = "Verifica";
 "Your account has been reviewed and approved by our staff" = "Il tuo account è stato verificato e approvato dal team Alysei";

@@ -12,6 +12,7 @@ class PhotosPost: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
     @IBOutlet weak var uiview: UIView!
+    @IBOutlet weak var lblHeader: UILabel!
     
     var pageNumber = 1
     var visitorId = ""
@@ -27,6 +28,7 @@ class PhotosPost: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         fromMenuTab = "PhotosPost"
+        lblHeader.text = AppConstants.kPosts
         uiview.drawBottomShadow()
         self.userPost.rowHeight = UITableView.automaticDimension
         self.userPost.tableFooterView = UIView()
@@ -141,7 +143,7 @@ extension PhotosPost {
                 
             }
             case 409:
-                self.showAlert(withMessage: "Post Unavailable") {
+                self.showAlert(withMessage: AppConstants.kPostUnavailable) {
                     if self.fromvc == .Notification {
                         kSharedAppDelegate.pushToTabBarViewC()
                     } else {
@@ -307,7 +309,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 cell.follower.isHidden = true
             } else {
                 cell.follower.isHidden = false
-                cell.follower.text = "\(data?.follower_count ?? 0) Followers"
+                cell.follower.text = "\(data?.follower_count ?? 0)" + " " +  AppConstants.Followers
             }
             cell.lblPostDesc.text = data?.body
             cell.lblPostLikeCount.text = "\(data?.likeCount ?? 0)"
@@ -440,23 +442,23 @@ extension PhotosPost: ShareEditMenuProtocol {
         }
         let actionSheet = UIAlertController(style: .actionSheet)
 
-        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+        let shareAction = UIAlertAction(title: AppConstants.kSharePost, style: .default) { action in
             self.sharePost(postID)
         }
 
-        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+        let editPostAction = UIAlertAction(title: AppConstants.kEditPost, style: .default) { action in
             self.editPost(postID)
         }
 
-        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+        let deletePost = UIAlertAction(title: AppConstants.kDeletePost, style: .destructive) { action in
             self.deletePost(postID)
         }
 
 
-        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        let reportAction = UIAlertAction(title: AppConstants.kReportAction, style: .destructive) { action in
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel) { action in
 
         }
 
@@ -497,7 +499,7 @@ extension PhotosPost: ShareEditMenuProtocol {
             urlRequest.httpBody = body
             WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
                 if (statusCode ?? 0) >= 400 {
-                    self.showAlert(withMessage: "Some error occured")
+                    self.showAlert(withMessage: MarketPlaceConstant.kSomeErrorOccured)
                 } else {
                     //self.callNewFeedApi(1)
                     self.fetchPostWithPhotsFromServer(1, visitorId: self.visitorId)

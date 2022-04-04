@@ -79,8 +79,8 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     var eventPhoto: UIImage?
     
     var dataDropDown = DropDown()
-    var arrData = ["Public","Private"]
-    var arrDataResgistration = ["Free","Paid"]
+    var arrData = [AppConstants.kPublic,AppConstants.kPrivate]
+    var arrDataResgistration = [AppConstants.kFree,AppConstants.kPaid]
     
     // camera image
     var ypImages = [YPMediaItem]()
@@ -95,6 +95,20 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerText.text = AppConstants.kCreateEvent
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        eventNameLabel.text = AppConstants.kEventName
+        hostNameLabel.text = AppConstants.kHostName
+        locationNameLabel.text = MarketPlaceConstant.kLocation
+        dateLabel.text = AppConstants.kDate
+        timeLabel.text = AppConstants.kTime
+        descriptionLabel.text = MarketPlaceConstant.kDescription
+        websiteLabel.text = MarketPlaceConstant.kCWebsite
+        eventLabel.text = AppConstants.kEventCapType
+        registrationLabel.text = AppConstants.kRegistrationCapType
+        vwHeadBooking.text = AppConstants.kBookingUrl
+        
+        
         self.property()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -246,21 +260,21 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         if eventname != nil {
            
             if eventNameTxf.text == "" {
-                alert(msg: "Please enter event!")
+                alert(msg: AlertMessage.kPleaseEnterEvent)
             } else if dateTxf.text == "" {
-                alert(msg: "Please enter date!")
+                alert(msg: AlertMessage.kPleaseEnterDate)
             } else if timeTxf.text == "" {
-                alert(msg: "Please enter time!")
+                alert(msg: AlertMessage.kPleaseEnterTime)
             } else if descriptionTextView.text == "" {
-                alert(msg: "Please enter description!")
+                alert(msg: AlertMessage.kPleaseEnterDescription)
             } else if eventTxf.text == "" {
-                alert(msg: "Please select event type!")
+                alert(msg: AlertMessage.kPleaseSelectEventType)
             } else if registrationTxf.text == "" {
-                alert(msg: "Please select registration type!")
+                alert(msg: AlertMessage.kPleaseSelectRegistrationType)
             } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
-                alert(msg: "Please enter booking url!")
+                alert(msg: AlertMessage.kPleaseEnterBookingUrl)
             } else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
-                alert(msg: "Please enter valid booking url!")
+                alert(msg:AlertMessage.kPleaseEnterValidBookingUrl)
             } else {
                 updateEventApi()
             }
@@ -269,21 +283,21 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             
             
             if self.uploadImageArray.count == 0 {
-                alert(msg: "Please upload event image!")
+                alert(msg: AlertMessage.kPleaseUploadEventImage)
             } else if eventNameTxf.text == "" {
-                alert(msg: "Please enter event!")
+                alert(msg: AlertMessage.kPleaseEnterEvent)
             } else if dateTxf.text == "" {
-                alert(msg: "Please enter date!")
+                alert(msg: AlertMessage.kPleaseEnterDate)
             } else if timeTxf.text == "" {
-                alert(msg: "Please enter time!")
+                alert(msg: AlertMessage.kPleaseEnterTime)
             } else if descriptionTextView.text == "" {
-                alert(msg: "Please enter description!")
+                alert(msg: AlertMessage.kPleaseEnterDescription)
             } else if eventTxf.text == "" {
-                alert(msg: "Please select event type!")
+                alert(msg:AlertMessage.kPleaseSelectEventType)
             } else if registrationTxf.text == "" {
-                alert(msg: "Please select registration type!")
+                alert(msg: AlertMessage.kPleaseSelectRegistrationType)
             } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
-                alert(msg: "Please enter booking url!")
+                alert(msg: AlertMessage.kPleaseEnterBookingUrl)
             } else {
                 createEventApi()
             }
@@ -587,7 +601,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.eventNameLabel.isHidden = false
              //   self.eventNameLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.eventNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.eventNameTxf.placeholder = "Event Name"
+            self.eventNameTxf.placeholder = AppConstants.kEventName
                 self.eventNameView.isHidden = false
                 nameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //}
@@ -601,7 +615,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.vwHeadBooking.isHidden = false
               //  self.vwHeadBooking.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.vwHeadBooking.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.bookingTxf.placeholder = "Booking Url"
+            self.bookingTxf.placeholder = AppConstants.kBookingUrl
                 self.bookingUrlView.isHidden = false
             bookingUrlView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //}
@@ -615,7 +629,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.hostNameLabel.isHidden = false
                // self.hostNameLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.hostNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.hostNameTxf.placeholder = "Host Name"
+            self.hostNameTxf.placeholder = AppConstants.kHostName
                 self.hostNameView1.isHidden = false
                 hostNameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
            // }
@@ -627,7 +641,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.locationNameLabel.isHidden = false
               //  self.locationNameLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.locationNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.locationNameTxf.placeholder = "Location"
+            self.locationNameTxf.placeholder = MarketPlaceConstant.kLocation
                 self.locationNameView1.isHidden = false
                 locationNameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //}
@@ -641,7 +655,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.dateLabel.isHidden = false
                // self.dateLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.dateLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.dateTxf.placeholder = "Date"
+            self.dateTxf.placeholder = AppConstants.kDate
                 self.dateView1.isHidden = false
                 dateView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             //}
@@ -655,7 +669,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.timeLabel.isHidden = false
               //  self.timeLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.timeLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.timeTxf.placeholder = "Time"
+            self.timeTxf.placeholder = AppConstants.kTime
                 self.timeView1.isHidden = false
                 timeView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -670,7 +684,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.websiteLabel.isHidden = false
               //  self.websiteLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.websiteLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.websiteTxf.placeholder = "Website"
+            self.websiteTxf.placeholder = MarketPlaceConstant.kCWebsite
                 self.websiteView1.isHidden = false
                 websiteView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -685,7 +699,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.eventLabel.isHidden = false
            // self.eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.eventLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.eventTxf.placeholder = "Event Type"
+            self.eventTxf.placeholder = AppConstants.kEventCapType
                 self.eventView1.isHidden = false
                 eventView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -699,7 +713,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 self.registrationLabel.isHidden = false
               //  self.registrationLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             self.registrationLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-                self.registrationTxf.placeholder = "Registration Type"
+                self.registrationTxf.placeholder = AppConstants.kRegistrationCapType
                 self.registrationView1.isHidden = false
                 registrationView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
                 
@@ -743,7 +757,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         
         descriptionTextView.text = "Description"
         descriptionTextView.textColor = .lightGray
-        descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
+        descriptionTextView.font = UIFont(name: "Helvetica-Neue", size: 16)
         
         eventNameView.isHidden = true
         hostNameView1.isHidden = true

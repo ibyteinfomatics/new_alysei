@@ -41,6 +41,11 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerText.text = AppConstants.kCreateBlog
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        blogLabel.text = AppConstants.kBlogTitle
+        descriptionLabel.text = AppConstants.kDescription
+        draftLabel.text  = RecipeConstants.kDraft
         setUi()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateBlogViewController.dismissKeyboard))
             view.addGestureRecognizer(tap)
@@ -76,7 +81,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         }
         
         if typeofpage == "read" {
-            headerText.text = "Blog"
+            headerText.text = AppConstants.kBlog
             draftView.isHidden = true
             saveButton.isHidden = true
             blogTxf.isUserInteractionEnabled = true
@@ -161,7 +166,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     func textViewDidBeginEditing(_ textView: UITextView) {
        if textView == self.descriptionTextView{
         
-        if self.descriptionTextView.text == "Description" {
+           if self.descriptionTextView.text == AppConstants.kDescription {
             self.descriptionTextView.text = nil
         }
         
@@ -181,7 +186,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         {
             
             self.blogLabel.isHidden = false
-            self.blogTxf.placeholder = "Blog "
+            self.blogTxf.placeholder = AppConstants.kBlog + " "
                 self.blogView1.isHidden = false
                 blogView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             self.blogLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
@@ -214,11 +219,11 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         } else {
            
             if blogTxf.text == "" {
-                alert(msg: "Please enter title!")
+                alert(msg: AlertMessage.kPleaseEnterTitle)
             } else if descriptionTextView.text == "" {
-                alert(msg: "Please enter description!")
+                alert(msg: AlertMessage.kPleaseEnterDescription)
             } else if self.uploadImageArray.count == 0 {
-                alert(msg: "Please upload blog image!")
+                alert(msg: AlertMessage.kPleaseUploadBlogImage)
             } else {
                 createBlogApi()
             }
@@ -229,11 +234,11 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     
     @IBAction func switchButtonTapped(_ sender: UISwitch) {
         if switchBar.isOn{
-            draftLabel.text = "Publish"
+            draftLabel.text = AppConstants.Publish
             draftView.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
         }
         else{
-            draftLabel.text = "Draft"
+            draftLabel.text = RecipeConstants.kDraft
             draftView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
         }
     }
@@ -244,7 +249,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         blogLabel.isHidden = true
         descriptionLabel.isHidden = true
         
-        descriptionTextView.text = "Description"
+        descriptionTextView.text = AppConstants.kDescription
         descriptionTextView.textColor = .lightGray
         descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
         
