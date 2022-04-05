@@ -13,7 +13,7 @@ class EventsView: AlysieBaseViewC {
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var vwBlank: UIView!
-   
+    @IBOutlet weak var lblBlank: UILabel!
     
     var eventModel:EventModel?
     var userId: String?
@@ -21,6 +21,9 @@ class EventsView: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblBlank.text = AppConstants.kThereAreNoEventsAtThisMoment
+        myEventsLabel.text = AppConstants.kMyEvents
+        createEventButton.setTitle(AppConstants.kCreateEvents, for: .normal)
         eventsTableView.delegate = self
         eventsTableView.dataSource = self
         createEventButton.layer.cornerRadius = 18
@@ -61,13 +64,14 @@ class EventsView: AlysieBaseViewC {
         }else{
             eventTableCell.btnInterested.isHidden = false
         }
+        eventTableCell.moreButton.setTitle(AppConstants.kMoreInfo, for: .normal)
         if eventModel?.data?[indexPath].is_event_liked?.count == 0{
             eventTableCell.btnInterestedWidth.constant = 180
             eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
-            eventTableCell.btnInterested.setTitle("Are you Interested?", for: .normal)
+            eventTableCell.btnInterested.setTitle(AppConstants.kAreyouInterested, for: .normal)
         }else{
             eventTableCell.btnInterested.backgroundColor = UIColor.red
-            eventTableCell.btnInterested.setTitle("Uninterested", for: .normal)
+            eventTableCell.btnInterested.setTitle(AppConstants.kUninterested, for: .normal)
         }
         eventTableCell.eventTitle.text = eventModel?.data?[indexPath].eventName
         eventTableCell.hostTitle.text = eventModel?.data?[indexPath].hostName
@@ -115,8 +119,8 @@ class EventsView: AlysieBaseViewC {
           
             
             //MARK:show Alert Message
-            let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this event?", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            let refreshAlert = UIAlertController(title: "", message: AppConstants.kAreYouSureYouWantToDeleteThisEvent, preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kYes, style: .default, handler: { (action: UIAlertAction!) in
                
                 self.disableWindowInteraction()
               
@@ -125,7 +129,7 @@ class EventsView: AlysieBaseViewC {
                     self.postRequest()
                 }
             }))
-            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kNo, style: .cancel, handler: { (action: UIAlertAction!) in
                   
                 self.parent?.dismiss(animated: true, completion: nil)
             }))
@@ -190,7 +194,7 @@ class EventsView: AlysieBaseViewC {
           
           self.eventModel = EventModel.init(with: dictResponse)
         
-        self.myEventsLabel.text = "My Events (\(self.eventModel?.data?.count ?? 0))"
+          self.myEventsLabel.text = AppConstants.kMyEvents + " " + "(\(self.eventModel?.data?.count ?? 0))"
         self.setUI()
         self.eventsTableView.reloadData()
       }

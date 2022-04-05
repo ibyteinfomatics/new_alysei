@@ -11,10 +11,17 @@ class DeclineRequest: AlysieBaseViewC {
     
     @IBOutlet weak var reasonToDecline: UITextView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnDecline: UIButton!
+    @IBOutlet weak var lblReasonDecline: UILabel!
+    
     var visitordId : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblTitle.text = AppConstants.kDeclineRequest
+        btnDecline.setTitle(AppConstants.kDecline, for: .normal)
+        lblReasonDecline.text = AppConstants.kReasonToDecline
         headerView.drawBottomShadow()
         reasonToDecline.layer.borderWidth = 1
         reasonToDecline.layer.borderColor = UIColor.lightGray.cgColor

@@ -34,6 +34,11 @@ class PostsViewController: AlysieBaseViewC  {
     @IBOutlet weak var lblNotificationCount: UILabel!
     @IBOutlet weak var vwNotification: UIView!
     
+    @IBOutlet weak var lblHeading1: UILabel!
+    @IBOutlet weak var lblHeading2: UILabel!
+    @IBOutlet weak var lblHeading3: UILabel!
+    @IBOutlet weak var lblHeading4: UILabel!
+
     var getUser:[userClass]?
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
@@ -71,6 +76,10 @@ class PostsViewController: AlysieBaseViewC  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblHeading1.text = AppConstants.kPosts
+        lblHeading2.text = AppConstants.kTitleMarketPlace
+        lblHeading3.text = MarketPlaceConstant.kRecipe
+        lblHeading4.text = MarketPlaceConstant.kNotifications
         vwNotification.layer.cornerRadius = self.vwNotification.frame.height / 2
         vwNotification.layer.masksToBounds = true
         let data = kSharedUserDefaults.getLoggedInUserDetails()
@@ -136,7 +145,7 @@ class PostsViewController: AlysieBaseViewC  {
             if let viewController2 = self.tabBarController?.viewControllers?[1] {
                 
                 //viewController2.tabBarItem.image = UIImage(named: "b2btab1_icon")
-                viewController2.tabBarItem.title = "Hubs"
+                viewController2.tabBarItem.title = AppConstants.kHubs
                 // viewController2.tabBarItem.isEnabled = false
                 //viewController2.tabBarItem.selectedImage = UIImage(named: "turnoff_comments_icon")
                 
@@ -145,7 +154,7 @@ class PostsViewController: AlysieBaseViewC  {
             if let viewController2 = self.tabBarController?.viewControllers?[1] {
                 
                 //viewController2.tabBarItem.image = UIImage(named: "b2b_normal")
-                viewController2.tabBarItem.title = "B2B"
+                viewController2.tabBarItem.title = AppConstants.kB2B
                 // viewController2.tabBarItem.isEnabled = true
                 // viewController2.tabBarItem.selectedImage = UIImage(named: "b2b_active")
                 
@@ -568,15 +577,15 @@ extension PostsViewController: ShareEditMenuProtocol {
         }
         let actionSheet = UIAlertController(style: .actionSheet)
         
-        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+        let shareAction = UIAlertAction(title: AppConstants.kSharePost, style: .default) { action in
             self.sharePost(postID)
         }
         
-        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+        let editPostAction = UIAlertAction(title: AppConstants.kEditPost, style: .default) { action in
             self.editPost(postID)
         }
         
-        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+        let deletePost = UIAlertAction(title:AppConstants.kDeletePost, style: .destructive) { action in
             self.deletePost(postID)
         }
         
@@ -584,10 +593,10 @@ extension PostsViewController: ShareEditMenuProtocol {
         //   self.editPost(postID)
         //}
         
-        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        let reportAction = UIAlertAction(title:AppConstants.kReportAction, style: .destructive) { action in
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel) { action in
             
         }
         
@@ -628,7 +637,7 @@ extension PostsViewController: ShareEditMenuProtocol {
             urlRequest.httpBody = body
             WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
                 if (statusCode ?? 0) != 200 {
-                    self.showAlert(withMessage: "Some error occured")
+                    self.showAlert(withMessage: MarketPlaceConstant.kSomeErrorOccured)
                 } else {
                     kChatharedInstance.deletePost(postId: "\(postID)")
                     self.callNewFeedApi(1)

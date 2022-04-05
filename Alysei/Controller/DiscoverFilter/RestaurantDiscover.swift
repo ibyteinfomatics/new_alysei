@@ -10,9 +10,11 @@ import UIKit
 class RestaurantDiscover: AlysieBaseViewC {
     
     @IBOutlet weak var filter: UIButton!
+    @IBOutlet weak var btnMap: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+ //   @IBOutlet weak var userImage: UIImageView!
     
     var restModel:RestaurantModel?
     var restauUser = [RestaurantUser]()
@@ -32,6 +34,8 @@ class RestaurantDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
+        lblTitle.text = AppConstants.kRestaurants
+        btnMap.setTitle(AppConstants.kMap, for: .normal)
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         restId = "restaurants"

@@ -18,6 +18,12 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle1: UILabel!
+    @IBOutlet weak var lblTitle2: UILabel!
+    @IBOutlet weak var lblTitle3: UILabel!
+    @IBOutlet weak var btnAccept: UIButton!
+   
     
     var connectionId = ""
     var visitordId = ""
@@ -25,6 +31,14 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnAccept.setTitle(AppConstants.kAccept, for: .normal)
+        btnDecline.setTitle(AppConstants.kDecline, for: .normal)
+        lblTitle.text = AppConstants.kViewRequest
+        lblTitle1.text = AppConstants.kSpecialization
+        lblTitle2.text = AppConstants.kTitle
+        lblTitle3.text = AppConstants.kCapCountry
+        
+        
         vwHeader.drawBottomShadow()
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor

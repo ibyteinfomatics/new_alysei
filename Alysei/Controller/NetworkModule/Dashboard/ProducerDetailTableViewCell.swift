@@ -14,6 +14,8 @@ class ProducerDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var reasontoconnect: UILabel!
     @IBOutlet weak var vatno: UILabel!
+    @IBOutlet weak var lblVatno: UILabel!
+    @IBOutlet weak var lblfdano: UILabel!
     @IBOutlet weak var fdano: UILabel!
     @IBOutlet weak var userimg: UIImageView!
     
@@ -27,8 +29,12 @@ class ProducerDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        lblVatno.text = AppConstants.kVATNo
+        lblfdano.text = APIConstants.FDANumber
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
+        btnAccept.setTitle(AppConstants.kAccept, for: .normal)
+        btnDecline.setTitle(AppConstants.kDecline, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -206,29 +206,29 @@ class PostDescTableViewCell: UITableViewCell {
        
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
-            userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kVoyager //modelData.subjectId?.email?.lowercased()
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
         }
         /*else{
   
@@ -241,7 +241,7 @@ class PostDescTableViewCell: UITableViewCell {
             follower.isHidden = true
         } else {
             follower.isHidden = false
-            follower.text = "\(modelData.follower_count ?? 0) Followers"
+            follower.text = "\(modelData.follower_count ?? 0)" + " " +  AppConstants.Followers
         }
         
         lblPostDesc.text = modelData.body
@@ -353,29 +353,29 @@ class PostDescTableViewCell: UITableViewCell {
        
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
-            userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kVoyager //modelData.subjectId?.email?.lowercased()
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
         }
         /*else{
   
@@ -388,7 +388,7 @@ class PostDescTableViewCell: UITableViewCell {
             follower.isHidden = true
         } else {
             follower.isHidden = false
-            follower.text = "\(modelData.follower_count ?? 0) Followers"
+            follower.text = "\(modelData.follower_count ?? 0)" + AppConstants.Followers
         }
         
         lblPostDesc.text = modelData.body

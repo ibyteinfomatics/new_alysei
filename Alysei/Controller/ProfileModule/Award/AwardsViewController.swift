@@ -13,13 +13,16 @@ class AwardsViewController: AlysieBaseViewC {
     @IBOutlet weak var createAwardButton: UIButton!
     @IBOutlet weak var awardCollectionView: UICollectionView!
     @IBOutlet weak var vwBlank: UIView!
-    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblBlank: UILabel!
     var awardModel:AwardModel?
     var userId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lblTitle.text = AppConstants.kAwards
+        createAwardButton.setTitle(AppConstants.kAddAwards, for: .normal)
+        lblBlank.text = AppConstants.kThereAreNoAwardAtThisMoment
         awardCollectionView.delegate = self
         awardCollectionView.dataSource = self
         createAwardButton.layer.cornerRadius = 18
@@ -60,7 +63,7 @@ class AwardsViewController: AlysieBaseViewC {
           
           self.awardModel = AwardModel.init(with: dictResponse)
         
-        self.countLabel.text = "Awards (\(self.awardModel?.data?.count ?? 0))"
+            self.countLabel.text = AppConstants.kAwards + " " + "(\(self.awardModel?.data?.count ?? 0))"
         self.setUI()
         self.awardCollectionView.reloadData()
       }

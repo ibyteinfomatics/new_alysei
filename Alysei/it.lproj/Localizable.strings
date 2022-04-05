@@ -1,16 +1,16 @@
-/* 
+/*
   Localizable.strings
   Alysei
 
   Created by Gitesh Dang on 23/02/22.
-  
+
 */
 /*
   Localizable.strings
   Alysei
 
   Created by Gitesh Dang on 23/02/22.
-  
+
 */
 //MARK: TOUR GUIDE
 
@@ -414,6 +414,14 @@
 "Select Event" = "Select Event";
 "Select Registration"=  "Select Registration";
 "Select Restaurant"= "Select Restaurant";
+"Our Menu"= "Our Menu";
+"About Restaurant" = "About Restaurant";
+"Title" = "Title";
+"About Travel Agency" = "About Travel Agency";
+"Our Trips" = "Our Trips";
+"Decline Request" = "Decline Request";
+"Reason to decline" = "Reason to decline";
+"Discovery Alysei" = "Discovery Alysei";
 
 //MARK: Settings
 "Settings" = "Settings";
@@ -472,6 +480,10 @@
 "Edit Post" = "Edit Post";
 "Delete Post" = "Delete Post";
 "Report Action" = "Report Action";
+"What's new?" = "What's new?";
+"Post" = "Post";
+"Post can't be empty" = "Post can't be empty";
+"Share to my timeline" = "Share to my timeline";
 
 //MARK: MARKETPLACE
 
@@ -767,8 +779,42 @@
 
 //MARK: Home
 "Posts" = "Posts";
-"Post Unavailable" "Post Unavailable";
+"Post Unavailable" = "Post Unavailable";
 "Some error occured" = "Some error occured";
+"People" = "People";
+"Trips" = "Trips";
+"Events" = "Events";
+"Awards" = "Awards";
+"All" = "All";
+"Are you Interested?" = "Are you Interested?";
+"Uninterested" = "Uninterested";
+"What are you searching?" = "What are you searching?";
+"Map" = "Map";
+"Trip Price" = "Trip Price";
+"Read More" = "Read More";
+"There are no events at this moment." = "There are no events at this moment.";
+"My Events" ="My Events";
+"Create Events" = "Create Events";
+"Are you sure you want to delete this event?" = "Are you sure you want to delete this event?";
+"More Info" = "More Info";
+"Create Blogs" ="Create Blogs";
+"There are no blogs at this moment." = "There are no blogs at this moment.";
+"Are you sure you want to delete this blog?" = "Are you sure you want to delete this blog?";
+"My Blogs" = "My Blogs";
+"My Trips" = "My Trips";
+"Create Trips" = "Create Trips";
+"There are no trips at this moment." = "There are no trips at this moment.";
+"Interested" = "Interested";
+"Add Awards" = "Add Awards";
+"There are no awards to show at this moment." = "There are no awards to show at this moment.";
+"View Request" = "View Request";
+"Accept" = "Accept";
+"Decline" = "Decline";
+"About" = "About";
+"Our Products" = "Our Products";
+"Hubs" = "Hubs";
+"B2B" = "B2B";
+
 //MARK: Membership Screen
 "Review" = "Verifica";
 "Your account has been reviewed and approved by our staff" = "Il tuo account è stato verificato e approvato dal team Alysei";
@@ -806,7 +852,7 @@
 "US Importers & Distributors" = "Importatori e Distributori negli USA";
 "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Esplora, trova e connettiti con i Produttori Locali Italiani per rafforzare il tuo portafoglio prodotti, accrescere la tua competitività, espandere il tuo brand.";
 "Italian Restaurants in US" = "Accedi al tuo Account";
- 
+
 "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach." = "Rafforza la collaborazione con Produttori e Importatori, promuovi la tua cucina ed I tuoi eventi speciali, espandi la tua presenza sul mercato.";
 "Voice of Expert" = "Esperti di Settore";
 "Chefs, Cooking Schools, and all Italian Food and Beverage specialists will leverage on the Alysei platform to promote their name, brand, offering, events, blogs." = "Cuochi, Scuole di Cucina e tutti gli specialisti italiani di enogastronomia potranno attraverso la piattaforma Alysei  promuovere il proprio nome, brand, eventi e blogs.";
@@ -926,6 +972,7 @@
 
 "Hotel/Restaurant/Café" = "Hotel/Restaurant/Café";
 "Horeca" = "Horeca";
+"HORECA" = "HORECA";
 "Private Label" = "Private Label";
 "Sell your products under the retailer name" = "Vendi i tuoi prodotti sotto il marchio del tuo acquirente";
 "Alysei Brand Label" = "Etichetta/Marchio Alysei";
@@ -936,12 +983,17 @@
 "Delivery Discount for Alysei Voyager" = "Sconto consegna per i Voyagers";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 
+//MARK: USER Roles
 
-
-
-
-
-
+"Producer" = "Producer";
+"Restaurant" = "Restaurant";
+"Restaurants" = "Restaurants";
+"Voyager" = "Voyager";
+"Voice Of Experts" = "Voice Of Experts";
+"Importer" = "Importer";
+"Distributer" = "Distributer";
+"Importer & Distributer" = "Importer & Distributer";
+"Travel Agencies" = "Travel Agencies";
 
 
 

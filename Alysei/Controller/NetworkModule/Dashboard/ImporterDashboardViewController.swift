@@ -28,6 +28,14 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     
     @IBOutlet weak var fdaLine: UIView!
     @IBOutlet weak var fdaLabel: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle1: UILabel!
+    @IBOutlet weak var lblTitle2: UILabel!
+    @IBOutlet weak var lblTitle3: UILabel!
+    @IBOutlet weak var lblTitle4: UILabel!
+    @IBOutlet weak var lblTitle5: UILabel!
+    @IBOutlet weak var lblTitle6: UILabel!
+    
     
     var connectionId = ""
     var visitordId = ""
@@ -37,6 +45,15 @@ class ImporterDashboardViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.drawBottomShadow()
+        lblTitle.text = AppConstants.kViewRequest
+        btnAccept.setTitle(AppConstants.kAccept, for: .normal)
+        btnDecline.setTitle(AppConstants.kDecline, for: .normal)
+        lblTitle1.text = AppConstants.kAbout
+        lblTitle2.text = AppConstants.kHORECA
+        lblTitle3.text = MarketPlaceConstant.kFDACertified
+        lblTitle4.text = AppConstants.PrivateLabel
+        lblTitle5.text = AppConstants.AlyseiBrand
+        lblTitle6.text = AppConstants.kOurProducts
 //        headerView.layer.masksToBounds = false
 //        headerView.layer.shadowRadius = 2
 //        headerView.layer.shadowOpacity = 0.2

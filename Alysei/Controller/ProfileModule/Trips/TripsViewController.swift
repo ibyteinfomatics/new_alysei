@@ -12,7 +12,7 @@ class TripsViewController: AlysieBaseViewC {
     @IBOutlet weak var createTripsButton: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var vwBlank: UIView!
-    
+    @IBOutlet weak var lblBlank: UILabel!
     var tripModel:TripModel?
     var userId: String?
     
@@ -23,7 +23,9 @@ class TripsViewController: AlysieBaseViewC {
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         createTripsButton.layer.cornerRadius = 18
-        
+        myTripLabel.text = AppConstants.kMyTrips
+        createTripsButton.setTitle(AppConstants.kCreateTrips, for: .normal)
+        lblBlank.text = AppConstants.kThereAreNoTripsAtThisMoment
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +70,8 @@ class TripsViewController: AlysieBaseViewC {
         } else {
             tripTableCell.priceTitle.text =  "$" + (tripModel?.data?[indexPath].price ?? "0")
         }
-        
+        tripTableCell.moreInfoButton.setTitle(AppConstants.kMoreInfo, for: .normal)
+        tripTableCell.interestedButton.setTitle(AppConstants.kInterested, for: .normal)
         let imageUrl = (tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "") + (tripModel?.data?[indexPath].user?.avatarID?.attachmentURL ?? "")
         tripTableCell.userImage.setImage(withString: imageUrl)
         tripTableCell.userImage.layer.cornerRadius = tripTableCell.userImage.frame.height / 2

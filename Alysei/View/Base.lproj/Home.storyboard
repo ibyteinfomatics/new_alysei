@@ -679,7 +679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJZ-ZI-xQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644.9275362318842" y="-504.24107142857139"/>
+            <point key="canvasLocation" x="-4538" y="1601"/>
         </scene>
         <!--Business Multi OptionsVC-->
         <scene sceneID="z2p-gd-y7c">
@@ -803,7 +803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTf-qz-PlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388" y="-431"/>
+            <point key="canvasLocation" x="1334" y="-108"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GKw-ei-gjS">
@@ -1309,7 +1309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htX-rW-yuy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2280" y="1043"/>
+            <point key="canvasLocation" x="-3778" y="1601"/>
         </scene>
         <!--Contact Detail View Controller-->
         <scene sceneID="6sh-g1-ELy">
@@ -1509,7 +1509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPk-hJ-KDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="1042"/>
+            <point key="canvasLocation" x="1993" y="3454"/>
         </scene>
         <!--Basic Connect Flow View Controller-->
         <scene sceneID="VLV-mm-IZh">
@@ -1669,7 +1669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWe-Pr-tgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571.0144927536235" y="1008.4821428571428"/>
+            <point key="canvasLocation" x="2623" y="3454"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ukW-MI-7Nv">
@@ -2670,7 +2670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgY-au-SeB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742.02898550724649" y="1712.9464285714284"/>
+            <point key="canvasLocation" x="564" y="2311"/>
         </scene>
         <!--Edit User Settings ViewC-->
         <scene sceneID="ZI1-rT-7iJ">
@@ -3126,7 +3126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAd-Ir-AI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4964" y="1862"/>
+            <point key="canvasLocation" x="4495" y="2461"/>
         </scene>
         <!--Add Feature ViewC-->
         <scene sceneID="Gl3-OL-E1g">
@@ -3441,7 +3441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mt7-RW-90B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5613.04347826087" y="1728.3482142857142"/>
+            <point key="canvasLocation" x="5153" y="2311"/>
         </scene>
         <!--Settings ScreenVC-->
         <scene sceneID="7Z1-F5-TPj">
@@ -3646,7 +3646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yaq-IG-3vT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6265" y="1721"/>
+            <point key="canvasLocation" x="5828" y="2311"/>
         </scene>
         <!--Update Password ViewC-->
         <scene sceneID="fR9-72-Oba">
@@ -3812,7 +3812,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwt-ne-Qye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079.7101449275365" y="2881.4732142857142"/>
+            <point key="canvasLocation" x="1918" y="4083"/>
         </scene>
         <!--Settings ViewC-->
         <scene sceneID="HOA-eL-zs7">
@@ -3998,7 +3998,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5a-lo-S6w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4354" y="1728"/>
+            <point key="canvasLocation" x="3873" y="2310"/>
         </scene>
         <!--Home ViewC-->
         <scene sceneID="zc9-PO-RjJ">
@@ -4418,7 +4418,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W81-Go-cbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="901.60000000000002" y="-1147.3763118440781"/>
+            <point key="canvasLocation" x="665" y="-788"/>
         </scene>
         <!--Add Post-->
         <scene sceneID="fdO-jt-MZe">
@@ -4813,7 +4813,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvg-A4-sma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1028.2608695652175" y="169.08482142857142"/>
+            <point key="canvasLocation" x="614" y="749"/>
         </scene>
         <!--Tab Bar ViewC-->
         <scene sceneID="RcQ-jz-f0R">
@@ -4838,7 +4838,7 @@ any other devices.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEf-9J-Gln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143.19999999999999" y="229.83508245877064"/>
+            <point key="canvasLocation" x="-3095" y="-331"/>
         </scene>
         <!--Company ViewC-->
         <scene sceneID="FxB-xh-ROh">
@@ -5250,7 +5250,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nw5-v1-Kwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="2933.8830584707648"/>
+            <point key="canvasLocation" x="1279" y="4083"/>
         </scene>
         <!--Profile-->
         <scene sceneID="TMM-cW-DIc">
@@ -5270,7 +5270,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPT-iZ-yrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="1720"/>
+            <point key="canvasLocation" x="-143" y="2312"/>
         </scene>
         <!--Blocking ViewC-->
         <scene sceneID="Yck-5m-RHx">
@@ -5403,14 +5403,14 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIh-MA-S86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2736.231884057971" y="2881.4732142857142"/>
+            <point key="canvasLocation" x="2569" y="4083"/>
         </scene>
         <!--Share Post View Controller-->
         <scene sceneID="JAz-Fv-i3T">
             <objects>
                 <viewController id="qf7-tb-JA1" customClass="SharePostViewController" customModule="Alysei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rfc-2V-LSS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sic-er-c9K">
@@ -5463,7 +5463,7 @@ any other devices.</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1J-41-bI0">
-                                <rect key="frame" x="0.0" y="69" width="375" height="578"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="465"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkQ-bx-GMO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
@@ -5620,9 +5620,11 @@ any other devices.</string>
                     <navigationItem key="navigationItem" id="kof-00-oCj"/>
                     <connections>
                         <outlet property="backButton" destination="jw8-De-4p4" id="KZF-qS-WIm"/>
+                        <outlet property="btnPost" destination="y7b-31-ZjU" id="3pK-Rt-bZh"/>
                         <outlet property="imageCollectionHght" destination="0ls-v7-fSW" id="82l-1G-mrT"/>
                         <outlet property="imageCollectionView" destination="fnH-EL-7KB" id="KyG-G1-hYR"/>
                         <outlet property="lblPostDesc" destination="U7C-aJ-hah" id="4UK-3W-fTp"/>
+                        <outlet property="lblTitle" destination="Y2g-gz-k0I" id="4Zd-ZC-UI0"/>
                         <outlet property="postOwnerImage" destination="f9w-f8-iRE" id="APN-Al-AXw"/>
                         <outlet property="postOwnerUsernameLabel" destination="7p5-vu-2vf" id="Rba-6m-s6G"/>
                         <outlet property="privacyTextfield" destination="Yyf-1d-PMO" id="fKD-p3-MUv"/>
@@ -5634,7 +5636,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="033-wP-LB9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815.94202898550736" y="-1896.09375"/>
+            <point key="canvasLocation" x="2690" y="-1794"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DVC-ZL-hq7">
@@ -5675,7 +5677,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjs-Jk-dhy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2737" y="-1147"/>
+            <point key="canvasLocation" x="2657" y="-788"/>
         </scene>
         <!--Your Data ViewC-->
         <scene sceneID="kOi-aK-Gou">
@@ -5788,7 +5790,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GdM-kV-xnB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3396" y="2882"/>
+            <point key="canvasLocation" x="3182" y="4083"/>
         </scene>
         <!--Hubs ViewC-->
         <scene sceneID="wsI-5c-Y6f">
@@ -6037,7 +6039,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jN-2i-gNJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4437.6000000000004" y="-461.91904047976016"/>
+            <point key="canvasLocation" x="3338" y="-118"/>
         </scene>
         <!--Hub User ListVC-->
         <scene sceneID="KYp-GM-oq5">
@@ -6490,7 +6492,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgc-1r-h5y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5111.594202898551" y="-461.38392857142856"/>
+            <point key="canvasLocation" x="3993" y="-118"/>
         </scene>
         <!--User Posts View Controller-->
         <scene sceneID="jOm-Ap-fdd">
@@ -6837,7 +6839,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgV-xo-o8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752.8" y="1774.3628185907048"/>
+            <point key="canvasLocation" x="1215" y="2311"/>
         </scene>
         <!--Photos Post-->
         <scene sceneID="dtR-fQ-dbL">
@@ -7195,7 +7197,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsG-oZ-yXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="-2956"/>
+            <point key="canvasLocation" x="2108" y="-2705"/>
         </scene>
         <!--User Photos Grid View Controller-->
         <scene sceneID="mGE-xn-gLa">
@@ -7289,7 +7291,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sn-84-A4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="2392"/>
+            <point key="canvasLocation" x="1347" y="3334"/>
         </scene>
         <!--Posts ViewC-->
         <scene sceneID="cFs-My-uvz">
@@ -7355,7 +7357,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qze-hv-ngd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="1728"/>
+            <point key="canvasLocation" x="1918" y="2310"/>
         </scene>
         <!--About ViewC-->
         <scene sceneID="JUe-cs-kDW">
@@ -7512,14 +7514,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="37" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="37.5" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7560,7 +7562,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="22"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7582,7 +7584,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="137" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -7620,7 +7622,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="205.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -7721,7 +7723,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSq-Ca-Jug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3073.913043478261" y="1727.6785714285713"/>
+            <point key="canvasLocation" x="2570" y="2310"/>
         </scene>
         <!--Contact ViewC-->
         <scene sceneID="7JT-6a-lhb">
@@ -7854,7 +7856,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18T-kJ-1tn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3703" y="1728"/>
+            <point key="canvasLocation" x="3223" y="2310"/>
         </scene>
         <!--Home-->
         <scene sceneID="D64-wK-ljp">
@@ -7875,7 +7877,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bf-sT-iQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31" y="-1146"/>
+            <point key="canvasLocation" x="-36" y="-788"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CSO-tm-YWJ">
@@ -7968,7 +7970,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMI-Lo-Qvl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3778.985507246377" y="-466.40625"/>
+            <point key="canvasLocation" x="2657" y="-113"/>
         </scene>
         <!--Selected Hubs ViewC-->
         <scene sceneID="Vl8-Qy-bGH">
@@ -8071,7 +8073,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBr-VX-9hY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3095" y="-466"/>
+            <point key="canvasLocation" x="1993" y="-108"/>
         </scene>
         <!--B2B-->
         <scene sceneID="51c-gm-lKt">
@@ -8091,7 +8093,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7S-CS-g3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="-461"/>
+            <point key="canvasLocation" x="-36" y="-87"/>
         </scene>
         <!--Network-->
         <scene sceneID="KIN-Bg-HZX">
@@ -8113,7 +8115,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRV-lG-oHd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="972"/>
+            <point key="canvasLocation" x="-143" y="1513"/>
         </scene>
         <!--Edit Profile ViewC-->
         <scene sceneID="Vpu-Fm-9b7">
@@ -8742,7 +8744,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whi-G5-lNA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="756.52173913043487" y="3000.6696428571427"/>
+            <point key="canvasLocation" x="614" y="4233"/>
         </scene>
         <!--Edit Seting Type View Controller-->
         <scene sceneID="I7K-e3-uEH">
@@ -8954,7 +8956,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGr-kG-UmT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6919" y="1721"/>
+            <point key="canvasLocation" x="6497" y="2311"/>
         </scene>
         <!--Web Kit View Controller-->
         <scene sceneID="lya-dL-Xi9">
@@ -9029,7 +9031,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fo-vf-g2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7612" y="1720"/>
+            <point key="canvasLocation" x="7154" y="2310"/>
         </scene>
         <!--Profile Completion View Controller-->
         <scene sceneID="46g-BD-obj">
@@ -9193,7 +9195,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEh-A4-RO0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4178" y="-1146"/>
+            <point key="canvasLocation" x="-5314" y="1601"/>
         </scene>
         <!--Add Post-->
         <scene sceneID="B5t-fa-mic">
@@ -9215,7 +9217,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0H-Cy-3es" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1965.5999999999999" y="169.56521739130437"/>
+            <point key="canvasLocation" x="-36" y="659"/>
         </scene>
         <!--Connection Product Type View Controller-->
         <scene sceneID="IzB-Jy-57z">
@@ -9371,7 +9373,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxY-yz-pOK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3267" y="1013"/>
+            <point key="canvasLocation" x="1278" y="1513"/>
         </scene>
         <!--User Product List View Controller-->
         <scene sceneID="5FH-Hp-PS2">
@@ -9494,7 +9496,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fw-lt-4be" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3999" y="1022"/>
+            <point key="canvasLocation" x="1918" y="1513"/>
         </scene>
         <!--Connection ConfirmVC-->
         <scene sceneID="3cp-cH-MqY">
@@ -9545,7 +9547,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dj-g7-DVb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4697" y="1022"/>
+            <point key="canvasLocation" x="2569" y="1513"/>
         </scene>
         <!--Country List-->
         <scene sceneID="001-yY-mqx">
@@ -9662,7 +9664,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyz-xG-kbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1993" y="307"/>
+            <point key="canvasLocation" x="1993" y="659"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r3o-40-t4x">
@@ -9680,7 +9682,7 @@ any other devices.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Qr-KH-Px9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1061" y="307"/>
+            <point key="canvasLocation" x="1358" y="659"/>
         </scene>
         <!--Blogs View Controller-->
         <scene sceneID="vka-XV-edj">
@@ -9942,6 +9944,7 @@ any other devices.</string>
                     <connections>
                         <outlet property="blogTableView" destination="cX0-DW-N2T" id="Zhq-Rs-Zna"/>
                         <outlet property="createBlogButton" destination="T8h-gx-b8i" id="YNX-qv-gc8"/>
+                        <outlet property="lblBlank" destination="Zio-y7-0G3" id="cR0-Qr-2x6"/>
                         <outlet property="myBlogLabel" destination="pZk-ty-7hf" id="Fe1-zT-c3X"/>
                         <outlet property="vwBlank" destination="g2c-Sh-CRX" id="wbZ-ML-Pop"/>
                     </connections>
@@ -10233,7 +10236,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyt-8R-qB7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2988.4057971014495" y="-3185.4910714285711"/>
+            <point key="canvasLocation" x="-3190" y="-3038"/>
         </scene>
         <!--Blank Data-->
         <scene sceneID="rom-a5-ff1">
@@ -10266,7 +10269,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3w-sv-GCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-883" y="-1146"/>
+            <point key="canvasLocation" x="-3095" y="1601"/>
         </scene>
         <!--Notification List-->
         <scene sceneID="N9Z-DP-Tlf">
@@ -10447,7 +10450,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEC-EY-RWb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4576.8000000000002" y="-1896.7016491754125"/>
+            <point key="canvasLocation" x="4550" y="-787"/>
         </scene>
         <!--Trips View Controller-->
         <scene sceneID="D5r-Jv-mcv">
@@ -10754,6 +10757,11 @@ any other devices.</string>
                                             <outlet property="editButton" destination="Xdj-la-Jdh" id="sYQ-3I-eLJ"/>
                                             <outlet property="interestedButton" destination="6DM-gc-wxr" id="TXl-ed-M7f"/>
                                             <outlet property="lblDuration" destination="eST-A5-Mif" id="xvN-8V-whI"/>
+                                            <outlet property="lblTitleDuration" destination="FPL-v1-cK1" id="qOl-7R-Tjm"/>
+                                            <outlet property="lblTitleIntensity" destination="EDC-e7-Vo8" id="shU-FL-xBl"/>
+                                            <outlet property="lblTitleRegion" destination="RBu-vD-DEg" id="i2d-63-Frs"/>
+                                            <outlet property="lblTitleTravelAgency" destination="2Pe-bn-VlX" id="d5s-W5-gmX"/>
+                                            <outlet property="lblTitleTripPrice" destination="Dgj-sm-EXk" id="YXl-J9-4gh"/>
                                             <outlet property="locationTitle" destination="KwR-AM-0ne" id="tun-oO-uwT"/>
                                             <outlet property="moreInfoButton" destination="f2s-bb-t41" id="nud-Hb-rmX"/>
                                             <outlet property="priceTitle" destination="7m7-b8-Rh1" id="Kas-8t-Jvw"/>
@@ -10847,6 +10855,7 @@ any other devices.</string>
                     </view>
                     <connections>
                         <outlet property="createTripsButton" destination="lta-4N-Me6" id="ZKS-Vu-5F5"/>
+                        <outlet property="lblBlank" destination="wxn-wR-Upb" id="y4T-f3-MrD"/>
                         <outlet property="myTripLabel" destination="EeL-72-hbW" id="DhG-Pn-ru5"/>
                         <outlet property="tripsTableView" destination="ajH-VT-Q89" id="fdY-2d-kkG"/>
                         <outlet property="vwBlank" destination="RCr-CL-EUa" id="946-RG-XGe"/>
@@ -11035,7 +11044,7 @@ any other devices.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqq-kI-uaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3872.8000000000002" y="-1896.7016491754125"/>
+            <point key="canvasLocation" x="3910" y="-788"/>
         </scene>
         <!--Membership ViewC-->
         <scene sceneID="72x-E8-R1S">
@@ -11240,7 +11249,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHr-Dc-KhP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82.608695652173921" y="-1854.2410714285713"/>
+            <point key="canvasLocation" x="5194" y="-788"/>
         </scene>
         <!--Posts View Controller-->
         <scene sceneID="pQC-5P-n34">
@@ -11520,6 +11529,7 @@ You will be notified for any membership status update.</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="discoverCollectionView" destination="tWe-Xt-hSo" id="Sby-9M-Qus"/>
+                                            <outlet property="lblSubTitle" destination="Lme-1T-gdl" id="jrJ-Xa-qGu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="PostDescTableViewCell" rowHeight="377" id="hMg-YV-lBR" customClass="PostDescTableViewCell" customModule="Alysei" customModuleProvider="target">
@@ -12196,6 +12206,10 @@ You will be notified for any membership status update.</string>
                     <connections>
                         <outlet property="btnNewpost" destination="XAy-NI-egM" id="AKx-bn-fsr"/>
                         <outlet property="headerStack" destination="mkT-ei-zVV" id="ltI-AC-QnK"/>
+                        <outlet property="lblHeading1" destination="Wgq-16-Mql" id="TgA-uT-Mgy"/>
+                        <outlet property="lblHeading2" destination="a2W-TI-nQT" id="Ziw-qR-JJ0"/>
+                        <outlet property="lblHeading3" destination="8fO-aW-iKi" id="BI3-9l-b5j"/>
+                        <outlet property="lblHeading4" destination="VXW-nZ-w43" id="wsE-ex-h3G"/>
                         <outlet property="lblNotificationCount" destination="6NK-LB-bbZ" id="kfc-N2-d5L"/>
                         <outlet property="marketplaceView" destination="fla-B7-xl0" id="rBH-d4-Bef"/>
                         <outlet property="notificationView" destination="1gE-Qe-amL" id="ncM-0a-vco"/>
@@ -12210,7 +12224,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-nb-G29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="-1147"/>
+            <point key="canvasLocation" x="1334" y="-1794"/>
         </scene>
         <!--Notification ViewC-->
         <scene sceneID="1na-eb-btK">
@@ -12431,7 +12445,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c46-ro-qjM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3447.1999999999998" y="-1147.3763118440781"/>
+            <point key="canvasLocation" x="3284" y="-788"/>
         </scene>
         <!--Create Trips View Controller-->
         <scene sceneID="czS-Y8-8BI">
@@ -13307,7 +13321,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYB-9I-n1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2226.0869565217395" y="-2968.5267857142858"/>
+            <point key="canvasLocation" x="-2453" y="-2790"/>
         </scene>
         <!--Add Award-->
         <scene sceneID="G9i-kj-bEO">
@@ -13699,7 +13713,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5m-FX-LjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1484.057971014493" y="-2956.4732142857142"/>
+            <point key="canvasLocation" x="-1802" y="-3066"/>
         </scene>
         <!--Events View-->
         <scene sceneID="syU-ed-RzO">
@@ -13981,6 +13995,7 @@ You will be notified for any membership status update.</string>
                     <connections>
                         <outlet property="createEventButton" destination="N07-iA-KDb" id="6H9-8q-iUT"/>
                         <outlet property="eventsTableView" destination="xrz-QN-zdd" id="tJs-hB-crO"/>
+                        <outlet property="lblBlank" destination="SJL-nM-cJO" id="jJX-dq-miU"/>
                         <outlet property="myEventsLabel" destination="r15-xP-GLd" id="7hv-Gw-jJK"/>
                         <outlet property="vwBlank" destination="LeO-wG-F2f" id="vbJ-Au-gXf"/>
                     </connections>
@@ -14237,6 +14252,7 @@ You will be notified for any membership status update.</string>
                     <connections>
                         <outlet property="blogTableView" destination="VWf-Tx-XhK" id="lQk-VA-0rI"/>
                         <outlet property="filter" destination="cFV-nU-BO6" id="2rF-Cw-5Fw"/>
+                        <outlet property="lblTitle" destination="P2b-EV-kcM" id="5Ea-rh-Vid"/>
                         <outlet property="vwHeader" destination="lhr-vY-Tfh" id="Sjb-VA-J6q"/>
                     </connections>
                 </viewController>
@@ -14544,7 +14560,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBY-3u-jLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6846.376811594203" y="-2532.5892857142858"/>
+            <point key="canvasLocation" x="-6530" y="-3099"/>
         </scene>
         <!--Restaurant Discover-->
         <scene sceneID="W9M-u4-fHz">
@@ -14721,6 +14737,7 @@ You will be notified for any membership status update.</string>
                     </view>
                     <connections>
                         <outlet property="filter" destination="Kd0-qx-MhK" id="lkG-6E-gPt"/>
+                        <outlet property="lblTitle" destination="ahA-wG-22d" id="MiX-cR-6jU"/>
                         <outlet property="tripsTableView" destination="mxC-eM-qSy" id="rEJ-h9-Z20"/>
                         <outlet property="vwHeader" destination="HMV-xx-6cf" id="g37-5W-a3u"/>
                     </connections>
@@ -14979,6 +14996,7 @@ You will be notified for any membership status update.</string>
                     <connections>
                         <outlet property="eventsTableView" destination="yYi-zW-cSt" id="FcA-qi-nGR"/>
                         <outlet property="filter" destination="S86-0u-Tuu" id="BQE-Sd-ycz"/>
+                        <outlet property="lblTitle" destination="sWD-0U-Jls" id="ayf-gV-Sra"/>
                         <outlet property="vwHeader" destination="kem-zA-Rva" id="tpR-sj-a6K"/>
                     </connections>
                 </viewController>
@@ -15175,12 +15193,14 @@ You will be notified for any membership status update.</string>
                         <outlet property="awardCollectionView" destination="fhh-fC-gvp" id="0dH-WY-mdo"/>
                         <outlet property="countLabel" destination="LSm-ra-Ql0" id="x9s-tn-UXi"/>
                         <outlet property="createAwardButton" destination="rNt-Zr-sxF" id="kYW-2B-aOF"/>
+                        <outlet property="lblBlank" destination="dkI-Yx-ZwS" id="nVY-WD-91b"/>
+                        <outlet property="lblTitle" destination="LSm-ra-Ql0" id="Tan-cj-Yfe"/>
                         <outlet property="vwBlank" destination="Ld3-tE-5jr" id="0ac-u9-Z84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jso-2F-USU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1697.1014492753625" y="-1809.375"/>
+            <point key="canvasLocation" x="-1740" y="-1809"/>
         </scene>
         <!--Add Post-->
         <scene sceneID="cYt-Gi-S3Z">
@@ -15416,10 +15436,12 @@ You will be notified for any membership status update.</string>
                     <navigationItem key="navigationItem" id="w4S-Y8-cDw"/>
                     <size key="freeformSize" width="375" height="867"/>
                     <connections>
+                        <outlet property="btnPost" destination="1ZF-aP-tfh" id="j6R-aH-B6V"/>
                         <outlet property="btnPostPrivacy" destination="GPs-dm-vkj" id="ePb-EL-hz6"/>
                         <outlet property="collectionViewHeight" destination="Acj-cI-Dbe" id="655-2t-GDY"/>
                         <outlet property="collectionViewImage" destination="hmz-nu-alp" id="zRq-78-AOG"/>
                         <outlet property="imgPrivacy" destination="qlI-3G-x2O" id="AEh-uf-wJY"/>
+                        <outlet property="lblHeader" destination="sDv-ly-JOe" id="cgm-0j-CLP"/>
                         <outlet property="txtPost" destination="uex-QT-PaY" id="40K-31-rb6"/>
                         <outlet property="userImage" destination="QDF-M7-1r5" id="fex-TZ-hv7"/>
                         <outlet property="userName" destination="lr4-8s-pA0" id="87Z-Xq-Doa"/>
@@ -15429,7 +15451,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f29-tG-rNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="-1865"/>
+            <point key="canvasLocation" x="2026" y="-1654"/>
         </scene>
         <!--Privacy-->
         <scene sceneID="SOv-XJ-Fbi">
@@ -15839,7 +15861,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loO-hA-Npw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9165.217391304348" y="-773.4375"/>
+            <point key="canvasLocation" x="-8914" y="-888"/>
         </scene>
         <!--Importer Dashboard View Controller-->
         <scene sceneID="7Sl-nr-fo9">
@@ -16245,6 +16267,13 @@ You will be notified for any membership status update.</string>
                         <outlet property="fdaLine" destination="ta6-gO-y5K" id="jCE-Au-egV"/>
                         <outlet property="headerView" destination="aeI-Dd-X2f" id="lOL-j9-0bk"/>
                         <outlet property="horeca" destination="qqk-U8-AQ9" id="vt4-AK-0KN"/>
+                        <outlet property="lblTitle" destination="0SH-x1-Dka" id="wP8-Er-c16"/>
+                        <outlet property="lblTitle1" destination="hjw-Yl-Bex" id="XbG-14-toM"/>
+                        <outlet property="lblTitle2" destination="09B-3d-zzb" id="AWe-va-KMZ"/>
+                        <outlet property="lblTitle3" destination="Lj6-w0-a8e" id="yTU-cm-8QX"/>
+                        <outlet property="lblTitle4" destination="nJg-un-ayi" id="D8a-i3-Hun"/>
+                        <outlet property="lblTitle5" destination="fjG-mr-Ktp" id="zT5-oi-rKv"/>
+                        <outlet property="lblTitle6" destination="uVY-1B-O9e" id="Xhz-M7-se9"/>
                         <outlet property="name" destination="FLS-Ym-mRc" id="ucq-r3-qwE"/>
                         <outlet property="ourproduct" destination="H43-XY-RSn" id="LDZ-bQ-nhV"/>
                         <outlet property="privatelabel" destination="ITM-qJ-MAZ" id="rZz-qP-riI"/>
@@ -16256,7 +16285,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kx-yo-soa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7968" y="-770.0149925037482"/>
+            <point key="canvasLocation" x="-8186" y="-775"/>
         </scene>
         <!--Travel Agency View Controller-->
         <scene sceneID="6ce-SO-eMx">
@@ -16543,8 +16572,12 @@ You will be notified for any membership status update.</string>
                     </view>
                     <connections>
                         <outlet property="about" destination="lYQ-ZC-4gM" id="SG0-Km-w9y"/>
+                        <outlet property="btnAccept" destination="V2z-oJ-Y57" id="cvL-26-rLK"/>
                         <outlet property="btnDecline" destination="oRi-fE-QVC" id="sgM-ff-VsF"/>
                         <outlet property="country" destination="NfW-eL-tiy" id="8xH-CC-pGg"/>
+                        <outlet property="lblTitle" destination="uQZ-TY-yht" id="cPI-Sq-PFf"/>
+                        <outlet property="lblTitle1" destination="zT5-bh-JFL" id="do1-VH-lKK"/>
+                        <outlet property="lblTitle2" destination="YMj-Wg-7yP" id="LYw-sR-Xst"/>
                         <outlet property="name" destination="x3Z-uG-XiZ" id="rMw-cP-rqU"/>
                         <outlet property="ourptrip" destination="MkV-hH-Ucz" id="aEe-aU-ePF"/>
                         <outlet property="reason" destination="Ufv-kw-gSs" id="zlb-qz-AiX"/>
@@ -16556,7 +16589,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0Y-Ty-8N9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4713" y="-771"/>
+            <point key="canvasLocation" x="-5314" y="-895"/>
         </scene>
         <!--Voice Of Experts View Controller-->
         <scene sceneID="FLi-9S-U1f">
@@ -16814,8 +16847,13 @@ You will be notified for any membership status update.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnAccept" destination="eyd-ji-uRP" id="G62-iC-jEb"/>
                         <outlet property="btnDecline" destination="ihW-TX-bwK" id="eHp-Ii-5Fo"/>
                         <outlet property="country" destination="DrP-5Y-dfL" id="dFP-eJ-qmW"/>
+                        <outlet property="lblTitle" destination="FmZ-xx-R1Q" id="3Ee-jd-9c0"/>
+                        <outlet property="lblTitle1" destination="Y74-fI-txL" id="g7c-zN-sEg"/>
+                        <outlet property="lblTitle2" destination="xDw-se-Aq8" id="fHm-gW-wW5"/>
+                        <outlet property="lblTitle3" destination="33h-wm-OPy" id="Rkp-ZF-5NE"/>
                         <outlet property="name" destination="06o-6N-v19" id="Z4m-ie-d0l"/>
                         <outlet property="reason" destination="bo2-b0-lqC" id="L6A-A2-FVT"/>
                         <outlet property="scrollview" destination="04n-l6-2nV" id="sx5-MA-UwU"/>
@@ -16827,7 +16865,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vD-FH-cnP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5571" y="-773"/>
+            <point key="canvasLocation" x="-5990" y="-894"/>
         </scene>
         <!--Producer Dashboard View Controller-->
         <scene sceneID="6Dw-oA-QNF">
@@ -17053,12 +17091,14 @@ You will be notified for any membership status update.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btnAccept" destination="UTo-vs-GW1" id="tAS-TG-MMQ"/>
-                                            <outlet property="btnDecline" destination="Pix-2n-yO0" id="4ok-cE-xhl"/>
+                                            <outlet property="btnAccept" destination="UTo-vs-GW1" id="c4C-3i-q6q"/>
+                                            <outlet property="btnDecline" destination="Pix-2n-yO0" id="Py6-Vi-z8v"/>
                                             <outlet property="fdalabelconstraint" destination="2Cf-N2-K5I" id="KA5-lu-wWX"/>
                                             <outlet property="fdalineconstraint" destination="1CA-1o-2AQ" id="dXs-Cy-051"/>
                                             <outlet property="fdano" destination="AFL-ac-iEc" id="0Cn-Ug-Odf"/>
                                             <outlet property="fdanumberconstraint" destination="8OO-Nl-mfc" id="69Z-Mq-eYw"/>
+                                            <outlet property="lblVatno" destination="Ua7-R3-SgQ" id="Hsn-Ij-nNc"/>
+                                            <outlet property="lblfdano" destination="56I-sc-SKF" id="Lek-tA-a7K"/>
                                             <outlet property="name" destination="Gac-jE-o7F" id="Jip-W3-yqb"/>
                                             <outlet property="reasontoconnect" destination="mzJ-FN-0kv" id="OrR-Xq-riS"/>
                                             <outlet property="userimg" destination="1oW-JU-U4c" id="8Z2-K8-K9v"/>
@@ -17630,7 +17670,21 @@ You will be notified for any membership status update.</string>
                                             <outlet property="btnView" destination="eMq-uf-DT4" id="n4y-H3-MMS"/>
                                             <outlet property="conservationheight" destination="UQQ-my-AyE" id="XPC-tr-ybI"/>
                                             <outlet property="dropDownTableView" destination="QrO-0H-o2y" id="aoj-Mn-IRd"/>
+                                            <outlet property="lblConservationMethod" destination="bsa-51-UwN" id="jPy-nb-rCy"/>
                                             <outlet property="lblDocumentUpload" destination="oKF-AT-p7T" id="g0h-Je-Ftd"/>
+                                            <outlet property="lblProperties" destination="hom-PS-cvo" id="wCl-UO-13e"/>
+                                            <outlet property="lblSubtitle1" destination="TdC-zB-frS" id="QJw-s1-hMQ"/>
+                                            <outlet property="lblSubtitle2" destination="sDJ-Rm-coh" id="ck2-4h-fr2"/>
+                                            <outlet property="lblSubtitle3" destination="ZT2-j8-XYO" id="KHF-yr-tpj"/>
+                                            <outlet property="lblSubtitle4" destination="m74-Bv-NIo" id="8qe-0W-JMU"/>
+                                            <outlet property="lblSubtitle5" destination="gxC-v3-av8" id="wwj-5O-ZTT"/>
+                                            <outlet property="lblSubtitle6" destination="fuS-GL-sZM" id="mbx-O2-qen"/>
+                                            <outlet property="lbltitle1" destination="rFg-Nu-n2p" id="dkb-pR-pIK"/>
+                                            <outlet property="lbltitle2" destination="9CI-bg-hfZ" id="13a-Z0-Un9"/>
+                                            <outlet property="lbltitle3" destination="3sN-6j-w5r" id="8Is-H8-Sfa"/>
+                                            <outlet property="lbltitle4" destination="nVk-QI-4Ia" id="poq-eI-4eS"/>
+                                            <outlet property="lbltitle5" destination="yya-Gi-af0" id="BMg-73-xUv"/>
+                                            <outlet property="lbltitle6" destination="Erj-at-Hqb" id="Lve-Hb-McJ"/>
                                             <outlet property="propertiesheight" destination="59R-3Y-5st" id="Z9U-E5-XA9"/>
                                             <outlet property="propertyTableView" destination="0LF-cV-RjL" id="241-mE-Mu8"/>
                                             <outlet property="uiview1" destination="Ovk-Z3-mwJ" id="L1g-bf-QgE"/>
@@ -17663,12 +17717,13 @@ You will be notified for any membership status update.</string>
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
                         <outlet property="headerView" destination="SGf-fn-Klz" id="2AE-Dw-IOs"/>
+                        <outlet property="lblTitle" destination="Elq-1d-zhr" id="09b-gF-CFE"/>
                         <outlet property="producerTableView" destination="umD-WG-In9" id="Urt-69-PP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHy-XV-eMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7169.6000000000004" y="-773.6131934032984"/>
+            <point key="canvasLocation" x="-7418" y="-519"/>
         </scene>
         <!--Restaurant View Controller-->
         <scene sceneID="fSF-JN-KKX">
@@ -17994,8 +18049,13 @@ You will be notified for any membership status update.</string>
                     </view>
                     <connections>
                         <outlet property="about" destination="oqA-HO-wZx" id="AsQ-Yq-Yhn"/>
+                        <outlet property="btnAccept" destination="gT5-Dt-bxd" id="app-gT-MrF"/>
                         <outlet property="btnDecline" destination="aFB-rb-gC8" id="pDC-2g-RyZ"/>
                         <outlet property="deliveryDiscount" destination="1n0-FV-UYW" id="u2h-PS-MWF"/>
+                        <outlet property="lblTitle" destination="4Jg-D6-YgK" id="D83-eD-6pu"/>
+                        <outlet property="lblTitle1" destination="Qsi-E8-QKf" id="DW3-eV-lfv"/>
+                        <outlet property="lblTitle2" destination="yfA-wG-zr8" id="CTN-ke-gd9"/>
+                        <outlet property="lblTitle3" destination="5E7-tj-pNx" id="gur-Py-GIJ"/>
                         <outlet property="name" destination="RWe-nh-DyD" id="Sm2-eX-MfC"/>
                         <outlet property="ourmenu" destination="Yqi-vL-aCD" id="i6G-ak-Rl9"/>
                         <outlet property="pickup" destination="dmh-l7-UwU" id="fQ3-D5-RpW"/>
@@ -18009,7 +18069,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3f-UX-SBD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6397.1014492753629" y="-773.4375"/>
+            <point key="canvasLocation" x="-6673" y="-888"/>
         </scene>
         <!--Post Comments View Controller-->
         <scene sceneID="luU-lC-4ut">
@@ -18211,7 +18271,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsK-9E-XVX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2151" y="-2284"/>
+            <point key="canvasLocation" x="1334" y="-839"/>
         </scene>
         <!--Trip Discover-->
         <scene sceneID="Lsg-Vq-E4O">
@@ -18521,6 +18581,11 @@ You will be notified for any membership status update.</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblDuration" destination="b8h-zf-Dyq" id="Rgo-dg-lTG"/>
+                                            <outlet property="lblTitleDuration" destination="8uR-f9-8sj" id="zvP-xa-6Ko"/>
+                                            <outlet property="lblTitleIntensity" destination="c2h-I2-1hW" id="oGR-hI-4d3"/>
+                                            <outlet property="lblTitleRegion" destination="ItE-CC-Kg4" id="Dc6-m3-THQ"/>
+                                            <outlet property="lblTitleTravelAgency" destination="qGV-Jp-XJl" id="wEJ-mQ-HzA"/>
+                                            <outlet property="lblTitleTripPrice" destination="x89-cm-A8A" id="KRb-P8-4iq"/>
                                             <outlet property="locationTitle" destination="9cf-QB-Ys7" id="Rhq-FT-5aU"/>
                                             <outlet property="priceTitle" destination="RsY-Lz-nwQ" id="ghu-XW-deW"/>
                                             <outlet property="travelTitle" destination="ZIM-1k-NGh" id="jio-wZ-bAm"/>
@@ -18555,6 +18620,7 @@ You will be notified for any membership status update.</string>
                     </view>
                     <connections>
                         <outlet property="filter" destination="88y-Oa-ntP" id="try-pd-Yn8"/>
+                        <outlet property="lblTitle" destination="P1N-dK-CG6" id="xKC-lQ-j2u"/>
                         <outlet property="tripsTableView" destination="z9e-OQ-V77" id="qbs-oe-kfJ"/>
                         <outlet property="vwHeader" destination="IfK-3i-MX4" id="c8Z-W1-4Iy"/>
                     </connections>
@@ -18891,7 +18957,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKJ-n4-XRJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6162.3188405797109" y="-2533.2589285714284"/>
+            <point key="canvasLocation" x="-5886" y="-3098"/>
         </scene>
         <!--Blog FilterVC-->
         <scene sceneID="G6a-mV-Ymc">
@@ -19074,7 +19140,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOt-2H-QKz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5468.115942028986" y="-2533.2589285714284"/>
+            <point key="canvasLocation" x="-5225" y="-3098"/>
         </scene>
         <!--Restaurant FilterVC-->
         <scene sceneID="uFu-tv-bHJ">
@@ -19263,7 +19329,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frn-kn-V02" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4772.463768115942" y="-2533.2589285714284"/>
+            <point key="canvasLocation" x="-4538" y="-3099"/>
         </scene>
         <!--Show Map Marker-->
         <scene sceneID="OvS-ga-spj">
@@ -19388,7 +19454,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rO5-gv-V5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7971.0144927536239" y="-2500.4464285714284"/>
+            <point key="canvasLocation" x="-7162" y="-3098"/>
         </scene>
         <!--B2B-->
         <scene sceneID="9gd-3r-GHg">
@@ -20008,7 +20074,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDp-Hi-3lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="230"/>
+            <point key="canvasLocation" x="665" y="-108"/>
         </scene>
         <!--Network ViewC-->
         <scene sceneID="3n3-H6-bTs">
@@ -20536,7 +20602,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjm-4n-LAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.60000000000002" y="1041.2293853073463"/>
+            <point key="canvasLocation" x="564" y="1513"/>
         </scene>
         <!--Universal Search View Controller-->
         <scene sceneID="jVh-F2-nih">
@@ -20701,7 +20767,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azu-pK-JCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="-2995"/>
+            <point key="canvasLocation" x="2746" y="-2705"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="8xr-BY-n6N">
@@ -21498,7 +21564,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raV-bB-1sb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3971" y="-3348"/>
+            <point key="canvasLocation" x="-3869" y="-2799"/>
         </scene>
         <!--Decline Request-->
         <scene sceneID="5ff-65-h6d">
@@ -21604,13 +21670,16 @@ You will be notified for any membership status update.</string>
                     </view>
                     <navigationItem key="navigationItem" id="xP3-EX-1LS"/>
                     <connections>
+                        <outlet property="btnDecline" destination="hcZ-3W-7O4" id="v6B-tJ-RE2"/>
                         <outlet property="headerView" destination="GaU-6T-23i" id="JMA-KA-FN2"/>
+                        <outlet property="lblReasonDecline" destination="MNI-k0-DTl" id="9RY-Gt-xDF"/>
+                        <outlet property="lblTitle" destination="fax-lu-UdC" id="TjM-Sm-f5t"/>
                         <outlet property="reasonToDecline" destination="k9A-cK-LLm" id="6Ff-Jz-aNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7Z-qj-Zyn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3602" y="-774"/>
+            <point key="canvasLocation" x="-4623" y="-878"/>
         </scene>
         <!--Controller-->
         <scene sceneID="aUe-hj-xQm">
@@ -21742,7 +21811,7 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wEe-uI-5T7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4353" y="2882"/>
+            <point key="canvasLocation" x="3828" y="4083"/>
         </scene>
         <!--Story View Controller-->
         <scene sceneID="c28-Jd-cGK">
@@ -21873,13 +21942,13 @@ You will be notified for any membership status update.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7N2-9y-753" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3264.8000000000002" y="-2957.2713643178413"/>
+            <point key="canvasLocation" x="1993" y="-788"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mxZ-oT-J3C"/>
+        <segue reference="cuV-3K-C7q"/>
         <segue reference="pzj-Bp-ciG"/>
-        <segue reference="Jaq-xQ-JSM"/>
+        <segue reference="z87-Y7-L4C"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ellipse 22" width="128" height="128"/>
@@ -23164,7 +23233,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>

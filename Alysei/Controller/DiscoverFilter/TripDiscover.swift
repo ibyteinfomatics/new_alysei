@@ -12,6 +12,8 @@ class TripDiscover: AlysieBaseViewC {
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var tripModel:TripModel?
     var tripData = [TripDatum]()
     var tripId: String?
@@ -31,6 +33,7 @@ class TripDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
+        lblTitle.text = AppConstants.kTrips
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         // Do any additional setup after loading the view.

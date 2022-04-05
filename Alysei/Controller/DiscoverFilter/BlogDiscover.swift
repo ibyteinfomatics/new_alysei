@@ -13,7 +13,7 @@ class BlogDiscover: AlysieBaseViewC {
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var blogTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
-    
+    @IBOutlet weak var lblTitle: UILabel!
     
     var blogModel:BlogModel?
     var blogData = [BlogDatum]()
@@ -27,9 +27,11 @@ class BlogDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
+        lblTitle.text = AppConstants.kBlogs
         blogTableView.delegate = self
         blogTableView.dataSource = self
         blogId = "blogs"
+        
         postRequestToGetBlog(indexOfPageToRequest)
         // Do any additional setup after loading the view.
     }
@@ -92,9 +94,9 @@ class BlogDiscover: AlysieBaseViewC {
          let datep = dateFormatterPrint.string(from: date ?? Date())
         blogTableCell.dateTimeLabel.text = datep
         if String.getString(blogData[indexPath].status) == "0"{
-            blogTableCell.lblDraftPublsh.text = "Draft"
+            blogTableCell.lblDraftPublsh.text = RecipeConstants.kDraft
         }else{
-            blogTableCell.lblDraftPublsh.text = "Publish"
+            blogTableCell.lblDraftPublsh.text = RecipeConstants.kPublish
         }
 //        let imageurl = blogModel?.data?[indexPath].user?.avatarID?.attachmentURL
 //        blogTableCell.imgUser.setImage(withString: (kImageBaseUrl + "\(imageurl ?? "")"))

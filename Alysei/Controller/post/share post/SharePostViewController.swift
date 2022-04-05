@@ -66,7 +66,8 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
         super.viewDidLoad()
         viewHeader.drawBottomShadow()
 //        self.imageCollectionView.register
-
+        lblTitle.text = AppConstants.KShareToMyTimeline
+        btnPost.setTitle(AppConstants.kPost, for: .normal)
         var name = ""
         if (kSharedUserDefaults.loggedInUserModal.displayName?.count ?? 0) > 0 {
             name = kSharedUserDefaults.loggedInUserModal.displayName ?? ""
@@ -152,6 +153,8 @@ class SharePostViewController: UIViewController, SharePostDisplayLogic {
     @IBOutlet weak var imageCollectionHght: NSLayoutConstraint!
     @IBOutlet var lblPostDesc: UILabel!
     @IBOutlet var postOwnerImage: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnPost: UIButton!
     @IBOutlet weak var viewHeader: UIView!
 
     // MARK:- IBAction methods
@@ -188,21 +191,21 @@ extension SharePostViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.privacyTextfield {
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            alertController.addAction(UIAlertAction(title: "Public", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "Public"
+            alertController.addAction(UIAlertAction(title: AppConstants.kPublic, style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text =  AppConstants.kPublic
             }))
-            alertController.addAction(UIAlertAction(title: "Followers", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "Followers"
-            }))
-
-            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "Only Me"
-            }))
-            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
-                self.privacyTextfield.text = "Connections"
+            alertController.addAction(UIAlertAction(title:  AppConstants.Followers, style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text = AppConstants.Followers
             }))
 
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: AppConstants.OnlyMe, style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text = AppConstants.OnlyMe
+            }))
+            alertController.addAction(UIAlertAction(title: AppConstants.Connections, style: .default, handler: { (action: UIAlertAction!) in
+                self.privacyTextfield.text = AppConstants.Connections
+            }))
+
+            alertController.addAction(UIAlertAction(title:MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
             }))
 
 

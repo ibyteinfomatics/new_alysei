@@ -10,14 +10,15 @@ import UIKit
 class DiscoverTableViewCell: UITableViewCell {
     
     @IBOutlet weak var discoverCollectionView: UICollectionView!
-    
-    var storyUser = ["Events","Trips","Blogs","Restaurants"]
+    @IBOutlet weak var lblSubTitle: UILabel!
+    var storyUser = [AppConstants.kEvents,AppConstants.kTrips,AppConstants.kBlogs,AppConstants.kRestaurants]
     var storyImage  = ["select_role2","select_role3","select_role1","select_role4"]
     var pushCallback: ((Int) ->Void)? = nil
     var data: [NewDiscoverDataModel]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblSubTitle.text = AppConstants.kDiscoveryAlysei
         // Initialization code
     }
 

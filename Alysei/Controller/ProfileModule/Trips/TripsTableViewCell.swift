@@ -13,6 +13,13 @@ class TripsTableViewCell: UITableViewCell {
     @IBOutlet weak var view3: UIView!
     @IBOutlet weak var view4: UIView!
     @IBOutlet weak var view5: UIView!
+    @IBOutlet weak var lblTitleIntensity: UILabel!
+    @IBOutlet weak var lblTitleDuration: UILabel!
+    @IBOutlet weak var lblTitleTripPrice: UILabel!
+    @IBOutlet weak var lblTitleTravelAgency: UILabel!
+    @IBOutlet weak var lblTitleRegion: UILabel!
+    
+    
     
     @IBOutlet weak var duview1: UIView!
     @IBOutlet weak var duview2: UIView!
@@ -44,6 +51,13 @@ class TripsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        lblTitleIntensity.text = AppConstants.kIntensity + ":"
+        lblTitleDuration.text = AppConstants.kDuration + ":"
+        lblTitleRegion.text = AppConstants.kRegion + ":"
+        lblTitleTripPrice.text = AppConstants.kTripPrice + ":"
+        lblTitleTravelAgency.text = AppConstants.kTravelAgency + ":"
+       
         view1.layer.cornerRadius = view1.frame.size.width/2
         view2.layer.cornerRadius = view2.frame.size.width/2
         view3.layer.cornerRadius = view3.frame.size.width/2

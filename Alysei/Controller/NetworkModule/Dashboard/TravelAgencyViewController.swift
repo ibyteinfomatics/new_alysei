@@ -21,6 +21,11 @@ class TravelAgencyViewController: AlysieBaseViewC {
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle1: UILabel!
+    @IBOutlet weak var lblTitle2: UILabel!
+    @IBOutlet weak var btnAccept: UIButton!
+   
     
     var connectionId = ""
     var visitordId = ""
@@ -29,6 +34,10 @@ class TravelAgencyViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnAccept.setTitle(AppConstants.kAccept, for: .normal)
+        lblTitle.text = AppConstants.kViewRequest
+        lblTitle1.text = AppConstants.kAboutTravelAgency
+        lblTitle2.text = AppConstants.kOurTrips
         vwHeader.drawBottomShadow()
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor

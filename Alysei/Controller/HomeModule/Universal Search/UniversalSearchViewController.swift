@@ -10,8 +10,8 @@ import UIKit
 var arraySearchByAward : [AwardDatum]? = []
 var searchUniversal = false
 var searchTap = false
-let titleArrayUniversal = ["People","Blogs","Trips","Events","Posts", "Awards"]
-let titleUniversal = ["All","People","Blogs","Trips","Events","Posts", "Awards"]
+let titleArrayUniversal = [AppConstants.kPeople,AppConstants.kBlogs,AppConstants.kTrips,AppConstants.kEvents,AppConstants.kPosts, AppConstants.kAwards]
+let titleUniversal = [AppConstants.kAll,AppConstants.kPeople,AppConstants.kBlogs,AppConstants.kTrips,AppConstants.kEvents,AppConstants.kPosts, AppConstants.kAwards]
 
 class UniversalSearchViewController: AlysieBaseViewC {
     
@@ -47,7 +47,7 @@ class UniversalSearchViewController: AlysieBaseViewC {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchTextField.placeholder = AppConstants.kWhatAreYouSearching
         bubbleCollectionView.delegate = self
         bubbleCollectionView.dataSource = self
         universalSearchTableView.delegate = self
@@ -512,30 +512,31 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
                         
                         if arraySearchByPeople?[indexPath.row].roleId == UserRoles.producer.rawValue{
-                            cell1.labelPeopleDetail.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
                             //notificationTableCell.message.isHidden = false
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.restaurant.rawValue{
                             //cell1.labelPeopleDetail.isHidden = false
-                            cell1.labelPeopleDetail.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voyagers.rawValue {
                             
-                            cell1.labelPeopleDetail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kVoyager
+                            //modelData.subjectId?.email?.lowercased()
                             //notificationTableCell.message.isHidden = true
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voiceExperts.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer1.rawValue {
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer2.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kDistributer + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer3.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.travelAgencies.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
                         }
                         
                         cell1.followercount.text = ""
@@ -779,10 +780,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         if arraySearchByEvents?[indexPath.row].is_event_liked?.count == 0{
                             cell4.btnInterestedWidth.constant = 180
                             cell4.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
-                            cell4.btnInterested.setTitle("Are you Interested?", for: .normal)
+                            cell4.btnInterested.setTitle(AppConstants.kAreyouInterested, for: .normal)
                         }else{
                             cell4.btnInterested.backgroundColor = UIColor.red
-                            cell4.btnInterested.setTitle("Uninterested", for: .normal)
+                            cell4.btnInterested.setTitle(AppConstants.kUninterested, for: .normal)
                         }
                         cell4.callInterestedCallback = { index in
                             
@@ -1174,10 +1175,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     if arraySearchByEvents?[indexPath.row].is_event_liked?.count == 0{
                         cell4.btnInterestedWidth.constant = 180
                         cell4.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
-                        cell4.btnInterested.setTitle("Are you Interested?", for: .normal)
+                        cell4.btnInterested.setTitle(AppConstants.kAreyouInterested, for: .normal)
                     }else{
                         cell4.btnInterested.backgroundColor = UIColor.red
-                        cell4.btnInterested.setTitle("Uninterested", for: .normal)
+                        cell4.btnInterested.setTitle(AppConstants.kUninterested, for: .normal)
                     }
                     cell4.callInterestedCallback = { index in
                         
@@ -1471,22 +1472,22 @@ extension UniversalSearchViewController: EditMenuProtocol {
         }
         let actionSheet = UIAlertController(style: .actionSheet)
         
-        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+        let shareAction = UIAlertAction(title: AppConstants.kSharePost, style: .default) { action in
             self.sharePost(postID)
         }
         
-        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+        let editPostAction = UIAlertAction(title: AppConstants.kEditPost, style: .default) { action in
             self.editPost(postID)
         }
         
-        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+        let deletePost = UIAlertAction(title: AppConstants.kDeletePost, style: .destructive) { action in
             self.deletePost(postID)
         }
         
-        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        let reportAction = UIAlertAction(title: AppConstants.kReportAction, style: .destructive) { action in
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: RecipeConstants.kCancel, style: .cancel) { action in
             
         }
         
@@ -1527,7 +1528,7 @@ extension UniversalSearchViewController: EditMenuProtocol {
             urlRequest.httpBody = body
             WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
                 if (statusCode ?? 0) >= 400 {
-                    self.showAlert(withMessage: "Some error occured")
+                    self.showAlert(withMessage: MarketPlaceConstant.kSomeErrorOccured)
                 } else {
                     
                 }

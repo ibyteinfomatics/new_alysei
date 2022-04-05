@@ -9,6 +9,7 @@ import UIKit
 
 class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var btnDecline: UIButton!
+    @IBOutlet weak var btnAccept: UIButton!
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var reason: UILabel!
@@ -20,6 +21,10 @@ class RestaurantViewController: AlysieBaseViewC {
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var restType: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle1: UILabel!
+    @IBOutlet weak var lblTitle2: UILabel!
+    @IBOutlet weak var lblTitle3: UILabel!
     
     var connectionId = ""
     var visitordId = ""
@@ -27,6 +32,12 @@ class RestaurantViewController: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblTitle.text = AppConstants.kViewRequest
+        lblTitle1.text = AppConstants.kAbout
+        lblTitle2.text = AppConstants.kAboutRestaurant
+        lblTitle3.text = AppConstants.kOurMenu
+        btnDecline.setTitle(AppConstants.kDecline, for: .normal)
+        btnAccept.setTitle(AppConstants.kAccept, for: .normal)
         vwHeader.drawBottomShadow()
         btnDecline.layer.borderWidth = 1
         btnDecline.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor

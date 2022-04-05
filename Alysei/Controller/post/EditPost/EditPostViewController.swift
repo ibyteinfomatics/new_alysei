@@ -36,9 +36,11 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
     
     @IBOutlet weak var imgPrivacy: UIImageView!
     @IBOutlet weak var vwPrivacy: UIView!
+    @IBOutlet weak var lblHeader: UILabel!
+    @IBOutlet weak var btnPost: UIButton!
     
     var privacy:String?
-    var privacyImageArray = ["Public","Friends","OnlyMe"]
+    var privacyImageArray = [AppConstants.kPublic,AppConstants.Followers,AppConstants.OnlyMe,AppConstants.Connections]
     
     var postDesc: String?
     //    var picker = UIImagePickerController()
@@ -103,6 +105,8 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
     {
         super.viewDidLoad()
         doSomething()
+        lblHeader.text = AppConstants.kWhatsNew
+        btnPost.setTitle(AppConstants.kPost, for: .normal)
     }
     
     // MARK: Do something
@@ -219,7 +223,7 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
     @IBAction func postAction(_ sender: UIButton){
         if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) {
             //            showAlert(withMessage: "Please enter some post")
-            showAlert(withMessage: "Post can't be empty")
+            showAlert(withMessage: AppConstants.KPostCantBeEmpty)
             
         }else{
              editPostApi()
@@ -234,22 +238,22 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
        // postPrivacyTableView.isHidden = false
         txtPost.resignFirstResponder()
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            alertController.addAction(UIAlertAction(title: "Public", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Public", for: .normal)
+        alertController.addAction(UIAlertAction(title: AppConstants.kPublic, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle(AppConstants.kPublic, for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "Followers", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Followers", for: .normal)
+            alertController.addAction(UIAlertAction(title: AppConstants.Followers, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle(AppConstants.Followers, for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Only Me", for: .normal)
+        alertController.addAction(UIAlertAction(title: AppConstants.OnlyMe, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle(AppConstants.OnlyMe, for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: AppConstants.Connections, style: .default, handler: { (action: UIAlertAction!) in
                 
-                self.btnPostPrivacy.setTitle("Connections", for: .normal)
+                self.btnPostPrivacy.setTitle(AppConstants.Connections, for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
             }))
 
 

@@ -11,13 +11,16 @@ import DropDown
 class ProducerDashboardViewController: AlysieBaseViewC {
     @IBOutlet weak var producerTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     var connectionId = ""
     var visitordId = ""
-    
+   
     var dashboardModel:DashboardModel?
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblTitle.text = AppConstants.kViewRequest
+        
         headerView.drawBottomShadow()
         producerTableView.delegate = self
         producerTableView.dataSource = self

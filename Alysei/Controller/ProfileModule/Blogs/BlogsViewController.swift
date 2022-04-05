@@ -13,7 +13,7 @@ class BlogsViewController: AlysieBaseViewC {
     @IBOutlet weak var createBlogButton: UIButton!
     @IBOutlet weak var blogTableView: UITableView!
     @IBOutlet weak var vwBlank: UIView!
-    
+    @IBOutlet weak var lblBlank: UILabel!
     var blogModel:BlogModel?
     var userId: String?
     
@@ -22,7 +22,9 @@ class BlogsViewController: AlysieBaseViewC {
         blogTableView.delegate = self
         blogTableView.dataSource = self
         createBlogButton.layer.cornerRadius = 18
-        
+        myBlogLabel.text = AppConstants.kBlogs
+        createBlogButton.setTitle(AppConstants.kCreateBlogs, for: .normal)
+        lblBlank.text = AppConstants.kThereAreNoBlogsAtThisMoment
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,16 +97,16 @@ class BlogsViewController: AlysieBaseViewC {
         blogTableCell.deleteButton.tag = indexPath
         blogTableCell.readMoreButton.tag = indexPath
         if String.getString(blogModel?.data?[indexPath].status) == "0"{
-            blogTableCell.lblDraftPublsh.text = "Draft"
+            blogTableCell.lblDraftPublsh.text = RecipeConstants.kDraft
         }else{
-            blogTableCell.lblDraftPublsh.text = "Publish"
+            blogTableCell.lblDraftPublsh.text = RecipeConstants.kPublish
         }
         blogTableCell.btnDeleteCallback = { tag in
           
             
             //MARK:show Alert Message
-            let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this blog?", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            let refreshAlert = UIAlertController(title: "", message: AppConstants.kAreYouSureYouWantToDeleteThisBlog, preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: { (action: UIAlertAction!) in
                
                 self.disableWindowInteraction()
               
@@ -113,7 +115,7 @@ class BlogsViewController: AlysieBaseViewC {
                     self.postRequestToGetBlog()
                 }
             }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
                   
                 self.parent?.dismiss(animated: true, completion: nil)
             }))
@@ -170,7 +172,7 @@ class BlogsViewController: AlysieBaseViewC {
           
           self.blogModel = BlogModel.init(with: dictResponse)
         
-        self.myBlogLabel.text = "My Blogs (\(self.blogModel?.data?.count ?? 0))"
+          self.myBlogLabel.text = AppConstants.kMyBlogs + " " + "(\(self.blogModel?.data?.count ?? 0))"
         self.setUI()
         self.blogTableView.reloadData()
       }

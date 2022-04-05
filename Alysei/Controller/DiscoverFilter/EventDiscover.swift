@@ -12,6 +12,8 @@ class EventDiscover: AlysieBaseViewC {
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var eventModel:EventModel?
     var eventId: String?
     var hostname,location,website:String?
@@ -30,7 +32,7 @@ class EventDiscover: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lblTitle.text = AppConstants.kEvents
         eventId = "events"
         vwHeader.drawBottomShadow()
         eventsTableView.delegate = self
@@ -86,7 +88,7 @@ class EventDiscover: AlysieBaseViewC {
     private func getEventTableCell(_ indexPath: Int) -> UITableViewCell{
         
         let eventTableCell = eventsTableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier()) as! EventsTableViewCell
-        
+        eventTableCell.moreButton.setTitle(AppConstants.kReadMore, for: .normal)
         eventTableCell.eventTitle.text = eventData[indexPath].eventName
         eventTableCell.hostTitle.text = eventData[indexPath].hostName
         eventTableCell.locationTitle.text = eventData[indexPath].datumDescription
@@ -98,10 +100,10 @@ class EventDiscover: AlysieBaseViewC {
         if eventData[indexPath].is_event_liked?.count == 0{
             eventTableCell.btnInterestedWidth.constant = 180
             eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
-            eventTableCell.btnInterested.setTitle("Are you Interested?", for: .normal)
+            eventTableCell.btnInterested.setTitle(AppConstants.kAreyouInterested, for: .normal)
         }else{
             eventTableCell.btnInterested.backgroundColor = UIColor.red
-            eventTableCell.btnInterested.setTitle("Uninterested", for: .normal)
+            eventTableCell.btnInterested.setTitle(AppConstants.kUninterested, for: .normal)
         }
         eventTableCell.callInterestedCallback = { index in
            
