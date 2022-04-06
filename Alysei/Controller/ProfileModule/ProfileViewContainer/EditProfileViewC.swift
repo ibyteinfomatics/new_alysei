@@ -78,7 +78,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
         let imgPUrl = ((self.signUpViewModel.profileData?.coverID?.baseUrl ?? "") + (self.signUpViewModel.profileData?.avatarID?.attachmentURL ?? ""))
         self.imgViewProfile.setImage(withString: imgPUrl)
 
-        self.imgViewProfile.roundCorners(.allCorners, radius: (self.imgViewProfile.frame.width / 2.0))
+        self.imgViewProfile.roundCorners(.allCorners, radius: (self.imgViewProfile.frame.height / 2.0))
         
         fetchProductsFromProfile()
     }
@@ -558,7 +558,7 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
         case AppConstants.Select:
         
             if kSharedInstance.signUpStepTwoOptionsModel == nil {
-                if ((((model.isHidden == false) || (model.parentId?.isEmpty == false)) && model.selectedValue != "") && model.title == "FDA Certified"){
+                if ((((model.isHidden == false) || (model.parentId?.isEmpty == false)) && model.selectedValue != "") && model.name == APIConstants.fdaCertified){
                     return 75
                     
                 }
@@ -580,7 +580,10 @@ extension EditProfileViewC: UITableViewDelegate, UITableViewDataSource{
                     selectedIndex.append(firstIndex)
                 }
                // print("indexs",selectedIndex)
-
+                if ((((model.isHidden == false) || (model.parentId?.isEmpty == false)) && model.selectedValue != "") && model.name == APIConstants.fdaCertified){
+                    return 75
+                    
+                }
                 if selectedIndex.contains(indexPath.row) || model.parentId?.isEmpty == true{
                     model.isHidden = false
                     return 115.0

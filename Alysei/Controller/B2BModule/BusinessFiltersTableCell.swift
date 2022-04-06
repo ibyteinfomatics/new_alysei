@@ -13,7 +13,7 @@ class BusinessFiltersTableCell: UITableViewCell {
   
   @IBOutlet weak var collectionViewFilters: UICollectionView!
   @IBOutlet weak var lblFilterHeading: UILabel!
-  
+    var model : BusinessDataModel?
   //MARK: - Properties -
   
   var businessDataModel: BusinessDataModel!
@@ -40,7 +40,7 @@ class BusinessFiltersTableCell: UITableViewCell {
   //MARK: - Public Methods -
   
   public func configureData(withBusinessDataModel model: BusinessDataModel) -> Void{
-    
+      self.model = model
     self.selectedIndex.removeAll()
     self.businessDataModel = model
     self.lblFilterHeading.isHidden = (model.arrFilters == StaticArrayData.kRestaurantFilter) ? false : true
@@ -77,7 +77,9 @@ extension BusinessFiltersTableCell: UICollectionViewDelegate, UICollectionViewDa
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
+      if model?.arrFilters == StaticArrayData.kRestaurantFilter {
+          return CGSize(width: (kScreenWidth - 30.0)/2, height: 40.0)
+      }
     return CGSize(width: (kScreenWidth - 30.0)/3, height: 40.0)
   }
     

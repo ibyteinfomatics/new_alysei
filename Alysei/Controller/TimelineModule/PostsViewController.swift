@@ -761,8 +761,10 @@ extension PostsViewController {
                             let parent = self.parent as? HomeViewC
                             parent?.headerView.isUserInteractionEnabled = false
                             parent?.headerView.alpha = 0.8
-                            parent?.headerView.backgroundColor = .black//#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
+                            parent?.headerView.backgroundColor = .black //#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 0.75)
                             
+                          
+                           
                             self.tabBarController?.tabBar.backgroundColor = UIColor.darkGray 
                             self.tabBarController?.tabBar.alpha = 0.9
                             self.tabBarController?.tabBar.isUserInteractionEnabled = false
@@ -913,7 +915,7 @@ extension PostsViewController : CoachMarksControllerDataSource, CoachMarksContro
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
         
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
+       
         switch index {
         case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
