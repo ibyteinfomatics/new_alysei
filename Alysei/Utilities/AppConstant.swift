@@ -495,7 +495,7 @@ struct APIUrl{
 struct AppConstants {
     static var recipeWalkthrough = false
     static var kPrice: String {"Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var kComments: String{"Comments".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPosts: String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPost: String {"Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSharePost: String{"Share Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -593,6 +593,7 @@ struct AppConstants {
     static var OnlyMe : String{"Only Me".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var KPostCantBeEmpty : String{"Post can't be empty".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var KShareToMyTimeline : String{"Share to my timeline".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kThereIsNoMessage : String{"There is no message.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var PrivateMessages : String{"Private Messages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EmailWhenSomeoneRequestsToFollowMe : String{"Email when someone requests to follow me".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -853,6 +854,7 @@ struct MarketPlaceConstant{
     static var kEmail : String {"Email".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPhoneNumber : String {"Phone Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMessage : String {"Message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMessages : String {"Messages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Home Screen
     static var kMarketPlace : String {"MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

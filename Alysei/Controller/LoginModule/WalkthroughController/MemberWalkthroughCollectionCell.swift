@@ -54,7 +54,7 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
     self.getWalkThroughDataModel = model
       if let strUrl = "\(model?.base_url ?? "")\(model?.imageId ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
           let imgUrl = URL(string: strUrl) {
-         print("ImageUrl-----------------------------------------\(imgUrl)")
+         print("ImageUrltrex-----------------------------------------\(imgUrl)")
         self.imgViewBackground.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
     }
     self.lblTitle.text = model?.title

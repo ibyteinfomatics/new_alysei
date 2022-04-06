@@ -29,7 +29,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-    
+    @IBOutlet weak var lblHeading: UILabel!
     var commentmessages:[CommentClass]?
     var countLikeComment:[PostClass]?
     var commentLike:[Comment_Like_Class]?
@@ -160,6 +160,8 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblHeading.text = AppConstants.kComments
+        sendCommentButton.setTitle(AppConstants.kPost, for: .normal)
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         

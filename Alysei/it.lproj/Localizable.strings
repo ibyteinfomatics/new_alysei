@@ -484,6 +484,8 @@
 "Post" = "Post";
 "Post can't be empty" = "Post can't be empty";
 "Share to my timeline" = "Share to my timeline";
+//MARK: Message Screen
+"There is no message." = "There is no message.";
 
 //MARK: MARKETPLACE
 

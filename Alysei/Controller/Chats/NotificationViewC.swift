@@ -17,6 +17,8 @@ class NotificationViewC: AlysieBaseViewC{
   @IBOutlet weak var tblViewNotification: UITableView!
   @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var blankview: UIView!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblBlankView: UIView!
   var ResentUser:[RecentUser]?
     
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
@@ -26,6 +28,7 @@ class NotificationViewC: AlysieBaseViewC{
   override func viewDidLoad() {
     super.viewDidLoad()
     //self.tblViewNotification.tableFooterView = UIView()
+      lblHeading.text = MarketPlaceConstant.kMessages
       self.blankview.isHidden = false
     receiveUsers()
       
