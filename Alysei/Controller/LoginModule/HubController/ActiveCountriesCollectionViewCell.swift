@@ -23,7 +23,7 @@ class ActiveCountriesCollectionViewCell: UICollectionViewCell {
     
     func configCell(_ data: CountryModel){
         lblCountryName.text = data.name
-        if let strUrl = "\(kImageBaseUrl)\(data.flagId?.attachmentUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+        if let strUrl = "\(data.flagId?.baseUrl ?? "")\(data.flagId?.attachmentUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
            let imgUrl = URL(string: strUrl) {
            
             imgFlag.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView

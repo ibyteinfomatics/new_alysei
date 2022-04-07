@@ -688,7 +688,7 @@ extension AddPostViewController {
         //                                "attachments": []]]
         
         //var compressedImages = [UIImage]()
-        let imageParam : [String:Any] = [APIConstants.kImage: self.uploadImageArray,
+        let imageParam : [String:Any] = [APIConstants.kImage: self.imagesFromSource,
                                          // APIConstants.kImageName: "attachments"]
                                          //        let imageParam : [String:Any] = [APIConstants.kImage: [],
                                          APIConstants.kImageName: "attachments"]
