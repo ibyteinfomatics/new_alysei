@@ -979,7 +979,7 @@ class Chat_hepler {
     }
     
     func notificationUpdate(userID :String){
-        userReference.child(userID).updateChildValues(["notification": "0"])
+        userReference.child(userID).updateChildValues(["notification": 0])
     }
     
     
