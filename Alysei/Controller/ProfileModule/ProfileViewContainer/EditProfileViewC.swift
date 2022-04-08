@@ -18,6 +18,7 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
     @IBOutlet weak var imgViewProfile: UIImageView!
     @IBOutlet weak var imgViewCoverPhoto: UIImageView!
     @IBOutlet weak var vwheader: UIView!
+    @IBOutlet weak var lblHeading:UILabel!
     //MARK:  - Properties -
 
     var isProfilePhotoCaptured = false
@@ -45,7 +46,8 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
     override func viewDidLoad() {
       
         super.viewDidLoad()
-       
+        lblHeading.text = MarketPlaceConstant.kEditProfile
+        btnSave.setTitle(RecipeConstants.kSave, for: .normal)
 //        print("Profile Pic----------------------------------------------\(signUpViewModel.profileData?.avatarID?.attachmentURL ?? "")")
 //        print("Cover Pic----------------------------------------------\(signUpViewModel.profileData?.coverID?.attachmentURL ?? "")")
         vwheader.drawBottomShadow()

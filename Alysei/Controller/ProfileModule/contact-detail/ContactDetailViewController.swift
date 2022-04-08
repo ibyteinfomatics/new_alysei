@@ -88,8 +88,13 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        lblHeading.text = AppConstants.ContactDetail
+        lblEmail.text = AppConstants.Email
+        lblPhoneNumber.text = MarketPlaceConstant.kPhoneNumber
+        lblWebsite.text = MarketPlaceConstant.kCWebsite
+        lblAddress.text = AppConstants.kAddress
+        lblFacebook.text = AppConstants.Facebook
+        btnSave.setTitle(AppConstants.Save, for: .normal)
         vwHeader.drawBottomShadow()
         self.emailTextField.placeholder = "email@example.com"
         self.phoneTextField.placeholder = "9999999999"
@@ -152,7 +157,15 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     @IBOutlet var addressTextField: UITextFieldExtended!
     @IBOutlet var websiteTextField: UITextFieldExtended!
     @IBOutlet var facebookTextField: UITextFieldExtended!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var vwHeader: UIView!
+    
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
+    @IBOutlet weak var lblFacebook: UILabel!
 
     // MARK:- protocol methods
 

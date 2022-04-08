@@ -40,7 +40,8 @@ class EditPostViewController: UIViewController, EditPostDisplayLogic
     @IBOutlet weak var btnPost: UIButton!
     
     var privacy:String?
-    var privacyImageArray = [AppConstants.kPublic,AppConstants.Followers,AppConstants.OnlyMe,AppConstants.Connections]
+   // var privacyImageArray = [AppConstants.kPublic,AppConstants.Followers,AppConstants.OnlyMe,AppConstants.Connections]
+    var privacyImageArray = ["Public","Followers","OnlyMe","Connections"]
     
     var postDesc: String?
     //    var picker = UIImagePickerController()

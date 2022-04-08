@@ -12,6 +12,8 @@ class UserPostsViewController: AlysieBaseViewC {
     
     @IBOutlet weak var userPost: UITableView!
     @IBOutlet weak var vwBlank: UIView!
+    @IBOutlet weak var lblBlankView: UILabel!
+    
    // @IBOutlet var vwpageControl: ScrollingPageControl!
     var pageNumber = 1
     var visitorId : String?
@@ -25,7 +27,7 @@ class UserPostsViewController: AlysieBaseViewC {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        lblBlankView.text = AppConstants.kWhenYouPostSomethingItWillAppearHere
         fromMenuTab = "UserPostsViewController"
 
         self.userPost.rowHeight = UITableView.automaticDimension

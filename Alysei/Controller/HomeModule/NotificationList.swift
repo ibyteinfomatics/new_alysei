@@ -12,13 +12,22 @@ class NotificationList: AlysieBaseViewC {
     @IBOutlet weak var tblViewNotification: UITableView!
     @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var blankview: UIView!
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblBlankView: UILabel!
+    @IBOutlet weak var btnClearAll: UIButton!
+   
+    
+    
     var notimodel:NotificationListModel?
     var notifiacationArray = [NotiDatum]()
     var indexOfPageToRequest = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+        lblHeading.text = MarketPlaceConstant.kNotifications
+        btnClearAll.setTitle(RecipeConstants.kClearAll, for: .normal)
+        lblBlankView.text = AppConstants.kThereIsNoNotification
         blankview.isHidden = true
         postRequestToGetNotification(indexOfPageToRequest)
        

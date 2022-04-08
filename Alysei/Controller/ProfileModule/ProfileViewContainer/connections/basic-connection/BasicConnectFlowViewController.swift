@@ -29,6 +29,9 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     var userModel: BasicConnectFlow.userDataModel!
     var userName = ""
     @IBOutlet weak var vwConfirm: UIView!
+    @IBOutlet weak var lblHeading: UILabel!
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -70,8 +73,13 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     override func viewDidLoad() {
         super.viewDidLoad()
         vwConfirm.isHidden = true
+        lblHeading.text = AppConstants.kConnectionRequest
+        lblReasonToConnect.text = AppConstants.ReasonToConnect
+        lblBottomText.text = AppConstants.kRequestSentSuccessfully
+        btnClose.setTitle(MarketPlaceConstant.kClose, for: .normal)
+        btnContinue.setTitle(AppConstants.Continue, for: .normal)
         let messageAttributedString = NSMutableAttributedString()
-        messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
+        messageAttributedString.append(NSAttributedString(string: AppConstants.kSendingARequestToConnectWith + "\n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
         if self.userName != ""{
             messageAttributedString.append(NSAttributedString(string: "@\(self.userName ?? "")", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
         }else{
@@ -88,7 +96,11 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
     // MARK:- IBOutlets
     @IBOutlet weak var emailIDLabel: UILabel!
     @IBOutlet weak var reasonToConnect: UITextView!
-
+    @IBOutlet weak var lblReasonToConnect: UILabel!
+    @IBOutlet weak var lblBottomText: UILabel!
+    @IBOutlet weak var btnContinue: UIButton!
+    @IBOutlet weak var btnClose: UIButton!
+    
     // MARK:- protocol methods
 
     var selectProductId = [String]()

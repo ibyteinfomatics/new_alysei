@@ -34,8 +34,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     @IBOutlet weak var blankdataView: UIView!
     @IBOutlet weak var imgReview: UIImageView!
    
-    
-    var privacyArray = ["Public","Followers","Only Me","Connections"]
+    @IBOutlet weak var lblWhatNew: UILabel!
+    var privacyArray = [AppConstants.kPublic,AppConstants.Followers,AppConstants.OnlyMe,AppConstants.Connections]
     var privacyImageArray = ["Public","Friends","OnlyMe","Friends"]
     var progressUserData: UserData?
     var postDesc: String?
@@ -52,7 +52,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        lblWhatNew.text = AppConstants.kWhatNew
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
         vwPrivacy.layer.borderColor = UIColor.darkGray.cgColor
@@ -360,8 +360,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //    }
 
     func showExceededMaximumAlert(vc: UIViewController) {
-        let alert = UIAlertController(title: "", message: "Exceed Maximum Number Of Selection", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kExceedMaximumLimit, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
     
@@ -373,7 +373,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //        }
         if (txtPost.text == AppConstants.kEnterText && self.imagesFromSource.count == 0) || (txtPost.text == "") {
 //            showAlert(withMessage: "Please enter some post")
-            showAlert(withMessage: "Say Something...")
+            showAlert(withMessage: AppConstants.kSaySomething)
 
         }else{
         addPostApi()
@@ -400,22 +400,22 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
         //postPrivacyTableView.reloadData()
         txtPost.resignFirstResponder()
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            alertController.addAction(UIAlertAction(title: "Public", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Public", for: .normal)
+        alertController.addAction(UIAlertAction(title: AppConstants.kPublic, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle( AppConstants.kPublic, for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "Followers", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Followers", for: .normal)
+        alertController.addAction(UIAlertAction(title: AppConstants.Followers, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle(AppConstants.Followers, for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Only Me", style: .default, handler: { (action: UIAlertAction!) in
-                self.btnPostPrivacy.setTitle("Only Me", for: .normal)
+            alertController.addAction(UIAlertAction(title: AppConstants.OnlyMe, style: .default, handler: { (action: UIAlertAction!) in
+                self.btnPostPrivacy.setTitle(AppConstants.OnlyMe, for: .normal)
             }))
-            alertController.addAction(UIAlertAction(title: "Connections", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: AppConstants.Connections, style: .default, handler: { (action: UIAlertAction!) in
                 
-                self.btnPostPrivacy.setTitle("Connections", for: .normal)
+                self.btnPostPrivacy.setTitle(AppConstants.Connections, for: .normal)
             }))
 
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
             }))
 
 
@@ -499,15 +499,15 @@ extension AddPostViewController: TLPhotosPickerLogDelegate {
     
     func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
         picker.dismiss(animated: true) {
-            let alert = UIAlertController(title: "", message: "Denied albums permissions granted", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedAlbumPermissioins, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func handleNoCameraPermissions(picker: TLPhotosPickerViewController) {
-        let alert = UIAlertController(title: "", message: "Denied camera permissions granted", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: MarketPlaceConstant.kDeniedCameraPermissioins, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:  MarketPlaceConstant.kOk, style: .default, handler: nil))
         picker.present(alert, animated: true, completion: nil)
     }
     

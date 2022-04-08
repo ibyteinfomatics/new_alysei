@@ -48,7 +48,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var followercount: UILabel!
     @IBOutlet weak var featureUIview: NSLayoutConstraint!
     @IBOutlet weak var headerView: UIView!
-    
+    @IBOutlet weak var lblProgress: UILabel!
     @IBOutlet weak var addbtn: NSLayoutConstraint!
     @IBOutlet weak var addimg: NSLayoutConstraint!
     @IBOutlet weak var addtext: NSLayoutConstraint!
@@ -71,6 +71,12 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var btnConnectHght: NSLayoutConstraint!
     
     @IBOutlet weak var viewFeature: UIView!
+    @IBOutlet weak var lblUpdateProfile: UILabel!
+    @IBOutlet weak var btnLogout: UIButton!
+   
+    @IBOutlet weak var lblPosts: UILabel!
+    @IBOutlet weak var lblConnections: UILabel!
+    @IBOutlet weak var lblAbout: UILabel!
     
     // @IBOutlet weak var featureCollectionView: UICollectionView!
     
@@ -195,7 +201,12 @@ class ProfileViewC: AlysieBaseViewC{
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lblPosts.text = AppConstants.kPosts
+        lblAbout.text = ProfileCompletion.About
+        lblConnections.text = AppConstants.Connections
+        lblProgress.text = AppConstants.kYourProgress
+        lblUpdateProfile.text = AppConstants.kUpdateProfile
+        btnLogout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView
@@ -263,9 +274,9 @@ class ProfileViewC: AlysieBaseViewC{
                 self.viewFeature.isHidden = false
             }
             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-                followerstext.text = "Following"
+                followerstext.text = AppConstants.kFollowing
             } else {
-                followerstext.text = "Followers"
+                followerstext.text = AppConstants.Followers
             }
             
         case .other:
@@ -744,9 +755,9 @@ class ProfileViewC: AlysieBaseViewC{
                     print("Success---------------------------Successssss")
                     self.fetchVisiterProfileDetails(self.userID)
                 } else if statusCode == 409{
-                    self.showAlert(withMessage: "You are not autorized user.")
+                    self.showAlert(withMessage: AppConstants.kYouAreNotAuthorizedUser)
                 } else {
-                    self.showAlert(withMessage: "Something went wrong.")
+                    self.showAlert(withMessage: AppConstants.kSomethingWentWrong)
                 }
                 
             }
@@ -784,16 +795,16 @@ class ProfileViewC: AlysieBaseViewC{
             } else if connectionStatus == 2 {
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
-                let cancelConnectionRequestAction = UIAlertAction(title: "Cancel Request", style: .default) { action in
+                let cancelConnectionRequestAction = UIAlertAction(title: AppConstants.kCancelRequest, style: .default) { action in
                     self.cancelConnectionRequest()
                 }
                 cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
-                var title = "Block"
+                var title = AppConstants.Block
                 if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                    title = "Block"
+                    title = AppConstants.Block
                 } else {
-                    title = "UnBlock"
+                    title = AppConstants.UnBlock
                 }
                 
                 let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
@@ -802,7 +813,7 @@ class ProfileViewC: AlysieBaseViewC{
                 blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: nil)
                 cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 alertController.addAction(cancelConnectionRequestAction)
@@ -815,16 +826,18 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
-                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                let cancelConnectionRequestAction = UIAlertAction(title: AppConstants.RemoveConnection, style: .default) { action in
                     self.cancelConnectionRequest()
                 }
                 cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
-                var title = "Block"
+                var title = AppConstants.Block
                 if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                    title = "Block"
+                    title = AppConstants.Block
+
                 } else {
-                    title = "UnBlock"
+                    title = AppConstants.UnBlock
+
                 }
                 
                 let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
@@ -833,7 +846,7 @@ class ProfileViewC: AlysieBaseViewC{
                 blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: nil)
                 cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 alertController.addAction(cancelConnectionRequestAction)
@@ -860,16 +873,16 @@ class ProfileViewC: AlysieBaseViewC{
         }
         if self.connectButton.isHidden == false{
             if self.userType != .voyagers {
-                var title = "Connect"
+                var title = AppConstants.Connect
                 switch connectionFlag {
                 case 0:
-                    title = "Connect"
+                    title = AppConstants.Connect
                 case 1:
-                    title = "Connected"
+                    title = AppConstants.Connected
                 case 2:
-                    title = "Pending"
+                    title = AppConstants.kPending
                 default:
-                    title = "Connect"
+                    title = AppConstants.Connect
                 }
                 self.connectButton.setTitle("\(title)", for: .normal)
             } else if self.userType == .voyagers {
@@ -877,21 +890,21 @@ class ProfileViewC: AlysieBaseViewC{
                 if self.visitorUserType == .voyagers {
                     //let title = (self.userProfileModel.data?.userData?.connectionFlag ?? 0) == 1 ? "Connected" : "Pending"
                     //self.connectButton.setTitle("\(title)", for: .normal)
-                    var title = "Connect"
+                    var title = AppConstants.Connect
                     switch connectionFlag {
                     case 0:
-                        title = "Connect"
+                        title = AppConstants.Connect
                     case 1:
-                        title = "Connected"
+                        title = AppConstants.Connected
                     case 2:
-                        title = "Pending"
+                        title = AppConstants.kPending
                     default:
-                        title = "Connect"
+                        title = AppConstants.Connect
                     }
                     self.connectButton.setTitle("\(title)", for: .normal)
                     
                 } else {
-                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? "Unfollow" : "Follow"
+                    let title = (self.userProfileModel.data?.userData?.followFlag ?? 0) == 1 ? AppConstants.Unfollow : AppConstants.Follow
                     self.connectButton.setTitle("\(title)", for: .normal)
                 }
             }
@@ -949,21 +962,21 @@ class ProfileViewC: AlysieBaseViewC{
             
             switch self.userType {
             case .distributer1, .distributer2, .distributer3:
-                self.lbladdproduct.text = "Add Product"
+                self.lbladdproduct.text = MarketPlaceConstant.kAddProduct
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.distributer1.rawValue).cgColor
             case .producer:
-                self.lbladdproduct.text = "Add Product"
+                self.lbladdproduct.text = MarketPlaceConstant.kAddProduct
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.producer.rawValue).cgColor
             case .travelAgencies:
-                self.lbladdproduct.text = "Add Package"
+                self.lbladdproduct.text = MarketPlaceConstant.kAddPackage
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.travelAgencies.rawValue).cgColor
             case .voiceExperts:
-                self.lbladdproduct.text = "Add Featured"
+                self.lbladdproduct.text = MarketPlaceConstant.kAddFeatured
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.voiceExperts.rawValue).cgColor
             case .voyagers:
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.voyagers.rawValue).cgColor
             case .restaurant :
-                self.lbladdproduct.text = "Add Menu"
+                self.lbladdproduct.text = MarketPlaceConstant.KAddMenu
                 self.imgViewProfile.layer.borderColor = UIColor.init(hexString: RolesBorderColor.restaurant.rawValue).cgColor
             default:
                 self.imgViewProfile.layer.borderColor = UIColor.white.cgColor
@@ -1039,14 +1052,14 @@ class ProfileViewC: AlysieBaseViewC{
         if userLevel == .other {
             switch self.visitorUserType {
             case .distributer1, .distributer2, .distributer3, .producer:
-                self.featuredListingTitleLabel.text = "Featured Product"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeaturedProduct
             case .restaurant:
-                self.featuredListingTitleLabel.text = "Featured Menu"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeaturedMenu
             case .travelAgencies:
-                self.featuredListingTitleLabel.text = "Featured Package"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeaturedPackage
                 
             case .voiceExperts:
-                self.featuredListingTitleLabel.text = "Featured"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeatured
                 
             default:
                 
@@ -1055,13 +1068,13 @@ class ProfileViewC: AlysieBaseViewC{
         }else{
             switch self.userType {
             case .distributer1, .distributer2, .distributer3, .producer:
-                self.featuredListingTitleLabel.text = "Featured Product"
+                self.featuredListingTitleLabel.text =  MarketPlaceConstant.kFeaturedProduct
             case .restaurant:
-                self.featuredListingTitleLabel.text = "Featured Menu"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeaturedMenu
             case .travelAgencies:
-                self.featuredListingTitleLabel.text = "Featured Package"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeaturedPackage
             case .voiceExperts:
-                self.featuredListingTitleLabel.text = "Featured"
+                self.featuredListingTitleLabel.text = MarketPlaceConstant.kFeatured
             default:
                 print("no user role found")
             }
@@ -1205,7 +1218,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     func setPercentageUI(_ userPercentage: String ){
         //let userPercentage = responseModel.data?.userData?.profilePercentage ?? 0
-        self.percentageLabel.text = "\(userPercentage )% completed"
+        self.percentageLabel.text = "\(userPercentage )%" + AppConstants.kcompleted
         self.lblPercentage.text = "\(userPercentage )%"
         
         let floatPercentage = Float(userPercentage )
@@ -1272,9 +1285,9 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 //self.collectionViewAddProduct.reloadData()
                 if self.userProfileModel.data?.userData?.roleID == 10 {
-                    self.followerstext.text = "Following"
+                    self.followerstext.text = AppConstants.kFollowing
                 } else {
-                    self.followerstext.text = "Followers"
+                    self.followerstext.text = AppConstants.Followers
                 }
                 if self.userProfileModel.data?.userData?.connectionFlag == 1 || self.userProfileModel.data?.userData?.followFlag == 1 ||  self.userProfileModel.data?.userData?.whoCanViewProfile == "anyone"{
                     self.tabsCollectionView.reloadData()
@@ -1432,11 +1445,11 @@ class ProfileViewC: AlysieBaseViewC{
         disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kFollowUnfollow, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             
-            if self.connectButton.titleLabel?.text == "Follow" {
+            if self.connectButton.titleLabel?.text == AppConstants.Follow {
                 
-                self.connectButton.setTitle("Unfollow", for: .normal)
-            } else if self.connectButton.titleLabel?.text == "Unfollow" {
-                self.connectButton.setTitle("Follow", for: .normal)
+                self.connectButton.setTitle(AppConstants.Unfollow, for: .normal)
+            } else if self.connectButton.titleLabel?.text == AppConstants.Unfollow {
+                self.connectButton.setTitle(AppConstants.Follow, for: .normal)
             }
         }
         
@@ -1571,7 +1584,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
         if collectionView == collectionViewAddProduct {
             let productCategoryDataModel = self.signUpViewModel?.arrProductCategories.first
             let product = productCategoryDataModel?.arrAllProducts[indexPath.row]
-            self.postRequestToGetFeatureListing(product?.featuredListingId ?? "", navigationTitle: "Featured Product")
+            self.postRequestToGetFeatureListing(product?.featuredListingId ?? "", navigationTitle: MarketPlaceConstant.kFeaturedProduct)
         }
         else{
             print("Invalid data")
@@ -1927,16 +1940,16 @@ extension ProfileViewC {
             } else if connectionStatus == 2 {
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
-                let cancelConnectionRequestAction = UIAlertAction(title: "Cancel Request", style: .default) { action in
+                let cancelConnectionRequestAction = UIAlertAction(title: AppConstants.kCancelRequest, style: .default) { action in
                     self.cancelConnectionRequest()
                 }
                 cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
-                var title = "Block"
+                var title = AppConstants.Block
                 if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                    title = "Block"
+                    title = AppConstants.Block
                 } else {
-                    title = "UnBlock"
+                    title = AppConstants.UnBlock
                 }
                 
                 let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
@@ -1945,7 +1958,7 @@ extension ProfileViewC {
                 blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: nil)
                 cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 alertController.addAction(cancelConnectionRequestAction)
@@ -1957,16 +1970,16 @@ extension ProfileViewC {
                 // print("Check")
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
-                let cancelConnectionRequestAction = UIAlertAction(title: "Remove Connection", style: .default) { action in
+                let cancelConnectionRequestAction = UIAlertAction(title: AppConstants.RemoveConnection, style: .default) { action in
                     self.cancelConnectionRequest()
                 }
                 cancelConnectionRequestAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
-                var title = "Block"
+                var title = AppConstants.Block
                 if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
-                    title = "Block"
+                    title = AppConstants.Block
                 } else {
-                    title = "UnBlock"
+                    title = AppConstants.UnBlock
                 }
                 
                 let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
@@ -1975,7 +1988,7 @@ extension ProfileViewC {
                 blockUserAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: nil)
                 cancelAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
                 
                 alertController.addAction(cancelConnectionRequestAction)
@@ -2061,7 +2074,7 @@ extension ProfileViewC {
         let alert:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         // acceptAction
-        let acceptAction = UIAlertAction(title: "Accept Request",
+        let acceptAction = UIAlertAction(title: MarketPlaceConstant.kAcceptRequest,
                                          style: UIAlertAction.Style.default) { (action) in
             
             self.inviteApi(id: self.userID, type: 1)
@@ -2072,7 +2085,7 @@ extension ProfileViewC {
         acceptAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
         // declineAction
-        let deleteAction = UIAlertAction(title: "Decline Request",
+        let deleteAction = UIAlertAction(title: AppConstants.kDeclineRequest,
                                          style: UIAlertAction.Style.default) { (action) in
            // self.inviteApi(id: self.userID, type: 2)
             
@@ -2086,7 +2099,7 @@ extension ProfileViewC {
         deleteAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
         // blockAction
-        let blockAction = UIAlertAction(title: "Block",
+        let blockAction = UIAlertAction(title: AppConstants.Block,
                                         style: UIAlertAction.Style.default) { (action) in
             print("\(AlertMessage.kCancel) tapped")
         }
@@ -2095,7 +2108,7 @@ extension ProfileViewC {
         blockAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
         // cancelAction
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel,
                                          style: UIAlertAction.Style.cancel) { (action) in
             print("\(AlertMessage.kCancel) tapped")
         }

@@ -12,6 +12,8 @@ class NewChat: AlysieBaseViewC {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var blankview: UIView!
+    @IBOutlet weak var lblheading: UILabel!
+    @IBOutlet weak var lblBlankView: UILabel!
     
     var connection:ConnectionTabModel?
     var arrConnection =  [Datum]()
@@ -21,6 +23,8 @@ class NewChat: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.blankview.isHidden = true
+        lblheading.text = AppConstants.kNewChat
+        lblBlankView.text = AppConstants.kThereIsNoNewChat
         callConnectionApi()
         // Do any additional setup after loading the view.
     }

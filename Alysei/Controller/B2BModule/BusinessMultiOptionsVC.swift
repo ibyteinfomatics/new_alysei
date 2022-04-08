@@ -12,6 +12,7 @@ class BusinessMultiOptionsVC: UIViewController {
     @IBOutlet weak var optionTableView: UITableView!
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var vwHeader: UIView!
+    @IBOutlet weak var btnDone: UIButton!
     
     var arrUserHubs: [HubCityArray]?
     var getRoleViewModel: GetRoleViewModel!
@@ -29,13 +30,13 @@ class BusinessMultiOptionsVC: UIViewController {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
         if ((currentIndex == B2BSearch.Hub.rawValue || currentIndex == B2BSearch.Voyager.rawValue) && selectFieldType == AppConstants.SelectState){
-            headerTitle.text = "Select State"
+            headerTitle.text = AppConstants.SelectState
         }else if ((currentIndex == B2BSearch.Expert.rawValue || currentIndex == B2BSearch.TravelAgencies.rawValue) && selectFieldType == AppConstants.SelectRegion){
-            headerTitle.text = "Select Region"
+            headerTitle.text = AppConstants.SelectRegion
         }else{
         headerTitle.text = selectFieldType
         }
-        
+        btnDone.setTitle(MarketPlaceConstant.kDone, for: .normal)
         if selectFieldType == AppConstants.Hubs{
         for i in 0..<(arrUserHubs?.count ?? 0){
             if passSelectOptionId.contains("\(self.arrUserHubs?[i].id ?? 0)"){

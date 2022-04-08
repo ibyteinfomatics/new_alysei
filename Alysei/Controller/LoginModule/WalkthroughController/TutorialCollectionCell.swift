@@ -62,7 +62,7 @@ class TutorialCollectionCell: UICollectionViewCell {
       self.btnSkip.isHidden = false
       self.btnGetStarted.setTitle(AppConstants.GetStarted, for: .normal)
     default:
-      if indexPath.item == StaticArrayData.kTutorialDict.count - 1{
+      if indexPath.item == walkthroughModel.count - 1{
         self.btnGetStarted.setTitle(AppConstants.Finish, for: .normal)
         self.btnSkip.isHidden = true
       }

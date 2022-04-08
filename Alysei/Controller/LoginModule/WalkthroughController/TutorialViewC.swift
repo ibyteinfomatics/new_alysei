@@ -74,7 +74,7 @@ extension TutorialViewC: GetStartedDelegate{
       
       //let walkthroughArray = self.getWalkThroughViewModel.arrWalkThroughs.count
       let currentIndexPath = collectionViewTutorial.indexPath(for: cell)!
-      if currentIndexPath.item < StaticArrayData.kTutorialDict.count - 1{
+      if currentIndexPath.item < walkthroughModel.count - 1{
         
         let indexPath = IndexPath(item: currentIndexPath.item+1, section: 0)
         self.collectionViewTutorial.scrollToItem(at: indexPath, at: .right, animated: true)

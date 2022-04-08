@@ -14,7 +14,7 @@ class MembershipViewC: AlysieBaseViewC {
   @IBOutlet weak var tblViewMembership: UITableView!
   @IBOutlet weak var viewBlueHeading: UIView!
     @IBOutlet weak var lblMemberShip: UILabel!
-   
+    @IBOutlet weak var lblHeading: UILabel!
   //  @IBOutlet weak var viewBottom: UIView!
  // @IBOutlet weak var tableviewheight: NSLayoutConstraint!
   var progressmodel:ProgressModel?
@@ -37,7 +37,7 @@ class MembershipViewC: AlysieBaseViewC {
     
     super.viewDidLoad()
       lblMemberShip.text = LogInSignUp.kMembershipTitle
-     
+      lblHeading.text = LogInSignUp.kAlyseiMemberShip
       if MobileDeviceType.IS_IPHONE_X || MobileDeviceType.IS_IPHONE_X_MAX {
           tblViewMembership.isScrollEnabled = false
       } else {
@@ -276,9 +276,7 @@ extension MembershipViewC{
 class BottomViewCell: UITableViewCell{
    //
     @IBOutlet weak var lblBottomText: UILabel!
-    
-
-    override func awakeFromNib() {
+     override func awakeFromNib() {
         lblBottomText.text = AppConstants.kMemberShipProgressPending
     }
     

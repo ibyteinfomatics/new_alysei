@@ -82,6 +82,7 @@
 "Discover the trending recipes." = "Scopri le ricette di tendenza.";
 
 //MARK: Alert Message
+"Please select any product" ="Please select any product";
 "Please enter first name." = "Inserisci il nome.";
 "Please enter last name." = "nserisci il cognome.";
 "Please enter mobile number." = "Inserisci il numero di cellulare.";
@@ -423,6 +424,50 @@
 "Reason to decline" = "Reason to decline";
 "Discovery Alysei" = "Discovery Alysei";
 
+//MARK: Add Post
+"What's new?" = "What's new?";
+"Say Something..." = "Say Something...";
+
+//MARK: Network Screen
+"You have no invitations right now!" = "You have no invitations right now!";
+"You have no connections right now!" = "You have no connections right now!";
+"You have no pending invites right now!" = "You have no pending invites right now!";
+"You have no followers right now!" = "You have no followers right now!";
+"Connection Request" = "Connection Request";
+"Sending a request to connect with" = "Sending a request to connect with";
+"Request Sent Successfully." = "Request Sent Successfully.";
+"Close" = "Close";
+//MARK: Profile
+
+"Update Profile" = "Update Profile";
+"You are not authorized user." = "You are not authorized user.";
+"Something went wrong." = "Something went wrong.";
+"Cancel Request" = "Cancel Request";
+"Block" = "Block";
+"UnBlock" = "UnBlock";
+"Remove Connection" = "Remove Connection";
+"Connect" = "Connect";
+"Connected" = "Connected";
+"Unfollow" = "Unfollow";
+"Follow" = "Follow";
+"Add Package" = "Add Package";
+"Add Featured" = "Add Featured";
+"Add Menu" = "Add Menu";
+"Featured Product" = "Featured Product";
+"Featured Menu" = "Featured Menu";
+"Featured Package" = "Featured Package";
+"Featured" = "Featured";
+"Accept Request" = "Accept Request";
+"Your Progress" = "Your Progress";
+"completed" = "completed";
+"When you post something it will appear here." = "When you post something it will appear here.";
+"There are no posts at this moment." = "There are no posts at this moment.";
+"Contact Detail" = "Contact Detail";
+"Address" = "Address";
+"Facebook" = "Facebook";
+"Reason to connect" = "Reason to connect";
+"Edit Profile" = "Edit Profile";
+
 //MARK: Settings
 "Settings" = "Settings";
 "Company" = "Company";
@@ -484,8 +529,23 @@
 "Post" = "Post";
 "Post can't be empty" = "Post can't be empty";
 "Share to my timeline" = "Share to my timeline";
+
 //MARK: Message Screen
 "There is no message." = "There is no message.";
+"There is no new chat." = "There is no new chat.";
+"New Chat" = "New Chat";
+"There is no notification." = "There is no notification.";
+
+//MARK: B2bScreen
+"Importer & Distributers" = "Importer & Distributers";
+"Italian Restaurants" = "Italian Restaurants";
+"Join the"= "Join the";
+"to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community." = "to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community.";
+//MARK: Invitation
+"Invitations" = "Invitations";
+"Connections" = "Connections";
+"Pending" =  "Pending";
+"Following" = "Following";
 
 //MARK: MARKETPLACE
 
@@ -819,6 +879,9 @@
 
 //MARK: Membership Screen
 "Review" = "Verifica";
+"Your have been recognized by our app." = "Your have been recognized by our app.";
+"You have been officially certified by our staff." = "You have been officially certified by our staff.";
+"You will receive an official quality mark on your profile." = "You will receive an official quality mark on your profile.";
 "Your account has been reviewed and approved by our staff" = "Il tuo account è stato verificato e approvato dal team Alysei";
 "Alysei Certification" = "Certificazione Alysei";
 "Congratulation! You are now a certified Alysei Member." = "Comlipeniti! ora sei un Membro Certificato Alysei";

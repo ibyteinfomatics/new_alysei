@@ -83,7 +83,8 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
     @IBOutlet weak var vwProduct : UIView!
     @IBOutlet weak var lblSelectedProduct: UILabel!
     @IBOutlet weak var lblUserName: UILabel!
-   
+    @IBOutlet weak var lblHeading: UILabel!
+    @IBOutlet weak var lblSubHeading: UILabel!
     
     var userName: String?
     var productData: Data?
@@ -94,13 +95,15 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
   {
     let request = ConnectionProductType.Something.Request()
     interactor?.doSomething(request: request)
-    lblSelectedProduct.text = "Select product type"
+      lblHeading.text = AppConstants.kConnectionRequest
+      lblSelectedProduct.text = AppConstants.SelectProductType
+      lblSubHeading.text = AppConstants.SelectProductType
     lblSelectedProduct.textColor = UIColor.lightGray
    print("UserName---------------------\(self.userName!)")
     
     
     let messageAttributedString = NSMutableAttributedString()
-    messageAttributedString.append(NSAttributedString(string: "Sending a request to connect with \n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
+      messageAttributedString.append(NSAttributedString(string: AppConstants.kSendingARequestToConnectWith + "\n", attributes: [NSAttributedString.Key.font: AppFonts.regular(16.0).font]))
     messageAttributedString.append(NSAttributedString(string: "@\(self.userName!)", attributes: [NSAttributedString.Key.font: AppFonts.bold(16.0).font]))
     
     lblUserName.attributedText = messageAttributedString
@@ -134,7 +137,7 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
     
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         if self.selectedProductId.count == 0{
-            self.showAlert(withMessage: "Please select any product")
+            self.showAlert(withMessage: AppConstants.kPleaseSelectAnyProduct)
         }else{
         let controller = pushViewController(withName: CompanyViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? CompanyViewC
             controller?.selectedProductId = self.selectedProductId

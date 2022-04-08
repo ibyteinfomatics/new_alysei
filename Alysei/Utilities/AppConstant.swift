@@ -494,7 +494,31 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var kWhatNew: String{"What's new?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSaySomething : String {"Say Something...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddress : String {"Address".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+    static var kYouHaveNoInvitationsRightNow : String { "You have no invitations right now!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYouHaveNoConnectionsRightNow : String { "You have no connections right now!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYouHaveNoPendingInvitiesRightNow : String { "You have no pending invites right now!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYouHaveNoFollowersRightNow : String {"You have no followers right now!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kConnectionRequest : String {"Connection Request".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSendingARequestToConnectWith : String {"Sending a request to connect with".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectAnyProduct : String {"Please select any product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kRequestSentSuccessfully: String {"Request Sent Successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUpdateProfile: String {"Update Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var kPrice: String {"Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kInvitations : String {"Invitations".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kConnections : String {"Connections".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPending : String {"Pending".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kFollowing : String {"Following".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSubscribe : String {"Subscribe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kUnsubscribe : String {"Unsubscribe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Unfollow : String {"Unfollow".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Follow : String {"Follow".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+  
     static var kComments: String{"Comments".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPosts: String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPost: String {"Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -532,7 +556,9 @@ struct AppConstants {
     static var kEvents: String{"Events".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAwards: String{"Awards".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddAwards: String{"Add Awards".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var kNewChat : String{"New Chat".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kThereIsNoNotification : String{"There is no notification.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kItalianRestaurants : String{"Italian Restaurants".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAll: String{"All".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kProducer: String{"Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRestaurant: String{"Restaurant".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -542,6 +568,7 @@ struct AppConstants {
     static var kImporter: String{"Importer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDistributer: String{"Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterDistributer: String{"Importer & Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImporterDistributers: String{"Importer & Distributers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgencies: String{"Travel Agencies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kPostUnavailable: String {"Post Unavailable".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -565,6 +592,10 @@ struct AppConstants {
     static var Privacy: String{return "Privacy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var CapPassword: String{return "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Blocking: String {"Blocking".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Block: String {"Block".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UnBlock: String {"UnBlock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var RemoveConnection: String {"Remove Connection".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var Membership: String{"Membership".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Billing : String{"Billing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var YourData : String {"Your Data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -577,6 +608,7 @@ struct AppConstants {
     static var Featured: String {"Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var UserSettings: String{"User Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EditHub: String{"Edit Hub".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Edit: String{"Edit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EditProfile: String{"Edit Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Notification: String {"Notification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EditSettings: String{"Edit Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -594,7 +626,8 @@ struct AppConstants {
     static var KPostCantBeEmpty : String{"Post can't be empty".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var KShareToMyTimeline : String{"Share to my timeline".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kThereIsNoMessage : String{"There is no message.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var kThereIsNoNewChat : String{"There is no new chat.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
     static var PrivateMessages : String{"Private Messages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EmailWhenSomeoneRequestsToFollowMe : String{"Email when someone requests to follow me".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ReceiveWeeklyUpdates : String{"Receive weekly updates".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -608,6 +641,15 @@ struct AppConstants {
     static var kReasonToDecline: String{"Reason to decline".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTitleMarketPlace: String{"MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiscoveryAlysei: String{"Discovery Alysei".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYourProgress: String{"Your Progress".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kcompleted: String{"completed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWhenYouPostSomethingItWillAppearHere: String{"When you post something it will appear here.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ContactUs: String{"Contact Us".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ThereAreNoPostAtThisMoment: String{"There are no posts at this moment.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var ContactDetail: String{"Contact Detail".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Facebook: String{"Facebook".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ReasonToConnect: String{"Reason to connect".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kB2B: String{"B2B".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kHubs: String{"Hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -633,6 +675,19 @@ struct AppConstants {
     static var kUplaod: String{"Upload".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var isRequired: String{"is required".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddFeaturedProducts: String{"Add Featured Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kYouAreNotAuthorizedUser: String{"You are not authorized user.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSomethingWentWrong: String{"Something went wrong.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kCancelRequest: String{"Cancel Request".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+   
+    //MARK: HOME SCREEN
+
+    static var kYouHaveBeenOfficiallyCertifiedByOurStaff : String {"You have been officially certified by our staff.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kYourHaveBeenRecognizedByOurApp : String {"Your have been recognized by our app.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kYouWillReceiveAnOfficialQualityMarkOnYourProfile : String {"You will receive an official quality mark on your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     
     static var KAddFeaturedMenu : String{"Add Featured Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddFeaturedPackages: String{"Add Featured Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -766,6 +821,7 @@ struct AppConstants {
     static var kRegions: String{"Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRegion: String{"Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAdventures: String{"Adventures".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAdventure: String{"Adventure".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDuration: String{"Duration".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kIntensity : String{"Intensity".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //static var kPrice: String{"Price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -783,7 +839,9 @@ struct AppConstants {
     static var kCreateBlogs : String{"Create Blogs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kBlogTitle: String{"Blog Title".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kBlog: String{"Blog".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var Connect  : String {"Connect".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Continue  : String {"Continue".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Connected : String {"Connected".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
     //MARK: Validation field type(check)
@@ -808,6 +866,8 @@ struct ProfileCompletion {
     static var Ourtours   : String { "Our Tours".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ContactInfo  : String { "Contact Info".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var OurMenu  : String { "Our Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
+    
 }
 
 struct PlaceholderImages {
@@ -831,6 +891,8 @@ struct MarketPlaceConstant{
     static var kNew : String { "New".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOpened : String { "Opened".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kClosed : String {"Closed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClose : String {"Close".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEditProfile : String {"Edit Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kYearsAgo : String { "years ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMonthsAgo : String { "months ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWeeksAgo : String { "weeks ago".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -865,6 +927,7 @@ static var  kNotifications : String {"Notifications".localizableString(loc: kSha
 static var kCreateMyStore : String {  "Create your store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiscoverMarketplace : String { return "Discover Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
  static var kProducerStore  : String {"Producer Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
 
 static var kConservationMethod : String {"Conservation Method".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
@@ -987,6 +1050,18 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kKeyword  : String {  "Keywords".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kGrams  : String {  "grams".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddProduct  : String {  "Add Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddPackage  : String {"Add Package".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeatured  : String {"Add Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KAddMenu  : String {"Add Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kFeaturedProduct : String { "Featured Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kFeaturedMenu : String {"Featured Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kFeaturedPackage : String {"Featured Package".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var  kFeatured : String {"Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAcceptRequest: String {"Accept Request".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
+    
+    
     static var kMilligram  : String {  "milligrams".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMinimumOrderProductQuantity  : String {  "Minimum Order quantity should be less or equal to quantity Available".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kUploadProductImages  : String {  "Please upload product images.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1108,6 +1183,9 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     //MARK: Marketplace Store Screen
     static var kItalianFBProducers  : String {"Italian F&B Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var JoinThe: String{"Join the".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ToExpandYourNetworkAndAccess: String{"to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var kOurGallery  : String { "Our Gallery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCall  : String {"Call".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddToFav  : String {"Add to Fav".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1682,24 +1760,24 @@ struct OtherConstant {
 
 struct StaticArrayData {
     
-    static let kInactiveNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
-                                               (image: "connections", name: "Connections"),
-                                               (image: "pending", name: "Pending"),
-                                               kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
+    static let kInactiveNetworkCategoryDict = [(image: "invitations", name: AppConstants.kInvitations),
+                                               (image: "connections", name: AppConstants.kConnections),
+                                               (image: "pending", name: AppConstants.kPending),
+                                               kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: AppConstants.kFollowing) : (image: "followers", name: AppConstants.Followers)]
     
-    static let kInactiveBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
-                                                (image: "importers&distributors", name: "Importers & Distributors"),
-                                                (image: "italianrestaurantsinus", name: "Italian Restaurants in US"),
-                                                (image: "voiceofexperts", name: "Voice of Experts"),
-                                                (image: "travelagencies", name: "Travel Agencies"),
-                                                (image: "producers", name: "Producer"),
+    static let kInactiveBusinessCategoryDict = [(image: "hubs", name: AppConstants.Hubs),
+                                                (image: "importers&distributors", name: AppConstants.kImporterDistributer),
+                                                (image: "italianrestaurantsinus", name: LogInSignUp.kIatalianRestaurants),
+                                                (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
+                                                (image: "travelagencies", name: AppConstants.kTravelAgencies),
+                                                (image: "producers", name: AppConstants.kProducer),
     ]
     
-    static let kTutorialDict = [(image: "Alysei Splash Screen 1", title: "Welcome to Alysei", description: "Connect to social platform Alysei and follow your interests in restaurants,events,wine,food,cooking classes,recipes,blogs and more."),
-                                (image: "Alysei Splash Screen 2", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
-                                (image: "Alysei Splash Screen 3", title: "Lorem Ipsum", description: "Promote your brand on a collaborative network of certified US-based Producers, Importers, and Distributors."),
-                                (image: "Alysei Splash Screen 4", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
-                                (image: "Alysei Splash Screen 5", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster.")]
+//    static let kTutorialDict = [(image: "Alysei Splash Screen 1", title: "Welcome to Alysei", description: "Connect to social platform Alysei and follow your interests in restaurants,events,wine,food,cooking classes,recipes,blogs and more."),
+//                                (image: "Alysei Splash Screen 2", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
+//                                (image: "Alysei Splash Screen 3", title: "Lorem Ipsum", description: "Promote your brand on a collaborative network of certified US-based Producers, Importers, and Distributors."),
+//                                (image: "Alysei Splash Screen 4", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster."),
+//                                (image: "Alysei Splash Screen 5", title: "Lorem Ipsum", description: "First B2B and B2C portal developed to sell high quality Italian products among targeted US customers effortlessly and faster.")]
     
     
     static let kSettingScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
@@ -1825,28 +1903,28 @@ struct StaticArrayData {
     //MARK: SettingTableView
     
     static let kSettingPrdrTblScreenDict = [
-        (image: "billing_icon", name: "Billing"),
-        (image: "data_icon", name: "Your Data"),
-        (image: "block_icon", name: "Blocking")]
+        (image: "billing_icon", name: AppConstants.Billing),
+        (image: "data_icon", name: AppConstants.YourData),
+        (image: "block_icon", name: AppConstants.Blocking)]
     
-    static let kMembershipData = [(image: "Ellipse 22", name: "Review", status: "Your account is being reviewed by our staff."),
-                                  (image: "Ellipse 22", name: "Alysei Certification", status: "You have been officially certified by our staff."),
-                                  (image: "Ellipse 22", name: "Recognition", status: "Your have been recognized by our app."),
-                                  (image: "Ellipse 22", name: "Quality Mark", status: "You will receive an official quality mark on your profile.")]
+    static let kMembershipData = [(image: "Ellipse 22", name: MarketPlaceConstant.kReviews, status: LogInSignUp.kAccountReviewesApprovOurStaff),
+                                  (image: "Ellipse 22", name: LogInSignUp.kAlyseiCertification, status: AppConstants.kYouHaveBeenOfficiallyCertifiedByOurStaff),
+                                  (image: "Ellipse 22", name: LogInSignUp.kRecognition, status: AppConstants.kYourHaveBeenRecognizedByOurApp),
+                                  (image: "Ellipse 22", name: LogInSignUp.kQualityMark, status: AppConstants.kYouWillReceiveAnOfficialQualityMarkOnYourProfile)]
     
     
-    static let kBusinessCategoryDict = [(image: "hubs", name: "Hubs"),
-                                        (image: "importers&distributors", name: "Importers & Distributors"),
-                                        (image: "italianrestaurantsinus", name: "Italian Restaurants"),
-                                        (image: "voiceofexperts", name: "Voice of Experts"),
-                                        (image: "travelagencies", name: "Travel Agencies"),
-                                        (image: "producers", name: "Italian F&B Producers"),
+    static let kBusinessCategoryDict = [(image: "hubs", name: AppConstants.kHubs),
+                                        (image: "importers&distributors", name: AppConstants.kImporterDistributers),
+                                        (image: "italianrestaurantsinus", name: AppConstants.kItalianRestaurants),
+                                        (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
+                                        (image: "travelagencies", name: AppConstants.kTravelAgencies),
+                                        (image: "producers", name: MarketPlaceConstant.kItalianFBProducer),
     ]
     
-    static let kNetworkCategoryDict = [(image: "invitations", name: "Invitations"),
-                                       (image: "connections", name: "Connections"),
-                                       (image: "pending", name: "Pending"),
-                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: "Following") : (image: "followers", name: "Followers")]
+    static let kNetworkCategoryDict = [(image: "invitations", name: AppConstants.kInvitations),
+                                       (image: "connections", name: AppConstants.kConnections),
+                                       (image: "pending", name: AppConstants.kPending),
+                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: AppConstants.kFollowing) : (image: "followers", name: AppConstants.Followers)]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),
@@ -1855,11 +1933,11 @@ struct StaticArrayData {
     //                                 (image: "select_role5", name: "Travel Agencies"),
     //                                 (image: "select_role6", name: "Voyagers")]
     
-    static let kImporterFilter = ["Horeca","Private Label","Alysei Brand Label"]
+    static let kImporterFilter = [AppConstants.kHORECA,AppConstants.PrivateLabel,AppConstants.AlyseiBrand]
     
     static let kRestaurantFilter = ["PickUp","Delivery"]
     
-    static let kEventArray = ["Adventure","Tech","Family","Wellness","Fitness","Photography","Food & Drink","Writing","Culture"]
+    static let kEventArray = [AppConstants.kAdventure,"Tech","Family","Wellness","Fitness","Photography","Food & Drink","Writing","Culture"]
     
     static let ArrayProducerProfileCompletionDict = [(name: "HubSelection", status: "Your account is being                                                         reviewed by our staff."),
                                                      (name: "Profile Picture", status: "You have been officially certified by our staff."),
@@ -1867,13 +1945,13 @@ struct StaticArrayData {
                                                      (name: "About", status: "You will receive an official quality mark on your profile."),
                                                      (name: "Our Products", status: "You will receive an official quality mark on your profile."),
                                                      (name: "Featured Products", status: "You will receive an official quality mark on your profile.")]
-    static let kMemberShipArray = [(name: "Create your Store", desc: "Create your own modern, professional online Store", image: "membership_store"),
-                                   (name: "Create your Product listing", desc: "Display your unique products listings", image: "membership_productListing"),
-                                   (name: "Respond to buyers inquiry", desc: "Interact with your future buyers", image: "membership_respond"),
-                                   (name: "Favorite and Ratings", desc: "Being able to be reviewed and rated by buyers", image: "membership_heart")]
-    static let kMemberShipCmngSoonArray = [(name: "Boost your listing", desc: "Boost your listing to expand you reach and increase buyers engagement",  image: "membership_boost"),
-                                   (name: "Sell online", desc: "Sell your product online to your buyers",  image: "membership_sell"),
-                                   (name: "B2C Grand Opening", desc: "Alysei full opening to Market, Buyers and Consumers",  image: "membership_b2b"),
+    static let kMemberShipArray = [(name: MarketPlaceConstant.kCreateMyStore, desc: MarketPlaceConstant.kCreateYourOwnModern, image: "membership_store"),
+                                   (name: MarketPlaceConstant.kCreateProductListing, desc: MarketPlaceConstant.kDisplayProductListing, image: "membership_productListing"),
+                                   (name: MarketPlaceConstant.kRespondToBuyers, desc: MarketPlaceConstant.kInteractWithFutureBuyers, image: "membership_respond"),
+                                   (name: MarketPlaceConstant.kFavRatings, desc: MarketPlaceConstant.kBeingAbleToReviewedAndRated, image: "membership_heart")]
+    static let kMemberShipCmngSoonArray = [(name: MarketPlaceConstant.kBoostYourListing, desc: MarketPlaceConstant.kBoostListingExpandReach,  image: "membership_boost"),
+                                           (name: MarketPlaceConstant.kSellOnline, desc: MarketPlaceConstant.kSellProducttoBuyers,  image: "membership_sell"),
+                                           (name:MarketPlaceConstant.kB2CGrandOpening, desc: MarketPlaceConstant.kAlyseiFullOpeneingToMarket,  image: "membership_b2b"),
                                    ]
 
 }

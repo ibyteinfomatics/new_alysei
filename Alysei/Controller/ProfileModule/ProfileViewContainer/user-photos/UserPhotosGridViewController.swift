@@ -12,6 +12,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
 
     @IBOutlet weak var userPhotosCollectionView: UICollectionView!
     @IBOutlet weak var vwBlank: UIView!
+    @IBOutlet weak var lblBlank: UILabel!
 
     var photos = [String]()
     var pageNumber = 1
@@ -23,7 +24,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        lblBlank.text = AppConstants.ThereAreNoPostAtThisMoment
         self.userPhotosCollectionView.delegate = self
         self.userPhotosCollectionView.dataSource = self
 

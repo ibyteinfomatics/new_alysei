@@ -16,6 +16,7 @@ class HubsViewC: AlysieBaseViewC {
     @IBOutlet weak var btnSubscribe: UIButton!
     @IBOutlet weak var vwHeader: UIView!
     @IBOutlet weak var imgHub: UIImageView!
+    @IBOutlet weak var lblHeading: UILabel!
    // @IBOutlet weak var imgHub: UIImageView!
     
     var arruserCount : [UserRoleCount]?
@@ -30,19 +31,20 @@ class HubsViewC: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblHeading.text = AppConstants.kHubs
         vwHeader.drawBottomShadow()
         hubName.text = passHubName
         hubLocation.text = passHubLocation
         self.imgHub.setImage(withString: (passBaseUrl ?? "") + String.getString(passHubImageUrl))
-        lblSubHeading.text = "Join the \(passHubName ?? "") to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community."
+        lblSubHeading.text = (MarketPlaceConstant.JoinThe + "\(passHubName ?? "")" + MarketPlaceConstant.ToExpandYourNetworkAndAccess)
         callUserCountApi()
         // Do any additional setup after loading the view.
     }
     func setData(){
         if self.isHubSubscribed == 0 {
-            self.btnSubscribe.setTitle("Subscribe", for: .normal)
+            self.btnSubscribe.setTitle(AppConstants.kSubscribe, for: .normal)
         }else{
-            self.btnSubscribe.setTitle("Unsubscribe", for: .normal)
+            self.btnSubscribe.setTitle(AppConstants.kUnsubscribe, for: .normal)
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton){

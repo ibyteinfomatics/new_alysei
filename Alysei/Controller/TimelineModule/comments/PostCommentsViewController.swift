@@ -235,7 +235,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     // MARK:- IBOutlets
     @IBOutlet weak var viewNavigation: UIView!
     //@IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabelExtended!
+   // @IBOutlet weak var titleLabel: UILabelExtended!
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var bottomViewForCommentTextField: UIView!

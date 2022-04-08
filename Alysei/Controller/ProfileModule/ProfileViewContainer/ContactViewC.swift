@@ -24,6 +24,9 @@ class ContactViewC: AlysieBaseViewC {
   
     @IBOutlet weak var tblViewContactUs: UITableView!
     @IBOutlet var editContactDetailButton: UIButtonExtended!
+    @IBOutlet weak var lblHeading: UILabel!
+    
+    
     var userLevel: UserLevel = .own
     
     var openUrlCallBack: ((URL) -> Void)? = nil
@@ -33,7 +36,8 @@ class ContactViewC: AlysieBaseViewC {
   override func viewDidLoad() {
      
     super.viewDidLoad()
-
+      lblHeading.text = AppConstants.ContactUs
+      editContactDetailButton.setTitle(AppConstants.EditHub, for: .normal)
     self.tblViewContactUs.showsHorizontalScrollIndicator = false
     self.tblViewContactUs.showsVerticalScrollIndicator = false
     

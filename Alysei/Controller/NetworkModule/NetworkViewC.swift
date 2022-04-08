@@ -22,7 +22,7 @@ class NetworkViewC: AlysieBaseViewC {
   @IBOutlet weak var tblViewNetwork: UITableView!
   //@IBOutlet weak var tblViewInviteNetwork: UITableView!
     
-    
+  
     // blank data view
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var logout: UIButton!
@@ -39,6 +39,7 @@ class NetworkViewC: AlysieBaseViewC {
   
   override func viewDidLoad() {
    super.viewDidLoad()
+      
     self.tblViewNetwork.tableFooterView = UIView()
       indexOfPageToRequest = 1
    // self.tblViewInviteNetwork.tableFooterView = UIView()
@@ -157,13 +158,13 @@ class NetworkViewC: AlysieBaseViewC {
         blankdata.isHidden = true
         
         if networkcurrentIndex == 0 {
-            blanktext.text = "You have no invitations right now!"
+            blanktext.text = AppConstants.kYouHaveNoInvitationsRightNow
         } else if networkcurrentIndex == 1 {
-            blanktext.text = "You have no connections right now!"
+            blanktext.text = AppConstants.kYouHaveNoConnectionsRightNow
         } else if networkcurrentIndex == 2 {
-            blanktext.text = "You have no pending invites right now!"
+            blanktext.text = AppConstants.kYouHaveNoPendingInvitiesRightNow
         } else if networkcurrentIndex == 3 {
-            blanktext.text = "You have no followers right now!"
+            blanktext.text = AppConstants.kYouHaveNoFollowersRightNow
         }
         
         self.arrConnection.removeAll()
@@ -381,7 +382,7 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.remove.isHidden = false
                     networkTableCell.remove.setTitleColor(.red, for: .normal)
                     networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
-                    networkTableCell.remove.setTitle("Cancel", for: .normal)
+                    networkTableCell.remove.setTitle(MarketPlaceConstant.kCancel, for: .normal)
 
                     networkTableCell.btnRemoveCallback = { tag in
                         //self.pendingRemoveApi(id: (self.arrConnection[indexPath.row].userID)!)

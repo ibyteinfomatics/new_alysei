@@ -18,7 +18,8 @@ class NotificationViewC: AlysieBaseViewC{
   @IBOutlet weak var viewNavigation: UIView!
     @IBOutlet weak var blankview: UIView!
     @IBOutlet weak var lblHeading: UILabel!
-    @IBOutlet weak var lblBlankView: UIView!
+    @IBOutlet weak var lblBlankView: UILabel!
+  
   var ResentUser:[RecentUser]?
     
     var resentReference     = Database.database().reference().child(Parameters.ResentMessage)
@@ -29,6 +30,7 @@ class NotificationViewC: AlysieBaseViewC{
     super.viewDidLoad()
     //self.tblViewNotification.tableFooterView = UIView()
       lblHeading.text = MarketPlaceConstant.kMessages
+      self.lblBlankView.text = AppConstants.kThereIsNoMessage
       self.blankview.isHidden = false
     receiveUsers()
       

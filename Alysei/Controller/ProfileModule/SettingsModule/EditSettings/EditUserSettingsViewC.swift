@@ -18,6 +18,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   @IBOutlet weak var lblUserName: UILabel!
   @IBOutlet weak var lblUserEmail: UILabel!
   @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var lblHeading: UILabel!
     var imgPUrl: String?
   //MARK: - Properties -
   
@@ -32,6 +33,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+      lblHeading.text = AppConstants.Settings
     self.setInitialData()
     
   }

@@ -21,7 +21,7 @@ class BusinessViewC: AlysieBaseViewC {
     //MARK: - Properties -
     
     // blank data view
-    @IBOutlet weak var text: UILabel!
+   // @IBOutlet weak var text: UILabel!
     @IBOutlet weak var logout: UIButton!
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
