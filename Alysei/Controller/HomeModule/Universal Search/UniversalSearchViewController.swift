@@ -499,7 +499,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     else{
                         cell1.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
-                        
+                        cell1.followercount.text =  ((arraySearchByPeople?[indexPath.row].follower_count ?? "0") + " " + AppConstants.Followers)
                         
                         if arraySearchByPeople?[indexPath.row].compnyName != "" {
                             cell1.labelPeopleName.text = arraySearchByPeople?[indexPath.row].compnyName
@@ -509,8 +509,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell1.labelPeopleName.text = arraySearchByPeople?[indexPath.row].restaurantName
                         }
                         
-                        cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
-                        
+                      //  cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
+                      
                         if arraySearchByPeople?[indexPath.row].roleId == UserRoles.producer.rawValue{
                             cell1.labelPeopleDetail.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
                             //notificationTableCell.message.isHidden = false
@@ -539,7 +539,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell1.labelPeopleDetail.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
                         }
                         
-                        cell1.followercount.text = ""
+                        //cell1.followercount.text = ""
                         
                         if self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl != nil {
                             cell1.peopleImgView.setImage(withString: String.getString((self.arraySearchByPeople?[indexPath.row].avatarId?.baseUrl ?? "")+(self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
@@ -934,6 +934,35 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell1.noItemLabel.isHidden = true
                     cell1.mainVw.isHidden = false
                     cell1.labelPeopleName.text = arraySearchByPeople?[indexPath.row].name
+                    cell1.followercount.text = ((arraySearchByPeople?[indexPath.row].follower_count ?? "0") + " " + AppConstants.Followers)
+                    if arraySearchByPeople?[indexPath.row].roleId == UserRoles.producer.rawValue{
+                        cell1.labelPeopleDetail.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
+                        //notificationTableCell.message.isHidden = false
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.restaurant.rawValue{
+                        //cell1.labelPeopleDetail.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voyagers.rawValue {
+                        
+                        cell1.labelPeopleDetail.text = AppConstants.kVoyager
+                        //modelData.subjectId?.email?.lowercased()
+                        //notificationTableCell.message.isHidden = true
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voiceExperts.rawValue{
+                        //notificationTableCell.message.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer1.rawValue {
+                        //notificationTableCell.message.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer2.rawValue{
+                        //notificationTableCell.message.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kDistributer + ","//modelData.subjectId?.email?.lowercased()
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer3.rawValue{
+                        //notificationTableCell.message.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
+                    }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.travelAgencies.rawValue{
+                        //notificationTableCell.message.isHidden = false
+                        cell1.labelPeopleDetail.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+                    }
+                        
                     cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email
                     let imgUrl = ((self.arraySearchByPeople?[indexPath.row].avatarId?.baseUrl ?? "") + (self.arraySearchByPeople?[indexPath.row].avatarId?.imageUrl ?? ""))
                     cell1.peopleImgView.layer.masksToBounds = false

@@ -125,7 +125,7 @@ class UserDataModel{
     var restaurantName: String?
     var roleId: Int?
     var avatarId: AvatarDataModel?
-    
+    var follower_count: String?
     init(with dictResponse: [String:Any]){
         self.userId = Int.getInt(dictResponse["user_id"])
         self.name = String.getString(dictResponse["name"])
@@ -135,7 +135,7 @@ class UserDataModel{
         self.compnyName = String.getString(dictResponse["company_name"])
         self.restaurantName = String.getString(dictResponse["restaurant_name"])
         self.roleId = Int.getInt(dictResponse["role_id"])
-      
+        self.follower_count = String.getString(dictResponse["follower_count"])
         if let data = dictResponse["avatar_id"] as? [String:Any]{
             self.avatarId = AvatarDataModel.init(with: data)
         }
