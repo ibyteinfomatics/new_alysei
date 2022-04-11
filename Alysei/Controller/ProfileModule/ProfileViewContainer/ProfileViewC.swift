@@ -73,7 +73,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var viewFeature: UIView!
     @IBOutlet weak var lblUpdateProfile: UILabel!
     @IBOutlet weak var btnLogout: UIButton!
-   
+    
     @IBOutlet weak var lblPosts: UILabel!
     @IBOutlet weak var lblConnections: UILabel!
     @IBOutlet weak var lblAbout: UILabel!
@@ -198,7 +198,7 @@ class ProfileViewC: AlysieBaseViewC{
         
     }
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lblPosts.text = AppConstants.kPosts
@@ -310,43 +310,43 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-    
-            let data = kSharedUserDefaults.getLoggedInUserDetails()
-              if Int.getInt(data["alysei_review"]) == 1 {
-                if isprofileComplete == false{
+        
+        let data = kSharedUserDefaults.getLoggedInUserDetails()
+        if Int.getInt(data["alysei_review"]) == 1 {
+            if isprofileComplete == false{
+                
+                if !AppManager.getUserSeenAppInstructionProfile() {
+                    Thread.sleep(forTimeInterval: 1.0)
+                    self.coachMarksController.start(in: .viewController(self))
                     
-                        if !AppManager.getUserSeenAppInstructionProfile() {
-                            Thread.sleep(forTimeInterval: 1.0)
-                            self.coachMarksController.start(in: .viewController(self))
-                            
-                            self.tabBarController?.tabBar.backgroundColor = .darkGray
-                            self.tabBarController?.tabBar.alpha = 0.9
-                            self.tabBarController?.tabBar.isUserInteractionEnabled = false
-                            
-                        }
-                        else{
-                            self.tabBarController?.tabBar.backgroundColor = .white
-                            self.tabBarController?.tabBar.alpha = 1.0
-                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
-
-                        }
-                    
+                    self.tabBarController?.tabBar.backgroundColor = .darkGray
+                    self.tabBarController?.tabBar.alpha = 0.9
+                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
                     
                 }
                 else{
                     self.tabBarController?.tabBar.backgroundColor = .white
                     self.tabBarController?.tabBar.alpha = 1.0
                     self.tabBarController?.tabBar.isUserInteractionEnabled = true
-
+                    
                 }
+                
+                
             }
             else{
                 self.tabBarController?.tabBar.backgroundColor = .white
                 self.tabBarController?.tabBar.alpha = 1.0
                 self.tabBarController?.tabBar.isUserInteractionEnabled = true
-
+                
             }
-         }
+        }
+        else{
+            self.tabBarController?.tabBar.backgroundColor = .white
+            self.tabBarController?.tabBar.alpha = 1.0
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            
+        }
+    }
     
     func inviteApi(id: Int, type: Int){
         
@@ -448,37 +448,37 @@ class ProfileViewC: AlysieBaseViewC{
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
-//                        let data = kSharedUserDefaults.getLoggedInUserDetails()
-//                          if Int.getInt(data["alysei_review"]) == 1 {
-//                            if isprofileComplete == false{
-//                                if !AppManager.getUserSeenAppInstructionProfile() {
-////                                    self.coachMarksController.start(in: .viewController(self))
-//                                    self.tabBarController?.tabBar.backgroundColor = .darkGray
-//                                    self.tabBarController?.tabBar.alpha = 0.9
-//                                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
-//
-//                                }
-//                                else{
-//                                    self.tabBarController?.tabBar.backgroundColor = .white
-//                                    self.tabBarController?.tabBar.alpha = 1.0
-//                                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
-//
-//                                }
-//                            }
-//                            else{
-//                                self.tabBarController?.tabBar.backgroundColor = .white
-//                                self.tabBarController?.tabBar.alpha = 1.0
-//                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
-//
-//                            }
-//                        }
-//                        else{
-//                            self.tabBarController?.tabBar.backgroundColor = .white
-//                            self.tabBarController?.tabBar.alpha = 1.0
-//                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
-//
-//                        }
-
+                        //                        let data = kSharedUserDefaults.getLoggedInUserDetails()
+                        //                          if Int.getInt(data["alysei_review"]) == 1 {
+                        //                            if isprofileComplete == false{
+                        //                                if !AppManager.getUserSeenAppInstructionProfile() {
+                        ////                                    self.coachMarksController.start(in: .viewController(self))
+                        //                                    self.tabBarController?.tabBar.backgroundColor = .darkGray
+                        //                                    self.tabBarController?.tabBar.alpha = 0.9
+                        //                                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                        //
+                        //                                }
+                        //                                else{
+                        //                                    self.tabBarController?.tabBar.backgroundColor = .white
+                        //                                    self.tabBarController?.tabBar.alpha = 1.0
+                        //                                    self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                        //
+                        //                                }
+                        //                            }
+                        //                            else{
+                        //                                self.tabBarController?.tabBar.backgroundColor = .white
+                        //                                self.tabBarController?.tabBar.alpha = 1.0
+                        //                                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                        //
+                        //                            }
+                        //                        }
+                        //                        else{
+                        //                            self.tabBarController?.tabBar.backgroundColor = .white
+                        //                            self.tabBarController?.tabBar.alpha = 1.0
+                        //                            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                        //
+                        //                        }
+                        
                     } else {
                         if self.userID != nil {
                             self.menuButton.isHidden = true
@@ -834,10 +834,10 @@ class ProfileViewC: AlysieBaseViewC{
                 var title = AppConstants.Block
                 if self.userProfileModel.data?.userData?.blockFlag ?? 0 == 0 {
                     title = AppConstants.Block
-
+                    
                 } else {
                     title = AppConstants.UnBlock
-
+                    
                 }
                 
                 let blockUserAction = UIAlertAction(title: title, style: .destructive) { action in
@@ -2044,15 +2044,15 @@ extension ProfileViewC {
     
     func cancelConnectionRequest() {
         
-               let params: [String:Any] = [:]
-               
-               TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(self.userID ?? -1)+"&accept_or_reject=3", requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-                   
-                   if statusCode == 200 {
-                       self.fetchVisiterProfileDetails(self.userID)
-                   }
-                   
-               }
+        let params: [String:Any] = [:]
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(self.userID ?? -1)+"&accept_or_reject=3", requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            
+            if statusCode == 200 {
+                self.fetchVisiterProfileDetails(self.userID)
+            }
+            
+        }
     }
     
     func blockUserFromConnectionRequest(_ model: ProfileScreenModels.BlockConnectRequest) {
@@ -2087,7 +2087,7 @@ extension ProfileViewC {
         // declineAction
         let deleteAction = UIAlertAction(title: AppConstants.kDeclineRequest,
                                          style: UIAlertAction.Style.default) { (action) in
-           // self.inviteApi(id: self.userID, type: 2)
+            // self.inviteApi(id: self.userID, type: 2)
             
             let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
             vc.visitordId = self.userID
@@ -2179,7 +2179,7 @@ extension UITabBarController {
 extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 3
+        return 5
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
@@ -2187,7 +2187,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         switch index {
-
+            
         case 0:
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId{
             case "3", "4", "5", "6":
@@ -2236,13 +2236,42 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
             case "10":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoyagers
             default: break
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+        case 3:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId {
+            case "3":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerField
+            case "4","5","6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
+            case "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgencies
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
+            default:
+                break
                 
             }
             
+           
             coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
             
-           
-         
+        case 4:
+            switch kSharedUserDefaults.loggedInUserModal.memberRoleId {
+            case "3","4","5","6":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
+            case "7":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
+            case "8":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
+            case "9":
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantFeatured
+            default:
+                break
+                
+            }
+            coachViews.bodyView.nextLabel.text = ButtonTitle.kOk
+            
         default: break
         }
         
@@ -2253,13 +2282,37 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
                               coachMarkAt index: Int) -> CoachMark {
         
         switch index {
-
+            
         case 0: return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 1, section: 0)))
         case 1:
             return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
         case 2:
-            return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 3, section: 0)))
-        
+            
+            
+            if MobileDeviceType.IS_IPHONE_6 == true {
+                let IndexP = IndexPath(row: 4, section: 0)
+                tblViewProfileCompletion.scrollToRow(at: IndexP, at: .none, animated: true)
+                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
+            }
+            else{
+                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 3, section: 0)))
+            }
+            
+        case 3:
+            
+            if MobileDeviceType.IS_IPHONE_6 == true {
+                let IndexP = IndexPath(row: ((profileCompletionModel?.count ?? 1) - 1), section: 0)
+                tblViewProfileCompletion.scrollToRow(at: IndexP, at: .none, animated: true)
+                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
+            }else{
+                
+                    let IndexP = IndexPath(row: ((profileCompletionModel?.count ?? 1) - 1), section: 0)
+                    tblViewProfileCompletion.scrollToRow(at: IndexP, at: .none, animated: true)
+                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: Int(1), section: 0)))
+            }
+            
+        case 4:
+            return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: ( (profileCompletionModel?.count ?? 1) - 1), section: 0)))
         default:
             return coachMarksController.helper.makeCoachMark()
         }

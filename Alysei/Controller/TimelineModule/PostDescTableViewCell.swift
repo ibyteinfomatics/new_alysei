@@ -606,14 +606,14 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
   
     var originalFrame = CGRect()
    
-    var overlay: UIView = {
-        let view = UIView(frame: UIScreen.main.bounds);
-
-        view.alpha = 0
-        view.backgroundColor = .black
-
-        return view
-    }()
+//    var overlay: UIView = {
+//        let view = UIView(frame: UIScreen.main.bounds);
+//
+//        view.alpha = 0
+//        view.backgroundColor = .black
+//
+//        return view
+//    }()
 
     var isZooming = false
     var originalImageCenter:CGPoint?
@@ -636,7 +636,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     var windowImageView: UIImageView?
     // the origin of the source imageview (in the Window coordinate space)
     var startingRect = CGRect.zero
-    
+    var pinchtouches: Int?
     weak var delegate: SubclassedCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -648,8 +648,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         
        // if loadTypeCell == .sharePost{
              let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
-             //pinch.minimumNumberOfTouches = 2
-            // pinch.maximumNumberOfTouches = 2
+       
             self.imagePost.addGestureRecognizer(pinch)
 
             // let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
@@ -679,6 +678,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 //       // passImageCallBack?(imagePost)
 //    }
     @objc func pinch(sender: UIPinchGestureRecognizer) {
+       
         if sender.state == .began {
             // the current scale is the aspect ratio
             let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
@@ -748,6 +748,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
                 // hide the original image
                 imagePost.isHidden = true
             }
+            
         } else if sender.state == .changed {
             // if we don't have a current window, do nothing. Ensure the initialCenter has been set
             guard let currentWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
@@ -793,7 +794,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
             guard let windowImageView = self.windowImageView else { return }
             
             // animate the change when the pinch has finished
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 // make the transformation go back to the original
                 windowImageView.transform = CGAffineTransform.identity
             }, completion: { _ in
@@ -811,6 +812,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
                 self.delegate?.zooming(started: false)
             })
         }
+        
     }
 
 //    @objc func pan(sender: UIPanGestureRecognizer) {
