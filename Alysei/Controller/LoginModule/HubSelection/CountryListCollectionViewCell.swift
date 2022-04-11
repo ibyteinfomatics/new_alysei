@@ -20,6 +20,6 @@ class CountryListCollectionViewCell: UICollectionViewCell {
     func configCell(_ data: CountryModel){
         lblCountryName.text = data.name
 
-        self.imgFlag.setImage(withString: kImageBaseUrl + String.getString(data.flagId?.attachmentUrl))
+        self.imgFlag.setImage(withString: String.getString(data.flagId?.baseUrl) + String.getString(data.flagId?.attachmentUrl))
     }
 }

@@ -76,7 +76,7 @@ class AddReviewRecipeViewController: AlysieBaseViewC{
         
         
         if let imageURLString = kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url {
-            userImageVw.setImage(withString: "\(kImageBaseUrl)\(imageURLString)")
+            userImageVw.setImage(withString: "\(kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl ?? "")\(imageURLString)")
         }
         userImageVw.layer.cornerRadius = userImageVw.frame.height/2
         getAllReviews()
