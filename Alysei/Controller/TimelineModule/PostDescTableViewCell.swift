@@ -514,6 +514,7 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()}
+        cell.delegate = self
       //  addZoombehavior(for: cell.imagePost)
        
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
@@ -551,7 +552,11 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //        imagePostCollectionView?.collectionViewLayout.invalidateLayout();
 //   }
 }
-
+extension PostDescTableViewCell: SubclassedCellDelegate {
+    func zooming(started: Bool) {
+        self.imagePostCollectionView.isScrollEnabled = !started
+    }
+}
 extension PostDescTableViewCell {
     
     func callLikeUnlikeApi(_ isLike: Int?, _ postId: Int? ,_ indexPath: Int?){
@@ -592,7 +597,9 @@ extension PostDescTableViewCell {
     
 }
 import Zoomy
-
+protocol SubclassedCellDelegate: AnyObject {
+    func zooming(started: Bool)
+}
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
     @IBOutlet weak var imagePost: UIImageView!
     @IBOutlet weak var imageConstant: NSLayoutConstraint!
@@ -614,6 +621,23 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     var fullScreenImage: UIImageView!
    // var passImageCallBack: ((UIImageView) -> Void)? = nil
     
+
+    // the view that will be overlayed, giving a back transparent look
+    var overlayView: UIView!
+    
+    // a property representing the maximum alpha value of the background
+    let maxOverlayAlpha: CGFloat = 1.0
+    // a property representing the minimum alpha value of the background
+    let minOverlayAlpha: CGFloat = 0.4
+    
+    // the initial center of the pinch
+    var initialCenter: CGPoint?
+    // the view to be added to the Window
+    var windowImageView: UIImageView?
+    // the origin of the source imageview (in the Window coordinate space)
+    var startingRect = CGRect.zero
+    
+    weak var delegate: SubclassedCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -622,22 +646,22 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
         self.imagePost.isUserInteractionEnabled = true
         
-        if loadTypeCell == .sharePost{
+       // if loadTypeCell == .sharePost{
              let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
              //pinch.minimumNumberOfTouches = 2
             // pinch.maximumNumberOfTouches = 2
             self.imagePost.addGestureRecognizer(pinch)
 
-             let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
-             pan.minimumNumberOfTouches = 2
-             pan.maximumNumberOfTouches = 2
-             pan.delegate = self
-              self.imagePost.addGestureRecognizer(pan)
+            // let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
+            // pan.minimumNumberOfTouches = 2
+             //pan.maximumNumberOfTouches = 2
+            // pan.delegate = self
+            //  self.imagePost.addGestureRecognizer(pan)
              
           //   let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
           //   self.imagePost.addGestureRecognizer(tap)
             
-        }
+       // }
 
 
         
@@ -654,108 +678,168 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 //    @objc func tap(sender: UITapGestureRecognizer) {
 //       // passImageCallBack?(imagePost)
 //    }
-    @objc func pinch(sender:UIPinchGestureRecognizer) {
-        //self.imagePost.image = nil
-        var touchBaseView = sender.view
-        if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
-            if let navCon = tab.viewControllers?.first as? UINavigationController {
-                if let viewCon = navCon.viewControllers.first as? HomeViewC {
-                    touchBaseView = viewCon.view
-                }
-            }
-        }
-//        let touch1 = sender.location(ofTouch: 0, in: touchBaseView)
-
-        let touch1 = sender.location(ofTouch: 0, in: touchBaseView)
-        var midPointX = touch1.x
-        var midPointY = touch1.y
-        if sender.numberOfTouches > 1 {
-            let touch2 = sender.location(ofTouch: 1, in: touchBaseView)
-            midPointX = (touch1.x + touch2.x)/2
-            midPointY = (touch1.y + touch2.y)/2
-        }
-
-        let touchedPoint = CGPoint(x: midPointX, y: midPointY)
-//        let touch2 = sender.location(ofTouch: 1, in: sender.view)
-
+    @objc func pinch(sender: UIPinchGestureRecognizer) {
         if sender.state == .began {
-            self.imagePost.frame = UIScreen.main.bounds
+            // the current scale is the aspect ratio
             let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
-            let newScale = currentScale*sender.scale
+            // the new scale of the current `UIPinchGestureRecognizer`
+            let newScale = currentScale * sender.scale
+            
+            // if we are really zooming
             if newScale > 1 {
-                self.isZooming = true
-                self.imagePost.isHidden = true
+                // if we don't have a current window, do nothing
+                guard let currentWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {return}
+                
+                // inform listeners that we are zooming, to stop them scrolling the UICollectionView
+                self.delegate?.zooming(started: true)
+                
+                // setup the overlay to be the same size as the window
+                overlayView = UIView.init(
+                    frame: CGRect(
+                        x: 0,
+                        y: 0,
+                        width: (currentWindow.frame.size.width),
+                        height: (currentWindow.frame.size.height)
+                    )
+                )
+                
+                // set the view of the overlay as black
+                overlayView.backgroundColor = UIColor.black
+                
+                // set the minimum alpha for the overlay
+                overlayView.alpha = CGFloat(minOverlayAlpha)
+                
+                // add the subview to the overlay
+                currentWindow.addSubview(overlayView)
+                
+                // set the center of the pinch, so we can calculate the later transformation
+                initialCenter = sender.location(in: currentWindow)
+                
+                // set the window Image view to be a new UIImageView instance
+                windowImageView = UIImageView.init(image: self.imagePost.image)
+                
+                // set the contentMode to be the same as the original ImageView
+                windowImageView!.contentMode = .scaleAspectFill
+                
+                // Do not let it flow over the image bounds
+                windowImageView!.clipsToBounds = true
+                
+                // since the to view is nil, this converts to the base window coordinates.
+                // so where is the origin of the imageview, in the main window
+                let point = self.imagePost.convert(
+                    imagePost.frame.origin,
+                    to: nil
+                )
+                
+                // the location of the imageview, with the origin in the Window's coordinate space
+                startingRect = CGRect(
+                    x: point.x,
+                    y: point.y,
+                    width: imagePost.frame.size.width,
+                    height: imagePost.frame.size.height
+                )
+                
+                // set the frame for the image to be added to the window
+                windowImageView?.frame = startingRect
+                
+                // add the image to the Window, so it will be in front of the navigation controller
+                currentWindow.addSubview(windowImageView!)
+                
+                // hide the original image
+                imagePost.isHidden = true
             }
-            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
-
-
         } else if sender.state == .changed {
-            guard let view = sender.view else {return}
-            self.imagePost.isHidden = true
-            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
-                                      y: sender.location(in: view).y - view.bounds.midY)
-            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
-                .scaledBy(x: sender.scale, y: sender.scale)
-                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
-            let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
-            var newScale = currentScale*sender.scale
-            if newScale < 1 {
-                newScale = 1
-                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
-                self.imagePost.transform = transform
-                sender.scale = 1
-            }else {
-                view.transform = transform
-                sender.scale = 1
-            }
-            self.showAlertOnTab(1.0, frame: self.imagePost.frame, center: touchedPoint)
+            // if we don't have a current window, do nothing. Ensure the initialCenter has been set
+            guard let currentWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+                  let initialCenter = initialCenter,
+                  let windowImageWidth = windowImageView?.frame.size.width
+            else { return }
+            
+            // Calculate new image scale.
+            let currentScale = windowImageWidth / startingRect.size.width
+            
+            // the new scale of the current `UIPinchGestureRecognizer`
+            let newScale = currentScale * sender.scale
+            
+            // Calculate new overlay alpha, so there is a nice animated transition effect
+          //  overlayView.alpha = minOverlayAlpha + (newScale - 1) < maxOverlayAlpha ? minOverlayAlpha + (newScale - 1) : maxOverlayAlpha
+
+            // calculate the center of the pinch
+            let pinchCenter = CGPoint(
+                x: sender.location(in: currentWindow).x - (currentWindow.bounds.midX),
+                y: sender.location(in: currentWindow).y - (currentWindow.bounds.midY)
+            )
+            
+            // calculate the difference between the inital centerX and new centerX
+            let centerXDif = initialCenter.x - sender.location(in: currentWindow).x
+            // calculate the difference between the intial centerY and the new centerY
+            let centerYDif = initialCenter.y - sender.location(in: currentWindow).y
+            
+            // calculate the zoomscale
+            let zoomScale = (newScale * windowImageWidth >= imagePost.frame.width) ? newScale : currentScale
+
+            // transform scaled by the zoom scale
+            let transform = currentWindow.transform
+                .translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                .scaledBy(x: zoomScale, y: zoomScale)
+                .translatedBy(x: -centerXDif, y: -centerYDif)
+
+            // apply the transformation
+            windowImageView?.transform = transform
+            
+            // Reset the scale
+            sender.scale = 1
         } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
-            self.showAlertOnTab(0.0, frame: self.imagePost.frame, center: CGPoint())
-
-
-            guard let center = self.originalImageCenter else {return}
-
-           // self.imagePost.frame = self.bounds
-
-            UIView.animate(withDuration: 0.0, animations: {
-                self.imagePost.transform = CGAffineTransform.identity
-                //self.imagePost.center = center
-                sender.scale = 1
+            guard let windowImageView = self.windowImageView else { return }
+            
+            // animate the change when the pinch has finished
+            UIView.animate(withDuration: 0.5, animations: {
+                // make the transformation go back to the original
+                windowImageView.transform = CGAffineTransform.identity
             }, completion: { _ in
-                self.isZooming = false
+                
+                // remove the imageview from the superview
+                windowImageView.removeFromSuperview()
+                
+                // remove the overlayview
+                self.overlayView.removeFromSuperview()
+                
+                // make the original view reappear
                 self.imagePost.isHidden = false
-
+                
+                // tell the collectionview that we have stopped
+                self.delegate?.zooming(started: false)
             })
         }
     }
 
-    @objc func pan(sender: UIPanGestureRecognizer) {
-        if self.isZooming && sender.state == .began {
-            self.originalImageCenter = sender.view?.center
-        } else if self.isZooming && sender.state == .changed {
-            let translation = sender.translation(in: self)
-            if let view = sender.view {
-                view.center = CGPoint(x:view.center.x + translation.x,
-                                      y:view.center.y + translation.y)
-            }
-            sender.setTranslation(CGPoint.zero, in: self.imagePost.superview)
-        }
-    }
+//    @objc func pan(sender: UIPanGestureRecognizer) {
+//        if self.isZooming && sender.state == .began {
+//            self.originalImageCenter = sender.view?.center
+//        } else if self.isZooming && sender.state == .changed {
+//            let translation = sender.translation(in: self)
+//            if let view = sender.view {
+//                view.center = CGPoint(x:view.center.x + translation.x,
+//                                      y:view.center.y + translation.y)
+//            }
+//            sender.setTranslation(CGPoint.zero, in: self.imagePost.superview)
+//        }
+//    }
 
-    func  showAlertOnTab(_ alpha: CGFloat, frame: CGRect, center: CGPoint) {
-        if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
-            if let navCon = tab.viewControllers?.first as? UINavigationController {
-                if let viewCon = navCon.viewControllers.first as? HomeViewC {
-                    viewCon.fullScreenImageView.frame = frame
-                    viewCon.fullScreenImageView.center = center
-                    viewCon.fullScreenImageView.alpha = alpha
-                    viewCon.fullScreenImageView.contentMode = .scaleAspectFill
-                    viewCon.fullScreenImageView.image = self.imagePost.image
-                   // print(viewCon.description)
-                }
-            }
-        }
-    }
+//    func  showAlertOnTab(_ alpha: CGFloat, frame: CGRect, center: CGPoint) {
+//        if let tab = UIApplication.shared.windows.first?.rootViewController as? UITabBarController {
+//            if let navCon = tab.viewControllers?.first as? UINavigationController {
+//                if let viewCon = navCon.viewControllers.first as? HomeViewC {
+//                    viewCon.fullScreenImageView.frame = frame
+//                    viewCon.fullScreenImageView.center = center
+//                    viewCon.fullScreenImageView.alpha = alpha
+//                    viewCon.fullScreenImageView.contentMode = .scaleAspectFill
+//                    viewCon.fullScreenImageView.image = self.imagePost.image
+//                   // print(viewCon.description)
+//                }
+//            }
+//        }
+//    }
 }
 
 
