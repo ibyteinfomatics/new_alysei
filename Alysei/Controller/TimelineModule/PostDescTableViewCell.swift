@@ -637,6 +637,8 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
     // the origin of the source imageview (in the Window coordinate space)
     var startingRect = CGRect.zero
     var pinchtouches: Int?
+    var countTouch:Int? // = []
+    var pinch : UIPinchGestureRecognizer?
     weak var delegate: SubclassedCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -647,9 +649,8 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         self.imagePost.isUserInteractionEnabled = true
         
        // if loadTypeCell == .sharePost{
-             let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
-       
-            self.imagePost.addGestureRecognizer(pinch)
+        pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+        self.imagePost.addGestureRecognizer(pinch ?? UIPinchGestureRecognizer())
 
             // let pan = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
             // pan.minimumNumberOfTouches = 2
@@ -677,8 +678,33 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 //    @objc func tap(sender: UITapGestureRecognizer) {
 //       // passImageCallBack?(imagePost)
 //    }
+   
+
+    
     @objc func pinch(sender: UIPinchGestureRecognizer) {
-       
+        if sender.numberOfTouches != 2{
+            guard let windowImageView = self.windowImageView else { return }
+            
+            // animate the change when the pinch has finished
+            UIView.animate(withDuration: 0.5, animations: {
+                // make the transformation go back to the original
+                windowImageView.transform = CGAffineTransform.identity
+            }, completion: { _ in
+                
+                // remove the imageview from the superview
+                windowImageView.removeFromSuperview()
+                
+                // remove the overlayview
+                self.overlayView.removeFromSuperview()
+                
+                // make the original view reappear
+                self.imagePost.isHidden = false
+                
+                // tell the collectionview that we have stopped
+                self.delegate?.zooming(started: false)
+            })
+        }
+        if sender.numberOfTouches == 2{
         if sender.state == .began {
             // the current scale is the aspect ratio
             let currentScale = self.imagePost.frame.size.width / self.imagePost.bounds.size.width
@@ -741,6 +767,9 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
                 
                 // set the frame for the image to be added to the window
                 windowImageView?.frame = startingRect
+              //  let lastTouchPoint = sender.location(in: imagePost)
+               
+              //  windowImageView?.center = lastTouchPoint
                 
                 // add the image to the Window, so it will be in front of the navigation controller
                 currentWindow.addSubview(windowImageView!)
@@ -794,7 +823,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
             guard let windowImageView = self.windowImageView else { return }
             
             // animate the change when the pinch has finished
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 // make the transformation go back to the original
                 windowImageView.transform = CGAffineTransform.identity
             }, completion: { _ in
@@ -812,7 +841,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
                 self.delegate?.zooming(started: false)
             })
         }
-        
+        }
     }
 
 //    @objc func pan(sender: UIPanGestureRecognizer) {
