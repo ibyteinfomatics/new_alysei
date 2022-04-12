@@ -117,7 +117,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
         
         //MARK: Set Localization title------
         postLabel.text = MarketPlaceConstant.kPosts
-        marketPlcLabel.text = MarketPlaceConstant.kMarketPlace
+        marketPlcLabel.text = MarketPlaceConstant.kMarketplace
         recipeLabel.text = RecipeConstants.kRecipe
         notificationLabel.text = MarketPlaceConstant.kNotifications
         createRecipeLbl.text = RecipeConstants.kCreateRecipe

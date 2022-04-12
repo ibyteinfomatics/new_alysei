@@ -639,7 +639,7 @@ struct AppConstants {
     static var kOurTrips: String{"Our Trips".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDeclineRequest: String{"Decline Request".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kReasonToDecline: String{"Reason to decline".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kTitleMarketPlace: String{"MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kTitleMarketplace: String{"Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDiscoveryAlysei: String{"Discovery Alysei".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kYourProgress: String{"Your Progress".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kcompleted: String{"completed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -919,7 +919,7 @@ struct MarketPlaceConstant{
     static var kMessages : String {"Messages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     //MARK: Marketplace Home Screen
-    static var kMarketPlace : String {"MarketPlace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kMarketplace : String {"Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kRecipe : String {"Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kPosts : String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var  kNotifications : String {"Notifications".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

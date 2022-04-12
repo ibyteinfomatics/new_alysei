@@ -38,7 +38,7 @@ class PostsViewController: AlysieBaseViewC  {
     @IBOutlet weak var lblHeading2: UILabel!
     @IBOutlet weak var lblHeading3: UILabel!
     @IBOutlet weak var lblHeading4: UILabel!
-
+    @IBOutlet weak var vwNewPost: UIView!
     var getUser:[userClass]?
     //@IBOutlet weak var postView: UIView!
     var userType: UserRoles!
@@ -77,7 +77,7 @@ class PostsViewController: AlysieBaseViewC  {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblHeading1.text = AppConstants.kPosts
-        lblHeading2.text = AppConstants.kTitleMarketPlace
+        lblHeading2.text = AppConstants.kTitleMarketplace
         lblHeading3.text = MarketPlaceConstant.kRecipe
         lblHeading4.text = MarketPlaceConstant.kNotifications
         vwNotification.layer.cornerRadius = self.vwNotification.frame.height / 2
@@ -101,6 +101,7 @@ class PostsViewController: AlysieBaseViewC  {
         self.coachMarksController.delegate = self
         
         btnNewpost.layer.cornerRadius = btnNewpost.frame.height / 2
+        vwNewPost.layer.cornerRadius = vwNewPost.frame.height / 2
         fromMenuTab = "PostViewController"
         self.role = kSharedUserDefaults.loggedInUserModal.memberRoleId
         
@@ -175,6 +176,7 @@ class PostsViewController: AlysieBaseViewC  {
     
     @IBAction func btnNewPOst(_ sender: UIButton){
         self.btnNewpost.isHidden = true
+        self.vwNewPost.isHidden = true
         callNewFeedApi(1)
     }
     
@@ -250,6 +252,7 @@ class PostsViewController: AlysieBaseViewC  {
                 // increments the number of the page to request
                 indexOfPageToRequest += 1
                 self.btnNewpost.isHidden = true
+                self.vwNewPost.isHidden = true
                 // call your API for more data
                 callNewFeedApi(indexOfPageToRequest)
                 
@@ -313,6 +316,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 if self.postLike?.last?.postId != self.arrNewFeedDataModel[0].postID &&
                     self.postLike?.last?.postId != self.arrNewFeedDataModel[1].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[2].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[3].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[4].postID && self.postLike?.last?.postId != self.arrNewFeedDataModel[5].postID{
                     self.btnNewpost.isHidden = false
+                    self.vwNewPost.isHidden = false
                 } else {
                     self.postTableView.reloadData()
                 }

@@ -186,7 +186,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         super.viewWillAppear(animated)
         tableView.reloadData()
         lblHeadPost.text = MarketPlaceConstant.kPosts
-        lblheadMarkePtlace.text = MarketPlaceConstant.kMarketPlace
+        lblheadMarkePtlace.text = MarketPlaceConstant.kMarketplace
         lblHeadRecipe.text = MarketPlaceConstant.kRecipe
         lblHeadNotification.text = MarketPlaceConstant.kNotifications
         lblWhatyourlooking.text = MarketPlaceConstant.kWhatYouLookingFor
