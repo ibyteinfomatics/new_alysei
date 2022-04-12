@@ -2179,7 +2179,11 @@ extension UITabBarController {
 extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDelegate{
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers  .rawValue)"{
+            return 3
+        }else{
         return 5
+        }
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: (UIView & CoachMarkBodyView), arrowView: (UIView & CoachMarkArrowView)?) {
@@ -2260,8 +2264,8 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
             switch kSharedUserDefaults.loggedInUserModal.memberRoleId {
             case "3","4","5","6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kProducerImpDistFeatured
-            case "7":
-                coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
+           // case "7":
+            //    coachViews.bodyView.hintLabel.text = TourGuideConstants.kVoiceofExpertsFeatured
             case "8":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesFeatured
             case "9":
@@ -2305,13 +2309,22 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
                 tblViewProfileCompletion.scrollToRow(at: IndexP, at: .none, animated: true)
                 return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: 2, section: 0)))
             }else{
+                if (profileCompletionModel?.count ?? 0) > 5 {
+                let IndexP = IndexPath(row: 3, section: 0)
                 
-                    let IndexP = IndexPath(row: ((profileCompletionModel?.count ?? 1) - 1), section: 0)
-                    tblViewProfileCompletion.scrollToRow(at: IndexP, at: .none, animated: true)
-                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: Int(1), section: 0)))
+                if let theCell = tblViewProfileCompletion.cellForRow(at: IndexP) as? ProfileCompletionTableViewCell {
+                       var tableViewCenter:CGPoint = tblViewProfileCompletion.contentOffset
+                       tableViewCenter.y += tblViewProfileCompletion.frame.size.height/2
+
+                    tblViewProfileCompletion.contentOffset = CGPoint(x: 0, y: theCell.center.y-55)
+                    tblViewProfileCompletion.reloadData()
+                   }
+                }
+                return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: Int(4), section: 0)))
             }
             
         case 4:
+                    
             return coachMarksController.helper.makeCoachMark(for: self.tblViewProfileCompletion.cellForRow(at: IndexPath(row: ( (profileCompletionModel?.count ?? 1) - 1), section: 0)))
         default:
             return coachMarksController.helper.makeCoachMark()
