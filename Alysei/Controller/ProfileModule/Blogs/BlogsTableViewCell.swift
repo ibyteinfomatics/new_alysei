@@ -29,12 +29,12 @@ class BlogsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        readMoreButton.setTitle(AppConstants.kReadMore, for: .normal)
+      //  readMoreButton.setTitle(AppConstants.kReadMore, for: .normal)
         vwContainer.layer.shadowColor = UIColor.darkGray.withAlphaComponent(0.8).cgColor
         vwContainer.layer.shadowRadius = 2
         vwContainer.layer.shadowOpacity = 0.8
         vwContainer.layer.shadowOffset = .zero
-        readMoreButton.setTitle(AppConstants.kReadMore, for: .normal)
+       // readMoreButton.setTitle(AppConstants.kReadMore, for: .normal)
         
         
         // Initialization code

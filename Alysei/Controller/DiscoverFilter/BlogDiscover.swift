@@ -71,7 +71,7 @@ class BlogDiscover: AlysieBaseViewC {
     private func getBlogTableCell(_ indexPath: Int) -> UITableViewCell{
         
         let blogTableCell = blogTableView.dequeueReusableCell(withIdentifier: BlogsTableViewCell.identifier()) as! BlogsTableViewCell
-        
+        blogTableCell.readMoreButton.setTitle(AppConstants.kReadMore, for: .normal)
         blogTableCell.blogTitle.text = blogData[indexPath].title
         blogTableCell.blogDescription.text = blogData[indexPath].datumDescription
         blogTableCell.imgUser.layer.cornerRadius = blogTableCell.imgUser.frame.height / 2

@@ -5998,7 +5998,7 @@ any other devices.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyX-yp-y21">
-                                                    <rect key="frame" x="29.5" y="48" width="69" height="33"/>
+                                                    <rect key="frame" x="29.5" y="49" width="69" height="31.5"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -14799,6 +14799,7 @@ You will be notified for any membership status update.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnMap" destination="o9F-Q5-tG0" id="1o1-AL-pfM"/>
                         <outlet property="filter" destination="Kd0-qx-MhK" id="lkG-6E-gPt"/>
                         <outlet property="lblTitle" destination="ahA-wG-22d" id="MiX-cR-6jU"/>
                         <outlet property="tripsTableView" destination="mxC-eM-qSy" id="rEJ-h9-Z20"/>
@@ -23296,7 +23297,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
