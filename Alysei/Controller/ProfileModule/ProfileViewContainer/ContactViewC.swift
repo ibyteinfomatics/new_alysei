@@ -37,7 +37,7 @@ class ContactViewC: AlysieBaseViewC {
      
     super.viewDidLoad()
       lblHeading.text = AppConstants.ContactUs
-      editContactDetailButton.setTitle(AppConstants.EditHub, for: .normal)
+      editContactDetailButton.setTitle(AppConstants.Edit, for: .normal)
     self.tblViewContactUs.showsHorizontalScrollIndicator = false
     self.tblViewContactUs.showsVerticalScrollIndicator = false
     
