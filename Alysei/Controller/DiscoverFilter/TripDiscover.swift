@@ -351,17 +351,29 @@ extension TripDiscover {
        
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverTripsSearch + "&region=" + "\(regionId ?? "" )" + "&adventure_type=" + "\(adventureId ?? "" )" + "&duration=" + "\(trimmedDurationStr ?? "")" + "&intensity=" + "\(intensityId ?? "")"  + "&price=" + "\(passprice ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-            let dictResponse = dictResponse as? [String:Any]
-          if let data = dictResponse?["data"] as? [String:Any]{
-            self.tripModel = TripModel.init(with: data)
-            
-            if self.indexOfPageToRequest == 1 { self.tripData.removeAll() }
-            
-            self.tripData.append(contentsOf: self.tripModel?.data ?? [TripDatum(with: [:])])
+            switch statusCode{
+            case 200:
+                let dictResponse = dictResponse as? [String:Any]
+              if let data = dictResponse?["data"] as? [String:Any]{
+                self.tripModel = TripModel.init(with: data)
+                
+                if self.indexOfPageToRequest == 1 { self.tripData.removeAll() }
+                
+                self.tripData.append(contentsOf: self.tripModel?.data ?? [TripDatum(with: [:])])
+              }
+              case 409:
+                  if pageNo == 1{
+                      self.tripData.removeAll()
+                  }
+              default:
+                  print("Error")
+            }
+            self.tripsTableView.reloadData()
+           
           }
           
-          self.tripsTableView.reloadData()
+         
         }
         
     }
-}
+

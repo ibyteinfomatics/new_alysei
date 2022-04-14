@@ -285,7 +285,8 @@ extension EventDiscover {
     func callFilterApi (_ pageNo: Int?) {
       //  self.eventModel = EventModel(with: [:])
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverEventSearch + "&date=" + "\(selectedDate ?? "")" + "&event_type=" + "\(selectedEventType ?? "")" + "&registration_type=" + "\(selectedRegistrationType ?? "")" + "&restaurant_type=" + "\(passRestId ?? "")"+"&page=\(pageNo ?? 1)" , requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
           if let data = dictResponse?["data"] as? [String:Any]{
             self.eventModel = EventModel.init(with: data)
@@ -294,7 +295,13 @@ extension EventDiscover {
             
             self.eventData.append(contentsOf: self.eventModel?.data ?? [EventDatum(with: [:])])
           }
-          
+        case 409:
+            if pageNo == 1{
+                self.eventData.removeAll()
+            }
+        default:
+            print("Error")
+      }
           self.eventsTableView.reloadData()
         }
         

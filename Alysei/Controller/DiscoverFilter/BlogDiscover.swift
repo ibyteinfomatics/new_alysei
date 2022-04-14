@@ -50,9 +50,9 @@ class BlogDiscover: AlysieBaseViewC {
         let controller = pushViewController(withName: BlogFilterVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? BlogFilterVC
         controller?.passSpecialization = self.passSpecialization
         controller?.passBlogTitle = self.passBlogTitle
-        controller?.passSelectedDataCallback = {  passSpecialization, passBlogTitle in
-            self.passSpecialization = String.getString(passSpecialization)
-            self.passBlogTitle = passBlogTitle
+        controller?.passSelectedDataCallback = {  passSpecializationID, passBlogTitleID in
+            self.passSpecialization = passSpecializationID
+            self.passBlogTitle = passBlogTitleID
             self.callFilterApi (1)
         }
         
@@ -186,13 +186,22 @@ extension BlogDiscover {
     
     func callFilterApi (_ pageNo: Int?) {
        // self.blogModel = BlogModel(with: [:])
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverBlogSearch + "&title=" + String.getString(self.passBlogTitle)+"&specialization="+String.getString(self.passSpecialization)+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverBlogSearch + "&title=" + "\(self.passBlogTitle ?? "")" + "&specialization=" + "\(self.passSpecialization ?? "")"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
               if let data = dictResponse?["data"] as? [String:Any]{
                 self.blogModel = BlogModel.init(with: data)
               }
-                
+            if self.indexOfPageToRequest == 1 { self.blogData.removeAll() }
+                self.blogData.append(contentsOf: self.blogModel?.data ?? [BlogDatum(with: [:])])
+        case 409:
+            if pageNo == 1{
+                self.blogData.removeAll()
+            }
+        default:
+            print("Error")
+      }
             self.blogTableView.reloadData()
               
         }

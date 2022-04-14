@@ -19,16 +19,19 @@ class BlogFilterVC: AlysieBaseViewC {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnClearFilter: UIButton!
     @IBOutlet weak var btnApplyFilter: UIButton!
-    
+    var productType: ProductType?
+    var arrProductType = [String]()
+    var arrProductType1 = [String]()
     var passSpecialization: String?
     var passBlogTitle: String?
     var specializationModel: SpecializationModel?
     
-    var arrProductType = [String]()
-    var specializationId: Int?
+   
+    var specializationId: String?
+    var TitleId: String?
     var dataDropDown = DropDown()
     
-    var passSelectedDataCallback: ((Int,String) -> Void)? = nil
+    var passSelectedDataCallback: ((String,String) -> Void)? = nil
     
     var clearFiltercCallBack: (() -> Void)? = nil
     
@@ -43,9 +46,12 @@ class BlogFilterVC: AlysieBaseViewC {
         vw2.addBorder()
         
         getSpecialization()
-        
+        callTitleApi()
         let specializationTap = UITapGestureRecognizer(target: self, action: #selector(openSpecializationdropDown))
         self.vw1.addGestureRecognizer(specializationTap)
+        
+        let blogTitleTap = UITapGestureRecognizer(target: self, action: #selector(openblogTitledropDown))
+        self.vw2.addGestureRecognizer(blogTitleTap)
         
         
         // Do any additional setup after loading the view.
@@ -69,7 +75,7 @@ class BlogFilterVC: AlysieBaseViewC {
     
     @IBAction func btnFilterAction(_ sender: UIButton){
         setData()
-        self.passSelectedDataCallback?(specializationId ?? 0,self.lblBlogTitle.text ?? "")
+        self.passSelectedDataCallback?(specializationId ?? "",TitleId ?? "")
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -80,7 +86,27 @@ class BlogFilterVC: AlysieBaseViewC {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func openblogTitledropDown(){
+        
+         dataDropDown.dataSource = arrProductType1
+         dataDropDown.show()
+     
+         dataDropDown.anchorView = vw2
+
+         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
+         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+         
+             self.lblBlogTitle.text = item
+             TitleId = self.productType?.options?[index].userFieldOptionId     
+         }
+         dataDropDown.cellHeight = 40
+         dataDropDown.backgroundColor = UIColor.white
+         dataDropDown.selectionBackgroundColor = UIColor.clear
+         dataDropDown.direction = .bottom
+    }
+    
     @objc func openSpecializationdropDown(){
+       
         dataDropDown.dataSource = arrProductType
         dataDropDown.show()
     
@@ -90,7 +116,7 @@ class BlogFilterVC: AlysieBaseViewC {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblSpecialization.text = item
-            specializationId = Int.getInt(self.specializationModel?.data?[index].id)
+            specializationId = "\(self.specializationModel?.data?[index].id)"
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white
@@ -114,6 +140,20 @@ class BlogFilterVC: AlysieBaseViewC {
         
       }
       
+    }
+    
+    func callTitleApi(){
+    TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetFieldValue + "12", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, errorType, statusCode in
+      
+        let response = dictResponse as? [String:Any]
+            if let data = response?["data"] as? [String:Any]{
+                self.productType = ProductType.init(with: data)
+                print("Count ------------------------------\(self.productType?.options?.count ?? 0)")
+                for product in 0..<(self.productType?.options?.count ?? 0) {
+                    self.arrProductType1.append(self.productType?.options?[product].optionName ?? "")
+                }
+            }
+        }
     }
     
 }

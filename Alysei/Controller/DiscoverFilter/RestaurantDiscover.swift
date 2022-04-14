@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RestaurantDiscover: AlysieBaseViewC {
     
@@ -19,7 +20,7 @@ class RestaurantDiscover: AlysieBaseViewC {
     var restModel:RestaurantModel?
     var restauUser = [RestaurantUser]()
     var restId: String?
-    
+    var locationManager: CLLocationManager!
     var passHubs: String?
     var passRestType: String?
     
@@ -28,8 +29,12 @@ class RestaurantDiscover: AlysieBaseViewC {
     var name = [String]()
     var address = [String]()
     var userid = [Int]()
-    
+   // var latitude: String?
+   // var longitude: String?
     var indexOfPageToRequest = 1
+    var latitude : Double?
+    var longitude: Double?
+    var country: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +44,8 @@ class RestaurantDiscover: AlysieBaseViewC {
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         restId = "restaurants"
-        postRequestToGetRestaurant(1)
+        
+        getCurrentLocation()
         // Do any additional setup after loading the view.
     }
     
@@ -183,13 +189,53 @@ extension RestaurantDiscover: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+extension RestaurantDiscover: CLLocationManagerDelegate{
+ 
+ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+    
+   NotificationCenter.default.removeObserver(self)
+   manager.stopUpdatingLocation()
+   let location = locations.last! as CLLocation
+     
+     self.latitude = location.coordinate.latitude
+     self.longitude = location.coordinate.longitude
+   //_ = pushViewController(withName: MapViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
+     self.intialGoogleSetup(withLatitude: self.latitude ?? 0.0, withLongitude: self.longitude ?? 0.0)
+ }
+    
+    private func intialGoogleSetup(withLatitude latitude: Double, withLongitude longitude: Double) {
+      
+      self.getAddressFromGeoCodeAPI(latitude: latitude, longitude: longitude, handler: { (response: String?) in
+        print("location-------------------------",response)
+          let component = response?.components(separatedBy: ",")
+          print("Compponent--------------------------------",component?.last?.removeWhitespace())
+          let userCountry = component?.last?.removeWhitespace()
+          self.country = userCountry
+          self.postRequestToGetRestaurant(1)
+      })
+     }
+    private func getCurrentLocation() {
+    
+    if (CLLocationManager.locationServicesEnabled()) {
+      print(AlertMessage.kLocationEnabled)
+      locationManager = CLLocationManager()
+      locationManager.delegate = self
+      locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      locationManager.requestAlwaysAuthorization()
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.startUpdatingLocation()
+    } else {
+      print(AlertMessage.kLocationNotEnabled)
+     }
+    }
+}
 extension RestaurantDiscover {
     
     private func postRequestToGetRestaurant(_ pageNo: Int?) -> Void{
         
         disableWindowInteraction()
         
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing+"\(restId!)"+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kGetDiscoverListing + "\(restId!)" + "&country=" + "\(self.country ?? "")" + "&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -209,8 +255,9 @@ extension RestaurantDiscover {
     func callFilterApi (_ pageNo: Int?) {
         // self.restModel = RestaurantModel(with: [:])
         
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverRestaurantSearch + "&hubs=" + String.getString(self.passHubs)+"&restaurant_type="+String.getString(self.passRestType)+"&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-            
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Discover.kDiscoverRestaurantSearch + "&hubs=" + String.getString(self.passHubs)+"&restaurant_type="+String.getString(self.passRestType) + "&country=" + "\(self.country ?? "")" + "&page=\(pageNo ?? 1)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.restModel = RestaurantModel.init(with: data)
@@ -220,7 +267,13 @@ extension RestaurantDiscover {
                 self.restauUser.append(contentsOf: self.restModel?.data ?? [RestaurantUser(with: [:])])
                 
             }
-            
+            case 409:
+                if pageNo == 1{
+                    self.restauUser.removeAll()
+                }
+            default:
+                print("Error")
+          }
             self.tripsTableView.reloadData()
             
         }
