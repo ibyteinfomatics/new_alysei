@@ -117,7 +117,7 @@ struct  AlertMessage{
     static var kOkay   : String { return "Okay".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEnter6DigitOTP : String { return "Enter 6-digit OTP.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kFeatureNot  : String { return "This feature is not available.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSignUpFirst  : String { return "To Start Shopping, you have to SignUp First.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   // static var kSignUpFirst  : String { return "To Start Shopping, you have to SignUp First.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kLogIn  : String { return "Profile updated successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kProfileUpdated : String { return "Profile updated successfully.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -568,7 +568,7 @@ struct AppConstants {
     static var kImporter: String{"Importer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDistributer: String{"Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterDistributer: String{"Importer & Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kImporterDistributers: String{"Importer & Distributers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImporterDistributers: String{"Importers & Distributers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgencies: String{"Travel Agencies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kPostUnavailable: String {"Post Unavailable".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -612,9 +612,9 @@ struct AppConstants {
     static var EditProfile: String{"Edit Profile".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Notification: String {"Notification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EditSettings: String{"Edit Settings".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var WhoCanSendYouPrivateMessge : String{"Who can send you a private message ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var WhoCanViewYourProfile : String{"Who can view your profile ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var WhoCanConnectWithYou : String{"Who can connect with you ?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanSendYouPrivateMessge : String{"Who can send you a private message?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanViewYourProfile : String{"Who can view your profile?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var WhoCanConnectWithYou : String{"Who can connect with you?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var EmailPrefrences : String {"Email Prefrences".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Anyone: String {"Anyone".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Followers: String {"Followers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

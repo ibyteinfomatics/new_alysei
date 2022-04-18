@@ -87,7 +87,7 @@
 "Please enter last name." = "nserisci il cognome.";
 "Please enter mobile number." = "Inserisci il numero di cellulare.";
 "Please enter email address." = "Inserisci l'indirizzo email.";
-"Please enter valid email address." = "nserisci un indirizzo email valido.";
+"Please enter valid email address." = "Inserisci un indirizzo email valido.";
 "Please enter description." = "Inserisci una descrizione.";
 "Please enter address." = "Inserisci l'indirizzo.";
 "Please select country first." = "Seleziona prima il Paese.";
@@ -121,7 +121,7 @@
 "Remove photo" = "Rimuovi foto";
 "Enter 6-digit OTP." = "Inserisci l'OTP a 6 cifre.";
 "This feature is not available." = "Questa funzione non è disponibile.";
-"To Start Shopping, you have to SignUp First." = "To Start Shopping, you have to SignUp First.";
+//"To Start Shopping, you have to SignUp First." = "To Start Shopping, you have to SignUp First.";
 "Profile updated successfully." = "Profilo aggiornato con successo.";
 "Please upload image." = "Carica l'immagine.";
 "Please choose the role." = "Scegli il ruolo.";
@@ -154,7 +154,7 @@
 "Registration type" = "Registration type";
 "Restaurant type" = "Restaurant type";
 "Country" = "Country";
-"Regions" = "Regions";
+"Regions" = "Regione";
 "Adventures" ="Adventures";
 "Duration" = "Duration";
 "Intensity" = "Intensity";
@@ -426,101 +426,106 @@
 
 //MARK: Add Post
 "What's new?" = "What's new?";
-"Say Something..." = "Say Something...";
+"Say Something..." = "Parlaci...";
 
 //MARK: Network Screen
-"You have no invitations right now!" = "You have no invitations right now!";
-"You have no connections right now!" = "You have no connections right now!";
-"You have no pending invites right now!" = "You have no pending invites right now!";
-"You have no followers right now!" = "You have no followers right now!";
-"Connection Request" = "Connection Request";
-"Sending a request to connect with" = "Sending a request to connect with";
-"Request Sent Successfully." = "Request Sent Successfully.";
+"You have no invitations right now!" = "Non hai inviti al momento!";
+"You have no connections right now!" = "Non hai connessioni al momento!";
+"You have no pending invites right now!" = "Non hai inviti in sospeso al momento!";
+"You have no followers right now!" = "Non hai followers al momento!";
+"Connection Request" = "Richiesta di Connessione";
+"Sending a request to connect with" = "Invio richiesta di connessione con";
+"Request Sent Successfully." = "Richiesta inviata con successo";
 "Close" = "Close";
+"Select Country" = "Seleziona Paese";
 //MARK: Profile
-
-"Update Profile" = "Update Profile";
-"You are not authorized user." = "You are not authorized user.";
-"Something went wrong." = "Something went wrong.";
-"Cancel Request" = "Cancel Request";
-"Block" = "Block";
-"UnBlock" = "UnBlock";
-"Remove Connection" = "Remove Connection";
-"Connect" = "Connect";
-"Connected" = "Connected";
-"Unfollow" = "Unfollow";
-"Follow" = "Follow";
-"Add Package" = "Add Package";
-"Add Featured" = "Add Featured";
-"Add Menu" = "Add Menu";
-"Featured Product" = "Featured Product";
-"Featured Menu" = "Featured Menu";
-"Featured Package" = "Featured Package";
-"Featured" = "Featured";
-"Accept Request" = "Accept Request";
-"Your Progress" = "Your Progress";
-"completed" = "completed";
-"When you post something it will appear here." = "When you post something it will appear here.";
-"There are no posts at this moment." = "There are no posts at this moment.";
-"Contact Detail" = "Contact Detail";
-"Address" = "Address";
+"Comments" = "Commenti";
+"Update Profile" = "Aggiorna il Profilo";
+"You are not authorized user." = "Non sei un utente autorizzato";
+"Something went wrong." = "Qualcosa è andato storto.";
+"Cancel Request" = "Richiesta cancellata";
+"Block" = "Blocca";
+"UnBlock" = "Sblocca";
+"Remove Connection" = "Rimuovi Connessione";
+"Connect" = "Connettiti";
+"Connected" = "Connesso";
+"Unfollow" = "Non seguire";
+"Follow" = "Segui";
+"Add Package" = "Aggiungi pacchetto";
+"Add Featured" = "Aggiungi In primo piano";
+"Add Menu" = "Aggiungi Menù";
+"Featured Product" = "Prodotto in primo piano";
+"Featured Menu" = "Menù in primo piano";
+"Featured Package" = "Pacchetto in primo piano";
+"Featured" = "In primo piano";
+"Accept Request" = "Accetta Richiesta";
+"Your Progress" = "Il tuo progresso";
+"completed" = "completato";
+"When you post something it will appear here." = "Quando pubblichi qualcosa, apparirà qui.";
+"There are no posts at this moment." = "Non ci sono post al momento.";
+"Contact Detail" = "Dettagli del contatto";
+"Address" = "Indirizzo";
 "Facebook" = "Facebook";
 "Reason to connect" = "Reason to connect";
-"Edit Profile" = "Edit Profile";
+"Edit Profile" = "Modifica Profilo";
 
 //MARK: Settings
-"Settings" = "Settings";
-"Company" = "Company";
+"Settings" = "Impostazioni";
+"Company" = "Azienda";
 "Privacy" = "Privacy";
 "Password" = "Password";
-"Blocking" = "Blocking";
-"Membership" = "Membership";
-"Billing" = "Billing";
-"Your Data" = "Your Data";
+"Blocking" = "Blocca";
+"Membership" = "Iscrizione";
+"Billing" = "Fatturazioni";
+"Your Data" = "Nome dell'Azienda";
 "Marketplace" = "Marketplace";
-"Terms and Conditions" = "Terms and Conditions";
-"Privacy Policy" = "Privacy Policy";
-"FAQ" = "FAQ";
-"Events" = "Events";
-"Featured" = "Featured";
-"User Settings" = "User Settings";
-"Edit Profile" = "Edit Profile";
-"Notification" = "Notification";
-"Edit Settings" = "Edit Settings";
-"Photo of Label" = "Photo of Label";
-"FCE-SID Certification" = "FCE-SID Certification";
-"Phytosanitary Certificate" = "Phytosanitary Certificate";
-"Packaging of USA" = "Packaging of USA";
-"Food Safety Plan" = "Food Safety Plan";
-"Animal Health or ASL Certificate" = "Animal Health or ASL Certificate";
-"Upload an image your product's label" = "Upload an image your product's label";
-"Upload an image of your FCE-SID certification" = "Upload an image of your FCE-SID certification";
-"Upload an image of your Phytosanitary Certificate" = "Upload an image of your Phytosanitary Certificate";
-"Upload an image or PDF of your packaging for USA" = "Upload an image or PDF of your packaging for USA";
-"Upload an image or PDF of your food safety plan" = "Upload an image or PDF of your food safety plan";
-"Upload an image or PDF of your Animal Health or ASL Certificate" = "Upload an image or PDF of your Animal Health or ASL Certificate";
+"Terms and Conditions" = "Termini e Condizioni d'Uso";
+"Privacy Policy" = "Politica sulla Privacy";
+"FAQ" = "Domande frequenti";
+"Events" = "Eventi";
+"Featured" = "In Primo Piano";
+"Username" = "Nome Utente";
+"User Settings" = "Impostazioni Utente";
+"URL" = "Sito Web o URL";
+"Edit Profile" = "Modifica Profilo";
+"Notification" = "Notifiche";
+"Edit Settings" = "Modifica Impostazioni";
+"Edit Hub" = "Modifica Hub";
+"Photo of Label" = "Foto dell'etichetta";
+"FCE-SID Certification" = "Certificazione FCE-SID";
+"Phytosanitary Certificate" = "Certificato Fitosanitario";
+"Packaging of USA" = "Packaging per gli USA";
+"Food Safety Plan" = "Piano di Sicurezza Alimentare";
+"Animal Health or ASL Certificate" = "Certificato di Salute Animale o Certificato ASL";
+"Upload an image your product's label" = "Carica una foto dell'etichetta del tuo prodotto";
+"Upload an image of your FCE-SID certification" = "Carica una foto del tuo certificato FCE-SID";
+"Upload an image of your Phytosanitary Certificate" = "Carica una foto del tuo certificato fitosanitario";
+"Upload an image or PDF of your packaging for USA" = "Carica una foto della tua confezione per gli USA";
+"Upload an image or PDF of your food safety plan" = "Carica una foto del tuo piano di sicurezza alimentare";
+"Upload an image or PDF of your Animal Health or ASL Certificate" = "Carica una foto del tuo certificato di salute animale o certificato ASL";
 "Provide your value-added tax ID" = "Provide your value-added tax ID";
-"Provide your Food and Drug Administration identification" =  "Provide your Food and Drug Administration identification";
-"Changing your password will log you off any other devices." = "Changing your password will log you off any other devices.";
-"Update Password" = "Update Password";
-"Account Data Download" = "Account Data Download";
-"Nothing requested yet." = "Nothing requested yet.";
-"Request Data" = "Request Data";
+"Provide your Food and Drug Administration identification" =  "Fornisci il tuo numero FDA";
+"Changing your password will log you off any other devices." = "La modifica della password ti disconnetterà da qualsiasi altro dispositivo.";
+"Update Password" = "Aggiorna la Password";
+"Account Data Download" = "Scarica i dati del tuo account";
+"Nothing requested yet." = "Nessuna richiesta al momento";
+"Request Data" = "Richiedi dati";
 
 
 //MARK: Privacy
-"Who can send you a private message ?" = "Who can send you a private message ?";
-"Who can view your profile ?" = "Who can view your profile ?";
-"Who can connect with you ?" = "Who can connect with you ?";
-"Email Prefrences" = "Email Prefrences";
-"Anyone" = "Anyone";
-"Followers" = "Followers";
-"Connections" = "Connections";
+"Who can send you a private message?" = "Chi può inviarti un messaggio privato?";
+"Who can view your profile?" = "Chi può vedere il tuo profilo?";
+"Who can connect with you?" = "Chi può connettersi con te?";
+"Email Prefrences" = "Preferenze Email";
+"Anyone" = "Tutti";
+"Followers" = "Chi ti segue";
+"Connections" = "Connessioni";
 "Nobody" = "Nobody";
-"Only Me" = "Only Me";
-"Private Messages" = "Private Messages";
-"Email when someone requests to follow me" = "Email when someone requests to follow me";
-"Receive weekly updates" = "Receive weekly updates";
+"Only Me" = "Solo Io";
+"Private Messages" = "Messaggi Privati";
+"Messages"= "Messaggi";
+"Email when someone requests to follow me" = "Email quando qualcuno richiede di seguirmi";
+"Receive weekly updates" = "Ricevere aggiornamenti settimanali";
 "Share Post" = "Share Post";
 "Edit Post" = "Edit Post";
 "Delete Post" = "Delete Post";
@@ -529,23 +534,28 @@
 "Post" = "Post";
 "Post can't be empty" = "Post can't be empty";
 "Share to my timeline" = "Share to my timeline";
-
+"VAT" = "Part.IVA";
+"Provide your FDA Number" = "Fornisci il tuo numero FDA";
 //MARK: Message Screen
 "There is no message." = "There is no message.";
-"There is no new chat." = "There is no new chat.";
-"New Chat" = "New Chat";
-"There is no notification." = "There is no notification.";
+"There is no new chat." = "Non ci sono nuove chat";
+"New Chat" = "Nuova chat";
+"There is no notification." = "Non ci sono notifiche";
 
 //MARK: B2bScreen
-"Importer & Distributers" = "Importer & Distributers";
-"Italian Restaurants" = "Italian Restaurants";
-"Join the"= "Join the";
-"to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community." = "to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community.";
+"Importers & Distributers" = "Importatori e Distributori";
+"Italian Restaurants" = "Ristoranti Italiani";
+"Join the"= "Unisciti a";
+"to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community." = "per espandere la tua rete di contatti e accedere all'infinita opportunità di scoprire la cucina italiana attraverso la community di Alysei.";
 //MARK: Invitation
-"Invitations" = "Invitations";
-"Connections" = "Connections";
-"Pending" =  "Pending";
-"Following" = "Following";
+"Invitations" = "Inviti";
+"Connections" = "Connessioni";
+"Pending" =  "In sospeso";
+"Following" = "Seguiti";
+"Unsubscribe" = "Annulla iscrizione";
+"Subscribe" = "Iscriviti";
+"Language" = "Lingua";
+
 
 //MARK: MARKETPLACE
 
@@ -642,7 +652,7 @@
 "Okay" = "Okay";
 "Denied albums permissions granted" = "Autorizzazioni album negate, concesse";
 "Denied camera permissions granted" = "Autorizzazioni alla fotocamera negate, concesse";
-
+"Current Password" = "Password Attuale";
 
 //MARK: Marketplace Add Product Screen
 
@@ -662,7 +672,12 @@
 "Brand Label" = "Etichetta del prodotto";
 "Keywords" = "Parola chiave";
 "grams" = "grammi";
+"Keyword Search" = "Ricerca Keyword";
+"Select State" = "Seleziona Stato";
+"Select User Type" = "Seleziona Utente";
+"Search" = "Cerca";
 "Add Product" = "Aggiungi Prodotto";
+"Product Type" = "Tipo di Prodotto";
 "milligrams" = "milligrammi";
 "Exceed Maximum Number Of Selection" = "Superato il numero massimo di selezione";
 "Minimum Order quantity should be less or equal to quantity Available" = "La quantità minima dell'ordine deve essere inferiore o uguale alla quantità disponibile";
@@ -736,7 +751,7 @@
 
 //MARK: Marketplace Create Store Walthrough
 "Start promoting your products" = "Incomina a promuovere i tuoi Prodotti ";
-"Configure Your Store" = "Configure Your Store";
+"Configure Your Store" = "Configura il tuo negozio online";
 "Here is some tips to help you promote with confidence" = "Guarda alcuni suggerimenti per aiutarti a promuovere con efficacia";
 "Post in English" = "Promuovi in lingua inglese";
 "Write in English language to create your store and list your products" = "Scrivi in lingua inglese per creare il tuo negozio online e presentare i tuoi prodotti";
@@ -755,7 +770,7 @@
 "You can boost your listing to expand you reach and increase buyers engagement" = "Puoi accelerare la promozione delle tue inserzioni per un maggior coinvolgimeto della tua clientela";
 
 //MARK: Marketplace Inquiry Screen
-"Fill the form just once to get faster responses. Store will contact you shortly." = "Fill the form just once to get faster responses. Store will contact you shortly.";
+"Fill the form just once to get faster responses. Store will contact you shortly." = "Compila il modulo per ottenere una risposta più rapida. Il negozio ti contatterà a breve.";
 "Hi is this product is available?" = "Salve, questo prodotto è disponibile?";
 "Message" = "Messaggio";
 "Please enter some message" = "Scrivi un messaggio";
@@ -798,7 +813,7 @@
 "Price Range" = "Fascia di prezzo";
 "Method" = "Metodo";
 "My Products" = "I miei prodotti";
-"No producer found" = "No producer found";
+"No producer found" = "Nessun produttore trovato";
 
 
 //MARK: Marketplace Dashboard Screen
@@ -876,11 +891,12 @@
 "Our Products" = "Our Products";
 "Hubs" = "Hubs";
 "B2B" = "B2B";
+"Terms of Use" = "Termini di Utilizzo";
 
 //MARK: Membership Screen
 "Review" = "Verifica";
 "Your have been recognized by our app." = "Your have been recognized by our app.";
-"You have been officially certified by our staff." = "You have been officially certified by our staff.";
+"You have been officially certified by our staff." = "Sei stato ufficialmente certificato dal nostro staff.";
 "You will receive an official quality mark on your profile." = "You will receive an official quality mark on your profile.";
 "Your account has been reviewed and approved by our staff" = "Il tuo account è stato verificato e approvato dal team Alysei";
 "Alysei Certification" = "Certificazione Alysei";
@@ -915,8 +931,9 @@
 "Italian F&B Producers" = "Produttori enogastronomici Italiani";
 "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Scopri, trova e connettiti con Importatori e Distributori certificati negli Stati Uniti, crea e consolida il tuo brand, promuovi i tuoi prodotti, raggiungi i tuoi consumatori.";
 "US Importers & Distributors" = "Importatori e Distributori negli USA";
+"Importers & Distributors" = "Importatori e Distributori";
 "Explore, find and connect with local italian Producers to strenghten your product portfolio, enanch your competiviness, expand your brand and market access." = "Esplora, trova e connettiti con i Produttori Locali Italiani per rafforzare il tuo portafoglio prodotti, accrescere la tua competitività, espandere il tuo brand.";
-"Italian Restaurants in US" = "Accedi al tuo Account";
+"Italian Restaurants in US" = "Ristoranti Italiani in USA";
 
 "Strengthen collaboration with Producers, Importers, promote your cusine and special events, bring more clients to the table by exponentially expand your reach." = "Rafforza la collaborazione con Produttori e Importatori, promuovi la tua cucina ed I tuoi eventi speciali, espandi la tua presenza sul mercato.";
 "Voice of Expert" = "Esperti di Settore";
@@ -930,11 +947,14 @@
 "Didn't receive the OTP ? " = "Didn't receive the OTP ? ";
 "Resend OTP" = "Resend OTP";
 "Confirm Password" = "Confirm Password";
-"New Password" = "New Password";
+"New Password" = "Nuova Password";
 "Proceed Next" = "Proceed Next";
 "Search for your location" = "Search for your location";
 "Select Your location" = "Select Your location";
 "Your location" = "Your location";
+"Password must be atleast 8 charaters and contains at least one numeric digit and a special charater." = "La password deve contenere almeno 8 caratteri e contenere almeno una cifra numerica e un carattere speciale.";
+
+
 //MARK: SELECT LANGUAGE SCREEN, WALKTHROUGH SCREEN
 
 "Select your Language" = "Seleziona la tua lingua";
@@ -1019,19 +1039,19 @@
 "plan to develop" = "vuoi sviluppare il";
 "your business" = "tuo business";
 "Select Hubs" = "Select Hubs";
-"Didn't recognize your hub?" = "Didn't recognize your hub?";
-"Click Here" = "Click Here";
-"Select State" = "Select State";
-"Please select atleast one state" = "Please select atleast one state";
-"Select the states from " = "Select the states from ";
+"Didn't recognize your hub?" = "Non trovi il tuo Hub?";
+"Click Here" = "Clicca qui";
+"Select State" = "Seleziona lo Stato";
+"Please select atleast one state" = "Seleziona almeno uno Stato";
+"Select the states from " = "Seleziona gli Stati in ";
 " where you " = " where you ";
-"Select Cities" = "Select Cities";
-"Search Cities" = "Search Cities";
-"Selected hubs" = "Selected hubs";
-"Edit" = "Edit";
-"Edit Selection" = "Edit Selection";
-"Remove" = "Remove";
-"Go to Profile" = "Go to Profile";
+"Select Cities" = "Seleziona le città";
+"Where do you want" = "Dove vuoi";
+"Selected hubs" = "Seleziona gli Hubs";
+"Edit" = "Modifica";
+"Edit Selection" = "Modifica Selezione";
+"Remove" = "Rimuovi";
+"Go to Profile" = "Vai al tuo Profilo";
 
 //MARK: SIGN UP SCREEN
 
@@ -1047,6 +1067,7 @@
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 "Delivery Discount for Alysei Voyager" = "Sconto consegna per i Voyagers";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
+"Continue" = "Continua";
 
 //MARK: USER Roles
 
@@ -1054,11 +1075,11 @@
 "Restaurant" = "Restaurant";
 "Restaurants" = "Restaurants";
 "Voyager" = "Voyager";
-"Voice Of Experts" = "Voice Of Experts";
-"Importer" = "Importer";
-"Distributer" = "Distributer";
+"Voice Of Experts" = "Esperti di Settore";
+"Importer" = "Importatori";
+"Distributer" = "Distributori";
 "Importer & Distributer" = "Importer & Distributer";
-"Travel Agencies" = "Travel Agencies";
+"Travel Agencies" = "Agenzie di Viaggio";
 
 
 
