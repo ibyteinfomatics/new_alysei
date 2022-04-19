@@ -145,7 +145,15 @@ extension OTPVerificationViewC{
       else{
         let dicResult = kSharedInstance.getDictionary(result)
         kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
+          let roleId =  kSharedUserDefaults.loggedInUserModal.memberRoleId
+          if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
         kSharedAppDelegate.pushToTabBarViewC()
+          }else{
+                      let nextVC = CountryListVC()
+                      nextVC.roleId = roleId
+              //        nextVC.isEditHub = false
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+          }
       }
     case 1:
       showAlert(withMessage: AlertMessage.kOTPSent)

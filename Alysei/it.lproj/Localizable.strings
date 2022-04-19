@@ -84,7 +84,7 @@
 //MARK: Alert Message
 "Please select any product" ="Please select any product";
 "Please enter first name." = "Inserisci il nome.";
-"Please enter last name." = "nserisci il cognome.";
+"Please enter last name." = "Inserisci il cognome.";
 "Please enter mobile number." = "Inserisci il numero di cellulare.";
 "Please enter email address." = "Inserisci l'indirizzo email.";
 "Please enter valid email address." = "Inserisci un indirizzo email valido.";
@@ -149,24 +149,25 @@
 "Please enter Description or Url." = "Inserisci una descrizione o il sito web.";
 
 //MARK: Filter Screen
-"Select a date" = "Select a date";
-"Event type" = "Event type";
-"Registration type" = "Registration type";
+"Select a date" = "Seleziona una data";
+"Event type" = "Tipo di Evento";
+"Registration type" = "Registrazione";
 "Restaurant type" = "Restaurant type";
-"Country" = "Country";
-"Regions" = "Regione";
-"Adventures" ="Adventures";
-"Duration" = "Duration";
-"Intensity" = "Intensity";
-"Price" = "Price";
+"Country" = "Paese";
+"Regions" = "Regioni";
+"Region" = "Regione";
+"Adventures" ="Avventuras";
+"Duration" = "Durata";
+"Intensity" = "Intensità";
+"Price" = "Prezzo";
 "Create Event" = "Create Event";
-"Event Name" = "Event Name";
-"Host Name" = "Host Name";
-"Date" = "Date";
-"Time" = "Time";
-"Event Type" = "Event Type";
-"Registration Type" = "Registration Type";
-"Booking Url" = "Booking Url";
+"Event Name" = "Nome Evento";
+"Host Name" = "Nome Organizzatore";
+"Date" = "Data";
+"Time" = "Ora";
+"Event Type" = "Tipo di Evento";
+"Registration Type" = "Registrazione";
+"Booking Url" = "Sito Web per Prenotazione";
 "Please enter event!"= "Please enter event!";
 "Please enter date!" = "Please enter date!";
 "Please enter time!" = "Please enter time!";
@@ -184,7 +185,7 @@
 "Publish" ="Publish";
 "Create Trips/Packages" = "Create Trips/Packages";
 "Trip Name/Package Name" = "Trip Name/Package Name";
-"Travel Agency" = "Travel Agency";
+"Travel Agency" = "Agenzia di Viaggio";
 "Price" = "Price";
 "Trips/Packages" = "Trips/Packages";
 "Please select country!" = "Please select country!";
@@ -196,8 +197,8 @@
 "Please upload travel image!" = "Please upload travel image!";
 "Please enter trip name!" = "Please enter trip name!";
 "Add Award" = "Add Award";
-"Name of Competition / Event" = "Name of Competition / Event";
-"Name of winning Product" = "Name of winning Product";
+"Name of Competition / Event" = "Nome della Competizione/Evento";
+"Name of winning Product" = "Nome del Prodotto vincitore";
 "Name of Medal / place received" = "Name of Medal / place received";
 "Competition URL" = "Competition URL";
 "Please enter winning product name!" = "Please enter winning product name!";
@@ -405,16 +406,16 @@
 "Add Featured Packages" = "Add Featured Packages";
 "Add Featured" = "Add Featured";
 "All Information is required" = "All Information is required";
-"Specialization" = "Specialization";
-"Blog Titles" = "Blog Titles";
+"Specialization" = "Specializzazione";
+"Blog Titles" = "Titolo del Blog";
 "Public" = "Public";
 "Private" = "Private";
 "Free" = "Free";
 "Paid" = "Paid";
 "Choose Date" = "Choose Date";
 "Select Event" = "Select Event";
-"Select Registration"=  "Select Registration";
-"Select Restaurant"= "Select Restaurant";
+"Select Registration"=  "Seleziona Registrazione";
+"Select Restaurant"= "Seleziona il Ristorante";
 "Our Menu"= "Our Menu";
 "About Restaurant" = "About Restaurant";
 "Title" = "Title";
@@ -441,6 +442,7 @@
 //MARK: Profile
 "Comments" = "Commenti";
 "Update Profile" = "Aggiorna il Profilo";
+"Profile" = "Profilo";
 "You are not authorized user." = "Non sei un utente autorizzato";
 "Something went wrong." = "Qualcosa è andato storto.";
 "Cancel Request" = "Richiesta cancellata";
@@ -526,10 +528,10 @@
 "Messages"= "Messaggi";
 "Email when someone requests to follow me" = "Email quando qualcuno richiede di seguirmi";
 "Receive weekly updates" = "Ricevere aggiornamenti settimanali";
-"Share Post" = "Share Post";
-"Edit Post" = "Edit Post";
-"Delete Post" = "Delete Post";
-"Report Action" = "Report Action";
+"Share Post" = "Condividi Post";
+"Edit Post" = "Modifica Post";
+"Delete Post" = "Elimina Post";
+"Report Action" = "Segnala un'azione";
 "What's new?" = "What's new?";
 "Post" = "Post";
 "Post can't be empty" = "Post can't be empty";
@@ -537,7 +539,7 @@
 "VAT" = "Part.IVA";
 "Provide your FDA Number" = "Fornisci il tuo numero FDA";
 //MARK: Message Screen
-"There is no message." = "There is no message.";
+"There is no message." = "Non ci sono messaggi.";
 "There is no new chat." = "Non ci sono nuove chat";
 "New Chat" = "Nuova chat";
 "There is no notification." = "Non ci sono notifiche";
@@ -573,6 +575,7 @@
 "Categories" = "Categorie";
 "Product Properties" = "Proprietà del Prodotto";
 "FDA Certified" = "Certificato FDA";
+"The owner, operator, or agent in charge of either a domestic or foreign facility that is engaged in manufacturing/processing, packing, or holding of food for human or animal consumption in the United States, must register with FDA"= "Il proprietario, l'operatore o l'agente responsabile di una struttura nazionale o estera impegnata nella produzione/trasformazione, confezionamento o stoccaggio di alimenti per il consumo umano o animale negli Stati Uniti, deve registrarsi presso la FDA";
 "My Favourite" = "I Miei Favoriti";
 "Most Popular" = "I Più Popolari";
 "Promotions" = "Promozioni";
@@ -605,7 +608,7 @@
 "Product Name" = "Nome del Prodotto";
 "Clear Filters" = "Elimina Filtri";
 "Filters" = "Filtri";
-"Apply Filter" = "Apply Filter";
+"Apply Filter" = "Applica Filtri";
 "Product" = "Prodotto";
 
 //MARK: Marketplace Membership Screen
@@ -634,7 +637,7 @@
 "Description" = "Descrizione";
 "Website" = "Sito Web";
 "Store Region" = "Regione del negozio";
-"Location" = "Posizione";
+"Location" = "Luogo";
 "Next" = "Avanti";
 "Exceed Maximum Number Of Selection" = "Superato il numero massimo di selezione";
 "Ok" = "Ok";
@@ -725,7 +728,7 @@
 "MarketPlace Rules" = "Regole del Marketplace";
 "Here you can create your unique Store" = "Qui puoi creare il tuo negozio online";
 "upload your product portfolio, explore, search and reply to inquiries" = "caricare il tuo portafoglio di prodotti, scoprire, ricercare e rispondere a richieste";
-"The most powerful markeplace engine for the Made in Italy" = "Il più potente motore Marketplace per il Made in Italy";
+"The most powerful marketplace engine for the Made in Italy" = "Il più potente motore Marketplace per il Made in Italy";
 "To ensure a positive experience follow these simple rules" = "Per garantire un'esperienza positiva, segui queste semplici regole";
 "Here you can explore and search for products from Italian Producers" = "Qui puoi scorprire, ricercare prodotti di Produttori Italiani";
 "Here you can explore and search for products and send inquiry to Italian Producers" = "Qui puoi scorprire, ricercare prodotti e inviare richieste a Produttori Italiani";
@@ -859,16 +862,18 @@
 "Post Unavailable" = "Post Unavailable";
 "Some error occured" = "Some error occured";
 "People" = "People";
-"Trips" = "Trips";
-"Events" = "Events";
-"Awards" = "Awards";
+"Trips" = "Viaggi";
+"Events" = "Eventi";
+"Awards" = "Premi";
+"Award" = "Premio";
+"Blogs" = "Blogs";
 "All" = "All";
-"Are you Interested?" = "Are you Interested?";
+"Are you Interested?" = "Sei interessato?";
 "Uninterested" = "Uninterested";
 "What are you searching?" = "What are you searching?";
 "Map" = "Map";
-"Trip Price" = "Trip Price";
-"Read More" = "Read More";
+"Trip Price" = "Prezzo del Viaggio";
+"Read More" = "Leggi di più";
 "There are no events at this moment." = "There are no events at this moment.";
 "My Events" ="My Events";
 "Create Events" = "Create Events";
@@ -882,13 +887,13 @@
 "Create Trips" = "Create Trips";
 "There are no trips at this moment." = "There are no trips at this moment.";
 "Interested" = "Interested";
-"Add Awards" = "Add Awards";
-"There are no awards to show at this moment." = "There are no awards to show at this moment.";
+"Add Awards" = "Aggiungi Premio";
+"There are no awards to show at this moment." = "Non ci sono premi al momento.";
 "View Request" = "View Request";
 "Accept" = "Accept";
 "Decline" = "Decline";
-"About" = "About";
-"Our Products" = "Our Products";
+"About" = "Chi siamo";
+"Our Products" = "I Nostri Prodotti";
 "Hubs" = "Hubs";
 "B2B" = "B2B";
 "Terms of Use" = "Termini di Utilizzo";
@@ -908,7 +913,7 @@
 "Become a Certified Alysei Member to expan your market access" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
 "Complete your profile in order to fully access Alysei" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
 "Fill the form to get a faster response. The Italian Producer will contact you shortly."="Compila il modulo per ottenere una risposta più rapida. Il Produttore Italiano ti contatterà a breve.";
-"Alysei Membership Progress" = "Alysei Membership Progress";
+"Alysei Membership Progress" = "Status Membership Alysei";
 "Your membership progress is pending review. You will be notified once the review of your account has begun." = "Your membership progress is pending review. You will be notified once the review of your account has begun.";
 "Complete your profile in order to start Posting" = "Complete your profile in order to start Posting";
 "Your profile is not reviewed from admin" = "Your profile is not reviewed from admin";
@@ -925,9 +930,9 @@
 "Don't have an account yet?" = "Non hai ancora un account?";
 "Enter your registered email to recover your password" = "Inserisci la tua email per recuperare la password";
 "Reset Password" = "Reset Password";
-"Password must be at least 8 characters and contain at least one numeric digit and a special character." = "Password must be at least 8 characters and contain at least one numeric digit and a special character.";
+"Password must be at least 8 characters and contain at least one numeric digit and a special character." = "La password deve contenere almeno 8 caratteri e contenere almeno una cifra numerica e un carattere speciale.";
 "Select your role" = "Seleziona chi sei";
-"* Required Information" = "* Required Information";
+"* Required Information" = "* Informazioni Richieste";
 "Italian F&B Producers" = "Produttori enogastronomici Italiani";
 "Explore, find and connect with certified Importers and Distributors in USA, build up and consolidate your brand, promote your products, reach your consumers." = "Scopri, trova e connettiti con Importatori e Distributori certificati negli Stati Uniti, crea e consolida il tuo brand, promuovi i tuoi prodotti, raggiungi i tuoi consumatori.";
 "US Importers & Distributors" = "Importatori e Distributori negli USA";
@@ -942,16 +947,16 @@
 "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers." = "Rafforza la connessione con Produttori Italiani, Importatori e Distributori negli Stati Uniti, con Esperti di Settore, aumenta la tua visibilità, raggiungi i tuoi clienti target.";
 "Voyagers" = "Voyagers";
 "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
-"We have sent you a 6 digit verification code(OTP) to" = "We have sent you a 6 digit verification code(OTP) to";
-"Verify OTP" = "Verify OTP";
-"Didn't receive the OTP ? " = "Didn't receive the OTP ? ";
-"Resend OTP" = "Resend OTP";
-"Confirm Password" = "Confirm Password";
+"We have sent you a 6 digit verification code(OTP) to" = "Ti abbiamo inviato un codice di verifica a 6 cifre (OTP) per.....";
+"Verify OTP" = "Verifica OTP";
+"Didn't receive the OTP ? " = "Non hai ricevuto l'OTP?";
+"Resend OTP" = "Invia di nuovo l'OTP";
+"Confirm Password" = "Conferma Password";
 "New Password" = "Nuova Password";
-"Proceed Next" = "Proceed Next";
-"Search for your location" = "Search for your location";
-"Select Your location" = "Select Your location";
-"Your location" = "Your location";
+"Proceed Next" = "Avanti";
+"Search for your location" = "Cerca la tua posizione";
+"Select Your location" = "Seleziona la tua posizione";
+"Your location" = "Seleziona la tua posizione";
 "Password must be atleast 8 charaters and contains at least one numeric digit and a special charater." = "La password deve contenere almeno 8 caratteri e contenere almeno una cifra numerica e un carattere speciale.";
 
 
@@ -1038,7 +1043,7 @@
 "USA where you" = "US dove";
 "plan to develop" = "vuoi sviluppare il";
 "your business" = "tuo business";
-"Select Hubs" = "Select Hubs";
+"Select Hubs" = "Seleziona gli Hubs";
 "Didn't recognize your hub?" = "Non trovi il tuo Hub?";
 "Click Here" = "Clicca qui";
 "Select State" = "Seleziona lo Stato";
@@ -1072,18 +1077,24 @@
 //MARK: USER Roles
 
 "Producer" = "Producer";
-"Restaurant" = "Restaurant";
-"Restaurants" = "Restaurants";
+"Restaurant" = "Ristoranti";
+"Restaurants" = "Ristoranti";
 "Voyager" = "Voyager";
 "Voice Of Experts" = "Esperti di Settore";
 "Importer" = "Importatori";
 "Distributer" = "Distributori";
 "Importer & Distributer" = "Importer & Distributer";
 "Travel Agencies" = "Agenzie di Viaggio";
-
-
-
-
+"Importers" = "Importatori";
+"Distributors" = "Distributori";
+"Email Preferences" = "Preferenze Email";
+"Photos" = "Foto";
+"Contact" = "Contatti";
+"Contact us"  = "Contattaci";
+"There is no posts at this moment" = "Non ci sono posts al momento";
+"There is no photos at this moment" = "Non ci sono foto al momento";
+"URL format should be like https://www.example.com/" = "Il formato dell'URL dovrebbe essere https://www.example.com/";
+"URL format should be like https://www.facebook.com/username" = "Il formato dell'URL dovrebbe essere https://www.facebook.com/nomeutente";
 
 
 

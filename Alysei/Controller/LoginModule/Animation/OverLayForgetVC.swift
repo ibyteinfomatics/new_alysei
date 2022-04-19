@@ -95,7 +95,7 @@ extension OverLayForgetVC {
         let param: [String:Any] = [APIConstants.kEmail:String.getString(self.txtFieldEmail.text)]
         
         disableWindowInteraction()
-        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kResendOtp, method: .POST, controller: self, type: 0, param: param,btnTapped: self.btnResetPassword)
+        CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kForgotPassword, method: .POST, controller: self, type: 0, param: param,btnTapped: self.btnResetPassword)
     }
 }
 

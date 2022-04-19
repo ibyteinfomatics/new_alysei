@@ -494,6 +494,7 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var kPhotos : String { "Photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWhatNew: String{"What's new?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSaySomething : String {"Say Something...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddress : String {"Address".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -644,6 +645,7 @@ struct AppConstants {
     static var kYourProgress: String{"Your Progress".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kcompleted: String{"completed".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWhenYouPostSomethingItWillAppearHere: String{"When you post something it will appear here.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kContact: String{"Contact".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ContactUs: String{"Contact Us".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ThereAreNoPostAtThisMoment: String{"There are no posts at this moment.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
@@ -1103,7 +1105,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kFeatureYouExplore  : String { "Features you can explore".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMarketPlaceRules  : String {  "MarketPlace Rules".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCreateYourUniqueStore : String { "Here you can create your unique Store, upload your product portfolio, explore, search and reply to inquiries".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kPowerfulMarketplaceEngine  : String {  "The most powerful markeplace engine for the Made in Italy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPowerfulMarketplaceEngine  : String {  "The most powerful marketplace engine for the Made in Italy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kPostiveExperience  : String {  "To ensure a positive experience follow these simple rules".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kExploreSearchProductsFormItalian  : String {  "Here you can explore and search for products from Italian Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kExploreSendInquiry  : String {   "Here you can explore and search for products and send inquiry to Italian Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1138,6 +1140,9 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     
     static var kAddingAccurateHelpBuyers  : String { "Adding relevant and accurate info helps buyers to learn more about what you are selling.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddClearPhotos  : String { "Add clear photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
+    
     static var kPhotosGoodResolutionAndLightning : String {"Photos should have a good resolution and lighting,and should only show what you are listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOfferFairPrice  : String {"Offer a fair price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOfferingFarePriceToCompMarket  : String {"Make sure you are offering prices appropriate to a competitive market like the US".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

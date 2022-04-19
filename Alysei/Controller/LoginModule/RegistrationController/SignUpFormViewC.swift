@@ -379,10 +379,13 @@ extension SignUpFormViewC{
       kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
       kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
       let roleId = String.getString(dicRole[APIConstants.kRoleId])
-      let nextVC = CountryListVC()
-        nextVC.roleId = roleId
-//        nextVC.isEditHub = false
-      self.navigationController?.pushViewController(nextVC, animated: true)
+        let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
+        controller?.email = String.getString(dicData[APIConstants.kEmail])
+      
+//        let nextVC = CountryListVC()
+//        nextVC.roleId = roleId
+////        nextVC.isEditHub = false
+//      self.navigationController?.pushViewController(nextVC, animated: true)
     }
   }
 }

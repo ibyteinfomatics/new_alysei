@@ -35,21 +35,21 @@ struct ProfileTabRows {
     func rowsTitle(_ userRole: UserRoles) -> [String] {
         switch userRole {
         case .producer:
-            return ["Post" , "Photos", "About", "Contact", "Awards"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards]
         case .distributer1:
-            return ["Post" , "Photos", "About", "Contact", "Awards"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards]
         case .distributer2:
-            return ["Post" , "Photos", "About", "Contact", "Awards"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards]
         case .distributer3:
-            return ["Post" , "Photos", "About", "Contact", "Awards"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards]
         case .voiceExperts:
-            return ["Post" , "Photos", "About", "Contact", "Awards", "Blogs"]
+            return [AppConstants.kPost ,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards, AppConstants.kBlogs]
         case .travelAgencies:
-            return ["Post" , "Photos", "About", "Contact", "Awards", "Trips"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards, AppConstants.kTrips]
         case .restaurant:
-            return ["Post" , "Photos", "About", "Contact", "Awards", "Events"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact, AppConstants.kAwards, AppConstants.kEvents]
         case .voyagers:
-            return ["Post" , "Photos", "About", "Contact"]
+            return [AppConstants.kPost,AppConstants.kPhotos, AppConstants.kAbout, AppConstants.kContact]
         }
     }
 
