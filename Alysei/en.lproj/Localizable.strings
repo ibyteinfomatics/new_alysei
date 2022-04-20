@@ -447,7 +447,7 @@
 "Email" = "Email";
 "Password" = "Password";
 "LOGIN" = "LOGIN";
-"Forget Password?" = "Forget Password?";
+"Forgot Password?" = "Forgot Password?";
 "Don't have an account yet?" ="Don't have an account yet?";
 "Enter your registered email to recover your password" = "Enter your registered email to recover your password";
 "Reset Password" = "Reset Password";

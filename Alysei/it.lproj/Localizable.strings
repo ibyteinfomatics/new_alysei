@@ -926,7 +926,7 @@
 "Email" = "Email";
 "Password" = "Password";
 "LOGIN" = "Accedi";
-"Forget Password?" = "Hai dimenticato la password?";
+"Forgot Password?" = "Hai dimenticato la password?";
 "Don't have an account yet?" = "Non hai ancora un account?";
 "Enter your registered email to recover your password" = "Inserisci la tua email per recuperare la password";
 "Reset Password" = "Reset Password";

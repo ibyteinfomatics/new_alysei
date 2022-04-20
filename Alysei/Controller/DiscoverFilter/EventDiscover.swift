@@ -28,7 +28,7 @@ class EventDiscover: AlysieBaseViewC {
     var selectedRegistrationType: String?
     var selectedRestType: String?
     var passRestId: String?
-   
+    var loadIsInterest = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +97,7 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.configCell(eventData[indexPath])
         eventTableCell.btnInterested.tag = indexPath
        
-        if eventData[indexPath].is_event_liked?.count == 0{
+        if eventData[indexPath].is_event_liked?.count == 0 || eventData[indexPath].is_event_liked?.count == nil {
             eventTableCell.btnInterestedWidth.constant = 180
             eventTableCell.btnInterested.backgroundColor = UIColor.init(hexString: "37A282")
             eventTableCell.btnInterested.setTitle(AppConstants.kAreyouInterested, for: .normal)
@@ -106,10 +106,14 @@ class EventDiscover: AlysieBaseViewC {
             eventTableCell.btnInterested.setTitle(AppConstants.kUninterested, for: .normal)
         }
         eventTableCell.callInterestedCallback = { index in
-           
+            self.loadIsInterest = true
             let reloadIndexPath = IndexPath(row: index, section: 0)
-            self.postRequest(self.indexOfPageToRequest)
-            self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+            //self.postRequest(self.indexOfPageToRequest)
+            for i in 1...self.indexOfPageToRequest{
+            self.postRequest(i)
+            }
+            self.eventsTableView.reloadData()
+           // self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
         }
 
         
@@ -318,13 +322,16 @@ extension EventDiscover {
         if let data = dictResponse?["data"] as? [String:Any]{
           self.eventModel = EventModel.init(with: data)
             
-            if self.indexOfPageToRequest == 1 { self.eventData.removeAll() }
+            if pageNo == 1 { self.eventData.removeAll() }
             
             self.eventData.append(contentsOf: self.eventModel?.data ?? [EventDatum(with: [:])])
             
         }
-        
-        self.eventsTableView.reloadData()
+          if self.loadIsInterest == true && pageNo == self.indexOfPageToRequest{
+              self.eventsTableView.reloadData()
+          }else{
+            self.eventsTableView.reloadData()
+          }
       }
       
     }

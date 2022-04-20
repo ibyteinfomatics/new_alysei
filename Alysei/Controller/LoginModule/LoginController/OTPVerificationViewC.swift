@@ -48,7 +48,8 @@ class OTPVerificationViewC: AlysieBaseViewC {
     text.append(NSAttributedString(string: AppConstants.OTPHeading, attributes: [NSAttributedString.Key.font: AppFonts.regular(18.0).font]));
     text.append(NSAttributedString(string: String.getString(email), attributes: [NSAttributedString.Key.font: AppFonts.bold(20.0).font]))
     lblHeading.attributedText = text
-    lblUsername.text = (self.userName?.isEmpty == false) ? (AppConstants.Hi + String.getString(self.userName) + ",") : (AppConstants.Hi + "User" + ",")
+      let companyName = kSharedUserDefaults.loggedInUserModal.companyName
+    lblUsername.text = (self.userName?.isEmpty == false) ? (AppConstants.Hi + String.getString(self.userName) + ",") : (AppConstants.Hi + String.getString(companyName) + ",")
     self.txtFieldOTP.first?.becomeFirstResponder()
     self.txtFieldOTP.forEach{
       $0.delegate = self

@@ -1234,7 +1234,7 @@ struct LogInSignUp{
     
         static var kPassword  : String {  "Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kLOGIN  : String {  "LOGIN".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-        static var kForgetPassword  : String {  "Forget Password?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kForgetPassword  : String {  "Forgot Password?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kDontHaveAccount  : String {  "Don't have an account yet?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kEnterYourRegisteredEmail  : String {  "Enter your registered email to recover your password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kResetPassword  : String {  "Reset Password".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
