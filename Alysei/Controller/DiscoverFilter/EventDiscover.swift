@@ -109,9 +109,9 @@ class EventDiscover: AlysieBaseViewC {
             self.loadIsInterest = true
             let reloadIndexPath = IndexPath(row: index, section: 0)
             //self.postRequest(self.indexOfPageToRequest)
-            for i in 1...self.indexOfPageToRequest{
-            self.postRequest(i)
-            }
+           // for i in 1...self.indexOfPageToRequest{
+            //self.postRequest(i)
+           // }
             self.eventsTableView.reloadData()
            // self.eventsTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
         }

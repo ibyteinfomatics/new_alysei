@@ -64,11 +64,14 @@ class EventsTableViewCell: UITableViewCell {
     @IBAction func btnInterestedAction(_ sender: UIButton){
         self.index = sender.tag
         if data?.is_event_liked?.count == 0 {
-            isInterested = 1
+           // isInterested = 1
+            self.data?.is_event_liked?.append(EventLike(with: [:]))
         }else {
-            isInterested = 0
+           // isInterested = 0
+            self.data?.is_event_liked?.removeAll()
         }
-        callInterestesApi(sender.tag, isInterested)
+        callInterestesApi(sender.tag, data?.is_event_liked?.count)
+      
     }
     
 //    @IBAction func btnVisit(_ sender: UIButton){
