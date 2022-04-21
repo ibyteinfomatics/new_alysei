@@ -24,8 +24,8 @@ class NotificationTableCell: UITableViewCell {
     public func configure(){
       
     
-        name.text = "Anthony Tran is now connected with you."
-        message.text = "few seconds ago"
+        //name.text = "Anthony Tran is now connected with you."
+       // message.text = "few seconds ago"
     }
 
 }

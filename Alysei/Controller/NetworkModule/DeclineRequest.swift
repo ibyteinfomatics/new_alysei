@@ -70,7 +70,9 @@ class DeclineRequest: AlysieBaseViewC {
         
         let params: [String:Any] = [:]
         
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(id)+"&accept_or_reject="+String.getString(type)+"&reason="+resaon, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        let declineReason = String(resaon.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kotherAcceptReject+"visitor_profile_id="+String.getString(id)+"&accept_or_reject="+String.getString(type)+"&reason="+declineReason, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             //self.fetchVisiterProfileDetails(self.userID)
             

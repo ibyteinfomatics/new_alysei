@@ -18,7 +18,7 @@ protocol BasicConnectFlowDisplayLogic: AnyObject {
     func alert(msg : String)
 }
 
-class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayLogic {
+class BasicConnectFlowViewController: AlysieBaseViewC, BasicConnectFlowDisplayLogic {
     
     
     var interactor: BasicConnectFlowBusinessLogic?
@@ -141,7 +141,7 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
 //        controller?.userID = self.userID
         vwConfirm.isHidden = false
        // self.navigationController?.popViewController(animated: true)
-        
+        enableWindowInteraction()
         if self.navigationController!.viewControllers != nil {
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: ProfileViewC.self) {
@@ -156,7 +156,7 @@ class BasicConnectFlowViewController: UIViewController, BasicConnectFlowDisplayL
         
     }
     
-    public func pushViewController(withName name: String, fromStoryboard storyboard: String) -> UIViewController {
+    public override func pushViewController(withName name: String, fromStoryboard storyboard: String) -> UIViewController {
 
         let storyboard = UIStoryboard.init(name: storyboard, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: name)

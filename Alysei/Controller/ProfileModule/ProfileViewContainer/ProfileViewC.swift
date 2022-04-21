@@ -1365,7 +1365,7 @@ class ProfileViewC: AlysieBaseViewC{
                     
                 case .other:
                     if self.connectionFlagValue == 3{
-                        self.messageButton.isHidden = false
+                        self.messageButton.isHidden = true
                         self.respondeButton.isHidden = false
                         self.respondeButton.isUserInteractionEnabled = true
                         self.connectButton.isHidden = true

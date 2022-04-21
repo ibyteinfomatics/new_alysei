@@ -20,7 +20,7 @@ protocol BasicConnectFlowDataStore {
     //var name: String { get set }
 }
 
-class BasicConnectFlowInteractor: BasicConnectFlowBusinessLogic, BasicConnectFlowDataStore {
+class BasicConnectFlowInteractor: AlysieBaseViewC, BasicConnectFlowBusinessLogic, BasicConnectFlowDataStore {
     var presenter: BasicConnectFlowPresentationLogic?
     var worker: BasicConnectFlowWorker?
     //var name: String = ""
@@ -35,22 +35,23 @@ class BasicConnectFlowInteractor: BasicConnectFlowBusinessLogic, BasicConnectFlo
             guard var request = WebServices.shared.buildURLRequest(urlString, method: .POST) else {
                 return
             }
+            disableWindowInteraction()
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpBody = model.urlEncoded()
 
 //            request.httpBody = body
 
             WebServices.shared.request(request) { data, URLResponse, statusCode, error in
-               
-                
                 
                 if statusCode == 200 {
                     print("Success---------------------------Successssss")
                     self.presenter?.showConnectionConfirmScreen()
                 } else if statusCode == 409{
-                    self.presenter?.showAlert(msg: "You are not autorized user.")
+                    self.enableWindowInteraction()
+                    self.presenter?.showAlert(msg: AppConstants.kYouAreNotAuthorizedUser)
                 } else {
-                    self.presenter?.showAlert(msg: "Something went wrong.")
+                    self.enableWindowInteraction()
+                    self.presenter?.showAlert(msg: AppConstants.kSomethingWentWrong)
                 }
                 
             }

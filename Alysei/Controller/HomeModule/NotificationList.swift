@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class NotificationList: AlysieBaseViewC {
     
     @IBOutlet weak var tblViewNotification: UITableView!
@@ -22,6 +23,7 @@ class NotificationList: AlysieBaseViewC {
     var notifiacationArray = [NotiDatum]()
     var indexOfPageToRequest = 1
 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -218,7 +220,7 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             //kSharedAppDelegate.moveToNetwork(index: 0)
             
             tabBarController!.selectedIndex = 3
-            networkcurrentIndex = 0
+             networkcurrentIndex = 0
         case 4:
             networkcurrentIndex = 1
             tabBarController!.selectedIndex = 3
@@ -226,6 +228,9 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             // kSharedAppDelegate.moveToNetwork(index: 3)
             tabBarController!.selectedIndex = 3
             networkcurrentIndex = 3
+//            let controller = pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
+//            controller?.userLevel = .other
+//            controller?.userID = Int.getInt(notifiacationArray[indexPath.row].user?.userid)
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:
