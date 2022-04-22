@@ -13,6 +13,7 @@ class OverLayLoginViewController: AlysieBaseViewC {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     var btnCallback: ((Int,GetRoleViewModel,String,String) -> Void)? = nil
+    var otpCallBack: ((String,String) -> Void)? = nil
    // var btnSignUpCallBack : ((GetRoleViewModel) -> Void)? = nil
     
     //MARK: IBOutlets
@@ -175,7 +176,11 @@ extension OverLayLoginViewController{
                 kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
                 kSharedUserDefaults.alyseiReview =  Int.getInt(dictData["alysei_review"])
                 kSharedUserDefaults.setAppLanguage(language: (dictData["locale"] as? String ?? ""))
+                kSharedUserDefaults.setAccountEnableStatus(status: dicResult["account_enabled"] as? String ?? "")
+                print("AccountEnableStatus -----------------",kSharedUserDefaults.getAccountEnableStatus())
+              
                 kSharedAppDelegate.pushToTabBarViewC()
+               
             }
         case 3:
             self.btnSignUp.isUserInteractionEnabled = true

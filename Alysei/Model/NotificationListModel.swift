@@ -75,6 +75,7 @@ class NotiDatum {
     var redirectToid: Int?
     var isRead, createdAt, updatedAt,sender_name: String?
     var user: NotiUser?
+    var reason: String?
 
     
     
@@ -84,6 +85,7 @@ class NotiDatum {
             self.from = Int.getInt(dictResponse?["from"])
             self.to = Int.getInt(dictResponse?["to"])
             self.notificationType = String.getString(dictResponse?["notification_type"])
+        self.reason = String.getString(dictResponse?["reason"])
             self.title = String.getString(dictResponse?["title"])
             self.body = String.getString(dictResponse?["body"])
             self.redirectTo = String.getString(dictResponse?["redirect_to"])

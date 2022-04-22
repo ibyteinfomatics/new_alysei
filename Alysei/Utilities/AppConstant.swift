@@ -519,7 +519,9 @@ struct AppConstants {
     static var Unfollow : String {"Unfollow".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Follow : String {"Follow".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-  
+    static var storeInfo: String{"Store Info".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ViewStore: String{"View Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var kComments: String{"Comments".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPosts: String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPost: String {"Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -764,6 +766,7 @@ struct AppConstants {
     static var ProceedNext  : String { return "Proceed Next".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Submit  : String { return "Submit".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Incomplete  : String { return "incomplete".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
     static var AddDescription  : String { return "Add some description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Calander  : String { return "calander".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var SeparateTags  : String { return "Separate tags with commas...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -850,7 +853,7 @@ struct AppConstants {
     static var kzip_postal_code = "zip_postal_code"
     static var kvatno  = "vat_no"
     static var kpassword = "password"
-   
+    static var ConstIncomplete = "incomplete"
 }
 
 struct ProfileCompletion {

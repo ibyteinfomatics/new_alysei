@@ -113,14 +113,17 @@ extension LoginViewC{
     case 0:
       let dicResult = kSharedInstance.getDictionary(result)
       let dictData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
-      
-      if String.getString(dictData[APIConstants.kAccountEnabled]) == AppConstants.Incomplete{
+      //  let otpVerify = kSharedInstance.getDictionary("otp")
+      //  print("otpVerify----------------------",otpVerify)
+      if String.getString(dictData[APIConstants.kAccountEnabled]) == AppConstants.ConstIncomplete{
         let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
         controller?.email = String.getString(self.txtFieldEmail.text)
         controller?.userName = String.getString(dictData[APIConstants.kFirstName])
         controller?.pushedFrom = .login
       }
       else{
+          if String.getString(dictData[APIConstants.kAccountEnabled]) == AppConstants.ConstIncomplete{
+          } 
         kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
         kSharedAppDelegate.pushToTabBarViewC()
       }

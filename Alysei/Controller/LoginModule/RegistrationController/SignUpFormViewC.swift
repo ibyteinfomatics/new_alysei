@@ -369,7 +369,7 @@ extension SignUpFormViewC{
     let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
     let dicRole = kSharedInstance.getDictionary(dicData[APIConstants.kRoles])
     //let accessToken = kSharedInstance.getDictionary(dicData[APIConstants.kToken])
-  
+      
     if String.getString(dicRole[APIConstants.kRoleId]) == "10"{
       let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
       controller?.email = String.getString(dicData[APIConstants.kEmail])
@@ -378,7 +378,9 @@ extension SignUpFormViewC{
       
       kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
       kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
-      let roleId = String.getString(dicRole[APIConstants.kRoleId])
+     kSharedUserDefaults.setAppLanguage(language: (dicData["locale"] as? String ?? ""))
+        kSharedUserDefaults.setAccountEnableStatus(status: dicResult["account_enabled"] as? String ?? "")
+        print("AccountEnableStatus -----------------",kSharedUserDefaults.getAccountEnableStatus())
         let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
         controller?.email = String.getString(dicData[APIConstants.kEmail])
       

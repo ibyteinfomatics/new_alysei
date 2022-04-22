@@ -275,7 +275,7 @@ class InquiryChatVC: AlysieBaseViewC {
         if String.getString(self.ResentUser?[index].otherImage ?? "").contains(imageDomain) {
             notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? "").replacingOccurrences(of: "https://alyseiapi.ibyteworkshop.com/", with: "https://alysei.s3.us-west-1.amazonaws.com/"), placeholder: UIImage(named: "image_placeholder"))
         } else {
-            let img = ("https://alysei.s3.us-west-1.amazonaws.com/"+String.getString(self.ResentUser?[index].otherImage ?? ""))
+            let img = (String.getString(self.ResentUser?[index].otherImage ?? ""))
             notificationTableCell.imgViewNotification.setImage(withString: img, placeholder: UIImage(named: "image_placeholder"))
         }
         
@@ -376,16 +376,19 @@ extension InquiryChatVC: UITableViewDataSource, UITableViewDelegate{
         vc.userId = self.ResentUser?[indexPath.row].otherId
         vc.type = type
         vc.name = self.ResentUser?[indexPath.row].otherName
-        vc.profileImageUrl = imageDomain+"/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
+       // vc.profileImageUrl = imageDomain+"/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
+        vc.profileImageUrl = String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
         
         if String.getString(self.ResentUser?[indexPath.row].otherImage ?? "").contains(imageDomain) {
             vc.profileImageUrl = String.getString(self.ResentUser?[indexPath.row].otherImage ?? "")
             
         } else {
-            var img = ("/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? ""))
+           // var img = ("/"+String.getString(self.ResentUser?[indexPath.row].otherImage ?? ""))
+            var img = (String.getString(self.ResentUser?[indexPath.row].otherImage ?? ""))
             img = img.replacingOccurrences(of: "//", with: "/")
             
-            vc.profileImageUrl = imageDomain+img
+            //vc.profileImageUrl = imageDomain+img
+            vc.profileImageUrl = img
         }
         
         vc.ResentUser = self.ResentUser

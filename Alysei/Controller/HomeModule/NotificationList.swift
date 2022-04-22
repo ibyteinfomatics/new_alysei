@@ -93,7 +93,7 @@ class NotificationList: AlysieBaseViewC {
         print("formatted date is =  \(dateString)")
         
         notificationTableCell.message.text = dateString
-        notificationTableCell.name.text = notifiacationArray[index].title
+        notificationTableCell.name.text = (notifiacationArray[index].sender_name ?? "") + " " + (notifiacationArray[index].title ?? "")
        
         return notificationTableCell
         
@@ -222,8 +222,9 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             tabBarController!.selectedIndex = 3
              networkcurrentIndex = 0
         case 4:
-            networkcurrentIndex = 1
-            tabBarController!.selectedIndex = 3
+            //networkcurrentIndex = 1
+           // tabBarController!.selectedIndex = 3
+            self.showAlert(withMessage: notifiacationArray[indexPath.row].reason ?? "", nil)
         case 5:
             // kSharedAppDelegate.moveToNetwork(index: 3)
             tabBarController!.selectedIndex = 3

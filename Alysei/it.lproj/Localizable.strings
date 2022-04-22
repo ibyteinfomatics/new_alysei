@@ -208,7 +208,7 @@
 "Please enter competition name!" = "Please enter competition name!";
 "Please enter winning product name!" = "Please enter winning product name!";
 "Please enter medal name!" ="Please enter medal name!";
-
+"Company Name" = "Nome della ditta";
 
 //MARK: RECIPE HOME SCREEN
 "Create Recipe" = "Crea la tua Ricetta";
@@ -711,6 +711,7 @@
 "Yes" = "Sì";
 "reviews" = "Recensioni";
 "Reviews" = "Recensioni";
+" Reviews" = " Recensioni";
 "Edit Review" = "Modifica recensione";
 "Add Review" = "Aggiungi recensione";
 "Leave a comment" = "Lascia un commento";
@@ -1096,8 +1097,8 @@
 "URL format should be like https://www.example.com/" = "Il formato dell'URL dovrebbe essere https://www.example.com/";
 "URL format should be like https://www.facebook.com/username" = "Il formato dell'URL dovrebbe essere https://www.facebook.com/nomeutente";
 
-
-
+"Store Info" = "Store Info";
+"View Store" = "View Store";
 
 
 

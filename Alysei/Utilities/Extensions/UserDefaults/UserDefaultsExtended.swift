@@ -75,6 +75,17 @@ extension UserDefaults{
             return Int.getInt(self.loggedInUserModal.alysei_review ?? 0)
        }
      }
+    var accountEnabled: String{
+
+         set{
+             var userDict = self.getLoggedInUserDetails()
+             userDict["account_enabled"] = newValue
+             self.setLoggedInUserDetails(loggedInUserDetails: userDict)
+         }
+         get{
+            return String.getString(self.loggedInUserModal.accountEnabled ?? "")
+       }
+     }
   
   var latitude: Double{
 
@@ -120,6 +131,10 @@ extension UserDefaults{
         self.set(language, forKey: appLocale)
         self.synchronize()
     }
+    func setAccountEnableStatus(status: String) {
+        self.set(status, forKey: APIConstants.kAccountEnabled)
+        self.synchronize()
+    }
     
     func getDeviceToken() -> String {
         return String.getString(self.string(forKey: kDeviceToken))
@@ -127,7 +142,10 @@ extension UserDefaults{
     func getAppLanguage() -> String {
         return String.getString(self.string(forKey: appLocale))
     }
-    
+    func getAccountEnableStatus() -> String {
+        return String.getString(self.string(forKey: APIConstants.kAccountEnabled))
+    }
+
    
   //MARK: - Methods -
     

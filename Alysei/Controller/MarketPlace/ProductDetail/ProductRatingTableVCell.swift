@@ -55,9 +55,9 @@ class ProductRatingTableVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imgProducer.layer.cornerRadius = 25
-        lblStoreInfo.text = "Store Info"
+        lblStoreInfo.text = AppConstants.storeInfo
         lblRating.text = MarketPlaceConstant.kRatingAndReviews
-        btnViewStore.setTitle("View Store", for: .normal)
+        btnViewStore.setTitle(AppConstants.ViewStore, for: .normal)
         self.setStarUI()
         // Initialization code
     }

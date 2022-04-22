@@ -269,7 +269,7 @@ class NetworkViewC: AlysieBaseViewC {
                 //self.inviteApi(id: (self.arrConnection[indexPath.row].connectionID)!, type: 2)
                 
                 let vc = self.pushViewController(withName: DeclineRequest.id(), fromStoryboard: StoryBoardConstants.kHome) as! DeclineRequest
-                vc.visitordId = self.arrConnection[indexPath.row].userID
+                vc.visitordId = self.arrConnection[indexPath.row].user?.userID
                 
             }
             
@@ -282,7 +282,7 @@ class NetworkViewC: AlysieBaseViewC {
                 case 4,5,6:
                     let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                     vc.role = type!
-                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                     vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 3:
                     
@@ -292,12 +292,12 @@ class NetworkViewC: AlysieBaseViewC {
                     case 9,7,8,3:
                         let vc = self.pushViewController(withName: ImporterDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ImporterDashboardViewController
                         vc.role = type!
-                        vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                        vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                         vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                     default:
                         let vc = self.pushViewController(withName: ProducerDashboardViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! ProducerDashboardViewController
                        //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
-                        vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                        vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                         vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                     }
                     
@@ -305,15 +305,15 @@ class NetworkViewC: AlysieBaseViewC {
                 case 8:
                     let vc = self.pushViewController(withName: TravelAgencyViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! TravelAgencyViewController
                     //vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
-                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                     vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 9:
                     let vc = self.pushViewController(withName: RestaurantViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! RestaurantViewController
-                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                     vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 7:
                     let vc = self.pushViewController(withName: VoiceOfExpertsViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! VoiceOfExpertsViewController
-                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].userID)
+                    vc.visitordId = String.getString(self.arrConnection[indexPath.row].user?.userID)
                     vc.connectionId = String.getString(self.arrConnection[indexPath.row].connectionID)
                 case 10:
                     let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC

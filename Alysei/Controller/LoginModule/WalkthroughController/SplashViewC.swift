@@ -18,8 +18,10 @@ class SplashViewC: AlysieBaseViewC{
     super.viewDidLoad()
   
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-      
-      if (kSharedUserDefaults.isUserLoggedIn == true) && (kSharedUserDefaults.logout == false) && (kSharedUserDefaults.loggedInUserModal.accessToken?.isEmpty == false){
+        if (kSharedUserDefaults.isUserLoggedIn == true) && (kSharedUserDefaults.logout == false) && (kSharedUserDefaults.loggedInUserModal.accessToken?.isEmpty == false) && (kSharedUserDefaults.getAccountEnableStatus() == AppConstants.ConstIncomplete){
+                  kSharedAppDelegate.pushToLoginAccountViewC()
+       }
+      else if (kSharedUserDefaults.isUserLoggedIn == true) && (kSharedUserDefaults.logout == false) && (kSharedUserDefaults.loggedInUserModal.accessToken?.isEmpty == false){
         kSharedAppDelegate.pushToTabBarViewC()
       }
       else if (kSharedUserDefaults.isUserLoggedIn == true) && (kSharedUserDefaults.logout == true){

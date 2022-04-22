@@ -31,6 +31,9 @@ class OTPVerificationViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     
     super.viewDidLoad()
+      if pushedFrom == .login && kSharedUserDefaults.getAccountEnableStatus() == AppConstants.ConstIncomplete  {
+          postRequestToResendOTP()
+      }
     self.initialSetupTextFields()
   }
   

@@ -104,6 +104,13 @@ class LoginAccountViewC: AlysieBaseViewC{
         let slideVC = OverLayLoginViewController()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
+        
+//        slideVC.otpCallBack = { email, name in
+//            let controller = self.pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
+//            controller?.email = email
+//            controller?.userName = name
+//            controller?.pushedFrom = .login
+//        }
         slideVC.btnCallback =  { tag, getRoleViewModel,userEmail, firstName in
             switch tag {
             case 1:
