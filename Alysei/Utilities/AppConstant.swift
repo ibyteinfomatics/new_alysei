@@ -740,6 +740,7 @@ struct AppConstants {
     static var PlaceholderItalianRegion  : String { return "Select a answer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var URL  : String { return "URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Username  : String { return "Username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var FirstName  : String { return "First Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var LastName  : String { return "Last Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var DisplayName  : String { return "Display Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -854,6 +855,13 @@ struct AppConstants {
     static var kvatno  = "vat_no"
     static var kpassword = "password"
     static var ConstIncomplete = "incomplete"
+    static var ConstUsername = "Username"
+    static var ConstURL = "URL"
+    static var ConstCompanyName =  "Company Name"
+    
+    static var ConstRestaurantName = "Restaurant Name"
+    static var ConstDisplayName = "Display Name"
+    static var ConstLanguage = "Language"
 }
 
 struct ProfileCompletion {

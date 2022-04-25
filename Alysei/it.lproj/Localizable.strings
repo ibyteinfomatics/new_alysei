@@ -1097,11 +1097,11 @@
 "URL format should be like https://www.example.com/" = "Il formato dell'URL dovrebbe essere https://www.example.com/";
 "URL format should be like https://www.facebook.com/username" = "Il formato dell'URL dovrebbe essere https://www.facebook.com/nomeutente";
 
-"Store Info" = "Store Info";
-"View Store" = "View Store";
-"Related Products" = "Related Products";
-"Try Again" = "Try Again";
-"Add Image" = "Add Image";
+"Store Info" = "Informazioni sul negozio";
+"View Store" = "Vedi negozio";
+"Related Products" = "Prodotti correlati";
+"Try Again" = "Riprova";
+"Add Image" = "Aggiungi immagine";
 
 
 

@@ -18,35 +18,35 @@ class SettingsEditViewModel: NSObject {
 
   var selectedUrl: String {
       
-    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.URL }
+    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstURL }
     return modal.first?.settingsSelectedValue ?? ""
   }
   
   var selectedCompanyName: String {
       
-    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.CompanyName }
+    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstCompanyName }
     return modal.first?.settingsSelectedValue ?? ""
   }
     var selectedRestaurantName: String {
         
-      let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.RestaurantName }
+      let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstRestaurantName }
       return modal.first?.settingsSelectedValue ?? ""
     }
     var selectedDisplayName: String {
         
-      let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.DisplayName }
+      let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstDisplayName }
       return modal.first?.settingsSelectedValue ?? ""
     }
     
   var selectedUserName: String {
       
-    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.Username }
+    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstUsername }
     return modal.first?.settingsSelectedValue ?? ""
   }
   
   var selectedLanguage: String {
       
-    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.Language }
+    let modal = self.arrSections[0].arrSettingsData.filter { $0.settingsHeading == AppConstants.ConstLanguage }
     return modal.first?.settingsSelectedValue ?? ""
   }
    
