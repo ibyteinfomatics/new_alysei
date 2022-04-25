@@ -57,7 +57,7 @@ class ProductStoreVC: UIViewController {
         lblNoStoreFound.text = MarketPlaceConstant.kNoStoreFound
         lblTryAgain.text = MarketPlaceConstant.kTryAgain
       //  vwSearch.isHidden =  true
-        txtSearch.attributedPlaceholder = NSAttributedString(string: "Search",
+        txtSearch.attributedPlaceholder = NSAttributedString(string: MarketPlaceConstant.kSearch,
                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
        // vwSearch.layer.cornerRadius = 20
         //self.hghtSearch.constant = 0

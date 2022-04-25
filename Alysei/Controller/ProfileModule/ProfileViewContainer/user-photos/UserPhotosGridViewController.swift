@@ -45,6 +45,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        pageNumber = 1
         self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
     }
 
@@ -141,8 +142,11 @@ extension UserPhotosGridViewController {
                     }
                     
                     self.updatePhotosList()
+                    self.setUI()
+                }else{
+                    self.setUI()
                 }
-                self.setUI()
+               
             } catch {
                 print(error.localizedDescription)
             }

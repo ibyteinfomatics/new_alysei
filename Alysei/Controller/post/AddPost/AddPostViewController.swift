@@ -53,6 +53,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
     override func viewDidLoad() {
         super.viewDidLoad()
         lblWhatNew.text = AppConstants.kWhatNew
+        self.btnPostPrivacy.setTitle( AppConstants.kPublic, for: .normal)
         txtPost.textColor = UIColor.lightGray
         txtPost.text = AppConstants.kEnterText
         vwPrivacy.layer.borderColor = UIColor.darkGray.cgColor
@@ -722,11 +723,12 @@ class ImageCollectionViewCell:UICollectionViewCell{
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var viewAddImage: UIView!
-    
+    @IBOutlet weak var lblAddImage: UILabel!
     var btnDeleteCallback:((Int) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblAddImage.text = MarketPlaceConstant.kAddImage
         viewAddImage.layer.borderWidth = 0.5
         viewAddImage.layer.borderColor = UIColor.lightGray.cgColor
     }

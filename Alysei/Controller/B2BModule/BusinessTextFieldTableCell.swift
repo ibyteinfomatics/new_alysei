@@ -17,7 +17,7 @@ class BusinessTextFieldTableCell: UITableViewCell {
     txtFieldBusiness.delegate = self
     super.awakeFromNib()
     self.txtFieldBusiness.makeCornerRadius(radius: 6.0)
-    self.txtFieldBusiness.attributedPlaceholder = NSAttributedString(string: "Keyword Search",
+      self.txtFieldBusiness.attributedPlaceholder = NSAttributedString(string: AppConstants.KeywordSearch,
                                                                      attributes: [NSAttributedString.Key.foregroundColor: AppColors.liteGray.color])
    
   }

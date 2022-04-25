@@ -88,7 +88,7 @@ extension SearchProductVC: UITableViewDataSource, UITableViewDelegate{
             nextVC.selectProductName = arrLoadRecentSearch?[indexPath.row].title
         }
        
-                self.navigationController?.pushViewController(nextVC, animated: true)
+          self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }

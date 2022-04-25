@@ -13,6 +13,8 @@ class MarketPlaceProductListViewController: UIViewController {
     @IBOutlet weak var lblHeading: UILabel!
 //    @IBOutlet weak var vwSearch: UIView!
 //    @IBOutlet weak var hghtSearch: NSLayoutConstraint!
+    @IBOutlet weak var lblNoProduct: UILabel!
+    @IBOutlet weak var lblTryAgain: UILabel!
     @IBOutlet weak var searchtextField: UITextField!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
@@ -65,6 +67,8 @@ class MarketPlaceProductListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         blankScreen.isHidden = true
+        lblNoProduct.text = MarketPlaceConstant.kNoProductFound
+        lblTryAgain.text = MarketPlaceConstant.kTryAgain
         if pushedFromVC == .viewAllEntities{
             btnSearch.isHidden = true
             btnFilter.isHidden = true
@@ -96,7 +100,7 @@ class MarketPlaceProductListViewController: UIViewController {
         //self.vwSearch.isHidden = true
         //vwSearch.layer.cornerRadius = 20
         searchtextField.delegate = self
-        searchtextField.attributedPlaceholder = NSAttributedString(string: "Search",
+        searchtextField.attributedPlaceholder = NSAttributedString(string: MarketPlaceConstant.kSearch,
                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         lblHeading.text = keywordSearch
         // Do any additional setup after loading the view.

@@ -48,6 +48,7 @@ class ProductRatingTableVCell: UITableViewCell {
     @IBOutlet weak var lblStoreInfo: UILabel!
     @IBOutlet weak var lblRating: UILabel!
     @IBOutlet weak var btnViewStore: UIButton!
+    @IBOutlet weak var btnSeeAll: UIButton!
     
     var avgRating:String?
     var data: RatingReviewModel?
@@ -58,6 +59,7 @@ class ProductRatingTableVCell: UITableViewCell {
         lblStoreInfo.text = AppConstants.storeInfo
         lblRating.text = MarketPlaceConstant.kRatingAndReviews
         btnViewStore.setTitle(AppConstants.ViewStore, for: .normal)
+        btnSeeAll.setTitle(MarketPlaceConstant.kSeeAll, for: .normal)
         self.setStarUI()
         // Initialization code
     }

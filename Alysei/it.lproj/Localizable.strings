@@ -82,7 +82,7 @@
 "Discover the trending recipes." = "Scopri le ricette di tendenza.";
 
 //MARK: Alert Message
-"Please select any product" ="Please select any product";
+"Please select any product" ="Seleziona un prodotto";
 "Please enter first name." = "Inserisci il nome.";
 "Please enter last name." = "Inserisci il cognome.";
 "Please enter mobile number." = "Inserisci il numero di cellulare.";
@@ -152,7 +152,7 @@
 "Select a date" = "Seleziona una data";
 "Event type" = "Tipo di Evento";
 "Registration type" = "Registrazione";
-"Restaurant type" = "Restaurant type";
+"Restaurant type" = "Tipologia di ristorante";
 "Country" = "Paese";
 "Regions" = "Regioni";
 "Region" = "Regione";
@@ -160,7 +160,7 @@
 "Duration" = "Durata";
 "Intensity" = "Intensità";
 "Price" = "Prezzo";
-"Create Event" = "Create Event";
+"Create Event" = "Crea un evento";
 "Event Name" = "Nome Evento";
 "Host Name" = "Nome Organizzatore";
 "Date" = "Data";
@@ -168,46 +168,46 @@
 "Event Type" = "Tipo di Evento";
 "Registration Type" = "Registrazione";
 "Booking Url" = "Sito Web per Prenotazione";
-"Please enter event!"= "Please enter event!";
-"Please enter date!" = "Please enter date!";
-"Please enter time!" = "Please enter time!";
-"Please enter description!" = "Please enter description!";
-"Please select event type!" = "Please select event type!";
-"Please select registration type!" = "Please select registration type!";
-"Please enter booking url!" = "Please enter booking url!";
-"Please enter valid booking url!" =  "Please enter valid booking url!";
-"Please upload event image!" = "Please upload event image!";
-"Create Blog" = "Create Blog";
-"Blog Title" = "Blog Title";
+"Please enter event!"= "Inserisci l'evento!";
+"Please enter date!" = "Inserisci la data!";
+"Please enter time!" = "Inserisci l'ora!";
+"Please enter description!" = "Inserisci la descrizione!";
+"Please select event type!" = "Seleziona il tipo di evento!";
+"Please select registration type!" = "Seleziona il tipo di registrazione!";
+"Please enter booking url!" = "Inserisci il sito web per la prenotazione!";
+"Please enter valid booking url!" =  "Inserisci un sito web valido!";
+"Please upload event image!" = "Carica la foto dell'evento!";
+"Create Blog" = "Crea un Blog";
+"Blog Title" = "Titolo del Blog";
 "Blog" = "Blog";
-"Please enter title!"=  "Please enter title!";
-"Please upload blog image!" = "Please upload blog image!";
-"Publish" ="Publish";
-"Create Trips/Packages" = "Create Trips/Packages";
-"Trip Name/Package Name" = "Trip Name/Package Name";
+"Please enter title!"=  "Inserisci il titolo!";
+"Please upload blog image!" = "Carica l'immagine del Blog!";
+"Publish" ="Pubblica";
+"Create Trips/Packages" = "Crea Viaggi/Pacchetti";
+"Trip Name/Package Name" = "Nome del Viaggio/Pacchetto";
 "Travel Agency" = "Agenzia di Viaggio";
-"Price" = "Price";
-"Trips/Packages" = "Trips/Packages";
-"Please select country!" = "Please select country!";
-"Please select region" = "Please select region";
-"Please select adventures!" = "Please select adventures!";
-"Please select duration!" = "Please select duration!";
-"Please select intensity!" = "Please select intensity!";
-"Please enter price!" = "Please enter price!";
-"Please upload travel image!" = "Please upload travel image!";
-"Please enter trip name!" = "Please enter trip name!";
-"Add Award" = "Add Award";
+"Price" = "Prezzo";
+"Trips/Packages" = "Viaggi/Pacchetti";
+"Please select country!" = "Seleziona il Paese!";
+"Please select region" = "Seleziona la Regione!";
+"Please select adventures!" = "Seleziona la tua Avventura!";
+"Please select duration!" = "Seleziona la Durata!";
+"Please select intensity!" = "Seleziona l'Intensità!";
+"Please enter price!" = "Inserisci il Prezzo!";
+"Please upload travel image!" = "Carica la foto del Viaggio!";
+"Please enter trip name!" = "Inserisci il nome del Viaggio!";
+"Add Award" = "Aggiungi Premio";
 "Name of Competition / Event" = "Nome della Competizione/Evento";
 "Name of winning Product" = "Nome del Prodotto vincitore";
-"Name of Medal / place received" = "Name of Medal / place received";
+"Name of Medal / place received" = "Medaglia/Podio Sito Web del concorso";
 "Competition URL" = "Competition URL";
-"Please enter winning product name!" = "Please enter winning product name!";
-"Please enter competition name!" = "Please enter competition name!";
-"Please enter medal name!" = "Please enter medal name!";
-"Please upload competition image!" = "Please upload competition image!";
-"Please enter competition name!" = "Please enter competition name!";
-"Please enter winning product name!" = "Please enter winning product name!";
-"Please enter medal name!" ="Please enter medal name!";
+"Please enter winning product name!" = "Inserisci il nome del prodotto premiato!";
+"Please enter competition name!" = "Inserisci il nome del concorso!";
+"Please enter medal name!" = "Inserisci la medaglia!";
+"Please upload competition image!" = "Carica l'immagine del concorso!";
+"Please enter competition name!" = "Inserisci il nome del concorso!";
+"Please enter winning product name!" = "Inserisci il nome del prodotto premiato!";
+"Please enter medal name!" ="Inserisci la medaglia!";
 "Company Name" = "Nome della ditta";
 
 //MARK: RECIPE HOME SCREEN
@@ -352,8 +352,8 @@
 "Don't  want to see \n ingredients?" = "Quali ingredienti non \n vuoi vedere?";
 "Back" = "Indietro";
 "Skip" = "Salta";
-"Search Other Ingridients to exclude" = "Search Other Ingridients to exclude";
-"Add other ingredients to exclude" = "Add other ingredients to exclude";
+"Search Other Ingridients to exclude" = "Cerca altri ingredienti da escludere";
+"Add other ingredients to exclude" = "Aggiungi altri ingredienti da escludere";
 
 //MARK: VIEW RECIPE
 
@@ -399,30 +399,30 @@
 "Save Tools" = "Salva strumenti";
 
 //MARK: Profile
-"is required" = "is required";
-"Upload" = "Upload";
-"Add Featured Products" = "Add Featured Products";
-"Add Featured Menu" = "Add Featured Menu";
-"Add Featured Packages" = "Add Featured Packages";
-"Add Featured" = "Add Featured";
-"All Information is required" = "All Information is required";
+"is required" = "è richiesto";
+"Upload" = "Carica";
+"Add Featured Products" = "Aggiungi Prodotti in Primo Piano";
+"Add Featured Menu" = "Aggiungi Menù in Primo Piano";
+"Add Featured Packages" = "Aggiungi Pacchetti in Primo Piano";
+"Add Featured" = "Aggiungi In Primo Piano";
+"All Information is required" = "Tutte le informazioni sono richieste";
 "Specialization" = "Specializzazione";
 "Blog Titles" = "Titolo del Blog";
-"Public" = "Public";
-"Private" = "Private";
-"Free" = "Free";
-"Paid" = "Paid";
-"Choose Date" = "Choose Date";
-"Select Event" = "Select Event";
+"Public" = "Pubblico";
+"Private" = "Privato";
+"Free" = "Gratuito";
+"Paid" = "A Pagamento";
+"Choose Date" = "Scegli la Data";
+"Select Event" = "Seleziona l'Evento";
 "Select Registration"=  "Seleziona Registrazione";
 "Select Restaurant"= "Seleziona il Ristorante";
-"Our Menu"= "Our Menu";
-"About Restaurant" = "About Restaurant";
-"Title" = "Title";
-"About Travel Agency" = "About Travel Agency";
-"Our Trips" = "Our Trips";
-"Decline Request" = "Decline Request";
-"Reason to decline" = "Reason to decline";
+"Our Menu"= "Il Nostro Menù";
+"About Restaurant" = "Il Ristorante";
+"Title" = "Titolo";
+"About Travel Agency" = "L'Agenzia di Viaggio";
+"Our Trips" = "I Nostri Viaggi";
+"Decline Request" = "Rifiuta la Richiesta";
+"Reason to decline" = "Motivi del rifiuto";
 "Discovery Alysei" = "Discovery Alysei";
 
 //MARK: Add Post
@@ -437,7 +437,7 @@
 "Connection Request" = "Richiesta di Connessione";
 "Sending a request to connect with" = "Invio richiesta di connessione con";
 "Request Sent Successfully." = "Richiesta inviata con successo";
-"Close" = "Close";
+"Close" = "Chiudi";
 "Select Country" = "Seleziona Paese";
 //MARK: Profile
 "Comments" = "Commenti";
@@ -468,7 +468,7 @@
 "Contact Detail" = "Dettagli del contatto";
 "Address" = "Indirizzo";
 "Facebook" = "Facebook";
-"Reason to connect" = "Reason to connect";
+"Reason to connect" = "Motivi della connessione";
 "Edit Profile" = "Modifica Profilo";
 
 //MARK: Settings
@@ -534,8 +534,8 @@
 "Report Action" = "Segnala un'azione";
 "What's new?" = "What's new?";
 "Post" = "Post";
-"Post can't be empty" = "Post can't be empty";
-"Share to my timeline" = "Share to my timeline";
+"Post can't be empty" = "Il post non può essere vuoto";
+"Share to my timeline" = "Condividi nella tua pagina";
 "VAT" = "Part.IVA";
 "Provide your FDA Number" = "Fornisci il tuo numero FDA";
 //MARK: Message Screen
@@ -854,15 +854,15 @@
 "Website" = "Sito Web";
 "Add to Fav" = "Aggiungi ai favoriti";
 "No Image" = "Nessuna immagine";
-"Rating & Reviews" = "Recensioni";
+
 "See All" = "Vedi tutto";
 "All Products" = "Tutti i prodotti";
 
 //MARK: Home
 "Posts" = "Posts";
-"Post Unavailable" = "Post Unavailable";
-"Some error occured" = "Some error occured";
-"People" = "People";
+"Post Unavailable" = "Post non disponibile";
+"Some error occured" = "Si è verificato un problema";
+"People" = "Persone";
 "Trips" = "Viaggi";
 "Events" = "Eventi";
 "Awards" = "Premi";
@@ -870,29 +870,29 @@
 "Blogs" = "Blogs";
 "All" = "All";
 "Are you Interested?" = "Sei interessato?";
-"Uninterested" = "Uninterested";
-"What are you searching?" = "What are you searching?";
+"Uninterested" = "Non mi interessa";
+"What are you searching?" = "Che cosa stai cercando?";
 "Map" = "Map";
 "Trip Price" = "Prezzo del Viaggio";
 "Read More" = "Leggi di più";
-"There are no events at this moment." = "There are no events at this moment.";
-"My Events" ="My Events";
-"Create Events" = "Create Events";
-"Are you sure you want to delete this event?" = "Are you sure you want to delete this event?";
-"More Info" = "More Info";
-"Create Blogs" ="Create Blogs";
-"There are no blogs at this moment." = "There are no blogs at this moment.";
-"Are you sure you want to delete this blog?" = "Are you sure you want to delete this blog?";
-"My Blogs" = "My Blogs";
-"My Trips" = "My Trips";
-"Create Trips" = "Create Trips";
-"There are no trips at this moment." = "There are no trips at this moment.";
-"Interested" = "Interested";
+"There are no events at this moment." = "Non ci sono eventi al momento";
+"My Events" ="I Miei Eventi";
+"Create Events" = "Crea Evento";
+"Are you sure you want to delete this event?" = "Sei sicuro di voler eliminare questo evento?";
+"More Info" = "Più Informazioni";
+"Create Blogs" ="Crea Blog";
+"There are no blogs at this moment." = "Non ci sono Blogs al momento";
+"Are you sure you want to delete this blog?" = "ASei sicuro di voler eliminare questo Blog?";
+"My Blogs" = "I Miei Blogs";
+"My Trips" = "I Miei Viaggi";
+"Create Trips" = "Crea Viaggio";
+"There are no trips at this moment." = "Non ci sono viaggi al momento";
+"Interested" = "Mi interessa";
 "Add Awards" = "Aggiungi Premio";
 "There are no awards to show at this moment." = "Non ci sono premi al momento.";
-"View Request" = "View Request";
-"Accept" = "Accept";
-"Decline" = "Decline";
+"View Request" = "Vedi Richiesta";
+"Accept" = "Accetta";
+"Decline" = "Rifiuta";
 "About" = "Chi siamo";
 "Our Products" = "I Nostri Prodotti";
 "Hubs" = "Hubs";
@@ -915,9 +915,9 @@
 "Complete your profile in order to fully access Alysei" = "Diventa un membro Certificato Alysei per espandere la tua presenza sul mercato";
 "Fill the form to get a faster response. The Italian Producer will contact you shortly."="Compila il modulo per ottenere una risposta più rapida. Il Produttore Italiano ti contatterà a breve.";
 "Alysei Membership Progress" = "Status Membership Alysei";
-"Your membership progress is pending review. You will be notified once the review of your account has begun." = "Your membership progress is pending review. You will be notified once the review of your account has begun.";
-"Complete your profile in order to start Posting" = "Complete your profile in order to start Posting";
-"Your profile is not reviewed from admin" = "Your profile is not reviewed from admin";
+"Your membership progress is pending review. You will be notified once the review of your account has begun." = "La tua iscrizione è in attesa di revisione. Riceverai una notifica una volta iniziata la revisione del tuo account.";
+"Complete your profile in order to start Posting" = "Completa il tuo profilo per iniziare a postare";
+"Your profile is not reviewed from admin" = "Il tuo profilo non è stato ancora verificato da Alysei";
 "Alysei Membership is important to guarantee professionalism, quality and visibility"="La Membership ad Alysei è importante per garantire professionalità, qualità e visibilità";
 //MARK: LOGIN SCREEN
 "Login to your Account" = "Accedi al tuo Account";
@@ -1084,7 +1084,7 @@
 "Voice Of Experts" = "Esperti di Settore";
 "Importer" = "Importatori";
 "Distributer" = "Distributori";
-"Importer & Distributer" = "Importer & Distributer";
+"Importer & Distributer" = "Importatore e Distributore";
 "Travel Agencies" = "Agenzie di Viaggio";
 "Importers" = "Importatori";
 "Distributors" = "Distributori";
@@ -1099,7 +1099,9 @@
 
 "Store Info" = "Store Info";
 "View Store" = "View Store";
-
+"Related Products" = "Related Products";
+"Try Again" = "Try Again";
+"Add Image" = "Add Image";
 
 
 

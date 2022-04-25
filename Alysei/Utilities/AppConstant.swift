@@ -888,6 +888,7 @@ struct PlaceholderImages {
     
 }
 struct MarketPlaceConstant{
+    static var kRelatedProducts : String{"Related Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSubmitQuery : String { return  "You already submitted a query on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNetworkError : String { "Network Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var KEnterSomeMessage : String { "Please enter some message".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1119,6 +1120,9 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
         static var kLetUSKnowSomethingDoesNotFeelright  : String {  "Let us know if something does not feel right".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kReplytoInquiry  : String {  "Reply to inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
        static var kEnquiryStoreContact : String {  "Fill the form just once to get faster responses. Store will contact you shortly.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSearch : String {"Search".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddImage : String {"Add Image".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
         static var kSendAnInquiry  : String {  "Send an inquiry".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kShowcaseProductSimpleClean  : String {  "Showcase you Products Store in a simple, clean and professional way".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kBeingResponsiveBuildTrust  : String {  "Being responsive will help you to build trust with Buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

@@ -117,7 +117,7 @@ extension StoreDescrptnViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.viewComment.isHidden = false
     
             }
-            cell.lblTotalReview.text = "\(self.storeDetails?.total_reviews ?? "0") reviews"
+            cell.lblTotalReview.text = "\(self.storeDetails?.total_reviews ?? "0")" + " " + MarketPlaceConstant.kReviews
             cell.lblAvgRating.text = "\(self.storeDetails?.avg_rating ?? "0")"
             cell.avgRating = storeDetails?.avg_rating
             cell.configCell(self.storeDetails?.latest_review ?? RatingReviewModel(with: [:]))

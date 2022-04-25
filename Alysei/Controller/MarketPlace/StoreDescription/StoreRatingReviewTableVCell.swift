@@ -46,7 +46,7 @@ class StoreRatingReviewTableVCell: UITableViewCell {
     var avgRating:String?
     override func awakeFromNib() {
         super.awakeFromNib()
-        lblTitleRatingReview.text = MarketPlaceConstant.kRatingAndReviews
+        lblTitleRatingReview.text = RecipeConstants.kRatingReview
         btnSeeAll.setTitle(MarketPlaceConstant.kSeeAll, for: .normal)
         // Initialization code
     }

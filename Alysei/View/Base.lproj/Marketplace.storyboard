@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -6318,6 +6318,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Ocz-ti-2H2" secondAttribute="bottom" constant="20" id="trV-K4-n0h"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnSeeAll" destination="2ad-6j-qn3" id="Yrq-j8-a1G"/>
                                             <outlet property="btnViewStore" destination="TKA-65-PcS" id="VlS-mu-QNc"/>
                                             <outlet property="imgProducer" destination="ZaD-He-zNG" id="5eL-uk-dX1"/>
                                             <outlet property="lblAvgRating" destination="5Mw-0h-edA" id="tDy-fs-s5E"/>
@@ -8848,6 +8849,8 @@
                         <outlet property="btnFilter" destination="0ko-qY-NUJ" id="5Rc-Sf-NDb"/>
                         <outlet property="btnSearch" destination="eqk-3f-r3V" id="qPH-zD-Tiu"/>
                         <outlet property="lblHeading" destination="Ulg-Y1-eVd" id="KqJ-Pi-svB"/>
+                        <outlet property="lblNoProduct" destination="crZ-3Z-Yc0" id="wTV-jY-zlG"/>
+                        <outlet property="lblTryAgain" destination="BvL-mX-LNh" id="cqZ-Bm-B8d"/>
                         <outlet property="searchtextField" destination="6RT-u5-WHk" id="PZh-N7-Si3"/>
                         <outlet property="tableView" destination="Y6D-S5-ycQ" id="c3w-in-j0V"/>
                         <outlet property="vwSearchUnderLine" destination="zqN-3C-huT" id="siJ-Jn-bjE"/>

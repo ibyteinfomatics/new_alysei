@@ -45,7 +45,7 @@ class InquiryFormViewC: AlysieBaseViewC {
         lblEmail.text = MarketPlaceConstant.kEmail + "*"
         lblMessage.text = MarketPlaceConstant.kMessage + "*"
         lblPhoneNumber.text = MarketPlaceConstant.kPhoneNumber + "*"
-        //lblStoreContact.text = MarketPlaceConstant.
+        lblStoreContact.text = MarketPlaceConstant.kEnquiryStoreContact
         btnSendInquiry.setTitle(MarketPlaceConstant.kSendInquiry, for: .normal)
         setData()
        

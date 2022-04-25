@@ -17,7 +17,7 @@ class SimilarProductTableVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        lblRealtedProduct.text = "Related Products"
+        lblRealtedProduct.text = MarketPlaceConstant.kRelatedProducts
         // Initialization code
     }
 

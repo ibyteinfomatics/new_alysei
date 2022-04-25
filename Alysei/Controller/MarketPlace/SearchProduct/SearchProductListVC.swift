@@ -11,7 +11,8 @@ class SearchProductListVC: UIViewController {
     
     @IBOutlet weak var sortFilterView: UIView!
     var selectProductName: String?
-    var arrProductList: [ProductSearchListModel]?
+    var arrProductList = [ProductSearchListModel]()
+    var searchProductList : [ProductSearchListModel]?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var blankView: UIView!
@@ -26,14 +27,15 @@ class SearchProductListVC: UIViewController {
     var selectedCategoryCheckIndex: [Int]?
     var firstLoading = true
     //var trimmedProductName : String?
-    
+    var lastPage:Int?
+    var indexOfPageToRequest = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         blankView.isHidden = true
         btnSort.setTitle(MarketPlaceConstant.kSort, for: .normal)
         btnFilter.setTitle(MarketPlaceConstant.kFilter, for: .normal)
         lblNoMoreProduct.text = MarketPlaceConstant.kNoProductFound
-        lbltryAgain.text = "Try Again"
+        lbltryAgain.text =  MarketPlaceConstant.kTryAgain
         self.sortFilterView.addShadow()
         lblTitle.text = selectProductName
         //trimmedProductName = selectProductName?.replacingOccurrences(of: " ", with: "")
@@ -72,7 +74,7 @@ class SearchProductListVC: UIViewController {
         nextVC.selectedCategoryCheckIndex = self.selectedCategoryCheckIndex ?? [-1]
         }
         nextVC.passDataCallBack = { filterproductList,selectedSampleIndex,selectedCategoryProductId,selectedCategoryIndex,selectPriceRangeIndex, isFirstloading in
-            self.arrProductList = filterproductList
+            self.arrProductList = filterproductList ?? [ProductSearchListModel(with: [:])]
             self.selectedSampleIndex = selectedSampleIndex
             self.selectedCategoryCheckIndex = selectedCategoryIndex
             self.selectedCategoryId = nextVC.selectedCategoryProductId
@@ -83,17 +85,38 @@ class SearchProductListVC: UIViewController {
         }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if indexOfPageToRequest > lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+               
+                self.indexOfPageToRequest += 1
+                callSearchListApi(selectProductName ?? "")
+
+            // call your API for more data
+              
+
+            // tell the table view to reload with the new data
+            self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension SearchProductListVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrProductList?.count ?? 0
+        return arrProductList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableVCell", for: indexPath) as? ProductListTableVCell else {return UITableViewCell()}
-        cell.configCell(arrProductList?[indexPath.row] ?? ProductSearchListModel(with: [:]))
+        cell.configCell(arrProductList[indexPath.row] ?? ProductSearchListModel(with: [:]))
         return cell
     }
     
@@ -103,7 +126,7 @@ extension SearchProductListVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
-        nextVC.marketplaceProductId = "\(arrProductList?[indexPath.row].marketplaceProductId ?? 0)"
+        nextVC.marketplaceProductId = "\(arrProductList[indexPath.row].marketplaceProductId ?? 0)"
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
@@ -127,16 +150,27 @@ extension SearchProductListVC {
     
     func callSearchListApi(_ text: String){
         
-        let urlString = APIUrl.kProductListing + "\(text)" + "&available_for_sample=" + "" + "&sort_by=" + "" + "&category=" + "" + "&price_rfrom=" + "" + "&price_to="
+        let urlString = APIUrl.kProductListing + "\(text)" + "&available_for_sample=" + "" + "&sort_by=" + "" + "&category=" + "" + "&price_rfrom=" + "" + "&price_to=" + "&page=" + "\(self.indexOfPageToRequest)"
         let urlString1 = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         TANetworkManager.sharedInstance.requestApi(withServiceName: urlString1, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             switch statusCode{
             case 200:
                 let response = dictResponse as? [String:Any]
-                if  let data = response?["data"] as? [[String:Any]]{
-                    self.arrProductList = data.map({ProductSearchListModel.init(with: $0)})
+//                if  let data = response?["data"] as? [[String:Any]]{
+//                    self.arrProductList = data.map({ProductSearchListModel.init(with: $0)})
+//                }
+              
+                let outerData = response?["data"] as? [String:Any]
+                self.lastPage = outerData?["last_page"] as? Int
+            if  let data = outerData?["data"] as? [[String:Any]]{
+                if self.indexOfPageToRequest == 1 {self.arrProductList.removeAll()}
+                self.searchProductList = data.map({ProductSearchListModel.init(with: $0)})
+               
+            }
+                for i in 0..<(self.searchProductList?.count ?? 0){
+                    self.arrProductList.append(self.searchProductList?[i] ?? ProductSearchListModel.init(with: [:]))
                 }
-                if self.arrProductList?.count == 0 {
+                if self.arrProductList.count == 0 {
                     self.blankView.isHidden = false
                 }else{
                     self.blankView.isHidden = true
@@ -144,7 +178,7 @@ extension SearchProductListVC {
                 self.tableView.reloadData()
                 
             case 409:
-                if self.arrProductList?.count != 0 {
+                if self.arrProductList.count != 0 {
                     print("Product Exist")
                 }else{
                     self.blankView.isHidden = false
