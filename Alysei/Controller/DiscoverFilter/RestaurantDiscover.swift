@@ -44,7 +44,7 @@ class RestaurantDiscover: AlysieBaseViewC {
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         restId = "restaurants"
-        
+        btnMap.setTitle(AppConstants.kMap, for: .normal)
         getCurrentLocation()
         // Do any additional setup after loading the view.
     }
@@ -110,7 +110,7 @@ class RestaurantDiscover: AlysieBaseViewC {
         let restTableCell = tripsTableView.dequeueReusableCell(withIdentifier: BlogsTableViewCell.identifier()) as! BlogsTableViewCell
         
         restTableCell.blogTitle.text = restauUser[indexPath].restaurantName
-        restTableCell.blogDescription.text = "Restaurant Type : \(restauUser[indexPath].restaurant_type ?? "")"
+        restTableCell.blogDescription.text = AppConstants.RestaurantType + " : " +  "\(restauUser[indexPath].restaurant_type ?? "")"
         
         restTableCell.imgUser.layer.cornerRadius =  restTableCell.imgUser.frame.height / 2
         

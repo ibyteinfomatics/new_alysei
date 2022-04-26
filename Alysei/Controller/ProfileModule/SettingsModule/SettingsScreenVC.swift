@@ -21,12 +21,13 @@ class SettingsScreenVC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
-        lblTitle.text = AppConstants.Settings
+       // lblTitle.text = AppConstants.Settings
         self.viewShadow.drawBottomShadow()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
+        lblTitle.text = AppConstants.Settings
         settingCollectionView.reloadData()
         
     }
@@ -34,7 +35,110 @@ class SettingsScreenVC: AlysieBaseViewC {
     private func getSettingCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
         
         guard let settingsTableCell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: SettingsScreenCollectionVC.identifier(), for: indexPath) as? SettingsScreenCollectionVC else{return UICollectionViewCell()}
+        
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+        settingsTableCell.arrData = [(image: "icons8_settings", name: AppConstants.Settings),
+                                     (image: "icons8_shop", name: AppConstants.Marketplace),
+                                     (image: "icons8_business", name:"Company".localizableString(loc: kSharedUserDefaults.getAppLanguage())),
+                                     (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                     (image: "passwordSetting", name: AppConstants.CapPassword),
+                                     (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                     (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                     (image: "icons8_purchase_order", name: AppConstants.Billing),
+                                     (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                     (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                     (image: "Faq", name: AppConstants.FAQ),
+                                     (image: "yourData", name: AppConstants.YourData),
+                                      (image: "icons8_exit", name: AppConstants.Logout),
+]
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
+            settingsTableCell.arrData = [(image: "icons8_settings", name: AppConstants.Settings),
+                                                    
+                                                    (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                                    (image: "passwordSetting", name: AppConstants.CapPassword),
+                                                    (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                                   // (image: "icons8_debit_card_1", name: "Membership"),
+                                                    (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                                    (image: "icons8_terms_and_conditions", name:AppConstants.TermsAndConditions),
+                                                    (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                                    (image: "Faq", name: AppConstants.FAQ),
+                                                    
+                                                    (image: "icons8_exit", name: AppConstants.Logout),
+                                                    (image: "yourData", name: AppConstants.YourData)
+                                                    
+                                                    
+                                                    
+            ]
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
+            settingsTableCell.arrData = [(image: "icons8_settings", name: AppConstants.Settings),
+                                                    (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                                    (image: "calendar (2)", name: AppConstants.Events),
+                                                    (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                                    (image: "passwordSetting", name: AppConstants.CapPassword),
+                                                    (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                                    (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                                    (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                                    (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                                    (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                                    (image: "Faq", name: AppConstants.FAQ),
+                                                    (image: "yourData", name: AppConstants.YourData),
+                                                    (image: "icons8_exit", name: AppConstants.Logout)
+                                                    
+                                                    
+            ]
+            
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" {
+            settingsTableCell.arrData = [(image: "icons8_settings", name: AppConstants.Settings),
+                                                      (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                                      (image: "Featured", name: AppConstants.Featured),
+                                                      (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                                      (image: "passwordSetting", name: AppConstants.CapPassword),
+                                                      (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                                      (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                                      (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                                      (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                                      (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                                      (image: "Faq", name: AppConstants.FAQ),
+                                                      (image: "yourData", name: AppConstants.YourData),
+                                                      (image: "icons8_exit", name: AppConstants.Logout)
+          ]
+        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
+            settingsTableCell.arrData =  [(image: "icons8_settings", name: AppConstants.Settings),
+                                                     (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                                     (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                                     (image: "passwordSetting", name: AppConstants.CapPassword),
+                                                     (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                                     (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                                     (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                                     (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                                     (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                                     (image: "Faq", name: AppConstants.FAQ),
+                                                    
+                                                     (image: "icons8_exit", name:AppConstants.Logout),
+                                                     (image: "yourData", name: AppConstants.YourData)
+                                                     
+                                                     
+            ]
+        }else{
+            settingsTableCell.arrData =  [(image: "icons8_settings", name: AppConstants.Settings),
+                                                      (image: "icons8_shop", name:  AppConstants.Marketplace),
+                                                      (image: "icons8_security_lock", name: AppConstants.Privacy),
+                                                      (image: "passwordSetting", name: AppConstants.CapPassword),
+                                                      (image: "icons8_unavailable", name: AppConstants.Blocking),
+                                                      (image: "icons8_debit_card_1", name: AppConstants.Membership),
+                                                      (image: "icons8_purchase_order", name:  AppConstants.Billing),
+                                                      (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
+                                                      (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
+                                                      (image: "Faq", name: AppConstants.FAQ),
+                                                      (image: "icons8_exit", name: AppConstants.Logout),
+                                                      (image: "yourData", name: AppConstants.YourData)
+                                                     
+                                                      
+            ]
+            
+        }
         settingsTableCell.configure(indexPath)
+       
       return settingsTableCell
     }
 

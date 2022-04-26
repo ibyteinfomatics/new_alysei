@@ -494,6 +494,7 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var FDANumber : String { "FDA Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPhotos : String { "Photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWhatNew: String{"What's new?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSaySomething : String {"Say Something...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -521,6 +522,9 @@ struct AppConstants {
     
     static var storeInfo: String{"Store Info".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ViewStore: String{"View Store".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var NewPost: String{"New Post".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
     
     static var kComments: String{"Comments".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPosts: String {"Posts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -739,7 +743,7 @@ struct AppConstants {
     static var ItalianRegion  : String { return "Italian Region*".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var PlaceholderItalianRegion  : String { return "Select a answer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var URL  : String { return "URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var Username  : String { return "Username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var Username : String { return "Username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var FirstName  : String { return "First Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var LastName  : String { return "Last Name".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -783,7 +787,7 @@ struct AppConstants {
     static var Hubs  : String { return "Hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var SelectRegion  : String { return "Select Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var RestaurantType  : String { return "Restaurant Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var PickUp  : String { return"Pick up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var PickUp  : String { return"Pick Up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Delivery  : String { return "Delivery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Expertise  : String { return "Expertise".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var SelectCountry  : String { return "Select Country".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1811,7 +1815,7 @@ struct StaticArrayData {
     
     static let kSettingPrducrColScreenDict = [(image: "icons8_settings", name: AppConstants.Settings),
                                               (image: "icons8_shop", name: AppConstants.Marketplace),
-                                              (image: "icons8_business", name:AppConstants.Company),
+                                              (image: "icons8_business", name:"Company".localizableString(loc: kSharedUserDefaults.getAppLanguage())),
                                               (image: "icons8_security_lock", name: AppConstants.Privacy),
                                               (image: "passwordSetting", name: AppConstants.CapPassword),
                                               (image: "icons8_unavailable", name: AppConstants.Blocking),
@@ -1955,7 +1959,7 @@ struct StaticArrayData {
     
     static let kImporterFilter = [AppConstants.kHORECA,AppConstants.PrivateLabel,AppConstants.AlyseiBrand]
     
-    static let kRestaurantFilter = ["PickUp","Delivery"]
+    static let kRestaurantFilter = [AppConstants.PickUp,AppConstants.Delivery]
     
     static let kEventArray = [AppConstants.kAdventure,"Tech","Family","Wellness","Fitness","Photography","Food & Drink","Writing","Culture"]
     

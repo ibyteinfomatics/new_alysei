@@ -24,6 +24,7 @@ class BusinessFiltersTableCell: UITableViewCell {
   override func awakeFromNib() {
     
     super.awakeFromNib()
+      lblFilterHeading.text = LogInSignUp.kProvidePickUpDelivery
     self.collectionViewFilters.delegate = self
     self.collectionViewFilters.dataSource = self
   }

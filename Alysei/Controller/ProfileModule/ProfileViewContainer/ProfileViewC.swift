@@ -77,6 +77,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var lblPosts: UILabel!
     @IBOutlet weak var lblConnections: UILabel!
     @IBOutlet weak var lblAbout: UILabel!
+   
     
     // @IBOutlet weak var featureCollectionView: UICollectionView!
     
@@ -407,6 +408,21 @@ class ProfileViewC: AlysieBaseViewC{
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        lblPosts.text = AppConstants.kPosts
+        lblAbout.text = ProfileCompletion.About
+        lblConnections.text = AppConstants.Connections
+        lblProgress.text = AppConstants.kYourProgress
+        lblUpdateProfile.text = AppConstants.kUpdateProfile
+        btnLogout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle(RecipeConstants.kSkip, for: .normal)
+        self.coachMarksController.skipView = skipView
+        logout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+            followerstext.text = AppConstants.kFollowing
+        } else {
+            followerstext.text = AppConstants.Followers
+        }
         
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
             if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {

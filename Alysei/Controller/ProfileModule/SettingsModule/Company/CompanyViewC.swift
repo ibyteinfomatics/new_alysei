@@ -19,7 +19,7 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
     @IBOutlet weak var txtFDA: UITextField!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSave: UIButton!
-    @IBOutlet weak var lblfdaNumber: UILabel!
+   // @IBOutlet weak var lblfdaNumber: UILabel!
     
     
     var titleArray = [AppConstants.kVATNo,APIConstants.FDANumber]
@@ -54,7 +54,8 @@ class CompanyViewC: AlysieBaseViewC  , UITextFieldDelegate{
         lblTitle.text = AppConstants.Company
         btnSave.setTitle(AppConstants.Save, for: .normal)
         lblVatTitle.text = AppConstants.kVATNo
-        lblfdaNumber.text = APIConstants.FDANumber
+        self.lblFDATitle.text = AppConstants.FDANumber
+     //   lblfdaNumber.text = APIConstants.FDANumber
         self.callGetCertificatesApi()
         
     }

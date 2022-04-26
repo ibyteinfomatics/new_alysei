@@ -10,7 +10,7 @@ import UIKit
 class EditSetingTypeViewController: AlysieBaseViewC {
 
     //MARK: @IBOutlet
-    @IBOutlet weak var settingTypeCollectionView: UICollectionView!
+    //@IBOutlet weak var settingTypeCollectionView: UICollectionView!
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var viewShadow: UIView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -26,6 +26,12 @@ class EditSetingTypeViewController: AlysieBaseViewC {
         getNotificationStatusApi()
         self.viewShadow.drawBottomShadow()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblTitle.text = AppConstants.EditSettings
+        settingTableView.reloadData()
+    }
   
 //    private func getSettingCollectionCell(_ indexPath: IndexPath) -> UICollectionViewCell{
 //
@@ -37,6 +43,7 @@ class EditSetingTypeViewController: AlysieBaseViewC {
         
         guard let settingsTableCell = settingTableView.dequeueReusableCell(withIdentifier: EditSettingTypeTableViewCell.identifier(), for: indexPath) as? EditSettingTypeTableViewCell else {return UITableViewCell()}
         settingsTableCell.selectionStyle = .none
+        settingsTableCell.arrColDta = [AppConstants.UserSettings,AppConstants.EditHub]
         settingsTableCell.configure(indexPath)
       return settingsTableCell
     }
@@ -44,6 +51,7 @@ class EditSetingTypeViewController: AlysieBaseViewC {
         
         guard let notificationTableCell = settingTableView.dequeueReusableCell(withIdentifier: EditSettingTypeNotificationTableVC.identifier(), for: indexPath) as? EditSettingTypeNotificationTableVC else {return UITableViewCell()}
         notificationTableCell.selectionStyle = .none
+        notificationTableCell.lblOption.text = AppConstants.Notification
         if notificationStatus == 0 {
             notificationTableCell.btnSwitch.isOn = false
         }else{
@@ -164,7 +172,7 @@ class EditSettingTypeNotificationTableVC: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        lblOption.text = AppConstants.Notification
+        
     }
     
     @IBAction func btnSwitchAction(_ sender: UISwitch){
@@ -176,9 +184,10 @@ class EditSettingTypeTableViewCell: UITableViewCell{
     @IBOutlet weak var txtLabel: UILabel!
    // @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imgViewSettings: UIImageView!
-    
+    var arrColDta = [String]()
     override func awakeFromNib() {
         super.awakeFromNib()
+    
        // viewContainer.layer.cornerRadius = 10
 
     }
@@ -190,7 +199,7 @@ class EditSettingTypeTableViewCell: UITableViewCell{
         txtLabel.text = StaticArrayData.kEditSettingVoyColScreenDict[indexPath.item].name
     }else{
         imgViewSettings.image = UIImage.init(named: StaticArrayData.kEditSettingUserColScreenDict[indexPath.item].image)
-        txtLabel.text = StaticArrayData.kEditSettingUserColScreenDict[indexPath.item].name
+        txtLabel.text = arrColDta[indexPath.item]
     }
 }
 }

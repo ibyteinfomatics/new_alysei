@@ -20,6 +20,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var lblHeading: UILabel!
     var imgPUrl: String?
+    var langIndex: Int?
   //MARK: - Properties -
   
     var languageArray = ["English", "Italian"]
@@ -28,6 +29,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   var currentProductTitle: String?
     var dataDropDown = DropDown()
     var selectedLanguage: String?
+    var sendAppLang: String?
   
   //MARK: - ViewLifeCycle Methods -
   
@@ -40,6 +42,8 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+     
+    self.sendAppLang = kSharedUserDefaults.getAppLanguage()
   }
   
   override func viewDidLayoutSubviews(){
@@ -132,7 +136,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       
     let editLanguageTableCell = tblViewEditUserSettings.dequeueReusableCell(withIdentifier: EditLanguageTableCell.identifier(), for: indexPath) as! EditLanguageTableCell
     editLanguageTableCell.configure(withSettingsEditDataModel: self.settingEditViewModel.arrSections[indexPath.section].arrSettingsData[indexPath.row])
-      
+     
         if  self.selectedLanguage == "en"{
             editLanguageTableCell.lblLanguage.text = "English"
         }else{
@@ -162,7 +166,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
     
     let param: [String:Any] = [APIConstants.kName: self.settingEditViewModel.selectedUserName,
                                APIConstants.kCompanyName: self.settingEditViewModel.selectedCompanyName,
-                               APIConstants.kLocale: kSharedUserDefaults.getAppLanguage(),
+                               APIConstants.kLocale: self.sendAppLang,
                                APIConstants.kWebsite: self.settingEditViewModel.selectedUrl
                                ]
     disableWindowInteraction()
@@ -183,10 +187,11 @@ class EditUserSettingsViewC: AlysieBaseViewC {
         dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             bound.lblLanguage.text = item
+            langIndex = index
             if index == 0 {
-                kSharedUserDefaults.setAppLanguage(language: "en")
+                self.sendAppLang = "en"
             }else{
-                kSharedUserDefaults.setAppLanguage(language: "it")
+                self.sendAppLang = "it"
             }
         }
         dataDropDown.cellHeight = 50
@@ -317,6 +322,8 @@ extension EditUserSettingsViewC{
         //self.lblUserName.text = kSharedUserDefaults.loggedInUserModal.displayName
         kSharedUserDefaults.alyseiReview =  Int.getInt(dicData["alysei_review"])
         print("kSharedUserDefaults.alyseiReview --------------\(kSharedUserDefaults.alyseiReview )")
+        kSharedUserDefaults.setAppLanguage(language: String.getString(dicData["locale"]))
+        
             let roleID = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
             var name = ""
             switch roleID {
@@ -330,8 +337,11 @@ extension EditUserSettingsViewC{
            // }
         self.lblUserName.text = name
         self.lblUserEmail.text = "@" + "\(kSharedUserDefaults.loggedInUserModal.userName ?? "")"
-               
+       
       }
+        self.sendAppLang = kSharedUserDefaults.getAppLanguage()
+        lblHeading.text = AppConstants.Settings
+        self.postRequestToGetUserSettings()
     case 2:
       var arrSelectedFields: [ProductFieldsDataModel] = []
       if let fields = dicData[APIConstants.kFields] as? ArrayOfDictionary{

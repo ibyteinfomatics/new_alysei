@@ -138,6 +138,11 @@ class PostsViewController: AlysieBaseViewC  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        lblHeading1.text = AppConstants.kPosts
+        lblHeading2.text = AppConstants.kTitleMarketplace
+        lblHeading3.text = MarketPlaceConstant.kRecipe
+        lblHeading4.text = MarketPlaceConstant.kNotifications
+        btnNewpost.setTitle(AppConstants.NewPost, for: .normal)
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         self.tabBarController?.selectedIndex = 0
@@ -342,6 +347,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             guard let cell = postTableView.dequeueReusableCell(withIdentifier: "DiscoverTableViewCell") as? DiscoverTableViewCell else{return UITableViewCell()}
+            cell.lblSubTitle.text = AppConstants.kDiscoveryAlysei
             cell.configCell(arrDiscoverDataModel)
             
             cell.pushCallback = { index in

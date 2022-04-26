@@ -12,7 +12,7 @@ class SettingsScreenCollectionVC: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imgViewSettings: UIImageView!
-    
+    var arrData = [(image:String,name:String)]()
     override func awakeFromNib() {
         super.awakeFromNib()
         viewContainer.layer.cornerRadius = 10
@@ -36,25 +36,29 @@ class SettingsScreenCollectionVC: UICollectionViewCell {
 //            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].image)
 //            textLabel.text = StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].name
 //        }else
-        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].name
-        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingVoyaColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingVoyaColScreenDict[indexPath.item].name
-        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "9"{
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingRestColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingRestColScreenDict[indexPath.item].name
-        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "7"{
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingExpertColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingExpertColScreenDict[indexPath.item].name
-        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "8"{
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingTravlColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingTravlColScreenDict[indexPath.item].name
-        }else {
-            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingImprtrColScreenDict[indexPath.item].image)
-            textLabel.text = StaticArrayData.kSettingImprtrColScreenDict[indexPath.item].name
-        }
+        imgViewSettings.image = UIImage.init(named: arrData[indexPath.item].image)
+        textLabel.text = arrData[indexPath.item].name
+        
+//        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "3"{
+//            
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingPrducrColScreenDict[indexPath.item].name
+//        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "10"{
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingVoyaColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingVoyaColScreenDict[indexPath.item].name
+//        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "9"{
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingRestColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingRestColScreenDict[indexPath.item].name
+//        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "7"{
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingExpertColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingExpertColScreenDict[indexPath.item].name
+//        }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "8"{
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingTravlColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingTravlColScreenDict[indexPath.item].name
+//        }else {
+//            imgViewSettings.image = UIImage.init(named: StaticArrayData.kSettingImprtrColScreenDict[indexPath.item].image)
+//            textLabel.text = StaticArrayData.kSettingImprtrColScreenDict[indexPath.item].name
+//        }
         
     }
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

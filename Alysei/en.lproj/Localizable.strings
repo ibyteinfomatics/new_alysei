@@ -113,7 +113,7 @@
 "Remove photo" = "Remove photo";
 "Enter 6-digit OTP." = "Enter 6-digit OTP.";
 "This feature is not available." = "This feature is not available.";
-"To Start Shopping, you have to SignUp First." = "To Start Shopping, you have to SignUp First.";
+"To Start Shopping, you have to SignUp First." = "    .";
 "Profile updated successfully." = "Profile updated successfully.";
 "Profile updated successfully." = "Profile updated successfully.";
 "Please upload image." = "Please upload image.";
@@ -554,7 +554,7 @@
 "  Private Label" = "Private Label";
 "Sell your products under the retailer name" = "Sell your products under the retailer name";
 "Alysei Brand Label" = "Alysei Brand Label";
-"Provide Pick Up and And/Or Delivery" = "Provide Pick Up and And/Or Delivery";
+//"Provide Pick Up and And/Or Delivery" = "Fornire ritiro e/o consegna";
 "Select if you can provide Pick Up and Delivery" = "Select if you can provide Pick Up and Delivery";
 "Pick up Discount for Alysei Voyager" = "Pick up Discount for Alysei Voyager";
 "Select the discount you want to offer to Voyagers" = "Select the discount you want to offer to Voyagers";

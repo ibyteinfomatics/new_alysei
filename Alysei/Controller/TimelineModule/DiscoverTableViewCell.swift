@@ -18,7 +18,7 @@ class DiscoverTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        lblSubTitle.text = AppConstants.kDiscoveryAlysei
+        
         // Initialization code
     }
 

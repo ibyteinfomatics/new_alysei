@@ -10,8 +10,11 @@ import UIKit
 class BusinessSearchTableCell: UITableViewCell {
 
     var searchTappedCallback:(() -> Void)? = nil
+    
+    @IBOutlet weak var btnSearch: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnSearch.setTitle(MarketPlaceConstant.kSearch, for: .normal)
 
     }
 

@@ -153,6 +153,8 @@
 "Event type" = "Tipo di Evento";
 "Registration type" = "Registrazione";
 "Restaurant type" = "Tipologia di ristorante";
+"Restaurant Type" = "Tipologia di ristorante";
+
 "Country" = "Paese";
 "Regions" = "Regioni";
 "Region" = "Regione";
@@ -423,7 +425,7 @@
 "Our Trips" = "I Nostri Viaggi";
 "Decline Request" = "Rifiuta la Richiesta";
 "Reason to decline" = "Motivi del rifiuto";
-"Discovery Alysei" = "Discovery Alysei";
+"Discovery Alysei" = "Scoperta Alysei";
 
 //MARK: Add Post
 "What's new?" = "What's new?";
@@ -487,6 +489,7 @@
 "Events" = "Eventi";
 "Featured" = "In Primo Piano";
 "Username" = "Nome Utente";
+"Enter Username" = "Nome Utente";
 "User Settings" = "Impostazioni Utente";
 "URL" = "Sito Web o URL";
 "Edit Profile" = "Modifica Profilo";
@@ -537,6 +540,7 @@
 "Post can't be empty" = "Il post non può essere vuoto";
 "Share to my timeline" = "Condividi nella tua pagina";
 "VAT" = "Part.IVA";
+"VAT No." = "Part.IVA";
 "Provide your FDA Number" = "Fornisci il tuo numero FDA";
 //MARK: Message Screen
 "There is no message." = "Non ci sono messaggi.";
@@ -601,6 +605,7 @@
 "Categories" = "Categorie";
 "Properties" = "Proprietà";
 "FDA Certfied" = "Certificato FDA";
+"FDA Number" = "Numero FDA";
 "Italian Region" = "Regione Italiana";
 "Distance" = "Distanza";
 "Ratings" = "Recensioni";
@@ -954,6 +959,7 @@
 "Resend OTP" = "Invia di nuovo l'OTP";
 "Confirm Password" = "Conferma Password";
 "New Password" = "Nuova Password";
+"New Post" = "Nuovo Post";
 "Proceed Next" = "Avanti";
 "Search for your location" = "Cerca la tua posizione";
 "Select Your location" = "Seleziona la tua posizione";
@@ -1069,6 +1075,8 @@
 "Alysei Brand Label" = "Etichetta/Marchio Alysei";
 "Provide Pick Up and And/Or Delivery" = "Offri da Asporto e/o Consegna";
 "Select if you can provide Pick Up and Delivery" = "Seleziona se puoi fare asporto e consegna";
+"Pick Up" = "Asporto";
+"Delivery" = "Consegna";
 "Pick up Discount for Alysei Voyager" = "Sconto asporto per i Voyagers";
 "Select the discount you want to offer to Voyagers" = "Indica lo sconto per i Voyagers";
 "Delivery Discount for Alysei Voyager" = "Sconto consegna per i Voyagers";

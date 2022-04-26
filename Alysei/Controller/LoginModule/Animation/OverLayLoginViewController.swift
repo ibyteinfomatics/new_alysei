@@ -168,11 +168,9 @@ extension OverLayLoginViewController{
                 let firstName = String.getString(dictData[APIConstants.kFirstName])
                 self.dismiss(animated: true, completion: {
                     self.btnCallback?(type,GetRoleViewModel([:]),self.txtFieldEmail.text ?? "",firstName)
-                })
-                 
+                })            
             }
             else{
-                
                 kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
                 kSharedUserDefaults.alyseiReview =  Int.getInt(dictData["alysei_review"])
                 kSharedUserDefaults.setAppLanguage(language: (dictData["locale"] as? String ?? ""))
