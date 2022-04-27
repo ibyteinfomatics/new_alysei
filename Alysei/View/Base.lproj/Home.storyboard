@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -6364,6 +6364,9 @@ any other devices.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="btnSearch" destination="HaJ-w5-DDc" id="pkh-mB-SY8"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedHubsTableCell" rowHeight="180" id="mmq-8k-3Cz" customClass="SelectedHubsTableCell" customModule="Alysei" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="354.5" width="375" height="180"/>
@@ -23336,7 +23339,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
