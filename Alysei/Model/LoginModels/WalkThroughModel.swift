@@ -29,7 +29,9 @@ class GetWalkThroughDataModel: NSObject {
   var roleId: String?
   var imageId: String?
     var base_url: String?
-
+    var attachment: Attachment?
+    
+    
   init(withDictionary dictRoles: [String:Any]) {
     
     self.walkthroughDescription = String.getString(dictRoles[APIConstants.kDescription])
@@ -37,6 +39,10 @@ class GetWalkThroughDataModel: NSObject {
     self.title = String.getString(dictRoles[APIConstants.kTitle])
     self.roleId = String.getString(dictRoles[APIConstants.kRoleId])
     self.imageId = String.getString(dictRoles[APIConstants.kImageId])
+      if let attachment = dictRoles["attachment"] as? [String:Any]{
+          self.attachment =  Attachment.init(with: attachment)
+      }
+   
       self.base_url = String.getString(dictRoles["base_url"])
     
   }

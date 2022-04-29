@@ -221,12 +221,18 @@ class AttachmentLink: Codable {
     var baseUrl : String?
     var height: Int?
     var width: Int?
+    var attachmenThumbnailUrl: String?
+    var attachmentLargeUrl: String?
+    var attachmentMediumUrl: String?
     
     init(with dictResponse: [String:Any]){
         self.attachmentUrl = String.getString(dictResponse["attachment_url"])
         self.baseUrl = String.getString(dictResponse["base_url"])
         self.height = Int.getInt(dictResponse["height"])
         self.width = Int.getInt(dictResponse["width"])
+        self.attachmenThumbnailUrl = String.getString(dictResponse["attachment_thumbnail_url"])
+        self.attachmentLargeUrl = String.getString(dictResponse["attachment_large_url"])
+        self.attachmentMediumUrl = String.getString(dictResponse["attachment_medium_url"])
     }
 
     private enum CodingKeys: String, CodingKey {

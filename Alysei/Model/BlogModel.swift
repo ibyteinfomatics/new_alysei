@@ -69,11 +69,17 @@ class BlogDatum {
 }
 
 // MARK: - Attachment
+
 class Attachment {
     var id: Int?
     var attachmentURL, attachmentType, createdAt, updatedAt: String?
     var baseUrl : String?
     var fimageUrl : String
+    var attachmenThumbnailUrl: String?
+    var attachmentLargeUrl: String?
+    var attachmentMediumUrl: String?
+   
+    
     
     init(with dictResponse: [String:Any]?) {
         self.attachmentURL = String.getString(dictResponse?["attachment_url"])
@@ -83,6 +89,10 @@ class Attachment {
         self.updatedAt = String.getString(dictResponse?["updated_at"])
         self.id = Int.getInt(dictResponse?["id"])
         self.fimageUrl = (self.baseUrl ?? "") + (self.attachmentURL ?? "")
+        self.attachmenThumbnailUrl = String.getString(dictResponse?["attachment_thumbnail_url"])
+        self.attachmentLargeUrl = String.getString(dictResponse?["attachment_large_url"])
+        self.attachmentMediumUrl = String.getString(dictResponse?["attachment_medium_url"])
+        
         
     }
     

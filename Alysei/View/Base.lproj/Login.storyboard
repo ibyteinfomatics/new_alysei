@@ -154,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_language_bg" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-l4-set">
@@ -256,7 +256,7 @@
                                         <connections>
                                             <outlet property="btnGetStarted" destination="dHL-5w-Zs7" id="GBt-PW-sMD"/>
                                             <outlet property="btnSkip" destination="82Y-KZ-j1J" id="jd8-Qx-izf"/>
-                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="aah-eB-SZa"/>
+                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="yKO-RU-ZUW"/>
                                             <outlet property="lblDescription" destination="JkP-O6-DDp" id="qT7-s0-ftw"/>
                                             <outlet property="lblWelcome" destination="5L1-I6-Trr" id="gHW-qc-eoZ"/>
                                             <outlet property="pageControl" destination="24X-3h-mvm" id="9wL-HY-jbk"/>
@@ -2402,13 +2402,13 @@
                                                     <rect key="frame" x="0.0" y="363" width="375" height="300"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Alysei" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSR-zG-GZ5">
-                                                            <rect key="frame" x="20" y="35" width="335" height="26"/>
+                                                            <rect key="frame" x="20" y="35" width="335" height="27"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Connect to social platform Alysei and follow your interests in restaurants" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-Oa-YOK">
-                                                            <rect key="frame" x="10" y="66" width="355" height="99"/>
+                                                            <rect key="frame" x="10" y="67" width="355" height="98"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -3182,7 +3182,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a country" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyC-mx-77c">
-                                        <rect key="frame" x="75" y="12" width="135" height="40"/>
+                                        <rect key="frame" x="75" y="12" width="151" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3uj-fl-4dN"/>
                                         </constraints>
@@ -3201,7 +3201,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-6x-Vv1">
-                                <rect key="frame" x="15" y="114" width="350" height="120"/>
+                                <rect key="frame" x="15" y="115" width="350" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="MyR-BA-zW2"/>
@@ -3284,13 +3284,13 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are available In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cem-eY-nY7">
-                                <rect key="frame" x="15" y="84" width="345" height="20"/>
+                                <rect key="frame" x="15" y="84" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G6G-T1-Shz">
-                                <rect key="frame" x="15" y="294" width="350" height="373"/>
+                                <rect key="frame" x="15" y="296" width="350" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sxy-jM-MXy">
                                     <size key="itemSize" width="118" height="128"/>
@@ -3374,7 +3374,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Countries (soon)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-58-Od0">
-                                <rect key="frame" x="15" y="254" width="345" height="20"/>
+                                <rect key="frame" x="15" y="255" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3696,7 +3696,6 @@
         <image name="Lang_bg" width="256" height="576"/>
         <image name="MapCircle" width="376" height="812"/>
         <image name="Walkthrough1x" width="376" height="812"/>
-        <image name="activity_language_bg" width="376" height="812"/>
         <image name="activity_welcome_bg" width="376" height="812"/>
         <image name="back_black" width="24" height="18.5"/>
         <image name="back_white" width="24" height="18.5"/>

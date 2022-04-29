@@ -52,6 +52,8 @@ class MembershipViewC: AlysieBaseViewC {
         tblViewMembership.isHidden = true
       //  self.viewBottom.isHidden = true
         //self.navigationController?.navigationBar.isHidden = false
+        lblMemberShip.text = LogInSignUp.kMembershipTitle
+        lblHeading.text = LogInSignUp.kAlyseiMemberShip
         self.tabBarController?.tabBar.isHidden = false
         
         self.postRequestToGetProgress()

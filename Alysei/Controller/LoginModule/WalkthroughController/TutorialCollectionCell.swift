@@ -76,11 +76,14 @@ class TutorialCollectionCell: UICollectionViewCell {
    // lblWelcome.text = StaticArrayData.kTutorialDict[indexPath.item].title
     //lblDescription.text = StaticArrayData.kTutorialDict[indexPath.item].description
        // imgViewTutorial.image = UIImage.init(named: StaticArrayData.kTutorialDict[indexPath.item].image)
-        if let strUrl = "\(data.base_url ?? "")\(data.imageId ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+        if let strUrl = "\(data.attachment?.baseUrl ?? "")\(data.attachment?.attachmenThumbnailUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
             self.imgViewTutorial.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
+//
+//        print("tetststts------------------------",imaget)
+      //  self.imgViewTutorial.setImage(withString: imaget)
         lblWelcome.text = data.title
         lblDescription.text = data.walkthroughDescription
 
