@@ -41,10 +41,10 @@ extension DiscoverTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = discoverCollectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCollectionViewCell", for: indexPath) as? DiscoverCollectionViewCell else{return UICollectionViewCell()}
-        if String.getString(data?[indexPath.row].image?.attachmentUrl) == ""{
+        if String.getString(data?[indexPath.row].image?.attachmentMediumUrl) == ""{
             cell.imgStory.image = UIImage(named: "profile_icon")
         }else{
-            cell.imgStory.setImage(withString: String.getString(data?[indexPath.row].image?.baseUrl) + String.getString(data?[indexPath.row].image?.attachmentUrl))
+            cell.imgStory.setImage(withString: String.getString(data?[indexPath.row].image?.baseUrl) + String.getString(data?[indexPath.row].image?.attachmentMediumUrl))
         }
         
         cell.imgStory.layer.cornerRadius = (cell.imgStory.frame.width / 2.0)

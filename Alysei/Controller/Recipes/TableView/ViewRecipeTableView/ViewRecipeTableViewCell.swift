@@ -12,9 +12,13 @@ class ViewRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var ingredientNameLabel: UILabel!
     @IBOutlet weak var ingredientQuantityLabel: UILabel!
+    @IBOutlet weak var vwImage : UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        vwImage.layer.cornerRadius = self.vwImage.frame.height / 2
+        vwImage.layer.borderWidth = 0.5
+        vwImage.layer.borderColor = UIColor.lightGray.cgColor
         // Initialization code
     }
 

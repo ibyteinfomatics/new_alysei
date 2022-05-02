@@ -22,7 +22,7 @@ class HubCollectionViewCell: UICollectionViewCell {
     func configData(_ index: Int, _ data: UserRoleCount){
         title.text = data.name
         lblUserCount.text = "\(data.userCount ?? 0)"
-        let image = "\(data.attachment?.baseUrl ?? "")" + "\(data.attachment?.attachmentURL ?? "")"
+        let image = "\(data.attachment?.baseUrl ?? "")" + "\(data.attachment?.attachmentMediumUrl ?? "")"
         if let strUrl = image.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
