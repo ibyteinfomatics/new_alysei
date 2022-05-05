@@ -83,10 +83,10 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBOutlet weak var lblHeadRecipe: UILabel!
     @IBOutlet weak var lblHeadNotification: UILabel!
     @IBOutlet weak var lblWhatyourlooking: UILabel!
-   
-    
+    @IBOutlet weak var vwNotification: UIView!
+    @IBOutlet weak var lblNotificationCount: UILabel!
      
-    
+    var getUser:[userClass]?
     var arrList: [ProductSearchListModel]?
     var arrListAppData = [ProductSearchListModel]()
     var newunread: Int = 0
@@ -107,7 +107,9 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     private var isBottomSheetShown = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        vwNotification.layer.cornerRadius = self.vwNotification.frame.height / 2
+        vwNotification.layer.masksToBounds = true
+        getUsersData()
         self.tabBarController?.tabBar.isHidden = true
         subheaderView.drawBottomShadow()
         //vwBtnContainer.layer.borderWidth = 0.5
@@ -817,5 +819,27 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
 extension MarketplaceHomePageVC: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentingWalkVC(presentedViewController: presented, presenting: presenting)
+    }
+}
+extension MarketplaceHomePageVC{
+    
+    func getUsersData() {
+        
+        kChatharedInstance.receivce_user_data(userID: String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
+            self.getUser?.removeAll()
+            self.getUser = users
+            
+            if self.getUser![0].notification ?? 0 > 10 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = "10+"
+            }else if self.getUser![0].notification ?? 0 > 0 && self.getUser![0].notification ?? 0 <= 10 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = String.getString(self.getUser![0].notification)
+            } else {
+                self.vwNotification.isHidden = true
+            }
+            
+        }
+        
     }
 }

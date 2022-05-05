@@ -83,6 +83,8 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     @IBOutlet weak var walkVw1Title: UILabel!
     @IBOutlet weak var walkVw1SubTitle: UILabel!
     @IBOutlet weak var walkVwContainer1Img: UIImageView!
+    @IBOutlet weak var vwNotification: UIView!
+    @IBOutlet weak var lblNotificationCount: UILabel!
     
     var arrayMyFavouriteRecipe: [HomeTrending]? = []
     
@@ -96,7 +98,7 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     var nextWalkCount = 0
     let coachMarksController = CoachMarksController()
     var trendingTour = UILabel()
-   
+    var getUser:[userClass]?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -107,7 +109,9 @@ class DiscoverRecipeViewController: AlysieBaseViewC, UIScrollViewDelegate, Categ
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getUsersData()
+        vwNotification.layer.cornerRadius = self.vwNotification.frame.height / 2
+        vwNotification.layer.masksToBounds = true
         self.coachMarksController.dataSource = self
         self.coachMarksController.delegate = self
         
@@ -1446,4 +1450,26 @@ extension DiscoverRecipeViewController : CoachMarksControllerDataSource, CoachMa
     func coachMarksController(_ coachMarksController: CoachMarksController, didEndShowingBySkipping skipped: Bool) {
         AppManager.setUserSeenAppInstruction()
      }
+}
+extension DiscoverRecipeViewController{
+    
+    func getUsersData() {
+        
+        kChatharedInstance.receivce_user_data(userID: String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
+            self.getUser?.removeAll()
+            self.getUser = users
+            
+            if self.getUser![0].notification ?? 0 > 10 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = "10+"
+            }else if self.getUser![0].notification ?? 0 > 0 && self.getUser![0].notification ?? 0 <= 10 {
+                self.vwNotification.isHidden = false
+                self.lblNotificationCount.text = String.getString(self.getUser![0].notification)
+            } else {
+                self.vwNotification.isHidden = true
+            }
+            
+        }
+        
+    }
 }

@@ -33,6 +33,8 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
     var titleWalk3ImpTitle = [MarketPlaceConstant.kInformationAndDetails,MarketPlaceConstant.kReportSuspiciousBehaviour]
     var subTitleWalk3ProdTitle = [MarketPlaceConstant.kInformationAccurateAndcomplete,MarketPlaceConstant.kPhotosUploadhighQuality,MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright]
     var subTitleWalk3ImpTitle = [MarketPlaceConstant.kInformationAccurateAndcomplete,MarketPlaceConstant.kLetUSKnowSomethingDoesNotFeelright]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -162,7 +164,7 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
                 cell.walkSubView3.isHidden = true
                 cell.walkSubView3Height.constant = 55
                 cell.walkSubView1Height.constant = 55
-                cell.walkSubView2Height.constant = 0
+                cell.walkSubView2Height.constant = 0   
                 cell.walkSubView1Img.image = UIImage(named: "icons8_reply")
                 cell.walkSubView1Title.text = titleWalk3ImpTitle[0]
                 cell.walkSubView1SubTitle.text = subTitleWalk3ImpTitle[0]

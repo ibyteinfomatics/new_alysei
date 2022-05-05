@@ -14,7 +14,7 @@ class SelectMemberShipVC: AlysieBaseViewC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var vwTriangle: UIView!
-    @IBOutlet weak var membershipCollectionView: UICollectionView!
+ //   @IBOutlet weak var membershipCollectionView: UICollectionView!
    
     var selectedPassId: Int?
 

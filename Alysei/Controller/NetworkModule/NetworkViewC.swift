@@ -73,13 +73,13 @@ class NetworkViewC: AlysieBaseViewC {
         
         
         if networkcurrentIndex == 0 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
+            callConnectionApi(api: APIUrl.kConnectionTabApi1 + "&page=\( indexOfPageToRequest)")
         } else if networkcurrentIndex == 1 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
+            callConnectionApi(api: APIUrl.kConnectionTabApi + "&page=\(indexOfPageToRequest)")
         } else if networkcurrentIndex == 2 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
+            callConnectionApi(api: APIUrl.kConnectionTabApi3 + "&page=\(indexOfPageToRequest)")
         } else if networkcurrentIndex == 3 {
-            callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
+            callConnectionApi(api: APIUrl.kConnectionTabApi4 + "&page=\(indexOfPageToRequest)")
         }
         
         //callConnectionApi(api: APIUrl.kConnectionTabApi1)
@@ -109,13 +109,13 @@ class NetworkViewC: AlysieBaseViewC {
 
             // call your API for more data
                 if networkcurrentIndex == 0 {
-                    callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\( indexOfPageToRequest)")
+                    callConnectionApi(api: APIUrl.kConnectionTabApi1 + "&page=\( indexOfPageToRequest)")
                 } else if networkcurrentIndex == 1 {
-                    callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(indexOfPageToRequest)")
+                    callConnectionApi(api: APIUrl.kConnectionTabApi + "&page=\(indexOfPageToRequest)")
                 } else if networkcurrentIndex == 2 {
-                    callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(indexOfPageToRequest)")
+                    callConnectionApi(api: APIUrl.kConnectionTabApi3 + "&page=\(indexOfPageToRequest)")
                 } else if networkcurrentIndex == 3 {
-                    callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=\(indexOfPageToRequest)")
+                    callConnectionApi(api: APIUrl.kConnectionTabApi4 + "&page=\(indexOfPageToRequest)")
                 }
 
             // tell the table view to reload with the new data
@@ -132,11 +132,11 @@ class NetworkViewC: AlysieBaseViewC {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kinvitationAcceptReject, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             if networkcurrentIndex == 0 {
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=\(1)")
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi1 + "&page=\(1)")
             } else if networkcurrentIndex == 1{
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=\(1)")
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi + "&page=\(1)")
             } else if networkcurrentIndex == 2{
-                self.callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=\(1)")
+                self.callConnectionApi(api: APIUrl.kConnectionTabApi3 + "&page=\(1)")
             }
             
         }
@@ -166,8 +166,9 @@ class NetworkViewC: AlysieBaseViewC {
         } else if networkcurrentIndex == 3 {
             blanktext.text = AppConstants.kYouHaveNoFollowersRightNow
         }
+       
+       // self.arrConnection.removeAll()
         
-        self.arrConnection.removeAll()
         self.tblViewNetwork.reloadData()
         //self.tblViewInviteNetwork.reloadData()
         TANetworkManager.sharedInstance.requestApi(withServiceName: api, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
@@ -426,14 +427,16 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
     networkcurrentIndex = indexPath.item
     self.collectionViewNetworkCategory.reloadData()
     collectionViewNetworkCategory.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      self.indexOfPageToRequest = 1
+      self.arrConnection.removeAll()
     if indexPath.row == 0 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi1 + "?page=1")
+        callConnectionApi(api: APIUrl.kConnectionTabApi1 + "&page=1")
     } else if indexPath.row == 1 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi + "?page=1")
+        callConnectionApi(api: APIUrl.kConnectionTabApi + "&page=1")
     } else if indexPath.row == 2 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi3 + "?page=1")
+        callConnectionApi(api: APIUrl.kConnectionTabApi3 + "&page=1")
     } else if indexPath.row == 3 {
-        callConnectionApi(api: APIUrl.kConnectionTabApi4 + "?page=1")
+        callConnectionApi(api: APIUrl.kConnectionTabApi4 + "&page=1")
     }
     
   }
