@@ -51,7 +51,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblFdaNumber: UILabel!
     
-    
+    @IBOutlet weak var lblShowDesc: UILabel!
     
     var passpackageId: Int?
     
@@ -92,7 +92,9 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         lblWebsite.text = MarketPlaceConstant.kCWebsite
         lblStoreRegion.text = MarketPlaceConstant.kStoreRegion
         lblLocation.text = MarketPlaceConstant.kLocation
-        lblFdaNumber.text =  MarketPlaceConstant.kFDACertified //MarketPlaceConstant.kFDACertified
+        lblFdaNumber.text =  MarketPlaceConstant.kFDACertified
+        txtDescription.textContainer.heightTracksTextView = true
+        txtDescription.isScrollEnabled = false//MarketPlaceConstant.kFDACertified
         setDataUI()
         if fromVC == .myStoreDashboard{
             callGetDashboardStoreDetail()
@@ -101,6 +103,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             self.btnNext.setTitle(MarketPlaceConstant.kUpdateStore, for: .normal)
             //self.headerView.isHidden = true
             self.heightHeaderView.constant = 40
+            lblShowDesc.isHidden = false
+            txtDescription.isHidden = true
         }else{
             callGetFieldStoreApi()
             // self.headerView.isHidden = false
@@ -109,6 +113,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             headerTitle.text = MarketPlaceConstant.kConfigureStore
             self.btnNext.setTitle(AppConstants.Next, for: .normal)
             self.heightHeaderView.constant = 64
+            lblShowDesc.isHidden = false
+            txtDescription.isHidden = true
         }
     }
     
@@ -120,10 +126,12 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
         self.txtProducerMobileNumber.text = self.userMobileNumber
         self.txtLocation.text = self.userLocation
         self.txtDescription.text = self.userAbout
+        self.lblShowDesc.text = self.userAbout
         self.txtStoreRegion.text = self.userRegion
         self.txtFDANumber.text = self.fdaNumber
         if fromVC == .myStoreDashboard {
             self.txtDescription.text = self.storeDescription
+            self.lblShowDesc.text = self.userAbout
             self.imgProfile.setImage(withString: (storeData?.logo_base_url ?? "") + String.getString(storeData?.logo_id))
             self.imgCover.setImage(withString: (storeData?.banner_base_url ?? "") + String.getString(storeData?.banner_id))
         }
