@@ -11452,12 +11452,12 @@ You will be notified for any membership status update.</string>
                                                         </constraints>
                                                     </imageView>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrm-ps-aBv">
-                                                        <rect key="frame" x="44" y="0.0" width="21" height="21"/>
+                                                        <rect key="frame" x="43" y="0.0" width="22" height="22"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NK-LB-bbZ">
-                                                                <rect key="frame" x="4" y="4" width="13" height="13"/>
+                                                                <rect key="frame" x="4" y="4" width="14" height="14"/>
                                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="8"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -11465,9 +11465,9 @@ You will be notified for any membership status update.</string>
                                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                                         <constraints>
                                                             <constraint firstItem="6NK-LB-bbZ" firstAttribute="leading" secondItem="lrm-ps-aBv" secondAttribute="leading" constant="4" id="2vY-H7-Mr2"/>
+                                                            <constraint firstAttribute="width" constant="22" id="D3u-9i-g90"/>
                                                             <constraint firstAttribute="bottom" secondItem="6NK-LB-bbZ" secondAttribute="bottom" constant="4" id="DyA-DC-P5U"/>
                                                             <constraint firstAttribute="width" secondItem="lrm-ps-aBv" secondAttribute="height" multiplier="1:1" id="X01-sP-qYH"/>
-                                                            <constraint firstAttribute="height" constant="21" id="c3i-Gg-xpV"/>
                                                             <constraint firstItem="6NK-LB-bbZ" firstAttribute="top" secondItem="lrm-ps-aBv" secondAttribute="top" constant="4" id="mnZ-DQ-481"/>
                                                             <constraint firstAttribute="trailing" secondItem="6NK-LB-bbZ" secondAttribute="trailing" constant="4" id="zVp-aK-2Jb"/>
                                                         </constraints>

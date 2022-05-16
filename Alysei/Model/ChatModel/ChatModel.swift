@@ -902,6 +902,7 @@ class CommentAvatarId {
     var poster_created_at : String?
     var id :Int?
     var updated_at : String?
+    var base_url: String?
     
     init() { }
     init(with messageData: [String:Any]) {
@@ -911,6 +912,7 @@ class CommentAvatarId {
         self.attachment_url           = String.getString(messageData[Parameters.attachment_url])
         self.id          = Int.getInt(messageData[Parameters.id])
         self.updated_at           = String.getString(messageData[Parameters.updated_at])
+        self.base_url = String.getString(messageData[Parameters.base_url])
         
     }
     
@@ -921,6 +923,7 @@ class CommentAvatarId {
             Parameters.attachment_url                 : objects?.attachment_url ?? "",
             Parameters.id                 : objects?.id ?? 0,
             Parameters.updated_at           : objects?.updated_at ?? "",
+            Parameters.base_url : objects?.base_url ?? ""
         ]
         return params
     }

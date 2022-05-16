@@ -172,12 +172,12 @@
                                                         </constraints>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJC-sq-izU">
-                                                        <rect key="frame" x="44" y="-5" width="21" height="21"/>
+                                                        <rect key="frame" x="43" y="-5" width="22" height="22"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-d5-M1y">
-                                                                <rect key="frame" x="4" y="4" width="13" height="13"/>
+                                                                <rect key="frame" x="4" y="4" width="14" height="14"/>
                                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="8"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -188,7 +188,7 @@
                                                             <constraint firstAttribute="width" secondItem="uJC-sq-izU" secondAttribute="height" multiplier="1:1" id="I1y-82-DXO"/>
                                                             <constraint firstItem="Spe-d5-M1y" firstAttribute="top" secondItem="uJC-sq-izU" secondAttribute="top" constant="4" id="JK8-RU-uhZ"/>
                                                             <constraint firstAttribute="bottom" secondItem="Spe-d5-M1y" secondAttribute="bottom" constant="4" id="JKX-8d-Qhe"/>
-                                                            <constraint firstAttribute="height" constant="21" id="OIl-JT-Feh"/>
+                                                            <constraint firstAttribute="height" constant="22" id="OIl-JT-Feh"/>
                                                             <constraint firstAttribute="trailing" secondItem="Spe-d5-M1y" secondAttribute="trailing" constant="4" id="mAA-hw-eu7"/>
                                                         </constraints>
                                                     </view>

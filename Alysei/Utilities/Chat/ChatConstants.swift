@@ -131,6 +131,7 @@ struct Parameters {
     static let id = "id"
     static let like_id = "like_id"
     static let updated_at = "updated_at"
+    static let base_url = "base_url"
     
     static let avatar_id = "avatar_id"
     static let email = "email"
