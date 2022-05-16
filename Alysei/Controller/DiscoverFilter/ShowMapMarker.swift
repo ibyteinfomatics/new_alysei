@@ -15,6 +15,8 @@ class ShowMapMarker: AlysieBaseViewC {
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var nextbtn: UIButton!
     @IBOutlet weak var previous: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    
    // @IBOutlet weak var imgViewMarker: UIImageView!
     var lat = [Double]()
     var long = [Double]()
@@ -31,7 +33,7 @@ class ShowMapMarker: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        headerView.drawBottomShadow()
         /*lat.append(28.621271)
         long.append(77.061325)
         name.append("Me")

@@ -19,11 +19,12 @@ class PhotosPost: AlysieBaseViewC {
     var position = 0
     //TODO: pagination is pending
     var count = 100
-    
+    var tapIndex: Int?
+    var lastPage: Int?
     var fromvc: FromVC?
    // var postData = [PostList.innerData]()
     var postData = [NewFeedSearchDataModel]()
-    var singlePostData : SinglePostDataModel?
+    var singlePostData : NewFeedSearchDataModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,23 @@ class PhotosPost: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if postData.count == 0 {
         userPost.isHidden = true
-        if postId == ""{
-            self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
-        } else {
+        }
+//        if postId == ""{
+//            self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+//        } else {
+//            self.fetchPostParticularFromServer()
+//        }
+        //pageNumber = 1
+        if fromvc == .Notification{
             self.fetchPostParticularFromServer()
+        } else {
+           // self.postData.removeAll()
+          //  self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+            let indexPaths = IndexPath(row: self.tapIndex ?? 0, section: 0)
+            //userPost.selectRow(at: indexPaths, animated: false, scrollPosition: .bottom)
+            self.userPost.scrollToRow(at: indexPaths, at: .top, animated: false)
         }
         
     }
@@ -91,16 +103,27 @@ class PhotosPost: AlysieBaseViewC {
         
     }
 
-    /*
-    // MARK: - Navigation
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if fromvc != .Notification{
+            if pageNumber > self.lastPage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+                pageNumber += 1
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            // call your API for more data
+                self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+
+            // tell the table view to reload with the new data
+            self.userPost.reloadData()
+            }
+            }
+        }
     }
-    */
-    
 
 }
 
@@ -113,11 +136,12 @@ extension PhotosPost {
             
             if let data = response?["data"]  as? [String:Any]{
                 if let subData = data["data"] as? [[String:Any]]{
-                    self.postData = subData.map({NewFeedSearchDataModel.init(with: $0)})
+                    let subPostData = subData.map({NewFeedSearchDataModel.init(with: $0)})
+                    self.postData.append(contentsOf: subPostData)
                 }
                 self.userPost.isHidden = false
                 self.updatePostList()
-                let indexPaths = IndexPath(row: self.position, section: 0)
+                let indexPaths = IndexPath(row: self.position + 1, section: 0)
                 //userPost.selectRow(at: indexPaths, animated: false, scrollPosition: .bottom)
                 self.userPost.scrollToRow(at: indexPaths, at: .top, animated: false)
             }
@@ -137,7 +161,7 @@ extension PhotosPost {
             
             if let data = response?["data"]  as? [String:Any]{
                 
-                self.singlePostData = SinglePostDataModel.init(with: data)
+                self.singlePostData = NewFeedSearchDataModel.init(with: data)
                 self.userPost.isHidden = false
                 self.updatePostList()
                 
@@ -162,19 +186,25 @@ extension PhotosPost {
 extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if postId == "" {
+//        if postId == "" {
+//            return self.postData.count
+//        } else {
+//            return 1
+//        }
+        if fromvc != .Notification{
             return self.postData.count
-        } else {
+        }else{
             return 1
         }
-        
+//
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = userPost.dequeueReusableCell(withIdentifier: "PostDescTableViewCell", for: indexPath) as? PostDescTableViewCell else { return UITableViewCell() }
 
-        if postId == "" {
+      //  if postId == "" {
+        if fromvc != .Notification {
             
             let data = self.postData[indexPath.row]
             cell.configCell(data, indexPath.row)
@@ -261,7 +291,9 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
         } else {
             
             let data = self.singlePostData
-//            cell.configCell1(data ?? <#default value#>, indexPath.row)
+            
+           // cell.configCell(data ?? NewFeedSearchDataModel(with: [:]), indexPath.row)
+//            cell.configCell1(data ?? default value, indexPath.row)
            
             //cell.sizeToFit()
             
@@ -316,14 +348,43 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             cell.lblPostCommentCount.text = "\(data?.commentCount ?? 0)"
             cell.lblPostTime.text = data?.posted_at
             //islike = data.likeFlag
-            if data?.attachments?.first?.attachmentLink?.width == 0 || data?.attachments?.first?.attachmentLink?.height == 0 || data?.attachments?.first?.attachmentLink?.width == nil || data?.attachments?.first?.attachmentLink?.height == nil ||  data?.attachments == nil || data?.attachmentCount == 0 {
+//            if data?.attachments?.first?.attachmentLink?.width == 0 || data?.attachments?.first?.attachmentLink?.height == 0 || data?.attachments?.first?.attachmentLink?.width == nil || data?.attachments?.first?.attachmentLink?.height == nil ||  data?.attachments == nil || data?.attachmentCount == 0 {
+//                cell.imageHeightCVConstant.constant = 0
+//                cell.imagePostCollectionView.isHidden = true
+//
+//    //            imagePostCollectionView.alpha = 0.0
+//            }else{
+//                cell.imageHeightCVConstant.constant = 130
+//                cell.imagePostCollectionView.isHidden = false
+//            }
+            if data?.attachments?.first?.attachmentLink?.width == 0 || data?.attachments?.first?.attachmentLink?.height == 0 || data?.attachments?.first?.attachmentLink?.width == nil || data?.attachments?.first?.attachmentLink?.height == nil ||  data?.attachments == nil{
+                print("error")
+    //                    cell.newHeightCllctn = 350
+    //                    cell.imageHeightCVConstant.constant = 350
+                cell.newHeightCllctn = 0
                 cell.imageHeightCVConstant.constant = 0
-                cell.imagePostCollectionView.isHidden = true
-                
-    //            imagePostCollectionView.alpha = 0.0
             }else{
-                cell.imagePostCollectionView.isHidden = true
-            }
+            var ratio = CGFloat((data?.attachments?.first?.attachmentLink?.width ?? 0 ) / (data?.attachments?.first?.attachmentLink?.height ?? 0  ))
+            if (data?.attachments?.first?.attachmentLink?.width ?? 0) > (data?.attachments?.first?.attachmentLink?.height ?? 0) {
+                        let newHeight = 320 / ratio
+                                   // cell.imageConstant.constant = newHeight
+                        cell.newHeightCllctn = Int(newHeight - 50)
+                        cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
+                } else{
+                    
+                    var newWidth = 430
+                    if ratio == 0.0 {
+                        ratio = 1
+                        newWidth = 350
+                    }
+                    newWidth = newWidth * Int(ratio)
+                    
+                        
+                        //cell.imageConstant.constant = newWidth
+                        cell.newHeightCllctn = Int(newWidth)
+                        cell.imageHeightCVConstant.constant = CGFloat(newWidth)
+                }
+        }
 //                if data?.attachments?.first?.attachmentLink?.height == data?.attachments?.first?.attachmentLink?.width {
 //                    cell.imageHeightCVConstant.constant = 250
 //                }else{
@@ -363,6 +424,8 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                     let imageUrl = baseUrl + (data?.attachments?[i].attachmentLink?.attachmentUrl ?? "")
                     cell.imageArray.append(imageUrl)
                 }
+               // cell.imagePostCollectionView.reloadData()
+
             }
 
 //            if cell.imageArray.count <= 0 {
@@ -409,11 +472,8 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             }
             
            
-            
+            cell.imagePostCollectionView.reloadData()
         }
-        
-        
-        
         
         return cell
     }

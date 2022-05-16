@@ -154,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-l4-set">
@@ -256,7 +256,7 @@
                                         <connections>
                                             <outlet property="btnGetStarted" destination="dHL-5w-Zs7" id="GBt-PW-sMD"/>
                                             <outlet property="btnSkip" destination="82Y-KZ-j1J" id="jd8-Qx-izf"/>
-                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="yKO-RU-ZUW"/>
+                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="cwG-l5-ONv"/>
                                             <outlet property="lblDescription" destination="JkP-O6-DDp" id="qT7-s0-ftw"/>
                                             <outlet property="lblWelcome" destination="5L1-I6-Trr" id="gHW-qc-eoZ"/>
                                             <outlet property="pageControl" destination="24X-3h-mvm" id="9wL-HY-jbk"/>
@@ -2163,6 +2163,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnBack" destination="Ivn-Xs-7ko" id="8vC-YO-xtV"/>
                         <outlet property="btnResendOTP" destination="jDx-XU-MIh" id="dAa-8S-rlr"/>
                         <outlet property="btnVerifyOTP" destination="rrj-bv-Y52" id="z5P-zi-jCF"/>
                         <outlet property="lblDidntReciveOtp" destination="hVX-FE-hqU" id="zld-GV-dJf"/>
@@ -2391,7 +2392,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough1x" translatesAutoresizingMaskIntoConstraints="NO" id="1XO-pa-Bbc" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough1x" translatesAutoresizingMaskIntoConstraints="NO" id="1XO-pa-Bbc" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                                 </imageView>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0I-HS-3qS">
@@ -2494,7 +2495,7 @@
                                         <connections>
                                             <outlet property="btnNext" destination="ace-vn-rOo" id="uTM-A6-y7a"/>
                                             <outlet property="btnSkip" destination="kP2-Ey-CBk" id="IOq-HY-5Vl"/>
-                                            <outlet property="imgViewBackground" destination="1XO-pa-Bbc" id="t5i-c6-WGa"/>
+                                            <outlet property="imgViewBackground" destination="1XO-pa-Bbc" id="xeu-Xp-GRx"/>
                                             <outlet property="lblDescription" destination="jUb-Oa-YOK" id="Cjd-Dh-eNS"/>
                                             <outlet property="lblTitle" destination="PSR-zG-GZ5" id="mDt-14-bHs"/>
                                             <outlet property="paging" destination="ahj-aP-el6" id="Pds-bY-sNh"/>
@@ -3434,7 +3435,7 @@
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-qf-tgP">
                                                     <rect key="frame" x="15" y="10" width="345" height="152"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role2" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-9y-yWY" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-9y-yWY" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="210" y="11" width="130" height="130"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="130" id="Gih-F4-4rs"/>
@@ -3489,7 +3490,7 @@
                                         <connections>
                                             <outlet property="containerBottomConstraint" destination="P9j-z2-d6X" id="Kuh-VH-EEG"/>
                                             <outlet property="containerView" destination="Zef-qf-tgP" id="2EI-Kn-EUY"/>
-                                            <outlet property="imgRole" destination="tcg-9y-yWY" id="MuC-Kd-mQU"/>
+                                            <outlet property="imgRole" destination="tcg-9y-yWY" id="7dv-Sj-gyZ"/>
                                             <outlet property="imgViewSelected" destination="eTf-qr-ZP3" id="BP5-m7-hBx"/>
                                             <outlet property="lblRoleDesc" destination="Lco-UQ-RPg" id="Wec-kP-sd8"/>
                                             <outlet property="lblRoleName" destination="02f-Td-hV4" id="dbl-NB-Wwv"/>
@@ -25081,13 +25082,13 @@ AA47+gAOO/8ADjwMAA48DwAOPBwADjwhAA48KQAOPCwADjwxAA48OQAAAAAAAAQBAAAAAAAAAGgAAAAA
 AAAAAAAAAAAADjw8A
 </mutableData>
         </image>
+        <image name="image_placeholder" width="41" height="33"/>
         <image name="info_icon" width="20" height="20"/>
         <image name="location" width="2400" height="2400"/>
         <image name="logo-1" width="135" height="44"/>
         <image name="logo-2" width="405" height="131"/>
         <image name="overlay_on_role_selection-1" width="78" height="78"/>
         <image name="producer_signup_bg" width="376" height="160"/>
-        <image name="select_role2" width="78" height="78"/>
         <image name="select_role4" width="78" height="78"/>
         <namedColor name="darkGreyColor">
             <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

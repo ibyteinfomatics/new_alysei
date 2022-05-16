@@ -85,7 +85,7 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblHeading: UILabel!
     @IBOutlet weak var lblSubHeading: UILabel!
-    
+    @IBOutlet weak var headerView: UIView!
     var userName: String?
     var productData: Data?
     var selectedProductId = [String]()
@@ -93,6 +93,7 @@ class ConnectionProductTypeViewController: UIViewController, ConnectionProductTy
   
   func doSomething()
   {
+      headerView.drawBottomShadow()
     let request = ConnectionProductType.Something.Request()
     interactor?.doSomething(request: request)
       lblHeading.text = AppConstants.kConnectionRequest

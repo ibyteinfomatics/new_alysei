@@ -16,7 +16,7 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
   
   //MARK: - IBOutlet -
   
-  @IBOutlet weak var imgViewBackground: ImageLoader!
+  @IBOutlet weak var imgViewBackground: CustomImageView!
   @IBOutlet weak var lblDescription: UILabel!
   @IBOutlet weak var btnNext: UIButtonExtended!
   @IBOutlet weak var paging: UIPageControl!
@@ -34,7 +34,10 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
       btnSkip.setTitle(LogInSignUp.kskip, for: .normal)
       btnNext.setTitle(RecipeConstants.kNext, for: .normal)
   }
-  
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imgViewBackground.image = UIImage(named: "image_placeholder")
+    }
   //MARK: - IBAction -
   
   @IBAction func tapNext(_ sender: UIButton) {
@@ -55,7 +58,8 @@ class MemberWalkthroughCollectionCell: UICollectionViewCell {
       if let strUrl = "\(model?.attachment?.baseUrl ?? "")\(model?.attachment?.attachmentLargeUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
           let imgUrl = URL(string: strUrl) {
          print("ImageUrltrex-----------------------------------------\(imgUrl)")
-        self.imgViewBackground.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+        //self.imgViewBackground.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+          self.imgViewBackground.loadCacheImage(urlString: strUrl)
     }
     self.lblTitle.text = model?.title
     self.lblDescription.text = model?.walkthroughDescription

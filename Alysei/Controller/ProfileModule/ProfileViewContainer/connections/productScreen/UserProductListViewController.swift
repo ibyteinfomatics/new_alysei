@@ -79,7 +79,7 @@ class UserProductListViewController: UIViewController, UserProductListDisplayLog
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
     @IBOutlet weak var btnDone: UIButton!
-    
+    @IBOutlet weak var headerView: UIView!
     var productData: [SignUpOptionsDataModel]?
     var selectedProductId = [String]()
     var selectedProductName = [String]()
@@ -87,6 +87,7 @@ class UserProductListViewController: UIViewController, UserProductListDisplayLog
     
   func doSomething()
   {
+      headerView.drawBottomShadow()
     let request = UserProductList.Something.Request()
     interactor?.doSomething(request: request)
       lblHeading.text = AppConstants.ProductTypeBusiness

@@ -372,6 +372,7 @@ extension SignUpFormViewC{
       
     if String.getString(dicRole[APIConstants.kRoleId]) == "10"{
       let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
+        controller?.pushedFrom = .signUp
       controller?.email = String.getString(dicData[APIConstants.kEmail])
     }
     else{
@@ -382,6 +383,7 @@ extension SignUpFormViewC{
         kSharedUserDefaults.setAccountEnableStatus(status: dicResult["account_enabled"] as? String ?? "")
         print("AccountEnableStatus -----------------",kSharedUserDefaults.getAccountEnableStatus())
         let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
+        controller?.pushedFrom = .signUp
         controller?.email = String.getString(dicData[APIConstants.kEmail])
       
 //        let nextVC = CountryListVC()

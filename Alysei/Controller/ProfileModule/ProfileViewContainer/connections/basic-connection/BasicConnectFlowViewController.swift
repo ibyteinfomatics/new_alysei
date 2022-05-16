@@ -30,7 +30,7 @@ class BasicConnectFlowViewController: AlysieBaseViewC, BasicConnectFlowDisplayLo
     var userName = ""
     @IBOutlet weak var vwConfirm: UIView!
     @IBOutlet weak var lblHeading: UILabel!
-    
+    @IBOutlet weak var headerView: UIView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -72,6 +72,7 @@ class BasicConnectFlowViewController: AlysieBaseViewC, BasicConnectFlowDisplayLo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerView.drawBottomShadow()
         vwConfirm.isHidden = true
         lblHeading.text = AppConstants.kConnectionRequest
         lblReasonToConnect.text = AppConstants.ReasonToConnect

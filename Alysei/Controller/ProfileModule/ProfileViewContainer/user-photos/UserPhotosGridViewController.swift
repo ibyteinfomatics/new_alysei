@@ -15,8 +15,9 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     @IBOutlet weak var lblBlank: UILabel!
 
     var photos = [String]()
+    var postData = [NewFeedSearchDataModel]()
     var pageNumber = 1
-
+    var lastpage: Int?
     //TODO: pagination is pending
     var count = 100
     var visitorId = ""
@@ -44,12 +45,32 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         pageNumber = 1
         self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+        self.fetchGetPostWithPhotsFromServer(pageNumber,visitorId: visitorId)
     }
 
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // calculates where the user is in the y-axis
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height - (self.view.frame.height * 2) {
+            if pageNumber > self.lastpage ?? 0{
+                print("No Data")
+            }else{
+            // increments the number of the page to request
+                pageNumber += 1
 
+            // call your API for more data
+                self.fetchPostWithPhotsFromServer(pageNumber, visitorId: visitorId)
+                self.fetchGetPostWithPhotsFromServer(pageNumber,visitorId: visitorId)
+
+            // tell the table view to reload with the new data
+            self.userPhotosCollectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -63,7 +84,9 @@ extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionV
         }
 
         ///////cell.imageView.setImage(withString: "\(kImageBaseUrl)\(self.photos[indexPath.row])")
-        cell.imageView.setImage(withString: "\(self.photos[indexPath.row])")
+       // cell.imageView.setImage(withString: "\(self.photos[indexPath.row])")
+        let imgUrl = self.photos[indexPath.row]
+     cell.imageView.loadCacheImage(urlString: imgUrl)
 
         return cell
     }
@@ -72,7 +95,10 @@ extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionV
         let vc = pushViewController(withName: PhotosPost.id(), fromStoryboard: StoryBoardConstants.kHome) as? PhotosPost
         vc?.position = indexPath.row
         vc?.visitorId = visitorId
-        
+        vc?.postData = self.postData
+        vc?.tapIndex = indexPath.row
+        vc?.pageNumber = self.pageNumber
+        vc?.lastPage = self.lastpage
     }
 
 }
@@ -102,7 +128,9 @@ extension UserPhotosGridViewController {
             guard statusCode == 200 else { return }
 
             guard let data = data else { return }
-
+            
+            switch statusCode {
+            case 200:
             do {
                 let response = try JSONDecoder().decode(PhotosList.request.self, from: data)
                 print(response)
@@ -115,6 +143,8 @@ extension UserPhotosGridViewController {
 //                          return innerResult
 //                      }
                     var innerResult = res
+                    
+                    
                     if innerData.attachments.first?.attachment_link.attachment_url != nil {
                         let baseurl = innerData.attachments.first?.attachment_link.base_url ?? ""
                         innerResult.append(baseurl + (innerData.attachments.first?.attachment_link.attachment_url ?? ""))
@@ -130,28 +160,65 @@ extension UserPhotosGridViewController {
 //                    }
                     //return result
                 }
+                if page == 1{
                 self.photos.removeAll()
+                }
                 if photosURLList.count > 0 {
                     //self.pageNumber += 1
                     
                     self.photos.append(contentsOf: photosURLList)
                     
-                    if photosURLList.count > 20 {
-                        self.pageNumber += 1
-                        
-                    }
+//                    if photosURLList.count > 20 {
+//                        self.pageNumber += 1
+//
+//                    }
                     
                     self.updatePhotosList()
                     self.setUI()
                 }else{
                     self.setUI()
                 }
+                } catch {
+                        print(error.localizedDescription)
+                    }
+                    
+                case 409:
+                if self.photos.count > 0 {
+                        print("No remove")
+                    }
+                    
+                default:
+                    print("eror")
+                    
                
-            } catch {
-                print(error.localizedDescription)
+            }
             }
 
         }
+    func fetchGetPostWithPhotsFromServer(_ page: Int, count: Int = 30,visitorId: String) {
+        let urlString = APIUrl.Profile.postList + "?page=\(page)&per_page=\(count)&visitor_profile_id=\(visitorId)"
+
+        guard WebServices.shared.buildURLRequest(urlString, method: .GET) != nil else {
+            return
+        }
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: urlString, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { dictResponse, error, erroType, statusCode in
+            let response = dictResponse as? [String:Any]
+            
+            if let data = response?["data"]  as? [String:Any]{
+                self.lastpage = data["last_page"] as? Int
+                if let subData = data["data"] as? [[String:Any]]{
+                    let respostData = subData.map({NewFeedSearchDataModel.init(with: $0)})
+                    if page == 1{
+                        self.postData.removeAll()
+                    }
+                    self.postData.append(contentsOf: respostData)
+                }
+               
+            
+            }
+        }
+
     }
 }
 

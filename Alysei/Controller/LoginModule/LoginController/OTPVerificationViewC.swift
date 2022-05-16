@@ -18,7 +18,7 @@ class OTPVerificationViewC: AlysieBaseViewC {
   @IBOutlet weak var viewNavigation: UIView!
   @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblDidntReciveOtp: UILabel!
-   
+    @IBOutlet weak var btnBack: UIButton!
   
   //MARK: - Properties -
   
@@ -33,6 +33,12 @@ class OTPVerificationViewC: AlysieBaseViewC {
     super.viewDidLoad()
       if pushedFrom == .login && kSharedUserDefaults.getAccountEnableStatus() == AppConstants.ConstIncomplete  {
           postRequestToResendOTP()
+      }
+      if pushedFrom == .signUp {
+          self.btnBack.isHidden = true
+          
+      }else{
+          self.btnBack.isHidden = false
       }
     self.initialSetupTextFields()
   }

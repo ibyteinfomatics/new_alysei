@@ -54,6 +54,7 @@ class PostDescTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btnMoreLess: UIButton!
     @IBOutlet var vwpageControl: ScrollingPageControl!
+   
    // @IBOutlet weak var collectionVieweHight: NSLayoutConstraint!
     
     //var passImageTabCallBack: ((UIImageView) -> Void)? = nil
@@ -518,10 +519,21 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
       //  addZoombehavior(for: cell.imagePost)
        
         print("checkUrlImageurl--------------------------------\(String.getString(imageArray[indexPath.row]))")
-        cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
+       // cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
 //        cell.passImageCallBack = { imageZoomPost in
 //            self.imageZoomPost = imageZoomPost
 //            //self.passImageTabCallBack?(self.imageZoomPost)
+      //  if let imgUrl = URL(string:imageArray[indexPath.row]){
+      
+        let imgUrl = imageArray[indexPath.row]
+        if imgUrl != ""{
+            cell.imagePost.loadCacheImage(urlString: imgUrl)
+        }else{
+          print("No Photos")
+        }
+        
+        
+        
 //        }
         
         return cell
@@ -599,7 +611,7 @@ protocol SubclassedCellDelegate: AnyObject {
     func zooming(started: Bool)
 }
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
-    @IBOutlet weak var imagePost: UIImageView!
+    @IBOutlet weak var imagePost: CustomImageView!
     @IBOutlet weak var imageConstant: NSLayoutConstraint!
   
     var originalFrame = CGRect()
@@ -664,6 +676,11 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
 
         
       
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //hide or reset anything you want hereafter, for example
+        imagePost.image = UIImage(named: "image_placeholder")
     }
 //    @objc func pinch(sender:UIPinchGestureRecognizer) {
 //       // passImageCallBack?(imagePost)

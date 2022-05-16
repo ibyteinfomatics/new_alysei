@@ -50,12 +50,14 @@ class SignUpViewC: AlysieBaseViewC {
     }
     
     @IBAction func tapProceedNext(_ sender: UIButton) {
-        
+        disableWindowInteraction()
         let tuple = kSharedInstance.signUpViewModel.validateFields()
         if tuple.0 == false {
             self.showAlert(withMessage: tuple.1)
+            enableWindowInteraction()
         }else{
             if kSharedInstance.signUpViewModel.arrSignUpStepTwo.count != 0{
+                enableWindowInteraction()
                 let controller = pushViewController(withName: SignUpFormViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SignUpFormViewC
                 controller?.signUpStepOneDataModel = self.signUpStepOneDataModel
                 controller?.getRoleDataModel = self.getRoleDataModel
@@ -341,7 +343,7 @@ extension SignUpViewC: SignUpTermsDelegate{
 extension SignUpViewC{
     
     override func didUserGetData(from result: Any, type: Int) {
-        
+        enableWindowInteraction()
         let dicResult = kSharedInstance.getDictionary(result)
         let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
         let dicRole = kSharedInstance.getDictionary(dicData[APIConstants.kRoles])
@@ -373,6 +375,7 @@ extension SignUpViewC{
             kSharedInstance.signUpStepTwoOptionsModel = nil
             if String.getString(dicRole[APIConstants.kRoleId]) == "10"{
                 let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
+                controller?.pushedFrom = .signUp
                 controller?.email = String.getString(dicData[APIConstants.kEmail])
             }
             else{

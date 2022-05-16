@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
+        let URLCache1 = URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+        URLCache.shared = URLCache1
+        
         IQKeyboardManager.shared.enable = true
         self.setInitialViewController()
         self.setDefaultProgressHud()
