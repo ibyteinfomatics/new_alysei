@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -31,7 +31,7 @@
                         <rect key="frame" x="10" y="5" width="295.5" height="227"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gvN-Ke-03t">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery_image" translatesAutoresizingMaskIntoConstraints="NO" id="gvN-Ke-03t">
                         <rect key="frame" x="15" y="10" width="285.5" height="155"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="155" id="D1O-xc-6NU"/>
@@ -103,7 +103,7 @@
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbG-QZ-TAX">
                         <rect key="frame" x="25" y="32.5" width="265.5" height="50"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="0rD-pL-NkN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery_image" translatesAutoresizingMaskIntoConstraints="NO" id="0rD-pL-NkN">
                                 <rect key="frame" x="10" y="12.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Wjz-hT-iIq"/>
@@ -206,9 +206,9 @@
     </objects>
     <resources>
         <image name="chat_like-selected" width="17.5" height="15.5"/>
-        <image name="icons8_delete_bin" width="32" height="37"/>
+        <image name="gallery_image" width="49" height="38"/>
+        <image name="icons8_delete_bin" width="9" height="11"/>
         <image name="icons8_double_tick" width="15.956999778747559" height="9.1840000152587891"/>
-        <image name="image_placeholder" width="41" height="33"/>
         <image name="liked_icon" width="128" height="113"/>
         <namedColor name="darkGreyColor">
             <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

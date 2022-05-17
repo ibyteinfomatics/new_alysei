@@ -279,15 +279,15 @@ class ConversationViewController: AlysieBaseViewC {
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
+        let time = Double.getDouble(timeStamp) /// 1000
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateStyle = .full
         dateFormatter.timeZone = .current
         dateFormatter.dateFormat = "dd MMM YYYY"
-        dateFormatter.locale =  Locale(identifier:  "en")
+        dateFormatter.locale =  Locale(identifier:  "en_US")
         let localDate = dateFormatter.string(from: date)
-        
+       
         let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
             let components = Calendar.current.dateComponents(units, from: date, to: Date())
 
@@ -391,6 +391,8 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 textCell.lblMessage.text = objects?.message
                 textCell.likeImgView.isHidden = true
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
+                
+                print("senderChatMessage--------",(objects?.message ?? "") ,"and its time",(time))
                 textCell.bgView.layer.cornerRadius = 15
                 textCell.bgView.layer.masksToBounds = true
                 textCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
@@ -424,7 +426,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
             case .photos? :
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
-                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "gallery_image"))
                 photoCell.btnLike.isHidden = true
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -467,7 +469,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
             case .textphotos? :
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderTextImageCell") as? SenderTextImageCell else {return UITableViewCell()}
-                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.sendimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "gallery_image"))
                 photoCell.btnLike.isHidden = true
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -530,7 +532,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 textCell.chatBoxView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner]
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
-                
+                print("receiverChatMessage--------",(objects?.message ?? "") ,"and its time",(time),"with time stamp",objects?.timestamp)
                 textCell.lbltime.text = time
                 
                 textCell.LongDeleteCallBack = {
@@ -555,10 +557,11 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                     
                 }
                 
-                if String.getString(objects?.senderImage).contains(imageDomain) {
+                if String.getString(objects?.senderImage).contains(kImageBaseUrl) {
                     textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
                 } else {
-                    textCell.profile_image.setImage(withString:String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
+                    let imgUrl = (objects?.base_url ?? "") + (objects?.senderImage ?? "")
+                    textCell.profile_image.setImage(withString:String.getString(imgUrl), placeholder: UIImage(named: "image_placeholder"))
                 }
                 
                 //textCell.profile_image.setImage(withString: String.getString(objects?.receiverImage), placeholder: UIImage(named: "image_placeholder"))
@@ -569,7 +572,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
                 
-                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "gallery_image"))
                 photoCell.btnLike.isHidden = true
                 
                 let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
@@ -614,7 +617,7 @@ extension ConversationViewController : UITableViewDataSource , UITableViewDelega
                 
                 guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverTextImageCell") as? ReceiverTextImageCell else {return UITableViewCell()}
                 
-                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "image_placeholder"))
+                photoCell.receiveimageView.setImage(withString: String.getString(objects?.mediaImage), placeholder: UIImage(named: "gallery_image"))
                 photoCell.btnLike.isHidden = true
                 photoCell.lblMessage.text = String.getString(objects?.message)
 
@@ -701,7 +704,7 @@ extension ConversationViewController {
         
         sendMessageDetails.receiverImage = profileImageUrl
         sendMessageDetails.receiverName = name
-        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
         kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId))

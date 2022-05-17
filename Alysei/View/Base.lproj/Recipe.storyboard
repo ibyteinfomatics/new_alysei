@@ -453,16 +453,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-oo-0y2">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUL-wc-eVX">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-Ak-1US">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -752,16 +752,16 @@
                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="an8-j4-2Zh">
-                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNN-Nh-Pgk">
-                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-sM-Z4M">
-                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -7325,7 +7325,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zv1-Jd-dac">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="86.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="posts_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="YLU-QU-sar">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Post_unfill" translatesAutoresizingMaskIntoConstraints="NO" id="YLU-QU-sar">
                                                         <rect key="frame" x="25.5" y="5" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="YLU-QU-sar" secondAttribute="height" multiplier="1:1" id="9qU-ps-xbA"/>
@@ -8017,16 +8017,16 @@
                                                         <rect key="frame" x="0.0" y="171" width="384" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_image_1" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-1S-PLg">
-                                                                <rect key="frame" x="15" y="14.5" width="38" height="30.5"/>
+                                                                <rect key="frame" x="15" y="17.5" width="34.5" height="27.5"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbS-J5-Lb1">
-                                                                <rect key="frame" x="58" y="17" width="41.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="17" width="41.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PNG,JPG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-WD-Z23">
-                                                                <rect key="frame" x="58" y="30.5" width="50.5" height="13.5"/>
+                                                                <rect key="frame" x="54.5" y="30.5" width="50.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -12634,6 +12634,7 @@
         <image name="Group 673" width="35" height="35"/>
         <image name="Group 674" width="35" height="35"/>
         <image name="MENU" width="55" height="55"/>
+        <image name="Post_unfill" width="28.5" height="28"/>
         <image name="RecipeBlank" width="331" height="707"/>
         <image name="Rectangle 2637" width="140" height="140"/>
         <image name="Subtract" width="24" height="24"/>
@@ -12647,16 +12648,16 @@
         <image name="icons8_christmas_star_2" width="8" height="7.5"/>
         <image name="icons8_dining_room_1" width="12" height="13"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>
-        <image name="icons8_image_1" width="38" height="30.5"/>
+        <image name="icons8_image_1" width="34.5" height="27.5"/>
         <image name="icons8_ingredients" width="18.5" height="17.5"/>
         <image name="icons8_kitchen1" width="19.5" height="17"/>
-        <image name="icons8_left" width="24" height="18.5"/>
+        <image name="icons8_left" width="19" height="15"/>
         <image name="icons8_left1" width="19" height="15"/>
         <image name="icons8_left2" width="24" height="18.5"/>
         <image name="icons8_multiply" width="17.5" height="17.5"/>
-        <image name="icons8_plus" width="27" height="27"/>
+        <image name="icons8_plus" width="14" height="14"/>
         <image name="icons8_plus1" width="27" height="27"/>
-        <image name="icons8_search" width="23" height="23"/>
+        <image name="icons8_search" width="19.5" height="19.5"/>
         <image name="icons8_slider" width="16" height="12.5"/>
         <image name="icons8_star" width="13" height="12.5"/>
         <image name="icons8_user" width="13.5" height="14"/>
@@ -12668,7 +12669,6 @@
         <image name="marketplace_outlined" width="27.5" height="25"/>
         <image name="notification_outlined" width="25.5" height="25"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="posts_outlined" width="28" height="25"/>
         <image name="profile_icon" width="26" height="26"/>
         <image name="recipe_filled" width="31" height="25"/>
         <image name="search_icon_grey" width="18" height="18"/>

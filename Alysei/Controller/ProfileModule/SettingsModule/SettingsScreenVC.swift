@@ -26,6 +26,7 @@ class SettingsScreenVC: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        enableWindowInteraction()
         print("modelRoleID--------------------------------\(kSharedUserDefaults.loggedInUserModal.memberRoleId ?? "")")
         lblTitle.text = AppConstants.Settings
         settingCollectionView.reloadData()

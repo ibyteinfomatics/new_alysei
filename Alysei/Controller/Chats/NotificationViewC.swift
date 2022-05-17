@@ -113,7 +113,7 @@ class NotificationViewC: AlysieBaseViewC{
 
         
         
-        if String.getString(self.ResentUser?[index].otherImage ?? "").contains(imageDomain) {
+        if String.getString(self.ResentUser?[index].otherImage ?? "").contains(kImageBaseUrl) {
             notificationTableCell.imgViewNotification.setImage(withString: String.getString(self.ResentUser?[index].otherImage ?? ""), placeholder: UIImage(named: "image_placeholder"))
         } else {
             let img = (String.getString(self.ResentUser?[index].otherImage ?? ""))
@@ -127,7 +127,7 @@ class NotificationViewC: AlysieBaseViewC{
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
+        let time = Double.getDouble(timeStamp) /// 1000
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

@@ -139,7 +139,7 @@ class InquiryFormViewC: AlysieBaseViewC {
         
         sendMessageDetails.receiverImage = profileImageUrl
         sendMessageDetails.receiverName = self.name
-        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
         kChatharedInstance.inquirysend_message(child: "New", messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: self.passproductId ?? "")

@@ -18,7 +18,7 @@ class SeemImageVC: UIViewController {
        // chatImage.kf.indicatorType = .activity
         //chatImage.kf.setImage(with:url,placeholder:UIImage(named: "addPicture"))
         
-        chatImage.setImage(withString: url!, placeholder: UIImage(named: "image_placeholder"))
+        chatImage.setImage(withString: url!, placeholder: UIImage(named: "gallery_image"))
         
        // let logoTap = UITapGestureRecognizer(target: self, action: #selector(logoTapped(_:)))
        // self.logoImageView.addGestureRecognizer(logoTap)

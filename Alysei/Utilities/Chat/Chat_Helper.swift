@@ -696,7 +696,7 @@ class Chat_hepler {
                                 Parameters.otherId : String.getString(receiverId),
                                 Parameters.lastmessage : String.getString(messageDetails.message),
                                 Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
-                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970)),// * 1000)),
                                 Parameters.otherImage : String.getString(messageDetails.receiverImage) ,
                                 Parameters.otherName : String.getString(messageDetails.receiverName),
                                 Parameters.producerUserId : String.getString(messageDetails.producerUserId),
@@ -714,7 +714,7 @@ class Chat_hepler {
                                Parameters.otherId : String.getString(senderId),
                                Parameters.lastmessage : String.getString(messageDetails.message),
                                Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
-                               Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                               Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970)),// * 1000)),
                                Parameters.otherImage : String.getString(messageDetails.senderImage) ,
                                Parameters.otherName : String.getString(messageDetails.senderName),
                                Parameters.producerUserId : String.getString(messageDetails.producerUserId),
@@ -777,7 +777,7 @@ class Chat_hepler {
                                 Parameters.otherId : String.getString(receiverId),
                                 Parameters.lastmessage : String.getString(messageDetails.message),
                                 Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
-                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                                Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970)), // * 1000)),
                                 Parameters.otherImage : String.getString(messageDetails.receiverImage) ,
                                 Parameters.otherName : String.getString(messageDetails.receiverName),
                                 Parameters.readCount : 0,
@@ -787,7 +787,7 @@ class Chat_hepler {
                                Parameters.otherId : String.getString(senderId),
                                Parameters.lastmessage : String.getString(messageDetails.message),
                                Parameters.mediaType    : String.getString(messageDetails.mediaType?.rawValue) ,
-                               Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970 * 1000)),
+                               Parameters.timeStamp : String.getString(Int(Date().timeIntervalSince1970)), // * 1000)),
                                Parameters.otherImage : String.getString(messageDetails.senderImage) ,
                                Parameters.otherName : String.getString(messageDetails.senderName),
                                Parameters.readCount : unread, // increase count
@@ -1451,7 +1451,7 @@ extension Chat_hepler {
         let details:[String : Any] = [Parameters.information : kSharedInstance.getDictionary(groupsDetails) , Parameters.Users : kSharedInstance.getArray(userdic)]
         reference.child(autoKey).setValue(details)
         
-        let resentDetails = ["id" : String.getString(autoKey) , "name" : String.getString(groupdic["group_name"]) , "profile_image" : "" , "readState" : "" , "receiverid" : "" , "senderid" : ""  , "timestamp" : String.getString(Int(Date().timeIntervalSince1970 * 1000)) , Parameters.CreatedBy : String.getString(autoKey)]
+        let resentDetails = ["id" : String.getString(autoKey) , "name" : String.getString(groupdic["group_name"]) , "profile_image" : "" , "readState" : "" , "receiverid" : "" , "senderid" : ""  , "timestamp" : String.getString(Int(Date().timeIntervalSince1970 )) , Parameters.CreatedBy : String.getString(autoKey)]
         
         Database.database().reference().child(Parameters.ResentMessage).child(String.getString("user_" + "\(String.getString(groupdic[Parameters.admin_id]))")).child(String.getString(groupsDetails[Parameters._id])).updateChildValues(resentDetails)
         groupid(autoKey)
@@ -1536,7 +1536,7 @@ extension Chat_hepler {
     
     func GroupResentUser(lastmessage:String, groupid:String , adminid :String  , name:String , profile_image:String , readState :String) {
         
-        let timeStamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+        let timeStamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
         if  groupid == Parameters.emptyString {
             print(Parameters.alertmessage)
             return
@@ -1833,7 +1833,7 @@ extension Chat_hepler {
 extension Chat_hepler{
     //MARK;- Func for Get time from Time Stamp
     func getTime(timeStamp :Double) ->String {
-        let time = Double(timeStamp) / 1000
+        let time = Double(timeStamp) /// 1000
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short

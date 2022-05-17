@@ -181,7 +181,7 @@ class InquiryConversation: AlysieBaseViewC {
         
         self.itemName.text = productName
         
-        if productImage.contains(imageDomain) {
+        if productImage.contains(kImageBaseUrl) {
             itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
         } else {
             itemImg.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com/"+productImage, placeholder: UIImage(named: "image_placeholder"))
@@ -340,7 +340,7 @@ class InquiryConversation: AlysieBaseViewC {
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
+        let time = Double.getDouble(timeStamp) /// 1000
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -695,7 +695,7 @@ extension InquiryConversation {
         
         sendMessageDetails.receiverImage = String.getString(profileImageUrl)
         sendMessageDetails.receiverName = name
-        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+        sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
         //sendMessageDetails.uid = String.getString(self.chatTextView.text)
         
         kChatharedInstance.inquirysend_message(child: String.getString(type), messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString(userId), storeId: productId)
@@ -773,7 +773,7 @@ extension InquiryConversation {
                     
                     sendMessageDetails.receiverImage = String.getString(self?.profileImageUrl)
                     sendMessageDetails.receiverName = self?.name
-                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
                     kChatharedInstance.inquirysend_message(child: String.getString(self?.type), messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId), storeId: self?.productId ?? "")

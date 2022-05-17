@@ -48,7 +48,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dee-oG-u0W">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="86"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="posts_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="RDS-Ol-Eui">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Post_unfill" translatesAutoresizingMaskIntoConstraints="NO" id="RDS-Ol-Eui">
                                                         <rect key="frame" x="25.333333333333329" y="5" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="610-CF-AXM"/>
@@ -10363,6 +10363,7 @@
         <image name="LikesBlue" width="42" height="42"/>
         <image name="Location-1" width="42" height="42"/>
         <image name="MarketplaceAnim1" width="181.33332824707031" height="156.33332824707031"/>
+        <image name="Post_unfill" width="28.666666030883789" height="27.666666030883789"/>
         <image name="UnselectSort" width="16" height="16"/>
         <image name="Walkthrough Screen – 20" width="375" height="832"/>
         <image name="Website" width="42" height="42"/>
@@ -10402,7 +10403,6 @@
         <image name="marketplace_Store" width="28" height="26.666666030883789"/>
         <image name="marketplace_filled" width="27.333333969116211" height="25"/>
         <image name="notification_outlined" width="25.333333969116211" height="25"/>
-        <image name="posts_outlined" width="28" height="25"/>
         <image name="producer_signup_bg" width="376" height="160"/>
         <image name="product_inactive" width="19.666666030883789" height="19"/>
         <image name="profile_icon" width="26" height="26"/>

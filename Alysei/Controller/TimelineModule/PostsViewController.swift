@@ -138,6 +138,7 @@ class PostsViewController: AlysieBaseViewC  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.isUserInteractionEnabled = true
         lblHeading1.text = AppConstants.kPosts
         lblHeading2.text = AppConstants.kTitleMarketplace
         lblHeading3.text = MarketPlaceConstant.kRecipe
@@ -225,6 +226,7 @@ class PostsViewController: AlysieBaseViewC  {
     }
     
     @objc func openMarketPlace(){
+        self.view.isUserInteractionEnabled = false
         callMarketPlaceHomeApi()
         
         //self.tabBarController?.tabBar.bounds.height = 0
@@ -688,13 +690,17 @@ extension PostsViewController{
     
     func callMarketPlaceHomeApi(){
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kMarketPlaceHome, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+          
             let response = dictResponse as? [String:Any]
+          
             let isVisitedMarketplace = response?["is_visited_marketplace"] as? Int
             if isVisitedMarketplace == 0 {
                 _ = self.pushViewController(withName: MarketPlaceFirstTiimeVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
+               
             }else{
                 _ = self.pushViewController(withName: MarketplaceHomePageVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace)
-                self.hidesBottomBarWhenPushed = true
+            
+              
             }
         }
         

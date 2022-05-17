@@ -42,6 +42,7 @@ class MarketPlaceFirstTiimeVC: AlysieBaseViewC {
     }
  override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+     self.enableWindowInteraction()
         tabBarController?.tabBar.isHidden = true
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true

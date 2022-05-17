@@ -516,10 +516,12 @@ class ReceivedMessageClass {
     var senderid :String?
     var timestamp : String?
     var uid :String?
+    var base_url: String?
     var messageFrom:MessageFrom?
     init() { }
     init(uid :String , messageData:[String:Any]) {
         self.chat_id            = String.getString(messageData[Parameters.chat_id])
+        self.base_url = String.getString(messageData[Parameters.base_url])
         self.deleted          = String.getString(messageData[Parameters.deleted])
         self.like          = Bool.getBool(messageData[Parameters.like])
         //self.mediaType        = String.getString(messageData[Parameters.mediaType])

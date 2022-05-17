@@ -186,6 +186,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.enableWindowInteraction()
         tableView.reloadData()
         lblHeadPost.text = MarketPlaceConstant.kPosts
         lblheadMarkePtlace.text = MarketPlaceConstant.kMarketplace

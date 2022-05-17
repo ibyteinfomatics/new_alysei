@@ -408,6 +408,7 @@ class ProfileViewC: AlysieBaseViewC{
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        enableWindowInteraction()
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -593,6 +594,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
+        disableWindowInteraction()
         let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
         vc?.imgPUrl = self.imgPUrl
         vc!.userId = String.getString(userID)
@@ -672,6 +674,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapEditProfile(_ sender: UIButton) {
+        disableWindowInteraction()
         initiateEditProfileViewController()
         
     }

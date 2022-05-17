@@ -162,7 +162,7 @@ extension ImageWithText {
                     
                     sendMessageDetails.receiverImage = self?.profileImageUrl
                     sendMessageDetails.receiverName = self?.name
-                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970 * 1000))
+                    sendMessageDetails.timestamp = String.getString(Int(Date().timeIntervalSince1970)) // * 1000))
                     //sendMessageDetails.uid = String.getString(self!.chatTextView.text)
                     
                     kChatharedInstance.send_message(messageDic: sendMessageDetails, senderId:  String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId:String.getString( self?.userId))

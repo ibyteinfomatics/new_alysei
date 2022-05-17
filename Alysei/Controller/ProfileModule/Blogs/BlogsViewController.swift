@@ -50,7 +50,7 @@ class BlogsViewController: AlysieBaseViewC {
     }
     
     func getcurrentdateWithTime(timeStamp :String?) -> String {
-        let time = Double.getDouble(timeStamp) / 1000
+        let time = Double.getDouble(timeStamp) /// 1000
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
