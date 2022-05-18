@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "recipe_outlined@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "recipe_outlined@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

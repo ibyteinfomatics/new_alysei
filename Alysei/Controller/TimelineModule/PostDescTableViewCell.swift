@@ -90,6 +90,8 @@ class PostDescTableViewCell: UITableViewCell {
 
 
    // let socket = manager.defaultSocket
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -134,6 +136,7 @@ class PostDescTableViewCell: UITableViewCell {
         
         // Initialization code
     }
+    
    
     func pageControlUI(){
         _ = IndexPath(item: 0, section: 0)
@@ -152,6 +155,8 @@ class PostDescTableViewCell: UITableViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.imageArray.removeAll()
+        self.data = NewFeedSearchDataModel(with: [:])
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -515,6 +520,8 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imagePostCollectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCollectionViewCell", for: indexPath) as? PostImageCollectionViewCell else{
             return UICollectionViewCell()}
+        cell.imagePost.image = UIImage(named: "image_placeholder")
+        cell.tag = indexPath.row
         cell.delegate = self
       //  addZoombehavior(for: cell.imagePost)
        
@@ -526,8 +533,10 @@ extension PostDescTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
       //  if let imgUrl = URL(string:imageArray[indexPath.row]){
       
         let imgUrl = imageArray[indexPath.row]
+        let imgUrl1 = URL(string: imageArray[indexPath.row])
         if imgUrl != ""{
-            cell.imagePost.loadCacheImage(urlString: imgUrl)
+           // cell.imagePost.loadCacheImage(urlString: imgUrl)
+            cell.imagePost.loadImageWithUrl(imgUrl1!)
         }else{
           print("No Photos")
         }
@@ -611,7 +620,7 @@ protocol SubclassedCellDelegate: AnyObject {
     func zooming(started: Bool)
 }
 class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
-    @IBOutlet weak var imagePost: CustomImageView!
+    @IBOutlet weak var imagePost: ImageLoader!
     @IBOutlet weak var imageConstant: NSLayoutConstraint!
   
     var originalFrame = CGRect()
@@ -681,6 +690,7 @@ class PostImageCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDele
         super.prepareForReuse()
         //hide or reset anything you want hereafter, for example
         imagePost.image = UIImage(named: "image_placeholder")
+        
     }
 //    @objc func pinch(sender:UIPinchGestureRecognizer) {
 //       // passImageCallBack?(imagePost)

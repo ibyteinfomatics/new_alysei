@@ -10,7 +10,7 @@ import UIKit
 class UserPhotosGridCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet var imageView: CustomImageView!
+    @IBOutlet var imageView: ImageLoader!
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = UIImage(named: "image_placeholder")

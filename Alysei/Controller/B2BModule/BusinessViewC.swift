@@ -21,7 +21,7 @@ class BusinessViewC: AlysieBaseViewC {
     //MARK: - Properties -
     
     // blank data view
-   // @IBOutlet weak var text: UILabel!
+    // @IBOutlet weak var text: UILabel!
     @IBOutlet weak var logout: UIButton!
     @IBOutlet weak var viewBlankHeading: UIView!
     @IBOutlet weak var blankdataView: UIView!
@@ -276,21 +276,17 @@ class BusinessViewC: AlysieBaseViewC {
                     }else{
                         businessButtonTableCell.btnBusiness.setTitle(self.selectPrdctCatgryOptnNme, for: .normal)
                     }
-                    // }
                 }else{
                     print("No Impupdate-----",(indexPath.row))
                     
                     if indexPath.row == 0 {
                         if self.selectImpHubName == nil || self.selectImpHubName == "" {
                             businessButtonTableCell.btnBusiness.setTitle("Hubs" , for: .normal)
-                            
-                            
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(selectImpHubName ?? "", for: .normal)
                             
                         }
                     }
-                    
                     if  indexPath.row == 1 {
                         
                         if selectImpRolesNames == nil ||   selectImpRolesNames == "" {
@@ -298,7 +294,6 @@ class BusinessViewC: AlysieBaseViewC {
                             
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(selectImpRolesNames ?? "", for: .normal)
-                            
                         }
                     }
                     if indexPath.row == 2 {
@@ -310,7 +305,6 @@ class BusinessViewC: AlysieBaseViewC {
                             businessButtonTableCell.btnBusiness.setTitle(selectPrdctCatgryOptnNme ?? "", for: .normal)
                             
                         }
-                        
                     }
                 }
                 
@@ -319,7 +313,6 @@ class BusinessViewC: AlysieBaseViewC {
                     if indexPath.row == 0{
                         if self.selectProdHubName == nil || self.selectProdHubName == "" {
                             businessButtonTableCell.btnBusiness.setTitle(AppConstants.Hubs , for: .normal)
-                            
                             
                         }else{
                             businessButtonTableCell.btnBusiness.setTitle(selectProdHubName ?? "", for: .normal)
@@ -1274,8 +1267,7 @@ extension BusinessViewC {
             self.businessViewModel = BusinessViewModel(currentIndex: self.currentIndex)
             self.tblViewSearchOptions.reloadData()
             self.view.isUserInteractionEnabled = true
-            
-            
+           
         }
     }
     

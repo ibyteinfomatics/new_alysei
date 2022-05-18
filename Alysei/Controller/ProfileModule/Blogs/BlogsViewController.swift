@@ -56,7 +56,7 @@ class BlogsViewController: AlysieBaseViewC {
         dateFormatter.dateStyle = .short
         dateFormatter.timeZone = .current
         dateFormatter.dateFormat = "dd MMM YYYY"
-        dateFormatter.locale =  Locale(identifier:  "en")
+        dateFormatter.locale =  Locale(identifier: "en")
         let localDate = dateFormatter.string(from: date)
         
         return localDate

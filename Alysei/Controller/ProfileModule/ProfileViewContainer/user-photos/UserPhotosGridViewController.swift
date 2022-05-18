@@ -86,7 +86,11 @@ extension UserPhotosGridViewController : UICollectionViewDelegate, UICollectionV
         ///////cell.imageView.setImage(withString: "\(kImageBaseUrl)\(self.photos[indexPath.row])")
        // cell.imageView.setImage(withString: "\(self.photos[indexPath.row])")
         let imgUrl = self.photos[indexPath.row]
-     cell.imageView.loadCacheImage(urlString: imgUrl)
+        let imgUrl1 = URL(string: imgUrl)
+    // cell.imageView.loadCacheImage(urlString: imgUrl)
+        if imgUrl1 != URL(string: ""){
+        cell.imageView.loadImageWithUrl(imgUrl1!)
+        }
 
         return cell
     }

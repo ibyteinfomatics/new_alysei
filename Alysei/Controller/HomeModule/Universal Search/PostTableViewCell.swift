@@ -27,7 +27,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var imgPost: UIImageView!
+    @IBOutlet weak var imgPost: ImageLoader!
     
     @IBOutlet var vwpageControl: ScrollingPageControl!
     
@@ -145,8 +145,11 @@ class PostTableViewCell: UITableViewCell {
         }else{
             for i in  0..<(modelData.attachments?.count ?? 0) {
                 self.imageArray.append((modelData.attachments?[i].attachmentLink?.baseUrl ?? "") + (modelData.attachments?[i].attachmentLink?.attachmentUrl ?? ""))
-                
-                    self.imgPost.setImage(withString: String.getString(imageArray.first))
+                let imgUrl = URL(string: imageArray.first ?? "")
+                if imgUrl != URL(string: ""){
+                self.imgPost.loadImageWithUrl(imgUrl!)
+                }
+                 //   self.imgPost.setImage(withString: String.getString(imageArray.first))
             }
         }
         

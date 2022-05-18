@@ -28,7 +28,7 @@ class ImageLoader: UIImageView {
 
         imageURL = url
 
-        image = nil
+        image = UIImage(named: "image_placeholder")
         activityIndicator.startAnimating()
 
         // retrieves image if already available in cache
@@ -65,3 +65,5 @@ class ImageLoader: UIImageView {
         }).resume()
     }
 }
+
+

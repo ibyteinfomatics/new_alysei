@@ -86,6 +86,7 @@ class TutorialCollectionCell: UICollectionViewCell {
              print("ImageUrl-----------------------------------------\(imgUrl)")
            // self.imgViewTutorial.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
                  self.imgViewTutorial.loadCacheImage(urlString: strUrl)
+           
            // self.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
         }
 //
