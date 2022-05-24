@@ -154,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-E4-Vgo">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="663"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-l4-set">
@@ -256,7 +256,7 @@
                                         <connections>
                                             <outlet property="btnGetStarted" destination="dHL-5w-Zs7" id="GBt-PW-sMD"/>
                                             <outlet property="btnSkip" destination="82Y-KZ-j1J" id="jd8-Qx-izf"/>
-                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="cwG-l5-ONv"/>
+                                            <outlet property="imgViewTutorial" destination="NXJ-E4-Vgo" id="UBF-OR-gwv"/>
                                             <outlet property="lblDescription" destination="JkP-O6-DDp" id="qT7-s0-ftw"/>
                                             <outlet property="lblWelcome" destination="5L1-I6-Trr" id="gHW-qc-eoZ"/>
                                             <outlet property="pageControl" destination="24X-3h-mvm" id="9wL-HY-jbk"/>
@@ -1988,10 +1988,9 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Username," lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuE-Dp-2oV">
-                                <rect key="frame" x="20" y="84" width="130" height="30"/>
+                                <rect key="frame" x="20" y="84" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Rza-re-ygw"/>
-                                    <constraint firstAttribute="width" constant="130" id="vZ1-b1-Avd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2142,6 +2141,7 @@
                             <constraint firstItem="yxm-0u-CCo" firstAttribute="trailing" secondItem="JIO-W7-40h" secondAttribute="trailing" constant="20" id="7wr-Z8-HlX"/>
                             <constraint firstItem="TwS-YW-1Ck" firstAttribute="leading" secondItem="yxm-0u-CCo" secondAttribute="leading" id="9XL-KW-cYg"/>
                             <constraint firstItem="yxm-0u-CCo" firstAttribute="trailing" secondItem="Pbz-Lw-Cd1" secondAttribute="trailing" constant="20" id="9xx-bx-80X"/>
+                            <constraint firstItem="yxm-0u-CCo" firstAttribute="trailing" secondItem="fuE-Dp-2oV" secondAttribute="trailing" constant="20" id="Cmw-YC-2B5"/>
                             <constraint firstItem="OeT-JG-gl4" firstAttribute="leading" secondItem="yxm-0u-CCo" secondAttribute="leading" id="INB-Ax-3rZ"/>
                             <constraint firstItem="fuE-Dp-2oV" firstAttribute="leading" secondItem="yxm-0u-CCo" secondAttribute="leading" constant="20" id="MUO-4R-GaL"/>
                             <constraint firstItem="Pbz-Lw-Cd1" firstAttribute="leading" secondItem="fuE-Dp-2oV" secondAttribute="leading" id="Vvg-OH-6Lh"/>

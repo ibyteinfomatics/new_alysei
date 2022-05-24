@@ -27,5 +27,6 @@ pod 'Firebase/Messaging'
 pod 'ScrollingPageControl'
 pod 'Zoomy'
 pod 'Instructions'
+pod 'Kingfisher'
 
 end

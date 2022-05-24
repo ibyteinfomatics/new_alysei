@@ -1,5 +1,6 @@
 
 import UIKit
+import Kingfisher
 
 class TutorialViewC: AlysieBaseViewC{
 
@@ -8,6 +9,8 @@ class TutorialViewC: AlysieBaseViewC{
   @IBOutlet weak var collectionViewTutorial: UICollectionView!
     var walkthroughModel = [GetWalkThroughDataModel]()
   //MARK: - ViewLifeCycle Methods -
+    var image: UIImageView!
+    var imageArray = [UIImage]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,6 +41,20 @@ class TutorialViewC: AlysieBaseViewC{
     
     let tutorialCollectionCell = collectionViewTutorial.dequeueReusableCell(withReuseIdentifier: TutorialCollectionCell.identifier(), for: indexPath) as! TutorialCollectionCell
       tutorialCollectionCell.pageControl.currentPage = indexPath.item
+      
+      //tutorialCollectionCell.imgViewTutorial.setImage(withString: imageArray[indexPath.row], placeholder: UIImage(named: "image_placeholder"), nil)
+      let data = walkthroughModel[indexPath.row]
+    
+      if let strUrl = "\(data.attachment?.baseUrl ?? "")\(data.attachment?.attachmentURL  ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
+         
+          DispatchQueue.main.async {
+            
+              tutorialCollectionCell.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+          }
+         
+          }
+    
+      
       tutorialCollectionCell.configure(indexPath,self.walkthroughModel[indexPath.row], modelData: walkthroughModel)
       tutorialCollectionCell.pageControl.addTarget(self, action: #selector(pageControlHandle), for: .valueChanged)
     tutorialCollectionCell.delegate = self
@@ -97,10 +114,15 @@ extension TutorialViewC {
             let dictResponse = dictResponse as? [String:Any]
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.walkthroughModel = data.map({GetWalkThroughDataModel.init(withDictionary: $0)})
+              
+
             }
-            self.collectionViewTutorial.reloadData()
+             self.collectionViewTutorial.reloadData()
         }
         
     }
     
 }
+
+
+
