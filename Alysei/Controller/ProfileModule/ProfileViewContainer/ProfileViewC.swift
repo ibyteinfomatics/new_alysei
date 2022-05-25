@@ -81,7 +81,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     // @IBOutlet weak var featureCollectionView: UICollectionView!
     
-    
+    var userPercentage: Int?
     //MARK: - Properties -
     var fromRecipe: String? = ""
     var percentage: String?
@@ -612,7 +612,10 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     func tapPhotos(_ sender: UIButton) {
-        self.moveToNew(childViewController: self.photosViewcontroller, fromController: self.currentChild)
+        if self.userPercentage == ProfilePercentage.percent100.rawValue{
+            self.moveToNew(childViewController: self.photosViewcontroller, fromController: self.currentChild)
+            
+        }
     }
     
     @IBAction func tapTrip(_ sender: UIButton) {
@@ -1174,8 +1177,8 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 self.lblDisplayName.text = "\(name)".capitalized
                 self.lblDisplayNameNavigation.text = "\(name)".capitalized
-                let userPercentage = responseModel.data?.userData?.profilePercentage ?? 0
-                if (userPercentage == ProfilePercentage.percent100.rawValue) {
+                self.userPercentage = responseModel.data?.userData?.profilePercentage ?? 0
+                if (self.userPercentage == ProfilePercentage.percent100.rawValue) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
                         self.tblViewProfileCompletion.isHidden = true
                         self.headerView.isHidden = false

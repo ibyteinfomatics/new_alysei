@@ -580,6 +580,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell2.readMoreButton.tag = indexPath.row
                         let imageUrl = "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.baseUrl ?? "")" + "\(arraySearchByBolg?[indexPath.row].user?.avatarID?.attachmentURL ?? "")"
                         cell2.userImage.setImage(withString: imageUrl)
+                        cell2.lblAuthorName.text = ( arraySearchByBolg?[indexPath.row].user?.firstName ?? "") + (arraySearchByBolg?[indexPath.row].user?.lastName ?? "")
                         cell2.btnReadMoreCallback = { tag in
                             
                             check = "show"
@@ -986,6 +987,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     let imgUrl = ((self.arraySearchByBolg?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByBolg?[indexPath.row].attachment?.attachmentURL ?? ""))
                     cell2.blogImage.setImage(withString: imgUrl)
                     cell2.blogTitle.text = arraySearchByBolg?[indexPath.row].title
+                    cell2.lblAuthorName.text = ( arraySearchByBolg?[indexPath.row].user?.firstName ?? "") + (arraySearchByBolg?[indexPath.row].user?.lastName ?? "")
                     cell2.blogDescription.text = arraySearchByBolg?[indexPath.row].datumDescription
                     //cell2.dateTimeLabel.text = arraySearchByBolg?[indexPath.row].createdAt
                     let dateFormatterGet = DateFormatter()

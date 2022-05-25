@@ -376,12 +376,21 @@ class AddPostViewController: UIViewController, UITextViewDelegate , TLPhotosPick
 //            showAlert(withMessage: "Please enter some post")
             showAlert(withMessage: AppConstants.kSaySomething)
 
-        }else if imagesFromSource.count == 0{
+        }else if (imagesFromSource.count == 0 && txtPost.text == AppConstants.kEnterText){
         let charSet = CharacterSet.whitespaces
         let trimmedString = txtPost.text.trimmingCharacters(in: charSet)
         if trimmedString == "" {
             showAlert(withMessage: AppConstants.kSaySomething)
         }
+        }else if (imagesFromSource.count == 0){
+            let rawString = txtPost.text
+            let whitespace = CharacterSet.whitespacesAndNewlines
+            let trimmed = rawString?.trimmingCharacters(in: whitespace)
+            if trimmed?.count == 0 {
+                showAlert(withMessage: AppConstants.kSaySomething)
+            }else{
+                addPostApi()
+                }
         }
         else{
         addPostApi()

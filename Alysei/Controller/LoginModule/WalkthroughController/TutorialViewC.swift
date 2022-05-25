@@ -49,7 +49,7 @@ class TutorialViewC: AlysieBaseViewC{
          
           DispatchQueue.main.async {
             
-              tutorialCollectionCell.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+                   tutorialCollectionCell.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
           }
          
           }

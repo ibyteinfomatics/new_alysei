@@ -35,7 +35,7 @@ class CustomImageView: UIImageView{
         task.resume()
     }
     func loadCacheImage(urlString: String) {
-            
+        self.image = UIImage(named: "image_placeholder")
             if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
                 self.image = cacheImage
                 return

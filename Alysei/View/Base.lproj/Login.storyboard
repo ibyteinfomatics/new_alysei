@@ -2403,13 +2403,13 @@
                                                     <rect key="frame" x="0.0" y="363" width="375" height="300"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Alysei" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSR-zG-GZ5">
-                                                            <rect key="frame" x="20" y="35" width="335" height="27"/>
+                                                            <rect key="frame" x="20" y="35" width="335" height="26"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Connect to social platform Alysei and follow your interests in restaurants" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-Oa-YOK">
-                                                            <rect key="frame" x="10" y="67" width="355" height="98"/>
+                                                            <rect key="frame" x="10" y="66" width="355" height="99"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -3435,7 +3435,7 @@
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-qf-tgP">
                                                     <rect key="frame" x="15" y="10" width="345" height="152"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-9y-yWY" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-9y-yWY" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="210" y="11" width="130" height="130"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="130" id="Gih-F4-4rs"/>
@@ -3490,8 +3490,8 @@
                                         <connections>
                                             <outlet property="containerBottomConstraint" destination="P9j-z2-d6X" id="Kuh-VH-EEG"/>
                                             <outlet property="containerView" destination="Zef-qf-tgP" id="2EI-Kn-EUY"/>
-                                            <outlet property="imgRole" destination="tcg-9y-yWY" id="7dv-Sj-gyZ"/>
-                                            <outlet property="imgViewSelected" destination="eTf-qr-ZP3" id="BP5-m7-hBx"/>
+                                            <outlet property="imgRole" destination="tcg-9y-yWY" id="suA-Ds-eol"/>
+                                            <outlet property="imgViewSelected" destination="eTf-qr-ZP3" id="uCc-qF-qFx"/>
                                             <outlet property="lblRoleDesc" destination="Lco-UQ-RPg" id="Wec-kP-sd8"/>
                                             <outlet property="lblRoleName" destination="02f-Td-hV4" id="dbl-NB-Wwv"/>
                                         </connections>

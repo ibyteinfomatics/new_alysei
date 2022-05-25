@@ -153,7 +153,7 @@ class RoleTableVieCell: UITableViewCell{
     var imageArray = ["select_role1","select_role2","select_role3","select_role4","select_role5","select_role6"]
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var imgRole: CustomImageView!
+    @IBOutlet weak var imgRole: ImageLoader!
     @IBOutlet weak var lblRoleName: UILabel!
     @IBOutlet weak var imgViewSelected: UIImageView!
     @IBOutlet weak var lblRoleDesc: UILabel!
@@ -182,8 +182,9 @@ class RoleTableVieCell: UITableViewCell{
         if let strUrl = "\(model.attachment?.fimageUrl ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
-            //self.imgRole.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
-            self.imgRole.loadCacheImage(urlString: strUrl)
+                  self.imgRole.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
+      //  self.imgRole.loadCacheImage(urlString: strUrl)
+          //  self.imgRole.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder") , nil)
         }
         if model.isSelected == true{
             containerView.backgroundColor = UIColor.init(hexString: "009A9E")  //#174E85

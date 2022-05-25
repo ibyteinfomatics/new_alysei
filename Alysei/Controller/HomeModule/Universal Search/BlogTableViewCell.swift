@@ -17,6 +17,7 @@ class BlogTableViewCell: UITableViewCell {
     @IBOutlet weak var noItemLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var mainVw: UIView!
+    @IBOutlet weak var lblAuthorName: UILabel!
     var btnReadMoreCallback:((Int) -> Void)? = nil
    
     
