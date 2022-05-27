@@ -290,7 +290,7 @@ extension ProductDetailVC {
             if "\(self.productDetail?.product_detail?.userId ?? 0)" == kSharedUserDefaults.loggedInUserModal.userId {
                 self.btnSendEnquiry.isHidden = true
                 self.btnenquiryHght.constant = 0
-            }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)")  {
+            }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)") {
                 self.btnSendEnquiry.isHidden = true
                 self.btnenquiryHght.constant = 0
             }else{

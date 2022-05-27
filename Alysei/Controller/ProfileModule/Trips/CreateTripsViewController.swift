@@ -77,6 +77,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
     @IBOutlet weak var drop5: UIButton!
     @IBOutlet weak var drop6: UIImageView!
     @IBOutlet weak var lblCountTxt: UILabel!
+    @IBOutlet weak var lblMaximumCount: UILabel!
     
     var countryId,regionId,adventureId,intensityId: Int!
     
@@ -142,7 +143,11 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
         descriptionTextView.textContainer.heightTracksTextView = true
         descriptionTextView.isScrollEnabled = false
+        lblCountTxt.isHidden = false
+        lblMaximumCount.isHidden = false
         
+        let websiteTap = UITapGestureRecognizer(target: self, action: #selector(openWebsite))
+        self.websiteView.addGestureRecognizer(websiteTap)
         if tripname != nil {
             tripNameTxf.text = tripname
             
@@ -204,7 +209,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         }
         
         if typeofpage == "read" {
-            
+            websiteTxf.textColor = UIColor.link
             headerText.text = AppConstants.kTripsPackages
             drop1.isHidden = true
             drop2.isHidden = true
@@ -220,6 +225,9 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
             
             descriptionTextView.textColor = .black
             
+            lblCountTxt.isHidden = true
+            lblMaximumCount.isHidden = true  
+            
         } else {
             getInensity()
             getAdventure()
@@ -228,7 +236,17 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
     }
     
-    
+    @objc func openWebsite(){
+        guard let url = URL(string: websiteTxf.text ?? "") else {
+          return //be safe
+        }
+
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+     }
     override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
 
@@ -1007,7 +1025,7 @@ class CreateTripsViewController: AlysieBaseViewC,UITextFieldDelegate,UITextViewD
         
         descriptionTextView.text = AppConstants.kDescription
         descriptionTextView.textColor = .lightGray
-        descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
+      //  descriptionTextView.font = UIFont(name: "Helvetica Neue ", size: 16)
         
         tripNameView1.isHidden = true
         travelAgencyView1.isHidden = true

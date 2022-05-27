@@ -40,6 +40,7 @@ class UserModel: NSObject{
     var UserAvatar_id: UserAvatar?
     var userData: UserDataModel?
     var avatarImage: String?
+    var name: String?
  // var cover_id: AllProductsDataModel?
    
     
@@ -57,6 +58,7 @@ class UserModel: NSObject{
     let dictRoles = kSharedInstance.getDictionary(dictData[APIConstants.kRoles])
     self.isStoreCreated = String.getString(dictData["is_store_created"])
     self.alysei_review = Int.getInt(dictData["alysei_review"])
+      self.name = String.getString(dictData["name"])
     self.accessToken = String.getString(dicResult[APIConstants.kToken])
     self.userId = String.getString(dictData[APIConstants.kUserId])
     self.displayName = String.getString(dictData[APIConstants.kDisplayName])

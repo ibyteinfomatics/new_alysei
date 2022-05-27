@@ -386,6 +386,9 @@ struct APIUrl{
     static let kPostNotifictionEnableDisableApi = "update/notification/status"
     static let clearAllNotification = "delete/notifications"
     
+    //Enquiry Marketplace
+    static let getEnquiry = "get/user/enquiries/"
+    
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -707,7 +710,7 @@ struct AppConstants {
     static var PackagingOfUSA: String {"Packaging of USA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var FoodSafetyPlan: String { "Food Safety Plan".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var AnimalHealthOrASLCertificate: String{"Animal Health or ASL Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var UploadAnImageYourProductLabel: String{"Upload an image your product's label".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var UploadAnImageYourProductLabel: String{"Upload an image of your product label.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var UploadAnImageOfYourFCESIDCertification :String {"Upload an image of your FCE-SID certification".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var UploadAnImagOfYourPhytosanitaryCertificate : String {"Upload an image of your Phytosanitary Certificate".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var UploadAnImageOrPDFOfYourPackagingforUSA: String {"Upload an image or PDF of your packaging for USA".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

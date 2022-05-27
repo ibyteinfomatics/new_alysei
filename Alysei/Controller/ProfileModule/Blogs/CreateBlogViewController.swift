@@ -251,7 +251,7 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
         
         descriptionTextView.text = AppConstants.kDescription
         descriptionTextView.textColor = .lightGray
-        descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
+       // descriptionTextView.font = UIFont(name: "Montserrat", size: 16)
         
         blogView1.isHidden = true
         descriptionView1.isHidden = true

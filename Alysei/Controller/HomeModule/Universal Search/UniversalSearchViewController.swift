@@ -1387,10 +1387,10 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                 case 4:
                     if arraySearchByPost.count == 0{
-                        return 80
+                        return UITableView.automaticDimension
                     }
                     else{
-                        return 380
+                        return UITableView.automaticDimension
                     }
                 case 5:
                     if arraySearchByAward?.count == 0{
@@ -1411,7 +1411,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
             case 4:
                 return UITableView.automaticDimension
             case 5:
-                return 380
+                return UITableView.automaticDimension
             case 6:
                 return 280
                 

@@ -53,7 +53,6 @@ class PostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-         lblPostDesc.numberOfLines = 2
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
         self.vwpageControl.selectedPage = pages

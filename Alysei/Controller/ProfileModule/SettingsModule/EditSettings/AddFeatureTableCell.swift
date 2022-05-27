@@ -80,9 +80,16 @@ class AddFeatureTableCell: UITableViewCell {
             txtViewAddFeature.isHidden = true
             lblCountTxt.isHidden = true
             lblMaxCount.isHidden = true
+           
         }
         if (model.productTitle == AppConstants.URL) || (model.productTitle == AppConstants.URL){
             self.urlFeatureProduct = model.selectedValue
+            if model.selectedValue == ""  || model.selectedValue == nil {
+                txtFieldAddFeature.textColor = UIColor.black
+            }else{
+                txtFieldAddFeature.textColor = UIColor.link
+            }
+         
         }
         if model.productTitle == AppConstants.kDescription{
             
@@ -112,6 +119,7 @@ class AddFeatureTableCell: UITableViewCell {
             
             
         }
+        
     }
     
 }

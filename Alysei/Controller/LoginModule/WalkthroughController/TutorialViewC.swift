@@ -11,6 +11,8 @@ class TutorialViewC: AlysieBaseViewC{
   //MARK: - ViewLifeCycle Methods -
     var image: UIImageView!
     var imageArray = [UIImage]()
+    
+    var bgImages = ["SplashScreen1","SplashScreen2","SplashScreen3","SplashScreen4","SplashScreen5"]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,14 +47,16 @@ class TutorialViewC: AlysieBaseViewC{
       //tutorialCollectionCell.imgViewTutorial.setImage(withString: imageArray[indexPath.row], placeholder: UIImage(named: "image_placeholder"), nil)
       let data = walkthroughModel[indexPath.row]
     
-      if let strUrl = "\(data.attachment?.baseUrl ?? "")\(data.attachment?.attachmentURL  ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
-         
-          DispatchQueue.main.async {
-            
-                   tutorialCollectionCell.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
-          }
-         
-          }
+//      if let strUrl = "\(data.attachment?.baseUrl ?? "")\(data.attachment?.attachmentURL  ?? "")".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
+//
+//          DispatchQueue.main.async {
+//
+//                   tutorialCollectionCell.imgViewTutorial.setImage(withString: strUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+//          }
+//
+//          }
+      
+      tutorialCollectionCell.imgViewTutorial.image = UIImage(named: bgImages[indexPath.row])
     
       
       tutorialCollectionCell.configure(indexPath,self.walkthroughModel[indexPath.row], modelData: walkthroughModel)

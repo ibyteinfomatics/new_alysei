@@ -17,7 +17,7 @@ class BlockingViewC: AlysieBaseViewC {
     
   @IBOutlet weak var tblViewBlocking: UITableView!
   @IBOutlet weak var viewShadow: UIView!
-    
+    @IBOutlet weak var lblNoBlock: UILabel!
   var blockModel:BlockModel?
   
   //MARK:  - ViewLifeCycle Methods -
@@ -25,6 +25,7 @@ class BlockingViewC: AlysieBaseViewC {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tblViewBlocking.tableFooterView = UIView()
+      lblNoBlock.isHidden = true
     blockList()
   }
   
@@ -49,12 +50,19 @@ class BlockingViewC: AlysieBaseViewC {
         
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kBlockList, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
+            switch statusCode{
+            case 200:
             let dictResponse = dictResponse as? [String:Any]
             
             self.blockModel = BlockModel.init(with: dictResponse)
-          
+        
             self.tblViewBlocking.reloadData()
+                
+            default:
+                self.lblNoBlock.isHidden = false
+            }
         }
+       
       
     }
     

@@ -45,6 +45,7 @@ class AddFeatureViewC: AlysieBaseViewC {
     if userLevel == .other {
         btnUpload.isHidden = true
         btnUploadImage.isHidden = true
+       
         
     }
       btnUpload.setTitle(AppConstants.kUplaod, for: .normal)

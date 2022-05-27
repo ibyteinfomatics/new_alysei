@@ -84,7 +84,7 @@ class SelectRecipeCategaryViewController: UIViewController,UICollectionViewDeleg
                 cell.img.setImage(withString: imgUrl)
                  cell.imgSelected.alpha  = 0
                 cell.lbl.text = self.newSearchModel?[indexPath.row].name
-                cell.lbl?.font = UIFont(name: "Montserrat-Bold", size: 16)
+                cell.lbl?.font = UIFont(name: "Helvetica Neue Bold", size: 16)
 //                cell.img.layer.cornerRadius = cell.img.frame.height/2
                 cell.imgSelected.layer.cornerRadius = cell.imgSelected.frame.height/2
                

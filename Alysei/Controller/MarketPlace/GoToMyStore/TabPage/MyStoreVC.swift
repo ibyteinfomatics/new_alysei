@@ -128,6 +128,8 @@ class MyStoreVC: AlysieBaseViewC {
     }
     @objc func loadinquiry(){
         _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+        
+       // _ = self.pushViewController(withName: InquiryChatController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatController
     }
     @IBAction func btnBackAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)

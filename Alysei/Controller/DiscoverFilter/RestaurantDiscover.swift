@@ -224,6 +224,7 @@ extension RestaurantDiscover: CLLocationManagerDelegate{
       locationManager.requestAlwaysAuthorization()
       locationManager.requestWhenInUseAuthorization()
       locationManager.startUpdatingLocation()
+       
     } else {
       print(AlertMessage.kLocationNotEnabled)
      }

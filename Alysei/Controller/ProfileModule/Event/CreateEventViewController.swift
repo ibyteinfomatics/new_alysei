@@ -68,7 +68,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     @IBOutlet weak var heightbookingUrl: NSLayoutConstraint!
     @IBOutlet weak var vwHeadBooking: UILabel!
     @IBOutlet weak var lblCountTxt: UILabel!
-    
+    @IBOutlet weak var lblMaximumText: UILabel!
     
     var hostname,location,date,time,eventname,fulldescription,website,eventYype,registrationType,imgurl,baseUrl,bookingUrl: String?
     var event_id: Int?
@@ -107,7 +107,11 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         eventLabel.text = AppConstants.kEventCapType
         registrationLabel.text = AppConstants.kRegistrationCapType
         vwHeadBooking.text = AppConstants.kBookingUrl
+        lblMaximumText.isHidden = false
+        lblCountTxt.isHidden = false
         
+        let websiteTap = UITapGestureRecognizer(target: self, action: #selector(openWebsite))
+        self.websiteView.addGestureRecognizer(websiteTap)
         
         self.property()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
@@ -210,12 +214,15 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             drop1.isHidden = true
             drop2.isHidden = true
             saveButton.isHidden = true
+            websiteTxf.textColor = UIColor.link
             eventNameTxf.isUserInteractionEnabled = false
             dateTxf.isUserInteractionEnabled = false
             timeTxf.isUserInteractionEnabled = false
             descriptionTextView.isUserInteractionEnabled = false
             eventTxf.isUserInteractionEnabled = false
             registrationTxf.isUserInteractionEnabled = false
+            lblMaximumText.isHidden = true
+            lblCountTxt.isHidden = true
             if bookingUrl != "" || bookingUrl == nil {
                 heightbookingUrl.constant = 60
                 bookingUrlView.isHidden = false
@@ -304,7 +311,17 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         }
         
     }
-    
+   @objc func openWebsite(){
+       guard let url = URL(string: websiteTxf.text ?? "") else {
+         return //be safe
+       }
+
+       if #available(iOS 10.0, *) {
+           UIApplication.shared.open(url, options: [:], completionHandler: nil)
+       } else {
+           UIApplication.shared.openURL(url)
+       }
+    }
     @objc func openDropDown(){
         dataDropDown.dataSource = self.arrData
         dataDropDown.show()
@@ -755,9 +772,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         registrationLabel.isHidden = true
         vwHeadBooking.isHidden = true
         
-        descriptionTextView.text = "Description"
+        descriptionTextView.text = AppConstants.kDescription
         descriptionTextView.textColor = .lightGray
-        descriptionTextView.font = UIFont(name: "Helvetica-Neue", size: 16)
+      //  descriptionTextView.font = UIFont(name: "Helvetica-Neue", size: 18)
         
         eventNameView.isHidden = true
         hostNameView1.isHidden = true

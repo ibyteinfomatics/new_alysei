@@ -61,7 +61,7 @@ extension HubListViewController: UITableViewDelegate, UITableViewDataSource{
         let label = UILabel()
         label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
         label.text = "\(arrStateWiseHub?.hubs?[section].state_name ?? "")"
-        label.font = UIFont(name: "Montserrat-Bold", size: 16)
+        label.font = UIFont(name: "Helvetica Neue Bold", size: 16)
         label.textColor = .black
         headerView.layer.backgroundColor = UIColor.init(hexString: "#C8E9E9").cgColor
         headerView.addSubview(label)
