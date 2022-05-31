@@ -152,6 +152,7 @@ class SubjectData: Codable {
     var firstName: String?
     var lastName: String?
     var follower_count : Int?
+    var profile_img:Avatar?
    
 
     init(with dictResponse: [String:Any]){
@@ -163,6 +164,9 @@ class SubjectData: Codable {
         self.restaurantName = String.getString(dictResponse["restaurant_name"])
         if let avatar = dictResponse["avatar_id"] as? [String:Any]{
             self.avatarId = Avatar.init(with: avatar)
+        }
+        if let profile_img = dictResponse["profile_img"] as? [String:Any]{
+            self.profile_img = Avatar.init(with: profile_img)
         }
         
         self.follower_count = Int.getInt(dictResponse["follower_count"])

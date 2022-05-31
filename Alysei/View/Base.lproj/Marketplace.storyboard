@@ -9611,7 +9611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ada-dt-dPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="-607"/>
+            <point key="canvasLocation" x="986" y="-674"/>
         </scene>
         <!--Inquiry Form ViewC-->
         <scene sceneID="nYJ-7k-mSc">
@@ -9824,7 +9824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="En7-Jr-kON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2387" y="-556"/>
+            <point key="canvasLocation" x="1659" y="-674"/>
         </scene>
         <!--Inquiry ChatVC-->
         <scene sceneID="dFO-E1-CX1">
@@ -10113,7 +10113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tin-IW-e62" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108.6956521739135" y="-556.47321428571422"/>
+            <point key="canvasLocation" x="2128" y="2211"/>
         </scene>
         <!--Select Multi Member ShipVC-->
         <scene sceneID="qt2-7F-6OE">
@@ -10630,7 +10630,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGB-h0-OJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3777" y="-556"/>
+            <point key="canvasLocation" x="2128" y="2881"/>
         </scene>
     </scenes>
     <resources>

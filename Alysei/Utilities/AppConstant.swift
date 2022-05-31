@@ -386,8 +386,9 @@ struct APIUrl{
     static let kPostNotifictionEnableDisableApi = "update/notification/status"
     static let clearAllNotification = "delete/notifications"
     
-    //Enquiry Marketplace
+    //Inquiry Marketplace
     static let getEnquiry = "get/user/enquiries/"
+    static let getInquiryMessage = "get/enquiry/messages"
     
     
     enum FeaturedProduct {
@@ -1787,6 +1788,7 @@ struct APIConstants {
     static let kProductPrice = "product_price"
     static let kProductCategoryId = "product_category_id"
     static let kProductId = "product_id"
+    static let kSenderId = "sender_id"
     static let kProductSubCategoryId = "product_subcategory_id"
     static let kbrandLabelId = "brand_label_id"
     static let kMarketPlaceProduct_id = "marketplace_product_id"

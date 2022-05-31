@@ -19,11 +19,19 @@ class NotificationTableCell: UITableViewCell {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var count: UIButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imgViewNotification.layer.cornerRadius = self.imgViewNotification.frame.height / 2
+        imgViewNotification.layer.masksToBounds = true
+       
+        
+    }
+    
     //MARK: - Public Methods -
     
     public func configure(){
       
-    
+       
         //name.text = "Anthony Tran is now connected with you."
        // message.text = "few seconds ago"
     }

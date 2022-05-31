@@ -449,6 +449,7 @@
 		6BD23A032771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */; };
 		6BD28D062770A49400AA0105 /* SearchByRegionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */; };
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
+		6BE430AE2845ED200000A897 /* InquiryConverstionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */; };
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
@@ -1149,6 +1150,7 @@
 		6BD23A022771D9B600F0A1F6 /* MyPreferenceCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPreferenceCollectionReusableView.swift; sourceTree = "<group>"; };
 		6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByRegionCollectionViewCell.xib; sourceTree = "<group>"; };
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
+		6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryConverstionController.swift; sourceTree = "<group>"; };
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
@@ -2362,6 +2364,7 @@
 			children = (
 				6BC76A04283E0F1500B49313 /* Firebase Enquiry */,
 				6BC76A02283E0F0700B49313 /* InquiryChatController.swift */,
+				6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */,
 			);
 			path = Inquiry;
 			sourceTree = "<group>";
@@ -3787,6 +3790,7 @@
 				27D0FAB225CEE9FF00463FE0 /* ForgotPasswordViewC.swift in Sources */,
 				276E16B125DD8C5E00B17ACF /* TutorialCollectionCell.swift in Sources */,
 				271662A925BD7A1E000C0189 /* BusinessTextFieldTableCell.swift in Sources */,
+				6BE430AE2845ED200000A897 /* InquiryConverstionController.swift in Sources */,
 				C5EB3CEA26E9CB8600CCAC9E /* ViewAllViewController.swift in Sources */,
 				C5D6F7EC26B1829D006FFCDF /* HubsListVC.swift in Sources */,
 				279AB34925FF436C0061FCB3 /* StateListTable.swift in Sources */,

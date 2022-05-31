@@ -486,8 +486,8 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         }
     
     @IBAction func messageAction(_ sender: UIButton){
-        _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
-      //  _ = self.pushViewController(withName: InquiryChatController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatController
+      //  _ = self.pushViewController(withName: InquiryChatVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatVC
+        _ = self.pushViewController(withName: InquiryChatController.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? InquiryChatController
     }
     
     @IBAction func backAction(_ sender: UIButton){

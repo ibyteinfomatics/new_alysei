@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreMIDI
 
-class InquiryChatController: UIViewController {
+class InquiryChatController: AlysieBaseViewC {
     @IBOutlet weak var vwNew: UIView!
     @IBOutlet weak var vwOpened: UIView!
     @IBOutlet weak var vwClosed: UIView!
@@ -25,9 +26,17 @@ class InquiryChatController: UIViewController {
     var inquiryNewOpenModel : InquiryNewOpenModel?
     var userType: UserRoles!
     var type: String?
+    
+    var passProductId: String?
+    var passSenderId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        type = "new"
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+            type = "new"
+        }else{
+            type = "open"
+        }
         callTabApi()
         lblHeading.text  = "Inbox"
         lblOpened.text = MarketPlaceConstant.kOpened
@@ -124,21 +133,76 @@ class InquiryChatController: UIViewController {
             return UITableViewCell()
         }else{
         let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as! NotificationTableCell
-        notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].sender?.name
+         notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
+            
+            let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.attachmentUrl ?? "")
+            
+            notificationTableCell.imgViewNotification.setImage(withString: imageUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+            let timeInterval  = inquiryNewOpenModel?.dataOpen?[index].created_at ?? ""
+            print("timeInterval----------------------",timeInterval)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en")
+            let date = dateFormatter.date(from: timeInterval)
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "HH:mm a"
+            let dateString = newDateFormatter.string(from: date ?? Date())
+            print("formatted date is =  \(dateString)")
+            notificationTableCell.time.text = dateString
+            
+//            if inquiryNewOpenModel![index].mediaType == "photos" {
+//                notificationTableCell.photo.constant = 20
+//                notificationTableCell.message.text = "  Photo"
+//            } else {
+//                notificationTableCell.photo.constant = 0
+//                notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[0].me
+//            }
             return notificationTableCell
         }
         //notificationTableCell.configure()
-        
-       
-        
-       
-        
+     
     }
     
     @IBAction func backAction(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
-    
+    func getcurrentdateWithTime(timeStamp :String?) -> String {
+        let time = Double.getDouble(timeStamp) /// 1000
+        let date = Date(timeIntervalSince1970: time)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeZone = .current
+        dateFormatter.dateFormat = "dd MMM YYYY"
+        dateFormatter.locale =  Locale(identifier:  "en")
+        let localDate = dateFormatter.string(from: date)
+        
+            let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
+            let components = Calendar.current.dateComponents(units, from: date, to: Date())
+
+            if components.year! > 0 {
+                return "\(components.year!) " + (components.year! > 1 ? MarketPlaceConstant.kYearsAgo : MarketPlaceConstant.kYearAgo )
+
+            } else if components.month! > 0 {
+                return "\(components.month!) " + (components.month! > 1 ? MarketPlaceConstant.kMonthsAgo : MarketPlaceConstant.kMonthAgo)
+
+            } else if components.weekOfYear! > 0 {
+                return "\(components.weekOfYear!) " + (components.weekOfYear! > 1 ? MarketPlaceConstant.kWeeksAgo : MarketPlaceConstant.kWeekAgo)
+
+            } else if (components.day! > 0) {
+                return (components.day! > 1 ? "\(String.getString(localDate))" : MarketPlaceConstant.kYesterday)
+
+            } else if components.hour! > 0 {
+                return "\(components.hour!) " + (components.hour! > 1 ? MarketPlaceConstant.kHoursAgo : MarketPlaceConstant.kHourAgo)
+
+            } else if components.minute! > 0 {
+                return "\(components.minute!) " + (components.minute! > 1 ? MarketPlaceConstant.kMinutesAgo : MarketPlaceConstant.kMinuteAgo)
+
+            } else {
+                return "\(components.second!) " + (components.second! > 1 ? MarketPlaceConstant.kSecondsAgo : MarketPlaceConstant.kSecondAgo)
+            }
+        
+    }
+
 }
 extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,6 +221,16 @@ extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.passProductId  = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
+        self.passSenderId = "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].receiver?.userId ?? 0)"
+        let vc = pushViewController(withName: InquiryConverstionController.id(), fromStoryboard: StoryBoardConstants.kChat) as! InquiryConverstionController
+        vc.passProductId = passProductId
+        vc.passSenderId = passSenderId
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+    }
 }
 extension InquiryChatController {
     func callTabApi(){
@@ -167,6 +241,7 @@ extension InquiryChatController {
                 if let data = result["data"] as? [String:Any]{
                 self.inquiryNewOpenModel = InquiryNewOpenModel.init(with: data)
             }
+              
                 self.tblViewNotification.reloadData()
             }
             
