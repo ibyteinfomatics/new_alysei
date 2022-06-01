@@ -67,7 +67,7 @@ class InquiryConverstionController: AlysieBaseViewC {
         var senderselectedImageChat = [String]()
         var receiverselectedImgaeChat = [String]()*/
         
-        var messages:[InquiryReceivedMessageClass]?
+        var messages: [OpenModel]?
         //var receiverDetails:RecentUser?
         var resentUserDetails = [InquiryRecentUser]()
         
@@ -103,7 +103,7 @@ class InquiryConverstionController: AlysieBaseViewC {
             morebtn.isHidden = true
             initialSetup()
             registerNib()
-            receiveMessage()
+           // receiveMessage()
             
             if type == "Closed" && ResentUser?[position].producerUserId == String.getString(kSharedUserDefaults.loggedInUserModal.userId){
                 viewBottom.isHidden = true
@@ -260,15 +260,15 @@ class InquiryConverstionController: AlysieBaseViewC {
         
         
         //MARK:- func for receiveMessgae
-        func receiveMessage() {
-            kChatharedInstance.inquiryreceivce_message(senderId: String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId: String.getString(userId), storeId: productId ) { (message, deletedMessage) in
-                //chatInstanse.updateRecentChatMessageCount(receiverId: String.getString(self.receiverDetails?.receiverId), senderId: String.getString(self.receiverDetails?.senderId))
-                self.messages?.removeAll()
-                self.messages =  message
-                self.chatTblView.reloadData()
-                self.scrollToLastRow()
-            }
-        }
+//        func receiveMessage() {
+//            kChatharedInstance.inquiryreceivce_message(senderId: String.getString(kSharedUserDefaults.loggedInUserModal.userId), receiverId: String.getString(userId), storeId: productId ) { (message, deletedMessage) in
+//                //chatInstanse.updateRecentChatMessageCount(receiverId: String.getString(self.receiverDetails?.receiverId), senderId: String.getString(self.receiverDetails?.senderId))
+//                self.messages?.removeAll()
+//                self.messages =  message
+//                self.chatTblView.reloadData()
+//                self.scrollToLastRow()
+//            }
+//        }
         
         @IBAction func moreTapped(_ sender: UIButton) {
             openMoredropDown()
@@ -446,225 +446,29 @@ class InquiryConverstionController: AlysieBaseViewC {
         
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           
-            let objects = self.messages?[indexPath.row]
-            if  objects?.messageFrom  == .sender {
-                
-                switch objects?.mediaType {
-                
-                case .text? :
-                    if type == "New" || type == "Opened"{
-                        //type = "New"
-                    }
-                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
-                    
-                    
-                    
-                    textCell.lblMessage.text = objects?.message
-                    textCell.likeImgView.isHidden = true
-                    let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
-                    textCell.bgView.layer.cornerRadius = 15
-                    textCell.bgView.layer.masksToBounds = true
-                    textCell.bgView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMinXMaxYCorner]
-                    
-                    textCell.lbltime.text = time
-                    
-                    textCell.LongDeleteCallBack = {
-                        //textCell.bgView.backgroundColor = UIColor.darkGray
-                        
-                        if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
-                            textCell.bgView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-                            
-                            let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
-                            self.selectedChat.remove(at: index!)
-                            
-                        } else {
-                            textCell.bgView.backgroundColor = UIColor.darkGray
-                            self.selectedChat.append(String.getString(objects?.uid))
-                        }
-                        
-                        if self.selectedChat.count > 0{
-                            self.btnDelete.isHidden = false
-                        } else {
-                            self.btnDelete.isHidden = true
-                        }
-                        
-                    }
-                    
+            if indexPath.row == 0{
+                   guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
+                textCell.likeImgView.isHidden = true
+                let companyName = self.messages?[indexPath.row].receiver?.companyName ?? ""
+                let email = self.messages?[indexPath.row].receiver?.email ?? ""
+                let phone = self.messages?[indexPath.row].receiver?.phone ?? ""
+                let message = self.messages?[indexPath.row].message ?? ""
+                textCell.lblMessage.text = ((companyName) + "\n" + (email) + "\n" + (phone) + (message))
+                let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                print("timeInterval----------------------",timeInterval)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateFormatter.locale = Locale(identifier: "en")
+                let date = dateFormatter.date(from: timeInterval)
+                let newDateFormatter = DateFormatter()
+                newDateFormatter.dateFormat = "HH:mm a"
+                let dateString = newDateFormatter.string(from: date ?? Date())
+                print("formatted date is =  \(dateString)")
+                textCell.lbltime.text = dateString
                     return textCell
-                    
-                case .photos? :
-                    
-                    if type == "New" || type == "Opened"{
-                        //type = "New"
-                    }
-                    
-                    
-                    guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
-                    
-                    photoCell.sendimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
-                    photoCell.btnLike.isHidden = true
-                    
-                    let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
-                    photoCell.time.text = time
-                    
-                    //OPEN IMAGE
-                    photoCell.openImageCallBack = {
-                        
-                        let story = UIStoryboard(name:"Chat", bundle: nil)
-                        let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                        controller.url = String.getString(objects?.message)
-                        
-                        self.present(controller, animated: true)
-                    }
-                    
-                    photoCell.LongDeleteCallBack = {
-                        //textCell.bgView.backgroundColor = UIColor.darkGray
-                        
-                        if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
-                            //textCell.bgView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-                            
-                            let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
-                            self.selectedChat.remove(at: index!)
-                            
-                        } else {
-                            //textCell.bgView.backgroundColor = UIColor.darkGray
-                            self.selectedChat.append(String.getString(objects?.uid))
-                        }
-                        
-                        if self.selectedChat.count > 0 {
-                            self.btnDelete.isHidden = false
-                        } else {
-                            self.btnDelete.isHidden = true
-                        }
-                        
-                    }
-                    
-                    return photoCell
-                    
-                default :
-                    return UITableViewCell()
-                }
-                
-            }else  {
-                
-                switch objects?.mediaType {
-                case .text? :
-                    
-                    new_opend = false
-                    if indexPath.row == 0 && type == "Opened"{
-                        morebtn.isHidden = false
-                    }
-                    
-                    if type == "New"{
-                        type = "Opened"
-                    }
-                    
-                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
-                    
-                    textCell.lblMessage.text = objects?.message
-                    textCell.likeImgView.isHidden = true
-                    textCell.chatBoxView.layer.cornerRadius = 15
-                    textCell.chatBoxView.layer.masksToBounds = true
-                    textCell.chatBoxView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner]
-                    
-                    let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
-                    
-                    textCell.lbltime.text = time
-                    
-                    textCell.LongDeleteCallBack = {
-                        //textCell.bgView.backgroundColor = UIColor.darkGray
-                        
-                        if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
-                            textCell.chatBoxView.backgroundColor = UIColor.init(red: 229/255.0, green: 229/255.0, blue: 234/255.0, alpha: 1.0)
-                            
-                            let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
-                            self.selectedChat.remove(at: index!)
-                            
-                        } else {
-                            textCell.chatBoxView.backgroundColor = UIColor.darkGray
-                            self.selectedChat.append(String.getString(objects?.uid))
-                        }
-                        
-                        if self.selectedChat.count > 0 {
-                            self.btnDelete.isHidden = false
-                        } else {
-                            self.btnDelete.isHidden = true
-                        }
-                        
-                    }
-                    
-                    if String.getString(objects?.senderImage).contains(imageDomain) {
-                        textCell.profile_image.setImage(withString: String.getString(objects?.senderImage).replacingOccurrences(of: "https://alyseiapi.ibyteworkshop.com/", with: "https://alysei.s3.us-west-1.amazonaws.com/"), placeholder: UIImage(named: "image_placeholder"))
-                    } else {
-                       // textCell.profile_image.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com//"+String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
-                        textCell.profile_image.setImage(withString: String.getString(objects?.senderImage), placeholder: UIImage(named: "image_placeholder"))
-                    }
-                    
-                    //textCell.profile_image.setImage(withString: String.getString(objects?.receiverImage), placeholder: UIImage(named: "image_placeholder"))
-                    textCell.profile_image.layer.cornerRadius = textCell.profile_image.frame.width/2
-                    
-                    return textCell
-                case .photos? :
-                    if indexPath.row == 0 && type == "Opened"{
-                        morebtn.isHidden = false
-                    }
-                    
-                    new_opend = false
-                    
-                    if type == "New"{
-                        type = "Opened"
-                    }
-                    
-                    guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
-                    
-                    photoCell.receiveimageView.setImage(withString: String.getString(objects?.message), placeholder: UIImage(named: "image_placeholder"))
-                    photoCell.btnLike.isHidden = true
-                    
-                    let time = self.getcurrentdateWithTime(timeStamp: String.getString(objects?.timestamp))
-                    
-                    photoCell.time.text = time
-                    
-                    photoCell.LongDeleteCallBack = {
-                        //textCell.bgView.backgroundColor = UIColor.darkGray
-                        
-                        if self.selectedChat.contains(obj: String.getString(objects?.uid)) {
-                            //textCell.bgView.backgroundColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-                            
-                            let index = self.selectedChat.firstIndex(of: String.getString(objects?.uid))
-                            self.selectedChat.remove(at: index!)
-                            
-                        } else {
-                            //textCell.bgView.backgroundColor = UIColor.darkGray
-                            self.selectedChat.append(String.getString(objects?.uid))
-                        }
-                        
-                        if self.selectedChat.count > 0 {
-                            self.btnDelete.isHidden = false
-                        } else {
-                            self.btnDelete.isHidden = true
-                        }
-                        
-                    }
-                    
-                    //OPEN IMAGE
-                    photoCell.openImageCallBack = {
-                        
-                        let story = UIStoryboard(name:"Chat", bundle: nil)
-                        let controller = story.instantiateViewController(withIdentifier: "SeemImageVC") as! SeemImageVC
-                        controller.url = String.getString(objects?.message)
-                        
-                        self.present(controller, animated: true)
-                    }
-                    
-                    return photoCell
-                default :
-                    return UITableViewCell()
-                }
-                
             }
-            
-        }
+            return UITableViewCell()
+            }
         
     }
 
@@ -678,6 +482,14 @@ class InquiryConverstionController: AlysieBaseViewC {
                 TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.getInquiryMessage, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { result, error, errorType, statusCode in
                     
                     print(result)
+                    if let result = result as? [String:Any] {
+
+                        if let data = result["data"] as? [[String:Any]]{
+                            self.messages = data.map({OpenModel.init(with: $0)})
+                    }
+
+                        self.chatTblView.reloadData()
+                    }
                 }
             }
        func notificationApi(fromid: String, toid: String){

@@ -1250,7 +1250,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     
     //MARK: Marketplace Store Screen
     static var kItalianFBProducers  : String {"Italian F&B Producers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+      static var kItalianFBProducer  : String {"Italian F&B Producer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var JoinThe: String{"Join the".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ToExpandYourNetworkAndAccess: String{"to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
@@ -1987,7 +1987,7 @@ struct StaticArrayData {
                                         (image: "italianrestaurantsinus", name: AppConstants.kItalianRestaurants),
                                         (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
                                         (image: "travelagencies", name: AppConstants.kTravelAgencies),
-                                        (image: "producers", name: MarketPlaceConstant.kItalianFBProducer),
+                                        (image: "producers", name: MarketPlaceConstant.kItalianFBProducers),
     ]
     
     static let kNetworkCategoryDict = [(image: "invitations", name: AppConstants.kInvitations),

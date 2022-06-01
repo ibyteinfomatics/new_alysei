@@ -147,6 +147,7 @@ class SubjectData: Codable {
     var email: String?
     var roleId: Int?
     var companyName: String?
+    var phone: String?
     var restaurantName: String?
     var avatarId: Avatar?
     var firstName: String?
@@ -162,6 +163,7 @@ class SubjectData: Codable {
         self.roleId = Int.getInt(dictResponse["role_id"])
         self.companyName = String.getString(dictResponse["company_name"])
         self.restaurantName = String.getString(dictResponse["restaurant_name"])
+        self.phone = String.getString(dictResponse["phone"])
         if let avatar = dictResponse["avatar_id"] as? [String:Any]{
             self.avatarId = Avatar.init(with: avatar)
         }

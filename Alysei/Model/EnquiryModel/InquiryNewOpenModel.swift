@@ -39,10 +39,11 @@ class OpenModel{
     var email: String?
     var phone: String?
     var message: String?
-    var sender: UserModel?
+    var sender: SubjectData?
     var receiver: SubjectData?
     var product: MyStoreProductDetail?
     var created_at: String?
+   
     
     init(with dictResponse: [String:Any]){
         
@@ -55,10 +56,10 @@ class OpenModel{
         self.phone = String.getString(dictResponse["phone"])
         self.message = String.getString(dictResponse["message"])
         if let data = dictResponse["sender"] as? [String:Any]{
-            self.sender = UserModel.init(withDictionary: data)
+            self.sender = SubjectData.init(with: data)
         
         }
-        
+      
         self.created_at = dictResponse["created_at"] as? String
         if let data1 = dictResponse["receiver"] as? [String:Any]{
             self.receiver = SubjectData.init(with: data1)

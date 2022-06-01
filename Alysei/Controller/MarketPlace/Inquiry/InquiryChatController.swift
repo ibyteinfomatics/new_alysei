@@ -133,7 +133,7 @@ class InquiryChatController: AlysieBaseViewC {
             return UITableViewCell()
         }else{
         let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as! NotificationTableCell
-         notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
+   //      notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
             
             let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.attachmentUrl ?? "")
             
