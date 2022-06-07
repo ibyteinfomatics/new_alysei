@@ -45,12 +45,17 @@ class AddFeatureViewC: AlysieBaseViewC {
     if userLevel == .other {
         btnUpload.isHidden = true
         btnUploadImage.isHidden = true
-       
-        
+           
     }
       btnUpload.setTitle(AppConstants.kUplaod, for: .normal)
     super.viewDidLoad()
-    btnCamera.isHidden = true
+      if userLevel == .other {
+        btnCamera.isHidden = true
+      }else if arrSelectedFields.count == 0{
+       btnCamera.isHidden = true
+      }else {
+          btnCamera.isHidden = false
+      }
     self.initialImageSetUp()
   }
 
@@ -319,7 +324,7 @@ extension AddFeatureViewC: UIImagePickerControllerDelegate, UINavigationControll
     
     guard let selectedImage = info[.editedImage] as? UIImage else { return }
     self.dismiss(animated: true) {
-        self.btnCamera.isHidden = false
+       // self.btnCamera.isHidden = false
       self.imgViewProduct.image = selectedImage
 
     }

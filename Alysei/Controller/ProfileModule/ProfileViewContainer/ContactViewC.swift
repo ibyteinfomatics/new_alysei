@@ -38,14 +38,14 @@ class ContactViewC: AlysieBaseViewC {
     super.viewDidLoad()
       lblHeading.text = AppConstants.ContactUs
       editContactDetailButton.setTitle(AppConstants.Edit, for: .normal)
-    self.tblViewContactUs.showsHorizontalScrollIndicator = false
-    self.tblViewContactUs.showsVerticalScrollIndicator = false
+  //  self.tblViewContactUs.showsHorizontalScrollIndicator = false
+   // self.tblViewContactUs.showsVerticalScrollIndicator = false
     
     self.view.isUserInteractionEnabled = true
     self.editContactDetailButton.isUserInteractionEnabled = true
-    self.tblViewContactUs.isUserInteractionEnabled = true
+ //   self.tblViewContactUs.isUserInteractionEnabled = true
 
-    self.tblViewContactUs.allowsSelection = true
+ //   self.tblViewContactUs.allowsSelection = true
 
     //let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureMethod(_:)))
     //self.view.addGestureRecognizer(tap)
@@ -102,11 +102,13 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
   }
     
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if indexPath.row == 2{
-        return 90
-    }else{
-    return 60
-    }
+      
+      return UITableView.automaticDimension
+//    if indexPath.row == 2{
+//        return 90
+//    }else{
+//    return 60
+//    }
   }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,7 +121,7 @@ extension ContactViewC: UITableViewDataSource,UITableViewDelegate{
         }
         if indexPath.row == 4{
             let facebookUrl = (self.tableData[indexPath.row].value )
-            print("Website----------------------------",facebookUrl)
+            print("facebookUrl----------------------------",facebookUrl)
             guard let url = URL(string: facebookUrl) else { return }
             openUrlCallBack?(url)
            

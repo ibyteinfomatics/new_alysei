@@ -79,7 +79,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         urlView1.isHidden = false
         urlLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
         urlNameTxf.text = "https://"
-        
+        urlNameTxf.textColor = UIColor.black
         if eventName != nil {
             
             uploadImage.setImage(withString: String.getString(imgurl!), placeholder: UIImage(named: "image_placeholder"))
@@ -89,6 +89,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             eventNameTxf.text = eventName
             productNameTxf.text = productName
             urlNameTxf.text = url
+            urlNameTxf.textColor = UIColor.link
             placeNameTxf.text = placeName
             
             
@@ -117,6 +118,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
+           
             saveButton.isHidden = true
             eventNameTxf.isUserInteractionEnabled = false
             productNameTxf.isUserInteractionEnabled = false

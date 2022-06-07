@@ -62,8 +62,10 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
             
             if draft == "1" {
                 switchBar.isOn = true
+                draftLabel.text = AppConstants.Publish
             } else {
                 switchBar.isOn = false
+                draftLabel.text = RecipeConstants.kDraft
             }
             
             self.cameraIcon.isHidden = true

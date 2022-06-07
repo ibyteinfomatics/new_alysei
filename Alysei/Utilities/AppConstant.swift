@@ -1183,7 +1183,7 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
         static var kShowcaseProductSimpleClean  : String {  "Showcase you Products Store in a simple, clean and professional way".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kBeingResponsiveBuildTrust  : String {  "Being responsive will help you to build trust with Buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
-        static var kAskFoeProductSampleRequest  : String {  "Ask for product information, samples request, prices, quantity etc.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+        static var kAskFoeProductSampleRequest  : String {  "Ask for product information, samples request, prices, quantity etc".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kInformationAndDetails  : String { "Information and details".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
         static var kPhotoQuality  : String {  "Photo Quality".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kAllInformationProvideAccurate =  "Make sure all the information you provide are accurate and completed"
@@ -1201,12 +1201,12 @@ static var kChoosePlanRight  : String { "Choose a plan that is right for you".lo
     static var kConnectWithBuyers  : String {"Connect with buyers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCreateListingBuyers  : String {"When you create a listing, buyers will interact with you".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
-    static var kAddingAccurateHelpBuyers  : String { "Adding relevant and accurate info helps buyers to learn more about what you are selling.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddingAccurateHelpBuyers  : String { "Adding relevant and accurate info helps buyers to learn more about what you are selling".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddClearPhotos  : String { "Add clear photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
     
-    static var kPhotosGoodResolutionAndLightning : String {"Photos should have a good resolution and lighting,and should only show what you are listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPhotosGoodResolutionAndLightning : String {"Photos should have a good resolution and lighting, and should only show what you are listing".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOfferFairPrice  : String {"Offer a fair price".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kOfferingFarePriceToCompMarket  : String {"Make sure you are offering prices appropriate to a competitive market like the US".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     ////MARK: Marketplace ProductInfo Screen

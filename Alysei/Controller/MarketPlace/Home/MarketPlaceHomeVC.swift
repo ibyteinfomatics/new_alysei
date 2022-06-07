@@ -381,7 +381,7 @@ class MarketPlaceHomeVC: AlysieBaseViewC {
         self.walkSubView3Height.constant = 55
         walkView2Img.image = UIImage(named: "Group 1091")
         walkView2Tilte.text = "Create your store"
-        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers learn more about what you're selling."
+        walkView2SubTitle.text = "Adding relevant and accurate info helps buyers learn more about what you're selling"
        
         walkSubView1Img.image = UIImage(named: "icons8_xlarge_icons")
         walkSubView1Title.text = "Add clear photos"

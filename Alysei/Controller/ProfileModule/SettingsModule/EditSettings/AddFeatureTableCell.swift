@@ -163,9 +163,11 @@ extension AddFeatureTableCell: UITextViewDelegate, UITextFieldDelegate{
                 self.lblCountTxt.text = "0"
             }else{
             self.lblCountTxt.text = "\(finalText.count)"
+                txtViewAddFeature.text = updatedText
             }
+           
             self.productFieldsDataModel.selectedValue = String.getString(self.txtViewAddFeature.text)
-            callback?(textView.text)
+            callback?(txtViewAddFeature.text)
             return true
             
         }else{
