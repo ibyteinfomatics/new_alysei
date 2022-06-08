@@ -633,7 +633,7 @@ struct AppConstants {
     static var kNameOfCompetitionEvent: String{"Name of Competition / Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgency: String {"Travel Agency".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNameOfWinningProduct: String{"Name of winning Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kNameOfMedalPlaceReceived : String {"Name of Medal / place received".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNameOfMedalPlaceReceived : String {"Medal / Place received".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCompetitionURL : String {"Competition URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
   
     

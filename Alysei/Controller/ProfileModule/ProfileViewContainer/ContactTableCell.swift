@@ -20,7 +20,15 @@ class ContactTableCell: UITableViewCell {
     func updateDisplay(_ viewModel: ContactDetail.view.tableCellModel!) {
         self.iconView.image = UIImage(named: viewModel.imageName)
         self.titleLabel.text = "\(viewModel.title)"
-        self.detailLabel.text = "\(viewModel.value)"
+        let firstChar = viewModel.value.first
+        var detail = viewModel.value
+        if firstChar == ","{
+            var detailValue = detail.removeFirst()
+            self.detailLabel.text = "\(detailValue)"
+        }else{
+            self.detailLabel.text = "\(viewModel.value)"
+        }
+        
         if  viewModel.value == nil || viewModel.value == "null"{
             self.detailLabel.isHidden = true
             self.titleLabel.isHidden = true
@@ -36,5 +44,7 @@ class ContactTableCell: UITableViewCell {
         }else{
             self.detailLabel.textColor = UIColor.black
         }
+        
+    
     }
 }

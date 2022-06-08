@@ -84,6 +84,7 @@ class ContactViewC: AlysieBaseViewC {
     guard let contactTableCell = tblViewContactUs.dequeueReusableCell(withIdentifier: ContactTableCell.identifier(), for: indexPath) as? ContactTableCell else {
         return UITableViewCell()
     }
+      contactTableCell.selectionStyle = .none
     contactTableCell.updateDisplay(tableData[indexPath.row])
     return contactTableCell
   }

@@ -4328,7 +4328,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-UF-RRq">
-                                                            <rect key="frame" x="10" y="30" width="374" height="68"/>
+                                                            <rect key="frame" x="5" y="30" width="379" height="68"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <color key="textColor" systemColor="labelColor"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -4343,7 +4343,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="V8r-UF-RRq" secondAttribute="bottom" constant="2" id="7lu-6R-1qn"/>
                                                         <constraint firstItem="s9M-Yv-A6Q" firstAttribute="top" secondItem="bAC-M0-Sti" secondAttribute="top" constant="8" id="9HL-vl-sba"/>
                                                         <constraint firstAttribute="trailing" secondItem="V8r-UF-RRq" secondAttribute="trailing" constant="10" id="KZq-GH-dD3"/>
-                                                        <constraint firstItem="V8r-UF-RRq" firstAttribute="leading" secondItem="s9M-Yv-A6Q" secondAttribute="leading" id="PRv-D4-ciG"/>
+                                                        <constraint firstItem="V8r-UF-RRq" firstAttribute="leading" secondItem="s9M-Yv-A6Q" secondAttribute="leading" constant="-5" id="PRv-D4-ciG"/>
                                                         <constraint firstItem="iDl-qG-Svb" firstAttribute="top" secondItem="s9M-Yv-A6Q" secondAttribute="top" id="Q1c-gj-yuH"/>
                                                         <constraint firstItem="V8r-UF-RRq" firstAttribute="top" secondItem="s9M-Yv-A6Q" secondAttribute="bottom" constant="2" id="fVn-Ws-HUg"/>
                                                     </constraints>
