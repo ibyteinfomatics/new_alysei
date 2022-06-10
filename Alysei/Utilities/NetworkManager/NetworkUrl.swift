@@ -87,4 +87,5 @@ let kMessage                    = "message"
 let kDeviceToken                = "deviceToken"
 let profilepic                  = "profilepic"
 let appLocale                   =  "locale"
+let profile_completed           = "profile_completed"
 

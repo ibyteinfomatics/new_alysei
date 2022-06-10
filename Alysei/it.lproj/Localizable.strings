@@ -350,7 +350,7 @@
 
 "What is your favourite \n Cuisines?" = "Qual è la tua cucina \n preferita?";
 "Do you have any food \n allergies?" = "Hai qualche allergia \n alimentare?";
-"Do you have follow these \n diets?" = "Segui una di queste \n diete?";
+"Which diet do you follow?" = "Segui una di queste \n diete?";
 "Don't  want to see \n ingredients?" = "Quali ingredienti non \n vuoi vedere?";
 "Back" = "Indietro";
 "Skip" = "Salta";
@@ -414,6 +414,7 @@
 "Private" = "Privato";
 "Free" = "Gratuito";
 "Paid" = "A Pagamento";
+"Buy Invitation" = "Buy Invitation";
 "Choose Date" = "Scegli la Data";
 "Select Event" = "Seleziona l'Evento";
 "Select Registration"=  "Seleziona Registrazione";

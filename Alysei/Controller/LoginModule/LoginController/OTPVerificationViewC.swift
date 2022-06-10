@@ -57,8 +57,16 @@ class OTPVerificationViewC: AlysieBaseViewC {
     text.append(NSAttributedString(string: AppConstants.OTPHeading, attributes: [NSAttributedString.Key.font: AppFonts.regular(18.0).font]));
     text.append(NSAttributedString(string: String.getString(email), attributes: [NSAttributedString.Key.font: AppFonts.bold(20.0).font]))
     lblHeading.attributedText = text
-      let companyName = kSharedUserDefaults.loggedInUserModal.companyName
-    lblUsername.text = (self.userName?.isEmpty == false) ? (AppConstants.Hi + String.getString(self.userName) + ",") : (AppConstants.Hi + String.getString(companyName) + ",")
+      
+   
+      if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer1.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer2.rawValue)" ||  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.distributer3.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
+          lblUsername.text =  (AppConstants.Hi + (kSharedUserDefaults.loggedInUserModal.companyName ?? ""))
+          
+      }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
+          lblUsername.text =  (AppConstants.Hi + (kSharedUserDefaults.loggedInUserModal.restaurantName ?? ""))
+      }else{
+          lblUsername.text =  (AppConstants.Hi + (kSharedUserDefaults.loggedInUserModal.firstName ?? "") + " " + (kSharedUserDefaults.loggedInUserModal.lastName ?? ""))
+      }
     self.txtFieldOTP.first?.becomeFirstResponder()
     self.txtFieldOTP.forEach{
       $0.delegate = self

@@ -29,7 +29,7 @@ class EventFilterVC: UIViewController {
     let datePicker = UIDatePicker()
     var dataDropDown = DropDown()
     var arrEventType = [AppConstants.kPublic,AppConstants.kPrivate]
-    var arrRegistrationType = [AppConstants.kFree,AppConstants.kPaid]
+    var arrRegistrationType = [AppConstants.kFree,AppConstants.kPaid,AppConstants.kBuyInvitation]
     var selectDate: Date?
     
     var productType: ProductType?

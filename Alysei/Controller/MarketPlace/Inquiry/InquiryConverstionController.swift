@@ -91,6 +91,7 @@ class InquiryConverstionController: AlysieBaseViewC {
         var position = 0
         var passProductId: String?
         var passReceiverId: String?
+       var sendChatImage: UIImage?
         override func viewDidLoad() {
             super.viewDidLoad()
             getMessage()
@@ -319,8 +320,10 @@ class InquiryConverstionController: AlysieBaseViewC {
                 for item in items {
                     switch item {
                     case .photo(let photo):
-                        self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
+                        //self.imagesFromSource.append(photo.modifiedImage ?? photo.image)
                       //  sendImage(image: photo.modifiedImage)
+                        self.sendChatImage = photo.modifiedImage ?? photo.originalImage
+                        self.apiSendMessage()
                         print(photo)
                     case .video(v: let v):
                         print("not used")
@@ -450,29 +453,94 @@ class InquiryConverstionController: AlysieBaseViewC {
         
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+                if indexPath.row == 0 {
+                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
+                    textCell.configCell(self.messages?[indexPath.row] ?? OpenModel(with: [:]))
+                        return textCell
+                }else{
+                    if kSharedUserDefaults.loggedInUserModal.userId  != "\(self.messages?[indexPath.row].receiver?.userId ?? 0)" && (self.messages?[indexPath.row].image_id == nil){
+                        guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
+                        textCell.likeImgView.isHidden = true
+                        textCell.lblMessage.text = self.messages?[indexPath.row].message
+                        let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                        print("timeInterval----------------------",timeInterval)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        dateFormatter.locale = Locale(identifier: "en")
+                        let date = dateFormatter.date(from: timeInterval)
+                        let newDateFormatter = DateFormatter()
+                        newDateFormatter.dateFormat = "HH:mm a"
+                        let dateString = newDateFormatter.string(from: date ?? Date())
+                        print("formatted date is =  \(dateString)")
+                        textCell.lbltime.text = dateString
+                        return textCell
+                    }else if kSharedUserDefaults.loggedInUserModal.userId  != "\(self.messages?[indexPath.row].receiver?.userId ?? 0)" && (self.messages?[indexPath.row].image_id != nil){
+                        guard let senderImageCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
+                        let imageUrl = (self.messages?[indexPath.row].image_id?.baseUrl ?? "") + (self.messages?[indexPath.row].image_id?.attachmentURL ?? "")
+                        senderImageCell.sendimageView.setImage(withString: imageUrl)
+                        let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                        print("timeInterval----------------------",timeInterval)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        dateFormatter.locale = Locale(identifier: "en")
+                        let date = dateFormatter.date(from: timeInterval)
+                        let newDateFormatter = DateFormatter()
+                        newDateFormatter.dateFormat = "HH:mm a"
+                        let dateString = newDateFormatter.string(from: date ?? Date())
+                        print("formatted date is =  \(dateString)")
+                        senderImageCell.time.text = dateString
+                        senderImageCell.btnLike.isHidden = true
+                        return senderImageCell
+                    }else{
+                        if self.messages?[indexPath.row].image_id == nil{
+                        guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
+                        textCell.likeImgView.isHidden = true
+                        textCell.lblMessage.text = self.messages?[indexPath.row].message
+                        let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                        print("timeInterval----------------------",timeInterval)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        dateFormatter.locale = Locale(identifier: "en")
+                        let date = dateFormatter.date(from: timeInterval)
+                        let newDateFormatter = DateFormatter()
+                        newDateFormatter.dateFormat = "HH:mm a"
+                        let dateString = newDateFormatter.string(from: date ?? Date())
+                        print("formatted date is =  \(dateString)")
+                        textCell.lbltime.text = dateString
+                        let image =  (self.messages?[indexPath.row].sender?.profile_img?.baseUrl ?? "") + (self.messages?[indexPath.row].sender?.profile_img?.attachmentUrl ?? "")
+                        textCell.profile_image.setImage(withString: image,placeholder: UIImage(named: "image-placeholder"))
+                        return textCell
+                        }else{
+                            guard let receiverImageCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
+                            let imageUrl = (self.messages?[indexPath.row].image_id?.baseUrl ?? "") + (self.messages?[indexPath.row].image_id?.attachmentURL ?? "")
+                            receiverImageCell.receiveimageView.setImage(withString: imageUrl)
+                            
+                            let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                            print("timeInterval----------------------",timeInterval)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            dateFormatter.locale = Locale(identifier: "en")
+                            let date = dateFormatter.date(from: timeInterval)
+                            let newDateFormatter = DateFormatter()
+                            newDateFormatter.dateFormat = "HH:mm a"
+                            let dateString = newDateFormatter.string(from: date ?? Date())
+                            print("formatted date is =  \(dateString)")
+                            receiverImageCell.time.text = dateString
+                            receiverImageCell.btnLike.isHidden = true
+                            return receiverImageCell
+                        }
+                    }
+                }
+            }else{
             if indexPath.row == 0{
                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
-                textCell.likeImgView.isHidden = true
-                let companyName = self.messages?[indexPath.row].receiver?.companyName ?? ""
-                let email = self.messages?[indexPath.row].receiver?.email ?? ""
-                let phone = self.messages?[indexPath.row].receiver?.phone ?? ""
-                let message = self.messages?[indexPath.row].message ?? ""
-                textCell.lblMessage.text = ((companyName) + "\n" + (email) + "\n" + (phone) + (message))
-                let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
-                print("timeInterval----------------------",timeInterval)
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                dateFormatter.locale = Locale(identifier: "en")
-                let date = dateFormatter.date(from: timeInterval)
-                let newDateFormatter = DateFormatter()
-                newDateFormatter.dateFormat = "HH:mm a"
-                let dateString = newDateFormatter.string(from: date ?? Date())
-                print("formatted date is =  \(dateString)")
-                textCell.lbltime.text = dateString
+                textCell.configCell(self.messages?[indexPath.row] ?? OpenModel(with: [:]))
                     return textCell
             }else{
-                if kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(self.messages?[indexPath.row].sender?.userId ?? 0)" {
+                if kSharedUserDefaults.loggedInUserModal.userId  != "\(self.messages?[indexPath.row].receiver?.userId ?? 0)" && (self.messages?[indexPath.row].image_id == nil){
                     guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
+                    textCell.likeImgView.isHidden = true
                     textCell.lblMessage.text = self.messages?[indexPath.row].message
                     let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
                     print("timeInterval----------------------",timeInterval)
@@ -486,8 +554,27 @@ class InquiryConverstionController: AlysieBaseViewC {
                     print("formatted date is =  \(dateString)")
                     textCell.lbltime.text = dateString
                     return textCell
+                }else if kSharedUserDefaults.loggedInUserModal.userId  != "\(self.messages?[indexPath.row].receiver?.userId ?? 0)" && (self.messages?[indexPath.row].image_id != nil){
+                    guard let senderImageCell = tableView.dequeueReusableCell(withIdentifier: "SenderImageCell") as? SenderImageCell else {return UITableViewCell()}
+                    let imageUrl = (self.messages?[indexPath.row].image_id?.baseUrl ?? "") + (self.messages?[indexPath.row].image_id?.attachmentURL ?? "")
+                    senderImageCell.sendimageView.setImage(withString: imageUrl)
+                    let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                    print("timeInterval----------------------",timeInterval)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.locale = Locale(identifier: "en")
+                    let date = dateFormatter.date(from: timeInterval)
+                    let newDateFormatter = DateFormatter()
+                    newDateFormatter.dateFormat = "HH:mm a"
+                    let dateString = newDateFormatter.string(from: date ?? Date())
+                    print("formatted date is =  \(dateString)")
+                    senderImageCell.time.text = dateString
+                    senderImageCell.btnLike.isHidden = true
+                    return senderImageCell
                 }else{
+                    if self.messages?[indexPath.row].image_id == nil{
                     guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
+                    textCell.likeImgView.isHidden = true
                     textCell.lblMessage.text = self.messages?[indexPath.row].message
                     let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
                     print("timeInterval----------------------",timeInterval)
@@ -503,7 +590,27 @@ class InquiryConverstionController: AlysieBaseViewC {
                     let image =  (self.messages?[indexPath.row].sender?.profile_img?.baseUrl ?? "") + (self.messages?[indexPath.row].sender?.profile_img?.attachmentUrl ?? "")
                     textCell.profile_image.setImage(withString: image,placeholder: UIImage(named: "image-placeholder"))
                     return textCell
+                    }else{
+                        guard let receiverImageCell = tableView.dequeueReusableCell(withIdentifier: "ReceiverImageCell") as? ReceiverImageCell else {return UITableViewCell()}
+                        let imageUrl = (self.messages?[indexPath.row].image_id?.baseUrl ?? "") + (self.messages?[indexPath.row].image_id?.attachmentURL ?? "")
+                        receiverImageCell.receiveimageView.setImage(withString: imageUrl)
+                        
+                        let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                        print("timeInterval----------------------",timeInterval)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        dateFormatter.locale = Locale(identifier: "en")
+                        let date = dateFormatter.date(from: timeInterval)
+                        let newDateFormatter = DateFormatter()
+                        newDateFormatter.dateFormat = "HH:mm a"
+                        let dateString = newDateFormatter.string(from: date ?? Date())
+                        print("formatted date is =  \(dateString)")
+                        receiverImageCell.time.text = dateString
+                        receiverImageCell.btnLike.isHidden = true
+                        return receiverImageCell
+                    }
                 }
+            }
             }
            // return UITableViewCell()
             }
@@ -540,7 +647,7 @@ class InquiryConverstionController: AlysieBaseViewC {
              
             ]
             
-            let imageParam : [String:Any] = [APIConstants.kImage: UIImage(named: "activity_language_bg") ?? UIImage(named: ""),
+            let imageParam : [String:Any] = [APIConstants.kImage: self.sendChatImage,
                                              APIConstants.kImageName: "image"]
             
             
@@ -548,6 +655,7 @@ class InquiryConverstionController: AlysieBaseViewC {
                 switch statusCode {
                 case 200:
                     self?.chatTextView.text = ""
+                    self?.sendChatImage = UIImage()
                     self?.getMessage()
                     self?.scrollToLastRow()
                     break

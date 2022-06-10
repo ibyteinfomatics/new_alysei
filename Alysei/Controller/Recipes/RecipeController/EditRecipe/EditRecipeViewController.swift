@@ -7,7 +7,7 @@
 
 import UIKit
 
-var editRecipeId = Int()
+var editRecipeId = -1
 var editSavedIngridientId = Int()
 var editSavedtoolId = Int()
 var createEditRecipeJson: [String : Any] = [:]
@@ -309,9 +309,11 @@ class EditRecipeViewController: UIViewController {
         
         switch picker1.tag {
         case 1:
+            if editRecipeId == -1 {
             if let stId = self.arrCookingSkill[0].cookinSkillId
             {
                 self.strSelectedId = stId
+            }
             }
             self.cookingSkillLabel.text = self.str_return
 //            self.cookingSkillLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -320,9 +322,11 @@ class EditRecipeViewController: UIViewController {
             picker1.removeFromSuperview()
 
         case 2:
+            if editRecipeId == -1 {
             if let stId = self.arrCuisine[0].cuisineId
             {
                 self.strSelectedId2 = stId
+            }
             }
             self.cuisineLabel.text = self.str_return
 //            self.cuisineLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -332,9 +336,11 @@ class EditRecipeViewController: UIViewController {
         
             
         case 3:
+            if editRecipeId == -1 {
             if let stId = self.arrOptions[0].recipeMealId
             {
                 self.strSelectedIdMeal = stId
+            }
             }
             self.mealLabel.text = self.str_return
 //            self.mealNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -344,9 +350,11 @@ class EditRecipeViewController: UIViewController {
         
             
         case 4:
+            if editRecipeId == -1 {
             if let stId = self.arrCourse[0].recipeCourseId
             {
                 self.strSelectedIdCourse = stId
+            }
             }
             self.courseLabel.text = self.str_return
 //            self.courseNameLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -356,9 +364,11 @@ class EditRecipeViewController: UIViewController {
         
         
         case 5:
+            if editRecipeId == -1 {
             if let stId = self.arrDiet[0].dietId
             {
                 self.strSelecetdIdDiet = stId
+            }
             }
             if str_return == RecipeConstants.kNone{
                 self.dietLabel.text = RecipeConstants.kSelectDiet
@@ -373,9 +383,11 @@ class EditRecipeViewController: UIViewController {
             picker1.removeFromSuperview()
         
         case 6:
+            if editRecipeId == -1 {
             if let stId = self.arrFoodIntolerance[0].foodId
             {
                 self.strSelectedIdIntolerance = stId
+            }
             }
             if str_return == RecipeConstants.kNone{
                 self.foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
@@ -390,9 +402,11 @@ class EditRecipeViewController: UIViewController {
            
             
         case 7:
+            if editRecipeId == -1 {
             if let stId = self.arrRegion[0].regionId
             {
                 self.strSelectedIdRegion = stId
+            }
             }
             self.regionLabel.text = self.str_return
 //            self.regionLabel.font = UIFont(name:"Montserrat-Regular",size: 14.0)
@@ -1011,7 +1025,7 @@ extension EditRecipeViewController: UIPickerViewDelegate, UIPickerViewDataSource
         case 3:
              if let stId = self.arrOptions[row].recipeMealId
              {
-                 self.strSelectedId = stId
+                 self.strSelectedIdMeal = stId
              }
              if let stName = self.arrOptions[row].mealName
              {

@@ -264,7 +264,9 @@ class ProfileViewC: AlysieBaseViewC{
             self.btnEditProfile.isHidden = false
             self.backButton.isHidden = true
             self.btnEditProfile.isUserInteractionEnabled = true
+            //if kSharedUserDefaults.getProfileCompLanguage() == false{
             self.postRequestToGetProgress()
+           // }
             if self.userType == .voyagers {
                 self.featureUIview.constant = 0
                 self.iconAddProduct.isHidden = true
@@ -1498,7 +1500,9 @@ class ProfileViewC: AlysieBaseViewC{
             }
             
             if let perData = response?["data"] as? [String:Any]{
+                
                 self.percentage = perData["profile_percentage"] as? String
+                //if self.percentage ==
                 self.setPercentageUI(self.percentage ?? "0")
                 self.progressUserData = UserData.init(with: perData)
                 

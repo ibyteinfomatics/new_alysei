@@ -43,13 +43,13 @@ class UserModel: NSObject{
     var name: String?
  // var cover_id: AllProductsDataModel?
    
-    
+   
   init(withDictionary dicResult: [String:Any]){
     
     super.init()
     self.avatarImage = String.getString(["avatar_image"])
     self.logout = Bool.getBool(dicResult["logout"])
-    
+     
     self.latitude = Double.getDouble(dicResult[APIConstants.kLatitude])
     self.longitude = Double.getDouble(dicResult[APIConstants.kLongitude])
     

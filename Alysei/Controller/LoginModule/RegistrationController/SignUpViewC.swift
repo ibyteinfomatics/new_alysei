@@ -373,6 +373,10 @@ extension SignUpViewC{
         case 2:
             kSharedInstance.signUpViewModel = nil
             kSharedInstance.signUpStepTwoOptionsModel = nil
+            let dicResult = kSharedInstance.getDictionary(result)
+            let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
+            let dicRole = kSharedInstance.getDictionary(dicData[APIConstants.kRoles])
+            kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
             if String.getString(dicRole[APIConstants.kRoleId]) == "10"{
                 let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
                 controller?.pushedFrom = .signUp

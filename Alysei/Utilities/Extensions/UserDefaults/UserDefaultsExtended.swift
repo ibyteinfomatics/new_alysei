@@ -145,8 +145,13 @@ extension UserDefaults{
     func getAccountEnableStatus() -> String {
         return String.getString(self.string(forKey: APIConstants.kAccountEnabled))
     }
-
-   
+    func setProfileCompLanguage(completed: Bool) {
+        self.set(completed, forKey: profile_completed)
+        self.synchronize()
+    }
+    func getProfileCompLanguage() -> Bool {
+        return Bool.getBool(self.string(forKey: profile_completed))
+    }
   //MARK: - Methods -
     
   func setLoggedInUserDetails(loggedInUserDetails dictUser: Dictionary<String, Any>){

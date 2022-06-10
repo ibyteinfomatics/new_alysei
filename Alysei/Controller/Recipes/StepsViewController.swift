@@ -247,6 +247,15 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             
             
             cell.ingredientQuantityLabel.text = (choosestepIngridient?[indexPath.row].quantity ?? "")  + " " + (choosestepIngridient?[indexPath.row].unit ?? "")
+            cell.openImageCallback = { image , index in
+                
+                let imgUrl =  ((self.choosestepIngridient?[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (self.choosestepIngridient?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: RecipeFullImageViewController.id()) as? RecipeFullImageViewController else{return}
+                vc.imageUrl = imgUrl
+                self.navigationController?.pushViewController(vc, animated: false)
+                //let mainImage = UIImage(named:"image_placeholder")
+                
+            }
             
             return cell
         case 2:
@@ -262,6 +271,15 @@ extension StepsViewController: UITableViewDelegate, UITableViewDataSource{
             cell.ingredientNameLabel.text = choosestepTool?[indexPath.row].tool?.toolTitle
             
             cell.ingredientQuantityLabel.text = (choosestepTool?[indexPath.row].quantityTool ?? "") + " " + (choosestepTool?[indexPath.row].unitTool ?? "")
+            cell.openImageCallback = { image , index in
+                
+                let imgUrl = ((self.choosestepTool?[indexPath.row].tool?.imageId?.baseUrl ?? "") + (self.choosestepTool?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: RecipeFullImageViewController.id()) as? RecipeFullImageViewController else{return}
+                vc.imageUrl = imgUrl
+                self.navigationController?.pushViewController(vc, animated: false)
+                //let mainImage = UIImage(named:"image_placeholder")
+                
+            }
             
             return cell
             

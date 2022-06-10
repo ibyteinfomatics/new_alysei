@@ -44,6 +44,7 @@ class OpenModel{
     var product: MyStoreProductDetail?
     var created_at: String?
     var unread_count: Int?
+    var image_id: Attachment?
     
     init(with dictResponse: [String:Any]){
         
@@ -57,6 +58,10 @@ class OpenModel{
         self.message = String.getString(dictResponse["message"])
         if let data = dictResponse["sender"] as? [String:Any]{
             self.sender = SubjectData.init(with: data)
+        
+        }
+        if let image_id = dictResponse["image_id"] as? [String:Any]{
+            self.image_id = Attachment.init(with: image_id)
         
         }
         if let product = dictResponse["product"] as? [String:Any]{

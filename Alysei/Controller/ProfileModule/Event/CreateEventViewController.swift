@@ -80,7 +80,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
     
     var dataDropDown = DropDown()
     var arrData = [AppConstants.kPublic,AppConstants.kPrivate]
-    var arrDataResgistration = [AppConstants.kFree,AppConstants.kPaid]
+    var arrDataResgistration = [AppConstants.kFree,AppConstants.kPaid,AppConstants.kBuyInvitation]
     
     // camera image
     var ypImages = [YPMediaItem]()
@@ -346,7 +346,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             //self.btnReport.setTitle(item, for: .normal)
             registrationTxf.text = item
-            if item == "Paid"{
+            if item == AppConstants.kPaid || item == AppConstants.kBuyInvitation{
                 bookingUrlView.isHidden = false
                 bookingUrlView1.isHidden = true
                 vwHeadBooking.isHidden = true

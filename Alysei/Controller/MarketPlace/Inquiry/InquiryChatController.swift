@@ -141,14 +141,23 @@ class InquiryChatController: AlysieBaseViewC {
    //      notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
             notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
             notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[index].message
-            let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.attachmentUrl ?? "")
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+                let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].sender?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].sender?.profile_img?.attachmentUrl ?? "")
+                notificationTableCell.imgViewNotification.setImage(withString: imageUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+                notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].sender?.companyName
+            }else{
+                let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.attachmentUrl ?? "")
+                notificationTableCell.imgViewNotification.setImage(withString: imageUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+                notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
+            }
+          
             if inquiryNewOpenModel?.dataOpen?[index].unread_count == 0{
             notificationTableCell.count.isHidden = true
             }else{
                 notificationTableCell.count.setTitle("\(inquiryNewOpenModel?.dataOpen?[index].unread_count ?? 0)", for: .normal)
                 notificationTableCell.count.layer.cornerRadius = notificationTableCell.count.frame.height / 2
             }
-            notificationTableCell.imgViewNotification.setImage(withString: imageUrl, placeholder: UIImage(named: "image_placeholder"), nil)
+            
             let timeInterval  = inquiryNewOpenModel?.dataOpen?[index].created_at ?? ""
             print("timeInterval----------------------",timeInterval)
             let dateFormatter = DateFormatter()
@@ -237,9 +246,14 @@ extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     
         let vc = pushViewController(withName: InquiryConverstionController.id(), fromStoryboard: StoryBoardConstants.kChat) as! InquiryConverstionController
         vc.passProductId = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
-        vc.passReceiverId =  "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].receiver?.userId ?? 0)"
         vc.passProductImageUrl = (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.baseUrl ?? "") + (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.attachment_url ?? "")
         vc.passProductName = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.title ?? ""
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+            vc.passReceiverId =  "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].sender?.userId ?? 0)"
+        }else{
+            vc.passReceiverId =  "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].receiver?.userId ?? 0)"
+        }
+        
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
     }

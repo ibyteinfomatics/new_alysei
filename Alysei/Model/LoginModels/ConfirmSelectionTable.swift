@@ -71,6 +71,7 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
                 }
               //  print("ReviewSelectedHubCityArray--------------------------\(reviewSelectedHubCityArray)")
             cell.reviewSelectedHub = self.reviewSelectedHubs?[indexPath.row]
+            
             cell.reviewSelectedHubCityArray = self.reviewSelectedHubCityArray
             //hub = self.reviewSelectedHubs?.data?.hubs?[0]
         }else{

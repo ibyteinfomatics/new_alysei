@@ -752,7 +752,7 @@ struct AppConstants {
     static var kPrivate: String{"Private".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kFree: String{"Free".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPaid: String{"Paid".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var kBuyInvitation: String{"Buy Invitation".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kChooseDate: String{"Choose Date".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSelectEvent : String{"Select Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSelectRegistration : String{"Select Registration".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1620,7 +1620,7 @@ struct RecipeConstants{
     
     static var kPreference1 : String {  "What is your favourite \n Cuisines?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPreference2 : String {  "Do you have any food \n allergies?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kPreference3 : String {  "Do you have follow these \n diets?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPreference3 : String {  "Which diet do you follow?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPreference4 : String {  "Don't  want to see \n ingredients?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kBack : String {  "Back".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSkip : String {  "Skip".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
