@@ -71,6 +71,7 @@ class MyStoreProductDetail{
     
     var product_gallery: [ProductGallery]?
     var store_gallery: [ProductGallery]?
+    var galleries: ProductGallery?
     var prefilled: SubjectData?
     var totalCategory: Int?
     var avg_rating:String?
@@ -152,6 +153,9 @@ class MyStoreProductDetail{
         if let store_gallery = data?["store_gallery"] as? [[String:Any]]{
             self.store_gallery = store_gallery.map({ProductGallery.init(with: $0)})
         }
+        if let galleries = data?["galleries"] as? [String:Any]{
+            self.galleries = ProductGallery.init(with: galleries)
+        }
         if let labels = data?["labels"] as? [String:Any]{
             self.labels = Labels.init(with: labels)
         }
@@ -203,7 +207,7 @@ class ProductGallery{
     var marketplace_store_gallery_id: Int?
     var marketplace_store_id: String?
     var baseUrl: String?
-    
+    var basePUrl : String?
     init(with data: [String:Any]?) {
         self.marketplace_product_gallery_id = Int.getInt(data?["marketplace_product_gallery_id"])
         self.marketplace_product_id = Int.getInt(data?["marketplace_product_id"])
@@ -211,6 +215,7 @@ class ProductGallery{
         self.marketplace_store_gallery_id = Int.getInt(data?["marketplace_store_gallery_id"])
         self.marketplace_store_id = String.getString(data?["marketplace_store_id"])
         self.baseUrl = String.getString(data?["base_url"])
+        self.basePUrl = String.getString(data?["baseUrl"])
     }
     
 }

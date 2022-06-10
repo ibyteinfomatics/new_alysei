@@ -389,7 +389,7 @@ struct APIUrl{
     //Inquiry Marketplace
     static let getEnquiry = "get/user/enquiries/"
     static let getInquiryMessage = "get/enquiry/messages"
-    
+    static let kSendMessage = "send/enquiry/message"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -1819,6 +1819,7 @@ struct APIConstants {
     static let kIngridients = "ingredients"
     static let kTools = "tools"
     static let kRecipeReviewRatingId = "recipe_review_rating_id"
+    static let kReceiver_id = "receiver_id"
 }
 
 struct OtherConstant {
@@ -2163,6 +2164,7 @@ enum PushedFrom: Int {
     case myFav
     case viewAllEntities
     case hubUserListVC
+    case storeDesc
     
 }
 

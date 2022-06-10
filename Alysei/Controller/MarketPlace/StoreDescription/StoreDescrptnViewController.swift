@@ -58,6 +58,8 @@ extension StoreDescrptnViewController: UITableViewDelegate, UITableViewDataSourc
             cell.callBackMoveToProfile = {
                 let controller = self.pushViewController(withName: ProfileViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? ProfileViewC
                // controller?.userLevel = .other
+                controller?.fromVC = .storeDesc
+             //   controller?.controller.fromVC
                 controller?.userID = self.storeDetails?.user_id
                 if kSharedUserDefaults.loggedInUserModal.userId == "\(self.storeDetails?.user_id ?? 0)"{
                     controller?.userLevel = .own

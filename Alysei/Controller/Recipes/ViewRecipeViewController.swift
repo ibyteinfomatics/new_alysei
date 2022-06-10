@@ -12,33 +12,33 @@ var stepsModel: [StepsDataModel]? = []
 var recipeModel : ViewRecipeDetailDataModel?
 var usedIngridientModel : [UsedIngridientDataModel]? = []
 var usedToolModel: [UsedToolsDataModel]? = []
-class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRowDelegate, touchedTableviewTouchDelegate{
+class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRowDelegate {
     
-    
+    //touchedTableviewTouchDelegate
     
     
     @IBOutlet weak var viewStartCookingHeight: NSLayoutConstraint!
-    @IBOutlet weak var tableView: touchedTableview!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnStartCooking: UIButton!
-    @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var vwImage: UIView!
+    //@IBOutlet weak var mainImageView: UIImageView!
+   // @IBOutlet weak var vwImage: UIView!
     @IBOutlet weak var tableVwTop: NSLayoutConstraint!
     var checkbutton = 0
     var imgUrl1 = String()
     let recipeImageView = UIImageView()
     let backButton = UIButton()
     let menuButton = UIButton()
-  
+    
     override func viewWillAppear(_ animated: Bool) {
-            self.getRecipeDetail()
-            
+        self.getRecipeDetail()
+      
         self.tabBarController?.tabBar.isHidden = true
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.touchedTableviewdelegate = self
+     //   self.tableView.touchedTableviewdelegate = self
         btnStartCooking.setTitle(RecipeConstants.kStartCooking, for: .normal)
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
         
@@ -69,10 +69,11 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         isFromComment = ""
         tableView.register(UINib(nibName: "ViewRecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewRecipeTableViewCell")
         recipeImageView.image = UIImage(named: "image_placeholder.png")
-        self.vwImage.isHidden = true
-        self.vwImage?.layer.cornerRadius = (self.mainImageView?.frame.height ?? 0) / 2
-        self.mainImageView?.layer.borderColor = UIColor.lightGray.cgColor
-        self.vwImage?.layer.borderWidth = 0.5
+      //  self.vwImage.isHidden = true
+        // self.vwImage?.layer.cornerRadius = (self.mainImageView?.frame.height ?? 0) / 2
+        //self.mainImageView?.layer.borderColor = UIColor.lightGray.cgColor
+       // self.view.backgroundColor = UIColor.black
+       // self.vwImage?.layer.borderWidth = 0.5
         getRecipeDetail()
         
     }
@@ -133,7 +134,7 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         //                let appScheme = "\(appName)://app"
         //                let appUrl = URL(string: appScheme)
         let url = URL(string: ( ("https://alyseiweb.ibyteworkshop.com/singlerecipeview/")
-        + slug))
+                                + slug))
         
         //            if UIApplication.shared.canOpenURL(appUrl! as URL) {
         //                UIApplication.shared.open(appUrl!)
@@ -149,12 +150,12 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
         self.present(activityVC, animated: true, completion: nil)
         
     }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-//        {
-//            let touch = touches.first
-//            if touch?.view != self.mainImageView
-//            { self.mainImageView?.isHidden = true }
-//        }
+    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    //        {
+    //            let touch = touches.first
+    //            if touch?.view != self.mainImageView
+    //            { self.mainImageView?.isHidden = true }
+    //        }
     
     @IBAction func tapForStartCooking(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StepsViewController") as! StepsViewController
@@ -162,24 +163,25 @@ class ViewRecipeViewController: AlysieBaseViewC, ViewRecipeDelegate, CategoryRow
     }
     
     func setImage(){
-
+        
         let imgUrl = ((recipeModel?.image?.baseUrl ?? "") + (recipeModel?.image?.imgUrl ?? ""))
         
-            recipeImageView.setImage(withString: imgUrl)
-      
+        recipeImageView.setImage(withString: imgUrl)
+        
     }
 }
 
 extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
-   func touchesBegunInTableview(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-       self.vwImage?.isHidden = true
-   }
+//    func touchesBegunInTableview(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.tableView.alpha = 1.0
+//        self.view.backgroundColor = UIColor.white
+//        self.vwImage?.isHidden = true
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 5
-     
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -189,10 +191,12 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 1{
             switch checkbutton {
             case 0:
-                vwImage.isHidden = true
+               // vwImage.isHidden = true
+                // self.view.alpha = 1.0
                 return usedIngridientModel?.count ?? 0
             case 1:
-                vwImage.isHidden = true
+             //   vwImage.isHidden = true
+                //  self.view.alpha = 1.0
                 return usedToolModel?.count ?? 0
                 
             default:
@@ -325,14 +329,17 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.ingredientQuantityLabel.text = (usedIngridientModel?[indexPath.row].quantity ?? "0") + " " + (usedIngridientModel?[indexPath.row].unit ?? "")
                 editSavedIngridientId = usedIngridientModel?[indexPath.row].recipeSavedIngridientId ?? 0
                 cell.openImageCallback = { image , index in
-
-                    let imgUrl = ((usedIngridientModel?[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (usedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))                    //let mainImage = UIImage(named:"image_placeholder")
-                    self.mainImageView.setImage(withString: imgUrl)
-                   self.vwImage?.isHidden = false
+                    
+                    let imgUrl = ((usedIngridientModel?[indexPath.row].ingridient?.imageId?.baseUrl ?? "") + (usedIngridientModel?[indexPath.row].ingridient?.imageId?.imgUrl ?? ""))
+                    guard let vc = self.storyboard?.instantiateViewController(withIdentifier: RecipeFullImageViewController.id()) as? RecipeFullImageViewController else{return}
+                    vc.imageUrl = imgUrl
+                    self.navigationController?.pushViewController(vc, animated: false)
+                    //let mainImage = UIImage(named:"image_placeholder")
                     
                 }
                 
             }else{
+                
                 cell.ingredientImageView.tag = indexPath.row
                 let imgUrl = ((usedToolModel?[indexPath.row].tool?.imageId?.baseUrl ?? "") + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
                 
@@ -342,9 +349,11 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 editSavedtoolId = usedToolModel?[indexPath.row].recipeSavedToolId ?? 0
                 cell.openImageCallback = { image , index in
                     let imgUrl = ((usedToolModel?[indexPath.row].tool?.imageId?.baseUrl ?? "") + (usedToolModel?[indexPath.row].tool?.imageId?.imgUrl ?? ""))
-                    self.mainImageView.setImage(withString: imgUrl)
-                   self.vwImage?.isHidden = false
+                    guard let vc = self.storyboard?.instantiateViewController(withIdentifier: RecipeFullImageViewController.id()) as? RecipeFullImageViewController else{return}
+                    vc.imageUrl = imgUrl
+                    self.navigationController?.pushViewController(vc, animated: false)
                 }
+                
             }
             
             return cell
@@ -431,7 +440,7 @@ extension ViewRecipeViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.section{
@@ -479,8 +488,8 @@ extension ViewRecipeViewController{
             if let data = dictResponse?["used_ingredients"] as? [[String:Any]]{
                 usedIngridientModel = data.map({UsedIngridientDataModel.init(with: $0)})
                 
-                }
-                
+            }
+            
             
             if let data = dictResponse?["used_tools"] as? [[String:Any]]{
                 usedToolModel = data.map({UsedToolsDataModel.init(with: $0)})
@@ -490,19 +499,19 @@ extension ViewRecipeViewController{
             if let data = dictResponse?["steps"] as? [[String:Any]]{
                 stepsModel = data.map({StepsDataModel.init(with: $0)})
                 
-//                for i in (0..<(stepsModel?.count ?? 0)){
-//                    for j in (0..<(stepsModel?[i].stepIngridient?.count ?? 0)){
-//
-//                        if stepsModel?[i].stepIngridient?[j].isSelected == true {
-//                            selectedIngridientArray.append(stepsModel?[i].stepIngridient?[j] ?? UsedIngridientDataModel(with: [:]) )
-//                        }
-//
-//                    }
-//                    arrayselectedIngridientId?.removeAll()
-//                    for k in (0..<(selectedIngridientArray.count)){
-//                        arrayselectedIngridientId?.append(selectedIngridientArray[k].ingridientId ?? 0 )
-//                    }
-//                }
+                //                for i in (0..<(stepsModel?.count ?? 0)){
+                //                    for j in (0..<(stepsModel?[i].stepIngridient?.count ?? 0)){
+                //
+                //                        if stepsModel?[i].stepIngridient?[j].isSelected == true {
+                //                            selectedIngridientArray.append(stepsModel?[i].stepIngridient?[j] ?? UsedIngridientDataModel(with: [:]) )
+                //                        }
+                //
+                //                    }
+                //                    arrayselectedIngridientId?.removeAll()
+                //                    for k in (0..<(selectedIngridientArray.count)){
+                //                        arrayselectedIngridientId?.append(selectedIngridientArray[k].ingridientId ?? 0 )
+                //                    }
+                //                }
                 
             }
             
@@ -547,22 +556,22 @@ extension Date {
         
         if let year = interval.year, year > 0 {
             return year == 1 ? "\(year)" + " " + "year" :
-                "\(year)" + " " + "years"
+            "\(year)" + " " + "years"
         } else if let month = interval.month, month > 0 {
             return month == 1 ? "\(month)" + " " + "month" :
-                "\(month)" + " " + "months"
+            "\(month)" + " " + "months"
         } else if let day = interval.day, day > 0 {
             return day == 1 ? "\(day)" + " " + "day" :
-                "\(day)" + " " + "days"
+            "\(day)" + " " + "days"
         } else if let hour = interval.hour, hour > 0 {
             return hour == 1 ? "\(hour)" + " " + "hour" :
-                "\(hour)" + " " + "hours"
+            "\(hour)" + " " + "hours"
         } else if let minute = interval.minute, minute > 0 {
             return minute == 1 ? "\(minute)" + " " + "minute" :
-                "\(minute)" + " " + "minutes"
+            "\(minute)" + " " + "minutes"
         } else if let second = interval.second, second > 0 {
             return second == 1 ? "\(second)" + " " + "second" :
-                "\(second)" + " " + "seconds"
+            "\(second)" + " " + "seconds"
         } else {
             return "a moment ago"
         }
@@ -570,16 +579,16 @@ extension Date {
     }
 }
 
-protocol touchedTableviewTouchDelegate: class {
-    func touchesBegunInTableview(_ touches: Set<UITouch>, with event: UIEvent?)
-}
+//protocol touchedTableviewTouchDelegate: class {
+//    func touchesBegunInTableview(_ touches: Set<UITouch>, with event: UIEvent?)
+//}
 
-class touchedTableview: UITableView
-{
-    var touchedTableviewdelegate: touchedTableviewTouchDelegate?
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touchedTableviewdelegate?.touchesBegunInTableview(touches, with: event)
-    }
-
-}
+//class touchedTableview: UITableView
+//{
+//    var touchedTableviewdelegate: touchedTableviewTouchDelegate?
+//
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        touchedTableviewdelegate?.touchesBegunInTableview(touches, with: event)
+//    }
+//
+//}

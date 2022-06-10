@@ -43,7 +43,7 @@ class OpenModel{
     var receiver: SubjectData?
     var product: MyStoreProductDetail?
     var created_at: String?
-   
+    var unread_count: Int?
     
     init(with dictResponse: [String:Any]){
         
@@ -59,13 +59,18 @@ class OpenModel{
             self.sender = SubjectData.init(with: data)
         
         }
-      
+        if let product = dictResponse["product"] as? [String:Any]{
+            self.product = MyStoreProductDetail.init(with: product)
+        
+        }
+
+       
         self.created_at = dictResponse["created_at"] as? String
         if let data1 = dictResponse["receiver"] as? [String:Any]{
             self.receiver = SubjectData.init(with: data1)
         
         }
-        
+        self.unread_count = dictResponse["unread_count"] as? Int
 //        if let data = dictResponse["sender"] as? [String:Any]{
 //            self.product = MyStoreProductDetail.init(with: data)
 //

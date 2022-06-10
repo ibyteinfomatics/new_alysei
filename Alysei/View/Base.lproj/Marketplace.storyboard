@@ -10586,7 +10586,7 @@
                                             <outlet property="count" destination="Sek-oR-hfd" id="PBu-ep-bnU"/>
                                             <outlet property="imgViewNotification" destination="AYU-fz-vR0" id="0BN-a3-r1F"/>
                                             <outlet property="message" destination="0rZ-Xc-Ce1" id="rLt-ID-tHc"/>
-                                            <outlet property="name" destination="8BV-vX-8yk" id="jvZ-up-PLp"/>
+                                            <outlet property="name" destination="8BV-vX-8yk" id="nei-lZ-bQr"/>
                                             <outlet property="photo" destination="hBw-hT-jXY" id="lVT-Iy-LlB"/>
                                             <outlet property="time" destination="Wsy-6K-29c" id="ZEe-cU-aCV"/>
                                         </connections>

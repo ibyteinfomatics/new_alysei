@@ -61,7 +61,8 @@ class InquiryChatController: AlysieBaseViewC {
         newCount.layer.cornerRadius = 13
         newCount.layer.masksToBounds = true
         newCount.textColor = UIColor.white
-        
+        openedCount.isHidden = true
+        newCount.isHidden = true
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
             if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
                 self.userType = selfUserType
@@ -72,7 +73,11 @@ class InquiryChatController: AlysieBaseViewC {
             self.vwNew.isHidden = true
            // openOpenedList()
         }
-        
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+            openNewChatList()
+        }else{
+            openOpenedList()
+        }
         if type == "New" {
             
         } else if type == "Opened" {
@@ -132,11 +137,17 @@ class InquiryChatController: AlysieBaseViewC {
         if type == "new"{
             return UITableViewCell()
         }else{
-        let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as! NotificationTableCell
+            guard let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as? NotificationTableCell else{return UITableViewCell()}
    //      notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
-            
+            notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
+            notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[index].message
             let imageUrl = (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.baseUrl ?? "") + (inquiryNewOpenModel?.dataOpen?[index].receiver?.profile_img?.attachmentUrl ?? "")
-            
+            if inquiryNewOpenModel?.dataOpen?[index].unread_count == 0{
+            notificationTableCell.count.isHidden = true
+            }else{
+                notificationTableCell.count.setTitle("\(inquiryNewOpenModel?.dataOpen?[index].unread_count ?? 0)", for: .normal)
+                notificationTableCell.count.layer.cornerRadius = notificationTableCell.count.frame.height / 2
+            }
             notificationTableCell.imgViewNotification.setImage(withString: imageUrl, placeholder: UIImage(named: "image_placeholder"), nil)
             let timeInterval  = inquiryNewOpenModel?.dataOpen?[index].created_at ?? ""
             print("timeInterval----------------------",timeInterval)
@@ -154,8 +165,8 @@ class InquiryChatController: AlysieBaseViewC {
 //                notificationTableCell.photo.constant = 20
 //                notificationTableCell.message.text = "  Photo"
 //            } else {
-//                notificationTableCell.photo.constant = 0
-//                notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[0].me
+                notificationTableCell.photo.constant = 0
+              //  notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[0].me
 //            }
             return notificationTableCell
         }
@@ -223,11 +234,12 @@ extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.passProductId  = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
-        self.passSenderId = "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].receiver?.userId ?? 0)"
+    
         let vc = pushViewController(withName: InquiryConverstionController.id(), fromStoryboard: StoryBoardConstants.kChat) as! InquiryConverstionController
-        vc.passProductId = passProductId
-        vc.passSenderId = passSenderId
+        vc.passProductId = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
+        vc.passReceiverId =  "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].receiver?.userId ?? 0)"
+        vc.passProductImageUrl = (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.baseUrl ?? "") + (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.attachment_url ?? "")
+        vc.passProductName = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.title ?? ""
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
     }
@@ -243,6 +255,13 @@ extension InquiryChatController {
             }
               
                 self.tblViewNotification.reloadData()
+            }
+            if self.inquiryNewOpenModel?.dataOpen?.count == 0 {
+                if self.type == "open"{
+                    self.openedCount.isHidden = true
+                }else{
+                    self.newCount.isHidden = true
+                }
             }
             
             

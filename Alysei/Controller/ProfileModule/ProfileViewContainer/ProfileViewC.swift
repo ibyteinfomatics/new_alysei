@@ -115,7 +115,7 @@ class ProfileViewC: AlysieBaseViewC{
     var currentProductTitle: String?
     var isLoadingAnimation = true
     let coachMarksController = CoachMarksController()
-    
+    var fromVC : PushedFrom?
     //MARK: - Properties -
     
     private var editProfileViewCon: EditProfileViewC!
@@ -346,6 +346,14 @@ class ProfileViewC: AlysieBaseViewC{
             self.tabBarController?.tabBar.alpha = 1.0
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
             
+        }
+        
+        if userLevel == .other && fromVC == .storeDesc{
+            self.tabBarController?.tabBar.isHidden = true
+            self.hidesBottomBarWhenPushed = true
+        }else{
+            self.tabBarController?.tabBar.isHidden = false
+            self.hidesBottomBarWhenPushed = false
         }
     }
     

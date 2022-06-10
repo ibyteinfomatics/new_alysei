@@ -23,7 +23,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var btnUpload: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
   @IBOutlet weak var btnCamera: UIButton!
-
+@IBOutlet weak var vwuploadHght: NSLayoutConstraint!
     
     var addDesc = false
     var addUrl = false
@@ -51,9 +51,15 @@ class AddFeatureViewC: AlysieBaseViewC {
     super.viewDidLoad()
       if userLevel == .other {
         btnCamera.isHidden = true
+          btnUpload.isHidden = true
+          vwuploadHght.constant  = 0
       }else if arrSelectedFields.count == 0{
        btnCamera.isHidden = true
+          btnUpload.isHidden = false
+          vwuploadHght.constant  = 80
       }else {
+          btnUpload.isHidden = false
+          vwuploadHght.constant  = 80
           btnCamera.isHidden = false
       }
     self.initialImageSetUp()

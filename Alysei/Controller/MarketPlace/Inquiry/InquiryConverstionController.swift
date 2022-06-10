@@ -85,11 +85,12 @@ class InquiryConverstionController: AlysieBaseViewC {
         
         var arrMoreType = ["Closed"]
         var dataDropDown = DropDown()
-        
+        var passProductImageUrl: String?
+        var passProductName: String?
         var ResentUser:[InquiryRecentUser]?
         var position = 0
-    var passProductId: String?
-    var passSenderId: String?
+        var passProductId: String?
+        var passReceiverId: String?
         override func viewDidLoad() {
             super.viewDidLoad()
             getMessage()
@@ -120,7 +121,9 @@ class InquiryConverstionController: AlysieBaseViewC {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
             self.btnDelete.isHidden = true
+            itemImg.setImage(withString: passProductImageUrl ?? "", placeholder: UIImage(named: "profile_icon"))
             
+            itemName.text = passProductName
             print("profileImageUrl ",String.getString(profileImageUrl))
             self.chatTextView.returnKeyType = .next
             chatTblView.reloadData()
@@ -186,14 +189,14 @@ class InquiryConverstionController: AlysieBaseViewC {
         private func initialSetup() {
             chatTblView.rowHeight = UITableView.automaticDimension
             lblUserName.text = name
+         
+          //  self.itemName.text = productName
             
-            self.itemName.text = productName
-            
-            if productImage.contains(kImageBaseUrl) {
-                itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
-            } else {
-                itemImg.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com/"+productImage, placeholder: UIImage(named: "image_placeholder"))
-            }
+//            if productImage.contains(kImageBaseUrl) {
+//                itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
+//            } else {
+//                itemImg.setImage(withString: "https://alysei.s3.us-west-1.amazonaws.com/"+productImage, placeholder: UIImage(named: "image_placeholder"))
+//            }
          //   itemImg.setImage(withString: productImage, placeholder: UIImage(named: "image_placeholder"))
         }
         
@@ -334,15 +337,16 @@ class InquiryConverstionController: AlysieBaseViewC {
             if chatTextView.text != "" {
                 //type = "Opened"
                 
-                if new_opend == true {
-                    type = "New"
-                }
+//                if new_opend == true {
+//                    type = "New"
+//                }
+//
+//                if type == "Closed"{
+//                    morebtn.isHidden = false
+//                }
                 
-                if type == "Closed"{
-                    morebtn.isHidden = false
-                }
-                
-                chatTextView.text = ""
+               
+                apiSendMessage()
             }
         }
         
@@ -466,8 +470,42 @@ class InquiryConverstionController: AlysieBaseViewC {
                 print("formatted date is =  \(dateString)")
                 textCell.lbltime.text = dateString
                     return textCell
+            }else{
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId  == "\(self.messages?[indexPath.row].sender?.userId ?? 0)" {
+                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "SendertextCell") as? SendertextCell else {return UITableViewCell()}
+                    textCell.lblMessage.text = self.messages?[indexPath.row].message
+                    let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                    print("timeInterval----------------------",timeInterval)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.locale = Locale(identifier: "en")
+                    let date = dateFormatter.date(from: timeInterval)
+                    let newDateFormatter = DateFormatter()
+                    newDateFormatter.dateFormat = "HH:mm a"
+                    let dateString = newDateFormatter.string(from: date ?? Date())
+                    print("formatted date is =  \(dateString)")
+                    textCell.lbltime.text = dateString
+                    return textCell
+                }else{
+                    guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
+                    textCell.lblMessage.text = self.messages?[indexPath.row].message
+                    let timeInterval  = self.messages?[indexPath.row].created_at ?? ""
+                    print("timeInterval----------------------",timeInterval)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.locale = Locale(identifier: "en")
+                    let date = dateFormatter.date(from: timeInterval)
+                    let newDateFormatter = DateFormatter()
+                    newDateFormatter.dateFormat = "HH:mm a"
+                    let dateString = newDateFormatter.string(from: date ?? Date())
+                    print("formatted date is =  \(dateString)")
+                    textCell.lbltime.text = dateString
+                    let image =  (self.messages?[indexPath.row].sender?.profile_img?.baseUrl ?? "") + (self.messages?[indexPath.row].sender?.profile_img?.attachmentUrl ?? "")
+                    textCell.profile_image.setImage(withString: image,placeholder: UIImage(named: "image-placeholder"))
+                    return textCell
+                }
             }
-            return UITableViewCell()
+           // return UITableViewCell()
             }
         
     }
@@ -477,7 +515,7 @@ class InquiryConverstionController: AlysieBaseViewC {
 
                 let params: [String:Any] = [
                     APIConstants.kProductId: passProductId ?? "",
-                    APIConstants.kSenderId: passSenderId ?? ""
+                    APIConstants.kSenderId: passReceiverId ?? ""
                 ]
                 TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.getInquiryMessage, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { result, error, errorType, statusCode in
                     
@@ -489,9 +527,40 @@ class InquiryConverstionController: AlysieBaseViewC {
                     }
 
                         self.chatTblView.reloadData()
+                        self.scrollToLastRow()
                     }
                 }
             }
+        
+        func apiSendMessage(){
+            let params: [String:Any] = [
+                APIConstants.kProductId : String.getString(passProductId ?? ""),
+                APIConstants.kMessage: String.getString(chatTextView.text ?? ""),
+                APIConstants.kReceiver_id : String.getString(passReceiverId)
+             
+            ]
+            
+            let imageParam : [String:Any] = [APIConstants.kImage: UIImage(named: "activity_language_bg") ?? UIImage(named: ""),
+                                             APIConstants.kImageName: "image"]
+            
+            
+            TANetworkManager.sharedInstance.requestMultiPart(withServiceName: APIUrl.kSendMessage, requestMethod: .post, requestImages: [imageParam], requestVideos: [:], requestData: params) {[weak self] result, error, errorType, statusCode in
+                switch statusCode {
+                case 200:
+                    self?.chatTextView.text = ""
+                    self?.getMessage()
+                    self?.scrollToLastRow()
+                    break
+                default:
+                    self?.showAlert(withMessage: "Error Occured")
+                    break
+                    
+                }
+                
+            }
+        }
+        
+       
        func notificationApi(fromid: String, toid: String){
             
            let parameters: [String:Any] = [

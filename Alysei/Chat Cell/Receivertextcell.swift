@@ -30,7 +30,7 @@ class Receivertextcell: UITableViewCell {
         //longpressRight
         let rightPress = UILongPressGestureRecognizer(target: self, action: #selector(longpressRight))
         self.addGestureRecognizer(rightPress)
-        
+        self.profile_image.layer.cornerRadius = self.profile_image.frame.height / 2
        /* let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         leftSwipe.direction = .left
         self.addGestureRecognizer(leftSwipe)
