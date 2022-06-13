@@ -77,7 +77,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBOutlet weak var lblPosts: UILabel!
     @IBOutlet weak var lblConnections: UILabel!
     @IBOutlet weak var lblAbout: UILabel!
-   
+    @IBOutlet weak var btnBack: UIButton!
     
     // @IBOutlet weak var featureCollectionView: UICollectionView!
     
@@ -172,6 +172,7 @@ class ProfileViewC: AlysieBaseViewC{
     private lazy var contactViewC: ContactViewC = {
         
         let contactViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: ContactViewC.id()) as! ContactViewC
+       
         contactViewC.userLevel = userLevel
         contactViewC.openUrlCallBack = { url in
             if #available(iOS 10.0, *) {
@@ -230,7 +231,8 @@ class ProfileViewC: AlysieBaseViewC{
                 self.userType = selfUserType
             }
         }
-        
+      
+      
         self.btnPosts.isSelected = true
         self.tblViewProfileCompletion.isHidden = true
         self.headerView.isHidden = true
@@ -257,16 +259,17 @@ class ProfileViewC: AlysieBaseViewC{
         
         someHeight = Int((self.tblViewPosts.tableHeaderView?.frame.height ?? 0) + tableHeaderViewHeight - 50.0)
         
-        //self.btnBack.isHidden = userLevel == .other ? false : true
+        self.btnBack.isHidden = userLevel == .other ? false : true
         switch self.userLevel {
         case .own:
             print("own")
             self.btnEditProfile.isHidden = false
             self.backButton.isHidden = true
             self.btnEditProfile.isUserInteractionEnabled = true
-            //if kSharedUserDefaults.getProfileCompLanguage() == false{
+          if kSharedUserDefaults.getProfileCompletion() == false{
             self.postRequestToGetProgress()
-           // }
+            }
+            
             if self.userType == .voyagers {
                 self.featureUIview.constant = 0
                 self.iconAddProduct.isHidden = true
@@ -311,6 +314,8 @@ class ProfileViewC: AlysieBaseViewC{
         
         
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -419,6 +424,7 @@ class ProfileViewC: AlysieBaseViewC{
         
         super.viewWillAppear(animated)
         enableWindowInteraction()
+      //  self.addSkeletableAnimation()
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -446,9 +452,11 @@ class ProfileViewC: AlysieBaseViewC{
         if fromRecipe == ""{
             self.tabBarController?.tabBar.isHidden = false
         }
-        // if userLevel == .own {
-        self.postRequestToGetProgress()
-        // }
+        
+        //MARK: check Api calling
+//        if kSharedUserDefaults.getProfileCompletion() == false{
+//        self.postRequestToGetProgress()
+//         }
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
         
@@ -468,13 +476,16 @@ class ProfileViewC: AlysieBaseViewC{
                 // self.fetchContactDetail()
                 // self.fetchProfileDetails()
                 self.currentIndex = 0
+                if kSharedUserDefaults.getProfileCompletion() == false {
                 self.postRequestToGetProgress()
+                }
                 //       self.postRequestToGetFields()
                 if check == "" {
                     if self.userLevel == .own {
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
                         self.fetchProfileDetails()
+
                         //                        let data = kSharedUserDefaults.getLoggedInUserDetails()
                         //                          if Int.getInt(data["alysei_review"]) == 1 {
                         //                            if isprofileComplete == false{
@@ -521,11 +532,15 @@ class ProfileViewC: AlysieBaseViewC{
             // self.fetchContactDetail()
             // self.fetchProfileDetails()
             self.currentIndex = 0
+            if kSharedUserDefaults.getProfileCompletion() == false {
             self.postRequestToGetProgress()
+            }
             if check == "" {
                 if self.userLevel == .own {
                     self.menuButton.isHidden = false
+                    if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
                     self.fetchProfileDetails()
+                    }
                 } else {
                     if self.userID != nil {
                         self.menuButton.isHidden = true
@@ -604,7 +619,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
-        disableWindowInteraction()
+       //disableWindowInteraction()
         let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
         vc?.imgPUrl = self.imgPUrl
         vc!.userId = String.getString(userID)
@@ -622,7 +637,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     func tapPhotos(_ sender: UIButton) {
-        if self.userPercentage == ProfilePercentage.percent100.rawValue{
+        if (self.userPercentage == ProfilePercentage.percent100.rawValue || self.userPercentage == nil) {
             self.moveToNew(childViewController: self.photosViewcontroller, fromController: self.currentChild)
             
         }
@@ -687,7 +702,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapEditProfile(_ sender: UIButton) {
-        disableWindowInteraction()
+        //disableWindowInteraction()
         initiateEditProfileViewController()
         
     }
@@ -748,7 +763,7 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 
             } else {
-                if percentage == "100" || percentage == nil{
+                if self.percentage == "\(ProfilePercentage.percent100.rawValue)" || percentage == nil{
                     let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
                     
                     if self.connectButton.titleLabel?.text == "Follow" {
@@ -1070,7 +1085,7 @@ class ProfileViewC: AlysieBaseViewC{
                 
                 oldVC.removeFromParent()
                 newVC.didMove(toParent: self)
-                self.view.isUserInteractionEnabled = true
+            //    self.view.isUserInteractionEnabled = true
                 completion?()
             }
         }
@@ -1188,7 +1203,7 @@ class ProfileViewC: AlysieBaseViewC{
                 self.lblDisplayName.text = "\(name)".capitalized
                 self.lblDisplayNameNavigation.text = "\(name)".capitalized
                 self.userPercentage = responseModel.data?.userData?.profilePercentage ?? 0
-                if (self.userPercentage == ProfilePercentage.percent100.rawValue) {
+                if ((self.userPercentage == ProfilePercentage.percent100.rawValue) || (self.userPercentage == nil)) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
                         self.tblViewProfileCompletion.isHidden = true
                         self.headerView.isHidden = false
@@ -1239,6 +1254,7 @@ class ProfileViewC: AlysieBaseViewC{
                     self.contactDetail.append(ContactDetail.view.tableCellModel(imageName: "contact_facebook",
                                                                                 title: "Facebook", value: facebook))
                 }
+              //  self.stopSkeletableAnimation()
                 
                 
             } catch {
@@ -1248,7 +1264,7 @@ class ProfileViewC: AlysieBaseViewC{
         }
         
     }
-    func setPercentageUI(_ userPercentage: String ){
+    func setPercentageUI(_ userPercentage: String){
         //let userPercentage = responseModel.data?.userData?.profilePercentage ?? 0
         self.percentageLabel.text = "\(userPercentage )%" + AppConstants.kcompleted
         self.lblPercentage.text = "\(userPercentage )%"
@@ -1446,19 +1462,21 @@ class ProfileViewC: AlysieBaseViewC{
     
     private func postRequestToGetFields() -> Void{
         
-        disableWindowInteraction()
+        //disableWindowInteraction()
         //
+       // if kSharedUserDefaults.getProfileCompletion() == false {
         if userLevel == .own{
             CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
         }else{
             CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields+"/"+String.getString(userID), method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
+       // }
         }
     }
     //MARK:- HandleViewTap
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         guard let controller = self.storyboard?.instantiateViewController(identifier: "ProfileCompletionViewController") as? ProfileCompletionViewController else {return}
-        controller.percentage = percentage
+        controller.percentage = String.getString(percentage)
         controller.signUpViewModel = self.signUpViewModel
         controller.userType = self.userType ?? .voyagers
         self.navigationController?.pushViewController(controller, animated: true)
@@ -1474,7 +1492,7 @@ class ProfileViewC: AlysieBaseViewC{
             "follow_user_id": id,
             "follow_or_unfollow": type]
         
-        disableWindowInteraction()
+        //disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kFollowUnfollow, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             
             if self.connectButton.titleLabel?.text == AppConstants.Follow {
@@ -1489,7 +1507,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     private func postRequestToGetProgress() -> Void{
         
-        disableWindowInteraction()
+        //disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kProfileProgress, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             let response = dictRespnose as? [String:Any]
             
@@ -1501,13 +1519,21 @@ class ProfileViewC: AlysieBaseViewC{
             
             if let perData = response?["data"] as? [String:Any]{
                 
-                self.percentage = perData["profile_percentage"] as? String
-                //if self.percentage ==
-                self.setPercentageUI(self.percentage ?? "0")
+                self.percentage = String.getString(perData["profile_percentage"]) //as? String
+                if self.percentage != "\(ProfilePercentage.percent100.rawValue)" && self.percentage != nil {
+                    self.tblViewProfileCompletion.isHidden = false
+                    self.setPercentageUI(self.percentage ?? "0")
                 self.progressUserData = UserData.init(with: perData)
-                
                 if let progUserData = perData["user_details"] as? [String:Any]{
                     self.progressUserData = UserData.init(with: progUserData)
+                }
+                }else{
+                    self.tblViewProfileCompletion.isHidden = true
+                   // self.tblViewPosts.isHidden = false
+                    kSharedUserDefaults.setProfileCompletion(completed: true)
+                   // self.fetchProfileDetails()
+                    self.enableWindowInteraction()
+                    //self.tblViewPosts.reloadData()
                 }
             }
             
@@ -2165,7 +2191,7 @@ extension ProfileViewC {
         self.featureListingId = featureListingId
         self.currentProductTitle = navigationTitle
         
-        disableWindowInteraction()
+        //disableWindowInteraction()
         CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetFeatureListing + featureListingId, method: .GET, controller: self, type: 2, param: [:], btnTapped: UIButton())
     }
 }

@@ -377,7 +377,7 @@ extension SignUpViewC{
             let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
             let dicRole = kSharedInstance.getDictionary(dicData[APIConstants.kRoles])
             kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
-            if String.getString(dicRole[APIConstants.kRoleId]) == "10"{
+            if String.getString(dicRole[APIConstants.kRoleId]) == "\(UserRoles.voyagers.rawValue)" || String.getString(dicRole[APIConstants.kRoleId]) == "\(UserRoles.travelAgencies.rawValue)" {
                 let controller = pushViewController(withName: OTPVerificationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? OTPVerificationViewC
                 controller?.pushedFrom = .signUp
                 controller?.email = String.getString(dicData[APIConstants.kEmail])

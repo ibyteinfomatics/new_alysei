@@ -113,6 +113,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         let websiteTap = UITapGestureRecognizer(target: self, action: #selector(openWebsite))
         self.websiteView.addGestureRecognizer(websiteTap)
         
+        let bookingUrlTap = UITapGestureRecognizer(target: self, action: #selector(openBookingUrl))
+        self.bookingUrlView.addGestureRecognizer(bookingUrlTap)
+        
         self.property()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -168,7 +171,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             eventNameTxf.placeholder = ""
             eventNameView.isHidden = false
             eventNameLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
-            
+            bookingUrlView.isUserInteractionEnabled = true
             dateLabel.isHidden = false
             dateTxf.placeholder = ""
             dateView1.isHidden = false
@@ -194,7 +197,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             registrationView1.isHidden = false
             registrationLabel.textColor =  UIColor.darkGray.withAlphaComponent(0.7)
             
-            
+           // bookingTxf.textColor = UIColor.black
             
             descriptionView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
             nameView.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
@@ -215,6 +218,7 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             drop2.isHidden = true
             saveButton.isHidden = true
             websiteTxf.textColor = UIColor.link
+            bookingTxf.textColor = UIColor.link
             eventNameTxf.isUserInteractionEnabled = false
             dateTxf.isUserInteractionEnabled = false
             timeTxf.isUserInteractionEnabled = false
@@ -227,6 +231,8 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 heightbookingUrl.constant = 60
                 bookingUrlView.isHidden = false
                 bookingUrlView1.isHidden = false
+            
+                vwHeadBooking.textColor = UIColor.darkGray.withAlphaComponent(0.7)
                 bookingTxf.isHidden = false
                 bookingTxf.isUserInteractionEnabled = false
             }else{
@@ -305,6 +311,8 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: AlertMessage.kPleaseSelectRegistrationType)
             } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
                 alert(msg: AlertMessage.kPleaseEnterBookingUrl)
+            }else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
+                alert(msg:AlertMessage.kPleaseEnterValidBookingUrl)
             } else {
                 createEventApi()
             }
@@ -322,6 +330,18 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
            UIApplication.shared.openURL(url)
        }
     }
+    
+    @objc func openBookingUrl(){
+        guard let url = URL(string: bookingTxf.text ?? "") else {
+          return //be safe
+        }
+
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+     }
     @objc func openDropDown(){
         dataDropDown.dataSource = self.arrData
         dataDropDown.show()
@@ -607,6 +627,26 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == bookingTxf {
+        if (registrationTxf.text == AppConstants.kPaid || registrationTxf.text == AppConstants.kBuyInvitation){
+            if textField.text == "" {
+                bookingTxf.text = "https://"
+            }
+        }
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == bookingTxf {
+            if bookingTxf.text == "https://"{
+                textField.text = ""
+            }
+        }
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         
@@ -757,6 +797,8 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
             
             
         }
+        
+        
     }
     
     func property(){

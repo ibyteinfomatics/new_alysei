@@ -12,6 +12,7 @@ class PreferencesImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageNameLabel: UILabel!
+    @IBOutlet weak var vwImage: UIView!
     
 //    @IBOutlet weak var imageIcon: UIImageView!
     override func awakeFromNib() {

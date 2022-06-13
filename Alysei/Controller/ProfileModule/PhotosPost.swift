@@ -241,6 +241,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 cell.newHeightCllctn = 0
                 cell.imageHeightCVConstant.constant = 0
             }else{
+            //    cell.data = data
             var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
             if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
                         let newHeight = 320 / ratio
@@ -289,9 +290,9 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
             
             
         } else {
-            
+           
             let data = self.singlePostData
-            
+            cell.data = self.singlePostData
            // cell.configCell(data ?? NewFeedSearchDataModel(with: [:]), indexPath.row)
 //            cell.configCell1(data ?? default value, indexPath.row)
            

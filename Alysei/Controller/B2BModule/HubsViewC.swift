@@ -36,7 +36,7 @@ class HubsViewC: AlysieBaseViewC {
         hubName.text = passHubName
         hubLocation.text = passHubLocation
         self.imgHub.setImage(withString: (passBaseUrl ?? "") + String.getString(passHubImageUrl))
-        lblSubHeading.text = (MarketPlaceConstant.JoinThe + "\(passHubName ?? "")" + MarketPlaceConstant.ToExpandYourNetworkAndAccess)
+        lblSubHeading.text = (MarketPlaceConstant.JoinThe + " " + "\(passHubName ?? "")" + " " + MarketPlaceConstant.ToExpandYourNetworkAndAccess)
         callUserCountApi()
         // Do any additional setup after loading the view.
     }

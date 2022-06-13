@@ -66,7 +66,7 @@ extension UpdateProfileDescVC: UITextViewDelegate {
         let currentText:String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
         let finalText = updatedText.removeWhitespace()
-        if finalText.count <= 200{
+        if finalText.count <= 300{
          //   let finalText = updatedText.removeWhitespace()
             self.lblTextCount.text = "\(finalText.count)"
             return true

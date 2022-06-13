@@ -138,26 +138,26 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                     cell.imageView.setImage(withString: imgUrl)
                 }
                 
-                cell.imageView.contentMode = .scaleAspectFill
+               // cell.imageView.contentMode = .scaleAspectFill
                 cell.imageNameLabel.text = showCuisine?[indexPath.item].name
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+           //     cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }else {
                 cell.imageView.image = UIImage(named: "")
                
-                cell.imageView.contentMode = .scaleAspectFit
+              //  cell.imageView.contentMode = .scaleAspectFit
 
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.clear.cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.clear.cgColor
+             //   cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }
             
         case 1:
@@ -165,7 +165,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
 
                 let imgUrl = ((showFood?[indexPath.item].imageId?.baseUrl ?? "") + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-                cell.imageView.contentMode = .center
+               // cell.imageView.contentMode = .center
                 if imgUrl == ""{
                     cell.imageView.image = UIImage(named: "image_placeholder")
                 }
@@ -175,30 +175,30 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 
                 cell.imageNameLabel.text = showFood?[indexPath.row].name
               
-            cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
-            cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                cell.imageView1.image = UIImage(named: "")
-            cell.imageView1.clipsToBounds = true
+            cell.vwImage.layer.cornerRadius = cell.vwImage.frame.height/2
+            cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+             //   cell.vwImage.image = UIImage(named: "")
+            cell.vwImage.clipsToBounds = true
             }else {
-                cell.imageView.image = UIImage(named: "Group 1166")
-                cell.imageView.contentMode = .center
-                cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.image = UIImage(named: "Group 122845")
+               // cell.imageView.contentMode = .center
+               // cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.lightGray.cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+           //     cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }
         
         case 2:
             if indexPath.row < showDiet!.count {
                 let imgUrl = ((showDiet?[indexPath.item].imageId?.baseUrl ?? "") + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-                cell.imageView.contentMode = .center
-               
+                    //cell.imageView.contentMode = .center
+               // cell.imageView.contentMode = .center
                 if imgUrl == ""{
                     cell.imageView.image = UIImage(named: "image_placeholder")
                 }
@@ -207,22 +207,22 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 }
                 cell.imageNameLabel.text = showDiet?[indexPath.row].name
                
-            cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
-            cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                cell.imageView1.image = UIImage(named: "")
-            cell.imageView1.clipsToBounds = true
+            cell.vwImage.layer.cornerRadius = cell.vwImage.frame.height/2
+            cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+           //     cell.vwImage.image = UIImage(named: "")
+            cell.vwImage.clipsToBounds = true
             }else {
-                cell.imageView.image = UIImage(named: "Group 1166")
-                cell.imageView.contentMode = .center
-                cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.image = UIImage(named: "Group 122845")
+               // cell.imageView.contentMode = .center
+               // cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.lightGray.cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+            //    cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }
             
 
@@ -237,24 +237,25 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                     cell.imageView.setImage(withString: imgUrl)
                 }
              
-                cell.imageView.contentMode = .scaleAspectFit
+               // cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = showIngridient?[indexPath.row].title
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-
-            cell.imageView1.image = UIImage(named: "Group 1165")
-            cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+          //  cell.vwImage.image = UIImage(named: "Group 1165")
+            cell.vwImage.clipsToBounds = true
             }else {
-                cell.imageView.image = UIImage(named: "Group 1166")
-                cell.imageView.contentMode = .center
-                cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.image = UIImage(named: "Group 122845")
+               // cell.imageView.contentMode = .center
+               // cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.lightGray.cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+             //   cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }
             
 
@@ -262,7 +263,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             if indexPath.row < showCookingSkill!.count {
                 let imgUrl = ((showCookingSkill?[indexPath.item].imageId?.baseUrl ?? "") + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-                cell.imageView.contentMode = .center
+              //  cell.imageView.contentMode = .center
                 if imgUrl == ""{
                     cell.imageView.image = UIImage(named: "image_placeholder")
                 }
@@ -271,23 +272,23 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 }
                 cell.imageNameLabel.text = showCookingSkill?[indexPath.row].name
              
-            cell.imageView1.layer.cornerRadius = cell.imageView1.frame.height/2
-            cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
-                cell.imageView1.image = UIImage(named: "")
-            cell.imageView1.clipsToBounds = true
+            cell.vwImage.layer.cornerRadius = cell.vwImage.frame.height/2
+            cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+             //   cell.vwImage.image = UIImage(named: "")
+            cell.vwImage.clipsToBounds = true
             }else {
               
-                cell.imageView.image = UIImage(named: "Group 1166")
-                cell.imageView.contentMode = .center
-                cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.image = UIImage(named: "Group 122845")
+               // cell.imageView.contentMode = .center
+              //  cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.imageView1.layer.borderWidth = 3
-                cell.imageView1.layer.borderColor = UIColor.lightGray.cgColor
-                cell.imageView1.image = UIImage(named: "")
-                cell.imageView1.clipsToBounds = true
+                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.vwImage.layer.borderWidth = 3
+                cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+              //  cell.vwImage.image = UIImage(named: "")
+                cell.vwImage.clipsToBounds = true
             }
          
         default:
