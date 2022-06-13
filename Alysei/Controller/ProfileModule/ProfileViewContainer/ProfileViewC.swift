@@ -12,7 +12,7 @@ import Instructions
 var check = "";
 var profileTabImage: UIImage?
 
-
+var imgPUrl: String?
 class ProfileViewC: AlysieBaseViewC{
     
     //MARK: - IBOutlet -
@@ -104,7 +104,7 @@ class ProfileViewC: AlysieBaseViewC{
     //var profileCompletion
     var currentIndex: Int = 0
     var tabposition: Int = 1
-    var imgPUrl: String?
+    //var imgPUrl: String?
     var someHeight: Int = 1
     var shownumber = 50
     
@@ -621,7 +621,7 @@ class ProfileViewC: AlysieBaseViewC{
     @IBAction func tapSideMenu(_ sender: UIButton) {
        //disableWindowInteraction()
         let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
-        vc?.imgPUrl = self.imgPUrl
+      //  vc?.imgPUrl = imgPUrl
         vc!.userId = String.getString(userID)
     }
     
@@ -999,7 +999,7 @@ class ProfileViewC: AlysieBaseViewC{
         let imgUrl = (baseUrl + coverImage)
         
         self.imgViewCover.setImage(withString: imgUrl)
-        self.imgPUrl = (baseUrl + profileImage)
+        imgPUrl = (baseUrl + profileImage)
         
         
         if imgPUrl != "" {

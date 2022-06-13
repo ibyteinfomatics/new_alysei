@@ -19,7 +19,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
   @IBOutlet weak var lblUserEmail: UILabel!
   @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var lblHeading: UILabel!
-    var imgPUrl: String?
+   // var imgPUrl: String?
     var langIndex: Int?
   //MARK: - Properties -
   
@@ -92,6 +92,7 @@ class EditUserSettingsViewC: AlysieBaseViewC {
       }
      // if let profilePhoto = LocalStorage.shared.fetchImage(UserDetailBasedElements().coverPhoto) {
         if imgPUrl != ""{
+            
             self.imgViewUser.setImage(withString: imgPUrl ?? "")
           self.imgViewUser.layer.cornerRadius = (self.imgViewUser.frame.width / 2.0)
           self.imgViewUser.layer.borderWidth = 5.0

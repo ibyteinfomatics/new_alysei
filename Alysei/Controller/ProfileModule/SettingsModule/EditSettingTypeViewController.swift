@@ -145,7 +145,7 @@ extension EditSetingTypeViewController: UITableViewDataSource, UITableViewDelega
         switch indexPath.row {
         case 0:
             let vc = pushViewController(withName: EditUserSettingsViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as! EditUserSettingsViewC
-            vc.imgPUrl = self.imgPUrl
+          //  vc.imgPUrl = imgPUrl
         case 1:
             print("HubSelection")
 //            let nextVC = CountryListVC()
