@@ -15,7 +15,7 @@ class AwardCell: UICollectionViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var awardimg: UIImageView!
-    
+    @IBOutlet weak var rewardImageWidth: NSLayoutConstraint!
     var btnDeleteCallback:((Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil
     

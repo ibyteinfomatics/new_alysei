@@ -46,11 +46,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-v6-fsM">
+                                <rect key="frame" x="10" y="5" width="180" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.28975340136054423" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1Pt-Yb-zoq">
-                                <rect key="frame" x="15" y="5" width="31" height="54"/>
+                                <rect key="frame" x="15" y="5" width="54" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Ven-t6-RtJ"/>
-                                    <constraint firstAttribute="width" constant="31" id="bLf-ty-8Pc"/>
+                                    <constraint firstAttribute="width" constant="54" id="bLf-ty-8Pc"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -59,14 +63,18 @@
                             <constraint firstItem="rK1-ve-tJU" firstAttribute="top" secondItem="Waq-iu-nbY" secondAttribute="bottom" constant="5" id="CYr-3J-tEf"/>
                             <constraint firstAttribute="trailing" secondItem="TQc-Sc-a4o" secondAttribute="trailing" constant="5" id="IGr-jT-rhE"/>
                             <constraint firstItem="rK1-ve-tJU" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="JwJ-4z-KhO"/>
+                            <constraint firstItem="Nv8-v6-fsM" firstAttribute="top" secondItem="Waq-iu-nbY" secondAttribute="top" id="KVz-3x-c3d"/>
                             <constraint firstItem="1Pt-Yb-zoq" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="15" id="Q5Q-PI-hdS"/>
                             <constraint firstItem="1Pt-Yb-zoq" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="5" id="Sc2-mU-R1L"/>
                             <constraint firstItem="TQc-Sc-a4o" firstAttribute="top" secondItem="rK1-ve-tJU" secondAttribute="bottom" constant="5" id="ZmJ-bS-ShL"/>
                             <constraint firstItem="Waq-iu-nbY" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="b0t-p9-D3V"/>
                             <constraint firstAttribute="trailing" secondItem="Waq-iu-nbY" secondAttribute="trailing" constant="10" id="b9n-Zk-nqt"/>
+                            <constraint firstItem="Nv8-v6-fsM" firstAttribute="trailing" secondItem="Waq-iu-nbY" secondAttribute="trailing" id="cBO-yr-HB1"/>
                             <constraint firstItem="Waq-iu-nbY" firstAttribute="top" secondItem="M18-Hp-KeF" secondAttribute="top" constant="5" id="j3I-pz-ZEK"/>
                             <constraint firstAttribute="trailing" secondItem="rK1-ve-tJU" secondAttribute="trailing" constant="5" id="oEz-Lh-07f"/>
                             <constraint firstItem="TQc-Sc-a4o" firstAttribute="leading" secondItem="M18-Hp-KeF" secondAttribute="leading" constant="10" id="q7I-IL-kSg"/>
+                            <constraint firstItem="Nv8-v6-fsM" firstAttribute="leading" secondItem="Waq-iu-nbY" secondAttribute="leading" id="syw-KN-ETu"/>
+                            <constraint firstItem="Nv8-v6-fsM" firstAttribute="bottom" secondItem="Waq-iu-nbY" secondAttribute="bottom" id="vep-HV-hfh"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -82,6 +90,7 @@
                 <outlet property="awardimg" destination="1Pt-Yb-zoq" id="zeL-jK-F5d"/>
                 <outlet property="competitionName" destination="rK1-ve-tJU" id="pbP-WQ-QV7"/>
                 <outlet property="rewardImage" destination="Waq-iu-nbY" id="h3K-6R-bHh"/>
+                <outlet property="rewardImageWidth" destination="bLf-ty-8Pc" id="fjO-Nu-9e4"/>
                 <outlet property="winningproduct" destination="TQc-Sc-a4o" id="oA2-Hf-KMN"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="70.3125"/>

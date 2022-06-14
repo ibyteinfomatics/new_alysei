@@ -87,11 +87,12 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
 
     func disableInteraction(){
         self.disableWindowInteraction()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
             self.enableWindowInteraction()
         }
     }
     func fetchProductsFromProfile() {
+        disableInteraction()
         if let nav = self.parent as? UINavigationController, let profileCon = nav.viewControllers.first as? ProfileViewC {
             profileCon.reloadFields()
 
@@ -665,6 +666,7 @@ extension EditProfileViewC{
         case 0:
             //showAlert(withMessage: AlertMessage.kProfileUpdated){
                 //self.navigationController?.popViewController(animated: true)
+          
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ProfileViewC.self) {
                         self.navigationController!.popToViewController(controller, animated: true)
@@ -673,8 +675,10 @@ extension EditProfileViewC{
                 }
             //}
         case 1:
+          
             break
         case 2:
+           
             var arrSelectedFields: [ProductFieldsDataModel] = []
             if let fields = dicData[APIConstants.kFields] as? ArrayOfDictionary{
                 arrSelectedFields = fields.map({ProductFieldsDataModel(withDictionary: $0)})
@@ -687,6 +691,7 @@ extension EditProfileViewC{
             controller?.currentNavigationTitle = self.currentProductTitle
             controller?.delegate = self
         default:
+           
             break
         }
     }

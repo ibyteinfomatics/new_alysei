@@ -12,6 +12,7 @@ class AwardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rewardImage: UIImageView!
     @IBOutlet weak var competitionName: UILabel!
     @IBOutlet weak var winningproduct: UILabel!
+    @IBOutlet weak var rewardImageWidth: NSLayoutConstraint!
     
     @IBOutlet weak var awardimg: UIImageView!
     

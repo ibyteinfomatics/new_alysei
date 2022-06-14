@@ -60,12 +60,16 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         if arraySearchByAward?[indexPath.item].medal?.name == "Silver"{
             cell.awardimg.image = UIImage(named: "silver")
+            cell.rewardImageWidth.constant = 31
         } else if arraySearchByAward?[indexPath.item].medal?.name == "Gold"{
             cell.awardimg.image = UIImage(named: "gold")
+            cell.rewardImageWidth.constant = 31
         } else if arraySearchByAward?[indexPath.item].medal?.name == "Bronze"{
             cell.awardimg.image = UIImage(named: "bronze")
+            cell.rewardImageWidth.constant = 31
         }else if  arraySearchByAward?[indexPath.item].medal?.name == "Winner"{
             cell.awardimg.image = UIImage(named: "Winner")
+            cell.rewardImageWidth.constant = 54
         }
         
         
