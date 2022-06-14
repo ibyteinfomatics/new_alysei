@@ -733,10 +733,15 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
     @IBOutlet weak var lblCost: UILabel!
     @IBOutlet weak var lblProductType: UILabel!
     @IBOutlet weak var imgSample: UIImageView!
-    @IBOutlet weak var imgProduct: CustomImageView!
+    @IBOutlet weak var imgProduct: ImageLoader!
     @IBOutlet weak var lblPriceHeight: NSLayoutConstraint!
     @IBOutlet weak var lblSampleHeight: NSLayoutConstraint!
     @IBOutlet weak var vwbottomTop: NSLayoutConstraint!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imgProduct.image = UIImage(named: "image_placeholder")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -760,9 +765,12 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
         lblTotalRating.text = "\(data.total_reviews ?? 0)" + MarketPlaceConstant.kSRatings
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
         
-        if let imgUrl = URL(string: baseUrl + String.getString(data.product_gallery?.first?.attachment_url)){
-        self.imgProduct.loadImageUrl(imgUrl)
-        }
+        //if let imgUrl = URL(string: baseUrl + String.getString(data.product_gallery?.first?.attachment_url)){
+        // self.imgProduct.loadImageUrl(imgUrl)
+         let imgUrl = String.getString(baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
+      
+            self.imgProduct.setImage(withString: imgUrl)
+        
         if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)") {
             lblAvalblForSample.isHidden = true
             imgSample.isHidden = true

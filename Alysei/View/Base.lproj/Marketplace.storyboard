@@ -2437,7 +2437,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-Tz-uvU">
                                                     <rect key="frame" x="5" y="5" width="404" height="134"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-JQ-aYU">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-JQ-aYU" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="-3" width="140" height="140"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="140" id="CpV-JA-aoG"/>
@@ -2536,7 +2536,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imgStore" destination="Sv7-JQ-aYU" id="lN0-8c-ks0"/>
+                                            <outlet property="imgStore" destination="Sv7-JQ-aYU" id="zUl-Py-wyn"/>
                                             <outlet property="lblAddress" destination="oId-R9-o6F" id="sFd-a3-Wqb"/>
                                             <outlet property="lblProductType" destination="lXs-T5-wQv" id="0d4-Yl-Q35"/>
                                             <outlet property="lblStoreName" destination="hai-2d-H5i" id="5qx-mn-EEn"/>
@@ -8642,7 +8642,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5KM-Xi-hgr">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WQC-Cj-Lz5" customClass="CustomImageView" customModule="Alysei" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WQC-Cj-Lz5" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="5" width="155" height="155"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="155" id="OqA-nA-IEE"/>
@@ -8701,9 +8701,9 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="780 ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5y4-fN-syf">
-                                                            <rect key="frame" x="255" y="90.666666666666671" width="149" height="18.666666666666671"/>
+                                                            <rect key="frame" x="255" y="89.666666666666671" width="149" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="18.670000000000002" id="RvQ-ny-be1"/>
+                                                                <constraint firstAttribute="height" constant="21" id="RvQ-ny-be1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" name="blackColor"/>
@@ -8719,7 +8719,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8_approval_1" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Z-je-zgp">
-                                                            <rect key="frame" x="336.66666666666669" y="116.66666666666667" width="16.333333333333314" height="16.333333333333329"/>
+                                                            <rect key="frame" x="336.66666666666669" y="115.66666666666667" width="18.666666666666686" height="18.666666666666671"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Z5Z-je-zgp" secondAttribute="height" multiplier="1:1" id="Wr8-np-Tdf"/>
                                                             </constraints>
@@ -8773,7 +8773,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="qug-9g-9RT" secondAttribute="trailing" constant="10" id="M64-ol-hye"/>
                                                         <constraint firstAttribute="trailing" secondItem="5y4-fN-syf" secondAttribute="trailing" constant="10" id="Nb8-CI-Cxb"/>
                                                         <constraint firstItem="5y4-fN-syf" firstAttribute="centerY" secondItem="E4f-75-PCv" secondAttribute="centerY" id="Op5-Zb-GTX"/>
-                                                        <constraint firstItem="Z5Z-je-zgp" firstAttribute="top" secondItem="5y4-fN-syf" secondAttribute="bottom" constant="7.333333333333286" id="PZl-mF-Mj2"/>
+                                                        <constraint firstItem="Z5Z-je-zgp" firstAttribute="top" secondItem="5y4-fN-syf" secondAttribute="bottom" constant="5" id="PZl-mF-Mj2"/>
                                                         <constraint firstItem="pju-yF-RVy" firstAttribute="top" secondItem="IQ6-ol-hEZ" secondAttribute="bottom" constant="41" id="TZ5-ZI-LQD"/>
                                                         <constraint firstItem="E4f-75-PCv" firstAttribute="leading" secondItem="FmH-xh-Jin" secondAttribute="leading" id="Tsb-HL-uKr"/>
                                                         <constraint firstItem="FmH-xh-Jin" firstAttribute="leading" secondItem="RRl-wO-zzz" secondAttribute="leading" id="YCO-DB-KZS"/>
@@ -8799,7 +8799,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imgProduct" destination="WQC-Cj-Lz5" id="RZO-KR-uSh"/>
+                                            <outlet property="imgProduct" destination="WQC-Cj-Lz5" id="5Hm-vQ-lC5"/>
                                             <outlet property="imgSample" destination="Z5Z-je-zgp" id="fcx-8d-u3J"/>
                                             <outlet property="lblAvalblForSample" destination="ja3-V8-kW0" id="JRm-fx-ysR"/>
                                             <outlet property="lblAvg_Rating" destination="2Ob-Jj-Nuc" id="rJ1-OQ-2Pm"/>

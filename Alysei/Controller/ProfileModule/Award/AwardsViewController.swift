@@ -116,6 +116,8 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.awardimg.image = UIImage(named: "gold")
         } else if awardModel?.data?[indexPath.item].medal?.name == "Bronze"{
             cell.awardimg.image = UIImage(named: "bronze")
+        }else if  awardModel?.data?[indexPath.item].medal?.name == "Winner"{
+            cell.awardimg.image = UIImage(named: "Winner")
         }
         
         

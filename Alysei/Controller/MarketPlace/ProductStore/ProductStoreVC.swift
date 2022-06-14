@@ -392,7 +392,7 @@ class ProductTableViewCell: UITableViewCell{
     @IBOutlet weak var lblTotalReview: UILabel!
     @IBOutlet weak var lblTotalRating: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var imgStore: UIImageView!
+    @IBOutlet weak var imgStore: ImageLoader!
     @IBOutlet weak var vwContainer: UIView!
     
     @IBOutlet weak var userRatingStar1: UIImageView!
@@ -406,6 +406,10 @@ class ProductTableViewCell: UITableViewCell{
     override func awakeFromNib() {
         vwContainer.addShadow()
         
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imgStore.image = UIImage(named: "image_placeholder")
     }
     
     func configCell(_ data: MyStoreProductDetail?){
