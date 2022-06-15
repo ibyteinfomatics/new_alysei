@@ -6000,7 +6000,7 @@ any other devices.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="175"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role3" translatesAutoresizingMaskIntoConstraints="NO" id="Nc9-bw-Kfc" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_role3" translatesAutoresizingMaskIntoConstraints="NO" id="Nc9-bw-Kfc" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="19.5" y="20" width="89" height="89"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -15213,9 +15213,9 @@ You will be notified for any membership status update.</string>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silver" translatesAutoresizingMaskIntoConstraints="NO" id="ctr-EG-1qM">
-                                                    <rect key="frame" x="12" y="5" width="40" height="45"/>
+                                                    <rect key="frame" x="12" y="5" width="40" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="45" id="Oyy-x0-v9r"/>
+                                                        <constraint firstAttribute="height" constant="35" id="Oyy-x0-v9r"/>
                                                         <constraint firstAttribute="width" constant="40" id="kpG-W8-6B9"/>
                                                     </constraints>
                                                 </imageView>
@@ -23344,7 +23344,7 @@ AAEbvwABG8wAARvPAAEb3AABG+EAARvpAAEb7AABG/EAARv5AAAAAAAABAEAAAAAAAAAaAAAAAAAAAAA
 AAAAAAABG/w
 </mutableData>
         </image>
-        <image name="camera" catalog="system" width="32" height="32"/>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="camera_icon_colored" width="22" height="18.5"/>
         <image name="chaticon" width="76.5" height="67.5"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
@@ -23390,7 +23390,7 @@ AAAAAAABG/w
         <image name="icons_left" width="24" height="18.5"/>
         <image name="icons_people_inactive" width="20.5" height="15.5"/>
         <image name="image_placeholder" width="41" height="33"/>
-        <image name="info.circle" catalog="system" width="32" height="32"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="info_icon" width="20" height="20"/>
         <image name="left_arrow_black" width="24" height="18.5"/>
         <image name="logout_icon" width="15" height="15"/>

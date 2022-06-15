@@ -187,10 +187,15 @@ class AddProductMarketplaceVC: AlysieBaseViewC,TLPhotosPickerViewControllerDeleg
         for img in 0..<(self.passEditProductDetail?.product_gallery?.count ?? 0) {
             let urlString = (String.getString(self.passEditProductDetail?.product_gallery?[img].baseUrl)) + "\(String.getString(self.passEditProductDetail?.product_gallery?[img].attachment_url))"
             do {
+                if urlString != "" || urlString != nil {
                 let imageData = try Data(contentsOf: URL(string: urlString)!)
-                if let image = UIImage(data: imageData) {
-                    self.imagesFromSource.append(image)
+                    if let image = UIImage(data: imageData) {
+                        self.imagesFromSource.append(image)
+                    }
+                }else{
+                    print("error")
                 }
+              
             } catch {
                 print("\(error.localizedDescription)")
             }

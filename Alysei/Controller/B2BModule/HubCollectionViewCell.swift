@@ -26,6 +26,7 @@ class HubCollectionViewCell: UICollectionViewCell {
         if let strUrl = image.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
+            coverImage.contentMode = .scaleAspectFill
             self.coverImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
     }
