@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,7 +69,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We7-LM-97f">
-                                        <rect key="frame" x="278" y="5" width="20" height="20"/>
+                                        <rect key="frame" x="278" y="6.5" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="eoa-c6-9iB"/>
                                             <constraint firstAttribute="height" constant="20" id="tJU-lG-GKL"/>
@@ -79,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-iS-aBD">
-                                        <rect key="frame" x="255" y="25" width="55" height="18"/>
+                                        <rect key="frame" x="255" y="27" width="55" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="Mg8-7g-LT8"/>
                                         </constraints>
@@ -97,8 +97,8 @@
                                     <constraint firstItem="i1D-Wc-j0f" firstAttribute="top" secondItem="QD4-vX-9vU" secondAttribute="bottom" constant="1" id="HdM-VO-CEG"/>
                                     <constraint firstAttribute="trailing" secondItem="We7-LM-97f" secondAttribute="trailing" constant="22" id="Knh-yH-Djk"/>
                                     <constraint firstItem="QD4-vX-9vU" firstAttribute="leading" secondItem="i7o-w8-a7R" secondAttribute="leading" constant="15" id="Nby-BN-SRf"/>
-                                    <constraint firstItem="0fF-iS-aBD" firstAttribute="top" secondItem="We7-LM-97f" secondAttribute="bottom" id="Pos-Nr-WRJ"/>
-                                    <constraint firstItem="We7-LM-97f" firstAttribute="top" secondItem="i7o-w8-a7R" secondAttribute="top" constant="5" id="b8V-34-6dU"/>
+                                    <constraint firstItem="We7-LM-97f" firstAttribute="top" secondItem="i7o-w8-a7R" secondAttribute="top" constant="6.5" id="b8V-34-6dU"/>
+                                    <constraint firstAttribute="bottom" secondItem="0fF-iS-aBD" secondAttribute="bottom" constant="5" id="cwx-SC-Pcd"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fj-fe-fRF">

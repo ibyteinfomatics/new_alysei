@@ -1590,7 +1590,10 @@ struct RecipeConstants{
     static var kDozen : String {  "dozen".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kgm : String {  "gm".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMl : String {  "ml".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSpoon : String {  "spoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kSpoon : String {  "Teaspoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnvelope : String { "Envelope".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    
     static var kDrops : String {  "drops".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddTools : String {  "Add Tools in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSearchTools : String {  "Search Appliance, Utensils & Tools".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

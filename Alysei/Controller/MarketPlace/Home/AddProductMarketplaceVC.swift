@@ -513,21 +513,38 @@ extension AddProductMarketplaceVC: UITextViewDelegate, UITextFieldDelegate{
             let currentText:String = textView.text
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
             //let finalText = updatedText.removeWhitespace()
-            if updatedText.count <= 200{
-                return true
-            }else{
-                return false
+//            if updatedText.count <= 200{
+//                return true
+//            }else{
+//                return false
+//            }
+            if updatedText.count ?? 0 >= 200{
+                if let char = updatedText.cString(using: String.Encoding.utf8) {
+                    let isBackSpace = strcmp(char, "\\b")
+                    if (isBackSpace == -92) {
+                        print("Backspace was pressed")
+                        return true
+                    }else{
+                        return false
+                    }
+                }
             }
         }else if textView == txtProductHandleIns{
           
             let currentText:String = textView.text
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
             //let finalText = updatedText.removeWhitespace()
-            if updatedText.count <= 50{
-                return true
-            }else{
-                return false
-            }
+            if updatedText.count ?? 0 >= 50{
+                if let char = updatedText.cString(using: String.Encoding.utf8) {
+                    let isBackSpace = strcmp(char, "\\b")
+                    if (isBackSpace == -92) {
+                        print("Backspace was pressed")
+                        return true
+                    }else{
+                        return false
+                    }
+                }
+        }
         }
         return true
         
@@ -535,7 +552,7 @@ extension AddProductMarketplaceVC: UITextViewDelegate, UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtProductTitle{
-            if textField.text?.count ?? 0 >= 16{
+            if textField.text?.count ?? 0 >= 30{
                 if let char = string.cString(using: String.Encoding.utf8) {
                     let isBackSpace = strcmp(char, "\\b")
                     if (isBackSpace == -92) {

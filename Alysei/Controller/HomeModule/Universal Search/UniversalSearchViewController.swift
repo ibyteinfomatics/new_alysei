@@ -893,17 +893,27 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell6.openUrlCallBack = { url in
                             let compUrl = URL(string: url )
                             let compt = compUrl ?? URL(string: "")
-                            if #available(iOS 10.0, *) {
-                                if compt == URL(string: ""){
-                                    return
-                                }
-                                UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
-                            } else {
-                                if compt == URL(string: ""){
-                                    return
-                                }
-                                UIApplication.shared.openURL(compt!)
-                            }
+                            
+                            let vc = self.pushViewController(withName: AddAward.id(), fromStoryboard: StoryBoardConstants.kHome) as! AddAward
+                            vc.typeofpage = "read"
+                            vc.award_id = arraySearchByAward?[indexPath.item].awardid
+                            vc.eventName = arraySearchByAward?[indexPath.item].awardName
+                            vc.productName = arraySearchByAward?[indexPath.item].winningProduct
+                            vc.placeName = arraySearchByAward?[indexPath.item].medal?.name
+                            vc.medal_id = String.getString(arraySearchByAward?[indexPath.item].medal?.medal_id)
+                            vc.url = arraySearchByAward?[indexPath.item].competitionurl
+                            vc.imgurl = String.getString((arraySearchByAward?[indexPath.row].attachment?.baseUrl ?? "")+(arraySearchByAward?[indexPath.item].attachment?.attachmenturl)! )
+//                            if #available(iOS 10.0, *) {
+//                                if compt == URL(string: ""){
+//                                    return
+//                                }
+//                                UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
+//                            } else {
+//                                if compt == URL(string: ""){
+//                                    return
+//                                }
+//                                UIApplication.shared.openURL(compt!)
+//                            }
                         }
                         cell6.apiCallback = {
                             if self.indexOfPageToRequest >= self.lastpage ?? 0{
@@ -1316,17 +1326,27 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     cell6.openUrlCallBack = { url in
                         let compUrl = URL(string: url )
                         let compt = compUrl ?? URL(string: "")
-                        if #available(iOS 10.0, *) {
-                            if compt == URL(string: ""){
-                                return
-                            }
-                            UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
-                        } else {
-                            if compt == URL(string: ""){
-                                return
-                            }
-                            UIApplication.shared.openURL(compt!)
-                        }
+                        
+                        let vc = self.pushViewController(withName: AddAward.id(), fromStoryboard: StoryBoardConstants.kHome) as! AddAward
+                        vc.typeofpage = "read"
+                        vc.award_id = arraySearchByAward?[indexPath.item].awardid
+                        vc.eventName = arraySearchByAward?[indexPath.item].awardName
+                        vc.productName = arraySearchByAward?[indexPath.item].winningProduct
+                        vc.placeName = arraySearchByAward?[indexPath.item].medal?.name
+                        vc.medal_id = String.getString(arraySearchByAward?[indexPath.item].medal?.medal_id)
+                        vc.url = arraySearchByAward?[indexPath.item].competitionurl
+                        vc.imgurl = String.getString((arraySearchByAward?[indexPath.row].attachment?.baseUrl ?? "")+(arraySearchByAward?[indexPath.item].attachment?.attachmenturl)! )
+//                        if #available(iOS 10.0, *) {
+//                            if compt == URL(string: ""){
+//                                return
+//                            }
+//                            UIApplication.shared.open(compt!, options: [:], completionHandler: nil)
+//                        } else {
+//                            if compt == URL(string: ""){
+//                                return
+//                            }
+//                            UIApplication.shared.openURL(compt!)
+//                        }
                     }
                     cell6.apiCallback = {
                         if self.indexOfPageToRequest >= self.lastpage ?? 0{

@@ -316,7 +316,8 @@
 "dozen" = "Dozzina";
 "gm" = "gr";
 "ml" =  "ml";
-"spoon" = "Cucchiai";
+"Teaspoon" = "Cucchiaino";
+"Envelope" = "Bustina";
 "drops" = "Gocce";
 "Add Tools in Recipe" =  "Aggiungi Utensili per la ricetta";
 "Search Appliance, Utensils & Tools" = "Ricerca Elettrodomestici e Utensili ";

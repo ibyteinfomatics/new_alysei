@@ -57,7 +57,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
     var medalIdarrData = [String]()
     var dataDropDown = DropDown()
     var medaModel:AwardMedalModel?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
@@ -70,7 +70,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         placeNameTxf.placeholder = AppConstants.kNameOfMedalPlaceReceived
         urlLabel.text = AppConstants.kCompetitionURL
         urlNameTxf.placeholder = AppConstants.kCompetitionURL
-       
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddAward.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -96,7 +96,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             eventLabel.isHidden = false
             eventNameTxf.placeholder = ""
             eventView1.isHidden = false
-           // eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            // eventLabel.textColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
             eventLabel.textColor = UIColor.darkGray.withAlphaComponent(0.7)
             
             productLabel.isHidden = false
@@ -118,19 +118,33 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             
             self.cameraIcon.isHidden = true
             self.cameraText.isHidden = true
-           
+            
             saveButton.isHidden = true
             eventNameTxf.isUserInteractionEnabled = false
             productNameTxf.isUserInteractionEnabled = false
             urlNameTxf.isUserInteractionEnabled = false
-            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(openUrlView))
+            self.urlView1.addGestureRecognizer(tap)
         } else {
             getModelList()
         }
         
         // Do any additional setup after loading the view.
     }
-    
+    @objc func openUrlView(_ sender: UITapGestureRecognizer){
+        let checkUrl = URL(string: url ?? "")
+        if #available(iOS 10.0, *) {
+            if checkUrl == URL(string: ""){
+                return
+            }
+            UIApplication.shared.open(checkUrl!, options: [:], completionHandler: nil)
+        } else {
+            if checkUrl == URL(string: ""){
+                return
+            }
+            UIApplication.shared.openURL(checkUrl!)
+        }
+    }
     @IBAction func placeBtn(_ sender: UIButton){
         
         if typeofpage != "read" {
@@ -151,12 +165,12 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             } else if placeNameTxf.text == "" {
                 alert(msg: AlertMessage.kPleaseEnterMedalName)
             } /*else if urlNameTxf.text == "" {
-                alert(msg: "Please enter competition URL!")
-            } else if String.getString(self.urlNameTxf.text).isURL() == false{
-                alert(msg: "Please enter valid competition URL!")
-            }*/ else {
-                updateRewardApi()
-            }
+               alert(msg: "Please enter competition URL!")
+               } else if String.getString(self.urlNameTxf.text).isURL() == false{
+               alert(msg: "Please enter valid competition URL!")
+               }*/ else {
+                   updateRewardApi()
+               }
             
         } else {
             
@@ -169,12 +183,12 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             } else if placeNameTxf.text == "" {
                 alert(msg: AlertMessage.kPleaseEnterMedalName)
             } /*else if urlNameTxf.text == "" {
-                alert(msg: "Please enter competition URL!")
-            } else if String.getString(self.urlNameTxf.text).isURL() == false{
-                alert(msg: "Please enter valid competition URL!")
-            }*/ else {
-                createRewardApi()
-            }
+               alert(msg: "Please enter competition URL!")
+               } else if String.getString(self.urlNameTxf.text).isURL() == false{
+               alert(msg: "Please enter valid competition URL!")
+               }*/ else {
+                   createRewardApi()
+               }
             
             
         }
@@ -301,7 +315,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.eventView.isHidden = false
             self.eventView1.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             eventLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
-
+            
         }
         
         
@@ -312,7 +326,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.productView.isHidden = false
             self.productView1.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             productLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
-
+            
         }
         
         
@@ -323,7 +337,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.urlView.isHidden = false
             self.urlView1.layer.borderColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
             urlLabel.textColor = UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1)
-
+            
         }
         
     }
@@ -339,7 +353,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.eventNameTxf.placeholder = AppConstants.kNameOfCompetitionEvent
             self.eventView.isHidden = false
             eventView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-           
+            
         }
         
         if textField == self.productNameTxf {
@@ -349,7 +363,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.productNameTxf.placeholder = AppConstants.kNameOfWinningProduct
             self.productView.isHidden = false
             productView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-           
+            
         }
         
         if textField == self.urlNameTxf {
@@ -359,28 +373,28 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
             self.urlNameTxf.placeholder = AppConstants.kCompetitionURL
             self.urlView.isHidden = false
             urlView1.layer.borderColor = UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1).cgColor
-           
+            
         }
         
     }
     
     private func getModelList() -> Void{
-      
-      disableWindowInteraction()
-    
-      TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kAwardMedal, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
-          
-          let dictResponse = dictResponse as? [String:Any]
-          
-          self.medaModel = AwardMedalModel.init(with: dictResponse)
+        
+        disableWindowInteraction()
+        
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kAwardMedal, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
-          for i in 0..<(self.medaModel?.data?.count)! {
+            let dictResponse = dictResponse as? [String:Any]
+            
+            self.medaModel = AwardMedalModel.init(with: dictResponse)
+            
+            for i in 0..<(self.medaModel?.data?.count)! {
                 self.medalarrData.append(self.medaModel?.data?[i].name ?? "")
                 self.medalIdarrData.append(String.getString(self.medaModel?.data?[i].medal_id))
-          }
+            }
+            
+        }
         
-      }
-      
     }
     
     
@@ -411,7 +425,7 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
         
         let imageParam : [String:Any] = self.uploadImageArray.count > 0 ? [APIConstants.kImage: self.uploadImageArray[0],
                                                                            APIConstants.kImageName: "image_id"] : [:]
-       
+        
         CommonUtil.sharedInstance.postRequestToImageUpload(withParameter: params, url: APIUrl.kAwardUpdate, image: imageParam, controller: self, type: 0)
         
     }
@@ -420,24 +434,24 @@ class AddAward: AlysieBaseViewC,UITextFieldDelegate,UINavigationControllerDelega
     func alert(msg:String){
         let refreshAlert = UIAlertController(title: "Alert!!", message: msg, preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-           
+            
             self.parent?.dismiss(animated: true, completion: nil)
         }))
         
         //let parent = self.parentViewController?.presentedViewController as? HubsListVC
         self.parent?.present(refreshAlert, animated: true, completion: nil)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
- 
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension AddAward{
     
@@ -448,7 +462,7 @@ extension AddAward{
 }
 
 extension UITextField{
-   @IBInspectable var placeHolderColors: UIColor? {
+    @IBInspectable var placeHolderColors: UIColor? {
         get {
             return self.placeHolderColors
         }

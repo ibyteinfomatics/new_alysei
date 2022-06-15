@@ -148,10 +148,13 @@ extension MyStoreProductViewController: UICollectionViewDataSource, UICollection
            
         }
         cell.editCallBack = { editProductId, tag in
-            let controller = self.pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
-            controller?.fromVC = .myStoreDashboard
-            controller?.marketPlaceProductId = "\(editProductId)"
-            controller?.passEditProductDetail = self.productList?[tag]
+            DispatchQueue.main.async {
+                let controller = self.pushViewController(withName: AddProductMarketplaceVC.id(), fromStoryboard: StoryBoardConstants.kMarketplace) as? AddProductMarketplaceVC
+                controller?.fromVC = .myStoreDashboard
+                controller?.marketPlaceProductId = "\(editProductId)"
+                controller?.passEditProductDetail = self.productList?[tag]
+            }
+            
         }
         return cell
     }

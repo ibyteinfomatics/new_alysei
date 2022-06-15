@@ -2309,7 +2309,7 @@ extension ProfileViewC : CoachMarksControllerDataSource, CoachMarksControllerDel
             case "4","5","6":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kImporterDistField
             case "8":
-                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgencies
+                coachViews.bodyView.hintLabel.text = TourGuideConstants.kTravelAgenciesField
             case "9":
                 coachViews.bodyView.hintLabel.text = TourGuideConstants.kRestaurantField
             default:
