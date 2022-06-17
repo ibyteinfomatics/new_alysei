@@ -169,6 +169,7 @@ extension OTPVerificationViewC{
           }else{
                       let nextVC = CountryListVC()
                       nextVC.roleId = roleId
+                      editHubValue = "1"
               //        nextVC.isEditHub = false
                     self.navigationController?.pushViewController(nextVC, animated: true)
           }

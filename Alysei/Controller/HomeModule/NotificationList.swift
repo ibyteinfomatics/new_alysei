@@ -224,7 +224,8 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
         case 4:
             //networkcurrentIndex = 1
            // tabBarController!.selectedIndex = 3
-            self.showAlert(withMessage: notifiacationArray[indexPath.row].reason ?? "", nil)
+            //self.showAlert(withMessage: notifiacationArray[indexPath.row].reason ?? "", nil)
+            self.showAlertWithTitle(withMessage: notifiacationArray[indexPath.row].reason ?? "", appTitle: notifiacationArray[indexPath.row].sender_name ?? "", nil)
         case 5:
             // kSharedAppDelegate.moveToNetwork(index: 3)
             tabBarController!.selectedIndex = 3

@@ -14,6 +14,9 @@ import IQKeyboardManagerSwift
 import FirebaseMessaging
 import Firebase
 import Zoomy
+
+
+var editHubValue: String?
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
     
@@ -304,10 +307,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func moveInqueryChat(receiverid:String,username:String){
         
         let storyboard = UIStoryboard(name: StoryBoardConstants.kChat, bundle: nil)
-        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "InquiryConversation") as? InquiryConversation else { return }
-        nextvc.userId = receiverid
-        nextvc.name = username
-        nextvc.fromvc = .Notification
+        guard let nextvc = storyboard.instantiateViewController(withIdentifier: "InquiryConverstionController") as? InquiryConverstionController else { return }
+//        nextvc.userId = receiverid
+//        nextvc.name = username
+//        nextvc.fromvc = .Notification
+//        nextvc.passProductId = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
+//        nextvc.passProductImageUrl = (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.baseUrl ?? "") + (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.attachment_url ?? "")
+//        nextvc.passProductName = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.title ?? ""
+        nextvc.passReceiverId =  receiverid
+       
         let navigationController = UINavigationController(rootViewController: nextvc)
         navigationController.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.windows.first?.rootViewController = navigationController

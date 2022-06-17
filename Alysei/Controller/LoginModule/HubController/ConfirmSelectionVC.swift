@@ -90,12 +90,13 @@ class ConfirmSelectionVC: UIViewController , SelectList{
             let selectedCity = allHubs.filter{$0.type == .city}
             let selectedHubs = allHubs.filter{$0.type == .hubs}
             let hubsID = selectedHubs.map{Int.getInt($0.id)}
-            if self.isEditHubServerApi == true {
-                addOrUpdate = 2
-            }else{
-                addOrUpdate = 1
-            }
-            let params = ["params":["add_or_update": addOrUpdate,
+//            if self.isEditHubServerApi == true {
+//                addOrUpdate = 2
+//            }else{
+//                addOrUpdate = 1
+//            }
+           // "add_or_update": addOrUpdate
+            let params = ["params":["add_or_update": editHubValue ?? "1",
                                     "selectedhubs":hubsID,
                                     "selectedcity":self.createCityJson(hubs: selectedCity)]]
             print(params)

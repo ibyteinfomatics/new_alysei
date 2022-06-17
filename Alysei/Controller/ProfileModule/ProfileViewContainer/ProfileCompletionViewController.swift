@@ -378,6 +378,7 @@ extension ProfileCompletionViewController: AnimationProfileCallBack{
         switch profileCompletionModel?[indexPath.row].title {
         case ProfileCompletion.HubSelection :
             let nextVC = CountryListVC()
+            editHubValue = "1"
 //            nextVC.isEditHub = true
             self.navigationController?.pushViewController(nextVC, animated: true)
         case ProfileCompletion.ContactInfo :

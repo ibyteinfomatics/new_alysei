@@ -387,6 +387,7 @@ extension SignUpViewC{
                 kSharedUserDefaults.setLoggedInUserDetails(loggedInUserDetails: dicResult)
                 let roleId = String.getString(dicRole[APIConstants.kRoleId])
                 let nextVC = CountryListVC()
+                editHubValue = "1"
                 self.navigationController?.pushViewController(nextVC, animated: true)
                 nextVC.roleId = roleId
             }

@@ -149,6 +149,7 @@ class ShowHubSelectionTableViewCell: UITableViewCell {
             //            }
             // hubNameTableCell.lblNAme.sizeToFit()
         }else{
+          
             let hub = self.selectedHub?.hubs[indexPath.row]
             self.labeCountryName.text = self.selectedHub?.country.name
            // hubNameTableCell.lblCountryState.text = (self.selectedHub?.country.name ?? "") + "/" + (hub?.state?.name ?? "")

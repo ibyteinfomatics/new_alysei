@@ -147,9 +147,11 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         let tapNotification = UITapGestureRecognizer(target: self, action: #selector(openNotification))
         self.tapNotificationVw.addGestureRecognizer(tapNotification)
         
-        openednewCount.layer.cornerRadius = 10
-        openednewCount.layer.masksToBounds = true
-        openednewCount.textColor = UIColor.white
+       
+        
+//        openednewCount.layer.cornerRadius = 10
+//        openednewCount.layer.masksToBounds = true
+//        openednewCount.textColor = UIColor.white
         
     }
     
@@ -201,23 +203,23 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         self.vwwWalkContainer1.isHidden = true
         self.vwwWalkContainer2.isHidden = true
         self.walknextBtn.setTitle(AppConstants.Next, for: .normal)
-        openednewCount.isHidden = true
+        //openednewCount.isHidden = true
         newInquiryCount(child: "New")
         openedInquiryCount(child: "Opened")
   
             if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"){
                 self.btnEnquiry.isHidden = true
-                self.openednewCount.isHidden = true
+               // self.openednewCount.isHidden = true
             }else{
-                DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
-                    if self.newunread == 0 &&  self.openedunread == 0 {
-                        self.openednewCount.isHidden = true
-                    } else {
-                        self.openednewCount.isHidden = false
-                    }
-            self.openednewCount.text = String.getString(self.openedunread+self.newunread)
+//                DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
+//                    if self.newunread == 0 &&  self.openedunread == 0 {
+//                        self.openednewCount.isHidden = true
+//                    } else {
+//                        self.openednewCount.isHidden = false
+//                    }
+//            self.openednewCount.text = String.getString(self.openedunread+self.newunread)
             
-        })
+       // })
             }
         
         

@@ -238,6 +238,8 @@ enum CountryCityHubSelection {
 }
 
 struct APIUrl{
+    
+    static let kEnquiryStatus         = "update/enquiry/status"
     static let kFaq                     = "get/faq"
     static let kSignUp                 =  "register"
     static let kForgotPassword         =  "forgot/password"
@@ -632,7 +634,7 @@ struct AppConstants {
     
     static var kNameOfCompetitionEvent: String{"Name of Competition / Event".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgency: String {"Travel Agency".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kNameOfWinningProduct: String{"Name of winning Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kNameOfWinningProduct: String{"Prize".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNameOfMedalPlaceReceived : String {"Medal / Place received".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCompetitionURL : String {"Competition URL".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
   

@@ -122,6 +122,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     private var currentChild: UIViewController {
         return self.children.last!
+        
     }
     
     private lazy var postsViewC: UserPostsViewController = {
@@ -1823,10 +1824,12 @@ extension ProfileViewC: AnimationProfileCallBack{
             if profileCompletionModel?[indexPath.row].status == true{
                 let nextVC = ConfirmSelectionVC()
                 nextVC.isEditHub = true
+                editHubValue = "2"
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }else{
                 let nextVC = CountryListVC()
                 nextVC.isEditHub = true
+                editHubValue = "1"
                 self.navigationController?.pushViewController(nextVC, animated: true)
             }
         case ProfileCompletion.ContactInfo:

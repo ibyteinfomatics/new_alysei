@@ -79,6 +79,7 @@ class SelectCityTableViewCell: UITableViewCell {
        labelCityName.text = data?.name
        // self.imgHub.layer.cornerRadius = 15
         self.imgHub.setImage(withString: String.getString(data?.image?.baseUrl) + String.getString(data?.image?.attachmentUrl))
+        
         if self.hasCome == .hubs && data?.is_checked == true {
             self.buttonLeftCheckbox.isSelected = true
             self.buttonLeftCheckbox.setImage(UIImage(named: "icon_blueSelected"), for: .normal)

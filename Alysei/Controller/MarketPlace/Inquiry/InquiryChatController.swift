@@ -20,6 +20,7 @@ class InquiryChatController: AlysieBaseViewC {
     @IBOutlet weak var lblClosed: UILabel!
     @IBOutlet weak var newCount: UILabel!
     @IBOutlet weak var openedCount: UILabel!
+    @IBOutlet weak var closeCount: UILabel!
     @IBOutlet weak var tblViewNotification: UITableView!
     @IBOutlet weak var lblHeading: UILabel!
     
@@ -63,6 +64,7 @@ class InquiryChatController: AlysieBaseViewC {
         newCount.textColor = UIColor.white
         openedCount.isHidden = true
         newCount.isHidden = true
+        closeCount.isHidden = true
         if let selfUserTypeString = kSharedUserDefaults.loggedInUserModal.memberRoleId {
             if let selfUserType: UserRoles = UserRoles(rawValue: (Int(selfUserTypeString) ?? 10))  {
                 self.userType = selfUserType
@@ -151,7 +153,7 @@ class InquiryChatController: AlysieBaseViewC {
                 notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
             }
           
-            if inquiryNewOpenModel?.dataOpen?[index].unread_count == 0{
+            if inquiryNewOpenModel?.dataOpen?[index].unread_count == 0 || inquiryNewOpenModel?.dataOpen?[index].unread_count == nil {
             notificationTableCell.count.isHidden = true
             }else{
                 notificationTableCell.count.setTitle("\(inquiryNewOpenModel?.dataOpen?[index].unread_count ?? 0)", for: .normal)
@@ -245,7 +247,9 @@ extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         let vc = pushViewController(withName: InquiryConverstionController.id(), fromStoryboard: StoryBoardConstants.kChat) as! InquiryConverstionController
+        vc.type = self.type
         vc.passProductId = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product_id
+        vc.passProductEnquiryId = "\(self.inquiryNewOpenModel?.dataOpen?[indexPath.row].marketplace_product_enquery_id ?? 0)"
         vc.passProductImageUrl = (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.baseUrl ?? "") + (self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.galleries?.attachment_url ?? "")
         vc.passProductName = self.inquiryNewOpenModel?.dataOpen?[indexPath.row].product?.title ?? ""
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
@@ -263,20 +267,40 @@ extension InquiryChatController {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.getEnquiry + "\(self.type ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { result, error, errorType, statusCode in
             
             if let result = result as? [String:Any] {
-            
+                if result["total_open_count"] as? String == "0"{
+                    self.openedCount.isHidden = false
+                self.openedCount.text = result["total_open_count"] as? String
+                }else{
+                    self.openedCount.isHidden = true
+                }
+                if result["total_close_count"] as? String == "0"{
+                    self.closeCount.isHidden = false
+                self.closeCount.text = result["total_close_count"] as? String
+                }else{
+                    self.closeCount.isHidden = true
+                }
+                if result["total_new_count"] as? String == "0" {
+                    self.closeCount.isHidden = false
+                self.newCount.text = result["total_new_count"] as? String
+                }else{
+                    self.closeCount.isHidden = true
+                }
+                
+                
+                
                 if let data = result["data"] as? [String:Any]{
                 self.inquiryNewOpenModel = InquiryNewOpenModel.init(with: data)
             }
               
                 self.tblViewNotification.reloadData()
             }
-            if self.inquiryNewOpenModel?.dataOpen?.count == 0 {
-                if self.type == "open"{
-                    self.openedCount.isHidden = true
-                }else{
-                    self.newCount.isHidden = true
-                }
-            }
+//            if self.inquiryNewOpenModel?.dataOpen?.count == 0 {
+//                if self.type == "open"{
+//                    self.openedCount.isHidden = true
+//                }else{
+//                    self.newCount.isHidden = true
+//                }
+//            }
             
             
         }

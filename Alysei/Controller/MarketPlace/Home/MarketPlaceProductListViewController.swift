@@ -704,7 +704,9 @@ extension MarketPlaceProductListViewController{
                     self.blankScreen.isHidden = true
                 }
             case 409:
-                self.arrListAppData = [ProductSearchListModel]()
+                if indexOfPageToRequest == 1 {
+                    self.blankScreen.isHidden = false
+                }
                 //self.showAlert(withMessage: "No products found")
             default:
                 if (self.arrListAppData.count == 0) {

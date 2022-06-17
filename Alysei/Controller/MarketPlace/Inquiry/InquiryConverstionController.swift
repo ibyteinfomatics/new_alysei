@@ -83,7 +83,7 @@ class InquiryConverstionController: AlysieBaseViewC {
         var ypImages = [YPMediaItem]()
         var imagesFromSource = [UIImage]()
         
-        var arrMoreType = ["Closed"]
+        var arrMoreType = ["Close Inquiry"]
         var dataDropDown = DropDown()
         var passProductImageUrl: String?
         var passProductName: String?
@@ -91,6 +91,8 @@ class InquiryConverstionController: AlysieBaseViewC {
         var position = 0
         var passProductId: String?
         var passReceiverId: String?
+        var passProductEnquiryId: String?
+    
        var sendChatImage: UIImage?
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -102,13 +104,19 @@ class InquiryConverstionController: AlysieBaseViewC {
             chatTblView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0)
             
            // print("image",kSharedUserDefaults.loggedInUserModal.avatar?.imageURL)
-            morebtn.isHidden = true
+            
             initialSetup()
             registerNib()
            // receiveMessage()
             
             if type == "Closed" && ResentUser?[position].producerUserId == String.getString(kSharedUserDefaults.loggedInUserModal.userId){
                 viewBottom.isHidden = true
+            }
+           
+            if ((kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)") && (type == "open" || type == "new")) {
+                morebtn.isHidden = true
+            }else{
+                morebtn.isHidden = false
             }
            
             // Do any additional setup after loading the view.
@@ -140,7 +148,7 @@ class InquiryConverstionController: AlysieBaseViewC {
             dataDropDown.bottomOffset = CGPoint(x: 0, y: (dataDropDown.anchorView?.plainView.bounds.height)!)
             dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
 
-                
+                updateEnquiryStatus()
                 
 //                let sendMessageDetails = InquiryReceivedMessageClass()
 //                sendMessageDetails.receiverid = String.getString( userId)
@@ -668,7 +676,24 @@ class InquiryConverstionController: AlysieBaseViewC {
             }
         }
         
-       
+        func updateEnquiryStatus(){
+            
+           let parameters: [String:Any] = [
+            "marketplace_product_enquery_id": self.passProductEnquiryId ?? "",
+            "status": "close",
+            ]
+            
+            TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kEnquiryStatus, requestMethod: .POST, requestParameters: parameters, withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+                switch statusCode {
+                case 200:
+                    self.morebtn.isHidden = true
+                default:
+                    print("Error")
+                }
+               
+                
+            }
+        }
        func notificationApi(fromid: String, toid: String){
             
            let parameters: [String:Any] = [

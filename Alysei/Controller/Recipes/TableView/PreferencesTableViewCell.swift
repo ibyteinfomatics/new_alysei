@@ -125,9 +125,10 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
-       
+        
         switch indexPath.section {
         case 0:
+            cell.imageView1.isHidden = true
             if indexPath.row < showCuisine!.count {
                 let imgUrl = ((showCuisine?[indexPath.item].imageId?.baseUrl ?? "") + (showCuisine?[indexPath.item].imageId?.imgUrl ?? ""))
                 
@@ -161,6 +162,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             }
             
         case 1:
+            cell.imageView1.isHidden = true
             if indexPath.row < showFood!.count {
 
                 let imgUrl = ((showFood?[indexPath.item].imageId?.baseUrl ?? "") + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
@@ -194,6 +196,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             }
         
         case 2:
+            cell.imageView1.isHidden = true
             if indexPath.row < showDiet!.count {
                 let imgUrl = ((showDiet?[indexPath.item].imageId?.baseUrl ?? "") + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
@@ -240,6 +243,8 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                // cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = showIngridient?[indexPath.row].title
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.imageView1.isHidden = false
+                cell.imageView1.image = UIImage(named: "Group 1165")
                 cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.vwImage.layer.borderWidth = 3
                 cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
@@ -260,6 +265,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             
 
         case 4:
+            cell.imageView1.isHidden = true
             if indexPath.row < showCookingSkill!.count {
                 let imgUrl = ((showCookingSkill?[indexPath.item].imageId?.baseUrl ?? "") + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))

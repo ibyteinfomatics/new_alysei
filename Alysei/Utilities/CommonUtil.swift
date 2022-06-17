@@ -31,7 +31,17 @@ extension UIViewController: CommonUtilDelegate {
     }
     
 
-  
+    public func showAlertWithTitle(withMessage message: String,appTitle: String,_ completion:(() ->Void)? = nil){
+      
+        let alert = UIAlertController(title: appTitle, message: message, preferredStyle: .alert)
+        let okAction =  UIAlertAction(title: ButtonTitle.kOk, style: .cancel) { (_) in
+            
+            DispatchQueue.main.async { completion?() }
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+
   public func showTwoButtonsAlert(title: String = "",message: String,buttonTitle: String,_ completion:(() ->Void)? = nil) -> Void{
       
     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

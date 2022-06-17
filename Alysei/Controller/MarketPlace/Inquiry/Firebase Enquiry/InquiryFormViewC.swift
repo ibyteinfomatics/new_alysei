@@ -79,7 +79,7 @@ class InquiryFormViewC: AlysieBaseViewC {
     }
     
     @IBAction func btnSendEnquiryAction(_ sender: UIButton){
-        if txtMessage.text == MarketPlaceConstant.kMarkMessage{
+        if txtMessage.text == MarketPlaceConstant.kIsProductAvailable ||  txtMessage.text == ""{
             self.showAlert(withMessage: MarketPlaceConstant.KEnterSomeMessage)
         }else{
         self.callSaveInquiryApi()
@@ -218,6 +218,23 @@ extension InquiryFormViewC: UITextViewDelegate{
         }
         return true
     }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textView == txtMessage {
+            txtMessage.text = ""
+        }
+        return true
+    }
+    
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if  textView.text == ""{
+            txtMessage.text = MarketPlaceConstant.kIsProductAvailable
+            textView.textColor = UIColor.lightGray
+            textView.selectedRange = NSRange(location: 0, length: 0)
+        }
+    }
 }
 
 extension InquiryFormViewC{
@@ -235,21 +252,38 @@ extension InquiryFormViewC{
             
             switch statusCode {
             case 200:
-                self.sendMessage()
-                let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
-                vc?.name = self.name ?? ""
-                vc?.userId = self.userId ?? ""
-                vc?.profileImageUrl = self.profileImageUrl ?? ""
-                vc?.storeId = self.storeId ?? ""
-                vc?.type = "New"
-                vc?.storeName = self.storeName ?? ""
-                vc?.productId = self.passproductId ?? ""
-                vc?.productName = self.passproductName ?? ""
-                vc?.productImage = self.productImage ?? ""
-            case 409:
-                self.showAlert(withMessage: MarketPlaceConstant.kSubmitQuery)
+               // self.sendMessage()
+//                let vc = self.pushViewController(withName: InquiryConversation.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConversation
+//                vc?.name = self.name ?? ""
+//                vc?.userId = self.userId ?? ""
+//                vc?.profileImageUrl = self.profileImageUrl ?? ""
+//                vc?.storeId = self.storeId ?? ""
+//                vc?.type = "New"
+//                vc?.storeName = self.storeName ?? ""
+//                vc?.productId = self.passproductId ?? ""
+//                vc?.productName = self.passproductName ?? ""
+//                vc?.productImage = self.productImage ?? ""
+                let response = dictResponse  as? [String:Any]
+                let data = response?["data"] as? [String:Any]
+                
+                let vc = self.pushViewController(withName: InquiryConverstionController.id(), fromStoryboard: StoryBoardConstants.kChat) as? InquiryConverstionController
+//                              vc.type = self.type
+                vc?.passProductId = "\(data?["marketplace_product_id"] as? Int ?? 0)"
+                vc?.passProductEnquiryId = "\(response?["marketplace_product_enquery_id"]  as? Int ?? 0)"
+                vc?.passProductImageUrl = response?["product_image"] as? String
+                vc?.passProductName = response?["product_name"] as? String
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+                   
+                    vc?.passReceiverId =  kSharedUserDefaults.loggedInUserModal.userId
+                }else{
+                    let reciverdata = data?["receiver_data"] as? [String:Any]
+                    vc?.passReceiverId =  "\(reciverdata?["user_id"] as? Int ?? 0)"
+                }
+                
+           case 409:
+                self.showAlert(withMessage: "\(error?.localizedDescription ?? "")")
             default:
-                self.showAlert(withMessage: MarketPlaceConstant.kNetworkError)
+                self.showAlert(withMessage: "\(error?.localizedDescription ?? "")")
             }
         }
     }

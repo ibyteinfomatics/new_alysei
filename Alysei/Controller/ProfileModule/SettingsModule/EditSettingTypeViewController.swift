@@ -217,7 +217,8 @@ extension EditSetingTypeViewController {
             print("wertyuihgfdszxcvbnm,nbcvxvbnm,---------\(self.reviewSelectedHubs ?? [ReviewSelectedHub]())")
             if self.reviewSelectedHubs?.count == 0 {
                 let nextVC = CountryListVC()
-                nextVC.isEditHub = true
+                nextVC.isEditHub = false
+                editHubValue = "1"
                 nextVC.selectedHubs = []
                 self.hidesBottomBarWhenPushed = true
             
@@ -225,6 +226,7 @@ extension EditSetingTypeViewController {
             }else{
                 let nextVC = ConfirmSelectionVC()
                 nextVC.isEditHub = true
+                editHubValue = "2"
                 nextVC.selectedHubs = []
                 self.hidesBottomBarWhenPushed = true
             

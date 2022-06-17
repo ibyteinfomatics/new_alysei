@@ -61,6 +61,7 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
        cell.roleId = self.roleId
         var hub: SelectdHubs?
         if isEditHub == true {
+            
             for i in 0..<(self.reviewSelectedHubs?[indexPath.row].hubs?.count ?? 0){
                 let data = self.reviewSelectedHubs?[indexPath.row].hubs?[i]
                 self.reviewSelectedHubCityArray.append(data?.title ?? "" )
@@ -75,9 +76,16 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
             cell.reviewSelectedHubCityArray = self.reviewSelectedHubCityArray
             //hub = self.reviewSelectedHubs?.data?.hubs?[0]
         }else{
+
             hub = selectedHubs[indexPath.row]
             hub?.hubs = hub?.hubs.uniqueArray(map: {$0.id}) ?? []
+            let hubDictionary = hub?.hubs.filter({$0.type == .hubs})
+            let cityDictionary = hub?.hubs.filter({$0.type != .hubs})
+            let mergeDict = (hubDictionary ?? [CountryHubs]()) + (cityDictionary  ?? [CountryHubs]())
+            hub?.hubs.removeAll()
+            hub?.hubs.append(contentsOf: mergeDict)
             cell.selectedHub = hub
+       
         }
         cell.addRemoveCallback = { tag in
             if tag == 0 {
