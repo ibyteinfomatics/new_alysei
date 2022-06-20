@@ -289,7 +289,8 @@ class InquiryConverstionController: AlysieBaseViewC {
         @IBAction func btnBackTapped(_ sender: UIButton) {
             
             if fromvc == .Notification {
-                kSharedAppDelegate.pushToTabBarViewC()
+               // kSharedAppDelegate.pushToTabBarViewC()
+                self.navigationController?.popViewController(animated: true)
             } else {
                 self.navigationController?.popViewController(animated: true)
             }
@@ -455,7 +456,7 @@ class InquiryConverstionController: AlysieBaseViewC {
     extension InquiryConverstionController : UITableViewDataSource , UITableViewDelegate {
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.messages?.count ?? 0
+            return (self.messages?.count ?? 0 + 1)
         }
         
         

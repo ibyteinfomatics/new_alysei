@@ -136,9 +136,9 @@ class InquiryChatController: AlysieBaseViewC {
     
     private func getNotificationTableCell(index: Int) -> UITableViewCell{
     
-        if type == "new"{
-            return UITableViewCell()
-        }else{
+//        if type == "new"{
+//            return UITableViewCell()
+//        }else{
             guard let notificationTableCell = tblViewNotification.dequeueReusableCell(withIdentifier: "NotificationTableCell") as? NotificationTableCell else{return UITableViewCell()}
    //      notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
             notificationTableCell.name.text = inquiryNewOpenModel?.dataOpen?[index].receiver?.companyName
@@ -180,7 +180,7 @@ class InquiryChatController: AlysieBaseViewC {
               //  notificationTableCell.message.text = inquiryNewOpenModel?.dataOpen?[0].me
 //            }
             return notificationTableCell
-        }
+       // }
         //notificationTableCell.configure()
      
     }
@@ -229,7 +229,7 @@ class InquiryChatController: AlysieBaseViewC {
 extension InquiryChatController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if type == "new"{
-            return 2
+            return inquiryNewOpenModel?.dataOpen?.count ?? 0
         }else{
         return inquiryNewOpenModel?.dataOpen?.count ?? 0
         }

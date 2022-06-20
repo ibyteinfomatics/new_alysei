@@ -236,7 +236,24 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
         case 9:
             kSharedAppDelegate.moveToMemberShip()
         case 10:
-            kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
+            let storyboard = UIStoryboard(name: StoryBoardConstants.kChat, bundle: nil)
+            guard let nextvc = storyboard.instantiateViewController(withIdentifier: "InquiryConverstionController") as? InquiryConverstionController else { return }
+            
+                let data = notifiacationArray[indexPath.row]
+            nextvc.passProductId = "\(data.redirectToid ?? 0)"
+                //nextvc?.passProductEnquiryId = "\(response?["marketplace_product_enquery_id"]  as? Int ?? 0)"
+            nextvc.passProductImageUrl = data.enquiry_product_image
+            nextvc.passProductName = data.enquiry_product_name
+                if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)" {
+
+                    nextvc.passReceiverId =  kSharedUserDefaults.loggedInUserModal.userId
+                }else{
+                    let reciverdata = data.sender_id as? Int
+                    nextvc.passReceiverId =  "\(reciverdata ?? 0)"
+                }
+                
+            self.navigationController?.pushViewController(nextvc, animated: true)
+          // kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
        
         default:
             kSharedAppDelegate.pushToTabBarViewC()

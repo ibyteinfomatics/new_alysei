@@ -28,7 +28,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imgPost: ImageLoader!
-    
+    @IBOutlet weak var followerCount: UILabel!
     @IBOutlet var vwpageControl: ScrollingPageControl!
     
     @IBOutlet weak var noItemLabel: UILabel!
@@ -55,6 +55,7 @@ class PostTableViewCell: UITableViewCell {
        
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.layer.masksToBounds = true
+        followerCount.isHidden = true
         self.vwpageControl.selectedPage = pages
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(likeAction))
         tap.numberOfTouchesRequired = 1
@@ -110,17 +111,50 @@ class PostTableViewCell: UITableViewCell {
         self.index = self.data?.postID ?? 0
         if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kProducer + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
-            userNickName.text = modelData.subjectId?.email?.lowercased()
-        }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue) || (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue)  {
+            userNickName.text = AppConstants.kRestaurant + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+        }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue)   {
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = modelData.subjectId?.email?.lowercased()
-        }else{
+            userNickName.text = AppConstants.kVoyager + ","
+            followerCount.isHidden = true
+           
+        }else if  (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue){
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+            userNickName.text = AppConstants.kVoiceOfExperts + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+        }
+        else if (modelData.subjectId?.roleId == UserRoles.distributer1.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kImporter + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+        }else if (modelData.subjectId?.roleId == UserRoles.distributer2.rawValue) {
+            
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = AppConstants.kDistributer + ","
+            
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+        }else if (modelData.subjectId?.roleId == UserRoles.distributer3.rawValue) {
+            
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = AppConstants.kImporterDistributer + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+        }else if (modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue) {
+            
+            userName.text = modelData.subjectId?.companyName?.capitalized
+            userNickName.text = AppConstants.kTravelAgencies + ","
+            followerCount.isHidden = false
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
         }
         lblPostDesc.text = modelData.body
         lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"

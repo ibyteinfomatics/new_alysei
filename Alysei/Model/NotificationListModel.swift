@@ -76,9 +76,10 @@ class NotiDatum {
     var isRead, createdAt, updatedAt,sender_name: String?
     var user: NotiUser?
     var reason: String?
-
-    
-    
+    var enquiry_product_image:String?
+    var enquiry_product_name: String?
+    var enquiry_type: String?
+    var sender_id: String?
     init(with dictResponse: [String:Any]?) {
             
             self.notificationid = Int.getInt(dictResponse?["notification_id"])
@@ -94,7 +95,12 @@ class NotiDatum {
             self.createdAt = String.getString(dictResponse?["created_at"])
             self.updatedAt = String.getString(dictResponse?["updated_at"])
             self.sender_name = String.getString(dictResponse?["sender_name"])
-            
+        self.enquiry_product_image = String.getString(dictResponse?["enquiry_product_image"])
+        self.enquiry_product_name = String.getString(dictResponse?["enquiry_product_name"])
+        self.enquiry_type = String.getString(dictResponse?["enquiry_type"])
+        self.sender_name = String.getString(dictResponse?["sender_name"])
+        self.sender_id = String.getString(dictResponse?["sender_id"])
+        
             if let data = dictResponse?["user"] as? [String:Any]{
                 self.user =  NotiUser.init(with: data)
             }

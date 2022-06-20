@@ -45,6 +45,26 @@ class Receivertextcell: UITableViewCell {
         
     }
     func configCell(_ messages: OpenModel){
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
+            likeImgView.isHidden = true
+               let companyName = messages.sender?.companyName ?? ""
+            let email = messages.sender?.email ?? ""
+            let phone = messages.sender?.phone ?? ""
+            let message = messages.message ?? ""
+            lblMessage.text = ((companyName) + "\n" + (email) + "\n" + (phone) + (message))
+            let timeInterval  = messages.created_at ?? ""
+            print("timeInterval----------------------",timeInterval)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en")
+            let date = dateFormatter.date(from: timeInterval)
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "HH:mm a"
+            let dateString = newDateFormatter.string(from: date ?? Date())
+            print("formatted date is =  \(dateString)")
+            lbltime.text = dateString
+            
+        }else{
      likeImgView.isHidden = true
         let companyName = messages.receiver?.companyName ?? ""
      let email = messages.receiver?.email ?? ""
@@ -62,6 +82,7 @@ class Receivertextcell: UITableViewCell {
      let dateString = newDateFormatter.string(from: date ?? Date())
      print("formatted date is =  \(dateString)")
      lbltime.text = dateString
+        }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

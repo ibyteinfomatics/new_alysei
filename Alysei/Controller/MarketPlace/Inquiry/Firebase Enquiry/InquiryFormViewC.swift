@@ -276,12 +276,12 @@ extension InquiryFormViewC{
                    
                     vc?.passReceiverId =  kSharedUserDefaults.loggedInUserModal.userId
                 }else{
-                    let reciverdata = data?["receiver_data"] as? [String:Any]
-                    vc?.passReceiverId =  "\(reciverdata?["user_id"] as? Int ?? 0)"
+                    let reciverdata = data?["user_id"] as? Int
+                    vc?.passReceiverId =  "\(reciverdata ?? 0)"
                 }
                 
            case 409:
-                self.showAlert(withMessage: "\(error?.localizedDescription ?? "")")
+                self.showAlert(withMessage: "\("You already submitted a query on this product")")
             default:
                 self.showAlert(withMessage: "\(error?.localizedDescription ?? "")")
             }

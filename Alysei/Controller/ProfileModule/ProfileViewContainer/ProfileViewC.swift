@@ -204,6 +204,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableWindowInteraction()
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -424,7 +425,8 @@ class ProfileViewC: AlysieBaseViewC{
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        enableWindowInteraction()
+        disableWindowInteraction()
+        //enableWindowInteraction()
       //  self.addSkeletableAnimation()
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
@@ -1050,6 +1052,7 @@ class ProfileViewC: AlysieBaseViewC{
         //        if self.signUpViewModel != nil {
         //            featuredProductCollectionCell.configureData(withProductCategoriesDataModel: self.signUpViewModel.arrProductCategories[indexPath.section])
         //        }
+       // self.enableWindowInteraction()
         return featuredProductCollectionCell
     }
     
@@ -1135,6 +1138,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     private func fetchProfileDetails() {
+        disableWindowInteraction()
         SVProgressHUD.show()
         guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.userProfile)", method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
@@ -1533,7 +1537,7 @@ class ProfileViewC: AlysieBaseViewC{
                    // self.tblViewPosts.isHidden = false
                     kSharedUserDefaults.setProfileCompletion(completed: true)
                    // self.fetchProfileDetails()
-                    self.enableWindowInteraction()
+                   
                     //self.tblViewPosts.reloadData()
                 }
             }
