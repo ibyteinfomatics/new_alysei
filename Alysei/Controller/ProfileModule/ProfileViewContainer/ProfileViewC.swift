@@ -196,6 +196,7 @@ class ProfileViewC: AlysieBaseViewC{
     //MARK: - ViewLifeCycle Methods -
     
     override func viewWillDisappear(_ animated: Bool) {
+    
         super.viewWillDisappear(animated)
         self.coachMarksController.stop(immediately: true)
         
@@ -204,7 +205,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        disableWindowInteraction()
+        
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -423,11 +424,8 @@ class ProfileViewC: AlysieBaseViewC{
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
-        disableWindowInteraction()
-        //enableWindowInteraction()
-      //  self.addSkeletableAnimation()
+        self.tblViewPosts.isUserInteractionEnabled = false
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -487,6 +485,7 @@ class ProfileViewC: AlysieBaseViewC{
                     if self.userLevel == .own {
                         self.menuButton.isHidden = false
                         self.tabBarController?.selectedIndex = 4
+                        
                         self.fetchProfileDetails()
 
                         //                        let data = kSharedUserDefaults.getLoggedInUserDetails()
@@ -622,7 +621,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapSideMenu(_ sender: UIButton) {
-       //disableWindowInteraction()
+       
         let vc = pushViewController(withName: SettingsScreenVC.id(), fromStoryboard: StoryBoardConstants.kHome) as? SettingsScreenVC
       //  vc?.imgPUrl = imgPUrl
         vc!.userId = String.getString(userID)
@@ -705,7 +704,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func tapEditProfile(_ sender: UIButton) {
-        //disableWindowInteraction()
+       
         initiateEditProfileViewController()
         
     }
@@ -727,7 +726,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     @IBAction func connectButtonTapped(_ sender: UIButton) {
-        
+        sender.isUserInteractionEnabled = false
         if  percentage != nil {
             self.tabBarController?.selectedIndex = 4
         }
@@ -736,7 +735,9 @@ class ProfileViewC: AlysieBaseViewC{
             if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .distributer1 || self.visitorUserType == .distributer2 || self.visitorUserType == .distributer3) {
                 
                 //  if percentage == "100" || percentage == nil{
+               
                 self.connectButtonTapped()
+                sender.isUserInteractionEnabled = true
                 //  } else {
                 
                 //  }
@@ -744,41 +745,52 @@ class ProfileViewC: AlysieBaseViewC{
                 return
                 // Mark: - producer to other user
             } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.producer.rawValue)) && (self.visitorUserType == .restaurant || self.visitorUserType == .travelAgencies || self.visitorUserType == .voiceExperts || self.visitorUserType == .producer){
-                
+               
                 self.segueToCompleteConnectionFlow()
+                sender.isUserInteractionEnabled = true
                 
                 
             } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.voiceExperts.rawValue)) {
                 
                 self.segueToCompleteConnectionFlow()
+                sender.isUserInteractionEnabled = true
                 
             }else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer1.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer2.rawValue)) || (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.distributer3.rawValue)){
-                
+                sender.isUserInteractionEnabled = true
                 self.segueToCompleteConnectionFlow()
                 
                 
             } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.restaurant.rawValue)) {
+                
                 self.segueToCompleteConnectionFlow()
+                sender.isUserInteractionEnabled = true
                 
                 
             } else if (kSharedUserDefaults.loggedInUserModal.memberRoleId == String.getString(UserRoles.travelAgencies.rawValue)) {
-                self.segueToCompleteConnectionFlow()
                 
+                self.segueToCompleteConnectionFlow()
+                sender.isUserInteractionEnabled = true
                 
             } else {
                 if self.percentage == "\(ProfilePercentage.percent100.rawValue)" || percentage == nil{
                     let profileID = (self.userProfileModel.data?.userData?.userID) ?? (self.userID) ?? 1
                     
                     if self.connectButton.titleLabel?.text == "Follow" {
+                       
                         followUnfollow(id: profileID, type: 1)
+                        sender.isUserInteractionEnabled = true
                     } else if self.connectButton.titleLabel?.text == "Unfollow" {
+                        
                         followUnfollow(id: profileID, type: 0)
+                        sender.isUserInteractionEnabled = true
                     } else {
                         self.connectButtonTapped()
+                        sender.isUserInteractionEnabled = true
                     }
                 } else {
                     self.tabBarController?.selectedIndex = 4
                     self.segueToCompleteConnectionFlow()
+                    sender.isUserInteractionEnabled = true
                 }
             }
         }
@@ -1052,7 +1064,8 @@ class ProfileViewC: AlysieBaseViewC{
         //        if self.signUpViewModel != nil {
         //            featuredProductCollectionCell.configureData(withProductCategoriesDataModel: self.signUpViewModel.arrProductCategories[indexPath.section])
         //        }
-       // self.enableWindowInteraction()
+      
+        
         return featuredProductCollectionCell
     }
     
@@ -1138,7 +1151,7 @@ class ProfileViewC: AlysieBaseViewC{
     }
     
     private func fetchProfileDetails() {
-        disableWindowInteraction()
+       
         SVProgressHUD.show()
         guard let urlRequest = WebServices.shared.buildURLRequest("\(APIUrl.Profile.userProfile)", method: .GET) else { return }
         WebServices.shared.request(urlRequest) { (data, response, statusCode, error)  in
@@ -1347,8 +1360,10 @@ class ProfileViewC: AlysieBaseViewC{
                     self.tabsCollectionView.isHidden = false
                     self.containerView.isHidden = false
                 } else {
-                    self.tabsCollectionView.isHidden = true
-                    self.containerView.isHidden = true
+                    //self.tabsCollectionView.isHidden = true
+                   // self.containerView.isHidden = true
+                    self.tabsCollectionView.isHidden = false
+                    self.containerView.isHidden = false
                 }
                 
                 var name = ""
@@ -1467,8 +1482,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     private func postRequestToGetFields() -> Void{
         
-        //disableWindowInteraction()
-        //
+       
        // if kSharedUserDefaults.getProfileCompletion() == false {
         if userLevel == .own{
             CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kUserSubmittedFields, method: .GET, controller: self, type: 0, param: [:], btnTapped: UIButton())
@@ -1497,7 +1511,6 @@ class ProfileViewC: AlysieBaseViewC{
             "follow_user_id": id,
             "follow_or_unfollow": type]
         
-        //disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kFollowUnfollow, requestMethod: .POST, requestParameters: params, withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             
             if self.connectButton.titleLabel?.text == AppConstants.Follow {
@@ -1512,7 +1525,6 @@ class ProfileViewC: AlysieBaseViewC{
     
     private func postRequestToGetProgress() -> Void{
         
-        //disableWindowInteraction()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kProfileProgress, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictRespnose, error, errorType, statusCode) in
             let response = dictRespnose as? [String:Any]
             
@@ -1591,7 +1603,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) -> Void {
-        
+        self.tabsCollectionView.isUserInteractionEnabled = false
         let totalRows = ProfileTabRows().noOfRows(self.userType)
         
         //        if currentSelectedIndexPath != indexPath.row {
@@ -1631,6 +1643,7 @@ extension ProfileViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
                     //cell.imageView.tintColor = UIColor(named: "blueberryColor")
                     
                     self.tabsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                    self.tabsCollectionView.isUserInteractionEnabled = true
                     
                     
                 }
@@ -1930,6 +1943,7 @@ extension ProfileViewC{
         
         switch  type {
         case 2:
+            
             var arrSelectedFields: [ProductFieldsDataModel] = []
             let dicResult = kSharedInstance.getDictionary(result)
             let dicData = kSharedInstance.getDictionary(dicResult[APIConstants.kData])
@@ -1945,7 +1959,7 @@ extension ProfileViewC{
             controller?.currentNavigationTitle = self.currentProductTitle
             // controller?.delegate = self
         default:
-            
+            self.tblViewPosts.isUserInteractionEnabled = true
             if editProfileViewCon == nil {
                 //            self.initiateEditProfileViewController()
             }
@@ -2198,7 +2212,6 @@ extension ProfileViewC {
         self.featureListingId = featureListingId
         self.currentProductTitle = navigationTitle
         
-        //disableWindowInteraction()
         CommonUtil.sharedInstance.postRequestToServer(url: APIUrl.kGetFeatureListing + featureListingId, method: .GET, controller: self, type: 2, param: [:], btnTapped: UIButton())
     }
 }

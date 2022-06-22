@@ -31,7 +31,7 @@ class SelectProductViewC: AlysieBaseViewC {
   var signUpStepTwoDataModel: SignUpStepTwoDataModel!
   var stepOneDelegate: TappedDoneStepOne?
   var stepTwoDelegate: TappedDoneStepTwo?
-   
+    var fromVC: PushedFrom?
   //MARK:  - ViewLifeCycle Methods -
     
    override func viewDidLoad() {
@@ -75,7 +75,7 @@ class SelectProductViewC: AlysieBaseViewC {
   //MARK:  - IBAction -
   
   @IBAction func tapDone(_ sender: UIButton) {
-    
+     
     if self.signUpStepOneDataModel != nil{
       self.validationForMultiSelection()
     }
@@ -102,8 +102,8 @@ class SelectProductViewC: AlysieBaseViewC {
       for sectionIndex in 0..<sections.count {
         
        // if sections[sectionIndex].arrSelectedSubOptions.isEmpty == true{
-          if sections[sectionIndex].arrSelectedSubOptions == [""] || sections[sectionIndex].arrSelectedSubOptions.count == 0 {
-           showAlert(withMessage: "You have to select atleast one conservation method and properties for all the selected Products.")
+          if (sections[sectionIndex].arrSelectedSubOptions == [""] || sections[sectionIndex].arrSelectedSubOptions.count == 0 ) && (fromVC != .b2b) {
+              showAlert(withMessage: AppConstants.KYouHaveTosSelectAtLeastOneconservation)
         }
       }
     }

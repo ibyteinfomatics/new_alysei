@@ -211,6 +211,7 @@
 "Please enter winning product name!" = "Inserisci il nome del prodotto premiato!";
 "Please enter medal name!" ="Inserisci la medaglia!";
 "Company Name" = "Nome della ditta";
+"Winning Prize" = "Premio vincente";
 
 //MARK: RECIPE HOME SCREEN
 "Create Recipe" = "Crea la tua Ricetta";
@@ -1113,9 +1114,9 @@
 "Try Again" = "Riprova";
 "Add Image" = "Aggiungi immagine";
 
+"You have to select atleast one conservation method and properties for all the selected Products." = "You have to select atleast one conservation method and properties for all the selected Products.";
 
-
-
+"Winning Prize" = "Winning Prize";
 
 
 

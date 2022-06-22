@@ -710,6 +710,7 @@ class BusinessViewC: AlysieBaseViewC {
         businessButtonTableCell.pushToProductTypeScreen = { signUpmodel, IdentifyUserForProduct in
             //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
             let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
+            controller?.fromVC = .b2b
             let signupmodel = signUpmodel
             for _ in signupmodel.arrOptions {
                 if self.signUpStepOneDataModel == nil{
@@ -1140,6 +1141,7 @@ extension BusinessViewC {
         if paginationData == false{
             arrSearchimpotrDataModel.removeAll()
         }
+       
         let productype = "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")"
         cellCount = 0
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.distributer3.rawValue)" + "&hub_id=" + "\(self.selectImpHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(productype)".replacingOccurrences(of: ",,", with: ",") + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in

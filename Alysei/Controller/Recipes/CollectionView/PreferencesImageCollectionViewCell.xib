@@ -30,17 +30,17 @@
                                 <rect key="frame" x="4" y="0.0" width="94" height="94"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K6r-uL-tHs">
-                                        <rect key="frame" x="2" y="2" width="90" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="K6r-uL-tHs" secondAttribute="trailing" constant="2" id="56J-P1-9zE"/>
+                                    <constraint firstAttribute="trailing" secondItem="K6r-uL-tHs" secondAttribute="trailing" id="56J-P1-9zE"/>
                                     <constraint firstAttribute="height" constant="94" id="CW9-Ou-IZT"/>
                                     <constraint firstAttribute="width" constant="94" id="Pkg-5G-kQ7"/>
-                                    <constraint firstItem="K6r-uL-tHs" firstAttribute="top" secondItem="XNG-b5-5Jk" secondAttribute="top" constant="2" id="fuW-py-44A"/>
-                                    <constraint firstItem="K6r-uL-tHs" firstAttribute="leading" secondItem="XNG-b5-5Jk" secondAttribute="leading" constant="2" id="jh3-ZL-BEN"/>
-                                    <constraint firstAttribute="bottom" secondItem="K6r-uL-tHs" secondAttribute="bottom" constant="2" id="ovg-QH-fZS"/>
+                                    <constraint firstItem="K6r-uL-tHs" firstAttribute="top" secondItem="XNG-b5-5Jk" secondAttribute="top" id="fuW-py-44A"/>
+                                    <constraint firstItem="K6r-uL-tHs" firstAttribute="leading" secondItem="XNG-b5-5Jk" secondAttribute="leading" id="jh3-ZL-BEN"/>
+                                    <constraint firstAttribute="bottom" secondItem="K6r-uL-tHs" secondAttribute="bottom" id="ovg-QH-fZS"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr0-LT-jlt">
@@ -81,6 +81,10 @@
                 <outlet property="imageNameLabel" destination="Tr0-LT-jlt" id="Yhe-5H-M6Z"/>
                 <outlet property="imageView" destination="K6r-uL-tHs" id="x9c-71-W3P"/>
                 <outlet property="imageView1" destination="wIj-yW-eBW" id="sv7-70-Dxr"/>
+                <outlet property="imgBottom" destination="ovg-QH-fZS" id="pfN-pL-Ikg"/>
+                <outlet property="imgLeading" destination="jh3-ZL-BEN" id="7fk-dd-EyB"/>
+                <outlet property="imgTop" destination="fuW-py-44A" id="uWb-pb-Aym"/>
+                <outlet property="imgTrailing" destination="56J-P1-9zE" id="mi6-Ni-Try"/>
                 <outlet property="vwImage" destination="XNG-b5-5Jk" id="unx-Hr-hCR"/>
             </connections>
             <point key="canvasLocation" x="69.565217391304358" y="125.22321428571428"/>

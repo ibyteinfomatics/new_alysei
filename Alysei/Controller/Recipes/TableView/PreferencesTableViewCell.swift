@@ -49,6 +49,8 @@ class PreferencesTableViewCell: UITableViewCell {
         PrefrenceImageCollectionView.collectionViewLayout.invalidateLayout()
         self.PrefrenceImageCollectionView.register(PreferencesSectionCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesSectionCollectionReusableView")
         self.PrefrenceImageCollectionView.register(MyPreferenceCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "MyPreferenceCollectionReusableView")
+        
+        self.PrefrenceImageCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
 
     }
    
@@ -124,11 +126,13 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
+        
         
         switch indexPath.section {
         case 0:
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
             cell.imageView1.isHidden = true
+            
             if indexPath.row < showCuisine!.count {
                 let imgUrl = ((showCuisine?[indexPath.item].imageId?.baseUrl ?? "") + (showCuisine?[indexPath.item].imageId?.imgUrl ?? ""))
                 
@@ -139,7 +143,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                     cell.imageView.setImage(withString: imgUrl)
                 }
                 
-               // cell.imageView.contentMode = .scaleAspectFill
+                cell.imageView.contentMode = .scaleAspectFill
                 cell.imageNameLabel.text = showCuisine?[indexPath.item].name
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
@@ -150,7 +154,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             }else {
                 cell.imageView.image = UIImage(named: "")
                
-              //  cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.contentMode = .scaleAspectFit
 
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
@@ -160,14 +164,16 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
              //   cell.vwImage.image = UIImage(named: "")
                 cell.vwImage.clipsToBounds = true
             }
-            
+            return cell
         case 1:
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
             cell.imageView1.isHidden = true
+            
             if indexPath.row < showFood!.count {
 
                 let imgUrl = ((showFood?[indexPath.item].imageId?.baseUrl ?? "") + (showFood?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-               // cell.imageView.contentMode = .center
+               cell.imageView.contentMode = .center
                 if imgUrl == ""{
                     cell.imageView.image = UIImage(named: "image_placeholder")
                 }
@@ -184,8 +190,8 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             cell.vwImage.clipsToBounds = true
             }else {
                 cell.imageView.image = UIImage(named: "Group 122845")
-               // cell.imageView.contentMode = .center
-               // cell.imageView.contentMode = .scaleAspectFit
+               cell.imageView.contentMode = .center
+          
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
@@ -194,42 +200,57 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
            //     cell.vwImage.image = UIImage(named: "")
                 cell.vwImage.clipsToBounds = true
             }
-        
+        return cell
         case 2:
-            cell.imageView1.isHidden = true
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+            cell.image2.isHidden = true
+            cell.image1.contentMode = . scaleAspectFit
+//            let imgUrl = ((showAllFood?[indexPath.row].imageId?.baseUrl ?? "") + (showAllFood?[indexPath.row].imageId?.imgUrl ?? ""))
+//            let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
+//            cell.image1.contentMode = .scaleAspectFit
+//            cell.image1.image = mySVGImage.uiImage
+//            cell.imageNameLabel.text = showAllFood?[indexPath.row].name
+//
+//            cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+//
+//            if showAllFood?[indexPath.row].isSelected == 1{
+//                cell.viewOfImage.layer.borderWidth = 4
+//                cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
             if indexPath.row < showDiet!.count {
                 let imgUrl = ((showDiet?[indexPath.item].imageId?.baseUrl ?? "") + (showDiet?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
                     //cell.imageView.contentMode = .center
-               // cell.imageView.contentMode = .center
+               
+              
                 if imgUrl == ""{
-                    cell.imageView.image = UIImage(named: "image_placeholder")
+                    cell.image1.image = UIImage(named: "image_placeholder")
                 }
                 else{
-                    cell.imageView.image = mySVGImage.uiImage
+                    cell.image1.image = mySVGImage.uiImage
                 }
                 cell.imageNameLabel.text = showDiet?[indexPath.row].name
                
-            cell.vwImage.layer.cornerRadius = cell.vwImage.frame.height/2
-            cell.vwImage.layer.borderWidth = 3
-                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+            cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.frame.height/2
+            cell.viewOfImage.layer.borderWidth = 3
+                cell.viewOfImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
            //     cell.vwImage.image = UIImage(named: "")
-            cell.vwImage.clipsToBounds = true
+            cell.viewOfImage.clipsToBounds = true
             }else {
-                cell.imageView.image = UIImage(named: "Group 122845")
-               // cell.imageView.contentMode = .center
-               // cell.imageView.contentMode = .scaleAspectFit
+                  cell.image1.image = UIImage(named: "Group 122845")
+                cell.image1.contentMode = .center
+                
                 cell.imageNameLabel.text = ""
-                cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.vwImage.layer.borderWidth = 3
-                cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+              //  cell.image1.layer.cornerRadius = cell.imageView.frame.height/2
+                cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.frame.height/2
+                cell.viewOfImage.layer.borderWidth = 3
+                cell.viewOfImage.layer.borderColor = UIColor.lightGray.cgColor
             //    cell.vwImage.image = UIImage(named: "")
-                cell.vwImage.clipsToBounds = true
+                cell.viewOfImage.clipsToBounds = true
             }
             
-
+         return cell
         case 3:
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
             if indexPath.row < showIngridient!.count {
                 let imgUrl = ((showIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (showIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
                 
@@ -240,36 +261,37 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                     cell.imageView.setImage(withString: imgUrl)
                 }
              
-               // cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.contentMode = .scaleAspectFit
                 cell.imageNameLabel.text = showIngridient?[indexPath.row].title
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.imageView1.isHidden = false
                 cell.imageView1.image = UIImage(named: "Group 1165")
-                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.vwImage.layer.borderWidth = 3
-                cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+               // cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+               // cell.vwImage.layer.borderWidth = 3
+                //cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
           //  cell.vwImage.image = UIImage(named: "Group 1165")
-            cell.vwImage.clipsToBounds = true
+            //cell.vwImage.clipsToBounds = true
             }else {
                 cell.imageView.image = UIImage(named: "Group 122845")
-               // cell.imageView.contentMode = .center
-               // cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.contentMode = .center
+             
                 cell.imageNameLabel.text = ""
-                cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
-                cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+                //cell.imageView.layer.cornerRadius = cell.vwImage.frame.height/2
+                cell.vwImage.layer.cornerRadius = cell.vwImage.frame.height/2
                 cell.vwImage.layer.borderWidth = 3
                 cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
              //   cell.vwImage.image = UIImage(named: "")
                 cell.vwImage.clipsToBounds = true
             }
             
-
+return cell
         case 4:
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
             cell.imageView1.isHidden = true
             if indexPath.row < showCookingSkill!.count {
                 let imgUrl = ((showCookingSkill?[indexPath.item].imageId?.baseUrl ?? "") + (showCookingSkill?[indexPath.row].imageId?.imgUrl ?? ""))
                 let mySVGImage: SVGKImage = SVGKImage(contentsOf: URL(string: imgUrl))
-              //  cell.imageView.contentMode = .center
+                cell.imageView.contentMode = .center
                 if imgUrl == ""{
                     cell.imageView.image = UIImage(named: "image_placeholder")
                 }
@@ -286,8 +308,8 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             }else {
               
                 cell.imageView.image = UIImage(named: "Group 122845")
-               // cell.imageView.contentMode = .center
-              //  cell.imageView.contentMode = .scaleAspectFit
+                cell.imageView.contentMode = .center
+                
                 cell.imageNameLabel.text = ""
                 cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
                 cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
@@ -296,12 +318,12 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
               //  cell.vwImage.image = UIImage(named: "")
                 cell.vwImage.clipsToBounds = true
             }
-         
+         return cell
         default:
-            break
+            return UICollectionViewCell()
         }
       
-       return cell
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

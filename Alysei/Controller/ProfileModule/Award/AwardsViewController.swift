@@ -102,7 +102,8 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.editButton.isHidden = true
         }
         
-        cell.winningproduct.text = "Winning Product: \(awardModel?.data?[indexPath.item].winningProduct ?? "" )"
+        
+        cell.winningproduct.text =  "Winning Prize: " + "\(awardModel?.data?[indexPath.item].winningProduct ?? "" )"
         
         /*if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
                    
@@ -182,5 +183,16 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return CGSize(width: collectionView.frame.width/2, height: 280)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = self.pushViewController(withName: AddAward.id(), fromStoryboard: StoryBoardConstants.kHome) as! AddAward
+        vc.typeofpage = "read"
+        vc.award_id = self.awardModel?.data?[indexPath.item].awardid
+        vc.eventName = self.awardModel?.data?[indexPath.item].awardName
+        vc.productName = self.awardModel?.data?[indexPath.item].winningProduct
+        vc.placeName = self.awardModel?.data?[indexPath.item].medal?.name
+        vc.medal_id = String.getString(self.awardModel?.data?[indexPath.item].medal?.medal_id)
+        vc.url = self.awardModel?.data?[indexPath.item].competitionurl
+        let baseUrl = self.awardModel?.data?[indexPath.item].attachment?.baseUrl ?? ""
+        vc.imgurl = String.getString(baseUrl+(self.awardModel?.data?[indexPath.item].attachment?.attachmenturl)! )
+    }
 }

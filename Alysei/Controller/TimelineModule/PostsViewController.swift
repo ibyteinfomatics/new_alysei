@@ -172,6 +172,7 @@ class PostsViewController: AlysieBaseViewC  {
         self.postTableView.separatorStyle = .singleLine
         headerStack.isHidden = true
         postTableView.isHidden = true
+        self.indexOfPageToRequest = 1
         callNewFeedApi(1)
         //        let urlP = URL(string: "\(( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.baseUrl  ?? "") + "\( kSharedUserDefaults.loggedInUserModal.UserAvatar_id?.attachment_url  ?? "")")")
         //               self.downloadImage(from: urlP ?? URL(fileURLWithPath: ""))
@@ -183,6 +184,7 @@ class PostsViewController: AlysieBaseViewC  {
     @IBAction func btnNewPOst(_ sender: UIButton){
         self.btnNewpost.isHidden = true
         self.vwNewPost.isHidden = true
+        self.indexOfPageToRequest = 1
         callNewFeedApi(1)
     }
     
@@ -387,6 +389,30 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "SharePostDescTableViewCell") as? SharePostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
                 loadTypeCell = .sharePost
+                let data = arrNewFeedDataModel[indexPath.row]
+                if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
+                    print("error")
+                    cell.newHeightCllctn = 0
+                    cell.imageHeightCVConstant.constant = 0
+                }else{
+                    var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
+                    if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
+                        let newHeight = 320 / ratio
+                        // cell.imageConstant.constant = newHeight
+                        cell.newHeightCllctn = Int(newHeight - 50)
+                        cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
+                    } else{
+                        var newWidth = 430
+                        if ratio == 0.0 {
+                            ratio = 1
+                            newWidth = 550
+                        }
+                        newWidth = newWidth * Int(ratio)
+                       //cell.imageConstant.constant = newWidth
+                        cell.newHeightCllctn = Int(newWidth)
+                        cell.imageHeightCVConstant.constant = CGFloat(newWidth)
+                    }
+                }
                 if arrNewFeedDataModel.count > indexPath.row {
                     cell.configCell(arrNewFeedDataModel[indexPath.row] , indexPath.row)
                     let data = arrNewFeedDataModel[indexPath.row]
@@ -530,16 +556,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                             cell.newHeightCllctn = Int(newHeight - 50)
                             cell.imageHeightCVConstant.constant = CGFloat(newHeight) - 50
                         } else{
-                            
                             var newWidth = 430
                             if ratio == 0.0 {
                                 ratio = 1
                                 newWidth = 550
                             }
                             newWidth = newWidth * Int(ratio)
-                            
-                            
-                            //cell.imageConstant.constant = newWidth
+                           //cell.imageConstant.constant = newWidth
                             cell.newHeightCllctn = Int(newWidth)
                             cell.imageHeightCVConstant.constant = CGFloat(newWidth)
                         }
@@ -652,6 +675,7 @@ extension PostsViewController: ShareEditMenuProtocol {
                     self.showAlert(withMessage: MarketPlaceConstant.kSomeErrorOccured)
                 } else {
                     kChatharedInstance.deletePost(postId: "\(postID)")
+                    self.indexOfPageToRequest = 1
                     self.callNewFeedApi(1)
                 }
             }

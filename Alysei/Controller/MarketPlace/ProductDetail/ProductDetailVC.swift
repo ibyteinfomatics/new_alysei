@@ -91,6 +91,7 @@ class ProductDetailVC: AlysieBaseViewC {
 }
 
 extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == "" {
             return 10
@@ -221,19 +222,34 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0{
             return 600
         }else if indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 6{
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"  || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" {
+                if indexPath.row == 5 || indexPath.row == 6{
+                    return 0
+                }
+            }
+           
             return UITableView.automaticDimension
         }else if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7{
             print("Check")
           //  return 60
+            if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"  || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)" && indexPath.row != 7){
+                    return 0
+                }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voiceExperts.rawValue)"{
+                if indexPath.row == 7 && (self.productDetail?.product_detail?.available_for_sample == "" || self.productDetail?.product_detail?.available_for_sample == nil){
+                    return 0
+                }
+               
+                }else{
             if indexPath.row == 3 && (self.productDetail?.product_detail?.brand_label_id == "0" || self.productDetail?.product_detail?.brand_label_id == nil || self.productDetail?.product_detail?.brand_label_id == ""){
                 return 0
             }
-            if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)")){
-                if indexPath.row == 7 {
-                    return 0
                 }
+//            if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)") || (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)")){
+//                if indexPath.row == 7 {
+//                    return 0
+//                }
                 
-            }
+           // }
             return 60
         }else if indexPath.row == 8 {
            

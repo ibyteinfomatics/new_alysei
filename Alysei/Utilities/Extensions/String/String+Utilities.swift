@@ -565,7 +565,7 @@ extension String {
             regex = "[A-Z0-9a-z@#$_+-\\s]{5,100}"
             maxChar = 100
         case .mobileNumber:
-            regex = "[0-9+-]{4,10}"
+            regex = "[0-9+-]{8,10}"
             maxChar = 10
         case .firstName:
             regex = "[A-Za-z\\s]{1,75}"

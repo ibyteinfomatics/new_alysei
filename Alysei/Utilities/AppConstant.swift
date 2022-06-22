@@ -541,6 +541,8 @@ struct APIUrl{
 struct AppConstants {
     static var recipeWalkthrough = false
     static var FDANumber : String { "FDA Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KYouHaveTosSelectAtLeastOneconservation :  String {"You have to select atleast one conservation method and properties for all the selected Products.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWinningPrize = {"Winning Prize".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPhotos : String { "Photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWhatNew: String{"What's new?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSaySomething : String {"Say Something...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -2170,6 +2172,7 @@ enum PushedFrom: Int {
     case viewAllEntities
     case hubUserListVC
     case storeDesc
+    case b2b
     
 }
 

@@ -65,6 +65,7 @@ class SharePostDescTableViewCell: UITableViewCell {
     var sharedProfileCallback:(() -> ())?
     var pages = 0
     let stackView = UIStackView()
+    var newHeightCllctn: Int?
     override func awakeFromNib() {
         super.awakeFromNib()
         pageControlUI()
@@ -374,62 +375,68 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
         vwpageControl.selectedPage = indexPath.row
     }
     
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
+//       // return CGSize(width: (self.imagePostCollectionView.frame.width), height: 220);
+//        
+//        let data = self.data?.sharedPostData?.attachments?[indexPath.row]
+//        
+//        
+//        /*if data?.attachmentLink?.height == data?.attachmentLink?.width {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+//            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+//           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
+//        } else {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
+//                                                                                                * 72 / 96)-250)
+//        }*/
+//        
+//        
+//        if data?.attachmentLink?.height == data?.attachmentLink?.width {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
+//            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
+//        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
+//           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            
+//            if Int.getInt(data?.attachmentLink?.width) > 500 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+//            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
+//            } else {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
+//            }
+//            
+//            
+//        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
+//            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            
+//            if  Int.getInt(data?.attachmentLink?.height) < 350 {
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
+//            } else {
+//                
+//                
+//                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
+//            }
+//            
+//             
+//         } else {
+//            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
+//            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
+//        }
+//        
+//        
+//        
+//    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //return CGSize(width: self.imagePostCollectionView.frame.width - 20, height: 220)
-       // return CGSize(width: (self.imagePostCollectionView.frame.width), height: 220);
-        
-        let data = self.data?.sharedPostData?.attachments?[indexPath.row]
-        
-        
-        /*if data?.attachmentLink?.height == data?.attachmentLink?.width {
-            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
-            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
-           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 200)
-        } else {
-            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0
-                                                                                                * 72 / 96)-250)
-        }*/
-        
-        
-        if data?.attachmentLink?.height == data?.attachmentLink?.width {
-            //let floatHeight = CGFloat(data?.attachmentLink?.height ?? 0)
-            //return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350);
-        } else if Int.getInt(data?.attachmentLink?.width) > Int.getInt(data?.attachmentLink?.height) {
-           // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            
-            if Int.getInt(data?.attachmentLink?.width) > 500 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-            } else if Int.getInt(data?.attachmentLink?.width) > 300 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 400)
-            } else {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 300)
-            }
-            
-            
-        } else if Int.getInt(data?.attachmentLink?.height) > Int.getInt(data?.attachmentLink?.width) {
-            // let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            
-            if  Int.getInt(data?.attachmentLink?.height) < 350 {
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 350)
-            } else {
-                
-                
-                return CGSize(width: (self.imagePostCollectionView.frame.width), height: 500)
-            }
-            
-             
-         } else {
-            //let floatHeight = CGFloat(data?.attachmentLink?.width ?? 0)
-            return CGSize(width: (self.imagePostCollectionView.frame.width), height: CGFloat(data?.attachmentLink?.height ?? 0 * 72 / 96)-150)
-        }
-        
-        
-        
+        return CGSize(width: self.imagePostCollectionView.frame.width, height: CGFloat(newHeightCllctn ?? 0))
+
+
+
     }
 //
 //     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

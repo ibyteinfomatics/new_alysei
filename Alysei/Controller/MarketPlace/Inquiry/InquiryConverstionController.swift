@@ -130,7 +130,7 @@ class InquiryConverstionController: AlysieBaseViewC {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
             self.btnDelete.isHidden = true
-            itemImg.setImage(withString: passProductImageUrl ?? "", placeholder: UIImage(named: "profile_icon"))
+            itemImg.setImage(withString: passProductImageUrl ?? "", placeholder: UIImage(named: "image_placeholder"))
             
             itemName.text = passProductName
             print("profileImageUrl ",String.getString(profileImageUrl))
@@ -465,6 +465,7 @@ class InquiryConverstionController: AlysieBaseViewC {
             if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
                 if indexPath.row == 0 {
                     guard let textCell = tableView.dequeueReusableCell(withIdentifier: "Receivertextcell") as? Receivertextcell else {return UITableViewCell()}
+                    //textCell.profile_image.setImage(withString: )
                     textCell.configCell(self.messages?[indexPath.row] ?? OpenModel(with: [:]))
                         return textCell
                 }else{
