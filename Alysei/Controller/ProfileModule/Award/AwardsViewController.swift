@@ -103,7 +103,7 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         
-        cell.winningproduct.text =  "Winning Prize: " + "\(awardModel?.data?[indexPath.item].winningProduct ?? "" )"
+        cell.winningproduct.text =  AppConstants.kWinningPrize + ": " + "\(awardModel?.data?[indexPath.item].winningProduct ?? "" )"
         
         /*if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
                    
@@ -149,7 +149,7 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             
             
             //MARK:show Alert Message
-            let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this Award?", preferredStyle: UIAlertController.Style.alert)
+            let refreshAlert = UIAlertController(title: "", message: AppConstants.deleteAward, preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                
                 self.disableWindowInteraction()
@@ -166,7 +166,7 @@ extension AwardsViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 
                 
             }))
-            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: AppConstants.No, style: .cancel, handler: { (action: UIAlertAction!) in
                   
                 self.parent?.dismiss(animated: true, completion: nil)
             }))

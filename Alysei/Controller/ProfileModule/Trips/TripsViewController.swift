@@ -212,7 +212,7 @@ class TripsViewController: AlysieBaseViewC {
           
             
             //MARK:show Alert Message
-            let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to delete this trip?", preferredStyle: UIAlertController.Style.alert)
+            let refreshAlert = UIAlertController(title: "", message: AppConstants.deleteTrip, preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                
                 self.disableWindowInteraction()
@@ -222,7 +222,7 @@ class TripsViewController: AlysieBaseViewC {
                     self.postRequestToGetTrip()
                 }
             }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
                   
                 self.parent?.dismiss(animated: true, completion: nil)
             }))
@@ -297,7 +297,7 @@ class TripsViewController: AlysieBaseViewC {
           
           self.tripModel = TripModel.init(with: dictResponse)
         
-        self.myTripLabel.text = "My Trips (\(self.tripModel?.data?.count ?? 0))"
+          self.myTripLabel.text = AppConstants.myTrip + " " + "\(self.tripModel?.data?.count ?? 0)"
         self.setUI()
         self.tripsTableView.reloadData()
       }

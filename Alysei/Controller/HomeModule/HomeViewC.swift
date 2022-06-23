@@ -299,7 +299,7 @@ class HomeViewC: AlysieBaseViewC  {
                     self.membershipView.isHidden = true
                     self.blankdataView.isHidden = false
                     self.imgReview.image = UIImage(named: "ProfileCompletion")
-                    self.text.text = "Complete your profile in order to start Posting"
+                    self.text.text = AppConstants.kCompleteProfileStartPosting
                 } else {
                     isprofileComplete = true
                     self.membershipView.isHidden = true

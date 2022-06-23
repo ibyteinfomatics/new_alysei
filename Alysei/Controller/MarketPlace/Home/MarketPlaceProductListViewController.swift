@@ -689,6 +689,7 @@ extension MarketPlaceProductListViewController{
                 let response = dictResponse as? [String:Any]
                 if let data = response?["data"] as? [String:Any]{
                     self.lastPage = data["last_page"] as? Int
+                   
                     if let subData = data["data"] as? [[String:Any]]{
                         self.arrList = subData.map({ProductSearchListModel.init(with: $0)})
                     }

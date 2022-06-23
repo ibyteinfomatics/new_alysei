@@ -52,7 +52,9 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         
             searchViewHeight.constant = 130
         
-        ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
+      //  ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
+        ingredientsCollectionView.register(UINib(nibName: "PreferencesImageCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
+       
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
         ingredientsCollectionView.dataSource = self
@@ -117,22 +119,43 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+        //let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+        let cell: PreferencesImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
         
         let imgUrl = ((ingdntArray[indexPath.row].imageId?.baseUrl ?? "") + (self.ingdntArray[indexPath.row].imageId?.imgUrl ?? ""))
-        cell.image2.setImage(withString: "")
-        cell.image1.setImage(withString: imgUrl)
+        cell.imageView1.setImage(withString: "")
+        cell.imageView1.isHidden = false
+        cell.imageView.setImage(withString: imgUrl)
         cell.imageNameLabel.text = self.ingdntArray[indexPath.item].ingridientTitle
-        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
-        cell.viewOfImage.layer.borderWidth = 4
-        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+        cell.imageView.contentMode = .scaleAspectFill
+        cell.imageNameLabel.text = showCuisine?[indexPath.item].name
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
+        cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+        cell.vwImage.layer.borderWidth = 3
+        cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+   //     cell.vwImage.image = UIImage(named: "")
+        cell.vwImage.clipsToBounds = true
         
         
         if ingdntArray[indexPath.row].isSelected == true{
-            cell.image2.image = UIImage(named: "Group 1165")
+            cell.imageView1.image = UIImage(named: "Group 1165")
         } else{
-            cell.image2.image = nil
+            cell.imageView1.image = nil
         }
+//        let imgUrl = ((ingdntArray[indexPath.row].imageId?.baseUrl ?? "") + (self.ingdntArray[indexPath.row].imageId?.imgUrl ?? ""))
+//        cell.image2.setImage(withString: "")
+//        cell.image1.setImage(withString: imgUrl)
+//        cell.imageNameLabel.text = self.ingdntArray[indexPath.item].ingridientTitle
+//        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
+//        cell.viewOfImage.layer.borderWidth = 4
+//        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+//
+//
+//        if ingdntArray[indexPath.row].isSelected == true{
+//            cell.image2.image = UIImage(named: "Group 1165")
+//        } else{
+//            cell.image2.image = nil
+//        }
         
         if arraySelectedIngridient?.count == 0{
             nextButton.layer.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor

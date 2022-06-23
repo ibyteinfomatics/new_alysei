@@ -239,18 +239,18 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     private func validateAllfields() -> Bool {
 
        guard self.emailTextField.text?.isValid(.email) == true else {
-            showAlert(withMessage: "Please enter a valid email ID.")
+           showAlert(withMessage: AlertMessage.enterValidEmail)
         return false
         }
 
         guard self.phoneTextField.text?.isValid(.mobileNumber) == true else {
-            showAlert(withMessage: "Please enter a valid phone number.")
+            showAlert(withMessage: AlertMessage.enterValidPhone)
             return false
         }
 
         if !(self.facebookTextField.text?.isEmpty ?? true) {
             guard self.facebookTextField.text?.isValid(.facebook) == true else {
-                showAlert(withMessage: "Please enter a valid facebook url.")
+                showAlert(withMessage: AlertMessage.enterValidFacebookUrl)
                 return false
             }
         }
@@ -267,7 +267,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
             } else {
 
             guard self.websiteTextField.text?.isValid(.url) == true else {
-                showAlert(withMessage: "Please enter a valid URL.")
+                showAlert(withMessage: AlertMessage.enterValidkUrl)
                 return false
             }
         }
@@ -353,11 +353,11 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     }
 
     @IBAction func websiteInfoButtonTapped(_ sender: UIButton) {
-        showAlert(withMessage: "URL format should be like \n https://www.example.com/")
+        showAlert(withMessage: AlertMessage.enterValidFormatUrl)
     }
 
     @IBAction func facebookInfoButtonTapped(_ sender: UIButton) {
-        showAlert(withMessage: "URL format should be like \n https://www.facebook.com/username")
+        showAlert(withMessage: AlertMessage.enterValidFormatUsername)
     }
     
     func countryName(from countryCode: String) -> String{

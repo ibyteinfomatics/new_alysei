@@ -38,7 +38,7 @@ class BusinessViewC: AlysieBaseViewC {
     var arrSearchimpotrDataModel = [SubjectData]()
     //var arrImpSearchList:  NewFeedSearchModel?
     var indexOfPageToRequest = 1
-    
+  
     var selectImpHubName: String?
     var selectImpRolesNames: String?
     var selectProdHubName: String?
@@ -80,6 +80,7 @@ class BusinessViewC: AlysieBaseViewC {
     var paginationData = false
     var searchImpDone = false
     var loadFirst = true
+    var b2bSelctSubProduct : Bool?
     //var selectedProducWithCategory:String
     var selectedProducWithCategory: String? = nil {
         didSet {
@@ -1138,7 +1139,8 @@ extension BusinessViewC {
         
     }
     func callSearchImporterApi(){
-        if paginationData == false{
+        if paginationData == false && indexOfPageToRequest == 1{
+            self.arrSearchDataModel.removeAll()
             arrSearchimpotrDataModel.removeAll()
         }
        
@@ -1149,7 +1151,11 @@ extension BusinessViewC {
             
             if let data = dictResponse?["data"] as? [String:Any]{
                 self.newSearchModel = NewFeedSearchModel.init(with: data)
-                if self.indexOfPageToRequest == 1 { self.arrSearchDataModel.removeAll() }
+                if self.indexOfPageToRequest == 1 {
+                    self.arrSearchDataModel.removeAll()
+                    self.arrSearchimpotrDataModel.removeAll()
+                    
+                }
                 //self.arrSearchDataModel.append(contentsOf: self.newSearchModel?.data ?? [NewFeedSearchDataModel(with: [:])])
                 
                 self.arrSearchimpotrDataModel.append(contentsOf: self.newSearchModel?.importerSeacrhData ?? [SubjectData(with: [:])])
@@ -1177,7 +1183,7 @@ extension BusinessViewC {
         }
     }
     func callSearchProducerApi(){
-        if paginationData == false{
+        if paginationData == false && indexOfPageToRequest == 1{
             arrSearchimpotrDataModel.removeAll()
         }
         let productType = "\(selectedProducWithCategory?.replacingOccurrences(of: " ", with: "") ?? "")"
@@ -1212,7 +1218,7 @@ extension BusinessViewC {
         }
     }
     func callSearchResturntApi(){
-        if paginationData == false{
+        if paginationData == false && indexOfPageToRequest == 1{
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
@@ -1243,7 +1249,7 @@ extension BusinessViewC {
     }
     
     func callSearchExpertApi(){
-        if paginationData == false{
+        if paginationData == false && indexOfPageToRequest == 1{
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
@@ -1275,7 +1281,7 @@ extension BusinessViewC {
     }
     
     func callSearchTravelApi(){
-        if paginationData == false{
+        if paginationData == false && indexOfPageToRequest == 1{
             arrSearchimpotrDataModel.removeAll()
         }
         cellCount = 0
@@ -1378,9 +1384,11 @@ extension BusinessViewC: TappedDoneStepOne{
         }
         print("product",selectedProductOptionIds)
         print("sub product",selectedSubProductOptionIds)
-        
+
+        selectedSubProductOptionIds = selectedSubProductOptionIds.filter({$0 != ""})
         let mergeArray = selectedProductOptionIds + selectedSubProductOptionIds
         return mergeArray.joined(separator: ", ")
+    
     }
     
     

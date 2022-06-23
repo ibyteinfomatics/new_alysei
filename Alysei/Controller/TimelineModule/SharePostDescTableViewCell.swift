@@ -149,35 +149,35 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     if modelData.subjectId?.roleId == UserRoles.producer.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text = AppConstants.kProducer + ","
     }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.restaurantName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.restaurantName?.capitalized
-        lblSharedUserEmail.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kRestaurant + ","
     }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kVoyager + ","
     }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kVoiceOfExperts + ","
     }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kImporter + ","
     }else if modelData.subjectId?.roleId == UserRoles.distributer2.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kDistributer + ","
     }else if modelData.subjectId?.roleId == UserRoles.distributer3.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kImporterDistributer + ","
     }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+        lblSharedUserEmail.text =  AppConstants.kTravelAgencies + ","
     }
     
     if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
@@ -185,7 +185,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
         follower.isHidden = true
     } else {
         follower.isHidden = false
-        follower.text = "\(modelData.follower_count ?? 0) Followers"
+        follower.text = "\(modelData.follower_count ?? 0) " + AppConstants.Followers
     }
     
     

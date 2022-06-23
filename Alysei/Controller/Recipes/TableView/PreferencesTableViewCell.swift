@@ -251,6 +251,7 @@ extension PreferencesTableViewCell: UICollectionViewDelegate, UICollectionViewDa
          return cell
         case 3:
             let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
+            cell.imageView1.isHidden = true
             if indexPath.row < showIngridient!.count {
                 let imgUrl = ((showIngridient?[indexPath.item].imageId?.baseUrl ?? "") + (showIngridient?[indexPath.item].imageId?.imgUrl ?? ""))
                 

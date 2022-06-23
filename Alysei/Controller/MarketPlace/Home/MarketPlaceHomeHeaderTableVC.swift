@@ -10,7 +10,7 @@ import UIKit
 class MarketPlaceHomeHeaderTableVC: UITableViewCell {
     @IBOutlet weak var headerCollectionView: UICollectionView!
     
-    var marketPlaceOptions = ["pStore", "cnsrvationMtd" , "ItlanRgn" ,"4", "prdctPrprties", "fda", "myFav", "mostPoplr", "promotion"]
+    var marketPlaceOptions = ["pStore", "cnsrvationMtd" , "ItlanRgn" ,"Categories", "prdctPrprties", "fda", "myFav", "mostPoplr", "promotion"]
     var arrMarketPlace = [MarketPlaceConstant.kProducerStore,MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProductProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kMyFavourite,MarketPlaceConstant.kMostPospular,MarketPlaceConstant.kPromotions]
     
     var callback:((Int) -> Void)? = nil

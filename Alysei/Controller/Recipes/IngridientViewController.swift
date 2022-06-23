@@ -47,7 +47,8 @@ class IngridientViewController: UIViewController {
         callChooseIngridients()
         scrollView.isScrollEnabled = false
         searchViewHeight.constant = 130
-        ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
+      //  ingredientsCollectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
+        ingredientsCollectionView.register(UINib(nibName: "PreferencesImageCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "PreferencesImageCollectionViewCell")
         self.view.isUserInteractionEnabled = false
         ingredientsCollectionView.delegate = self
         ingredientsCollectionView.dataSource = self
@@ -107,21 +108,38 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+        
+        let cell: PreferencesImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PreferencesImageCollectionViewCell", for: indexPath) as! PreferencesImageCollectionViewCell
         
         let imgUrl = ((showAllIngridient?[indexPath.row].imageId?.baseUrl ?? "") + (self.showAllIngridient?[indexPath.row].imageId?.imgUrl ?? ""))
-        cell.image2.setImage(withString: "")
-        cell.image1.setImage(withString: imgUrl)
+        cell.imageView1.setImage(withString: "")
+        cell.imageView1.isHidden = false
+        cell.imageView.setImage(withString: imgUrl)
+        cell.imageView.contentMode = .scaleAspectFit
         cell.imageNameLabel.text = self.showAllIngridient?[indexPath.item].title
-        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
-        cell.viewOfImage.layer.borderWidth = 4
-        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
+   
+        cell.imageNameLabel.text = showAllIngridient?[indexPath.item].name
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
+        cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
+        cell.vwImage.layer.borderWidth = 3
+        cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+   //     cell.vwImage.image = UIImage(named: "")
+        cell.vwImage.clipsToBounds = true
+       // let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell
+        
+//        let imgUrl = ((showAllIngridient?[indexPath.row].imageId?.baseUrl ?? "") + (self.showAllIngridient?[indexPath.row].imageId?.imgUrl ?? ""))
+//        cell.image2.setImage(withString: "")
+//        cell.image1.setImage(withString: imgUrl)
+//        cell.imageNameLabel.text = self.showAllIngridient?[indexPath.item].title
+//        cell.viewOfImage.layer.cornerRadius = cell.viewOfImage.bounds.width/2
+//        cell.viewOfImage.layer.borderWidth = 4
+//        cell.viewOfImage.layer.borderColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1).cgColor
         
         
         if showAllIngridient?[indexPath.row].isSelected == 1{
-            cell.image2.image = UIImage(named: "Group 1165")
+            cell.imageView1.image = UIImage(named: "Group 1165")
         } else{
-            cell.image2.image = nil
+            cell.imageView1.image = nil
         }
         
         cell.layoutSubviews()
@@ -130,7 +148,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? FoodAllergyCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? PreferencesImageCollectionViewCell
         if searching == true{
         for i in 0..<(self.showAllIngridient?.count ?? 0){
             if self.searchingridientId == self.showAllIngridient?[i].ingridientId{
@@ -144,7 +162,8 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if  showAllIngridient?[selectedIndexPath?.row ?? 0].isSelected == 1{
             showAllIngridient?[selectedIndexPath?.row ?? 0].isSelected = 0
-            cell?.image2.image = nil
+          //  cell?.image2.image = nil
+            cell?.imageView1.image = nil
             
             print("You deselected cell #\(indexPath.item)!")
             
@@ -157,7 +176,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         else {
             showAllIngridient?[selectedIndexPath?.row ?? 0].isSelected = 1
-            cell?.image2.image = UIImage(named: "Group 1165")
+            cell?.imageView1.image = UIImage(named: "Group 1165")
             
             arraySelectedIngridient?.append(showAllIngridient?[selectedIndexPath?.row ?? 0].ingridientId ?? 0)
             

@@ -77,6 +77,15 @@ struct UserDetailBasedElements {
 
 struct  AlertMessage{
     
+    
+    static var passwordUpdatedSuccfly : String {"Password Updated Successfully".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var sureDeleteProduct : String {"Are you surely want to delete this product?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidFormatUsername : String {"URL format should be like https://www.facebook.com/username".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidFormatUrl : String {"URL format should be like https://www.example.com/".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidkUrl : String { "Please enter a valid URL.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidFacebookUrl : String { "Please enter a valid facebook url.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidEmail : String { "Please enter a valid email ID.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var enterValidPhone: String { "Please enter a valid phone number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEnterFirstName : String { return "Please enter first name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kEnterLastName  : String { return "Please enter last name.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMobileNumber : String { return "Please enter mobile number.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -540,9 +549,30 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+  
+    static var youWantToUnblock : String {"You want to unblock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var areYouSure : String {"Are You Sure?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var tapToUnblock : String {"Blocked. Tap to Unblock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var pleaseEnterSomeDesc : String { "Please enter some description".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var infoUpdated : String {"Your info has been updated.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var errorWhileUpdate : String { "Error while updating contact info.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+  
+                
+    static var myTrip : String { "My Trips".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var deleteTrip : String { "Are you sure you want to delete this trip?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAlert : String { "Alert!!".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var deleteAward : String { "Are you sure you want to delete this Award?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KOf : String { "of".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kPleaseSelectOneHub: String { "Please select atleast one hub".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KhubsSelected : String {  "hubs selected".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kDelete : String {  "Delete".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReply : String { "Reply".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kReplyComment : String {  "Add a reply to comment".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kLeaveAReply : String {  "Leave a Reply".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KCommentCantBeBlank : String { "Comment can't be blank.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var FDANumber : String { "FDA Number".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var KYouHaveTosSelectAtLeastOneconservation :  String {"You have to select atleast one conservation method and properties for all the selected Products.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kWinningPrize = {"Winning Prize".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWinningPrize : String { "Winning Prize".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kPhotos : String { "Photos".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kWhatNew: String{"What's new?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSaySomething : String {"Say Something...".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -835,6 +865,7 @@ struct AppConstants {
     static var Hubs  : String { return "Hubs".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var SelectRegion  : String { return "Select Region".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var RestaurantType  : String { return "Restaurant Type".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+  
     static var PickUp  : String { return"Pick Up".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Delivery  : String { return "Delivery".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Expertise  : String { return "Expertise".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -948,6 +979,8 @@ struct PlaceholderImages {
     
 }
 struct MarketPlaceConstant{
+    
+    static var kNotAvailable: String{ "Not Available".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kRelatedProducts : String{"Related Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSubmitQuery : String { return  "You already submitted a query on this product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kNetworkError : String { "Network Error".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

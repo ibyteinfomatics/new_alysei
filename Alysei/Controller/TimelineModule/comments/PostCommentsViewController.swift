@@ -479,33 +479,33 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second, .weekOfYear])
             let components = Calendar.current.dateComponents(units, from: date, to: Date())
 
-            if components.year! > 0 {
-                return "\(components.year!) " + (components.year! > 1 ? "years ago" : "year ago")
+        if components.year! > 0 {
+            return "\(components.year!) " + (components.year! > 1 ? MarketPlaceConstant.kYearsAgo :  MarketPlaceConstant.kYearAgo)
 
-            } else if components.month! > 0 {
-                return "\(components.month!) " + (components.month! > 1 ? "months ago" : "month ago")
+        } else if components.month! > 0 {
+            return "\(components.month!) " + (components.month! > 1 ? MarketPlaceConstant.kMonthsAgo : MarketPlaceConstant.kMonthAgo)
 
-            } else if components.weekOfYear! > 0 {
-                return "\(components.weekOfYear!) " + (components.weekOfYear! > 1 ? "weeks ago" : "week ago")
+        } else if components.weekOfYear! > 0 {
+            return "\(components.weekOfYear!) " + (components.weekOfYear! > 1 ? MarketPlaceConstant.kWeeksAgo : MarketPlaceConstant.kWeekAgo)
 
-            } else if (components.day! > 0) {
-                return (components.day! > 1 ? "\(components.day!) Days" : "Yesterday")
+        } else if (components.day! > 0) {
+            return (components.day! > 1 ? "\(String.getString(localDate))" : MarketPlaceConstant.kYesterday)
 
-            } else if components.hour! > 0 {
-                return "\(components.hour!) " + (components.hour! > 1 ? "hours ago" : "hour ago")
+        } else if components.hour! > 0 {
+            return "\(components.hour!) " + (components.hour! > 1 ? MarketPlaceConstant.kHoursAgo : MarketPlaceConstant.kHourAgo)
 
-            } else if components.minute! > 0 {
-                return "\(components.minute!) " + (components.minute! > 1 ? "minutes ago" : "minute ago")
+        } else if components.minute! > 0 {
+            return "\(components.minute!) " + (components.minute! > 1 ? MarketPlaceConstant.kMinutesAgo : MarketPlaceConstant.kMinuteAgo)
 
-            } else {
-                return "\(components.second!) " + (components.second! > 1 ? "seconds ago" : "second ago")
-            }
+        } else {
+            return "\(components.second!) " + (components.second! > 1 ? MarketPlaceConstant.kSecondsAgo : MarketPlaceConstant.kSecondAgo)
+        }
         
     }
 
     func sendReply(_ commentID: Int) {
         guard let text = self.commentTextfield.text else {
-            showAlert(withMessage: "Comment can't be blank.")
+            showAlert(withMessage: AppConstants.KCommentCantBeBlank)
             return
         }
 
@@ -530,7 +530,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
     @IBAction func sendCommentButtonTapped(_ sender: UIButtonExtended) {
         if self.commentTextfield.text == "" {
             //self.sendReply(self.commentID)
-            showAlert(withMessage: "Comment can't be blank.")
+            showAlert(withMessage: AppConstants.KCommentCantBeBlank)
         } else {
             
             
@@ -657,7 +657,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                // self.replyTap = true
                 self.commentId = self.commentmessages?[indexPath.row].core_comment_id ?? 0
                 self.commentTextfield.becomeFirstResponder()
-                self.commentTextfield.placeholder = "Leave a Reply"
+                self.commentTextfield.placeholder = AppConstants.kLeaveAReply
             }
             
             cell.btnLikeCallback = {tag in
@@ -706,7 +706,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                 
                 let actionSheet = UIAlertController(style: .actionSheet)
                 
-                let edit = UIAlertAction(title: "Edit", style: .default) { action in
+                let edit = UIAlertAction(title: AppConstants.Edit, style: .default) { action in
                     
                     self.commentTextfield.text = self.commentmessages?[indexPath.row].body
                     self.commentTextfield.becomeFirstResponder()
@@ -715,7 +715,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                     
                 }
                 
-                let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+                let delete = UIAlertAction(title: AppConstants.kDelete, style: .destructive) { action in
                     
                     let postId = String.getString(self.postid)
                     let commentId = String.getString(self.commentmessages?[indexPath.row].core_comment_id)
@@ -737,7 +737,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
                     
                 }
 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                let cancelAction = UIAlertAction(title: RecipeConstants.kCancel, style: .cancel) { action in
 
                 }
                 
@@ -753,7 +753,7 @@ extension PostCommentsViewController: UITableViewDelegate, UITableViewDataSource
             if self.commentmessages?[indexPath.row].reply.count ?? 0 > 0 {
                 cell.viewReplyButtonconstraint.constant = 20
                 cell.viewReplyButton.isHidden = false
-                cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0) Reply", for: .normal)
+                cell.viewReplyButton.setTitle("---- View \(self.commentmessages?[indexPath.row].reply.count ?? 0)" + AppConstants.kReply, for: .normal)
             } else {
                 
                 cell.viewReplyButtonconstraint.constant = 0
@@ -799,7 +799,7 @@ extension PostCommentsViewController: CommnentReplyProtocol {
     func addReplyToComment(_ commentID: Int) {
         
         self.commentID = commentID
-        self.commentTextfield.placeholder = "Add a reply to comment"
+        self.commentTextfield.placeholder = AppConstants.kReplyComment
         self.commentTextfield.becomeFirstResponder()
     }
 

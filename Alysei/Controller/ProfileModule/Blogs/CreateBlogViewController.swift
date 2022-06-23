@@ -336,8 +336,8 @@ class CreateBlogViewController: UIViewController,UITextFieldDelegate, UINavigati
     }
     
     func alert(msg:String){
-        let refreshAlert = UIAlertController(title: "Alert!!", message: msg, preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        let refreshAlert = UIAlertController(title: AppConstants.kAlert, message: msg, preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kOk, style: .default, handler: { (action: UIAlertAction!) in
            
             self.parent?.dismiss(animated: true, completion: nil)
         }))

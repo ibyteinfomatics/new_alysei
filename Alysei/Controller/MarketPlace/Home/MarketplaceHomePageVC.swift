@@ -123,7 +123,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         //self.callIsStoreReviewApi()
         callMarketPlaceHomeApi()
         setBottomUI()
-       walknextBtn.setTitle("Next", for: .normal)
+        walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
         
         if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)"{
             self.btnCreateStore.isHidden = false
@@ -411,7 +411,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
         pageControl5.layer.borderColor = UIColor.white.cgColor
         pageControl5.layer.backgroundColor = UIColor.clear.cgColor
         pageControl6.layer.backgroundColor = UIColor.white.cgColor
-        self.walknextBtn.setTitle("Done", for: .normal)
+        self.walknextBtn.setTitle(RecipeConstants.kDone, for: .normal)
         UIView.animate(withDuration: 0.5) {
             self.vwwWalkContainer2.isHidden = false
             self.walkView1height.constant = self.view.frame.height / 2 + 260
@@ -495,7 +495,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
     @IBAction func backAction(_ sender: UIButton){
         if nextWalkCount == 2{
             nextWalkCount = 1
-            self.walknextBtn.setTitle("Next", for: .normal)
+            self.walknextBtn.setTitle(RecipeConstants.kNext, for: .normal)
             vwwWalkContainer1.isHidden = true
             vwwWalkContainer1.isHidden = false
             animate2View()

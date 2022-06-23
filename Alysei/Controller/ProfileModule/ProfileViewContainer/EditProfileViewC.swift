@@ -382,7 +382,8 @@ class EditProfileViewC: AlysieBaseViewC, AddProductCallBack {
         }
         print("product",selectedProductOptionIds)
         print("sub product",selectedSubProductOptionIds)
-
+       
+        selectedSubProductOptionIds = selectedSubProductOptionIds.filter({$0 != ""})
         let mergeArray = (selectedProductOptionIds + selectedSubProductOptionIds).orderedSet
         return mergeArray.filter({ $0 != ""}).joined(separator: ", ")
     }
@@ -794,11 +795,11 @@ extension EditProfileViewC: FeaturedProductCollectionCellProtocol {
 
     func deleteProduct(_ productID: Int) {
 
-        let alertController = UIAlertController(title: "", message: "Are you surely want to delete this product?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "", message: AlertMessage.sureDeleteProduct, preferredStyle: .actionSheet)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: nil)
 
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+        let deleteAction = UIAlertAction(title: AppConstants.kDelete, style: .destructive) { (action) in
             self.deleteProduct("\(APIUrl.FeaturedProduct.delete)\(productID)")
         }
 

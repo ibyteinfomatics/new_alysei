@@ -22,9 +22,9 @@ class ContactDetailPresenter: ContactDetailPresentationLogic {
     // MARK:- protocol methods
 
     func contactInfoUpdated(_ status: Bool) {
-        var message = "Your info has been updated."
+        var message = AppConstants.infoUpdated
         if !status {
-            message = "Error while updating contact info."
+            message = AppConstants.errorWhileUpdate
         }
         
         self.viewController?.showAlertWithMessage(message)

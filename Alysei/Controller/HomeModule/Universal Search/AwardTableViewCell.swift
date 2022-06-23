@@ -51,8 +51,12 @@ extension AwardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
       //  let titleText = (AppConstants.kWinningPrize)
       //  let mergeText = "\(String(describing: titleText))" + ":" + " "
-        cell.winningproduct.text =  "Winning Prize: " + "\(arraySearchByAward?[indexPath.item].winningProduct ?? "" )"
+        cell.winningproduct.text =  AppConstants.kWinningPrize + " : " + "\(arraySearchByAward?[indexPath.item].winningProduct ?? "" )"
         
+        
+      
+        
+       // AppConstants.RestaurantType + " : " +  "\(restauUser[indexPath].restaurant_type ?? "")"
         /*if let attributedString = self.createAttributedString(stringArray: ["Winning Product: ", "\( awardModel?.data?[indexPath.item].winningProduct ?? "" )"], attributedPart: 1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) {
                    
             cell.winningproduct.attributedText = attributedString//awardModel?.data?[indexPath.item].winningProduct

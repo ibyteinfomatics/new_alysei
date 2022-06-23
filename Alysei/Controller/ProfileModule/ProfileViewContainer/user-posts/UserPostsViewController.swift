@@ -288,15 +288,15 @@ extension UserPostsViewController: ShareEditMenuProtocol {
         }
         let actionSheet = UIAlertController(style: .actionSheet)
 
-        let shareAction = UIAlertAction(title: "Share Post", style: .default) { action in
+        let shareAction = UIAlertAction(title: AppConstants.kSharePost, style: .default) { action in
             self.sharePost(postID)
         }
 
-        let editPostAction = UIAlertAction(title: "Edit Post", style: .default) { action in
+        let editPostAction = UIAlertAction(title: AppConstants.kEditPost, style: .default) { action in
             self.editPost(postID)
         }
 
-        let deletePost = UIAlertAction(title: "Delete Post", style: .destructive) { action in
+        let deletePost = UIAlertAction(title: AppConstants.kDeletePost, style: .destructive) { action in
             self.deletePost(postID)
         }
 
@@ -304,10 +304,10 @@ extension UserPostsViewController: ShareEditMenuProtocol {
          //   self.editPost(postID)
         //}
 
-        let reportAction = UIAlertAction(title: "Report Action", style: .destructive) { action in
+        let reportAction = UIAlertAction(title: AppConstants.kReportAction, style: .destructive) { action in
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel) { action in
 
         }
 
@@ -348,7 +348,7 @@ extension UserPostsViewController: ShareEditMenuProtocol {
             urlRequest.httpBody = body
             WebServices.shared.request(urlRequest) { data, urlResponse, statusCode, error in
                 if (statusCode ?? 0) >= 400 {
-                    self.showAlert(withMessage: "Some error occured")
+                    self.showAlert(withMessage: AppConstants.kSomethingWentWrong)
                 } else {
                     //self.callNewFeedApi(1)
                     self.fetchPostWithPhotsFromServer(1, visitorId: self.visitorId ?? "")

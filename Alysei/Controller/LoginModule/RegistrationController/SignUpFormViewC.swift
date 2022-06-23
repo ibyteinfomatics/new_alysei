@@ -167,6 +167,10 @@ class SignUpFormViewC: AlysieBaseViewC{
        model.selectedOptionName = selectedProductNames[0] + " & " + String.getString(remainingProducts) + " more"
      }
     print("product",selectedProductOptionIds)
+      
+//      selectedProductOptionIds = selectedProductOptionIds.filter({$0 != ""})
+//      let mergeArray = selectedProductOptionIds + selectedProductOptionIds
+//      return mergeArray.joined(separator: ", ")
     let mergeArray = selectedProductOptionIds
     return mergeArray.joined(separator: ", ")
   }

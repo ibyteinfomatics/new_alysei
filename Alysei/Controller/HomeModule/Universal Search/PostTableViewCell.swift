@@ -113,12 +113,12 @@ class PostTableViewCell: UITableViewCell {
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kProducer + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }else if modelData.subjectId?.roleId == UserRoles.restaurant.rawValue{
             userName.text = modelData.subjectId?.restaurantName?.capitalized
             userNickName.text = AppConstants.kRestaurant + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue)   {
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
             userNickName.text = AppConstants.kVoyager + ","
@@ -128,33 +128,33 @@ class PostTableViewCell: UITableViewCell {
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
             userNickName.text = AppConstants.kVoiceOfExperts + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }
         else if (modelData.subjectId?.roleId == UserRoles.distributer1.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kImporter + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }else if (modelData.subjectId?.roleId == UserRoles.distributer2.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kDistributer + ","
             
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }else if (modelData.subjectId?.roleId == UserRoles.distributer3.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kImporterDistributer + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }else if (modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kTravelAgencies + ","
             followerCount.isHidden = false
-            followerCount.text = "\(modelData.follower_count ?? 0)" + " Followers"
+            followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }
         lblPostDesc.text = modelData.body
         lblPostLikeCount.text = "\(modelData.likeCount ?? 0)"

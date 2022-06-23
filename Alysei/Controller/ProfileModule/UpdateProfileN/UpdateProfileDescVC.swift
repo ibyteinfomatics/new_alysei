@@ -28,8 +28,7 @@ class UpdateProfileDescVC: AlysieBaseViewC {
     
     @IBAction func btnSaveAction(_ sender: UIButton){
         if txtDesc.text == ""{
-            self.showAlert(withMessage: "Please enter some description")
-        }else{
+            self.showAlert(withMessage: AppConstants.pleaseEnterSomeDesc)
             callSaVeApi()
         }
     }

@@ -1117,12 +1117,33 @@
 "You have to select atleast one conservation method and properties for all the selected Products." = "You have to select atleast one conservation method and properties for all the selected Products.";
 
 "Winning Prize" = "Winning Prize";
-
-
-
-
-
-
+"Not Available" = "Not Available";
+"Comment can't be blank." = "Comment can't be blank.";
+"Leave a Reply" = "Leave a Reply";
+"Add a reply to comment" = "Add a reply to comment";
+"Delete" = "Delete";
+"Reply" = "Reply";
+"hubs selected" = "hubs selected";
+"Please select atleast one hub" = "Please select atleast one hub";
+"of" = "of";
+"Please enter some description" = "Please enter some description";
+"Are you sure you want to delete this Award?" = "Are you sure you want to delete this Award?";
+"Alert!!" = "Alert!!";
+"Are you sure you want to delete this trip?" = "Are you sure you want to delete this trip?";
+"My Trips" = "My Trips";
+"Your info has been updated." = "Your info has been updated.";
+"Please enter a valid email ID." = "Please enter a valid email ID.";
+"Please enter a valid phone number" = "Please enter a valid phone number";
+"Error while updating contact info." = "Error while updating contact info.";
+"Please enter a valid facebook url." = "Please enter a valid facebook url.";
+"Please enter a valid URL." = "Please enter a valid URL.";
+"URL format should be like https://www.example.com/" =  "URL format should be like https://www.example.com/";
+"Are you surely want to delete this product?" = "Are you surely want to delete this product?";
+"URL format should be like https://www.facebook.com/username" = "URL format should be like https://www.facebook.com/username";
+"Password Updated Successfully" = "Password Updated Successfully";
+"Blocked. Tap to Unblock" = "Blocked. Tap to Unblock";
+"Are You Sure?" = "Are You Sure?";
+"You want to unblock" = "You want to unblock";
 
 
 

@@ -313,29 +313,29 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
 //            }
             if data?.subjectId?.roleId == UserRoles.producer.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kProducer + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.restaurant.rawValue{
                 cell.userName.text = data?.subjectId?.restaurantName?.capitalized
-                cell.userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
             }else if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue){
                 cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
-                cell.userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kVoyager + ","//modelData.subjectId?.email?.lowercased()
                 cell.follower.isHidden = true
             }else if data?.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
                 cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
-                cell.userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.distributer1.rawValue {
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.distributer2.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kDistributer + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.distributer3.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
             }
             if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue){
                 

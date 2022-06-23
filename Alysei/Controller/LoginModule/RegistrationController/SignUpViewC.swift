@@ -179,7 +179,8 @@ class SignUpViewC: AlysieBaseViewC {
         }
         print("product",selectedProductOptionIds)
         print("sub product",selectedSubProductOptionIds)
-        
+       
+        selectedSubProductOptionIds = selectedSubProductOptionIds.filter({$0 != ""})
         let mergeArray = selectedProductOptionIds + selectedSubProductOptionIds
         return mergeArray.joined(separator: ", ")
     }

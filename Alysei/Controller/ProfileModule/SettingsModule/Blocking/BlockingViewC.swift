@@ -95,7 +95,7 @@ class BlockingViewC: AlysieBaseViewC {
     }
     
     
-    blockingTableCell.lblBlockingStatus.text = "Blocked. Tap to Unblock"
+      blockingTableCell.lblBlockingStatus.text = AppConstants.tapToUnblock
     
     blockingTableCell.imgViewBlocking.layer.masksToBounds = false
     blockingTableCell.imgViewBlocking.clipsToBounds = true
@@ -142,13 +142,13 @@ extension BlockingViewC: UITableViewDataSource, UITableViewDelegate{
         print(blockModel?.data?[indexPath.row].blockuser?.companyName ?? "")
         
         //MARK:show Alert Message
-        let refreshAlert = UIAlertController(title: "Are You Sure?", message: "You want to unblock "+name, preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: AppConstants.areYouSure, message: AppConstants.youWantToUnblock + " " + name, preferredStyle: UIAlertController.Style.alert)
         refreshAlert.view.superview?.isUserInteractionEnabled = false
         
-        refreshAlert.addAction(UIAlertAction(title: "Unblock", style: .destructive, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: AppConstants.UnBlock, style: .destructive, handler: { (action: UIAlertAction!) in
             self.unBlock(id: String.getString(self.blockModel?.data?[indexPath.row].blockuser?.userid))
         }))
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: MarketPlaceConstant.kCancel, style: .cancel, handler: { (action: UIAlertAction!) in
              
             
         }))

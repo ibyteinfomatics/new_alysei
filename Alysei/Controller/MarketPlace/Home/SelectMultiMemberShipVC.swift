@@ -53,7 +53,7 @@ extension SelectMultiMemberShipVC : UICollectionViewDataSource, UICollectionView
             cell.vwHeader.layer.backgroundColor = UIColor.init(hexString: "4BB3FD").cgColor
            
         }else{
-            cell.lblMemberShip.text = "Coming Soon....."
+            cell.lblMemberShip.text = MarketPlaceConstant.kComingSoon
             cell.vwHeader.layer.backgroundColor = UIColor.init(hexString: "33A386").cgColor
            
         }

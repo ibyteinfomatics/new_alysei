@@ -292,7 +292,7 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
             })
             self.picker.delegate = self }
         else{
-            self.showAlert(withMessage: "Not Available")
+            self.showAlert(withMessage: MarketPlaceConstant.kNotAvailable)
         }
     }
 }

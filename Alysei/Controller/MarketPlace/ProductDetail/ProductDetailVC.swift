@@ -196,7 +196,7 @@ extension ProductDetailVC: UITableViewDelegate, UITableViewDataSource{
                     print("No action")
                 }
             }
-            cell.lblTotalReview.text = "\(self.productDetail?.product_detail?.total_reviews ?? 0) reviews"
+            cell.lblTotalReview.text = "\(self.productDetail?.product_detail?.total_reviews ?? 0) " + MarketPlaceConstant.kReviews
             cell.lblAvgRating.text = "\(self.productDetail?.product_detail?.avg_rating ?? "0")"
             cell.avgRating = self.productDetail?.product_detail?.avg_rating
             cell.configCell(self.arrRatingReview?.first ?? RatingReviewModel(with: [:]))

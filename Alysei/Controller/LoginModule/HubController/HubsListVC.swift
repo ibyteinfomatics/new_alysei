@@ -184,7 +184,7 @@ class HubsListVC: UIViewController {
     }
     
     func setSelectedHubLabel(_ selectedHub: Int? , totalHub: Int?){
-        lblShowSelectedHub.text = "\(selectedHub ?? 0)" + " " + "of" + " " + "\(totalHub ?? 0)" + " " + "hubs selected"
+        lblShowSelectedHub.text = "\(selectedHub ?? 0)" + " " + AppConstants.KOf + " " + "\(totalHub ?? 0)" + " " + AppConstants.KhubsSelected
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
@@ -198,7 +198,7 @@ class HubsListVC: UIViewController {
         let oldHubs = selectedHub?.hubs.filter{$0.type != self.hasCome} ?? []
         selectedHub?.hubs = oldHubs +  selectedHubs
         if selectedHub?.hubs.isEmpty ?? false {
-            showAlert(withMessage: "Please select atleast one hub")
+            showAlert(withMessage: AppConstants.kPleaseSelectOneHub)
         }else{
             let nextVC = ConfirmSelectionVC()
             nextVC.selectedHubs = self.selectedHubs
