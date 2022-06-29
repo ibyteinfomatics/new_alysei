@@ -128,7 +128,7 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
         cell.imageView.setImage(withString: imgUrl)
         cell.imageNameLabel.text = self.ingdntArray[indexPath.item].ingridientTitle
         cell.imageView.contentMode = .scaleAspectFill
-        cell.imageNameLabel.text = showCuisine?[indexPath.item].name
+        cell.imageNameLabel.text = ingdntArray[indexPath.item].ingridientTitle
         cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.borderWidth = 3

@@ -21,12 +21,13 @@ class HubCollectionViewCell: UICollectionViewCell {
     
     func configData(_ index: Int, _ data: UserRoleCount){
         title.text = data.name
+        coverImage.layer.cornerRadius = self.coverImage.frame.width / 2
         lblUserCount.text = "\(data.userCount ?? 0)"
-        let image = "\(data.attachment?.baseUrl ?? "")" + "\(data.attachment?.attachmentMediumUrl ?? "")"
+        let image = "\(data.attachment?.baseUrl ?? "")" + "\(data.attachment?.attachmentURL ?? "")"
         if let strUrl = image.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
               let imgUrl = URL(string: strUrl) {
              print("ImageUrl-----------------------------------------\(imgUrl)")
-            coverImage.contentMode = .scaleAspectFill
+         //   coverImage.contentMode = .scaleAspectFill
             self.coverImage.loadImageWithUrl(imgUrl) // call this line for getting image to yourImageView
         }
     }

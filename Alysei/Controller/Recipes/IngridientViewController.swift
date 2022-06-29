@@ -118,7 +118,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.imageView.contentMode = .scaleAspectFit
         cell.imageNameLabel.text = self.showAllIngridient?[indexPath.item].title
    
-        cell.imageNameLabel.text = showAllIngridient?[indexPath.item].name
+        //cell.imageNameLabel.text = showAllIngridient?[indexPath.item].name
         cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.borderWidth = 3

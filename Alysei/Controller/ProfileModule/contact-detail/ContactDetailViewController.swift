@@ -14,6 +14,7 @@ import UIKit
 import SVProgressHUD
 import CoreLocation
 
+var contactFromVC: PushedFrom?
 protocol ContactDetailDisplayLogic: class {
     func showAlertWithMessage(_ message: String)
 }
@@ -31,6 +32,7 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
     var phoneCode : String?
     var countryList = [Country]()
     var Countryname : String?
+   
    
     // MARK:- Object lifecycle
 
@@ -243,9 +245,11 @@ class ContactDetailViewController: UIViewController, ContactDetailDisplayLogic {
         return false
         }
 
+        if self.phoneTextField.text?.isEmpty() == false && contactFromVC == .profileCompletion{
         guard self.phoneTextField.text?.isValid(.mobileNumber) == true else {
             showAlert(withMessage: AlertMessage.enterValidPhone)
             return false
+        }
         }
 
         if !(self.facebookTextField.text?.isEmpty ?? true) {

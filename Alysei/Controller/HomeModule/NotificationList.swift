@@ -76,11 +76,13 @@ class NotificationList: AlysieBaseViewC {
         
         //notificationTableCell.configure()
         
-        let dfmatter = DateFormatter()
-        dfmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dfmatter.date(from: String.getString(notifiacationArray[index].createdAt))
-        let dateStamp:TimeInterval = date!.timeIntervalSince1970
-        let dateSt:Int = Int(dateStamp)
+        //let dfmatter = DateFormatter()
+        //dfmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+       // let date = dfmatter.date(from: String.getString(notifiacationArray[index].postedAt))
+       // let dateStamp:TimeInterval = date!.timeIntervalSince1970
+      //  let dateSt:Int = Int(dateStamp)
+        
+        let postedAt = String.getString(notifiacationArray[index].postedAt)
         
         //let timeInterval  = notimodel?.data?.data?[index].createdAt
         notificationTableCell.imgViewNotification.layer.cornerRadius = notificationTableCell.imgViewNotification.layer.frame.height / 2
@@ -89,10 +91,10 @@ class NotificationList: AlysieBaseViewC {
         let baseUrl = notifiacationArray[index].user?.base_url ?? ""
         notificationTableCell.imgViewNotification.setImage(withString: String.getString(baseUrl + (notifiacationArray[index].user?.avatar_image ?? "")), placeholder: UIImage(named: "NotiLogo"))
         
-        let dateString = getcurrentdateWithTime(timeStamp: String.getString(dateSt))
-        print("formatted date is =  \(dateString)")
+        //let dateString = getcurrentdateWithTime(timeStamp: String.getString(dateSt))
+       // print("formatted date is =  \(dateString)")
         
-        notificationTableCell.message.text = dateString
+        notificationTableCell.message.text = postedAt
         notificationTableCell.name.text = (notifiacationArray[index].sender_name ?? "") + " " + (notifiacationArray[index].title ?? "")
        
         return notificationTableCell

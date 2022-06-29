@@ -469,6 +469,7 @@ class HubUserListVC: AlysieBaseViewC {
         businessButtonTableCell.pushToProductTypeScreen = { signUpmodel, IdentifyUserForProduct in
              //   let model = self.signUpViewModel.arrSignUpStepOne[indexPath.row]
                 let controller = self.pushViewController(withName: SelectProductViewC.id(), fromStoryboard: StoryBoardConstants.kLogin) as? SelectProductViewC
+            controller?.fromVC = .b2b
             let signupmodel = signUpmodel
             for _ in signupmodel.arrOptions {
                 if self.signUpStepOneDataModel == nil{
@@ -702,7 +703,8 @@ extension HubUserListVC {
     func callSearchImporterApi(){
         //arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(self.selectImpProductId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        let productId = selectedProducWithCategory?.removeWhitespace()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(productId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{
@@ -734,7 +736,8 @@ extension HubUserListVC {
     func callSearchProducerApi(){
       //  arrSearchimpotrDataModel.removeAll()
         cellCount = 0
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(selectProducerProductType ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        let productId = selectedProducWithCategory?.removeWhitespace()
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(productId ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
             
             if let data = dictResponse?["data"] as? [String:Any]{

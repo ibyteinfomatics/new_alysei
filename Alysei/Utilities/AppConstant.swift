@@ -2206,7 +2206,7 @@ enum PushedFrom: Int {
     case hubUserListVC
     case storeDesc
     case b2b
-    
+    case profileCompletion
 }
 
 enum LoadCell {

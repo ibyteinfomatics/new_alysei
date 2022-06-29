@@ -80,6 +80,8 @@ class NotiDatum {
     var enquiry_product_name: String?
     var enquiry_type: String?
     var sender_id: String?
+    var postedAt: String?
+    
     init(with dictResponse: [String:Any]?) {
             
             self.notificationid = Int.getInt(dictResponse?["notification_id"])
@@ -94,6 +96,7 @@ class NotiDatum {
             self.isRead = String.getString(dictResponse?["is_read"])
             self.createdAt = String.getString(dictResponse?["created_at"])
             self.updatedAt = String.getString(dictResponse?["updated_at"])
+        self.postedAt = String.getString(dictResponse?["posted_at"])
             self.sender_name = String.getString(dictResponse?["sender_name"])
         self.enquiry_product_image = String.getString(dictResponse?["enquiry_product_image"])
         self.enquiry_product_name = String.getString(dictResponse?["enquiry_product_name"])

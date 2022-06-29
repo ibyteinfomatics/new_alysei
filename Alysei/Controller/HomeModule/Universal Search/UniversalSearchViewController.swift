@@ -789,8 +789,8 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell4.callInterestedCallback = { index in
                             
                             let reloadIndexPath = IndexPath(row: index, section: 0)
-                            self.getUniversalSearchData(1, self.updatedText,self.indexOfPageToRequest)
-                            self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+                           self.getUniversalSearchData(1, self.updatedText,self.indexOfPageToRequest)
+                           self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                         }
                         cell4.btnMoreCallback = { tag in
                             
@@ -1223,7 +1223,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     }
                     cell4.callInterestedCallback = { index in
                         
-                        let reloadIndexPath = IndexPath(row: index, section: 0)
+                       let reloadIndexPath = IndexPath(row: index, section: 0)
                         self.getUniversalSearchData(1, self.updatedText,self.indexOfPageToRequest)
                         self.universalSearchTableView.reloadRows(at: [reloadIndexPath], with: .automatic)
                     }

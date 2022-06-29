@@ -109,10 +109,11 @@ class CommonUtil: NSObject {
                     //superView.isUserInteractionEnabled = true
                   controller.showAlert(withMessage: String.getString(dictResult[APIConstants.kError]))
                 case 409,422:
+                    controller.showAlert(withMessage: String.getString(dictResult[APIConstants.kMessage]))
                   btnTapped.isUserInteractionEnabled = true
 
                    // superView.isUserInteractionEnabled = true
-                  controller.showAlert(withMessage: String.getString(dictResult[APIConstants.kErrors]))
+                  //controller.showAlert(withMessage: String.getString(dictResult[APIConstants.kErrors]))
                     return
                 default:
                  break

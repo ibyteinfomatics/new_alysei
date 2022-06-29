@@ -159,6 +159,7 @@ class ProfileViewC: AlysieBaseViewC{
         eventViewC.hostname = self.lblDisplayName.text
         eventViewC.location = self.contactDetail[2].value
         eventViewC.website = self.contactDetail[3].value
+        self.tblViewPosts.isUserInteractionEnabled = true
         return eventViewC
     }()
     
@@ -168,6 +169,7 @@ class ProfileViewC: AlysieBaseViewC{
         tripViewC.userId = String.getString(userID)
         tripViewC.agencyname = self.lblDisplayName.text
         tripViewC.website = self.contactDetail[3].value
+
         return tripViewC
     }()
     private lazy var contactViewC: ContactViewC = {
@@ -182,6 +184,7 @@ class ProfileViewC: AlysieBaseViewC{
                 UIApplication.shared.openURL(url)
             }
         }
+       
         return contactViewC
     }()
     
@@ -189,6 +192,7 @@ class ProfileViewC: AlysieBaseViewC{
         
         let awardViewC = UIStoryboard.init(name: StoryBoardConstants.kHome, bundle: nil).instantiateViewController(withIdentifier: AwardsViewController.id()) as! AwardsViewController
         awardViewC.userId = String.getString(userID)
+        
         return awardViewC
     }()
     
@@ -425,7 +429,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tblViewPosts.isUserInteractionEnabled = false
+      //  self.tblViewPosts.isUserInteractionEnabled = false
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -453,7 +457,7 @@ class ProfileViewC: AlysieBaseViewC{
         if fromRecipe == ""{
             self.tabBarController?.tabBar.isHidden = false
         }
-        
+       
         //MARK: check Api calling
 //        if kSharedUserDefaults.getProfileCompletion() == false{
 //        self.postRequestToGetProgress()
@@ -1851,7 +1855,9 @@ extension ProfileViewC: AnimationProfileCallBack{
             }
         case ProfileCompletion.ContactInfo:
             print("Contact")
+            contactFromVC = .profileCompletion
             self.performSegue(withIdentifier: "segueProfileTabToContactDetail", sender: self)
+            
         case ProfileCompletion.FeaturedProducts, ProfileCompletion.FeaturedRecipe, ProfileCompletion.FeaturedPackages:
             self.addFeaturedProductButtonTapped(UIButton())
             

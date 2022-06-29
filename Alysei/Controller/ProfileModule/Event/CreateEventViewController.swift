@@ -284,9 +284,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg: AlertMessage.kPleaseSelectEventType)
             } else if registrationTxf.text == "" {
                 alert(msg: AlertMessage.kPleaseSelectRegistrationType)
-            } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
+            } else if ((bookingUrlView.isHidden == false && bookingTxf.text == "") && (registrationTxf.text == AppConstants.kPaid)) {
                 alert(msg: AlertMessage.kPleaseEnterBookingUrl)
-            } else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
+            } else if ((bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false) && (registrationTxf.text == AppConstants.kPaid)) {
                 alert(msg:AlertMessage.kPleaseEnterValidBookingUrl)
             } else {
                 updateEventApi()
@@ -309,9 +309,9 @@ class CreateEventViewController: UIViewController,UITextFieldDelegate, UINavigat
                 alert(msg:AlertMessage.kPleaseSelectEventType)
             } else if registrationTxf.text == "" {
                 alert(msg: AlertMessage.kPleaseSelectRegistrationType)
-            } else if bookingUrlView.isHidden == false && bookingTxf.text == "" {
+            } else if ((bookingUrlView.isHidden == false && bookingTxf.text == "") && (registrationTxf.text == AppConstants.kPaid)) {
                 alert(msg: AlertMessage.kPleaseEnterBookingUrl)
-            }else if bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false{
+            }else if ((bookingUrlView.isHidden == false && bookingTxf.text?.isURL() == false) && (registrationTxf.text == AppConstants.kPaid)) {
                 alert(msg:AlertMessage.kPleaseEnterValidBookingUrl)
             } else {
                 createEventApi()

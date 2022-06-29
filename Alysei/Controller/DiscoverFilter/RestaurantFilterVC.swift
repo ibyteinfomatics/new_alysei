@@ -65,7 +65,7 @@ class RestaurantFilterVC: AlysieBaseViewC {
         }
         
         if self.passRestType == "" || self.passRestType == nil{
-            self.lblreatau.text = AppConstants.kRegistrationType    
+            self.lblreatau.text = AppConstants.kRestaurantType
         }else{
             self.passRestType = self.lblreatau.text
         }

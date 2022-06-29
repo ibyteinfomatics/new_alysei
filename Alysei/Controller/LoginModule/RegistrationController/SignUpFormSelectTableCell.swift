@@ -61,6 +61,11 @@ class SignUpFormSelectTableCell: UITableViewCell {
     case AppConstants.Map:
       self.imgViewDropDown.isHidden = true
       self.imgViewLocation.isHidden = false
+        let firstchar = model.selectedValue?.first
+        print("First char -----------------",firstchar)
+        if firstchar == "," {
+            model.selectedValue?.removeFirst()
+        }
       self.txtFieldSelect.text = model.selectedValue
       self.txtFieldSelect.isUserInteractionEnabled = false
     default:

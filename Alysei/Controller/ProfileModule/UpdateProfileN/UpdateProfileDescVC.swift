@@ -29,6 +29,7 @@ class UpdateProfileDescVC: AlysieBaseViewC {
     @IBAction func btnSaveAction(_ sender: UIButton){
         if txtDesc.text == ""{
             self.showAlert(withMessage: AppConstants.pleaseEnterSomeDesc)
+        }else{
             callSaVeApi()
         }
     }

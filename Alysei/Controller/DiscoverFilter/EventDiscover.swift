@@ -108,7 +108,8 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.callInterestedCallback = { index in
             self.loadIsInterest = true
             let reloadIndexPath = IndexPath(row: index, section: 0)
-            //self.postRequest(self.indexOfPageToRequest)
+            
+            self.postRequest(1)
            // for i in 1...self.indexOfPageToRequest{
             //self.postRequest(i)
            // }

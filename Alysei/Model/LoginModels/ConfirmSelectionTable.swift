@@ -67,7 +67,7 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
                 self.reviewSelectedHubCityArray.append(data?.title ?? "" )
                 }
             for i in 0..<(self.reviewSelectedHubs?[indexPath.row].cities?.count ?? 0){
-                let sortCityArr = reviewSelectedHubs?[indexPath.row].cities?.sorted(by: {(($0.title ?? "") < ($1.title ?? ""))})
+                let sortCityArr = reviewSelectedHubs?[indexPath.row].cities?.sorted(by: {(($0.state?.name ?? "") < ($1.state?.name ?? ""))})
                 //let data = self.reviewSelectedHubs?[indexPath.row].cities?[i]
                 let data = sortCityArr?[i]
                 self.reviewSelectedHubCityArray.append(data?.city?.name ?? "" )
@@ -83,7 +83,7 @@ extension ConfirmSelectionTable : UITableViewDelegate   , UITableViewDataSource 
             hub?.hubs = hub?.hubs.uniqueArray(map: {$0.id}) ?? []
             let hubDictionary = hub?.hubs.filter({$0.type == .hubs})
             let cityDictionary = hub?.hubs.filter({$0.type != .hubs})
-            let sortCityArr = cityDictionary?.sorted(by: {($0.name ?? "") < ($1.name ?? "")})
+            let sortCityArr = cityDictionary?.sorted(by: {($0.state?.name ?? "") < ($1.state?.name ?? "")})
             let mergeDict = (hubDictionary ?? [CountryHubs]()) + (sortCityArr  ?? [CountryHubs]())
             hub?.hubs.removeAll()
             hub?.hubs.append(contentsOf: mergeDict)
