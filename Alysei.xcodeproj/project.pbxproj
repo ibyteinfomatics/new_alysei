@@ -2988,6 +2988,7 @@
 			isa = PBXGroup;
 			children = (
 				6B8830F82738F10B001800D3 /* Inquiry */,
+				C56C284D268464430042A0A3 /* GoToMyStore */,
 				6B13371B272925DC005D79E5 /* WalkthroughAnimation */,
 				6BD5696F270AF914009F2F35 /* ProductStore */,
 				C519FFC226C397E100245E7A /* Home */,
@@ -2996,7 +2997,6 @@
 				C519FFBF26C3975F00245E7A /* ProductDetail */,
 				C519FFBE26C3973D00245E7A /* StoreDescription */,
 				C519FFBC26C3972400245E7A /* Filter&Sort */,
-				C56C284D268464430042A0A3 /* GoToMyStore */,
 			);
 			path = MarketPlace;
 			sourceTree = "<group>";

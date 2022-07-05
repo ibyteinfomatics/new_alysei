@@ -1696,7 +1696,7 @@ extension UniversalSearchViewController{
     
     func getUniversalSearchData(_ searchType: Int?, _ keyword: String?,_ pageNo: Int?){
         
-        let originalUrl = APIUrl.Posts.searchUniversal + "\(searchType ?? 0)" + "&keyword=" + "\(keyword ?? "")" + "&page=\(pageNo ?? 1)"
+        let originalUrl = APIUrl.Posts.searchUniversal + "\(searchType ?? 0)" + "&keyword=" + "\(keyword?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? "")" + "&page=\(pageNo ?? 1)"
         TANetworkManager.sharedInstance.requestApi(withServiceName: originalUrl
                                                    , requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ [self] (dictResponse, error, errorType, statusCode) in
             
