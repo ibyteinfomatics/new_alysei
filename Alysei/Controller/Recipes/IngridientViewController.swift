@@ -122,7 +122,8 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.imageView.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.cornerRadius = cell.imageView.frame.height/2
         cell.vwImage.layer.borderWidth = 3
-        cell.vwImage.layer.borderColor = UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
+        cell.vwImage.layer.borderColor = UIColor.lightGray.cgColor
+        //UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor
    //     cell.vwImage.image = UIImage(named: "")
         cell.vwImage.clipsToBounds = true
        // let cell: FoodAllergyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodAllergyCollectionViewCell", for: indexPath) as! FoodAllergyCollectionViewCell

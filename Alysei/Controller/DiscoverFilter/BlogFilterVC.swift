@@ -116,7 +116,7 @@ class BlogFilterVC: AlysieBaseViewC {
         dataDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
         
             self.lblSpecialization.text = item
-            specializationId = "\(self.specializationModel?.data?[index].id)"
+            specializationId = "\(self.specializationModel?.data?[index].id ?? 0)"
         }
         dataDropDown.cellHeight = 40
         dataDropDown.backgroundColor = UIColor.white

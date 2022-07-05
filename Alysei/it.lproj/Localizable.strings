@@ -495,7 +495,7 @@
 "Enter Username" = "Nome Utente";
 "User Settings" = "Impostazioni Utente";
 "URL" = "Sito Web o URL";
-"Edit Profile" = "Modifica Profilo";
+//"Edit Profile" = "Modifica Profilo";
 "Notification" = "Notifiche";
 "Edit Settings" = "Modifica Impostazioni";
 "Edit Hub" = "Modifica Hub";
@@ -661,8 +661,8 @@
 "Remove photo" = "Rimuovi foto";
 "Cancel" = "Cancellal";
 "Okay" = "Okay";
-"Denied albums permissions granted" = "Autorizzazioni album negate, concesse";
-"Denied camera permissions granted" = "Autorizzazioni alla fotocamera negate, concesse";
+"Denied albums permissions, granted" = "Autorizzazioni album negate, concesse";
+"Denied camera permissions, granted" = "Autorizzazioni alla fotocamera negate, concesse";
 "Current Password" = "Password Attuale";
 
 //MARK: Marketplace Add Product Screen
@@ -956,7 +956,7 @@
 "Strenghten connection with Italian Producers, Importers and Distributors in USA, Voice of Experts, grown your visibility, reach your target customers." = "Rafforza la connessione con Produttori Italiani, Importatori e Distributori negli Stati Uniti, con Esperti di Settore, aumenta la tua visibilità, raggiungi i tuoi clienti target.";
 "Voyagers" = "Voyagers";
 "Enjoy the magic world of our endless cuisine searching for products, restaurants, events, trips to Italy, tasting tours, cooking classes, recipes, blogs and much more." = "Esplora il magico mondo della nostra infinita cucina alla ricerca di prodotti, ristoranti, eventi, viaggi in Italia, tour di degustazione, corsi di cucina, ricette, blogs e molto altro.";
-"We have sent you a 6 digit verification code(OTP) to" = "Ti abbiamo inviato un codice di verifica a 6 cifre (OTP) per.....";
+"We have sent you a 6 digit verification code(OTP) to" = "Ti abbiamo inviato un codice di verifica a 6 cifre (OTP)";
 "Verify OTP" = "Verifica OTP";
 "Didn't receive the OTP ? " = "Non hai ricevuto l'OTP?";
 "Resend OTP" = "Invia di nuovo l'OTP";
@@ -1114,38 +1114,67 @@
 "Try Again" = "Riprova";
 "Add Image" = "Aggiungi immagine";
 
-"You have to select atleast one conservation method and properties for all the selected Products." = "You have to select atleast one conservation method and properties for all the selected Products.";
+//"You have to select atleast one conservation method and properties for all the selected Products." = "You have to select atleast one conservation method and properties for all the selected Products.";
+//
+//"Winning Prize" = "Winning Prize";
+//"Not Available" = "Not Available";
+//"Comment can't be blank." = "Comment can't be blank.";
+//"Leave a Reply" = "Leave a Reply";
+//"Add a reply to comment" = "Add a reply to comment";
+//"Delete" = "Delete";
+//"Reply" = "Reply";
+//"hubs selected" = "hubs selected";
+//"Please select atleast one hub" = "Please select atleast one hub";
+//"of" = "of";
+//"Please enter some description" = "Please enter some description";
+//"Are you sure you want to delete this Award?" = "Are you sure you want to delete this Award?";
+//"Alert!!" = "Alert!!";
+//"Are you sure you want to delete this trip?" = "Are you sure you want to delete this trip?";
+//"My Trips" = "My Trips";
+//"Your info has been updated." = "Your info has been updated.";
+//"Please enter a valid email ID." = "Please enter a valid email ID.";
+//"Please enter a valid phone number" = "Please enter a valid phone number";
+//"Error while updating contact info." = "Error while updating contact info.";
+//"Please enter a valid facebook url." = "Please enter a valid facebook url.";
+//"Please enter a valid URL." = "Please enter a valid URL.";
+//"URL format should be like https://www.example.com/" =  "URL format should be like https://www.example.com/";
+//"Are you surely want to delete this product?" = "Are you surely want to delete this product?";
+//"URL format should be like https://www.facebook.com/username" = "URL format should be like https://www.facebook.com/username";
+//"Password Updated Successfully" = "Password Updated Successfully";
+//"Blocked. Tap to Unblock" = "Blocked. Tap to Unblock";
+//"Are You Sure?" = "Are You Sure?";
+//"You want to unblock" = "You want to unblock";
 
-"Winning Prize" = "Winning Prize";
-"Not Available" = "Not Available";
-"Comment can't be blank." = "Comment can't be blank.";
-"Leave a Reply" = "Leave a Reply";
-"Add a reply to comment" = "Add a reply to comment";
-"Delete" = "Delete";
-"Reply" = "Reply";
-"hubs selected" = "hubs selected";
-"Please select atleast one hub" = "Please select atleast one hub";
-"of" = "of";
-"Please enter some description" = "Please enter some description";
-"Are you sure you want to delete this Award?" = "Are you sure you want to delete this Award?";
-"Alert!!" = "Alert!!";
-"Are you sure you want to delete this trip?" = "Are you sure you want to delete this trip?";
-"My Trips" = "My Trips";
-"Your info has been updated." = "Your info has been updated.";
-"Please enter a valid email ID." = "Please enter a valid email ID.";
-"Please enter a valid phone number" = "Please enter a valid phone number";
-"Error while updating contact info." = "Error while updating contact info.";
-"Please enter a valid facebook url." = "Please enter a valid facebook url.";
-"Please enter a valid URL." = "Please enter a valid URL.";
-"URL format should be like https://www.example.com/" =  "URL format should be like https://www.example.com/";
-"Are you surely want to delete this product?" = "Are you surely want to delete this product?";
-"URL format should be like https://www.facebook.com/username" = "URL format should be like https://www.facebook.com/username";
-"Password Updated Successfully" = "Password Updated Successfully";
-"Blocked. Tap to Unblock" = "Blocked. Tap to Unblock";
-"Are You Sure?" = "Are You Sure?";
-"You want to unblock" = "You want to unblock";
 
-
+"You have to select at least one conservation method and properties for all the selected products." = " Devi selezionare almeno un metodo di conservazione e una proprietà per tutti i prodotti selezionati.";
+//"Winning Prize" = "Premio";
+"Not Available" = "Non disponibile";
+"Comment can't be blank." = " Il commento non può essere vuoto.";
+"Leave a Reply" = "Rispondi";
+"Add a reply to a comment" = "Rispondi ad un commento";
+"Delete" = "Elimina";
+"Reply" = "Rispondi";
+"hubs selected" = "hubs selezionati";
+"Please select at least one hub" = "Seleziona almeno un Hub";
+"of" = "di";
+"Please enter some description" = "Aggiungi una descrizione";
+"Are you sure you want to delete this award?" = "Sei sicuro di voler eliminare questo premio?";
+"Alert!!" = "Allerta!!";
+"Are you sure you want to delete this trip?" = "Sei sicuro di voler eliminare questo viaggio?";
+"My Trips" = "I miei Viaggi";
+"Your info has been updated." = " Le tue informazioni sono state aggiornate.";
+"Please enter a valid email ID." = "Inserisci un’email valida.";
+"Please enter a valid phone number" = "Inserisci un numero di telefono valido";
+"Error while updating contact info." = "Si è verificato un errore durante l'aggiornamento dei contatti.";
+"Please enter a valid facebook url." = "Inserisci una pagina Facebook valida.";
+"Please enter a valid URL." = "Inserisci un sito web valido.";
+"URL format should be like https://www.example.com/" = "Il formato dell'URL dovrebbe essere https://www.example.com/";
+"Are you surely want to delete this product?" = "Sei sicuro di voler eliminare questo prodotto?";
+"URL format should be like https://www.facebook.com/username" = "Il formato dell’URL dovrebbe essere https://www.facebook.com/username";
+"Password Updated Successfully" = "Password aggiornata con successo";
+"Blocked. Tap to Unblock" = "Bloccato. Tocca per sbloccare";
+"Are You Sure?" = "Sei sicuro?";
+"You want to unblock" = "Vuoi sbloccare";
 
 
 

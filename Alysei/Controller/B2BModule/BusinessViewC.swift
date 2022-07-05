@@ -719,6 +719,7 @@ class BusinessViewC: AlysieBaseViewC {
                     controller?.stepOneDelegate = self
                     return
                 }
+            }
                 //                for selectedOptions in self.signUpStepOneDataModel.arrOptions{
                 //                    options.isSelected = selectedOptions.id == options.id
                 //                    for suboptions in options.arrSubSections{
@@ -733,7 +734,7 @@ class BusinessViewC: AlysieBaseViewC {
                 //                        }
                 //                    }
                 //                }
-            }
+           // }
             
             controller?.signUpStepOneDataModel = signupmodel
             controller?.stepOneDelegate = self

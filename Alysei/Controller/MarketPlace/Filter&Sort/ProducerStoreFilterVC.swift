@@ -23,7 +23,7 @@ enum checkHitApi : String{
     case sortProducer
     case region = "Italian Regions"
     case distance = "Distance"
-    case rating = "Ratings"
+    case rating = " Ratings"
     case producers = "Producers"
     case productName = "Product"
 
@@ -36,7 +36,7 @@ enum checkItalianHitApi : String{
     case sortProducer
     case region =  "Regioni Italiane"
     case distance =  "Distanza"
-    case rating = "Recensioni"
+    case rating = " Recensioni"
     case producers =  "Produttori"
     case productName =  "Prodotto"
     
@@ -328,6 +328,7 @@ extension ProducerStoreFilterVC: UITableViewDelegate, UITableViewDataSource{
                 self.selectedOptionsId = self.arrSelectedDistance
             }
             else if arrFilterOptions[indexPath.row].name == checkHitApi.rating.rawValue || arrFilterOptions[indexPath.row].name == checkItalianHitApi.rating.rawValue {
+                //self.arrSelectedRating = []
                 checkApi = .rating
                // self.selectedOptionsId = []
                 self.selectedOptionsId = self.arrSelectedRating

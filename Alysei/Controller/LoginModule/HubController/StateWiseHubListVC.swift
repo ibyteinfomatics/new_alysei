@@ -28,6 +28,9 @@ class StateWiseHubListVC: AlysieBaseViewC,SelectList {
         if self.hasCome == .showCountry && self.selectedHubs.first?.country.id != data.id {
             self.selectedHubs.removeAll()
         }
+//        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
+//            self.selectedHubs.removeAll()
+//        }
         let commmingHub = SelectdHubs.createHub(country: data)
         if checkDataIsFillOrNot(commmingHub: commmingHub) { return }
         let firstIndex = self.selectedHubs.first{$0.country.id == commmingHub.country.id}
@@ -44,7 +47,7 @@ class StateWiseHubListVC: AlysieBaseViewC,SelectList {
         print(data)
     }
     func checkDataIsFillOrNot(commmingHub:SelectdHubs)->Bool {
-        return  self.selectedHubs.first{$0.country.id == commmingHub.country.id} != nil && self.selectedHubs.first{$0.state.count != 0} != nil
+        return self.selectedHubs.first{$0.country.id == commmingHub.country.id} != nil && self.selectedHubs.first{$0.state.count != 0} != nil
     }
 
     func didSelectReviewList(data: Any?, index: IndexPath, isEdithub: Bool) {

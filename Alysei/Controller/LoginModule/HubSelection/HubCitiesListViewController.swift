@@ -153,18 +153,28 @@ extension HubCitiesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? HubCitiesListTableViewCell
+       
         cell?.selectedHubs?(cell?.city)
         
     }
     func updateSelectedHubsData(unselectedHub:CountryHubs?) {
         if  kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
            _ = self.cityList?.map{$0.isSelected = false}
+            
         }
         unselectedHub?.isSelected = !(unselectedHub?.isSelected ?? false)
         let selectedCity = self.cityList?.filter{$0.isSelected}
         let selectedHub = self.selectedHubs.first{$0.country.id == self.country?.id}
         selectedHub?.hubs = selectedHub?.hubs.filter{$0.id != unselectedHub?.id} ?? []
+        if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)"{
+            if selectedCity != nil{
+                selectedHub?.hubs = [selectedCity?.first ?? CountryHubs(hub: [:])]
+            }else{
+                selectedHub?.hubs  = [selectedHub?.hubs.first  ?? CountryHubs(hub: [:])]
+            }
+        }else{
         selectedHub?.hubs = ((selectedHub?.hubs ?? []) + (selectedCity ?? [])).uniqueArray(map: {$0.id})
+        }
         self.tableView.reloadData()
     }
 }

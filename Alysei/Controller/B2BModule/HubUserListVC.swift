@@ -6,6 +6,14 @@
 //
 
 import UIKit
+enum searchPerform{
+    case producer
+    case importer
+    case expert
+    case travelAgencies
+    case restaurent
+    case voyager
+}
 
 class HubUserListVC: AlysieBaseViewC {
     
@@ -52,13 +60,14 @@ class HubUserListVC: AlysieBaseViewC {
     var passUserTitle: String?
     var pushedFrom: PushedFrom?
     var searchImpDone = false
+    var isSearching = false
     var signUpStepOneDataModel: SignUpStepOneDataModel!
     var selectPrdctCatgryOptnNme :String?
     var selectFieldType:String?
     var selectTravelSpecialityName: String?
     var selectExpertExpertiseName: String?
     var selectExpertTitleName: String?
-    
+    var searchUserType: searchPerform?
     var identifyUserForProduct: IdentifyUserForProduct?
     var selectedProducWithCategory: String? = nil {
         didSet {
@@ -510,7 +519,29 @@ class HubUserListVC: AlysieBaseViewC {
             indexOfPageToRequest += 1
 
             // call your API for more data
-                getUserListFromHubSelctionApi()
+                if self.isSearching == true {
+                    switch searchUserType {
+                    case .producer:
+                        callSearchProducerApi()
+                    case .importer:
+                        callSearchImporterApi()
+                    case .restaurent:
+                        callSearchResturntApi()
+                    case .travelAgencies:
+                        callSearchTravelApi()
+                    case .voyager:
+                        callSearchVoyagerApi()
+                    case .expert:
+                        callSearchExpertApi()
+                    default:
+                        print("Invalid User")
+                        
+                    }
+                   
+                }else{
+                    getUserListFromHubSelctionApi()
+                }
+                
 
             // tell the table view to reload with the new data
           //  self.tblViewSearchOptions.reloadData()
@@ -569,6 +600,7 @@ class HubUserListVC: AlysieBaseViewC {
 //                self.callSearchHubApi()
 //            }else
             self.indexOfPageToRequest = 1
+            self.isSearching = true
             self.searchImpDone = true
             if self.currentIndex == B2BSearch.Importer.rawValue{
                 self.callSearchImporterApi()
@@ -702,6 +734,7 @@ extension HubUserListVC: TappedHubs{
 extension HubUserListVC {
     func callSearchImporterApi(){
         //arrSearchimpotrDataModel.removeAll()
+        searchUserType = .importer
         cellCount = 0
         let productId = selectedProducWithCategory?.removeWhitespace()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&hub_id=" + "\(self.passHubId ?? "")" + "&user_type=" + "\(selectImpRoleId ?? "")" + "&product_type=" + "\(productId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
@@ -735,6 +768,7 @@ extension HubUserListVC {
     }
     func callSearchProducerApi(){
       //  arrSearchimpotrDataModel.removeAll()
+        searchUserType = .producer
         cellCount = 0
         let productId = selectedProducWithCategory?.removeWhitespace()
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.producer.rawValue)" + "&hub_id=" + "\(self.passHubId ?? "")" + "&product_type=" + "\(productId ?? "")" + "&region=" + "\(self.selectProducerRegionId ?? "")" + "&horeca=" + "\(self.horecaValue ?? "")" + "&private_label=" + "\(self.privateValue ?? "")" + "&alysei_brand_label=" + "\(self.alyseiBrandValue ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
@@ -768,6 +802,7 @@ extension HubUserListVC {
     }
     func callSearchResturntApi(){
       //  arrSearchimpotrDataModel.removeAll()
+        searchUserType = .restaurent
         cellCount = 0
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.restaurant.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&restaurant_type=" + "\(self.resTypeId ?? "")" + "&pickup=" + "\(restPickUp ?? "")" + "&delivery=" + "\(restDelivery ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dicResponse, error, errorType, statusCode) in
             let dictResponse = dicResponse as? [String:Any]
@@ -796,6 +831,7 @@ extension HubUserListVC {
     
     func callSearchExpertApi(){
        // arrSearchimpotrDataModel.removeAll()
+        searchUserType = .expert
         cellCount = 0
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.voiceExperts.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&expertise=" + "\(self.selectExpertExpertiseId ?? "")" + "&title=" + "\(self.selectExpertTitleId ?? "")" + "&country=" + "\(self.selectExpertCountryId ?? "")" + "&region=" + "\(self.selectExpertRegionId ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
@@ -825,6 +861,7 @@ extension HubUserListVC {
     
     func callSearchTravelApi(){
       //  arrSearchimpotrDataModel.removeAll()
+        searchUserType = .travelAgencies
         cellCount = 0
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(UserRoles.travelAgencies.rawValue)" + "&hub_id=" + "\(self.passHubId  ?? "")" + "&speciality=" + "\(self.selectTravelSpecialityId ?? "")" + "&country=" + "\(self.selectTravelCountryId ?? "")" + "&region=" + "\(self.selectTravelRegionId ?? "")"  + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]
@@ -852,6 +889,7 @@ extension HubUserListVC {
     }
     func callSearchVoyagerApi(){
         //arrSearchimpotrDataModel.removeAll()
+        searchUserType = .voyager
         cellCount = 0
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&role_id=" + "\(passRoleId ?? "")" + "&state=" + "\(self.selectStateId ?? "")" + "&page=\(indexOfPageToRequest)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             let dictResponse = dictResponse as? [String:Any]

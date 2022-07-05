@@ -215,9 +215,10 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
         case 1:
             kSharedAppDelegate.moveChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
             
-        case 2,6,7,8:
+        case 2,6,7:
             kSharedAppDelegate.moveToPost(postid: String.getString(notifiacationArray[indexPath.row].redirectToid))
-            
+        case 8:
+            callEditEventApi(notifiacationArray[indexPath.row].postId ?? "0")
         case 3:
             //kSharedAppDelegate.moveToNetwork(index: 0)
             
@@ -264,4 +265,34 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
         
     }
     
+}
+extension NotificationList {
+    func callEditEventApi(_ eventId: String){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.editEvent + "\(eventId)", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { result, error, errorType, statusCode in
+            let response = result as? [String:Any]
+            if  let data = response?["data"] as? [String:Any] {
+            let vc = self.pushViewController(withName: CreateEventViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as! CreateEventViewController
+            vc.hostname = data["host_name"] as? String
+            vc.eventname = data["event_name"] as? String
+            vc.location = data["location"] as? String
+            let timeDate = data["event_date_time"] as? String
+                let datep = timeDate?.components(separatedBy: " ").first
+                let timep = timeDate?.components(separatedBy: " ").last
+            vc.date = datep
+            vc.time = timep
+            vc.fulldescription = data["description"] as? String
+            vc.website = data["website"] as? String
+            vc.eventYype = data["event_type"] as? String
+            vc.registrationType = data["registration_type"] as? String
+                
+                if let attachment = data["attachment"] as? [String:Any]{
+                    let baseUrlImg = attachment["base_url"] as? String
+                    let attachment_url = attachment["attachment_url"] as? String
+                    vc.imgurl = String.getString((baseUrlImg ?? "") + (attachment_url ?? ""))
+                }
+            vc.bookingUrl = data["url"] as? String
+            vc.typeofpage = "read"
+            }
+        }
+    }
 }

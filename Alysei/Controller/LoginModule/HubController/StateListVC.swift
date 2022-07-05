@@ -105,6 +105,7 @@ class StateListVC: AlysieBaseViewC , SelectList {
             for selectedHubs in self.selectedHubs {
                 selectedHubs.hubs = selectedHubs.hubs.filter{statesIDs.contains($0.state_id ?? "") || String.getString($0.state_id)  == "" }
             }
+            
             nextvc.selectedHubs = self.selectedHubs
             nextvc.isEditHub = self.isEditHub
             self.navigationController?.pushViewController(nextvc, animated: true)

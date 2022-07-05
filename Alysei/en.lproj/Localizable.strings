@@ -231,8 +231,8 @@
 "Delete photo" = "Delete photo";
 "Remove photo" = "Remove photo";
 "Okay" = "Okay";
-"Denied albums permissions granted" = "Denied albums permissions granted";
-"Denied camera permissions granted" = "Denied camera permissions granted";
+"Denied albums permissions, granted" = "Denied albums permissions, granted";
+"Denied camera permissions, granted" = "Denied camera permissions, granted";
 
 //MARK: Marketplace Add Product Screen
 "Yes" = "Yes";
@@ -749,4 +749,5 @@
 "Edit Tools in Recipe" = "Edit Tools in Recipe";
 "Save Ingridients" = "Save Ingridients";
 "Save Tools" = "Save Tools";
+"Edit Profile" = "Edit Profile";
 

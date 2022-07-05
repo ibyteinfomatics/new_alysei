@@ -209,7 +209,7 @@ class ProfileViewC: AlysieBaseViewC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         lblPosts.text = AppConstants.kPosts
         lblAbout.text = ProfileCompletion.About
         lblConnections.text = AppConstants.Connections
@@ -436,6 +436,7 @@ class ProfileViewC: AlysieBaseViewC{
         lblProgress.text = AppConstants.kYourProgress
         lblUpdateProfile.text = AppConstants.kUpdateProfile
         btnLogout.setTitle(TourGuideConstants.kLogoutProfile, for: .normal)
+        btnEditProfile.setTitle(AppConstants.EditProfile, for: .normal)  
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle(RecipeConstants.kSkip, for: .normal)
         self.coachMarksController.skipView = skipView

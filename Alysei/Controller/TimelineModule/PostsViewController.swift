@@ -390,13 +390,13 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 cell.selectionStyle = .none
                 loadTypeCell = .sharePost
                 let data = arrNewFeedDataModel[indexPath.row]
-                if data.attachments?.first?.attachmentLink?.width == 0 || data.attachments?.first?.attachmentLink?.height == 0 || data.attachments?.first?.attachmentLink?.width == nil || data.attachments?.first?.attachmentLink?.height == nil{
+                if data.sharedPostData?.attachments?.first?.attachmentLink?.width == 0 || data.sharedPostData?.attachments?.first?.attachmentLink?.height == 0 || data.sharedPostData?.attachments?.first?.attachmentLink?.width == nil || data.sharedPostData?.attachments?.first?.attachmentLink?.height == nil{
                     print("error")
                     cell.newHeightCllctn = 0
                     cell.imageHeightCVConstant.constant = 0
                 }else{
-                    var ratio = CGFloat((data.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.attachments?.first?.attachmentLink?.height ?? 0  ))
-                    if (data.attachments?.first?.attachmentLink?.width ?? 0) > (data.attachments?.first?.attachmentLink?.height ?? 0) {
+                    var ratio = CGFloat((data.sharedPostData?.attachments?.first?.attachmentLink?.width ?? 0 ) / (data.sharedPostData?.attachments?.first?.attachmentLink?.height ?? 0  ))
+                    if (data.sharedPostData?.attachments?.first?.attachmentLink?.width ?? 0) > (data.sharedPostData?.attachments?.first?.attachmentLink?.height ?? 0) {
                         let newHeight = 320 / ratio
                         // cell.imageConstant.constant = newHeight
                         cell.newHeightCllctn = Int(newHeight - 50)

@@ -97,19 +97,26 @@ class TravelAgencyViewController: AlysieBaseViewC {
             self.userimg.layer.cornerRadius = self.userimg.frame.width/2
             
             if self.dashboardModel?.data?.userData?.avatarid?.attachmenturl != nil {
-                self.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "")+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+                self.userimg.setImage(withString: String.getString((self.dashboardModel?.data?.userData?.avatarid?.baseUrl ?? "")+(self.dashboardModel?.data?.userData?.avatarid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
             }
             
-            self.about.text = self.dashboardModel?.data?.aboutMember?[3].value
-            self.ourptrip.text = self.dashboardModel?.data?.aboutMember?[4].value
-            self.speciality.text = self.dashboardModel?.data?.aboutMember?[1].value
-            self.country.text = self.dashboardModel?.data?.aboutMember?[2].value
-            
-            
+            for i in 0..<(self.dashboardModel?.data?.aboutMember?.count ?? 0){
+            if self.dashboardModel?.data?.aboutMember?[i].title == "About" {
+            self.about.text = self.dashboardModel?.data?.aboutMember?[i].value
+            }
+            if self.dashboardModel?.data?.aboutMember?[i].title == "Our Tours" {
+            self.ourptrip.text = self.dashboardModel?.data?.aboutMember?[i].value
+            }
+            if self.dashboardModel?.data?.aboutMember?[i].title == "Speciality Trips" {
+            self.speciality.text = self.dashboardModel?.data?.aboutMember?[i].value
+            }
+                if self.dashboardModel?.data?.aboutMember?[i].title == "State/Region" {
+            self.country.text = self.dashboardModel?.data?.aboutMember?[i].value
+                }
+            }
         }
         
     }
-    
     
     @IBAction func backAccept(_ sender: UIButton) {
         

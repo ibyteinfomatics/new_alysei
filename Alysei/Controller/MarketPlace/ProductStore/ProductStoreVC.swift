@@ -320,18 +320,18 @@ extension ProductStoreVC {
         let selectedRegionStringId = stringRegionArray?.joined(separator: ",")
         
         
-        //MARK:- Rating
-        if arrSelectedRating?.count != 0{
-        for i in 0..<(arrSelectedRating?.count ?? 0){
-            self.modifiedRatingArray.append((arrSelectedRating?[i] ?? 0) + 1)
-        }
-         stringRatingArray = modifiedRatingArray.compactMap({String($0)})
-        
-        }
-        else{
-            stringRatingArray = arrSelectedRating?.compactMap({String($0)}) ?? [String]()
-        }
-         selectedRatingStringId = stringRatingArray.joined(separator: ",")
+//        //MARK:- Rating
+//        if arrSelectedRating?.count != 0{
+//        for i in 0..<(arrSelectedRating?.count ?? 0){
+//            self.modifiedRatingArray.append((arrSelectedRating?[i] ?? 0) + 1)
+//        }
+//         stringRatingArray = modifiedRatingArray.compactMap({String($0)})
+//
+//        }
+//        else{
+//            stringRatingArray = arrSelectedRating?.compactMap({String($0)}) ?? [String]()
+//        }
+        selectedRatingStringId = "\((arrSelectedRating?.first ?? 0) + 1)"
     
         let selectedSortProducerString = String.getString(selectedSortProducer?.first)
         let selectFdaCertifiedString = String.getString(selectFdaCertified?.first)

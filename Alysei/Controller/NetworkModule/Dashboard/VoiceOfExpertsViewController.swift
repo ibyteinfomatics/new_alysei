@@ -102,6 +102,19 @@ class VoiceOfExpertsViewController: AlysieBaseViewC {
             self.specialization.text = self.dashboardModel?.data?.aboutMember?[1].value
             self.voice_title.text = self.dashboardModel?.data?.aboutMember?[2].value
             self.country.text = self.dashboardModel?.data?.aboutMember?[3].value
+           
+            for i in 0..<(self.dashboardModel?.data?.aboutMember?.count ?? 0){
+//                 
+            if self.dashboardModel?.data?.aboutMember?[i].title == "Title" {
+            self.voice_title.text = self.dashboardModel?.data?.aboutMember?[i].value
+            }
+            if self.dashboardModel?.data?.aboutMember?[i].title == "Select your specialization" {
+            self.specialization.text = self.dashboardModel?.data?.aboutMember?[i].value
+            }
+                if self.dashboardModel?.data?.aboutMember?[i].title == "State/Region" {
+            self.country.text = self.dashboardModel?.data?.aboutMember?[i].value
+                }
+            }
             
             
         }
