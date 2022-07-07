@@ -86,6 +86,6 @@ extension FeaturedProductTableCell: UICollectionViewDelegate, UICollectionViewDa
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize(width: 100.0, height: 130.0)
+    return CGSize(width: 100.0, height: 140.0)
   }
 }

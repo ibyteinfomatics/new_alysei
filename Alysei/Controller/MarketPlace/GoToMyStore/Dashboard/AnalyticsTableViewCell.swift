@@ -15,6 +15,7 @@ class AnalyticsTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnReport: UIButton!
     @IBOutlet weak var lblAnalytics: UILabel!
+    @IBOutlet weak var btnDownload: UIButton!
     var dataDropDown = DropDown()
     
     var analyticsArr = [MarketPlaceConstant.kTotalProduct,MarketPlaceConstant.kTotalEnquiry,MarketPlaceConstant.kTotalCategories,MarketPlaceConstant.kTotalReviews]
@@ -28,7 +29,7 @@ class AnalyticsTableViewCell: UITableViewCell {
     var logobaseUrl: String?
     var bannerbaseUrl:String?
     var callApi:(() -> Void)? = nil
-    
+    var callPop: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         lblAnalytics.text = MarketPlaceConstant.kAnalytics
@@ -43,6 +44,23 @@ class AnalyticsTableViewCell: UITableViewCell {
     }
     @IBAction func btnOpenDropDown(_ sender: UIButton){
         openDropDown()
+    }
+    @IBAction func btnDownload(_ sender: Any){
+    
+        
+        let userId = kSharedUserDefaults.loggedInUserModal.userId
+        let wUrl = "https://api.alysei.com/download/marketplace/analyst/1/" + "\(userId ?? "0")"
+        guard let url = URL(string: wUrl) else {
+          return //be safe
+        }
+
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.open(url){_ in
+                self.callPop?()
+            }
+    }
     }
     @objc func openDropDown(){
         dataDropDown.dataSource = self.arrData

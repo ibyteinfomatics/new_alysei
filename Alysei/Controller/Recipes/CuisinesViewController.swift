@@ -28,7 +28,7 @@ class CuisinesViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        yourFavLabel.text = RecipeConstants.kPreference1
+        //yourFavLabel.text = RecipeConstants.kPreference1
         SaveButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         super.viewDidLoad()
@@ -99,7 +99,7 @@ extension CuisinesViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 140)
         return cellSize
     }
     
@@ -150,6 +150,8 @@ extension CuisinesViewController{
                 self.collectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }
+            let title = self.getSavedCousinPreferencesModel?[0].name
+            self.yourFavLabel.text = title
         }
     }
 }

@@ -224,7 +224,7 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             
             tabBarController!.selectedIndex = 3
              networkcurrentIndex = 0
-        case 4:
+        case 11:
             //networkcurrentIndex = 1
            // tabBarController!.selectedIndex = 3
             //self.showAlert(withMessage: notifiacationArray[indexPath.row].reason ?? "", nil)
@@ -279,7 +279,7 @@ extension NotificationList {
                 let datep = timeDate?.components(separatedBy: " ").first
                 let timep = timeDate?.components(separatedBy: " ").last
             vc.date = datep
-            vc.time = timep
+           // vc.time = timep
             vc.fulldescription = data["description"] as? String
             vc.website = data["website"] as? String
             vc.eventYype = data["event_type"] as? String

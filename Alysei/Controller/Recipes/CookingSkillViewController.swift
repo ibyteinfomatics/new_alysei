@@ -29,7 +29,7 @@ class CookingSkillViewController: AlysieBaseViewC {
         self.view.isUserInteractionEnabled = false
         preferenceNumber = 5
         
-        cookingSkillLbl.text = RecipeConstants.kCkngSkill
+      //  cookingSkillLbl.text = RecipeConstants.kCkngSkill
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         
@@ -139,7 +139,7 @@ extension CookingSkillViewController: UICollectionViewDelegate, UICollectionView
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -153,6 +153,8 @@ extension CookingSkillViewController{
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCookingSkill, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
+            let title = res?["title"] as? String
+            self.cookingSkillLbl.text = title
             
             if let data = res?["data"] as? [[String:Any]]{
                 self.arrCookingSkill = data.map({SelectCookingSkillsDataModel.init(with: $0)})

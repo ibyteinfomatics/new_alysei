@@ -25,7 +25,7 @@ class CookingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        cookingSkillLabel.text = RecipeConstants.kCkngSkill
+       // cookingSkillLabel.text = RecipeConstants.kCkngSkill
         saveButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         
@@ -116,7 +116,7 @@ extension CookingViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -163,6 +163,8 @@ extension CookingViewController{
                 self.collectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }
+            let title = self.getSavedCookingPreferencesModel?[4].name
+            self.cookingSkillLabel.text = title
         }
     }
 }

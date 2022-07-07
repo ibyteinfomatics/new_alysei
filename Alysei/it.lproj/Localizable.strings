@@ -405,9 +405,9 @@
 //MARK: Profile
 "is required" = "è richiesto";
 "Upload" = "Carica";
-"Add Featured Products" = "Aggiungi Prodotti in Primo Piano";
-"Add Featured Menu" = "Aggiungi Menù in Primo Piano";
-"Add Featured Packages" = "Aggiungi Pacchetti in Primo Piano";
+"Add Products" = "Aggiungi Prodotti";
+"Add Menu" = "Aggiungi Menù";
+"Add Packages" = "Aggiungi Pacchetti";
 "Add Featured" = "Aggiungi In Primo Piano";
 "All Information is required" = "Tutte le informazioni sono richieste";
 "Specialization" = "Specializzazione";
@@ -469,7 +469,8 @@
 "Your Progress" = "Il tuo progresso";
 "completed" = "completato";
 "When you post something it will appear here." = "Quando pubblichi qualcosa, apparirà qui.";
-"There are no posts at this moment." = "Non ci sono post al momento.";
+"There are no photos at this moment." = "Non ci sono photos al momento.";
+"There are no posts at this moment." = "Non ci sono posts al momento.";
 "Contact Detail" = "Dettagli del contatto";
 "Address" = "Indirizzo";
 "Facebook" = "Facebook";
@@ -1176,7 +1177,7 @@
 "Are You Sure?" = "Sei sicuro?";
 "You want to unblock" = "Vuoi sbloccare";
 
-
+"Support" = "Support";
 
 
 

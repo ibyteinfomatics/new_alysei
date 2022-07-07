@@ -26,7 +26,7 @@ class FollowDietsViewController: AlysieBaseViewC {
         super.viewDidLoad()
         preferenceNumber = 3
         
-        followDietLabel.text = RecipeConstants.kPreference3
+       // followDietLabel.text = RecipeConstants.kPreference3
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
@@ -155,7 +155,7 @@ extension FollowDietsViewController: UICollectionViewDelegate, UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -169,7 +169,8 @@ extension FollowDietsViewController{
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getRecipeDiet, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
-            
+            let title = res?["title"] as? String
+            self.followDietLabel.text = title
             if let data = res?["data"] as? [[String:Any]]{
                 self.arrDiet = data.map({SelectRecipeDietDataModel.init(with: $0)})
             }

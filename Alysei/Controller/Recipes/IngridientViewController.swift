@@ -41,7 +41,7 @@ class IngridientViewController: UIViewController {
         super.viewDidLoad()
        
         addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
-        seeIngedientLabel.text = RecipeConstants.kPreference4
+       // seeIngedientLabel.text = RecipeConstants.kPreference4
         saveButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         callChooseIngridients()
@@ -189,7 +189,7 @@ extension IngridientViewController: UICollectionViewDelegate, UICollectionViewDa
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -239,6 +239,9 @@ extension IngridientViewController{
                 self.ingredientsCollectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }
+            let title = self.getSavedIngridientPreferencesModel?[3].name
+            self.seeIngedientLabel.text = title
+
         }
     }
     func callChooseIngridients(){

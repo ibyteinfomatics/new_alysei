@@ -25,7 +25,7 @@ class UserPhotosGridViewController: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        lblBlank.text = AppConstants.ThereAreNoPostAtThisMoment
+        lblBlank.text = AppConstants.ThereAreNoPhotosAtThisMoment
         self.userPhotosCollectionView.delegate = self
         self.userPhotosCollectionView.dataSource = self
 

@@ -42,7 +42,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         preferenceNumber = 4
         super.viewDidLoad()
         
-        seeIngredientLabel.text = RecipeConstants.kPreference4
+       // seeIngredientLabel.text = RecipeConstants.kPreference4
         addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
@@ -209,7 +209,7 @@ extension DontSeeIngredientsViewController: UICollectionViewDelegate, UICollecti
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -365,7 +365,8 @@ extension DontSeeIngredientsViewController{
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getrecipeIngridents, requestMethod: .GET, requestParameters: [:], withProgressHUD: true){ (dictResponse, error, errorType, statusCode) in
             
             let dictResponse = dictResponse as? [String:Any]
-            
+            let title = dictResponse?["title"] as? String
+            self.seeIngredientLabel.text = title
             if let data = dictResponse?["data"] as? [[String:Any]]{
                 self.newSearchModel = data.map({AddIngridientDataModel.init(with: $0)})
                 

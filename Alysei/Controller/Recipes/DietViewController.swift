@@ -26,7 +26,7 @@ class DietViewController: AlysieBaseViewC  {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        dietLabel.text = RecipeConstants.kPreference3
+        //dietLabel.text = RecipeConstants.kPreference3
         saveButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         
@@ -140,7 +140,7 @@ extension DietViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -188,6 +188,9 @@ extension DietViewController{
                 self.collectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }
+            
+            let title = self.getSavedDietPreferencesModel?[2].name
+            self.dietLabel.text = title
         }
     }
 }

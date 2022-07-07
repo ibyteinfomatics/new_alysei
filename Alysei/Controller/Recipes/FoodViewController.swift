@@ -26,7 +26,7 @@ class FoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        foodAllergyLabel.text = RecipeConstants.kPreference2
+        //foodAllergyLabel.text = RecipeConstants.kPreference2
         saveButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         
@@ -144,7 +144,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10, height: 140)
         return cellSize
         
     }
@@ -181,6 +181,7 @@ extension FoodViewController{
             
             let res = response as? [String:Any]
             
+          
             if let data = res?["data"] as? [[String:Any]]{
                 self.getSavedFoodPreferencesModel = data.map({GetSavedPreferencesDataModel.init(with: $0)})
                 
@@ -193,6 +194,8 @@ extension FoodViewController{
                 self.collectionView.reloadData()
                 self.view.isUserInteractionEnabled = true
             }
+            let title = self.getSavedFoodPreferencesModel?[1].name
+            self.foodAllergyLabel.text = title
         }
     }
     

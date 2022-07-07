@@ -23,12 +23,13 @@ class AddFeatureViewC: AlysieBaseViewC {
   @IBOutlet weak var btnUpload: UIButton!
   @IBOutlet weak var lblNavigationHeading: UILabel!
   @IBOutlet weak var btnCamera: UIButton!
-@IBOutlet weak var vwuploadHght: NSLayoutConstraint!
+  @IBOutlet weak var vwuploadHght: NSLayoutConstraint!
     
     var addDesc = false
     var addUrl = false
     var userLevel: UserLevel?
     var fromVC: isCameFrom?
+    var passRoleID: String?
   //MARK: - Properties -
 
   var productCategoriesDataModel: ProductCategoriesDataModel!
@@ -42,12 +43,7 @@ class AddFeatureViewC: AlysieBaseViewC {
   
   override func viewDidLoad() {
     
-    if userLevel == .other {
-        btnUpload.isHidden = true
-        btnUploadImage.isHidden = true
-           
-    }
-      btnUpload.setTitle(AppConstants.kUplaod, for: .normal)
+ 
     super.viewDidLoad()
       if userLevel == .other {
         btnCamera.isHidden = true
@@ -62,6 +58,12 @@ class AddFeatureViewC: AlysieBaseViewC {
           vwuploadHght.constant  = 80
           btnCamera.isHidden = false
       }
+      if userLevel == .other {
+          btnUpload.isHidden = true
+          btnUploadImage.isHidden = true
+             
+      }
+        btnUpload.setTitle(AppConstants.kUplaod, for: .normal)
     self.initialImageSetUp()
   }
 
@@ -232,29 +234,52 @@ class AddFeatureViewC: AlysieBaseViewC {
   }
   
   private func initialImageSetUp() -> Void{
-    if fromVC == .settings{
-        self.lblNavigationHeading.text = AppConstants.kAddFeature
-    }else{
-    
-    if arrSelectedFields.count != 0{
-      
       let filter = self.arrSelectedFields.map({$0}).filter({$0.type == AppConstants.File})
       self.imgViewProduct.setImage(withString: String.getString(filter.first?.base_url) + String.getString(filter.first?.selectedValue))
-      self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.currentNavigationTitle)
+      if fromVC == .settings {
+        self.lblNavigationHeading.text = AppConstants.kAddFeature
+    }else{
+        if arrSelectedFields.count != 0 && userLevel != .other{
+     if userLevel == .other {
+            self.lblNavigationHeading.text = String.getString(self.currentNavigationTitle)
+        }else{
+      self.lblNavigationHeading.text =  String.getString(self.currentNavigationTitle)
+        }
     }
+   
     else{
     //  self.lblNavigationHeading.text = AppConstants.Add + String.getString(self.productCategoriesDataModel.title)
-        let roleID = UserRoles(rawValue:Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)  ) ?? .voyagers
+//        if userLevel == .other {
+//         let roleID = self.passRoleID
+//        }else{
+        let roleID = UserRoles(rawValue:Int.getInt(passRoleID)) ?? .voyagers
+//        }
         
         switch roleID {
     case .distributer1, .distributer2, .distributer3, .producer:
-            self.lblNavigationHeading.text = AppConstants.kAddFeaturedProducts
+            if userLevel == .other {
+            self.lblNavigationHeading.text = ProfileCompletion.FeaturedProducts
+            }else{
+                self.lblNavigationHeading.text = AppConstants.kAddFeaturedProducts
+            }
     case .restaurant:
-            self.lblNavigationHeading.text = AppConstants.KAddFeaturedMenu
+            if userLevel == .other {
+            self.lblNavigationHeading.text = ProfileCompletion.FeaturedRecipe
+            }else{
+                self.lblNavigationHeading.text = AppConstants.KAddFeaturedMenu
+            }
     case .travelAgencies:
+            if userLevel == .other {
+            self.lblNavigationHeading.text = ProfileCompletion.FeaturedPackages
+            }else{
             self.lblNavigationHeading.text = AppConstants.kAddFeaturedPackages
+            }
     case .voiceExperts:
+            if userLevel == .other {
+            self.lblNavigationHeading.text = ProfileCompletion.FeaturedBlog
+            }else{
             self.lblNavigationHeading.text = AppConstants.kAddFeatured
+            }
         default:
             self.lblNavigationHeading.text = AppConstants.kAddFeatured
         }

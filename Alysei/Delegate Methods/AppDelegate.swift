@@ -14,6 +14,7 @@ import IQKeyboardManagerSwift
 import FirebaseMessaging
 import Firebase
 import Zoomy
+import FreshchatSDK
 
 
 var editHubValue: String?
@@ -60,9 +61,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        let FreshChatAppID = "d4b977a6-ea91-495e-a750-e6abd6463344"
+        let FreshChatAppKey = "140931b5-5f54-4022-96a8-2c017e818f57"
+        let freshchatConfig:FreshchatConfig = FreshchatConfig.init(appID: FreshChatAppID, andAppKey: FreshChatAppKey)
+        freshchatConfig.domain = "msdk.in.freshchat.com"
+        freshchatConfig.gallerySelectionEnabled = true;
+        // set FALSE to disable picture selection for messaging via gallery
+            freshchatConfig.cameraCaptureEnabled = true;
+        // set FALSE to disable picture selection for messaging via camera
+            freshchatConfig.teamMemberInfoVisible = true;
+        // set to FALSE to turn off showing a team member avatar. To customize the avatar shown, use the theme file
+            freshchatConfig.showNotificationBanner = true;
+        freshchatConfig.eventsUploadEnabled = true
+        freshchatConfig.responseExpectationVisible = true
+        freshchatConfig.errorLogsEnabled = true
+        // set to FALSE if you don't want to show the in-app notification banner upon receiving a new message while the app is open
+         //   freshchatConfig.responseExpectations = true;
+        //set to FALSE if you want to hide the response expectations for the Topics
+        Freshchat.sharedInstance().initWith(freshchatConfig)
+
+       
         return true
     }
 
+    
     //    private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]) -> Bool {
     //        print(url)
     //        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)

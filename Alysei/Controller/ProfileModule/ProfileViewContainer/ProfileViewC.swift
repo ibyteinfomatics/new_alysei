@@ -723,6 +723,11 @@ class ProfileViewC: AlysieBaseViewC{
         let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
         controller?.productCategoriesDataModel = productCategoriesDataModel
         controller?.delegate = self
+        if userLevel == .other {
+            controller?.passRoleID = "\(self.visitorUserType.rawValue )"
+        }else{
+            controller?.passRoleID = kSharedUserDefaults.loggedInUserModal.memberRoleId
+        }
         
     }
     
@@ -1964,6 +1969,11 @@ extension ProfileViewC{
             controller?.arrSelectedFields = arrSelectedFields
             controller?.featureListingId = self.featureListingId
             controller?.currentNavigationTitle = self.currentProductTitle
+            if userLevel == .other{
+                controller?.passRoleID = "\(self.visitorUserType.rawValue ?? 0)"
+            }else{
+                controller?.passRoleID = kSharedUserDefaults.loggedInUserModal.memberRoleId
+            }
             // controller?.delegate = self
         default:
             self.tblViewPosts.isUserInteractionEnabled = true
@@ -2234,6 +2244,11 @@ extension ProfileViewC: AddFeaturedProductCallBack {
             let controller = pushViewController(withName: AddFeatureViewC.id(), fromStoryboard: StoryBoardConstants.kHome) as? AddFeatureViewC
             controller?.productCategoriesDataModel = model
             controller?.delegate = self
+            if userLevel == .other {
+                controller?.passRoleID = "\(self.visitorUserType.rawValue ?? 0)"
+            }else{
+                controller?.passRoleID = kSharedUserDefaults.loggedInUserModal.memberRoleId
+            }
         }
         else{
             self.postRequestToGetFeatureListing(String.getString(featureListingId), navigationTitle: String.getString(model.title))

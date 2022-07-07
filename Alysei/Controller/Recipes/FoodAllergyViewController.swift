@@ -26,7 +26,7 @@ class FoodAllergyViewController: AlysieBaseViewC {
         super.viewDidLoad()
         preferenceNumber = 2
         
-        foodAllergyLabel.text = RecipeConstants.kPreference2
+       // foodAllergyLabel.text = RecipeConstants.kPreference2
         nextButton.setTitle(RecipeConstants.kSave, for: .normal)
         backButton.setTitle(RecipeConstants.kBack, for: .normal)
         btnSkip.setTitle(RecipeConstants.kSkip, for: .normal)
@@ -145,7 +145,7 @@ extension FoodAllergyViewController: UICollectionViewDelegate, UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 130)
+        let cellSize = CGSize(width: (collectionView.bounds.width)/3 - 10 , height: 140)
         return cellSize
         
     }
@@ -159,7 +159,8 @@ extension FoodAllergyViewController{
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getFoodIntolerance, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
-            
+            let title = res?["title"] as? String
+            self.foodAllergyLabel.text = title
             if let data = res?["data"] as? [[String:Any]]{
                 self.arrFoodIntolerance = data.map({SelectFoodIntoleranceDataModel.init(with: $0)})
             }

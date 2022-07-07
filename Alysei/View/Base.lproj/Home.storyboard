@@ -4818,13 +4818,13 @@ any other devices.</string>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aa3-aj-n4f">
-                                        <rect key="frame" x="30" y="234" width="315" height="350"/>
+                                        <rect key="frame" x="30" y="226" width="315" height="350"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="fnB-ky-GJ5"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzS-HZ-3qZ">
-                                        <rect key="frame" x="20" y="594" width="335" height="0.0"/>
+                                        <rect key="frame" x="20" y="586" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -4836,7 +4836,7 @@ any other devices.</string>
                                     <constraint firstItem="SaY-Yy-Vpy" firstAttribute="top" secondItem="Uwx-TN-lmi" secondAttribute="top" id="Kkf-Cm-mTn"/>
                                     <constraint firstItem="Aa3-aj-n4f" firstAttribute="centerX" secondItem="Uwx-TN-lmi" secondAttribute="centerX" id="L4q-UE-dLU"/>
                                     <constraint firstItem="qzS-HZ-3qZ" firstAttribute="leading" secondItem="Uwx-TN-lmi" secondAttribute="leading" constant="20" id="TU1-Qb-oWi"/>
-                                    <constraint firstItem="Aa3-aj-n4f" firstAttribute="centerY" secondItem="Uwx-TN-lmi" secondAttribute="centerY" id="Tgu-Nq-mhW"/>
+                                    <constraint firstItem="Aa3-aj-n4f" firstAttribute="centerY" secondItem="Uwx-TN-lmi" secondAttribute="centerY" constant="-8" id="Tgu-Nq-mhW"/>
                                     <constraint firstItem="qzS-HZ-3qZ" firstAttribute="centerX" secondItem="Aa3-aj-n4f" secondAttribute="centerX" id="Vi9-1k-C9q"/>
                                     <constraint firstItem="SaY-Yy-Vpy" firstAttribute="leading" secondItem="Uwx-TN-lmi" secondAttribute="leading" id="Wqg-N6-06z"/>
                                     <constraint firstItem="Aa3-aj-n4f" firstAttribute="leading" secondItem="Uwx-TN-lmi" secondAttribute="leading" constant="30" id="Z3G-YB-2JW"/>
@@ -7600,14 +7600,14 @@ any other devices.</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithCollectionView" id="EQD-Ce-WuD" customClass="AboutViewTableCellWithCollection" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQD-Ce-WuD" id="mJq-bn-XQA">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-DF-fRg">
-                                                    <rect key="frame" x="10" y="37.5" width="335" height="45"/>
+                                                    <rect key="frame" x="10" y="37" width="335" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="4ao-vg-KEO"/>
@@ -7648,7 +7648,7 @@ any other devices.</string>
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-ry-9oC" customClass="UILabelExtended" customModule="Alysei" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="335" height="22.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="22"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" name="almostBlack"/>
                                                     <nil key="highlightedColor"/>
@@ -7670,7 +7670,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithText" id="6qB-Io-5ru" customClass="AboutViewTableCellWithText" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="137" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="136.5" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qB-Io-5ru" id="Qer-1c-e75">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -7708,7 +7708,7 @@ any other devices.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWithTextAndSwitch" id="0U6-op-wSh" customClass="AboutViewTableCellWithTextAndSwitch" customModule="Alysei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205.5" width="355" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="205" width="355" height="68.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0U6-op-wSh" id="dpP-hP-2hO">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="68.5"/>
@@ -20144,13 +20144,13 @@ You will be notified for any membership status update.</string>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Review" translatesAutoresizingMaskIntoConstraints="NO" id="sGQ-cg-dXb">
-                                        <rect key="frame" x="30" y="134" width="315" height="350"/>
+                                        <rect key="frame" x="30" y="126" width="315" height="350"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="3hL-HX-vxu"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPK-ZT-9Dr">
-                                        <rect key="frame" x="20" y="494" width="335" height="48"/>
+                                        <rect key="frame" x="20" y="486" width="335" height="48"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -20164,7 +20164,7 @@ You will be notified for any membership status update.</string>
                                     <constraint firstAttribute="trailing" secondItem="sGQ-cg-dXb" secondAttribute="trailing" constant="30" id="G5K-Ki-PAr"/>
                                     <constraint firstItem="Eif-Z9-5se" firstAttribute="leading" secondItem="9ry-Fb-bc5" secondAttribute="leading" id="P2y-7r-wjY"/>
                                     <constraint firstAttribute="trailing" secondItem="jPK-ZT-9Dr" secondAttribute="trailing" constant="20" id="PJq-KD-Nt5"/>
-                                    <constraint firstItem="sGQ-cg-dXb" firstAttribute="centerY" secondItem="9ry-Fb-bc5" secondAttribute="centerY" id="QwN-R6-Dzu"/>
+                                    <constraint firstItem="sGQ-cg-dXb" firstAttribute="centerY" secondItem="9ry-Fb-bc5" secondAttribute="centerY" constant="-8" id="QwN-R6-Dzu"/>
                                     <constraint firstAttribute="trailing" secondItem="Eif-Z9-5se" secondAttribute="trailing" id="jgW-vp-Djm"/>
                                     <constraint firstItem="Eif-Z9-5se" firstAttribute="top" secondItem="9ry-Fb-bc5" secondAttribute="top" id="mSz-AI-VGq"/>
                                     <constraint firstItem="jPK-ZT-9Dr" firstAttribute="leading" secondItem="9ry-Fb-bc5" secondAttribute="leading" constant="20" id="ra0-vd-J5Y"/>
@@ -20668,13 +20668,13 @@ You will be notified for any membership status update.</string>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Review" translatesAutoresizingMaskIntoConstraints="NO" id="ZpD-6A-zgq">
-                                        <rect key="frame" x="30" y="134" width="315" height="350"/>
+                                        <rect key="frame" x="30" y="126" width="315" height="350"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="GtT-RB-bHW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is not reviewed from admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzH-NV-PFK">
-                                        <rect key="frame" x="10" y="494" width="355" height="48"/>
+                                        <rect key="frame" x="10" y="486" width="355" height="48"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -20692,7 +20692,7 @@ You will be notified for any membership status update.</string>
                                     <constraint firstItem="IzH-NV-PFK" firstAttribute="top" secondItem="ZpD-6A-zgq" secondAttribute="bottom" constant="10" id="bcK-8E-Ra6"/>
                                     <constraint firstItem="ZpD-6A-zgq" firstAttribute="centerX" secondItem="Z4v-OF-pht" secondAttribute="centerX" id="s7e-Yj-etI"/>
                                     <constraint firstItem="fc6-bg-geJ" firstAttribute="top" secondItem="Z4v-OF-pht" secondAttribute="top" id="xuA-x5-ziY"/>
-                                    <constraint firstItem="ZpD-6A-zgq" firstAttribute="centerY" secondItem="Z4v-OF-pht" secondAttribute="centerY" id="zaY-og-rpZ"/>
+                                    <constraint firstItem="ZpD-6A-zgq" firstAttribute="centerY" secondItem="Z4v-OF-pht" secondAttribute="centerY" constant="-8" id="zaY-og-rpZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -23390,7 +23390,7 @@ AAAAAAABG/w
         <image name="icons8_Marker1" width="9" height="11"/>
         <image name="icons8_comments" width="21" height="19"/>
         <image name="icons8_delete" width="22" height="22"/>
-        <image name="icons8_delete_bin" width="9" height="11"/>
+        <image name="icons8_delete_bin" width="32" height="37"/>
         <image name="icons8_edit_3" width="19.5" height="19.5"/>
         <image name="icons8_envelope" width="28.5" height="19.5"/>
         <image name="icons8_forward" width="19.5" height="10.5"/>

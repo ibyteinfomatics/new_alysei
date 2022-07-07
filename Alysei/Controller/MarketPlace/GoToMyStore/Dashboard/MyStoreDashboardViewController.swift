@@ -94,7 +94,7 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     @IBOutlet weak var lblTotalCategories: UILabel!
     @IBOutlet weak var lblTitleProduct: UILabel!
     @IBOutlet weak var lblTitleCategories: UILabel!
-  
+ 
     
     var totalProduct: Int?
     var totalCategory: Int?
@@ -147,6 +147,9 @@ extension MyStoreDashboardViewController: UITableViewDataSource, UITableViewDele
         cell.configeCell(self.totalProduct ?? 0, self.totalCategory ?? 0, self.totalEnquiry ?? 0, self.totalReview ?? 0 , logobaseUrl ?? "", bannerbaseUrl ?? "")
         cell.callApi = {
             self.interactor?.callDashBoardApi()
+        }
+        cell.callPop = {
+            self.navigationController?.popViewController(animated: true)
         }
         return cell
     }

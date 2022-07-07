@@ -401,7 +401,7 @@ struct APIUrl{
     static let getEnquiry = "get/user/enquiries/"
     static let getInquiryMessage = "get/enquiry/messages"
     static let kSendMessage = "send/enquiry/message"
-    static let editEvent = "edit/event/"
+    static let editEvent = "edit/event"
     
     enum FeaturedProduct {
         static let delete = kBASEURL + "delete/featured/listing?featured_listing_id="
@@ -545,7 +545,7 @@ struct APIUrl{
         static let deleteRecipe =  "delete/recipe/"
         static let searchTool =  "search/tools?keyword="
         static let editReview = "update/review"
-       
+      
     }
 }
 
@@ -733,6 +733,7 @@ struct AppConstants {
     static var kWhenYouPostSomethingItWillAppearHere: String{"When you post something it will appear here.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kContact: String{"Contact".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ContactUs: String{"Contact Us".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var ThereAreNoPhotosAtThisMoment: String{"There are no photos at this moment.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var ThereAreNoPostAtThisMoment: String{"There are no posts at this moment.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var ContactDetail: String{"Contact Detail".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -762,7 +763,7 @@ struct AppConstants {
     static var RequestData : String{"Request Data".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kUplaod: String{"Upload".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var isRequired: String{"is required".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kAddFeaturedProducts: String{"Add Featured Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeaturedProducts: String{"Add Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kYouAreNotAuthorizedUser: String{"You are not authorized user.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kSomethingWentWrong: String{"Something went wrong.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kCancelRequest: String{"Cancel Request".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -777,8 +778,8 @@ struct AppConstants {
     static var kYouWillReceiveAnOfficialQualityMarkOnYourProfile : String {"You will receive an official quality mark on your profile.".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     
-    static var KAddFeaturedMenu : String{"Add Featured Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kAddFeaturedPackages: String{"Add Featured Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var KAddFeaturedMenu : String{"Add Menu".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAddFeaturedPackages: String{"Add Packages".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kAddFeatured: String{ "Add Featured".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAllInformationIsRequired : String{"All Information is required".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1913,6 +1914,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
+                                              (image: "customerSupport", name: "Support"),
                                                (image: "icons8_exit", name: AppConstants.Logout),
     ]
     
@@ -1927,6 +1929,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "icons8_exit", name: AppConstants.Logout),
+                                              (image: "customerSupport", name: "Support"),
                                               (image: "yourData", name: AppConstants.YourData)
                                              
                                               
@@ -1944,6 +1947,7 @@ struct StaticArrayData {
                                             (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                             (image: "Faq", name: AppConstants.FAQ),
                                             (image: "yourData", name: AppConstants.YourData),
+                                            (image: "customerSupport", name: "Support"),
                                             (image: "icons8_exit", name: AppConstants.Logout)
                                             
                                             
@@ -1959,9 +1963,9 @@ struct StaticArrayData {
                                             (image: "icons8_terms_and_conditions", name:AppConstants.TermsAndConditions),
                                             (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                             (image: "Faq", name: AppConstants.FAQ),
-                                            
+                                            (image: "yourData", name: AppConstants.YourData),
+                                            (image: "customerSupport", name: "Support"),
                                             (image: "icons8_exit", name: AppConstants.Logout),
-                                            (image: "yourData", name: AppConstants.YourData)
                                             
                                             
                                             
@@ -1977,9 +1981,10 @@ struct StaticArrayData {
                                              (image: "icons8_terms_and_conditions", name: AppConstants.TermsAndConditions),
                                              (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                              (image: "Faq", name: AppConstants.FAQ),
-                                            
+                                             (image: "yourData", name: AppConstants.YourData),
+                                             (image: "customerSupport", name: "Support"),
                                              (image: "icons8_exit", name:AppConstants.Logout),
-                                             (image: "yourData", name: AppConstants.YourData)
+                                             
                                              
                                              
     ]
@@ -1996,6 +2001,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
+                                              (image: "customerSupport", name: "Support"),
                                               (image: "icons8_exit", name: AppConstants.Logout)
                                               
     ]

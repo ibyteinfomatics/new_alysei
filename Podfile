@@ -28,5 +28,6 @@ pod 'ScrollingPageControl'
 pod 'Zoomy'
 pod 'Instructions'
 pod 'Kingfisher'
+pod 'FreshchatSDK'
 
 end

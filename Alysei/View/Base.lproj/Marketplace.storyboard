@@ -11,8 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue-Light.ttf">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -2864,7 +2866,7 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-ds-QKL">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-ds-QKL">
                                                     <rect key="frame" x="304" y="13.666666666666664" width="65" height="33"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Monthly">
@@ -2874,7 +2876,7 @@
                                                         <action selector="btnOpenDropDown:" destination="wFV-qS-XFu" eventType="touchUpInside" id="xaL-8a-6US"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-2C-ExY">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-2C-ExY">
                                                     <rect key="frame" x="379" y="24.666666666666671" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="4l7-HP-miW"/>
@@ -2885,6 +2887,18 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnOpenDropDown:" destination="wFV-qS-XFu" eventType="touchUpInside" id="FrE-us-3EK"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRY-dj-1Dx">
+                                                    <rect key="frame" x="369" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zRY-dj-1Dx" secondAttribute="height" multiplier="1:1" id="dew-D9-38c"/>
+                                                        <constraint firstAttribute="width" constant="30" id="mkY-sM-5eC"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="tray.and.arrow.down.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="btnDownload:" destination="wFV-qS-XFu" eventType="touchUpInside" id="5Bu-qF-w4w"/>
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="15E-jl-JuS">
@@ -2922,7 +2936,7 @@
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKG-D5-RPm">
+                                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKG-D5-RPm">
                                                                                 <rect key="frame" x="123" y="15" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="25" id="DOP-tz-Mut"/>
@@ -2985,7 +2999,9 @@
                                                 <constraint firstItem="QJW-2C-ExY" firstAttribute="leading" secondItem="rgY-ds-QKL" secondAttribute="trailing" constant="10" id="60h-f0-C2p"/>
                                                 <constraint firstItem="15E-jl-JuS" firstAttribute="leading" secondItem="dGh-sQ-00r" secondAttribute="leading" id="8To-PL-7vG"/>
                                                 <constraint firstItem="a6m-ye-k3P" firstAttribute="leading" secondItem="dGh-sQ-00r" secondAttribute="leading" constant="20" id="8c1-GZ-OaK"/>
+                                                <constraint firstAttribute="trailing" secondItem="zRY-dj-1Dx" secondAttribute="trailing" constant="15" id="Hoh-Aw-dky"/>
                                                 <constraint firstAttribute="bottom" secondItem="15E-jl-JuS" secondAttribute="bottom" id="STE-Y7-4Eh"/>
+                                                <constraint firstItem="zRY-dj-1Dx" firstAttribute="centerY" secondItem="rgY-ds-QKL" secondAttribute="centerY" id="YWZ-5c-WMZ"/>
                                                 <constraint firstItem="QJW-2C-ExY" firstAttribute="centerY" secondItem="rgY-ds-QKL" secondAttribute="centerY" constant="2" id="i26-eD-Wvv"/>
                                                 <constraint firstItem="15E-jl-JuS" firstAttribute="top" secondItem="a6m-ye-k3P" secondAttribute="bottom" constant="14" id="mTG-uE-aSX"/>
                                                 <constraint firstItem="QJW-2C-ExY" firstAttribute="trailing" secondItem="dGh-sQ-00r" secondAttribute="trailingMargin" id="s7m-X4-ZWg"/>
@@ -2994,6 +3010,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnDownload" destination="zRY-dj-1Dx" id="3y1-Ra-XY4"/>
                                             <outlet property="btnReport" destination="rgY-ds-QKL" id="y09-05-hUX"/>
                                             <outlet property="collectionView" destination="15E-jl-JuS" id="7uo-27-neT"/>
                                             <outlet property="lblAnalytics" destination="a6m-ye-k3P" id="HrI-T4-bEG"/>
@@ -3027,7 +3044,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmX-JR-Z6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="781"/>
+            <point key="canvasLocation" x="1821.7391304347827" y="780.80357142857144"/>
         </scene>
         <!--My Store Product View Controller-->
         <scene sceneID="Gx3-W0-dd1">
@@ -8780,7 +8797,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="5y4-fN-syf" secondAttribute="trailing" constant="10" id="Nb8-CI-Cxb"/>
                                                         <constraint firstItem="5y4-fN-syf" firstAttribute="centerY" secondItem="E4f-75-PCv" secondAttribute="centerY" id="Op5-Zb-GTX"/>
                                                         <constraint firstItem="Z5Z-je-zgp" firstAttribute="top" secondItem="5y4-fN-syf" secondAttribute="bottom" constant="5" id="PZl-mF-Mj2"/>
-                                                        <constraint firstItem="pju-yF-RVy" firstAttribute="top" secondItem="IQ6-ol-hEZ" secondAttribute="bottom" constant="41" id="TZ5-ZI-LQD"/>
+                                                        <constraint firstItem="pju-yF-RVy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IQ6-ol-hEZ" secondAttribute="bottom" constant="41" id="TZ5-ZI-LQD"/>
                                                         <constraint firstItem="E4f-75-PCv" firstAttribute="leading" secondItem="FmH-xh-Jin" secondAttribute="leading" id="Tsb-HL-uKr"/>
                                                         <constraint firstItem="FmH-xh-Jin" firstAttribute="leading" secondItem="RRl-wO-zzz" secondAttribute="leading" id="YCO-DB-KZS"/>
                                                         <constraint firstItem="IQ6-ol-hEZ" firstAttribute="top" secondItem="ja3-V8-kW0" secondAttribute="bottom" constant="3" id="byO-wB-SCx"/>
@@ -8788,6 +8805,7 @@
                                                         <constraint firstItem="ja3-V8-kW0" firstAttribute="top" secondItem="E4f-75-PCv" secondAttribute="bottom" constant="8" id="g5y-qB-8Wr"/>
                                                         <constraint firstItem="qug-9g-9RT" firstAttribute="top" secondItem="FmH-xh-Jin" secondAttribute="bottom" constant="2.5" id="lSJ-O5-W09"/>
                                                         <constraint firstItem="ja3-V8-kW0" firstAttribute="leading" secondItem="E4f-75-PCv" secondAttribute="leading" id="t1J-D1-ebu"/>
+                                                        <constraint firstItem="pju-yF-RVy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WQC-Cj-Lz5" secondAttribute="bottom" constant="5" id="taC-cV-pnL"/>
                                                         <constraint firstItem="pju-yF-RVy" firstAttribute="leading" secondItem="5KM-Xi-hgr" secondAttribute="leading" id="u6d-Oc-akE"/>
                                                         <constraint firstItem="IQ6-ol-hEZ" firstAttribute="leading" secondItem="ja3-V8-kW0" secondAttribute="leading" id="vDV-TW-g9I"/>
                                                         <constraint firstItem="WQC-Cj-Lz5" firstAttribute="top" secondItem="5KM-Xi-hgr" secondAttribute="top" constant="5" id="wWU-Qn-0wM"/>
@@ -8894,7 +8912,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuA-eW-o3k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3221.739130434783" y="780.80357142857144"/>
+            <point key="canvasLocation" x="3154" y="781"/>
         </scene>
         <!--Select Member ShipVC-->
         <scene sceneID="cQS-1j-wO0">
@@ -10731,6 +10749,7 @@
         <image name="search_icon_grey" width="18" height="18"/>
         <image name="search_icon_white" width="18" height="18"/>
         <image name="store_inactive" width="20" height="19"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
         <image name="user_icon_active" width="128" height="128"/>
         <image name="user_icon_normal" width="128" height="128"/>
         <image name="walkthrough_bg2" width="376" height="812"/>

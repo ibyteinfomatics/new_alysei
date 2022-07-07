@@ -29,7 +29,7 @@ class CuisinePageControlViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        favCuisineLabel.text = RecipeConstants.kPreference1
+    //    favCuisineLabel.text = RecipeConstants.kPreference1
         btnCusineNext.setTitle(RecipeConstants.kNext, for: .normal)
         preferenceNumber = 1
         cuisineCollectionView.delegate = self
@@ -44,7 +44,21 @@ class CuisinePageControlViewController: UIViewController {
         
         postRequestToGetCuisine()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        edgesForExtendedLayout = UIRectEdge.bottom
+        extendedLayoutIncludesOpaqueBars = true
+    }
     
     @IBAction func tapNext(_ sender: Any) {
         
@@ -149,6 +163,8 @@ extension CuisinePageControlViewController{
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.Recipes.getCuisine, requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (response, error, errorType, statusCode) in
             
             let res = response as? [String:Any]
+            let title = res?["title"] as? String
+            self.favCuisineLabel.text = title
             
             if let data = res?["data"] as? [[String:Any]]{
                 self.arrCuisine = data.map({SelectCuisineDataModel.init(with: $0)})

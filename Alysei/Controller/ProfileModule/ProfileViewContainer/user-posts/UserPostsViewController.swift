@@ -27,7 +27,11 @@ class UserPostsViewController: AlysieBaseViewC {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if visitorId == "" || visitorId == nil{
         lblBlankView.text = AppConstants.kWhenYouPostSomethingItWillAppearHere
+        }else{
+            lblBlankView.text = AppConstants.ThereAreNoPostAtThisMoment
+        }
         fromMenuTab = "UserPostsViewController"
 
         self.userPost.rowHeight = UITableView.automaticDimension
