@@ -132,7 +132,7 @@ class EventDiscover: AlysieBaseViewC {
         eventTableCell.dateTitle.text = datep
        // }
         let baseUrl = eventData[indexPath].user?.avatarid?.baseUrl ?? ""
-        let imageUrl = (baseUrl + (eventData[indexPath].user?.avatarid?.attachmenturl ?? ""))
+        let imageUrl = (baseUrl + (eventData[indexPath].user?.avatarid?.attachmenThumbnailUrl ?? ""))
         eventTableCell.userImage.setImage(withString: imageUrl, placeholder: UIImage(named: "profile_icon"))
         
         
@@ -144,7 +144,7 @@ class EventDiscover: AlysieBaseViewC {
 //        eventTableCell.eventImage.layer.cornerRadius = 5
         
         let baseUrlImg = eventData[indexPath].attachment?.baseUrl ?? ""
-        eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenturl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenThumbnailUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         
         eventTableCell.moreButton.tag = indexPath
@@ -184,7 +184,7 @@ class EventDiscover: AlysieBaseViewC {
             vc.website = self.eventData[indexPath].website
             vc.eventYype = self.eventData[indexPath].eventType
             vc.registrationType = self.eventData[indexPath].registrationType
-            vc.imgurl = String.getString(baseUrlImg + (self.self.eventData[indexPath].attachment?.attachmenturl ?? ""))
+            vc.imgurl = String.getString(baseUrlImg + (self.self.eventData[indexPath].attachment?.attachmenThumbnailUrl ?? ""))
             vc.bookingUrl = self.eventData[indexPath].url
             vc.typeofpage = "read"
                     
@@ -202,7 +202,7 @@ class EventDiscover: AlysieBaseViewC {
         vc.website = self.eventData[indexPath].website
         vc.eventYype = self.eventData[indexPath].eventType
         vc.registrationType = self.eventData[indexPath].registrationType
-        vc.imgurl = String.getString(baseUrlImg + (self.eventData[indexPath].attachment?.attachmenturl ?? ""))
+        vc.imgurl = String.getString(baseUrlImg + (self.eventData[indexPath].attachment?.attachmentLargeUrl ?? ""))
         vc.bookingUrl = self.eventData[indexPath].url
         vc.typeofpage = "read"
         

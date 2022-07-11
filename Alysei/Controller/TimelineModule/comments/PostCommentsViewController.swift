@@ -227,6 +227,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         bottomViewForCommentTextField.layer.borderWidth = 1
         bottomViewForCommentTextField.layer.borderColor = UIColor.lightGray.cgColor
+        commentTextfield.placeholder = AppConstants.kTypeHere
         receiveComment()
         
     }

@@ -696,9 +696,10 @@ extension MarketPlaceProductListViewController{
                     for i in 0..<(self.arrList?.count ?? 0){
                         self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
-                }else{
-                    self.arrListAppData = [ProductSearchListModel]()
                 }
+//                else{
+//                    self.arrListAppData = [ProductSearchListModel]()
+//                }
                 if self.arrListAppData.count == 0 {
                     self.blankScreen.isHidden = false
                 }else{

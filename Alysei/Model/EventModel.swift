@@ -85,7 +85,9 @@ class EventLike {
 class EventAttachment {
     var id: Int?
     var attachmenturl, baseUrl, attachmentType, createdAt, updatedAt: String?
-
+    var attachmenThumbnailUrl: String?
+    var attachmentLargeUrl: String?
+    var attachmentMediumUrl: String?
     
     init(with dictResponse: [String:Any]?) {
         self.attachmenturl = String.getString(dictResponse?["attachment_url"])
@@ -94,6 +96,9 @@ class EventAttachment {
         self.createdAt = String.getString(dictResponse?["created_at"])
         self.updatedAt = String.getString(dictResponse?["updated_at"])
         self.id = Int.getInt(dictResponse?["id"])
+        self.attachmenThumbnailUrl = String.getString(dictResponse?["attachment_thumbnail_url"])
+        self.attachmentLargeUrl = String.getString(dictResponse?["attachment_large_url"])
+        self.attachmentMediumUrl = String.getString(dictResponse?["attachment_medium_url"])
     }
 
     

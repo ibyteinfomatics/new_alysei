@@ -13,7 +13,7 @@ class NetworkTableCell: UITableViewCell {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var remove: UIButton!
-
+    @IBOutlet weak var lblFolloweCount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

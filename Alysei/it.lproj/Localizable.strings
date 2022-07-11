@@ -431,7 +431,7 @@
 "Discovery Alysei" = "Scoperta Alysei";
 
 //MARK: Add Post
-"What's new?" = "What's new?";
+"What's new?" = "Cosa c’è di nuovo?";
 "Say Something..." = "Parlaci...";
 
 //MARK: Network Screen
@@ -469,7 +469,7 @@
 "Your Progress" = "Il tuo progresso";
 "completed" = "completato";
 "When you post something it will appear here." = "Quando pubblichi qualcosa, apparirà qui.";
-"There are no photos at this moment." = "Non ci sono photos al momento.";
+"There are no photos at this moment." = "Non ci sono foto al momento.";
 "There are no posts at this moment." = "Non ci sono posts al momento.";
 "Contact Detail" = "Dettagli del contatto";
 "Address" = "Indirizzo";
@@ -539,7 +539,7 @@
 "Edit Post" = "Modifica Post";
 "Delete Post" = "Elimina Post";
 "Report Action" = "Segnala un'azione";
-"What's new?" = "What's new?";
+//"What's new?" = "What's new?";
 "Post" = "Post";
 "Post can't be empty" = "Il post non può essere vuoto";
 "Share to my timeline" = "Condividi nella tua pagina";
@@ -878,6 +878,7 @@
 "Award" = "Premio";
 "Blogs" = "Blogs";
 "All" = "All";
+"Type here...." = "Type here....";
 "Are you Interested?" = "Sei interessato?";
 "Uninterested" = "Non mi interessa";
 "What are you searching?" = "Che cosa stai cercando?";

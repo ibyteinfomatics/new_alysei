@@ -116,7 +116,7 @@ class TripDiscover: AlysieBaseViewC {
             tripTableCell.priceTitle.text =  "$" + (tripData[indexPath].price ?? "0")
         }
         let baseUrl = tripData[indexPath].user?.avatarID?.baseUrl ?? ""
-        let imageUrl = baseUrl + (tripData[indexPath].user?.avatarID?.attachmentURL ?? "")
+        let imageUrl = baseUrl + (tripData[indexPath].user?.avatarID?.attachmentLargeUrl ?? "")
         tripTableCell.userImage.setImage(withString: imageUrl, placeholder: UIImage(named: "profile_icon"))
         tripTableCell.userImage.layer.cornerRadius =  tripTableCell.userImage.frame.height / 2
         
@@ -243,7 +243,7 @@ class TripDiscover: AlysieBaseViewC {
 //        tripTableCell.tripImage.layer.cornerRadius = 5
         
         let baseUrlImg = tripData[indexPath].attachment?.baseUrl ?? ""
-        tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
+        tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentLargeUrl)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return tripTableCell
         
@@ -315,7 +315,7 @@ extension TripDiscover: UITableViewDelegate, UITableViewDataSource{
         vc.website = self.tripData[indexPath].website
         vc.price = self.tripData[indexPath].price
         vc.fulldescription = self.tripData[indexPath].datumDescription
-        vc.imgurl = String.getString(baseUrlImg + (self.tripData[indexPath].attachment?.attachmentURL)! )
+        vc.imgurl = String.getString(baseUrlImg + (self.tripData[indexPath].attachment?.attachmentLargeUrl)! )
         vc.currency = self.tripData[indexPath].currency
         vc.typeofpage = "read"
     }

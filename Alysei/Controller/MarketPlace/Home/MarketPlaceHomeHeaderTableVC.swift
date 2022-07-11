@@ -37,11 +37,17 @@ extension MarketPlaceHomeHeaderTableVC : UICollectionViewDelegate, UICollectionV
         guard let cell = headerCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
         cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
         
+        if kSharedUserDefaults.getAppLanguage() == "en"{
         let firstWord = arrMarketPlace[indexPath.row].components(separatedBy: " ")
+        
         if firstWord.first == firstWord.last{
             cell.lblOption.text = (firstWord.first ?? "")
         }else{
             cell.lblOption.text = (firstWord.first ?? "") + "\n" + (firstWord.last ?? "")
+        }
+        }else{
+         
+            cell.lblOption.text =  arrMarketPlace[indexPath.row]
         }
         return cell
     }

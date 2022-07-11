@@ -16,7 +16,7 @@ class NetworkConnectionTableViewCell: UITableViewCell {
     @IBOutlet weak var btnDecline: UIButton!
     @IBOutlet weak var btnViewRequest: UIButton!
    // @IBOutlet weak var remove: UIButton!
-
+    @IBOutlet weak var lblFollowerCount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         btnAccept.layer.cornerRadius =  15

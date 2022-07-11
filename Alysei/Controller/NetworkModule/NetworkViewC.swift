@@ -148,6 +148,7 @@ class NetworkViewC: AlysieBaseViewC {
         TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.kPendingRemove+String.getString(id), requestMethod: .POST, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             self.callConnectionApi(api: APIUrl.kConnectionTabApi1)
+            self.tblViewNetwork.reloadData()
             
         }
         
@@ -231,11 +232,12 @@ class NetworkViewC: AlysieBaseViewC {
         if networkcurrentIndex == 0{
             guard  let networkCTableCell = tblViewNetwork.dequeueReusableCell(withIdentifier: NetworkConnectionTableViewCell.identifier()) as? NetworkConnectionTableViewCell else{return UITableViewCell()}
             networkCTableCell.img.layer.masksToBounds = false
+            networkCTableCell.lblFollowerCount.text = "\(arrConnection[indexPath.row].user?.followers_count ?? 0)" +  " " + AppConstants.Followers
             networkCTableCell.img.clipsToBounds = true
             networkCTableCell.img.layer.borderWidth = 2
             networkCTableCell.img.layer.borderColor = UIColor.init(red: 75.0/255.0, green: 179.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor
             networkCTableCell.img.layer.cornerRadius = networkCTableCell.img.frame.width/2
-            networkCTableCell.email.text = //self.arrConnection[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
+            networkCTableCell.email.text = 
             self.arrConnection[indexPath.row].reasonToConnect?.stringByTrimmingWhiteSpaceAndNewLine().stringByTrimmingWhiteSpace()
             
            // if arrConnection[indexPath.row].user?.companyName != "" {
@@ -342,6 +344,7 @@ class NetworkViewC: AlysieBaseViewC {
                 networkTableCell.remove.setTitleColor(.red, for: .normal)
                 networkTableCell.remove.layer.borderColor = UIColor.red.cgColor
             }
+            networkTableCell.lblFolloweCount.text = "\(arrConnection[indexPath.row].user?.followers_count ?? 0)" + " " + AppConstants.Followers
             networkTableCell.img.layer.masksToBounds = false
             networkTableCell.img.clipsToBounds = true
             networkTableCell.img.layer.borderWidth = 2
@@ -354,7 +357,26 @@ class NetworkViewC: AlysieBaseViewC {
                     networkTableCell.img.setImage(withString: String.getString((self.arrConnection[indexPath.row].user?.avatarID?.baseUrl ?? "") + (self.arrConnection[indexPath.row].user?.avatarID?.attachmentURL ?? "") ), placeholder: UIImage(named: "image_placeholder"))
     
                 //networkTableCell.email.text = self.arrConnection[indexPath.row].user?.email
-                    networkTableCell.email.text = self.arrConnection[indexPath.row].user?.email
+                   // networkTableCell.email.text = self.arrConnection[indexPath.row].user?.email
+                    if self.arrConnection[indexPath.row].user?.roleID == UserRoles.producer.rawValue{
+                        networkTableCell.email.text =  AppConstants.kProducer + ","
+                        
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.restaurant.rawValue{
+                        networkTableCell.email.text  =  AppConstants.kRestaurant + ","
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.voyagers.rawValue {
+                        networkTableCell.email.text =  AppConstants.kVoyager + ","
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.voiceExperts.rawValue{
+                        networkTableCell.email.text =  AppConstants.kVoiceOfExperts + ","
+                    }else if self.arrConnection[indexPath.row].user?.roleID  == UserRoles.distributer1.rawValue {
+                        networkTableCell.email.text =  AppConstants.kImporter + ","
+                        
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.distributer2.rawValue{
+                     networkTableCell.email.text  = AppConstants.kDistributer + ","
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.distributer3.rawValue{
+                    networkTableCell.email.text =  AppConstants.kImporterDistributer + ","
+                    }else if arrConnection[indexPath.row].user?.roleID == UserRoles.travelAgencies.rawValue{
+                        networkTableCell.email.text =  AppConstants.kTravelAgency + ","
+                    }
 
                 if arrConnection[indexPath.row].user?.companyName != "" {
                     networkTableCell.name.text = arrConnection[indexPath.row].user?.companyName

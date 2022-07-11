@@ -714,6 +714,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else if indexPath.row == 6 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketplaceHomeTopFavTableVC", for: indexPath) as? MarketplaceHomeTopFavTableVC else {return UITableViewCell()}
+                cell.selectionStyle = .none
                 cell.callback = { id in
                     guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
                     nextVC.marketplaceProductId = "\(id)"
@@ -724,6 +725,7 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else{
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketplaceHomeAdTableVC", for: indexPath) as? MarketplaceHomeAdTableVC else {return UITableViewCell()}
+                cell.selectionStyle = .none
                 cell.configCell(self.maketPlaceHomeScreenData ?? (MaketPlaceHomeScreenModel(with: [:])))
                 return cell
             }

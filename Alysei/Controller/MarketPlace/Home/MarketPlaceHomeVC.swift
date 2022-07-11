@@ -591,6 +591,7 @@ extension MarketPlaceHomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MarketplaceHomeTopFavTableVC", for: indexPath) as? MarketplaceHomeTopFavTableVC else {return UITableViewCell()}
+            cell.selectionStyle = .none
         cell.callback = { id in
             guard let nextVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailVC") as? ProductDetailVC else {return}
             nextVC.marketplaceProductId = "\( self.maketPlaceHomeScreenData?.top_favourite_products?[indexPath.row].marketplace_product_id ?? 0)"
@@ -716,11 +717,16 @@ extension MarketPlaceHomeVC: UICollectionViewDelegate, UICollectionViewDataSourc
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketPlaceHomeCollectionVCell", for: indexPath) as? MarketPlaceHomeCollectionVCell else {return UICollectionViewCell()}
             cell.imgView.image = UIImage(named: marketPlaceOptions[indexPath.row])
             
+            if kSharedUserDefaults.getAppLanguage() != "it"{
             let firstWord = arrMarketPlace[indexPath.row].components(separatedBy: " ")
             if firstWord.first == firstWord.last{
                 cell.lblOption.text = (firstWord.first ?? "")
             }else{
                 cell.lblOption.text = (firstWord.first ?? "") + "\n" + (firstWord.last ?? "")
+            }
+            }else{
+                cell.lblOption.text = arrMarketPlace[indexPath.row]
+                
             }
             //cell.lblOption.text = ("\u{00a0}\(arrMarketPlace[indexPath.row])")
             

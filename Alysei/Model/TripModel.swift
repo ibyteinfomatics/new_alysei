@@ -42,7 +42,7 @@ class TripDatum {
     var website, price, datumDescription, imageID: String?
     var status, createdAt, updatedAt, currency: String?
     var user: TripUser?
-    var attachment: TripAttachment?
+    var attachment: Attachment?
     var adventure: TripAdventure?
     var region: TripCountry?
     var country: TripCountry?
@@ -75,7 +75,7 @@ class TripDatum {
         }
         
         if let attachment = dictResponse?["attachment"] as? [String:Any]{
-            self.attachment =  TripAttachment.init(with: attachment)
+            self.attachment =  Attachment.init(with: attachment)
         }
         
         if let adventure = dictResponse?["adventure"] as? [String:Any]{
@@ -163,7 +163,7 @@ class TripUser {
     var email, companyName: String?
     var restaurantName: String?
     var roleID: Int?
-    var avatarID: TripAttachment?
+    var avatarID: Attachment?
    
     init(with dictResponse: [String:Any]?) {
         self.name = String.getString(dictResponse?["name"])
@@ -174,7 +174,7 @@ class TripUser {
         self.roleID = Int.getInt(dictResponse?["role_id"])
         
         if let avatar_id = dictResponse?["avatar_id"] as? [String:Any]{
-            self.avatarID =  TripAttachment.init(with: avatar_id)
+            self.avatarID =  Attachment.init(with: avatar_id)
         }
         
     }

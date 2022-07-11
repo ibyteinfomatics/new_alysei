@@ -551,7 +551,7 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
-  
+    static var kTypeHere: String{"Type here....".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var youWantToUnblock : String {"You want to unblock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var areYouSure : String {"Are You Sure?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var tapToUnblock : String {"Blocked. Tap to Unblock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}

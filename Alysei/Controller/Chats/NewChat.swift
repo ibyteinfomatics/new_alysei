@@ -75,30 +75,30 @@ class NewChat: AlysieBaseViewC {
         }
         
         if arrConnection[index].user?.roleID == UserRoles.producer.rawValue{
-            notificationTableCell.userNickName.text = "Producer,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Producer,"
             notificationTableCell.message.isHidden = false
         }else if arrConnection[index].user?.roleID == UserRoles.restaurant.rawValue{
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Restaurant,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Restaurant,"
         }else if arrConnection[index].user?.roleID == UserRoles.voyagers.rawValue {
             
-            notificationTableCell.userNickName.text = "Voyager"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Voyager"
             notificationTableCell.message.isHidden = true
         }else if arrConnection[index].user?.roleID == UserRoles.voiceExperts.rawValue{
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Voice Of Experts,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Voice Of Experts,"
         }else if arrConnection[index].user?.roleID == UserRoles.distributer1.rawValue {
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Importer,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Importer,"
         }else if arrConnection[index].user?.roleID == UserRoles.distributer2.rawValue{
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Distributer,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Distributer,"
         }else if arrConnection[index].user?.roleID == UserRoles.distributer3.rawValue{
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Importer & Distributer,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Importer & Distributer,"
         }else if arrConnection[index].user?.roleID == UserRoles.travelAgencies.rawValue{
             notificationTableCell.message.isHidden = false
-            notificationTableCell.userNickName.text = "Travel Agencies,"//modelData.subjectId?.email?.lowercased()
+            notificationTableCell.userNickName.text = "Travel Agencies,"
         }
         
         
