@@ -158,6 +158,8 @@ class BusinessViewC: AlysieBaseViewC {
         }
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
+        
+        
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -255,6 +257,7 @@ class BusinessViewC: AlysieBaseViewC {
     private func getBusinessTextFieldTableCell(_ indexPath: IndexPath) -> UITableViewCell{
         
         let businessTextFieldTableCell = tblViewSearchOptions.dequeueReusableCell(withIdentifier: BusinessTextFieldTableCell.identifier()) as! BusinessTextFieldTableCell
+       
         businessTextFieldTableCell.passTextCallBack = { text in
             self.txtkeywordSearch = text
         }
@@ -1107,7 +1110,7 @@ extension BusinessViewC: TappedHubs{
 
 extension BusinessViewC {
     func callSearchHubApi(){
-        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&keyword=" + "\(txtkeywordSearch ?? "")" + "&state=" + "\(self.selectStateId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.B2BModule.kSearchApi + "\(searchType ?? 1)" + "&keyword=" + "\(txtkeywordSearch?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? "")" + "&state=" + "\(self.selectStateId ?? "")", requestMethod: .GET, requestParameters: [:], withProgressHUD: true) { (dictResponse, error, errorType, statusCode) in
             
             switch statusCode {
             case 200:

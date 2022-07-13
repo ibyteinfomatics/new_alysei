@@ -553,7 +553,7 @@
 "There is no notification." = "Non ci sono notifiche";
 
 //MARK: B2bScreen
-"Importers & Distributers" = "Importatori e Distributori";
+"Importers & Distributors" = "Importatori e Distributori";
 "Italian Restaurants" = "Ristoranti Italiani";
 "Join the"= "Unisciti a";
 "to expand your network and access the endless opportunity to discover the Italian cuisine through the Alysei community." = "per espandere la tua rete di contatti e accedere all'infinita opportunità di scoprire la cucina italiana attraverso la community di Alysei.";
@@ -1181,7 +1181,10 @@
 
 "Support" = "Support";
 "Most Searched" = "Most Searched";
-
+"Thank you for choosing Alysei," = "Thank you for choosing Alysei,";
+"Please enter the access code" = "Please enter the access code";
+"In case you don't have access" = "In case you don't have access";
+"code,Please write us at" = "code. Please write us at";
 
 
 

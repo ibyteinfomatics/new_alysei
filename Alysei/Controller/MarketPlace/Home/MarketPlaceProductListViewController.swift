@@ -194,6 +194,7 @@ class MarketPlaceProductListViewController: UIViewController {
         nextVC.callApiCallBack = {
             arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
             self.isSearch = true
+            self.indexOfPageToRequest = 1
             self.arrListAppData = [ProductSearchListModel]()
             self.arrSelectedCategories = nextVC.arrSelectedCategories
             self.arrSelectedProperties = nextVC.arrSelectedProperties
@@ -346,6 +347,7 @@ extension MarketPlaceProductListViewController : UITextFieldDelegate{
                 self.typeFirst = true
             }else if isSearch == true {
                 self.searchProductString = updatedText
+                indexOfPageToRequest = 1
             self.callBoxFilterApi(arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName,1)
             }
             if typeFirst == true{

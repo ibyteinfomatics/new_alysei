@@ -655,7 +655,7 @@ struct AppConstants {
     static var kImporter: String{"Importer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDistributer: String{"Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterDistributer: String{"Importer & Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kImporterDistributers: String{"Importers & Distributers".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kImporterDistributors: String{"Importers & Distributors".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgencies: String{"Travel Agencies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kPostUnavailable: String {"Post Unavailable".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -2035,7 +2035,7 @@ struct StaticArrayData {
     
     
     static let kBusinessCategoryDict = [(image: "hubs", name: AppConstants.kHubs),
-                                        (image: "importers&distributors", name: AppConstants.kImporterDistributers),
+                                        (image: "importers&distributors", name: AppConstants.kImporterDistributors),
                                         (image: "italianrestaurantsinus", name: AppConstants.kItalianRestaurants),
                                         (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
                                         (image: "travelagencies", name: AppConstants.kTravelAgencies),
