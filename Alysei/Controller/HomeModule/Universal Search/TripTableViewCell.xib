@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,34 +20,34 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="343" id="KGk-i7-Jjw" customClass="TripTableViewCell" customModule="Alysei" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="541" height="343"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="541" height="343"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2R-Pr-Nyh">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N2R-Pr-Nyh">
                         <rect key="frame" x="0.0" y="0.0" width="541" height="343"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zUD-wD-tF3">
-                                <rect key="frame" x="0.0" y="8" width="541" height="210"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zUD-wD-tF3" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="8" width="541" height="260"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="D4q-Vz-utB"/>
+                                    <constraint firstAttribute="height" constant="260" id="D4q-Vz-utB"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Across the Alps" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXh-D3-us5">
-                                <rect key="frame" x="80" y="226" width="451" height="21.5"/>
+                                <rect key="frame" x="80" y="276" width="451" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="3a0-IJ-1JM">
-                                <rect key="frame" x="15" y="226" width="50" height="50"/>
+                                <rect key="frame" x="15" y="276" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3a0-IJ-1JM" secondAttribute="height" multiplier="1:1" id="Whd-pb-e3m"/>
                                     <constraint firstAttribute="height" constant="50" id="cfZ-RM-aL6"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffe-LY-3NV">
-                                <rect key="frame" x="80" y="252.5" width="429" height="18"/>
+                                <rect key="frame" x="80" y="302.5" width="429" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3H-Vr-bVg">
                                         <rect key="frame" x="0.0" y="0.0" width="65.5" height="18"/>
@@ -101,7 +101,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9an-rg-mCd">
-                                <rect key="frame" x="15" y="281" width="507" height="45"/>
+                                <rect key="frame" x="15" y="331" width="507" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CWp-cZ-YDx">
                                         <rect key="frame" x="0.0" y="0.0" width="248.5" height="45"/>
@@ -218,7 +218,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F10-Q5-rZa">
-                                <rect key="frame" x="0.0" y="337" width="537" height="1"/>
+                                <rect key="frame" x="0.0" y="387" width="537" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="DEk-bZ-thl"/>
@@ -276,7 +276,7 @@
                 <outlet property="noItemLabel" destination="XYx-Bt-POJ" id="PWe-2n-yWp"/>
                 <outlet property="priceTitle" destination="40w-kL-Aen" id="iBL-Vg-zP2"/>
                 <outlet property="travelTitle" destination="zpr-pp-uml" id="o05-xf-edB"/>
-                <outlet property="tripImage" destination="zUD-wD-tF3" id="C1F-zs-vm5"/>
+                <outlet property="tripImage" destination="zUD-wD-tF3" id="4a9-Oo-TtR"/>
                 <outlet property="tripTitle" destination="IXh-D3-us5" id="cfT-wY-BS7"/>
                 <outlet property="userImage" destination="3a0-IJ-1JM" id="GAH-lx-i97"/>
                 <outlet property="view1" destination="GzV-xI-MBj" id="8PV-qF-kSr"/>

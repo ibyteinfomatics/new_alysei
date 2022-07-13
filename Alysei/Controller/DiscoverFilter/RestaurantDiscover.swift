@@ -124,7 +124,12 @@ class RestaurantDiscover: AlysieBaseViewC {
         
         if restauUser[indexPath].avatarid?.attachmenturl != nil {
             let baseurlImg = restauUser[indexPath].avatarid?.baseUrl ?? ""
-            restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].coverid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+            //restTableCell.blogImage.setImage(withString: String.getString(baseurlImg+(restauUser[indexPath].coverid?.attachmenturl ?? "") ), placeholder: UIImage(named: "image_placeholder"))
+            let imageRest = String.getString(baseurlImg+(restauUser[indexPath].coverid?.attachmenturl ?? "")).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+            let imageRestUrl = URL(string: imageRest)
+            if imageRestUrl != URL(string: ""){
+                restTableCell.blogImage.loadImageWithUrl((imageRestUrl ?? URL(string: ""))!)
+            }
         } else {
             restTableCell.blogImage.image = UIImage(named: "image_placeholder")
         }

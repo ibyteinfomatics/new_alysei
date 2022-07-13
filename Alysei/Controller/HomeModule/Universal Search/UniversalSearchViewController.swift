@@ -605,8 +605,11 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                     else{
                         cell3.noItemLabel.isHidden = true
                         cell1.mainVw.isHidden = false
-                        let imgUrl = ((self.arraySearchByTrips?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? ""))
-                        cell3.tripImage.setImage(withString: imgUrl)
+                        let imgUrl = ((self.arraySearchByTrips?[indexPath.row].attachment?.baseUrl ?? "") + (self.arraySearchByTrips?[indexPath.row].attachment?.attachmentURL ?? "")).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+                        if imgUrl != ""{
+                            let imageSUrl = (URL(string: imgUrl ?? "") ?? URL(string: ""))!
+                        cell3.tripImage.loadImageWithUrl(imageSUrl)
+                        }
                         cell3.tripTitle.text = arraySearchByTrips?[indexPath.row].tripName
                         cell3.travelTitle.text = arraySearchByTrips?[indexPath.row].travelAgency
                         // cell3.activitiesTitle.text = arraySearchByTrips?[indexPath.row].datumDescription

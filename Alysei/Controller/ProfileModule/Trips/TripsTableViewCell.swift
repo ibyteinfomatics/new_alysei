@@ -30,7 +30,7 @@ class TripsTableViewCell: UITableViewCell {
     @IBOutlet weak var duview7: UIView!
     @IBOutlet weak var lblDuration: UILabel!
     
-    @IBOutlet weak var tripImage: UIImageView!
+    @IBOutlet weak var tripImage: ImageLoader!
     @IBOutlet weak var tripTitle: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!

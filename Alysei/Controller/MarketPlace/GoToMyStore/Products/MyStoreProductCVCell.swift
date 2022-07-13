@@ -9,7 +9,7 @@ import UIKit
 
 class MyStoreProductCVCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var imgProduct: ImageLoader!
     @IBOutlet weak var lblProductName: UILabel!
     @IBOutlet weak var lblRating: UILabel!
     @IBOutlet weak var lblReview: UILabel!
@@ -37,7 +37,13 @@ class MyStoreProductCVCell: UICollectionViewCell {
         self.lblRating.text = data.avg_rating
         
         let baseUrl = data.product_gallery?.first?.baseUrl ?? ""
-        self.imgProduct.setImage(withString: baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
+        let imageString = String(baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
+           
+        if imageString != "" {
+            let imgProductUrl = URL(string: imageString)!
+            self.imgProduct.loadImageWithUrl(imgProductUrl)
+        }
+       // self.imgProduct.setImage(withString: )
         setUserRatngStarUI()
     }
     func setUserRatngStarUI(){

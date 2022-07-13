@@ -144,9 +144,40 @@ class EventDiscover: AlysieBaseViewC {
 //        eventTableCell.eventImage.layer.cornerRadius = 5
         
         let baseUrlImg = eventData[indexPath].attachment?.baseUrl ?? ""
-        eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenThumbnailUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        //eventTableCell.eventImage.setImage(withString: String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenThumbnailUrl ?? "")), placeholder: UIImage(named: "image_placeholder"))
+        let imageUrlEvent = (String.getString(baseUrlImg + (eventData[indexPath].attachment?.attachmenturl ?? ""))).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+        let imgUrl = URL(string: imageUrlEvent)
+        eventTableCell.eventImage.loadImageWithUrl((imgUrl ?? URL(string: ""))!)
         
-        
+//        if   (imageUrlEvent ?? "") != "" {
+//
+//            let url = URL(string: imageUrlEvent ?? "")
+//
+//                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+//                    guard let data = data, error == nil else { return }
+//
+//                    /**CHECK 404 HERE*/
+//                    if let httpResponse = response as? HTTPURLResponse {
+//                        if httpResponse.statusCode == 400 {
+//                            //YOUR CODE HERE
+//                        return
+//                        }
+//                    }
+//
+//
+//                    DispatchQueue.main.async() {    // execute on main thread
+//                        eventTableCell.eventImage.image = UIImage(data: data)
+//                    }
+//                }
+//
+//            task.resume()
+//
+//            }else{
+//
+//                DispatchQueue.main.async() {    // execute on main thread
+//                    eventTableCell.eventImage.image = UIImage(named: "image_placeholder")
+//                }
+//            }
         eventTableCell.moreButton.tag = indexPath
         
         
@@ -202,7 +233,8 @@ class EventDiscover: AlysieBaseViewC {
         vc.website = self.eventData[indexPath].website
         vc.eventYype = self.eventData[indexPath].eventType
         vc.registrationType = self.eventData[indexPath].registrationType
-        vc.imgurl = String.getString(baseUrlImg + (self.eventData[indexPath].attachment?.attachmentLargeUrl ?? ""))
+        vc.imgurl = String.getString(baseUrlImg + (self.eventData[indexPath].attachment?.attachmenturl ?? ""))
+        
         vc.bookingUrl = self.eventData[indexPath].url
         vc.typeofpage = "read"
         

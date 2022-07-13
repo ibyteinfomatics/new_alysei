@@ -156,7 +156,13 @@ class BlogsViewController: AlysieBaseViewC {
             blogTableCell.editButton.isHidden = false
         }
         
-        blogTableCell.blogImage.setImage(withString: String.getString((blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+(blogModel?.data?[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
+        let imageString = String.getString((blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+((blogModel?.data?[indexPath].attachment?.attachmentURL)!.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""))
+           if imageString != "" {
+            let imageBlogUrl = URL(string: imageString)!
+            blogTableCell.blogImage.loadImageWithUrl(imageBlogUrl)
+            
+        }
+      // blogTableCell.blogImage.setImage(withString: String.getString((blogModel?.data?[indexPath].attachment?.baseUrl ?? "")+(blogModel?.data?[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         

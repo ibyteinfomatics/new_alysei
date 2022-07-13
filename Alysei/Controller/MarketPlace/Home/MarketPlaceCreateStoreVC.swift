@@ -22,8 +22,8 @@ class MarketPlaceCreateStoreVC: AlysieBaseViewC ,TLPhotosPickerViewControllerDel
     @IBOutlet weak var view7: UIView!
     @IBOutlet weak var view8: UIView!
     @IBOutlet weak var view9: UIView!
-    @IBOutlet weak var imgCover: UIImageView!
-    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var imgCover: ImageLoader!
+    @IBOutlet weak var imgProfile: ImageLoader!
     @IBOutlet weak var btnCoverCameraImage: UIView!
     @IBOutlet weak var btnProfileCameraImage: UIView!
     @IBOutlet weak var collectionViewImage: UICollectionView!

@@ -36,8 +36,11 @@ extension MarketplaceAdTableVCell : UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "MarketplaceHomeImageCVC", for: indexPath) as? MarketplaceHomeImageCVC else {return UICollectionViewCell()}
         let baseUrl = self.topBannerData?[indexPath.row].attachment?.baseUrl ?? ""
-        let imgUrl = (baseUrl + (self.topBannerData?[indexPath.row].attachment?.attachmentURL ?? ""))
-        cell.image.setImage(withString: imgUrl)
+        let imgUrl = (baseUrl + (self.topBannerData?[indexPath.row].attachment?.attachmentURL ?? "").addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)
+        if imgUrl !=  "" {
+            let imageUrlAd = URL(string: imgUrl) ?? URL(string: "")!
+            cell.image.loadImageWithUrl(imageUrlAd )
+        }
         return cell
     }
     

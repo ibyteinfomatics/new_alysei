@@ -1058,6 +1058,7 @@ static var kTopFavproduct : String {  "Top Favourite Products".localizableString
 static var kWhatYouLookingFor : String {  "What are you looking for?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    
 static var kProduct : String {  "Product".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kProducts : String {  "Products".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     //MARK: Marketplace Search Screen
 static var kSearchForProductBrands : String { return "Search for product brands & more".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 

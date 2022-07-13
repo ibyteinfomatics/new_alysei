@@ -8,7 +8,7 @@
 import UIKit
 
 class EventsTableViewCell: UITableViewCell {
-    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var eventImage: ImageLoader!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -32,7 +32,10 @@ class EventsTableViewCell: UITableViewCell {
         // Initialization code
         
     }
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        eventImage.image = UIImage(named: "image_placeholder")
+    }
     var btnDeleteCallback:((Int) -> Void)? = nil
     var btnEditCallback:((Int) -> Void)? = nil
     var btnMoreCallback:((Int) -> Void)? = nil

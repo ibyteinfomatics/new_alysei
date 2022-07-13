@@ -11,10 +11,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue-Light.ttf">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -459,7 +457,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hOa-b9-HlO">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hOa-b9-HlO" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                                         <rect key="frame" x="5" y="5" width="390" height="190"/>
                                                                     </imageView>
                                                                 </subviews>
@@ -2719,7 +2717,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="308"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Awr-9J-Mjv">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Awr-9J-Mjv" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="10" width="414" height="180"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="180" id="6ja-qk-j3b"/>
@@ -2751,7 +2749,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="b82-9K-L90">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="b82-9K-L90" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                             <rect key="frame" x="30" y="140" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="b82-9K-L90" secondAttribute="height" multiplier="1:1" id="bEA-LJ-eC0"/>
@@ -3033,8 +3031,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imgCoverImg" destination="Awr-9J-Mjv" id="TXv-gc-Gka"/>
-                        <outlet property="imgStore" destination="b82-9K-L90" id="t0y-ae-3rm"/>
+                        <outlet property="imgCoverImg" destination="Awr-9J-Mjv" id="xek-JD-sb3"/>
+                        <outlet property="imgStore" destination="b82-9K-L90" id="1Mf-o0-sxX"/>
                         <outlet property="lblTitleCategories" destination="o8U-zE-Gzb" id="8Uz-TO-dpy"/>
                         <outlet property="lblTitleProduct" destination="uFI-aK-s0B" id="FRj-an-V77"/>
                         <outlet property="lblTotalCategories" destination="asj-gU-DH4" id="i0e-Dv-8MF"/>
@@ -3116,7 +3114,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-xb-OJL">
                                                             <rect key="frame" x="10" y="10" width="184" height="130"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="et5-8K-EOJ">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="et5-8K-EOJ" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="184" height="130"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -3250,7 +3248,7 @@
                                             <outlet property="containerView" destination="Rzr-xb-OJL" id="Kum-Vl-aaq"/>
                                             <outlet property="deleteButton" destination="eDa-YL-QRI" id="dcl-ed-Spk"/>
                                             <outlet property="editButton" destination="YhG-Al-ynz" id="joj-0c-QHQ"/>
-                                            <outlet property="imgProduct" destination="et5-8K-EOJ" id="1nj-2j-WBs"/>
+                                            <outlet property="imgProduct" destination="et5-8K-EOJ" id="mve-4V-eha"/>
                                             <outlet property="lblProductName" destination="pdN-5T-4kB" id="PwS-jq-bpD"/>
                                             <outlet property="lblRating" destination="tRk-6T-jJv" id="AcS-bN-ffC"/>
                                             <outlet property="lblReview" destination="sTf-Yo-rgT" id="mae-dO-MbC"/>
@@ -3609,7 +3607,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZk-H5-P6C">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1063"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2Qe-93-b91">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2Qe-93-b91" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="0.0" width="394" height="180"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="OLV-wo-hAc"/>
@@ -3638,7 +3636,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="fM6-ka-zXs"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon_normal" translatesAutoresizingMaskIntoConstraints="NO" id="iQt-VQ-X9S">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon_normal" translatesAutoresizingMaskIntoConstraints="NO" id="iQt-VQ-X9S" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="130" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="OJf-pv-wnL"/>
@@ -4105,8 +4103,8 @@
                         <outlet property="headerTitle" destination="Az2-pk-cxa" id="mJe-YH-Aca"/>
                         <outlet property="headerView" destination="3AI-rG-kPs" id="jqh-zq-GFb"/>
                         <outlet property="heightHeaderView" destination="fMs-Bo-fGO" id="DJK-HE-2w4"/>
-                        <outlet property="imgCover" destination="2Qe-93-b91" id="nKM-p7-xg7"/>
-                        <outlet property="imgProfile" destination="iQt-VQ-X9S" id="vnx-0Z-rWz"/>
+                        <outlet property="imgCover" destination="2Qe-93-b91" id="ycK-Ve-Dbg"/>
+                        <outlet property="imgProfile" destination="iQt-VQ-X9S" id="H1t-kP-kYd"/>
                         <outlet property="lblDescription" destination="B7I-hw-yF7" id="bz9-Gl-1F4"/>
                         <outlet property="lblEmail" destination="enf-9h-j7h" id="sKY-ii-SqB"/>
                         <outlet property="lblFdaNumber" destination="WGF-Qj-kqM" id="Mda-m0-WFN"/>
@@ -5647,7 +5645,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="arh-g3-eed">
-                                <rect key="frame" x="0.0" y="109" width="414" height="691"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductDetailTableVC" rowHeight="468" id="F2l-DV-24U" customClass="ProductDetailTableVC" customModule="Alysei" customModuleProvider="target">
@@ -5657,6 +5655,45 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Opm-jf-kut">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="293.66666666666669"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="O9C-51-RRm">
+                                                        <size key="itemSize" width="417" height="299.5"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductImageColectionViewCell" id="Taa-ZA-qcn" customClass="ProductImageColectionViewCell" customModule="Alysei" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="-3" width="417" height="299.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W1M-6d-2zb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="417" height="299.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="XDu-P8-T6g" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="417" height="299.66666666666669"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="XDu-P8-T6g" firstAttribute="leading" secondItem="W1M-6d-2zb" secondAttribute="leading" id="Co8-8C-UdG"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="XDu-P8-T6g" secondAttribute="trailing" id="Xfn-50-sSA"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="XDu-P8-T6g" secondAttribute="bottom" id="cYw-oZ-6k8"/>
+                                                                    <constraint firstItem="XDu-P8-T6g" firstAttribute="top" secondItem="W1M-6d-2zb" secondAttribute="top" id="dGa-C6-hVH"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <size key="customSize" width="417" height="299.5"/>
+                                                            <connections>
+                                                                <outlet property="imgProduct" destination="XDu-P8-T6g" id="eLo-qA-jxh"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="F2l-DV-24U" id="FMe-5Z-yFG"/>
+                                                        <outlet property="delegate" destination="F2l-DV-24U" id="a4A-hQ-vQT"/>
+                                                    </connections>
+                                                </collectionView>
                                                 <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-dR-075">
                                                     <rect key="frame" x="150.66666666666666" y="308.66666666666669" width="112.66666666666666" height="25"/>
                                                     <color key="pageIndicatorTintColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5734,45 +5771,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Opm-jf-kut">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="293.66666666666669"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="O9C-51-RRm">
-                                                        <size key="itemSize" width="417" height="299.5"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductImageColectionViewCell" id="Taa-ZA-qcn" customClass="ProductImageColectionViewCell" customModule="Alysei" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-3" width="417" height="299.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W1M-6d-2zb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="417" height="299.5"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="XDu-P8-T6g">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="417" height="299.66666666666669"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="XDu-P8-T6g" firstAttribute="leading" secondItem="W1M-6d-2zb" secondAttribute="leading" id="Co8-8C-UdG"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="XDu-P8-T6g" secondAttribute="trailing" id="Xfn-50-sSA"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="XDu-P8-T6g" secondAttribute="bottom" id="cYw-oZ-6k8"/>
-                                                                    <constraint firstItem="XDu-P8-T6g" firstAttribute="top" secondItem="W1M-6d-2zb" secondAttribute="top" id="dGa-C6-hVH"/>
-                                                                </constraints>
-                                                            </collectionViewCellContentView>
-                                                            <size key="customSize" width="417" height="299.5"/>
-                                                            <connections>
-                                                                <outlet property="imgProduct" destination="XDu-P8-T6g" id="551-RD-mAu"/>
-                                                            </connections>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="F2l-DV-24U" id="FMe-5Z-yFG"/>
-                                                        <outlet property="delegate" destination="F2l-DV-24U" id="a4A-hQ-vQT"/>
-                                                    </connections>
-                                                </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-uD-8nS">
                                                     <rect key="frame" x="349" y="15" width="50" height="50"/>
                                                     <constraints>
@@ -6592,7 +6590,7 @@
                             <constraint firstItem="KQz-0v-2IC" firstAttribute="leading" secondItem="qOB-Gy-TdU" secondAttribute="leading" id="CD7-9A-ncu"/>
                             <constraint firstItem="RWm-Ke-cUy" firstAttribute="leading" secondItem="qOB-Gy-TdU" secondAttribute="leading" id="M4v-J8-WtC"/>
                             <constraint firstItem="KQz-0v-2IC" firstAttribute="top" secondItem="qOB-Gy-TdU" secondAttribute="top" id="UXw-ud-X2R"/>
-                            <constraint firstItem="arh-g3-eed" firstAttribute="top" secondItem="KQz-0v-2IC" secondAttribute="bottom" constant="1" id="X8u-X2-xXQ"/>
+                            <constraint firstItem="arh-g3-eed" firstAttribute="top" secondItem="KQz-0v-2IC" secondAttribute="bottom" id="X8u-X2-xXQ"/>
                             <constraint firstItem="arh-g3-eed" firstAttribute="leading" secondItem="qOB-Gy-TdU" secondAttribute="leading" id="gkE-FK-G7F"/>
                             <constraint firstItem="RWm-Ke-cUy" firstAttribute="top" secondItem="arh-g3-eed" secondAttribute="bottom" constant="2" id="j6E-Ji-P2x"/>
                             <constraint firstItem="qOB-Gy-TdU" firstAttribute="bottom" secondItem="RWm-Ke-cUy" secondAttribute="bottom" id="m33-d9-vPa"/>
@@ -7072,13 +7070,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw6-Xd-wCJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="1078"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gfv-Ai-YId">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gfv-Ai-YId" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="5" y="5" width="404" height="180"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="180" id="Jcy-Tc-ioV"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="O8d-pI-PrD">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="O8d-pI-PrD" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="15" y="115" width="120" height="120"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="O8d-pI-PrD" secondAttribute="height" multiplier="1:1" id="GBf-sf-E9m"/>
@@ -7534,10 +7532,10 @@
                                         <connections>
                                             <outlet property="imageCollectionView" destination="zcB-70-Okg" id="E2F-pF-ZUo"/>
                                             <outlet property="imgCollectionViewHeight" destination="ooq-YV-eBi" id="ITj-eQ-iaw"/>
-                                            <outlet property="imgCover" destination="gfv-Ai-YId" id="nQz-kU-1cJ"/>
+                                            <outlet property="imgCover" destination="gfv-Ai-YId" id="AQg-fQ-TuD"/>
                                             <outlet property="imgLikeUnlike" destination="oYp-Lu-voz" id="dm8-lr-hNb"/>
                                             <outlet property="imgProducer" destination="YE4-xb-41c" id="5ho-tB-vfQ"/>
-                                            <outlet property="imgProfile" destination="O8d-pI-PrD" id="ifh-52-DfN"/>
+                                            <outlet property="imgProfile" destination="O8d-pI-PrD" id="0x7-m8-ln9"/>
                                             <outlet property="labelAvgRating" destination="i59-o7-OKp" id="a1S-ya-uOC"/>
                                             <outlet property="labelTotalReview" destination="qf2-Og-ozT" id="xLx-zp-Yoc"/>
                                             <outlet property="lblCategories" destination="Fb3-bd-Q62" id="crm-8R-42b"/>
@@ -8277,7 +8275,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon_active" translatesAutoresizingMaskIntoConstraints="NO" id="LYk-Fy-55a">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="LYk-Fy-55a">
                                                     <rect key="frame" x="15" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="drk-MA-wRo"/>
@@ -8340,6 +8338,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="28b-d0-r2X" secondAttribute="bottom" constant="5" id="5B7-K3-PUp"/>
                                                 <constraint firstItem="28b-d0-r2X" firstAttribute="leading" secondItem="fxh-zA-0nA" secondAttribute="leading" id="9fv-DI-6lC"/>
                                                 <constraint firstAttribute="trailing" secondItem="nfT-Hd-w72" secondAttribute="trailing" constant="10" id="HAj-td-GvD"/>
+                                                <constraint firstItem="28b-d0-r2X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LYk-Fy-55a" secondAttribute="bottom" constant="10" id="HC4-O1-L4Y"/>
                                                 <constraint firstItem="UBg-CG-uQ5" firstAttribute="leading" secondItem="Kw3-ub-lpa" secondAttribute="leading" id="Hme-4M-vy6"/>
                                                 <constraint firstItem="LYk-Fy-55a" firstAttribute="leading" secondItem="fxh-zA-0nA" secondAttribute="leading" constant="15" id="N57-eH-16j"/>
                                                 <constraint firstItem="Kw3-ub-lpa" firstAttribute="leading" secondItem="LYk-Fy-55a" secondAttribute="trailing" constant="20" id="QIq-lT-fFQ"/>
@@ -8486,7 +8485,7 @@
                                     <constraint firstAttribute="height" constant="20" id="sIh-er-kHx"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon_active" translatesAutoresizingMaskIntoConstraints="NO" id="m7H-Zd-0da">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="m7H-Zd-0da">
                                 <rect key="frame" x="15" y="164.66666666666666" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="m7H-Zd-0da" secondAttribute="height" multiplier="1:1" id="1Es-Ly-RhZ"/>
@@ -10750,7 +10749,6 @@
         <image name="search_icon_white" width="18" height="18"/>
         <image name="store_inactive" width="20" height="19"/>
         <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
-        <image name="user_icon_active" width="128" height="128"/>
         <image name="user_icon_normal" width="128" height="128"/>
         <image name="walkthrough_bg2" width="376" height="812"/>
         <namedColor name="blackColor">

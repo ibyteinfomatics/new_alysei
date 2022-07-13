@@ -25,7 +25,7 @@ enum checkHitApi : String{
     case distance = "Distance"
     case rating = " Ratings"
     case producers = "Producers"
-    case productName = "Product"
+    case productName = "Products"
 
 }
 enum checkItalianHitApi : String{
@@ -38,7 +38,7 @@ enum checkItalianHitApi : String{
     case distance =  "Distanza"
     case rating = " Recensioni"
     case producers =  "Produttori"
-    case productName =  "Prodotto"
+    case productName =  "Prodotti"
     
 }
 
@@ -57,11 +57,11 @@ class ProducerStoreFilterVC: UIViewController {
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
     var arrOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings,MarketPlaceConstant.kFDACertified]
     var arrConservationOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kFDACertified]
-    var arrRegionOption = [MarketPlaceConstant.kProduct,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
+    var arrRegionOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
     var arrCategoriesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
     var arrPropertiesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kCategories]
     //var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
-    var arrFdaCertifiedOption = [MarketPlaceConstant.kProduct,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories]
+    var arrFdaCertifiedOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories]
     var arrMyFavOption = [MarketPlaceConstant.kProducers,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kDistance,MarketPlaceConstant.kRatings]
     
     var arrDistance = [MarketPlaceConstant.kWithIn5Miles,MarketPlaceConstant.kWithIn10Miles,MarketPlaceConstant.kWithIn20Miles,MarketPlaceConstant.kWithIn40Miles,MarketPlaceConstant.kWithIn100Miles]

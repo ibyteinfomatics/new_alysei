@@ -126,8 +126,14 @@ class BlogDiscover: AlysieBaseViewC {
                     
         }
         
+        let imageString = String.getString((blogData[indexPath].attachment?.baseUrl ?? "") + (blogData[indexPath].attachment?.attachmentURL ?? "").addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)! )
+           if imageString != "" {
+            let imageBlogUrl = URL(string: imageString)!
+            blogTableCell.blogImage.loadImageWithUrl(imageBlogUrl)
+            
+        }
         
-        blogTableCell.blogImage.setImage(withString: String.getString((blogData[indexPath].attachment?.baseUrl ?? "") + (blogData[indexPath].attachment?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
+       // blogTableCell.blogImage.setImage(withString: String.getString((blogData[indexPath].attachment?.baseUrl ?? "") + (blogData[indexPath].attachment?.attachmentURL ?? "")), placeholder: UIImage(named: "image_placeholder"))
         
         return blogTableCell
         

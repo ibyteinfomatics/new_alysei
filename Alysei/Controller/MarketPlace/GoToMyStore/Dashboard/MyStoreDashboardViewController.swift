@@ -88,8 +88,8 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
   
   //@IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var imgCoverImg: UIImageView!
-    @IBOutlet weak var imgStore: UIImageView!
+    @IBOutlet weak var imgCoverImg: ImageLoader!
+    @IBOutlet weak var imgStore: ImageLoader!
     @IBOutlet weak var lblTotalProduct: UILabel!
     @IBOutlet weak var lblTotalCategories: UILabel!
     @IBOutlet weak var lblTitleProduct: UILabel!
@@ -116,8 +116,19 @@ class MyStoreDashboardViewController: UIViewController, MyStoreDashboardDisplayL
     //nameTextField.text = viewModel.name
   }
     func displayDashboardData(_ imgProfile: String, _ imgCover: String, _ totalProduct: Int, _ totalCategory: Int, _ totalEnquiry: Int, _ totalReview: Int, _ productCount: Int,_ logobaseUrl: String,_ bannerbaseUrl: String) {
-        self.imgStore.setImage(withString: logobaseUrl + String.getString(imgProfile))
-        self.imgCoverImg.setImage(withString: bannerbaseUrl + String.getString(imgCover))
+        
+        let imgString =  logobaseUrl + String.getString(imgProfile)
+        if imgString != "" {
+            let imageUrl = URL(string: imgString)!
+            self.imgStore.loadImageWithUrl(imageUrl)
+        }
+        let imgCover = bannerbaseUrl + String.getString(imgCover)
+            if imgCover != "" {
+                let imgUrlCover = URL(string: imgCover)!
+                self.imgCoverImg.loadImageWithUrl(imgUrlCover)
+            }
+        
+        
         self.lblTotalProduct.text = "\(productCount)"
         self.totalProduct = totalProduct
         self.totalCategory = totalCategory

@@ -910,7 +910,7 @@ extension MarketPlaceHomeVC{
 }
 
 class MarketplaceHomeImageCVC: UICollectionViewCell{
-    @IBOutlet weak  var image: UIImageView!
+    @IBOutlet weak  var image: ImageLoader!
     
     override func awakeFromNib() {
       //  image.layer.cornerRadius = 27

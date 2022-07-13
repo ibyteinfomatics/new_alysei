@@ -281,7 +281,14 @@ class TripsViewController: AlysieBaseViewC {
         tripTableCell.tripImage.clipsToBounds = true
         tripTableCell.tripImage.layer.cornerRadius = 5
         
-        tripTableCell.tripImage.setImage(withString: String.getString((tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+(tripModel?.data?[indexPath].attachment?.attachmentURL)! ?? ""), placeholder: UIImage(named: "image_placeholder"))
+        let imageString = (tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+((tripModel?.data?[indexPath].attachment?.attachmentURL)?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? "")
+        
+        if imageString != ""{
+            let imageUrlTrip = (URL(string: imageString) ?? URL(string: ""))!
+            tripTableCell.tripImage.loadImageWithUrl(imageUrlTrip)
+        }
+        
+       // tripTableCell.tripImage.setImage(withString: String.getString((tripModel?.data?[indexPath].user?.avatarID?.baseUrl ?? "")+(tripModel?.data?[indexPath].attachment?.attachmentURL)! ), placeholder: UIImage(named: "image_placeholder"))
         
         return tripTableCell
         

@@ -12,10 +12,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue-Light.ttf">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="Montserrat-Bold.ttf">
@@ -14197,7 +14195,7 @@ You will be notified for any membership status update.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-Qr-oV5">
                                                     <rect key="frame" x="8" y="8" width="359" height="334"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="fml-if-6Kg">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="fml-if-6Kg" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="359" height="180"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="180" id="bfd-eI-zr3"/>
@@ -14775,7 +14773,7 @@ You will be notified for any membership status update.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhh-Mg-Sxe">
                                                     <rect key="frame" x="0.0" y="5" width="375" height="415"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-YY-h8F">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-YY-h8F" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="180" id="xPN-WE-JgR"/>
@@ -14831,7 +14829,7 @@ You will be notified for any membership status update.</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="blogDescription" destination="0fn-fC-OWq" id="VJ9-Hh-MOP"/>
-                                            <outlet property="blogImage" destination="gEE-YY-h8F" id="sRh-6j-Bce"/>
+                                            <outlet property="blogImage" destination="gEE-YY-h8F" id="T0y-oF-dWE"/>
                                             <outlet property="blogTitle" destination="Ida-D9-SW5" id="xwe-WB-WJ8"/>
                                             <outlet property="imgUser" destination="u5C-K3-Ty0" id="6Gk-DI-K7E"/>
                                             <outlet property="vwContainer" destination="mhh-Mg-Sxe" id="u5o-mw-TBj"/>
@@ -14934,11 +14932,12 @@ You will be notified for any membership status update.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-Om-dyZ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-Om-dyZ" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="8" width="375" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="hxi-yJ-CxM"/>
                                                     </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-Yo-ozF">
                                                     <rect key="frame" x="185" y="18" width="180" height="35"/>
@@ -15083,7 +15082,7 @@ You will be notified for any membership status update.</string>
                                             <outlet property="btnInterested" destination="V6p-Yo-ozF" id="DyL-91-okv"/>
                                             <outlet property="btnInterestedWidth" destination="aeL-Gt-6ke" id="AHd-G7-iaG"/>
                                             <outlet property="dateTitle" destination="rHR-Pr-HAb" id="AHw-Z3-GNO"/>
-                                            <outlet property="eventImage" destination="hfw-Om-dyZ" id="QO9-Os-QXk"/>
+                                            <outlet property="eventImage" destination="hfw-Om-dyZ" id="DPA-h2-jm2"/>
                                             <outlet property="eventTitle" destination="ueE-c4-ys6" id="eEw-SY-Q37"/>
                                             <outlet property="hostTitle" destination="qob-T5-SXl" id="5BN-9e-RNO"/>
                                             <outlet property="lblLikeCount" destination="FI6-Ms-Iq6" id="3bV-Py-jzX"/>
@@ -18470,7 +18469,7 @@ You will be notified for any membership status update.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mk1-OB-nqm">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="pQp-Ck-kGc">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="pQp-Ck-kGc" customClass="ImageLoader" customModule="Alysei" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="8" width="375" height="315"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="180" id="McZ-6b-def"/>
@@ -18714,7 +18713,7 @@ You will be notified for any membership status update.</string>
                                             <outlet property="locationTitle" destination="9cf-QB-Ys7" id="Rhq-FT-5aU"/>
                                             <outlet property="priceTitle" destination="RsY-Lz-nwQ" id="ghu-XW-deW"/>
                                             <outlet property="travelTitle" destination="ZIM-1k-NGh" id="jio-wZ-bAm"/>
-                                            <outlet property="tripImage" destination="pQp-Ck-kGc" id="7Ag-Pp-eia"/>
+                                            <outlet property="tripImage" destination="pQp-Ck-kGc" id="CP5-K3-K1D"/>
                                             <outlet property="tripTitle" destination="cl2-ry-XYv" id="4wy-Qt-Nwd"/>
                                             <outlet property="userImage" destination="Tjg-wG-Xgk" id="j3t-5T-8jU"/>
                                             <outlet property="view1" destination="plb-Ht-Pou" id="Tg7-E5-ifj"/>

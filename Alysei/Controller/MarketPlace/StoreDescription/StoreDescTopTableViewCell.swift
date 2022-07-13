@@ -14,8 +14,8 @@ class StoreDescTopTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var imgCover : UIImageView!
-    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var imgCover : ImageLoader!
+    @IBOutlet weak var imgProfile: ImageLoader!
     @IBOutlet weak var labelAvgRating: UILabel!
     @IBOutlet weak var labelTotalReview: UILabel!
     @IBOutlet weak var lblTotalProducts: UILabel!
@@ -102,8 +102,21 @@ class StoreDescTopTableViewCell: UITableViewCell {
         lblCategories.text = "\(storeDetails.totalCategory ?? 0)"
          labelAvgRating.text = storeDetails.avg_rating
         labelTotalReview.text = (storeDetails.total_reviews ?? "0") + MarketPlaceConstant.kSpaceReview
-        self.imgProfile.setImage(withString: (storeDetails.logo_base_url ?? "") + String.getString(storeDetails.logo_id))
-        self.imgCover.setImage(withString: String.getString(storeDetails.banner_base_url) + String.getString(storeDetails.banner_id))
+        
+        let imageStringP = String.getString(storeDetails.logo_base_url ?? "") + String.getString(storeDetails.logo_id)
+        if imageStringP != "" {
+            let imageUrl = URL(string: imageStringP)!
+            imgProfile.loadImageWithUrl(imageUrl)
+        }
+        
+     
+      //  self.imgCover.setImage(withString: String.getString(storeDetails.banner_base_url) + String.getString(storeDetails.banner_id))
+        let imageString = String.getString(storeDetails.banner_base_url) + (String.getString(storeDetails.banner_id).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)
+        if imageString != "" {
+            let imageUrl = URL(string: imageString)!
+            imgCover.loadImageWithUrl(imageUrl)
+        }
+        
         self.imgProducer.setImage(withString: (storeDetails.prefilled?.avatarId?.baseUrl ?? "") + String.getString(storeDetails.prefilled?.avatarId?.attachmentUrl))
         
         if storeDetails.is_favourite == 0{

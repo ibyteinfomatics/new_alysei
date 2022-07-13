@@ -243,7 +243,12 @@ class TripDiscover: AlysieBaseViewC {
 //        tripTableCell.tripImage.layer.cornerRadius = 5
         
         let baseUrlImg = tripData[indexPath].attachment?.baseUrl ?? ""
-        tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentLargeUrl)! ), placeholder: UIImage(named: "image_placeholder"))
+       // tripTableCell.tripImage.setImage(withString: String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentLargeUrl)! ), placeholder: UIImage(named: "image_placeholder"))
+        let imageString = String.getString(baseUrlImg + (tripData[indexPath].attachment?.attachmentURL ?? "")).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+        if imageString != ""{
+            let imageSUrl = URL(string: imageString ?? "")!
+            tripTableCell.tripImage.loadImageWithUrl(imageSUrl)
+        }
         
         return tripTableCell
         

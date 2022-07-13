@@ -23,7 +23,7 @@ class ReviewScreenViewController: AlysieBaseViewC {
         super.viewDidLoad()
         headerView.drawBottomShadow()
         lblTitle.text = MarketPlaceConstant.kAddReview
-        lblSubTitle.text = MarketPlaceConstant.kReviews
+        lblSubTitle.text = MarketPlaceConstant.kCapReviews
         callGetReviewApi()
         // Do any additional setup after loading the view.
     }

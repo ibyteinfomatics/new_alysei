@@ -80,7 +80,12 @@ extension ProductDetailTableVC: UICollectionViewDelegate, UICollectionViewDataSo
        
       //  self.pageControl.currentPage = indexPath.row
         let baseUrl = data?.product_detail?.product_gallery?[indexPath.row].baseUrl ?? ""
-        cell.imgProduct.setImage(withString: baseUrl + String.getString(data?.product_detail?.product_gallery?[indexPath.row].attachment_url))
+        let imageString = (baseUrl + String.getString(data?.product_detail?.product_gallery?[indexPath.row].attachment_url).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)
+        if imageString != "" {
+            let imageUrlS = URL(string: imageString)!
+            cell.imgProduct.loadImageWithUrl(imageUrlS)
+        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -93,7 +98,7 @@ extension ProductDetailTableVC: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 class ProductImageColectionViewCell: UICollectionViewCell{
-    @IBOutlet weak var imgProduct: UIImageView!
+    @IBOutlet weak var imgProduct: ImageLoader!
     
     override func awakeFromNib() {
         super.awakeFromNib()

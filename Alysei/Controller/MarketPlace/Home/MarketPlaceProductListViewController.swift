@@ -771,9 +771,10 @@ class MarketPlaceProductListTableVCell: UITableViewCell{
         
         //if let imgUrl = URL(string: baseUrl + String.getString(data.product_gallery?.first?.attachment_url)){
         // self.imgProduct.loadImageUrl(imgUrl)
-         let imgUrl = String.getString(baseUrl + String.getString(data.product_gallery?.first?.attachment_url))
-      
-            self.imgProduct.setImage(withString: imgUrl)
+        let imgUrl = String.getString(baseUrl + String.getString(data.product_gallery?.first?.attachment_url)).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+        if  let imgProUrl = URL(string: imgUrl!){
+            self.imgProduct.loadImageWithUrl(imgProUrl)
+        }
         
         if (kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.restaurant.rawValue)" || kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.producer.rawValue)") {
             lblAvalblForSample.isHidden = true

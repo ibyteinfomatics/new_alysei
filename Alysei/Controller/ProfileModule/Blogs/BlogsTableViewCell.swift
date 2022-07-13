@@ -8,7 +8,7 @@
 import UIKit
 
 class BlogsTableViewCell: UITableViewCell {
-    @IBOutlet weak var blogImage: UIImageView!
+    @IBOutlet weak var blogImage: ImageLoader!
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogDescription: UILabel!
     @IBOutlet weak var editButton: UIButton!

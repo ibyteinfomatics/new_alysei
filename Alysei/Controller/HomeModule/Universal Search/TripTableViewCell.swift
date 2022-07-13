@@ -23,7 +23,7 @@ class TripTableViewCell: UITableViewCell {
 //    @IBOutlet weak var duview6: UIView!
 //    @IBOutlet weak var duview7: UIView!
     
-    @IBOutlet weak var tripImage: UIImageView!
+    @IBOutlet weak var tripImage: ImageLoader!
     @IBOutlet weak var tripTitle: UILabel!
     @IBOutlet weak var travelTitle: UILabel!
     @IBOutlet weak var locationTitle: UILabel!
