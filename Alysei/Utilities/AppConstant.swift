@@ -1085,6 +1085,8 @@ static var kWithIn40Miles  : String { "Within 40 Miles".localizableString(loc: k
 static var kWithIn100Miles  : String {  "Within 100 Miles".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kMostratedstores  : String { "Most rated stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var k5StarStores  : String {  "5 star stores".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
+    static var kMostSearched  : String { "Most Searched".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kSortByAtoZ  : String {  "Sort by A to Z".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 static var kSortByZtoA  : String {  "Sort by Z to A".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
    // static let kFilter = "Filters"

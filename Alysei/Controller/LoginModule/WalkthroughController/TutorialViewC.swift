@@ -102,11 +102,11 @@ extension TutorialViewC: GetStartedDelegate{
         self.collectionViewTutorial.reloadItems(at: [indexPath])
       }
       else{
-        _ = pushViewController(withName: LoginAccountViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
+        _ = pushViewController(withName: AuthenticationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
       }
     }
     else if btn == cell.btnSkip{
-      _ = pushViewController(withName: LoginAccountViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
+      _ = pushViewController(withName: AuthenticationViewC.id(), fromStoryboard: StoryBoardConstants.kLogin)
     }
   }
 

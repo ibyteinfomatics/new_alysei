@@ -65,7 +65,7 @@ class ProducerStoreFilterVC: UIViewController {
     var arrMyFavOption = [MarketPlaceConstant.kProducers,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kDistance,MarketPlaceConstant.kRatings]
     
     var arrDistance = [MarketPlaceConstant.kWithIn5Miles,MarketPlaceConstant.kWithIn10Miles,MarketPlaceConstant.kWithIn20Miles,MarketPlaceConstant.kWithIn40Miles,MarketPlaceConstant.kWithIn100Miles]
-    var arrRating = [MarketPlaceConstant.kMostratedstores,MarketPlaceConstant.k5StarStores]
+    var arrRating = [MarketPlaceConstant.kMostratedstores,MarketPlaceConstant.k5StarStores,MarketPlaceConstant.kMostSearched]
     var arrFdaCertified = [MarketPlaceConstant.kYes,MarketPlaceConstant.kNo]
     var arrSortProducer = [MarketPlaceConstant.kSortByAtoZ,MarketPlaceConstant.kSortByZtoA]
     var arrFilterOptions = [FilterModel]()

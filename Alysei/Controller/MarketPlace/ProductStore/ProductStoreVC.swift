@@ -106,8 +106,9 @@ class ProductStoreVC: UIViewController {
         nextVC.selectedOptionsMethod = self.selectedOptionsMethod
         nextVC.arrSelectedPropertiesName = self.arrSelectedPropertiesName
         nextVC.arrSelectedMethodName = self.arrSelectedMethodName
-        nextVC.callApiCallBack = {
-            arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+        nextVC.callApiCallBack = { arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
+            
+            self.isSearch = true
            
             self.arrListData = [MyStoreProductDetail]()
             self.indexOfPageToRequest = 1

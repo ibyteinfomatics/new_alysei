@@ -193,7 +193,7 @@ class MarketPlaceProductListViewController: UIViewController {
         
         nextVC.callApiCallBack = {
             arrSelectedCategories,arrSelectedProperties,arrSelectedItalianRegion,arrSelectedDistance,arrSelectedRating,selectFdaCertified,selectedSortProducer,selectedOptionsMethod,arrSelectedPropertiesName,arrSelectedMethodName in
-            
+            self.isSearch = true
             self.arrListAppData = [ProductSearchListModel]()
             self.arrSelectedCategories = nextVC.arrSelectedCategories
             self.arrSelectedProperties = nextVC.arrSelectedProperties
@@ -450,13 +450,13 @@ extension MarketPlaceProductListViewController{
                     self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                 }
             }
-                if self.arrListAppData.count == 0 {
-                    self.blankScreen.isHidden = false
-                }else{
-                    self.blankScreen.isHidden = true
-                }
+//                if self.arrListAppData.count == 0 {
+//                    self.blankScreen.isHidden = false
+//                }else{
+//                    self.blankScreen.isHidden = true
+//                }
             case 409:
-                if self.indexOfPageToRequest == 1{
+                if pageNo == 1{
                     self.blankScreen.isHidden = false
                 }
             default:
@@ -569,7 +569,9 @@ extension MarketPlaceProductListViewController{
     func callBoxFilterApi(_ arrSelectedCategories: [Int]?, _ arrSelectedProperties: [Int]?,_ arrSelectedItalianRegion: [Int]?,_ arrSelectedDistance: [Int]?,_ arrSelectedRating: [Int]?,_ selectFdaCertified: [Int]?,_ selectedSortProducer: [Int]?,_ selectedOptionsMethod: [Int]?, _ arrSelectedPropertiesName: [String]?,_ arrSelectedMethodName: [String]?, _ page: Int?){
         
         // let formattedPropertiesArray = (arrSelectedPropertiesName.map{String($0)}).joined(separator: ",")
+        if indexOfPageToRequest == 1 {
         self.arrListAppData = [ProductSearchListModel]()
+        }
         let selectedPropertyString = arrSelectedPropertiesName?.joined(separator: ",")
         selectePropertiesFilterName = selectedPropertyString
         
@@ -655,9 +657,10 @@ extension MarketPlaceProductListViewController{
                     for i in 0..<(self.arrList?.count ?? 0){
                         self.arrListAppData.append(self.arrList?[i] ?? ProductSearchListModel(with: [:]))
                     }
-                }else{
-                    self.arrListAppData = [ProductSearchListModel]()
                 }
+//                else{
+//                    self.arrListAppData = [ProductSearchListModel]()
+//                }
                 if self.arrListAppData.count == 0 {
                     self.blankScreen.isHidden = false
                 }else{
