@@ -26,8 +26,7 @@ class CookingViewController: UIViewController {
         super.viewDidLoad()
       
        // cookingSkillLabel.text = RecipeConstants.kCkngSkill
-        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+       
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
@@ -42,6 +41,12 @@ class CookingViewController: UIViewController {
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         preferenceNumber = 5
         getSavedCookingMyPreferences()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
     }
     
     @IBAction func tapSave(_ sender: Any) {

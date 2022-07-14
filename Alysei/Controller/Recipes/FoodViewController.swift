@@ -27,8 +27,7 @@ class FoodViewController: UIViewController {
         super.viewDidLoad()
        
         //foodAllergyLabel.text = RecipeConstants.kPreference2
-        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+      
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -45,7 +44,11 @@ class FoodViewController: UIViewController {
         getSavedFoodMyPreferences()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+    }
     
     @IBAction func tapSave(_ sender: Any) {
         

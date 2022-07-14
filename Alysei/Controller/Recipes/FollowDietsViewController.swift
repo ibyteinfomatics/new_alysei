@@ -27,9 +27,7 @@ class FollowDietsViewController: AlysieBaseViewC {
         preferenceNumber = 3
         
        // followDietLabel.text = RecipeConstants.kPreference3
-        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
-        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
+        
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
@@ -45,7 +43,12 @@ class FollowDietsViewController: AlysieBaseViewC {
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
+    }
     
     @IBAction func tapNextToingridient(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{

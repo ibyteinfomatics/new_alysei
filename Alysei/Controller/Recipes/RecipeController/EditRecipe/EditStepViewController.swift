@@ -80,11 +80,7 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        headerLabel.text = RecipeConstants.kAddStepsRecipe
-        ingridientUsedLabel.text = RecipeConstants.kIngridientUsed
-        toolsUsedLabel.text = RecipeConstants.kToolUsed
-        nextButton.setTitle(RecipeConstants.kNext, for: .normal)
-        
+      
         addStepsCollectionView.delegate = self
         addStepsCollectionView.dataSource = self
         
@@ -115,6 +111,14 @@ class EditStepViewController: UIViewController, UITextFieldDelegate, UITextViewD
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        headerLabel.text = RecipeConstants.kAddStepsRecipe
+        ingridientUsedLabel.text = RecipeConstants.kIngridientUsed
+        toolsUsedLabel.text = RecipeConstants.kToolUsed
+        nextButton.setTitle(RecipeConstants.kNext, for: .normal)
+        
+    }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

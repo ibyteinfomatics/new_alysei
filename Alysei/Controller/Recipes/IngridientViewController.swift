@@ -40,10 +40,7 @@ class IngridientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
-       // seeIngedientLabel.text = RecipeConstants.kPreference4
-        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+       
         callChooseIngridients()
         scrollView.isScrollEnabled = false
         searchViewHeight.constant = 130
@@ -66,8 +63,17 @@ class IngridientViewController: UIViewController {
         searchTableView.dataSource = self
         searchTextField.delegate = self
         searchTextField.autocorrectionType = .no
-        searchTextField.placeholder = RecipeConstants.kSearchOtherIngredient
+     
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchTextField.placeholder = RecipeConstants.kSearchOtherIngredient
+        addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
+       // seeIngedientLabel.text = RecipeConstants.kPreference4
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
     }
     
     

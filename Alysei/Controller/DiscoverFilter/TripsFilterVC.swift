@@ -70,10 +70,6 @@ class TripsFilterVC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
-        lblTitle.text = MarketPlaceConstant.kFilter
-        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
-        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
-        setData()
         vw1.addBorder()
         vw2.addBorder()
         vw3.addBorder()
@@ -105,7 +101,13 @@ class TripsFilterVC: AlysieBaseViewC {
         
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setData()
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
+    }
     func setData(){
         if passSelectedCountry == "" || passSelectedCountry == nil {
             countryLabel.text = AppConstants.kCapCountry

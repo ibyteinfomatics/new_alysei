@@ -23,13 +23,16 @@ class NewChat: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.blankview.isHidden = true
-        lblheading.text = AppConstants.kNewChat
-        lblBlankView.text = AppConstants.kThereIsNoNewChat
+        
         callConnectionApi()
         // Do any additional setup after loading the view.
     }
        
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblheading.text = AppConstants.kNewChat
+        lblBlankView.text = AppConstants.kThereIsNoNewChat
+    }
       
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()

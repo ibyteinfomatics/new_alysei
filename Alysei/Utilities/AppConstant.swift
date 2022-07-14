@@ -1036,7 +1036,8 @@ static var kConservationMethod : String {"Conservation Method".localizableString
 static var kItalianRegion : String {"Italian Regions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kCategories : String { "Categories".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-
+    static var kProductCategories : String { "Product Category".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+   
 static var kProductProperties : String {  "Product Properties".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
 
 static var kFDACertified : String {"FDA Certified".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -2042,10 +2043,10 @@ struct StaticArrayData {
                                         (image: "producers", name: MarketPlaceConstant.kItalianFBProducers),
     ]
     
-    static let kNetworkCategoryDict = [(image: "invitations", name: AppConstants.kInvitations),
-                                       (image: "connections", name: AppConstants.kConnections),
-                                       (image: "pending", name: AppConstants.kPending),
-                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: AppConstants.kFollowing) : (image: "followers", name: AppConstants.Followers)]
+//    static let kNetworkCategoryDict = [(image: "invitations", name: AppConstants.kInvitations),
+//                                       (image: "connections", name: AppConstants.kConnections),
+//                                       (image: "pending", name: AppConstants.kPending),
+//                                       kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: AppConstants.kFollowing) : (image: "followers", name: AppConstants.Followers)]
     
     //  static let kRoleSelectionDict = [(image: "select_role1", name: "Italian F&B Producers"),
     //                                 (image: "select_role2", name: "US Importers & Distributors"),

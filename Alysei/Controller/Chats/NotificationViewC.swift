@@ -29,14 +29,13 @@ class NotificationViewC: AlysieBaseViewC{
   override func viewDidLoad() {
     super.viewDidLoad()
     //self.tblViewNotification.tableFooterView = UIView()
-      lblHeading.text = MarketPlaceConstant.kMessages
-      self.lblBlankView.text = AppConstants.kThereIsNoMessage
+     
       self.blankview.isHidden = false
     receiveUsers()
       
     
   }
-    
+
     func receiveUsers() {
         
         kChatharedInstance.receiveResentUsers(userid:String.getString(kSharedUserDefaults.loggedInUserModal.userId)) { (users) in
@@ -52,6 +51,8 @@ class NotificationViewC: AlysieBaseViewC{
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        lblHeading.text = MarketPlaceConstant.kMessages
+        self.lblBlankView.text = AppConstants.kThereIsNoMessage
     }
     
     @IBAction func newChat(_ sender: UIButton) {

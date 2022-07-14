@@ -39,13 +39,9 @@ class RestaurantFilterVC: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblTitle.text = MarketPlaceConstant.kFilter
-        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
-        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
         vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()
-        setData()
         getRestaurant()
         getHub()
         
@@ -56,7 +52,13 @@ class RestaurantFilterVC: AlysieBaseViewC {
         self.vw2.addGestureRecognizer(restauTap)
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
+        setData()
+    }
     func setData(){
         if self.passHubs == "" || self.passHubs == nil{
             self.lblhubs.text = AppConstants.Hubs

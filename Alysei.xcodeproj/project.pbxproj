@@ -454,6 +454,10 @@
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
 		6BDFD75F28745CAF0065D158 /* FreshChatSupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDFD75E28745CAF0065D158 /* FreshChatSupportVC.swift */; };
 		6BE430AE2845ED200000A897 /* InquiryConverstionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */; };
+		6BE64350287FD6050068130F /* aps_development (1).cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6434F287FD6050068130F /* aps_development (1).cer */; };
+		6BE64352287FD6590068130F /* ProductionSSL(PushNoti).cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */; };
+		6BE64354287FD7AA0068130F /* AlyseiDevCer.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */; };
+		6BE64356287FDD170068130F /* Alysei_Dev_14July.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */; };
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
@@ -1158,6 +1162,10 @@
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
 		6BDFD75E28745CAF0065D158 /* FreshChatSupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshChatSupportVC.swift; sourceTree = "<group>"; };
 		6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryConverstionController.swift; sourceTree = "<group>"; };
+		6BE6434F287FD6050068130F /* aps_development (1).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "aps_development (1).cer"; sourceTree = "<group>"; };
+		6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProductionSSL(PushNoti).cer"; sourceTree = "<group>"; };
+		6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiDevCer.cer; sourceTree = "<group>"; };
+		6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alysei_Dev_14July.mobileprovision; sourceTree = "<group>"; };
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
@@ -2020,6 +2028,7 @@
 				611BD9FA268C3D2900EAD7B5 /* CHANGELOG.md */,
 				6B79E66226E74B3400B2D434 /* Alysei.entitlements */,
 				27BC688225AC564100A01B6A /* Alysei */,
+				6BE6434E287FD5DF0068130F /* AlyseiCer */,
 				27BC688125AC564100A01B6A /* Products */,
 				C4D53758216B553EA7E32FEE /* Pods */,
 				8136D8C240C91EF7F5CD1719 /* Frameworks */,
@@ -2709,6 +2718,17 @@
 			path = FreshChat;
 			sourceTree = "<group>";
 		};
+		6BE6434E287FD5DF0068130F /* AlyseiCer */ = {
+			isa = PBXGroup;
+			children = (
+				6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */,
+				6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */,
+				6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */,
+				6BE6434F287FD6050068130F /* aps_development (1).cer */,
+			);
+			path = AlyseiCer;
+			sourceTree = "<group>";
+		};
 		8136D8C240C91EF7F5CD1719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3355,6 +3375,7 @@
 				6B3CB130274BC10D00D5E683 /* EventTableViewCell.xib in Resources */,
 				6B7CACC026FDD3CA00096E79 /* SanFranciscoText-SemiboldItalic.otf in Resources */,
 				6B89924B2702E90000591A2E /* RecipeIngredientsUsedTableViewCell.xib in Resources */,
+				6BE64354287FD7AA0068130F /* AlyseiDevCer.cer in Resources */,
 				6B3CB132274BC10D00D5E683 /* CompanyTableViewCell.xib in Resources */,
 				6B3CB136274BC10D00D5E683 /* PostTableViewCell.xib in Resources */,
 				6B7CACC626FDD3CA00096E79 /* SanFranciscoText-Semibold.otf in Resources */,
@@ -3381,6 +3402,8 @@
 				6B97B09E2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib in Resources */,
 				6B7AF261270EAC8800C48528 /* MyRecipeTableViewCell.xib in Resources */,
 				6B4CCF4027D9D21600626D70 /* Recipe.storyboard in Resources */,
+				6BE64352287FD6590068130F /* ProductionSSL(PushNoti).cer in Resources */,
+				6BE64350287FD6050068130F /* aps_development (1).cer in Resources */,
 				27A443D025AE03720002BAAC /* Montserrat-ThinItalic.ttf in Resources */,
 				6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */,
 				6B4CCF0727D9D19600626D70 /* UpdateProfile.storyboard in Resources */,
@@ -3420,6 +3443,7 @@
 				6B7CACBE26FDD3CA00096E79 /* SanFranciscoText-LightItalic.otf in Resources */,
 				61C7BE3D267C8A82006DB3BB /* Flag.xib in Resources */,
 				6B7CACCD26FDD3CA00096E79 /* SanFranciscoDisplay-Thin.otf in Resources */,
+				6BE64356287FDD170068130F /* Alysei_Dev_14July.mobileprovision in Resources */,
 				27A443D325AE03720002BAAC /* Montserrat-Bold.ttf in Resources */,
 				6B3CB12D274BC10D00D5E683 /* PeopelTableViewCell.xib in Resources */,
 				6B7CACC526FDD3CA00096E79 /* SanFranciscoText-Medium.otf in Resources */,

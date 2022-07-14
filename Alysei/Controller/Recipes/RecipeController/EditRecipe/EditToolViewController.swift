@@ -55,7 +55,7 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        searchToolTextField.placeholder = RecipeConstants.kSearchTools
         addToolsTableView.reloadData()
         
     }
@@ -77,11 +77,12 @@ class EditToolViewController: UIViewController, EditToolTableViewCellProtocol, A
         self.addMissingToolTableView.delegate = self
         self.addMissingToolTableView.dataSource = self
         
-        searchToolTextField.placeholder = RecipeConstants.kSearchTools
+      
         headerLabel.text = RecipeConstants.kEditTool
         saveButton.setTitle(RecipeConstants.kSaveTool, for: .normal)
         
     }
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

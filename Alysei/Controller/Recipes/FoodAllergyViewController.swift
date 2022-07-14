@@ -27,9 +27,7 @@ class FoodAllergyViewController: AlysieBaseViewC {
         preferenceNumber = 2
         
        // foodAllergyLabel.text = RecipeConstants.kPreference2
-        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
-        btnSkip.setTitle(RecipeConstants.kSkip, for: .normal)
+       
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: nil ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         //disableWindowInteraction()
@@ -45,6 +43,13 @@ class FoodAllergyViewController: AlysieBaseViewC {
         
         postRequestToGetFoodIntolerance()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        btnSkip.setTitle(RecipeConstants.kSkip, for: .normal)
     }
     @IBAction func tapNextToDiets(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{

@@ -16,8 +16,8 @@ enum loadFilter{
     case myFav
 }
 enum checkHitApi : String{
-    case method = "Method"
-    case categories = "Categories"
+    case method = "Conservation Method"
+    case categories = "Product Category"
     case properties = "Properties"
     case fdaCertified = "FDA Certified"
     case sortProducer
@@ -30,7 +30,7 @@ enum checkHitApi : String{
 }
 enum checkItalianHitApi : String{
     case method = "Metodo"
-    case categories = "Categorie"
+    case categories = "Metodo di Conservazione"
     case properties = "Proprietà"
     case fdaCertified = "Certificato FDA"
     case sortProducer
@@ -55,14 +55,14 @@ class ProducerStoreFilterVC: UIViewController {
     var selectedIndex = 0
     
         //var arrOption = ["Categories","Properties","Italian Region","Distance","Ratings"]
-    var arrOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings,MarketPlaceConstant.kFDACertified]
-    var arrConservationOption = [MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kFDACertified]
-    var arrRegionOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
-    var arrCategoriesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
-    var arrPropertiesOption = [MarketPlaceConstant.kMethod,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kCategories]
+    var arrOption = [MarketPlaceConstant.kProductCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kRatings,MarketPlaceConstant.kFDACertified]
+    var arrConservationOption = [MarketPlaceConstant.kProductCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kFDACertified]
+    var arrRegionOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kProductCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
+    var arrCategoriesOption = [MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified]
+    var arrPropertiesOption = [MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kProductCategories]
     //var arrFdaCertifiedOption = ["Producers","Product Name","Italian Region","Categories"]
-    var arrFdaCertifiedOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kCategories]
-    var arrMyFavOption = [MarketPlaceConstant.kProducers,MarketPlaceConstant.kMethod,MarketPlaceConstant.kCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kDistance,MarketPlaceConstant.kRatings]
+    var arrFdaCertifiedOption = [MarketPlaceConstant.kProducts,MarketPlaceConstant.kItalianRegion,MarketPlaceConstant.kProductCategories]
+    var arrMyFavOption = [MarketPlaceConstant.kProducers,MarketPlaceConstant.kConservationMethod,MarketPlaceConstant.kProductCategories,MarketPlaceConstant.kProperties,MarketPlaceConstant.kFDACertified,MarketPlaceConstant.kDistance,MarketPlaceConstant.kRatings]
     
     var arrDistance = [MarketPlaceConstant.kWithIn5Miles,MarketPlaceConstant.kWithIn10Miles,MarketPlaceConstant.kWithIn20Miles,MarketPlaceConstant.kWithIn40Miles,MarketPlaceConstant.kWithIn100Miles]
     var arrRating = [MarketPlaceConstant.kMostratedstores,MarketPlaceConstant.k5StarStores,MarketPlaceConstant.kMostSearched]

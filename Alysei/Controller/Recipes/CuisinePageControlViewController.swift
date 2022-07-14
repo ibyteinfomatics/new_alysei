@@ -30,7 +30,7 @@ class CuisinePageControlViewController: UIViewController {
         super.viewDidLoad()
         
     //    favCuisineLabel.text = RecipeConstants.kPreference1
-        btnCusineNext.setTitle(RecipeConstants.kNext, for: .normal)
+       
         preferenceNumber = 1
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
@@ -44,6 +44,8 @@ class CuisinePageControlViewController: UIViewController {
         
         postRequestToGetCuisine()
     }
+    
+
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -55,6 +57,7 @@ class CuisinePageControlViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        btnCusineNext.setTitle(RecipeConstants.kNext, for: .normal)
         tabBarController?.tabBar.isHidden = true
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true

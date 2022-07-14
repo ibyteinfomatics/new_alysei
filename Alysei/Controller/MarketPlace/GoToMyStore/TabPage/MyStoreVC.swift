@@ -40,10 +40,7 @@ class MyStoreVC: AlysieBaseViewC {
         //stackView.addSubview
         self.loadDashboard()
         selectDashboardUI()
-        lblDashboard.text = MarketPlaceConstant.kDashboard
-        lblStore.text = MarketPlaceConstant.kStore
-        lblProduct.text = MarketPlaceConstant.kProduct
-        lblInquiry.text = MarketPlaceConstant.kInquiries
+       
         let dashboardTap = UITapGestureRecognizer(target: self, action: #selector(loadDashboard))
         self.dashboardView.addGestureRecognizer(dashboardTap)
         
@@ -57,6 +54,14 @@ class MyStoreVC: AlysieBaseViewC {
         self.inquiryView.addGestureRecognizer(inquiryTap)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblDashboard.text = MarketPlaceConstant.kDashboard
+        lblStore.text = MarketPlaceConstant.kStore
+        lblProduct.text = MarketPlaceConstant.kProduct
+        lblInquiry.text = MarketPlaceConstant.kInquiries
     }
     func selectDashboardUI(){
         viewContDashboard.layer.backgroundColor = UIColor.init(hexString: "#37A282").cgColor

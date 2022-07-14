@@ -52,13 +52,6 @@ class EditScreen2ViewController: UIViewController  {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveButton.setTitle(RecipeConstants.kSaveEditRecipe, for: .normal)
-        btnEditSave.setTitle(RecipeConstants.kSave, for: .normal)
-        quantityLabel.text = RecipeConstants.kQuantity
-        unitLabel.text = RecipeConstants.kUnit
-        editquantityTextField.placeholder = RecipeConstants.kEnterQuantity
-        
         setupUI()
         editscreenTableView.dataSource = self
         editscreenTableView.delegate = self
@@ -83,6 +76,15 @@ class EditScreen2ViewController: UIViewController  {
         super.viewWillLayoutSubviews()
 
         headerViewUp.drawBottomShadow()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        saveButton.setTitle(RecipeConstants.kSaveEditRecipe, for: .normal)
+        btnEditSave.setTitle(RecipeConstants.kSave, for: .normal)
+        quantityLabel.text = RecipeConstants.kQuantity
+        unitLabel.text = RecipeConstants.kUnit
+        editquantityTextField.placeholder = RecipeConstants.kEnterQuantity
     }
     func setupUI(){
         addEditQuantityView.layer.borderWidth = 1

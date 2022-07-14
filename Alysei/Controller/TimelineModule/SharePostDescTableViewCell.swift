@@ -195,9 +195,9 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.restaurant.rawValue{
         userName.text = modelData.sharedPostData?.subjectId?.restaurantName?.capitalized
     }else if(modelData.sharedPostData?.subjectId?.roleId == UserRoles.voyagers.rawValue){
-        userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        userName.text = "\(modelData.sharedPostData?.subjectId?.firstName?.capitalized ?? "") \(modelData.sharedPostData?.subjectId?.lastName?.capitalized ?? "")"
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
-        userName.text = "\(modelData.sharedPostData?.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+        userName.text = "\(modelData.sharedPostData?.subjectId?.firstName?.capitalized ?? "") \(modelData.sharedPostData?.subjectId?.lastName?.capitalized ?? "")"
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.distributer1.rawValue {
         userName.text = modelData.sharedPostData?.subjectId?.companyName?.capitalized
     }else if modelData.sharedPostData?.subjectId?.roleId == UserRoles.distributer2.rawValue{

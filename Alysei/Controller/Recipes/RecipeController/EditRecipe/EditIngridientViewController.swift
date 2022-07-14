@@ -67,23 +67,11 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
     var singleUsedIngridientData: UsedIngridientDataModel?
     var arrayMyRecipe: [HomeTrending]? = []
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        addIngridientsTableView.reloadData()
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        headerLabel.text = RecipeConstants.kEditRecipeIngredient
-        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
-        quantityLabel.text = RecipeConstants.kQuantity
-        unitLabelTitle.text = RecipeConstants.kUnit
-        addsaveButton.setTitle(RecipeConstants.kAddtoList, for: .normal)
-        saveButton.setTitle(RecipeConstants.kSaveIngridients, for: .normal)
-        
-        
+       
         picker1.delegate = self
         picker1.dataSource = self
         self.addNewMissingIngridientBtn.isHidden = true
@@ -105,12 +93,26 @@ class EditIngridientViewController: UIViewController, EditIngridientsTableViewCe
         self.addMissingIngridientsTableView.dataSource = self
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addIngridientsTableView.reloadData()
+        
+        headerLabel.text = RecipeConstants.kEditRecipeIngredient
+        searchIngridientTextField.placeholder = RecipeConstants.kSearchIngredients
+        quantityLabel.text = RecipeConstants.kQuantity
+        unitLabelTitle.text = RecipeConstants.kUnit
+        addsaveButton.setTitle(RecipeConstants.kAddtoList, for: .normal)
+        saveButton.setTitle(RecipeConstants.kSaveIngridients, for: .normal)
+        
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         addIngredientsView.drawBottomShadow()
     }
+    
+    
     func setUI(){
         
         addIngredientsView.layer.masksToBounds = false

@@ -37,14 +37,9 @@ class BlogFilterVC: AlysieBaseViewC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
-        lblTitle.text = MarketPlaceConstant.kFilter
-        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
-        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
         vwHeader.drawBottomShadow()
         vw1.addBorder()
         vw2.addBorder()
-        
         getSpecialization()
         callTitleApi()
         let specializationTap = UITapGestureRecognizer(target: self, action: #selector(openSpecializationdropDown))
@@ -55,6 +50,13 @@ class BlogFilterVC: AlysieBaseViewC {
         
         
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setData()
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
     }
     func setData(){
         if self.passSpecialization == "" || self.passSpecialization == nil{

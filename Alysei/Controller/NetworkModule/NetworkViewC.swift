@@ -36,7 +36,7 @@ class NetworkViewC: AlysieBaseViewC {
     var arrConnection =  [Datum]()
     var indexOfPageToRequest = 1
   //MARK: - ViewLifeCycle Methods -
-  
+    var kNetworkCategoryDictnry:  [(image: String, name: String)]?
   override func viewDidLoad() {
    super.viewDidLoad()
       
@@ -83,6 +83,12 @@ class NetworkViewC: AlysieBaseViewC {
         }
         
         //callConnectionApi(api: APIUrl.kConnectionTabApi1)
+         kNetworkCategoryDictnry = [(image: "invitations", name: AppConstants.kInvitations),
+                                          (image: "connections", name: AppConstants.kConnections),
+                                          (image: "pending", name: AppConstants.kPending),
+                                          kSharedUserDefaults.loggedInUserModal.memberRoleId == "10" ? (image: "following", name: AppConstants.kFollowing) : (image: "followers", name: AppConstants.Followers)]
+       
+        collectionViewNetworkCategory.reloadData()
         
     }
     
@@ -224,6 +230,7 @@ class NetworkViewC: AlysieBaseViewC {
     let networkCategoryCollectionCell = collectionViewNetworkCategory.dequeueReusableCell(withReuseIdentifier: NetworkCategoryCollectionCell.identifier(), for: indexPath) as! NetworkCategoryCollectionCell
     networkCategoryCollectionCell.viewNetwork.layer.cornerRadius = networkCategoryCollectionCell.viewNetwork.frame.height / 2
     networkCategoryCollectionCell.lblNetworkCount.isHidden = true
+      networkCategoryCollectionCell.kNetworkCategoryDictnry = self.kNetworkCategoryDictnry
     networkCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: networkcurrentIndex)
     return networkCategoryCollectionCell
   }
@@ -436,7 +443,7 @@ extension NetworkViewC: UICollectionViewDelegate, UICollectionViewDataSource,UIC
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    return StaticArrayData.kNetworkCategoryDict.count
+      return self.kNetworkCategoryDictnry?.count ?? 0
   }
     
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

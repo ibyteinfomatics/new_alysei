@@ -32,7 +32,7 @@ class EventDiscover: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblTitle.text = AppConstants.kEvents
+       
         eventId = "events"
         vwHeader.drawBottomShadow()
         eventsTableView.delegate = self
@@ -51,7 +51,10 @@ class EventDiscover: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblTitle.text = AppConstants.kEvents
+    }
     
     
     @IBAction func filterBtn(_ sender: UIButton) {

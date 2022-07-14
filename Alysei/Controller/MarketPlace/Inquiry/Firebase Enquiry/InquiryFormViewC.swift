@@ -39,6 +39,13 @@ class InquiryFormViewC: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtMessage.delegate = self
+       
+      
+       
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         vwInquiry.drawBottomShadow()
         lblHeading.text = MarketPlaceConstant.kSendInquiry
         lblFullName.text = MarketPlaceConstant.kFullName + "*"
@@ -48,10 +55,7 @@ class InquiryFormViewC: AlysieBaseViewC {
         lblStoreContact.text = MarketPlaceConstant.kEnquiryStoreContact
         btnSendInquiry.setTitle(MarketPlaceConstant.kSendInquiry, for: .normal)
         setData()
-       
-        // Do any additional setup after loading the view.
     }
-    
     func setData(){
         lblProductDesc.text = passproductName?.capitalized
         lblProductPrice.text = "$" + "\(passProductPrice ?? "")"

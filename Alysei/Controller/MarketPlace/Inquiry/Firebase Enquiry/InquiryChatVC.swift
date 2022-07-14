@@ -40,10 +40,7 @@ class InquiryChatVC: AlysieBaseViewC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblHeading.text  = "Inbox"
-        lblOpened.text = MarketPlaceConstant.kOpened
-        lblClosed.text = MarketPlaceConstant.kClosed
-        lblNew.text = MarketPlaceConstant.kNew
+        
         
         let newTap = UITapGestureRecognizer.init(target: self, action: #selector(openNewChatList))
         self.vwNew.addGestureRecognizer(newTap)
@@ -66,7 +63,10 @@ class InquiryChatVC: AlysieBaseViewC {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
+        lblHeading.text  = "Inbox"
+        lblOpened.text = MarketPlaceConstant.kOpened
+        lblClosed.text = MarketPlaceConstant.kClosed
+        lblNew.text = MarketPlaceConstant.kNew
         openedCount.layer.cornerRadius = 13
         openedCount.layer.masksToBounds = true
         openedCount.textColor = UIColor.white

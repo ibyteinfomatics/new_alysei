@@ -39,14 +39,18 @@ class RestaurantDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
-        lblTitle.text = AppConstants.kRestaurants
-        btnMap.setTitle(AppConstants.kMap, for: .normal)
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         restId = "restaurants"
-        btnMap.setTitle(AppConstants.kMap, for: .normal)
         getCurrentLocation()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblTitle.text = AppConstants.kRestaurants
+        btnMap.setTitle(AppConstants.kMap, for: .normal)
+        btnMap.setTitle(AppConstants.kMap, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {

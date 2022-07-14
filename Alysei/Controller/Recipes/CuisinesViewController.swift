@@ -29,8 +29,7 @@ class CuisinesViewController: UIViewController {
     override func viewDidLoad() {
         
         //yourFavLabel.text = RecipeConstants.kPreference1
-        SaveButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+       
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -45,7 +44,11 @@ class CuisinesViewController: UIViewController {
         backButton.layer.borderColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         getSavedCusinMyPreferences()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SaveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+    }
     
     @IBAction func tapSave(_ sender: Any) {
         

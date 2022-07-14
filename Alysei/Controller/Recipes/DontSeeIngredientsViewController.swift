@@ -43,10 +43,7 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         super.viewDidLoad()
         
        // seeIngredientLabel.text = RecipeConstants.kPreference4
-        addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
-        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
-        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
+       
         
         scrollView.isScrollEnabled = false
         
@@ -70,9 +67,18 @@ class DontSeeIngredientsViewController: AlysieBaseViewC {
         searchTableView.dataSource = self
         searchTextField.delegate = self
         searchTextField.autocorrectionType = .no
+       
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addAnotherIngredientLbl.text = RecipeConstants.kAddOtherIngredient
+        nextButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+        skipBtn.setTitle(RecipeConstants.kSkip, for: .normal)
         searchTextField.placeholder = RecipeConstants.kSearchOtherIngredient
-        
-        
     }
     @IBAction func tapNextToCookigSkill(_ sender: Any) {
         if nextButton.layer.backgroundColor == UIColor.init(red: 59/255, green: 156/255, blue: 128/255, alpha: 1).cgColor{

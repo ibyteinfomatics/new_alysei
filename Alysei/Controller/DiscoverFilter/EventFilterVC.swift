@@ -48,14 +48,7 @@ class EventFilterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDataAndUI()
-        lblTitle.text = MarketPlaceConstant.kFilter
-        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
-        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
-        lblTitle1.text = AppConstants.kSelectADate
-        lblTitle2.text = AppConstants.kEventType
-        lblTitle3.text = AppConstants.kRegistrationType
-        lblTitle4.text = AppConstants.kRestaurantType
+       
 //        let dateTap = UITapGestureRecognizer(target: self, action: #selector(opendatepicker))
 //        self.vw1.addGestureRecognizer(dateTap)
         
@@ -71,7 +64,17 @@ class EventFilterVC: UIViewController {
         callGetValueOfFieldApi()
        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setDataAndUI()
+        lblTitle.text = MarketPlaceConstant.kFilter
+        btnClearFilter.setTitle(MarketPlaceConstant.kClearFilters, for: .normal)
+        btnApplyFilter.setTitle(MarketPlaceConstant.kApplyFilters, for: .normal)
+        lblTitle1.text = AppConstants.kSelectADate
+        lblTitle2.text = AppConstants.kEventType
+        lblTitle3.text = AppConstants.kRegistrationType
+        lblTitle4.text = AppConstants.kRestaurantType
+    }
     func setDataAndUI(){
         
         vwHeader.drawBottomShadow()

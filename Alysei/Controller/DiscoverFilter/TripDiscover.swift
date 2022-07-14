@@ -33,14 +33,16 @@ class TripDiscover: AlysieBaseViewC {
     override func viewDidLoad() {
         super.viewDidLoad()
         vwHeader.drawBottomShadow()
-        lblTitle.text = AppConstants.kTrips
+       
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         // Do any additional setup after loading the view.
         self.tripId = "trips"
         postRequestToGetTrip(indexOfPageToRequest)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        lblTitle.text = AppConstants.kTrips
+    }
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }

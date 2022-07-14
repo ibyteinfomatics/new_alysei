@@ -18,17 +18,17 @@ class NetworkCategoryCollectionCell: UICollectionViewCell {
     @IBOutlet weak var viewNetwork: UIView!
     
   //MARK: - Public Methods -
-  
+var kNetworkCategoryDictnry:  [(image: String, name: String)]?
   public func configureData(indexPath: IndexPath, currentIndex: Int) -> Void{
     
-    self.lblNetworkHeading.text = StaticArrayData.kNetworkCategoryDict[indexPath.item].name
+      self.lblNetworkHeading.text = kNetworkCategoryDictnry?[indexPath.item].name
   
     self.viewNetwork.layer.cornerRadius = self.viewNetwork.frame.height / 2
    // self.viewNetwork.layer.masksToBounds = true
     self.lblNetworkHeading.textColor = .black
-    
+
     if indexPath.item == currentIndex{
-        self.imgViewNetwork.image = UIImage(named: StaticArrayData.kNetworkCategoryDict[indexPath.item].image)
+        self.imgViewNetwork.image = UIImage(named: kNetworkCategoryDictnry?[indexPath.item].image ?? "")
        // self.lblNetworkHeading.textColor = .white
         self.viewNetwork.backgroundColor = .white
        
@@ -46,7 +46,7 @@ class NetworkCategoryCollectionCell: UICollectionViewCell {
 //        self.viewNetwork.layer.borderWidth = 0
     }
     else{
-        self.imgViewNetwork.image = UIImage(named: StaticArrayData.kInactiveNetworkCategoryDict[indexPath.item].image)
+        self.imgViewNetwork.image = UIImage(named: kNetworkCategoryDictnry?[indexPath.item].image ?? "")
        
         self.viewNetwork.backgroundColor = .white
         self.viewNetwork.layer.borderColor = UIColor.init(red: 154/255, green: 154/255, blue: 154/255, alpha: 0.2).cgColor

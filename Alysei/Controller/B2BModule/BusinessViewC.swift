@@ -120,8 +120,9 @@ class BusinessViewC: AlysieBaseViewC {
     //@IBOutlet weak var tblViewHeightConstraint: NSLayoutConstraint!
     //@IBOutlet weak var containerView: UIView!
     
-    //MARK: - ViewLifeCycle Methods -
     
+    var kBusinessCategoryDict: [(image: String, name: String)]?
+    //MARK: - ViewLifeCycle Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchType = 3
@@ -135,6 +136,13 @@ class BusinessViewC: AlysieBaseViewC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        kBusinessCategoryDict = [(image: "hubs", name: AppConstants.kHubs),
+                                         (image: "importers&distributors", name: AppConstants.kImporterDistributors),
+                                         (image: "italianrestaurantsinus", name: AppConstants.kItalianRestaurants),
+                                         (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
+                                         (image: "travelagencies", name: AppConstants.kTravelAgencies),
+                                         (image: "producers", name: MarketPlaceConstant.kItalianFBProducers),
+     ]
         let data = kSharedUserDefaults.getLoggedInUserDetails()
         
         let role = Int.getInt(kSharedUserDefaults.loggedInUserModal.memberRoleId)
@@ -159,7 +167,15 @@ class BusinessViewC: AlysieBaseViewC {
         self.tabBarController?.tabBar.isHidden = false
         hidesBottomBarWhenPushed = false
         
-        
+//         kBusinessCategoryDict = [(image: "hubs", name: AppConstants.Hubs),
+//                                                    (image: "importers&distributors", name: AppConstants.kImporterDistributer),
+//                                                    (image: "italianrestaurantsinus", name: LogInSignUp.kIatalianRestaurants),
+//                                                    (image: "voiceofexperts", name: AppConstants.kVoiceOfExperts),
+//                                                    (image: "travelagencies", name: AppConstants.kTravelAgencies),
+//                                                    (image: "producers", name: AppConstants.kProducer),
+//        ]
+       
+     
     }
     
     @IBAction func tapLogout(_ sender: UIButton) {
@@ -250,6 +266,7 @@ class BusinessViewC: AlysieBaseViewC {
         
         let businessCategoryCollectionCell = collectionViewBusinessCategory.dequeueReusableCell(withReuseIdentifier: BusinessCategoryCollectionCell.identifier(), for: indexPath) as! BusinessCategoryCollectionCell
         //_ = (self.currentIndex == 0) ? self.moveToNew(childViewController: selectedHubsViewC, fromController: self.currentChild) :   self.moveToNew(childViewController: businessListViewC, fromController: self.currentChild)
+        businessCategoryCollectionCell.kBusinessCategoryDict = self.kBusinessCategoryDict
         businessCategoryCollectionCell.configureData(indexPath: indexPath, currentIndex: self.currentIndex)
         return businessCategoryCollectionCell
     }

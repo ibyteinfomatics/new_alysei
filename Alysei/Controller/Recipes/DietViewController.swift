@@ -27,8 +27,7 @@ class DietViewController: AlysieBaseViewC  {
         super.viewDidLoad()
       
         //dietLabel.text = RecipeConstants.kPreference3
-        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
-        backButton.setTitle(RecipeConstants.kBack, for: .normal)
+      
         
         collectionView.register(UINib(nibName: "FoodAllergyCollectionViewCell", bundle: .main ), forCellWithReuseIdentifier: "FoodAllergyCollectionViewCell")
         self.view.isUserInteractionEnabled = false
@@ -44,6 +43,12 @@ class DietViewController: AlysieBaseViewC  {
         
         getSavedDietMyPreferences()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        saveButton.setTitle(RecipeConstants.kSave, for: .normal)
+        backButton.setTitle(RecipeConstants.kBack, for: .normal)
     }
     
     @IBAction func tapSave(_ sender: Any) {

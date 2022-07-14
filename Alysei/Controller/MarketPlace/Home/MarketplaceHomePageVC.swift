@@ -133,6 +133,7 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             self.lblDiscover.isHidden = false
         }
         self.btnCreateStore.setTitleColor(UIColor.white, for: .normal)
+        self.lblDiscover.text = MarketPlaceConstant.kDiscoverMarketplace
         marketplaceView.backgroundColor = UIColor.init(hexString: "#4BB3FD")
         // Do any additional setup after loading the view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(openPost))
@@ -255,8 +256,9 @@ class MarketplaceHomePageVC: AlysieBaseViewC {
             imgCreateleading.constant = 5
                self.btnCreateStore.setTitle(MarketPlaceConstant.kCreateMyStore, for: .normal)
             
-            
         }
+        
+       
     }
     @objc func openSearchView(){
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "SearchProductVC") as? SearchProductVC else {return}

@@ -15,7 +15,8 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
     @IBOutlet weak var lblBusinessHeading: UILabel!
     @IBOutlet weak var imgViewBusiness: UIImageView!
  
-  
+    var kBusinessCategoryDict: [(image: String, name: String)]?
+    
   override func layoutSubviews() {
     
     super.layoutSubviews()
@@ -32,12 +33,12 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
   
   public func configureData(indexPath: IndexPath, currentIndex: Int) -> Void{
     self.viewBusiness.layer.cornerRadius = self.viewBusiness.frame.height / 2
-    self.lblBusinessHeading.text = StaticArrayData.kBusinessCategoryDict[indexPath.item].name
+      self.lblBusinessHeading.text = kBusinessCategoryDict?[indexPath.item].name
    
     
     
     if indexPath.item == currentIndex{
-        self.imgViewBusiness.image = UIImage(named: StaticArrayData.kBusinessCategoryDict[indexPath.item].image)
+        self.imgViewBusiness.image = UIImage(named: kBusinessCategoryDict?[indexPath.item].image ?? "")
        // self.lblBusinessHeading.textColor = .white
        // self.viewBusiness.layer.backgroundColor = UIColor.init(red: 96/255, green: 96/255, blue: 96/255, alpha: 1).cgColor
 //            UIColor.init(red: 75/255, green: 179/255, blue: 253/255, alpha: 1).cgColor
@@ -55,7 +56,7 @@ class BusinessCategoryCollectionCell: UICollectionViewCell {
        // self.viewBusiness.layer.borderWidth = 0
     }
     else{
-        self.imgViewBusiness.image = UIImage(named: StaticArrayData.kInactiveBusinessCategoryDict[indexPath.item].image)
+        self.imgViewBusiness.image = UIImage(named: kBusinessCategoryDict?[indexPath.item].image ?? "")
         self.lblBusinessHeading.textColor = .black
         self.viewBusiness.backgroundColor = .white
         self.viewBusiness.layer.borderColor = UIColor.init(red: 154/255, green: 154/255, blue: 154/255, alpha: 0.2).cgColor
