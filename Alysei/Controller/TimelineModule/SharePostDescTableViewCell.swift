@@ -360,7 +360,8 @@ extension SharePostDescTableViewCell: UICollectionViewDelegate,UICollectionViewD
 //            cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(imageArray[i]))
 //            cell.imagePost.backgroundColor = .yellow
 //        }
-        cell.imagePost.setImage(withString: String.getString(imageArray[indexPath.row]))
+        let urlImg = URL(string: String.getString(imageArray[indexPath.row]))!
+        cell.imagePost.loadImageWithUrl(urlImg)
        // cell.imagePost.contentMode = .scaleAspectFill
         //cell.imagePost.setImage(withString: kImageBaseUrl + String.getString(data?.attachments?.attachmentLink?.attachmentUrl))
         return cell

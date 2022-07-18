@@ -752,13 +752,13 @@ extension MarketplaceHomePageVC : UITableViewDelegate, UITableViewDataSource{
                 if self.maketPlaceHomeScreenData?.top_favourite_products?.count == 0 {
                     return 0
                 }  else if (self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) % 2 == 0{
-                    return CGFloat(328 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
+                    return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2))
                 } else {
-                    return CGFloat(328 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 328)
+                    return CGFloat(320 * ((self.maketPlaceHomeScreenData?.top_favourite_products?.count ?? 0) / 2) + 320)
                 }
                 
             }else{
-                return 400
+                return 180
             }
         }
     }

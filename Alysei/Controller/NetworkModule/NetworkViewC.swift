@@ -163,6 +163,9 @@ class NetworkViewC: AlysieBaseViewC {
     func callConnectionApi(api: String){
         
         blankdata.isHidden = true
+        if indexOfPageToRequest == 1 {
+            self.arrConnection.removeAll()
+        }
         
         if networkcurrentIndex == 0 {
             blanktext.text = AppConstants.kYouHaveNoInvitationsRightNow

@@ -19,8 +19,10 @@ class AuthenticationViewC: UIViewController {
     @IBOutlet weak var textFieldThird: UITextField!
     @IBOutlet weak var textFieldFourth: UITextField!
     @IBOutlet weak var textFieldFive: UITextField!
-    
-   
+    @IBOutlet weak var lblHeading1: UILabel!
+    @IBOutlet weak var lblHeading2: UILabel!
+    @IBOutlet weak var lnlBottomHeading: UILabel!
+    @IBOutlet weak var btnSubmit: UIButton!
     var userOtp: String?
 
     override func viewDidLoad() {
@@ -49,7 +51,13 @@ class AuthenticationViewC: UIViewController {
         textFieldFourth.delegate = self
         textFieldFive.delegate = self
     }
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lblHeading1.text = AppConstants.kThanksForChoosingAlysei
+        lblHeading2.text = AppConstants.kEnterAccessCode
+        lnlBottomHeading.text = AppConstants.kWriteUsAt
+        btnSubmit.setTitle(AppConstants.Submit, for: .normal)
+    }
     
     @IBAction func tapVerifyPass(_ sender: UIButton) {
         

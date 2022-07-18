@@ -40,6 +40,6 @@ extension MarketplaceHomeAdTableVC: UICollectionViewDelegate, UICollectionViewDa
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2 , height: 220)
+        return CGSize(width: collectionView.frame.width / 1.05, height: 180)
     }
 }

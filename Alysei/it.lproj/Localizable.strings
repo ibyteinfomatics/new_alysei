@@ -1180,14 +1180,14 @@
 "Are You Sure?" = "Sei sicuro?";
 "You want to unblock" = "Vuoi sbloccare";
 
-"Support" = "Support";
-"Most Searched" = "Most Searched";
-"Thank you for choosing Alysei," = "Thank you for choosing Alysei,";
-"Please enter the access code" = "Please enter the access code";
-"In case you don't have access" = "In case you don't have access";
-"code,Please write us at" = "code. Please write us at";
+"Support" = "Supporto";
+"Most Searched" = "Più Cercati";
+"Thank you for choosing Alysei," = "Grazie per aver scelto Alysei,";
+"Please enter the access code" = "Si prega di inserire il codice di accesso";
+"In case you don't have access code, Please write us at" = "Nel caso tu non abbia il codice di accesso, scrivici a";
 
 
 
-
+"Account Deletion" = "Account Deletion";
+"Are you sure you want to delete this account" = "Are you sure you want to delete this account";
 

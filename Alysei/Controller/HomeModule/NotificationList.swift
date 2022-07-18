@@ -18,7 +18,7 @@ class NotificationList: AlysieBaseViewC {
     @IBOutlet weak var btnClearAll: UIButton!
    
     
-    
+    var selectedNotificationId:String?
     var notimodel:NotificationListModel?
     var notifiacationArray = [NotiDatum]()
     var indexOfPageToRequest = 1
@@ -228,7 +228,10 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
             //networkcurrentIndex = 1
            // tabBarController!.selectedIndex = 3
             //self.showAlert(withMessage: notifiacationArray[indexPath.row].reason ?? "", nil)
-            self.showAlertWithTitle(withMessage: notifiacationArray[indexPath.row].reason ?? "", appTitle: notifiacationArray[indexPath.row].sender_name ?? "", nil)
+            self.selectedNotificationId = "\(notifiacationArray[indexPath.row].notificationid ?? 0)"
+            self.showAlertWithTitle(withMessage: notifiacationArray[indexPath.row].reason ?? "", appTitle: notifiacationArray[indexPath.row].sender_name ?? "") {
+                self.callDeleteNotificationApi()
+            }
         case 5:
             // kSharedAppDelegate.moveToNetwork(index: 3)
             tabBarController!.selectedIndex = 3
@@ -251,13 +254,16 @@ extension NotificationList: UITableViewDataSource, UITableViewDelegate{
 
                     nextvc.passReceiverId =  kSharedUserDefaults.loggedInUserModal.userId
                 }else{
-                    let reciverdata = data.sender_id as? Int
-                    nextvc.passReceiverId =  "\(reciverdata ?? 0)"
+                    let reciverdata = data.sender_id
+                    nextvc.passReceiverId =  "\(reciverdata ?? "0")"
                 }
                 
             self.navigationController?.pushViewController(nextvc, animated: true)
           // kSharedAppDelegate.moveInqueryChat(receiverid: String.getString(notifiacationArray[indexPath.row].redirectToid), username: String.getString(notifiacationArray[indexPath.row].sender_name))
-       
+        case 4:
+            self.selectedNotificationId = "\(notifiacationArray[indexPath.row].notificationid ?? 0)"
+            self.callDeleteNotificationApi()
+            kSharedAppDelegate.pushToTabBarViewC()
         default:
             kSharedAppDelegate.pushToTabBarViewC()
     
@@ -292,6 +298,17 @@ extension NotificationList {
                 }
             vc.bookingUrl = data["url"] as? String
             vc.typeofpage = "read"
+            }
+        }
+    }
+    
+    func callDeleteNotificationApi(){
+        TANetworkManager.sharedInstance.requestApi(withServiceName: APIUrl.clearSingleNotification + "\(selectedNotificationId ?? "0")", requestMethod: .DELETE, requestParameters: [:], withProgressHUD: true) { result, error, errorType, statusCode in
+            switch statusCode{
+            case 200:
+            self.postRequestToGetNotification(1)
+            default:
+                print("Error")
             }
         }
     }

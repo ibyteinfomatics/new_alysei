@@ -435,6 +435,8 @@
 		6B9956B1272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */; };
 		6B9FA12C274F463300A41B2F /* AwardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */; };
 		6B9FA12E274F466700A41B2F /* AwardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */; };
+		6BA869E12881305600D95022 /* AlyseiDistribution.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BA869E02881305600D95022 /* AlyseiDistribution.cer */; };
+		6BA869E3288130CC00D95022 /* Alysei_Distribution_15.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 6BA869E2288130CC00D95022 /* Alysei_Distribution_15.mobileprovision */; };
 		6BABE12D287C012500DA9B10 /* MarketPlaceHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BABE12C287C012400DA9B10 /* MarketPlaceHomeVC.swift */; };
 		6BADE2E52787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADE2E42787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift */; };
 		6BBA994F260AF52300AA7A81 /* ActiveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */; };
@@ -452,12 +454,13 @@
 		6BD28D062770A49400AA0105 /* SearchByRegionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */; };
 		6BD399AE287E81D400C7BC98 /* AuthenticationViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD399AD287E81D400C7BC98 /* AuthenticationViewC.swift */; };
 		6BD56971270AF92D009F2F35 /* ProductStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */; };
+		6BDD3D66288122BA0047DEA4 /* AuthKey_C4SUR6F8Q2.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6BDD3D65288122BA0047DEA4 /* AuthKey_C4SUR6F8Q2.p8 */; };
 		6BDFD75F28745CAF0065D158 /* FreshChatSupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDFD75E28745CAF0065D158 /* FreshChatSupportVC.swift */; };
+		6BE0FBD128803EBD0012BE37 /* development.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE0FBD028803EBD0012BE37 /* development.cer */; };
+		6BE0FBD328803F150012BE37 /* Alysei_14Dev (1).mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 6BE0FBD228803F150012BE37 /* Alysei_14Dev (1).mobileprovision */; };
 		6BE430AE2845ED200000A897 /* InquiryConverstionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */; };
 		6BE64350287FD6050068130F /* aps_development (1).cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6434F287FD6050068130F /* aps_development (1).cer */; };
 		6BE64352287FD6590068130F /* ProductionSSL(PushNoti).cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */; };
-		6BE64354287FD7AA0068130F /* AlyseiDevCer.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */; };
-		6BE64356287FDD170068130F /* Alysei_Dev_14July.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */; };
 		6BE76F9D270C18FA00582D97 /* MarketplaceOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */; };
 		6BEA0A9B2705D39200B407B3 /* SKDeepHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */; };
 		6BECB1B6270EDDF70012D823 /* ProducerStoreFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */; };
@@ -1143,6 +1146,8 @@
 		6B9956B0272021CB00F43E4B /* StoreDescHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6B9FA12B274F463300A41B2F /* AwardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardTableViewCell.xib; sourceTree = "<group>"; };
 		6B9FA12D274F466700A41B2F /* AwardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardCollectionViewCell.xib; sourceTree = "<group>"; };
+		6BA869E02881305600D95022 /* AlyseiDistribution.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiDistribution.cer; sourceTree = "<group>"; };
+		6BA869E2288130CC00D95022 /* Alysei_Distribution_15.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alysei_Distribution_15.mobileprovision; sourceTree = "<group>"; };
 		6BABE12C287C012400DA9B10 /* MarketPlaceHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketPlaceHomeVC.swift; sourceTree = "<group>"; };
 		6BADE2E42787156E00C1303D /* MarketPlaceTopRatedTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceTopRatedTableVCell.swift; sourceTree = "<group>"; };
 		6BBA994E260AF52300AA7A81 /* ActiveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCollectionView.swift; sourceTree = "<group>"; };
@@ -1160,12 +1165,13 @@
 		6BD28D052770A49400AA0105 /* SearchByRegionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByRegionCollectionViewCell.xib; sourceTree = "<group>"; };
 		6BD399AD287E81D400C7BC98 /* AuthenticationViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewC.swift; sourceTree = "<group>"; };
 		6BD56970270AF92D009F2F35 /* ProductStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreVC.swift; sourceTree = "<group>"; };
+		6BDD3D65288122BA0047DEA4 /* AuthKey_C4SUR6F8Q2.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_C4SUR6F8Q2.p8; sourceTree = "<group>"; };
 		6BDFD75E28745CAF0065D158 /* FreshChatSupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshChatSupportVC.swift; sourceTree = "<group>"; };
+		6BE0FBD028803EBD0012BE37 /* development.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = development.cer; sourceTree = "<group>"; };
+		6BE0FBD228803F150012BE37 /* Alysei_14Dev (1).mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alysei_14Dev (1).mobileprovision"; sourceTree = "<group>"; };
 		6BE430AD2845ED200000A897 /* InquiryConverstionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryConverstionController.swift; sourceTree = "<group>"; };
 		6BE6434F287FD6050068130F /* aps_development (1).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "aps_development (1).cer"; sourceTree = "<group>"; };
 		6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProductionSSL(PushNoti).cer"; sourceTree = "<group>"; };
-		6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlyseiDevCer.cer; sourceTree = "<group>"; };
-		6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alysei_Dev_14July.mobileprovision; sourceTree = "<group>"; };
 		6BE76F9C270C18FA00582D97 /* MarketplaceOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceOptionModel.swift; sourceTree = "<group>"; };
 		6BEA0A9A2705D39200B407B3 /* SKDeepHalper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepHalper.swift; sourceTree = "<group>"; };
 		6BECB1B5270EDDF70012D823 /* ProducerStoreFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerStoreFilterVC.swift; sourceTree = "<group>"; };
@@ -2722,8 +2728,11 @@
 			isa = PBXGroup;
 			children = (
 				6BE64351287FD6590068130F /* ProductionSSL(PushNoti).cer */,
-				6BE64355287FDD170068130F /* Alysei_Dev_14July.mobileprovision */,
-				6BE64353287FD7AA0068130F /* AlyseiDevCer.cer */,
+				6BDD3D65288122BA0047DEA4 /* AuthKey_C4SUR6F8Q2.p8 */,
+				6BA869E2288130CC00D95022 /* Alysei_Distribution_15.mobileprovision */,
+				6BA869E02881305600D95022 /* AlyseiDistribution.cer */,
+				6BE0FBD228803F150012BE37 /* Alysei_14Dev (1).mobileprovision */,
+				6BE0FBD028803EBD0012BE37 /* development.cer */,
 				6BE6434F287FD6050068130F /* aps_development (1).cer */,
 			);
 			path = AlyseiCer;
@@ -3357,10 +3366,12 @@
 				C5EB3D1426E9E57500CCAC9E /* Assets.xcassets in Resources */,
 				6B4AA62F26FC357A00CD9A02 /* GoogleService-Info.plist in Resources */,
 				6B4CCF1F27D9D1DE00626D70 /* FooterCityHubTableViewCell.xib in Resources */,
+				6BE0FBD128803EBD0012BE37 /* development.cer in Resources */,
 				6B4CCF3D27D9D20800626D70 /* Chat.storyboard in Resources */,
 				C56863B427B1435E00D88F81 /* AlyseiBGV4.mp4 in Resources */,
 				6B89923F2702E55200591A2E /* TrendingCollectionViewCell.xib in Resources */,
 				6B4CCF3727D9D1FF00626D70 /* HubSelectionTableViewCell.xib in Resources */,
+				6BE0FBD328803F150012BE37 /* Alysei_14Dev (1).mobileprovision in Resources */,
 				61C7BE43267CB209006DB3BB /* Countries.json in Resources */,
 				6B7CACCA26FDD3CA00096E79 /* SanFranciscoDisplay-Regular.otf in Resources */,
 				6B7CACC426FDD3CA00096E79 /* SanFranciscoDisplay-Ultralight.otf in Resources */,
@@ -3375,7 +3386,6 @@
 				6B3CB130274BC10D00D5E683 /* EventTableViewCell.xib in Resources */,
 				6B7CACC026FDD3CA00096E79 /* SanFranciscoText-SemiboldItalic.otf in Resources */,
 				6B89924B2702E90000591A2E /* RecipeIngredientsUsedTableViewCell.xib in Resources */,
-				6BE64354287FD7AA0068130F /* AlyseiDevCer.cer in Resources */,
 				6B3CB132274BC10D00D5E683 /* CompanyTableViewCell.xib in Resources */,
 				6B3CB136274BC10D00D5E683 /* PostTableViewCell.xib in Resources */,
 				6B7CACC626FDD3CA00096E79 /* SanFranciscoText-Semibold.otf in Resources */,
@@ -3402,12 +3412,14 @@
 				6B97B09E2713EF29003B9E68 /* EditRecipeIngridientTableViewCell.xib in Resources */,
 				6B7AF261270EAC8800C48528 /* MyRecipeTableViewCell.xib in Resources */,
 				6B4CCF4027D9D21600626D70 /* Recipe.storyboard in Resources */,
+				6BA869E12881305600D95022 /* AlyseiDistribution.cer in Resources */,
 				6BE64352287FD6590068130F /* ProductionSSL(PushNoti).cer in Resources */,
 				6BE64350287FD6050068130F /* aps_development (1).cer in Resources */,
 				27A443D025AE03720002BAAC /* Montserrat-ThinItalic.ttf in Resources */,
 				6B13371F27292696005D79E5 /* MarketplaceWalkScreenViewController.xib in Resources */,
 				6B4CCF0727D9D19600626D70 /* UpdateProfile.storyboard in Resources */,
 				6BC4C0CF26006AA600791DCD /* OverLayLoginViewController.xib in Resources */,
+				6BA869E3288130CC00D95022 /* Alysei_Distribution_15.mobileprovision in Resources */,
 				6B3CB127274BC10D00D5E683 /* TripTableViewCell.xib in Resources */,
 				274635F025DC35AD0010C1C6 /* Splash.storyboard in Resources */,
 				6B4CCF1327D9D1C500626D70 /* StateListVC.xib in Resources */,
@@ -3443,8 +3455,8 @@
 				6B7CACBE26FDD3CA00096E79 /* SanFranciscoText-LightItalic.otf in Resources */,
 				61C7BE3D267C8A82006DB3BB /* Flag.xib in Resources */,
 				6B7CACCD26FDD3CA00096E79 /* SanFranciscoDisplay-Thin.otf in Resources */,
-				6BE64356287FDD170068130F /* Alysei_Dev_14July.mobileprovision in Resources */,
 				27A443D325AE03720002BAAC /* Montserrat-Bold.ttf in Resources */,
+				6BDD3D66288122BA0047DEA4 /* AuthKey_C4SUR6F8Q2.p8 in Resources */,
 				6B3CB12D274BC10D00D5E683 /* PeopelTableViewCell.xib in Resources */,
 				6B7CACC526FDD3CA00096E79 /* SanFranciscoText-Medium.otf in Resources */,
 				27A443DB25AE03720002BAAC /* Montserrat-Italic.ttf in Resources */,
@@ -4372,7 +4384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4427,7 +4439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -4446,16 +4458,16 @@
 				CODE_SIGN_ENTITLEMENTS = Alysei/AlyseiDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 3V73836LRC;
+				DEVELOPMENT_TEAM = 36XCU96U6L;
 				INFOPLIST_FILE = Alysei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Alysei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4473,15 +4485,15 @@
 				CODE_SIGN_ENTITLEMENTS = Alysei/Alysei.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
-				DEVELOPMENT_TEAM = 3V73836LRC;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 36XCU96U6L;
 				INFOPLIST_FILE = Alysei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Alysei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

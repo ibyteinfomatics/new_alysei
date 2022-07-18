@@ -396,6 +396,7 @@ struct APIUrl{
     static let kGetNotificationStatusApi = "get/notification/status"
     static let kPostNotifictionEnableDisableApi = "update/notification/status"
     static let clearAllNotification = "delete/notifications"
+    static let clearSingleNotification = "notification/delete/"
     
     //Inquiry Marketplace
     static let getEnquiry = "get/user/enquiries/"
@@ -551,6 +552,10 @@ struct APIUrl{
 
 struct AppConstants {
     static var recipeWalkthrough = false
+    static var kThanksForChoosingAlysei : String{ "Thank you for choosing Alysei,".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAreYouSureYouWantToDelete : String{ "Are you sure you want to delete this account".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnterAccessCode : String{ "Please enter the access code".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kWriteUsAt : String{"In case you don't have access code, Please write us at".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTypeHere: String{"Type here....".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var youWantToUnblock : String {"You want to unblock".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var areYouSure : String {"Are You Sure?".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -689,6 +694,8 @@ struct AppConstants {
     static var Marketplace : String {"Marketplace".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var TermsAndConditions : String {"Terms and Conditions".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var PrivacyPolicy : String {"Privacy Policy".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kAccountDeletion : String {"Account Deletion".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     static var FAQ : String {"FAQ".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Logout: String {"Logout".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var Events : String {"Events".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1918,7 +1925,9 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
+                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "customerSupport", name: "Support"),
+                                              
                                                (image: "icons8_exit", name: AppConstants.Logout),
     ]
     
@@ -1933,6 +1942,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "icons8_exit", name: AppConstants.Logout),
+                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "customerSupport", name: "Support"),
                                               (image: "yourData", name: AppConstants.YourData)
                                              
@@ -1952,6 +1962,7 @@ struct StaticArrayData {
                                             (image: "Faq", name: AppConstants.FAQ),
                                             (image: "yourData", name: AppConstants.YourData),
                                             (image: "customerSupport", name: "Support"),
+                                            (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                             (image: "icons8_exit", name: AppConstants.Logout)
                                             
                                             
@@ -1969,6 +1980,7 @@ struct StaticArrayData {
                                             (image: "Faq", name: AppConstants.FAQ),
                                             (image: "yourData", name: AppConstants.YourData),
                                             (image: "customerSupport", name: "Support"),
+                                            (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                             (image: "icons8_exit", name: AppConstants.Logout),
                                             
                                             
@@ -1987,6 +1999,7 @@ struct StaticArrayData {
                                              (image: "Faq", name: AppConstants.FAQ),
                                              (image: "yourData", name: AppConstants.YourData),
                                              (image: "customerSupport", name: "Support"),
+                                             (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                              (image: "icons8_exit", name:AppConstants.Logout),
                                              
                                              
@@ -2006,6 +2019,7 @@ struct StaticArrayData {
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
                                               (image: "customerSupport", name: "Support"),
+                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "icons8_exit", name: AppConstants.Logout)
                                               
     ]

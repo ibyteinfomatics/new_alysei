@@ -28,9 +28,6 @@ class UserPhotosGridViewController: AlysieBaseViewC {
         lblBlank.text = AppConstants.ThereAreNoPhotosAtThisMoment
         self.userPhotosCollectionView.delegate = self
         self.userPhotosCollectionView.dataSource = self
-
-        
-        
     }
 
     func updatePhotosList() {
