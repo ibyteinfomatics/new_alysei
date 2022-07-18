@@ -45,21 +45,21 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Alysei would like to access your camera.</string>
+	<string>Alysei would like to access your camera to attach photos to posts or to change profile images.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Alysei would like to access your location.</string>
+	<string>Alysei would like to access your location to show nearby restaurants and events.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Alysei would like to access your location.</string>
+	<string>Alysei would like to access your location to show nearby restaurants and events.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Alysei would like to access your location.</string>
+	<string>Alysei would like to access your location to show nearby restaurants and events.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Alysei would like to access your location.</string>
+	<string>Alysei would like to access your location to show nearby restaurants and events.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Alysei would like to access your microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Alysei would like to access your gallery.</string>
+	<string>Alysei would like to access your gallery to attach photos to posts or to change profile images.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Alysei would like to access your gallery.</string>
+	<string>Alysei would like to access your gallery to attach photos to posts or to change profile images.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>

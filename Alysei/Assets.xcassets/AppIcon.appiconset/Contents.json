@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "Group 658 1 (1).png",
+      "filename" : "Alysei40px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Group 658 2 (1).png",
+      "filename" : "Alysei60px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "Group 658 3 (1).png",
+      "filename" : "Alysei58px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Group 658 4 (1).png",
+      "filename" : "Alysei87px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Group 658 5 (1).png",
+      "filename" : "Alysei80px.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Group 658 6 (1).png",
+      "filename" : "Alysei120px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "Group 658 6 (1)-1.png",
+      "filename" : "Alysei120px-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Group 658 7 (1).png",
+      "filename" : "Alysei180px.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "Group 658 8.png",
+      "filename" : "Alysei20px.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "Group 658 1 (1)-1.png",
+      "filename" : "Alysei40px-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
@@ -66,16 +66,19 @@
       "size" : "29x29"
     },
     {
+      "filename" : "Alysei58px-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "Alysei40px-2.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
+      "filename" : "Alysei80px-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
@@ -96,7 +99,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "AlyseiAppStore2.png",
+      "filename" : "Alysei1024px.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
