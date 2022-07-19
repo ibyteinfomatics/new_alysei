@@ -80,6 +80,7 @@ class NewFeedSearchDataModel{
     var state: CountryModel?
     var id: Int?
     var shared_post_id: Int?
+    var shared_post_deleted: Bool?
     var sharedPostData: SharedPostData?
     var isExpand = false
   
@@ -89,6 +90,7 @@ class NewFeedSearchDataModel{
         if let subjectId = dictResponse["subject_id"] as? [String:Any]{
             self.subjectId = SubjectData.init(with: subjectId)
         }
+        self.shared_post_deleted = Bool.getBool(dictResponse["shared_post_deleted"])
         self.body = String.getString(dictResponse["body"])
         self.attachmentCount = Int.getInt(dictResponse["attachment_count"])
         self.commentCount = Int.getInt(dictResponse["comment_count"])

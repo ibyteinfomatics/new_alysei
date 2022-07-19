@@ -141,6 +141,8 @@ class EditRecipeViewController: UIViewController {
             self.courseLabel.textColor = .black
             strSelectedIdCourse = arrayMyRecipe?[index].course?.recipeCourseId
             
+            //forHowMuchLabel.text = "\(arrayMyRecipe?[index].serving ?? 0)"
+           // self.forHowMuchLabel.textColor = .black
             dietLabel.text = arrayMyRecipe?[index].diet?.dietName ?? RecipeConstants.kSelectDiet
             if dietLabel.text ==  RecipeConstants.kSelectDiet{
                 self.dietLabel.textColor = .darkGray
@@ -183,27 +185,7 @@ class EditRecipeViewController: UIViewController {
         headerLabel.text = RecipeConstants.kCreateNwRecipe
         changePhotoLabel.text = RecipeConstants.kChangePhoto
         
-        nameLabel.text = RecipeConstants.kName
-        selectCkngSkillLabel.text = RecipeConstants.kSelectCookingSkil
-        cookingSkillLabel.text = RecipeConstants.kSelectCookingSkil
-        selectCuisineLabel.text = RecipeConstants.kSelectCuisine
-        cuisineLabel.text = RecipeConstants.kSelectCuisine
-        selectMealLabel.text = RecipeConstants.kSelectMeal
-        selectMealLabel.text = RecipeConstants.kSelectMeal
-        selectCourseLabel.text = RecipeConstants.kSelectCourse
-        selectCourseLabel.text = RecipeConstants.kSelectCourse
-        selectDietLabel.text = RecipeConstants.kSelectDiet
-        dietLabel.text = RecipeConstants.kSelectDiet
-        selectFoodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
-        foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
-        preprationTimeLabel.text = RecipeConstants.kPreparationTime
-        hourLabel.text = RecipeConstants.kHours
-        minuteLabel.text = RecipeConstants.kMinutes
-        servingLabel.text = RecipeConstants.kServing
-        howMuchPeopleLable.text = RecipeConstants.kForHowMuch
-        selectRegionLabel.text = RecipeConstants.kSelectRegion
-        regionLabel.text = RecipeConstants.kSelectRegion
-        editIngredients.setTitle(RecipeConstants.kEditRecipeIngredient, for: .normal)
+        
     }
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
@@ -232,6 +214,28 @@ class EditRecipeViewController: UIViewController {
     }
     
     func uiSetup(){
+        
+        nameLabel.text = RecipeConstants.kName
+        selectCkngSkillLabel.text = RecipeConstants.kSelectCookingSkil
+        cookingSkillLabel.text = RecipeConstants.kSelectCookingSkil
+        selectCuisineLabel.text = RecipeConstants.kSelectCuisine
+        cuisineLabel.text = RecipeConstants.kSelectCuisine
+        selectMealLabel.text = RecipeConstants.kSelectMeal
+        selectMealLabel.text = RecipeConstants.kSelectMeal
+        selectCourseLabel.text = RecipeConstants.kSelectCourse
+        selectCourseLabel.text = RecipeConstants.kSelectCourse
+        selectDietLabel.text = RecipeConstants.kSelectDiet
+        dietLabel.text = RecipeConstants.kSelectDiet
+        selectFoodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        foodIntoleranceLabel.text = RecipeConstants.kSelectFoodIntolerance
+        preprationTimeLabel.text = RecipeConstants.kPreparationTime
+        hourLabel.text = RecipeConstants.kHours
+        minuteLabel.text = RecipeConstants.kMinutes
+        servingLabel.text = RecipeConstants.kServing
+        howMuchPeopleLable.text = RecipeConstants.kForHowMuch
+        selectRegionLabel.text = RecipeConstants.kSelectRegion
+        regionLabel.text = RecipeConstants.kSelectRegion
+        editIngredients.setTitle(RecipeConstants.kEditRecipeIngredient, for: .normal)
         
         headerView.layer.masksToBounds = false
         headerView.layer.shadowRadius = 2

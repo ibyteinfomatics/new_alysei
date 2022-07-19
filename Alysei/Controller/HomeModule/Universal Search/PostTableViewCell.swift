@@ -126,7 +126,7 @@ class PostTableViewCell: UITableViewCell {
            
         }else if  (modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue){
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = AppConstants.kVoiceOfExperts + ","
+            userNickName.text = AppConstants.kVoiceOfExpert + ","
             followerCount.isHidden = false
             followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }
@@ -152,7 +152,7 @@ class PostTableViewCell: UITableViewCell {
         }else if (modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue) {
             
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = AppConstants.kTravelAgencies + ","
+            userNickName.text = AppConstants.kTravelAgency + ","
             followerCount.isHidden = false
             followerCount.text = "\(modelData.follower_count ?? 0)" + " " + AppConstants.Followers
         }

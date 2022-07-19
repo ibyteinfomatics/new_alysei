@@ -199,7 +199,14 @@ class PostDescTableViewCell: UITableViewCell {
     
     func configCell(_ modelData: NewFeedSearchDataModel,postlike: [PostClass], _ index: Int) {
         
-        _ = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        var logUserID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        
+        logUserID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        if logUserID == modelData.subjectId?.userId{
+            self.viewShare.isHidden = true
+        }else{
+            self.viewShare.isHidden = false
+        }
         postLike = postlike
      
         self.viewLike.tag = index
@@ -217,12 +224,12 @@ class PostDescTableViewCell: UITableViewCell {
             userName.text = modelData.subjectId?.restaurantName?.capitalized
             userNickName.text = AppConstants.kRestaurant + ","//modelData.subjectId?.email?.lowercased()
         }else if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){
-            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")\(" ") \(modelData.subjectId?.lastName?.capitalized ?? "")"
             userNickName.text = AppConstants.kVoyager //modelData.subjectId?.email?.lowercased()
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
-            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+            userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "")\(" ") \(modelData.subjectId?.lastName?.capitalized ?? "")"
+            userNickName.text = AppConstants.kVoiceOfExpert + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
@@ -234,7 +241,7 @@ class PostDescTableViewCell: UITableViewCell {
             userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kTravelAgency + ","//modelData.subjectId?.email?.lowercased()
         }
         /*else{
   
@@ -345,8 +352,14 @@ class PostDescTableViewCell: UITableViewCell {
     }
     
     func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
+    
         
-        _ = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        let logUserID = Int(kSharedUserDefaults.loggedInUserModal.userId ?? "-1") ?? 0
+        if logUserID == modelData.subjectId?.userId{
+            self.viewShare.isHidden = true
+        }else{
+            self.viewShare.isHidden = false
+        }
       
      
         self.viewLike.tag = index
@@ -369,7 +382,7 @@ class PostDescTableViewCell: UITableViewCell {
             follower.isHidden = true
         }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
             userName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-            userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kVoiceOfExpert + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
             userName.text = modelData.subjectId?.companyName?.capitalized
             userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
@@ -381,7 +394,7 @@ class PostDescTableViewCell: UITableViewCell {
             userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
         }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
             userName.text = modelData.subjectId?.companyName?.capitalized
-            userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+            userNickName.text = AppConstants.kTravelAgency + ","//modelData.subjectId?.email?.lowercased()
         }
         /*else{
   

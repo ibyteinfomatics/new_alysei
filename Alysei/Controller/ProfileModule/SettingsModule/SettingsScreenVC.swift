@@ -53,10 +53,11 @@ class SettingsScreenVC: AlysieBaseViewC {
                                          (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                          (image: "Faq", name: AppConstants.FAQ),
                                          (image: "yourData", name: AppConstants.YourData),
-                                         (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                         //(image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                         (image: "icons8_exit", name: AppConstants.Logout),
                                          (image: "customerSupport", name: "Support"),
                                          
-                                         (image: "icons8_exit", name: AppConstants.Logout),
+                                         
             ]
         }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.voyagers.rawValue)"{
             settingsTableCell.arrData = [(image: "icons8_settings", name: AppConstants.Settings),
@@ -71,7 +72,7 @@ class SettingsScreenVC: AlysieBaseViewC {
                                          (image: "Faq", name: AppConstants.FAQ),
                                          (image: "customerSupport", name: "Support"),
                                          (image: "yourData", name: AppConstants.YourData),
-                                         (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                        // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                          (image: "icons8_exit", name: AppConstants.Logout),
                                          
                                          
@@ -90,10 +91,9 @@ class SettingsScreenVC: AlysieBaseViewC {
                                          (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                          (image: "Faq", name: AppConstants.FAQ),
                                          (image: "yourData", name: AppConstants.YourData),
-                                         (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
-                                         (image: "customerSupport", name: "Support"),
-                                        
+                                        // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                          (image: "icons8_exit", name: AppConstants.Logout),
+                                         (image: "customerSupport", name: "Support"),
                                          
                                          
             ]
@@ -111,9 +111,10 @@ class SettingsScreenVC: AlysieBaseViewC {
                                          (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                          (image: "Faq", name: AppConstants.FAQ),
                                          (image: "yourData", name: AppConstants.YourData),
+                                         (image: "icons8_exit", name: AppConstants.Logout),
                                          (image: "customerSupport", name: "Support"),
-                                         (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
-                                         (image: "icons8_exit", name: AppConstants.Logout)
+                                        // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                         
             ]
         }else if kSharedUserDefaults.loggedInUserModal.memberRoleId == "\(UserRoles.travelAgencies.rawValue)"{
             settingsTableCell.arrData =  [(image: "icons8_settings", name: AppConstants.Settings),
@@ -128,7 +129,7 @@ class SettingsScreenVC: AlysieBaseViewC {
                                           (image: "Faq", name: AppConstants.FAQ),
                                           (image: "customerSupport", name: "Support"),
                                           (image: "yourData", name: AppConstants.YourData),
-                                          (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                        //  (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                          (image: "icons8_exit", name:AppConstants.Logout),
                                           
                                           
@@ -146,7 +147,7 @@ class SettingsScreenVC: AlysieBaseViewC {
                                           (image: "Faq", name: AppConstants.FAQ),
                                           (image: "yourData", name: AppConstants.YourData),
                                           (image: "customerSupport", name: "Support"),
-                                          (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                          //(image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                           (image: "icons8_exit", name: AppConstants.Logout),
                                           
                                           
@@ -275,8 +276,7 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: BlockingViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 6:
                 _ = pushViewController(withName: MembershipViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-            case 13:
-                openSupportFreshChat()
+            
             case 8,9:
                 let controller  = pushViewController(withName:  WebKitViewController.id(), fromStoryboard: StoryBoardConstants.kHome) as? WebKitViewController
                 
@@ -285,14 +285,18 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 11:
                 _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
+//            case 12:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                   // callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
             case 12:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                   // callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case (StaticArrayData.kSettingPrducrColScreenDict.count - 1):
+                
                 resetUserData()
                 kSharedAppDelegate.callLogoutApi()
+            case (StaticArrayData.kSettingPrducrColScreenDict.count - 1):
+                openSupportFreshChat()
+                
                 
             default:
                 break
@@ -320,11 +324,11 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
             case 8:
                 openSupportFreshChat()
             case 10:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                   // callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case StaticArrayData.kSettingVoyaColScreenDict.count - 1:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                   // callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
+//            case StaticArrayData.kSettingVoyaColScreenDict.count - 1:
                 resetUserData()
                 kSharedAppDelegate.callLogoutApi()
                 
@@ -360,14 +364,16 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 13:
                 openSupportFreshChat()
-            case 12:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                   // callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case StaticArrayData.kSettingRestColScreenDict.count - 1:
+           case 12:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                   // callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
                 resetUserData()
                 kSharedAppDelegate.callLogoutApi()
+//            case StaticArrayData.kSettingRestColScreenDict.count - 1:
+//                resetUserData()
+//                kSharedAppDelegate.callLogoutApi()
             default:
                 break
             }
@@ -397,16 +403,19 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: FAQController.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 11:
                 _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
-            case 12:
-                openSupportFreshChat()
             case 13:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                    //callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case StaticArrayData.kSettingExpertColScreenDict.count - 1:
+                openSupportFreshChat()
+//            case 13:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                    //callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
+            case 12:
                 resetUserData()
                 kSharedAppDelegate.callLogoutApi()
+                
+//            case StaticArrayData.kSettingExpertColScreenDict.count - 1:
+//
                 
             default:
                 break
@@ -435,14 +444,19 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 10:
                 openSupportFreshChat()
+//            case 12:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                   // callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
             case 12:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                   // callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case StaticArrayData.kSettingTravlColScreenDict.count - 1:
                 resetUserData()
                 kSharedAppDelegate.callLogoutApi()
+             
+//            case StaticArrayData.kSettingTravlColScreenDict.count - 1:
+//                resetUserData()
+               // kSharedAppDelegate.callLogoutApi()
+//
             default:
                 break
             }
@@ -470,14 +484,17 @@ extension SettingsScreenVC: UICollectionViewDataSource, UICollectionViewDelegate
                 _ = pushViewController(withName: YourDataViewC.id(), fromStoryboard: StoryBoardConstants.kHome)
             case 11:
                 openSupportFreshChat()
+                
             case 12:
-                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
-                    //callDeleteAccoutApi()
-                    print("Hit Delete Api")
-                })
-            case StaticArrayData.kSettingImprtrColScreenDict.count - 1:
+//                self.showAlert(withMessage: AppConstants.kAreYouSureYouWantToDelete, {
+//                    //callDeleteAccoutApi()
+//                    print("Hit Delete Api")
+//                })
                 resetUserData()
-                kSharedAppDelegate.callLogoutApi()
+               kSharedAppDelegate.callLogoutApi()
+//            case StaticArrayData.kSettingImprtrColScreenDict.count - 1:
+//                resetUserData()
+//                kSharedAppDelegate.callLogoutApi()
             default:
                 break
             }

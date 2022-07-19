@@ -323,7 +323,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 cell.follower.isHidden = true
             }else if data?.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
                 cell.userName.text = "\(data?.subjectId?.firstName?.capitalized ?? "") \(data?.subjectId?.lastName?.capitalized ?? "")"
-                cell.userNickName.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kVoiceOfExpert + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.distributer1.rawValue {
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
                 cell.userNickName.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
@@ -335,7 +335,7 @@ extension PhotosPost : UITableViewDelegate,UITableViewDataSource{
                 cell.userNickName.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
             }else if data?.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
                 cell.userName.text = data?.subjectId?.companyName?.capitalized
-                cell.userNickName.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+                cell.userNickName.text = AppConstants.kTravelAgency + ","//modelData.subjectId?.email?.lowercased()
             }
             if(data?.subjectId?.roleId == UserRoles.voyagers.rawValue){
                 

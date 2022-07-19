@@ -161,7 +161,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     }else if modelData.subjectId?.roleId == UserRoles.voiceExperts.rawValue{
         lblSharedUserTitle.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
         lblSharedUserName.text = "\(modelData.subjectId?.firstName?.capitalized ?? "") \(modelData.subjectId?.lastName?.capitalized ?? "")"
-        lblSharedUserEmail.text =  AppConstants.kVoiceOfExperts + ","
+        lblSharedUserEmail.text =  AppConstants.kVoiceOfExpert + ","
     }else if modelData.subjectId?.roleId == UserRoles.distributer1.rawValue {
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
@@ -177,7 +177,7 @@ func configCell(_ modelData: NewFeedSearchDataModel, _ index: Int) {
     }else if modelData.subjectId?.roleId == UserRoles.travelAgencies.rawValue{
         lblSharedUserTitle.text = modelData.subjectId?.companyName?.capitalized
         lblSharedUserName.text = modelData.subjectId?.companyName?.capitalized
-        lblSharedUserEmail.text =  AppConstants.kTravelAgencies + ","
+        lblSharedUserEmail.text =  AppConstants.kTravelAgency + ","
     }
     
     if(modelData.subjectId?.roleId == UserRoles.voyagers.rawValue){

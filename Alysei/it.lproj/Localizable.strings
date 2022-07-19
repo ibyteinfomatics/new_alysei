@@ -312,14 +312,14 @@
 "Enter Quantity" =  "Inserisci Quantità";
 "Add to List" = "Aggiungi alla lista";
 "kg" = "kg";
-"litre" = "Litro (plurale o singolare?)";
-"pieces" = "Pezzi/Parti";
-"dozen" = "Dozzina";
+"litre" = "litro (plurale o singolare?)";
+"pieces" = "pezzi/Parti";
+"dozen" = "dozzina";
 "gm" = "gr";
 "ml" =  "ml";
-"Teaspoon" = "Cucchiaino";
-"Envelope" = "Bustina";
-"drops" = "Gocce";
+"teaspoon" = "cucchiaino";
+"envelope" = "bustina";
+"drops" = "gocce";
 "Add Tools in Recipe" =  "Aggiungi Utensili per la ricetta";
 "Search Appliance, Utensils & Tools" = "Ricerca Elettrodomestici e Utensili ";
 "Add Steps in Recipe" = "Aggiungi i passaggi nella ricetta";
@@ -1190,4 +1190,5 @@
 
 "Account Deletion" = "Account Deletion";
 "Are you sure you want to delete this account" = "Are you sure you want to delete this account";
+"clove" = "clove";
 

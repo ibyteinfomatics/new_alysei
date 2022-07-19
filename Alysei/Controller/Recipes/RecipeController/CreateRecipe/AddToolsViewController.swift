@@ -88,7 +88,7 @@ class AddToolsViewController: AlysieBaseViewC, AddToolTableViewCellProtocol {
         searchToolTextField.delegate = self
         searchToolTextField.autocorrectionType = .no
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops, RecipeConstants.kEnvelope]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops, RecipeConstants.kEnvelope,RecipeConstants.kClove]
         self.addNewMissingToolBtn.isHidden = true
         setUI()
         setupUI()

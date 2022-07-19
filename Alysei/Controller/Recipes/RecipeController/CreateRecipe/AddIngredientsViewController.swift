@@ -104,7 +104,7 @@ class AddIngredientsViewController: AlysieBaseViewC, AddIngridientsTableViewCell
         picker1.dataSource = self
         self.addNewMissingIngridientBtn.isHidden = true
         arrQuantity = [2, 4, 6, 8, 10, 12, 14]
-        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops, RecipeConstants.kEnvelope]
+        arrUnit = [RecipeConstants.kKg, RecipeConstants.kLitre,  RecipeConstants.kPieces, RecipeConstants.kDozen, RecipeConstants.kgm, RecipeConstants.kMl, RecipeConstants.kSpoon, RecipeConstants.kDrops, RecipeConstants.kEnvelope,RecipeConstants.kClove]
         setupUI()
         searchIngridientTextField.delegate = self
         searchIngridientTextField.translatesAutoresizingMaskIntoConstraints = true

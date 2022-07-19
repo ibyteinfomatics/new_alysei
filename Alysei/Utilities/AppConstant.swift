@@ -657,11 +657,13 @@ struct AppConstants {
     static var kRestaurants: String{"Restaurants".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kVoyager: String{"Voyager".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kVoiceOfExperts: String{"Voice Of Experts".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kVoiceOfExpert: String{"Voice Of Expert".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporter: String{"Importer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kDistributer: String{"Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterDistributer: String{"Importer & Distributer".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kImporterDistributors: String{"Importers & Distributors".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kTravelAgencies: String{"Travel Agencies".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    
     
     static var kPostUnavailable: String {"Post Unavailable".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
@@ -1641,9 +1643,9 @@ struct RecipeConstants{
     static var kDozen : String {  "dozen".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kgm : String {  "gm".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kMl : String {  "ml".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kSpoon : String {  "Teaspoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    static var kEnvelope : String { "Envelope".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
-    
+    static var kSpoon : String {  "teaspoon".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kEnvelope : String { "envelope".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
+    static var kClove: String {"clove".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     
     static var kDrops : String {  "drops".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
     static var kAddTools : String {  "Add Tools in Recipe".localizableString(loc: kSharedUserDefaults.getAppLanguage())}
@@ -1925,7 +1927,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
-                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                             // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "customerSupport", name: "Support"),
                                               
                                                (image: "icons8_exit", name: AppConstants.Logout),
@@ -1942,7 +1944,7 @@ struct StaticArrayData {
                                               (image: "icons8_data_protection", name: AppConstants.PrivacyPolicy),
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "icons8_exit", name: AppConstants.Logout),
-                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                             // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "customerSupport", name: "Support"),
                                               (image: "yourData", name: AppConstants.YourData)
                                              
@@ -1962,7 +1964,7 @@ struct StaticArrayData {
                                             (image: "Faq", name: AppConstants.FAQ),
                                             (image: "yourData", name: AppConstants.YourData),
                                             (image: "customerSupport", name: "Support"),
-                                            (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                            //(image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                             (image: "icons8_exit", name: AppConstants.Logout)
                                             
                                             
@@ -1980,7 +1982,7 @@ struct StaticArrayData {
                                             (image: "Faq", name: AppConstants.FAQ),
                                             (image: "yourData", name: AppConstants.YourData),
                                             (image: "customerSupport", name: "Support"),
-                                            (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                           // (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                             (image: "icons8_exit", name: AppConstants.Logout),
                                             
                                             
@@ -1999,7 +2001,7 @@ struct StaticArrayData {
                                              (image: "Faq", name: AppConstants.FAQ),
                                              (image: "yourData", name: AppConstants.YourData),
                                              (image: "customerSupport", name: "Support"),
-                                             (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                           //  (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                              (image: "icons8_exit", name:AppConstants.Logout),
                                              
                                              
@@ -2019,7 +2021,7 @@ struct StaticArrayData {
                                               (image: "Faq", name: AppConstants.FAQ),
                                               (image: "yourData", name: AppConstants.YourData),
                                               (image: "customerSupport", name: "Support"),
-                                              (image: "AccountDeletion", name: AppConstants.kAccountDeletion),
+                                              //(image: "AccountDeletion", name: AppConstants.kAccountDeletion),
                                               (image: "icons8_exit", name: AppConstants.Logout)
                                               
     ]

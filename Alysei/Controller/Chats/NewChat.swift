@@ -72,7 +72,7 @@ class NewChat: AlysieBaseViewC {
         if arrConnection[index].user?.companyName != "" {
             notificationTableCell.name.text = arrConnection[index].user?.companyName
         } else if arrConnection[index].user?.firstname != ""{
-            notificationTableCell.name.text = (arrConnection[index].user!.firstname)+" "+(arrConnection[index].user!.lastname)
+            notificationTableCell.name.text = (arrConnection[index].user!.firstname) + " " + (arrConnection[index].user!.lastname)
         } else {
             notificationTableCell.name.text = arrConnection[index].user?.restaurantName
         }

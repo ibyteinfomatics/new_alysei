@@ -376,7 +376,7 @@ class NetworkViewC: AlysieBaseViewC {
                     }else if arrConnection[indexPath.row].user?.roleID == UserRoles.voyagers.rawValue {
                         networkTableCell.email.text =  AppConstants.kVoyager + ","
                     }else if arrConnection[indexPath.row].user?.roleID == UserRoles.voiceExperts.rawValue{
-                        networkTableCell.email.text =  AppConstants.kVoiceOfExperts + ","
+                        networkTableCell.email.text =  AppConstants.kVoiceOfExpert + ","
                     }else if self.arrConnection[indexPath.row].user?.roleID  == UserRoles.distributer1.rawValue {
                         networkTableCell.email.text =  AppConstants.kImporter + ","
                         

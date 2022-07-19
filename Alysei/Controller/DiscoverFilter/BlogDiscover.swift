@@ -106,7 +106,7 @@ class BlogDiscover: AlysieBaseViewC {
         let imageurl = "\(blogData[indexPath].user?.avatarID?.baseUrl ?? "")"
  + "\(blogData[indexPath].user?.avatarID?.attachmentURL ?? "")"
         blogTableCell.imgUser.setImage(withString: imageurl, placeholder: UIImage(named: "profile_icon"))
-        blogTableCell.lblAuthorName.text = "\(blogData[indexPath].user?.firstName ?? "")" + "\(blogData[indexPath].user?.lastName ?? "")"
+        blogTableCell.lblAuthorName.text = "\(blogData[indexPath].user?.firstName ?? "")" + " " +  "\(blogData[indexPath].user?.lastName ?? "")"
 //        blogTableCell.blogImage.layer.masksToBounds = false
 //        blogTableCell.blogImage.clipsToBounds = true
 //        blogTableCell.blogImage.layer.cornerRadius = 5

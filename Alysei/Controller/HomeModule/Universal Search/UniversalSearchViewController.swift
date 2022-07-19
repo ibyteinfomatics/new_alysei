@@ -524,7 +524,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             //notificationTableCell.message.isHidden = true
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voiceExperts.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExpert + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer1.rawValue {
                             //notificationTableCell.message.isHidden = false
                             cell1.labelPeopleDetail.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
@@ -536,7 +536,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                             cell1.labelPeopleDetail.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
                         }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.travelAgencies.rawValue{
                             //notificationTableCell.message.isHidden = false
-                            cell1.labelPeopleDetail.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+                            cell1.labelPeopleDetail.text = AppConstants.kTravelAgency + ","//modelData.subjectId?.email?.lowercased()
                         }
                         
                         //cell1.followercount.text = ""
@@ -962,7 +962,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         //notificationTableCell.message.isHidden = true
                     }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.voiceExperts.rawValue{
                         //notificationTableCell.message.isHidden = false
-                        cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExperts + ","//modelData.subjectId?.email?.lowercased()
+                        cell1.labelPeopleDetail.text = AppConstants.kVoiceOfExpert + ","//modelData.subjectId?.email?.lowercased()
                     }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.distributer1.rawValue {
                         //notificationTableCell.message.isHidden = false
                         cell1.labelPeopleDetail.text = AppConstants.kImporter + ","//modelData.subjectId?.email?.lowercased()
@@ -974,7 +974,7 @@ extension UniversalSearchViewController: UITableViewDataSource, UITableViewDeleg
                         cell1.labelPeopleDetail.text = AppConstants.kImporterDistributer + ","//modelData.subjectId?.email?.lowercased()
                     }else if arraySearchByPeople?[indexPath.row].roleId == UserRoles.travelAgencies.rawValue{
                         //notificationTableCell.message.isHidden = false
-                        cell1.labelPeopleDetail.text = AppConstants.kTravelAgencies + ","//modelData.subjectId?.email?.lowercased()
+                        cell1.labelPeopleDetail.text = AppConstants.kTravelAgency + ","//modelData.subjectId?.email?.lowercased()
                     }
                         
                     cell1.labelPeopleDetail.text = arraySearchByPeople?[indexPath.row].email

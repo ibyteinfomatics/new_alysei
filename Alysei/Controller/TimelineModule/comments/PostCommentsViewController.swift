@@ -345,7 +345,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
                     poster.restaurant_name = kSharedUserDefaults.loggedInUserModal.restaurantName
                 } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-                    poster.restaurant_name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                    poster.restaurant_name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName) + " " + String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
                 }
                 
                 //poster.restaurant_name = ""
@@ -421,7 +421,7 @@ class PostCommentsViewController: AlysieBaseViewC, PostCommentsDisplayLogic  {
                 } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
                     poster.restaurant_name = kSharedUserDefaults.loggedInUserModal.restaurantName
                 } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-                    poster.restaurant_name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                    poster.restaurant_name = String.getString(kSharedUserDefaults.loggedInUserModal.firstName) + " " + String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
                 }
                 
                 //poster.restaurant_name = ""

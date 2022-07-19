@@ -152,7 +152,7 @@ class InquiryConversation: AlysieBaseViewC {
             } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
                 sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
             } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-                sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName) + " " + String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
             }
             
             sendMessageDetails.senderImage = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
@@ -686,7 +686,7 @@ extension InquiryConversation {
         } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
             sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
         } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-            sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+            sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName) + " " + String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
         }
         
         sendMessageDetails.senderImage = kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")
@@ -766,7 +766,7 @@ extension InquiryConversation {
                     } else if kSharedUserDefaults.loggedInUserModal.restaurantName != ""{
                         sendMessageDetails.senderName = kSharedUserDefaults.loggedInUserModal.restaurantName
                     } else if kSharedUserDefaults.loggedInUserModal.firstName != ""{
-                        sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName)+String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
+                        sendMessageDetails.senderName = String.getString(kSharedUserDefaults.loggedInUserModal.firstName) + " " + String.getString(kSharedUserDefaults.loggedInUserModal.lastName)
                     }
                     
                     sendMessageDetails.senderImage =  kSharedUserDefaults.loggedInUserModal.avatar?.imageURL?.replacingOccurrences(of: imageDomain, with: "")

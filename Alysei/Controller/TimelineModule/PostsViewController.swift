@@ -385,7 +385,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
         }else{
             if arrNewFeedDataModel.count == 0 {
                 print("No data")
-            }else if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil) {
+            }else if (arrNewFeedDataModel[indexPath.row].sharedPostData != nil) && (arrNewFeedDataModel[indexPath.row].shared_post_deleted == false) {
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "SharePostDescTableViewCell") as? SharePostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
                 loadTypeCell = .sharePost
@@ -468,6 +468,7 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                 return cell
                 
             }else{
+                if (arrNewFeedDataModel[indexPath.row].shared_post_deleted == false) {
                 guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostDescTableViewCell") as? PostDescTableViewCell else{return UITableViewCell()}
                 cell.selectionStyle = .none
                 //TODO: this needs to be discussed with Shalini.
@@ -568,7 +569,9 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
                         }
                     }
                 }
+                
                 return cell
+                }
             }
             
         }
@@ -581,6 +584,9 @@ extension PostsViewController: UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 0{
             return 150
         }else{
+            if arrNewFeedDataModel[indexPath.row].shared_post_deleted == true{
+                return 0
+            }
             return UITableView.automaticDimension
         }
     }
@@ -639,7 +645,7 @@ extension PostsViewController: ShareEditMenuProtocol {
         
         if let loggedInUserID = kSharedUserDefaults.loggedInUserModal.userId {
             if Int(loggedInUserID) == userID {
-                actionSheet.addAction(shareAction)
+                //actionSheet.addAction(shareAction)
                 actionSheet.addAction(editPostAction)
                 // actionSheet.addAction(changePrivacyAction)
                 actionSheet.addAction(deletePost)
